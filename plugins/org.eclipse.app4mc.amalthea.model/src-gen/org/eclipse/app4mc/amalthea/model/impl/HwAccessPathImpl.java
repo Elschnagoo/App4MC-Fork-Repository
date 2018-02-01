@@ -12,20 +12,13 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
-import java.net.URLEncoder;
-
-import java.nio.charset.StandardCharsets;
-
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
+import org.eclipse.app4mc.amalthea.model.INamed;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -37,10 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,15 +41,16 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getUniqueName <em>Unique Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getHwElements <em>Hw Elements</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getContainingAccessElement <em>Containing Access Element</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getPathElements <em>Path Elements</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getStartAddress <em>Start Address</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getEndAddress <em>End Address</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessPathImpl#getMemOffset <em>Mem Offset</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwAccessPath {
+public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,44 +72,74 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUniqueName() <em>Unique Name</em>}' attribute.
+	 * The cached value of the '{@link #getPathElements() <em>Path Elements</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUniqueName()
+	 * @see #getPathElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UNIQUE_NAME_EDEFAULT = null;
+	protected EList<HwPathElement> pathElements;
 
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * The default value of the '{@link #getStartAddress() <em>Start Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSource()
+	 * @see #getStartAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected ComplexNode source;
+	protected static final long START_ADDRESS_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * The cached value of the '{@link #getStartAddress() <em>Start Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * @see #getStartAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected ComplexNode target;
+	protected long startAddress = START_ADDRESS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getHwElements() <em>Hw Elements</em>}' containment reference list.
+	 * The default value of the '{@link #getEndAddress() <em>End Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHwElements()
+	 * @see #getEndAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwAccessPathElement> hwElements;
+	protected static final long END_ADDRESS_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getEndAddress() <em>End Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected long endAddress = END_ADDRESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMemOffset() <em>Mem Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long MEM_OFFSET_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getMemOffset() <em>Mem Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected long memOffset = MEM_OFFSET_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,8 +186,9 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUniqueName() {
-		return this.computeUniqueName();
+	public HwAccessElement getContainingAccessElement() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT) return null;
+		return (HwAccessElement)eContainer();
 	}
 
 	/**
@@ -174,16 +196,21 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode getSource() {
-		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
-			source = (ComplexNode)eResolveProxy(oldSource);
-			if (source != oldSource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_ACCESS_PATH__SOURCE, oldSource, source));
-			}
+	public HwAccessElement basicGetContainingAccessElement() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT) return null;
+		return (HwAccessElement)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<HwPathElement> getPathElements() {
+		if (pathElements == null) {
+			pathElements = new EObjectResolvingEList<HwPathElement>(HwPathElement.class, this, AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS);
 		}
-		return source;
+		return pathElements;
 	}
 
 	/**
@@ -191,8 +218,8 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode basicGetSource() {
-		return source;
+	public long getStartAddress() {
+		return startAddress;
 	}
 
 	/**
@@ -200,11 +227,11 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(ComplexNode newSource) {
-		ComplexNode oldSource = source;
-		source = newSource;
+	public void setStartAddress(long newStartAddress) {
+		long oldStartAddress = startAddress;
+		startAddress = newStartAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS, oldStartAddress, startAddress));
 	}
 
 	/**
@@ -212,16 +239,8 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode getTarget() {
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (ComplexNode)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.HW_ACCESS_PATH__TARGET, oldTarget, target));
-			}
-		}
-		return target;
+	public long getEndAddress() {
+		return endAddress;
 	}
 
 	/**
@@ -229,20 +248,11 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode basicGetTarget() {
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTarget(ComplexNode newTarget) {
-		ComplexNode oldTarget = target;
-		target = newTarget;
+	public void setEndAddress(long newEndAddress) {
+		long oldEndAddress = endAddress;
+		endAddress = newEndAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS, oldEndAddress, endAddress));
 	}
 
 	/**
@@ -250,66 +260,36 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwAccessPathElement> getHwElements() {
-		if (hwElements == null) {
-			hwElements = new EObjectContainmentEList<HwAccessPathElement>(HwAccessPathElement.class, this, AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS);
+	public long getMemOffset() {
+		return memOffset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemOffset(long newMemOffset) {
+		long oldMemOffset = memOffset;
+		memOffset = newMemOffset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET, oldMemOffset, memOffset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, msgs);
 		}
-		return hwElements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String computeUniqueName() {
-		return this.basicComputeUniqueName();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String basicComputeUniqueName() {
-		String _encode = this.encode(this.getName());
-		String _plus = (_encode + "?type=");
-		String _name = this.eClass().getName();
-		return (_plus + _name);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String basicComputeUniqueNameWithPrefix(final String prefix) {
-		String _encode = this.encode(prefix);
-		String _plus = (_encode + "/");
-		String _basicComputeUniqueName = this.basicComputeUniqueName();
-		return (_plus + _basicComputeUniqueName);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String encode(final String str) {
-		try {
-			String _xifexpression = null;
-			boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(str);
-			if (_isNullOrEmpty) {
-				_xifexpression = "no-name";
-			}
-			else {
-				_xifexpression = URLEncoder.encode(str, StandardCharsets.UTF_8.toString());
-			}
-			return _xifexpression;
-		}
-		catch (Throwable _e) {
-			throw org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow(_e);
-		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -320,10 +300,24 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				return ((InternalEList<?>)getHwElements()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				return eBasicSetContainer(null, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS, HwAccessElement.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -336,16 +330,17 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 		switch (featureID) {
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				return getName();
-			case AmaltheaPackage.HW_ACCESS_PATH__UNIQUE_NAME:
-				return getUniqueName();
-			case AmaltheaPackage.HW_ACCESS_PATH__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
-			case AmaltheaPackage.HW_ACCESS_PATH__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				return getHwElements();
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				if (resolve) return getContainingAccessElement();
+				return basicGetContainingAccessElement();
+			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
+				return getPathElements();
+			case AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS:
+				return getStartAddress();
+			case AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS:
+				return getEndAddress();
+			case AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET:
+				return getMemOffset();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -362,15 +357,18 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				setName((String)newValue);
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__SOURCE:
-				setSource((ComplexNode)newValue);
+			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
+				getPathElements().clear();
+				getPathElements().addAll((Collection<? extends HwPathElement>)newValue);
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__TARGET:
-				setTarget((ComplexNode)newValue);
+			case AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS:
+				setStartAddress((Long)newValue);
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				getHwElements().clear();
-				getHwElements().addAll((Collection<? extends HwAccessPathElement>)newValue);
+			case AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS:
+				setEndAddress((Long)newValue);
+				return;
+			case AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET:
+				setMemOffset((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -387,14 +385,17 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__SOURCE:
-				setSource((ComplexNode)null);
+			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
+				getPathElements().clear();
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__TARGET:
-				setTarget((ComplexNode)null);
+			case AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS:
+				setStartAddress(START_ADDRESS_EDEFAULT);
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				getHwElements().clear();
+			case AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS:
+				setEndAddress(END_ADDRESS_EDEFAULT);
+				return;
+			case AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET:
+				setMemOffset(MEM_OFFSET_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -410,14 +411,16 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 		switch (featureID) {
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AmaltheaPackage.HW_ACCESS_PATH__UNIQUE_NAME:
-				return UNIQUE_NAME_EDEFAULT == null ? getUniqueName() != null : !UNIQUE_NAME_EDEFAULT.equals(getUniqueName());
-			case AmaltheaPackage.HW_ACCESS_PATH__SOURCE:
-				return source != null;
-			case AmaltheaPackage.HW_ACCESS_PATH__TARGET:
-				return target != null;
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				return hwElements != null && !hwElements.isEmpty();
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				return basicGetContainingAccessElement() != null;
+			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
+				return pathElements != null && !pathElements.isEmpty();
+			case AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS:
+				return startAddress != START_ADDRESS_EDEFAULT;
+			case AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS:
+				return endAddress != END_ADDRESS_EDEFAULT;
+			case AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET:
+				return memOffset != MEM_OFFSET_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -428,18 +431,30 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.HW_ACCESS_PATH___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
-			case AmaltheaPackage.HW_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME:
-				return basicComputeUniqueName();
-			case AmaltheaPackage.HW_ACCESS_PATH___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING:
-				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
-			case AmaltheaPackage.HW_ACCESS_PATH___ENCODE__STRING:
-				return encode((String)arguments.get(0));
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.HW_ACCESS_PATH__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
 		}
-		return super.eInvoke(operationID, arguments);
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.HW_ACCESS_PATH__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -454,6 +469,12 @@ public class HwAccessPathImpl extends AmaltheaExtendedEObjectImpl implements HwA
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", startAddress: ");
+		result.append(startAddress);
+		result.append(", endAddress: ");
+		result.append(endAddress);
+		result.append(", memOffset: ");
+		result.append(memOffset);
 		result.append(')');
 		return result.toString();
 	}

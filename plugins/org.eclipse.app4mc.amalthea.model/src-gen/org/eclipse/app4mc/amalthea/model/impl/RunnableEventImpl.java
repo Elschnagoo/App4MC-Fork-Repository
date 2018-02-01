@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 
@@ -89,7 +89,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * @generated
 	 * @ordered
 	 */
-	protected Core core;
+	protected ProcessingUnit core;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -212,10 +212,10 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core getCore() {
+	public ProcessingUnit getCore() {
 		if (core != null && core.eIsProxy()) {
 			InternalEObject oldCore = (InternalEObject)core;
-			core = (Core)eResolveProxy(oldCore);
+			core = (ProcessingUnit)eResolveProxy(oldCore);
 			if (core != oldCore) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_EVENT__CORE, oldCore, core));
@@ -229,7 +229,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core basicGetCore() {
+	public ProcessingUnit basicGetCore() {
 		return core;
 	}
 
@@ -238,8 +238,8 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCore(Core newCore) {
-		Core oldCore = core;
+	public void setCore(ProcessingUnit newCore) {
+		ProcessingUnit oldCore = core;
 		core = newCore;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_EVENT__CORE, oldCore, core));
@@ -286,7 +286,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 				setProcess((org.eclipse.app4mc.amalthea.model.Process)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE_EVENT__CORE:
-				setCore((Core)newValue);
+				setCore((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -310,7 +310,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 				setProcess((org.eclipse.app4mc.amalthea.model.Process)null);
 				return;
 			case AmaltheaPackage.RUNNABLE_EVENT__CORE:
-				setCore((Core)null);
+				setCore((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);

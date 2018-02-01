@@ -22,12 +22,12 @@ import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -133,7 +133,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -178,7 +178,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -237,7 +237,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler_left = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler_left.setName("TestScheduler_left");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -290,7 +290,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -349,7 +349,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -405,7 +405,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();
@@ -460,7 +460,7 @@ public class MappingModelTests {
 		final TaskScheduler taskScheduler = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		taskScheduler.setName("TestScheduler");
 
-		final Core core = AmaltheaFactory.eINSTANCE.createCore();
+		final ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		core.setName("TestCore");
 
 		final OperatingSystem os = AmaltheaFactory.eINSTANCE.createOperatingSystem();

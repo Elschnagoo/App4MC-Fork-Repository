@@ -16,7 +16,6 @@ package org.eclipse.app4mc.amalthea.validation.checks.impl;
 
 import org.easymock.EasyMock;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;

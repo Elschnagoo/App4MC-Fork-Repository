@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -88,7 +88,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * @generated
 	 * @ordered
 	 */
-	protected ComplexNode hardwareContext;
+	protected ProcessingUnit hardwareContext;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,10 +156,10 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode getHardwareContext() {
+	public ProcessingUnit getHardwareContext() {
 		if (hardwareContext != null && hardwareContext.eIsProxy()) {
 			InternalEObject oldHardwareContext = (InternalEObject)hardwareContext;
-			hardwareContext = (ComplexNode)eResolveProxy(oldHardwareContext);
+			hardwareContext = (ProcessingUnit)eResolveProxy(oldHardwareContext);
 			if (hardwareContext != oldHardwareContext) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CPU_PERCENTAGE_REQUIREMENT_LIMIT__HARDWARE_CONTEXT, oldHardwareContext, hardwareContext));
@@ -173,7 +173,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode basicGetHardwareContext() {
+	public ProcessingUnit basicGetHardwareContext() {
 		return hardwareContext;
 	}
 
@@ -182,8 +182,8 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHardwareContext(ComplexNode newHardwareContext) {
-		ComplexNode oldHardwareContext = hardwareContext;
+	public void setHardwareContext(ProcessingUnit newHardwareContext) {
+		ProcessingUnit oldHardwareContext = hardwareContext;
 		hardwareContext = newHardwareContext;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CPU_PERCENTAGE_REQUIREMENT_LIMIT__HARDWARE_CONTEXT, oldHardwareContext, hardwareContext));
@@ -223,7 +223,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 				setLimitValue((Double)newValue);
 				return;
 			case AmaltheaPackage.CPU_PERCENTAGE_REQUIREMENT_LIMIT__HARDWARE_CONTEXT:
-				setHardwareContext((ComplexNode)newValue);
+				setHardwareContext((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,7 +244,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 				setLimitValue(LIMIT_VALUE_EDEFAULT);
 				return;
 			case AmaltheaPackage.CPU_PERCENTAGE_REQUIREMENT_LIMIT__HARDWARE_CONTEXT:
-				setHardwareContext((ComplexNode)null);
+				setHardwareContext((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -22,18 +22,14 @@ import java.util.Map.Entry;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
-import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
@@ -60,7 +56,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	private final ConsoleOutputHandler con = new ConsoleOutputHandler("OpenMapping Console");
 	private final MappingBuilder mappingHandle = new MappingBuilder();
 	private final ExpressionsBasedModel ebm = new ExpressionsBasedModel();
-	private final Map<Core, AdvancedCore> mCoreMap = new HashMap<Core, AdvancedCore>();
+	private final Map<ProcessingUnit, AdvancedCore> mCoreMap = new HashMap<ProcessingUnit, AdvancedCore>();
 	private final Map<Runnable, AdvancedRunnable> mRunnableMap = new HashMap<Runnable, AdvancedRunnable>();
 	private final List<AdvancedRunnable> lUnscheduledRunnables = new ArrayList<AdvancedRunnable>();
 	private final List<VoltageLevel> lVoltageLevels = new LinkedList<VoltageLevel>();
@@ -200,99 +196,102 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	 * @return true on success, false otherwise
 	 */
 	private Boolean createAdvancedCores() {
-		final HwSystem system;
-		if ((system = getMergedModel().getHwModel().getSystem()) == null) {
-			UniversalHandler.getInstance().log("Invalid HWModel.\nThere is no System element in this model.", null);
-			return false;
-		}
+		
+// TODO implement
 
-		// Get list of ECUs, Microcontrollers and finally Cores
-		// Check if the system has ECUs
-		if (system.getEcus().size() <= 0) {
-			UniversalHandler.getInstance().log("Invalid HWModel.\nThere are no ECUs in the System.", null);
-			return false;
-		}
-
-		final Iterator<ECU> itEcus = system.getEcus().iterator();
-		while (itEcus.hasNext()) {
-			final ECU ecu = itEcus.next();
-			UniversalHandler.getInstance().logCon("Parsing ECU '" + ecu.getName() + "'");
-
-			if (ecu.getMicrocontrollers().size() <= 0) {
-				UniversalHandler.getInstance().log("Invalid HWModel.\nThere are no Microcontrollers in the System.",
-						null);
-				return false;
-			}
-			final Iterator<Microcontroller> mcs = ecu.getMicrocontrollers().iterator();
-			while (mcs.hasNext()) {
-				final Microcontroller mc = mcs.next();
-				UniversalHandler.getInstance().logCon(" Parsing Microcontroller '" + mc.getName() + "'");
-				final Iterator<Core> cores = mc.getCores().iterator();
-				if (cores == null) {
-					UniversalHandler.getInstance().logCon(" Warning: Microcontroller contains no Cores, skipping...");
-				}
-				else {
-					CoreType ct = null;
-					while (cores.hasNext()) {
-						final Core core = cores.next();
-						final String sn = core.getName() + "_SCHED";
-
-
-						UniversalHandler.getInstance().logCon("  Adding Core '" + core.getName() + "'");
-
-						// Remember/Check the CoreType
-						if (ct == null) {
-							ct = core.getCoreType();
-							determineVoltageLevels(ct);
-						}
-						else {
-							// Check if there are equal CoreTypes
-							if (ct != core.getCoreType()) {
-								this.con.appendln(
-										"Heterogeneous CoreTypes detected. This algorithm only supports homogeneous cores.");
-								return false;
-							}
-						}
-
-						final AdvancedCore ac = new AdvancedCore(core, true);
-						this.mCoreMap.put(core, ac);
-
-						UniversalHandler.getInstance().logCon("  Creating Scheduler: " + sn);
-						final TaskScheduler s = this.osInstance.createTaskScheduler();
-						s.setName(sn);
-						ac.setScheduler(s);
-						getMergedModel().getOsModel().getOperatingSystems().get(0).getTaskSchedulers().add(s);
-						this.mappingHandle.addCoreToSchedulder(ac, s);
-
-						this.con.appendln(" Core " + ac.getCore().getName() + ": " + ac.getPsPerInstruction());
-
-						if (this.psPerInstruction == 0) {
-							this.psPerInstruction = ac.getPsPerInstruction();
-						}
-						else {
-							if (this.psPerInstruction != ac.getPsPerInstruction()) {
-								this.con.appendln(
-										"Heterogeneous CoreTypes detected. This algorithm only supports homogeneous cores.");
-								return false;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		if (this.mCoreMap.size() <= 0) {
-			UniversalHandler.getInstance()
-					.logCon(" Error: It seems there have been no (correct?) core definitions this model.");
-			return false;
-		}
+	//		final HwSystem system;
+	//		if ((system = getMergedModel().getHwModel().getSystem()) == null) {
+	//			UniversalHandler.getInstance().log("Invalid HWModel.\nThere is no System element in this model.", null);
+	//			return false;
+	//		}
+	//
+	//		// Get list of ECUs, Microcontrollers and finally Cores
+	//		// Check if the system has ECUs
+	//		if (system.getEcus().size() <= 0) {
+	//			UniversalHandler.getInstance().log("Invalid HWModel.\nThere are no ECUs in the System.", null);
+	//			return false;
+	//		}
+	//
+	//		final Iterator<ECU> itEcus = system.getEcus().iterator();
+	//		while (itEcus.hasNext()) {
+	//			final ECU ecu = itEcus.next();
+	//			UniversalHandler.getInstance().logCon("Parsing ECU '" + ecu.getName() + "'");
+	//
+	//			if (ecu.getMicrocontrollers().size() <= 0) {
+	//				UniversalHandler.getInstance().log("Invalid HWModel.\nThere are no Microcontrollers in the System.",
+	//						null);
+	//				return false;
+	//			}
+	//			final Iterator<Microcontroller> mcs = ecu.getMicrocontrollers().iterator();
+	//			while (mcs.hasNext()) {
+	//				final Microcontroller mc = mcs.next();
+	//				UniversalHandler.getInstance().logCon(" Parsing Microcontroller '" + mc.getName() + "'");
+	//				final Iterator<ProcessingUnit> cores = mc.getCores().iterator();
+	//				if (cores == null) {
+	//					UniversalHandler.getInstance().logCon(" Warning: Microcontroller contains no Cores, skipping...");
+	//				}
+	//				else {
+	//					ProcessingUnitDefinition ct = null;
+	//					while (cores.hasNext()) {
+	//						final ProcessingUnit core = cores.next();
+	//						final String sn = core.getName() + "_SCHED";
+	//
+	//
+	//						UniversalHandler.getInstance().logCon("  Adding Core '" + core.getName() + "'");
+	//
+	//						// Remember/Check the ProcessingUnitDefinition
+	//						if (ct == null) {
+	//							ct = core.getDefinition();
+	//							determineVoltageLevels(ct);
+	//						}
+	//						else {
+	//							// Check if there are equal ProcessingUnitDefinitions
+	//							if (ct != core.getDefinition()) {
+	//								this.con.appendln(
+	//										"Heterogeneous ProcessingUnitDefinitions detected. This algorithm only supports homogeneous cores.");
+	//								return false;
+	//							}
+	//						}
+	//
+	//						final AdvancedCore ac = new AdvancedCore(core, true);
+	//						this.mCoreMap.put(core, ac);
+	//
+	//						UniversalHandler.getInstance().logCon("  Creating Scheduler: " + sn);
+	//						final TaskScheduler s = this.osInstance.createTaskScheduler();
+	//						s.setName(sn);
+	//						ac.setScheduler(s);
+	//						getMergedModel().getOsModel().getOperatingSystems().get(0).getTaskSchedulers().add(s);
+	//						this.mappingHandle.addCoreToSchedulder(ac, s);
+	//
+	//						this.con.appendln(" Core " + ac.getCore().getName() + ": " + ac.getPsPerInstruction());
+	//
+	//						if (this.psPerInstruction == 0) {
+	//							this.psPerInstruction = ac.getPsPerInstruction();
+	//						}
+	//						else {
+	//							if (this.psPerInstruction != ac.getPsPerInstruction()) {
+	//								this.con.appendln(
+	//										"Heterogeneous ProcessingUnitDefinitions detected. This algorithm only supports homogeneous cores.");
+	//								return false;
+	//							}
+	//						}
+	//					}
+	//				}
+	//			}
+	//		}
+	//
+	//		if (this.mCoreMap.size() <= 0) {
+	//			UniversalHandler.getInstance()
+	//					.logCon(" Error: It seems there have been no (correct?) core definitions this model.");
+	//			return false;
+	//		}
 
 		return true;
 	}
 
-	private boolean determineVoltageLevels(final CoreType ct) {
+	private boolean determineVoltageLevels(final ProcessingUnitDefinition ct) {
 		if (ct.getCustomProperties().size() <= 0) {
-			this.con.appendln("Error: CoreType contains no voltage levels.");
+			this.con.appendln("Error: ProcessingUnitDefinition contains no voltage levels.");
 			return false;
 		}
 		// Local map for lookups
@@ -475,7 +474,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 			// }
 
 			// Find best-fit target core/processor
-			final Iterator<Entry<Core, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
+			final Iterator<Entry<ProcessingUnit, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
 
 			// Minimal available time of all cores
 			// Storages for the best fit processors in each stage
@@ -717,7 +716,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 	}
 
 	private void updateMinAvailTime() {
-		final Iterator<Entry<Core, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
+		final Iterator<Entry<ProcessingUnit, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
 		long localMin = Long.MAX_VALUE;
 		while (itCores.hasNext()) {
 			final AdvancedCore ac = itCores.next().getValue();
@@ -737,7 +736,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		this.dag.addVertex(in);
 		this.dag.addVertex(out);
 
-		final Iterator<Entry<Core, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
+		final Iterator<Entry<ProcessingUnit, AdvancedCore>> itCores = this.mCoreMap.entrySet().iterator();
 		while (itCores.hasNext()) {
 			final AdvancedCore ac = itCores.next().getValue();
 			// Fetch first and last runnable on the resp. core and add an edge

@@ -20,10 +20,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
-import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
-import org.eclipse.app4mc.amalthea.model.AccessPath;
-import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Activation;
@@ -44,11 +41,11 @@ import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
-import org.eclipse.app4mc.amalthea.model.Bridge;
-import org.eclipse.app4mc.amalthea.model.Bus;
-import org.eclipse.app4mc.amalthea.model.BusType;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.CacheDefinition;
+import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -69,9 +66,6 @@ import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
-import org.eclipse.app4mc.amalthea.model.ComplexPin;
-import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
 import org.eclipse.app4mc.amalthea.model.ComponentEventType;
@@ -84,19 +78,19 @@ import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConcurrencyType;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
+import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
-import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -129,7 +123,6 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
@@ -155,6 +148,7 @@ import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
@@ -166,14 +160,20 @@ import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
-import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwElementRef;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwDomain;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureType;
+import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.HwModule;
+import org.eclipse.app4mc.amalthea.model.HwPath;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -204,10 +204,6 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.Latency;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
@@ -222,12 +218,9 @@ import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
-import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -241,8 +234,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Network;
-import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -268,13 +259,13 @@ import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
-import org.eclipse.app4mc.amalthea.model.Pin;
-import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
+import org.eclipse.app4mc.amalthea.model.PortInterface;
+import org.eclipse.app4mc.amalthea.model.PortType;
+import org.eclipse.app4mc.amalthea.model.PowerDomain;
 import org.eclipse.app4mc.amalthea.model.Preemption;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
@@ -295,12 +286,12 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.QType;
+import org.eclipse.app4mc.amalthea.model.PuType;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quantity;
-import org.eclipse.app4mc.amalthea.model.Quartz;
-import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
@@ -335,7 +326,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.Scenario;
-import org.eclipse.app4mc.amalthea.model.SchedType;
+import org.eclipse.app4mc.amalthea.model.SchedPolicy;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -366,11 +357,11 @@ import org.eclipse.app4mc.amalthea.model.StimulusEvent;
 import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
+import org.eclipse.app4mc.amalthea.model.StructureType;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
@@ -407,6 +398,7 @@ import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
+import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
 
@@ -1423,35 +1415,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass complexNodeEClass = null;
+	private EClass hwStructureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwSystemEClass = null;
+	private EClass hwDomainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ecuEClass = null;
+	private EClass frequencyDomainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass microcontrollerEClass = null;
+	private EClass powerDomainEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass coreEClass = null;
+	private EClass hwModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass processingUnitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1465,77 +1464,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass networkEClass = null;
+	private EClass cacheEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass quartzEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hwComponentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hardwareTypeDescriptionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractionTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass systemTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ecuTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass microcontrollerTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass coreTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass memoryTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass networkTypeEClass = null;
+	private EClass hwFeatureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1549,98 +1485,28 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass pinEClass = null;
+	private EClass connectionHandlerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass complexPortEClass = null;
+	private EClass hwConnectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass complexPinEClass = null;
+	private EClass hwAccessElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass prescalerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass crossbarSwitchEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass busEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass bridgeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass accessPathEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyAccessPathEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hwAccessPathEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyAccessPathElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass accessPathRefEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyConstantEClass = null;
+	private EClass constantLatencyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1654,21 +1520,70 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwAccessPathElementEClass = null;
+	private EClass hwLatencyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwAccessPathRefEClass = null;
+	private EClass hwDefinitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwElementRefEClass = null;
+	private EClass processingUnitDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionHandlerDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass memoryDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cacheDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hwPathEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hwAccessPathEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hwPathElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hwDestinationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3054,42 +2969,56 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum qTypeEEnum = null;
+	private EEnum structureTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum memoryTypeEnumEEnum = null;
+	private EEnum cacheTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum busTypeEEnum = null;
+	private EEnum portTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum rwTypeEEnum = null;
+	private EEnum schedPolicyEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum schedTypeEEnum = null;
+	private EEnum writeStrategyEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum pinTypeEEnum = null;
+	private EEnum puTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum portInterfaceEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum hwFeatureTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6804,7 +6733,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_SystemTypes() {
+	public EReference getHWModel_Definitions() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -6813,7 +6742,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_EcuTypes() {
+	public EReference getHWModel_Features() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -6822,7 +6751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_McTypes() {
+	public EReference getHWModel_Structures() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -6831,7 +6760,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_CoreTypes() {
+	public EReference getHWModel_Domains() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -6840,8 +6769,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_MemoryTypes() {
-		return (EReference)hwModelEClass.getEStructuralFeatures().get(4);
+	public EClass getHwStructure() {
+		return hwStructureEClass;
 	}
 
 	/**
@@ -6849,8 +6778,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_NetworkTypes() {
-		return (EReference)hwModelEClass.getEStructuralFeatures().get(5);
+	public EAttribute getHwStructure_StructureType() {
+		return (EAttribute)hwStructureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6858,8 +6787,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_AccessPaths() {
-		return (EReference)hwModelEClass.getEStructuralFeatures().get(6);
+	public EReference getHwStructure_Ports() {
+		return (EReference)hwStructureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -6867,8 +6796,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_System() {
-		return (EReference)hwModelEClass.getEStructuralFeatures().get(7);
+	public EReference getHwStructure_Modules() {
+		return (EReference)hwStructureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -6876,8 +6805,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComplexNode() {
-		return complexNodeEClass;
+	public EReference getHwStructure_Connections() {
+		return (EReference)hwStructureEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -6885,8 +6814,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Prescaler() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(0);
+	public EReference getHwStructure_Structures() {
+		return (EReference)hwStructureEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -6894,8 +6823,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Memories() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(1);
+	public EClass getHwDomain() {
+		return hwDomainEClass;
 	}
 
 	/**
@@ -6903,8 +6832,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Networks() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(2);
+	public EClass getFrequencyDomain() {
+		return frequencyDomainEClass;
 	}
 
 	/**
@@ -6912,8 +6841,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Components() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(3);
+	public EReference getFrequencyDomain_PossibleValues() {
+		return (EReference)frequencyDomainEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6921,8 +6850,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexNode_Ports() {
-		return (EReference)complexNodeEClass.getEStructuralFeatures().get(4);
+	public EReference getFrequencyDomain_DefaultValue() {
+		return (EReference)frequencyDomainEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -6930,8 +6859,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwSystem() {
-		return hwSystemEClass;
+	public EAttribute getFrequencyDomain_ClockGating() {
+		return (EAttribute)frequencyDomainEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -6939,8 +6868,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwSystem_SystemType() {
-		return (EReference)hwSystemEClass.getEStructuralFeatures().get(0);
+	public EClass getPowerDomain() {
+		return powerDomainEClass;
 	}
 
 	/**
@@ -6948,8 +6877,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwSystem_Ecus() {
-		return (EReference)hwSystemEClass.getEStructuralFeatures().get(1);
+	public EReference getPowerDomain_PossibleValues() {
+		return (EReference)powerDomainEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6957,8 +6886,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwSystem_Quartzes() {
-		return (EReference)hwSystemEClass.getEStructuralFeatures().get(2);
+	public EReference getPowerDomain_DefaultValue() {
+		return (EReference)powerDomainEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -6966,8 +6895,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getECU() {
-		return ecuEClass;
+	public EAttribute getPowerDomain_PowerGating() {
+		return (EAttribute)powerDomainEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -6975,8 +6904,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getECU_EcuType() {
-		return (EReference)ecuEClass.getEStructuralFeatures().get(0);
+	public EClass getHwModule() {
+		return hwModuleEClass;
 	}
 
 	/**
@@ -6984,8 +6913,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getECU_Microcontrollers() {
-		return (EReference)ecuEClass.getEStructuralFeatures().get(1);
+	public EReference getHwModule_Ports() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6993,8 +6922,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMicrocontroller() {
-		return microcontrollerEClass;
+	public EReference getHwModule_PowerDomain() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7002,8 +6931,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMicrocontroller_MicrocontrollerType() {
-		return (EReference)microcontrollerEClass.getEStructuralFeatures().get(0);
+	public EReference getHwModule_FrequencyDomain() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7011,8 +6940,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMicrocontroller_Cores() {
-		return (EReference)microcontrollerEClass.getEStructuralFeatures().get(1);
+	public EClass getProcessingUnit() {
+		return processingUnitEClass;
 	}
 
 	/**
@@ -7020,8 +6949,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCore() {
-		return coreEClass;
+	public EReference getProcessingUnit_Definition() {
+		return (EReference)processingUnitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7029,17 +6958,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCore_CoreType() {
-		return (EReference)coreEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCore_LockstepGroup() {
-		return (EAttribute)coreEClass.getEStructuralFeatures().get(1);
+	public EReference getProcessingUnit_AccessElements() {
+		return (EReference)processingUnitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7056,7 +6976,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMemory_Type() {
+	public EReference getMemory_Definition() {
 		return (EReference)memoryEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7074,8 +6994,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNetwork() {
-		return networkEClass;
+	public EClass getCache() {
+		return cacheEClass;
 	}
 
 	/**
@@ -7083,8 +7003,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNetwork_Type() {
-		return (EReference)networkEClass.getEStructuralFeatures().get(0);
+	public EReference getCache_Definition() {
+		return (EReference)cacheEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7092,8 +7012,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getQuartz() {
-		return quartzEClass;
+	public EClass getHwFeature() {
+		return hwFeatureEClass;
 	}
 
 	/**
@@ -7101,8 +7021,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getQuartz_Frequency() {
-		return (EReference)quartzEClass.getEStructuralFeatures().get(0);
+	public EAttribute getHwFeature_FeatureType() {
+		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7110,8 +7030,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getQuartz_Type() {
-		return (EAttribute)quartzEClass.getEStructuralFeatures().get(1);
+	public EAttribute getHwFeature_Description() {
+		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7119,8 +7039,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwComponent() {
-		return hwComponentEClass;
+	public EReference getHwFeature_Value() {
+		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7128,152 +7048,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwComponent_NestedComponents() {
-		return (EReference)hwComponentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHardwareTypeDescription() {
-		return hardwareTypeDescriptionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAbstractionType() {
-		return abstractionTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSystemType() {
-		return systemTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getECUType() {
-		return ecuTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMicrocontrollerType() {
-		return microcontrollerTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCoreType() {
-		return coreTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCoreType_BitWidth() {
-		return (EAttribute)coreTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCoreType_InstructionsPerCycle() {
-		return (EAttribute)coreTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCoreType_Classifiers() {
-		return (EReference)coreTypeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMemoryType() {
-		return memoryTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMemoryType_Type() {
-		return (EAttribute)memoryTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMemoryType_Size() {
-		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMemoryType_Classifiers() {
-		return (EReference)memoryTypeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getNetworkType() {
-		return networkTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNetworkType_SchedPolicy() {
-		return (EAttribute)networkTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNetworkType_BitWidth() {
-		return (EAttribute)networkTypeEClass.getEStructuralFeatures().get(1);
+	public EReference getHwFeature_Latency() {
+		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7290,8 +7066,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwPort_ContainingNode() {
-		return (EReference)hwPortEClass.getEStructuralFeatures().get(0);
+	public EAttribute getHwPort_BitWidth() {
+		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7299,8 +7075,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwPort_Pins() {
-		return (EReference)hwPortEClass.getEStructuralFeatures().get(1);
+	public EAttribute getHwPort_Priority() {
+		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwPort_PortType() {
+		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwPort_PortInterface() {
+		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwPort_Delegated() {
+		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7317,8 +7120,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPin() {
-		return pinEClass;
+	public EClass getConnectionHandler() {
+		return connectionHandlerEClass;
 	}
 
 	/**
@@ -7326,8 +7129,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComplexPort() {
-		return complexPortEClass;
+	public EReference getConnectionHandler_Definition() {
+		return (EReference)connectionHandlerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7335,8 +7138,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComplexPort_Network() {
-		return (EReference)complexPortEClass.getEStructuralFeatures().get(0);
+	public EReference getConnectionHandler_InternalConnections() {
+		return (EReference)connectionHandlerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7344,8 +7147,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_Master() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(1);
+	public EClass getHwConnection() {
+		return hwConnectionEClass;
 	}
 
 	/**
@@ -7353,8 +7156,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_BitWidth() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(2);
+	public EReference getHwConnection_ReadLatency() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7362,8 +7165,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_BaseAddress() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(3);
+	public EReference getHwConnection_WirteLatency() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7371,8 +7174,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_AddressRange() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(4);
+	public EReference getHwConnection_DataRate() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7380,8 +7183,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_Direction() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(5);
+	public EReference getHwConnection_Port1() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7389,8 +7192,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_WriteCycles() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(6);
+	public EReference getHwConnection_Port2() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7398,8 +7201,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_ReadCycles() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(7);
+	public EOperation getHwConnection__ComputeUniqueName() {
+		return hwConnectionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -7407,8 +7210,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPort_SchedValue() {
-		return (EAttribute)complexPortEClass.getEStructuralFeatures().get(8);
+	public EClass getHwAccessElement() {
+		return hwAccessElementEClass;
 	}
 
 	/**
@@ -7416,8 +7219,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComplexPin() {
-		return complexPinEClass;
+	public EReference getHwAccessElement_Source() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7425,8 +7228,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPin_Type() {
-		return (EAttribute)complexPinEClass.getEStructuralFeatures().get(0);
+	public EReference getHwAccessElement_Destination() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7434,8 +7237,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPin_BaseAddress() {
-		return (EAttribute)complexPinEClass.getEStructuralFeatures().get(1);
+	public EReference getHwAccessElement_AccessPaths() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7443,8 +7246,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComplexPin_Direction() {
-		return (EAttribute)complexPinEClass.getEStructuralFeatures().get(2);
+	public EReference getHwAccessElement_ReadLatency() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7452,8 +7255,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPrescaler() {
-		return prescalerEClass;
+	public EReference getHwAccessElement_WriteLatency() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7461,8 +7264,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPrescaler_Name() {
-		return (EAttribute)prescalerEClass.getEStructuralFeatures().get(0);
+	public EReference getHwAccessElement_DataRate() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -7470,8 +7273,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPrescaler_ClockRatio() {
-		return (EAttribute)prescalerEClass.getEStructuralFeatures().get(1);
+	public EClass getConstantLatency() {
+		return constantLatencyEClass;
 	}
 
 	/**
@@ -7479,197 +7282,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrescaler_Quartz() {
-		return (EReference)prescalerEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCrossbarSwitch() {
-		return crossbarSwitchEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCrossbarSwitch_ConConnections() {
-		return (EAttribute)crossbarSwitchEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBus() {
-		return busEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBus_BusType() {
-		return (EAttribute)busEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBridge() {
-		return bridgeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAccessPath() {
-		return accessPathEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAccessPath_Source() {
-		return (EReference)accessPathEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAccessPath_Target() {
-		return (EReference)accessPathEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatencyAccessPath() {
-		return latencyAccessPathEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLatencyAccessPath_Latencies() {
-		return (EReference)latencyAccessPathEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHwAccessPath() {
-		return hwAccessPathEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwAccessPath_HwElements() {
-		return (EReference)hwAccessPathEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatencyAccessPathElement() {
-		return latencyAccessPathElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAccessPathRef() {
-		return accessPathRefEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAccessPathRef_Ref() {
-		return (EReference)accessPathRefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatency() {
-		return latencyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLatency_AccessType() {
-		return (EAttribute)latencyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLatency_TransferSize() {
-		return (EAttribute)latencyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLatency_Quartz() {
-		return (EReference)latencyEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatencyConstant() {
-		return latencyConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLatencyConstant_Value() {
-		return (EAttribute)latencyConstantEClass.getEStructuralFeatures().get(0);
+	public EAttribute getConstantLatency_ConstantCycles() {
+		return (EAttribute)constantLatencyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7686,7 +7300,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLatencyDeviation_Deviation() {
+	public EReference getLatencyDeviation_DeviationInCylces() {
 		return (EReference)latencyDeviationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7695,8 +7309,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwAccessPathElement() {
-		return hwAccessPathElementEClass;
+	public EClass getHwLatency() {
+		return hwLatencyEClass;
 	}
 
 	/**
@@ -7704,8 +7318,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwAccessPathRef() {
-		return hwAccessPathRefEClass;
+	public EClass getHwDefinition() {
+		return hwDefinitionEClass;
 	}
 
 	/**
@@ -7713,8 +7327,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwAccessPathRef_Ref() {
-		return (EReference)hwAccessPathRefEClass.getEStructuralFeatures().get(0);
+	public EReference getHwDefinition_Features() {
+		return (EReference)hwDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7722,8 +7336,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwElementRef() {
-		return hwElementRefEClass;
+	public EClass getProcessingUnitDefinition() {
+		return processingUnitDefinitionEClass;
 	}
 
 	/**
@@ -7731,8 +7345,296 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwElementRef_Port() {
-		return (EReference)hwElementRefEClass.getEStructuralFeatures().get(0);
+	public EAttribute getProcessingUnitDefinition_PuType() {
+		return (EAttribute)processingUnitDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessingUnitDefinition_Classifiers() {
+		return (EReference)processingUnitDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConnectionHandlerDefinition() {
+		return connectionHandlerDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnectionHandlerDefinition_Policy() {
+		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnectionHandlerDefinition_ReadLatency() {
+		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnectionHandlerDefinition_WriteLatency() {
+		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnectionHandlerDefinition_DataRate() {
+		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMemoryDefinition() {
+		return memoryDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryDefinition_Size() {
+		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryDefinition_AccessLatency() {
+		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryDefinition_MemoryBandwidth() {
+		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMemoryDefinition_Classifiers() {
+		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCacheDefinition() {
+		return cacheDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCacheDefinition_Size() {
+		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCacheDefinition_AccessLatency() {
+		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_CacheType() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_WriteStrategy() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_NWays() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_Coherency() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_Exclusive() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_LineSize() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHwPath() {
+		return hwPathEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwPath_Source() {
+		return (EReference)hwPathEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwPath_Destination() {
+		return (EReference)hwPathEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getHwPath__GetContainingAccessElement() {
+		return hwPathEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHwAccessPath() {
+		return hwAccessPathEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwAccessPath_ContainingAccessElement() {
+		return (EReference)hwAccessPathEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwAccessPath_PathElements() {
+		return (EReference)hwAccessPathEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwAccessPath_StartAddress() {
+		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwAccessPath_EndAddress() {
+		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwAccessPath_MemOffset() {
+		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHwPathElement() {
+		return hwPathElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHwDestination() {
+		return hwDestinationEClass;
 	}
 
 	/**
@@ -12654,8 +12556,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getQType() {
-		return qTypeEEnum;
+	public EEnum getStructureType() {
+		return structureTypeEEnum;
 	}
 
 	/**
@@ -12663,8 +12565,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getMemoryTypeEnum() {
-		return memoryTypeEnumEEnum;
+	public EEnum getCacheType() {
+		return cacheTypeEEnum;
 	}
 
 	/**
@@ -12672,8 +12574,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getBusType() {
-		return busTypeEEnum;
+	public EEnum getPortType() {
+		return portTypeEEnum;
 	}
 
 	/**
@@ -12681,8 +12583,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getRWType() {
-		return rwTypeEEnum;
+	public EEnum getSchedPolicy() {
+		return schedPolicyEEnum;
 	}
 
 	/**
@@ -12690,8 +12592,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getSchedType() {
-		return schedTypeEEnum;
+	public EEnum getWriteStrategy() {
+		return writeStrategyEEnum;
 	}
 
 	/**
@@ -12699,8 +12601,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getPinType() {
-		return pinTypeEEnum;
+	public EEnum getPuType() {
+		return puTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getPortInterface() {
+		return portInterfaceEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getHwFeatureType() {
+		return hwFeatureTypeEEnum;
 	}
 
 	/**
@@ -13464,146 +13384,132 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(componentEventEClass, COMPONENT_EVENT__ENTITY);
 
 		hwModelEClass = createEClass(HW_MODEL);
-		createEReference(hwModelEClass, HW_MODEL__SYSTEM_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__ECU_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__MC_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__CORE_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__MEMORY_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__NETWORK_TYPES);
-		createEReference(hwModelEClass, HW_MODEL__ACCESS_PATHS);
-		createEReference(hwModelEClass, HW_MODEL__SYSTEM);
+		createEReference(hwModelEClass, HW_MODEL__DEFINITIONS);
+		createEReference(hwModelEClass, HW_MODEL__FEATURES);
+		createEReference(hwModelEClass, HW_MODEL__STRUCTURES);
+		createEReference(hwModelEClass, HW_MODEL__DOMAINS);
 
-		complexNodeEClass = createEClass(COMPLEX_NODE);
-		createEReference(complexNodeEClass, COMPLEX_NODE__PRESCALER);
-		createEReference(complexNodeEClass, COMPLEX_NODE__MEMORIES);
-		createEReference(complexNodeEClass, COMPLEX_NODE__NETWORKS);
-		createEReference(complexNodeEClass, COMPLEX_NODE__COMPONENTS);
-		createEReference(complexNodeEClass, COMPLEX_NODE__PORTS);
+		hwStructureEClass = createEClass(HW_STRUCTURE);
+		createEAttribute(hwStructureEClass, HW_STRUCTURE__STRUCTURE_TYPE);
+		createEReference(hwStructureEClass, HW_STRUCTURE__PORTS);
+		createEReference(hwStructureEClass, HW_STRUCTURE__MODULES);
+		createEReference(hwStructureEClass, HW_STRUCTURE__CONNECTIONS);
+		createEReference(hwStructureEClass, HW_STRUCTURE__STRUCTURES);
 
-		hwSystemEClass = createEClass(HW_SYSTEM);
-		createEReference(hwSystemEClass, HW_SYSTEM__SYSTEM_TYPE);
-		createEReference(hwSystemEClass, HW_SYSTEM__ECUS);
-		createEReference(hwSystemEClass, HW_SYSTEM__QUARTZES);
+		hwDomainEClass = createEClass(HW_DOMAIN);
 
-		ecuEClass = createEClass(ECU);
-		createEReference(ecuEClass, ECU__ECU_TYPE);
-		createEReference(ecuEClass, ECU__MICROCONTROLLERS);
+		frequencyDomainEClass = createEClass(FREQUENCY_DOMAIN);
+		createEReference(frequencyDomainEClass, FREQUENCY_DOMAIN__POSSIBLE_VALUES);
+		createEReference(frequencyDomainEClass, FREQUENCY_DOMAIN__DEFAULT_VALUE);
+		createEAttribute(frequencyDomainEClass, FREQUENCY_DOMAIN__CLOCK_GATING);
 
-		microcontrollerEClass = createEClass(MICROCONTROLLER);
-		createEReference(microcontrollerEClass, MICROCONTROLLER__MICROCONTROLLER_TYPE);
-		createEReference(microcontrollerEClass, MICROCONTROLLER__CORES);
+		powerDomainEClass = createEClass(POWER_DOMAIN);
+		createEReference(powerDomainEClass, POWER_DOMAIN__POSSIBLE_VALUES);
+		createEReference(powerDomainEClass, POWER_DOMAIN__DEFAULT_VALUE);
+		createEAttribute(powerDomainEClass, POWER_DOMAIN__POWER_GATING);
 
-		coreEClass = createEClass(CORE);
-		createEReference(coreEClass, CORE__CORE_TYPE);
-		createEAttribute(coreEClass, CORE__LOCKSTEP_GROUP);
+		hwModuleEClass = createEClass(HW_MODULE);
+		createEReference(hwModuleEClass, HW_MODULE__PORTS);
+		createEReference(hwModuleEClass, HW_MODULE__POWER_DOMAIN);
+		createEReference(hwModuleEClass, HW_MODULE__FREQUENCY_DOMAIN);
+
+		processingUnitEClass = createEClass(PROCESSING_UNIT);
+		createEReference(processingUnitEClass, PROCESSING_UNIT__DEFINITION);
+		createEReference(processingUnitEClass, PROCESSING_UNIT__ACCESS_ELEMENTS);
 
 		memoryEClass = createEClass(MEMORY);
-		createEReference(memoryEClass, MEMORY__TYPE);
+		createEReference(memoryEClass, MEMORY__DEFINITION);
 		createEReference(memoryEClass, MEMORY__MAPPINGS);
 
-		networkEClass = createEClass(NETWORK);
-		createEReference(networkEClass, NETWORK__TYPE);
+		cacheEClass = createEClass(CACHE);
+		createEReference(cacheEClass, CACHE__DEFINITION);
 
-		quartzEClass = createEClass(QUARTZ);
-		createEReference(quartzEClass, QUARTZ__FREQUENCY);
-		createEAttribute(quartzEClass, QUARTZ__TYPE);
-
-		hwComponentEClass = createEClass(HW_COMPONENT);
-		createEReference(hwComponentEClass, HW_COMPONENT__NESTED_COMPONENTS);
-
-		hardwareTypeDescriptionEClass = createEClass(HARDWARE_TYPE_DESCRIPTION);
-
-		abstractionTypeEClass = createEClass(ABSTRACTION_TYPE);
-
-		systemTypeEClass = createEClass(SYSTEM_TYPE);
-
-		ecuTypeEClass = createEClass(ECU_TYPE);
-
-		microcontrollerTypeEClass = createEClass(MICROCONTROLLER_TYPE);
-
-		coreTypeEClass = createEClass(CORE_TYPE);
-		createEAttribute(coreTypeEClass, CORE_TYPE__BIT_WIDTH);
-		createEAttribute(coreTypeEClass, CORE_TYPE__INSTRUCTIONS_PER_CYCLE);
-		createEReference(coreTypeEClass, CORE_TYPE__CLASSIFIERS);
-
-		memoryTypeEClass = createEClass(MEMORY_TYPE);
-		createEAttribute(memoryTypeEClass, MEMORY_TYPE__TYPE);
-		createEReference(memoryTypeEClass, MEMORY_TYPE__SIZE);
-		createEReference(memoryTypeEClass, MEMORY_TYPE__CLASSIFIERS);
-
-		networkTypeEClass = createEClass(NETWORK_TYPE);
-		createEAttribute(networkTypeEClass, NETWORK_TYPE__SCHED_POLICY);
-		createEAttribute(networkTypeEClass, NETWORK_TYPE__BIT_WIDTH);
+		hwFeatureEClass = createEClass(HW_FEATURE);
+		createEAttribute(hwFeatureEClass, HW_FEATURE__FEATURE_TYPE);
+		createEAttribute(hwFeatureEClass, HW_FEATURE__DESCRIPTION);
+		createEReference(hwFeatureEClass, HW_FEATURE__VALUE);
+		createEReference(hwFeatureEClass, HW_FEATURE__LATENCY);
 
 		hwPortEClass = createEClass(HW_PORT);
-		createEReference(hwPortEClass, HW_PORT__CONTAINING_NODE);
-		createEReference(hwPortEClass, HW_PORT__PINS);
+		createEAttribute(hwPortEClass, HW_PORT__BIT_WIDTH);
+		createEAttribute(hwPortEClass, HW_PORT__PRIORITY);
+		createEAttribute(hwPortEClass, HW_PORT__PORT_TYPE);
+		createEAttribute(hwPortEClass, HW_PORT__PORT_INTERFACE);
+		createEAttribute(hwPortEClass, HW_PORT__DELEGATED);
 		createEOperation(hwPortEClass, HW_PORT___COMPUTE_UNIQUE_NAME);
 
-		pinEClass = createEClass(PIN);
+		connectionHandlerEClass = createEClass(CONNECTION_HANDLER);
+		createEReference(connectionHandlerEClass, CONNECTION_HANDLER__DEFINITION);
+		createEReference(connectionHandlerEClass, CONNECTION_HANDLER__INTERNAL_CONNECTIONS);
 
-		complexPortEClass = createEClass(COMPLEX_PORT);
-		createEReference(complexPortEClass, COMPLEX_PORT__NETWORK);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__MASTER);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__BIT_WIDTH);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__BASE_ADDRESS);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__ADDRESS_RANGE);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__DIRECTION);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__WRITE_CYCLES);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__READ_CYCLES);
-		createEAttribute(complexPortEClass, COMPLEX_PORT__SCHED_VALUE);
+		hwConnectionEClass = createEClass(HW_CONNECTION);
+		createEReference(hwConnectionEClass, HW_CONNECTION__READ_LATENCY);
+		createEReference(hwConnectionEClass, HW_CONNECTION__WIRTE_LATENCY);
+		createEReference(hwConnectionEClass, HW_CONNECTION__DATA_RATE);
+		createEReference(hwConnectionEClass, HW_CONNECTION__PORT1);
+		createEReference(hwConnectionEClass, HW_CONNECTION__PORT2);
+		createEOperation(hwConnectionEClass, HW_CONNECTION___COMPUTE_UNIQUE_NAME);
 
-		complexPinEClass = createEClass(COMPLEX_PIN);
-		createEAttribute(complexPinEClass, COMPLEX_PIN__TYPE);
-		createEAttribute(complexPinEClass, COMPLEX_PIN__BASE_ADDRESS);
-		createEAttribute(complexPinEClass, COMPLEX_PIN__DIRECTION);
+		hwAccessElementEClass = createEClass(HW_ACCESS_ELEMENT);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__SOURCE);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DESTINATION);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__ACCESS_PATHS);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__READ_LATENCY);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_LATENCY);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
 
-		prescalerEClass = createEClass(PRESCALER);
-		createEAttribute(prescalerEClass, PRESCALER__NAME);
-		createEAttribute(prescalerEClass, PRESCALER__CLOCK_RATIO);
-		createEReference(prescalerEClass, PRESCALER__QUARTZ);
-
-		crossbarSwitchEClass = createEClass(CROSSBAR_SWITCH);
-		createEAttribute(crossbarSwitchEClass, CROSSBAR_SWITCH__CON_CONNECTIONS);
-
-		busEClass = createEClass(BUS);
-		createEAttribute(busEClass, BUS__BUS_TYPE);
-
-		bridgeEClass = createEClass(BRIDGE);
-
-		accessPathEClass = createEClass(ACCESS_PATH);
-		createEReference(accessPathEClass, ACCESS_PATH__SOURCE);
-		createEReference(accessPathEClass, ACCESS_PATH__TARGET);
-
-		latencyAccessPathEClass = createEClass(LATENCY_ACCESS_PATH);
-		createEReference(latencyAccessPathEClass, LATENCY_ACCESS_PATH__LATENCIES);
-
-		hwAccessPathEClass = createEClass(HW_ACCESS_PATH);
-		createEReference(hwAccessPathEClass, HW_ACCESS_PATH__HW_ELEMENTS);
-
-		latencyAccessPathElementEClass = createEClass(LATENCY_ACCESS_PATH_ELEMENT);
-
-		accessPathRefEClass = createEClass(ACCESS_PATH_REF);
-		createEReference(accessPathRefEClass, ACCESS_PATH_REF__REF);
-
-		latencyEClass = createEClass(LATENCY);
-		createEAttribute(latencyEClass, LATENCY__ACCESS_TYPE);
-		createEAttribute(latencyEClass, LATENCY__TRANSFER_SIZE);
-		createEReference(latencyEClass, LATENCY__QUARTZ);
-
-		latencyConstantEClass = createEClass(LATENCY_CONSTANT);
-		createEAttribute(latencyConstantEClass, LATENCY_CONSTANT__VALUE);
+		constantLatencyEClass = createEClass(CONSTANT_LATENCY);
+		createEAttribute(constantLatencyEClass, CONSTANT_LATENCY__CONSTANT_CYCLES);
 
 		latencyDeviationEClass = createEClass(LATENCY_DEVIATION);
-		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__DEVIATION);
+		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__DEVIATION_IN_CYLCES);
 
-		hwAccessPathElementEClass = createEClass(HW_ACCESS_PATH_ELEMENT);
+		hwLatencyEClass = createEClass(HW_LATENCY);
 
-		hwAccessPathRefEClass = createEClass(HW_ACCESS_PATH_REF);
-		createEReference(hwAccessPathRefEClass, HW_ACCESS_PATH_REF__REF);
+		hwDefinitionEClass = createEClass(HW_DEFINITION);
+		createEReference(hwDefinitionEClass, HW_DEFINITION__FEATURES);
 
-		hwElementRefEClass = createEClass(HW_ELEMENT_REF);
-		createEReference(hwElementRefEClass, HW_ELEMENT_REF__PORT);
+		processingUnitDefinitionEClass = createEClass(PROCESSING_UNIT_DEFINITION);
+		createEAttribute(processingUnitDefinitionEClass, PROCESSING_UNIT_DEFINITION__PU_TYPE);
+		createEReference(processingUnitDefinitionEClass, PROCESSING_UNIT_DEFINITION__CLASSIFIERS);
+
+		connectionHandlerDefinitionEClass = createEClass(CONNECTION_HANDLER_DEFINITION);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__POLICY);
+		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__READ_LATENCY);
+		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY);
+		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__DATA_RATE);
+
+		memoryDefinitionEClass = createEClass(MEMORY_DEFINITION);
+		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__SIZE);
+		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__ACCESS_LATENCY);
+		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__MEMORY_BANDWIDTH);
+		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__CLASSIFIERS);
+
+		cacheDefinitionEClass = createEClass(CACHE_DEFINITION);
+		createEReference(cacheDefinitionEClass, CACHE_DEFINITION__SIZE);
+		createEReference(cacheDefinitionEClass, CACHE_DEFINITION__ACCESS_LATENCY);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__CACHE_TYPE);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__WRITE_STRATEGY);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__NWAYS);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__COHERENCY);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__EXCLUSIVE);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__LINE_SIZE);
+
+		hwPathEClass = createEClass(HW_PATH);
+		createEReference(hwPathEClass, HW_PATH__SOURCE);
+		createEReference(hwPathEClass, HW_PATH__DESTINATION);
+		createEOperation(hwPathEClass, HW_PATH___GET_CONTAINING_ACCESS_ELEMENT);
+
+		hwAccessPathEClass = createEClass(HW_ACCESS_PATH);
+		createEReference(hwAccessPathEClass, HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT);
+		createEReference(hwAccessPathEClass, HW_ACCESS_PATH__PATH_ELEMENTS);
+		createEAttribute(hwAccessPathEClass, HW_ACCESS_PATH__START_ADDRESS);
+		createEAttribute(hwAccessPathEClass, HW_ACCESS_PATH__END_ADDRESS);
+		createEAttribute(hwAccessPathEClass, HW_ACCESS_PATH__MEM_OFFSET);
+
+		hwPathElementEClass = createEClass(HW_PATH_ELEMENT);
+
+		hwDestinationEClass = createEClass(HW_DESTINATION);
 
 		mappingModelEClass = createEClass(MAPPING_MODEL);
 		createEReference(mappingModelEClass, MAPPING_MODEL__SCHEDULER_ALLOCATION);
@@ -14324,12 +14230,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		channelEventTypeEEnum = createEEnum(CHANNEL_EVENT_TYPE);
 		semaphoreEventTypeEEnum = createEEnum(SEMAPHORE_EVENT_TYPE);
 		componentEventTypeEEnum = createEEnum(COMPONENT_EVENT_TYPE);
-		qTypeEEnum = createEEnum(QTYPE);
-		memoryTypeEnumEEnum = createEEnum(MEMORY_TYPE_ENUM);
-		busTypeEEnum = createEEnum(BUS_TYPE);
-		rwTypeEEnum = createEEnum(RW_TYPE);
-		schedTypeEEnum = createEEnum(SCHED_TYPE);
-		pinTypeEEnum = createEEnum(PIN_TYPE);
+		structureTypeEEnum = createEEnum(STRUCTURE_TYPE);
+		cacheTypeEEnum = createEEnum(CACHE_TYPE);
+		portTypeEEnum = createEEnum(PORT_TYPE);
+		schedPolicyEEnum = createEEnum(SCHED_POLICY);
+		writeStrategyEEnum = createEEnum(WRITE_STRATEGY);
+		puTypeEEnum = createEEnum(PU_TYPE);
+		portInterfaceEEnum = createEEnum(PORT_INTERFACE);
+		hwFeatureTypeEEnum = createEEnum(HW_FEATURE_TYPE);
 		memoryAddressMappingTypeEEnum = createEEnum(MEMORY_ADDRESS_MAPPING_TYPE);
 		osDataConsistencyModeEEnum = createEEnum(OS_DATA_CONSISTENCY_MODE);
 		accessMultiplicityEEnum = createEEnum(ACCESS_MULTIPLICITY);
@@ -14572,42 +14480,43 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		semaphoreEventEClass.getESuperTypes().add(this.getEntityEvent());
 		componentEventEClass.getESuperTypes().add(this.getEntityEvent());
 		hwModelEClass.getESuperTypes().add(this.getBaseObject());
-		complexNodeEClass.getESuperTypes().add(this.getReferableBaseObject());
-		complexNodeEClass.getESuperTypes().add(this.getITaggable());
-		hwSystemEClass.getESuperTypes().add(this.getComplexNode());
-		ecuEClass.getESuperTypes().add(this.getComplexNode());
-		microcontrollerEClass.getESuperTypes().add(this.getComplexNode());
-		coreEClass.getESuperTypes().add(this.getComplexNode());
-		memoryEClass.getESuperTypes().add(this.getComplexNode());
-		networkEClass.getESuperTypes().add(this.getComplexNode());
-		quartzEClass.getESuperTypes().add(this.getReferableBaseObject());
-		quartzEClass.getESuperTypes().add(this.getITaggable());
-		hwComponentEClass.getESuperTypes().add(this.getComplexNode());
-		hardwareTypeDescriptionEClass.getESuperTypes().add(this.getReferableBaseObject());
-		hardwareTypeDescriptionEClass.getESuperTypes().add(this.getITaggable());
-		abstractionTypeEClass.getESuperTypes().add(this.getHardwareTypeDescription());
-		systemTypeEClass.getESuperTypes().add(this.getAbstractionType());
-		ecuTypeEClass.getESuperTypes().add(this.getAbstractionType());
-		microcontrollerTypeEClass.getESuperTypes().add(this.getAbstractionType());
-		coreTypeEClass.getESuperTypes().add(this.getAbstractionType());
-		memoryTypeEClass.getESuperTypes().add(this.getHardwareTypeDescription());
-		networkTypeEClass.getESuperTypes().add(this.getHardwareTypeDescription());
+		hwStructureEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwStructureEClass.getESuperTypes().add(this.getITaggable());
+		hwDomainEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwDomainEClass.getESuperTypes().add(this.getITaggable());
+		frequencyDomainEClass.getESuperTypes().add(this.getHwDomain());
+		powerDomainEClass.getESuperTypes().add(this.getHwDomain());
+		hwModuleEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwModuleEClass.getESuperTypes().add(this.getITaggable());
+		processingUnitEClass.getESuperTypes().add(this.getHwModule());
+		processingUnitEClass.getESuperTypes().add(this.getHwDestination());
+		processingUnitEClass.getESuperTypes().add(this.getHwPathElement());
+		memoryEClass.getESuperTypes().add(this.getHwModule());
+		memoryEClass.getESuperTypes().add(this.getHwDestination());
+		cacheEClass.getESuperTypes().add(this.getHwModule());
+		cacheEClass.getESuperTypes().add(this.getHwPathElement());
+		hwFeatureEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwPortEClass.getESuperTypes().add(this.getReferableBaseObject());
-		pinEClass.getESuperTypes().add(this.getReferableBaseObject());
-		complexPortEClass.getESuperTypes().add(this.getHwPort());
-		complexPinEClass.getESuperTypes().add(this.getPin());
-		crossbarSwitchEClass.getESuperTypes().add(this.getNetworkType());
-		busEClass.getESuperTypes().add(this.getNetworkType());
-		bridgeEClass.getESuperTypes().add(this.getNetworkType());
-		accessPathEClass.getESuperTypes().add(this.getIReferable());
-		latencyAccessPathEClass.getESuperTypes().add(this.getAccessPath());
-		hwAccessPathEClass.getESuperTypes().add(this.getAccessPath());
-		accessPathRefEClass.getESuperTypes().add(this.getLatencyAccessPathElement());
-		latencyEClass.getESuperTypes().add(this.getLatencyAccessPathElement());
-		latencyConstantEClass.getESuperTypes().add(this.getLatency());
-		latencyDeviationEClass.getESuperTypes().add(this.getLatency());
-		hwAccessPathRefEClass.getESuperTypes().add(this.getHwAccessPathElement());
-		hwElementRefEClass.getESuperTypes().add(this.getHwAccessPathElement());
+		hwPortEClass.getESuperTypes().add(this.getITaggable());
+		connectionHandlerEClass.getESuperTypes().add(this.getHwModule());
+		connectionHandlerEClass.getESuperTypes().add(this.getHwPathElement());
+		hwConnectionEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwConnectionEClass.getESuperTypes().add(this.getHwPathElement());
+		hwConnectionEClass.getESuperTypes().add(this.getITaggable());
+		hwAccessElementEClass.getESuperTypes().add(this.getITaggable());
+		hwAccessElementEClass.getESuperTypes().add(this.getINamed());
+		constantLatencyEClass.getESuperTypes().add(this.getHwLatency());
+		latencyDeviationEClass.getESuperTypes().add(this.getHwLatency());
+		hwDefinitionEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwDefinitionEClass.getESuperTypes().add(this.getITaggable());
+		processingUnitDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
+		connectionHandlerDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
+		memoryDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
+		cacheDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
+		hwAccessPathEClass.getESuperTypes().add(this.getHwPath());
+		hwAccessPathEClass.getESuperTypes().add(this.getINamed());
+		hwPathElementEClass.getESuperTypes().add(this.getIReferable());
+		hwDestinationEClass.getESuperTypes().add(this.getIReferable());
 		mappingModelEClass.getESuperTypes().add(this.getBaseObject());
 		schedulerAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		taskAllocationEClass.getESuperTypes().add(this.getBaseObject());
@@ -15139,7 +15048,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getTargetMemory_Memories(), this.getMemory(), null, "memories", null, 0, -1, TargetMemory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(targetCoreEClass, TargetCore.class, "TargetCore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTargetCore_Cores(), this.getCore(), null, "cores", null, 0, -1, TargetCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTargetCore_Cores(), this.getProcessingUnit(), null, "cores", null, 0, -1, TargetCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(targetSchedulerEClass, TargetScheduler.class, "TargetScheduler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTargetScheduler_Schedulers(), this.getScheduler(), null, "schedulers", null, 0, -1, TargetScheduler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15262,7 +15171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(cpuPercentageRequirementLimitEClass, CPUPercentageRequirementLimit.class, "CPUPercentageRequirementLimit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCPUPercentageRequirementLimit_Metric(), this.getCPUPercentageMetric(), "metric", null, 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCPUPercentageRequirementLimit_LimitValue(), theEcorePackage.getEDouble(), "limitValue", "0.0", 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCPUPercentageRequirementLimit_HardwareContext(), this.getComplexNode(), null, "hardwareContext", null, 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCPUPercentageRequirementLimit_HardwareContext(), this.getProcessingUnit(), null, "hardwareContext", null, 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(frequencyRequirementLimitEClass, FrequencyRequirementLimit.class, "FrequencyRequirementLimit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrequencyRequirementLimit_Metric(), this.getFrequencyMetric(), "metric", null, 0, 1, FrequencyRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15325,18 +15234,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processEventEClass, ProcessEvent.class, "ProcessEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessEvent_EventType(), this.getProcessEventType(), "eventType", null, 1, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessEvent_Entity(), this.getProcess(), null, "entity", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessEvent_Core(), this.getCore(), null, "core", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processChainEventEClass, ProcessChainEvent.class, "ProcessChainEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessChainEvent_EventType(), this.getProcessEventType(), "eventType", null, 1, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessChainEvent_Entity(), this.getProcessChain(), null, "entity", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessChainEvent_Core(), this.getCore(), null, "core", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessChainEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableEventEClass, RunnableEvent.class, "RunnableEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRunnableEvent_EventType(), this.getRunnableEventType(), "eventType", null, 1, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableEvent_Entity(), this.getRunnable(), null, "entity", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableEvent_Process(), this.getProcess(), null, "process", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnableEvent_Core(), this.getCore(), null, "core", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEventEClass, LabelEvent.class, "LabelEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLabelEvent_EventType(), this.getLabelEventType(), "eventType", null, 1, 1, LabelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15355,157 +15264,145 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSemaphoreEvent_Entity(), this.getSemaphore(), null, "entity", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Process(), this.getProcess(), null, "process", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemaphoreEvent_Core(), this.getCore(), null, "core", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemaphoreEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentEventEClass, ComponentEvent.class, "ComponentEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentEvent_EventType(), this.getComponentEventType(), "eventType", null, 1, 1, ComponentEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentEvent_Entity(), this.getComponent(), null, "entity", null, 0, 1, ComponentEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwModelEClass, HWModel.class, "HWModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHWModel_SystemTypes(), this.getSystemType(), null, "systemTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_EcuTypes(), this.getECUType(), null, "ecuTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_McTypes(), this.getMicrocontrollerType(), null, "mcTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_CoreTypes(), this.getCoreType(), null, "coreTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_MemoryTypes(), this.getMemoryType(), null, "memoryTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_NetworkTypes(), this.getNetworkType(), null, "networkTypes", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_AccessPaths(), this.getAccessPath(), null, "accessPaths", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_System(), this.getHwSystem(), null, "system", null, 0, 1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_Definitions(), this.getHwDefinition(), null, "definitions", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_Features(), this.getHwFeature(), null, "features", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_Domains(), this.getHwDomain(), null, "domains", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(complexNodeEClass, ComplexNode.class, "ComplexNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComplexNode_Prescaler(), this.getPrescaler(), null, "prescaler", null, 0, 1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComplexNode_Memories(), this.getMemory(), null, "memories", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComplexNode_Networks(), this.getNetwork(), null, "networks", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComplexNode_Components(), this.getHwComponent(), null, "components", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComplexNode_Ports(), this.getHwPort(), this.getHwPort_ContainingNode(), "ports", null, 0, -1, ComplexNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwStructureEClass, HwStructure.class, "HwStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHwStructure_StructureType(), this.getStructureType(), "structureType", null, 0, 1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_Modules(), this.getHwModule(), null, "modules", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_Connections(), this.getHwConnection(), null, "connections", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hwSystemEClass, HwSystem.class, "HwSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwSystem_SystemType(), this.getSystemType(), null, "systemType", null, 0, 1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwSystem_Ecus(), this.getECU(), null, "ecus", null, 1, -1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwSystem_Quartzes(), this.getQuartz(), null, "quartzes", null, 0, -1, HwSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwDomainEClass, HwDomain.class, "HwDomain", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(ecuEClass, org.eclipse.app4mc.amalthea.model.ECU.class, "ECU", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getECU_EcuType(), this.getECUType(), null, "ecuType", null, 0, 1, org.eclipse.app4mc.amalthea.model.ECU.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getECU_Microcontrollers(), this.getMicrocontroller(), null, "microcontrollers", null, 1, -1, org.eclipse.app4mc.amalthea.model.ECU.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(frequencyDomainEClass, FrequencyDomain.class, "FrequencyDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFrequencyDomain_PossibleValues(), this.getFrequency(), null, "possibleValues", null, 0, -1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFrequencyDomain_DefaultValue(), this.getFrequency(), null, "defaultValue", null, 0, 1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrequencyDomain_ClockGating(), theEcorePackage.getEBoolean(), "clockGating", "false", 0, 1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(microcontrollerEClass, Microcontroller.class, "Microcontroller", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMicrocontroller_MicrocontrollerType(), this.getMicrocontrollerType(), null, "microcontrollerType", null, 0, 1, Microcontroller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMicrocontroller_Cores(), this.getCore(), null, "cores", null, 1, -1, Microcontroller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(powerDomainEClass, PowerDomain.class, "PowerDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPowerDomain_PossibleValues(), this.getVoltage(), null, "possibleValues", null, 0, -1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPowerDomain_DefaultValue(), this.getVoltage(), null, "defaultValue", null, 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPowerDomain_PowerGating(), theEcorePackage.getEBoolean(), "powerGating", "false", 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(coreEClass, Core.class, "Core", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCore_CoreType(), this.getCoreType(), null, "coreType", null, 0, 1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCore_LockstepGroup(), theEcorePackage.getEInt(), "lockstepGroup", "0", 0, 1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwModuleEClass, HwModule.class, "HwModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwModule_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwModule_PowerDomain(), this.getPowerDomain(), null, "powerDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwModule_FrequencyDomain(), this.getFrequencyDomain(), null, "frequencyDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(processingUnitEClass, ProcessingUnit.class, "ProcessingUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProcessingUnit_Definition(), this.getProcessingUnitDefinition(), null, "definition", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnit_AccessElements(), this.getHwAccessElement(), this.getHwAccessElement_Source(), "accessElements", null, 0, -1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryEClass, Memory.class, "Memory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMemory_Type(), this.getMemoryType(), null, "type", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemory_Definition(), this.getMemoryDefinition(), null, "definition", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemory_Mappings(), this.getMemoryMapping(), this.getMemoryMapping_MemoryLinkInt(), "mappings", null, 0, -1, Memory.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNetwork_Type(), this.getNetworkType(), null, "type", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCache_Definition(), this.getCacheDefinition(), null, "definition", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(quartzEClass, Quartz.class, "Quartz", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getQuartz_Frequency(), this.getFrequency(), null, "frequency", null, 0, 1, Quartz.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuartz_Type(), this.getQType(), "type", null, 0, 1, Quartz.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hwComponentEClass, HwComponent.class, "HwComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwComponent_NestedComponents(), this.getHwComponent(), null, "nestedComponents", null, 0, -1, HwComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hardwareTypeDescriptionEClass, HardwareTypeDescription.class, "HardwareTypeDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(abstractionTypeEClass, AbstractionType.class, "AbstractionType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(systemTypeEClass, SystemType.class, "SystemType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(ecuTypeEClass, ECUType.class, "ECUType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(microcontrollerTypeEClass, MicrocontrollerType.class, "MicrocontrollerType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(coreTypeEClass, CoreType.class, "CoreType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCoreType_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, CoreType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCoreType_InstructionsPerCycle(), theEcorePackage.getEFloat(), "instructionsPerCycle", "0.0", 0, 1, CoreType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCoreType_Classifiers(), this.getCoreClassifier(), null, "classifiers", null, 0, -1, CoreType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(memoryTypeEClass, MemoryType.class, "MemoryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMemoryType_Type(), this.getMemoryTypeEnum(), "type", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryType_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryType_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(networkTypeEClass, NetworkType.class, "NetworkType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNetworkType_SchedPolicy(), this.getSchedType(), "schedPolicy", null, 0, 1, NetworkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNetworkType_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, NetworkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwFeatureEClass, HwFeature.class, "HwFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHwFeature_FeatureType(), this.getHwFeatureType(), "featureType", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwFeature_Description(), theEcorePackage.getEString(), "description", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwFeature_Value(), this.getValue(), null, "value", null, 1, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwFeature_Latency(), this.getHwLatency(), null, "latency", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortEClass, HwPort.class, "HwPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwPort_ContainingNode(), this.getComplexNode(), this.getComplexNode_Ports(), "containingNode", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwPort_Pins(), this.getPin(), null, "pins", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwPort_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwPort_Priority(), theEcorePackage.getEInt(), "priority", "0", 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwPort_PortType(), this.getPortType(), "portType", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwPort_PortInterface(), this.getPortInterface(), "portInterface", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwPort_Delegated(), theEcorePackage.getEBoolean(), "delegated", null, 0, 1, HwPort.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHwPort__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(pinEClass, Pin.class, "Pin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(connectionHandlerEClass, ConnectionHandler.class, "ConnectionHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnectionHandler_Definition(), this.getConnectionHandlerDefinition(), null, "definition", null, 0, 1, ConnectionHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandler_InternalConnections(), this.getHwConnection(), null, "internalConnections", null, 0, -1, ConnectionHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(complexPortEClass, ComplexPort.class, "ComplexPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComplexPort_Network(), this.getNetwork(), null, "network", null, 1, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_Master(), theEcorePackage.getEBoolean(), "master", "false", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_BaseAddress(), this.getAddress(), "baseAddress", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_AddressRange(), this.getAddress(), "addressRange", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_Direction(), this.getRWType(), "direction", null, 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_WriteCycles(), theEcorePackage.getEInt(), "writeCycles", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_ReadCycles(), theEcorePackage.getEInt(), "readCycles", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPort_SchedValue(), theEcorePackage.getEInt(), "schedValue", "0", 0, 1, ComplexPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwConnectionEClass, HwConnection.class, "HwConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwConnection_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WirteLatency(), this.getHwLatency(), null, "wirteLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(complexPinEClass, ComplexPin.class, "ComplexPin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComplexPin_Type(), this.getPinType(), "type", null, 0, 1, ComplexPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPin_BaseAddress(), this.getAddress(), "baseAddress", "0", 0, 1, ComplexPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComplexPin_Direction(), this.getRWType(), "direction", null, 0, 1, ComplexPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(getHwConnection__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(prescalerEClass, Prescaler.class, "Prescaler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrescaler_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Prescaler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPrescaler_ClockRatio(), theEcorePackage.getEDouble(), "clockRatio", "0.0", 0, 1, Prescaler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrescaler_Quartz(), this.getQuartz(), null, "quartz", null, 1, 1, Prescaler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwAccessElementEClass, HwAccessElement.class, "HwAccessElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_Destination(), this.getHwDestination(), null, "destination", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_AccessPaths(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPaths", null, 0, -1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(crossbarSwitchEClass, CrossbarSwitch.class, "CrossbarSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCrossbarSwitch_ConConnections(), theEcorePackage.getEInt(), "conConnections", "0", 0, 1, CrossbarSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(busEClass, Bus.class, "Bus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBus_BusType(), this.getBusType(), "busType", null, 0, 1, Bus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(bridgeEClass, Bridge.class, "Bridge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(accessPathEClass, AccessPath.class, "AccessPath", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAccessPath_Source(), this.getComplexNode(), null, "source", null, 0, 1, AccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAccessPath_Target(), this.getComplexNode(), null, "target", null, 0, 1, AccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(latencyAccessPathEClass, LatencyAccessPath.class, "LatencyAccessPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLatencyAccessPath_Latencies(), this.getLatencyAccessPathElement(), null, "latencies", null, 0, -1, LatencyAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hwAccessPathEClass, HwAccessPath.class, "HwAccessPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwAccessPath_HwElements(), this.getHwAccessPathElement(), null, "hwElements", null, 0, -1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(latencyAccessPathElementEClass, LatencyAccessPathElement.class, "LatencyAccessPathElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(accessPathRefEClass, AccessPathRef.class, "AccessPathRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAccessPathRef_Ref(), this.getLatencyAccessPath(), null, "ref", null, 0, 1, AccessPathRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(latencyEClass, Latency.class, "Latency", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLatency_AccessType(), this.getRWType(), "accessType", null, 0, 1, Latency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLatency_TransferSize(), theEcorePackage.getELong(), "transferSize", "0", 0, 1, Latency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLatency_Quartz(), this.getQuartz(), null, "quartz", null, 1, 1, Latency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(latencyConstantEClass, LatencyConstant.class, "LatencyConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLatencyConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, LatencyConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(constantLatencyEClass, ConstantLatency.class, "ConstantLatency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstantLatency_ConstantCycles(), theEcorePackage.getELong(), "constantCycles", "0", 0, 1, ConstantLatency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(latencyDeviationEClass, LatencyDeviation.class, "LatencyDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getLongObject());
 		g1.getETypeArguments().add(g2);
-		initEReference(getLatencyDeviation_Deviation(), g1, null, "deviation", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLatencyDeviation_DeviationInCylces(), g1, null, "deviationInCylces", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hwAccessPathElementEClass, HwAccessPathElement.class, "HwAccessPathElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(hwAccessPathRefEClass, HwAccessPathRef.class, "HwAccessPathRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwAccessPathRef_Ref(), this.getHwAccessPath(), null, "ref", null, 0, 1, HwAccessPathRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwDefinition_Features(), this.getHwFeature(), null, "features", null, 0, -1, HwDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hwElementRefEClass, HwElementRef.class, "HwElementRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwElementRef_Port(), this.getComplexPort(), null, "port", null, 0, 1, HwElementRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(processingUnitDefinitionEClass, ProcessingUnitDefinition.class, "ProcessingUnitDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcessingUnitDefinition_PuType(), this.getPuType(), "puType", null, 0, 1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnitDefinition_Classifiers(), this.getCoreClassifier(), null, "classifiers", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConnectionHandlerDefinition_Policy(), this.getSchedPolicy(), "policy", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_MemoryBandwidth(), this.getDataRate(), null, "memoryBandwidth", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCacheDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCacheDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_CacheType(), this.getCacheType(), "cacheType", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_WriteStrategy(), this.getWriteStrategy(), "writeStrategy", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_NWays(), theEcorePackage.getEInt(), "nWays", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_Coherency(), theEcorePackage.getEBoolean(), "coherency", "false", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_Exclusive(), theEcorePackage.getEBoolean(), "exclusive", "false", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_LineSize(), theEcorePackage.getEInt(), "lineSize", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(hwPathEClass, HwPath.class, "HwPath", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwPath_Source(), this.getProcessingUnit(), null, "source", null, 0, 1, HwPath.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getHwPath_Destination(), this.getHwDestination(), null, "destination", null, 0, 1, HwPath.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getHwPath__GetContainingAccessElement(), this.getHwAccessElement(), "getContainingAccessElement", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(hwAccessPathEClass, HwAccessPath.class, "HwAccessPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwAccessPath_ContainingAccessElement(), this.getHwAccessElement(), this.getHwAccessElement_AccessPaths(), "containingAccessElement", null, 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessPath_PathElements(), this.getHwPathElement(), null, "pathElements", null, 1, -1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwAccessPath_StartAddress(), this.getAddress(), "startAddress", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwAccessPath_EndAddress(), this.getAddress(), "endAddress", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwAccessPath_MemOffset(), this.getAddress(), "memOffset", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(hwPathElementEClass, HwPathElement.class, "HwPathElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(hwDestinationEClass, HwDestination.class, "HwDestination", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(mappingModelEClass, MappingModel.class, "MappingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMappingModel_SchedulerAllocation(), this.getSchedulerAllocation(), null, "schedulerAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15518,13 +15415,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(schedulerAllocationEClass, SchedulerAllocation.class, "SchedulerAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSchedulerAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchedulerAllocation_Responsibility(), this.getCore(), null, "responsibility", null, 1, -1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchedulerAllocation_ExecutingCore(), this.getCore(), null, "executingCore", null, 0, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAllocation_Responsibility(), this.getProcessingUnit(), null, "responsibility", null, 1, -1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAllocation_ExecutingCore(), this.getProcessingUnit(), null, "executingCore", null, 0, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskAllocationEClass, TaskAllocation.class, "TaskAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_Scheduler(), this.getTaskScheduler(), null, "scheduler", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTaskAllocation_CoreAffinity(), this.getCore(), null, "coreAffinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskAllocation_CoreAffinity(), this.getProcessingUnit(), null, "coreAffinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -16064,7 +15961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableInstructions_Extended(), this.getRunnableInstructionsEntry(), null, "extended", null, 0, -1, RunnableInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableInstructionsEntryEClass, Map.Entry.class, "RunnableInstructionsEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableInstructionsEntry_Key(), this.getCoreType(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableInstructionsEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableInstructionsEntry_Value(), this.getInstructions(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16469,43 +16366,73 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.START);
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.END);
 
-		initEEnum(qTypeEEnum, QType.class, "QType");
-		addEEnumLiteral(qTypeEEnum, QType._UNDEFINED_);
-		addEEnumLiteral(qTypeEEnum, QType.DYNAMIC);
-		addEEnumLiteral(qTypeEEnum, QType.STATIC);
+		initEEnum(structureTypeEEnum, StructureType.class, "StructureType");
+		addEEnumLiteral(structureTypeEEnum, StructureType._UNDEFINED_);
+		addEEnumLiteral(structureTypeEEnum, StructureType.SYSTEM);
+		addEEnumLiteral(structureTypeEEnum, StructureType.ECU);
+		addEEnumLiteral(structureTypeEEnum, StructureType.MICROCONTROLLER);
+		addEEnumLiteral(structureTypeEEnum, StructureType.SO_C);
+		addEEnumLiteral(structureTypeEEnum, StructureType.CLUSTER);
+		addEEnumLiteral(structureTypeEEnum, StructureType.GROUP);
+		addEEnumLiteral(structureTypeEEnum, StructureType.ARRAY);
+		addEEnumLiteral(structureTypeEEnum, StructureType.AREA);
+		addEEnumLiteral(structureTypeEEnum, StructureType.REGION);
+		addEEnumLiteral(structureTypeEEnum, StructureType._OTHER_);
 
-		initEEnum(memoryTypeEnumEEnum, MemoryTypeEnum.class, "MemoryTypeEnum");
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum._UNDEFINED_);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.RAM);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.CACHE);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_INT);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_EXT);
+		initEEnum(cacheTypeEEnum, CacheType.class, "CacheType");
+		addEEnumLiteral(cacheTypeEEnum, CacheType._UNDEFINED_);
+		addEEnumLiteral(cacheTypeEEnum, CacheType.INSTRUCTION);
+		addEEnumLiteral(cacheTypeEEnum, CacheType.DATA);
+		addEEnumLiteral(cacheTypeEEnum, CacheType.UNIFIED);
 
-		initEEnum(busTypeEEnum, BusType.class, "BusType");
-		addEEnumLiteral(busTypeEEnum, BusType._UNDEFINED_);
-		addEEnumLiteral(busTypeEEnum, BusType.CAN);
-		addEEnumLiteral(busTypeEEnum, BusType.TTCAN);
-		addEEnumLiteral(busTypeEEnum, BusType.LIN);
-		addEEnumLiteral(busTypeEEnum, BusType.FLEXRAY);
-		addEEnumLiteral(busTypeEEnum, BusType.ETHERNET);
-		addEEnumLiteral(busTypeEEnum, BusType.SPI);
-		addEEnumLiteral(busTypeEEnum, BusType.NA);
+		initEEnum(portTypeEEnum, PortType.class, "PortType");
+		addEEnumLiteral(portTypeEEnum, PortType._UNDEFINED_);
+		addEEnumLiteral(portTypeEEnum, PortType.INITIATOR);
+		addEEnumLiteral(portTypeEEnum, PortType.RESPONDER);
 
-		initEEnum(rwTypeEEnum, RWType.class, "RWType");
-		addEEnumLiteral(rwTypeEEnum, RWType._UNDEFINED_);
-		addEEnumLiteral(rwTypeEEnum, RWType.R);
-		addEEnumLiteral(rwTypeEEnum, RWType.W);
-		addEEnumLiteral(rwTypeEEnum, RWType.RW);
+		initEEnum(schedPolicyEEnum, SchedPolicy.class, "SchedPolicy");
+		addEEnumLiteral(schedPolicyEEnum, SchedPolicy._UNDEFINED_);
+		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.ROUND_ROBIN);
+		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.FCFS);
+		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.PRIORITY_BASED);
+		addEEnumLiteral(schedPolicyEEnum, SchedPolicy._OTHER_);
 
-		initEEnum(schedTypeEEnum, SchedType.class, "SchedType");
-		addEEnumLiteral(schedTypeEEnum, SchedType._UNDEFINED_);
-		addEEnumLiteral(schedTypeEEnum, SchedType.RROBIN);
-		addEEnumLiteral(schedTypeEEnum, SchedType.PRIORITY);
+		initEEnum(writeStrategyEEnum, WriteStrategy.class, "WriteStrategy");
+		addEEnumLiteral(writeStrategyEEnum, WriteStrategy._UNDEFINED_);
+		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.NONE);
+		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.WRITEBACK);
+		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.WRITETHROUGH);
+		addEEnumLiteral(writeStrategyEEnum, WriteStrategy._OTHER_);
 
-		initEEnum(pinTypeEEnum, PinType.class, "PinType");
-		addEEnumLiteral(pinTypeEEnum, PinType._UNDEFINED_);
-		addEEnumLiteral(pinTypeEEnum, PinType.ANALOG);
-		addEEnumLiteral(pinTypeEEnum, PinType.DIGITAL);
+		initEEnum(puTypeEEnum, PuType.class, "PuType");
+		addEEnumLiteral(puTypeEEnum, PuType._UNDEFINED_);
+		addEEnumLiteral(puTypeEEnum, PuType.GPU);
+		addEEnumLiteral(puTypeEEnum, PuType.CPU);
+		addEEnumLiteral(puTypeEEnum, PuType.ACCELERATOR);
+		addEEnumLiteral(puTypeEEnum, PuType._OTHER_);
+
+		initEEnum(portInterfaceEEnum, PortInterface.class, "PortInterface");
+		addEEnumLiteral(portInterfaceEEnum, PortInterface._UNDEFINED_);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.CUSTOM);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.CAN);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.FLEXRAY);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.LIN);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.MOST);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.ETHERNET);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.SPI);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.I2C);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.AXI);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.ABH);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.APB);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.SWR);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface._OTHER_);
+
+		initEEnum(hwFeatureTypeEEnum, HwFeatureType.class, "HwFeatureType");
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType._UNDEFINED_);
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.PERFORMANCE);
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.POWER);
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.BOTH);
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.INFORMATION);
 
 		initEEnum(memoryAddressMappingTypeEEnum, MemoryAddressMappingType.class, "MemoryAddressMappingType");
 		addEEnumLiteral(memoryAddressMappingTypeEEnum, MemoryAddressMappingType._UNDEFINED_);

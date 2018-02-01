@@ -16,8 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Memory;
+import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -40,22 +40,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryImpl#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MemoryImpl extends ComplexNodeImpl implements Memory {
+public class MemoryImpl extends HwModuleImpl implements Memory {
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
 	 */
-	protected MemoryType type;
+	protected MemoryDefinition definition;
 
 	/**
 	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list.
@@ -91,16 +91,16 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MemoryType getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (MemoryType)eResolveProxy(oldType);
-			if (type != oldType) {
+	public MemoryDefinition getDefinition() {
+		if (definition != null && definition.eIsProxy()) {
+			InternalEObject oldDefinition = (InternalEObject)definition;
+			definition = (MemoryDefinition)eResolveProxy(oldDefinition);
+			if (definition != oldDefinition) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MEMORY__TYPE, oldType, type));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MEMORY__DEFINITION, oldDefinition, definition));
 			}
 		}
-		return type;
+		return definition;
 	}
 
 	/**
@@ -108,8 +108,8 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MemoryType basicGetType() {
-		return type;
+	public MemoryDefinition basicGetDefinition() {
+		return definition;
 	}
 
 	/**
@@ -117,11 +117,11 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(MemoryType newType) {
-		MemoryType oldType = type;
-		type = newType;
+	public void setDefinition(MemoryDefinition newDefinition) {
+		MemoryDefinition oldDefinition = definition;
+		definition = newDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY__DEFINITION, oldDefinition, definition));
 	}
 
 	/**
@@ -173,9 +173,9 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
+			case AmaltheaPackage.MEMORY__DEFINITION:
+				if (resolve) return getDefinition();
+				return basicGetDefinition();
 			case AmaltheaPackage.MEMORY__MAPPINGS:
 				return getMappings();
 		}
@@ -191,8 +191,8 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY__TYPE:
-				setType((MemoryType)newValue);
+			case AmaltheaPackage.MEMORY__DEFINITION:
+				setDefinition((MemoryDefinition)newValue);
 				return;
 			case AmaltheaPackage.MEMORY__MAPPINGS:
 				getMappings().clear();
@@ -210,8 +210,8 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY__TYPE:
-				setType((MemoryType)null);
+			case AmaltheaPackage.MEMORY__DEFINITION:
+				setDefinition((MemoryDefinition)null);
 				return;
 			case AmaltheaPackage.MEMORY__MAPPINGS:
 				getMappings().clear();
@@ -228,8 +228,8 @@ public class MemoryImpl extends ComplexNodeImpl implements Memory {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MEMORY__TYPE:
-				return type != null;
+			case AmaltheaPackage.MEMORY__DEFINITION:
+				return definition != null;
 			case AmaltheaPackage.MEMORY__MAPPINGS:
 				return mappings != null && !mappings.isEmpty();
 		}

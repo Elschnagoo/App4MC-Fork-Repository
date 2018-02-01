@@ -16,15 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 
 public class MappingService {
 
-	public List<Core> getCoresOfMappingModel(final MappingModel mappingModel) {
-		final List<Core> result = new ArrayList<>();
+	public List<ProcessingUnit> getCoresOfMappingModel(final MappingModel mappingModel) {
+		final List<ProcessingUnit> result = new ArrayList<>();
 		if (null != mappingModel) {
 			mappingModel.getSchedulerAllocation().forEach(alloc -> {
 				result.addAll(alloc.getResponsibility());
@@ -44,8 +44,8 @@ public class MappingService {
 		return result;
 	}
 
-	public List<Core> getCoresForScheduler(final Scheduler scheduler) {
-		final List<Core> result = new ArrayList<>();
+	public List<ProcessingUnit> getCoresForScheduler(final Scheduler scheduler) {
+		final List<ProcessingUnit> result = new ArrayList<>();
 		if (null != scheduler) {
 			final Amalthea amalthea = getAmaltheaForScheduler(scheduler);
 			if (null != amalthea && null != amalthea.getMappingModel()) {

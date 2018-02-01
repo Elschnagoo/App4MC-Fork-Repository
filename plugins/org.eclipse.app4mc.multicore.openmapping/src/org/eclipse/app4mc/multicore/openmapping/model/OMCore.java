@@ -11,24 +11,18 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
-import org.eclipse.app4mc.amalthea.model.Quartz;
-import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 
 public class OMCore {
-	private final Core coreRef;
+	private final ProcessingUnit coreRef;
 	private long instructionsPerSecond = -1;
 	private ArrayList<OMAnnotationElement> referrableAnnotationElements = new ArrayList<OMAnnotationElement>();
 
-	public OMCore(final Core coreRef) {
+	public OMCore(final ProcessingUnit coreRef) {
 		this.coreRef = coreRef;
-		// Prepare element, copy attributes from CoreType
+		// Prepare element, copy attributes from ProcessingUnitDefinition
 		this.referrableAnnotationElements = addAnnotatableElements();
 	}
 	
@@ -39,14 +33,14 @@ public class OMCore {
 			this.coreRef.getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
 		}
 		
-		if(null != coreRef.getCoreType()) {
-			// Add all Tags from the CoreType
-			if(this.coreRef.getCoreType().getTags().size() > 0) {
-				this.coreRef.getCoreType().getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
+		if(null != coreRef.getDefinition()) {
+			// Add all Tags from the ProcessingUnitDefinition
+			if(this.coreRef.getDefinition().getTags().size() > 0) {
+				this.coreRef.getDefinition().getTags().stream().forEach(tag -> out.add(new OMTag(tag)));
 			}
-			// Add all Core Classifiers from the CoreType
-			if(this.coreRef.getCoreType().getClassifiers().size() > 0) {
-				this.coreRef.getCoreType().getClassifiers().stream().forEach(coreClassifier -> out.add(new OMCoreClassifier(coreClassifier)));
+			// Add all Core Classifiers from the ProcessingUnitDefinition
+			if(this.coreRef.getDefinition().getClassifiers().size() > 0) {
+				this.coreRef.getDefinition().getClassifiers().stream().forEach(coreClassifier -> out.add(new OMCoreClassifier(coreClassifier)));
 			}
 		}	
 		
@@ -68,58 +62,63 @@ public class OMCore {
 		if (this.instructionsPerSecond >= 0) {
 			return this.instructionsPerSecond;
 		}
-		// Calculate the Value otherwise
-		// Check the core's Prescaler element and its attribute
-		final Prescaler prescaler = this.coreRef.getPrescaler();
-		if (prescaler == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
-					+ "' has an invalid or missing reference to its Prescaler.", null);
-			return -1;
-		}
-
-		final double clockRatio = prescaler.getClockRatio();
-		if (clockRatio <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute clockRatio.", null);
-			return -1;
-		}
-
-		// Check the Quartz element and its attribute
-		final Quartz quartz = prescaler.getQuartz();
-		if (quartz == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
-					+ this.coreRef.getName() + "' has an invalid or missing reference to Quartz.", null);
-			return -1;
-		}
-		BigDecimal frequencyQuartz = AmaltheaServices.convertToHz(quartz.getFrequency());
-		long frequency = frequencyQuartz.longValue();
 		
-		if (frequency <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Quartz of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute frequency.", null);
-			return -1;
-		}
-
-		// Check CoreType and its attribute
-		final CoreType type = this.coreRef.getCoreType();
-		if (type == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
-					+ "' has an invalid or missing reference to its CoreType.", null);
-			return -1;
-		}
-
-		final float instructionsPerCycle = type.getInstructionsPerCycle();
-		if (instructionsPerCycle <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred CoreType of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);
-			return -1;
-		}
-
-		// Calculate the instructions per second as the product of frequency, clockRatio and instructionsPerCycle
-		return (this.instructionsPerSecond = (long) (frequency * clockRatio * instructionsPerCycle));
+// TODO implement
+		
+//		// Calculate the Value otherwise
+//		// Check the core's Prescaler element and its attribute
+//		final Prescaler prescaler = this.coreRef.getPrescaler();
+//		if (prescaler == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
+//					+ "' has an invalid or missing reference to its Prescaler.", null);
+//			return -1;
+//		}
+//
+//		final double clockRatio = prescaler.getClockRatio();
+//		if (clockRatio <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute clockRatio.", null);
+//			return -1;
+//		}
+//
+//		// Check the Quartz element and its attribute
+//		final Quartz quartz = prescaler.getQuartz();
+//		if (quartz == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Prescaler of Core '"
+//					+ this.coreRef.getName() + "' has an invalid or missing reference to Quartz.", null);
+//			return -1;
+//		}
+//		BigDecimal frequencyQuartz = AmaltheaServices.convertToHz(quartz.getFrequency());
+//		long frequency = frequencyQuartz.longValue();
+//		
+//		if (frequency <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred Quartz of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute frequency.", null);
+//			return -1;
+//		}
+//
+//		// Check ProcessingUnitDefinition and its attribute
+//		final ProcessingUnitDefinition type = this.coreRef.getDefinition();
+//		if (type == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
+//					+ "' has an invalid or missing reference to its ProcessingUnitDefinition.", null);
+//			return -1;
+//		}
+//
+//		final float instructionsPerCycle = 1; // TODO dummy for: type.getInstructionsPerCycle();
+//		if (instructionsPerCycle <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the referred ProcessingUnitDefinition of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);
+//			return -1;
+//		}
+//
+//		// Calculate the instructions per second as the product of frequency, clockRatio and instructionsPerCycle
+//		return (this.instructionsPerSecond = (long) (frequency * clockRatio * instructionsPerCycle));
+		
+		return 1; // TODO dummy	
 	}
 	
-	public Core getCoreRef() {
+	public ProcessingUnit getCoreRef() {
 		return this.coreRef;
 	}
 	

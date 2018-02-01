@@ -14,26 +14,19 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AccessPath;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CoreType;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
-import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
-import org.eclipse.app4mc.amalthea.model.NetworkType;
-import org.eclipse.app4mc.amalthea.model.SystemType;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
+import org.eclipse.app4mc.amalthea.model.HwDomain;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -46,98 +39,54 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getSystemTypes <em>System Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getEcuTypes <em>Ecu Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getMcTypes <em>Mc Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getCoreTypes <em>Core Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getMemoryTypes <em>Memory Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getNetworkTypes <em>Network Types</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getAccessPaths <em>Access Paths</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getSystem <em>System</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getDefinitions <em>Definitions</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getStructures <em>Structures</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getDomains <em>Domains</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	/**
-	 * The cached value of the '{@link #getSystemTypes() <em>System Types</em>}' containment reference list.
+	 * The cached value of the '{@link #getDefinitions() <em>Definitions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSystemTypes()
+	 * @see #getDefinitions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SystemType> systemTypes;
+	protected EList<HwDefinition> definitions;
 
 	/**
-	 * The cached value of the '{@link #getEcuTypes() <em>Ecu Types</em>}' containment reference list.
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEcuTypes()
+	 * @see #getFeatures()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ECUType> ecuTypes;
+	protected EList<HwFeature> features;
 
 	/**
-	 * The cached value of the '{@link #getMcTypes() <em>Mc Types</em>}' containment reference list.
+	 * The cached value of the '{@link #getStructures() <em>Structures</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMcTypes()
+	 * @see #getStructures()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MicrocontrollerType> mcTypes;
+	protected EList<HwStructure> structures;
 
 	/**
-	 * The cached value of the '{@link #getCoreTypes() <em>Core Types</em>}' containment reference list.
+	 * The cached value of the '{@link #getDomains() <em>Domains</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoreTypes()
+	 * @see #getDomains()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CoreType> coreTypes;
-
-	/**
-	 * The cached value of the '{@link #getMemoryTypes() <em>Memory Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMemoryTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MemoryType> memoryTypes;
-
-	/**
-	 * The cached value of the '{@link #getNetworkTypes() <em>Network Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNetworkTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NetworkType> networkTypes;
-
-	/**
-	 * The cached value of the '{@link #getAccessPaths() <em>Access Paths</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAccessPaths()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AccessPath> accessPaths;
-
-	/**
-	 * The cached value of the '{@link #getSystem() <em>System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected HwSystem system;
+	protected EList<HwDomain> domains;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,11 +112,11 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SystemType> getSystemTypes() {
-		if (systemTypes == null) {
-			systemTypes = new EObjectContainmentEList<SystemType>(SystemType.class, this, AmaltheaPackage.HW_MODEL__SYSTEM_TYPES);
+	public EList<HwDefinition> getDefinitions() {
+		if (definitions == null) {
+			definitions = new EObjectContainmentEList<HwDefinition>(HwDefinition.class, this, AmaltheaPackage.HW_MODEL__DEFINITIONS);
 		}
-		return systemTypes;
+		return definitions;
 	}
 
 	/**
@@ -175,11 +124,11 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ECUType> getEcuTypes() {
-		if (ecuTypes == null) {
-			ecuTypes = new EObjectContainmentEList<ECUType>(ECUType.class, this, AmaltheaPackage.HW_MODEL__ECU_TYPES);
+	public EList<HwFeature> getFeatures() {
+		if (features == null) {
+			features = new EObjectContainmentEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.HW_MODEL__FEATURES);
 		}
-		return ecuTypes;
+		return features;
 	}
 
 	/**
@@ -187,11 +136,11 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MicrocontrollerType> getMcTypes() {
-		if (mcTypes == null) {
-			mcTypes = new EObjectContainmentEList<MicrocontrollerType>(MicrocontrollerType.class, this, AmaltheaPackage.HW_MODEL__MC_TYPES);
+	public EList<HwStructure> getStructures() {
+		if (structures == null) {
+			structures = new EObjectContainmentEList<HwStructure>(HwStructure.class, this, AmaltheaPackage.HW_MODEL__STRUCTURES);
 		}
-		return mcTypes;
+		return structures;
 	}
 
 	/**
@@ -199,90 +148,11 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CoreType> getCoreTypes() {
-		if (coreTypes == null) {
-			coreTypes = new EObjectContainmentEList<CoreType>(CoreType.class, this, AmaltheaPackage.HW_MODEL__CORE_TYPES);
+	public EList<HwDomain> getDomains() {
+		if (domains == null) {
+			domains = new EObjectContainmentEList<HwDomain>(HwDomain.class, this, AmaltheaPackage.HW_MODEL__DOMAINS);
 		}
-		return coreTypes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<MemoryType> getMemoryTypes() {
-		if (memoryTypes == null) {
-			memoryTypes = new EObjectContainmentEList<MemoryType>(MemoryType.class, this, AmaltheaPackage.HW_MODEL__MEMORY_TYPES);
-		}
-		return memoryTypes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<NetworkType> getNetworkTypes() {
-		if (networkTypes == null) {
-			networkTypes = new EObjectContainmentEList<NetworkType>(NetworkType.class, this, AmaltheaPackage.HW_MODEL__NETWORK_TYPES);
-		}
-		return networkTypes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<AccessPath> getAccessPaths() {
-		if (accessPaths == null) {
-			accessPaths = new EObjectContainmentEList<AccessPath>(AccessPath.class, this, AmaltheaPackage.HW_MODEL__ACCESS_PATHS);
-		}
-		return accessPaths;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwSystem getSystem() {
-		return system;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSystem(HwSystem newSystem, NotificationChain msgs) {
-		HwSystem oldSystem = system;
-		system = newSystem;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MODEL__SYSTEM, oldSystem, newSystem);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSystem(HwSystem newSystem) {
-		if (newSystem != system) {
-			NotificationChain msgs = null;
-			if (system != null)
-				msgs = ((InternalEObject)system).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MODEL__SYSTEM, null, msgs);
-			if (newSystem != null)
-				msgs = ((InternalEObject)newSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_MODEL__SYSTEM, null, msgs);
-			msgs = basicSetSystem(newSystem, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_MODEL__SYSTEM, newSystem, newSystem));
+		return domains;
 	}
 
 	/**
@@ -293,22 +163,14 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-				return ((InternalEList<?>)getSystemTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-				return ((InternalEList<?>)getEcuTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-				return ((InternalEList<?>)getMcTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-				return ((InternalEList<?>)getCoreTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-				return ((InternalEList<?>)getMemoryTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-				return ((InternalEList<?>)getNetworkTypes()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-				return ((InternalEList<?>)getAccessPaths()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
-				return basicSetSystem(null, msgs);
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+				return ((InternalEList<?>)getDefinitions()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+				return ((InternalEList<?>)getStructures()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
+				return ((InternalEList<?>)getDomains()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -321,22 +183,14 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-				return getSystemTypes();
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-				return getEcuTypes();
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-				return getMcTypes();
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-				return getCoreTypes();
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-				return getMemoryTypes();
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-				return getNetworkTypes();
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-				return getAccessPaths();
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
-				return getSystem();
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+				return getDefinitions();
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+				return getFeatures();
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+				return getStructures();
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
+				return getDomains();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -350,36 +204,21 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-				getSystemTypes().clear();
-				getSystemTypes().addAll((Collection<? extends SystemType>)newValue);
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+				getDefinitions().clear();
+				getDefinitions().addAll((Collection<? extends HwDefinition>)newValue);
 				return;
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-				getEcuTypes().clear();
-				getEcuTypes().addAll((Collection<? extends ECUType>)newValue);
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends HwFeature>)newValue);
 				return;
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-				getMcTypes().clear();
-				getMcTypes().addAll((Collection<? extends MicrocontrollerType>)newValue);
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+				getStructures().clear();
+				getStructures().addAll((Collection<? extends HwStructure>)newValue);
 				return;
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-				getCoreTypes().clear();
-				getCoreTypes().addAll((Collection<? extends CoreType>)newValue);
-				return;
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-				getMemoryTypes().clear();
-				getMemoryTypes().addAll((Collection<? extends MemoryType>)newValue);
-				return;
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-				getNetworkTypes().clear();
-				getNetworkTypes().addAll((Collection<? extends NetworkType>)newValue);
-				return;
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-				getAccessPaths().clear();
-				getAccessPaths().addAll((Collection<? extends AccessPath>)newValue);
-				return;
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
-				setSystem((HwSystem)newValue);
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
+				getDomains().clear();
+				getDomains().addAll((Collection<? extends HwDomain>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -393,29 +232,17 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-				getSystemTypes().clear();
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+				getDefinitions().clear();
 				return;
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-				getEcuTypes().clear();
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+				getFeatures().clear();
 				return;
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-				getMcTypes().clear();
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+				getStructures().clear();
 				return;
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-				getCoreTypes().clear();
-				return;
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-				getMemoryTypes().clear();
-				return;
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-				getNetworkTypes().clear();
-				return;
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-				getAccessPaths().clear();
-				return;
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
-				setSystem((HwSystem)null);
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
+				getDomains().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -429,22 +256,14 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-				return systemTypes != null && !systemTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-				return ecuTypes != null && !ecuTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-				return mcTypes != null && !mcTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-				return coreTypes != null && !coreTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-				return memoryTypes != null && !memoryTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-				return networkTypes != null && !networkTypes.isEmpty();
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-				return accessPaths != null && !accessPaths.isEmpty();
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
-				return system != null;
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+				return definitions != null && !definitions.isEmpty();
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+				return features != null && !features.isEmpty();
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+				return structures != null && !structures.isEmpty();
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
+				return domains != null && !domains.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -16,9 +16,9 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.ProcessConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
 import org.eclipse.app4mc.amalthea.model.Value;
 
@@ -68,7 +68,7 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Core> cores;
+	protected EList<ProcessingUnit> cores;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,9 +106,9 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Core> getCores() {
+	public EList<ProcessingUnit> getCores() {
 		if (cores == null) {
-			cores = new EObjectResolvingEList<Core>(Core.class, this, AmaltheaPackage.TARGET_CORE__CORES);
+			cores = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TARGET_CORE__CORES);
 		}
 		return cores;
 	}
@@ -158,7 +158,7 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 				return;
 			case AmaltheaPackage.TARGET_CORE__CORES:
 				getCores().clear();
-				getCores().addAll((Collection<? extends Core>)newValue);
+				getCores().addAll((Collection<? extends ProcessingUnit>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

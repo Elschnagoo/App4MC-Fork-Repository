@@ -1,13 +1,13 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -16,35 +16,28 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessPath} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- *
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessPath} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class HwAccessPathItemProvider extends HwPathItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public HwAccessPathItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +46,8 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -62,16 +56,19 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addUniqueNamePropertyDescriptor(object);
-			addSourcePropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
+			addContainingAccessElementPropertyDescriptor(object);
+			addPathElementsPropertyDescriptor(object);
+			addStartAddressPropertyDescriptor(object);
+			addEndAddressPropertyDescriptor(object);
+			addMemOffsetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
 	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -91,22 +88,23 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
-	 * This adds a property descriptor for the Unique Name feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Containing Access Element feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addUniqueNamePropertyDescriptor(Object object) {
+	protected void addContainingAccessElementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IReferable_uniqueName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IReferable_uniqueName_feature", "_UI_IReferable_type"),
-				 AmaltheaPackage.eINSTANCE.getIReferable_UniqueName(),
+				 getString("_UI_HwAccessPath_containingAccessElement_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_containingAccessElement_feature", "_UI_HwAccessPath_type"),
+				 AmaltheaPackage.eINSTANCE.getHwAccessPath_ContainingAccessElement(),
 				 false,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {
 					"org.eclipse.ui.views.properties.expert"
@@ -114,18 +112,19 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
-	 * This adds a property descriptor for the Source feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Path Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSourcePropertyDescriptor(Object object) {
+	protected void addPathElementsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AccessPath_source_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AccessPath_source_feature", "_UI_AccessPath_type"),
-				 AmaltheaPackage.eINSTANCE.getAccessPath_Source(),
+				 getString("_UI_HwAccessPath_pathElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_pathElements_feature", "_UI_HwAccessPath_type"),
+				 AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements(),
 				 true,
 				 false,
 				 true,
@@ -135,58 +134,75 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
-	 * This adds a property descriptor for the Target feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Start Address feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetPropertyDescriptor(Object object) {
+	protected void addStartAddressPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AccessPath_target_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AccessPath_target_feature", "_UI_AccessPath_type"),
-				 AmaltheaPackage.eINSTANCE.getAccessPath_Target(),
+				 getString("_UI_HwAccessPath_startAddress_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_startAddress_feature", "_UI_HwAccessPath_type"),
+				 AmaltheaPackage.eINSTANCE.getHwAccessPath_StartAddress(),
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * This adds a property descriptor for the End Address feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessPath_HwElements());
-		}
-		return childrenFeatures;
+	protected void addEndAddressPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwAccessPath_endAddress_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_endAddress_feature", "_UI_HwAccessPath_type"),
+				 AmaltheaPackage.eINSTANCE.getHwAccessPath_EndAddress(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Mem Offset feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addMemOffsetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwAccessPath_memOffset_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_memOffset_feature", "_UI_HwAccessPath_type"),
+				 AmaltheaPackage.eINSTANCE.getHwAccessPath_MemOffset(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This returns HwAccessPath.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -195,7 +211,8 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -205,7 +222,8 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
@@ -225,73 +243,37 @@ public class HwAccessPathItemProvider extends AmaltheaExtendedItemProviderAdapte
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HwAccessPath.class)) {
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
-			case AmaltheaPackage.HW_ACCESS_PATH__UNIQUE_NAME:
+			case AmaltheaPackage.HW_ACCESS_PATH__START_ADDRESS:
+			case AmaltheaPackage.HW_ACCESS_PATH__END_ADDRESS:
+			case AmaltheaPackage.HW_ACCESS_PATH__MEM_OFFSET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
 		}
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getHwAccessPathItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
-			fireNotifyChanged(vn);
-		}
-
 		super.notifyChanged(notification);
 	}
 
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessPath_HwElements(),
-				 AmaltheaFactory.eINSTANCE.createHwAccessPathRef()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessPath_HwElements(),
-				 AmaltheaFactory.eINSTANCE.createHwElementRef()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

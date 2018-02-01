@@ -973,7 +973,7 @@ class TargetMemory extends DataConstraintTarget, BaseObject
  */
 class TargetCore extends RunnableConstraintTarget, ProcessConstraintTarget, BaseObject
 {
-	refers Core[] cores
+	refers ProcessingUnit[] cores
 }
 
 /*
@@ -1250,7 +1250,7 @@ class CPUPercentageRequirementLimit extends RequirementLimit {
 	CPUPercentageMetric metric
 	double limitValue = "0.0"
 	// can be ECU, Processor or Core
-	refers ComplexNode hardwareContext
+	refers ProcessingUnit hardwareContext
 }
 
 class FrequencyRequirementLimit extends RequirementLimit {
@@ -1461,7 +1461,7 @@ class ProcessEvent extends EntityEvent
 {
 	ProcessEventType[1] eventType
 	refers Process entity
-	refers Core core
+	refers ProcessingUnit core
 }
 
 /*
@@ -1474,7 +1474,7 @@ class ProcessChainEvent extends EntityEvent
 {
 	ProcessEventType[1] eventType
 	refers ProcessChain entity
-	refers Core core
+	refers ProcessingUnit core
 }
 
 /*
@@ -1489,7 +1489,7 @@ class RunnableEvent extends TriggerEvent
 	RunnableEventType[1] eventType
 	refers Runnable entity
 	refers Process process
-	refers Core core
+	refers ProcessingUnit core
 }
 
 /*
@@ -1536,7 +1536,7 @@ class SemaphoreEvent extends EntityEvent
 	refers Semaphore entity
 	refers Runnable runnable
 	refers Process process
-	refers Core core
+	refers ProcessingUnit core
 }
 
 /*
@@ -1633,289 +1633,296 @@ enum ComponentEventType
 // ===============================================================================
 
 
-class HWModel extends BaseObject {
-	// containments of all hardware type descriptions, i.e. Core(s), Memory(s), Network(s), ...
-	contains SystemType[] systemTypes
-	contains ECUType[] ecuTypes
-	contains MicrocontrollerType[] mcTypes
-	contains CoreType[] coreTypes
-	contains MemoryType[] memoryTypes
-	contains NetworkType[] networkTypes
-	contains AccessPath[] accessPaths
-	// Containment of the system described by this model
-	contains HwSystem system
+class HWModel extends BaseObject
+{
+	contains HwDefinition[] definitions
+	contains HwFeature[] features
+	contains HwStructure[] structures
+	contains HwDomain[] domains
 }
 
-// Each instance of an Element may have an unique configuration, i.e. name, Ports, Prescaler and nested hardware elements
-abstract class ComplexNode extends ReferableBaseObject, ITaggable
-{
-	contains Prescaler prescaler
-	contains Memory[] memories
-	contains Network[] networks
-	contains HwComponent[] components
-	contains HwPort[] ports opposite containingNode
+ class HwStructure extends ReferableBaseObject, ITaggable {
+	StructureType structureType
+	contains HwPort[] ports
+	contains HwModule[] modules
+	contains HwConnection[] connections
+	contains HwStructure[] structures
 }
 
-class HwSystem extends ComplexNode
-{
-	refers SystemType systemType
-	contains ECU[+] ecus
-	contains Quartz[] quartzes
+abstract class HwDomain extends ReferableBaseObject, ITaggable {
 }
 
-class ECU extends ComplexNode
-{
-	refers ECUType ecuType
-	contains Microcontroller[+] microcontrollers
+class FrequencyDomain extends HwDomain {
+	contains Frequency[] possibleValues
+	contains Frequency defaultValue
+	boolean clockGating = "false"
 }
 
-class Microcontroller extends ComplexNode
-{
-	refers MicrocontrollerType microcontrollerType
-	contains Core[+] cores
+class PowerDomain extends HwDomain {
+	contains Voltage[] possibleValues
+	contains Voltage defaultValue
+	boolean powerGating = "false"
 }
 
-class Core extends ComplexNode
-{
-	refers CoreType coreType
-	int lockstepGroup = "0"
+abstract class HwModule extends ReferableBaseObject, ITaggable {
+	contains HwPort[] ports
+	refers PowerDomain powerDomain
+	refers FrequencyDomain frequencyDomain
 }
 
-class Memory extends ComplexNode
-{
-	refers MemoryType ^type
-	
+class ProcessingUnit extends HwModule, HwDestination, HwPathElement {
+	refers ProcessingUnitDefinition definition
+	contains HwAccessElement[] accessElements opposite source
+}
+
+class Memory extends HwModule, HwDestination {
+	refers MemoryDefinition definition
+		
 	// back pointer (readonly)
 	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient MemoryMapping[] mappings opposite memoryLinkInt
 }
 
-class Network extends ComplexNode
-{
-	refers NetworkType ^type
+class Cache extends HwModule, HwPathElement {
+	refers CacheDefinition definition
 }
 
-class Quartz extends ReferableBaseObject, ITaggable
-{
-	contains Frequency frequency
-	QType ^type
+class HwFeature extends ReferableBaseObject {
+	HwFeatureType featureType
+	String description
+	contains Value[1] value
+	contains HwLatency latency
 }
 
-// Unclassified Components, i.e. additional periphery that may be used by Autosar
-class HwComponent extends ComplexNode
-{
-	contains HwComponent[] nestedComponents
-}
-
-abstract class HardwareTypeDescription extends ReferableBaseObject, ITaggable
-{
-}
-
-abstract class AbstractionType extends HardwareTypeDescription
-{
-}
-
-class SystemType extends AbstractionType
-{
-}
-
-class ECUType extends AbstractionType
-{
-}
-
-class MicrocontrollerType extends AbstractionType
-{
-}
-
-class CoreType extends AbstractionType
-{
+class HwPort  extends ReferableBaseObject, ITaggable {
 	int bitWidth = "0"
-	float instructionsPerCycle = "0.0"
-	refers CoreClassifier[] classifiers
-}
-
-class MemoryType extends HardwareTypeDescription
-{
-	MemoryTypeEnum ^type
-	contains DataSize size
-	refers MemoryClassifier[] classifiers
-}
-
-class NetworkType extends HardwareTypeDescription
-{
-	SchedType schedPolicy
-	int bitWidth = "0"
-}
-
-// Element for Autosar PinGroup entities
-class HwPort extends ReferableBaseObject {
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly ComplexNode containingNode opposite ports
+	int priority = "0"
+	PortType portType
+	PortInterface portInterface
 	
-	contains Pin pins
+	derived readonly boolean delegated get {
+		eContainer instanceof HwStructure
+	}
 	
 	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingNode?.name)
+		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
 	}
 }
 
-// Element for Autosar Pin entities
-class Pin extends ReferableBaseObject
-{
+class ConnectionHandler extends HwModule, HwPathElement {
+	refers ConnectionHandlerDefinition definition
+	contains HwConnection[] internalConnections
 }
 
-// Specialization of the Port with additional attributes
-class ComplexPort extends HwPort
-{
-	refers Network[1] network
-	boolean master = "false"
-	int bitWidth = "0"
-	Address baseAddress = "0"
-	Address addressRange = "0"
-	RWType direction
-	int writeCycles = "0"
-	int readCycles = "0"
-	int schedValue = "0"
+class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
+	//contains HwConverter converter
+	contains HwLatency readLatency
+	contains HwLatency wirteLatency
+	contains DataRate dataRate
+	refers HwPort port1
+	refers HwPort port2
+	
+	op String computeUniqueName() {
+		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
+	}
 }
 
-// Specialization of the Pin with additional attributes
-class ComplexPin extends Pin
-{
-	PinType ^type
-	Address baseAddress = "0"
-	RWType direction
-}
+/*class HwConverter extends INamed {
+	contains HwLatency latency
+	refers FrequencyDomain[1] sourceFrequencyDomain
+	refers FrequencyDomain[1] targetFrequencyDomain
+}*/
 
-class Prescaler
-{
-	String name
-	double clockRatio = "0.0"
-	refers Quartz[1] quartz
-}
+/*class AddressElement extends INamed {
+	@GenModel(propertyCategory="Read only")
+	container readonly ProcessingUnit source opposite addressElements
+	refers HwDestination destination
+	contains HwAccessPath[] accessPaths opposite containingAddressElement
+	contains HwLogicalPath logicalPaths opposite containingAddressElement
+	Address startAddress = "0"
+	Address endAddress = "0"
+	Address memOffset = "0"
+	boolean cached = "false"
+}*/
+ 
 
-class CrossbarSwitch extends NetworkType
-{
-	int conConnections = "0"
-}
+ class HwAccessElement extends ITaggable, INamed {
+ 	@GenModel(propertyCategory="Read only")
+	container readonly ProcessingUnit source opposite accessElements
+	refers HwDestination destination
+	contains HwAccessPath[] accessPaths opposite containingAccessElement
+	contains HwLatency readLatency
+	contains HwLatency writeLatency
+	contains DataRate dataRate
+ }
 
-class Bus extends NetworkType
-{
-	BusType busType
-}
-
-class Bridge extends NetworkType
-{
-}
-
-enum QType
-{
+enum StructureType {
 	_undefined_
-	DYNAMIC
-	STATIC
+	System
+	ECU
+	Microcontroller
+	SoC
+	Cluster
+	Group
+	Array
+	Area
+	Region
+	_other_
 }
 
-enum MemoryTypeEnum
-{
+enum CacheType {
 	_undefined_
-	RAM
-	CACHE
-	FLASH_INT
-	FLASH_EXT
+	instruction
+	data
+	unified
 }
 
-enum BusType
-{
+
+enum PortType {
 	_undefined_
+	initiator	// master
+	responder	// slave
+}
+
+enum SchedPolicy {
+	_undefined_
+	RoundRobin
+	FCFS
+	PriorityBased
+	_other_
+}
+
+
+enum WriteStrategy {
+	_undefined_
+	none
+	writeback
+	writethrough
+	_other_
+}
+
+class ConstantLatency extends HwLatency {
+	long constantCycles = "0"
+}
+
+class LatencyDeviation extends HwLatency {
+	contains Deviation<LongObject> deviationInCylces
+}
+
+abstract class HwLatency {
+}
+
+
+abstract class HwDefinition extends ReferableBaseObject, ITaggable {
+	refers HwFeature[] features
+
+}
+
+class ProcessingUnitDefinition extends HwDefinition {
+	PuType puType
+	refers CoreClassifier[] classifiers	// backward compatibility
+}
+
+class ConnectionHandlerDefinition extends HwDefinition {
+	SchedPolicy policy
+	contains HwLatency readLatency
+	contains HwLatency writeLatency
+	contains DataRate dataRate
+}
+
+class MemoryDefinition extends HwDefinition {
+	contains DataSize size
+	contains HwLatency accessLatency
+	contains DataRate memoryBandwidth
+	refers MemoryClassifier[] classifiers	// backward compatibility
+}
+
+class CacheDefinition extends HwDefinition {
+	contains DataSize size
+	contains HwLatency accessLatency
+	CacheType cacheType
+	WriteStrategy writeStrategy
+	int nWays = "0"
+	boolean coherency = "false"
+	boolean exclusive = "false"
+	int lineSize = "0"
+}
+
+
+abstract class HwPath {
+	op HwAccessElement getContainingAccessElement() {
+		null
+	}
+	
+	@GenModel(propertyCategory="Read only")
+	refers derived readonly ProcessingUnit source get {
+		return containingAccessElement.source
+	}
+	
+	@GenModel(propertyCategory="Read only")
+	refers derived readonly HwDestination destination get {
+		return containingAccessElement.destination
+	}
+}
+
+class HwAccessPath extends HwPath, INamed {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	container readonly HwAccessElement containingAccessElement opposite accessPaths
+	
+	refers HwPathElement[+] pathElements
+	Address startAddress = "0"
+	Address endAddress = "0"
+	Address memOffset = "0"
+}
+
+/*class HwLogicalPath extends HwPath, INamed {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	container readonly AddressElement containingAddressElement opposite logicalPaths
+	contains DataRate dataRate
+	contains HwLatency readLatency
+	contains HwLatency writeLatency
+}*/
+
+interface HwPathElement extends IReferable {
+}
+
+interface HwDestination extends IReferable {
+}
+
+enum PuType {
+	_undefined_
+	GPU
+	CPU
+	Accelerator
+	_other_
+}
+
+enum PortInterface {
+	_undefined_
+	custom
 	CAN
-	TTCAN
+	Flexray
 	LIN
-	FLEXRAY
-	ETHERNET
+	MOST
+	Ethernet
 	SPI
-	NA
+	I2C
+	AXI
+	ABH 
+	APB
+	SWR
+	_other_
 }
 
-enum RWType
-{
+enum HwFeatureType {
 	_undefined_
-	R
-	W
-	RW
+	performance
+	power
+	both
+	information
 }
 
-enum SchedType
-{
-	_undefined_
-	RROBIN
-	PRIORITY
-}
-
-enum PinType
-{
-	_undefined_
-	ANALOG
-	DIGITAL
-}
-
-
-interface AccessPath extends IReferable
-{
-	refers ComplexNode source
-	refers ComplexNode target
-}
-
-/* AccessPath represented by latencies in cycles */
-class LatencyAccessPath extends AccessPath
-{
-	contains LatencyAccessPathElement[] latencies
-}
-
-/* AccessPath represented by directly referencing to existing HW elements (Ports) */
-class HwAccessPath extends AccessPath
-{
-	contains HwAccessPathElement[] hwElements
-}
-
-interface LatencyAccessPathElement
-{
-}
-
-class AccessPathRef extends LatencyAccessPathElement
-{
-	refers LatencyAccessPath ref
-}
-
-interface Latency extends LatencyAccessPathElement
-{
-	RWType accessType
-	long transferSize = "0"
-	refers Quartz[1] quartz
-}
-
-class LatencyConstant extends Latency
-{
-	long value = "0"
-}
-
-class LatencyDeviation extends Latency
-{
-	contains Deviation<LongObject> deviation
-}
-
-interface HwAccessPathElement
-{
-}
-
-class HwAccessPathRef extends HwAccessPathElement
-{
-	refers HwAccessPath ref
-}
-
-class HwElementRef extends HwAccessPathElement
-{
-	refers ComplexPort port
-}
 
 
 // ===============================================================================
@@ -1962,8 +1969,8 @@ enum MemoryAddressMappingType
 class SchedulerAllocation extends BaseObject
 {
 	refers Scheduler[1] scheduler
-	refers Core[+] responsibility
-	refers Core executingCore
+	refers ProcessingUnit[+] responsibility
+	refers ProcessingUnit executingCore
 }
 
 
@@ -1973,7 +1980,7 @@ class TaskAllocation extends BaseObject
 {
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
-	refers Core[] coreAffinity
+	refers ProcessingUnit[] coreAffinity
 	
 	contains SchedulingParameters schedulingParameters
 	contains ParameterExtension[] parameterExtensions
@@ -3342,7 +3349,7 @@ class RunnableInstructions extends ComputationItem {
 }
 
 class RunnableInstructionsEntry wraps java.util.Map$Entry {
-	refers CoreType[1] key
+	refers ProcessingUnitDefinition[1] key
 	contains Instructions[1] value
 }
 

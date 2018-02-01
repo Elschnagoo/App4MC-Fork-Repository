@@ -39,7 +39,7 @@ import org.eclipse.emf.common.util.EList;
 public interface TargetCore extends RunnableConstraintTarget, ProcessConstraintTarget, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Cores</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Core}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cores</em>' reference list isn't clear,
@@ -51,6 +51,6 @@ public interface TargetCore extends RunnableConstraintTarget, ProcessConstraintT
 	 * @model
 	 * @generated
 	 */
-	EList<Core> getCores();
+	EList<ProcessingUnit> getCores();
 
 } // TargetCore

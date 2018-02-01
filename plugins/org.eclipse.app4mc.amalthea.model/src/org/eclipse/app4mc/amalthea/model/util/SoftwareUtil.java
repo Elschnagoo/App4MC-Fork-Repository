@@ -25,7 +25,6 @@ import java.util.function.Function;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Instructions;
@@ -42,6 +41,7 @@ import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.Process;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
@@ -907,7 +907,7 @@ public class SoftwareUtil {
 	 * @param modeLiterals (optional) - null works
 	 * @return List<Instructions>
 	 */
-	public static List<Instructions> getInstructionsList(Process process, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Instructions> getInstructionsList(Process process, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = getRunnableList(process, modes);
 		List<Instructions> result = new ArrayList<>();
 		
@@ -925,7 +925,7 @@ public class SoftwareUtil {
 	 * @param modeLiterals (optional) - null works
 	 * @return List<Instructions>
 	 */
-	public static List<Instructions> getInstructionsList(Runnable runnable, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Instructions> getInstructionsList(Runnable runnable, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Instructions> result = new ArrayList<>();
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
 		

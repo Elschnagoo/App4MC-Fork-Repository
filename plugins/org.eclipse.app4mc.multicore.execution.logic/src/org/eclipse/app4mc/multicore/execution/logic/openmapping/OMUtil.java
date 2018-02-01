@@ -23,8 +23,8 @@ import java.util.concurrent.atomic.DoubleAdder;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
@@ -43,12 +43,12 @@ public class OMUtil {
 		List<TaskAllocation> allocations = model.getTaskAllocation();
 		List<SchedulerAllocation> schedAllocs = model.getSchedulerAllocation();
 		
-		final Map<Core,OMCore> cores = new HashMap<>();
-		final Map<Scheduler,Core> schedToCore = new HashMap<>();
+		final Map<ProcessingUnit,OMCore> cores = new HashMap<>();
+		final Map<Scheduler,ProcessingUnit> schedToCore = new HashMap<>();
 
 
 		for(SchedulerAllocation sa:schedAllocs) {
-			Core c = sa.getResponsibility().get(0);
+			ProcessingUnit c = sa.getResponsibility().get(0);
 			Scheduler s = sa.getScheduler();
 			schedToCore.put(s, c);
 		}
@@ -57,7 +57,7 @@ public class OMUtil {
 		for(TaskAllocation ta:allocations){
 			Task t = ta.getTask();
 			Scheduler s = ta.getScheduler();
-			Core c = schedToCore.get(s);
+			ProcessingUnit c = schedToCore.get(s);
 			if(!cores.containsKey(c)){
 				cores.put(c, new OMCore(c));
 			}

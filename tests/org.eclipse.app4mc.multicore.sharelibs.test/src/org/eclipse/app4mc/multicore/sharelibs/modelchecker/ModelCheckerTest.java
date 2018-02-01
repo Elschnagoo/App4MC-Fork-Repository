@@ -361,7 +361,9 @@ public class ModelCheckerTest {
 
 		// We have to create the entire path to cores to be sure that we are
 		// testing it
-		emptyModel.getHwModel().setSystem(AmaltheaFactory.eINSTANCE.createHwSystem());
+		
+// TODO implement
+//		emptyModel.getHwModel().setSystem(AmaltheaFactory.eINSTANCE.createHwSystem());
 
 
 		for (final ModelSpecAmountType type : ModelSpecAmountType.values()) {

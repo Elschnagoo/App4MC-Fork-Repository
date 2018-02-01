@@ -19,9 +19,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
-import org.eclipse.app4mc.amalthea.model.AbstractionType;
-import org.eclipse.app4mc.amalthea.model.AccessPath;
-import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
@@ -39,9 +36,9 @@ import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
-import org.eclipse.app4mc.amalthea.model.Bridge;
-import org.eclipse.app4mc.amalthea.model.Bus;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -60,9 +57,6 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
-import org.eclipse.app4mc.amalthea.model.ComplexPin;
-import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
@@ -72,18 +66,18 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
 import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
+import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
-import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -113,8 +107,6 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
@@ -140,6 +132,7 @@ import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
@@ -148,14 +141,19 @@ import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
-import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwElementRef;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwDomain;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.HwModule;
+import org.eclipse.app4mc.amalthea.model.HwPath;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -180,10 +178,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.Latency;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
@@ -194,11 +188,9 @@ import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -212,8 +204,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Network;
-import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -237,11 +227,10 @@ import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
-import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
+import org.eclipse.app4mc.amalthea.model.PowerDomain;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
@@ -261,10 +250,11 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quantity;
-import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
@@ -324,7 +314,6 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
@@ -985,148 +974,104 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createHWModelAdapter();
 			}
 			@Override
-			public Adapter caseComplexNode(ComplexNode object) {
-				return createComplexNodeAdapter();
+			public Adapter caseHwStructure(HwStructure object) {
+				return createHwStructureAdapter();
 			}
 			@Override
-			public Adapter caseHwSystem(HwSystem object) {
-				return createHwSystemAdapter();
+			public Adapter caseHwDomain(HwDomain object) {
+				return createHwDomainAdapter();
 			}
 			@Override
-			public Adapter caseECU(ECU object) {
-				return createECUAdapter();
+			public Adapter caseFrequencyDomain(FrequencyDomain object) {
+				return createFrequencyDomainAdapter();
 			}
 			@Override
-			public Adapter caseMicrocontroller(Microcontroller object) {
-				return createMicrocontrollerAdapter();
+			public Adapter casePowerDomain(PowerDomain object) {
+				return createPowerDomainAdapter();
 			}
 			@Override
-			public Adapter caseCore(Core object) {
-				return createCoreAdapter();
+			public Adapter caseHwModule(HwModule object) {
+				return createHwModuleAdapter();
+			}
+			@Override
+			public Adapter caseProcessingUnit(ProcessingUnit object) {
+				return createProcessingUnitAdapter();
 			}
 			@Override
 			public Adapter caseMemory(Memory object) {
 				return createMemoryAdapter();
 			}
 			@Override
-			public Adapter caseNetwork(Network object) {
-				return createNetworkAdapter();
+			public Adapter caseCache(Cache object) {
+				return createCacheAdapter();
 			}
 			@Override
-			public Adapter caseQuartz(Quartz object) {
-				return createQuartzAdapter();
-			}
-			@Override
-			public Adapter caseHwComponent(HwComponent object) {
-				return createHwComponentAdapter();
-			}
-			@Override
-			public Adapter caseHardwareTypeDescription(HardwareTypeDescription object) {
-				return createHardwareTypeDescriptionAdapter();
-			}
-			@Override
-			public Adapter caseAbstractionType(AbstractionType object) {
-				return createAbstractionTypeAdapter();
-			}
-			@Override
-			public Adapter caseSystemType(SystemType object) {
-				return createSystemTypeAdapter();
-			}
-			@Override
-			public Adapter caseECUType(ECUType object) {
-				return createECUTypeAdapter();
-			}
-			@Override
-			public Adapter caseMicrocontrollerType(MicrocontrollerType object) {
-				return createMicrocontrollerTypeAdapter();
-			}
-			@Override
-			public Adapter caseCoreType(CoreType object) {
-				return createCoreTypeAdapter();
-			}
-			@Override
-			public Adapter caseMemoryType(MemoryType object) {
-				return createMemoryTypeAdapter();
-			}
-			@Override
-			public Adapter caseNetworkType(NetworkType object) {
-				return createNetworkTypeAdapter();
+			public Adapter caseHwFeature(HwFeature object) {
+				return createHwFeatureAdapter();
 			}
 			@Override
 			public Adapter caseHwPort(HwPort object) {
 				return createHwPortAdapter();
 			}
 			@Override
-			public Adapter casePin(Pin object) {
-				return createPinAdapter();
+			public Adapter caseConnectionHandler(ConnectionHandler object) {
+				return createConnectionHandlerAdapter();
 			}
 			@Override
-			public Adapter caseComplexPort(ComplexPort object) {
-				return createComplexPortAdapter();
+			public Adapter caseHwConnection(HwConnection object) {
+				return createHwConnectionAdapter();
 			}
 			@Override
-			public Adapter caseComplexPin(ComplexPin object) {
-				return createComplexPinAdapter();
+			public Adapter caseHwAccessElement(HwAccessElement object) {
+				return createHwAccessElementAdapter();
 			}
 			@Override
-			public Adapter casePrescaler(Prescaler object) {
-				return createPrescalerAdapter();
-			}
-			@Override
-			public Adapter caseCrossbarSwitch(CrossbarSwitch object) {
-				return createCrossbarSwitchAdapter();
-			}
-			@Override
-			public Adapter caseBus(Bus object) {
-				return createBusAdapter();
-			}
-			@Override
-			public Adapter caseBridge(Bridge object) {
-				return createBridgeAdapter();
-			}
-			@Override
-			public Adapter caseAccessPath(AccessPath object) {
-				return createAccessPathAdapter();
-			}
-			@Override
-			public Adapter caseLatencyAccessPath(LatencyAccessPath object) {
-				return createLatencyAccessPathAdapter();
-			}
-			@Override
-			public Adapter caseHwAccessPath(HwAccessPath object) {
-				return createHwAccessPathAdapter();
-			}
-			@Override
-			public Adapter caseLatencyAccessPathElement(LatencyAccessPathElement object) {
-				return createLatencyAccessPathElementAdapter();
-			}
-			@Override
-			public Adapter caseAccessPathRef(AccessPathRef object) {
-				return createAccessPathRefAdapter();
-			}
-			@Override
-			public Adapter caseLatency(Latency object) {
-				return createLatencyAdapter();
-			}
-			@Override
-			public Adapter caseLatencyConstant(LatencyConstant object) {
-				return createLatencyConstantAdapter();
+			public Adapter caseConstantLatency(ConstantLatency object) {
+				return createConstantLatencyAdapter();
 			}
 			@Override
 			public Adapter caseLatencyDeviation(LatencyDeviation object) {
 				return createLatencyDeviationAdapter();
 			}
 			@Override
-			public Adapter caseHwAccessPathElement(HwAccessPathElement object) {
-				return createHwAccessPathElementAdapter();
+			public Adapter caseHwLatency(HwLatency object) {
+				return createHwLatencyAdapter();
 			}
 			@Override
-			public Adapter caseHwAccessPathRef(HwAccessPathRef object) {
-				return createHwAccessPathRefAdapter();
+			public Adapter caseHwDefinition(HwDefinition object) {
+				return createHwDefinitionAdapter();
 			}
 			@Override
-			public Adapter caseHwElementRef(HwElementRef object) {
-				return createHwElementRefAdapter();
+			public Adapter caseProcessingUnitDefinition(ProcessingUnitDefinition object) {
+				return createProcessingUnitDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseConnectionHandlerDefinition(ConnectionHandlerDefinition object) {
+				return createConnectionHandlerDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseMemoryDefinition(MemoryDefinition object) {
+				return createMemoryDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseCacheDefinition(CacheDefinition object) {
+				return createCacheDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseHwPath(HwPath object) {
+				return createHwPathAdapter();
+			}
+			@Override
+			public Adapter caseHwAccessPath(HwAccessPath object) {
+				return createHwAccessPathAdapter();
+			}
+			@Override
+			public Adapter caseHwPathElement(HwPathElement object) {
+				return createHwPathElementAdapter();
+			}
+			@Override
+			public Adapter caseHwDestination(HwDestination object) {
+				return createHwDestinationAdapter();
 			}
 			@Override
 			public Adapter caseMappingModel(MappingModel object) {
@@ -1637,7 +1582,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableInstructionsAdapter();
 			}
 			@Override
-			public Adapter caseRunnableInstructionsEntry(Map.Entry<CoreType, Instructions> object) {
+			public Adapter caseRunnableInstructionsEntry(Map.Entry<ProcessingUnitDefinition, Instructions> object) {
 				return createRunnableInstructionsEntryAdapter();
 			}
 			@Override
@@ -3811,72 +3756,86 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComplexNode <em>Complex Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwStructure <em>Hw Structure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ComplexNode
+	 * @see org.eclipse.app4mc.amalthea.model.HwStructure
 	 * @generated
 	 */
-	public Adapter createComplexNodeAdapter() {
+	public Adapter createHwStructureAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwSystem <em>Hw System</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwDomain <em>Hw Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwSystem
+	 * @see org.eclipse.app4mc.amalthea.model.HwDomain
 	 * @generated
 	 */
-	public Adapter createHwSystemAdapter() {
+	public Adapter createHwDomainAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ECU <em>ECU</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.FrequencyDomain <em>Frequency Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ECU
+	 * @see org.eclipse.app4mc.amalthea.model.FrequencyDomain
 	 * @generated
 	 */
-	public Adapter createECUAdapter() {
+	public Adapter createFrequencyDomainAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Microcontroller <em>Microcontroller</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.PowerDomain <em>Power Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Microcontroller
+	 * @see org.eclipse.app4mc.amalthea.model.PowerDomain
 	 * @generated
 	 */
-	public Adapter createMicrocontrollerAdapter() {
+	public Adapter createPowerDomainAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Core <em>Core</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Core
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule
 	 * @generated
 	 */
-	public Adapter createCoreAdapter() {
+	public Adapter createHwModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit <em>Processing Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnit
+	 * @generated
+	 */
+	public Adapter createProcessingUnitAdapter() {
 		return null;
 	}
 
@@ -3895,156 +3854,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Network <em>Network</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Cache <em>Cache</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Network
+	 * @see org.eclipse.app4mc.amalthea.model.Cache
 	 * @generated
 	 */
-	public Adapter createNetworkAdapter() {
+	public Adapter createCacheAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Quartz <em>Quartz</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwFeature <em>Hw Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Quartz
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeature
 	 * @generated
 	 */
-	public Adapter createQuartzAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwComponent <em>Hw Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwComponent
-	 * @generated
-	 */
-	public Adapter createHwComponentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HardwareTypeDescription <em>Hardware Type Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HardwareTypeDescription
-	 * @generated
-	 */
-	public Adapter createHardwareTypeDescriptionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractionType <em>Abstraction Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractionType
-	 * @generated
-	 */
-	public Adapter createAbstractionTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SystemType <em>System Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SystemType
-	 * @generated
-	 */
-	public Adapter createSystemTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ECUType <em>ECU Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ECUType
-	 * @generated
-	 */
-	public Adapter createECUTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MicrocontrollerType <em>Microcontroller Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.MicrocontrollerType
-	 * @generated
-	 */
-	public Adapter createMicrocontrollerTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CoreType <em>Core Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CoreType
-	 * @generated
-	 */
-	public Adapter createCoreTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryType <em>Memory Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
-	 * @generated
-	 */
-	public Adapter createMemoryTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NetworkType <em>Network Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.NetworkType
-	 * @generated
-	 */
-	public Adapter createNetworkTypeAdapter() {
+	public Adapter createHwFeatureAdapter() {
 		return null;
 	}
 
@@ -4063,198 +3896,58 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Pin <em>Pin</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandler <em>Connection Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Pin
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandler
 	 * @generated
 	 */
-	public Adapter createPinAdapter() {
+	public Adapter createConnectionHandlerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComplexPort <em>Complex Port</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwConnection <em>Hw Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ComplexPort
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection
 	 * @generated
 	 */
-	public Adapter createComplexPortAdapter() {
+	public Adapter createHwConnectionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComplexPin <em>Complex Pin</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement <em>Hw Access Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ComplexPin
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement
 	 * @generated
 	 */
-	public Adapter createComplexPinAdapter() {
+	public Adapter createHwAccessElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Prescaler <em>Prescaler</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConstantLatency <em>Constant Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Prescaler
+	 * @see org.eclipse.app4mc.amalthea.model.ConstantLatency
 	 * @generated
 	 */
-	public Adapter createPrescalerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CrossbarSwitch <em>Crossbar Switch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CrossbarSwitch
-	 * @generated
-	 */
-	public Adapter createCrossbarSwitchAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Bus <em>Bus</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Bus
-	 * @generated
-	 */
-	public Adapter createBusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Bridge <em>Bridge</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Bridge
-	 * @generated
-	 */
-	public Adapter createBridgeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AccessPath <em>Access Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AccessPath
-	 * @generated
-	 */
-	public Adapter createAccessPathAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LatencyAccessPath <em>Latency Access Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.LatencyAccessPath
-	 * @generated
-	 */
-	public Adapter createLatencyAccessPathAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwAccessPath <em>Hw Access Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessPath
-	 * @generated
-	 */
-	public Adapter createHwAccessPathAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement <em>Latency Access Path Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement
-	 * @generated
-	 */
-	public Adapter createLatencyAccessPathElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AccessPathRef <em>Access Path Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AccessPathRef
-	 * @generated
-	 */
-	public Adapter createAccessPathRefAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Latency <em>Latency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Latency
-	 * @generated
-	 */
-	public Adapter createLatencyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant <em>Latency Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.LatencyConstant
-	 * @generated
-	 */
-	public Adapter createLatencyConstantAdapter() {
+	public Adapter createConstantLatencyAdapter() {
 		return null;
 	}
 
@@ -4273,44 +3966,142 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwAccessPathElement <em>Hw Access Path Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessPathElement
+	 * @see org.eclipse.app4mc.amalthea.model.HwLatency
 	 * @generated
 	 */
-	public Adapter createHwAccessPathElementAdapter() {
+	public Adapter createHwLatencyAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwAccessPathRef <em>Hw Access Path Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwDefinition <em>Hw Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessPathRef
+	 * @see org.eclipse.app4mc.amalthea.model.HwDefinition
 	 * @generated
 	 */
-	public Adapter createHwAccessPathRefAdapter() {
+	public Adapter createHwDefinitionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwElementRef <em>Hw Element Ref</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition <em>Processing Unit Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwElementRef
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 	 * @generated
 	 */
-	public Adapter createHwElementRefAdapter() {
+	public Adapter createProcessingUnitDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition <em>Connection Handler Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition
+	 * @generated
+	 */
+	public Adapter createConnectionHandlerDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition <em>Memory Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryDefinition
+	 * @generated
+	 */
+	public Adapter createMemoryDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition <em>Cache Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CacheDefinition
+	 * @generated
+	 */
+	public Adapter createCacheDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwPath <em>Hw Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwPath
+	 * @generated
+	 */
+	public Adapter createHwPathAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwAccessPath <em>Hw Access Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessPath
+	 * @generated
+	 */
+	public Adapter createHwAccessPathAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwPathElement <em>Hw Path Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwPathElement
+	 * @generated
+	 */
+	public Adapter createHwPathElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwDestination <em>Hw Destination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwDestination
+	 * @generated
+	 */
+	public Adapter createHwDestinationAdapter() {
 		return null;
 	}
 

@@ -12,8 +12,6 @@
 package org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpecAmountOperation;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpecAmountType;
@@ -71,11 +69,14 @@ public class ModelSpecAmount extends ModelSpec {
 				this.amount = 0;
 
 				// Add up all cores of all ECU
-				for (final ECU ecu : model.getHwModel().getSystem().getEcus()) {
-					for (final Microcontroller mc : ecu.getMicrocontrollers()) {
-						this.amount += mc.getCores().size();
-					}
-				}
+
+// TODO implement
+				
+//				for (final ECU ecu : model.getHwModel().getSystem().getEcus()) {
+//					for (final Microcontroller mc : ecu.getMicrocontrollers()) {
+//						this.amount += mc.getCores().size();
+//					}
+//				}
 
 				break;
 			case PROCESS_PROTOTYPE:
@@ -95,7 +96,7 @@ public class ModelSpecAmount extends ModelSpec {
 				this.amount = model.getSwModel().getActivations().size();
 				break;
 			default:
-				log("Unkwon object to parse from model");
+				log("Unknown object to parse from model");
 				return false;
 
 		}

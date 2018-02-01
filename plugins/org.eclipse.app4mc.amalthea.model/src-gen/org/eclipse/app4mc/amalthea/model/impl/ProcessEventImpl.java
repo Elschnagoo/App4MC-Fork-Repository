@@ -13,9 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.ProcessEvent;
 import org.eclipse.app4mc.amalthea.model.ProcessEventType;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -78,7 +78,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * @generated
 	 * @ordered
 	 */
-	protected Core core;
+	protected ProcessingUnit core;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,10 +163,10 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core getCore() {
+	public ProcessingUnit getCore() {
 		if (core != null && core.eIsProxy()) {
 			InternalEObject oldCore = (InternalEObject)core;
-			core = (Core)eResolveProxy(oldCore);
+			core = (ProcessingUnit)eResolveProxy(oldCore);
 			if (core != oldCore) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_EVENT__CORE, oldCore, core));
@@ -180,7 +180,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Core basicGetCore() {
+	public ProcessingUnit basicGetCore() {
 		return core;
 	}
 
@@ -189,8 +189,8 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCore(Core newCore) {
-		Core oldCore = core;
+	public void setCore(ProcessingUnit newCore) {
+		ProcessingUnit oldCore = core;
 		core = newCore;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_EVENT__CORE, oldCore, core));
@@ -231,7 +231,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 				setEntity((org.eclipse.app4mc.amalthea.model.Process)newValue);
 				return;
 			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				setCore((Core)newValue);
+				setCore((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,7 +252,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 				setEntity((org.eclipse.app4mc.amalthea.model.Process)null);
 				return;
 			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				setCore((Core)null);
+				setCore((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -914,40 +914,40 @@ public interface AmaltheaFactory extends EFactory {
 	HWModel createHWModel();
 
 	/**
-	 * Returns a new object of class '<em>Hw System</em>'.
+	 * Returns a new object of class '<em>Hw Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw System</em>'.
+	 * @return a new object of class '<em>Hw Structure</em>'.
 	 * @generated
 	 */
-	HwSystem createHwSystem();
+	HwStructure createHwStructure();
 
 	/**
-	 * Returns a new object of class '<em>ECU</em>'.
+	 * Returns a new object of class '<em>Frequency Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ECU</em>'.
+	 * @return a new object of class '<em>Frequency Domain</em>'.
 	 * @generated
 	 */
-	ECU createECU();
+	FrequencyDomain createFrequencyDomain();
 
 	/**
-	 * Returns a new object of class '<em>Microcontroller</em>'.
+	 * Returns a new object of class '<em>Power Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Microcontroller</em>'.
+	 * @return a new object of class '<em>Power Domain</em>'.
 	 * @generated
 	 */
-	Microcontroller createMicrocontroller();
+	PowerDomain createPowerDomain();
 
 	/**
-	 * Returns a new object of class '<em>Core</em>'.
+	 * Returns a new object of class '<em>Processing Unit</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Core</em>'.
+	 * @return a new object of class '<em>Processing Unit</em>'.
 	 * @generated
 	 */
-	Core createCore();
+	ProcessingUnit createProcessingUnit();
 
 	/**
 	 * Returns a new object of class '<em>Memory</em>'.
@@ -959,85 +959,22 @@ public interface AmaltheaFactory extends EFactory {
 	Memory createMemory();
 
 	/**
-	 * Returns a new object of class '<em>Network</em>'.
+	 * Returns a new object of class '<em>Cache</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Network</em>'.
+	 * @return a new object of class '<em>Cache</em>'.
 	 * @generated
 	 */
-	Network createNetwork();
+	Cache createCache();
 
 	/**
-	 * Returns a new object of class '<em>Quartz</em>'.
+	 * Returns a new object of class '<em>Hw Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Quartz</em>'.
+	 * @return a new object of class '<em>Hw Feature</em>'.
 	 * @generated
 	 */
-	Quartz createQuartz();
-
-	/**
-	 * Returns a new object of class '<em>Hw Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Component</em>'.
-	 * @generated
-	 */
-	HwComponent createHwComponent();
-
-	/**
-	 * Returns a new object of class '<em>System Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Type</em>'.
-	 * @generated
-	 */
-	SystemType createSystemType();
-
-	/**
-	 * Returns a new object of class '<em>ECU Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ECU Type</em>'.
-	 * @generated
-	 */
-	ECUType createECUType();
-
-	/**
-	 * Returns a new object of class '<em>Microcontroller Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Microcontroller Type</em>'.
-	 * @generated
-	 */
-	MicrocontrollerType createMicrocontrollerType();
-
-	/**
-	 * Returns a new object of class '<em>Core Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Core Type</em>'.
-	 * @generated
-	 */
-	CoreType createCoreType();
-
-	/**
-	 * Returns a new object of class '<em>Memory Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Memory Type</em>'.
-	 * @generated
-	 */
-	MemoryType createMemoryType();
-
-	/**
-	 * Returns a new object of class '<em>Network Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Network Type</em>'.
-	 * @generated
-	 */
-	NetworkType createNetworkType();
+	HwFeature createHwFeature();
 
 	/**
 	 * Returns a new object of class '<em>Hw Port</em>'.
@@ -1049,103 +986,40 @@ public interface AmaltheaFactory extends EFactory {
 	HwPort createHwPort();
 
 	/**
-	 * Returns a new object of class '<em>Pin</em>'.
+	 * Returns a new object of class '<em>Connection Handler</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pin</em>'.
+	 * @return a new object of class '<em>Connection Handler</em>'.
 	 * @generated
 	 */
-	Pin createPin();
+	ConnectionHandler createConnectionHandler();
 
 	/**
-	 * Returns a new object of class '<em>Complex Port</em>'.
+	 * Returns a new object of class '<em>Hw Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Complex Port</em>'.
+	 * @return a new object of class '<em>Hw Connection</em>'.
 	 * @generated
 	 */
-	ComplexPort createComplexPort();
+	HwConnection createHwConnection();
 
 	/**
-	 * Returns a new object of class '<em>Complex Pin</em>'.
+	 * Returns a new object of class '<em>Hw Access Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Complex Pin</em>'.
+	 * @return a new object of class '<em>Hw Access Element</em>'.
 	 * @generated
 	 */
-	ComplexPin createComplexPin();
+	HwAccessElement createHwAccessElement();
 
 	/**
-	 * Returns a new object of class '<em>Prescaler</em>'.
+	 * Returns a new object of class '<em>Constant Latency</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Prescaler</em>'.
+	 * @return a new object of class '<em>Constant Latency</em>'.
 	 * @generated
 	 */
-	Prescaler createPrescaler();
-
-	/**
-	 * Returns a new object of class '<em>Crossbar Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Crossbar Switch</em>'.
-	 * @generated
-	 */
-	CrossbarSwitch createCrossbarSwitch();
-
-	/**
-	 * Returns a new object of class '<em>Bus</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Bus</em>'.
-	 * @generated
-	 */
-	Bus createBus();
-
-	/**
-	 * Returns a new object of class '<em>Bridge</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Bridge</em>'.
-	 * @generated
-	 */
-	Bridge createBridge();
-
-	/**
-	 * Returns a new object of class '<em>Latency Access Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Latency Access Path</em>'.
-	 * @generated
-	 */
-	LatencyAccessPath createLatencyAccessPath();
-
-	/**
-	 * Returns a new object of class '<em>Hw Access Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Access Path</em>'.
-	 * @generated
-	 */
-	HwAccessPath createHwAccessPath();
-
-	/**
-	 * Returns a new object of class '<em>Access Path Ref</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Access Path Ref</em>'.
-	 * @generated
-	 */
-	AccessPathRef createAccessPathRef();
-
-	/**
-	 * Returns a new object of class '<em>Latency Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Latency Constant</em>'.
-	 * @generated
-	 */
-	LatencyConstant createLatencyConstant();
+	ConstantLatency createConstantLatency();
 
 	/**
 	 * Returns a new object of class '<em>Latency Deviation</em>'.
@@ -1157,22 +1031,49 @@ public interface AmaltheaFactory extends EFactory {
 	LatencyDeviation createLatencyDeviation();
 
 	/**
-	 * Returns a new object of class '<em>Hw Access Path Ref</em>'.
+	 * Returns a new object of class '<em>Processing Unit Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Access Path Ref</em>'.
+	 * @return a new object of class '<em>Processing Unit Definition</em>'.
 	 * @generated
 	 */
-	HwAccessPathRef createHwAccessPathRef();
+	ProcessingUnitDefinition createProcessingUnitDefinition();
 
 	/**
-	 * Returns a new object of class '<em>Hw Element Ref</em>'.
+	 * Returns a new object of class '<em>Connection Handler Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Element Ref</em>'.
+	 * @return a new object of class '<em>Connection Handler Definition</em>'.
 	 * @generated
 	 */
-	HwElementRef createHwElementRef();
+	ConnectionHandlerDefinition createConnectionHandlerDefinition();
+
+	/**
+	 * Returns a new object of class '<em>Memory Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Memory Definition</em>'.
+	 * @generated
+	 */
+	MemoryDefinition createMemoryDefinition();
+
+	/**
+	 * Returns a new object of class '<em>Cache Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cache Definition</em>'.
+	 * @generated
+	 */
+	CacheDefinition createCacheDefinition();
+
+	/**
+	 * Returns a new object of class '<em>Hw Access Path</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hw Access Path</em>'.
+	 * @generated
+	 */
+	HwAccessPath createHwAccessPath();
 
 	/**
 	 * Returns a new object of class '<em>Mapping Model</em>'.

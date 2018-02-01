@@ -15,18 +15,14 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -57,63 +53,146 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContainingNodePropertyDescriptor(object);
+			addTagsPropertyDescriptor(object);
+			addBitWidthPropertyDescriptor(object);
+			addPriorityPropertyDescriptor(object);
+			addPortTypePropertyDescriptor(object);
+			addPortInterfacePropertyDescriptor(object);
+			addDelegatedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Containing Node feature.
+	 * This adds a property descriptor for the Tags feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContainingNodePropertyDescriptor(Object object) {
+	protected void addTagsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_HwPort_containingNode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_containingNode_feature", "_UI_HwPort_type"),
-				 AmaltheaPackage.eINSTANCE.getHwPort_ContainingNode(),
+				 getString("_UI_ITaggable_tags_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ITaggable_tags_feature", "_UI_ITaggable_type"),
+				 AmaltheaPackage.eINSTANCE.getITaggable_Tags(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Bit Width feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwPort_Pins());
-		}
-		return childrenFeatures;
+	protected void addBitWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_bitWidth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_bitWidth_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_BitWidth(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Priority feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+	protected void addPriorityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_priority_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_priority_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_Priority(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
-		return super.getChildFeature(object, child);
+	/**
+	 * This adds a property descriptor for the Port Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPortTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_portType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_portType_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_PortType(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Delegated feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDelegatedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_delegated_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_delegated_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_Delegated(),
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Port Interface feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPortInterfacePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_portInterface_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_portInterface_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_PortInterface(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -143,14 +222,21 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		String label = ((HwPort)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_HwPort_type") :
 			getString("_UI_HwPort_type") + " " + label;
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getHwPortItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -164,8 +250,12 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HwPort.class)) {
-			case AmaltheaPackage.HW_PORT__PINS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			case AmaltheaPackage.HW_PORT__BIT_WIDTH:
+			case AmaltheaPackage.HW_PORT__PRIORITY:
+			case AmaltheaPackage.HW_PORT__PORT_TYPE:
+			case AmaltheaPackage.HW_PORT__PORT_INTERFACE:
+			case AmaltheaPackage.HW_PORT__DELEGATED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -181,16 +271,6 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwPort_Pins(),
-				 AmaltheaFactory.eINSTANCE.createPin()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwPort_Pins(),
-				 AmaltheaFactory.eINSTANCE.createComplexPin()));
 	}
 
 }

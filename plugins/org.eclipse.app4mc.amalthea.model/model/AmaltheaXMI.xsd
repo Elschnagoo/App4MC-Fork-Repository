@@ -303,54 +303,88 @@
       <xsd:enumeration value="end"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="QType">
+  <xsd:simpleType name="StructureType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="DYNAMIC"/>
-      <xsd:enumeration value="STATIC"/>
+      <xsd:enumeration value="System"/>
+      <xsd:enumeration value="ECU"/>
+      <xsd:enumeration value="Microcontroller"/>
+      <xsd:enumeration value="SoC"/>
+      <xsd:enumeration value="Cluster"/>
+      <xsd:enumeration value="Group"/>
+      <xsd:enumeration value="Array"/>
+      <xsd:enumeration value="Area"/>
+      <xsd:enumeration value="Region"/>
+      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="MemoryTypeEnum">
+  <xsd:simpleType name="CacheType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="RAM"/>
-      <xsd:enumeration value="CACHE"/>
-      <xsd:enumeration value="FLASH_INT"/>
-      <xsd:enumeration value="FLASH_EXT"/>
+      <xsd:enumeration value="instruction"/>
+      <xsd:enumeration value="data"/>
+      <xsd:enumeration value="unified"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="BusType">
+  <xsd:simpleType name="PortType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="initiator"/>
+      <xsd:enumeration value="responder"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SchedPolicy">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="RoundRobin"/>
+      <xsd:enumeration value="FCFS"/>
+      <xsd:enumeration value="PriorityBased"/>
+      <xsd:enumeration value="_other_"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="WriteStrategy">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="none"/>
+      <xsd:enumeration value="writeback"/>
+      <xsd:enumeration value="writethrough"/>
+      <xsd:enumeration value="_other_"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PuType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="GPU"/>
+      <xsd:enumeration value="CPU"/>
+      <xsd:enumeration value="Accelerator"/>
+      <xsd:enumeration value="_other_"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PortInterface">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="custom"/>
       <xsd:enumeration value="CAN"/>
-      <xsd:enumeration value="TTCAN"/>
+      <xsd:enumeration value="Flexray"/>
       <xsd:enumeration value="LIN"/>
-      <xsd:enumeration value="FLEXRAY"/>
-      <xsd:enumeration value="ETHERNET"/>
+      <xsd:enumeration value="MOST"/>
+      <xsd:enumeration value="Ethernet"/>
       <xsd:enumeration value="SPI"/>
-      <xsd:enumeration value="NA"/>
+      <xsd:enumeration value="I2C"/>
+      <xsd:enumeration value="AXI"/>
+      <xsd:enumeration value="ABH"/>
+      <xsd:enumeration value="APB"/>
+      <xsd:enumeration value="SWR"/>
+      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="RWType">
+  <xsd:simpleType name="HwFeatureType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="R"/>
-      <xsd:enumeration value="W"/>
-      <xsd:enumeration value="RW"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="SchedType">
-    <xsd:restriction base="xsd:NCName">
-      <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="RROBIN"/>
-      <xsd:enumeration value="PRIORITY"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="PinType">
-    <xsd:restriction base="xsd:NCName">
-      <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="ANALOG"/>
-      <xsd:enumeration value="DIGITAL"/>
+      <xsd:enumeration value="performance"/>
+      <xsd:enumeration value="power"/>
+      <xsd:enumeration value="both"/>
+      <xsd:enumeration value="information"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="MemoryAddressMappingType">
@@ -1785,7 +1819,7 @@ cores: the reference to zero or more Cores. If this list is empty, the target st
       <xsd:extension base="am:RunnableConstraintTarget">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="customProperties" type="am:CustomProperty"/>
-          <xsd:element name="cores" type="am:Core"/>
+          <xsd:element name="cores" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="cores" type="xsd:string"/>
       </xsd:extension>
@@ -2293,7 +2327,7 @@ maximum: Maximum allowed latency</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:RequirementLimit">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="hardwareContext" type="am:ComplexNode"/>
+          <xsd:element name="hardwareContext" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="metric" type="am:CPUPercentageMetric"/>
         <xsd:attribute name="limitValue" type="xsd:double"/>
@@ -2520,7 +2554,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Process"/>
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="core" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
@@ -2547,7 +2581,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:ProcessChain"/>
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="core" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
@@ -2576,7 +2610,7 @@ core: The core that processes the runnable (processes the process that executes 
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="core" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:RunnableEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
@@ -2671,7 +2705,7 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="entity" type="am:Semaphore"/>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:Core"/>
+          <xsd:element name="core" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:SemaphoreEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
@@ -2718,407 +2752,358 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="systemTypes" type="am:SystemType"/>
-          <xsd:element name="ecuTypes" type="am:ECUType"/>
-          <xsd:element name="mcTypes" type="am:MicrocontrollerType"/>
-          <xsd:element name="coreTypes" type="am:CoreType"/>
-          <xsd:element name="memoryTypes" type="am:MemoryType"/>
-          <xsd:element name="networkTypes" type="am:NetworkType"/>
-          <xsd:element name="accessPaths" type="am:AccessPath"/>
-          <xsd:element name="system" type="am:HwSystem"/>
+          <xsd:element name="definitions" type="am:HwDefinition"/>
+          <xsd:element name="features" type="am:HwFeature"/>
+          <xsd:element name="structures" type="am:HwStructure"/>
+          <xsd:element name="domains" type="am:HwDomain"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HWModel" type="am:HWModel"/>
-  <xsd:complexType abstract="true" name="ComplexNode">
+  <xsd:complexType name="HwStructure">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="prescaler" type="am:Prescaler"/>
-          <xsd:element name="memories" type="am:Memory"/>
-          <xsd:element name="networks" type="am:Network"/>
-          <xsd:element name="components" type="am:HwComponent"/>
           <xsd:element name="ports" type="am:HwPort"/>
+          <xsd:element name="modules" type="am:HwModule"/>
+          <xsd:element name="connections" type="am:HwConnection"/>
+          <xsd:element name="structures" type="am:HwStructure"/>
+        </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="structureType" type="am:StructureType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwStructure" type="am:HwStructure"/>
+  <xsd:complexType abstract="true" name="HwDomain">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ComplexNode" type="am:ComplexNode"/>
-  <xsd:complexType name="HwSystem">
+  <xsd:element name="HwDomain" type="am:HwDomain"/>
+  <xsd:complexType name="FrequencyDomain">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="systemType" type="am:SystemType"/>
-          <xsd:element name="ecus" type="am:ECU"/>
-          <xsd:element name="quartzes" type="am:Quartz"/>
+          <xsd:element name="possibleValues" type="am:Frequency"/>
+          <xsd:element name="defaultValue" type="am:Frequency"/>
         </xsd:choice>
-        <xsd:attribute name="systemType" type="xsd:string"/>
+        <xsd:attribute name="clockGating" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwSystem" type="am:HwSystem"/>
-  <xsd:complexType name="ECU">
+  <xsd:element name="FrequencyDomain" type="am:FrequencyDomain"/>
+  <xsd:complexType name="PowerDomain">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="ecuType" type="am:ECUType"/>
-          <xsd:element name="microcontrollers" type="am:Microcontroller"/>
+          <xsd:element name="possibleValues" type="am:Voltage"/>
+          <xsd:element name="defaultValue" type="am:Voltage"/>
         </xsd:choice>
-        <xsd:attribute name="ecuType" type="xsd:string"/>
+        <xsd:attribute name="powerGating" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ECU" type="am:ECU"/>
-  <xsd:complexType name="Microcontroller">
+  <xsd:element name="PowerDomain" type="am:PowerDomain"/>
+  <xsd:complexType abstract="true" name="HwModule">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="microcontrollerType" type="am:MicrocontrollerType"/>
-          <xsd:element name="cores" type="am:Core"/>
+          <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="ports" type="am:HwPort"/>
+          <xsd:element name="powerDomain" type="am:PowerDomain"/>
+          <xsd:element name="frequencyDomain" type="am:FrequencyDomain"/>
         </xsd:choice>
-        <xsd:attribute name="microcontrollerType" type="xsd:string"/>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="powerDomain" type="xsd:string"/>
+        <xsd:attribute name="frequencyDomain" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Microcontroller" type="am:Microcontroller"/>
-  <xsd:complexType name="Core">
+  <xsd:element name="HwModule" type="am:HwModule"/>
+  <xsd:complexType name="ProcessingUnit">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:HwModule">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="coreType" type="am:CoreType"/>
+          <xsd:element name="definition" type="am:ProcessingUnitDefinition"/>
+          <xsd:element name="accessElements" type="am:HwAccessElement"/>
         </xsd:choice>
-        <xsd:attribute name="lockstepGroup" type="xsd:int"/>
-        <xsd:attribute name="coreType" type="xsd:string"/>
+        <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Core" type="am:Core"/>
+  <xsd:element name="ProcessingUnit" type="am:ProcessingUnit"/>
   <xsd:complexType name="Memory">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:HwModule">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="type" type="am:MemoryType"/>
+          <xsd:element name="definition" type="am:MemoryDefinition"/>
         </xsd:choice>
-        <xsd:attribute name="type" type="xsd:string"/>
+        <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Memory" type="am:Memory"/>
-  <xsd:complexType name="Network">
+  <xsd:complexType name="Cache">
     <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
+      <xsd:extension base="am:HwModule">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="type" type="am:NetworkType"/>
+          <xsd:element name="definition" type="am:CacheDefinition"/>
         </xsd:choice>
-        <xsd:attribute name="type" type="xsd:string"/>
+        <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Network" type="am:Network"/>
-  <xsd:complexType name="Quartz">
+  <xsd:element name="Cache" type="am:Cache"/>
+  <xsd:complexType name="HwFeature">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="frequency" type="am:Frequency"/>
+          <xsd:element name="value" type="am:Value"/>
+          <xsd:element name="latency" type="am:HwLatency"/>
         </xsd:choice>
-        <xsd:attribute name="tags" type="xsd:string"/>
-        <xsd:attribute name="type" type="am:QType"/>
+        <xsd:attribute name="featureType" type="am:HwFeatureType"/>
+        <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Quartz" type="am:Quartz"/>
-  <xsd:complexType name="HwComponent">
-    <xsd:complexContent>
-      <xsd:extension base="am:ComplexNode">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="nestedComponents" type="am:HwComponent"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HwComponent" type="am:HwComponent"/>
-  <xsd:complexType abstract="true" name="HardwareTypeDescription">
-    <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
-        </xsd:choice>
-        <xsd:attribute name="tags" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HardwareTypeDescription" type="am:HardwareTypeDescription"/>
-  <xsd:complexType abstract="true" name="AbstractionType">
-    <xsd:complexContent>
-      <xsd:extension base="am:HardwareTypeDescription"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="AbstractionType" type="am:AbstractionType"/>
-  <xsd:complexType name="SystemType">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractionType"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SystemType" type="am:SystemType"/>
-  <xsd:complexType name="ECUType">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractionType"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ECUType" type="am:ECUType"/>
-  <xsd:complexType name="MicrocontrollerType">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractionType"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="MicrocontrollerType" type="am:MicrocontrollerType"/>
-  <xsd:complexType name="CoreType">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractionType">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="classifiers" type="am:CoreClassifier"/>
-        </xsd:choice>
-        <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="instructionsPerCycle" type="xsd:float"/>
-        <xsd:attribute name="classifiers" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="CoreType" type="am:CoreType"/>
-  <xsd:complexType name="MemoryType">
-    <xsd:complexContent>
-      <xsd:extension base="am:HardwareTypeDescription">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="size" type="am:DataSize"/>
-          <xsd:element name="classifiers" type="am:MemoryClassifier"/>
-        </xsd:choice>
-        <xsd:attribute name="type" type="am:MemoryTypeEnum"/>
-        <xsd:attribute name="classifiers" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="MemoryType" type="am:MemoryType"/>
-  <xsd:complexType name="NetworkType">
-    <xsd:complexContent>
-      <xsd:extension base="am:HardwareTypeDescription">
-        <xsd:attribute name="schedPolicy" type="am:SchedType"/>
-        <xsd:attribute name="bitWidth" type="xsd:int"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="NetworkType" type="am:NetworkType"/>
+  <xsd:element name="HwFeature" type="am:HwFeature"/>
   <xsd:complexType name="HwPort">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="containingNode" type="am:ComplexNode"/>
-          <xsd:element name="pins" type="am:Pin"/>
+          <xsd:element name="tags" type="am:Tag"/>
         </xsd:choice>
-        <xsd:attribute name="containingNode" type="xsd:string"/>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="bitWidth" type="xsd:int"/>
+        <xsd:attribute name="priority" type="xsd:int"/>
+        <xsd:attribute name="portType" type="am:PortType"/>
+        <xsd:attribute name="portInterface" type="am:PortInterface"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwPort" type="am:HwPort"/>
-  <xsd:complexType name="Pin">
+  <xsd:complexType name="ConnectionHandler">
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Pin" type="am:Pin"/>
-  <xsd:complexType name="ComplexPort">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwPort">
+      <xsd:extension base="am:HwModule">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="network" type="am:Network"/>
+          <xsd:element name="definition" type="am:ConnectionHandlerDefinition"/>
+          <xsd:element name="internalConnections" type="am:HwConnection"/>
         </xsd:choice>
-        <xsd:attribute name="master" type="xsd:boolean"/>
-        <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="baseAddress" type="xsd:string"/>
-        <xsd:attribute name="addressRange" type="xsd:string"/>
-        <xsd:attribute name="direction" type="am:RWType"/>
-        <xsd:attribute name="writeCycles" type="xsd:int"/>
-        <xsd:attribute name="readCycles" type="xsd:int"/>
-        <xsd:attribute name="schedValue" type="xsd:int"/>
-        <xsd:attribute name="network" type="xsd:string"/>
+        <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ComplexPort" type="am:ComplexPort"/>
-  <xsd:complexType name="ComplexPin">
+  <xsd:element name="ConnectionHandler" type="am:ConnectionHandler"/>
+  <xsd:complexType name="HwConnection">
     <xsd:complexContent>
-      <xsd:extension base="am:Pin">
-        <xsd:attribute name="type" type="am:PinType"/>
-        <xsd:attribute name="baseAddress" type="xsd:string"/>
-        <xsd:attribute name="direction" type="am:RWType"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ComplexPin" type="am:ComplexPin"/>
-  <xsd:complexType name="Prescaler">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="quartz" type="am:Quartz"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="name" type="xsd:string"/>
-    <xsd:attribute name="clockRatio" type="xsd:double"/>
-    <xsd:attribute name="quartz" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:element name="Prescaler" type="am:Prescaler"/>
-  <xsd:complexType name="CrossbarSwitch">
-    <xsd:complexContent>
-      <xsd:extension base="am:NetworkType">
-        <xsd:attribute name="conConnections" type="xsd:int"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="CrossbarSwitch" type="am:CrossbarSwitch"/>
-  <xsd:complexType name="Bus">
-    <xsd:complexContent>
-      <xsd:extension base="am:NetworkType">
-        <xsd:attribute name="busType" type="am:BusType"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Bus" type="am:Bus"/>
-  <xsd:complexType name="Bridge">
-    <xsd:complexContent>
-      <xsd:extension base="am:NetworkType"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Bridge" type="am:Bridge"/>
-  <xsd:complexType abstract="true" name="AccessPath">
-    <xsd:complexContent>
-      <xsd:extension base="am:IReferable">
+      <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="source" type="am:ComplexNode"/>
-          <xsd:element name="target" type="am:ComplexNode"/>
+          <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="readLatency" type="am:HwLatency"/>
+          <xsd:element name="wirteLatency" type="am:HwLatency"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
+          <xsd:element name="port1" type="am:HwPort"/>
+          <xsd:element name="port2" type="am:HwPort"/>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="port1" type="xsd:string"/>
+        <xsd:attribute name="port2" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwConnection" type="am:HwConnection"/>
+  <xsd:complexType name="HwAccessElement">
+    <xsd:annotation>
+      <xsd:documentation>class HwConverter extends INamed {
+	contains HwLatency latency
+	refers FrequencyDomain[1] sourceFrequencyDomain
+	refers FrequencyDomain[1] targetFrequencyDomain
+}</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ITaggable">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="source" type="am:ProcessingUnit"/>
+          <xsd:element name="destination" type="am:HwDestination"/>
+          <xsd:element name="accessPaths" type="am:HwAccessPath"/>
+          <xsd:element name="readLatency" type="am:HwLatency"/>
+          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="source" type="xsd:string"/>
-        <xsd:attribute name="target" type="xsd:string"/>
+        <xsd:attribute name="destination" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AccessPath" type="am:AccessPath"/>
-  <xsd:complexType name="LatencyAccessPath">
+  <xsd:element name="HwAccessElement" type="am:HwAccessElement">
     <xsd:annotation>
-      <xsd:documentation> AccessPath represented by latencies in cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:AccessPath">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="latencies" type="am:LatencyAccessPathElement"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="LatencyAccessPath" type="am:LatencyAccessPath">
-    <xsd:annotation>
-      <xsd:documentation> AccessPath represented by latencies in cycles</xsd:documentation>
+      <xsd:documentation>class HwConverter extends INamed {
+	contains HwLatency latency
+	refers FrequencyDomain[1] sourceFrequencyDomain
+	refers FrequencyDomain[1] targetFrequencyDomain
+}</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="HwAccessPath">
-    <xsd:annotation>
-      <xsd:documentation> AccessPath represented by directly referencing to existing HW elements (Ports)</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType name="ConstantLatency">
     <xsd:complexContent>
-      <xsd:extension base="am:AccessPath">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="hwElements" type="am:HwAccessPathElement"/>
-        </xsd:choice>
+      <xsd:extension base="am:HwLatency">
+        <xsd:attribute name="constantCycles" type="xsd:long"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwAccessPath" type="am:HwAccessPath">
-    <xsd:annotation>
-      <xsd:documentation> AccessPath represented by directly referencing to existing HW elements (Ports)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="LatencyAccessPathElement">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="LatencyAccessPathElement" type="am:LatencyAccessPathElement"/>
-  <xsd:complexType name="AccessPathRef">
-    <xsd:complexContent>
-      <xsd:extension base="am:LatencyAccessPathElement">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="ref" type="am:LatencyAccessPath"/>
-        </xsd:choice>
-        <xsd:attribute name="ref" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="AccessPathRef" type="am:AccessPathRef"/>
-  <xsd:complexType abstract="true" name="Latency">
-    <xsd:complexContent>
-      <xsd:extension base="am:LatencyAccessPathElement">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="quartz" type="am:Quartz"/>
-        </xsd:choice>
-        <xsd:attribute name="accessType" type="am:RWType"/>
-        <xsd:attribute name="transferSize" type="xsd:long"/>
-        <xsd:attribute name="quartz" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Latency" type="am:Latency"/>
-  <xsd:complexType name="LatencyConstant">
-    <xsd:complexContent>
-      <xsd:extension base="am:Latency">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="LatencyConstant" type="am:LatencyConstant"/>
+  <xsd:element name="ConstantLatency" type="am:ConstantLatency"/>
   <xsd:complexType name="LatencyDeviation">
     <xsd:complexContent>
-      <xsd:extension base="am:Latency">
+      <xsd:extension base="am:HwLatency">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
+          <xsd:element name="deviationInCylces" type="am:Deviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="LatencyDeviation" type="am:LatencyDeviation"/>
-  <xsd:complexType abstract="true" name="HwAccessPathElement">
+  <xsd:complexType abstract="true" name="HwLatency">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="HwAccessPathElement" type="am:HwAccessPathElement"/>
-  <xsd:complexType name="HwAccessPathRef">
+  <xsd:element name="HwLatency" type="am:HwLatency"/>
+  <xsd:complexType abstract="true" name="HwDefinition">
     <xsd:complexContent>
-      <xsd:extension base="am:HwAccessPathElement">
+      <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="ref" type="am:HwAccessPath"/>
+          <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="features" type="am:HwFeature"/>
         </xsd:choice>
-        <xsd:attribute name="ref" type="xsd:string"/>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="features" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwAccessPathRef" type="am:HwAccessPathRef"/>
-  <xsd:complexType name="HwElementRef">
+  <xsd:element name="HwDefinition" type="am:HwDefinition"/>
+  <xsd:complexType name="ProcessingUnitDefinition">
     <xsd:complexContent>
-      <xsd:extension base="am:HwAccessPathElement">
+      <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="port" type="am:ComplexPort"/>
+          <xsd:element name="classifiers" type="am:CoreClassifier"/>
         </xsd:choice>
-        <xsd:attribute name="port" type="xsd:string"/>
+        <xsd:attribute name="puType" type="am:PuType"/>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwElementRef" type="am:HwElementRef"/>
+  <xsd:element name="ProcessingUnitDefinition" type="am:ProcessingUnitDefinition"/>
+  <xsd:complexType name="ConnectionHandlerDefinition">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwDefinition">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="readLatency" type="am:HwLatency"/>
+          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
+        </xsd:choice>
+        <xsd:attribute name="policy" type="am:SchedPolicy"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ConnectionHandlerDefinition" type="am:ConnectionHandlerDefinition"/>
+  <xsd:complexType name="MemoryDefinition">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwDefinition">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="size" type="am:DataSize"/>
+          <xsd:element name="accessLatency" type="am:HwLatency"/>
+          <xsd:element name="memoryBandwidth" type="am:DataRate"/>
+          <xsd:element name="classifiers" type="am:MemoryClassifier"/>
+        </xsd:choice>
+        <xsd:attribute name="classifiers" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MemoryDefinition" type="am:MemoryDefinition"/>
+  <xsd:complexType name="CacheDefinition">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwDefinition">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="size" type="am:DataSize"/>
+          <xsd:element name="accessLatency" type="am:HwLatency"/>
+        </xsd:choice>
+        <xsd:attribute name="cacheType" type="am:CacheType"/>
+        <xsd:attribute name="writeStrategy" type="am:WriteStrategy"/>
+        <xsd:attribute name="nWays" type="xsd:int"/>
+        <xsd:attribute name="coherency" type="xsd:boolean"/>
+        <xsd:attribute name="exclusive" type="xsd:boolean"/>
+        <xsd:attribute name="lineSize" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CacheDefinition" type="am:CacheDefinition"/>
+  <xsd:complexType abstract="true" name="HwPath">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="HwPath" type="am:HwPath"/>
+  <xsd:complexType name="HwAccessPath">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwPath">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingAccessElement" type="am:HwAccessElement"/>
+          <xsd:element name="pathElements" type="am:HwPathElement"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="startAddress" type="xsd:string"/>
+        <xsd:attribute name="endAddress" type="xsd:string"/>
+        <xsd:attribute name="memOffset" type="xsd:string"/>
+        <xsd:attribute name="containingAccessElement" type="xsd:string"/>
+        <xsd:attribute name="pathElements" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwAccessPath" type="am:HwAccessPath"/>
+  <xsd:complexType abstract="true" name="HwPathElement">
+    <xsd:annotation>
+      <xsd:documentation>class HwLogicalPath extends HwPath, INamed {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	container readonly AddressElement containingAddressElement opposite logicalPaths
+	contains DataRate dataRate
+	contains HwLatency readLatency
+	contains HwLatency writeLatency
+}</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:IReferable"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwPathElement" type="am:HwPathElement">
+    <xsd:annotation>
+      <xsd:documentation>class HwLogicalPath extends HwPath, INamed {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	container readonly AddressElement containingAddressElement opposite logicalPaths
+	contains DataRate dataRate
+	contains HwLatency readLatency
+	contains HwLatency writeLatency
+}</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="HwDestination">
+    <xsd:complexContent>
+      <xsd:extension base="am:IReferable"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwDestination" type="am:HwDestination"/>
   <xsd:complexType name="MappingModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -3143,8 +3128,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scheduler" type="am:Scheduler"/>
-          <xsd:element name="responsibility" type="am:Core"/>
-          <xsd:element name="executingCore" type="am:Core"/>
+          <xsd:element name="responsibility" type="am:ProcessingUnit"/>
+          <xsd:element name="executingCore" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="scheduler" type="xsd:string"/>
         <xsd:attribute name="responsibility" type="xsd:string"/>
@@ -3163,7 +3148,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
-          <xsd:element name="coreAffinity" type="am:Core"/>
+          <xsd:element name="coreAffinity" type="am:ProcessingUnit"/>
           <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
           <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
@@ -5181,7 +5166,7 @@ which are belonging together.</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="RunnableInstructionsEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="key" type="am:CoreType"/>
+      <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
       <xsd:element name="value" type="am:Instructions"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>

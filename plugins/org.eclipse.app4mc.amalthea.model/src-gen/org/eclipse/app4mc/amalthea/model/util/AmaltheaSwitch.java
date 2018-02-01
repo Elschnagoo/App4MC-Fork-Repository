@@ -19,9 +19,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
-import org.eclipse.app4mc.amalthea.model.AbstractionType;
-import org.eclipse.app4mc.amalthea.model.AccessPath;
-import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
@@ -39,9 +36,9 @@ import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
-import org.eclipse.app4mc.amalthea.model.Bridge;
-import org.eclipse.app4mc.amalthea.model.Bus;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -60,9 +57,6 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
-import org.eclipse.app4mc.amalthea.model.ComplexPin;
-import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
@@ -72,18 +66,18 @@ import org.eclipse.app4mc.amalthea.model.Composite;
 import org.eclipse.app4mc.amalthea.model.CompoundType;
 import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
+import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
-import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -113,8 +107,6 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
@@ -140,6 +132,7 @@ import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
@@ -148,14 +141,19 @@ import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
-import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwElementRef;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwDomain;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.HwModule;
+import org.eclipse.app4mc.amalthea.model.HwPath;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -180,10 +178,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.Latency;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
@@ -194,11 +188,9 @@ import org.eclipse.app4mc.amalthea.model.MeasurementModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -212,8 +204,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Network;
-import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -237,11 +227,10 @@ import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
-import org.eclipse.app4mc.amalthea.model.Pin;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
+import org.eclipse.app4mc.amalthea.model.PowerDomain;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
@@ -261,10 +250,11 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quantity;
-import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
@@ -324,7 +314,6 @@ import org.eclipse.app4mc.amalthea.model.StructEntry;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
@@ -1664,69 +1653,82 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COMPLEX_NODE: {
-				ComplexNode complexNode = (ComplexNode)theEObject;
-				T1 result = caseComplexNode(complexNode);
-				if (result == null) result = caseReferableBaseObject(complexNode);
-				if (result == null) result = caseITaggable(complexNode);
-				if (result == null) result = caseIAnnotatable(complexNode);
-				if (result == null) result = caseIReferable(complexNode);
-				if (result == null) result = caseINamed(complexNode);
+			case AmaltheaPackage.HW_STRUCTURE: {
+				HwStructure hwStructure = (HwStructure)theEObject;
+				T1 result = caseHwStructure(hwStructure);
+				if (result == null) result = caseReferableBaseObject(hwStructure);
+				if (result == null) result = caseITaggable(hwStructure);
+				if (result == null) result = caseIAnnotatable(hwStructure);
+				if (result == null) result = caseIReferable(hwStructure);
+				if (result == null) result = caseINamed(hwStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_SYSTEM: {
-				HwSystem hwSystem = (HwSystem)theEObject;
-				T1 result = caseHwSystem(hwSystem);
-				if (result == null) result = caseComplexNode(hwSystem);
-				if (result == null) result = caseReferableBaseObject(hwSystem);
-				if (result == null) result = caseITaggable(hwSystem);
-				if (result == null) result = caseIAnnotatable(hwSystem);
-				if (result == null) result = caseIReferable(hwSystem);
-				if (result == null) result = caseINamed(hwSystem);
+			case AmaltheaPackage.HW_DOMAIN: {
+				HwDomain hwDomain = (HwDomain)theEObject;
+				T1 result = caseHwDomain(hwDomain);
+				if (result == null) result = caseReferableBaseObject(hwDomain);
+				if (result == null) result = caseITaggable(hwDomain);
+				if (result == null) result = caseIAnnotatable(hwDomain);
+				if (result == null) result = caseIReferable(hwDomain);
+				if (result == null) result = caseINamed(hwDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.ECU: {
-				ECU ecu = (ECU)theEObject;
-				T1 result = caseECU(ecu);
-				if (result == null) result = caseComplexNode(ecu);
-				if (result == null) result = caseReferableBaseObject(ecu);
-				if (result == null) result = caseITaggable(ecu);
-				if (result == null) result = caseIAnnotatable(ecu);
-				if (result == null) result = caseIReferable(ecu);
-				if (result == null) result = caseINamed(ecu);
+			case AmaltheaPackage.FREQUENCY_DOMAIN: {
+				FrequencyDomain frequencyDomain = (FrequencyDomain)theEObject;
+				T1 result = caseFrequencyDomain(frequencyDomain);
+				if (result == null) result = caseHwDomain(frequencyDomain);
+				if (result == null) result = caseReferableBaseObject(frequencyDomain);
+				if (result == null) result = caseITaggable(frequencyDomain);
+				if (result == null) result = caseIAnnotatable(frequencyDomain);
+				if (result == null) result = caseIReferable(frequencyDomain);
+				if (result == null) result = caseINamed(frequencyDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.MICROCONTROLLER: {
-				Microcontroller microcontroller = (Microcontroller)theEObject;
-				T1 result = caseMicrocontroller(microcontroller);
-				if (result == null) result = caseComplexNode(microcontroller);
-				if (result == null) result = caseReferableBaseObject(microcontroller);
-				if (result == null) result = caseITaggable(microcontroller);
-				if (result == null) result = caseIAnnotatable(microcontroller);
-				if (result == null) result = caseIReferable(microcontroller);
-				if (result == null) result = caseINamed(microcontroller);
+			case AmaltheaPackage.POWER_DOMAIN: {
+				PowerDomain powerDomain = (PowerDomain)theEObject;
+				T1 result = casePowerDomain(powerDomain);
+				if (result == null) result = caseHwDomain(powerDomain);
+				if (result == null) result = caseReferableBaseObject(powerDomain);
+				if (result == null) result = caseITaggable(powerDomain);
+				if (result == null) result = caseIAnnotatable(powerDomain);
+				if (result == null) result = caseIReferable(powerDomain);
+				if (result == null) result = caseINamed(powerDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CORE: {
-				Core core = (Core)theEObject;
-				T1 result = caseCore(core);
-				if (result == null) result = caseComplexNode(core);
-				if (result == null) result = caseReferableBaseObject(core);
-				if (result == null) result = caseITaggable(core);
-				if (result == null) result = caseIAnnotatable(core);
-				if (result == null) result = caseIReferable(core);
-				if (result == null) result = caseINamed(core);
+			case AmaltheaPackage.HW_MODULE: {
+				HwModule hwModule = (HwModule)theEObject;
+				T1 result = caseHwModule(hwModule);
+				if (result == null) result = caseReferableBaseObject(hwModule);
+				if (result == null) result = caseITaggable(hwModule);
+				if (result == null) result = caseIAnnotatable(hwModule);
+				if (result == null) result = caseIReferable(hwModule);
+				if (result == null) result = caseINamed(hwModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.PROCESSING_UNIT: {
+				ProcessingUnit processingUnit = (ProcessingUnit)theEObject;
+				T1 result = caseProcessingUnit(processingUnit);
+				if (result == null) result = caseHwModule(processingUnit);
+				if (result == null) result = caseHwDestination(processingUnit);
+				if (result == null) result = caseHwPathElement(processingUnit);
+				if (result == null) result = caseReferableBaseObject(processingUnit);
+				if (result == null) result = caseITaggable(processingUnit);
+				if (result == null) result = caseIAnnotatable(processingUnit);
+				if (result == null) result = caseIReferable(processingUnit);
+				if (result == null) result = caseINamed(processingUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MEMORY: {
 				Memory memory = (Memory)theEObject;
 				T1 result = caseMemory(memory);
-				if (result == null) result = caseComplexNode(memory);
+				if (result == null) result = caseHwModule(memory);
+				if (result == null) result = caseHwDestination(memory);
 				if (result == null) result = caseReferableBaseObject(memory);
 				if (result == null) result = caseITaggable(memory);
 				if (result == null) result = caseIAnnotatable(memory);
@@ -1735,137 +1737,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.NETWORK: {
-				Network network = (Network)theEObject;
-				T1 result = caseNetwork(network);
-				if (result == null) result = caseComplexNode(network);
-				if (result == null) result = caseReferableBaseObject(network);
-				if (result == null) result = caseITaggable(network);
-				if (result == null) result = caseIAnnotatable(network);
-				if (result == null) result = caseIReferable(network);
-				if (result == null) result = caseINamed(network);
+			case AmaltheaPackage.CACHE: {
+				Cache cache = (Cache)theEObject;
+				T1 result = caseCache(cache);
+				if (result == null) result = caseHwModule(cache);
+				if (result == null) result = caseHwPathElement(cache);
+				if (result == null) result = caseReferableBaseObject(cache);
+				if (result == null) result = caseITaggable(cache);
+				if (result == null) result = caseIAnnotatable(cache);
+				if (result == null) result = caseIReferable(cache);
+				if (result == null) result = caseINamed(cache);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.QUARTZ: {
-				Quartz quartz = (Quartz)theEObject;
-				T1 result = caseQuartz(quartz);
-				if (result == null) result = caseReferableBaseObject(quartz);
-				if (result == null) result = caseITaggable(quartz);
-				if (result == null) result = caseIAnnotatable(quartz);
-				if (result == null) result = caseIReferable(quartz);
-				if (result == null) result = caseINamed(quartz);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_COMPONENT: {
-				HwComponent hwComponent = (HwComponent)theEObject;
-				T1 result = caseHwComponent(hwComponent);
-				if (result == null) result = caseComplexNode(hwComponent);
-				if (result == null) result = caseReferableBaseObject(hwComponent);
-				if (result == null) result = caseITaggable(hwComponent);
-				if (result == null) result = caseIAnnotatable(hwComponent);
-				if (result == null) result = caseIReferable(hwComponent);
-				if (result == null) result = caseINamed(hwComponent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HARDWARE_TYPE_DESCRIPTION: {
-				HardwareTypeDescription hardwareTypeDescription = (HardwareTypeDescription)theEObject;
-				T1 result = caseHardwareTypeDescription(hardwareTypeDescription);
-				if (result == null) result = caseReferableBaseObject(hardwareTypeDescription);
-				if (result == null) result = caseITaggable(hardwareTypeDescription);
-				if (result == null) result = caseIAnnotatable(hardwareTypeDescription);
-				if (result == null) result = caseIReferable(hardwareTypeDescription);
-				if (result == null) result = caseINamed(hardwareTypeDescription);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.ABSTRACTION_TYPE: {
-				AbstractionType abstractionType = (AbstractionType)theEObject;
-				T1 result = caseAbstractionType(abstractionType);
-				if (result == null) result = caseHardwareTypeDescription(abstractionType);
-				if (result == null) result = caseReferableBaseObject(abstractionType);
-				if (result == null) result = caseITaggable(abstractionType);
-				if (result == null) result = caseIAnnotatable(abstractionType);
-				if (result == null) result = caseIReferable(abstractionType);
-				if (result == null) result = caseINamed(abstractionType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SYSTEM_TYPE: {
-				SystemType systemType = (SystemType)theEObject;
-				T1 result = caseSystemType(systemType);
-				if (result == null) result = caseAbstractionType(systemType);
-				if (result == null) result = caseHardwareTypeDescription(systemType);
-				if (result == null) result = caseReferableBaseObject(systemType);
-				if (result == null) result = caseITaggable(systemType);
-				if (result == null) result = caseIAnnotatable(systemType);
-				if (result == null) result = caseIReferable(systemType);
-				if (result == null) result = caseINamed(systemType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.ECU_TYPE: {
-				ECUType ecuType = (ECUType)theEObject;
-				T1 result = caseECUType(ecuType);
-				if (result == null) result = caseAbstractionType(ecuType);
-				if (result == null) result = caseHardwareTypeDescription(ecuType);
-				if (result == null) result = caseReferableBaseObject(ecuType);
-				if (result == null) result = caseITaggable(ecuType);
-				if (result == null) result = caseIAnnotatable(ecuType);
-				if (result == null) result = caseIReferable(ecuType);
-				if (result == null) result = caseINamed(ecuType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.MICROCONTROLLER_TYPE: {
-				MicrocontrollerType microcontrollerType = (MicrocontrollerType)theEObject;
-				T1 result = caseMicrocontrollerType(microcontrollerType);
-				if (result == null) result = caseAbstractionType(microcontrollerType);
-				if (result == null) result = caseHardwareTypeDescription(microcontrollerType);
-				if (result == null) result = caseReferableBaseObject(microcontrollerType);
-				if (result == null) result = caseITaggable(microcontrollerType);
-				if (result == null) result = caseIAnnotatable(microcontrollerType);
-				if (result == null) result = caseIReferable(microcontrollerType);
-				if (result == null) result = caseINamed(microcontrollerType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CORE_TYPE: {
-				CoreType coreType = (CoreType)theEObject;
-				T1 result = caseCoreType(coreType);
-				if (result == null) result = caseAbstractionType(coreType);
-				if (result == null) result = caseHardwareTypeDescription(coreType);
-				if (result == null) result = caseReferableBaseObject(coreType);
-				if (result == null) result = caseITaggable(coreType);
-				if (result == null) result = caseIAnnotatable(coreType);
-				if (result == null) result = caseIReferable(coreType);
-				if (result == null) result = caseINamed(coreType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.MEMORY_TYPE: {
-				MemoryType memoryType = (MemoryType)theEObject;
-				T1 result = caseMemoryType(memoryType);
-				if (result == null) result = caseHardwareTypeDescription(memoryType);
-				if (result == null) result = caseReferableBaseObject(memoryType);
-				if (result == null) result = caseITaggable(memoryType);
-				if (result == null) result = caseIAnnotatable(memoryType);
-				if (result == null) result = caseIReferable(memoryType);
-				if (result == null) result = caseINamed(memoryType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.NETWORK_TYPE: {
-				NetworkType networkType = (NetworkType)theEObject;
-				T1 result = caseNetworkType(networkType);
-				if (result == null) result = caseHardwareTypeDescription(networkType);
-				if (result == null) result = caseReferableBaseObject(networkType);
-				if (result == null) result = caseITaggable(networkType);
-				if (result == null) result = caseIAnnotatable(networkType);
-				if (result == null) result = caseIReferable(networkType);
-				if (result == null) result = caseINamed(networkType);
+			case AmaltheaPackage.HW_FEATURE: {
+				HwFeature hwFeature = (HwFeature)theEObject;
+				T1 result = caseHwFeature(hwFeature);
+				if (result == null) result = caseReferableBaseObject(hwFeature);
+				if (result == null) result = caseIAnnotatable(hwFeature);
+				if (result == null) result = caseIReferable(hwFeature);
+				if (result == null) result = caseINamed(hwFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1873,168 +1764,152 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				HwPort hwPort = (HwPort)theEObject;
 				T1 result = caseHwPort(hwPort);
 				if (result == null) result = caseReferableBaseObject(hwPort);
+				if (result == null) result = caseITaggable(hwPort);
 				if (result == null) result = caseIAnnotatable(hwPort);
 				if (result == null) result = caseIReferable(hwPort);
 				if (result == null) result = caseINamed(hwPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PIN: {
-				Pin pin = (Pin)theEObject;
-				T1 result = casePin(pin);
-				if (result == null) result = caseReferableBaseObject(pin);
-				if (result == null) result = caseIAnnotatable(pin);
-				if (result == null) result = caseIReferable(pin);
-				if (result == null) result = caseINamed(pin);
+			case AmaltheaPackage.CONNECTION_HANDLER: {
+				ConnectionHandler connectionHandler = (ConnectionHandler)theEObject;
+				T1 result = caseConnectionHandler(connectionHandler);
+				if (result == null) result = caseHwModule(connectionHandler);
+				if (result == null) result = caseHwPathElement(connectionHandler);
+				if (result == null) result = caseReferableBaseObject(connectionHandler);
+				if (result == null) result = caseITaggable(connectionHandler);
+				if (result == null) result = caseIAnnotatable(connectionHandler);
+				if (result == null) result = caseIReferable(connectionHandler);
+				if (result == null) result = caseINamed(connectionHandler);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COMPLEX_PORT: {
-				ComplexPort complexPort = (ComplexPort)theEObject;
-				T1 result = caseComplexPort(complexPort);
-				if (result == null) result = caseHwPort(complexPort);
-				if (result == null) result = caseReferableBaseObject(complexPort);
-				if (result == null) result = caseIAnnotatable(complexPort);
-				if (result == null) result = caseIReferable(complexPort);
-				if (result == null) result = caseINamed(complexPort);
+			case AmaltheaPackage.HW_CONNECTION: {
+				HwConnection hwConnection = (HwConnection)theEObject;
+				T1 result = caseHwConnection(hwConnection);
+				if (result == null) result = caseReferableBaseObject(hwConnection);
+				if (result == null) result = caseHwPathElement(hwConnection);
+				if (result == null) result = caseITaggable(hwConnection);
+				if (result == null) result = caseIAnnotatable(hwConnection);
+				if (result == null) result = caseIReferable(hwConnection);
+				if (result == null) result = caseINamed(hwConnection);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COMPLEX_PIN: {
-				ComplexPin complexPin = (ComplexPin)theEObject;
-				T1 result = caseComplexPin(complexPin);
-				if (result == null) result = casePin(complexPin);
-				if (result == null) result = caseReferableBaseObject(complexPin);
-				if (result == null) result = caseIAnnotatable(complexPin);
-				if (result == null) result = caseIReferable(complexPin);
-				if (result == null) result = caseINamed(complexPin);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT: {
+				HwAccessElement hwAccessElement = (HwAccessElement)theEObject;
+				T1 result = caseHwAccessElement(hwAccessElement);
+				if (result == null) result = caseITaggable(hwAccessElement);
+				if (result == null) result = caseINamed(hwAccessElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.PRESCALER: {
-				Prescaler prescaler = (Prescaler)theEObject;
-				T1 result = casePrescaler(prescaler);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CROSSBAR_SWITCH: {
-				CrossbarSwitch crossbarSwitch = (CrossbarSwitch)theEObject;
-				T1 result = caseCrossbarSwitch(crossbarSwitch);
-				if (result == null) result = caseNetworkType(crossbarSwitch);
-				if (result == null) result = caseHardwareTypeDescription(crossbarSwitch);
-				if (result == null) result = caseReferableBaseObject(crossbarSwitch);
-				if (result == null) result = caseITaggable(crossbarSwitch);
-				if (result == null) result = caseIAnnotatable(crossbarSwitch);
-				if (result == null) result = caseIReferable(crossbarSwitch);
-				if (result == null) result = caseINamed(crossbarSwitch);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BUS: {
-				Bus bus = (Bus)theEObject;
-				T1 result = caseBus(bus);
-				if (result == null) result = caseNetworkType(bus);
-				if (result == null) result = caseHardwareTypeDescription(bus);
-				if (result == null) result = caseReferableBaseObject(bus);
-				if (result == null) result = caseITaggable(bus);
-				if (result == null) result = caseIAnnotatable(bus);
-				if (result == null) result = caseIReferable(bus);
-				if (result == null) result = caseINamed(bus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BRIDGE: {
-				Bridge bridge = (Bridge)theEObject;
-				T1 result = caseBridge(bridge);
-				if (result == null) result = caseNetworkType(bridge);
-				if (result == null) result = caseHardwareTypeDescription(bridge);
-				if (result == null) result = caseReferableBaseObject(bridge);
-				if (result == null) result = caseITaggable(bridge);
-				if (result == null) result = caseIAnnotatable(bridge);
-				if (result == null) result = caseIReferable(bridge);
-				if (result == null) result = caseINamed(bridge);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.ACCESS_PATH: {
-				AccessPath accessPath = (AccessPath)theEObject;
-				T1 result = caseAccessPath(accessPath);
-				if (result == null) result = caseIReferable(accessPath);
-				if (result == null) result = caseINamed(accessPath);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY_ACCESS_PATH: {
-				LatencyAccessPath latencyAccessPath = (LatencyAccessPath)theEObject;
-				T1 result = caseLatencyAccessPath(latencyAccessPath);
-				if (result == null) result = caseAccessPath(latencyAccessPath);
-				if (result == null) result = caseIReferable(latencyAccessPath);
-				if (result == null) result = caseINamed(latencyAccessPath);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_ACCESS_PATH: {
-				HwAccessPath hwAccessPath = (HwAccessPath)theEObject;
-				T1 result = caseHwAccessPath(hwAccessPath);
-				if (result == null) result = caseAccessPath(hwAccessPath);
-				if (result == null) result = caseIReferable(hwAccessPath);
-				if (result == null) result = caseINamed(hwAccessPath);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY_ACCESS_PATH_ELEMENT: {
-				LatencyAccessPathElement latencyAccessPathElement = (LatencyAccessPathElement)theEObject;
-				T1 result = caseLatencyAccessPathElement(latencyAccessPathElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.ACCESS_PATH_REF: {
-				AccessPathRef accessPathRef = (AccessPathRef)theEObject;
-				T1 result = caseAccessPathRef(accessPathRef);
-				if (result == null) result = caseLatencyAccessPathElement(accessPathRef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY: {
-				Latency latency = (Latency)theEObject;
-				T1 result = caseLatency(latency);
-				if (result == null) result = caseLatencyAccessPathElement(latency);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY_CONSTANT: {
-				LatencyConstant latencyConstant = (LatencyConstant)theEObject;
-				T1 result = caseLatencyConstant(latencyConstant);
-				if (result == null) result = caseLatency(latencyConstant);
-				if (result == null) result = caseLatencyAccessPathElement(latencyConstant);
+			case AmaltheaPackage.CONSTANT_LATENCY: {
+				ConstantLatency constantLatency = (ConstantLatency)theEObject;
+				T1 result = caseConstantLatency(constantLatency);
+				if (result == null) result = caseHwLatency(constantLatency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.LATENCY_DEVIATION: {
 				LatencyDeviation latencyDeviation = (LatencyDeviation)theEObject;
 				T1 result = caseLatencyDeviation(latencyDeviation);
-				if (result == null) result = caseLatency(latencyDeviation);
-				if (result == null) result = caseLatencyAccessPathElement(latencyDeviation);
+				if (result == null) result = caseHwLatency(latencyDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_ACCESS_PATH_ELEMENT: {
-				HwAccessPathElement hwAccessPathElement = (HwAccessPathElement)theEObject;
-				T1 result = caseHwAccessPathElement(hwAccessPathElement);
+			case AmaltheaPackage.HW_LATENCY: {
+				HwLatency hwLatency = (HwLatency)theEObject;
+				T1 result = caseHwLatency(hwLatency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_ACCESS_PATH_REF: {
-				HwAccessPathRef hwAccessPathRef = (HwAccessPathRef)theEObject;
-				T1 result = caseHwAccessPathRef(hwAccessPathRef);
-				if (result == null) result = caseHwAccessPathElement(hwAccessPathRef);
+			case AmaltheaPackage.HW_DEFINITION: {
+				HwDefinition hwDefinition = (HwDefinition)theEObject;
+				T1 result = caseHwDefinition(hwDefinition);
+				if (result == null) result = caseReferableBaseObject(hwDefinition);
+				if (result == null) result = caseITaggable(hwDefinition);
+				if (result == null) result = caseIAnnotatable(hwDefinition);
+				if (result == null) result = caseIReferable(hwDefinition);
+				if (result == null) result = caseINamed(hwDefinition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.HW_ELEMENT_REF: {
-				HwElementRef hwElementRef = (HwElementRef)theEObject;
-				T1 result = caseHwElementRef(hwElementRef);
-				if (result == null) result = caseHwAccessPathElement(hwElementRef);
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION: {
+				ProcessingUnitDefinition processingUnitDefinition = (ProcessingUnitDefinition)theEObject;
+				T1 result = caseProcessingUnitDefinition(processingUnitDefinition);
+				if (result == null) result = caseHwDefinition(processingUnitDefinition);
+				if (result == null) result = caseReferableBaseObject(processingUnitDefinition);
+				if (result == null) result = caseITaggable(processingUnitDefinition);
+				if (result == null) result = caseIAnnotatable(processingUnitDefinition);
+				if (result == null) result = caseIReferable(processingUnitDefinition);
+				if (result == null) result = caseINamed(processingUnitDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION: {
+				ConnectionHandlerDefinition connectionHandlerDefinition = (ConnectionHandlerDefinition)theEObject;
+				T1 result = caseConnectionHandlerDefinition(connectionHandlerDefinition);
+				if (result == null) result = caseHwDefinition(connectionHandlerDefinition);
+				if (result == null) result = caseReferableBaseObject(connectionHandlerDefinition);
+				if (result == null) result = caseITaggable(connectionHandlerDefinition);
+				if (result == null) result = caseIAnnotatable(connectionHandlerDefinition);
+				if (result == null) result = caseIReferable(connectionHandlerDefinition);
+				if (result == null) result = caseINamed(connectionHandlerDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MEMORY_DEFINITION: {
+				MemoryDefinition memoryDefinition = (MemoryDefinition)theEObject;
+				T1 result = caseMemoryDefinition(memoryDefinition);
+				if (result == null) result = caseHwDefinition(memoryDefinition);
+				if (result == null) result = caseReferableBaseObject(memoryDefinition);
+				if (result == null) result = caseITaggable(memoryDefinition);
+				if (result == null) result = caseIAnnotatable(memoryDefinition);
+				if (result == null) result = caseIReferable(memoryDefinition);
+				if (result == null) result = caseINamed(memoryDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CACHE_DEFINITION: {
+				CacheDefinition cacheDefinition = (CacheDefinition)theEObject;
+				T1 result = caseCacheDefinition(cacheDefinition);
+				if (result == null) result = caseHwDefinition(cacheDefinition);
+				if (result == null) result = caseReferableBaseObject(cacheDefinition);
+				if (result == null) result = caseITaggable(cacheDefinition);
+				if (result == null) result = caseIAnnotatable(cacheDefinition);
+				if (result == null) result = caseIReferable(cacheDefinition);
+				if (result == null) result = caseINamed(cacheDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.HW_PATH: {
+				HwPath hwPath = (HwPath)theEObject;
+				T1 result = caseHwPath(hwPath);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.HW_ACCESS_PATH: {
+				HwAccessPath hwAccessPath = (HwAccessPath)theEObject;
+				T1 result = caseHwAccessPath(hwAccessPath);
+				if (result == null) result = caseHwPath(hwAccessPath);
+				if (result == null) result = caseINamed(hwAccessPath);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.HW_PATH_ELEMENT: {
+				HwPathElement hwPathElement = (HwPathElement)theEObject;
+				T1 result = caseHwPathElement(hwPathElement);
+				if (result == null) result = caseIReferable(hwPathElement);
+				if (result == null) result = caseINamed(hwPathElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.HW_DESTINATION: {
+				HwDestination hwDestination = (HwDestination)theEObject;
+				T1 result = caseHwDestination(hwDestination);
+				if (result == null) result = caseIReferable(hwDestination);
+				if (result == null) result = caseINamed(hwDestination);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3265,7 +3140,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<CoreType, Instructions> runnableInstructionsEntry = (Map.Entry<CoreType, Instructions>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, Instructions> runnableInstructionsEntry = (Map.Entry<ProcessingUnitDefinition, Instructions>)theEObject;
 				T1 result = caseRunnableInstructionsEntry(runnableInstructionsEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -5810,77 +5685,92 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Complex Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Complex Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Structure</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComplexNode(ComplexNode object) {
+	public T1 caseHwStructure(HwStructure object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw System</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw System</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwSystem(HwSystem object) {
+	public T1 caseHwDomain(HwDomain object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECU</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Frequency Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECU</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Frequency Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseECU(ECU object) {
+	public T1 caseFrequencyDomain(FrequencyDomain object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Microcontroller</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Power Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Microcontroller</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Power Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMicrocontroller(Microcontroller object) {
+	public T1 casePowerDomain(PowerDomain object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Core</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Module</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Core</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Module</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCore(Core object) {
+	public T1 caseHwModule(HwModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Processing Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Processing Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseProcessingUnit(ProcessingUnit object) {
 		return null;
 	}
 
@@ -5900,167 +5790,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cache</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Network</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cache</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNetwork(Network object) {
+	public T1 caseCache(Cache object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Quartz</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Quartz</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Feature</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseQuartz(Quartz object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwComponent(HwComponent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hardware Type Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hardware Type Description</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHardwareTypeDescription(HardwareTypeDescription object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstraction Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstraction Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAbstractionType(AbstractionType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSystemType(SystemType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ECU Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ECU Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseECUType(ECUType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Microcontroller Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Microcontroller Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseMicrocontrollerType(MicrocontrollerType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Core Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Core Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseCoreType(CoreType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Memory Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Memory Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseMemoryType(MemoryType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Network Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Network Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNetworkType(NetworkType object) {
+	public T1 caseHwFeature(HwFeature object) {
 		return null;
 	}
 
@@ -6080,212 +5835,62 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Pin</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Connection Handler</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Pin</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Connection Handler</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePin(Pin object) {
+	public T1 caseConnectionHandler(ConnectionHandler object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Complex Port</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Complex Port</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Connection</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComplexPort(ComplexPort object) {
+	public T1 caseHwConnection(HwConnection object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Complex Pin</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Access Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Complex Pin</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Access Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComplexPin(ComplexPin object) {
+	public T1 caseHwAccessElement(HwAccessElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Prescaler</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Constant Latency</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Prescaler</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Constant Latency</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePrescaler(Prescaler object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Crossbar Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Crossbar Switch</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseCrossbarSwitch(CrossbarSwitch object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Bus</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Bus</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseBus(Bus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Bridge</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Bridge</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseBridge(Bridge object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Access Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Access Path</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAccessPath(AccessPath object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency Access Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency Access Path</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatencyAccessPath(LatencyAccessPath object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Access Path</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Access Path</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwAccessPath(HwAccessPath object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency Access Path Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency Access Path Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatencyAccessPathElement(LatencyAccessPathElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Access Path Ref</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Access Path Ref</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAccessPathRef(AccessPathRef object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatency(Latency object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatencyConstant(LatencyConstant object) {
+	public T1 caseConstantLatency(ConstantLatency object) {
 		return null;
 	}
 
@@ -6305,47 +5910,152 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Access Path Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Latency</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Access Path Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Latency</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwAccessPathElement(HwAccessPathElement object) {
+	public T1 caseHwLatency(HwLatency object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Access Path Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Access Path Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Definition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwAccessPathRef(HwAccessPathRef object) {
+	public T1 caseHwDefinition(HwDefinition object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Element Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Processing Unit Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Element Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Processing Unit Definition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwElementRef(HwElementRef object) {
+	public T1 caseProcessingUnitDefinition(ProcessingUnitDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection Handler Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection Handler Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseConnectionHandlerDefinition(ConnectionHandlerDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Memory Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Memory Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMemoryDefinition(MemoryDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cache Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cache Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCacheDefinition(CacheDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Path</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Path</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwPath(HwPath object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Access Path</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Access Path</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwAccessPath(HwAccessPath object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Path Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Path Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwPathElement(HwPathElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Destination</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Destination</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwDestination(HwDestination object) {
 		return null;
 	}
 
@@ -8265,7 +7975,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableInstructionsEntry(Map.Entry<CoreType, Instructions> object) {
+	public T1 caseRunnableInstructionsEntry(Map.Entry<ProcessingUnitDefinition, Instructions> object) {
 		return null;
 	}
 

@@ -6,7 +6,6 @@ import java.util.Map
 import org.apache.commons.lang.StringUtils
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
 import org.eclipse.app4mc.amalthea.model.AbstractTime
-import org.eclipse.app4mc.amalthea.model.AccessPathRef
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
 import org.eclipse.app4mc.amalthea.model.Amalthea
@@ -38,6 +37,8 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle
 import org.eclipse.app4mc.amalthea.model.DataAgeTime
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping
+import org.eclipse.app4mc.amalthea.model.DataRate
+import org.eclipse.app4mc.amalthea.model.DataRateUnit
 import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 import org.eclipse.app4mc.amalthea.model.DataStability
@@ -56,9 +57,13 @@ import org.eclipse.app4mc.amalthea.model.FrequencyUnit
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall
 import org.eclipse.app4mc.amalthea.model.Group
 import org.eclipse.app4mc.amalthea.model.GroupingType
+import org.eclipse.app4mc.amalthea.model.HwAccessElement
 import org.eclipse.app4mc.amalthea.model.HwAccessPath
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef
-import org.eclipse.app4mc.amalthea.model.HwElementRef
+import org.eclipse.app4mc.amalthea.model.HwConnection
+import org.eclipse.app4mc.amalthea.model.HwModule
+import org.eclipse.app4mc.amalthea.model.HwPort
+import org.eclipse.app4mc.amalthea.model.HwStructure
+import org.eclipse.app4mc.amalthea.model.INamed
 import org.eclipse.app4mc.amalthea.model.ISRAllocation
 import org.eclipse.app4mc.amalthea.model.Instructions
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant
@@ -69,11 +74,9 @@ import org.eclipse.app4mc.amalthea.model.InterfaceKind
 import org.eclipse.app4mc.amalthea.model.InterfacePort
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath
-import org.eclipse.app4mc.amalthea.model.LatencyConstant
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
 import org.eclipse.app4mc.amalthea.model.LongObject
+import org.eclipse.app4mc.amalthea.model.Memory
 import org.eclipse.app4mc.amalthea.model.MemoryClassification
 import org.eclipse.app4mc.amalthea.model.MemoryMapping
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
@@ -82,6 +85,7 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
+import org.eclipse.app4mc.amalthea.model.ModeValue
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueList
@@ -102,8 +106,8 @@ import org.eclipse.app4mc.amalthea.model.ProcessChainRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessScope
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.QualifiedPort
-import org.eclipse.app4mc.amalthea.model.RWType
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
@@ -147,9 +151,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.ModeValue
-import org.eclipse.app4mc.amalthea.model.DataRate
-import org.eclipse.app4mc.amalthea.model.DataRateUnit
 
 class CustomItemProviderService {
 
@@ -238,7 +239,7 @@ class CustomItemProviderService {
 		
 		val value = if (rate.value === null) "???" else rate.value.toString
 		val unit = if (rate.unit == DataRateUnit::_UNDEFINED_) "<unit>" else rate.unit.literal
-		return value + " " + unit
+		return value + " " + unit.replace("PerSecond", "/s")
 	}
 
 	private def static trimDistName(String name) {
@@ -1218,46 +1219,46 @@ class CustomItemProviderService {
 	/*****************************************************************************
 	 * 						HwAccessPathItemProvider
 	 *****************************************************************************/
-	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
-		if (object instanceof HwAccessPath) {
-			val name = object?.name
-			val sourceName = object?.source?.name
-			val targetName = object?.target?.name
-			val s1 = ppName(name, "<path>")
-			val s2 = ppName(sourceName, "<source>")
-			val s3 = ppName(targetName, "<target>")
-			return "AccessPath (Hardware) " + s1 + " : " + s2 + " --> " + s3
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getHwAccessPathItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
-		switch notification.getFeatureID(typeof(HwAccessPath)) {
-			case AmaltheaPackage::HW_ACCESS_PATH__NAME,
-			case AmaltheaPackage::HW_ACCESS_PATH__SOURCE,
-			case AmaltheaPackage::HW_ACCESS_PATH__TARGET:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::HW_ACCESS_PATH__HW_ELEMENTS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-		}
-		return list
-	}
+//	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
+//		if (object instanceof HwAccessPath) {
+//			val name = object?.name
+//			val sourceName = object?.source?.name
+//			val targetName = object?.target?.name
+//			val s1 = ppName(name, "<path>")
+//			val s2 = ppName(sourceName, "<source>")
+//			val s3 = ppName(targetName, "<target>")
+//			return "AccessPath (Hardware) " + s1 + " : " + s2 + " --> " + s3
+//		} else {
+//			return defaultText
+//		}
+//	}
+//
+//	def static List<ViewerNotification> getHwAccessPathItemProviderNotifications(Notification notification) {
+//		val list = newArrayList
+//
+//		switch notification.getFeatureID(typeof(HwAccessPath)) {
+//			case AmaltheaPackage::HW_ACCESS_PATH__NAME,
+//			case AmaltheaPackage::HW_ACCESS_PATH__SOURCE,
+//			case AmaltheaPackage::HW_ACCESS_PATH__TARGET:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+//			case AmaltheaPackage::HW_ACCESS_PATH__HW_ELEMENTS:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+//		}
+//		return list
+//	}
 
 
 	/*****************************************************************************
 	 * 						AccessPathRefItemProvider
 	 *****************************************************************************/
-	def static String getAccessPathRefItemProviderText(Object object, String defaultText) {
-		if (object instanceof AccessPathRef) {
-			val refName = object?.ref?.name
-			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
-			return "Ref -> " + s1
-		} else {
-			return defaultText
-		}
+//	def static String getAccessPathRefItemProviderText(Object object, String defaultText) {
+//		if (object instanceof AccessPathRef) {
+//			val refName = object?.ref?.name
+//			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
+//			return "Ref -> " + s1
+//		} else {
+//			return defaultText
+//		}
 
 // TODO: use label text of referred element
 
@@ -1266,20 +1267,20 @@ class CustomItemProviderService {
 //				return getString("_UI_AccessPathRef_type") + " -> "
 //						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
 //			}
-	}
+//	}
 
 
 	/*****************************************************************************
 	 * 						HwAccessPathRefItemProvider
 	 *****************************************************************************/
-	def static String getHwAccessPathRefItemProviderText(Object object, String defaultText) {
-		if (object instanceof HwAccessPathRef) {
-			val refName = object?.ref?.name
-			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
-			return "Ref -> " + s1
-		} else {
-			return defaultText
-		}
+//	def static String getHwAccessPathRefItemProviderText(Object object, String defaultText) {
+//		if (object instanceof HwAccessPathRef) {
+//			val refName = object?.ref?.name
+//			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
+//			return "Ref -> " + s1
+//		} else {
+//			return defaultText
+//		}
 
 // TODO: use label text of referred element
 
@@ -1288,118 +1289,205 @@ class CustomItemProviderService {
 //				return getString("_UI_HwAccessPathRef_type") + " -> "
 //						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
 //			}
-	}
+//	}
 
-	def static List<ViewerNotification> getHwAccessPathRefItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
-		switch notification.getFeatureID(typeof(HwAccessPathRef)) {
-			case AmaltheaPackage::HW_ACCESS_PATH_REF__REF:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-		}
-		return list
-	}
+//	def static List<ViewerNotification> getHwAccessPathRefItemProviderNotifications(Notification notification) {
+//		val list = newArrayList
+//
+//		switch notification.getFeatureID(typeof(HwAccessPathRef)) {
+//			case AmaltheaPackage::HW_ACCESS_PATH_REF__REF:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+//		}
+//		return list
+//	}
 
 
 	/*****************************************************************************
 	 * 						HwElementRefItemProvider
 	 *****************************************************************************/
-	def static String getHwElementRefItemProviderText(Object object, String defaultText) {
-		if (object instanceof HwElementRef) {
-			val portName = object?.port?.name
-			val s1 = if(portName.isNullOrEmpty) "<port>" else "Port " + portName
-			return  "Ref -> " + s1
-		} else {
-			return defaultText
-		}
+//	def static String getHwElementRefItemProviderText(Object object, String defaultText) {
+//		if (object instanceof HwElementRef) {
+//			val portName = object?.port?.name
+//			val s1 = if(portName.isNullOrEmpty) "<port>" else "Port " + portName
+//			return  "Ref -> " + s1
+//		} else {
+//			return defaultText
+//		}
 
 // TODO: Name Provider and Update
-	}
+//	}
 
-	def static List<ViewerNotification> getHwElementRefItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(HwElementRef)) {
-			case AmaltheaPackage::HW_ELEMENT_REF__PORT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-		}
-		return list
-	}
+//	def static List<ViewerNotification> getHwElementRefItemProviderNotifications(Notification notification) {
+//		val list = newArrayList
+//		switch notification.getFeatureID(typeof(HwElementRef)) {
+//			case AmaltheaPackage::HW_ELEMENT_REF__PORT:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+//		}
+//		return list
+//	}
 
 
 	/*****************************************************************************
 	 * 						LatencyAccessPathItemProvider
 	 *****************************************************************************/
-	def static String getLatencyAccessPathItemProviderText(Object object, String defaultText) {
-		if (object instanceof LatencyAccessPath) {
-			val name = object?.name
-			val sourceName = object?.source?.name
-			val targetName = object?.target?.name
-			val s1 = ppName(name, "<path>")
-			val s2 = ppName(sourceName, "<source>")
-			val s3 = ppName(targetName, "<target>")
-			return "AccessPath (Latency) " + s1 + " : " + s2 + " --> " + s3
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getLatencyAccessPathItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(LatencyAccessPath)) {
-			case AmaltheaPackage::LATENCY_ACCESS_PATH__NAME,
-			case AmaltheaPackage::LATENCY_ACCESS_PATH__SOURCE,
-			case AmaltheaPackage::LATENCY_ACCESS_PATH__TARGET:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::LATENCY_ACCESS_PATH__LATENCIES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-		}
-		return list
-	}
+//	def static String getLatencyAccessPathItemProviderText(Object object, String defaultText) {
+//		if (object instanceof LatencyAccessPath) {
+//			val name = object?.name
+//			val sourceName = object?.source?.name
+//			val targetName = object?.target?.name
+//			val s1 = ppName(name, "<path>")
+//			val s2 = ppName(sourceName, "<source>")
+//			val s3 = ppName(targetName, "<target>")
+//			return "AccessPath (Latency) " + s1 + " : " + s2 + " --> " + s3
+//		} else {
+//			return defaultText
+//		}
+//	}
+//
+//	def static List<ViewerNotification> getLatencyAccessPathItemProviderNotifications(Notification notification) {
+//		val list = newArrayList
+//		switch notification.getFeatureID(typeof(LatencyAccessPath)) {
+//			case AmaltheaPackage::LATENCY_ACCESS_PATH__NAME,
+//			case AmaltheaPackage::LATENCY_ACCESS_PATH__SOURCE,
+//			case AmaltheaPackage::LATENCY_ACCESS_PATH__TARGET:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+//			case AmaltheaPackage::LATENCY_ACCESS_PATH__LATENCIES:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+//		}
+//		return list
+//	}
 
 
 	/*****************************************************************************
 	 * 						LatencyConstantItemProvider
 	 *****************************************************************************/
-	def static String getLatencyConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof LatencyConstant) {
-			val type = object?.accessType
-			val value = if(object === null) 0 else object.value
-			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
-			val s2 = Long.toString(value)
-			return "Access: " + s1 + " -- Latency (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
+//	def static String getLatencyConstantItemProviderText(Object object, String defaultText) {
+//		if (object instanceof LatencyConstant) {
+//			val type = object?.accessType
+//			val value = if(object === null) 0 else object.value
+//			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
+//			val s2 = Long.toString(value)
+//			return "Access: " + s1 + " -- Latency (constant): " + s2
+//		} else {
+//			return defaultText
+//		}
+//	}
 
 
 	/*****************************************************************************
 	 * 						LatencyDeviationItemProvider
 	 *****************************************************************************/
-	def static String getLatencyDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof LatencyDeviation) {
-			val type = object.accessType
-			val distName = object?.deviation?.distribution?.eClass?.name
-			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return "Access: " + s1 + " -- Latency (deviation): " + s2
+//	def static String getLatencyDeviationItemProviderText(Object object, String defaultText) {
+//		if (object instanceof LatencyDeviation) {
+//			val type = object.accessType
+//			val distName = object?.deviation?.distribution?.eClass?.name
+//			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
+//			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+//			return "Access: " + s1 + " -- Latency (deviation): " + s2
+//		} else {
+//			return defaultText
+//		}
+//	}
+//
+//	def static List<ViewerNotification> getLatencyDeviationItemProviderNotifications(Notification notification) {
+//		val list = newArrayList
+//
+//		switch notification.getFeatureID(typeof(LatencyDeviation)) {
+//			case AmaltheaPackage::LATENCY_DEVIATION__ACCESS_TYPE:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+//			case AmaltheaPackage::LATENCY_DEVIATION__DEVIATION:
+//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+//		}
+//		return list
+//	}
+
+
+	/*****************************************************************************
+	 * 						HwPortItemProvider
+	 *****************************************************************************/
+	def static String getHwPortItemProviderText(Object object, String defaultText) {
+		if (object instanceof HwPort) {
+			val name = object.name
+			val cName = (object.eContainer as INamed).name
+			val cType = if(object.eContainer instanceof HwStructure) "<structure>" else "<module>"
+
+			val s1 = ppName(cName, cType)
+			val s2 = ppName(name, "<port>")
+			return s1 + "_"  + s2
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getLatencyDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
-		switch notification.getFeatureID(typeof(LatencyDeviation)) {
-			case AmaltheaPackage::LATENCY_DEVIATION__ACCESS_TYPE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::LATENCY_DEVIATION__DEVIATION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-		}
-		return list
+		
+	/*****************************************************************************
+	 * 						HwAccessElementItemProvider
+	 *****************************************************************************/
+	def static String getHwAccessElementItemProviderText(Object object, String defaultText) {
+		if (object instanceof HwAccessElement) {
+				var tmp =  (object as HwAccessElement).destination
+				var	dName = "<destination>"
+				if (tmp instanceof Memory){
+					dName = (tmp as Memory).name
+				}else if(tmp instanceof ProcessingUnit){
+					dName = (tmp as ProcessingUnit).name
+				}
+				val sName = ((object.eContainer) as ProcessingUnit).name
+				val name = object?.name
+				val s1 = ppName(name, "<name>")
+				val s2 = ppName(sName, "<source>")
+				val s3 = ppName(dName, "<destination>")
+				return s1 + ": " + s2 + "-->" + s3
+			}
+	}
+	
+	/*****************************************************************************
+	 * 						HwAccessPathItemProvider
+	 *****************************************************************************/
+	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
+		if (object instanceof HwAccessPath) {
+				return object?.name
+			}
 	}
 
+	/*****************************************************************************
+	 * 						HwConnectionItemProvider
+	 *****************************************************************************/
+	def static String getHwConnectionItemProviderText(Object object, String defaultText) {
+		if (object instanceof HwConnection) {
+				val name = object?.name
+				var pName1 = "<port1>"
+				var pName2 = "<port2>"
+				var cName1 = "<moduleP1>"
+				var cName2 = "<moduleP2>"
+				//val pName1 = object?.port1.getName
+				//val pName2 = object?.port2.getName
+				if((object as HwConnection).port1 !== null){
+					 pName1 = ((object as HwConnection).port1).getName
+					 if((object as HwConnection).port1.eContainer instanceof HwModule){
+					 	 cName1 = ((object as HwConnection).port1.eContainer as HwModule).name
+					 }
+					 else if((object as HwConnection).port1.eContainer instanceof HwStructure){
+					 	 cName1 = ((object as HwConnection).port1.eContainer as HwStructure).name
+					 }
+				}				
+				if((object as HwConnection).port2 !== null){
+					 pName2 = ((object as HwConnection).port2).getName
+					  if((object as HwConnection).port2.eContainer instanceof HwModule){
+					 	 cName2 = ((object as HwConnection).port2.eContainer as HwModule).name
+					 }
+					 else if((object as HwConnection).port2.eContainer instanceof HwStructure){
+					 	 cName2 = ((object as HwConnection).port2.eContainer as HwStructure).name
+					 }
+				}
+				val s1 = ppName(name, "<name>")
+				val s2 = ppName(pName1, "<port1>")
+				val s3 = ppName(pName2, "<port2>")
+				val s4 = ppName(cName1, "<moduleP1>")
+				val s5 = ppName(cName2, "<moduleP2>")
+				return s1 + "-" + s4 + ":" + s2 + "-->" + s5 + ":" + s3 
+			}
+	}
 
 
 

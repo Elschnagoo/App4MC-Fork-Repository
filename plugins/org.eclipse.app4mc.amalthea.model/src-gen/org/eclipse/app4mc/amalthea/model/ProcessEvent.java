@@ -103,12 +103,12 @@ public interface ProcessEvent extends EntityEvent {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Core</em>' reference.
-	 * @see #setCore(Core)
+	 * @see #setCore(ProcessingUnit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessEvent_Core()
 	 * @model
 	 * @generated
 	 */
-	Core getCore();
+	ProcessingUnit getCore();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getCore <em>Core</em>}' reference.
@@ -118,6 +118,6 @@ public interface ProcessEvent extends EntityEvent {
 	 * @see #getCore()
 	 * @generated
 	 */
-	void setCore(Core value);
+	void setCore(ProcessingUnit value);
 
 } // ProcessEvent

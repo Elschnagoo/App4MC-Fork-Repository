@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -217,6 +217,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return transmissionPolicyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstructionsDeviationItemProvider instructionsDeviationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstructionsDeviationAdapter() {
+		if (instructionsDeviationItemProvider == null) {
+			instructionsDeviationItemProvider = new InstructionsDeviationItemProvider(this);
+		}
+
+		return instructionsDeviationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstructionsConstantItemProvider instructionsConstantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstructionsConstantAdapter() {
+		if (instructionsConstantItemProvider == null) {
+			instructionsConstantItemProvider = new InstructionsConstantItemProvider(this);
+		}
+
+		return instructionsConstantItemProvider;
 	}
 
 	/**
@@ -1439,6 +1485,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SubEventChain} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubEventChainItemProvider subEventChainItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SubEventChain}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubEventChainAdapter() {
+		if (subEventChainItemProvider == null) {
+			subEventChainItemProvider = new SubEventChainItemProvider(this);
+		}
+
+		return subEventChainItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EventChainReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1482,29 +1551,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return eventChainContainerItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SubEventChain} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SubEventChainItemProvider subEventChainItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SubEventChain}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSubEventChainAdapter() {
-		if (subEventChainItemProvider == null) {
-			subEventChainItemProvider = new SubEventChainItemProvider(this);
-		}
-
-		return subEventChainItemProvider;
 	}
 
 	/**
@@ -2313,95 +2359,95 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwSystem} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwStructure} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwSystemItemProvider hwSystemItemProvider;
+	protected HwStructureItemProvider hwStructureItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwSystem}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwStructure}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHwSystemAdapter() {
-		if (hwSystemItemProvider == null) {
-			hwSystemItemProvider = new HwSystemItemProvider(this);
+	public Adapter createHwStructureAdapter() {
+		if (hwStructureItemProvider == null) {
+			hwStructureItemProvider = new HwStructureItemProvider(this);
 		}
 
-		return hwSystemItemProvider;
+		return hwStructureItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ECU} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FrequencyDomain} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ECUItemProvider ecuItemProvider;
+	protected FrequencyDomainItemProvider frequencyDomainItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ECU}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FrequencyDomain}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createECUAdapter() {
-		if (ecuItemProvider == null) {
-			ecuItemProvider = new ECUItemProvider(this);
+	public Adapter createFrequencyDomainAdapter() {
+		if (frequencyDomainItemProvider == null) {
+			frequencyDomainItemProvider = new FrequencyDomainItemProvider(this);
 		}
 
-		return ecuItemProvider;
+		return frequencyDomainItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Microcontroller} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PowerDomain} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MicrocontrollerItemProvider microcontrollerItemProvider;
+	protected PowerDomainItemProvider powerDomainItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Microcontroller}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PowerDomain}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createMicrocontrollerAdapter() {
-		if (microcontrollerItemProvider == null) {
-			microcontrollerItemProvider = new MicrocontrollerItemProvider(this);
+	public Adapter createPowerDomainAdapter() {
+		if (powerDomainItemProvider == null) {
+			powerDomainItemProvider = new PowerDomainItemProvider(this);
 		}
 
-		return microcontrollerItemProvider;
+		return powerDomainItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Core} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoreItemProvider coreItemProvider;
+	protected ProcessingUnitItemProvider processingUnitItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Core}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCoreAdapter() {
-		if (coreItemProvider == null) {
-			coreItemProvider = new CoreItemProvider(this);
+	public Adapter createProcessingUnitAdapter() {
+		if (processingUnitItemProvider == null) {
+			processingUnitItemProvider = new ProcessingUnitItemProvider(this);
 		}
 
-		return coreItemProvider;
+		return processingUnitItemProvider;
 	}
 
 	/**
@@ -2428,210 +2474,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Network} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Cache} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NetworkItemProvider networkItemProvider;
+	protected CacheItemProvider cacheItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Network}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Cache}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createNetworkAdapter() {
-		if (networkItemProvider == null) {
-			networkItemProvider = new NetworkItemProvider(this);
+	public Adapter createCacheAdapter() {
+		if (cacheItemProvider == null) {
+			cacheItemProvider = new CacheItemProvider(this);
 		}
 
-		return networkItemProvider;
+		return cacheItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Quartz} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwFeature} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected QuartzItemProvider quartzItemProvider;
+	protected HwFeatureItemProvider hwFeatureItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Quartz}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createQuartzAdapter() {
-		if (quartzItemProvider == null) {
-			quartzItemProvider = new QuartzItemProvider(this);
+	public Adapter createHwFeatureAdapter() {
+		if (hwFeatureItemProvider == null) {
+			hwFeatureItemProvider = new HwFeatureItemProvider(this);
 		}
 
-		return quartzItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwComponent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HwComponentItemProvider hwComponentItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwComponent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHwComponentAdapter() {
-		if (hwComponentItemProvider == null) {
-			hwComponentItemProvider = new HwComponentItemProvider(this);
-		}
-
-		return hwComponentItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SystemType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemTypeItemProvider systemTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SystemType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemTypeAdapter() {
-		if (systemTypeItemProvider == null) {
-			systemTypeItemProvider = new SystemTypeItemProvider(this);
-		}
-
-		return systemTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ECUType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ECUTypeItemProvider ecuTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ECUType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createECUTypeAdapter() {
-		if (ecuTypeItemProvider == null) {
-			ecuTypeItemProvider = new ECUTypeItemProvider(this);
-		}
-
-		return ecuTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MicrocontrollerType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MicrocontrollerTypeItemProvider microcontrollerTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MicrocontrollerType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMicrocontrollerTypeAdapter() {
-		if (microcontrollerTypeItemProvider == null) {
-			microcontrollerTypeItemProvider = new MicrocontrollerTypeItemProvider(this);
-		}
-
-		return microcontrollerTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CoreType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CoreTypeItemProvider coreTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CoreType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCoreTypeAdapter() {
-		if (coreTypeItemProvider == null) {
-			coreTypeItemProvider = new CoreTypeItemProvider(this);
-		}
-
-		return coreTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MemoryTypeItemProvider memoryTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMemoryTypeAdapter() {
-		if (memoryTypeItemProvider == null) {
-			memoryTypeItemProvider = new MemoryTypeItemProvider(this);
-		}
-
-		return memoryTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NetworkType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NetworkTypeItemProvider networkTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NetworkType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNetworkTypeAdapter() {
-		if (networkTypeItemProvider == null) {
-			networkTypeItemProvider = new NetworkTypeItemProvider(this);
-		}
-
-		return networkTypeItemProvider;
+		return hwFeatureItemProvider;
 	}
 
 	/**
@@ -2658,256 +2543,95 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Pin} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConnectionHandler} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PinItemProvider pinItemProvider;
+	protected ConnectionHandlerItemProvider connectionHandlerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Pin}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConnectionHandler}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPinAdapter() {
-		if (pinItemProvider == null) {
-			pinItemProvider = new PinItemProvider(this);
+	public Adapter createConnectionHandlerAdapter() {
+		if (connectionHandlerItemProvider == null) {
+			connectionHandlerItemProvider = new ConnectionHandlerItemProvider(this);
 		}
 
-		return pinItemProvider;
+		return connectionHandlerItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ComplexPort} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwConnection} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComplexPortItemProvider complexPortItemProvider;
+	protected HwConnectionItemProvider hwConnectionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ComplexPort}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwConnection}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComplexPortAdapter() {
-		if (complexPortItemProvider == null) {
-			complexPortItemProvider = new ComplexPortItemProvider(this);
+	public Adapter createHwConnectionAdapter() {
+		if (hwConnectionItemProvider == null) {
+			hwConnectionItemProvider = new HwConnectionItemProvider(this);
 		}
 
-		return complexPortItemProvider;
+		return hwConnectionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ComplexPin} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwAccessElement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComplexPinItemProvider complexPinItemProvider;
+	protected HwAccessElementItemProvider hwAccessElementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ComplexPin}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComplexPinAdapter() {
-		if (complexPinItemProvider == null) {
-			complexPinItemProvider = new ComplexPinItemProvider(this);
+	public Adapter createHwAccessElementAdapter() {
+		if (hwAccessElementItemProvider == null) {
+			hwAccessElementItemProvider = new HwAccessElementItemProvider(this);
 		}
 
-		return complexPinItemProvider;
+		return hwAccessElementItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Prescaler} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConstantLatency} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PrescalerItemProvider prescalerItemProvider;
+	protected ConstantLatencyItemProvider constantLatencyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Prescaler}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConstantLatency}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPrescalerAdapter() {
-		if (prescalerItemProvider == null) {
-			prescalerItemProvider = new PrescalerItemProvider(this);
+	public Adapter createConstantLatencyAdapter() {
+		if (constantLatencyItemProvider == null) {
+			constantLatencyItemProvider = new ConstantLatencyItemProvider(this);
 		}
 
-		return prescalerItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CrossbarSwitch} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CrossbarSwitchItemProvider crossbarSwitchItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CrossbarSwitch}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCrossbarSwitchAdapter() {
-		if (crossbarSwitchItemProvider == null) {
-			crossbarSwitchItemProvider = new CrossbarSwitchItemProvider(this);
-		}
-
-		return crossbarSwitchItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Bus} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BusItemProvider busItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Bus}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBusAdapter() {
-		if (busItemProvider == null) {
-			busItemProvider = new BusItemProvider(this);
-		}
-
-		return busItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Bridge} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BridgeItemProvider bridgeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Bridge}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBridgeAdapter() {
-		if (bridgeItemProvider == null) {
-			bridgeItemProvider = new BridgeItemProvider(this);
-		}
-
-		return bridgeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LatencyAccessPath} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LatencyAccessPathItemProvider latencyAccessPathItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyAccessPath}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLatencyAccessPathAdapter() {
-		if (latencyAccessPathItemProvider == null) {
-			latencyAccessPathItemProvider = new LatencyAccessPathItemProvider(this);
-		}
-
-		return latencyAccessPathItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwAccessPath} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HwAccessPathItemProvider hwAccessPathItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessPath}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHwAccessPathAdapter() {
-		if (hwAccessPathItemProvider == null) {
-			hwAccessPathItemProvider = new HwAccessPathItemProvider(this);
-		}
-
-		return hwAccessPathItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.AccessPathRef} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AccessPathRefItemProvider accessPathRefItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.AccessPathRef}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAccessPathRefAdapter() {
-		if (accessPathRefItemProvider == null) {
-			accessPathRefItemProvider = new AccessPathRefItemProvider(this);
-		}
-
-		return accessPathRefItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LatencyConstantItemProvider latencyConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLatencyConstantAdapter() {
-		if (latencyConstantItemProvider == null) {
-			latencyConstantItemProvider = new LatencyConstantItemProvider(this);
-		}
-
-		return latencyConstantItemProvider;
+		return constantLatencyItemProvider;
 	}
 
 	/**
@@ -2934,49 +2658,118 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwAccessPathRef} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwAccessPathRefItemProvider hwAccessPathRefItemProvider;
+	protected ProcessingUnitDefinitionItemProvider processingUnitDefinitionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessPathRef}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHwAccessPathRefAdapter() {
-		if (hwAccessPathRefItemProvider == null) {
-			hwAccessPathRefItemProvider = new HwAccessPathRefItemProvider(this);
+	public Adapter createProcessingUnitDefinitionAdapter() {
+		if (processingUnitDefinitionItemProvider == null) {
+			processingUnitDefinitionItemProvider = new ProcessingUnitDefinitionItemProvider(this);
 		}
 
-		return hwAccessPathRefItemProvider;
+		return processingUnitDefinitionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwElementRef} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HwElementRefItemProvider hwElementRefItemProvider;
+	protected ConnectionHandlerDefinitionItemProvider connectionHandlerDefinitionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwElementRef}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHwElementRefAdapter() {
-		if (hwElementRefItemProvider == null) {
-			hwElementRefItemProvider = new HwElementRefItemProvider(this);
+	public Adapter createConnectionHandlerDefinitionAdapter() {
+		if (connectionHandlerDefinitionItemProvider == null) {
+			connectionHandlerDefinitionItemProvider = new ConnectionHandlerDefinitionItemProvider(this);
 		}
 
-		return hwElementRefItemProvider;
+		return connectionHandlerDefinitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MemoryDefinition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MemoryDefinitionItemProvider memoryDefinitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.MemoryDefinition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMemoryDefinitionAdapter() {
+		if (memoryDefinitionItemProvider == null) {
+			memoryDefinitionItemProvider = new MemoryDefinitionItemProvider(this);
+		}
+
+		return memoryDefinitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CacheDefinition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CacheDefinitionItemProvider cacheDefinitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CacheDefinition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCacheDefinitionAdapter() {
+		if (cacheDefinitionItemProvider == null) {
+			cacheDefinitionItemProvider = new CacheDefinitionItemProvider(this);
+		}
+
+		return cacheDefinitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwAccessPath} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HwAccessPathItemProvider hwAccessPathItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwAccessPath}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHwAccessPathAdapter() {
+		if (hwAccessPathItemProvider == null) {
+			hwAccessPathItemProvider = new HwAccessPathItemProvider(this);
+		}
+
+		return hwAccessPathItemProvider;
 	}
 
 	/**
@@ -3023,29 +2816,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return schedulerAllocationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PhysicalSectionMappingItemProvider physicalSectionMappingItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPhysicalSectionMappingAdapter() {
-		if (physicalSectionMappingItemProvider == null) {
-			physicalSectionMappingItemProvider = new PhysicalSectionMappingItemProvider(this);
-		}
-
-		return physicalSectionMappingItemProvider;
 	}
 
 	/**
@@ -3138,6 +2908,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return memoryMappingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PhysicalSectionMappingItemProvider physicalSectionMappingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPhysicalSectionMappingAdapter() {
+		if (physicalSectionMappingItemProvider == null) {
+			physicalSectionMappingItemProvider = new PhysicalSectionMappingItemProvider(this);
+		}
+
+		return physicalSectionMappingItemProvider;
 	}
 
 	/**
@@ -3256,6 +3049,167 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskScheduler} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TaskSchedulerItemProvider taskSchedulerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TaskScheduler}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTaskSchedulerAdapter() {
+		if (taskSchedulerItemProvider == null) {
+			taskSchedulerItemProvider = new TaskSchedulerItemProvider(this);
+		}
+
+		return taskSchedulerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SchedulerAssociationItemProvider schedulerAssociationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSchedulerAssociationAdapter() {
+		if (schedulerAssociationItemProvider == null) {
+			schedulerAssociationItemProvider = new SchedulerAssociationItemProvider(this);
+		}
+
+		return schedulerAssociationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterruptController} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterruptControllerItemProvider interruptControllerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterruptController}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInterruptControllerAdapter() {
+		if (interruptControllerItemProvider == null) {
+			interruptControllerItemProvider = new InterruptControllerItemProvider(this);
+		}
+
+		return interruptControllerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SchedulingParametersItemProvider schedulingParametersItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSchedulingParametersAdapter() {
+		if (schedulingParametersItemProvider == null) {
+			schedulingParametersItemProvider = new SchedulingParametersItemProvider(this);
+		}
+
+		return schedulingParametersItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterExtensionItemProvider parameterExtensionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterExtensionAdapter() {
+		if (parameterExtensionItemProvider == null) {
+			parameterExtensionItemProvider = new ParameterExtensionItemProvider(this);
+		}
+
+		return parameterExtensionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FixedPriorityPreemptiveItemProvider fixedPriorityPreemptiveItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFixedPriorityPreemptiveAdapter() {
+		if (fixedPriorityPreemptiveItemProvider == null) {
+			fixedPriorityPreemptiveItemProvider = new FixedPriorityPreemptiveItemProvider(this);
+		}
+
+		return fixedPriorityPreemptiveItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FixedPriorityPreemptiveWithBudgetEnforcementItemProvider fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFixedPriorityPreemptiveWithBudgetEnforcementAdapter() {
+		if (fixedPriorityPreemptiveWithBudgetEnforcementItemProvider == null) {
+			fixedPriorityPreemptiveWithBudgetEnforcementItemProvider = new FixedPriorityPreemptiveWithBudgetEnforcementItemProvider(this);
+		}
+
+		return fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OSEK} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3276,144 +3230,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return osekItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PartlyPFairPD2ItemProvider partlyPFairPD2ItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPartlyPFairPD2Adapter() {
-		if (partlyPFairPD2ItemProvider == null) {
-			partlyPFairPD2ItemProvider = new PartlyPFairPD2ItemProvider(this);
-		}
-
-		return partlyPFairPD2ItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PfairPD2} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PfairPD2ItemProvider pfairPD2ItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PfairPD2}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPfairPD2Adapter() {
-		if (pfairPD2ItemProvider == null) {
-			pfairPD2ItemProvider = new PfairPD2ItemProvider(this);
-		}
-
-		return pfairPD2ItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PartlyEarlyReleaseFairPD2ItemProvider partlyEarlyReleaseFairPD2ItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPartlyEarlyReleaseFairPD2Adapter() {
-		if (partlyEarlyReleaseFairPD2ItemProvider == null) {
-			partlyEarlyReleaseFairPD2ItemProvider = new PartlyEarlyReleaseFairPD2ItemProvider(this);
-		}
-
-		return partlyEarlyReleaseFairPD2ItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EarlyReleaseFairPD2ItemProvider earlyReleaseFairPD2ItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEarlyReleaseFairPD2Adapter() {
-		if (earlyReleaseFairPD2ItemProvider == null) {
-			earlyReleaseFairPD2ItemProvider = new EarlyReleaseFairPD2ItemProvider(this);
-		}
-
-		return earlyReleaseFairPD2ItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LeastLocalRemainingExecutionTimeFirstItemProvider leastLocalRemainingExecutionTimeFirstItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLeastLocalRemainingExecutionTimeFirstAdapter() {
-		if (leastLocalRemainingExecutionTimeFirstItemProvider == null) {
-			leastLocalRemainingExecutionTimeFirstItemProvider = new LeastLocalRemainingExecutionTimeFirstItemProvider(this);
-		}
-
-		return leastLocalRemainingExecutionTimeFirstItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EarliestDeadlineFirstItemProvider earliestDeadlineFirstItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEarliestDeadlineFirstAdapter() {
-		if (earliestDeadlineFirstItemProvider == null) {
-			earliestDeadlineFirstItemProvider = new EarliestDeadlineFirstItemProvider(this);
-		}
-
-		return earliestDeadlineFirstItemProvider;
 	}
 
 	/**
@@ -3460,6 +3276,144 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return rateMonotonicItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PfairPD2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PfairPD2ItemProvider pfairPD2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PfairPD2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPfairPD2Adapter() {
+		if (pfairPD2ItemProvider == null) {
+			pfairPD2ItemProvider = new PfairPD2ItemProvider(this);
+		}
+
+		return pfairPD2ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PartlyPFairPD2ItemProvider partlyPFairPD2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PartlyPFairPD2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPartlyPFairPD2Adapter() {
+		if (partlyPFairPD2ItemProvider == null) {
+			partlyPFairPD2ItemProvider = new PartlyPFairPD2ItemProvider(this);
+		}
+
+		return partlyPFairPD2ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EarlyReleaseFairPD2ItemProvider earlyReleaseFairPD2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEarlyReleaseFairPD2Adapter() {
+		if (earlyReleaseFairPD2ItemProvider == null) {
+			earlyReleaseFairPD2ItemProvider = new EarlyReleaseFairPD2ItemProvider(this);
+		}
+
+		return earlyReleaseFairPD2ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PartlyEarlyReleaseFairPD2ItemProvider partlyEarlyReleaseFairPD2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPartlyEarlyReleaseFairPD2Adapter() {
+		if (partlyEarlyReleaseFairPD2ItemProvider == null) {
+			partlyEarlyReleaseFairPD2ItemProvider = new PartlyEarlyReleaseFairPD2ItemProvider(this);
+		}
+
+		return partlyEarlyReleaseFairPD2ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LeastLocalRemainingExecutionTimeFirstItemProvider leastLocalRemainingExecutionTimeFirstItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLeastLocalRemainingExecutionTimeFirstAdapter() {
+		if (leastLocalRemainingExecutionTimeFirstItemProvider == null) {
+			leastLocalRemainingExecutionTimeFirstItemProvider = new LeastLocalRemainingExecutionTimeFirstItemProvider(this);
+		}
+
+		return leastLocalRemainingExecutionTimeFirstItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EarliestDeadlineFirstItemProvider earliestDeadlineFirstItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEarliestDeadlineFirstAdapter() {
+		if (earliestDeadlineFirstItemProvider == null) {
+			earliestDeadlineFirstItemProvider = new EarliestDeadlineFirstItemProvider(this);
+		}
+
+		return earliestDeadlineFirstItemProvider;
 	}
 
 	/**
@@ -3713,167 +3667,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return vendorOperatingSystemItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskScheduler} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TaskSchedulerItemProvider taskSchedulerItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TaskScheduler}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTaskSchedulerAdapter() {
-		if (taskSchedulerItemProvider == null) {
-			taskSchedulerItemProvider = new TaskSchedulerItemProvider(this);
-		}
-
-		return taskSchedulerItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SchedulerAssociationItemProvider schedulerAssociationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSchedulerAssociationAdapter() {
-		if (schedulerAssociationItemProvider == null) {
-			schedulerAssociationItemProvider = new SchedulerAssociationItemProvider(this);
-		}
-
-		return schedulerAssociationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InterruptController} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InterruptControllerItemProvider interruptControllerItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InterruptController}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInterruptControllerAdapter() {
-		if (interruptControllerItemProvider == null) {
-			interruptControllerItemProvider = new InterruptControllerItemProvider(this);
-		}
-
-		return interruptControllerItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SchedulingParametersItemProvider schedulingParametersItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.SchedulingParameters}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSchedulingParametersAdapter() {
-		if (schedulingParametersItemProvider == null) {
-			schedulingParametersItemProvider = new SchedulingParametersItemProvider(this);
-		}
-
-		return schedulingParametersItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ParameterExtensionItemProvider parameterExtensionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createParameterExtensionAdapter() {
-		if (parameterExtensionItemProvider == null) {
-			parameterExtensionItemProvider = new ParameterExtensionItemProvider(this);
-		}
-
-		return parameterExtensionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FixedPriorityPreemptiveItemProvider fixedPriorityPreemptiveItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFixedPriorityPreemptiveAdapter() {
-		if (fixedPriorityPreemptiveItemProvider == null) {
-			fixedPriorityPreemptiveItemProvider = new FixedPriorityPreemptiveItemProvider(this);
-		}
-
-		return fixedPriorityPreemptiveItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FixedPriorityPreemptiveWithBudgetEnforcementItemProvider fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFixedPriorityPreemptiveWithBudgetEnforcementAdapter() {
-		if (fixedPriorityPreemptiveWithBudgetEnforcementItemProvider == null) {
-			fixedPriorityPreemptiveWithBudgetEnforcementItemProvider = new FixedPriorityPreemptiveWithBudgetEnforcementItemProvider(this);
-		}
-
-		return fixedPriorityPreemptiveWithBudgetEnforcementItemProvider;
 	}
 
 	/**
@@ -4176,6 +3969,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeValueDisjunctionItemProvider modeValueDisjunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeValueDisjunctionAdapter() {
+		if (modeValueDisjunctionItemProvider == null) {
+			modeValueDisjunctionItemProvider = new ModeValueDisjunctionItemProvider(this);
+		}
+
+		return modeValueDisjunctionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4219,29 +4035,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return modeValueConjunctionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModeValueDisjunctionItemProvider modeValueDisjunctionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createModeValueDisjunctionAdapter() {
-		if (modeValueDisjunctionItemProvider == null) {
-			modeValueDisjunctionItemProvider = new ModeValueDisjunctionItemProvider(this);
-		}
-
-		return modeValueDisjunctionItemProvider;
 	}
 
 	/**
@@ -5740,52 +5533,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstructionsDeviationItemProvider instructionsDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInstructionsDeviationAdapter() {
-		if (instructionsDeviationItemProvider == null) {
-			instructionsDeviationItemProvider = new InstructionsDeviationItemProvider(this);
-		}
-
-		return instructionsDeviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstructionsConstantItemProvider instructionsConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInstructionsConstantAdapter() {
-		if (instructionsConstantItemProvider == null) {
-			instructionsConstantItemProvider = new InstructionsConstantItemProvider(this);
-		}
-
-		return instructionsConstantItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Struct} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6466,35 +6213,24 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (semaphoreEventItemProvider != null) semaphoreEventItemProvider.dispose();
 		if (componentEventItemProvider != null) componentEventItemProvider.dispose();
 		if (hwModelItemProvider != null) hwModelItemProvider.dispose();
-		if (hwSystemItemProvider != null) hwSystemItemProvider.dispose();
-		if (ecuItemProvider != null) ecuItemProvider.dispose();
-		if (microcontrollerItemProvider != null) microcontrollerItemProvider.dispose();
-		if (coreItemProvider != null) coreItemProvider.dispose();
+		if (hwStructureItemProvider != null) hwStructureItemProvider.dispose();
+		if (frequencyDomainItemProvider != null) frequencyDomainItemProvider.dispose();
+		if (powerDomainItemProvider != null) powerDomainItemProvider.dispose();
+		if (processingUnitItemProvider != null) processingUnitItemProvider.dispose();
 		if (memoryItemProvider != null) memoryItemProvider.dispose();
-		if (networkItemProvider != null) networkItemProvider.dispose();
-		if (quartzItemProvider != null) quartzItemProvider.dispose();
-		if (hwComponentItemProvider != null) hwComponentItemProvider.dispose();
-		if (systemTypeItemProvider != null) systemTypeItemProvider.dispose();
-		if (ecuTypeItemProvider != null) ecuTypeItemProvider.dispose();
-		if (microcontrollerTypeItemProvider != null) microcontrollerTypeItemProvider.dispose();
-		if (coreTypeItemProvider != null) coreTypeItemProvider.dispose();
-		if (memoryTypeItemProvider != null) memoryTypeItemProvider.dispose();
-		if (networkTypeItemProvider != null) networkTypeItemProvider.dispose();
+		if (cacheItemProvider != null) cacheItemProvider.dispose();
+		if (hwFeatureItemProvider != null) hwFeatureItemProvider.dispose();
 		if (hwPortItemProvider != null) hwPortItemProvider.dispose();
-		if (pinItemProvider != null) pinItemProvider.dispose();
-		if (complexPortItemProvider != null) complexPortItemProvider.dispose();
-		if (complexPinItemProvider != null) complexPinItemProvider.dispose();
-		if (prescalerItemProvider != null) prescalerItemProvider.dispose();
-		if (crossbarSwitchItemProvider != null) crossbarSwitchItemProvider.dispose();
-		if (busItemProvider != null) busItemProvider.dispose();
-		if (bridgeItemProvider != null) bridgeItemProvider.dispose();
-		if (latencyAccessPathItemProvider != null) latencyAccessPathItemProvider.dispose();
-		if (hwAccessPathItemProvider != null) hwAccessPathItemProvider.dispose();
-		if (accessPathRefItemProvider != null) accessPathRefItemProvider.dispose();
-		if (latencyConstantItemProvider != null) latencyConstantItemProvider.dispose();
+		if (connectionHandlerItemProvider != null) connectionHandlerItemProvider.dispose();
+		if (hwConnectionItemProvider != null) hwConnectionItemProvider.dispose();
+		if (hwAccessElementItemProvider != null) hwAccessElementItemProvider.dispose();
+		if (constantLatencyItemProvider != null) constantLatencyItemProvider.dispose();
 		if (latencyDeviationItemProvider != null) latencyDeviationItemProvider.dispose();
-		if (hwAccessPathRefItemProvider != null) hwAccessPathRefItemProvider.dispose();
-		if (hwElementRefItemProvider != null) hwElementRefItemProvider.dispose();
+		if (processingUnitDefinitionItemProvider != null) processingUnitDefinitionItemProvider.dispose();
+		if (connectionHandlerDefinitionItemProvider != null) connectionHandlerDefinitionItemProvider.dispose();
+		if (memoryDefinitionItemProvider != null) memoryDefinitionItemProvider.dispose();
+		if (cacheDefinitionItemProvider != null) cacheDefinitionItemProvider.dispose();
+		if (hwAccessPathItemProvider != null) hwAccessPathItemProvider.dispose();
 		if (mappingModelItemProvider != null) mappingModelItemProvider.dispose();
 		if (schedulerAllocationItemProvider != null) schedulerAllocationItemProvider.dispose();
 		if (taskAllocationItemProvider != null) taskAllocationItemProvider.dispose();
