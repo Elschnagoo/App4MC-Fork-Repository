@@ -100,7 +100,7 @@
 							<!-- Symbols are used while expanding index.html template -->
 							<symbols>
 								<update.site.name>${project.parent.name}</update.site.name>
-								<target.eclipse.version>Mars.2 (4.5.2)</target.eclipse.version>
+								<target.eclipse.version>Neon.3 (4.6.3)</target.eclipse.version>
 							</symbols>
 
 							<associateSites>
@@ -112,9 +112,6 @@
 								<site>http://download.eclipse.org/ease/update/release</site>
 								<site>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases</site>
 								<site>http://franca.github.io/franca/update_site/releases</site>
-								<site>http://updates.yakindu.org/sct/kepler/releases</site>							
-								
-								
 							</associateSites>
 						</configuration>
 					</execution>
