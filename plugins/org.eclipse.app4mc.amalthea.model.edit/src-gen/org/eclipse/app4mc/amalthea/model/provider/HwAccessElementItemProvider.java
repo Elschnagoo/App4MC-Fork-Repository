@@ -253,8 +253,7 @@ public class HwAccessElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HwAccessElement.class)) {
@@ -269,6 +268,23 @@ public class HwAccessElementItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final ViewerNotification vn = CustomItemProviderService
+				.getHwAccessElementItemProviderNotification(notification);
+		if (vn != null) {
+			fireNotifyChanged(vn);
+		} else {
+			super.notifyChanged(notification);			
+		}
 	}
 
 	/**

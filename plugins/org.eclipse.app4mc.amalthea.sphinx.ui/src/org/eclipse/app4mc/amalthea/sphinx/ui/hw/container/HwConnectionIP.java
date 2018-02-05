@@ -56,4 +56,14 @@ public class HwConnectionIP extends ExtendedSphinxTransientItemProvider {
 		return this.childrenFeatures;
 	}
 
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#collectNewChildDescriptors(java.util.Collection,
+	 *      java.lang.Object)
+	 */
+	@Override
+	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createHwConnection()));
+	}
+
 }

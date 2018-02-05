@@ -1419,34 +1419,42 @@ class CustomItemProviderService {
 		}
 	}
 
-		
+	def static ViewerNotification getHwPortItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(HwPort)) {
+			case AmaltheaPackage::HW_PORT__NAME:
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+		}
+		return null
+	}
+
 	/*****************************************************************************
 	 * 						HwAccessElementItemProvider
 	 *****************************************************************************/
 	def static String getHwAccessElementItemProviderText(Object object, String defaultText) {
 		if (object instanceof HwAccessElement) {
-				var tmp =  (object as HwAccessElement).destination
-				var	dName = "<destination>"
-				if (tmp instanceof Memory){
-					dName = (tmp as Memory).name
-				}else if(tmp instanceof ProcessingUnit){
-					dName = (tmp as ProcessingUnit).name
-				}
-				val sName = ((object.eContainer) as ProcessingUnit).name
-				val name = object?.name
-				val s1 = ppName(name, "<name>")
-				val s2 = ppName(sName, "<source>")
-				val s3 = ppName(dName, "<destination>")
-				return s1 + ": " + s2 + "-->" + s3
+				val s1 = ppName(object.name, "???")
+				val s2 = ppName(object.source?.name, "<source>")
+				val s3 = ppName(object.destination?.name, "<destination>")
+				return s1 + ": " + s2 + " --> " + s3
 			}
 	}
-	
+
+	def static ViewerNotification getHwAccessElementItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(HwAccessElement)) {
+			case AmaltheaPackage::HW_ACCESS_ELEMENT__NAME,
+			case AmaltheaPackage::HW_ACCESS_ELEMENT__SOURCE,
+			case AmaltheaPackage::HW_ACCESS_ELEMENT__DESTINATION:
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+		}
+		return null
+	}
+
 	/*****************************************************************************
 	 * 						HwAccessPathItemProvider
 	 *****************************************************************************/
 	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
 		if (object instanceof HwAccessPath) {
-				return object?.name
+				return object.name
 			}
 	}
 
@@ -1455,40 +1463,28 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getHwConnectionItemProviderText(Object object, String defaultText) {
 		if (object instanceof HwConnection) {
-				val name = object?.name
-				var pName1 = "<port1>"
-				var pName2 = "<port2>"
-				var cName1 = "<moduleP1>"
-				var cName2 = "<moduleP2>"
-				//val pName1 = object?.port1.getName
-				//val pName2 = object?.port2.getName
-				if((object as HwConnection).port1 !== null){
-					 pName1 = ((object as HwConnection).port1).getName
-					 if((object as HwConnection).port1.eContainer instanceof HwModule){
-					 	 cName1 = ((object as HwConnection).port1.eContainer as HwModule).name
-					 }
-					 else if((object as HwConnection).port1.eContainer instanceof HwStructure){
-					 	 cName1 = ((object as HwConnection).port1.eContainer as HwStructure).name
-					 }
-				}				
-				if((object as HwConnection).port2 !== null){
-					 pName2 = ((object as HwConnection).port2).getName
-					  if((object as HwConnection).port2.eContainer instanceof HwModule){
-					 	 cName2 = ((object as HwConnection).port2.eContainer as HwModule).name
-					 }
-					 else if((object as HwConnection).port2.eContainer instanceof HwStructure){
-					 	 cName2 = ((object as HwConnection).port2.eContainer as HwStructure).name
-					 }
-				}
-				val s1 = ppName(name, "<name>")
-				val s2 = ppName(pName1, "<port1>")
-				val s3 = ppName(pName2, "<port2>")
-				val s4 = ppName(cName1, "<moduleP1>")
-				val s5 = ppName(cName2, "<moduleP2>")
-				return s1 + "-" + s4 + ":" + s2 + "-->" + s5 + ":" + s3 
-			}
+			val cName1 = (object.port1?.eContainer as INamed)?.name
+			val cName2 = (object.port2?.eContainer as INamed)?.name
+		
+			val s1 = ppName(object.name, "???")
+			val s2 = ppName(object.port1?.name, "<port1>")
+			val s3 = ppName(object.port2?.name, "<port2>")
+			val s4 = ppName(cName1, "<moduleP1>")
+			val s5 = ppName(cName2, "<moduleP2>")
+			return s1 + ": " + s4 + "/" + s2 + " --> " + s5 + "/" + s3 
+		}
 	}
 
+	def static ViewerNotification getHwConnectionItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(HwConnection)) {
+			case AmaltheaPackage::HW_CONNECTION__NAME,
+			case AmaltheaPackage::HW_CONNECTION__PORT1,
+			case AmaltheaPackage::HW_CONNECTION__PORT2:
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+
+		}
+		return null
+	}
 
 
 ///// _________________________ Mapping _________________________

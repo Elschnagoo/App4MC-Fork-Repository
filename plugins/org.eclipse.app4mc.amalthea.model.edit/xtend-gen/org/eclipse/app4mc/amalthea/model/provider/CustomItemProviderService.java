@@ -74,7 +74,6 @@ import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
-import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -2189,31 +2188,59 @@ public class CustomItemProviderService {
     }
   }
   
+  public static ViewerNotification getHwPortItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwPort.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_PORT__NAME)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
+    }
+    return null;
+  }
+  
   /**
    * HwAccessElementItemProvider
    */
   public static String getHwAccessElementItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof HwAccessElement)) {
-      HwDestination tmp = ((HwAccessElement) object).getDestination();
-      String dName = "<destination>";
-      if ((tmp instanceof Memory)) {
-        dName = ((Memory) tmp).getName();
-      } else {
-        if ((tmp instanceof ProcessingUnit)) {
-          dName = ((ProcessingUnit) tmp).getName();
-        }
-      }
-      EObject _eContainer = ((HwAccessElement)object).eContainer();
-      final String sName = ((ProcessingUnit) _eContainer).getName();
+      final String s1 = CustomItemProviderService.ppName(((HwAccessElement)object).getName(), "???");
+      ProcessingUnit _source = ((HwAccessElement)object).getSource();
       String _name = null;
-      if (((HwAccessElement)object)!=null) {
-        _name=((HwAccessElement)object).getName();
+      if (_source!=null) {
+        _name=_source.getName();
       }
-      final String name = _name;
-      final String s1 = CustomItemProviderService.ppName(name, "<name>");
-      final String s2 = CustomItemProviderService.ppName(sName, "<source>");
-      final String s3 = CustomItemProviderService.ppName(dName, "<destination>");
-      return ((((s1 + ": ") + s2) + "-->") + s3);
+      final String s2 = CustomItemProviderService.ppName(_name, "<source>");
+      HwDestination _destination = ((HwAccessElement)object).getDestination();
+      String _name_1 = null;
+      if (_destination!=null) {
+        _name_1=_destination.getName();
+      }
+      final String s3 = CustomItemProviderService.ppName(_name_1, "<destination>");
+      return ((((s1 + ": ") + s2) + " --> ") + s3);
+    }
+    return null;
+  }
+  
+  public static ViewerNotification getHwAccessElementItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwAccessElement.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
     }
     return null;
   }
@@ -2223,11 +2250,7 @@ public class CustomItemProviderService {
    */
   public static String getHwAccessPathItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof HwAccessPath)) {
-      String _name = null;
-      if (((HwAccessPath)object)!=null) {
-        _name=((HwAccessPath)object).getName();
-      }
-      return _name;
+      return ((HwAccessPath)object).getName();
     }
     return null;
   }
@@ -2237,53 +2260,65 @@ public class CustomItemProviderService {
    */
   public static String getHwConnectionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof HwConnection)) {
+      HwPort _port1 = ((HwConnection)object).getPort1();
+      EObject _eContainer = null;
+      if (_port1!=null) {
+        _eContainer=_port1.eContainer();
+      }
       String _name = null;
-      if (((HwConnection)object)!=null) {
-        _name=((HwConnection)object).getName();
+      if (((INamed) _eContainer)!=null) {
+        _name=((INamed) _eContainer).getName();
       }
-      final String name = _name;
-      String pName1 = "<port1>";
-      String pName2 = "<port2>";
-      String cName1 = "<moduleP1>";
-      String cName2 = "<moduleP2>";
-      HwPort _port1 = ((HwConnection) object).getPort1();
-      boolean _tripleNotEquals = (_port1 != null);
-      if (_tripleNotEquals) {
-        pName1 = ((HwConnection) object).getPort1().getName();
-        EObject _eContainer = ((HwConnection) object).getPort1().eContainer();
-        if ((_eContainer instanceof HwModule)) {
-          EObject _eContainer_1 = ((HwConnection) object).getPort1().eContainer();
-          cName1 = ((HwModule) _eContainer_1).getName();
-        } else {
-          EObject _eContainer_2 = ((HwConnection) object).getPort1().eContainer();
-          if ((_eContainer_2 instanceof HwStructure)) {
-            EObject _eContainer_3 = ((HwConnection) object).getPort1().eContainer();
-            cName1 = ((HwStructure) _eContainer_3).getName();
-          }
-        }
+      final String cName1 = _name;
+      HwPort _port2 = ((HwConnection)object).getPort2();
+      EObject _eContainer_1 = null;
+      if (_port2!=null) {
+        _eContainer_1=_port2.eContainer();
       }
-      HwPort _port2 = ((HwConnection) object).getPort2();
-      boolean _tripleNotEquals_1 = (_port2 != null);
-      if (_tripleNotEquals_1) {
-        pName2 = ((HwConnection) object).getPort2().getName();
-        EObject _eContainer_4 = ((HwConnection) object).getPort2().eContainer();
-        if ((_eContainer_4 instanceof HwModule)) {
-          EObject _eContainer_5 = ((HwConnection) object).getPort2().eContainer();
-          cName2 = ((HwModule) _eContainer_5).getName();
-        } else {
-          EObject _eContainer_6 = ((HwConnection) object).getPort2().eContainer();
-          if ((_eContainer_6 instanceof HwStructure)) {
-            EObject _eContainer_7 = ((HwConnection) object).getPort2().eContainer();
-            cName2 = ((HwStructure) _eContainer_7).getName();
-          }
-        }
+      String _name_1 = null;
+      if (((INamed) _eContainer_1)!=null) {
+        _name_1=((INamed) _eContainer_1).getName();
       }
-      final String s1 = CustomItemProviderService.ppName(name, "<name>");
-      final String s2 = CustomItemProviderService.ppName(pName1, "<port1>");
-      final String s3 = CustomItemProviderService.ppName(pName2, "<port2>");
+      final String cName2 = _name_1;
+      final String s1 = CustomItemProviderService.ppName(((HwConnection)object).getName(), "???");
+      HwPort _port1_1 = ((HwConnection)object).getPort1();
+      String _name_2 = null;
+      if (_port1_1!=null) {
+        _name_2=_port1_1.getName();
+      }
+      final String s2 = CustomItemProviderService.ppName(_name_2, "<port1>");
+      HwPort _port2_1 = ((HwConnection)object).getPort2();
+      String _name_3 = null;
+      if (_port2_1!=null) {
+        _name_3=_port2_1.getName();
+      }
+      final String s3 = CustomItemProviderService.ppName(_name_3, "<port2>");
       final String s4 = CustomItemProviderService.ppName(cName1, "<moduleP1>");
       final String s5 = CustomItemProviderService.ppName(cName2, "<moduleP2>");
-      return ((((((((s1 + "-") + s4) + ":") + s2) + "-->") + s5) + ":") + s3);
+      return ((((((((s1 + ": ") + s4) + "/") + s2) + " --> ") + s5) + "/") + s3);
+    }
+    return null;
+  }
+  
+  public static ViewerNotification getHwConnectionItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwConnection.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__PORT1)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__PORT2)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
     }
     return null;
   }

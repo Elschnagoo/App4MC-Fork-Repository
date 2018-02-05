@@ -212,8 +212,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HwConnection.class)) {
@@ -224,6 +223,23 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final ViewerNotification vn = CustomItemProviderService
+				.getHwConnectionItemProviderNotification(notification);
+		if (vn != null) {
+			fireNotifyChanged(vn);
+		} else {
+			super.notifyChanged(notification);
+		}
 	}
 
 	/**
