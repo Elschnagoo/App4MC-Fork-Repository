@@ -1804,6 +1804,9 @@ enum WriteStrategy {
 
 
 abstract class HwLatency {
+	op boolean containerNotificationRequired() {
+		return true
+	}
 }
 
 class LatencyConstant extends HwLatency {

@@ -1466,11 +1466,11 @@ class CustomItemProviderService {
 			val cName2 = (object.port2?.eContainer as INamed)?.name
 		
 			val s1 = ppName(object.name, "???")
-			val s2 = ppName(object.port1?.name, "<port1>")
-			val s3 = ppName(object.port2?.name, "<port2>")
-			val s4 = ppName(cName1, "<moduleP1>")
-			val s5 = ppName(cName2, "<moduleP2>")
-			return s1 + ": " + s4 + "/" + s2 + " --> " + s5 + "/" + s3 
+			val s2 = ppName(cName1, "<module1>")
+			val s3 = ppName(object.port1?.name, "<port1>")
+			val s4 = ppName(cName2, "<module2>")
+			val s5 = ppName(object.port2?.name, "<port2>")
+			return s1 + ": " + s2 + "_" + s3 + " --> " + s4 + "_" + s5 
 		}
 	}
 

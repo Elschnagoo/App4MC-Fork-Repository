@@ -2283,21 +2283,21 @@ public class CustomItemProviderService {
       }
       final String cName2 = _name_1;
       final String s1 = CustomItemProviderService.ppName(((HwConnection)object).getName(), "???");
+      final String s2 = CustomItemProviderService.ppName(cName1, "<module1>");
       HwPort _port1_1 = ((HwConnection)object).getPort1();
       String _name_2 = null;
       if (_port1_1!=null) {
         _name_2=_port1_1.getName();
       }
-      final String s2 = CustomItemProviderService.ppName(_name_2, "<port1>");
+      final String s3 = CustomItemProviderService.ppName(_name_2, "<port1>");
+      final String s4 = CustomItemProviderService.ppName(cName2, "<module2>");
       HwPort _port2_1 = ((HwConnection)object).getPort2();
       String _name_3 = null;
       if (_port2_1!=null) {
         _name_3=_port2_1.getName();
       }
-      final String s3 = CustomItemProviderService.ppName(_name_3, "<port2>");
-      final String s4 = CustomItemProviderService.ppName(cName1, "<moduleP1>");
-      final String s5 = CustomItemProviderService.ppName(cName2, "<moduleP2>");
-      return ((((((((s1 + ": ") + s4) + "/") + s2) + " --> ") + s5) + "/") + s3);
+      final String s5 = CustomItemProviderService.ppName(_name_3, "<port2>");
+      return ((((((((s1 + ": ") + s2) + "_") + s3) + " --> ") + s4) + "_") + s5);
     }
     return null;
   }

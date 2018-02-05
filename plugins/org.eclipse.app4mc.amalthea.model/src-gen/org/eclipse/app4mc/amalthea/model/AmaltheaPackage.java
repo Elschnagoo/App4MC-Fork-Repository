@@ -12439,13 +12439,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_LATENCY_FEATURE_COUNT = 0;
 
 	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED = 0;
+
+	/**
 	 * The number of operations of the '<em>Hw Latency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_LATENCY_OPERATION_COUNT = 0;
+	int HW_LATENCY_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LatencyConstantImpl <em>Latency Constant</em>}' class.
@@ -12474,6 +12483,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LATENCY_CONSTANT_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATENCY_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Latency Constant</em>' class.
@@ -12511,6 +12529,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LATENCY_DEVIATION_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Container Notification Required</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LATENCY_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Latency Deviation</em>' class.
@@ -32247,6 +32274,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHwLatency();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwLatency#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.HwLatency#containerNotificationRequired()
+	 * @generated
+	 */
+	EOperation getHwLatency__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant <em>Latency Constant</em>}'.

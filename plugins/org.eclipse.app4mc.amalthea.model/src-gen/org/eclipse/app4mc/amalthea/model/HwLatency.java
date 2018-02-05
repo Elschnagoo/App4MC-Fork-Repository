@@ -25,4 +25,13 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface HwLatency extends EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
+	 * @generated
+	 */
+	boolean containerNotificationRequired();
+
 } // HwLatency
