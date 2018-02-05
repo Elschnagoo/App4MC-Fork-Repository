@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ConstantLatency;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,19 +28,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ConstantLatency} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConstantLatencyItemProvider extends HwLatencyItemProvider {
+public class LatencyConstantItemProvider extends HwLatencyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConstantLatencyItemProvider(AdapterFactory adapterFactory) {
+	public LatencyConstantItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,25 +55,25 @@ public class ConstantLatencyItemProvider extends HwLatencyItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addConstantCyclesPropertyDescriptor(object);
+			addCyclesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Constant Cycles feature.
+	 * This adds a property descriptor for the Cycles feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addConstantCyclesPropertyDescriptor(Object object) {
+	protected void addCyclesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ConstantLatency_constantCycles_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConstantLatency_constantCycles_feature", "_UI_ConstantLatency_type"),
-				 AmaltheaPackage.eINSTANCE.getConstantLatency_ConstantCycles(),
+				 getString("_UI_LatencyConstant_cycles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LatencyConstant_cycles_feature", "_UI_LatencyConstant_type"),
+				 AmaltheaPackage.eINSTANCE.getLatencyConstant_Cycles(),
 				 true,
 				 false,
 				 false,
@@ -83,14 +83,14 @@ public class ConstantLatencyItemProvider extends HwLatencyItemProvider {
 	}
 
 	/**
-	 * This returns ConstantLatency.gif.
+	 * This returns LatencyConstant.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ConstantLatency"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LatencyConstant"));
 	}
 
 	/**
@@ -109,12 +109,19 @@ public class ConstantLatencyItemProvider extends HwLatencyItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		ConstantLatency constantLatency = (ConstantLatency)object;
-		return getString("_UI_ConstantLatency_type") + " " + constantLatency.getConstantCycles();
+	public String getTextGen(Object object) {
+		LatencyConstant latencyConstant = (LatencyConstant)object;
+		return getString("_UI_LatencyConstant_type") + " " + latencyConstant.getCycles();
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getLatencyConstantItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -127,8 +134,8 @@ public class ConstantLatencyItemProvider extends HwLatencyItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ConstantLatency.class)) {
-			case AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES:
+		switch (notification.getFeatureID(LatencyConstant.class)) {
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

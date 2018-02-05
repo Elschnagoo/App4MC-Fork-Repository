@@ -33,21 +33,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LatencyDeviationImpl#getDeviationInCylces <em>Deviation In Cylces</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LatencyDeviationImpl#getCycles <em>Cycles</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviation {
 	/**
-	 * The cached value of the '{@link #getDeviationInCylces() <em>Deviation In Cylces</em>}' containment reference.
+	 * The cached value of the '{@link #getCycles() <em>Cycles</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDeviationInCylces()
+	 * @see #getCycles()
 	 * @generated
 	 * @ordered
 	 */
-	protected Deviation<LongObject> deviationInCylces;
+	protected Deviation<LongObject> cycles;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,8 +73,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deviation<LongObject> getDeviationInCylces() {
-		return deviationInCylces;
+	public Deviation<LongObject> getCycles() {
+		return cycles;
 	}
 
 	/**
@@ -82,11 +82,11 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDeviationInCylces(Deviation<LongObject> newDeviationInCylces, NotificationChain msgs) {
-		Deviation<LongObject> oldDeviationInCylces = deviationInCylces;
-		deviationInCylces = newDeviationInCylces;
+	public NotificationChain basicSetCycles(Deviation<LongObject> newCycles, NotificationChain msgs) {
+		Deviation<LongObject> oldCycles = cycles;
+		cycles = newCycles;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES, oldDeviationInCylces, newDeviationInCylces);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LATENCY_DEVIATION__CYCLES, oldCycles, newCycles);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -97,18 +97,18 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDeviationInCylces(Deviation<LongObject> newDeviationInCylces) {
-		if (newDeviationInCylces != deviationInCylces) {
+	public void setCycles(Deviation<LongObject> newCycles) {
+		if (newCycles != cycles) {
 			NotificationChain msgs = null;
-			if (deviationInCylces != null)
-				msgs = ((InternalEObject)deviationInCylces).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES, null, msgs);
-			if (newDeviationInCylces != null)
-				msgs = ((InternalEObject)newDeviationInCylces).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES, null, msgs);
-			msgs = basicSetDeviationInCylces(newDeviationInCylces, msgs);
+			if (cycles != null)
+				msgs = ((InternalEObject)cycles).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__CYCLES, null, msgs);
+			if (newCycles != null)
+				msgs = ((InternalEObject)newCycles).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LATENCY_DEVIATION__CYCLES, null, msgs);
+			msgs = basicSetCycles(newCycles, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES, newDeviationInCylces, newDeviationInCylces));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LATENCY_DEVIATION__CYCLES, newCycles, newCycles));
 	}
 
 	/**
@@ -119,8 +119,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
-				return basicSetDeviationInCylces(null, msgs);
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
+				return basicSetCycles(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -133,8 +133,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
-				return getDeviationInCylces();
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
+				return getCycles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,8 +148,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
-				setDeviationInCylces((Deviation<LongObject>)newValue);
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
+				setCycles((Deviation<LongObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,8 +163,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
-				setDeviationInCylces((Deviation<LongObject>)null);
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
+				setCycles((Deviation<LongObject>)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -178,8 +178,8 @@ public class LatencyDeviationImpl extends HwLatencyImpl implements LatencyDeviat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
-				return deviationInCylces != null;
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
+				return cycles != null;
 		}
 		return super.eIsSet(featureID);
 	}

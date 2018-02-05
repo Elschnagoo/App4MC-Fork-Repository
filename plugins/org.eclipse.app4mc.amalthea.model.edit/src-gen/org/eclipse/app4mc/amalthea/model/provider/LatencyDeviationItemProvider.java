@@ -72,7 +72,7 @@ public class LatencyDeviationItemProvider extends HwLatencyItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getLatencyDeviation_DeviationInCylces());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getLatencyDeviation_Cycles());
 		}
 		return childrenFeatures;
 	}
@@ -117,11 +117,18 @@ public class LatencyDeviationItemProvider extends HwLatencyItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		return getString("_UI_LatencyDeviation_type");
 	}
-	
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getLatencyDeviationItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -135,7 +142,7 @@ public class LatencyDeviationItemProvider extends HwLatencyItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LatencyDeviation.class)) {
-			case AmaltheaPackage.LATENCY_DEVIATION__DEVIATION_IN_CYLCES:
+			case AmaltheaPackage.LATENCY_DEVIATION__CYCLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,7 +162,7 @@ public class LatencyDeviationItemProvider extends HwLatencyItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getLatencyDeviation_DeviationInCylces(),
+				(AmaltheaPackage.eINSTANCE.getLatencyDeviation_Cycles(),
 				 AmaltheaFactory.eINSTANCE.createDeviation()));
 	}
 

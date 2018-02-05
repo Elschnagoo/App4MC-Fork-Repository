@@ -2953,24 +2953,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
 }</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ConstantLatency">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwLatency">
-        <xsd:attribute name="constantCycles" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ConstantLatency" type="am:ConstantLatency"/>
-  <xsd:complexType name="LatencyDeviation">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwLatency">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviationInCylces" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="LatencyDeviation" type="am:LatencyDeviation"/>
   <xsd:complexType abstract="true" name="HwLatency">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -2979,6 +2961,24 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
   <xsd:element name="HwLatency" type="am:HwLatency"/>
+  <xsd:complexType name="LatencyConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwLatency">
+        <xsd:attribute name="cycles" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LatencyConstant" type="am:LatencyConstant"/>
+  <xsd:complexType name="LatencyDeviation">
+    <xsd:complexContent>
+      <xsd:extension base="am:HwLatency">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="cycles" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="LatencyDeviation" type="am:LatencyDeviation"/>
   <xsd:complexType abstract="true" name="HwDefinition">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">

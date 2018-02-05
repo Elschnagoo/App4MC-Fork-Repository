@@ -1802,17 +1802,17 @@ enum WriteStrategy {
 	_other_
 }
 
-class ConstantLatency extends HwLatency {
-	long constantCycles = "0"
-}
-
-class LatencyDeviation extends HwLatency {
-	contains Deviation<LongObject> deviationInCylces
-}
 
 abstract class HwLatency {
 }
 
+class LatencyConstant extends HwLatency {
+	long cycles = "0"
+}
+
+class LatencyDeviation extends HwLatency {
+	contains Deviation<LongObject> cycles
+}
 
 abstract class HwDefinition extends ReferableBaseObject, ITaggable {
 	refers HwFeature[] features

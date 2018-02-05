@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ConstantLatency;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -23,44 +23,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Constant Latency</b></em>'.
+ * An implementation of the model object '<em><b>Latency Constant</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConstantLatencyImpl#getConstantCycles <em>Constant Cycles</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LatencyConstantImpl#getCycles <em>Cycles</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatency {
+public class LatencyConstantImpl extends HwLatencyImpl implements LatencyConstant {
 	/**
-	 * The default value of the '{@link #getConstantCycles() <em>Constant Cycles</em>}' attribute.
+	 * The default value of the '{@link #getCycles() <em>Cycles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstantCycles()
+	 * @see #getCycles()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long CONSTANT_CYCLES_EDEFAULT = 0L;
+	protected static final long CYCLES_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getConstantCycles() <em>Constant Cycles</em>}' attribute.
+	 * The cached value of the '{@link #getCycles() <em>Cycles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstantCycles()
+	 * @see #getCycles()
 	 * @generated
 	 * @ordered
 	 */
-	protected long constantCycles = CONSTANT_CYCLES_EDEFAULT;
+	protected long cycles = CYCLES_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConstantLatencyImpl() {
+	protected LatencyConstantImpl() {
 		super();
 	}
 
@@ -71,7 +71,7 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getConstantLatency();
+		return AmaltheaPackage.eINSTANCE.getLatencyConstant();
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getConstantCycles() {
-		return constantCycles;
+	public long getCycles() {
+		return cycles;
 	}
 
 	/**
@@ -88,11 +88,11 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConstantCycles(long newConstantCycles) {
-		long oldConstantCycles = constantCycles;
-		constantCycles = newConstantCycles;
+	public void setCycles(long newCycles) {
+		long oldCycles = cycles;
+		cycles = newCycles;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES, oldConstantCycles, constantCycles));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LATENCY_CONSTANT__CYCLES, oldCycles, cycles));
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES:
-				return getConstantCycles();
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
+				return getCycles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -117,8 +117,8 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES:
-				setConstantCycles((Long)newValue);
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
+				setCycles((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,8 +132,8 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES:
-				setConstantCycles(CONSTANT_CYCLES_EDEFAULT);
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
+				setCycles(CYCLES_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -147,8 +147,8 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CONSTANT_LATENCY__CONSTANT_CYCLES:
-				return constantCycles != CONSTANT_CYCLES_EDEFAULT;
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
+				return cycles != CYCLES_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -163,10 +163,10 @@ public class ConstantLatencyImpl extends HwLatencyImpl implements ConstantLatenc
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (constantCycles: ");
-		result.append(constantCycles);
+		result.append(" (cycles: ");
+		result.append(cycles);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ConstantLatencyImpl
+} //LatencyConstantImpl

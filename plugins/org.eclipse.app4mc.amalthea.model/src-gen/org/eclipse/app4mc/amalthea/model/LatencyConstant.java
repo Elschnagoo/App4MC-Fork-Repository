@@ -15,46 +15,46 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Constant Latency</b></em>'.
+ * A representation of the model object '<em><b>Latency Constant</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ConstantLatency#getConstantCycles <em>Constant Cycles</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles <em>Cycles</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstantLatency()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyConstant()
  * @model
  * @generated
  */
-public interface ConstantLatency extends HwLatency {
+public interface LatencyConstant extends HwLatency {
 	/**
-	 * Returns the value of the '<em><b>Constant Cycles</b></em>' attribute.
+	 * Returns the value of the '<em><b>Cycles</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Constant Cycles</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Cycles</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constant Cycles</em>' attribute.
-	 * @see #setConstantCycles(long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConstantLatency_ConstantCycles()
+	 * @return the value of the '<em>Cycles</em>' attribute.
+	 * @see #setCycles(long)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyConstant_Cycles()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	long getConstantCycles();
+	long getCycles();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConstantLatency#getConstantCycles <em>Constant Cycles</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles <em>Cycles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constant Cycles</em>' attribute.
-	 * @see #getConstantCycles()
+	 * @param value the new value of the '<em>Cycles</em>' attribute.
+	 * @see #getCycles()
 	 * @generated
 	 */
-	void setConstantCycles(long value);
+	void setCycles(long value);
 
-} // ConstantLatency
+} // LatencyConstant

@@ -306,7 +306,7 @@ public class HwAccessElementItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createConstantLatency()));
+				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -316,7 +316,7 @@ public class HwAccessElementItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createConstantLatency()));
+				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -82,7 +82,6 @@ import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
-import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
@@ -204,6 +203,7 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
@@ -790,12 +790,12 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateHwConnection((HwConnection)value, diagnostics, context);
 			case AmaltheaPackage.HW_ACCESS_ELEMENT:
 				return validateHwAccessElement((HwAccessElement)value, diagnostics, context);
-			case AmaltheaPackage.CONSTANT_LATENCY:
-				return validateConstantLatency((ConstantLatency)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY_DEVIATION:
-				return validateLatencyDeviation((LatencyDeviation)value, diagnostics, context);
 			case AmaltheaPackage.HW_LATENCY:
 				return validateHwLatency((HwLatency)value, diagnostics, context);
+			case AmaltheaPackage.LATENCY_CONSTANT:
+				return validateLatencyConstant((LatencyConstant)value, diagnostics, context);
+			case AmaltheaPackage.LATENCY_DEVIATION:
+				return validateLatencyDeviation((LatencyDeviation)value, diagnostics, context);
 			case AmaltheaPackage.HW_DEFINITION:
 				return validateHwDefinition((HwDefinition)value, diagnostics, context);
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION:
@@ -2666,8 +2666,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateConstantLatency(ConstantLatency constantLatency, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(constantLatency, diagnostics, context);
+	public boolean validateHwLatency(HwLatency hwLatency, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwLatency, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLatencyConstant(LatencyConstant latencyConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(latencyConstant, diagnostics, context);
 	}
 
 	/**
@@ -2677,15 +2686,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateLatencyDeviation(LatencyDeviation latencyDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(latencyDeviation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHwLatency(HwLatency hwLatency, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwLatency, diagnostics, context);
 	}
 
 	/**

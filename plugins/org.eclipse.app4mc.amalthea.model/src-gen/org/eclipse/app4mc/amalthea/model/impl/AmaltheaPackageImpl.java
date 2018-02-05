@@ -83,7 +83,6 @@ import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
-import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
@@ -204,6 +203,7 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
@@ -1506,7 +1506,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass constantLatencyEClass = null;
+	private EClass hwLatencyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass latencyConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1514,13 +1521,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass latencyDeviationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hwLatencyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7273,8 +7273,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getConstantLatency() {
-		return constantLatencyEClass;
+	public EClass getHwLatency() {
+		return hwLatencyEClass;
 	}
 
 	/**
@@ -7282,8 +7282,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConstantLatency_ConstantCycles() {
-		return (EAttribute)constantLatencyEClass.getEStructuralFeatures().get(0);
+	public EClass getLatencyConstant() {
+		return latencyConstantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLatencyConstant_Cycles() {
+		return (EAttribute)latencyConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7300,17 +7309,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLatencyDeviation_DeviationInCylces() {
+	public EReference getLatencyDeviation_Cycles() {
 		return (EReference)latencyDeviationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHwLatency() {
-		return hwLatencyEClass;
 	}
 
 	/**
@@ -13458,13 +13458,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_LATENCY);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
 
-		constantLatencyEClass = createEClass(CONSTANT_LATENCY);
-		createEAttribute(constantLatencyEClass, CONSTANT_LATENCY__CONSTANT_CYCLES);
+		hwLatencyEClass = createEClass(HW_LATENCY);
+
+		latencyConstantEClass = createEClass(LATENCY_CONSTANT);
+		createEAttribute(latencyConstantEClass, LATENCY_CONSTANT__CYCLES);
 
 		latencyDeviationEClass = createEClass(LATENCY_DEVIATION);
-		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__DEVIATION_IN_CYLCES);
-
-		hwLatencyEClass = createEClass(HW_LATENCY);
+		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__CYCLES);
 
 		hwDefinitionEClass = createEClass(HW_DEFINITION);
 		createEReference(hwDefinitionEClass, HW_DEFINITION__FEATURES);
@@ -14505,7 +14505,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwConnectionEClass.getESuperTypes().add(this.getITaggable());
 		hwAccessElementEClass.getESuperTypes().add(this.getITaggable());
 		hwAccessElementEClass.getESuperTypes().add(this.getINamed());
-		constantLatencyEClass.getESuperTypes().add(this.getHwLatency());
+		latencyConstantEClass.getESuperTypes().add(this.getHwLatency());
 		latencyDeviationEClass.getESuperTypes().add(this.getHwLatency());
 		hwDefinitionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwDefinitionEClass.getESuperTypes().add(this.getITaggable());
@@ -15347,16 +15347,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constantLatencyEClass, ConstantLatency.class, "ConstantLatency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConstantLatency_ConstantCycles(), theEcorePackage.getELong(), "constantCycles", "0", 0, 1, ConstantLatency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(latencyConstantEClass, LatencyConstant.class, "LatencyConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLatencyConstant_Cycles(), theEcorePackage.getELong(), "cycles", "0", 0, 1, LatencyConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(latencyDeviationEClass, LatencyDeviation.class, "LatencyDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getLongObject());
 		g1.getETypeArguments().add(g2);
-		initEReference(getLatencyDeviation_DeviationInCylces(), g1, null, "deviationInCylces", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLatencyDeviation_Cycles(), g1, null, "cycles", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwDefinition_Features(), this.getHwFeature(), null, "features", null, 0, -1, HwDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

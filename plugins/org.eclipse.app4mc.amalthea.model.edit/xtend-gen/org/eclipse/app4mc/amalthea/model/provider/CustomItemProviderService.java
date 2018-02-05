@@ -91,6 +91,8 @@ import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
+import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
@@ -2321,6 +2323,69 @@ public class CustomItemProviderService {
       return new ViewerNotification(notification, _notifier, false, true);
     }
     return null;
+  }
+  
+  /**
+   * LatencyConstantItemProvider
+   */
+  public static String getLatencyConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof LatencyConstant)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      final String s2 = Long.toString(((LatencyConstant)object).getCycles());
+      return ((s1 + "cycles (constant): ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  /**
+   * LatencyDeviationItemProvider
+   */
+  public static String getLatencyDeviationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof LatencyDeviation)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      Deviation<LongObject> _cycles = ((LatencyDeviation)object).getCycles();
+      Distribution<LongObject> _distribution = null;
+      if (_cycles!=null) {
+        _distribution=_cycles.getDistribution();
+      }
+      EClass _eClass = null;
+      if (_distribution!=null) {
+        _eClass=_distribution.eClass();
+      }
+      String _name = null;
+      if (_eClass!=null) {
+        _name=_eClass.getName();
+      }
+      final String distName = _name;
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
+      if (_isNullOrEmpty) {
+        _xifexpression_1 = "<distribution>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
+      }
+      final String s2 = _xifexpression_1;
+      return ((s1 + "cycles (deviation): ") + s2);
+    } else {
+      return defaultText;
+    }
   }
   
   /**

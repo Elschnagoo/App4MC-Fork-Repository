@@ -2612,26 +2612,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ConstantLatency} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConstantLatencyItemProvider constantLatencyItemProvider;
+	protected LatencyConstantItemProvider latencyConstantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ConstantLatency}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConstantLatencyAdapter() {
-		if (constantLatencyItemProvider == null) {
-			constantLatencyItemProvider = new ConstantLatencyItemProvider(this);
+	public Adapter createLatencyConstantAdapter() {
+		if (latencyConstantItemProvider == null) {
+			latencyConstantItemProvider = new LatencyConstantItemProvider(this);
 		}
 
-		return constantLatencyItemProvider;
+		return latencyConstantItemProvider;
 	}
 
 	/**
@@ -6224,7 +6224,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (connectionHandlerItemProvider != null) connectionHandlerItemProvider.dispose();
 		if (hwConnectionItemProvider != null) hwConnectionItemProvider.dispose();
 		if (hwAccessElementItemProvider != null) hwAccessElementItemProvider.dispose();
-		if (constantLatencyItemProvider != null) constantLatencyItemProvider.dispose();
+		if (latencyConstantItemProvider != null) latencyConstantItemProvider.dispose();
 		if (latencyDeviationItemProvider != null) latencyDeviationItemProvider.dispose();
 		if (processingUnitDefinitionItemProvider != null) processingUnitDefinitionItemProvider.dispose();
 		if (connectionHandlerDefinitionItemProvider != null) connectionHandlerDefinitionItemProvider.dispose();

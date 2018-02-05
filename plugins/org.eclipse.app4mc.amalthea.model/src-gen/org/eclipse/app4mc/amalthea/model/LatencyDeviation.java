@@ -22,7 +22,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getDeviationInCylces <em>Deviation In Cylces</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getCycles <em>Cycles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyDeviation()
@@ -31,29 +31,29 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface LatencyDeviation extends HwLatency {
 	/**
-	 * Returns the value of the '<em><b>Deviation In Cylces</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Cycles</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Deviation In Cylces</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Cycles</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deviation In Cylces</em>' containment reference.
-	 * @see #setDeviationInCylces(Deviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyDeviation_DeviationInCylces()
+	 * @return the value of the '<em>Cycles</em>' containment reference.
+	 * @see #setCycles(Deviation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyDeviation_Cycles()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Deviation<LongObject> getDeviationInCylces();
+	Deviation<LongObject> getCycles();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getDeviationInCylces <em>Deviation In Cylces</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getCycles <em>Cycles</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deviation In Cylces</em>' containment reference.
-	 * @see #getDeviationInCylces()
+	 * @param value the new value of the '<em>Cycles</em>' containment reference.
+	 * @see #getCycles()
 	 * @generated
 	 */
-	void setDeviationInCylces(Deviation<LongObject> value);
+	void setCycles(Deviation<LongObject> value);
 
 } // LatencyDeviation

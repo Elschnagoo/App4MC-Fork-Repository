@@ -263,7 +263,7 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwFeature_Latency(),
-				 AmaltheaFactory.eINSTANCE.createConstantLatency()));
+				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter

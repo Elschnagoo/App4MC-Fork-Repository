@@ -12427,7 +12427,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwLatency()
 	 * @generated
 	 */
-	int HW_LATENCY = 156;
+	int HW_LATENCY = 154;
 
 	/**
 	 * The number of structural features of the '<em>Hw Latency</em>' class.
@@ -12448,41 +12448,41 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_LATENCY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ConstantLatencyImpl <em>Constant Latency</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LatencyConstantImpl <em>Latency Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ConstantLatencyImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstantLatency()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.LatencyConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyConstant()
 	 * @generated
 	 */
-	int CONSTANT_LATENCY = 154;
+	int LATENCY_CONSTANT = 155;
 
 	/**
-	 * The feature id for the '<em><b>Constant Cycles</b></em>' attribute.
+	 * The feature id for the '<em><b>Cycles</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_LATENCY__CONSTANT_CYCLES = HW_LATENCY_FEATURE_COUNT + 0;
+	int LATENCY_CONSTANT__CYCLES = HW_LATENCY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Constant Latency</em>' class.
+	 * The number of structural features of the '<em>Latency Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_LATENCY_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
+	int LATENCY_CONSTANT_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Constant Latency</em>' class.
+	 * The number of operations of the '<em>Latency Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_LATENCY_OPERATION_COUNT = HW_LATENCY_OPERATION_COUNT + 0;
+	int LATENCY_CONSTANT_OPERATION_COUNT = HW_LATENCY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LatencyDeviationImpl <em>Latency Deviation</em>}' class.
@@ -12492,16 +12492,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyDeviation()
 	 * @generated
 	 */
-	int LATENCY_DEVIATION = 155;
+	int LATENCY_DEVIATION = 156;
 
 	/**
-	 * The feature id for the '<em><b>Deviation In Cylces</b></em>' containment reference.
+	 * The feature id for the '<em><b>Cycles</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LATENCY_DEVIATION__DEVIATION_IN_CYLCES = HW_LATENCY_FEATURE_COUNT + 0;
+	int LATENCY_DEVIATION__CYCLES = HW_LATENCY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Latency Deviation</em>' class.
@@ -32239,25 +32239,35 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwAccessElement_DataRate();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ConstantLatency <em>Constant Latency</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Constant Latency</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConstantLatency
+	 * @return the meta object for class '<em>Hw Latency</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwLatency
 	 * @generated
 	 */
-	EClass getConstantLatency();
+	EClass getHwLatency();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConstantLatency#getConstantCycles <em>Constant Cycles</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant <em>Latency Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Constant Cycles</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConstantLatency#getConstantCycles()
-	 * @see #getConstantLatency()
+	 * @return the meta object for class '<em>Latency Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.LatencyConstant
 	 * @generated
 	 */
-	EAttribute getConstantLatency_ConstantCycles();
+	EClass getLatencyConstant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles <em>Cycles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cycles</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles()
+	 * @see #getLatencyConstant()
+	 * @generated
+	 */
+	EAttribute getLatencyConstant_Cycles();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation <em>Latency Deviation</em>}'.
@@ -32270,25 +32280,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getLatencyDeviation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getDeviationInCylces <em>Deviation In Cylces</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.LatencyDeviation#getCycles <em>Cycles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Deviation In Cylces</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.LatencyDeviation#getDeviationInCylces()
+	 * @return the meta object for the containment reference '<em>Cycles</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.LatencyDeviation#getCycles()
 	 * @see #getLatencyDeviation()
 	 * @generated
 	 */
-	EReference getLatencyDeviation_DeviationInCylces();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Hw Latency</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwLatency
-	 * @generated
-	 */
-	EClass getHwLatency();
+	EReference getLatencyDeviation_Cycles();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwDefinition <em>Hw Definition</em>}'.

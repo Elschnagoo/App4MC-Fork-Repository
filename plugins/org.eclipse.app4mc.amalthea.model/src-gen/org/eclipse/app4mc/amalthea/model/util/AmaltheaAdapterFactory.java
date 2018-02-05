@@ -71,7 +71,6 @@ import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
-import org.eclipse.app4mc.amalthea.model.ConstantLatency;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
@@ -178,6 +177,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
@@ -1026,16 +1026,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createHwAccessElementAdapter();
 			}
 			@Override
-			public Adapter caseConstantLatency(ConstantLatency object) {
-				return createConstantLatencyAdapter();
+			public Adapter caseHwLatency(HwLatency object) {
+				return createHwLatencyAdapter();
+			}
+			@Override
+			public Adapter caseLatencyConstant(LatencyConstant object) {
+				return createLatencyConstantAdapter();
 			}
 			@Override
 			public Adapter caseLatencyDeviation(LatencyDeviation object) {
 				return createLatencyDeviationAdapter();
-			}
-			@Override
-			public Adapter caseHwLatency(HwLatency object) {
-				return createHwLatencyAdapter();
 			}
 			@Override
 			public Adapter caseHwDefinition(HwDefinition object) {
@@ -3938,16 +3938,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ConstantLatency <em>Constant Latency</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ConstantLatency
+	 * @see org.eclipse.app4mc.amalthea.model.HwLatency
 	 * @generated
 	 */
-	public Adapter createConstantLatencyAdapter() {
+	public Adapter createHwLatencyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant <em>Latency Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.LatencyConstant
+	 * @generated
+	 */
+	public Adapter createLatencyConstantAdapter() {
 		return null;
 	}
 
@@ -3962,20 +3976,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLatencyDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwLatency
-	 * @generated
-	 */
-	public Adapter createHwLatencyAdapter() {
 		return null;
 	}
 
