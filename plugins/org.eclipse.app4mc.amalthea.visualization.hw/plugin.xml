@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="visualization.cmd"
+               id="org.eclipse.app4mc.amalthea.visualization.hw.menuitem"
+               label="AMALTHEA HW Model Visualization"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <instanceof
+                           value="org.eclipse.app4mc.amalthea.model.HWModel">
+                     </instanceof>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.app4mc.amalthea.visualization.hw.VisualizationHandler"
+            commandId="visualization.cmd">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="visualization.cmd"
+            name="Amalthea HW Model visualization">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.app4mc.amalthea.visualization.hw.ui.HWVisualizationPreferencePage"
+            id="org.eclipse.app4mc.amalthea.visualization.hw.preferencepage"
+            name="AMALTHEA-HW Visualization">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.app4mc.amalthea.visualization.hw.ui.PreferenceInitializer">
+      </initializer>
+   </extension> 
+
+
+</plugin>

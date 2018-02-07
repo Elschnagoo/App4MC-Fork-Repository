@@ -13,8 +13,11 @@ h4. Documents
 
 h4. Examples
 
-* "Simple ECU":../help-model/examples/Simple_ECU.amxmi
-* "Simple EE-Architecture":../help-model/examples/Simple_E_E_Architecture.amxmi
+The following Zip archive contains two simple examples.
+* "Archive":../help-model/examples/new-hw-example-projects.zip
+
+Save the archive via @"Save target as..."@  
+and import it into the workspace via @"Import..." > "Existing Projects into Workspace"@
 
 h4. Class Diagrams
 
