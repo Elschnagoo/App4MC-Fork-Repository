@@ -123,6 +123,11 @@
 		<module>../../plugins/org.jdom2</module>
 		<module>../../plugins/org.jaxen</module>
 
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius.design</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.visualization.hw</module>
+		<module>../../plugins/net.sourceforge.plantuml</module>
+				
 		<module>../../plugins/org.eclipse.app4mc.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.help</module>
@@ -132,8 +137,6 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.help</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.help</module>
 		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius.design</module>
 
 		<!-- Features -->
 
@@ -149,6 +152,8 @@
 		<module>../../features/org.eclipse.app4mc.amalthea.import.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.models</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.models.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.visualizations</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.visualizations.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.workflow</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.workflow.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.workflow.common</module>
