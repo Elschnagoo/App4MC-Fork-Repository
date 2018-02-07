@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.console,
  org.apache.log4j,
  org.eclipse.app4mc.amalthea.model,
- org.eclipse.app4mc.amalthea.workflow.core;bundle-version="0.8.1"
+ org.eclipse.app4mc.amalthea.workflow.core
 Bundle-ClassPath: .

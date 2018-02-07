@@ -38,7 +38,7 @@ All rights reserved.
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.sphinx.emf"/>
-      <import plugin="org.eclipse.app4mc.multicore.openmapping" version="0.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.app4mc.multicore.openmapping"/>
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.emf.common.ui"/>
    </requires>
