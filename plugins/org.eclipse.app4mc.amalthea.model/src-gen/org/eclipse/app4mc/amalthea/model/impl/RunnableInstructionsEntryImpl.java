@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.Instructions;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<CoreType,Instructions> {
+public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,Instructions> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected CoreType key;
+	protected ProcessingUnitDefinition key;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
@@ -89,10 +89,10 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoreType getTypedKey() {
+	public ProcessingUnitDefinition getTypedKey() {
 		if (key != null && key.eIsProxy()) {
 			InternalEObject oldKey = (InternalEObject)key;
-			key = (CoreType)eResolveProxy(oldKey);
+			key = (ProcessingUnitDefinition)eResolveProxy(oldKey);
 			if (key != oldKey) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY, oldKey, key));
@@ -106,7 +106,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoreType basicGetTypedKey() {
+	public ProcessingUnitDefinition basicGetTypedKey() {
 		return key;
 	}
 
@@ -115,8 +115,8 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(CoreType newKey) {
-		CoreType oldKey = key;
+	public void setTypedKey(ProcessingUnitDefinition newKey) {
+		ProcessingUnitDefinition oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY, oldKey, key));
@@ -205,7 +205,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
-				setTypedKey((CoreType)newValue);
+				setTypedKey((ProcessingUnitDefinition)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
 				setTypedValue((Instructions)newValue);
@@ -223,7 +223,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
-				setTypedKey((CoreType)null);
+				setTypedKey((ProcessingUnitDefinition)null);
 				return;
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
 				setTypedValue((Instructions)null);
@@ -282,7 +282,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CoreType getKey() {
+	public ProcessingUnitDefinition getKey() {
 		return getTypedKey();
 	}
 
@@ -291,7 +291,7 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(CoreType key) {
+	public void setKey(ProcessingUnitDefinition key) {
 		setTypedKey(key);
 	}
 
@@ -321,9 +321,9 @@ public class RunnableInstructionsEntryImpl extends AmaltheaExtendedEObjectImpl i
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<CoreType, Instructions> getEMap() {
+	public EMap<ProcessingUnitDefinition, Instructions> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<CoreType, Instructions>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<ProcessingUnitDefinition, Instructions>)container.eGet(eContainmentFeature());
 	}
 
 } //RunnableInstructionsEntryImpl

@@ -20,10 +20,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
-import org.eclipse.app4mc.amalthea.model.AbstractionType;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
-import org.eclipse.app4mc.amalthea.model.AccessPath;
-import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Activation;
@@ -43,11 +40,11 @@ import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
-import org.eclipse.app4mc.amalthea.model.Bridge;
-import org.eclipse.app4mc.amalthea.model.Bus;
-import org.eclipse.app4mc.amalthea.model.BusType;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.CacheDefinition;
+import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -68,9 +65,6 @@ import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
-import org.eclipse.app4mc.amalthea.model.ComplexPin;
-import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
 import org.eclipse.app4mc.amalthea.model.ComponentEventType;
@@ -83,19 +77,18 @@ import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.ConcurrencyType;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.ConfigModel;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
-import org.eclipse.app4mc.amalthea.model.CrossbarSwitch;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -128,8 +121,6 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.ECUType;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
@@ -155,6 +146,7 @@ import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
@@ -166,14 +158,20 @@ import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HardwareTypeDescription;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathElement;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
-import org.eclipse.app4mc.amalthea.model.HwComponent;
-import org.eclipse.app4mc.amalthea.model.HwElementRef;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwDomain;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureType;
+import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.HwModule;
+import org.eclipse.app4mc.amalthea.model.HwPath;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -205,9 +203,6 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.Latency;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPathElement;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
@@ -223,12 +218,9 @@ import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
+import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryType;
-import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.MicrocontrollerType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -242,8 +234,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Network;
-import org.eclipse.app4mc.amalthea.model.NetworkType;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -270,13 +260,13 @@ import org.eclipse.app4mc.amalthea.model.Pfair;
 import org.eclipse.app4mc.amalthea.model.PfairPD2;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping;
-import org.eclipse.app4mc.amalthea.model.Pin;
-import org.eclipse.app4mc.amalthea.model.PinType;
 import org.eclipse.app4mc.amalthea.model.Pointer;
 import org.eclipse.app4mc.amalthea.model.PollingPeriodicServer;
 import org.eclipse.app4mc.amalthea.model.Port;
+import org.eclipse.app4mc.amalthea.model.PortInterface;
+import org.eclipse.app4mc.amalthea.model.PortType;
+import org.eclipse.app4mc.amalthea.model.PowerDomain;
 import org.eclipse.app4mc.amalthea.model.Preemption;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
 import org.eclipse.app4mc.amalthea.model.PriorityBased;
 import org.eclipse.app4mc.amalthea.model.PriorityBasedRoundRobin;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
@@ -297,12 +287,12 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessSeparationConstraint;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.QType;
+import org.eclipse.app4mc.amalthea.model.PuType;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.Quantity;
-import org.eclipse.app4mc.amalthea.model.Quartz;
-import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
@@ -337,7 +327,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.Scenario;
-import org.eclipse.app4mc.amalthea.model.SchedType;
+import org.eclipse.app4mc.amalthea.model.SchedPolicy;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -368,11 +358,11 @@ import org.eclipse.app4mc.amalthea.model.StimulusEvent;
 import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Struct;
 import org.eclipse.app4mc.amalthea.model.StructEntry;
+import org.eclipse.app4mc.amalthea.model.StructureType;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.SynchronizationType;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
-import org.eclipse.app4mc.amalthea.model.SystemType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
@@ -409,6 +399,7 @@ import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
+import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -773,78 +764,56 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateComponentEvent((ComponentEvent)value, diagnostics, context);
 			case AmaltheaPackage.HW_MODEL:
 				return validateHWModel((HWModel)value, diagnostics, context);
-			case AmaltheaPackage.COMPLEX_NODE:
-				return validateComplexNode((ComplexNode)value, diagnostics, context);
-			case AmaltheaPackage.HW_SYSTEM:
-				return validateHwSystem((HwSystem)value, diagnostics, context);
-			case AmaltheaPackage.ECU:
-				return validateECU((ECU)value, diagnostics, context);
-			case AmaltheaPackage.MICROCONTROLLER:
-				return validateMicrocontroller((Microcontroller)value, diagnostics, context);
-			case AmaltheaPackage.CORE:
-				return validateCore((Core)value, diagnostics, context);
+			case AmaltheaPackage.HW_STRUCTURE:
+				return validateHwStructure((HwStructure)value, diagnostics, context);
+			case AmaltheaPackage.HW_DOMAIN:
+				return validateHwDomain((HwDomain)value, diagnostics, context);
+			case AmaltheaPackage.FREQUENCY_DOMAIN:
+				return validateFrequencyDomain((FrequencyDomain)value, diagnostics, context);
+			case AmaltheaPackage.POWER_DOMAIN:
+				return validatePowerDomain((PowerDomain)value, diagnostics, context);
+			case AmaltheaPackage.HW_MODULE:
+				return validateHwModule((HwModule)value, diagnostics, context);
+			case AmaltheaPackage.PROCESSING_UNIT:
+				return validateProcessingUnit((ProcessingUnit)value, diagnostics, context);
 			case AmaltheaPackage.MEMORY:
 				return validateMemory((Memory)value, diagnostics, context);
-			case AmaltheaPackage.NETWORK:
-				return validateNetwork((Network)value, diagnostics, context);
-			case AmaltheaPackage.QUARTZ:
-				return validateQuartz((Quartz)value, diagnostics, context);
-			case AmaltheaPackage.HW_COMPONENT:
-				return validateHwComponent((HwComponent)value, diagnostics, context);
-			case AmaltheaPackage.HARDWARE_TYPE_DESCRIPTION:
-				return validateHardwareTypeDescription((HardwareTypeDescription)value, diagnostics, context);
-			case AmaltheaPackage.ABSTRACTION_TYPE:
-				return validateAbstractionType((AbstractionType)value, diagnostics, context);
-			case AmaltheaPackage.SYSTEM_TYPE:
-				return validateSystemType((SystemType)value, diagnostics, context);
-			case AmaltheaPackage.ECU_TYPE:
-				return validateECUType((ECUType)value, diagnostics, context);
-			case AmaltheaPackage.MICROCONTROLLER_TYPE:
-				return validateMicrocontrollerType((MicrocontrollerType)value, diagnostics, context);
-			case AmaltheaPackage.CORE_TYPE:
-				return validateCoreType((CoreType)value, diagnostics, context);
-			case AmaltheaPackage.MEMORY_TYPE:
-				return validateMemoryType((MemoryType)value, diagnostics, context);
-			case AmaltheaPackage.NETWORK_TYPE:
-				return validateNetworkType((NetworkType)value, diagnostics, context);
+			case AmaltheaPackage.CACHE:
+				return validateCache((Cache)value, diagnostics, context);
+			case AmaltheaPackage.HW_FEATURE:
+				return validateHwFeature((HwFeature)value, diagnostics, context);
 			case AmaltheaPackage.HW_PORT:
 				return validateHwPort((HwPort)value, diagnostics, context);
-			case AmaltheaPackage.PIN:
-				return validatePin((Pin)value, diagnostics, context);
-			case AmaltheaPackage.COMPLEX_PORT:
-				return validateComplexPort((ComplexPort)value, diagnostics, context);
-			case AmaltheaPackage.COMPLEX_PIN:
-				return validateComplexPin((ComplexPin)value, diagnostics, context);
-			case AmaltheaPackage.PRESCALER:
-				return validatePrescaler((Prescaler)value, diagnostics, context);
-			case AmaltheaPackage.CROSSBAR_SWITCH:
-				return validateCrossbarSwitch((CrossbarSwitch)value, diagnostics, context);
-			case AmaltheaPackage.BUS:
-				return validateBus((Bus)value, diagnostics, context);
-			case AmaltheaPackage.BRIDGE:
-				return validateBridge((Bridge)value, diagnostics, context);
-			case AmaltheaPackage.ACCESS_PATH:
-				return validateAccessPath((AccessPath)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY_ACCESS_PATH:
-				return validateLatencyAccessPath((LatencyAccessPath)value, diagnostics, context);
-			case AmaltheaPackage.HW_ACCESS_PATH:
-				return validateHwAccessPath((HwAccessPath)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY_ACCESS_PATH_ELEMENT:
-				return validateLatencyAccessPathElement((LatencyAccessPathElement)value, diagnostics, context);
-			case AmaltheaPackage.ACCESS_PATH_REF:
-				return validateAccessPathRef((AccessPathRef)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY:
-				return validateLatency((Latency)value, diagnostics, context);
+			case AmaltheaPackage.CONNECTION_HANDLER:
+				return validateConnectionHandler((ConnectionHandler)value, diagnostics, context);
+			case AmaltheaPackage.HW_CONNECTION:
+				return validateHwConnection((HwConnection)value, diagnostics, context);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT:
+				return validateHwAccessElement((HwAccessElement)value, diagnostics, context);
+			case AmaltheaPackage.HW_LATENCY:
+				return validateHwLatency((HwLatency)value, diagnostics, context);
 			case AmaltheaPackage.LATENCY_CONSTANT:
 				return validateLatencyConstant((LatencyConstant)value, diagnostics, context);
 			case AmaltheaPackage.LATENCY_DEVIATION:
 				return validateLatencyDeviation((LatencyDeviation)value, diagnostics, context);
-			case AmaltheaPackage.HW_ACCESS_PATH_ELEMENT:
-				return validateHwAccessPathElement((HwAccessPathElement)value, diagnostics, context);
-			case AmaltheaPackage.HW_ACCESS_PATH_REF:
-				return validateHwAccessPathRef((HwAccessPathRef)value, diagnostics, context);
-			case AmaltheaPackage.HW_ELEMENT_REF:
-				return validateHwElementRef((HwElementRef)value, diagnostics, context);
+			case AmaltheaPackage.HW_DEFINITION:
+				return validateHwDefinition((HwDefinition)value, diagnostics, context);
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION:
+				return validateProcessingUnitDefinition((ProcessingUnitDefinition)value, diagnostics, context);
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION:
+				return validateConnectionHandlerDefinition((ConnectionHandlerDefinition)value, diagnostics, context);
+			case AmaltheaPackage.MEMORY_DEFINITION:
+				return validateMemoryDefinition((MemoryDefinition)value, diagnostics, context);
+			case AmaltheaPackage.CACHE_DEFINITION:
+				return validateCacheDefinition((CacheDefinition)value, diagnostics, context);
+			case AmaltheaPackage.HW_PATH:
+				return validateHwPath((HwPath)value, diagnostics, context);
+			case AmaltheaPackage.HW_ACCESS_PATH:
+				return validateHwAccessPath((HwAccessPath)value, diagnostics, context);
+			case AmaltheaPackage.HW_PATH_ELEMENT:
+				return validateHwPathElement((HwPathElement)value, diagnostics, context);
+			case AmaltheaPackage.HW_DESTINATION:
+				return validateHwDestination((HwDestination)value, diagnostics, context);
 			case AmaltheaPackage.MAPPING_MODEL:
 				return validateMappingModel((MappingModel)value, diagnostics, context);
 			case AmaltheaPackage.SCHEDULER_ALLOCATION:
@@ -1239,18 +1208,22 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateSemaphoreEventType((SemaphoreEventType)value, diagnostics, context);
 			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
 				return validateComponentEventType((ComponentEventType)value, diagnostics, context);
-			case AmaltheaPackage.QTYPE:
-				return validateQType((QType)value, diagnostics, context);
-			case AmaltheaPackage.MEMORY_TYPE_ENUM:
-				return validateMemoryTypeEnum((MemoryTypeEnum)value, diagnostics, context);
-			case AmaltheaPackage.BUS_TYPE:
-				return validateBusType((BusType)value, diagnostics, context);
-			case AmaltheaPackage.RW_TYPE:
-				return validateRWType((RWType)value, diagnostics, context);
-			case AmaltheaPackage.SCHED_TYPE:
-				return validateSchedType((SchedType)value, diagnostics, context);
-			case AmaltheaPackage.PIN_TYPE:
-				return validatePinType((PinType)value, diagnostics, context);
+			case AmaltheaPackage.STRUCTURE_TYPE:
+				return validateStructureType((StructureType)value, diagnostics, context);
+			case AmaltheaPackage.CACHE_TYPE:
+				return validateCacheType((CacheType)value, diagnostics, context);
+			case AmaltheaPackage.PORT_TYPE:
+				return validatePortType((PortType)value, diagnostics, context);
+			case AmaltheaPackage.SCHED_POLICY:
+				return validateSchedPolicy((SchedPolicy)value, diagnostics, context);
+			case AmaltheaPackage.WRITE_STRATEGY:
+				return validateWriteStrategy((WriteStrategy)value, diagnostics, context);
+			case AmaltheaPackage.PU_TYPE:
+				return validatePuType((PuType)value, diagnostics, context);
+			case AmaltheaPackage.PORT_INTERFACE:
+				return validatePortInterface((PortInterface)value, diagnostics, context);
+			case AmaltheaPackage.HW_FEATURE_TYPE:
+				return validateHwFeatureType((HwFeatureType)value, diagnostics, context);
 			case AmaltheaPackage.MEMORY_ADDRESS_MAPPING_TYPE:
 				return validateMemoryAddressMappingType((MemoryAddressMappingType)value, diagnostics, context);
 			case AmaltheaPackage.OS_DATA_CONSISTENCY_MODE:
@@ -2576,8 +2549,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateComplexNode(ComplexNode complexNode, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(complexNode, diagnostics, context);
+	public boolean validateHwStructure(HwStructure hwStructure, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwStructure, diagnostics, context);
 	}
 
 	/**
@@ -2585,8 +2558,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHwSystem(HwSystem hwSystem, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwSystem, diagnostics, context);
+	public boolean validateHwDomain(HwDomain hwDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwDomain, diagnostics, context);
 	}
 
 	/**
@@ -2594,8 +2567,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateECU(ECU ecu, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(ecu, diagnostics, context);
+	public boolean validateFrequencyDomain(FrequencyDomain frequencyDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(frequencyDomain, diagnostics, context);
 	}
 
 	/**
@@ -2603,8 +2576,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMicrocontroller(Microcontroller microcontroller, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(microcontroller, diagnostics, context);
+	public boolean validatePowerDomain(PowerDomain powerDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(powerDomain, diagnostics, context);
 	}
 
 	/**
@@ -2612,8 +2585,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCore(Core core, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(core, diagnostics, context);
+	public boolean validateHwModule(HwModule hwModule, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwModule, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateProcessingUnit(ProcessingUnit processingUnit, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(processingUnit, diagnostics, context);
 	}
 
 	/**
@@ -2630,8 +2612,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNetwork(Network network, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(network, diagnostics, context);
+	public boolean validateCache(Cache cache, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(cache, diagnostics, context);
 	}
 
 	/**
@@ -2639,89 +2621,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateQuartz(Quartz quartz, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(quartz, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHwComponent(HwComponent hwComponent, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwComponent, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHardwareTypeDescription(HardwareTypeDescription hardwareTypeDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hardwareTypeDescription, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAbstractionType(AbstractionType abstractionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(abstractionType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSystemType(SystemType systemType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(systemType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateECUType(ECUType ecuType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(ecuType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMicrocontrollerType(MicrocontrollerType microcontrollerType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(microcontrollerType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCoreType(CoreType coreType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(coreType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMemoryType(MemoryType memoryType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(memoryType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNetworkType(NetworkType networkType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(networkType, diagnostics, context);
+	public boolean validateHwFeature(HwFeature hwFeature, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwFeature, diagnostics, context);
 	}
 
 	/**
@@ -2738,8 +2639,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePin(Pin pin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(pin, diagnostics, context);
+	public boolean validateConnectionHandler(ConnectionHandler connectionHandler, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(connectionHandler, diagnostics, context);
 	}
 
 	/**
@@ -2747,8 +2648,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateComplexPort(ComplexPort complexPort, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(complexPort, diagnostics, context);
+	public boolean validateHwConnection(HwConnection hwConnection, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwConnection, diagnostics, context);
 	}
 
 	/**
@@ -2756,8 +2657,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateComplexPin(ComplexPin complexPin, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(complexPin, diagnostics, context);
+	public boolean validateHwAccessElement(HwAccessElement hwAccessElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwAccessElement, diagnostics, context);
 	}
 
 	/**
@@ -2765,89 +2666,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePrescaler(Prescaler prescaler, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(prescaler, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCrossbarSwitch(CrossbarSwitch crossbarSwitch, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(crossbarSwitch, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBus(Bus bus, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(bus, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBridge(Bridge bridge, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(bridge, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAccessPath(AccessPath accessPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(accessPath, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLatencyAccessPath(LatencyAccessPath latencyAccessPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(latencyAccessPath, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHwAccessPath(HwAccessPath hwAccessPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwAccessPath, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLatencyAccessPathElement(LatencyAccessPathElement latencyAccessPathElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(latencyAccessPathElement, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAccessPathRef(AccessPathRef accessPathRef, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(accessPathRef, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLatency(Latency latency, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(latency, diagnostics, context);
+	public boolean validateHwLatency(HwLatency hwLatency, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwLatency, diagnostics, context);
 	}
 
 	/**
@@ -2873,8 +2693,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHwAccessPathElement(HwAccessPathElement hwAccessPathElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwAccessPathElement, diagnostics, context);
+	public boolean validateHwDefinition(HwDefinition hwDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwDefinition, diagnostics, context);
 	}
 
 	/**
@@ -2882,8 +2702,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHwAccessPathRef(HwAccessPathRef hwAccessPathRef, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwAccessPathRef, diagnostics, context);
+	public boolean validateProcessingUnitDefinition(ProcessingUnitDefinition processingUnitDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(processingUnitDefinition, diagnostics, context);
 	}
 
 	/**
@@ -2891,8 +2711,62 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHwElementRef(HwElementRef hwElementRef, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwElementRef, diagnostics, context);
+	public boolean validateConnectionHandlerDefinition(ConnectionHandlerDefinition connectionHandlerDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(connectionHandlerDefinition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMemoryDefinition(MemoryDefinition memoryDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(memoryDefinition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCacheDefinition(CacheDefinition cacheDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(cacheDefinition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwPath(HwPath hwPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwPath, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwAccessPath(HwAccessPath hwAccessPath, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwAccessPath, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwPathElement(HwPathElement hwPathElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwPathElement, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwDestination(HwDestination hwDestination, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwDestination, diagnostics, context);
 	}
 
 	/**
@@ -4673,7 +4547,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateQType(QType qType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateStructureType(StructureType structureType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -4682,7 +4556,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMemoryTypeEnum(MemoryTypeEnum memoryTypeEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCacheType(CacheType cacheType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -4691,7 +4565,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBusType(BusType busType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePortType(PortType portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -4700,7 +4574,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRWType(RWType rwType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSchedPolicy(SchedPolicy schedPolicy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -4709,7 +4583,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSchedType(SchedType schedType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateWriteStrategy(WriteStrategy writeStrategy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -4718,7 +4592,25 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePinType(PinType pinType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validatePuType(PuType puType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePortInterface(PortInterface portInterface, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwFeatureType(HwFeatureType hwFeatureType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

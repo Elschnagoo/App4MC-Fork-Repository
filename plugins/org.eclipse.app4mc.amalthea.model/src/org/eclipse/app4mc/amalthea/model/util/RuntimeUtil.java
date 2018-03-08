@@ -33,8 +33,6 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
@@ -49,14 +47,16 @@ import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Process;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
+import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
-import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
-import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -90,7 +90,7 @@ public class RuntimeUtil {
 	 * @param modes
 	 * @return instruction count for given process
 	 */
-	public static Long getInstructionCountForProcess(Process process, TimeType execTimeType, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Long getInstructionCountForProcess(Process process, TimeType execTimeType, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		long instructionCount = 0L;
 		
@@ -110,7 +110,7 @@ public class RuntimeUtil {
 	 * @param modes
 	 * @return instruction count for given runnable
 	 */
-	public static Long getInstructionCountForRunnable(Runnable runnable, TimeType execTimeType, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Long getInstructionCountForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Instructions> instructionElements = SoftwareUtil.getInstructionsList(runnable, coreType, modes);
 		return getInstructionCountForInstructionList(instructionElements, execTimeType);
 	}
@@ -164,15 +164,15 @@ public class RuntimeUtil {
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
-	 * @return map CoreType->Instruction count of the extended instructions of the process 
+	 * @return map ProcessingUnitDefinition->Instruction count of the extended instructions of the process 
 	 */
-	public static HashMap<CoreType, Long> getInstructionCountExtendedForProcess(Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<CoreType, Long> coreTypeToIcMap = new HashMap<CoreType, Long>();
+	public static HashMap<ProcessingUnitDefinition, Long> getInstructionCountExtendedForProcess(Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnitDefinition, Long> coreTypeToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 		
 		for(Runnable runnable : SoftwareUtil.getRunnableList(process, modes)) {
-			HashMap<CoreType, Long> map = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
+			HashMap<ProcessingUnitDefinition, Long> map = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
 			
-			for(CoreType ct : map.keySet()) {
+			for(ProcessingUnitDefinition ct : map.keySet()) {
 				Long ic = 0L;
 				if(coreTypeToIcMap.get(ct) != null) {
 					ic = coreTypeToIcMap.get(ct);
@@ -193,15 +193,15 @@ public class RuntimeUtil {
 	 * @param runnable
 	 * @param execTimeType
 	 * @param modes
-	 * @return map CoreType->Instruction count of the extended instructions of the runnable
+	 * @return map ProcessingUnitDefinition->Instruction count of the extended instructions of the runnable
 	 */
-	public static HashMap<CoreType, Long> getInstructionCountExtendedForRunnable(Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<CoreType, Long> coreTypeToIcMap = new HashMap<CoreType, Long>();
+	public static HashMap<ProcessingUnitDefinition, Long> getInstructionCountExtendedForRunnable(Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnitDefinition, Long> coreTypeToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 		
 
 		for(RunnableInstructions runnableInstruction : SoftwareUtil.getRunnableInstructionsList(runnable, modes)) {
 			if(runnableInstruction.getExtended() != null) {
-				for(CoreType ct : runnableInstruction.getExtended().keySet()) {
+				for(ProcessingUnitDefinition ct : runnableInstruction.getExtended().keySet()) {
 					Long ic = 0L;
 					if(coreTypeToIcMap.get(ct) != null) {
 						ic = coreTypeToIcMap.get(ct);
@@ -232,7 +232,7 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return execution Time of the given process
 	 */
-	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, Core core, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		Time executionTime = AmaltheaFactory.eINSTANCE.createTime();
 		executionTime.setValue(new BigInteger("0"));
@@ -253,11 +253,11 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return execution time of the given runnable
 	 */
-	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, Core core, EMap<ModeLabel, ModeLiteral> modes) {
-		long instructionCount = getInstructionCountForRunnable(runnable, execTimeType, core.getCoreType(), modes);
+	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
+		long instructionCount = getInstructionCountForRunnable(runnable, execTimeType, core.getDefinition(), modes);
 		
-		float ipc = core.getCoreType().getInstructionsPerCycle();
-		long frequency = HardwareUtil.getFrequencyOfCore(core);
+		float ipc = 1; //core.getDefinition().getInstructionsPerCycle();
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
 		
 	  	Time executionTime =  FactoryUtil.createTime(instructionCount, ipc, frequency);
 		return executionTime;
@@ -271,17 +271,17 @@ public class RuntimeUtil {
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
-	 * @return  map Core->Execution time of the extended instructions of the process
+	 * @return  map ProcessingUnit->Execution time of the extended instructions of the process
 	 */
-	public static HashMap<Core, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Core, Time> executionTimes = new HashMap<>();
+	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 		
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		
 		for(Runnable runnable : runnables) {
 			if(runnable != null) {
-				Map<Core, Time> map = getExecutionTimeExtendedForRunnable(model, runnable, execTimeType, modes);
-				for(Core c : map.keySet()) {
+				Map<ProcessingUnit, Time> map = getExecutionTimeExtendedForRunnable(model, runnable, execTimeType, modes);
+				for(ProcessingUnit c : map.keySet()) {
 					Time executionTime = executionTimes.get(c);
 					if(executionTime == null) {
 						executionTime =  FactoryUtil.createTime("0ms");
@@ -302,17 +302,17 @@ public class RuntimeUtil {
 	 * @param runnable
 	 * @param execTimeType
 	 * @param modes
-	 * @return  map Core->Execution time of the extended instructions of the process for all possible cores
+	 * @return  map ProcessingUnit->Execution time of the extended instructions of the process for all possible cores
 	 */
-	public static Map<Core, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Core, Time> executionTimes = new HashMap<>();
+	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 		
-		HashMap<CoreType, Long> coreTypeToInstructionCountMap = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
+		HashMap<ProcessingUnitDefinition, Long> coreTypeToInstructionCountMap = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
 		
-		for(CoreType ct : coreTypeToInstructionCountMap.keySet()) {
-			List<Core> coreWithGivenCoreType = HardwareUtil.getAllCoresForCoreType(model, ct);
+		for(ProcessingUnitDefinition ct : coreTypeToInstructionCountMap.keySet()) {
+			List<ProcessingUnit> coreWithGivenCoreType = HardwareUtil.getAllCoresForCoreType(model, ct);
 			
-			for(Core core : coreWithGivenCoreType) {
+			for(ProcessingUnit core : coreWithGivenCoreType) {
 				executionTimes.put(core, getExecutionTimeForInstructionCount(coreTypeToInstructionCountMap.get(ct), core, null));
 			}
 		}
@@ -334,9 +334,9 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return time on given core for given instruction count 
 	 */
-	public static Time getExecutionTimeForInstructionCount(long instructionCount, Core core, EMap<ModeLabel, ModeLiteral> modes) {
-		float ipc = core.getCoreType().getInstructionsPerCycle();
-		long frequency = HardwareUtil.getFrequencyOfCore(core);
+	public static Time getExecutionTimeForInstructionCount(long instructionCount, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
+		float ipc = 1; //core.getDefinition().getInstructionsPerCycle();
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
 
 	  	Time executionTime =  FactoryUtil.createTime(instructionCount, ipc, frequency);
 		return executionTime;
@@ -350,7 +350,7 @@ public class RuntimeUtil {
 	 * @param modes (optional) - null works
 	 * @return utilization of that core
 	 */
-	public static double getCoreUtilization(Core core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getCoreUtilization(ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 		
 		for(Process proc : DeploymentUtil.getProcessesMappedToCore(core, model)) {
@@ -369,13 +369,13 @@ public class RuntimeUtil {
 	 * @param modes (optional) - null works
 	 * @return map core -> utilization
 	 */
-	public static Map<Core, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Core, Double> utilizations = new HashMap<>(); 
+	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnit, Double> utilizations = new HashMap<>(); 
 		
 		
-		Set<Core> cores = DeploymentUtil.getAssignedCoreForProcess(process, model);
+		Set<ProcessingUnit> cores = DeploymentUtil.getAssignedCoreForProcess(process, model);
 		
-		for(Core core : cores) {
+		for(ProcessingUnit core : cores) {
 			double utilization = getProcessUtilization(process, core, model, tt, modes);
 			utilizations.put(core, utilization); 
 		}
@@ -394,7 +394,7 @@ public class RuntimeUtil {
 	 * @param modes (optional) - if none apply, null should be given
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, Core core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getProcessUtilization(Process process, ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 		
 		List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
@@ -422,7 +422,7 @@ public class RuntimeUtil {
 	 * @param modes
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, Time period, Core core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getProcessUtilization(Process process, Time period, ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
 		Time time = getExecutionTimeForProcess(process, tt, core, modes);
 		double utilization = (TimeUtil.divideTimes(time, period));
 		return utilization;
@@ -444,9 +444,9 @@ public class RuntimeUtil {
 		procs.addAll(model.getSwModel().getIsrs());
 		
 		for(Process proc : procs) {
-			Map<Core, Double> processUtilization = getProcessUtilization(proc, model, tt, modes);
+			Map<ProcessingUnit, Double> processUtilization = getProcessUtilization(proc, model, tt, modes);
 			double util = 0.0;
-			for(Core c : processUtilization.keySet()) {
+			for(ProcessingUnit c : processUtilization.keySet()) {
 				util += processUtilization.get(c);
 			}
 			utilizations.put(proc, util);
@@ -984,10 +984,10 @@ public class RuntimeUtil {
 	 * @param runnable
 	 * @param execTimeType
 	 * @param modes
-	 * @return List<CoreType>
+	 * @return List<ProcessingUnitDefinition>
 	 */
-	public static List<CoreType> getCoreTypesWithSpecifiedInstructionsOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		List<CoreType> coreTypes = new ArrayList<CoreType>();
+	public static List<ProcessingUnitDefinition> getCoreTypesWithSpecifiedInstructionsOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		List<ProcessingUnitDefinition> coreTypes = new ArrayList<ProcessingUnitDefinition>();
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
@@ -1047,7 +1047,7 @@ public class RuntimeUtil {
 	 * if coreType == null, delete all InstructionRunnable from that runnable that has default Instruction,
 	 * if coreType != null, delete only the extended instruction
 	 */
-	public static void clearRuntimeOfRunnable(Runnable runnable, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfRunnable(Runnable runnable, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Instructions> instructionElements = SoftwareUtil.getInstructionsList(runnable, coreType, modes);
 		instructionElements.remove(null);
 		if (coreType == null)
@@ -1075,7 +1075,7 @@ public class RuntimeUtil {
 	 * if it is not null, then only the runtime for the given coretype is removed
 	 * @param process
 	 */
-	public static void clearRuntimeOfProcess(Process process, CoreType coreType,  EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfProcess(Process process, ProcessingUnitDefinition coreType,  EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for(Runnable runnable : runnables) {
 			clearRuntimeOfRunnable(runnable, coreType, modes);
@@ -1088,7 +1088,7 @@ public class RuntimeUtil {
 	 * if it is not null, then only the runtime for the given coretype is removed
 	 * @param model
 	 */
-	public static void clearRuntimeOfModel(Amalthea model, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfModel(Amalthea model, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Process> processes = new ArrayList<Process>(); 
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
@@ -1103,7 +1103,7 @@ public class RuntimeUtil {
 	 * @param runnable
 	 * @param instructions
 	 */
-	public static void setRuntimeOfRunnable(Runnable runnable, RunnableInstructions instructions, CoreType coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void setRuntimeOfRunnable(Runnable runnable, RunnableInstructions instructions, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
 		clearRuntimeOfRunnable(runnable, coreType, modes);
 		addRuntimeToRunnable(runnable, instructions);
 	}
@@ -1114,10 +1114,10 @@ public class RuntimeUtil {
 	 * @param time
 	 * @return instruction count
 	 */
-	public static LongObject getInstructionCountForTime(Core core, Time time) {
+	public static LongObject getInstructionCountForTime(ProcessingUnit core, Time time) {
 		LongObject instructions = AmaltheaFactory.eINSTANCE.createLongObject();
-		double ipc = core.getCoreType().getInstructionsPerCycle();
-		long frequency = HardwareUtil.getFrequencyOfCore(core);
+		double ipc = 1; //core.getDefinition().getInstructionsPerCycle();
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
 		int power = TimeUnit.VALUES.indexOf(time.getUnit()) - TimeUnit.VALUES.indexOf(TimeUnit.S) ; 
 		double factor = Math.pow(1000, power);
 		if (factor < 1.0) 

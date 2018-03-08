@@ -31,7 +31,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MemoryItemProvider extends ComplexNodeItemProvider {
+public class MemoryItemProvider extends HwModuleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -53,26 +53,26 @@ public class MemoryItemProvider extends ComplexNodeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTypePropertyDescriptor(object);
+			addDefinitionPropertyDescriptor(object);
 			addMappingsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Type feature.
+	 * This adds a property descriptor for the Definition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTypePropertyDescriptor(Object object) {
+	protected void addDefinitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Memory_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Memory_type_feature", "_UI_Memory_type"),
-				 AmaltheaPackage.eINSTANCE.getMemory_Type(),
+				 getString("_UI_Memory_definition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Memory_definition_feature", "_UI_Memory_type"),
+				 AmaltheaPackage.eINSTANCE.getMemory_Definition(),
 				 true,
 				 false,
 				 true,

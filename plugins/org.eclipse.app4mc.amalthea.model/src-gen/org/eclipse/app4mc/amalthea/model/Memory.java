@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Memory#getMappings <em>Mappings</em>}</li>
  * </ul>
  *
@@ -31,32 +31,32 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Memory extends ComplexNode {
+public interface Memory extends HwModule, HwDestination {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+	 * Returns the value of the '<em><b>Definition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>Definition</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(MemoryType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Type()
+	 * @return the value of the '<em>Definition</em>' reference.
+	 * @see #setDefinition(MemoryDefinition)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Definition()
 	 * @model
 	 * @generated
 	 */
-	MemoryType getType();
+	MemoryDefinition getDefinition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Memory#getType <em>Type</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Memory#getDefinition <em>Definition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>Definition</em>' reference.
+	 * @see #getDefinition()
 	 * @generated
 	 */
-	void setType(MemoryType value);
+	void setDefinition(MemoryDefinition value);
 
 	/**
 	 * Returns the value of the '<em><b>Mappings</b></em>' reference list.

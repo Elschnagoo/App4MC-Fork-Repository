@@ -64,7 +64,7 @@ public interface RunnableInstructions extends ComputationItem {
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' map.
-	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.CoreType},
+	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
 	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.Instructions},
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -74,9 +74,9 @@ public interface RunnableInstructions extends ComputationItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableInstructions_Extended()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.RunnableInstructionsEntry&lt;org.eclipse.app4mc.amalthea.model.CoreType, org.eclipse.app4mc.amalthea.model.Instructions&gt;"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.RunnableInstructionsEntry&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.Instructions&gt;"
 	 * @generated
 	 */
-	EMap<CoreType, Instructions> getExtended();
+	EMap<ProcessingUnitDefinition, Instructions> getExtended();
 
 } // RunnableInstructions

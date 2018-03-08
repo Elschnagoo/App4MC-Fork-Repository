@@ -12,26 +12,10 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
-import org.eclipse.app4mc.amalthea.model.ECU;
-import org.eclipse.app4mc.amalthea.model.Frequency;
-import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
-import org.eclipse.app4mc.amalthea.model.Quartz;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 
 public class HWModelValidatorImpl extends AbstractValidatorImpl {
 
@@ -49,25 +33,26 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkQuartzFrequency(final Amalthea amalthea) {
 
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Quartz) {
-				Quartz quartz = (Quartz) elem;
-				Frequency frequency = quartz.getFrequency(); 
-				if(null == frequency) {
-					this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());
-				} else {
-					if(false == (0 < frequency.getValue())) {
-						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
-					}
-					if(FrequencyUnit._UNDEFINED_ == frequency.getUnit()) {
-						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
-					}
-				}
-			}
-		}
+// TODO
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof Quartz) {
+//				Quartz quartz = (Quartz) elem;
+//				Frequency frequency = quartz.getFrequency(); 
+//				if(null == frequency) {
+//					this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());
+//				} else {
+//					if(false == (0 < frequency.getValue())) {
+//						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
+//					}
+//					if(FrequencyUnit._UNDEFINED_ == frequency.getUnit()) {
+//						this.issueCreator.issue(quartz, AmaltheaPackage.eINSTANCE.getQuartz_Frequency());	
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	
@@ -77,18 +62,19 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkCoreTypeInstructionsPerCycle(final Amalthea amalthea) {
 
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof CoreType) {
-				CoreType coreType = (CoreType) elem;
-				float instructionsPerCycle = coreType.getInstructionsPerCycle(); 
-				if(0 >= instructionsPerCycle) {
-					this.issueCreator.issue(coreType, AmaltheaPackage.eINSTANCE.getCoreType_InstructionsPerCycle(), instructionsPerCycle);
-				}
-			}
-		}
+// TODO
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof CoreType) {
+//				CoreType coreType = (CoreType) elem;
+//				float instructionsPerCycle = coreType.getInstructionsPerCycle(); 
+//				if(0 >= instructionsPerCycle) {
+//					this.issueCreator.issue(coreType, AmaltheaPackage.eINSTANCE.getCoreType_InstructionsPerCycle(), instructionsPerCycle);
+//				}
+//			}
+//		}
 	}	
 	
 	/*
@@ -97,35 +83,36 @@ public class HWModelValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkQuartzReferenceOfPrescaler(final Amalthea amalthea) {
 
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<Prescaler> prescalers = new HashSet<>();
-		final Set<Quartz> quartzes = new HashSet<>();
-		
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Prescaler) {
-				Prescaler prescaler = (Prescaler) elem;
-				prescalers.add(prescaler);
-			} else if (elem instanceof HwSystem) {
-				HwSystem hwSystem = (HwSystem) elem;
-				Collection<Quartz> quartzList = hwSystem.getQuartzes();
-				if(null != quartzList) {
-					for(Quartz quartz : quartzList) {
-						if(null != quartz) {
-							quartzes.add(quartz);
-						}
-					}
-				}
-			}
-		}
-		
-		for(Prescaler prescaler : prescalers) {
-			if(null != prescaler) {
-				Quartz quartz = prescaler.getQuartz();
-				if((null == quartz) || (false == quartzes.contains(quartz))) { 
-					this.issueCreator.issue(prescaler, AmaltheaPackage.eINSTANCE.getPrescaler_Quartz());
-				}
-			}
-		}
+// TODO
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<Prescaler> prescalers = new HashSet<>();
+//		final Set<Quartz> quartzes = new HashSet<>();
+//		
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof Prescaler) {
+//				Prescaler prescaler = (Prescaler) elem;
+//				prescalers.add(prescaler);
+//			} else if (elem instanceof HwSystem) {
+//				HwSystem hwSystem = (HwSystem) elem;
+//				Collection<Quartz> quartzList = hwSystem.getQuartzes();
+//				if(null != quartzList) {
+//					for(Quartz quartz : quartzList) {
+//						if(null != quartz) {
+//							quartzes.add(quartz);
+//						}
+//					}
+//				}
+//			}
+//		}
+//		
+//		for(Prescaler prescaler : prescalers) {
+//			if(null != prescaler) {
+//				Quartz quartz = prescaler.getQuartz();
+//				if((null == quartz) || (false == quartzes.contains(quartz))) { 
+//					this.issueCreator.issue(prescaler, AmaltheaPackage.eINSTANCE.getPrescaler_Quartz());
+//				}
+//			}
+//		}
 	}
 }

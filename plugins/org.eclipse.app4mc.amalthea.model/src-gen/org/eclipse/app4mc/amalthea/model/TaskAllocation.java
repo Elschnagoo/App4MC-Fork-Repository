@@ -90,7 +90,7 @@ public interface TaskAllocation extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Core Affinity</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Core}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Core Affinity</em>' reference list isn't clear,
@@ -102,7 +102,7 @@ public interface TaskAllocation extends BaseObject {
 	 * @model
 	 * @generated
 	 */
-	EList<Core> getCoreAffinity();
+	EList<ProcessingUnit> getCoreAffinity();
 
 	/**
 	 * Returns the value of the '<em><b>Scheduling Parameters</b></em>' containment reference.

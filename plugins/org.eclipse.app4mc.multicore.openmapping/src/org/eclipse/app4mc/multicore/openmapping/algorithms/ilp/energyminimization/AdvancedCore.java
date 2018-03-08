@@ -14,7 +14,7 @@ package org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimizati
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 
 public class AdvancedCore extends ExtendedCore {
 	private static long minAvailableTime = 0;
@@ -23,7 +23,7 @@ public class AdvancedCore extends ExtendedCore {
 	private final List<AdvancedRunnable> lRunnables = new LinkedList<AdvancedRunnable>();
 	private long psPerInstruction = -1;
 
-	AdvancedCore(final Core core, final boolean debug) {
+	AdvancedCore(final ProcessingUnit core, final boolean debug) {
 		super(core, debug);
 	}
 

@@ -1,13 +1,13 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -18,33 +18,26 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.RWType;
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class LatencyConstantItemProvider extends HwLatencyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public LatencyConstantItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +46,8 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -61,90 +55,25 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAccessTypePropertyDescriptor(object);
-			addTransferSizePropertyDescriptor(object);
-			addQuartzPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			addCyclesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Access Type feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Cycles feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAccessTypePropertyDescriptor(Object object) {
+	protected void addCyclesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Latency_accessType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Latency_accessType_feature", "_UI_Latency_type"),
-				 AmaltheaPackage.eINSTANCE.getLatency_AccessType(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Transfer Size feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTransferSizePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Latency_transferSize_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Latency_transferSize_feature", "_UI_Latency_type"),
-				 AmaltheaPackage.eINSTANCE.getLatency_TransferSize(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Quartz feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQuartzPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Latency_quartz_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Latency_quartz_feature", "_UI_Latency_type"),
-				 AmaltheaPackage.eINSTANCE.getLatency_Quartz(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LatencyConstant_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LatencyConstant_value_feature", "_UI_LatencyConstant_type"),
-				 AmaltheaPackage.eINSTANCE.getLatencyConstant_Value(),
+				 getString("_UI_LatencyConstant_cycles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LatencyConstant_cycles_feature", "_UI_LatencyConstant_type"),
+				 AmaltheaPackage.eINSTANCE.getLatencyConstant_Cycles(),
 				 true,
 				 false,
 				 false,
@@ -155,7 +84,8 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 
 	/**
 	 * This returns LatencyConstant.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -164,7 +94,8 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -174,15 +105,13 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		RWType labelValue = ((LatencyConstant)object).getAccessType();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LatencyConstant_type") :
-			getString("_UI_LatencyConstant_type") + " " + label;
+		LatencyConstant latencyConstant = (LatencyConstant)object;
+		return getString("_UI_LatencyConstant_type") + " " + latencyConstant.getCycles();
 	}
 
 	/**
@@ -195,10 +124,10 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -206,9 +135,7 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LatencyConstant.class)) {
-			case AmaltheaPackage.LATENCY_CONSTANT__ACCESS_TYPE:
-			case AmaltheaPackage.LATENCY_CONSTANT__TRANSFER_SIZE:
-			case AmaltheaPackage.LATENCY_CONSTANT__VALUE:
+			case AmaltheaPackage.LATENCY_CONSTANT__CYCLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -218,22 +145,13 @@ public class LatencyConstantItemProvider extends AmaltheaExtendedItemProviderAda
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

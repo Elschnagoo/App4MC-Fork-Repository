@@ -97,12 +97,12 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hardware Context</em>' reference.
-	 * @see #setHardwareContext(ComplexNode)
+	 * @see #setHardwareContext(ProcessingUnit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCPUPercentageRequirementLimit_HardwareContext()
 	 * @model
 	 * @generated
 	 */
-	ComplexNode getHardwareContext();
+	ProcessingUnit getHardwareContext();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit#getHardwareContext <em>Hardware Context</em>}' reference.
@@ -112,6 +112,6 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	 * @see #getHardwareContext()
 	 * @generated
 	 */
-	void setHardwareContext(ComplexNode value);
+	void setHardwareContext(ProcessingUnit value);
 
 } // CPUPercentageRequirementLimit

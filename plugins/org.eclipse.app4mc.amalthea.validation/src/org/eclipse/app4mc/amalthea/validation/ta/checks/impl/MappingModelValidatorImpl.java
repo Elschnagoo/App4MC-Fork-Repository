@@ -6,20 +6,10 @@
 
 package org.eclipse.app4mc.amalthea.validation.ta.checks.impl;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
-import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 
 public class MappingModelValidatorImpl extends AbstractValidatorImpl {
 
@@ -36,46 +26,48 @@ public class MappingModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkCoreReferenceOfCoreAllocation(final Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<SchedulerAllocation> allocations = new HashSet<>();
-		final Set<Core> cores = new HashSet<>();
 
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof SchedulerAllocation) {
-				final SchedulerAllocation allocation = (SchedulerAllocation) elem;
-				allocations.add(allocation);
-			} else if (elem instanceof Microcontroller) {
-				final Microcontroller microcontroller = (Microcontroller) elem;
-				final Collection<Core> coreList = microcontroller.getCores();
-				if (null != coreList) {
-					for (final Core core : coreList) {
-						if (null != core) {
-							cores.add(core);
-						}
-					}
-				}
-			}
-		}
-
-		for (final SchedulerAllocation allocation : allocations) {
-			if (null != allocation) {
-				final Collection<Core> coreList = allocation.getResponsibility();
-				if (null == coreList) {
-					this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
-				} else {
-					if (true == coreList.isEmpty()) {
-						this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
-					} else {
-						for (final Core core : coreList) {
-							if ((null == core) || (false == cores.contains(core))) {
-								this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
-							}
-						}
-					}
-				}
-			}
-		}
+// TODO
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<SchedulerAllocation> allocations = new HashSet<>();
+//		final Set<Core> cores = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof SchedulerAllocation) {
+//				final SchedulerAllocation allocation = (SchedulerAllocation) elem;
+//				allocations.add(allocation);
+//			} else if (elem instanceof Microcontroller) {
+//				final Microcontroller microcontroller = (Microcontroller) elem;
+//				final Collection<Core> coreList = microcontroller.getCores();
+//				if (null != coreList) {
+//					for (final Core core : coreList) {
+//						if (null != core) {
+//							cores.add(core);
+//						}
+//					}
+//				}
+//			}
+//		}
+//
+//		for (final SchedulerAllocation allocation : allocations) {
+//			if (null != allocation) {
+//				final Collection<Core> coreList = allocation.getResponsibility();
+//				if (null == coreList) {
+//					this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
+//				} else {
+//					if (true == coreList.isEmpty()) {
+//						this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
+//					} else {
+//						for (final Core core : coreList) {
+//							if ((null == core) || (false == cores.contains(core))) {
+//								this.issueCreator.issue(allocation, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility());
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 
 }

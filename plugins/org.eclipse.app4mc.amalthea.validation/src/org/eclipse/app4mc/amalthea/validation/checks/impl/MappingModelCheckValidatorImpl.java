@@ -19,7 +19,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Algorithm;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
@@ -163,13 +163,13 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 	}
 
 	private void checkSchedulerToCoreMapping(final List<Scheduler> schedulers, final List<SchedulerAllocation> schedAllocs) {
-		// Scheduler --> Core
+		// Scheduler --> ProcessingUnit
 
 		// TODO Grouping does not require a core responsibility
 		
 		for (final SchedulerAllocation alloc : schedAllocs) {
 			final Scheduler sched = alloc.getScheduler();
-			final EList<Core> cores = alloc.getResponsibility();
+			final EList<ProcessingUnit> cores = alloc.getResponsibility();
 			if (cores.isEmpty() && sched == null) {
 				this.issueCreator.issue(alloc, AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Responsibility(),
 						"Scheduler2Core Mapping-Error: Scheduler and Responsibility are left blank", alloc);
@@ -182,7 +182,7 @@ public class MappingModelCheckValidatorImpl extends AbstractValidatorImpl {
 			else if (!cores.isEmpty() && sched == null) {
 
 				final StringBuilder sb = new StringBuilder();
-				for (final Core core : cores) {
+				for (final ProcessingUnit core : cores) {
 					sb.append("\"" + core.getName() + "\",");
 				}
 

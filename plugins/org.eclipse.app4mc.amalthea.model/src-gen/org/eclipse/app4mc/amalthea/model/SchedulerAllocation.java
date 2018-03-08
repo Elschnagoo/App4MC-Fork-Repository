@@ -65,7 +65,7 @@ public interface SchedulerAllocation extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Responsibility</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Core}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Responsibility</em>' reference list isn't clear,
@@ -77,7 +77,7 @@ public interface SchedulerAllocation extends BaseObject {
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Core> getResponsibility();
+	EList<ProcessingUnit> getResponsibility();
 
 	/**
 	 * Returns the value of the '<em><b>Executing Core</b></em>' reference.
@@ -88,12 +88,12 @@ public interface SchedulerAllocation extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Executing Core</em>' reference.
-	 * @see #setExecutingCore(Core)
+	 * @see #setExecutingCore(ProcessingUnit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAllocation_ExecutingCore()
 	 * @model
 	 * @generated
 	 */
-	Core getExecutingCore();
+	ProcessingUnit getExecutingCore();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore <em>Executing Core</em>}' reference.
@@ -103,6 +103,6 @@ public interface SchedulerAllocation extends BaseObject {
 	 * @see #getExecutingCore()
 	 * @generated
 	 */
-	void setExecutingCore(Core value);
+	void setExecutingCore(ProcessingUnit value);
 
 } // SchedulerAllocation

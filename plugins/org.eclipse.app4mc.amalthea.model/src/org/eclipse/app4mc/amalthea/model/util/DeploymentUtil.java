@@ -21,7 +21,6 @@ import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -29,6 +28,7 @@ import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.Process;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -37,7 +37,7 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.emf.common.util.EList;
 
 public class DeploymentUtil {
-	public static Set<Process> getProcessesMappedToCore(Core core, Amalthea model) {
+	public static Set<Process> getProcessesMappedToCore(ProcessingUnit core, Amalthea model) {
 		Set<Process> result = new HashSet<>();
 		result.addAll(getTasksMappedToCore(core, model));
 		result.addAll(getISRsMappedToCore(core, model));
@@ -53,7 +53,7 @@ public class DeploymentUtil {
 	 * @param Amalthea model
 	 * @return Set<Task>
 	 */
-	public static Set<Task> getTasksMappedToCore(Core core, Amalthea model) {	/// called it mapping
+	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) {	/// called it mapping
 		Set<Task> tasks = new HashSet<>();
 		Set<TaskScheduler> schedulers = new HashSet<>();
 		if (model.getMappingModel()!= null) {
@@ -93,7 +93,7 @@ public class DeploymentUtil {
 	 * @param model
 	 * @return Set<ISR>
 	 */
-	public static Set<ISR> getISRsMappedToCore(Core core, Amalthea model) {
+	public static Set<ISR> getISRsMappedToCore(ProcessingUnit core, Amalthea model) {
 		Set<ISR> result = new HashSet<>();
 		if (core == null || model.getSwModel() == null || model.getSwModel().getIsrs() == null || 
 				model.getMappingModel() ==null || model.getMappingModel().getIsrAllocation() == null)
@@ -220,8 +220,8 @@ public class DeploymentUtil {
 	 * @param model
 	 * @return Set<Core>
 	 */
-	public static Set<Core> getAssignedCoreForProcess(Process process, Amalthea model) {
-		Set<Core> result = new HashSet<>();
+	public static Set<ProcessingUnit> getAssignedCoreForProcess(Process process, Amalthea model) {
+		Set<ProcessingUnit> result = new HashSet<>();
 		if(process == null && model.getMappingModel() == null) 
 			return result;
 		Set<TaskAllocation> taskAllocations = new HashSet<>();
@@ -236,7 +236,7 @@ public class DeploymentUtil {
 						if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
 							//check core affinity -- retain the core affinity with the scheduler responsibility 
 							if (taskAlloc.getCoreAffinity()!= null && !taskAlloc.getCoreAffinity().isEmpty()) {
-								for (Core core : taskAlloc.getCoreAffinity()) {
+								for (ProcessingUnit core : taskAlloc.getCoreAffinity()) {
 									if (schedAlloc.getResponsibility().contains(core))
 										result.add(core);
 								}

@@ -12,7 +12,7 @@
 package org.eclipse.app4mc.multicore.execution.logic.openmapping;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 
 public class OMScheduler {
@@ -28,7 +28,7 @@ public class OMScheduler {
 		this.schedulerRef.setName("SCHED_" + coreName);
 	}
 
-	public OMScheduler(final Core core) {
+	public OMScheduler(final ProcessingUnit core) {
 		final String coreName = core.getName();
 		this.schedulerRef = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		this.schedulerRef.setName("SCHED_" + coreName);

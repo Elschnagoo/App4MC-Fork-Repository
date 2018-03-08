@@ -1,6 +1,47 @@
 
 h2. Hardware Model
 
+_________________________________________________________________________________________________________
+
+h3. New Hardware Model %{color:red}- **DRAFT !** -%
+
+h4. Documents
+
+* "HW Documentation (PDF)":../help-model/docs/Amalthea_HW_Documentation.pdf
+* "HW Model Examples (PDF)":../help-model/docs/Amalthea_HW_Model_Examples.pdf
+* "HW Visualization Plugin (PDF)":../help-model/docs/Amalthea_HW_Visualization_Plugin.pdf
+
+h4. Examples
+
+The following Zip archive contains two simple examples.
+* "Archive":../help-model/examples/new-hw-example-projects.zip
+
+Save the archive via @"Save target as..."@  
+and import it into the workspace via @"Import..." > "Existing Projects into Workspace"@
+
+h4. Class Diagrams
+
+h5. Hardware model elements
+
+!(scale)../pictures/model_hw_main.png!
+
+h5. Hardware definitions and features
+
+!(scale)../pictures/model_hw_definition.png!
+
+h5. Hardware modules and access elements
+
+!(scale)../pictures/model_hw_module.png!
+
+h5. Hardware paths and destinations
+
+!(scale)../pictures/model_hw_access.png!
+
+_________________________________________________________________________________________________________
+_________________________________________________________________________________________________________
+
+h3. Former Model (temporarily kept as reference)
+
 The AMALTHEA hardware model is used to describe hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
 
 * SystemType

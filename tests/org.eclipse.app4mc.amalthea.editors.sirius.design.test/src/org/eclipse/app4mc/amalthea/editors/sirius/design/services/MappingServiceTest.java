@@ -22,10 +22,10 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -66,7 +66,7 @@ public class MappingServiceTest {
 	 */
 	@Test
 	public void testGetCoresOfMappingModelNull() {
-		List<Core> result = this.mappingS.getCoresOfMappingModel(null);
+		List<ProcessingUnit> result = this.mappingS.getCoresOfMappingModel(null);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -79,7 +79,7 @@ public class MappingServiceTest {
 	@Test
 	public void testGetCoresOfMappingModelEmptyModel() {
 		MappingModel mappingM = AmaltheaFactory.eINSTANCE.createMappingModel();
-		List<Core> result = this.mappingS.getCoresOfMappingModel(mappingM);
+		List<ProcessingUnit> result = this.mappingS.getCoresOfMappingModel(mappingM);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -93,7 +93,7 @@ public class MappingServiceTest {
 	public void testGetCoresOfMappingModelEmptySchedAlloc() {
 		MappingModel mappingM = AmaltheaFactory.eINSTANCE.createMappingModel();
 		mappingM.getSchedulerAllocation().add(AmaltheaFactory.eINSTANCE.createSchedulerAllocation());
-		List<Core> result = this.mappingS.getCoresOfMappingModel(mappingM);
+		List<ProcessingUnit> result = this.mappingS.getCoresOfMappingModel(mappingM);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -107,10 +107,10 @@ public class MappingServiceTest {
 	public void testGetCoresOfMappingModelOneSchedAlloc() {
 		MappingModel mappingM = AmaltheaFactory.eINSTANCE.createMappingModel();
 		SchedulerAllocation schedA = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
-		Core core = AmaltheaFactory.eINSTANCE.createCore();
+		ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		schedA.getResponsibility().add(core);
 		mappingM.getSchedulerAllocation().add(schedA);
-		List<Core> result = this.mappingS.getCoresOfMappingModel(mappingM);
+		List<ProcessingUnit> result = this.mappingS.getCoresOfMappingModel(mappingM);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -183,7 +183,7 @@ public class MappingServiceTest {
 	 */
 	@Test
 	public void testGetCoresForSchedulerNull() {
-		List<Core> result = this.mappingS.getCoresForScheduler(null);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(null);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -196,7 +196,7 @@ public class MappingServiceTest {
 	@Test
 	public void testGetCoresForSchedulerOnlyScheduler() {
 		Scheduler sched = AmaltheaFactory.eINSTANCE.createTaskScheduler();
-		List<Core> result = this.mappingS.getCoresForScheduler(sched);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(sched);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -215,7 +215,7 @@ public class MappingServiceTest {
 		osM.getOperatingSystems().add(os);
 		TaskScheduler sched = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		os.getTaskSchedulers().add(sched);
-		List<Core> result = this.mappingS.getCoresForScheduler(sched);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(sched);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -236,7 +236,7 @@ public class MappingServiceTest {
 		osM.getOperatingSystems().add(os);
 		TaskScheduler sched = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		os.getTaskSchedulers().add(sched);
-		List<Core> result = this.mappingS.getCoresForScheduler(sched);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(sched);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -260,9 +260,9 @@ public class MappingServiceTest {
 		SchedulerAllocation schedA = AmaltheaFactory.eINSTANCE.createSchedulerAllocation();
 		schedA.setScheduler(sched);
 		mappingM.getSchedulerAllocation().add(schedA);
-		Core core = AmaltheaFactory.eINSTANCE.createCore();
+		ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		schedA.getResponsibility().add(core);
-		List<Core> result = this.mappingS.getCoresForScheduler(sched);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(sched);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -289,9 +289,9 @@ public class MappingServiceTest {
 		Scheduler sched2 = AmaltheaFactory.eINSTANCE.createTaskScheduler();
 		schedA.setScheduler(sched2);
 		mappingM.getSchedulerAllocation().add(schedA);
-		Core core = AmaltheaFactory.eINSTANCE.createCore();
+		ProcessingUnit core = AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		schedA.getResponsibility().add(core);
-		List<Core> result = this.mappingS.getCoresForScheduler(sched);
+		List<ProcessingUnit> result = this.mappingS.getCoresForScheduler(sched);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}

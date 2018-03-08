@@ -131,12 +131,12 @@ public interface RunnableEvent extends TriggerEvent {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Core</em>' reference.
-	 * @see #setCore(Core)
+	 * @see #setCore(ProcessingUnit)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableEvent_Core()
 	 * @model
 	 * @generated
 	 */
-	Core getCore();
+	ProcessingUnit getCore();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnableEvent#getCore <em>Core</em>}' reference.
@@ -146,6 +146,6 @@ public interface RunnableEvent extends TriggerEvent {
 	 * @see #getCore()
 	 * @generated
 	 */
-	void setCore(Core value);
+	void setCore(ProcessingUnit value);
 
 } // RunnableEvent

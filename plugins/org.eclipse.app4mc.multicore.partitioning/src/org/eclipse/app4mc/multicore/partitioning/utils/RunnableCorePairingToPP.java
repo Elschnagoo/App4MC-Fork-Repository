@@ -15,7 +15,7 @@ import java.util.HashMap;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
@@ -43,14 +43,14 @@ public class RunnableCorePairingToPP {
 
 	private EList<ProcessPrototype> getPPsFromCorePairings() {
 		final EList<ProcessPrototype> ppl = new BasicEList<ProcessPrototype>();
-		final HashMap<Core, Integer> CorePPIndexMap = new HashMap<Core, Integer>();
+		final HashMap<ProcessingUnit, Integer> CorePPIndexMap = new HashMap<ProcessingUnit, Integer>();
 
 		for (final AffinityConstraint ac : this.cm.getAffinityConstraints()) {
 			if (ac instanceof RunnablePairingConstraint) {
 				final RunnablePairingConstraint rpc = (RunnablePairingConstraint) ac;
 				if (null != rpc.getTarget() && rpc.getTarget() instanceof TargetCore) {
 
-					final Core c = ((TargetCore) rpc.getTarget()).getCores().get(0);
+					final ProcessingUnit c = ((TargetCore) rpc.getTarget()).getCores().get(0);
 					if (!CorePPIndexMap.containsKey(c)) {
 						final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 						pp.setName("CorePairing" + c.getName());

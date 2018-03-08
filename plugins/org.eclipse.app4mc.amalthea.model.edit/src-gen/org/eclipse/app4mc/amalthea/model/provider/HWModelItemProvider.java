@@ -72,14 +72,10 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_SystemTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_EcuTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_McTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_CoreTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_MemoryTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_System());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Definitions());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Features());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Structures());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Domains());
 		}
 		return childrenFeatures;
 	}
@@ -142,14 +138,10 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HWModel.class)) {
-			case AmaltheaPackage.HW_MODEL__SYSTEM_TYPES:
-			case AmaltheaPackage.HW_MODEL__ECU_TYPES:
-			case AmaltheaPackage.HW_MODEL__MC_TYPES:
-			case AmaltheaPackage.HW_MODEL__CORE_TYPES:
-			case AmaltheaPackage.HW_MODEL__MEMORY_TYPES:
-			case AmaltheaPackage.HW_MODEL__NETWORK_TYPES:
-			case AmaltheaPackage.HW_MODEL__ACCESS_PATHS:
-			case AmaltheaPackage.HW_MODEL__SYSTEM:
+			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
+			case AmaltheaPackage.HW_MODEL__FEATURES:
+			case AmaltheaPackage.HW_MODEL__STRUCTURES:
+			case AmaltheaPackage.HW_MODEL__DOMAINS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -169,63 +161,43 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_SystemTypes(),
-				 AmaltheaFactory.eINSTANCE.createSystemType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+				 AmaltheaFactory.eINSTANCE.createProcessingUnitDefinition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_EcuTypes(),
-				 AmaltheaFactory.eINSTANCE.createECUType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+				 AmaltheaFactory.eINSTANCE.createConnectionHandlerDefinition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_McTypes(),
-				 AmaltheaFactory.eINSTANCE.createMicrocontrollerType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+				 AmaltheaFactory.eINSTANCE.createMemoryDefinition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_CoreTypes(),
-				 AmaltheaFactory.eINSTANCE.createCoreType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+				 AmaltheaFactory.eINSTANCE.createCacheDefinition()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_MemoryTypes(),
-				 AmaltheaFactory.eINSTANCE.createMemoryType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Features(),
+				 AmaltheaFactory.eINSTANCE.createHwFeature()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createNetworkType()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Structures(),
+				 AmaltheaFactory.eINSTANCE.createHwStructure()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createCrossbarSwitch()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Domains(),
+				 AmaltheaFactory.eINSTANCE.createFrequencyDomain()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createBus()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_NetworkTypes(),
-				 AmaltheaFactory.eINSTANCE.createBridge()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths(),
-				 AmaltheaFactory.eINSTANCE.createLatencyAccessPath()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_AccessPaths(),
-				 AmaltheaFactory.eINSTANCE.createHwAccessPath()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_System(),
-				 AmaltheaFactory.eINSTANCE.createHwSystem()));
+				(AmaltheaPackage.eINSTANCE.getHWModel_Domains(),
+				 AmaltheaFactory.eINSTANCE.createPowerDomain()));
 	}
 
 }

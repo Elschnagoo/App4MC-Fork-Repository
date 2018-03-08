@@ -11,7 +11,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AbstractTime;
-import org.eclipse.app4mc.amalthea.model.AccessPathRef;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -32,17 +31,13 @@ import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
-import org.eclipse.app4mc.amalthea.model.ComplexPort;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentInstance;
 import org.eclipse.app4mc.amalthea.model.ComponentScope;
 import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.Connector;
-import org.eclipse.app4mc.amalthea.model.Core;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -75,9 +70,13 @@ import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
-import org.eclipse.app4mc.amalthea.model.HwAccessPathRef;
-import org.eclipse.app4mc.amalthea.model.HwElementRef;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwPort;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.Instructions;
@@ -92,7 +91,6 @@ import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
-import org.eclipse.app4mc.amalthea.model.LatencyAccessPath;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LimitType;
@@ -132,8 +130,9 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.ProcessScope;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
-import org.eclipse.app4mc.amalthea.model.RWType;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -347,7 +346,8 @@ public class CustomItemProviderService {
       _xifexpression_1 = rate.getUnit().getLiteral();
     }
     final String unit = _xifexpression_1;
-    return ((value + " ") + unit);
+    String _replace = unit.replace("PerSecond", "/s");
+    return ((value + " ") + _replace);
   }
   
   private static String trimDistName(final String name) {
@@ -1378,7 +1378,7 @@ public class CustomItemProviderService {
         _metric=((CPUPercentageRequirementLimit)object).getMetric();
       }
       final CPUPercentageMetric metric = _metric;
-      ComplexNode _hardwareContext = null;
+      ProcessingUnit _hardwareContext = null;
       if (((CPUPercentageRequirementLimit)object)!=null) {
         _hardwareContext=((CPUPercentageRequirementLimit)object).getHardwareContext();
       }
@@ -2167,253 +2167,162 @@ public class CustomItemProviderService {
   }
   
   /**
+   * HwPortItemProvider
+   */
+  public static String getHwPortItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof HwPort)) {
+      final String name = ((HwPort)object).getName();
+      EObject _eContainer = ((HwPort)object).eContainer();
+      final String cName = ((INamed) _eContainer).getName();
+      String _xifexpression = null;
+      EObject _eContainer_1 = ((HwPort)object).eContainer();
+      if ((_eContainer_1 instanceof HwStructure)) {
+        _xifexpression = "<structure>";
+      } else {
+        _xifexpression = "<module>";
+      }
+      final String cType = _xifexpression;
+      final String s1 = CustomItemProviderService.ppName(cName, cType);
+      final String s2 = CustomItemProviderService.ppName(name, "<port>");
+      return ((s1 + "_") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static ViewerNotification getHwPortItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwPort.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_PORT__NAME)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
+    }
+    return null;
+  }
+  
+  /**
+   * HwAccessElementItemProvider
+   */
+  public static String getHwAccessElementItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof HwAccessElement)) {
+      final String s1 = CustomItemProviderService.ppName(((HwAccessElement)object).getName(), "???");
+      ProcessingUnit _source = ((HwAccessElement)object).getSource();
+      String _name = null;
+      if (_source!=null) {
+        _name=_source.getName();
+      }
+      final String s2 = CustomItemProviderService.ppName(_name, "<source>");
+      HwDestination _destination = ((HwAccessElement)object).getDestination();
+      String _name_1 = null;
+      if (_destination!=null) {
+        _name_1=_destination.getName();
+      }
+      final String s3 = CustomItemProviderService.ppName(_name_1, "<destination>");
+      return ((((s1 + ": ") + s2) + " --> ") + s3);
+    }
+    return null;
+  }
+  
+  public static ViewerNotification getHwAccessElementItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwAccessElement.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
+    }
+    return null;
+  }
+  
+  /**
    * HwAccessPathItemProvider
    */
   public static String getHwAccessPathItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof HwAccessPath)) {
-      String _name = null;
-      if (((HwAccessPath)object)!=null) {
-        _name=((HwAccessPath)object).getName();
-      }
-      final String name = _name;
-      ComplexNode _source = null;
-      if (((HwAccessPath)object)!=null) {
-        _source=((HwAccessPath)object).getSource();
-      }
-      String _name_1 = null;
-      if (_source!=null) {
-        _name_1=_source.getName();
-      }
-      final String sourceName = _name_1;
-      ComplexNode _target = null;
-      if (((HwAccessPath)object)!=null) {
-        _target=((HwAccessPath)object).getTarget();
-      }
-      String _name_2 = null;
-      if (_target!=null) {
-        _name_2=_target.getName();
-      }
-      final String targetName = _name_2;
-      final String s1 = CustomItemProviderService.ppName(name, "<path>");
-      final String s2 = CustomItemProviderService.ppName(sourceName, "<source>");
-      final String s3 = CustomItemProviderService.ppName(targetName, "<target>");
-      return ((((("AccessPath (Hardware) " + s1) + " : ") + s2) + " --> ") + s3);
-    } else {
-      return defaultText;
+      return ((HwAccessPath)object).getName();
     }
+    return null;
   }
   
-  public static List<ViewerNotification> getHwAccessPathItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(HwAccessPath.class);
+  /**
+   * HwConnectionItemProvider
+   */
+  public static String getHwConnectionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof HwConnection)) {
+      HwPort _port1 = ((HwConnection)object).getPort1();
+      EObject _eContainer = null;
+      if (_port1!=null) {
+        _eContainer=_port1.eContainer();
+      }
+      String _name = null;
+      if (((INamed) _eContainer)!=null) {
+        _name=((INamed) _eContainer).getName();
+      }
+      final String cName1 = _name;
+      HwPort _port2 = ((HwConnection)object).getPort2();
+      EObject _eContainer_1 = null;
+      if (_port2!=null) {
+        _eContainer_1=_port2.eContainer();
+      }
+      String _name_1 = null;
+      if (((INamed) _eContainer_1)!=null) {
+        _name_1=((INamed) _eContainer_1).getName();
+      }
+      final String cName2 = _name_1;
+      final String s1 = CustomItemProviderService.ppName(((HwConnection)object).getName(), "???");
+      final String s2 = CustomItemProviderService.ppName(cName1, "<module1>");
+      HwPort _port1_1 = ((HwConnection)object).getPort1();
+      String _name_2 = null;
+      if (_port1_1!=null) {
+        _name_2=_port1_1.getName();
+      }
+      final String s3 = CustomItemProviderService.ppName(_name_2, "<port1>");
+      final String s4 = CustomItemProviderService.ppName(cName2, "<module2>");
+      HwPort _port2_1 = ((HwConnection)object).getPort2();
+      String _name_3 = null;
+      if (_port2_1!=null) {
+        _name_3=_port2_1.getName();
+      }
+      final String s5 = CustomItemProviderService.ppName(_name_3, "<port2>");
+      return ((((((((s1 + ": ") + s2) + "_") + s3) + " --> ") + s4) + "_") + s5);
+    }
+    return null;
+  }
+  
+  public static ViewerNotification getHwConnectionItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(HwConnection.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__NAME)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__NAME)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__SOURCE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__PORT1)) {
         _matched=true;
       }
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__TARGET)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__PORT2)) {
         _matched=true;
       }
     }
     if (_matched) {
       Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
+      return new ViewerNotification(notification, _notifier, false, true);
     }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH__HW_ELEMENTS)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
-    }
-    return list;
-  }
-  
-  /**
-   * AccessPathRefItemProvider
-   */
-  public static String getAccessPathRefItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof AccessPathRef)) {
-      LatencyAccessPath _ref = null;
-      if (((AccessPathRef)object)!=null) {
-        _ref=((AccessPathRef)object).getRef();
-      }
-      String _name = null;
-      if (_ref!=null) {
-        _name=_ref.getName();
-      }
-      final String refName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(refName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<path ref>";
-      } else {
-        _xifexpression = ("Path " + refName);
-      }
-      final String s1 = _xifexpression;
-      return ("Ref -> " + s1);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  /**
-   * HwAccessPathRefItemProvider
-   */
-  public static String getHwAccessPathRefItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof HwAccessPathRef)) {
-      HwAccessPath _ref = null;
-      if (((HwAccessPathRef)object)!=null) {
-        _ref=((HwAccessPathRef)object).getRef();
-      }
-      String _name = null;
-      if (_ref!=null) {
-        _name=_ref.getName();
-      }
-      final String refName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(refName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<path ref>";
-      } else {
-        _xifexpression = ("Path " + refName);
-      }
-      final String s1 = _xifexpression;
-      return ("Ref -> " + s1);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getHwAccessPathRefItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(HwAccessPathRef.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_PATH_REF__REF)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    return list;
-  }
-  
-  /**
-   * HwElementRefItemProvider
-   */
-  public static String getHwElementRefItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof HwElementRef)) {
-      ComplexPort _port = null;
-      if (((HwElementRef)object)!=null) {
-        _port=((HwElementRef)object).getPort();
-      }
-      String _name = null;
-      if (_port!=null) {
-        _name=_port.getName();
-      }
-      final String portName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(portName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<port>";
-      } else {
-        _xifexpression = ("Port " + portName);
-      }
-      final String s1 = _xifexpression;
-      return ("Ref -> " + s1);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getHwElementRefItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(HwElementRef.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.HW_ELEMENT_REF__PORT)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    return list;
-  }
-  
-  /**
-   * LatencyAccessPathItemProvider
-   */
-  public static String getLatencyAccessPathItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof LatencyAccessPath)) {
-      String _name = null;
-      if (((LatencyAccessPath)object)!=null) {
-        _name=((LatencyAccessPath)object).getName();
-      }
-      final String name = _name;
-      ComplexNode _source = null;
-      if (((LatencyAccessPath)object)!=null) {
-        _source=((LatencyAccessPath)object).getSource();
-      }
-      String _name_1 = null;
-      if (_source!=null) {
-        _name_1=_source.getName();
-      }
-      final String sourceName = _name_1;
-      ComplexNode _target = null;
-      if (((LatencyAccessPath)object)!=null) {
-        _target=((LatencyAccessPath)object).getTarget();
-      }
-      String _name_2 = null;
-      if (_target!=null) {
-        _name_2=_target.getName();
-      }
-      final String targetName = _name_2;
-      final String s1 = CustomItemProviderService.ppName(name, "<path>");
-      final String s2 = CustomItemProviderService.ppName(sourceName, "<source>");
-      final String s3 = CustomItemProviderService.ppName(targetName, "<target>");
-      return ((((("AccessPath (Latency) " + s1) + " : ") + s2) + " --> ") + s3);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getLatencyAccessPathItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(LatencyAccessPath.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__NAME)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__SOURCE)) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__TARGET)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_ACCESS_PATH__LATENCIES)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, false);
-        list.add(_viewerNotification_1);
-      }
-    }
-    return list;
+    return null;
   }
   
   /**
@@ -2421,27 +2330,17 @@ public class CustomItemProviderService {
    */
   public static String getLatencyConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof LatencyConstant)) {
-      RWType _accessType = null;
-      if (((LatencyConstant)object)!=null) {
-        _accessType=((LatencyConstant)object).getAccessType();
-      }
-      final RWType type = _accessType;
-      long _xifexpression = (long) 0;
-      if ((object == null)) {
-        _xifexpression = 0;
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
       } else {
-        _xifexpression = ((LatencyConstant)object).getValue();
+        _xifexpression = (feature + " -- ");
       }
-      final long value = _xifexpression;
-      String _xifexpression_1 = null;
-      if (((type == null) || Objects.equal(type, RWType._UNDEFINED_))) {
-        _xifexpression_1 = "?";
-      } else {
-        _xifexpression_1 = type.getLiteral();
-      }
-      final String s1 = _xifexpression_1;
-      final String s2 = Long.toString(value);
-      return ((("Access: " + s1) + " -- Latency (constant): ") + s2);
+      final String s1 = _xifexpression;
+      final String s2 = Long.toString(((LatencyConstant)object).getCycles());
+      return ((s1 + "cycles (constant): ") + s2);
     } else {
       return defaultText;
     }
@@ -2452,14 +2351,19 @@ public class CustomItemProviderService {
    */
   public static String getLatencyDeviationItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof LatencyDeviation)) {
-      final RWType type = ((LatencyDeviation)object).getAccessType();
-      Deviation<LongObject> _deviation = null;
-      if (((LatencyDeviation)object)!=null) {
-        _deviation=((LatencyDeviation)object).getDeviation();
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
       }
+      final String s1 = _xifexpression;
+      Deviation<LongObject> _cycles = ((LatencyDeviation)object).getCycles();
       Distribution<LongObject> _distribution = null;
-      if (_deviation!=null) {
-        _distribution=_deviation.getDistribution();
+      if (_cycles!=null) {
+        _distribution=_cycles.getDistribution();
       }
       EClass _eClass = null;
       if (_distribution!=null) {
@@ -2470,13 +2374,6 @@ public class CustomItemProviderService {
         _name=_eClass.getName();
       }
       final String distName = _name;
-      String _xifexpression = null;
-      if (((type == null) || Objects.equal(type, RWType._UNDEFINED_))) {
-        _xifexpression = "?";
-      } else {
-        _xifexpression = type.getLiteral();
-      }
-      final String s1 = _xifexpression;
       String _xifexpression_1 = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
       if (_isNullOrEmpty) {
@@ -2485,31 +2382,10 @@ public class CustomItemProviderService {
         _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
       }
       final String s2 = _xifexpression_1;
-      return ((("Access: " + s1) + " -- Latency (deviation): ") + s2);
+      return ((s1 + "cycles (deviation): ") + s2);
     } else {
       return defaultText;
     }
-  }
-  
-  public static List<ViewerNotification> getLatencyDeviationItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(LatencyDeviation.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__ACCESS_TYPE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.LATENCY_DEVIATION__DEVIATION)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
-        list.add(_viewerNotification_1);
-      }
-    }
-    return list;
   }
   
   /**
@@ -2533,11 +2409,11 @@ public class CustomItemProviderService {
         _name=_scheduler.getName();
       }
       final String schedName = _name;
-      EList<Core> _responsibility = null;
+      EList<ProcessingUnit> _responsibility = null;
       if (((SchedulerAllocation)object)!=null) {
         _responsibility=((SchedulerAllocation)object).getResponsibility();
       }
-      final EList<Core> cores = _responsibility;
+      final EList<ProcessingUnit> cores = _responsibility;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(schedName);
       if (_isNullOrEmpty) {
@@ -2546,14 +2422,14 @@ public class CustomItemProviderService {
         _xifexpression = ("Scheduler " + schedName);
       }
       final String s1 = _xifexpression;
-      final Function1<Core, String> _function = (Core e) -> {
+      final Function1<ProcessingUnit, String> _function = (ProcessingUnit e) -> {
         String _name_1 = null;
         if (e!=null) {
           _name_1=e.getName();
         }
         return CustomItemProviderService.ppName(_name_1);
       };
-      final String s2 = IterableExtensions.join(ListExtensions.<Core, String>map(cores, _function), ", ");
+      final String s2 = IterableExtensions.join(ListExtensions.<ProcessingUnit, String>map(cores, _function), ", ");
       return (((("Allocation: " + s1) + " -- Cores ( ") + s2) + " )");
     } else {
       return defaultText;
@@ -4569,7 +4445,7 @@ public class CustomItemProviderService {
    */
   public static String getRunnableInstructionsEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof RunnableInstructionsEntryImpl)) {
-      CoreType _key = null;
+      ProcessingUnitDefinition _key = null;
       if (((RunnableInstructionsEntryImpl)object)!=null) {
         _key=((RunnableInstructionsEntryImpl)object).getKey();
       }

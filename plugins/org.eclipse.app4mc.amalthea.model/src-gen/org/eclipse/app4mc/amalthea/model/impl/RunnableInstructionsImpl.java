@@ -13,8 +13,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CoreType;
 import org.eclipse.app4mc.amalthea.model.Instructions;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -64,7 +64,7 @@ public class RunnableInstructionsImpl extends ComputationItemImpl implements Run
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<CoreType, Instructions> extended;
+	protected EMap<ProcessingUnitDefinition, Instructions> extended;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,9 +133,9 @@ public class RunnableInstructionsImpl extends ComputationItemImpl implements Run
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<CoreType, Instructions> getExtended() {
+	public EMap<ProcessingUnitDefinition, Instructions> getExtended() {
 		if (extended == null) {
-			extended = new EcoreEMap<CoreType,Instructions>(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry(), RunnableInstructionsEntryImpl.class, this, AmaltheaPackage.RUNNABLE_INSTRUCTIONS__EXTENDED);
+			extended = new EcoreEMap<ProcessingUnitDefinition,Instructions>(AmaltheaPackage.eINSTANCE.getRunnableInstructionsEntry(), RunnableInstructionsEntryImpl.class, this, AmaltheaPackage.RUNNABLE_INSTRUCTIONS__EXTENDED);
 		}
 		return extended;
 	}

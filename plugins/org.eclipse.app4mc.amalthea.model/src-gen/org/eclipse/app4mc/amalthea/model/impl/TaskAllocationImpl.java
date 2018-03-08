@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -83,7 +83,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Core> coreAffinity;
+	protected EList<ProcessingUnit> coreAffinity;
 
 	/**
 	 * The cached value of the '{@link #getSchedulingParameters() <em>Scheduling Parameters</em>}' containment reference.
@@ -205,9 +205,9 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Core> getCoreAffinity() {
+	public EList<ProcessingUnit> getCoreAffinity() {
 		if (coreAffinity == null) {
-			coreAffinity = new EObjectResolvingEList<Core>(Core.class, this, AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY);
+			coreAffinity = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY);
 		}
 		return coreAffinity;
 	}
@@ -325,7 +325,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
 				getCoreAffinity().clear();
-				getCoreAffinity().addAll((Collection<? extends Core>)newValue);
+				getCoreAffinity().addAll((Collection<? extends ProcessingUnit>)newValue);
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				setSchedulingParameters((SchedulingParameters)newValue);

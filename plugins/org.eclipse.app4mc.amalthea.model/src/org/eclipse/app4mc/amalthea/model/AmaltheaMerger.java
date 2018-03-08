@@ -108,16 +108,17 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setHwModel(tmp);
 		} else {
-			if (main.getSystem() == null) {
-				main.setSystem(tmp.getSystem());
-			}
-			addIfAbsent(main.getSystemTypes(), tmp.getSystemTypes());
-			addIfAbsent(main.getEcuTypes(), tmp.getEcuTypes());
-			addIfAbsent(main.getMcTypes(), tmp.getMcTypes());
-			addIfAbsent(main.getCoreTypes(), tmp.getCoreTypes());
-			addIfAbsent(main.getMemoryTypes(), tmp.getMemoryTypes());
-			addIfAbsent(main.getNetworkTypes(), tmp.getNetworkTypes());
-			addIfAbsent(main.getAccessPaths(), tmp.getAccessPaths());
+// TODO implement HW merger
+//			if (main.getSystem() == null) {
+//				main.setSystem(tmp.getSystem());
+//			}
+//			addIfAbsent(main.getSystemTypes(), tmp.getSystemTypes());
+//			addIfAbsent(main.getEcuTypes(), tmp.getEcuTypes());
+//			addIfAbsent(main.getMcTypes(), tmp.getMcTypes());
+//			addIfAbsent(main.getCoreTypes(), tmp.getCoreTypes());
+//			addIfAbsent(main.getMemoryTypes(), tmp.getMemoryTypes());
+//			addIfAbsent(main.getNetworkTypes(), tmp.getNetworkTypes());
+//			addIfAbsent(main.getAccessPaths(), tmp.getAccessPaths());
 		}	
 	}
 

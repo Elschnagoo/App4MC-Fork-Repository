@@ -11,18 +11,12 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization;
 
-import java.math.BigDecimal;
-
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
-import org.eclipse.app4mc.amalthea.model.Quartz;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 public class ExtendedCore implements Comparable<ExtendedCore> {
-	private Core core;
+	private ProcessingUnit core;
 	private TaskScheduler sched;
 	private double frequencyQuartz; // The frequency from the attached quartz
 	// element
@@ -43,53 +37,56 @@ public class ExtendedCore implements Comparable<ExtendedCore> {
 	private double relativePerformance; // might be required
 	private double load; // load of the core
 
-	public ExtendedCore(final Core core, final boolean debug) {
+	public ExtendedCore(final ProcessingUnit core, final boolean debug) {
 		UniversalHandler.getInstance().logCon("  Creating Core '" + core.getName() + "'");
 		setCore(core);
 		fetchFrequency();
 	}
 
 	public void fetchFrequency() {
-		// Check if prescaler is set
-		final Prescaler ps = this.core.getPrescaler();
-		if (ps == null) {
-			UniversalHandler.getInstance().log("   Unexpected HWModel: Core contains no Prescaler.\nSkipping Core...",
-					null);
-			return;
-		}
-
-		// Check if clockRatio is valid
-		if (ps.getClockRatio() <= 0) {
-			UniversalHandler.getInstance()
-					.log("   Unexpected HWModel: clockRatio in Prescaler must be > 0.\nSkipping Core...", null);
-			this.ratioPrescaler = 1;
-		}
-		else {
-			this.ratioPrescaler = ps.getClockRatio();
-		}
-
-		final Quartz q = ps.getQuartz();
-		if (q == null) {
-			UniversalHandler.getInstance()
-					.log("   Unexpected HWModel: Prescaler has an unset reference to Quartz.\nSkipping Core...", null);
-			return;
-		}
-
-		final CoreType ct = this.core.getCoreType();
-		if (ct == null) {
-			UniversalHandler.getInstance()
-					.log("   Unexpected HWModel: Core has an unset reference to CoreType.\nSkipping Core...", null);
-			return;
-		}
-		this.ticksPerCycle = ct.getInstructionsPerCycle();
 		
-		BigDecimal frequency = AmaltheaServices.convertToHz(q.getFrequency());
-
-		this.frequencyQuartz = frequency.doubleValue();
-		this.ticksPerSecond = this.frequencyQuartz * this.ratioPrescaler;
-		this.cyclesPerSecond = this.ticksPerSecond * this.ticksPerCycle;
-		System.out.println("DEBUG::"+this.frequencyQuartz);
-		UniversalHandler.getInstance().logCon(toString());
+// TODO implement
+		
+//		// Check if prescaler is set
+//		final Prescaler ps = this.core.getPrescaler();
+//		if (ps == null) {
+//			UniversalHandler.getInstance().log("   Unexpected HWModel: Core contains no Prescaler.\nSkipping Core...",
+//					null);
+//			return;
+//		}
+//
+//		// Check if clockRatio is valid
+//		if (ps.getClockRatio() <= 0) {
+//			UniversalHandler.getInstance()
+//					.log("   Unexpected HWModel: clockRatio in Prescaler must be > 0.\nSkipping Core...", null);
+//			this.ratioPrescaler = 1;
+//		}
+//		else {
+//			this.ratioPrescaler = ps.getClockRatio();
+//		}
+//
+//		final Quartz q = ps.getQuartz();
+//		if (q == null) {
+//			UniversalHandler.getInstance()
+//					.log("   Unexpected HWModel: Prescaler has an unset reference to Quartz.\nSkipping Core...", null);
+//			return;
+//		}
+//
+//		final ProcessingUnitDefinition ct = this.core.getDefinition();
+//		if (ct == null) {
+//			UniversalHandler.getInstance()
+//					.log("   Unexpected HWModel: Core has an unset reference to CoreType.\nSkipping Core...", null);
+//			return;
+//		}
+//		this.ticksPerCycle = ct.getInstructionsPerCycle();
+//		
+//		BigDecimal frequency = AmaltheaServices.convertToHz(q.getFrequency());
+//
+//		this.frequencyQuartz = frequency.doubleValue();
+//		this.ticksPerSecond = this.frequencyQuartz * this.ratioPrescaler;
+//		this.cyclesPerSecond = this.ticksPerSecond * this.ticksPerCycle;
+//		System.out.println("DEBUG::"+this.frequencyQuartz);
+//		UniversalHandler.getInstance().logCon(toString());
 	}
 
 	@Override
@@ -103,11 +100,11 @@ public class ExtendedCore implements Comparable<ExtendedCore> {
 		return 0;
 	}
 
-	public Core getCore() {
+	public ProcessingUnit getCore() {
 		return this.core;
 	}
 
-	public void setCore(final Core core) {
+	public void setCore(final ProcessingUnit core) {
 		this.core = core;
 	}
 

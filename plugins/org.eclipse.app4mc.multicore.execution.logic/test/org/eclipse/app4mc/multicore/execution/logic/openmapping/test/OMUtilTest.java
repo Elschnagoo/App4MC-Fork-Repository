@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Core;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.multicore.execution.logic.openmapping.OMAllocation;
 import org.eclipse.app4mc.multicore.execution.logic.openmapping.OMCore;
@@ -32,11 +32,11 @@ public class OMUtilTest {
 
 	@Test
 	public void testGetCoreTaskMap() {
-		Core c1= AmaltheaFactory.eINSTANCE.createCore();
+		ProcessingUnit c1= AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		c1.setName("Core1");
 		OMCore omc1 = new OMCore(c1);
 		
-		Core c2= AmaltheaFactory.eINSTANCE.createCore();
+		ProcessingUnit c2= AmaltheaFactory.eINSTANCE.createProcessingUnit();
 		c2.setName("Core2");
 		OMCore omc2 = new OMCore(c2);
 		

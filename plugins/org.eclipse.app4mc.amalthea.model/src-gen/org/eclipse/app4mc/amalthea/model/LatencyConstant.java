@@ -22,39 +22,39 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles <em>Cycles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyConstant()
  * @model
  * @generated
  */
-public interface LatencyConstant extends Latency {
+public interface LatencyConstant extends HwLatency {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Cycles</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Cycles</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyConstant_Value()
+	 * @return the value of the '<em>Cycles</em>' attribute.
+	 * @see #setCycles(long)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLatencyConstant_Cycles()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	long getValue();
+	long getCycles();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant#getCycles <em>Cycles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @param value the new value of the '<em>Cycles</em>' attribute.
+	 * @see #getCycles()
 	 * @generated
 	 */
-	void setValue(long value);
+	void setCycles(long value);
 
 } // LatencyConstant

@@ -14,11 +14,7 @@ package org.eclipse.app4mc.multicore.openmapping.algorithms.helper;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.ECU;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HwSystem;
-import org.eclipse.app4mc.amalthea.model.Microcontroller;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.multicore.openmapping.model.OMCore;
@@ -30,52 +26,54 @@ public class ListBuilder {
 		UniversalHandler.getInstance().logCon("Building CoreList");
 		final ArrayList<OMCore> coreList = new ArrayList<OMCore>();
 
-		final HwSystem system;
-		if ((system = hw.getSystem()) == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the System element is missing.", null);
-			return null;
-		}
-
-		// Check if the system has ECUs
-		if (system.getEcus().size() <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the System contains no ECU's.", null);
-			return null;
-		}
-
-		// Check the ECUs of the System and find nested Cores
-		final Iterator<ECU> itEcus = system.getEcus().iterator();
-		while (itEcus.hasNext()) {
-			final ECU ecu = itEcus.next();
-			UniversalHandler.getInstance().logCon("Found ECU '" + ecu.getName() + "'");
-
-			// If the ECU has no Microcontrollers, it will skipped
-			if (ecu.getMicrocontrollers().size() <= 0) {
-				UniversalHandler.getInstance().logCon("No Microcontrollers on ECU, skipping...");
-				continue;
-			}
-
-			final Iterator<Microcontroller> mcs = ecu.getMicrocontrollers().iterator();
-			while (mcs.hasNext()) {
-				final Microcontroller mc = mcs.next();
-				UniversalHandler.getInstance().logCon("Found Microcontroller '" + mc.getName() + "'");
-				final Iterator<Core> cores = mc.getCores().iterator();
-				if (null == cores) {
-					UniversalHandler.getInstance().logCon("No cores on Microcontroller, skipping...");
-					continue;
-				}
-
-				while (cores.hasNext()) {
-					final Core core = cores.next();
-					UniversalHandler.getInstance().logCon("Found Core '" + core.getName() + "'");
-					coreList.add(new OMCore(core));
-				}
-			}
-		}
-
-		if (coreList.size() <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model! No Core elements could be found.", null);
-			return null;
-		}
+// TODO implement
+		
+//		final HwSystem system;
+//		if ((system = hw.getSystem()) == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the System element is missing.", null);
+//			return null;
+//		}
+//
+//		// Check if the system has ECUs
+//		if (system.getEcus().size() <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the System contains no ECU's.", null);
+//			return null;
+//		}
+//
+//		// Check the ECUs of the System and find nested Cores
+//		final Iterator<ECU> itEcus = system.getEcus().iterator();
+//		while (itEcus.hasNext()) {
+//			final ECU ecu = itEcus.next();
+//			UniversalHandler.getInstance().logCon("Found ECU '" + ecu.getName() + "'");
+//
+//			// If the ECU has no Microcontrollers, it will skipped
+//			if (ecu.getMicrocontrollers().size() <= 0) {
+//				UniversalHandler.getInstance().logCon("No Microcontrollers on ECU, skipping...");
+//				continue;
+//			}
+//
+//			final Iterator<Microcontroller> mcs = ecu.getMicrocontrollers().iterator();
+//			while (mcs.hasNext()) {
+//				final Microcontroller mc = mcs.next();
+//				UniversalHandler.getInstance().logCon("Found Microcontroller '" + mc.getName() + "'");
+//				final Iterator<ProcessingUnit> cores = mc.getCores().iterator();
+//				if (null == cores) {
+//					UniversalHandler.getInstance().logCon("No cores on Microcontroller, skipping...");
+//					continue;
+//				}
+//
+//				while (cores.hasNext()) {
+//					final ProcessingUnit core = cores.next();
+//					UniversalHandler.getInstance().logCon("Found Core '" + core.getName() + "'");
+//					coreList.add(new OMCore(core));
+//				}
+//			}
+//		}
+//
+//		if (coreList.size() <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model! No Core elements could be found.", null);
+//			return null;
+//		}
 
 		return coreList;
 	}

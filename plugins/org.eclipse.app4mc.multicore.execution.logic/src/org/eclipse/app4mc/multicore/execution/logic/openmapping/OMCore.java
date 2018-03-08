@@ -11,24 +11,17 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.execution.logic.openmapping;
 
-import java.math.BigDecimal;
-
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.Core;
-import org.eclipse.app4mc.amalthea.model.CoreType;
-import org.eclipse.app4mc.amalthea.model.Prescaler;
-import org.eclipse.app4mc.amalthea.model.Quartz;
-import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 
 public class OMCore {
-	private final Core coreRef;
+	private final ProcessingUnit coreRef;
 	private long instructionsPerSecond = -1;
 
-	public OMCore(final Core coreRef) {
+	public OMCore(final ProcessingUnit coreRef) {
 		this.coreRef = coreRef;
 	}
 
-	public Core getCoreRef() {
+	public ProcessingUnit getCoreRef() {
 		return this.coreRef;
 	}
 
@@ -48,84 +41,93 @@ public class OMCore {
 		if (this.instructionsPerSecond >= 0) {
 			return this.instructionsPerSecond;
 		}
-		// Calculate the Value otherwise
-		// Check the core's Prescaler element and its attribute
-		final Prescaler prescaler = this.coreRef.getPrescaler();
-		if (prescaler == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
-					+ "' has an invalid or missing reference to its Prescaler.", null);
-			return -1;
-		}
-
-		final double clockRatio = prescaler.getClockRatio();
-		if (clockRatio <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute clockRatio.", null);
-			return -1;
-		}
-
-		// Check the Quartz element and its attribute
-		final Quartz quartz = prescaler.getQuartz();
-		if (quartz == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
-					+ this.coreRef.getName() + "' has an invalid or missing reference to Quartz.", null);
-			return -1;
-		}
-
-		final long frequency = getFrequencyHz();
-		if (frequency <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Quartz of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute frequency.", null);
-			return -1;
-		}
-
-		// Check CoreType and its attribute
-		final CoreType type = this.coreRef.getCoreType();
-		if (type == null) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
-					+ "' has an invalid or missing reference to its CoreType.", null);
-			return -1;
-		}
-
-		final float instructionsPerCycle = type.getInstructionsPerCycle();
-		if (instructionsPerCycle <= 0) {
-			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered CoreType of Core '"
-					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);
-			return -1;
-		}
-
-		// Calculate the instructions per second as the product of frequency, clockRatio and instructionsPerCycle
-		return (this.instructionsPerSecond = (long) (frequency * clockRatio * instructionsPerCycle));
+		
+		
+		// TODO dummy
+		return 1;
+		
+//		// Calculate the Value otherwise
+//		// Check the core's Prescaler element and its attribute
+//		final Prescaler prescaler = this.coreRef.getPrescaler();
+//		if (prescaler == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
+//					+ "' has an invalid or missing reference to its Prescaler.", null);
+//			return -1;
+//		}
+//
+//		final double clockRatio = prescaler.getClockRatio();
+//		if (clockRatio <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute clockRatio.", null);
+//			return -1;
+//		}
+//
+//		// Check the Quartz element and its attribute
+//		final Quartz quartz = prescaler.getQuartz();
+//		if (quartz == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Prescaler of Core '"
+//					+ this.coreRef.getName() + "' has an invalid or missing reference to Quartz.", null);
+//			return -1;
+//		}
+//
+//		final long frequency = getFrequencyHz();
+//		if (frequency <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered Quartz of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute frequency.", null);
+//			return -1;
+//		}
+//
+//		// Check ProcessingUnitDefinition and its attribute
+//		final ProcessingUnitDefinition type = this.coreRef.getDefinition();
+//		if (type == null) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, Core '" + this.coreRef.getName()
+//					+ "' has an invalid or missing reference to its CoreType.", null);
+//			return -1;
+//		}
+//
+//		final float instructionsPerCycle = type.getInstructionsPerCycle();
+//		if (instructionsPerCycle <= 0) {
+//			UniversalHandler.getInstance().log("Invalid Hardware Model, the refered CoreType of Core '"
+//					+ this.coreRef.getName() + "' contains an invalid value in attribute instructionsPerCycle.", null);
+//			return -1;
+//		}
+//
+//		// Calculate the instructions per second as the product of frequency, clockRatio and instructionsPerCycle
+//		return (this.instructionsPerSecond = (long) (frequency * clockRatio * instructionsPerCycle));
 	}
 	
 	public long getFrequencyHz() throws MalformedModelException{
 		
-		if(coreRef==null){
-			throw new MalformedModelException(
-					"No core available!");
-		}else if(coreRef.getPrescaler()==null){
-			throw new MalformedModelException(
-					"No prescaler at core: "+ coreRef.getName());
-		}else if(coreRef.getPrescaler().getQuartz()==null){
-			throw new MalformedModelException(
-					"No quartz at prescaler: "+ coreRef.getPrescaler().getName() + 
-					" at core: "+coreRef.getName());
-		}else if (coreRef.getPrescaler().getQuartz().getFrequency()==null){
-			throw new MalformedModelException(
-					"No frequency at quartz: " + coreRef.getPrescaler().getQuartz().getName()+
-					" at prescaler: "+ coreRef.getPrescaler().getName() + 
-					" at core: "+coreRef.getName());
-		}
+		// TODO dummy
+		return 1;
 		
-		BigDecimal frequencyQuartz = AmaltheaServices.convertToHz(coreRef.getPrescaler().getQuartz().getFrequency());
-		if(frequencyQuartz==null){
-			throw new MalformedModelException(
-					"Malformed frequency at quartz: " + coreRef.getPrescaler().getQuartz()+
-					" at prescaler: "+ coreRef.getPrescaler().getName() + 
-					" at core: "+coreRef.getName());
-		}
-		long frequency = frequencyQuartz.longValue();
-		return frequency;
+//		if(coreRef==null){
+//			throw new MalformedModelException(
+//					"No core available!");
+//		}else if(coreRef.getPrescaler()==null){
+//			throw new MalformedModelException(
+//					"No prescaler at core: "+ coreRef.getName());
+//		}else if(coreRef.getPrescaler().getQuartz()==null){
+//			throw new MalformedModelException(
+//					"No quartz at prescaler: "+ coreRef.getPrescaler().getName() + 
+//					" at core: "+coreRef.getName());
+//		}else if (coreRef.getPrescaler().getQuartz().getFrequency()==null){
+//			throw new MalformedModelException(
+//					"No frequency at quartz: " + coreRef.getPrescaler().getQuartz().getName()+
+//					" at prescaler: "+ coreRef.getPrescaler().getName() + 
+//					" at core: "+coreRef.getName());
+//		}
+//		
+//		BigDecimal frequencyQuartz = AmaltheaServices.convertToHz(coreRef.getPrescaler().getQuartz().getFrequency());
+//		if(frequencyQuartz==null){
+//			throw new MalformedModelException(
+//					"Malformed frequency at quartz: " + coreRef.getPrescaler().getQuartz()+
+//					" at prescaler: "+ coreRef.getPrescaler().getName() + 
+//					" at core: "+coreRef.getName());
+//		}
+//		long frequency = frequencyQuartz.longValue();
+//		return frequency;
+		
 //		final Frequency f = coreRef.getPrescaler().getQuartz().getFrequency();
 //		double frequency = f.getValue();
 //		switch (f.getUnit()) {

@@ -16,6 +16,9 @@ package org.eclipse.app4mc.amalthea.sphinx.ui;
 
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaItemProviderAdapterFactory;
 import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedTagItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwDomainItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwFeatureItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwStructureItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProvider;
@@ -234,4 +237,26 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	public Adapter createTaskAdapter() {
 		return new ExtendedTaskItemProvider(this);
 	}
+	
+
+	@Override
+	public Adapter createHWModelAdapter() {
+		return new ExtendedHWModelItemProvider(this);
+	}
+
+	@Override
+	public Adapter createHwStructureAdapter() {
+		return new ExtendedHwStructureItemProvider(this);
+	}
+
+	@Override
+	public Adapter createHwFeatureAdapter() {
+		return new ExtendedHwFeatureItemProvider(this);
+	}
+
+	@Override
+	public Adapter createHwDomainAdapter() {
+		return new ExtendedHwDomainItemProvider(this);
+	}
+
 }

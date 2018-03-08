@@ -14,22 +14,29 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ComplexNode;
 import org.eclipse.app4mc.amalthea.model.HwPort;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
-import org.eclipse.app4mc.amalthea.model.Pin;
+import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.PortInterface;
+import org.eclipse.app4mc.amalthea.model.PortType;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
+import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,22 +46,116 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getContainingNode <em>Containing Node</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPins <em>Pins</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getBitWidth <em>Bit Width</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPortType <em>Port Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPortInterface <em>Port Interface</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#isDelegated <em>Delegated</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	/**
-	 * The cached value of the '{@link #getPins() <em>Pins</em>}' containment reference.
+	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPins()
+	 * @see #getTags()
 	 * @generated
 	 * @ordered
 	 */
-	protected Pin pins;
+	protected EList<Tag> tags;
+
+	/**
+	 * The default value of the '{@link #getBitWidth() <em>Bit Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBitWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int BIT_WIDTH_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getBitWidth() <em>Bit Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBitWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected int bitWidth = BIT_WIDTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPortType() <em>Port Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPortType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final PortType PORT_TYPE_EDEFAULT = PortType._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getPortType() <em>Port Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPortType()
+	 * @generated
+	 * @ordered
+	 */
+	protected PortType portType = PORT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPortInterface() <em>Port Interface</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPortInterface()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final PortInterface PORT_INTERFACE_EDEFAULT = PortInterface._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getPortInterface() <em>Port Interface</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPortInterface()
+	 * @generated
+	 * @ordered
+	 */
+	protected PortInterface portInterface = PORT_INTERFACE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDelegated() <em>Delegated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDelegated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DELEGATED_EDEFAULT = false;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,43 +181,11 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComplexNode getContainingNode() {
-		if (eContainerFeatureID() != AmaltheaPackage.HW_PORT__CONTAINING_NODE) return null;
-		return (ComplexNode)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComplexNode basicGetContainingNode() {
-		if (eContainerFeatureID() != AmaltheaPackage.HW_PORT__CONTAINING_NODE) return null;
-		return (ComplexNode)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Pin getPins() {
-		return pins;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPins(Pin newPins, NotificationChain msgs) {
-		Pin oldPins = pins;
-		pins = newPins;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__PINS, oldPins, newPins);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Tag> getTags() {
+		if (tags == null) {
+			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_PORT__TAGS);
 		}
-		return msgs;
+		return tags;
 	}
 
 	/**
@@ -124,18 +193,93 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPins(Pin newPins) {
-		if (newPins != pins) {
-			NotificationChain msgs = null;
-			if (pins != null)
-				msgs = ((InternalEObject)pins).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_PORT__PINS, null, msgs);
-			if (newPins != null)
-				msgs = ((InternalEObject)newPins).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_PORT__PINS, null, msgs);
-			msgs = basicSetPins(newPins, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__PINS, newPins, newPins));
+	public int getBitWidth() {
+		return bitWidth;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBitWidth(int newBitWidth) {
+		int oldBitWidth = bitWidth;
+		bitWidth = newBitWidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__BIT_WIDTH, oldBitWidth, bitWidth));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriority(int newPriority) {
+		int oldPriority = priority;
+		priority = newPriority;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__PRIORITY, oldPriority, priority));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PortType getPortType() {
+		return portType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPortType(PortType newPortType) {
+		PortType oldPortType = portType;
+		portType = newPortType == null ? PORT_TYPE_EDEFAULT : newPortType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__PORT_TYPE, oldPortType, portType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PortInterface getPortInterface() {
+		return portInterface;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPortInterface(PortInterface newPortInterface) {
+		PortInterface oldPortInterface = portInterface;
+		portInterface = newPortInterface == null ? PORT_INTERFACE_EDEFAULT : newPortInterface;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_PORT__PORT_INTERFACE, oldPortInterface, portInterface));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDelegated() {
+		EObject _eContainer = this.eContainer();
+		return (_eContainer instanceof HwStructure);
 	}
 
 	/**
@@ -144,10 +288,10 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * @generated
 	 */
 	public String computeUniqueName() {
-		ComplexNode _containingNode = this.getContainingNode();
+		EObject _eContainer = this.eContainer();
 		String _name = null;
-		if (_containingNode!=null) {
-			_name=_containingNode.getName();
+		if (((INamed) _eContainer)!=null) {
+			_name=((INamed) _eContainer).getName();
 		}
 		return this.basicComputeUniqueNameWithPrefix(_name);
 	}
@@ -158,59 +302,20 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_PORT__CONTAINING_NODE, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
-				return eBasicSetContainer(null, AmaltheaPackage.HW_PORT__CONTAINING_NODE, msgs);
-			case AmaltheaPackage.HW_PORT__PINS:
-				return basicSetPins(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
-				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.COMPLEX_NODE__PORTS, ComplexNode.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
-				if (resolve) return getContainingNode();
-				return basicGetContainingNode();
-			case AmaltheaPackage.HW_PORT__PINS:
-				return getPins();
+			case AmaltheaPackage.HW_PORT__TAGS:
+				return getTags();
+			case AmaltheaPackage.HW_PORT__BIT_WIDTH:
+				return getBitWidth();
+			case AmaltheaPackage.HW_PORT__PRIORITY:
+				return getPriority();
+			case AmaltheaPackage.HW_PORT__PORT_TYPE:
+				return getPortType();
+			case AmaltheaPackage.HW_PORT__PORT_INTERFACE:
+				return getPortInterface();
+			case AmaltheaPackage.HW_PORT__DELEGATED:
+				return isDelegated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -220,11 +325,25 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__PINS:
-				setPins((Pin)newValue);
+			case AmaltheaPackage.HW_PORT__TAGS:
+				getTags().clear();
+				getTags().addAll((Collection<? extends Tag>)newValue);
+				return;
+			case AmaltheaPackage.HW_PORT__BIT_WIDTH:
+				setBitWidth((Integer)newValue);
+				return;
+			case AmaltheaPackage.HW_PORT__PRIORITY:
+				setPriority((Integer)newValue);
+				return;
+			case AmaltheaPackage.HW_PORT__PORT_TYPE:
+				setPortType((PortType)newValue);
+				return;
+			case AmaltheaPackage.HW_PORT__PORT_INTERFACE:
+				setPortInterface((PortInterface)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -238,8 +357,20 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__PINS:
-				setPins((Pin)null);
+			case AmaltheaPackage.HW_PORT__TAGS:
+				getTags().clear();
+				return;
+			case AmaltheaPackage.HW_PORT__BIT_WIDTH:
+				setBitWidth(BIT_WIDTH_EDEFAULT);
+				return;
+			case AmaltheaPackage.HW_PORT__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
+				return;
+			case AmaltheaPackage.HW_PORT__PORT_TYPE:
+				setPortType(PORT_TYPE_EDEFAULT);
+				return;
+			case AmaltheaPackage.HW_PORT__PORT_INTERFACE:
+				setPortInterface(PORT_INTERFACE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -253,12 +384,52 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_PORT__CONTAINING_NODE:
-				return basicGetContainingNode() != null;
-			case AmaltheaPackage.HW_PORT__PINS:
-				return pins != null;
+			case AmaltheaPackage.HW_PORT__TAGS:
+				return tags != null && !tags.isEmpty();
+			case AmaltheaPackage.HW_PORT__BIT_WIDTH:
+				return bitWidth != BIT_WIDTH_EDEFAULT;
+			case AmaltheaPackage.HW_PORT__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
+			case AmaltheaPackage.HW_PORT__PORT_TYPE:
+				return portType != PORT_TYPE_EDEFAULT;
+			case AmaltheaPackage.HW_PORT__PORT_INTERFACE:
+				return portInterface != PORT_INTERFACE_EDEFAULT;
+			case AmaltheaPackage.HW_PORT__DELEGATED:
+				return isDelegated() != DELEGATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.HW_PORT__TAGS: return AmaltheaPackage.ITAGGABLE__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ITAGGABLE__TAGS: return AmaltheaPackage.HW_PORT__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -280,6 +451,11 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == ITaggable.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
 		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
@@ -295,6 +471,28 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 				return computeUniqueName();
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (bitWidth: ");
+		result.append(bitWidth);
+		result.append(", priority: ");
+		result.append(priority);
+		result.append(", portType: ");
+		result.append(portType);
+		result.append(", portInterface: ");
+		result.append(portInterface);
+		result.append(')');
+		return result.toString();
 	}
 
 } //HwPortImpl
