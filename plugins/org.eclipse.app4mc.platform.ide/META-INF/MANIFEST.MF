@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Tool Platform IDE
 Bundle-SymbolicName: org.eclipse.app4mc.platform.ide;singleton:=true
-Bundle-Version: 0.8.3.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: Eclipse APP4MC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

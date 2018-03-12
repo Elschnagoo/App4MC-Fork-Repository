@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.amalthea.converters"
       label="APP4MC AMALTHEA Converters"
-      version="0.8.3.qualifier"
+      version="0.9.0.qualifier"
       provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
       license-feature-version="1.0.1.qualifier">

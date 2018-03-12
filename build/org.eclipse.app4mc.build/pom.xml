@@ -6,7 +6,7 @@
 
 	<groupId>org.eclipse.app4mc.build</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.8.3-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -403,7 +403,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.8.3-SNAPSHOT</version>
+							<version>0.9.0-SNAPSHOT</version>
 							<classifier>dev</classifier>
 						</artifact>
 					</target>
@@ -724,7 +724,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.8.3-SNAPSHOT</version>
+							<version>0.9.0-SNAPSHOT</version>
 							<classifier>dev</classifier>
 						</artifact>
 					</target>
