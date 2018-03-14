@@ -384,7 +384,6 @@
       <xsd:enumeration value="performance"/>
       <xsd:enumeration value="power"/>
       <xsd:enumeration value="both"/>
-      <xsd:enumeration value="information"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="MemoryAddressMappingType">

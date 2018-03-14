@@ -1923,7 +1923,6 @@ enum HwFeatureType {
 	performance
 	power
 	both
-	information
 }
 
 

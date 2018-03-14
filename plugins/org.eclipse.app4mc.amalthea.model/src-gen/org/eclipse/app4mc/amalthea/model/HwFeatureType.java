@@ -66,17 +66,7 @@ public enum HwFeatureType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BOTH(0, "both", "both"),
-
-	/**
-	 * The '<em><b>Information</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INFORMATION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	INFORMATION(0, "information", "information");
+	BOTH(0, "both", "both");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -139,21 +129,6 @@ public enum HwFeatureType implements Enumerator {
 	public static final int BOTH_VALUE = 0;
 
 	/**
-	 * The '<em><b>Information</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Information</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #INFORMATION
-	 * @model name="information"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int INFORMATION_VALUE = 0;
-
-	/**
 	 * An array of all the '<em><b>Hw Feature Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,7 +140,6 @@ public enum HwFeatureType implements Enumerator {
 			PERFORMANCE,
 			POWER,
 			BOTH,
-			INFORMATION,
 		};
 
 	/**

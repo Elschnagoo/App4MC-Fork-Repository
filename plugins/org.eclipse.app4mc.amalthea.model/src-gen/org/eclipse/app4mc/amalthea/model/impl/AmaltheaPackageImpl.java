@@ -16444,7 +16444,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.PERFORMANCE);
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.POWER);
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.BOTH);
-		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.INFORMATION);
 
 		initEEnum(memoryAddressMappingTypeEEnum, MemoryAddressMappingType.class, "MemoryAddressMappingType");
 		addEEnumLiteral(memoryAddressMappingTypeEEnum, MemoryAddressMappingType._UNDEFINED_);
