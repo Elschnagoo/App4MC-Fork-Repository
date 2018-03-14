@@ -69,7 +69,7 @@ public class FactoryUtil {
 	 * 
 	 */
 	public static Time createTime(String timeString) {
-		Pattern p = Pattern.compile("(\\d+)(s|ms|us|ns|ps)");
+		Pattern p = Pattern.compile("(\\d+)\\s?(s|ms|us|ns|ps)");
 		Matcher m = p.matcher(timeString);
 		if(m.matches()) {
 			String value = m.group(1);
