@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Robert Bosch GmbH.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ *******************************************************************************/
+
 package org.eclipse.app4mc.amalthea.model.provider
 
 import java.util.ArrayList
@@ -162,7 +173,7 @@ class CustomItemProviderService {
 	private def static getContainingFeatureName(EObject object) {
 		return getContainingFeatureName(object, "", ": ")
 	}
-	
+
 	private def static getLabelProviderText(Object object, AdapterFactory rootAF) {
 		if (object !== null && rootAF.isFactoryForType(object)) {
 			val plainAdapter = rootAF.adapt(object, typeof(IItemLabelProvider))
@@ -174,7 +185,6 @@ class CustomItemProviderService {
 	}
 
 	/* Pretty print methods */
-	
 	private def static ppCamelCase(String s) {
 		StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(s), ' ')
 	}
@@ -188,10 +198,9 @@ class CustomItemProviderService {
 		return name
 	}
 
-
+///// 
 ///// _________________________ Amalthea _________________________
- 
-
+///// 
 
 	/*****************************************************************************
 	 * 						AmaltheaItemProvider
@@ -204,57 +213,54 @@ class CustomItemProviderService {
 		}
 	}
 
-
+///// 
 ///// _________________________ Common _________________________
- 
-
+///// 
 
 	private def static getFrequencyText(Frequency frequency) {
-		if (frequency === null) return "<frequency>"
-		
+		if(frequency === null) return "<frequency>"
+
 		val value = Double.toString(frequency.value)
-		val unit = if (frequency.unit == FrequencyUnit::_UNDEFINED_) "<unit>" else frequency.unit.literal
+		val unit = if(frequency.unit == FrequencyUnit::_UNDEFINED_) "<unit>" else frequency.unit.literal
 		return value + " " + unit
 	}
 
 	private def static getTimeText(AbstractTime time) {
-		if (time === null) return "<time>"
-		
-		val value = if (time.value === null) "???" else time.value.toString
-		val unit = if (time.unit == TimeUnit::_UNDEFINED_) "<unit>" else time.unit.literal
+		if(time === null) return "<time>"
+
+		val value = if(time.value === null) "???" else time.value.toString
+		val unit = if(time.unit == TimeUnit::_UNDEFINED_) "<unit>" else time.unit.literal
 		return value + " " + unit
 	}
 
 	private def static getDataSizeText(DataSize size) {
-		if (size === null) return "<data size>"
-		
-		val value = if (size.value === null) "???" else size.value.toString
-		val unit = if (size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
+		if(size === null) return "<data size>"
+
+		val value = if(size.value === null) "???" else size.value.toString
+		val unit = if(size.unit == DataSizeUnit::_UNDEFINED_) "<unit>" else size.unit.literal
 		return value + " " + unit
 	}
 
 	private def static getDataRateText(DataRate rate) {
-		if (rate === null) return "<data rate>"
-		
-		val value = if (rate.value === null) "???" else rate.value.toString
-		val unit = if (rate.unit == DataRateUnit::_UNDEFINED_) "<unit>" else rate.unit.literal
+		if(rate === null) return "<data rate>"
+
+		val value = if(rate.value === null) "???" else rate.value.toString
+		val unit = if(rate.unit == DataRateUnit::_UNDEFINED_) "<unit>" else rate.unit.literal
 		return value + " " + unit.replace("PerSecond", "/s")
 	}
 
 	private def static trimDistName(String name) {
-		if (name === null) return ""
-		
+		if(name === null) return ""
+
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
 	}
 
-
-	private def static getInstructionsText(Instructions instr){
+	private def static getInstructionsText(Instructions instr) {
 		switch instr {
 			InstructionsConstant: getInstructionsConstantItemProviderText(instr, null)
 			InstructionsDeviation: getInstructionsDeviationItemProviderText(instr, null)
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						CustomPropertyItemProvider
@@ -285,7 +291,7 @@ class CustomItemProviderService {
 	/*****************************************************************************
 	 * 						BooleanObjectItemProvider
 	 *****************************************************************************/
-	 def static String getBooleanObjectItemProviderText(Object object, String defaultText) {
+	def static String getBooleanObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BooleanObject) {
 			return getContainingFeatureName(object) + object
 		} else {
@@ -374,7 +380,6 @@ class CustomItemProviderService {
 		}
 	}
 
-
 	/*****************************************************************************
 	 * 						BoundariesItemProvider
 	 *****************************************************************************/
@@ -417,7 +422,6 @@ class CustomItemProviderService {
 		return "Dist: Weibull Parameters";
 	}
 
-
 	/*****************************************************************************
 	 * 						FrequencyItemProvider
 	 *****************************************************************************/
@@ -433,25 +437,23 @@ class CustomItemProviderService {
 	 * 						DataSizeItemProvider
 	 *****************************************************************************/
 	def static String getDataSizeItemProviderText(Object object, String defaultText) {
-	if (object instanceof DataSize) {
+		if (object instanceof DataSize) {
 			return getContainingFeatureName(object) + getDataSizeText(object)
 		} else {
 			return defaultText
 		}
 	}
-	
 
 	/*****************************************************************************
 	 * 						DataRateItemProvider
 	 *****************************************************************************/
 	def static String getDataRateItemProviderText(Object object, String defaultText) {
-	if (object instanceof DataRate) {
+		if (object instanceof DataRate) {
 			return getContainingFeatureName(object) + getDataRateText(object)
 		} else {
 			return defaultText
 		}
 	}
-	
 
 	/*****************************************************************************
 	 * 						DeviationItemProvider
@@ -464,8 +466,8 @@ class CustomItemProviderService {
 			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
 			val s2 = if(lower === null) "" else " lowerBound: " + lower
 			val s3 = if(upper === null) "" else " upperBound: " + upper
-			
-	 		return getContainingFeatureName(object) + "(" + s1 + ")" + s2 + s3
+
+			return getContainingFeatureName(object) + "(" + s1 + ")" + s2 + s3
 		}
 	}
 
@@ -552,7 +554,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						TransmissionPolicyItemProvider
 	 *****************************************************************************/
@@ -561,7 +562,7 @@ class CustomItemProviderService {
 			val size = object.chunkSize
 			val instr = object.chunkProcessingInstructions
 			val ratio = object.transmitRatio
-			
+
 			return "transmission (chunk size: " + getDataSizeText(size) + " instructions: " + instr + " ratio: " + ratio + ")";
 		} else {
 			return defaultText
@@ -581,11 +582,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ Components _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						ComponentInstanceItemProvider
@@ -644,7 +643,6 @@ class CustomItemProviderService {
 		}
 	}
 
-
 	/*****************************************************************************
 	 * 						QualifiedPortItemProvider
 	 *****************************************************************************/
@@ -677,11 +675,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ Config _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						EventConfigItemProvider
@@ -692,7 +688,7 @@ class CustomItemProviderService {
 			val event = object?.event
 			val s1 = ppName(name)
 			var s2 = if(event === null) "<event>" else getLabelProviderText(event, rootAF)
-			
+
 			return "Config " + s1 + " -> trace " + s2
 		} else {
 			return defaultText
@@ -701,7 +697,7 @@ class CustomItemProviderService {
 
 	def static List<ViewerNotification> getEventConfigItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(EventConfig)) {			
+		switch notification.getFeatureID(typeof(EventConfig)) {
 			case AmaltheaPackage::EVENT_CONFIG__NAME:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage::EVENT_CONFIG__EVENT:
@@ -710,17 +706,15 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ Constraints _________________________
-
-
+///// 
 
 	private def static getLimitTypeText(LimitType limitType) {
 		switch limitType {
-			case LimitType::UPPER_LIMIT : " <= "
-			case LimitType::LOWER_LIMIT : " >= "
-			default : " ? "
+			case LimitType::UPPER_LIMIT: " <= "
+			case LimitType::LOWER_LIMIT: " >= "
+			default: " ? "
 		}
 	}
 
@@ -743,7 +737,6 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(ComponentScope)) {
 			case AmaltheaPackage::COMPONENT_SCOPE__COMPONENT:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-
 		}
 		return list
 	}
@@ -794,7 +787,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ArchitectureRequirementItemProvider
 	 *****************************************************************************/
@@ -807,7 +799,7 @@ class CustomItemProviderService {
 			return "Req " + s1 + " -- " + s2
 		} else {
 			return defaultText
-		}	
+		}
 	}
 
 	def static List<ViewerNotification> getArchitectureRequirementItemProviderNotifications(Notification notification) {
@@ -820,7 +812,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-	
 
 	/*****************************************************************************
 	 * 						CountRequirementLimitItemProvider
@@ -829,7 +820,7 @@ class CustomItemProviderService {
 		if (object instanceof CountRequirementLimit) {
 			val metric = object?.metric
 			val limitType = object?.limitType
-			val limitValue = if (object === null) 0 else object.limitValue
+			val limitValue = if(object === null) 0 else object.limitValue
 			val s1 = if(metric === null || metric == CountMetric::_UNDEFINED_) "<count metric>" else metric.literal + " count"
 			val s2 = getLimitTypeText(limitType)
 			val s3 = Double.toString(limitValue)
@@ -838,7 +829,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-	
+
 	/*****************************************************************************
 	 * 						CPUPercentageRequirementLimitItemProvider
 	 *****************************************************************************/
@@ -847,7 +838,7 @@ class CustomItemProviderService {
 			val metric = object?.metric
 			val hwContext = object?.hardwareContext?.name
 			val limitType = object?.limitType
-			val limitValue = if (object === null) 0 else object.limitValue
+			val limitValue = if(object === null) 0 else object.limitValue
 			val s1 = if(metric === null || metric == CPUPercentageMetric::_UNDEFINED_) "<CPU % metric>" else metric.literal
 			val s2 = if(hwContext.isNullOrEmpty) "" else " on " + hwContext
 			val s3 = getLimitTypeText(limitType)
@@ -893,7 +884,7 @@ class CustomItemProviderService {
 		if (object instanceof PercentageRequirementLimit) {
 			val metric = object?.metric
 			val limitType = object?.limitType
-			val limitValue = if (object === null) 0 else object.limitValue
+			val limitValue = if(object === null) 0 else object.limitValue
 			val s1 = if(metric === null || metric == PercentageMetric::_UNDEFINED_) "<% metric>" else metric.literal
 			val s2 = getLimitTypeText(limitType)
 			val s3 = Double.toString(limitValue) + " %"
@@ -931,7 +922,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ProcessRequirementItemProvider
 	 *****************************************************************************/
@@ -946,7 +936,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-	
+
 	def static List<ViewerNotification> getProcessRequirementItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 
@@ -957,7 +947,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						RunnableRequirementItemProvider
@@ -985,7 +974,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-	
 	/*****************************************************************************
 	 * 						ProcessChainRequirementItemProvider
 	 *****************************************************************************/
@@ -1011,7 +999,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-	
 
 	/*****************************************************************************
 	 * 						DataAgeCycleItemProvider
@@ -1047,7 +1034,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						DataCoherencyGroupItemProvider
 	 *****************************************************************************/
@@ -1057,11 +1043,15 @@ class CustomItemProviderService {
 			val direction = object?.direction
 			val scope = object?.scope
 			val s1 = ppName(name, "<group>")
-			val s2 = if(direction === null || direction == CoherencyDirection::_UNDEFINED_) "<direction>" else direction.literal
+			val s2 = if(direction === null ||
+					direction == CoherencyDirection::_UNDEFINED_) "<direction>" else direction.literal
 			val s3 = switch scope {
-				RunnableScope: if (scope.runnable?.name.isNullOrEmpty) "<runnable>" else "Runnable " + scope.runnable.name
-				ProcessScope: if (scope.process?.name.isNullOrEmpty) "<process>" else scope.process.eClass.name + " " + scope.process.name
-				ComponentScope: if (scope.component?.name.isNullOrEmpty) "<component>" else "Component " + scope.component.name
+				RunnableScope: if(scope.runnable?.name.isNullOrEmpty) "<runnable>" else "Runnable " +
+					scope.runnable.name
+				ProcessScope: if(scope.process?.name.isNullOrEmpty) "<process>" else scope.process.eClass.name + " " +
+					scope.process.name
+				ComponentScope: if(scope.component?.name.isNullOrEmpty) "<component>" else "Component " +
+					scope.component.name
 				default: "?"
 			}
 			return "CoherencyGroup " + s1 + " " + s2 + " (Scope: " + s3 + ")"
@@ -1083,7 +1073,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						EventChainReferenceItemProvider
 	 *****************************************************************************/
@@ -1103,7 +1092,6 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(EventChainReference)) {
 			case AmaltheaPackage::EVENT_CHAIN_REFERENCE__EVENT_CHAIN:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-
 		}
 		return list
 	}
@@ -1115,7 +1103,8 @@ class CustomItemProviderService {
 		if (object instanceof EventChainContainer) {
 			val chain = object?.eventChain
 			val s1 = getContainingFeatureName(object)
-			val s2 = if(chain === null) "<sub chain>" else if (chain.name.isNullOrEmpty) "Sub Chain" else "(Sub Chain) " + chain.name
+			val s2 = if(chain === null) "<sub chain>" else if(chain.name.
+					isNullOrEmpty) "Sub Chain" else "(Sub Chain) " + chain.name
 			return s1 + s2
 		} else {
 			return defaultText
@@ -1130,7 +1119,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						TagGroupItemProvider
@@ -1154,10 +1142,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ Events _________________________
-
+///// 
 
 	/*****************************************************************************
 	 * 						PhysicalSectionConstraintItemProvider
@@ -1168,33 +1155,36 @@ class CustomItemProviderService {
 			val memories = object?.memories
 
 			val sectionString = if(section?.name.isNullOrEmpty) "<section>" else "Section :  " + section.name
-			
-			val List<String> memoryNames=new ArrayList<String>()
-			
-			if(!memories.isNullOrEmpty){
-				memories.forEach[it|
-					val st= if(it?.name.isNullOrEmpty) "???" else it.name
+
+			val List<String> memoryNames = new ArrayList<String>()
+
+			if (!memories.isNullOrEmpty) {
+				memories.forEach [ it |
+					val st = if(it?.name.isNullOrEmpty) "???" else it.name
 					memoryNames.add(st)
 				]
 			}
-			
-			val memoriesString = if(memoryNames.isNullOrEmpty) {"<memories>"}  else { 
-				if(memoryNames.size>10) {
-				" Memories : "+memoryNames.subList(0,10).join(', ')+", ..."
+
+			val memoriesString = if (memoryNames.isNullOrEmpty) {
+					"<memories>"
 				} else {
-				" Memories : "+memoryNames.join(', ')
+					if (memoryNames.size > 10) {
+						" Memories : " + memoryNames.subList(0, 10).join(', ') + ", ..."
+					} else {
+						" Memories : " + memoryNames.join(', ')
+					}
 				}
-			}
-			
-			val s0= if(object?.name.isNullOrEmpty) "<name>" else  object.name
-			
+
+			val s0 = if(object?.name.isNullOrEmpty) "<name>" else object.name
+
 			return s0 + " : (" + sectionString + ")" + " --> (" + memoriesString + ")";
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getPhysicalSectionConstraintItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getPhysicalSectionConstraintItemProviderNotifications(
+		Notification notification) {
 		val list = newArrayList
 
 		switch notification.getFeatureID(typeof(PhysicalSectionConstraint)) {
@@ -1208,12 +1198,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
-
-
+///// 
 ///// _________________________ HW _________________________
-
+///// 
 
 	/*****************************************************************************
 	 * 						HwAccessPathItemProvider
@@ -1245,8 +1232,6 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
-
-
 	/*****************************************************************************
 	 * 						AccessPathRefItemProvider
 	 *****************************************************************************/
@@ -1258,17 +1243,13 @@ class CustomItemProviderService {
 //		} else {
 //			return defaultText
 //		}
-
 // TODO: use label text of referred element
-
 //			final AccessPathRef element = (AccessPathRef) object;
 //			if (null != element.getRef()) {
 //				return getString("_UI_AccessPathRef_type") + " -> "
 //						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
 //			}
 //	}
-
-
 	/*****************************************************************************
 	 * 						HwAccessPathRefItemProvider
 	 *****************************************************************************/
@@ -1280,16 +1261,13 @@ class CustomItemProviderService {
 //		} else {
 //			return defaultText
 //		}
-
 // TODO: use label text of referred element
-
 //			final HwAccessPathRef element = (HwAccessPathRef) object;
 //			if (null != element.getRef()) {
 //				return getString("_UI_HwAccessPathRef_type") + " -> "
 //						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
 //			}
 //	}
-
 //	def static List<ViewerNotification> getHwAccessPathRefItemProviderNotifications(Notification notification) {
 //		val list = newArrayList
 //
@@ -1299,8 +1277,6 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
-
-
 	/*****************************************************************************
 	 * 						HwElementRefItemProvider
 	 *****************************************************************************/
@@ -1312,10 +1288,8 @@ class CustomItemProviderService {
 //		} else {
 //			return defaultText
 //		}
-
 // TODO: Name Provider and Update
 //	}
-
 //	def static List<ViewerNotification> getHwElementRefItemProviderNotifications(Notification notification) {
 //		val list = newArrayList
 //		switch notification.getFeatureID(typeof(HwElementRef)) {
@@ -1324,8 +1298,6 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
-
-
 	/*****************************************************************************
 	 * 						LatencyAccessPathItemProvider
 	 *****************************************************************************/
@@ -1355,8 +1327,6 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
-
-
 	/*****************************************************************************
 	 * 						LatencyConstantItemProvider
 	 *****************************************************************************/
@@ -1371,8 +1341,6 @@ class CustomItemProviderService {
 //			return defaultText
 //		}
 //	}
-
-
 	/*****************************************************************************
 	 * 						LatencyDeviationItemProvider
 	 *****************************************************************************/
@@ -1399,8 +1367,6 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
-
-
 	/*****************************************************************************
 	 * 						HwPortItemProvider
 	 *****************************************************************************/
@@ -1412,7 +1378,7 @@ class CustomItemProviderService {
 
 			val s1 = ppName(cName, cType)
 			val s2 = ppName(name, "<port>")
-			return s1 + "_"  + s2
+			return s1 + "_" + s2
 		} else {
 			return defaultText
 		}
@@ -1431,11 +1397,11 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getHwAccessElementItemProviderText(Object object, String defaultText) {
 		if (object instanceof HwAccessElement) {
-				val s1 = ppName(object.name, "???")
-				val s2 = ppName(object.source?.name, "<source>")
-				val s3 = ppName(object.destination?.name, "<destination>")
-				return s1 + ": " + s2 + " --> " + s3
-			}
+			val s1 = ppName(object.name, "???")
+			val s2 = ppName(object.source?.name, "<source>")
+			val s3 = ppName(object.destination?.name, "<destination>")
+			return s1 + ": " + s2 + " --> " + s3
+		}
 	}
 
 	def static ViewerNotification getHwAccessElementItemProviderNotification(Notification notification) {
@@ -1453,8 +1419,8 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
 		if (object instanceof HwAccessPath) {
-				return object.name
-			}
+			return object.name
+		}
 	}
 
 	/*****************************************************************************
@@ -1464,13 +1430,13 @@ class CustomItemProviderService {
 		if (object instanceof HwConnection) {
 			val cName1 = (object.port1?.eContainer as INamed)?.name
 			val cName2 = (object.port2?.eContainer as INamed)?.name
-		
+
 			val s1 = ppName(object.name, "???")
 			val s2 = ppName(cName1, "<module1>")
 			val s3 = ppName(object.port1?.name, "<port1>")
 			val s4 = ppName(cName2, "<module2>")
 			val s5 = ppName(object.port2?.name, "<port2>")
-			return s1 + ": " + s2 + "_" + s3 + " --> " + s4 + "_" + s5 
+			return s1 + ": " + s2 + "_" + s3 + " --> " + s4 + "_" + s5
 		}
 	}
 
@@ -1480,7 +1446,6 @@ class CustomItemProviderService {
 			case AmaltheaPackage::HW_CONNECTION__PORT1,
 			case AmaltheaPackage::HW_CONNECTION__PORT2:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-
 		}
 		return null
 	}
@@ -1514,11 +1479,9 @@ class CustomItemProviderService {
 		}
 	}
 
-
-
+///// 
 ///// _________________________ Mapping _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						MappingModelItemProvider
@@ -1535,7 +1498,7 @@ class CustomItemProviderService {
 			val schedName = object?.scheduler?.name
 			val cores = object?.responsibility
 			val s1 = if(schedName.isNullOrEmpty) "<scheduler>" else "Scheduler " + schedName
-			val s2 = cores.map[e | ppName(e?.name)].join(", ")
+			val s2 = cores.map[e|ppName(e?.name)].join(", ")
 			return "Allocation: " + s1 + " -- Cores ( " + s2 + " )";
 		} else {
 			return defaultText
@@ -1620,7 +1583,7 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-	
+
 	def static List<ViewerNotification> getTaskAllocationItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(TaskAllocation)) {
@@ -1632,11 +1595,9 @@ class CustomItemProviderService {
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
 				// update the content tree
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-			
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						MemoryMappingItemProvider
@@ -1663,9 +1624,6 @@ class CustomItemProviderService {
 		return list
 	}
 
- 
- 
-
 	/*****************************************************************************
 	 * 						PhysicalSectionMappingItemProvider
 	 *****************************************************************************/
@@ -1675,27 +1633,28 @@ class CustomItemProviderService {
 			val sections = object?.origin
 
 			val memoryString = if(memory?.name.isNullOrEmpty) "<memory>" else "Memory :  " + memory.name
-			
-			val List<String> sectionNames=new ArrayList<String>()
-			
-			if(!sections.isNullOrEmpty){
-				sections.forEach[it|
-					val st= if(it?.name.isNullOrEmpty) "???" else it.name
+
+			val List<String> sectionNames = new ArrayList<String>()
+
+			if (!sections.isNullOrEmpty) {
+				sections.forEach [ it |
+					val st = if(it?.name.isNullOrEmpty) "???" else it.name
 					sectionNames.add(st)
 				]
 			}
-			
-			val sectionsString = if(sectionNames.isNullOrEmpty) {"<sections>"}
-			 else {
-			 	if(sectionNames.size>10) {
-			 	" Sections : "+sectionNames.subList(0,10).join(', ')+", ..."
-			 	} else {
-			 	" Sections : "+sectionNames.join(', ')
-			 	}
-			 }
-			
-			val s0= ppName(object?.name, "<name>")
-			
+
+			val sectionsString = if (sectionNames.isNullOrEmpty) {
+					"<sections>"
+				} else {
+					if (sectionNames.size > 10) {
+						" Sections : " + sectionNames.subList(0, 10).join(', ') + ", ..."
+					} else {
+						" Sections : " + sectionNames.join(', ')
+					}
+				}
+
+			val s0 = ppName(object?.name, "<name>")
+
 			return s0 + " : (" + sectionsString + ")" + " --> (" + memoryString + ")";
 		} else {
 			return defaultText
@@ -1716,11 +1675,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ OS _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						OsDataConsistencyItemProvider
@@ -1728,7 +1685,7 @@ class CustomItemProviderService {
 	def static String getOsDataConsistencyItemProviderText(Object object, String defaultText) {
 		if (object instanceof OsDataConsistency) {
 			val mode = object.mode
-			
+
 			val s1 = "OS Data Consistency - "
 			val s2 = if(mode === null || mode == OsDataConsistencyMode::_UNDEFINED_) "?" else mode.literal
 			return s1 + s2
@@ -1807,11 +1764,9 @@ class CustomItemProviderService {
 		}
 	}
 
-
-
+///// 
 ///// _________________________ PropertyConstraints _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						ProcessPrototypeAllocationConstraintItemProvider
@@ -1890,7 +1845,7 @@ class CustomItemProviderService {
 
 			val s1 = if(con === null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
 			val s2 = if(grp === null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
-			val s3 = if (cla.isNullOrEmpty) "<classifiers>" else cla.map[e| ppName(e?.name)].join(", ")
+			val s3 = if(cla.isNullOrEmpty) "<classifiers>" else cla.map[e|ppName(e?.name)].join(", ")
 			return s1 + " (" + s2 + "): " + s3;
 		} else {
 			return defaultText
@@ -1943,7 +1898,7 @@ class CustomItemProviderService {
 
 			val s1 = if(con === null || con == Condition::_UNDEFINED_) "<condition>" else con.literal
 			val s2 = if(grp === null || grp == GroupingType::_UNDEFINED_) "<grouping>" else ppCamelCase(grp.literal).toLowerCase
-			val s3 = if (cla.isNullOrEmpty) "<classifiers>" else cla.map[e| ppName(e?.name)].join(", ")
+			val s3 = if(cla.isNullOrEmpty) "<classifiers>" else cla.map[e|ppName(e?.name)].join(", ")
 			return s1 + " (" + s2 + "): " + s3;
 		} else {
 			return defaultText
@@ -1962,10 +1917,9 @@ class CustomItemProviderService {
 		return list
 	}
 
-
+///// 
 ///// _________________________ Stimuli _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						ModeValueListItemProvider
@@ -1978,7 +1932,6 @@ class CustomItemProviderService {
 		}
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeValueDisjunctionItemProvider
 	 *****************************************************************************/
@@ -1990,7 +1943,6 @@ class CustomItemProviderService {
 		}
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeValueConjunctionItemProvider
 	 *****************************************************************************/
@@ -2001,7 +1953,6 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						ModeValueItemProvider
@@ -2030,13 +1981,12 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ArrivalCurveEntryItemProvider
 	 *****************************************************************************/
 	def static String getArrivalCurveEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof ArrivalCurveEntry) {
-			val num = if (object === null) 0 else object.numberOfOccurrences
+			val num = if(object === null) 0 else object.numberOfOccurrences
 			val s1 = getTimeText(object?.lowerTimeBorder)
 			val s2 = getTimeText(object?.upperTimeBorder)
 			return "#occurrences: " + num + " -- interval: " + s1 + ", " + s2
@@ -2058,12 +2008,10 @@ class CustomItemProviderService {
 		return list
 	}
 
-
-
+///// 
 ///// _________________________ SW _________________________
+///// 
 
-
-	
 	private def static getRunnableItemText(RunnableItem item) {
 		switch item {
 			LabelAccess: getLabelAccessItemProviderText(item, null)
@@ -2080,7 +2028,6 @@ class CustomItemProviderService {
 			SynchronousServerCall: getSynchronousServerCallItemProviderText(item, null)
 		}
 	}
-	
 
 	/*****************************************************************************
 	 * 						AccessPrecedenceSpecItemProvider
@@ -2141,7 +2088,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						AsynchronousServerCallItemProvider
 	 *****************************************************************************/
@@ -2163,7 +2109,6 @@ class CustomItemProviderService {
 			case AmaltheaPackage::ASYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE,
 			case AmaltheaPackage::ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-
 		}
 		return list
 	}
@@ -2189,7 +2134,6 @@ class CustomItemProviderService {
 			case AmaltheaPackage::SYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE,
 			case AmaltheaPackage::SYNCHRONOUS_SERVER_CALL__WAITING_BEHAVIOUR:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-
 		}
 		return list
 	}
@@ -2246,26 +2190,24 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						GroupItemProvider
 	 *****************************************************************************/
 	def static String getGroupItemProviderText(Object object, String defaultText) {
 		if (object instanceof Group) {
-			val name = if (object.name.isNullOrEmpty) null else object.name
+			val name = if(object.name.isNullOrEmpty) null else object.name
 			val ordered = if(object === null) false else object.isOrdered
 			val result = if(ordered) "(Sequence)" else "(Set)"
-			return if (name === null) result else result + " " + name
+			return if(name === null) result else result + " " + name
 		}
 	}
-	
+
 	def static String getGroupItemProviderImageName(Object object) {
 		if (object instanceof Group) {
 			val ordered = if(object === null) false else object.isOrdered
 			return "Group_" + if(ordered) "ordered" else "unordered"
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						InterProcessTriggerItemProvider
@@ -2289,7 +2231,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeLiteralItemProvider
 	 *****************************************************************************/
@@ -2300,7 +2241,6 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						ModeLabelItemProvider
@@ -2329,7 +2269,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeSwitchItemProvider
 	 *****************************************************************************/
@@ -2356,7 +2295,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						RunnableModeSwitchItemProvider
@@ -2385,7 +2323,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeSwitchEntryItemProvider
 	 *****************************************************************************/
@@ -2393,9 +2330,8 @@ class CustomItemProviderService {
 		if (object instanceof ModeSwitchEntry<?>) {
 			// Idea: create short notation if structure is simple (like the old one)
 			// val valueName = object?.values?.join("", ", ", "", [name])
-
 			val entryName = object?.name
-			val s1 = if (entryName.nullOrEmpty) "_" else "\"" + entryName + "\""
+			val s1 = if(entryName.nullOrEmpty) "_" else "\"" + entryName + "\""
 			return "case: " + s1
 		} else {
 			return defaultText
@@ -2415,14 +2351,12 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeSwitchDefaultItemProvider
 	 *****************************************************************************/
 	def static String getModeSwitchDefaultItemProviderText(Object object, String defaultText) {
 		return "default"
 	}
-
 
 	/*****************************************************************************
 	 * 						TaskRunnableCallItemProvider
@@ -2447,7 +2381,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						LabelAccessItemProvider
@@ -2475,7 +2408,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						ChannelAccessItemProvider
@@ -2546,7 +2478,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						ModeLabelAccessItemProvider
 	 *****************************************************************************/
@@ -2571,7 +2502,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						RunnableInstructionsEntryItemProvider
@@ -2601,7 +2531,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						RunnableCallItemProvider
 	 *****************************************************************************/
@@ -2626,7 +2555,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						CustomEventTriggerItemProvider
 	 *****************************************************************************/
@@ -2650,7 +2578,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						SenderReceiverReadItemProvider
 	 *****************************************************************************/
@@ -2673,7 +2600,6 @@ class CustomItemProviderService {
 		return list
 	}
 
-
 	/*****************************************************************************
 	 * 						SenderReceiverWriteItemProvider
 	 *****************************************************************************/
@@ -2695,7 +2621,6 @@ class CustomItemProviderService {
 		}
 		return list
 	}
-
 
 	/*****************************************************************************
 	 * 						SetEventItemProvider
@@ -2742,7 +2667,6 @@ class CustomItemProviderService {
 			return defaultText
 		}
 	}
-
 
 	/*****************************************************************************
 	 * 						BaseTypeDefinitionItemProvider
@@ -2820,10 +2744,9 @@ class CustomItemProviderService {
 		}
 	}
 
-
+///// 
 ///// _________________________ Measurement _________________________
-
-
+///// 
 
 	/*****************************************************************************
 	 * 						TaskMeasurementItemProvider
