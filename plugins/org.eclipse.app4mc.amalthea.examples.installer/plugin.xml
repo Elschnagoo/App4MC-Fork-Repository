@@ -103,7 +103,7 @@
             id="AMALTHEA Hardware Projects"
             wizardID="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
             pageImage="icons/full/wizban/NewEMFExample.gif">
-                        <projectDescriptor
+            <projectDescriptor
                name="app4mc.example.hardware"
                contentURI="examples/app4mc.example.hardware/"
                description="%_UI_AMALTHEA_Example_Hwmodel_Project_desc"/>
