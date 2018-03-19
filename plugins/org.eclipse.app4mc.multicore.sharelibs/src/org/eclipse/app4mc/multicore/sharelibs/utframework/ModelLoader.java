@@ -45,7 +45,7 @@ public class ModelLoader {
 	 * @return loaded model
 	 */
 	public static Amalthea getModel(final String model) {
-		return AmaltheaLoader.loadFromFile(getURI(model));
+		return AmaltheaLoader.loadFromURI(getURI(model));
 	}
 
 

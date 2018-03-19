@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
+ *  Copyright (c) 2018 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -19,67 +19,65 @@ import java.io.IOException;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sphinx.emf.resource.ExtendedResourceSet;
 import org.eclipse.sphinx.emf.resource.ExtendedResourceSetImpl;
 
-
-public class AmaltheaLoader {
+public class AmaltheaWriter {
 
 	/**
-	 * Static method to load an AMALTHEA model from a file with a given pathname string.
+	 * Static method to save an AMALTHEA model to a file with a given pathname string.
 	 * <p>
 	 * Possible path names:
 	 * <ul>
-	 * <li>absolute (example: "d:/temp/model.amxmi")</li>
-	 * <li>relative to project folder (example: "input/model.amxmi")</li>
+	 * <li>absolute (example: "d:/temp/model_new.amxmi")</li>
+	 * <li>relative to project folder (example: "output/model_new.amxmi")</li>
 	 * </ul>
 	 * 
+	 * @param model
 	 * @param pathname
-	 * @return AMALTHEA model - null if load failed
+	 * @return boolean - true if file is written successfully
 	 */
-	public static Amalthea loadFromFileNamed(String pathname) {
+	public static boolean writeToFileNamed(Amalthea model, String pathname) {
 		final File file = new File(pathname);
-		return loadFromFile(file);
+		return writeToFile(model, file);
 	}
 
 	/**
-	 * Static method to load an AMALTHEA model from a file.
+	 * Static method to save an AMALTHEA model to a file.
 	 * 
+	 * @param model
 	 * @param file
-	 * @return AMALTHEA model - null if load failed
+	 * @return boolean - true if file is written successfully
 	 */
-	public static Amalthea loadFromFile(File file) {
+	public static boolean writeToFile(Amalthea model, File file) {
 		final URI uri = URI.createFileURI(file.getAbsolutePath());
-		return loadFromURI(uri);
+		return writeToURI(model, uri);
 	}
 
 	/**
-	 * Static method to load an AMALTHEA model from a file URI.
+	 * Static method to save an AMALTHEA model to a file URI.
 	 * 
+	 * @param model
 	 * @param uri
-	 * @return AMALTHEA model - null if load failed
+	 * @return boolean - true if file is written successfully
 	 */
-	public static Amalthea loadFromURI(URI uri) {
+	public static boolean writeToURI(Amalthea model, URI uri) {
 		final ResourceSet resSet = initializeResourceSet();
 		
-		java.lang.System.out.println("Reading file: " + uri.toString());
-
+		java.lang.System.out.println("Writing file: " + uri.toString());
+		
 		final Resource res = resSet.createResource(uri);
+		res.getContents().add(EcoreUtil.copy(model));
 		try {
-			res.load(null);
+			res.save(null);
 		} catch (IOException e) {
-			// ignore
+			return false;
 		}
-		for (final EObject content : res.getContents()) {
-			if (content instanceof Amalthea) {
-				return (Amalthea) content;
-			}
-		}
-
-		return null;
+		
+		return true;
 	}
 
 	private static ResourceSet initializeResourceSet() {
