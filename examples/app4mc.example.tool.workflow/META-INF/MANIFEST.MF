@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Workflow Example
+Bundle-SymbolicName: app4mc.example.tool.workflow
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: Eclipse APP4MC
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.sphinx.emf,
+ org.eclipse.ui,
+ org.eclipse.ui.console,
+ org.apache.log4j,
+ org.eclipse.app4mc.amalthea.model,
+ org.eclipse.app4mc.amalthea.workflow.core
+Bundle-ClassPath: .

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
+      <size value="4" unit="MB"/>
+      <accessLatency xsi:type="am:LatencyConstant" cycles="2"/>
+    </definitions>
+    <features name="IPC" featureType="performance" description="">
+      <value xsi:type="am:DoubleObject" value="1.0"/>
+    </features>
+    <structures name="Democar" structureType="System">
+      <structures name="ECU_1" structureType="ECU">
+        <structures name="Microcontroler_1" structureType="Microcontroller">
+          <modules xsi:type="am:Memory" name="Mem_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
+            <ports name="port" bitWidth="32" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" name="Core_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultCore?type=ProcessingUnitDefinition">
+            <ports name="port" bitWidth="32" priority="0" portType="initiator"/>
+          </modules>
+          <connections name="con1" port1="Core_1/port?type=HwPort" port2="Mem_1/port?type=HwPort"/>
+        </structures>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" name="FrequencyDomain_1" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical" process="Task_5MS?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical" process="Task_10MS?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical" process="Task_20MS?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>

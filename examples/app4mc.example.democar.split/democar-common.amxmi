@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements>
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT"/>
+  </commonElements>
+</am:Amalthea>

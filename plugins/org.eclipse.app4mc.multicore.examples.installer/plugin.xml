@@ -3,38 +3,27 @@
 <plugin>
    <extension point="org.eclipse.ui.newWizards">
       <wizard
-            id="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
-            name="%_UI_AMALTHEA_DemocarExamplesWizard_name"
+            id="org.eclipse.app4mc.tools.examples.MappingExamplesWizard"
+            name="%_UI_Tools_MappingExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.tools.Examples"
             project="true"
             icon="icons/full/ctool16/NewEMFExample.gif">
-         <description>%_UI_AMALTHEA_DemocarExamplesWizard_desc</description>
+         <description>%_UI_Tools_MappingExamplesWizard_desc</description>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.emf.common.ui.examples">
       <example
-            id="org.eclipse.app4mc.amalthea.examples.Examples"
-            wizardID="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
+            id="APP4MC Mapping Projects"
+            wizardID="org.eclipse.app4mc.tools.examples.MappingExamplesWizard"
             pageImage="icons/full/wizban/NewEMFExample.gif">
-        <!-- bug#22 <projectDescriptor
-               name="org.eclipse.app4mc.amalthea.example.democar.autosar"
-               contentURI="examples/org.eclipse.app4mc.amalthea.example.democar.autosar/"
-               description="%_UI_AMALTHEA_Example_Democar_Autosar_Project_desc"/> -->
                <projectDescriptor
-               name="org.eclipse.app4mc.amalthea.example.democar"
-               contentURI="examples/org.eclipse.app4mc.amalthea.example.democar/"
-               description="%_UI_AMALTHEA_Example_Democar_Project_desc"/>
-               <projectDescriptor
+                     contentURI="examples/app4mc.example.tool.mapping/"
+                     description="%_UI_Tools_Example_Mapping_Project_desc"
+                     name="app4mc.example.tool.mapping">
                      contentURI="examples/org.eclipse.app4mc.amalthea.example.democar.mapping/"
                      description="%_UI_AMALTHEA_Example_Democar_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.democar.mapping">
-               </projectDescriptor>
-               <projectDescriptor
-                     contentURI="examples/org.eclipse.app4mc.amalthea.example.democar.split/"
-                     description="%_UI_AMALTHEA_Example_Democar_Project_desc"
-                     name="org.eclipse.app4mc.amalthea.example.democar.split">
                </projectDescriptor>
       </example>
       

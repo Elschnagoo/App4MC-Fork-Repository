@@ -4,29 +4,29 @@
 
 <extension point="org.eclipse.ui.newWizards">
       <wizard
-            id="org.eclipse.app4mc.amalthea.examples.WorkflowExamplesWizard"
-            name="%_UI_AMALTHEA_WorkflowExamplesWizard_name"
+            id="org.eclipse.app4mc.tools.examples.WorkflowExamplesWizard"
+            name="%_UI_Tools_WorkflowExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.tools.Examples"
             project="true"
             icon="icons/full/ctool16/NewEMFExample.gif">
-         <description>%_UI_AMALTHEA_WorkflowExamplesWizard_desc</description>
+         <description>%_UI_Tools_WorkflowExamplesWizard_desc</description>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.emf.common.ui.examples">
       <example
-            id="org.eclipse.app4mc.amalthea.workflow.examples"
-            wizardID="org.eclipse.app4mc.amalthea.examples.WorkflowExamplesWizard"
+            id="APP4MC Workflow Projects"
+            wizardID="org.eclipse.app4mc.tools.examples.WorkflowExamplesWizard"
             pageImage="icons/full/wizban/NewEMFExample.gif">
         <!-- bug#22 <projectDescriptor
                name="org.eclipse.app4mc.amalthea.example.democar.autosar"
                contentURI="examples/org.eclipse.app4mc.amalthea.example.democar.autosar/"
                description="%_UI_AMALTHEA_Example_Democar_Autosar_Project_desc"/> -->
                <projectDescriptor
-               name="org.eclipse.app4mc.amalthea.example.workflow"
-               contentURI="examples/org.eclipse.app4mc.amalthea.example.workflow/"
-               description="%_UI_AMALTHEA_Example_Workflow_Project_desc"/>
+               name="app4mc.example.tool.workflow"
+               contentURI="examples/app4mc.example.tool.workflow/"
+               description="%_UI_Tools_Example_Workflow_Project_desc"/>
       </example>
       
       
