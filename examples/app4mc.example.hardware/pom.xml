@@ -12,12 +12,12 @@
 	</parent>
 	
 	<properties>
-	<plugin-id>org.eclipse.app4mc.amalthea.example.hwmodel</plugin-id>
+	<plugin-id>app4mc.example.hardware</plugin-id>
 	<examples-installer-location>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</examples-installer-location>
 	</properties> 
 	
 
-	<artifactId>org.eclipse.app4mc.amalthea.example.hwmodel</artifactId>
+	<artifactId>app4mc.example.hardware</artifactId>
 	<packaging>jar</packaging>
 
 	<build>
@@ -78,8 +78,6 @@
 			               flags="s"
 			               match="\s*&lt;nature>org.eclipse.emf.cdo.releng.version.VersionNature&lt;/nature>"
 			               replace="" />
-						   
-						   
 							</target>
 						</configuration>
 
