@@ -6,7 +6,9 @@ Bundle-Version: 0.9.0.qualifier
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.amalthea.model,
+ org.eclipse.app4mc.amalthea.model.check,
  org.eclipse.app4mc.amalthea.model.impl,
+ org.eclipse.app4mc.amalthea.model.io,
  org.eclipse.app4mc.amalthea.model.util
 Bundle-Vendor: Eclipse APP4MC
 Bundle-Localization: plugin

@@ -12,11 +12,13 @@
  * *******************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.model;
+package org.eclipse.app4mc.amalthea.model.io;
 
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaResourceFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;

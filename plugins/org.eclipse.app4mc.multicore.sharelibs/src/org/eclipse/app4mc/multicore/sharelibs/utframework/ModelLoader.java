@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.multicore.sharelibs.utframework;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaLoader;
+import org.eclipse.app4mc.amalthea.model.io.AmaltheaLoader;
 import org.eclipse.emf.common.util.URI;
 
 public class ModelLoader {
