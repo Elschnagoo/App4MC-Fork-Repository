@@ -21,19 +21,19 @@ public class ModelLoader {
 	/**
 	 * Democar example model
 	 */
-	public final static String DEMOCAR = "../../examples/org.eclipse.app4mc.amalthea.example.democar/AMALTHEA_Democar.amxmi";
+	public final static String DEMOCAR = "../../examples/app4mc.example.democar/democar.amxmi";
 	/**
 	 * Democar mapping with task model
 	 */
-	public final static String DEMOCAR_WITH_PP = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample.amxmi";
+	public final static String DEMOCAR_WITH_PP = "../../examples/app4mc.example.tool.mapping/model/AMALTHEA_Democar_MappingExample.amxmi";
 	/**
 	 * Democar mapping with task model
 	 */
-	public final static String DEMOCAR_WITH_TASKS = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample_withTasks.amxmi";
+	public final static String DEMOCAR_WITH_TASKS = "../../examples/app4mc.example.tool.mapping/model/AMALTHEA_Democar_MappingExample_withTasks.amxmi";
 	/**
 	 * Democar mapping
 	 */
-	public final static String DEMOCAR_HW = "../../examples/org.eclipse.app4mc.amalthea.example.democar.mapping/model/AMALTHEA_Democar_MappingExample-hw.amxmi";
+	public final static String DEMOCAR_HW = "../../examples/app4mc.example.tool.mapping/model/AMALTHEA_Democar_MappingExample-hw.amxmi";
 
 
 	/**
