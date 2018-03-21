@@ -113,7 +113,7 @@
             pageImage="icons/full/wizban/NewEMFExample.gif"
             wizardID="org.eclipse.app4mc.tools.examples.JavaExamplesWizard">
          <projectDescriptor
-               contentURI="examples/app4mc.example.tool.java"
+               contentURI="examples/app4mc.example.tool.java/"
                description="%_UI_Tools_Example_Java_Project_desc"
                name="app4mc.example.tool.java">
          </projectDescriptor>

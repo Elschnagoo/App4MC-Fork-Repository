@@ -25,12 +25,12 @@ public class LoadModifySaveExample {
 	public static void main(String[] args) {
 
 		// example: absolute path
-		// final File inputFile = new File("d:/temp/AMALTHEA_Democar.amxmi");
-		// final File outputFile = new File("d:/temp/AMALTHEA_Democar_1.amxmi");
+		// final File inputFile = new File("d:/temp/democar.amxmi");
+		// final File outputFile = new File("d:/temp/democar_1.amxmi");
 
 		// example: relative path
-		final File inputFile = new File("model-input/AMALTHEA_Democar.amxmi");
-		final File outputFile = new File("model-output/LoadModifySave/AMALTHEA_Democar_1.amxmi");
+		final File inputFile = new File("model-input/democar.amxmi");
+		final File outputFile = new File("model-output/LoadModifySave/democar_1.amxmi");
 
 		// ***** Load *****
 
