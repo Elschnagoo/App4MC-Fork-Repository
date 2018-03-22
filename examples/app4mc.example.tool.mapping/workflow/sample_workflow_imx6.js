@@ -36,7 +36,7 @@ addLoggerToConsole("org.eclipse.app4mc.amalthea.workflow")
 print("Starting Workflow ...")
 //general setup
 const BASE = "platform:/resource"
-const PROJECT = BASE + "/org.eclipse.app4mc.amalthea.example.democar.mapping"
+const PROJECT = BASE + "/app4mc.example.tool.mapping"
 const MODEL_LOCATION1 = PROJECT + "/model/AMALTHEA_Democar_MappingExample.amxmi"
 const MODEL_LOCATION2 = PROJECT + "/modelEnergyEfficient/IMX6.amxmi"
 
