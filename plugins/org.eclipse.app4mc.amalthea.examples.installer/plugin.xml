@@ -117,7 +117,7 @@
       <example
             id="AMALTHEA Scheduler Projects"
             pageImage="icons/full/wizban/NewEMFExample.gif"
-            wizardID="org.eclipse.app4mc.amalthea.examples.installer.example1">
+            wizardID="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard">
          <projectDescriptor
                contentURI="examples/app4mc.example.scheduler/"
                description="%_UI_AMALTHEA_SchedulerExamplesWizard_desc"
@@ -125,7 +125,7 @@
          </projectDescriptor>
       </example>
       <example
-            id="APP4MC Tools Projects"
+            id="APP4MC Tools - Java Projects"
             pageImage="icons/full/wizban/NewEMFExample.gif"
             wizardID="org.eclipse.app4mc.tools.examples.JavaExamplesWizard">
          <projectDescriptor
