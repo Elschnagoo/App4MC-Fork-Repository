@@ -956,6 +956,24 @@
       </predicate>
     </workingSet>
     <workingSet
+        name="Model Visualization">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:OrPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="org\.eclipse\.app4mc\.amalthea\.visual.*"/>
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="net\.sourceforge\.plantuml"/>
+        </operand>
+        <operand
+            xsi:type="predicates:NaturePredicate"
+            nature="org.eclipse.pde.PluginNature"/>
+      </predicate>
+    </workingSet>
+    <workingSet
         name="Model Migration">
       <predicate
           xsi:type="predicates:AndPredicate">
@@ -1028,7 +1046,7 @@
           xsi:type="predicates:AndPredicate">
         <operand
             xsi:type="predicates:NamePredicate"
-            pattern=".*workflow.*"/>
+            pattern=".*amalthea\.workflow.*"/>
         <operand
             xsi:type="predicates:NaturePredicate"
             nature="org.eclipse.pde.PluginNature"/>
@@ -1085,7 +1103,7 @@
           xsi:type="predicates:OrPredicate">
         <operand
             xsi:type="predicates:NamePredicate"
-            pattern="org\.eclipse\.app4mc\.amalthea\..*example.*"/>
+            pattern="org\.eclipse\.app4mc\..*\.examples\.installer"/>
         <operand
             xsi:type="predicates:NamePredicate"
             pattern="app4mc\.example.*"/>
