@@ -315,7 +315,6 @@
       <xsd:enumeration value="Array"/>
       <xsd:enumeration value="Area"/>
       <xsd:enumeration value="Region"/>
-      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="CacheType">
@@ -339,7 +338,6 @@
       <xsd:enumeration value="RoundRobin"/>
       <xsd:enumeration value="FCFS"/>
       <xsd:enumeration value="PriorityBased"/>
-      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="WriteStrategy">
@@ -348,7 +346,6 @@
       <xsd:enumeration value="none"/>
       <xsd:enumeration value="writeback"/>
       <xsd:enumeration value="writethrough"/>
-      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="PuType">
@@ -357,7 +354,6 @@
       <xsd:enumeration value="GPU"/>
       <xsd:enumeration value="CPU"/>
       <xsd:enumeration value="Accelerator"/>
-      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="PortInterface">
@@ -375,7 +371,6 @@
       <xsd:enumeration value="ABH"/>
       <xsd:enumeration value="APB"/>
       <xsd:enumeration value="SWR"/>
-      <xsd:enumeration value="_other_"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="HwFeatureType">
@@ -383,7 +378,7 @@
       <xsd:enumeration value="_undefined_"/>
       <xsd:enumeration value="performance"/>
       <xsd:enumeration value="power"/>
-      <xsd:enumeration value="both"/>
+      <xsd:enumeration value="performance_and_power"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="MemoryAddressMappingType">
@@ -2833,6 +2828,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="definition" type="am:ProcessingUnitDefinition"/>
           <xsd:element name="accessElements" type="am:HwAccessElement"/>
+          <xsd:element name="cache" type="am:Cache"/>
         </xsd:choice>
         <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>
@@ -2907,8 +2903,9 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="readLatency" type="am:HwLatency"/>
-          <xsd:element name="wirteLatency" type="am:HwLatency"/>
-          <xsd:element name="dataRate" type="am:DataRate"/>
+          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="readDataRate" type="am:DataRate"/>
+          <xsd:element name="writeDataRate" type="am:DataRate"/>
           <xsd:element name="port1" type="am:HwPort"/>
           <xsd:element name="port2" type="am:HwPort"/>
         </xsd:choice>
@@ -2935,7 +2932,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="accessPaths" type="am:HwAccessPath"/>
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
-          <xsd:element name="dataRate" type="am:DataRate"/>
+          <xsd:element name="readDataRate" type="am:DataRate"/>
+          <xsd:element name="writeDataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="source" type="xsd:string"/>
@@ -3009,7 +3007,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
-          <xsd:element name="dataRate" type="am:DataRate"/>
+          <xsd:element name="readDataRate" type="am:DataRate"/>
+          <xsd:element name="writeDataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="policy" type="am:SchedPolicy"/>
       </xsd:extension>
@@ -3035,6 +3034,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="size" type="am:DataSize"/>
+          <xsd:element name="lineSize" type="am:DataSize"/>
           <xsd:element name="accessLatency" type="am:HwLatency"/>
         </xsd:choice>
         <xsd:attribute name="cacheType" type="am:CacheType"/>
@@ -3042,7 +3042,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:attribute name="nWays" type="xsd:int"/>
         <xsd:attribute name="coherency" type="xsd:boolean"/>
         <xsd:attribute name="exclusive" type="xsd:boolean"/>
-        <xsd:attribute name="lineSize" type="xsd:int"/>
+        <xsd:attribute name="hitRate" type="xsd:double"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

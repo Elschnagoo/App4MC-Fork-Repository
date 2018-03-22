@@ -1673,6 +1673,7 @@ abstract class HwModule extends ReferableBaseObject, ITaggable {
 class ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	refers ProcessingUnitDefinition definition
 	contains HwAccessElement[] accessElements opposite source
+	contains Cache cache
 }
 
 class Memory extends HwModule, HwDestination {
@@ -1718,8 +1719,9 @@ class ConnectionHandler extends HwModule, HwPathElement {
 class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
 	//contains HwConverter converter
 	contains HwLatency readLatency
-	contains HwLatency wirteLatency
-	contains DataRate dataRate
+	contains HwLatency writeLatency
+	contains DataRate readDataRate
+	contains DataRate writeDataRate
 	refers HwPort port1
 	refers HwPort port2
 	
@@ -1754,7 +1756,8 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
 	contains HwAccessPath[] accessPaths opposite containingAccessElement
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
-	contains DataRate dataRate
+	contains DataRate readDataRate
+	contains DataRate writeDataRate
  }
 
 enum StructureType {
@@ -1768,7 +1771,6 @@ enum StructureType {
 	Array
 	Area
 	Region
-	_other_
 }
 
 enum CacheType {
@@ -1790,7 +1792,6 @@ enum SchedPolicy {
 	RoundRobin
 	FCFS
 	PriorityBased
-	_other_
 }
 
 
@@ -1799,7 +1800,6 @@ enum WriteStrategy {
 	none
 	writeback
 	writethrough
-	_other_
 }
 
 
@@ -1831,7 +1831,8 @@ class ConnectionHandlerDefinition extends HwDefinition {
 	SchedPolicy policy
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
-	contains DataRate dataRate
+	contains DataRate readDataRate
+	contains DataRate writeDataRate
 }
 
 class MemoryDefinition extends HwDefinition {
@@ -1843,13 +1844,14 @@ class MemoryDefinition extends HwDefinition {
 
 class CacheDefinition extends HwDefinition {
 	contains DataSize size
+	contains DataSize lineSize
 	contains HwLatency accessLatency
 	CacheType cacheType
 	WriteStrategy writeStrategy
 	int nWays = "0"
 	boolean coherency = "false"
 	boolean exclusive = "false"
-	int lineSize = "0"
+	double hitRate = "0.0"
 }
 
 
@@ -1898,7 +1900,6 @@ enum PuType {
 	GPU
 	CPU
 	Accelerator
-	_other_
 }
 
 enum PortInterface {
@@ -1915,14 +1916,13 @@ enum PortInterface {
 	ABH 
 	APB
 	SWR
-	_other_
 }
 
 enum HwFeatureType {
 	_undefined_
 	performance
 	power
-	both
+	performance_and_power
 }
 
 

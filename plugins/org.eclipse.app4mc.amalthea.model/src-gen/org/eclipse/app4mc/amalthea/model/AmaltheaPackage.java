@@ -11423,13 +11423,22 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT__ACCESS_ELEMENTS = HW_MODULE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Cache</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESSING_UNIT__CACHE = HW_MODULE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Processing Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT_FEATURE_COUNT = HW_MODULE_FEATURE_COUNT + 2;
+	int PROCESSING_UNIT_FEATURE_COUNT = HW_MODULE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -12230,22 +12239,31 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_CONNECTION__READ_LATENCY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Wirte Latency</b></em>' containment reference.
+	 * The feature id for the '<em><b>Write Latency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION__WIRTE_LATENCY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int HW_CONNECTION__WRITE_LATENCY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Data Rate</b></em>' containment reference.
+	 * The feature id for the '<em><b>Read Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION__DATA_RATE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int HW_CONNECTION__READ_DATA_RATE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Write Data Rate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_CONNECTION__WRITE_DATA_RATE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Port1</b></em>' reference.
@@ -12254,7 +12272,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION__PORT1 = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int HW_CONNECTION__PORT1 = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Port2</b></em>' reference.
@@ -12263,7 +12281,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION__PORT2 = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+	int HW_CONNECTION__PORT2 = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Hw Connection</em>' class.
@@ -12272,7 +12290,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+	int HW_CONNECTION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -12393,13 +12411,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_ACCESS_ELEMENT__WRITE_LATENCY = ITAGGABLE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Data Rate</b></em>' containment reference.
+	 * The feature id for the '<em><b>Read Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_ACCESS_ELEMENT__DATA_RATE = ITAGGABLE_FEATURE_COUNT + 6;
+	int HW_ACCESS_ELEMENT__READ_DATA_RATE = ITAGGABLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Write Data Rate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_ACCESS_ELEMENT__WRITE_DATA_RATE = ITAGGABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Hw Access Element</em>' class.
@@ -12408,7 +12435,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_ACCESS_ELEMENT_FEATURE_COUNT = ITAGGABLE_FEATURE_COUNT + 7;
+	int HW_ACCESS_ELEMENT_FEATURE_COUNT = ITAGGABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Hw Access Element</em>' class.
@@ -12867,13 +12894,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY = HW_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Data Rate</b></em>' containment reference.
+	 * The feature id for the '<em><b>Read Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION__DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 3;
+	int CONNECTION_HANDLER_DEFINITION__READ_DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Write Data Rate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER_DEFINITION__WRITE_DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Connection Handler Definition</em>' class.
@@ -12882,7 +12918,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 4;
+	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -13139,13 +13175,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CACHE_DEFINITION__SIZE = HW_DEFINITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Line Size</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_DEFINITION__LINE_SIZE = HW_DEFINITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Access Latency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__ACCESS_LATENCY = HW_DEFINITION_FEATURE_COUNT + 1;
+	int CACHE_DEFINITION__ACCESS_LATENCY = HW_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Cache Type</b></em>' attribute.
@@ -13154,7 +13199,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__CACHE_TYPE = HW_DEFINITION_FEATURE_COUNT + 2;
+	int CACHE_DEFINITION__CACHE_TYPE = HW_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Write Strategy</b></em>' attribute.
@@ -13163,7 +13208,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__WRITE_STRATEGY = HW_DEFINITION_FEATURE_COUNT + 3;
+	int CACHE_DEFINITION__WRITE_STRATEGY = HW_DEFINITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>NWays</b></em>' attribute.
@@ -13172,7 +13217,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__NWAYS = HW_DEFINITION_FEATURE_COUNT + 4;
+	int CACHE_DEFINITION__NWAYS = HW_DEFINITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Coherency</b></em>' attribute.
@@ -13181,7 +13226,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__COHERENCY = HW_DEFINITION_FEATURE_COUNT + 5;
+	int CACHE_DEFINITION__COHERENCY = HW_DEFINITION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Exclusive</b></em>' attribute.
@@ -13190,16 +13235,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__EXCLUSIVE = HW_DEFINITION_FEATURE_COUNT + 6;
+	int CACHE_DEFINITION__EXCLUSIVE = HW_DEFINITION_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Line Size</b></em>' attribute.
+	 * The feature id for the '<em><b>Hit Rate</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION__LINE_SIZE = HW_DEFINITION_FEATURE_COUNT + 7;
+	int CACHE_DEFINITION__HIT_RATE = HW_DEFINITION_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Cache Definition</em>' class.
@@ -13208,7 +13253,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 8;
+	int CACHE_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -31901,6 +31946,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getProcessingUnit_AccessElements();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache <em>Cache</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cache</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache()
+	 * @see #getProcessingUnit()
+	 * @generated
+	 */
+	EReference getProcessingUnit_Cache();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Memory <em>Memory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32136,26 +32192,37 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwConnection_ReadLatency();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWirteLatency <em>Wirte Latency</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWriteLatency <em>Write Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Wirte Latency</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getWirteLatency()
+	 * @return the meta object for the containment reference '<em>Write Latency</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getWriteLatency()
 	 * @see #getHwConnection()
 	 * @generated
 	 */
-	EReference getHwConnection_WirteLatency();
+	EReference getHwConnection_WriteLatency();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getDataRate <em>Data Rate</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getReadDataRate <em>Read Data Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Rate</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getDataRate()
+	 * @return the meta object for the containment reference '<em>Read Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getReadDataRate()
 	 * @see #getHwConnection()
 	 * @generated
 	 */
-	EReference getHwConnection_DataRate();
+	EReference getHwConnection_ReadDataRate();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWriteDataRate <em>Write Data Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Write Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getWriteDataRate()
+	 * @see #getHwConnection()
+	 * @generated
+	 */
+	EReference getHwConnection_WriteDataRate();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPort1 <em>Port1</em>}'.
@@ -32255,15 +32322,26 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwAccessElement_WriteLatency();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getDataRate <em>Data Rate</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getReadDataRate <em>Read Data Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Rate</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getDataRate()
+	 * @return the meta object for the containment reference '<em>Read Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getReadDataRate()
 	 * @see #getHwAccessElement()
 	 * @generated
 	 */
-	EReference getHwAccessElement_DataRate();
+	EReference getHwAccessElement_ReadDataRate();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getWriteDataRate <em>Write Data Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Write Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getWriteDataRate()
+	 * @see #getHwAccessElement()
+	 * @generated
+	 */
+	EReference getHwAccessElement_WriteDataRate();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwLatency <em>Hw Latency</em>}'.
@@ -32424,15 +32502,26 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getConnectionHandlerDefinition_WriteLatency();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getDataRate <em>Data Rate</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getReadDataRate <em>Read Data Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Rate</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getDataRate()
+	 * @return the meta object for the containment reference '<em>Read Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getReadDataRate()
 	 * @see #getConnectionHandlerDefinition()
 	 * @generated
 	 */
-	EReference getConnectionHandlerDefinition_DataRate();
+	EReference getConnectionHandlerDefinition_ReadDataRate();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getWriteDataRate <em>Write Data Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Write Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getWriteDataRate()
+	 * @see #getConnectionHandlerDefinition()
+	 * @generated
+	 */
+	EReference getConnectionHandlerDefinition_WriteDataRate();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition <em>Memory Definition</em>}'.
@@ -32510,6 +32599,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getCacheDefinition_Size();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Line Size</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize()
+	 * @see #getCacheDefinition()
+	 * @generated
+	 */
+	EReference getCacheDefinition_LineSize();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getAccessLatency <em>Access Latency</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32576,15 +32676,15 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getCacheDefinition_Exclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getHitRate <em>Hit Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Line Size</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize()
+	 * @return the meta object for the attribute '<em>Hit Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CacheDefinition#getHitRate()
 	 * @see #getCacheDefinition()
 	 * @generated
 	 */
-	EAttribute getCacheDefinition_LineSize();
+	EAttribute getCacheDefinition_HitRate();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwPath <em>Hw Path</em>}'.

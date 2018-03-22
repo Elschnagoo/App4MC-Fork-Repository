@@ -23,13 +23,14 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getAccessLatency <em>Access Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getCacheType <em>Cache Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getWriteStrategy <em>Write Strategy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getNWays <em>NWays</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#isCoherency <em>Coherency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#isExclusive <em>Exclusive</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getHitRate <em>Hit Rate</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCacheDefinition()
@@ -62,6 +63,32 @@ public interface CacheDefinition extends HwDefinition {
 	 * @generated
 	 */
 	void setSize(DataSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Line Size</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Line Size</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Line Size</em>' containment reference.
+	 * @see #setLineSize(DataSize)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCacheDefinition_LineSize()
+	 * @model containment="true"
+	 * @generated
+	 */
+	DataSize getLineSize();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Line Size</em>' containment reference.
+	 * @see #getLineSize()
+	 * @generated
+	 */
+	void setLineSize(DataSize value);
 
 	/**
 	 * Returns the value of the '<em><b>Access Latency</b></em>' containment reference.
@@ -229,30 +256,30 @@ public interface CacheDefinition extends HwDefinition {
 	void setExclusive(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Line Size</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * Returns the value of the '<em><b>Hit Rate</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Line Size</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Hit Rate</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Line Size</em>' attribute.
-	 * @see #setLineSize(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCacheDefinition_LineSize()
-	 * @model default="0" unique="false"
+	 * @return the value of the '<em>Hit Rate</em>' attribute.
+	 * @see #setHitRate(double)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCacheDefinition_HitRate()
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
-	int getLineSize();
+	double getHitRate();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getLineSize <em>Line Size</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CacheDefinition#getHitRate <em>Hit Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Line Size</em>' attribute.
-	 * @see #getLineSize()
+	 * @param value the new value of the '<em>Hit Rate</em>' attribute.
+	 * @see #getHitRate()
 	 * @generated
 	 */
-	void setLineSize(int value);
+	void setHitRate(double value);
 
 } // CacheDefinition

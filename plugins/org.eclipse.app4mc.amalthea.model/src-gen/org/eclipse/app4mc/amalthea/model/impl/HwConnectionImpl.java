@@ -51,8 +51,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getReadLatency <em>Read Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getWirteLatency <em>Wirte Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getDataRate <em>Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getWriteLatency <em>Write Latency</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getReadDataRate <em>Read Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getWriteDataRate <em>Write Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getPort1 <em>Port1</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getPort2 <em>Port2</em>}</li>
  * </ul>
@@ -81,24 +82,34 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	protected HwLatency readLatency;
 
 	/**
-	 * The cached value of the '{@link #getWirteLatency() <em>Wirte Latency</em>}' containment reference.
+	 * The cached value of the '{@link #getWriteLatency() <em>Write Latency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWirteLatency()
+	 * @see #getWriteLatency()
 	 * @generated
 	 * @ordered
 	 */
-	protected HwLatency wirteLatency;
+	protected HwLatency writeLatency;
 
 	/**
-	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
+	 * The cached value of the '{@link #getReadDataRate() <em>Read Data Rate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataRate()
+	 * @see #getReadDataRate()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataRate dataRate;
+	protected DataRate readDataRate;
+
+	/**
+	 * The cached value of the '{@link #getWriteDataRate() <em>Write Data Rate</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWriteDataRate()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRate writeDataRate;
 
 	/**
 	 * The cached value of the '{@link #getPort1() <em>Port1</em>}' reference.
@@ -199,8 +210,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwLatency getWirteLatency() {
-		return wirteLatency;
+	public HwLatency getWriteLatency() {
+		return writeLatency;
 	}
 
 	/**
@@ -208,11 +219,11 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetWirteLatency(HwLatency newWirteLatency, NotificationChain msgs) {
-		HwLatency oldWirteLatency = wirteLatency;
-		wirteLatency = newWirteLatency;
+	public NotificationChain basicSetWriteLatency(HwLatency newWriteLatency, NotificationChain msgs) {
+		HwLatency oldWriteLatency = writeLatency;
+		writeLatency = newWriteLatency;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY, oldWirteLatency, newWirteLatency);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY, oldWriteLatency, newWriteLatency);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -223,18 +234,18 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWirteLatency(HwLatency newWirteLatency) {
-		if (newWirteLatency != wirteLatency) {
+	public void setWriteLatency(HwLatency newWriteLatency) {
+		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
-			if (wirteLatency != null)
-				msgs = ((InternalEObject)wirteLatency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY, null, msgs);
-			if (newWirteLatency != null)
-				msgs = ((InternalEObject)newWirteLatency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY, null, msgs);
-			msgs = basicSetWirteLatency(newWirteLatency, msgs);
+			if (writeLatency != null)
+				msgs = ((InternalEObject)writeLatency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY, null, msgs);
+			if (newWriteLatency != null)
+				msgs = ((InternalEObject)newWriteLatency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY, null, msgs);
+			msgs = basicSetWriteLatency(newWriteLatency, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY, newWirteLatency, newWirteLatency));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY, newWriteLatency, newWriteLatency));
 	}
 
 	/**
@@ -242,8 +253,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataRate getDataRate() {
-		return dataRate;
+	public DataRate getReadDataRate() {
+		return readDataRate;
 	}
 
 	/**
@@ -251,11 +262,11 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDataRate(DataRate newDataRate, NotificationChain msgs) {
-		DataRate oldDataRate = dataRate;
-		dataRate = newDataRate;
+	public NotificationChain basicSetReadDataRate(DataRate newReadDataRate, NotificationChain msgs) {
+		DataRate oldReadDataRate = readDataRate;
+		readDataRate = newReadDataRate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__DATA_RATE, oldDataRate, newDataRate);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE, oldReadDataRate, newReadDataRate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -266,18 +277,61 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataRate(DataRate newDataRate) {
-		if (newDataRate != dataRate) {
+	public void setReadDataRate(DataRate newReadDataRate) {
+		if (newReadDataRate != readDataRate) {
 			NotificationChain msgs = null;
-			if (dataRate != null)
-				msgs = ((InternalEObject)dataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__DATA_RATE, null, msgs);
-			if (newDataRate != null)
-				msgs = ((InternalEObject)newDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__DATA_RATE, null, msgs);
-			msgs = basicSetDataRate(newDataRate, msgs);
+			if (readDataRate != null)
+				msgs = ((InternalEObject)readDataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE, null, msgs);
+			if (newReadDataRate != null)
+				msgs = ((InternalEObject)newReadDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE, null, msgs);
+			msgs = basicSetReadDataRate(newReadDataRate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__DATA_RATE, newDataRate, newDataRate));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE, newReadDataRate, newReadDataRate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRate getWriteDataRate() {
+		return writeDataRate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWriteDataRate(DataRate newWriteDataRate, NotificationChain msgs) {
+		DataRate oldWriteDataRate = writeDataRate;
+		writeDataRate = newWriteDataRate;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE, oldWriteDataRate, newWriteDataRate);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWriteDataRate(DataRate newWriteDataRate) {
+		if (newWriteDataRate != writeDataRate) {
+			NotificationChain msgs = null;
+			if (writeDataRate != null)
+				msgs = ((InternalEObject)writeDataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE, null, msgs);
+			if (newWriteDataRate != null)
+				msgs = ((InternalEObject)newWriteDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE, null, msgs);
+			msgs = basicSetWriteDataRate(newWriteDataRate, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE, newWriteDataRate, newWriteDataRate));
 	}
 
 	/**
@@ -380,10 +434,12 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 		switch (featureID) {
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 				return basicSetReadLatency(null, msgs);
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-				return basicSetWirteLatency(null, msgs);
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
-				return basicSetDataRate(null, msgs);
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+				return basicSetWriteLatency(null, msgs);
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+				return basicSetReadDataRate(null, msgs);
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+				return basicSetWriteDataRate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -400,10 +456,12 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 				return getTags();
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 				return getReadLatency();
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-				return getWirteLatency();
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
-				return getDataRate();
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+				return getWriteLatency();
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+				return getReadDataRate();
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+				return getWriteDataRate();
 			case AmaltheaPackage.HW_CONNECTION__PORT1:
 				if (resolve) return getPort1();
 				return basicGetPort1();
@@ -430,11 +488,14 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 				setReadLatency((HwLatency)newValue);
 				return;
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-				setWirteLatency((HwLatency)newValue);
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+				setWriteLatency((HwLatency)newValue);
 				return;
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
-				setDataRate((DataRate)newValue);
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+				setReadDataRate((DataRate)newValue);
+				return;
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+				setWriteDataRate((DataRate)newValue);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__PORT1:
 				setPort1((HwPort)newValue);
@@ -460,11 +521,14 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 				setReadLatency((HwLatency)null);
 				return;
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-				setWirteLatency((HwLatency)null);
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+				setWriteLatency((HwLatency)null);
 				return;
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
-				setDataRate((DataRate)null);
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+				setReadDataRate((DataRate)null);
+				return;
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+				setWriteDataRate((DataRate)null);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__PORT1:
 				setPort1((HwPort)null);
@@ -488,10 +552,12 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 				return readLatency != null;
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-				return wirteLatency != null;
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
-				return dataRate != null;
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+				return writeLatency != null;
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+				return readDataRate != null;
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+				return writeDataRate != null;
 			case AmaltheaPackage.HW_CONNECTION__PORT1:
 				return port1 != null;
 			case AmaltheaPackage.HW_CONNECTION__PORT2:

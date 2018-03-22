@@ -143,8 +143,9 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_ReadLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_WirteLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_DataRate());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate());
 		}
 		return childrenFeatures;
 	}
@@ -217,8 +218,9 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 
 		switch (notification.getFeatureID(HwConnection.class)) {
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
-			case AmaltheaPackage.HW_CONNECTION__WIRTE_LATENCY:
-			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
+			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
+			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -265,17 +267,22 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwConnection_WirteLatency(),
+				(AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency(),
 				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwConnection_WirteLatency(),
+				(AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency(),
 				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwConnection_DataRate(),
+				(AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate(),
+				 AmaltheaFactory.eINSTANCE.createDataRate()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate(),
 				 AmaltheaFactory.eINSTANCE.createDataRate()));
 	}
 
@@ -292,7 +299,9 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_ReadLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WirteLatency();
+			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate();
 
 		if (qualify) {
 			return getString

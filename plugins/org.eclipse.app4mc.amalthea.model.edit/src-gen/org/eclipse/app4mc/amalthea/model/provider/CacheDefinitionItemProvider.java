@@ -63,7 +63,7 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 			addNWaysPropertyDescriptor(object);
 			addCoherencyPropertyDescriptor(object);
 			addExclusivePropertyDescriptor(object);
-			addLineSizePropertyDescriptor(object);
+			addHitRatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -179,23 +179,23 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Line Size feature.
+	 * This adds a property descriptor for the Hit Rate feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLineSizePropertyDescriptor(Object object) {
+	protected void addHitRatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CacheDefinition_lineSize_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CacheDefinition_lineSize_feature", "_UI_CacheDefinition_type"),
-				 AmaltheaPackage.eINSTANCE.getCacheDefinition_LineSize(),
+				 getString("_UI_CacheDefinition_hitRate_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheDefinition_hitRate_feature", "_UI_CacheDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getCacheDefinition_HitRate(),
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -213,6 +213,7 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCacheDefinition_Size());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCacheDefinition_LineSize());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency());
 		}
 		return childrenFeatures;
@@ -284,10 +285,11 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 			case AmaltheaPackage.CACHE_DEFINITION__NWAYS:
 			case AmaltheaPackage.CACHE_DEFINITION__COHERENCY:
 			case AmaltheaPackage.CACHE_DEFINITION__EXCLUSIVE:
-			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+			case AmaltheaPackage.CACHE_DEFINITION__HIT_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -313,6 +315,11 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_LineSize(),
+				 AmaltheaFactory.eINSTANCE.createDataSize()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
 				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
 
@@ -320,6 +327,29 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
 				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == AmaltheaPackage.eINSTANCE.getCacheDefinition_Size() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getCacheDefinition_LineSize();
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

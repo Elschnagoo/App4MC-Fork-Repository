@@ -126,17 +126,7 @@ public enum StructureType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REGION(0, "Region", "Region"),
-
-	/**
-	 * The '<em><b>other </b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #_OTHER__VALUE
-	 * @generated
-	 * @ordered
-	 */
-	_OTHER_(0, "_other_", "_other_");
+	REGION(0, "Region", "Region");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -289,21 +279,6 @@ public enum StructureType implements Enumerator {
 	public static final int REGION_VALUE = 0;
 
 	/**
-	 * The '<em><b>other </b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>other </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #_OTHER_
-	 * @model name="_other_"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int _OTHER__VALUE = 0;
-
-	/**
 	 * An array of all the '<em><b>Structure Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -321,7 +296,6 @@ public enum StructureType implements Enumerator {
 			ARRAY,
 			AREA,
 			REGION,
-			_OTHER_,
 		};
 
 	/**

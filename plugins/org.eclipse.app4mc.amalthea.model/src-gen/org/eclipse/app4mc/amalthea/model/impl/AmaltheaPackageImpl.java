@@ -6967,6 +6967,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProcessingUnit_Cache() {
+		return (EReference)processingUnitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMemory() {
 		return memoryEClass;
 	}
@@ -7165,7 +7174,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwConnection_WirteLatency() {
+	public EReference getHwConnection_WriteLatency() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -7174,7 +7183,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwConnection_DataRate() {
+	public EReference getHwConnection_ReadDataRate() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -7183,7 +7192,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwConnection_Port1() {
+	public EReference getHwConnection_WriteDataRate() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -7192,8 +7201,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwConnection_Port2() {
+	public EReference getHwConnection_Port1() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwConnection_Port2() {
+		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -7264,8 +7282,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwAccessElement_DataRate() {
+	public EReference getHwAccessElement_ReadDataRate() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwAccessElement_WriteDataRate() {
+		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -7408,8 +7435,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConnectionHandlerDefinition_DataRate() {
+	public EReference getConnectionHandlerDefinition_ReadDataRate() {
 		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnectionHandlerDefinition_WriteDataRate() {
+		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7480,7 +7516,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCacheDefinition_AccessLatency() {
+	public EReference getCacheDefinition_LineSize() {
 		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -7489,8 +7525,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_CacheType() {
-		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(2);
+	public EReference getCacheDefinition_AccessLatency() {
+		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7498,7 +7534,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_WriteStrategy() {
+	public EAttribute getCacheDefinition_CacheType() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -7507,7 +7543,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_NWays() {
+	public EAttribute getCacheDefinition_WriteStrategy() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -7516,7 +7552,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_Coherency() {
+	public EAttribute getCacheDefinition_NWays() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -7525,7 +7561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_Exclusive() {
+	public EAttribute getCacheDefinition_Coherency() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -7534,8 +7570,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheDefinition_LineSize() {
+	public EAttribute getCacheDefinition_Exclusive() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheDefinition_HitRate() {
+		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -13425,6 +13470,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processingUnitEClass = createEClass(PROCESSING_UNIT);
 		createEReference(processingUnitEClass, PROCESSING_UNIT__DEFINITION);
 		createEReference(processingUnitEClass, PROCESSING_UNIT__ACCESS_ELEMENTS);
+		createEReference(processingUnitEClass, PROCESSING_UNIT__CACHE);
 
 		memoryEClass = createEClass(MEMORY);
 		createEReference(memoryEClass, MEMORY__DEFINITION);
@@ -13453,8 +13499,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		hwConnectionEClass = createEClass(HW_CONNECTION);
 		createEReference(hwConnectionEClass, HW_CONNECTION__READ_LATENCY);
-		createEReference(hwConnectionEClass, HW_CONNECTION__WIRTE_LATENCY);
-		createEReference(hwConnectionEClass, HW_CONNECTION__DATA_RATE);
+		createEReference(hwConnectionEClass, HW_CONNECTION__WRITE_LATENCY);
+		createEReference(hwConnectionEClass, HW_CONNECTION__READ_DATA_RATE);
+		createEReference(hwConnectionEClass, HW_CONNECTION__WRITE_DATA_RATE);
 		createEReference(hwConnectionEClass, HW_CONNECTION__PORT1);
 		createEReference(hwConnectionEClass, HW_CONNECTION__PORT2);
 		createEOperation(hwConnectionEClass, HW_CONNECTION___COMPUTE_UNIQUE_NAME);
@@ -13465,7 +13512,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__ACCESS_PATHS);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__READ_LATENCY);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_LATENCY);
-		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__READ_DATA_RATE);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_DATA_RATE);
 
 		hwLatencyEClass = createEClass(HW_LATENCY);
 		createEOperation(hwLatencyEClass, HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED);
@@ -13487,7 +13535,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__POLICY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__READ_LATENCY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY);
-		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__DATA_RATE);
+		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__READ_DATA_RATE);
+		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__WRITE_DATA_RATE);
 
 		memoryDefinitionEClass = createEClass(MEMORY_DEFINITION);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__SIZE);
@@ -13497,13 +13546,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		cacheDefinitionEClass = createEClass(CACHE_DEFINITION);
 		createEReference(cacheDefinitionEClass, CACHE_DEFINITION__SIZE);
+		createEReference(cacheDefinitionEClass, CACHE_DEFINITION__LINE_SIZE);
 		createEReference(cacheDefinitionEClass, CACHE_DEFINITION__ACCESS_LATENCY);
 		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__CACHE_TYPE);
 		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__WRITE_STRATEGY);
 		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__NWAYS);
 		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__COHERENCY);
 		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__EXCLUSIVE);
-		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__LINE_SIZE);
+		createEAttribute(cacheDefinitionEClass, CACHE_DEFINITION__HIT_RATE);
 
 		hwPathEClass = createEClass(HW_PATH);
 		createEReference(hwPathEClass, HW_PATH__SOURCE);
@@ -15313,6 +15363,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processingUnitEClass, ProcessingUnit.class, "ProcessingUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessingUnit_Definition(), this.getProcessingUnitDefinition(), null, "definition", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessingUnit_AccessElements(), this.getHwAccessElement(), this.getHwAccessElement_Source(), "accessElements", null, 0, -1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnit_Cache(), this.getCache(), null, "cache", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryEClass, Memory.class, "Memory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemory_Definition(), this.getMemoryDefinition(), null, "definition", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15342,8 +15393,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(hwConnectionEClass, HwConnection.class, "HwConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwConnection_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwConnection_WirteLatency(), this.getHwLatency(), null, "wirteLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_ReadDataRate(), this.getDataRate(), null, "readDataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WriteDataRate(), this.getDataRate(), null, "writeDataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -15355,7 +15407,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_AccessPaths(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPaths", null, 0, -1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_ReadDataRate(), this.getDataRate(), null, "readDataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_WriteDataRate(), this.getDataRate(), null, "writeDataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -15381,7 +15434,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getConnectionHandlerDefinition_Policy(), this.getSchedPolicy(), "policy", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_ReadDataRate(), this.getDataRate(), null, "readDataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_WriteDataRate(), this.getDataRate(), null, "writeDataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15391,13 +15445,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCacheDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCacheDefinition_LineSize(), this.getDataSize(), null, "lineSize", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCacheDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_CacheType(), this.getCacheType(), "cacheType", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_WriteStrategy(), this.getWriteStrategy(), "writeStrategy", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_NWays(), theEcorePackage.getEInt(), "nWays", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_Coherency(), theEcorePackage.getEBoolean(), "coherency", "false", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_Exclusive(), theEcorePackage.getEBoolean(), "exclusive", "false", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCacheDefinition_LineSize(), theEcorePackage.getEInt(), "lineSize", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheDefinition_HitRate(), theEcorePackage.getEDouble(), "hitRate", "0.0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPathEClass, HwPath.class, "HwPath", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwPath_Source(), this.getProcessingUnit(), null, "source", null, 0, 1, HwPath.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -16389,7 +16444,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(structureTypeEEnum, StructureType.ARRAY);
 		addEEnumLiteral(structureTypeEEnum, StructureType.AREA);
 		addEEnumLiteral(structureTypeEEnum, StructureType.REGION);
-		addEEnumLiteral(structureTypeEEnum, StructureType._OTHER_);
 
 		initEEnum(cacheTypeEEnum, CacheType.class, "CacheType");
 		addEEnumLiteral(cacheTypeEEnum, CacheType._UNDEFINED_);
@@ -16407,21 +16461,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.ROUND_ROBIN);
 		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.FCFS);
 		addEEnumLiteral(schedPolicyEEnum, SchedPolicy.PRIORITY_BASED);
-		addEEnumLiteral(schedPolicyEEnum, SchedPolicy._OTHER_);
 
 		initEEnum(writeStrategyEEnum, WriteStrategy.class, "WriteStrategy");
 		addEEnumLiteral(writeStrategyEEnum, WriteStrategy._UNDEFINED_);
 		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.NONE);
 		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.WRITEBACK);
 		addEEnumLiteral(writeStrategyEEnum, WriteStrategy.WRITETHROUGH);
-		addEEnumLiteral(writeStrategyEEnum, WriteStrategy._OTHER_);
 
 		initEEnum(puTypeEEnum, PuType.class, "PuType");
 		addEEnumLiteral(puTypeEEnum, PuType._UNDEFINED_);
 		addEEnumLiteral(puTypeEEnum, PuType.GPU);
 		addEEnumLiteral(puTypeEEnum, PuType.CPU);
 		addEEnumLiteral(puTypeEEnum, PuType.ACCELERATOR);
-		addEEnumLiteral(puTypeEEnum, PuType._OTHER_);
 
 		initEEnum(portInterfaceEEnum, PortInterface.class, "PortInterface");
 		addEEnumLiteral(portInterfaceEEnum, PortInterface._UNDEFINED_);
@@ -16437,13 +16488,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.ABH);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.APB);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.SWR);
-		addEEnumLiteral(portInterfaceEEnum, PortInterface._OTHER_);
 
 		initEEnum(hwFeatureTypeEEnum, HwFeatureType.class, "HwFeatureType");
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType._UNDEFINED_);
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.PERFORMANCE);
 		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.POWER);
-		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.BOTH);
+		addEEnumLiteral(hwFeatureTypeEEnum, HwFeatureType.PERFORMANCE_AND_POWER);
 
 		initEEnum(memoryAddressMappingTypeEEnum, MemoryAddressMappingType.class, "MemoryAddressMappingType");
 		addEEnumLiteral(memoryAddressMappingTypeEEnum, MemoryAddressMappingType._UNDEFINED_);

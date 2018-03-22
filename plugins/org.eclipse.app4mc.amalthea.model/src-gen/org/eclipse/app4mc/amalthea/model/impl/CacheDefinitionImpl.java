@@ -36,13 +36,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getLineSize <em>Line Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getAccessLatency <em>Access Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getCacheType <em>Cache Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getWriteStrategy <em>Write Strategy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getNWays <em>NWays</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#isCoherency <em>Coherency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#isExclusive <em>Exclusive</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getLineSize <em>Line Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CacheDefinitionImpl#getHitRate <em>Hit Rate</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,6 +58,16 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * @ordered
 	 */
 	protected DataSize size;
+
+	/**
+	 * The cached value of the '{@link #getLineSize() <em>Line Size</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLineSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataSize lineSize;
 
 	/**
 	 * The cached value of the '{@link #getAccessLatency() <em>Access Latency</em>}' containment reference.
@@ -169,24 +180,24 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	protected boolean exclusive = EXCLUSIVE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLineSize() <em>Line Size</em>}' attribute.
+	 * The default value of the '{@link #getHitRate() <em>Hit Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLineSize()
+	 * @see #getHitRate()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LINE_SIZE_EDEFAULT = 0;
+	protected static final double HIT_RATE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getLineSize() <em>Line Size</em>}' attribute.
+	 * The cached value of the '{@link #getHitRate() <em>Hit Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLineSize()
+	 * @see #getHitRate()
 	 * @generated
 	 * @ordered
 	 */
-	protected int lineSize = LINE_SIZE_EDEFAULT;
+	protected double hitRate = HIT_RATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,6 +259,49 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__SIZE, newSize, newSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataSize getLineSize() {
+		return lineSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetLineSize(DataSize newLineSize, NotificationChain msgs) {
+		DataSize oldLineSize = lineSize;
+		lineSize = newLineSize;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE, oldLineSize, newLineSize);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLineSize(DataSize newLineSize) {
+		if (newLineSize != lineSize) {
+			NotificationChain msgs = null;
+			if (lineSize != null)
+				msgs = ((InternalEObject)lineSize).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE, null, msgs);
+			if (newLineSize != null)
+				msgs = ((InternalEObject)newLineSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE, null, msgs);
+			msgs = basicSetLineSize(newLineSize, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE, newLineSize, newLineSize));
 	}
 
 	/**
@@ -403,8 +457,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLineSize() {
-		return lineSize;
+	public double getHitRate() {
+		return hitRate;
 	}
 
 	/**
@@ -412,11 +466,11 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLineSize(int newLineSize) {
-		int oldLineSize = lineSize;
-		lineSize = newLineSize;
+	public void setHitRate(double newHitRate) {
+		double oldHitRate = hitRate;
+		hitRate = newHitRate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE, oldLineSize, lineSize));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__HIT_RATE, oldHitRate, hitRate));
 	}
 
 	/**
@@ -429,6 +483,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		switch (featureID) {
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
 				return basicSetSize(null, msgs);
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+				return basicSetLineSize(null, msgs);
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				return basicSetAccessLatency(null, msgs);
 		}
@@ -445,6 +501,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		switch (featureID) {
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
 				return getSize();
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+				return getLineSize();
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				return getAccessLatency();
 			case AmaltheaPackage.CACHE_DEFINITION__CACHE_TYPE:
@@ -457,8 +515,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 				return isCoherency();
 			case AmaltheaPackage.CACHE_DEFINITION__EXCLUSIVE:
 				return isExclusive();
-			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
-				return getLineSize();
+			case AmaltheaPackage.CACHE_DEFINITION__HIT_RATE:
+				return getHitRate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -473,6 +531,9 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		switch (featureID) {
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
 				setSize((DataSize)newValue);
+				return;
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+				setLineSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				setAccessLatency((HwLatency)newValue);
@@ -492,8 +553,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 			case AmaltheaPackage.CACHE_DEFINITION__EXCLUSIVE:
 				setExclusive((Boolean)newValue);
 				return;
-			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
-				setLineSize((Integer)newValue);
+			case AmaltheaPackage.CACHE_DEFINITION__HIT_RATE:
+				setHitRate((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -509,6 +570,9 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		switch (featureID) {
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
 				setSize((DataSize)null);
+				return;
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+				setLineSize((DataSize)null);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				setAccessLatency((HwLatency)null);
@@ -528,8 +592,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 			case AmaltheaPackage.CACHE_DEFINITION__EXCLUSIVE:
 				setExclusive(EXCLUSIVE_EDEFAULT);
 				return;
-			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
-				setLineSize(LINE_SIZE_EDEFAULT);
+			case AmaltheaPackage.CACHE_DEFINITION__HIT_RATE:
+				setHitRate(HIT_RATE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -545,6 +609,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		switch (featureID) {
 			case AmaltheaPackage.CACHE_DEFINITION__SIZE:
 				return size != null;
+			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
+				return lineSize != null;
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
 				return accessLatency != null;
 			case AmaltheaPackage.CACHE_DEFINITION__CACHE_TYPE:
@@ -557,8 +623,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 				return coherency != COHERENCY_EDEFAULT;
 			case AmaltheaPackage.CACHE_DEFINITION__EXCLUSIVE:
 				return exclusive != EXCLUSIVE_EDEFAULT;
-			case AmaltheaPackage.CACHE_DEFINITION__LINE_SIZE:
-				return lineSize != LINE_SIZE_EDEFAULT;
+			case AmaltheaPackage.CACHE_DEFINITION__HIT_RATE:
+				return hitRate != HIT_RATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -583,8 +649,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 		result.append(coherency);
 		result.append(", exclusive: ");
 		result.append(exclusive);
-		result.append(", lineSize: ");
-		result.append(lineSize);
+		result.append(", hitRate: ");
+		result.append(hitRate);
 		result.append(')');
 		return result.toString();
 	}

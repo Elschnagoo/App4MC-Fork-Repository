@@ -55,7 +55,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getAccessPaths <em>Access Paths</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getReadLatency <em>Read Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getWriteLatency <em>Write Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getDataRate <em>Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getReadDataRate <em>Read Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getWriteDataRate <em>Write Data Rate</em>}</li>
  * </ul>
  *
  * @generated
@@ -132,14 +133,24 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	protected HwLatency writeLatency;
 
 	/**
-	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
+	 * The cached value of the '{@link #getReadDataRate() <em>Read Data Rate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataRate()
+	 * @see #getReadDataRate()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataRate dataRate;
+	protected DataRate readDataRate;
+
+	/**
+	 * The cached value of the '{@link #getWriteDataRate() <em>Write Data Rate</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWriteDataRate()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRate writeDataRate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -354,8 +365,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataRate getDataRate() {
-		return dataRate;
+	public DataRate getReadDataRate() {
+		return readDataRate;
 	}
 
 	/**
@@ -363,11 +374,11 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDataRate(DataRate newDataRate, NotificationChain msgs) {
-		DataRate oldDataRate = dataRate;
-		dataRate = newDataRate;
+	public NotificationChain basicSetReadDataRate(DataRate newReadDataRate, NotificationChain msgs) {
+		DataRate oldReadDataRate = readDataRate;
+		readDataRate = newReadDataRate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE, oldDataRate, newDataRate);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE, oldReadDataRate, newReadDataRate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -378,18 +389,61 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataRate(DataRate newDataRate) {
-		if (newDataRate != dataRate) {
+	public void setReadDataRate(DataRate newReadDataRate) {
+		if (newReadDataRate != readDataRate) {
 			NotificationChain msgs = null;
-			if (dataRate != null)
-				msgs = ((InternalEObject)dataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE, null, msgs);
-			if (newDataRate != null)
-				msgs = ((InternalEObject)newDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE, null, msgs);
-			msgs = basicSetDataRate(newDataRate, msgs);
+			if (readDataRate != null)
+				msgs = ((InternalEObject)readDataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE, null, msgs);
+			if (newReadDataRate != null)
+				msgs = ((InternalEObject)newReadDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE, null, msgs);
+			msgs = basicSetReadDataRate(newReadDataRate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE, newDataRate, newDataRate));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE, newReadDataRate, newReadDataRate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRate getWriteDataRate() {
+		return writeDataRate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWriteDataRate(DataRate newWriteDataRate, NotificationChain msgs) {
+		DataRate oldWriteDataRate = writeDataRate;
+		writeDataRate = newWriteDataRate;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE, oldWriteDataRate, newWriteDataRate);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWriteDataRate(DataRate newWriteDataRate) {
+		if (newWriteDataRate != writeDataRate) {
+			NotificationChain msgs = null;
+			if (writeDataRate != null)
+				msgs = ((InternalEObject)writeDataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE, null, msgs);
+			if (newWriteDataRate != null)
+				msgs = ((InternalEObject)newWriteDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE, null, msgs);
+			msgs = basicSetWriteDataRate(newWriteDataRate, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE, newWriteDataRate, newWriteDataRate));
 	}
 
 	/**
@@ -427,8 +481,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				return basicSetReadLatency(null, msgs);
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 				return basicSetWriteLatency(null, msgs);
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
-				return basicSetDataRate(null, msgs);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
+				return basicSetReadDataRate(null, msgs);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+				return basicSetWriteDataRate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -471,8 +527,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				return getReadLatency();
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 				return getWriteLatency();
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
-				return getDataRate();
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
+				return getReadDataRate();
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+				return getWriteDataRate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -506,8 +564,11 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 				setWriteLatency((HwLatency)newValue);
 				return;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
-				setDataRate((DataRate)newValue);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
+				setReadDataRate((DataRate)newValue);
+				return;
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+				setWriteDataRate((DataRate)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -539,8 +600,11 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 				setWriteLatency((HwLatency)null);
 				return;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
-				setDataRate((DataRate)null);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
+				setReadDataRate((DataRate)null);
+				return;
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+				setWriteDataRate((DataRate)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -568,8 +632,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				return readLatency != null;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 				return writeLatency != null;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
-				return dataRate != null;
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
+				return readDataRate != null;
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+				return writeDataRate != null;
 		}
 		return super.eIsSet(featureID);
 	}

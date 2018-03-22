@@ -59,14 +59,14 @@ public enum HwFeatureType implements Enumerator {
 	POWER(0, "power", "power"),
 
 	/**
-	 * The '<em><b>Both</b></em>' literal object.
+	 * The '<em><b>Performance and power</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BOTH_VALUE
+	 * @see #PERFORMANCE_AND_POWER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BOTH(0, "both", "both");
+	PERFORMANCE_AND_POWER(0, "performance_and_power", "performance_and_power");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -114,19 +114,19 @@ public enum HwFeatureType implements Enumerator {
 	public static final int POWER_VALUE = 0;
 
 	/**
-	 * The '<em><b>Both</b></em>' literal value.
+	 * The '<em><b>Performance and power</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Both</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Performance and power</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #BOTH
-	 * @model name="both"
+	 * @see #PERFORMANCE_AND_POWER
+	 * @model name="performance_and_power"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BOTH_VALUE = 0;
+	public static final int PERFORMANCE_AND_POWER_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Hw Feature Type</b></em>' enumerators.
@@ -139,7 +139,7 @@ public enum HwFeatureType implements Enumerator {
 			_UNDEFINED_,
 			PERFORMANCE,
 			POWER,
-			BOTH,
+			PERFORMANCE_AND_POWER,
 		};
 
 	/**
