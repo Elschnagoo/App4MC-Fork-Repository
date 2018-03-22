@@ -35,7 +35,7 @@ loadModule('/APP4MC/Workflow')
 
 // Below package is specific to the plugin (where user specific component class's are defined)
 
-importPackage(app4mc.example.tool.workflow.components)
+importPackage(org.eclipse.app4mc.example.tool.workflow.components)
 	
 	
 //Configure logging
@@ -43,7 +43,7 @@ addLoggerToConsole("org.eclipse.app4mc.amalthea.workflow")
 
 //configure logging to the plugin which contains script class's
 
-addLoggerToConsole("app4mc.example.tool.workflow")
+addLoggerToConsole("org.eclipse.app4mc.example.tool.workflow.components")
 
 
 print("Starting Workflow ...")
@@ -74,7 +74,7 @@ reader.run(ctx)
  * ********************************************************************************
  */
 
-var labelsCreationComponent = createInstance("workspace://app4mc.example.tool.workflow/src/components/CreateLabelsComponent.java")
+var labelsCreationComponent = createInstance("workspace://app4mc.example.tool.workflow/src/org/eclipse/app4mc/example/tool/workflow/components/CreateLabelsComponent.java")
 
 
 labelsCreationComponent.getLabelNames().add("Test_Label_1");
@@ -88,7 +88,7 @@ labelsCreationComponent.run(ctx)
  * Print all Label names available in the AMALTHEA model
  * ********************************************************************************
  */
-var labelsExtractorComponent = createInstance("workspace://app4mc.example.tool.workflow/src/components/LabelsExtractorComponent.java")
+var labelsExtractorComponent = createInstance("workspace://app4mc.example.tool.workflow/src/org/eclipse/app4mc/example/tool/workflow/components/LabelsExtractorComponent.java")
 
 labelsExtractorComponent.run(ctx)
 
