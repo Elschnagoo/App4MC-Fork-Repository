@@ -12,12 +12,12 @@
 	</parent>
 	
 	<properties>
-	<plugin-id>app4mc.example.modeling.scheduler</plugin-id>
+	<plugin-id>app4mc.example.scheduler</plugin-id>
 	<examples-installer-location>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</examples-installer-location>
 	</properties> 
 	
 
-	<artifactId>app4mc.example.modeling.scheduler</artifactId>
+	<artifactId>app4mc.example.scheduler</artifactId>
 	<packaging>jar</packaging>
 
 	<build>

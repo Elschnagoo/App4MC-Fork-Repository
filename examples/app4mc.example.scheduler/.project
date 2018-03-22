@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>app4mc.example.modeling.scheduler</name>
+	<name>app4mc.example.scheduler</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
-		 
 		<buildCommand>
 			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
 			<triggers>auto,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/app4mc.example.modeling.scheduler.launch</value>
+					<value>&lt;project&gt;/.externalToolBuilders/app4mc.example.scheduler.launch</value>
 				</dictionary>
 				<dictionary>
 					<key>incclean</key>
@@ -21,5 +20,6 @@
 			</arguments>
 		</buildCommand>
 	</buildSpec>
-	 
+	<natures>
+	</natures>
 </projectDescription>

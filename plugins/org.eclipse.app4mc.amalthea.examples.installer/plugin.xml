@@ -26,6 +26,17 @@
          <description>%_UI_AMALTHEA_DemocarExamplesWizard_desc</description>
       </wizard>
       <wizard
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/full/ctool16/NewEMFExample.gif"
+            id="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard"
+            name="%_UI_AMALTHEA_SchedulerExamplesWizard_name"
+            project="true">
+         <description>
+            %_UI_AMALTHEA_DemocarExamplesWizard_desc
+         </description>
+      </wizard>
+      <wizard
             id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
             name="%_UI_AMALTHEA_HwmodelExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
@@ -80,11 +91,6 @@
                      name="app4mc.example.modeling.feedback_loop"
                      contentURI="examples/app4mc.example.modeling.feedback_loop/"
                      description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
-               <projectDescriptor
-                     contentURI="examples/app4mc.example.modeling.scheduler/"
-                     description="%_UI_AMALTHEA_Example_Modeling_Project_desc"
-                     name="app4mc.example.modeling.scheduler">
-               </projectDescriptor>
       </example>
       <example
             id="AMALTHEA Democar Projects"
@@ -107,6 +113,16 @@
                name="app4mc.example.hardware"
                contentURI="examples/app4mc.example.hardware/"
                description="%_UI_AMALTHEA_Example_Hwmodel_Project_desc"/>
+      </example>
+      <example
+            id="AMALTHEA Scheduler Projects"
+            pageImage="icons/full/wizban/NewEMFExample.gif"
+            wizardID="org.eclipse.app4mc.amalthea.examples.installer.example1">
+         <projectDescriptor
+               contentURI="examples/app4mc.example.scheduler/"
+               description="%_UI_AMALTHEA_SchedulerExamplesWizard_desc"
+               name="app4mc.example.scheduler">
+         </projectDescriptor>
       </example>
       <example
             id="APP4MC Tools Projects"
