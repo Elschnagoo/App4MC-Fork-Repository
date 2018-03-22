@@ -32,17 +32,18 @@ loadModule('/APP4MC/Workflow')
 // Below two packages are mandatory as they contain class's from the framework
 	importPackage(org.eclipse.app4mc.amalthea.workflow.component)
 	importPackage(org.eclipse.app4mc.amalthea.workflow.core)
-	
+
 // Below package is specific to the plugin (where user specific component class's are defined)
 
-importPackage(org.eclipse.app4mc.amalthea.example.workflow.components)
-
+importPackage(app4mc.example.tool.workflow.components)
+	
+	
 //Configure logging
 addLoggerToConsole("org.eclipse.app4mc.amalthea.workflow")
 
 //configure logging to the plugin which contains script class's
 
-addLoggerToConsole("org.eclipse.app4mc.amalthea.example.workflow")
+addLoggerToConsole("app4mc.example.tool.workflow")
 
 
 print("Starting Workflow ...")
@@ -50,7 +51,7 @@ print("Starting Workflow ...")
 //general setup
 const BASE = "platform:/resource"
 
-const PROJECT = BASE + "/org.eclipse.app4mc.amalthea.example.workflow"
+const PROJECT = BASE + "/app4mc.example.tool.workflow"
 
 const MODEL_LOCATION1 = PROJECT + "/model/AMALTHEA_Democar.amxmi"
 const MODEL_LOCATION2 = PROJECT + "/model/AMALTHEA_Components.amxmi"
@@ -73,7 +74,7 @@ reader.run(ctx)
  * ********************************************************************************
  */
 
-var labelsCreationComponent = createInstance("workspace://org.eclipse.app4mc.amalthea.example.workflow/src/org/eclipse/app4mc/amalthea/example/workflow/components/CreateLabelsComponent.java")
+var labelsCreationComponent = createInstance("workspace://app4mc.example.tool.workflow/src/components/CreateLabelsComponent.java")
 
 
 labelsCreationComponent.getLabelNames().add("Test_Label_1");
@@ -87,7 +88,7 @@ labelsCreationComponent.run(ctx)
  * Print all Label names available in the AMALTHEA model
  * ********************************************************************************
  */
-var labelsExtractorComponent = createInstance("workspace://org.eclipse.app4mc.amalthea.example.workflow/src/org/eclipse/app4mc/amalthea/example/workflow/components/LabelsExtractorComponent.java")
+var labelsExtractorComponent = createInstance("workspace://app4mc.example.tool.workflow/src/components/LabelsExtractorComponent.java")
 
 labelsExtractorComponent.run(ctx)
 

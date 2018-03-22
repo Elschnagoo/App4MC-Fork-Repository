@@ -11,7 +11,8 @@
  *
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.example.workflow.components;
+
+package app4mc.example.tool.workflow.components;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.Label;
