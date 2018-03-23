@@ -60,8 +60,8 @@
 		<module>../../examples/app4mc.example.democar</module>
 		<module>../../examples/app4mc.example.democar.split</module>
 		<module>../../examples/app4mc.example.hardware</module>
+		<module>../../examples/app4mc.example.scheduler</module>
 		<module>../../examples/app4mc.example.modeling</module>
-		<module>../../examples/app4mc.example.modeling.scheduler</module>
 		<module>../../examples/app4mc.example.modeling.client_server</module>
 		<module>../../examples/app4mc.example.modeling.feedback_loop</module>
 		<module>../../examples/app4mc.example.modeling.periodic</module>

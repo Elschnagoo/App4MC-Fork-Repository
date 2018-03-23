@@ -26,15 +26,13 @@
          <description>%_UI_AMALTHEA_DemocarExamplesWizard_desc</description>
       </wizard>
       <wizard
-            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
-            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            icon="icons/full/ctool16/NewEMFExample.gif"
             id="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard"
             name="%_UI_AMALTHEA_SchedulerExamplesWizard_name"
-            project="true">
-         <description>
-            %_UI_AMALTHEA_DemocarExamplesWizard_desc
-         </description>
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            project="true"
+            icon="icons/full/ctool16/NewEMFExample.gif">
+         <description>%_UI_AMALTHEA_SchedulerExamplesWizard_desc</description>
       </wizard>
       <wizard
             id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
@@ -59,7 +57,6 @@
             icon="icons/full/ctool16/NewEMFExample.gif">
          <description>%_UI_Tools_JavaExamplesWizard_desc</description>
       </wizard>
-
    </extension>
 
    <extension point="org.eclipse.emf.common.ui.examples">
