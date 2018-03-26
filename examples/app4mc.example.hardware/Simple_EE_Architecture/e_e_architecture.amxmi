@@ -2,10 +2,12 @@
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
     <definitions xsi:type="am:ConnectionHandlerDefinition" name="Interconnect_Def" policy="FCFS">
-      <dataRate value="1" unit="GBPerSecond"/>
+      <readDataRate value="1" unit="GBPerSecond"/>
+      <writeDataRate value="1" unit="GBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="CAN_Def" policy="_other_">
-      <dataRate value="1" unit="MbitPerSecond"/>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="CAN_Def">
+      <readDataRate value="1" unit="MbitPerSecond"/>
+      <writeDataRate value="1" unit="MbitPerSecond"/>
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="MainMemory_Def">
       <size value="1" unit="GB"/>

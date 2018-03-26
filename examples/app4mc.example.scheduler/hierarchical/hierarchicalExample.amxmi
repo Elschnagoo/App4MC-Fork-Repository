@@ -11,22 +11,17 @@
     <tasks name="TaskD2" multipleTaskActivationLimit="0"/>
   </swModel>
   <hwModel>
-    <coreTypes name="core" bitWidth="0" instructionsPerCycle="1.0"/>
-    <system name="HwSystem">
-      <ecus name="ECU">
-        <microcontrollers name="µC">
-          <cores name="CoreA" coreType="core?type=CoreType" lockstepGroup="0">
-            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz"/>
-          </cores>
-          <cores name="CoreB" coreType="core?type=CoreType" lockstepGroup="0">
-            <prescaler name="200mhz" clockRatio="2.0" quartz="quarz?type=Quartz"/>
-          </cores>
-        </microcontrollers>
-      </ecus>
-      <quartzes name="quarz" type="STATIC">
-        <frequency unit="MHz" value="100.0"/>
-      </quartzes>
-    </system>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" puType="CPU"/>
+    <structures name="System">
+      <structures name="ECU">
+        <modules xsi:type="am:ProcessingUnit" name="CoreA" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
+        <modules xsi:type="am:ProcessingUnit" name="CoreB" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
+      <possibleValues value="200.0" unit="MHz"/>
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
   </hwModel>
   <osModel>
     <operatingSystems>
@@ -60,11 +55,11 @@
     </operatingSystems>
   </osModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=Core CoreB?type=Core" executingCore="CoreA?type=Core"/>
-    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core"/>
-    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=Core" executingCore="CoreA?type=Core"/>
-    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core"/>
-    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=Core" executingCore="CoreB?type=Core"/>
+    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingCore="CoreB?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingCore="CoreB?type=ProcessingUnit"/>
     <taskAllocation task="TaskA1?type=Task" scheduler="OSEKA?type=TaskScheduler">
       <schedulingParameters priority="5"/>
     </taskAllocation>
