@@ -82,29 +82,26 @@
     </runnables>
   </swModel>
   <hwModel>
-    <mcTypes name="GENERIC" />
-    <coreTypes name="Core_1_type" bitWidth="0" instructionsPerCycle="1" />
-    <system name="System">
-      <ecus name="Ecu_1">
-        <microcontrollers name="Processor_1" microcontrollerType="GENERIC?type=MicrocontrollerType">
-          <memories name="Memory_1">
-            <customProperties key="attribute#MemoryType">
-              <value xsi:type="am:StringObject" value="AbstractMemory" />
-            </customProperties>
-            <ports xsi:type="am:ComplexPort" name="Memory_1_port" master="false" bitWidth="16" baseAddress="0" addressRange="0" writeCycles="12" readCycles="12" schedValue="0" />
-          </memories>
-          <cores name="Core_1" coreType="Core_1_type?type=CoreType" lockstepGroup="0">
-            <customProperties key="attribute#memoryArbiterPriority">
-              <value xsi:type="am:LongObject" value="0" />
-            </customProperties>
-            <prescaler name="Core_1_prescaler" clockRatio="0.0" quartz="Quartz_1?type=Quartz" />
-          </cores>
-        </microcontrollers>
-      </ecus>
-      <quartzes name="Quartz_1" type="STATIC">
-        <frequency unit="Hz" value="6.0E8" />
-      </quartzes>
-    </system>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
+    </definitions>
+    <features name="IPC" featureType="performance" description="">
+      <value xsi:type="am:DoubleObject" value="1.0"/>
+    </features>
+    <structures name="System" structureType="System">
+      <structures name="Ecu_1" structureType="ECU">
+        <structures name="Processor_1" structureType="Microcontroller">
+          <modules xsi:type="am:Memory" name="Memory_1" frequencyDomain="Frequency_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" name="Core_1" frequencyDomain="Frequency_1?type=FrequencyDomain" definition="DefaultCore?type=ProcessingUnitDefinition">
+            <ports name="port" bitWidth="32" priority="0" portType="initiator"/>
+          </modules>
+        </structures>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" name="Frequency_1" clockGating="false">
+      <defaultValue value="600.0" unit="MHz"/>
+    </domains>
   </hwModel>
   <osModel>
     <operatingSystems name="Generic_OS">
@@ -145,7 +142,7 @@
   <mappingModel addressMappingType="offset">
     <taskAllocation task="Task_1?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
     <taskAllocation task="Task_2?type=Task" scheduler="Scheduler_1?type=TaskScheduler" />
-    <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=Core" />
+    <schedulerAllocation scheduler="Scheduler_1?type=TaskScheduler" responsibility="Core_1?type=ProcessingUnit" />
   </mappingModel>
   <componentsModel />
 </am:Amalthea>
