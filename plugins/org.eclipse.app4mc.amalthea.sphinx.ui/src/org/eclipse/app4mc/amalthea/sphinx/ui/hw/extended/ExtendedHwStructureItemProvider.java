@@ -35,19 +35,16 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 public class ExtendedHwStructureItemProvider extends HwStructureItemProvider {
 
-	protected HwConnectionIP hwDirectConnectionIP;
-	protected HwModuleIP hwModuleIP;
+	protected HwConnectionIP hwConnectionsIP;
+	protected HwModuleIP hwModulesIP;
 
-	private final EStructuralFeature HWSTRUCTURE_DIRECTCONNECTIONS = AmaltheaPackage.eINSTANCE.getHwStructure_Connections();
-	private final EStructuralFeature HWSTRUCTURE_HWMODULE = AmaltheaPackage.eINSTANCE.getHwStructure_Modules();
+	private final EStructuralFeature feature_CONNECTIONS = AmaltheaPackage.eINSTANCE.getHwStructure_Connections();
+	private final EStructuralFeature feature_MODULES = AmaltheaPackage.eINSTANCE.getHwStructure_Modules();
 
 	public ExtendedHwStructureItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getParent(java.lang.Object)
-	 */
 	@Override
 	public Object getParent(final Object object) {
 		final Object hwModel = super.getParent(object);
@@ -56,45 +53,39 @@ public class ExtendedHwStructureItemProvider extends HwStructureItemProvider {
 		return hwModelItemProvider != null ? hwModelItemProvider.getHWStructure((HWModel) hwModel) : null;
 	}
 
-	/**
-	 * @return the DirectConnections
-	 */
-	public HwConnectionIP getDirectConnections(final HwStructure hwStructure) {
-		if (null == this.hwDirectConnectionIP) {
-			this.hwDirectConnectionIP = new HwConnectionIP(this.adapterFactory, hwStructure);
+	public HwConnectionIP getConnections(final HwStructure hwStructure) {
+		if (this.hwConnectionsIP == null) {
+			this.hwConnectionsIP = new HwConnectionIP(this.adapterFactory, hwStructure);
 		}
-		return this.hwDirectConnectionIP;
+		return this.hwConnectionsIP;
 	}
 
-	/**
-	 * @return the HWModules
-	 */
-	public HwModuleIP getHWModule(final HwStructure hwStructure) {
-		if (null == this.hwModuleIP) {
-			this.hwModuleIP = new HwModuleIP(this.adapterFactory, hwStructure);
+	public HwModuleIP getModules(final HwStructure hwStructure) {
+		if (this.hwModulesIP == null) {
+			this.hwModulesIP = new HwModuleIP(this.adapterFactory, hwStructure);
 		}
-		return this.hwModuleIP;
+		return this.hwModulesIP;
 	}
 
-	/**
-	 * @see org.eclipse.app4mc.amalthea.model.providerHWStrucutureItemProvider#getChildrenFeatures(java.lang.Object)
-	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		super.getChildrenFeatures(object);
-		this.childrenFeatures.remove(this.HWSTRUCTURE_DIRECTCONNECTIONS);
-		this.childrenFeatures.remove(this.HWSTRUCTURE_HWMODULE);
+		this.childrenFeatures.remove(this.feature_CONNECTIONS);
+		this.childrenFeatures.remove(this.feature_MODULES);
 		return this.childrenFeatures;
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
-	 */
 	@Override
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
-		children.add(getDirectConnections((HwStructure) object));
-		children.add(getHWModule((HwStructure) object));
+
+		HwStructure hwStruct = (HwStructure) object;
+		if (hwStruct.getConnections().size() > 0) {
+			children.add(getConnections(hwStruct));
+		}
+		if (hwStruct.getModules().size() > 0) {
+			children.add(getModules(hwStruct));
+		}
 		return children;
 	}
 
@@ -112,16 +103,16 @@ public class ExtendedHwStructureItemProvider extends HwStructureItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (this.HWSTRUCTURE_DIRECTCONNECTIONS == feature || this.HWSTRUCTURE_HWMODULE == feature) {
+		if (this.feature_CONNECTIONS == feature || this.feature_MODULES == feature) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
 						if (feature == AmaltheaPackage.eINSTANCE.getHwStructure_Connections()) {
-							affected = Collections.singleton(getDirectConnections(((HwStructure) owner)));
+							affected = Collections.singleton(getConnections(((HwStructure) owner)));
 						} else if (feature == AmaltheaPackage.eINSTANCE.getHwStructure_Modules()) {
-							affected = Collections.singleton(getHWModule(((HwStructure) owner)));
+							affected = Collections.singleton(getModules(((HwStructure) owner)));
 						}
 					}
 					return affected;
@@ -131,16 +122,13 @@ public class ExtendedHwStructureItemProvider extends HwStructureItemProvider {
 		return command;
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
-	 */
 	@Override
 	public void dispose() {
-		if (null != this.hwDirectConnectionIP) {
-			this.hwDirectConnectionIP.dispose();
+		if (this.hwConnectionsIP != null) {
+			this.hwConnectionsIP.dispose();
 		}
-		if (null != this.hwModuleIP) {
-			this.hwModuleIP.dispose();
+		if (this.hwModulesIP != null) {
+			this.hwModulesIP.dispose();
 		}
 		super.dispose();
 	}
