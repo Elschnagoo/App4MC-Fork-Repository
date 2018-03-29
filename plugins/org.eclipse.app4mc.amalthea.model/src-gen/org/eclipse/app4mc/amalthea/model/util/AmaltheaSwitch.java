@@ -1664,6 +1664,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.HW_MODULE: {
+				HwModule hwModule = (HwModule)theEObject;
+				T1 result = caseHwModule(hwModule);
+				if (result == null) result = caseReferableBaseObject(hwModule);
+				if (result == null) result = caseITaggable(hwModule);
+				if (result == null) result = caseIAnnotatable(hwModule);
+				if (result == null) result = caseIReferable(hwModule);
+				if (result == null) result = caseINamed(hwModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.HW_DOMAIN: {
 				HwDomain hwDomain = (HwDomain)theEObject;
 				T1 result = caseHwDomain(hwDomain);
@@ -1696,17 +1707,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIAnnotatable(powerDomain);
 				if (result == null) result = caseIReferable(powerDomain);
 				if (result == null) result = caseINamed(powerDomain);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_MODULE: {
-				HwModule hwModule = (HwModule)theEObject;
-				T1 result = caseHwModule(hwModule);
-				if (result == null) result = caseReferableBaseObject(hwModule);
-				if (result == null) result = caseITaggable(hwModule);
-				if (result == null) result = caseIAnnotatable(hwModule);
-				if (result == null) result = caseIReferable(hwModule);
-				if (result == null) result = caseINamed(hwModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5700,6 +5700,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwModule(HwModule object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Hw Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5741,21 +5756,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePowerDomain(PowerDomain object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Module</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Module</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwModule(HwModule object) {
 		return null;
 	}
 

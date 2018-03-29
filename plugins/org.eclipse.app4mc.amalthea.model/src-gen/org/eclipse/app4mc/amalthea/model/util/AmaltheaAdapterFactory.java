@@ -978,6 +978,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createHwStructureAdapter();
 			}
 			@Override
+			public Adapter caseHwModule(HwModule object) {
+				return createHwModuleAdapter();
+			}
+			@Override
 			public Adapter caseHwDomain(HwDomain object) {
 				return createHwDomainAdapter();
 			}
@@ -988,10 +992,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePowerDomain(PowerDomain object) {
 				return createPowerDomainAdapter();
-			}
-			@Override
-			public Adapter caseHwModule(HwModule object) {
-				return createHwModuleAdapter();
 			}
 			@Override
 			public Adapter caseProcessingUnit(ProcessingUnit object) {
@@ -3770,6 +3770,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule
+	 * @generated
+	 */
+	public Adapter createHwModuleAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwDomain <em>Hw Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3808,20 +3822,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPowerDomainAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwModule
-	 * @generated
-	 */
-	public Adapter createHwModuleAdapter() {
 		return null;
 	}
 

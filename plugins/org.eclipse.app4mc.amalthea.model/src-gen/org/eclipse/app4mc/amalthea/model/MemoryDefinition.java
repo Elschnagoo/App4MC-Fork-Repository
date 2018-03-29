@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getAccessLatency <em>Access Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryBandwidth <em>Memory Bandwidth</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getDataRate <em>Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -87,30 +87,30 @@ public interface MemoryDefinition extends HwDefinition {
 	void setAccessLatency(HwLatency value);
 
 	/**
-	 * Returns the value of the '<em><b>Memory Bandwidth</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Memory Bandwidth</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Memory Bandwidth</em>' containment reference.
-	 * @see #setMemoryBandwidth(DataRate)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryDefinition_MemoryBandwidth()
+	 * @return the value of the '<em>Data Rate</em>' containment reference.
+	 * @see #setDataRate(DataRate)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryDefinition_DataRate()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DataRate getMemoryBandwidth();
+	DataRate getDataRate();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryBandwidth <em>Memory Bandwidth</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getDataRate <em>Data Rate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Memory Bandwidth</em>' containment reference.
-	 * @see #getMemoryBandwidth()
+	 * @param value the new value of the '<em>Data Rate</em>' containment reference.
+	 * @see #getDataRate()
 	 * @generated
 	 */
-	void setMemoryBandwidth(DataRate value);
+	void setDataRate(DataRate value);
 
 	/**
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.

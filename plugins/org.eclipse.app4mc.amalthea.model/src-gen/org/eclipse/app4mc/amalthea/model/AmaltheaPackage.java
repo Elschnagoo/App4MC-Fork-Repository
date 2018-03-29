@@ -10851,6 +10851,133 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_STRUCTURE_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwModuleImpl <em>Hw Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.HwModuleImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwModule()
+	 * @generated
+	 */
+	int HW_MODULE = 142;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__CUSTOM_PROPERTIES = REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__NAME = REFERABLE_BASE_OBJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Power Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__POWER_DOMAIN = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Frequency Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE__FREQUENCY_DOMAIN = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Hw Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
+	 * The operation id for the '<em>Encode</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The number of operations of the '<em>Hw Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwDomainImpl <em>Hw Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10858,7 +10985,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDomain()
 	 * @generated
 	 */
-	int HW_DOMAIN = 142;
+	int HW_DOMAIN = 143;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10958,7 +11085,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyDomain()
 	 * @generated
 	 */
-	int FREQUENCY_DOMAIN = 143;
+	int FREQUENCY_DOMAIN = 144;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11085,7 +11212,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPowerDomain()
 	 * @generated
 	 */
-	int POWER_DOMAIN = 144;
+	int POWER_DOMAIN = 145;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11203,133 +11330,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int POWER_DOMAIN_OPERATION_COUNT = HW_DOMAIN_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwModuleImpl <em>Hw Module</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.HwModuleImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwModule()
-	 * @generated
-	 */
-	int HW_MODULE = 145;
-
-	/**
-	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__CUSTOM_PROPERTIES = REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__NAME = REFERABLE_BASE_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Tags</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Power Domain</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__POWER_DOMAIN = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Frequency Domain</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE__FREQUENCY_DOMAIN = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Hw Module</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
-
-	/**
-	 * The operation id for the '<em>Encode</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
-
-	/**
-	 * The number of operations of the '<em>Hw Module</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_MODULE_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitImpl <em>Processing Unit</em>}' class.
@@ -13039,13 +13039,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_DEFINITION__ACCESS_LATENCY = HW_DEFINITION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Memory Bandwidth</b></em>' containment reference.
+	 * The feature id for the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_DEFINITION__MEMORY_BANDWIDTH = HW_DEFINITION_FEATURE_COUNT + 2;
+	int MEMORY_DEFINITION__DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Classifiers</b></em>' reference list.
@@ -31775,6 +31775,49 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwStructure_Structures();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hw Module</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule
+	 * @generated
+	 */
+	EClass getHwModule();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwModule#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ports</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getPorts()
+	 * @see #getHwModule()
+	 * @generated
+	 */
+	EReference getHwModule_Ports();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwModule#getPowerDomain <em>Power Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Power Domain</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getPowerDomain()
+	 * @see #getHwModule()
+	 * @generated
+	 */
+	EReference getHwModule_PowerDomain();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwModule#getFrequencyDomain <em>Frequency Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Frequency Domain</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getFrequencyDomain()
+	 * @see #getHwModule()
+	 * @generated
+	 */
+	EReference getHwModule_FrequencyDomain();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwDomain <em>Hw Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31869,49 +31912,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPowerDomain_PowerGating();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Hw Module</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwModule
-	 * @generated
-	 */
-	EClass getHwModule();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwModule#getPorts <em>Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Ports</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getPorts()
-	 * @see #getHwModule()
-	 * @generated
-	 */
-	EReference getHwModule_Ports();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwModule#getPowerDomain <em>Power Domain</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Power Domain</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getPowerDomain()
-	 * @see #getHwModule()
-	 * @generated
-	 */
-	EReference getHwModule_PowerDomain();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.HwModule#getFrequencyDomain <em>Frequency Domain</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Frequency Domain</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwModule#getFrequencyDomain()
-	 * @see #getHwModule()
-	 * @generated
-	 */
-	EReference getHwModule_FrequencyDomain();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit <em>Processing Unit</em>}'.
@@ -32556,15 +32556,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getMemoryDefinition_AccessLatency();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryBandwidth <em>Memory Bandwidth</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getDataRate <em>Data Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Memory Bandwidth</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryBandwidth()
+	 * @return the meta object for the containment reference '<em>Data Rate</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryDefinition#getDataRate()
 	 * @see #getMemoryDefinition()
 	 * @generated
 	 */
-	EReference getMemoryDefinition_MemoryBandwidth();
+	EReference getMemoryDefinition_DataRate();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getClassifiers <em>Classifiers</em>}'.

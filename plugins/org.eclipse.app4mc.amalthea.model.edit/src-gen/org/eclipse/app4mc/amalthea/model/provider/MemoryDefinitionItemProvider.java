@@ -98,7 +98,7 @@ public class MemoryDefinitionItemProvider extends HwDefinitionItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMemoryDefinition_Size());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMemoryDefinition_MemoryBandwidth());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getMemoryDefinition_DataRate());
 		}
 		return childrenFeatures;
 	}
@@ -166,7 +166,7 @@ public class MemoryDefinitionItemProvider extends HwDefinitionItemProvider {
 		switch (notification.getFeatureID(MemoryDefinition.class)) {
 			case AmaltheaPackage.MEMORY_DEFINITION__SIZE:
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -201,7 +201,7 @@ public class MemoryDefinitionItemProvider extends HwDefinitionItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_MemoryBandwidth(),
+				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_DataRate(),
 				 AmaltheaFactory.eINSTANCE.createDataRate()));
 	}
 

@@ -1649,6 +1649,12 @@ class HWModel extends BaseObject
 	contains HwStructure[] structures
 }
 
+abstract class HwModule extends ReferableBaseObject, ITaggable {
+	contains HwPort[] ports
+	refers PowerDomain powerDomain
+	refers FrequencyDomain frequencyDomain
+}
+
 abstract class HwDomain extends ReferableBaseObject, ITaggable {
 }
 
@@ -1662,12 +1668,6 @@ class PowerDomain extends HwDomain {
 	contains Voltage[] possibleValues
 	contains Voltage defaultValue
 	boolean powerGating = "false"
-}
-
-abstract class HwModule extends ReferableBaseObject, ITaggable {
-	contains HwPort[] ports
-	refers PowerDomain powerDomain
-	refers FrequencyDomain frequencyDomain
 }
 
 class ProcessingUnit extends HwModule, HwDestination, HwPathElement {
@@ -1696,7 +1696,7 @@ class HwFeature extends ReferableBaseObject {
 	contains HwLatency latency
 }
 
-class HwPort  extends ReferableBaseObject, ITaggable {
+class HwPort extends ReferableBaseObject, ITaggable {
 	int bitWidth = "0"
 	int priority = "0"
 	PortType portType
@@ -1735,20 +1735,7 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
 	refers FrequencyDomain[1] sourceFrequencyDomain
 	refers FrequencyDomain[1] targetFrequencyDomain
 }*/
-
-/*class AddressElement extends INamed {
-	@GenModel(propertyCategory="Read only")
-	container readonly ProcessingUnit source opposite addressElements
-	refers HwDestination destination
-	contains HwAccessPath[] accessPaths opposite containingAddressElement
-	contains HwLogicalPath logicalPaths opposite containingAddressElement
-	Address startAddress = "0"
-	Address endAddress = "0"
-	Address memOffset = "0"
-	boolean cached = "false"
-}*/
  
-
  class HwAccessElement extends ITaggable, INamed {
  	@GenModel(propertyCategory="Read only")
 	container readonly ProcessingUnit source opposite accessElements
@@ -1838,7 +1825,7 @@ class ConnectionHandlerDefinition extends HwDefinition {
 class MemoryDefinition extends HwDefinition {
 	contains DataSize size
 	contains HwLatency accessLatency
-	contains DataRate memoryBandwidth
+	contains DataRate dataRate
 	refers MemoryClassifier[] classifiers	// backward compatibility
 }
 

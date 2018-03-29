@@ -2771,6 +2771,22 @@ entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwStructure" type="am:HwStructure"/>
+  <xsd:complexType abstract="true" name="HwModule">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
+          <xsd:element name="ports" type="am:HwPort"/>
+          <xsd:element name="powerDomain" type="am:PowerDomain"/>
+          <xsd:element name="frequencyDomain" type="am:FrequencyDomain"/>
+        </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
+        <xsd:attribute name="powerDomain" type="xsd:string"/>
+        <xsd:attribute name="frequencyDomain" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwModule" type="am:HwModule"/>
   <xsd:complexType abstract="true" name="HwDomain">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -2806,22 +2822,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="PowerDomain" type="am:PowerDomain"/>
-  <xsd:complexType abstract="true" name="HwModule">
-    <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="ports" type="am:HwPort"/>
-          <xsd:element name="powerDomain" type="am:PowerDomain"/>
-          <xsd:element name="frequencyDomain" type="am:FrequencyDomain"/>
-        </xsd:choice>
-        <xsd:attribute name="tags" type="xsd:string"/>
-        <xsd:attribute name="powerDomain" type="xsd:string"/>
-        <xsd:attribute name="frequencyDomain" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="HwModule" type="am:HwModule"/>
   <xsd:complexType name="ProcessingUnit">
     <xsd:complexContent>
       <xsd:extension base="am:HwModule">
@@ -3021,7 +3021,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="size" type="am:DataSize"/>
           <xsd:element name="accessLatency" type="am:HwLatency"/>
-          <xsd:element name="memoryBandwidth" type="am:DataRate"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
           <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
         <xsd:attribute name="classifiers" type="xsd:string"/>

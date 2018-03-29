@@ -766,14 +766,14 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateHWModel((HWModel)value, diagnostics, context);
 			case AmaltheaPackage.HW_STRUCTURE:
 				return validateHwStructure((HwStructure)value, diagnostics, context);
+			case AmaltheaPackage.HW_MODULE:
+				return validateHwModule((HwModule)value, diagnostics, context);
 			case AmaltheaPackage.HW_DOMAIN:
 				return validateHwDomain((HwDomain)value, diagnostics, context);
 			case AmaltheaPackage.FREQUENCY_DOMAIN:
 				return validateFrequencyDomain((FrequencyDomain)value, diagnostics, context);
 			case AmaltheaPackage.POWER_DOMAIN:
 				return validatePowerDomain((PowerDomain)value, diagnostics, context);
-			case AmaltheaPackage.HW_MODULE:
-				return validateHwModule((HwModule)value, diagnostics, context);
 			case AmaltheaPackage.PROCESSING_UNIT:
 				return validateProcessingUnit((ProcessingUnit)value, diagnostics, context);
 			case AmaltheaPackage.MEMORY:
@@ -2558,6 +2558,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateHwModule(HwModule hwModule, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwModule, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateHwDomain(HwDomain hwDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(hwDomain, diagnostics, context);
 	}
@@ -2578,15 +2587,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validatePowerDomain(PowerDomain powerDomain, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(powerDomain, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHwModule(HwModule hwModule, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwModule, diagnostics, context);
 	}
 
 	/**

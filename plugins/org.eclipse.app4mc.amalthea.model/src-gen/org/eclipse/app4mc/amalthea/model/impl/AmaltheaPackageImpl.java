@@ -1422,6 +1422,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass hwModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass hwDomainEClass = null;
 
 	/**
@@ -1437,13 +1444,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass powerDomainEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hwModuleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6823,6 +6823,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHwModule() {
+		return hwModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwModule_Ports() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwModule_PowerDomain() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwModule_FrequencyDomain() {
+		return (EReference)hwModuleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHwDomain() {
 		return hwDomainEClass;
 	}
@@ -6897,42 +6933,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getPowerDomain_PowerGating() {
 		return (EAttribute)powerDomainEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHwModule() {
-		return hwModuleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwModule_Ports() {
-		return (EReference)hwModuleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwModule_PowerDomain() {
-		return (EReference)hwModuleEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwModule_FrequencyDomain() {
-		return (EReference)hwModuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7480,7 +7480,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMemoryDefinition_MemoryBandwidth() {
+	public EReference getMemoryDefinition_DataRate() {
 		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -13450,6 +13450,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwStructureEClass, HW_STRUCTURE__CONNECTIONS);
 		createEReference(hwStructureEClass, HW_STRUCTURE__STRUCTURES);
 
+		hwModuleEClass = createEClass(HW_MODULE);
+		createEReference(hwModuleEClass, HW_MODULE__PORTS);
+		createEReference(hwModuleEClass, HW_MODULE__POWER_DOMAIN);
+		createEReference(hwModuleEClass, HW_MODULE__FREQUENCY_DOMAIN);
+
 		hwDomainEClass = createEClass(HW_DOMAIN);
 
 		frequencyDomainEClass = createEClass(FREQUENCY_DOMAIN);
@@ -13461,11 +13466,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(powerDomainEClass, POWER_DOMAIN__POSSIBLE_VALUES);
 		createEReference(powerDomainEClass, POWER_DOMAIN__DEFAULT_VALUE);
 		createEAttribute(powerDomainEClass, POWER_DOMAIN__POWER_GATING);
-
-		hwModuleEClass = createEClass(HW_MODULE);
-		createEReference(hwModuleEClass, HW_MODULE__PORTS);
-		createEReference(hwModuleEClass, HW_MODULE__POWER_DOMAIN);
-		createEReference(hwModuleEClass, HW_MODULE__FREQUENCY_DOMAIN);
 
 		processingUnitEClass = createEClass(PROCESSING_UNIT);
 		createEReference(processingUnitEClass, PROCESSING_UNIT__DEFINITION);
@@ -13541,7 +13541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryDefinitionEClass = createEClass(MEMORY_DEFINITION);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__SIZE);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__ACCESS_LATENCY);
-		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__MEMORY_BANDWIDTH);
+		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__DATA_RATE);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__CLASSIFIERS);
 
 		cacheDefinitionEClass = createEClass(CACHE_DEFINITION);
@@ -14542,12 +14542,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwModelEClass.getESuperTypes().add(this.getBaseObject());
 		hwStructureEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwStructureEClass.getESuperTypes().add(this.getITaggable());
+		hwModuleEClass.getESuperTypes().add(this.getReferableBaseObject());
+		hwModuleEClass.getESuperTypes().add(this.getITaggable());
 		hwDomainEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwDomainEClass.getESuperTypes().add(this.getITaggable());
 		frequencyDomainEClass.getESuperTypes().add(this.getHwDomain());
 		powerDomainEClass.getESuperTypes().add(this.getHwDomain());
-		hwModuleEClass.getESuperTypes().add(this.getReferableBaseObject());
-		hwModuleEClass.getESuperTypes().add(this.getITaggable());
 		processingUnitEClass.getESuperTypes().add(this.getHwModule());
 		processingUnitEClass.getESuperTypes().add(this.getHwDestination());
 		processingUnitEClass.getESuperTypes().add(this.getHwPathElement());
@@ -15343,6 +15343,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwStructure_Connections(), this.getHwConnection(), null, "connections", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(hwModuleEClass, HwModule.class, "HwModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHwModule_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwModule_PowerDomain(), this.getPowerDomain(), null, "powerDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwModule_FrequencyDomain(), this.getFrequencyDomain(), null, "frequencyDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(hwDomainEClass, HwDomain.class, "HwDomain", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(frequencyDomainEClass, FrequencyDomain.class, "FrequencyDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -15354,11 +15359,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getPowerDomain_PossibleValues(), this.getVoltage(), null, "possibleValues", null, 0, -1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPowerDomain_DefaultValue(), this.getVoltage(), null, "defaultValue", null, 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPowerDomain_PowerGating(), theEcorePackage.getEBoolean(), "powerGating", "false", 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hwModuleEClass, HwModule.class, "HwModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwModule_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwModule_PowerDomain(), this.getPowerDomain(), null, "powerDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwModule_FrequencyDomain(), this.getFrequencyDomain(), null, "frequencyDomain", null, 0, 1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processingUnitEClass, ProcessingUnit.class, "ProcessingUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessingUnit_Definition(), this.getProcessingUnitDefinition(), null, "definition", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15440,7 +15440,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryDefinition_MemoryBandwidth(), this.getDataRate(), null, "memoryBandwidth", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

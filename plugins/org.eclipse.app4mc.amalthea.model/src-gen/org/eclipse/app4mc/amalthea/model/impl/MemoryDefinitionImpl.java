@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getAccessLatency <em>Access Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getMemoryBandwidth <em>Memory Bandwidth</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getDataRate <em>Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -71,14 +71,14 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	protected HwLatency accessLatency;
 
 	/**
-	 * The cached value of the '{@link #getMemoryBandwidth() <em>Memory Bandwidth</em>}' containment reference.
+	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMemoryBandwidth()
+	 * @see #getDataRate()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataRate memoryBandwidth;
+	protected DataRate dataRate;
 
 	/**
 	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
@@ -200,8 +200,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataRate getMemoryBandwidth() {
-		return memoryBandwidth;
+	public DataRate getDataRate() {
+		return dataRate;
 	}
 
 	/**
@@ -209,11 +209,11 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMemoryBandwidth(DataRate newMemoryBandwidth, NotificationChain msgs) {
-		DataRate oldMemoryBandwidth = memoryBandwidth;
-		memoryBandwidth = newMemoryBandwidth;
+	public NotificationChain basicSetDataRate(DataRate newDataRate, NotificationChain msgs) {
+		DataRate oldDataRate = dataRate;
+		dataRate = newDataRate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH, oldMemoryBandwidth, newMemoryBandwidth);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE, oldDataRate, newDataRate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -224,18 +224,18 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMemoryBandwidth(DataRate newMemoryBandwidth) {
-		if (newMemoryBandwidth != memoryBandwidth) {
+	public void setDataRate(DataRate newDataRate) {
+		if (newDataRate != dataRate) {
 			NotificationChain msgs = null;
-			if (memoryBandwidth != null)
-				msgs = ((InternalEObject)memoryBandwidth).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH, null, msgs);
-			if (newMemoryBandwidth != null)
-				msgs = ((InternalEObject)newMemoryBandwidth).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH, null, msgs);
-			msgs = basicSetMemoryBandwidth(newMemoryBandwidth, msgs);
+			if (dataRate != null)
+				msgs = ((InternalEObject)dataRate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE, null, msgs);
+			if (newDataRate != null)
+				msgs = ((InternalEObject)newDataRate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE, null, msgs);
+			msgs = basicSetDataRate(newDataRate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH, newMemoryBandwidth, newMemoryBandwidth));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE, newDataRate, newDataRate));
 	}
 
 	/**
@@ -262,8 +262,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return basicSetSize(null, msgs);
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
 				return basicSetAccessLatency(null, msgs);
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
-				return basicSetMemoryBandwidth(null, msgs);
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
+				return basicSetDataRate(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -280,8 +280,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return getSize();
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
 				return getAccessLatency();
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
-				return getMemoryBandwidth();
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
+				return getDataRate();
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				return getClassifiers();
 		}
@@ -303,8 +303,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
 				setAccessLatency((HwLatency)newValue);
 				return;
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
-				setMemoryBandwidth((DataRate)newValue);
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
+				setDataRate((DataRate)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
@@ -328,8 +328,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
 				setAccessLatency((HwLatency)null);
 				return;
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
-				setMemoryBandwidth((DataRate)null);
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
+				setDataRate((DataRate)null);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
@@ -350,8 +350,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return size != null;
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
 				return accessLatency != null;
-			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_BANDWIDTH:
-				return memoryBandwidth != null;
+			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
+				return dataRate != null;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				return classifiers != null && !classifiers.isEmpty();
 		}
