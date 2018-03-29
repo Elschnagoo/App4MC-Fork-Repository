@@ -1001,7 +1001,7 @@
     </features>
     <structures name="Democar" structureType="System">
       <structures name="ECU_1" structureType="ECU">
-        <structures name="Microcontroler_1" structureType="Microcontroller">
+        <structures name="Microcontroller_1" structureType="Microcontroller">
           <modules xsi:type="am:Memory" name="Mem_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
             <ports name="port" bitWidth="32" priority="0" portType="responder"/>
           </modules>
