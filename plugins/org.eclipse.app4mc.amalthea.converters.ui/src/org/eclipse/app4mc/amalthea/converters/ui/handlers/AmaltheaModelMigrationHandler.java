@@ -47,7 +47,7 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 	private MigrationSettings migrationSettings;
 
-	private final String LATEST_MODEL_VERSION = "0.8.3";
+	private final String LATEST_MODEL_VERSION = "0.9.0";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -289,7 +289,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 											|| inputModelVersion.equals("0.8.0")
 											|| inputModelVersion.equals("0.8.1")
 											|| inputModelVersion.equals("0.8.2")
-											|| inputModelVersion.equals("0.8.3")))) {
+											|| inputModelVersion.equals("0.8.3")
+											|| inputModelVersion.equals("0.9.0")))) {
 
 										list.add(migModelFile);
 									}

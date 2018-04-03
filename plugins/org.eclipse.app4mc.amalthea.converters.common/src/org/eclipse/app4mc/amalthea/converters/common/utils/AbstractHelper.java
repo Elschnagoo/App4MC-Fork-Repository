@@ -75,6 +75,25 @@ public abstract class AbstractHelper {
 
 	}
 	
+	public boolean isNS_AvailableIn_090(final Namespace namespace) {
+
+		if (namespace != null) {
+
+			final String ns_prefix = namespace.getPrefix();
+
+			final String ns_uri = namespace.getURI();
+
+			if (enumTypeContainsIn090(ns_prefix)) {
+
+				if (ns_uri.equals(NameSpace_090.valueOf(ns_prefix).getNSValue())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+	
 	public boolean isNS_AvailableIn_083(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -95,6 +114,7 @@ public abstract class AbstractHelper {
 	}
 	
 
+	
 	public boolean isNS_AvailableIn_082(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -362,6 +382,15 @@ public abstract class AbstractHelper {
 		return Namespace.getNamespace("", "");
 	}
 
+	public Namespace getNS_090(final String prefix) {
+
+		if (enumTypeContainsIn090(prefix)) {
+			return Namespace.getNamespace(prefix, NameSpace_090.valueOf(prefix).getNSValue());
+		}
+
+		return Namespace.getNamespace("", "");
+	}
+	
 	public boolean enumTypeContainsIn110(final String s) {
 		try {
 			NameSpace_110.valueOf(s);
@@ -457,6 +486,16 @@ public abstract class AbstractHelper {
 	public boolean enumTypeContainsIn083(final String s) {
 		try {
 			NameSpace_083.valueOf(s);
+		}
+		catch (final IllegalArgumentException iae) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean enumTypeContainsIn090(final String s) {
+		try {
+			NameSpace_090.valueOf(s);
 		}
 		catch (final IllegalArgumentException iae) {
 			return false;

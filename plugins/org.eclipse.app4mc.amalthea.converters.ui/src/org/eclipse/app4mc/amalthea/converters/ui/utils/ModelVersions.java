@@ -20,6 +20,7 @@ public class ModelVersions {
 		allSupportedVersions.add("0.8.1");
 		allSupportedVersions.add("0.8.2");
 		allSupportedVersions.add("0.8.3");
+		allSupportedVersions.add("0.9.0");
 
 		return allSupportedVersions;
 	}
