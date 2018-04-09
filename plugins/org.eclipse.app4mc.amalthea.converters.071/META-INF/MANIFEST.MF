@@ -7,3 +7,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse APP4MC
 Import-Package: org.osgi.framework
 Require-Bundle: org.eclipse.app4mc.amalthea.converters.common
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.converters.071

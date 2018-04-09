@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.intro
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.app4mc.platform.ide.IDEPlugin
+Automatic-Module-Name: org.eclipse.app4mc.platform.ide

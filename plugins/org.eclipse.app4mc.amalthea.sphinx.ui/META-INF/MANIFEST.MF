@@ -16,3 +16,4 @@ Bundle-Localization: plugin
 Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui,
  org.eclipse.app4mc.amalthea.sphinx.ui.sw.container,
  org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.sphinx.ui

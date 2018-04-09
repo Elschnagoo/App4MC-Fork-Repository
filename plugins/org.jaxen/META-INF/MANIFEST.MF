@@ -22,3 +22,4 @@ Export-Package: org.jaxen,
  org.jaxen.xom,
  org.w3c.dom
 Bundle-ClassPath: lib/jaxen-1.1.6.jar
+Automatic-Module-Name: org.jaxen

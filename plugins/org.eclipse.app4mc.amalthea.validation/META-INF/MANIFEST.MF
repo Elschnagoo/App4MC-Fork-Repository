@@ -13,3 +13,4 @@ Bundle-Vendor: Eclipse APP4MC
 Export-Package: org.eclipse.app4mc.amalthea.validation,
  org.eclipse.app4mc.amalthea.validation.checks,
  org.eclipse.app4mc.amalthea.validation.checks.impl
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.validation

@@ -11,3 +11,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse APP4MC
 Export-Package: org.eclipse.app4mc.amalthea.emf.util.edit
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.emf.util

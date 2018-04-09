@@ -22,3 +22,4 @@ Export-Package: org.eclipse.app4mc.multicore.sharelibs,
  org.eclipse.app4mc.multicore.sharelibs.modelchecker.specs,
  org.eclipse.app4mc.multicore.sharelibs.utframework
 Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.multicore.sharelibs

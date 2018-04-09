@@ -12,3 +12,4 @@ Export-Package: org.eclipse.app4mc.amalthea.converters110,
  org.eclipse.app4mc.amalthea.converters110.impl,
  org.eclipse.app4mc.amalthea.converters110.utils
 Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.converters.110

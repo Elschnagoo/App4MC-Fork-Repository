@@ -95,3 +95,4 @@ Export-Package: net.sourceforge.plantuml,
  net.sourceforge.plantuml.svek.extremity,
  net.sourceforge.plantuml.svek.image,
  net.sourceforge.plantuml.svg
+Automatic-Module-Name: net.sourceforge.plantuml

@@ -41,3 +41,4 @@ Export-Package: org.ojalgo,
  org.ojalgo.type.format,
  org.ojalgo.type.keyvalue
 Bundle-ClassPath: libs/ojalgo-39.0.jar
+Automatic-Module-Name: org.ojalgo

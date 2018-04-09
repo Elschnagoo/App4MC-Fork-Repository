@@ -26,3 +26,4 @@ Export-Package: org.eclipse.app4mc.multicore.dialogs;
   uses:="org.eclipse.app4mc.multicore.sharedlibs",
  org.eclipse.app4mc.multicore.dialogs.openmapping,
  org.eclipse.app4mc.multicore.dialogs.partitioning
+Automatic-Module-Name: org.eclipse.app4mc.multicore.dialogs

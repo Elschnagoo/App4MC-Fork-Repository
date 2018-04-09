@@ -27,3 +27,4 @@ Export-Package: com.mxgraph.analysis,
  com.mxgraph.util.svg,
  com.mxgraph.view
 Bundle-ClassPath: libs/mxgraph-all.jar
+Automatic-Module-Name: com.mxgraph

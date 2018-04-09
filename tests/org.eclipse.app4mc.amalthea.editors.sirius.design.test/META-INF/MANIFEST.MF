@@ -7,3 +7,4 @@ Fragment-Host: org.eclipse.app4mc.amalthea.editors.sirius.design
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse APP4MC
 Require-Bundle: org.junit
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.editors.sirius.design.test

@@ -23,3 +23,4 @@ Export-Package: org.jgrapht,
  org.jgrapht.traverse,
  org.jgrapht.util
 Bundle-Vendor: JGraphT.org
+Automatic-Module-Name: org.jgrapht

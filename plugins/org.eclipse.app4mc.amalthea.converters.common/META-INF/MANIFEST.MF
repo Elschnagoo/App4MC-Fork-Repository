@@ -18,3 +18,4 @@ Export-Package: org.eclipse.app4mc.amalthea.converters.common,
  org.eclipse.app4mc.amalthea.converters.common.utils,
  org.eclipse.app4mc.amalthea.converters.common.xpath.utils
 Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.converters.common

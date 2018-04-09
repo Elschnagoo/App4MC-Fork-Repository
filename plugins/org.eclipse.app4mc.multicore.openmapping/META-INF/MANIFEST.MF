@@ -27,3 +27,4 @@ Export-Package: org.eclipse.app4mc.multicore.openmapping;uses:="org.eclipse.app4
  org.eclipse.app4mc.multicore.openmapping.model.specs,
  org.eclipse.app4mc.multicore.openmapping.workflow;uses:="org.eclipse.app4mc.multicore.sharedlibs"
 Bundle-ClassPath: .
+Automatic-Module-Name: org.eclipse.app4mc.multicore.openmapping

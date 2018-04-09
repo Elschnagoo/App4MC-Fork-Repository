@@ -19,4 +19,5 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.xtend.lib.macro,
  org.eclipse.app4mc.amalthea.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.model.edit
 

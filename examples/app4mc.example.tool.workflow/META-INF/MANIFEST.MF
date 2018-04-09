@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.workflow.core
 Bundle-ClassPath: .
+Automatic-Module-Name: app4mc.example.tool.workflow

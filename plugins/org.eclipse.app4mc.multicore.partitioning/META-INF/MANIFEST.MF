@@ -38,3 +38,4 @@ Export-Package: org.eclipse.app4mc.multicore.partitioning,
  org.eclipse.app4mc.multicore.partitioning.specs,
  org.eclipse.app4mc.multicore.partitioning.workflow
 Bundle-ClassPath: .
+Automatic-Module-Name: org.eclipse.app4mc.multicore.partitioning

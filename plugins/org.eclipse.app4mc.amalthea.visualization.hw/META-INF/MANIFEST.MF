@@ -18,3 +18,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.app4mc.amalthea.model
 Bundle-ClassPath: .
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.visualization.hw

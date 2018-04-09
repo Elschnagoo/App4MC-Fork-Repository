@@ -13,4 +13,5 @@ Export-Package: org.jenetics,
  org.jenetics.stat,
  org.jenetics.util
 Bundle-Vendor: jenetics.io
+Automatic-Module-Name: org.jenetics
 

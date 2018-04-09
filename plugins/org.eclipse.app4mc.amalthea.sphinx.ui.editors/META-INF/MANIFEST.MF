@@ -26,3 +26,4 @@ Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui.editors,
  org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.handlers
 Bundle-Activator: org.eclipse.app4mc.amalthea.sphinx.ui.editors.SphinxSupportPlugin
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.sphinx.ui.editors

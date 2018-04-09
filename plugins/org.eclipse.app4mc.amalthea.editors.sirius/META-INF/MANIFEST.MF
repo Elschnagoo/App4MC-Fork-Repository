@@ -22,3 +22,4 @@ Export-Package: org.eclipse.app4mc.amalthea.editors.sirius,
  org.eclipse.app4mc.amalthea.editors.sirius.command,
  org.eclipse.app4mc.amalthea.editors.sirius.helper,
  org.eclipse.app4mc.amalthea.editors.sirius.integration
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.editors.sirius

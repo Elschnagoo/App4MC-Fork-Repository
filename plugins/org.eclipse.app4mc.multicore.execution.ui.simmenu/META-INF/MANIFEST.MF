@@ -19,3 +19,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath:  .
+Automatic-Module-Name: org.eclipse.app4mc.multicore.execution.ui.simmenu

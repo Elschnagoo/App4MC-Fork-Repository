@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.app4mc.multicore.execution.logic,
  org.eclipse.osgi
 Bundle-Vendor: Eclipse APP4MC
 Import-Package: org.eclipse.core.runtime
+Automatic-Module-Name: org.eclipse.app4mc.multicore.execution.ui.widget

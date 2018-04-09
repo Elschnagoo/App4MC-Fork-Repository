@@ -13,3 +13,4 @@ Require-Bundle: org.apache.commons.lang,
  org.sqlite.jdbc,
  org.eclipse.app4mc.tracing.converter.ot1
 Export-Package: org.eclipse.app4mc.tracing.converter.atdb
+Automatic-Module-Name: org.eclipse.app4mc.tracing.converter.atdb

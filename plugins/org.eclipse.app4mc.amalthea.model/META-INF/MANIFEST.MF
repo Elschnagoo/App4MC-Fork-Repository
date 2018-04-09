@@ -21,3 +21,4 @@ Require-Bundle: org.apache.commons.math3;visibility:=reexport,
  org.eclipse.sphinx.emf;visibility:=reexport,
  org.eclipse.app4mc.amalthea.sphinx;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.model

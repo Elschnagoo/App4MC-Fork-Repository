@@ -18,3 +18,4 @@ Export-Package: org.eclipse.app4mc.multicore.execution.ui.traceview;
    org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget,
    org.eclipse.ui.plugin"
 Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.multicore.execution.ui.traceview

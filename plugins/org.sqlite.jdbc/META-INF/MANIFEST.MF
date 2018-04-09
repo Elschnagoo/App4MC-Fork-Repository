@@ -11,3 +11,4 @@ Export-Package: org.ibex.nestedvm,
  org.sqlite
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
  JavaSE-1.7
+Automatic-Module-Name: org.sqlite.jdbc
