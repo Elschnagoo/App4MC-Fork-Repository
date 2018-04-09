@@ -48,9 +48,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getStructureType <em>Structure Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getPorts <em>Ports</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getConnections <em>Connections</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getStructures <em>Structures</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,6 +97,16 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	protected EList<HwPort> ports;
 
 	/**
+	 * The cached value of the '{@link #getStructures() <em>Structures</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStructures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<HwStructure> structures;
+
+	/**
 	 * The cached value of the '{@link #getModules() <em>Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,16 +125,6 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * @ordered
 	 */
 	protected EList<HwConnection> connections;
-
-	/**
-	 * The cached value of the '{@link #getStructures() <em>Structures</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStructures()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<HwStructure> structures;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +195,18 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<HwStructure> getStructures() {
+		if (structures == null) {
+			structures = new EObjectContainmentEList<HwStructure>(HwStructure.class, this, AmaltheaPackage.HW_STRUCTURE__STRUCTURES);
+		}
+		return structures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<HwModule> getModules() {
 		if (modules == null) {
 			modules = new EObjectContainmentEList<HwModule>(HwModule.class, this, AmaltheaPackage.HW_STRUCTURE__MODULES);
@@ -219,29 +231,17 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwStructure> getStructures() {
-		if (structures == null) {
-			structures = new EObjectContainmentEList<HwStructure>(HwStructure.class, this, AmaltheaPackage.HW_STRUCTURE__STRUCTURES);
-		}
-		return structures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_STRUCTURE__PORTS:
 				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
+				return ((InternalEList<?>)getStructures()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
-				return ((InternalEList<?>)getStructures()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -260,12 +260,12 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 				return getStructureType();
 			case AmaltheaPackage.HW_STRUCTURE__PORTS:
 				return getPorts();
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
+				return getStructures();
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 				return getModules();
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				return getConnections();
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
-				return getStructures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -290,6 +290,10 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 				getPorts().clear();
 				getPorts().addAll((Collection<? extends HwPort>)newValue);
 				return;
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
+				getStructures().clear();
+				getStructures().addAll((Collection<? extends HwStructure>)newValue);
+				return;
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 				getModules().clear();
 				getModules().addAll((Collection<? extends HwModule>)newValue);
@@ -297,10 +301,6 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				getConnections().clear();
 				getConnections().addAll((Collection<? extends HwConnection>)newValue);
-				return;
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
-				getStructures().clear();
-				getStructures().addAll((Collection<? extends HwStructure>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -323,14 +323,14 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 			case AmaltheaPackage.HW_STRUCTURE__PORTS:
 				getPorts().clear();
 				return;
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
+				getStructures().clear();
+				return;
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 				getModules().clear();
 				return;
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				getConnections().clear();
-				return;
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
-				getStructures().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -350,12 +350,12 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 				return structureType != STRUCTURE_TYPE_EDEFAULT;
 			case AmaltheaPackage.HW_STRUCTURE__PORTS:
 				return ports != null && !ports.isEmpty();
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
+				return structures != null && !structures.isEmpty();
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 				return modules != null && !modules.isEmpty();
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				return connections != null && !connections.isEmpty();
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
-				return structures != null && !structures.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

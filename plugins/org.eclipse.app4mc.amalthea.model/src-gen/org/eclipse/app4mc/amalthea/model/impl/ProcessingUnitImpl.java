@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -43,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitImpl#getAccessElements <em>Access Elements</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitImpl#getCache <em>Cache</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitImpl#getCaches <em>Caches</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,14 +71,14 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	protected EList<HwAccessElement> accessElements;
 
 	/**
-	 * The cached value of the '{@link #getCache() <em>Cache</em>}' containment reference.
+	 * The cached value of the '{@link #getCaches() <em>Caches</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCache()
+	 * @see #getCaches()
 	 * @generated
 	 * @ordered
 	 */
-	protected Cache cache;
+	protected EList<Cache> caches;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,42 +154,11 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Cache getCache() {
-		return cache;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCache(Cache newCache, NotificationChain msgs) {
-		Cache oldCache = cache;
-		cache = newCache;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESSING_UNIT__CACHE, oldCache, newCache);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Cache> getCaches() {
+		if (caches == null) {
+			caches = new EObjectContainmentEList<Cache>(Cache.class, this, AmaltheaPackage.PROCESSING_UNIT__CACHES);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCache(Cache newCache) {
-		if (newCache != cache) {
-			NotificationChain msgs = null;
-			if (cache != null)
-				msgs = ((InternalEObject)cache).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESSING_UNIT__CACHE, null, msgs);
-			if (newCache != null)
-				msgs = ((InternalEObject)newCache).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.PROCESSING_UNIT__CACHE, null, msgs);
-			msgs = basicSetCache(newCache, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESSING_UNIT__CACHE, newCache, newCache));
+		return caches;
 	}
 
 	/**
@@ -216,8 +186,8 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 		switch (featureID) {
 			case AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS:
 				return ((InternalEList<?>)getAccessElements()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
-				return basicSetCache(null, msgs);
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
+				return ((InternalEList<?>)getCaches()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -235,8 +205,8 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 				return basicGetDefinition();
 			case AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS:
 				return getAccessElements();
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
-				return getCache();
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
+				return getCaches();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -257,8 +227,9 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 				getAccessElements().clear();
 				getAccessElements().addAll((Collection<? extends HwAccessElement>)newValue);
 				return;
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
-				setCache((Cache)newValue);
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
+				getCaches().clear();
+				getCaches().addAll((Collection<? extends Cache>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -278,8 +249,8 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 			case AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS:
 				getAccessElements().clear();
 				return;
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
-				setCache((Cache)null);
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
+				getCaches().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -297,8 +268,8 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 				return definition != null;
 			case AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS:
 				return accessElements != null && !accessElements.isEmpty();
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
-				return cache != null;
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
+				return caches != null && !caches.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

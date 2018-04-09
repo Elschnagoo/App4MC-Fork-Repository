@@ -6796,7 +6796,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwStructure_Modules() {
+	public EReference getHwStructure_Structures() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -6805,7 +6805,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwStructure_Connections() {
+	public EReference getHwStructure_Modules() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -6814,7 +6814,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwStructure_Structures() {
+	public EReference getHwStructure_Connections() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -6967,7 +6967,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessingUnit_Cache() {
+	public EReference getProcessingUnit_Caches() {
 		return (EReference)processingUnitEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -13446,9 +13446,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwStructureEClass = createEClass(HW_STRUCTURE);
 		createEAttribute(hwStructureEClass, HW_STRUCTURE__STRUCTURE_TYPE);
 		createEReference(hwStructureEClass, HW_STRUCTURE__PORTS);
+		createEReference(hwStructureEClass, HW_STRUCTURE__STRUCTURES);
 		createEReference(hwStructureEClass, HW_STRUCTURE__MODULES);
 		createEReference(hwStructureEClass, HW_STRUCTURE__CONNECTIONS);
-		createEReference(hwStructureEClass, HW_STRUCTURE__STRUCTURES);
 
 		hwModuleEClass = createEClass(HW_MODULE);
 		createEReference(hwModuleEClass, HW_MODULE__PORTS);
@@ -13470,7 +13470,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processingUnitEClass = createEClass(PROCESSING_UNIT);
 		createEReference(processingUnitEClass, PROCESSING_UNIT__DEFINITION);
 		createEReference(processingUnitEClass, PROCESSING_UNIT__ACCESS_ELEMENTS);
-		createEReference(processingUnitEClass, PROCESSING_UNIT__CACHE);
+		createEReference(processingUnitEClass, PROCESSING_UNIT__CACHES);
 
 		memoryEClass = createEClass(MEMORY);
 		createEReference(memoryEClass, MEMORY__DEFINITION);
@@ -15339,9 +15339,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(hwStructureEClass, HwStructure.class, "HwStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHwStructure_StructureType(), this.getStructureType(), "structureType", null, 0, 1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Modules(), this.getHwModule(), null, "modules", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Connections(), this.getHwConnection(), null, "connections", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwStructure_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwModuleEClass, HwModule.class, "HwModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwModule_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15363,7 +15363,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processingUnitEClass, ProcessingUnit.class, "ProcessingUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessingUnit_Definition(), this.getProcessingUnitDefinition(), null, "definition", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessingUnit_AccessElements(), this.getHwAccessElement(), this.getHwAccessElement_Source(), "accessElements", null, 0, -1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessingUnit_Cache(), this.getCache(), null, "cache", null, 0, 1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnit_Caches(), this.getCache(), null, "caches", null, 0, -1, ProcessingUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryEClass, Memory.class, "Memory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemory_Definition(), this.getMemoryDefinition(), null, "definition", null, 0, 1, Memory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

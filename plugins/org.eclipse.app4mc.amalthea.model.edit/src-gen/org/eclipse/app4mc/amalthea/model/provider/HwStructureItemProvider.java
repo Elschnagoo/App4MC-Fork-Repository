@@ -121,9 +121,9 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwStructure_Ports());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwStructure_Structures());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwStructure_Modules());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwStructure_Connections());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwStructure_Structures());
 		}
 		return childrenFeatures;
 	}
@@ -193,9 +193,9 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.HW_STRUCTURE__PORTS:
+			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
 			case AmaltheaPackage.HW_STRUCTURE__MODULES:
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
-			case AmaltheaPackage.HW_STRUCTURE__STRUCTURES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -217,6 +217,11 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwStructure_Ports(),
 				 AmaltheaFactory.eINSTANCE.createHwPort()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwStructure_Structures(),
+				 AmaltheaFactory.eINSTANCE.createHwStructure()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -242,11 +247,6 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwStructure_Connections(),
 				 AmaltheaFactory.eINSTANCE.createHwConnection()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwStructure_Structures(),
-				 AmaltheaFactory.eINSTANCE.createHwStructure()));
 	}
 
 }

@@ -88,7 +88,7 @@ public interface ModeValue extends ModeValueDisjunctionEntry {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _get = assignment.get(this.getValueProvider());\n&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _value = this.getValue();\nreturn (_get == _value);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _get = null;\nif (assignment!=null)\n{\n\t_get=assignment.get(this.getValueProvider());\n}\nfinal &lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; assign = _get;\nreturn ((assign == null) || (assign == this.getValue()));'"
 	 * @generated
 	 */
 	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);

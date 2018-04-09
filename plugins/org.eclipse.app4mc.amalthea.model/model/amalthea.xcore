@@ -1644,9 +1644,9 @@ class HWModel extends BaseObject
  class HwStructure extends ReferableBaseObject, ITaggable {
 	StructureType structureType
 	contains HwPort[] ports
+	contains HwStructure[] structures
 	contains HwModule[] modules
 	contains HwConnection[] connections
-	contains HwStructure[] structures
 }
 
 abstract class HwModule extends ReferableBaseObject, ITaggable {
@@ -1673,7 +1673,7 @@ class PowerDomain extends HwDomain {
 class ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	refers ProcessingUnitDefinition definition
 	contains HwAccessElement[] accessElements opposite source
-	contains Cache cache
+	contains Cache[] caches
 }
 
 class Memory extends HwModule, HwDestination {
@@ -2609,7 +2609,9 @@ class ModeValue extends ModeValueDisjunctionEntry
 	refers ModeLiteral [1] value
 	
 	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
-		return assignment.get(valueProvider) === value;
+		// no value assigned => satisfied (don't care)
+		val assign = assignment?.get(valueProvider)
+		return (assign === null) || (assign === value)
 	}
 }
 

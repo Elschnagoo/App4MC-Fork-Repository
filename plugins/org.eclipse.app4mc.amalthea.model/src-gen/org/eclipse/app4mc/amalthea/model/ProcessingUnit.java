@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getAccessElements <em>Access Elements</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache <em>Cache</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCaches <em>Caches</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnit()
@@ -78,29 +78,19 @@ public interface ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	EList<HwAccessElement> getAccessElements();
 
 	/**
-	 * Returns the value of the '<em><b>Cache</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Caches</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Cache}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cache</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Caches</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cache</em>' containment reference.
-	 * @see #setCache(Cache)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnit_Cache()
+	 * @return the value of the '<em>Caches</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnit_Caches()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Cache getCache();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache <em>Cache</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cache</em>' containment reference.
-	 * @see #getCache()
-	 * @generated
-	 */
-	void setCache(Cache value);
+	EList<Cache> getCaches();
 
 } // ProcessingUnit

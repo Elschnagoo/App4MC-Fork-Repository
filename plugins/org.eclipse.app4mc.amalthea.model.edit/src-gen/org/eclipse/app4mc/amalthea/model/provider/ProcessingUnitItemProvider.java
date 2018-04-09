@@ -97,7 +97,7 @@ public class ProcessingUnitItemProvider extends HwModuleItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessingUnit_AccessElements());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessingUnit_Cache());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProcessingUnit_Caches());
 		}
 		return childrenFeatures;
 	}
@@ -164,7 +164,7 @@ public class ProcessingUnitItemProvider extends HwModuleItemProvider {
 
 		switch (notification.getFeatureID(ProcessingUnit.class)) {
 			case AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS:
-			case AmaltheaPackage.PROCESSING_UNIT__CACHE:
+			case AmaltheaPackage.PROCESSING_UNIT__CACHES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -189,7 +189,7 @@ public class ProcessingUnitItemProvider extends HwModuleItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getProcessingUnit_Cache(),
+				(AmaltheaPackage.eINSTANCE.getProcessingUnit_Caches(),
 				 AmaltheaFactory.eINSTANCE.createCache()));
 	}
 

@@ -25,9 +25,9 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructureType <em>Structure Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getPorts <em>Ports</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getModules <em>Modules</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getConnections <em>Connections</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructures <em>Structures</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwStructure()
@@ -81,6 +81,22 @@ public interface HwStructure extends ReferableBaseObject, ITaggable {
 	EList<HwPort> getPorts();
 
 	/**
+	 * Returns the value of the '<em><b>Structures</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwStructure}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Structures</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Structures</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwStructure_Structures()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<HwStructure> getStructures();
+
+	/**
 	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwModule}.
 	 * <!-- begin-user-doc -->
@@ -111,21 +127,5 @@ public interface HwStructure extends ReferableBaseObject, ITaggable {
 	 * @generated
 	 */
 	EList<HwConnection> getConnections();
-
-	/**
-	 * Returns the value of the '<em><b>Structures</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwStructure}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Structures</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Structures</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwStructure_Structures()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<HwStructure> getStructures();
 
 } // HwStructure

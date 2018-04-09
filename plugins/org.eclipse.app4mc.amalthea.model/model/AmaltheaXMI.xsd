@@ -2761,9 +2761,9 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="ports" type="am:HwPort"/>
+          <xsd:element name="structures" type="am:HwStructure"/>
           <xsd:element name="modules" type="am:HwModule"/>
           <xsd:element name="connections" type="am:HwConnection"/>
-          <xsd:element name="structures" type="am:HwStructure"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="structureType" type="am:StructureType"/>
@@ -2828,7 +2828,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="definition" type="am:ProcessingUnitDefinition"/>
           <xsd:element name="accessElements" type="am:HwAccessElement"/>
-          <xsd:element name="cache" type="am:Cache"/>
+          <xsd:element name="caches" type="am:Cache"/>
         </xsd:choice>
         <xsd:attribute name="definition" type="xsd:string"/>
       </xsd:extension>

@@ -166,9 +166,12 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
-		ModeLiteral _get = assignment.get(this.getValueProvider());
-		ModeLiteral _value = this.getValue();
-		return (_get == _value);
+		ModeLiteral _get = null;
+		if (assignment!=null) {
+			_get=assignment.get(this.getValueProvider());
+		}
+		final ModeLiteral assign = _get;
+		return ((assign == null) || (assign == this.getValue()));
 	}
 
 	/**

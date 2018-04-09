@@ -10770,13 +10770,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_STRUCTURE__PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Structures</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_STRUCTURE__STRUCTURES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_STRUCTURE__MODULES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int HW_STRUCTURE__MODULES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Connections</b></em>' containment reference list.
@@ -10785,16 +10794,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_STRUCTURE__CONNECTIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Structures</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_STRUCTURE__STRUCTURES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+	int HW_STRUCTURE__CONNECTIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Hw Structure</em>' class.
@@ -11423,13 +11423,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT__ACCESS_ELEMENTS = HW_MODULE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Cache</b></em>' containment reference.
+	 * The feature id for the '<em><b>Caches</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT__CACHE = HW_MODULE_FEATURE_COUNT + 2;
+	int PROCESSING_UNIT__CACHES = HW_MODULE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Processing Unit</em>' class.
@@ -31742,6 +31742,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwStructure_Ports();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructures <em>Structures</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Structures</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwStructure#getStructures()
+	 * @see #getHwStructure()
+	 * @generated
+	 */
+	EReference getHwStructure_Structures();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwStructure#getModules <em>Modules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31762,17 +31773,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHwStructure_Connections();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructures <em>Structures</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Structures</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwStructure#getStructures()
-	 * @see #getHwStructure()
-	 * @generated
-	 */
-	EReference getHwStructure_Structures();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.
@@ -31946,15 +31946,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getProcessingUnit_AccessElements();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache <em>Cache</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCaches <em>Caches</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Cache</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCache()
+	 * @return the meta object for the containment reference list '<em>Caches</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnit#getCaches()
 	 * @see #getProcessingUnit()
 	 * @generated
 	 */
-	EReference getProcessingUnit_Cache();
+	EReference getProcessingUnit_Caches();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Memory <em>Memory</em>}'.
