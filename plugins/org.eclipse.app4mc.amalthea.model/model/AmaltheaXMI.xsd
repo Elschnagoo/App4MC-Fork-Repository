@@ -2861,8 +2861,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="value" type="am:Value"/>
-          <xsd:element name="latency" type="am:HwLatency"/>
+          <xsd:element name="literals" type="am:HwFeatureLiteral"/>
         </xsd:choice>
         <xsd:attribute name="featureType" type="am:HwFeatureType"/>
         <xsd:attribute name="description" type="xsd:string"/>
@@ -2870,6 +2869,19 @@ entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwFeature" type="am:HwFeature"/>
+  <xsd:complexType name="HwFeatureLiteral">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingFeature" type="am:HwFeature"/>
+          <xsd:element name="value" type="am:Value"/>
+          <xsd:element name="latency" type="am:HwLatency"/>
+        </xsd:choice>
+        <xsd:attribute name="containingFeature" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwFeatureLiteral" type="am:HwFeatureLiteral"/>
   <xsd:complexType name="HwPort">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -2981,7 +2993,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="features" type="am:HwFeature"/>
+          <xsd:element name="features" type="am:HwFeatureLiteral"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="features" type="xsd:string"/>

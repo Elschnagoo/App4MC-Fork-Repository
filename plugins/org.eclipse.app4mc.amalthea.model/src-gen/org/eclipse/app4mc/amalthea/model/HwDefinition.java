@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
 public interface HwDefinition extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Features</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Features</em>' reference list isn't clear,
@@ -45,6 +45,6 @@ public interface HwDefinition extends ReferableBaseObject, ITaggable {
 	 * @model
 	 * @generated
 	 */
-	EList<HwFeature> getFeatures();
+	EList<HwFeatureLiteral> getFeatures();
 
 } // HwDefinition

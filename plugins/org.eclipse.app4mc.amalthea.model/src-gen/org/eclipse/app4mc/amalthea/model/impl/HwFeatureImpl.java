@@ -12,19 +12,25 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
-import org.eclipse.app4mc.amalthea.model.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,8 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getFeatureType <em>Feature Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getLatency <em>Latency</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,24 +89,14 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getLiterals()
 	 * @generated
 	 * @ordered
 	 */
-	protected Value value;
-
-	/**
-	 * The cached value of the '{@link #getLatency() <em>Latency</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLatency()
-	 * @generated
-	 * @ordered
-	 */
-	protected HwLatency latency;
+	protected EList<HwFeatureLiteral> literals;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,23 +164,11 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Value getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetValue(Value newValue, NotificationChain msgs) {
-		Value oldValue = value;
-		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<HwFeatureLiteral> getLiterals() {
+		if (literals == null) {
+			literals = new EObjectContainmentWithInverseEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.HW_FEATURE__LITERALS, AmaltheaPackage.HW_FEATURE_LITERAL__CONTAINING_FEATURE);
 		}
-		return msgs;
+		return literals;
 	}
 
 	/**
@@ -193,61 +176,14 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(Value newValue) {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
-			msgs = basicSetValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLiterals()).basicAdd(otherEnd, msgs);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, newValue, newValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HwLatency getLatency() {
-		return latency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetLatency(HwLatency newLatency, NotificationChain msgs) {
-		HwLatency oldLatency = latency;
-		latency = newLatency;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__LATENCY, oldLatency, newLatency);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLatency(HwLatency newLatency) {
-		if (newLatency != latency) {
-			NotificationChain msgs = null;
-			if (latency != null)
-				msgs = ((InternalEObject)latency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__LATENCY, null, msgs);
-			if (newLatency != null)
-				msgs = ((InternalEObject)newLatency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__LATENCY, null, msgs);
-			msgs = basicSetLatency(newLatency, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__LATENCY, newLatency, newLatency));
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -258,10 +194,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				return basicSetValue(null, msgs);
-			case AmaltheaPackage.HW_FEATURE__LATENCY:
-				return basicSetLatency(null, msgs);
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				return ((InternalEList<?>)getLiterals()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -278,10 +212,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 				return getFeatureType();
 			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
 				return getDescription();
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				return getValue();
-			case AmaltheaPackage.HW_FEATURE__LATENCY:
-				return getLatency();
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				return getLiterals();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -291,6 +223,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -300,11 +233,9 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				setValue((Value)newValue);
-				return;
-			case AmaltheaPackage.HW_FEATURE__LATENCY:
-				setLatency((HwLatency)newValue);
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				getLiterals().clear();
+				getLiterals().addAll((Collection<? extends HwFeatureLiteral>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -324,11 +255,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				setValue((Value)null);
-				return;
-			case AmaltheaPackage.HW_FEATURE__LATENCY:
-				setLatency((HwLatency)null);
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				getLiterals().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -346,10 +274,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 				return featureType != FEATURE_TYPE_EDEFAULT;
 			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				return value != null;
-			case AmaltheaPackage.HW_FEATURE__LATENCY:
-				return latency != null;
+			case AmaltheaPackage.HW_FEATURE__LITERALS:
+				return literals != null && !literals.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

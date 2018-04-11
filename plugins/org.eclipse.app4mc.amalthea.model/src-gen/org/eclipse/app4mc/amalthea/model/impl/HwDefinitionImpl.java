@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwDefinition;
-import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
@@ -59,7 +59,7 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwFeature> features;
+	protected EList<HwFeatureLiteral> features;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,9 +97,9 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwFeature> getFeatures() {
+	public EList<HwFeatureLiteral> getFeatures() {
 		if (features == null) {
-			features = new EObjectResolvingEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.HW_DEFINITION__FEATURES);
+			features = new EObjectResolvingEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.HW_DEFINITION__FEATURES);
 		}
 		return features;
 	}
@@ -135,7 +135,7 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 				return;
 			case AmaltheaPackage.HW_DEFINITION__FEATURES:
 				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends HwFeature>)newValue);
+				getFeatures().addAll((Collection<? extends HwFeatureLiteral>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -27,23 +27,22 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeature} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
+public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureItemProvider(AdapterFactory adapterFactory) {
+	public HwFeatureLiteralItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,54 +57,33 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFeatureTypePropertyDescriptor(object);
-			addDescriptionPropertyDescriptor(object);
+			addContainingFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Feature Type feature.
+	 * This adds a property descriptor for the Containing Feature feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFeatureTypePropertyDescriptor(Object object) {
+	protected void addContainingFeaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_HwFeature_featureType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeature_featureType_feature", "_UI_HwFeature_type"),
-				 AmaltheaPackage.eINSTANCE.getHwFeature_FeatureType(),
-				 true,
+				 getString("_UI_HwFeatureLiteral_containingFeature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeatureLiteral_containingFeature_feature", "_UI_HwFeatureLiteral_type"),
+				 AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_ContainingFeature(),
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 false,
 				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Description feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HwFeature_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeature_description_feature", "_UI_HwFeature_type"),
-				 AmaltheaPackage.eINSTANCE.getHwFeature_Description(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
@@ -120,7 +98,8 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeature_Literals());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency());
 		}
 		return childrenFeatures;
 	}
@@ -139,14 +118,14 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns HwFeature.gif.
+	 * This returns HwFeatureLiteral.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/HwFeature"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/HwFeatureLiteral"));
 	}
 
 	/**
@@ -167,10 +146,10 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((HwFeature)object).getName();
+		String label = ((HwFeatureLiteral)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_HwFeature_type") :
-			getString("_UI_HwFeature_type") + " " + label;
+			getString("_UI_HwFeatureLiteral_type") :
+			getString("_UI_HwFeatureLiteral_type") + " " + label;
 	}
 	
 
@@ -185,12 +164,9 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(HwFeature.class)) {
-			case AmaltheaPackage.HW_FEATURE__FEATURE_TYPE:
-			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
+		switch (notification.getFeatureID(HwFeatureLiteral.class)) {
+			case AmaltheaPackage.HW_FEATURE_LITERAL__VALUE:
+			case AmaltheaPackage.HW_FEATURE_LITERAL__LATENCY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -210,8 +186,63 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeature_Literals(),
-				 AmaltheaFactory.eINSTANCE.createHwFeatureLiteral()));
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createListObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createStringObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createReferenceObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createIntegerObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createLongObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createFloatObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createDoubleObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createBooleanObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
+				 AmaltheaFactory.eINSTANCE.createTimeObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency(),
+				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency(),
+				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
 	}
 
 }

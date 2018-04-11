@@ -133,6 +133,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
@@ -485,6 +486,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MEMORY: return createMemory();
 			case AmaltheaPackage.CACHE: return createCache();
 			case AmaltheaPackage.HW_FEATURE: return createHwFeature();
+			case AmaltheaPackage.HW_FEATURE_LITERAL: return createHwFeatureLiteral();
 			case AmaltheaPackage.HW_PORT: return createHwPort();
 			case AmaltheaPackage.CONNECTION_HANDLER: return createConnectionHandler();
 			case AmaltheaPackage.HW_CONNECTION: return createHwConnection();
@@ -1950,6 +1952,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public HwFeature createHwFeature() {
 		HwFeatureImpl hwFeature = new HwFeatureImpl();
 		return hwFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HwFeatureLiteral createHwFeatureLiteral() {
+		HwFeatureLiteralImpl hwFeatureLiteral = new HwFeatureLiteralImpl();
+		return hwFeatureLiteral;
 	}
 
 	/**

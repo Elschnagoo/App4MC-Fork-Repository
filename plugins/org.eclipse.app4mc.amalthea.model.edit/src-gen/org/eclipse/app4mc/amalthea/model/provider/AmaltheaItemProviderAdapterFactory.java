@@ -2520,6 +2520,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HwFeatureLiteralItemProvider hwFeatureLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHwFeatureLiteralAdapter() {
+		if (hwFeatureLiteralItemProvider == null) {
+			hwFeatureLiteralItemProvider = new HwFeatureLiteralItemProvider(this);
+		}
+
+		return hwFeatureLiteralItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwPort} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6220,6 +6243,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (memoryItemProvider != null) memoryItemProvider.dispose();
 		if (cacheItemProvider != null) cacheItemProvider.dispose();
 		if (hwFeatureItemProvider != null) hwFeatureItemProvider.dispose();
+		if (hwFeatureLiteralItemProvider != null) hwFeatureLiteralItemProvider.dispose();
 		if (hwPortItemProvider != null) hwPortItemProvider.dispose();
 		if (connectionHandlerItemProvider != null) connectionHandlerItemProvider.dispose();
 		if (hwConnectionItemProvider != null) hwConnectionItemProvider.dispose();

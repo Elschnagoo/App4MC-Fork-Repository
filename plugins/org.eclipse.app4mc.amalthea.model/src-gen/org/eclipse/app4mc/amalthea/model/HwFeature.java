@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +25,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getFeatureType <em>Feature Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getLatency <em>Latency</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature()
@@ -89,55 +89,21 @@ public interface HwFeature extends ReferableBaseObject {
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature <em>Containing Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(Value)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Value()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Literals</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Literals()
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature
+	 * @model opposite="containingFeature" containment="true"
 	 * @generated
 	 */
-	Value getValue();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(Value value);
-
-	/**
-	 * Returns the value of the '<em><b>Latency</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Latency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Latency</em>' containment reference.
-	 * @see #setLatency(HwLatency)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Latency()
-	 * @model containment="true"
-	 * @generated
-	 */
-	HwLatency getLatency();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getLatency <em>Latency</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Latency</em>' containment reference.
-	 * @see #getLatency()
-	 * @generated
-	 */
-	void setLatency(HwLatency value);
+	EList<HwFeatureLiteral> getLiterals();
 
 } // HwFeature

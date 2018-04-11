@@ -165,6 +165,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
@@ -782,6 +783,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateCache((Cache)value, diagnostics, context);
 			case AmaltheaPackage.HW_FEATURE:
 				return validateHwFeature((HwFeature)value, diagnostics, context);
+			case AmaltheaPackage.HW_FEATURE_LITERAL:
+				return validateHwFeatureLiteral((HwFeatureLiteral)value, diagnostics, context);
 			case AmaltheaPackage.HW_PORT:
 				return validateHwPort((HwPort)value, diagnostics, context);
 			case AmaltheaPackage.CONNECTION_HANDLER:
@@ -2623,6 +2626,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateHwFeature(HwFeature hwFeature, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(hwFeature, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHwFeatureLiteral(HwFeatureLiteral hwFeatureLiteral, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(hwFeatureLiteral, diagnostics, context);
 	}
 
 	/**

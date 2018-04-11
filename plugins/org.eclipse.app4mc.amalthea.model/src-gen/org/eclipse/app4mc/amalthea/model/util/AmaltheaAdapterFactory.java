@@ -147,6 +147,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
@@ -1008,6 +1009,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseHwFeature(HwFeature object) {
 				return createHwFeatureAdapter();
+			}
+			@Override
+			public Adapter caseHwFeatureLiteral(HwFeatureLiteral object) {
+				return createHwFeatureLiteralAdapter();
 			}
 			@Override
 			public Adapter caseHwPort(HwPort object) {
@@ -3878,6 +3883,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createHwFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral <em>Hw Feature Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral
+	 * @generated
+	 */
+	public Adapter createHwFeatureLiteralAdapter() {
 		return null;
 	}
 

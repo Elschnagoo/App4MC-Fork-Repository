@@ -1689,12 +1689,31 @@ class Cache extends HwModule, HwPathElement {
 	refers CacheDefinition definition
 }
 
+
 class HwFeature extends ReferableBaseObject {
 	HwFeatureType featureType
 	String description
+	
+	contains HwFeatureLiteral [] literals opposite containingFeature
+}
+
+class HwFeatureLiteral extends ReferableBaseObject {
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	container readonly HwFeature containingFeature opposite literals
+
+	op String computeUniqueName() {
+		return basicComputeUniqueNameWithPrefix(containingFeature?.name)
+	}
+	
+	op String toString() {
+		val featureName = containingFeature?.name
+		return (if (featureName.nullOrEmpty) "<feature>" else featureName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
+	}
+	
 	contains Value[1] value
 	contains HwLatency latency
 }
+
 
 class HwPort extends ReferableBaseObject, ITaggable {
 	int bitWidth = "0"
@@ -1805,7 +1824,7 @@ class LatencyDeviation extends HwLatency {
 }
 
 abstract class HwDefinition extends ReferableBaseObject, ITaggable {
-	refers HwFeature[] features
+	refers HwFeatureLiteral[] features
 
 }
 

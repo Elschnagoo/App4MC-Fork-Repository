@@ -147,6 +147,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
@@ -1757,6 +1758,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIAnnotatable(hwFeature);
 				if (result == null) result = caseIReferable(hwFeature);
 				if (result == null) result = caseINamed(hwFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.HW_FEATURE_LITERAL: {
+				HwFeatureLiteral hwFeatureLiteral = (HwFeatureLiteral)theEObject;
+				T1 result = caseHwFeatureLiteral(hwFeatureLiteral);
+				if (result == null) result = caseReferableBaseObject(hwFeatureLiteral);
+				if (result == null) result = caseIAnnotatable(hwFeatureLiteral);
+				if (result == null) result = caseIReferable(hwFeatureLiteral);
+				if (result == null) result = caseINamed(hwFeatureLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -5816,6 +5827,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseHwFeature(HwFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Feature Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Feature Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwFeatureLiteral(HwFeatureLiteral object) {
 		return null;
 	}
 

@@ -977,6 +977,15 @@ public interface AmaltheaFactory extends EFactory {
 	HwFeature createHwFeature();
 
 	/**
+	 * Returns a new object of class '<em>Hw Feature Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hw Feature Literal</em>'.
+	 * @generated
+	 */
+	HwFeatureLiteral createHwFeatureLiteral();
+
+	/**
 	 * Returns a new object of class '<em>Hw Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
