@@ -188,20 +188,34 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
 		final SWModel swModel = (SWModel) object;
-		children.add(getRunnables(swModel));
-		children.add(getLabels(swModel));
-		children.add(getTasks(swModel));
-		children.add(getISRs(swModel));
-		children.add(getEvents(swModel));
-		children.add(getProcessChains(swModel));
-		children.add(getPrototypes(swModel));
-		children.add(getActivations(swModel));
-		children.add(getSections(swModel));
-		children.add(getModes(swModel));
-		children.add(getModeLabels(swModel));
-		children.add(getTypes(swModel));
-		children.add(getChannels(swModel));
-		children.add(getEntities(swModel));
+		if (!swModel.getRunnables().isEmpty())
+			children.add(getRunnables(swModel));
+		if (!swModel.getLabels().isEmpty())
+			children.add(getLabels(swModel));
+		if (!swModel.getTasks().isEmpty())
+			children.add(getTasks(swModel));
+		if (!swModel.getIsrs().isEmpty())
+			children.add(getISRs(swModel));
+		if (!swModel.getEvents().isEmpty())
+			children.add(getEvents(swModel));
+		if (!swModel.getProcessChains().isEmpty())
+			children.add(getProcessChains(swModel));
+		if (!swModel.getProcessPrototypes().isEmpty())
+			children.add(getPrototypes(swModel));
+		if (!swModel.getActivations().isEmpty())
+			children.add(getActivations(swModel));
+		if (!swModel.getSections().isEmpty())
+			children.add(getSections(swModel));
+		if (!swModel.getModes().isEmpty())
+			children.add(getModes(swModel));
+		if (!swModel.getModeLabels().isEmpty())
+			children.add(getModeLabels(swModel));
+		if (!swModel.getTypeDefinitions().isEmpty())
+			children.add(getTypes(swModel));
+		if (!swModel.getChannels().isEmpty())
+			children.add(getChannels(swModel));
+		if (!swModel.getCustomEntities().isEmpty())
+			children.add(getEntities(swModel));
 		return children;
 	}
 
