@@ -87,6 +87,9 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -141,6 +144,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.ExecutionCost;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -527,14 +531,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass instructionsEClass = null;
+	private EClass transmissionPolicyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass transmissionPolicyEClass = null;
+	private EClass instructionsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -549,6 +553,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass instructionsConstantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass costEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass costDeviationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass costConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2494,6 +2519,27 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass executionCostEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executionCostEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass costMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass modeLabelAccessEClass = null;
 
 	/**
@@ -3636,33 +3682,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInstructions() {
-		return instructionsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructions_FetchStatistic() {
-		return (EReference)instructionsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getInstructions__ContainerNotificationRequired() {
-		return instructionsEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTransmissionPolicy() {
 		return transmissionPolicyEClass;
 	}
@@ -3699,6 +3718,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInstructions() {
+		return instructionsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstructions_FetchStatistic() {
+		return (EReference)instructionsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstructions__ContainerNotificationRequired() {
+		return instructionsEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInstructionsDeviation() {
 		return instructionsDeviationEClass;
 	}
@@ -3728,6 +3774,60 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getInstructionsConstant_Value() {
 		return (EAttribute)instructionsConstantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCost() {
+		return costEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCost__ContainerNotificationRequired() {
+		return costEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCostDeviation() {
+		return costDeviationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCostDeviation_Deviation() {
+		return (EReference)costDeviationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCostConstant() {
+		return costConstantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCostConstant_Value() {
+		return (EAttribute)costConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11322,6 +11422,87 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExecutionCost() {
+		return executionCostEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecutionCost_Default() {
+		return (EReference)executionCostEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecutionCost_Extended() {
+		return (EReference)executionCostEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecutionCostEntry() {
+		return executionCostEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecutionCostEntry_Key() {
+		return (EReference)executionCostEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecutionCostEntry_Value() {
+		return (EReference)executionCostEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCostMapEntry() {
+		return costMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCostMapEntry_Key() {
+		return (EReference)costMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCostMapEntry_Value() {
+		return (EReference)costMapEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModeLabelAccess() {
 		return modeLabelAccessEClass;
 	}
@@ -13020,20 +13201,29 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		memoryClassifierEClass = createEClass(MEMORY_CLASSIFIER);
 
-		instructionsEClass = createEClass(INSTRUCTIONS);
-		createEReference(instructionsEClass, INSTRUCTIONS__FETCH_STATISTIC);
-		createEOperation(instructionsEClass, INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED);
-
 		transmissionPolicyEClass = createEClass(TRANSMISSION_POLICY);
 		createEReference(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_SIZE);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__TRANSMIT_RATIO);
+
+		instructionsEClass = createEClass(INSTRUCTIONS);
+		createEReference(instructionsEClass, INSTRUCTIONS__FETCH_STATISTIC);
+		createEOperation(instructionsEClass, INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED);
 
 		instructionsDeviationEClass = createEClass(INSTRUCTIONS_DEVIATION);
 		createEReference(instructionsDeviationEClass, INSTRUCTIONS_DEVIATION__DEVIATION);
 
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
+
+		costEClass = createEClass(COST);
+		createEOperation(costEClass, COST___CONTAINER_NOTIFICATION_REQUIRED);
+
+		costDeviationEClass = createEClass(COST_DEVIATION);
+		createEReference(costDeviationEClass, COST_DEVIATION__DEVIATION);
+
+		costConstantEClass = createEClass(COST_CONSTANT);
+		createEAttribute(costConstantEClass, COST_CONSTANT__VALUE);
 
 		quantityEClass = createEClass(QUANTITY);
 		createEOperation(quantityEClass, QUANTITY___CONTAINER_NOTIFICATION_REQUIRED);
@@ -14155,6 +14345,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__KEY);
 		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__VALUE);
 
+		executionCostEClass = createEClass(EXECUTION_COST);
+		createEReference(executionCostEClass, EXECUTION_COST__DEFAULT);
+		createEReference(executionCostEClass, EXECUTION_COST__EXTENDED);
+
+		executionCostEntryEClass = createEClass(EXECUTION_COST_ENTRY);
+		createEReference(executionCostEntryEClass, EXECUTION_COST_ENTRY__KEY);
+		createEReference(executionCostEntryEClass, EXECUTION_COST_ENTRY__VALUE);
+
+		costMapEntryEClass = createEClass(COST_MAP_ENTRY);
+		createEReference(costMapEntryEClass, COST_MAP_ENTRY__KEY);
+		createEReference(costMapEntryEClass, COST_MAP_ENTRY__VALUE);
+
 		modeLabelAccessEClass = createEClass(MODE_LABEL_ACCESS);
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__DATA);
 		createEAttribute(modeLabelAccessEClass, MODE_LABEL_ACCESS__ACCESS);
@@ -14440,6 +14642,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
+		costDeviationEClass.getESuperTypes().add(this.getCost());
+		costConstantEClass.getESuperTypes().add(this.getCost());
 		abstractTimeEClass.getESuperTypes().add(this.getTimeComparable());
 		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		timeEClass.getESuperTypes().add(this.getQuantity());
@@ -14768,6 +14972,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableInstructionsEClass.getESuperTypes().add(this.getComputationItem());
+		executionCostEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
@@ -14879,15 +15084,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(memoryClassifierEClass, MemoryClassifier.class, "MemoryClassifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(instructionsEClass, Instructions.class, "Instructions", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInstructions_FetchStatistic(), this.getInstructionFetch(), null, "fetchStatistic", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getInstructions__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(transmissionPolicyEClass, TransmissionPolicy.class, "TransmissionPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransmissionPolicy_ChunkSize(), this.getDataSize(), null, "chunkSize", null, 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_ChunkProcessingInstructions(), theEcorePackage.getEInt(), "chunkProcessingInstructions", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_TransmitRatio(), theEcorePackage.getEDouble(), "transmitRatio", "1.0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(instructionsEClass, Instructions.class, "Instructions", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInstructions_FetchStatistic(), this.getInstructionFetch(), null, "fetchStatistic", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getInstructions__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(instructionsDeviationEClass, InstructionsDeviation.class, "InstructionsDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
@@ -14897,6 +15102,19 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(costEClass, Cost.class, "Cost", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getCost__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(costDeviationEClass, CostDeviation.class, "CostDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getDeviation());
+		g2 = createEGenericType(this.getLongObject());
+		g1.getETypeArguments().add(g2);
+		initEReference(getCostDeviation_Deviation(), g1, null, "deviation", null, 0, 1, CostDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(costConstantEClass, CostConstant.class, "CostConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCostConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, CostConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(quantityEClass, Quantity.class, "Quantity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -16098,6 +16316,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(runnableInstructionsEntryEClass, Map.Entry.class, "RunnableInstructionsEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableInstructionsEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableInstructionsEntry_Value(), this.getInstructions(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executionCostEClass, ExecutionCost.class, "ExecutionCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutionCost_Default(), this.getCostMapEntry(), null, "default", null, 0, -1, ExecutionCost.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionCost_Extended(), this.getExecutionCostEntry(), null, "extended", null, 0, -1, ExecutionCost.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executionCostEntryEClass, Map.Entry.class, "ExecutionCostEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutionCostEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionCostEntry_Value(), this.getCostMapEntry(), null, "value", null, 1, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(costMapEntryEClass, Map.Entry.class, "CostMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCostMapEntry_Key(), this.getHwFeature(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCostMapEntry_Value(), this.getCost(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

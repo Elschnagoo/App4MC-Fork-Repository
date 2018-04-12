@@ -86,6 +86,9 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -140,6 +143,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.ExecutionCost;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -511,14 +515,20 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateCoreClassifier((CoreClassifier)value, diagnostics, context);
 			case AmaltheaPackage.MEMORY_CLASSIFIER:
 				return validateMemoryClassifier((MemoryClassifier)value, diagnostics, context);
-			case AmaltheaPackage.INSTRUCTIONS:
-				return validateInstructions((Instructions)value, diagnostics, context);
 			case AmaltheaPackage.TRANSMISSION_POLICY:
 				return validateTransmissionPolicy((TransmissionPolicy)value, diagnostics, context);
+			case AmaltheaPackage.INSTRUCTIONS:
+				return validateInstructions((Instructions)value, diagnostics, context);
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION:
 				return validateInstructionsDeviation((InstructionsDeviation)value, diagnostics, context);
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT:
 				return validateInstructionsConstant((InstructionsConstant)value, diagnostics, context);
+			case AmaltheaPackage.COST:
+				return validateCost((Cost)value, diagnostics, context);
+			case AmaltheaPackage.COST_DEVIATION:
+				return validateCostDeviation((CostDeviation)value, diagnostics, context);
+			case AmaltheaPackage.COST_CONSTANT:
+				return validateCostConstant((CostConstant)value, diagnostics, context);
 			case AmaltheaPackage.QUANTITY:
 				return validateQuantity((Quantity)value, diagnostics, context);
 			case AmaltheaPackage.TIME_COMPARABLE:
@@ -1073,6 +1083,12 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateRunnableInstructions((RunnableInstructions)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY:
 				return validateRunnableInstructionsEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case AmaltheaPackage.EXECUTION_COST:
+				return validateExecutionCost((ExecutionCost)value, diagnostics, context);
+			case AmaltheaPackage.EXECUTION_COST_ENTRY:
+				return validateExecutionCostEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case AmaltheaPackage.COST_MAP_ENTRY:
+				return validateCostMapEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LABEL_ACCESS:
 				return validateModeLabelAccess((ModeLabelAccess)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH:
@@ -1409,8 +1425,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInstructions(Instructions instructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(instructions, diagnostics, context);
+	public boolean validateTransmissionPolicy(TransmissionPolicy transmissionPolicy, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(transmissionPolicy, diagnostics, context);
 	}
 
 	/**
@@ -1418,8 +1434,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTransmissionPolicy(TransmissionPolicy transmissionPolicy, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(transmissionPolicy, diagnostics, context);
+	public boolean validateInstructions(Instructions instructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(instructions, diagnostics, context);
 	}
 
 	/**
@@ -1438,6 +1454,33 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateInstructionsConstant(InstructionsConstant instructionsConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(instructionsConstant, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCost(Cost cost, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(cost, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCostDeviation(CostDeviation costDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(costDeviation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCostConstant(CostConstant costConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(costConstant, diagnostics, context);
 	}
 
 	/**
@@ -3931,6 +3974,33 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateRunnableInstructionsEntry(Map.Entry<?, ?> runnableInstructionsEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint((EObject)runnableInstructionsEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExecutionCost(ExecutionCost executionCost, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(executionCost, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExecutionCostEntry(Map.Entry<?, ?> executionCostEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)executionCostEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCostMapEntry(Map.Entry<?, ?> costMapEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)costMapEntry, diagnostics, context);
 	}
 
 	/**

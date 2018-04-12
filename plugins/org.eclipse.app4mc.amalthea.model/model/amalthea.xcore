@@ -178,6 +178,15 @@ class MemoryClassifier extends Classifier
 }
 
 /*
+ * Data transmission details for communication (e.g. LabelAccesses)
+ */
+class TransmissionPolicy {
+	contains DataSize chunkSize
+	int chunkProcessingInstructions = "0"
+	double transmitRatio = "1.0"
+}
+
+/*
  * Abstract description for a set of execution cycles
  */
 abstract class Instructions
@@ -193,15 +202,6 @@ abstract class Instructions
 }
 
 /*
- * Data transmission details for communication (e.g. LabelAccesses)
- */
-class TransmissionPolicy {
-	contains DataSize chunkSize
-	int chunkProcessingInstructions = "0"
-	double transmitRatio = "1.0"
-}
-
-/*
  * Deviated set of execution cycles
  */
 class InstructionsDeviation extends Instructions
@@ -213,6 +213,27 @@ class InstructionsDeviation extends Instructions
  * Constant set of execution cycles 
  */
 class InstructionsConstant extends Instructions
+{
+	long value = "0"
+}
+
+
+/*
+ * Abstract description for cost (mostly execution time)
+ */
+abstract class Cost
+{
+	op boolean containerNotificationRequired() {
+		return true
+	}
+}
+
+class CostDeviation extends Cost
+{
+	contains Deviation<LongObject> deviation
+}
+
+class CostConstant extends Cost
 {
 	long value = "0"
 }
@@ -1689,7 +1710,6 @@ class Cache extends HwModule, HwPathElement {
 	refers CacheDefinition definition
 }
 
-
 class HwFeature extends ReferableBaseObject {
 	HwFeatureType featureType
 	String description
@@ -1713,7 +1733,6 @@ class HwFeatureLiteral extends ReferableBaseObject {
 	contains Value[1] value
 	contains HwLatency latency
 }
-
 
 class HwPort extends ReferableBaseObject, ITaggable {
 	int bitWidth = "0"
@@ -3362,6 +3381,23 @@ class RunnableInstructionsEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
 	contains Instructions[1] value
 }
+
+
+class ExecutionCost extends ComputationItem {
+	contains CostMapEntry[] ^default
+	contains ExecutionCostEntry[] extended
+}
+
+class ExecutionCostEntry wraps java.util.Map$Entry {
+	refers ProcessingUnitDefinition[1] key
+	contains CostMapEntry[+] value
+}
+
+class CostMapEntry wraps java.util.Map$Entry {
+	refers HwFeature[1] key
+	contains Cost[1] value
+}
+
 
 /*
  * Representation of a mode label access of a run entity.

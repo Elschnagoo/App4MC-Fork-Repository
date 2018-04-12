@@ -58,6 +58,7 @@ public class RunnableItemsIP extends ExtendedSphinxTransientItemProvider {
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createGroup()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createExecutionCost()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableInstructions()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createLabelAccess()));
 		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createRunnableCall()));

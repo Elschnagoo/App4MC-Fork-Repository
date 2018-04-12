@@ -71,6 +71,9 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -115,6 +118,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.ExecutionCost;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -327,6 +331,8 @@ import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
+import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -388,6 +394,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
+			case AmaltheaPackage.COST_DEVIATION: return createCostDeviation();
+			case AmaltheaPackage.COST_CONSTANT: return createCostConstant();
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
 			case AmaltheaPackage.VOLTAGE: return createVoltage();
@@ -603,6 +611,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: return createRunnableInstructions();
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: return (EObject)createRunnableInstructionsEntry();
+			case AmaltheaPackage.EXECUTION_COST: return createExecutionCost();
+			case AmaltheaPackage.EXECUTION_COST_ENTRY: return (EObject)createExecutionCostEntry();
+			case AmaltheaPackage.COST_MAP_ENTRY: return (EObject)createCostMapEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
@@ -972,6 +983,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public InstructionsConstant createInstructionsConstant() {
 		InstructionsConstantImpl instructionsConstant = new InstructionsConstantImpl();
 		return instructionsConstant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CostDeviation createCostDeviation() {
+		CostDeviationImpl costDeviation = new CostDeviationImpl();
+		return costDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CostConstant createCostConstant() {
+		CostConstantImpl costConstant = new CostConstantImpl();
+		return costConstant;
 	}
 
 	/**
@@ -3122,6 +3153,36 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Map.Entry<ProcessingUnitDefinition, Instructions> createRunnableInstructionsEntry() {
 		RunnableInstructionsEntryImpl runnableInstructionsEntry = new RunnableInstructionsEntryImpl();
 		return runnableInstructionsEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionCost createExecutionCost() {
+		ExecutionCostImpl executionCost = new ExecutionCostImpl();
+		return executionCost;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> createExecutionCostEntry() {
+		ExecutionCostEntryImpl executionCostEntry = new ExecutionCostEntryImpl();
+		return executionCostEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<HwFeature, Cost> createCostMapEntry() {
+		CostMapEntryImpl costMapEntry = new CostMapEntryImpl();
+		return costMapEntry;
 	}
 
 	/**

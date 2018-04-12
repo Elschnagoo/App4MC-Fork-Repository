@@ -75,6 +75,9 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
@@ -125,6 +128,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.ExecutionCost;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -347,6 +351,8 @@ import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 
+import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -522,15 +528,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.INSTRUCTIONS: {
-				Instructions instructions = (Instructions)theEObject;
-				T1 result = caseInstructions(instructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.TRANSMISSION_POLICY: {
 				TransmissionPolicy transmissionPolicy = (TransmissionPolicy)theEObject;
 				T1 result = caseTransmissionPolicy(transmissionPolicy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.INSTRUCTIONS: {
+				Instructions instructions = (Instructions)theEObject;
+				T1 result = caseInstructions(instructions);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -545,6 +551,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				InstructionsConstant instructionsConstant = (InstructionsConstant)theEObject;
 				T1 result = caseInstructionsConstant(instructionsConstant);
 				if (result == null) result = caseInstructions(instructionsConstant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COST: {
+				Cost cost = (Cost)theEObject;
+				T1 result = caseCost(cost);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COST_DEVIATION: {
+				CostDeviation costDeviation = (CostDeviation)theEObject;
+				T1 result = caseCostDeviation(costDeviation);
+				if (result == null) result = caseCost(costDeviation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COST_CONSTANT: {
+				CostConstant costConstant = (CostConstant)theEObject;
+				T1 result = caseCostConstant(costConstant);
+				if (result == null) result = caseCost(costConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3156,6 +3182,28 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.EXECUTION_COST: {
+				ExecutionCost executionCost = (ExecutionCost)theEObject;
+				T1 result = caseExecutionCost(executionCost);
+				if (result == null) result = caseComputationItem(executionCost);
+				if (result == null) result = caseRunnableItem(executionCost);
+				if (result == null) result = caseBaseObject(executionCost);
+				if (result == null) result = caseIAnnotatable(executionCost);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.EXECUTION_COST_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> executionCostEntry = (Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>>)theEObject;
+				T1 result = caseExecutionCostEntry(executionCostEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.COST_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<HwFeature, Cost> costMapEntry = (Map.Entry<HwFeature, Cost>)theEObject;
+				T1 result = caseCostMapEntry(costMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.MODE_LABEL_ACCESS: {
 				ModeLabelAccess modeLabelAccess = (ModeLabelAccess)theEObject;
 				T1 result = caseModeLabelAccess(modeLabelAccess);
@@ -3791,21 +3839,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructions(Instructions object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Transmission Policy</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -3817,6 +3850,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTransmissionPolicy(TransmissionPolicy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instructions</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instructions</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInstructions(Instructions object) {
 		return null;
 	}
 
@@ -3847,6 +3895,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseInstructionsConstant(InstructionsConstant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cost</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cost</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCost(Cost object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cost Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cost Deviation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCostDeviation(CostDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cost Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cost Constant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCostConstant(CostConstant object) {
 		return null;
 	}
 
@@ -8002,6 +8095,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRunnableInstructionsEntry(Map.Entry<ProcessingUnitDefinition, Instructions> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Cost</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Cost</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseExecutionCost(ExecutionCost object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Cost Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Cost Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseExecutionCostEntry(Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cost Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cost Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCostMapEntry(Map.Entry<HwFeature, Cost> object) {
 		return null;
 	}
 

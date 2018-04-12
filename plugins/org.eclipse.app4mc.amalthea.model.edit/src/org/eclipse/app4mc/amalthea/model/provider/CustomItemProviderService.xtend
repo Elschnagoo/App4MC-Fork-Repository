@@ -41,6 +41,9 @@ import org.eclipse.app4mc.amalthea.model.ComponentScope
 import org.eclipse.app4mc.amalthea.model.Condition
 import org.eclipse.app4mc.amalthea.model.Connector
 import org.eclipse.app4mc.amalthea.model.CoreClassification
+import org.eclipse.app4mc.amalthea.model.Cost
+import org.eclipse.app4mc.amalthea.model.CostConstant
+import org.eclipse.app4mc.amalthea.model.CostDeviation
 import org.eclipse.app4mc.amalthea.model.CountMetric
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit
 import org.eclipse.app4mc.amalthea.model.CustomEventTrigger
@@ -71,6 +74,7 @@ import org.eclipse.app4mc.amalthea.model.GroupingType
 import org.eclipse.app4mc.amalthea.model.HwAccessElement
 import org.eclipse.app4mc.amalthea.model.HwAccessPath
 import org.eclipse.app4mc.amalthea.model.HwConnection
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral
 import org.eclipse.app4mc.amalthea.model.HwPort
 import org.eclipse.app4mc.amalthea.model.HwStructure
 import org.eclipse.app4mc.amalthea.model.INamed
@@ -161,6 +165,8 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl
+import org.eclipse.app4mc.amalthea.model.impl.ExecutionCostEntryImpl
 
 class CustomItemProviderService {
 
@@ -259,6 +265,13 @@ class CustomItemProviderService {
 		switch instr {
 			InstructionsConstant: getInstructionsConstantItemProviderText(instr, null)
 			InstructionsDeviation: getInstructionsDeviationItemProviderText(instr, null)
+		}
+	}
+
+	private def static getCostText(Cost cost) {
+		switch cost {
+			CostConstant: getCostConstantItemProviderText(cost, null)
+			CostDeviation: getCostDeviationItemProviderText(cost, null)
 		}
 	}
 
@@ -549,6 +562,44 @@ class CustomItemProviderService {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(InstructionsDeviation)) {
 			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						CostConstantItemProvider
+	 *****************************************************************************/
+	def static String getCostConstantItemProviderText(Object object, String defaultText) {
+		if (object instanceof CostConstant) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val s2 = Long.toString(object.value)
+			return s1 + "cost (constant): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	/*****************************************************************************
+	 * 						CostDeviationItemProvider
+	 *****************************************************************************/
+	def static String getCostDeviationItemProviderText(Object object, String defaultText) {
+		if (object instanceof CostDeviation) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val distName = object?.deviation?.distribution?.eClass?.name
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+			return s1 + "cost (deviation): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getCostDeviationItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(CostDeviation)) {
+			case AmaltheaPackage::COST_DEVIATION__DEVIATION:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list
@@ -1367,6 +1418,18 @@ class CustomItemProviderService {
 //		}
 //		return list
 //	}
+
+	/*****************************************************************************
+	 * 						HwFeatureLiteralItemProvider
+	 *****************************************************************************/
+	def static String getHwFeatureLiteralItemProviderText(Object object, String defaultText) {
+		if (object instanceof HwFeatureLiteral) {
+			return object.toString
+		} else {
+			return defaultText
+		}
+	}
+
 	/*****************************************************************************
 	 * 						HwPortItemProvider
 	 *****************************************************************************/
@@ -2274,12 +2337,6 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeSwitchItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeSwitch) {
-// TODO: remove obsolete code for customization (both methods)
-//			val valueName = object.valueProvider?.name
-//			val modeName = object.valueProvider?.mode?.name
-//			val s1 = ppName(valueName, "<mode label>")
-//			val s2 = ppName(modeName, "<mode>")
-//			return "Switch " + s1 + " (" + s2 + ")";
 			return "Mode Switch"
 		} else {
 			return defaultText
@@ -2301,12 +2358,6 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getRunnableModeSwitchItemProviderText(Object object, String defaultText) {
 		if (object instanceof RunnableModeSwitch) {
-// TODO: remove obsolete code for customization (both methods)
-//			val valueName = object.valueProvider?.name
-//			val modeName = object.valueProvider?.mode?.name
-//			val s1 = ppName(valueName, "<mode label>")
-//			val s2 = ppName(modeName, "<mode>")
-//			return "Switch " + s1 + " (" + s2 + ")";
 			return "Mode Switch"
 		} else {
 			return defaultText
@@ -2511,7 +2562,7 @@ class CustomItemProviderService {
 			val typeName = object?.getKey()?.name
 			val instr = object?.getValue()
 
-			val s1 = if(typeName.isNullOrEmpty) "<core type>" else "Core Type " + typeName
+			val s1 = if(typeName.isNullOrEmpty) "<core type>" else typeName
 			val s2 = if(instr === null) "<instructions>" else getInstructionsText(instr)
 			return s1 + " -- " + s2;
 		} else {
@@ -2526,6 +2577,59 @@ class CustomItemProviderService {
 			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						ExecutionCostEntryItemProvider
+	 *****************************************************************************/
+	def static String getExecutionCostEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof ExecutionCostEntryImpl) {
+			val typeName = object?.getKey()?.name
+
+			val s1 = if(typeName.isNullOrEmpty) "<core type>" else typeName
+			val s2 = "Costs (Map)"
+			return s1 + " -- " + s2;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getExecutionCostEntryItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(Map.Entry)) {
+			case AmaltheaPackage::EXECUTION_COST_ENTRY__KEY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						CostMapEntryItemProvider
+	 *****************************************************************************/
+	def static String getCostMapEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof CostMapEntryImpl) {
+			val featureName = object?.getKey()?.name
+			val cost = object?.getValue()
+
+			val s1 = if(featureName.isNullOrEmpty) "<feature>" else "Feature \"" + featureName + "\""
+			val s2 = if(cost === null) "<cost>" else getCostText(cost)
+			return s1 + " -- " + s2;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getCostMapEntryItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(Map.Entry)) {
+			case AmaltheaPackage::COST_MAP_ENTRY__KEY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::COST_MAP_ENTRY__VALUE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list

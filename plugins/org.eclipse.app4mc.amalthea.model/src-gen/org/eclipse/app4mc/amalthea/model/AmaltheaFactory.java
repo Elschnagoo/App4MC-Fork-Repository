@@ -104,6 +104,24 @@ public interface AmaltheaFactory extends EFactory {
 	InstructionsConstant createInstructionsConstant();
 
 	/**
+	 * Returns a new object of class '<em>Cost Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cost Deviation</em>'.
+	 * @generated
+	 */
+	CostDeviation createCostDeviation();
+
+	/**
+	 * Returns a new object of class '<em>Cost Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cost Constant</em>'.
+	 * @generated
+	 */
+	CostConstant createCostConstant();
+
+	/**
 	 * Returns a new object of class '<em>Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2001,6 +2019,15 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	RunnableInstructions createRunnableInstructions();
+
+	/**
+	 * Returns a new object of class '<em>Execution Cost</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution Cost</em>'.
+	 * @generated
+	 */
+	ExecutionCost createExecutionCost();
 
 	/**
 	 * Returns a new object of class '<em>Mode Label Access</em>'.

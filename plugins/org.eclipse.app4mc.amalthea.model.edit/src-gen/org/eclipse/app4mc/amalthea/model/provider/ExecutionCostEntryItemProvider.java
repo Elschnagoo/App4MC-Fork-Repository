@@ -15,34 +15,50 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvider {
+public class ExecutionCostEntryItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureLiteralItemProvider(AdapterFactory adapterFactory) {
+	public ExecutionCostEntryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,33 +73,31 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContainingFeaturePropertyDescriptor(object);
+			addKeyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Containing Feature feature.
+	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContainingFeaturePropertyDescriptor(Object object) {
+	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_HwFeatureLiteral_containingFeature_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeatureLiteral_containingFeature_feature", "_UI_HwFeatureLiteral_type"),
-				 AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_ContainingFeature(),
+				 getString("_UI_ExecutionCostEntry_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionCostEntry_key_feature", "_UI_ExecutionCostEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Key(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**
@@ -98,8 +112,7 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Value());
 		}
 		return childrenFeatures;
 	}
@@ -118,14 +131,14 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 	}
 
 	/**
-	 * This returns HwFeatureLiteral.gif.
+	 * This returns ExecutionCostEntry.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/HwFeatureLiteral"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionCostEntry"));
 	}
 
 	/**
@@ -145,10 +158,8 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		String label = ((HwFeatureLiteral)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_HwFeatureLiteral_type") :
-			getString("_UI_HwFeatureLiteral_type") + " " + label;
+		Map.Entry<?, ?> executionCostEntry = (Map.Entry<?, ?>)object;
+		return "" + executionCostEntry.getKey() + " -> " + executionCostEntry.getValue();
 	}
 
 	/**
@@ -157,7 +168,7 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getHwFeatureLiteralItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getExecutionCostEntryItemProviderText(object, getTextGen(object));
 	}
 
 	/**
@@ -167,16 +178,31 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(HwFeatureLiteral.class)) {
-			case AmaltheaPackage.HW_FEATURE_LITERAL__VALUE:
-			case AmaltheaPackage.HW_FEATURE_LITERAL__LATENCY:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.EXECUTION_COST_ENTRY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomItemProviderService
+				.getExecutionCostEntryItemProviderNotifications(notification);
+		for (final ViewerNotification vn : notifications) {
+			fireNotifyChanged(vn);
+		}
+
 		super.notifyChanged(notification);
 	}
 
@@ -193,63 +219,19 @@ public class HwFeatureLiteralItemProvider extends ReferableBaseObjectItemProvide
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createListObject()));
+				(AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getCostMapEntry())));
+	}
 
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createStringObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createBigIntegerObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createReferenceObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createIntegerObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createLongObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createFloatObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createDoubleObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createBooleanObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Value(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwFeatureLiteral_Latency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

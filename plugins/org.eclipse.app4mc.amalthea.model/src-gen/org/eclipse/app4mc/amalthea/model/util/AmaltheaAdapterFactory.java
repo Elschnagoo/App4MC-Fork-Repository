@@ -75,6 +75,9 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
@@ -125,6 +128,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
+import org.eclipse.app4mc.amalthea.model.ExecutionCost;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -352,6 +356,8 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
+import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -467,12 +473,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createMemoryClassifierAdapter();
 			}
 			@Override
-			public Adapter caseInstructions(Instructions object) {
-				return createInstructionsAdapter();
-			}
-			@Override
 			public Adapter caseTransmissionPolicy(TransmissionPolicy object) {
 				return createTransmissionPolicyAdapter();
+			}
+			@Override
+			public Adapter caseInstructions(Instructions object) {
+				return createInstructionsAdapter();
 			}
 			@Override
 			public Adapter caseInstructionsDeviation(InstructionsDeviation object) {
@@ -481,6 +487,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInstructionsConstant(InstructionsConstant object) {
 				return createInstructionsConstantAdapter();
+			}
+			@Override
+			public Adapter caseCost(Cost object) {
+				return createCostAdapter();
+			}
+			@Override
+			public Adapter caseCostDeviation(CostDeviation object) {
+				return createCostDeviationAdapter();
+			}
+			@Override
+			public Adapter caseCostConstant(CostConstant object) {
+				return createCostConstantAdapter();
 			}
 			@Override
 			public Adapter caseQuantity(Quantity object) {
@@ -1591,6 +1609,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableInstructionsEntryAdapter();
 			}
 			@Override
+			public Adapter caseExecutionCost(ExecutionCost object) {
+				return createExecutionCostAdapter();
+			}
+			@Override
+			public Adapter caseExecutionCostEntry(Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> object) {
+				return createExecutionCostEntryAdapter();
+			}
+			@Override
+			public Adapter caseCostMapEntry(Map.Entry<HwFeature, Cost> object) {
+				return createCostMapEntryAdapter();
+			}
+			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
 				return createModeLabelAccessAdapter();
 			}
@@ -1983,20 +2013,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Instructions
-	 * @generated
-	 */
-	public Adapter createInstructionsAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy <em>Transmission Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2007,6 +2023,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransmissionPolicyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Instructions
+	 * @generated
+	 */
+	public Adapter createInstructionsAdapter() {
 		return null;
 	}
 
@@ -2035,6 +2065,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstructionsConstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Cost <em>Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.Cost
+	 * @generated
+	 */
+	public Adapter createCostAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CostDeviation <em>Cost Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CostDeviation
+	 * @generated
+	 */
+	public Adapter createCostDeviationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CostConstant <em>Cost Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CostConstant
+	 * @generated
+	 */
+	public Adapter createCostConstantAdapter() {
 		return null;
 	}
 
@@ -5913,6 +5985,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRunnableInstructionsEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ExecutionCost <em>Execution Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ExecutionCost
+	 * @generated
+	 */
+	public Adapter createExecutionCostAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Cost Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createExecutionCostEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Cost Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createCostMapEntryAdapter() {
 		return null;
 	}
 

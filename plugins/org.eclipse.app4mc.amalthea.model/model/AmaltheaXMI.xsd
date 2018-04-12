@@ -786,6 +786,24 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="MemoryClassifier" type="am:MemoryClassifier"/>
+  <xsd:complexType name="TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="chunkSize" type="am:DataSize"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="transmitRatio" type="xsd:double"/>
+  </xsd:complexType>
+  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
@@ -804,24 +822,6 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="Instructions" type="am:Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TransmissionPolicy">
-    <xsd:annotation>
-      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="chunkSize" type="am:DataSize"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
-    <xsd:attribute name="transmitRatio" type="xsd:double"/>
-  </xsd:complexType>
-  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
-    <xsd:annotation>
-      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="InstructionsDeviation">
@@ -856,6 +856,39 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Cost">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Cost" type="am:Cost">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CostDeviation">
+    <xsd:complexContent>
+      <xsd:extension base="am:Cost">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="deviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CostDeviation" type="am:CostDeviation"/>
+  <xsd:complexType name="CostConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:Cost">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CostConstant" type="am:CostConstant"/>
   <xsd:complexType abstract="true" name="Quantity">
     <xsd:annotation>
       <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
@@ -5186,6 +5219,39 @@ which are belonging together.</xsd:documentation>
     <xsd:attribute name="key" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="RunnableInstructionsEntry" type="am:RunnableInstructionsEntry"/>
+  <xsd:complexType name="ExecutionCost">
+    <xsd:complexContent>
+      <xsd:extension base="am:ComputationItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="default" type="am:CostMapEntry"/>
+          <xsd:element name="extended" type="am:ExecutionCostEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ExecutionCost" type="am:ExecutionCost"/>
+  <xsd:complexType name="ExecutionCostEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
+      <xsd:element name="value" type="am:CostMapEntry"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="ExecutionCostEntry" type="am:ExecutionCostEntry"/>
+  <xsd:complexType name="CostMapEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:HwFeature"/>
+      <xsd:element name="value" type="am:Cost"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="CostMapEntry" type="am:CostMapEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
