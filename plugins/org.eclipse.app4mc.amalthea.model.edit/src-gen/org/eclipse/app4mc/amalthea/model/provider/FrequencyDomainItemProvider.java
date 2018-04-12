@@ -97,7 +97,6 @@ public class FrequencyDomainItemProvider extends HwDomainItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFrequencyDomain_PossibleValues());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getFrequencyDomain_DefaultValue());
 		}
 		return childrenFeatures;
@@ -167,7 +166,6 @@ public class FrequencyDomainItemProvider extends HwDomainItemProvider {
 			case AmaltheaPackage.FREQUENCY_DOMAIN__CLOCK_GATING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -188,36 +186,8 @@ public class FrequencyDomainItemProvider extends HwDomainItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getFrequencyDomain_PossibleValues(),
-				 AmaltheaFactory.eINSTANCE.createFrequency()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getFrequencyDomain_DefaultValue(),
 				 AmaltheaFactory.eINSTANCE.createFrequency()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getFrequencyDomain_PossibleValues() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getFrequencyDomain_DefaultValue();
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

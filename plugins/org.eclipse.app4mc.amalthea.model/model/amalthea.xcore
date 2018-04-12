@@ -1680,13 +1680,13 @@ abstract class HwDomain extends ReferableBaseObject, ITaggable {
 }
 
 class FrequencyDomain extends HwDomain {
-	contains Frequency[] possibleValues
+	// contains Frequency[] possibleValues
 	contains Frequency defaultValue
 	boolean clockGating = "false"
 }
 
 class PowerDomain extends HwDomain {
-	contains Voltage[] possibleValues
+	// contains Voltage[] possibleValues
 	contains Voltage defaultValue
 	boolean powerGating = "false"
 }

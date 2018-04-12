@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
@@ -21,15 +19,10 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyDomainImpl#getPossibleValues <em>Possible Values</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyDomainImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyDomainImpl#isClockGating <em>Clock Gating</em>}</li>
  * </ul>
@@ -47,16 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain {
-	/**
-	 * The cached value of the '{@link #getPossibleValues() <em>Possible Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPossibleValues()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Frequency> possibleValues;
-
 	/**
 	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -104,18 +86,6 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getFrequencyDomain();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Frequency> getPossibleValues() {
-		if (possibleValues == null) {
-			possibleValues = new EObjectContainmentEList<Frequency>(Frequency.class, this, AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES);
-		}
-		return possibleValues;
 	}
 
 	/**
@@ -190,8 +160,6 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
-				return ((InternalEList<?>)getPossibleValues()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				return basicSetDefaultValue(null, msgs);
 		}
@@ -206,8 +174,6 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
-				return getPossibleValues();
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				return getDefaultValue();
 			case AmaltheaPackage.FREQUENCY_DOMAIN__CLOCK_GATING:
@@ -221,14 +187,9 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
-				getPossibleValues().clear();
-				getPossibleValues().addAll((Collection<? extends Frequency>)newValue);
-				return;
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				setDefaultValue((Frequency)newValue);
 				return;
@@ -247,9 +208,6 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
-				getPossibleValues().clear();
-				return;
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				setDefaultValue((Frequency)null);
 				return;
@@ -268,8 +226,6 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.FREQUENCY_DOMAIN__POSSIBLE_VALUES:
-				return possibleValues != null && !possibleValues.isEmpty();
 			case AmaltheaPackage.FREQUENCY_DOMAIN__DEFAULT_VALUE:
 				return defaultValue != null;
 			case AmaltheaPackage.FREQUENCY_DOMAIN__CLOCK_GATING:

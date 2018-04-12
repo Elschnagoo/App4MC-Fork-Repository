@@ -2835,7 +2835,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="possibleValues" type="am:Frequency"/>
           <xsd:element name="defaultValue" type="am:Frequency"/>
         </xsd:choice>
         <xsd:attribute name="clockGating" type="xsd:boolean"/>
@@ -2847,7 +2846,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="possibleValues" type="am:Voltage"/>
           <xsd:element name="defaultValue" type="am:Voltage"/>
         </xsd:choice>
         <xsd:attribute name="powerGating" type="xsd:boolean"/>

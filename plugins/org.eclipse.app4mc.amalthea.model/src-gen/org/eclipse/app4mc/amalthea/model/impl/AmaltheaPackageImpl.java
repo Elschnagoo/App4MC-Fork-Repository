@@ -6985,7 +6985,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFrequencyDomain_PossibleValues() {
+	public EReference getFrequencyDomain_DefaultValue() {
 		return (EReference)frequencyDomainEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -6994,17 +6994,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFrequencyDomain_DefaultValue() {
-		return (EReference)frequencyDomainEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getFrequencyDomain_ClockGating() {
-		return (EAttribute)frequencyDomainEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)frequencyDomainEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7021,7 +7012,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPowerDomain_PossibleValues() {
+	public EReference getPowerDomain_DefaultValue() {
 		return (EReference)powerDomainEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -7030,17 +7021,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPowerDomain_DefaultValue() {
-		return (EReference)powerDomainEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getPowerDomain_PowerGating() {
-		return (EAttribute)powerDomainEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)powerDomainEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13674,12 +13656,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwDomainEClass = createEClass(HW_DOMAIN);
 
 		frequencyDomainEClass = createEClass(FREQUENCY_DOMAIN);
-		createEReference(frequencyDomainEClass, FREQUENCY_DOMAIN__POSSIBLE_VALUES);
 		createEReference(frequencyDomainEClass, FREQUENCY_DOMAIN__DEFAULT_VALUE);
 		createEAttribute(frequencyDomainEClass, FREQUENCY_DOMAIN__CLOCK_GATING);
 
 		powerDomainEClass = createEClass(POWER_DOMAIN);
-		createEReference(powerDomainEClass, POWER_DOMAIN__POSSIBLE_VALUES);
 		createEReference(powerDomainEClass, POWER_DOMAIN__DEFAULT_VALUE);
 		createEAttribute(powerDomainEClass, POWER_DOMAIN__POWER_GATING);
 
@@ -15599,12 +15579,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(hwDomainEClass, HwDomain.class, "HwDomain", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(frequencyDomainEClass, FrequencyDomain.class, "FrequencyDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFrequencyDomain_PossibleValues(), this.getFrequency(), null, "possibleValues", null, 0, -1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFrequencyDomain_DefaultValue(), this.getFrequency(), null, "defaultValue", null, 0, 1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrequencyDomain_ClockGating(), theEcorePackage.getEBoolean(), "clockGating", "false", 0, 1, FrequencyDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(powerDomainEClass, PowerDomain.class, "PowerDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPowerDomain_PossibleValues(), this.getVoltage(), null, "possibleValues", null, 0, -1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPowerDomain_DefaultValue(), this.getVoltage(), null, "defaultValue", null, 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPowerDomain_PowerGating(), theEcorePackage.getEBoolean(), "powerGating", "false", 0, 1, PowerDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

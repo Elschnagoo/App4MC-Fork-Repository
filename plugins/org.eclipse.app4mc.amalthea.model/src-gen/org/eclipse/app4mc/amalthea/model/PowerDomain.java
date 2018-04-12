@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.PowerDomain#getPossibleValues <em>Possible Values</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PowerDomain#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.PowerDomain#isPowerGating <em>Power Gating</em>}</li>
  * </ul>
@@ -33,22 +31,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface PowerDomain extends HwDomain {
-	/**
-	 * Returns the value of the '<em><b>Possible Values</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Voltage}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Possible Values</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Possible Values</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPowerDomain_PossibleValues()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Voltage> getPossibleValues();
-
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

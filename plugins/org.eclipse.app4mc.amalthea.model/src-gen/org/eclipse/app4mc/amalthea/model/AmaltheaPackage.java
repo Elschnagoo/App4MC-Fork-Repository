@@ -11253,22 +11253,13 @@ public interface AmaltheaPackage extends EPackage {
 	int FREQUENCY_DOMAIN__TAGS = HW_DOMAIN__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Possible Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FREQUENCY_DOMAIN__POSSIBLE_VALUES = HW_DOMAIN_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FREQUENCY_DOMAIN__DEFAULT_VALUE = HW_DOMAIN_FEATURE_COUNT + 1;
+	int FREQUENCY_DOMAIN__DEFAULT_VALUE = HW_DOMAIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Clock Gating</b></em>' attribute.
@@ -11277,7 +11268,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREQUENCY_DOMAIN__CLOCK_GATING = HW_DOMAIN_FEATURE_COUNT + 2;
+	int FREQUENCY_DOMAIN__CLOCK_GATING = HW_DOMAIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Frequency Domain</em>' class.
@@ -11286,7 +11277,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREQUENCY_DOMAIN_FEATURE_COUNT = HW_DOMAIN_FEATURE_COUNT + 3;
+	int FREQUENCY_DOMAIN_FEATURE_COUNT = HW_DOMAIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -11380,22 +11371,13 @@ public interface AmaltheaPackage extends EPackage {
 	int POWER_DOMAIN__TAGS = HW_DOMAIN__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Possible Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int POWER_DOMAIN__POSSIBLE_VALUES = HW_DOMAIN_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int POWER_DOMAIN__DEFAULT_VALUE = HW_DOMAIN_FEATURE_COUNT + 1;
+	int POWER_DOMAIN__DEFAULT_VALUE = HW_DOMAIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Power Gating</b></em>' attribute.
@@ -11404,7 +11386,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POWER_DOMAIN__POWER_GATING = HW_DOMAIN_FEATURE_COUNT + 2;
+	int POWER_DOMAIN__POWER_GATING = HW_DOMAIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Power Domain</em>' class.
@@ -11413,7 +11395,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POWER_DOMAIN_FEATURE_COUNT = HW_DOMAIN_FEATURE_COUNT + 3;
+	int POWER_DOMAIN_FEATURE_COUNT = HW_DOMAIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -32276,17 +32258,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getFrequencyDomain();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.FrequencyDomain#getPossibleValues <em>Possible Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Possible Values</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.FrequencyDomain#getPossibleValues()
-	 * @see #getFrequencyDomain()
-	 * @generated
-	 */
-	EReference getFrequencyDomain_PossibleValues();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.FrequencyDomain#getDefaultValue <em>Default Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32317,17 +32288,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPowerDomain();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.PowerDomain#getPossibleValues <em>Possible Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Possible Values</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.PowerDomain#getPossibleValues()
-	 * @see #getPowerDomain()
-	 * @generated
-	 */
-	EReference getPowerDomain_PossibleValues();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.PowerDomain#getDefaultValue <em>Default Value</em>}'.

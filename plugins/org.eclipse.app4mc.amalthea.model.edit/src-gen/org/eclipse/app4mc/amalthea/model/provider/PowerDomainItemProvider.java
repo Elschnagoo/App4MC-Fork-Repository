@@ -97,7 +97,6 @@ public class PowerDomainItemProvider extends HwDomainItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPowerDomain_PossibleValues());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getPowerDomain_DefaultValue());
 		}
 		return childrenFeatures;
@@ -167,7 +166,6 @@ public class PowerDomainItemProvider extends HwDomainItemProvider {
 			case AmaltheaPackage.POWER_DOMAIN__POWER_GATING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.POWER_DOMAIN__POSSIBLE_VALUES:
 			case AmaltheaPackage.POWER_DOMAIN__DEFAULT_VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -188,36 +186,8 @@ public class PowerDomainItemProvider extends HwDomainItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getPowerDomain_PossibleValues(),
-				 AmaltheaFactory.eINSTANCE.createVoltage()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPowerDomain_DefaultValue(),
 				 AmaltheaFactory.eINSTANCE.createVoltage()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getPowerDomain_PossibleValues() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getPowerDomain_DefaultValue();
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

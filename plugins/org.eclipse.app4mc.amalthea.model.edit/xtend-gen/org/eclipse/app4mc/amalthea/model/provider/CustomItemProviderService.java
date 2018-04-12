@@ -2368,6 +2368,25 @@ public class CustomItemProviderService {
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, false, true);
     }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY)) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY)) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier_1 = notification.getNotifier();
+        return new ViewerNotification(notification, _notifier_1, true, false);
+      }
+    }
     return null;
   }
   
