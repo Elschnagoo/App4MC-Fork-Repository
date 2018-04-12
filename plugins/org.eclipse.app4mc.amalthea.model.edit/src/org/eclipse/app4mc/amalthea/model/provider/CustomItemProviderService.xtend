@@ -2603,6 +2603,8 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(Map.Entry)) {
 			case AmaltheaPackage::EXECUTION_COST_ENTRY__KEY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::EXECUTION_COST_ENTRY__VALUE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list
 	}

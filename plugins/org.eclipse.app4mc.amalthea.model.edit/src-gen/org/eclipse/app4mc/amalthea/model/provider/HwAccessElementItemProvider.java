@@ -185,8 +185,7 @@ public class HwAccessElementItemProvider
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_AccessPaths());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadDataRate());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteDataRate());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_DataRate());
 		}
 		return childrenFeatures;
 	}
@@ -264,8 +263,7 @@ public class HwAccessElementItemProvider
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_DATA_RATE:
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_DATA_RATE:
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -327,12 +325,7 @@ public class HwAccessElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadDataRate(),
-				 AmaltheaFactory.eINSTANCE.createDataRate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteDataRate(),
+				(AmaltheaPackage.eINSTANCE.getHwAccessElement_DataRate(),
 				 AmaltheaFactory.eINSTANCE.createDataRate()));
 	}
 
@@ -349,9 +342,7 @@ public class HwAccessElementItemProvider
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadDataRate() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteDataRate();
+			childFeature == AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency();
 
 		if (qualify) {
 			return getString

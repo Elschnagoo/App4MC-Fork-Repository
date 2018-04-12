@@ -4664,6 +4664,14 @@ public class CustomItemProviderService {
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_COST_ENTRY__VALUE)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
+    }
     return list;
   }
   

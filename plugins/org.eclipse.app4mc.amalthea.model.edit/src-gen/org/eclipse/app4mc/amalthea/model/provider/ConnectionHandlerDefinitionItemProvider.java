@@ -99,8 +99,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadDataRate());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteDataRate());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_DataRate());
 		}
 		return childrenFeatures;
 	}
@@ -171,8 +170,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY:
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY:
-			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_DATA_RATE:
-			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__WRITE_DATA_RATE:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -212,12 +210,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadDataRate(),
-				 AmaltheaFactory.eINSTANCE.createDataRate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteDataRate(),
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_DataRate(),
 				 AmaltheaFactory.eINSTANCE.createDataRate()));
 	}
 
@@ -234,9 +227,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadDataRate() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteDataRate();
+			childFeature == AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency();
 
 		if (qualify) {
 			return getString

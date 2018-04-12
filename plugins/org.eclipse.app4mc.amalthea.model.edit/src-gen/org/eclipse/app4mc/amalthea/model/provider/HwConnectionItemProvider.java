@@ -144,8 +144,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_ReadLatency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwConnection_DataRate());
 		}
 		return childrenFeatures;
 	}
@@ -219,8 +218,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 		switch (notification.getFeatureID(HwConnection.class)) {
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
-			case AmaltheaPackage.HW_CONNECTION__READ_DATA_RATE:
-			case AmaltheaPackage.HW_CONNECTION__WRITE_DATA_RATE:
+			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -277,12 +275,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate(),
-				 AmaltheaFactory.eINSTANCE.createDataRate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate(),
+				(AmaltheaPackage.eINSTANCE.getHwConnection_DataRate(),
 				 AmaltheaFactory.eINSTANCE.createDataRate()));
 	}
 
@@ -299,9 +292,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 
 		boolean qualify =
 			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_ReadLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_ReadDataRate() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WriteDataRate();
+			childFeature == AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency();
 
 		if (qualify) {
 			return getString

@@ -24,8 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getReadLatency <em>Read Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWriteLatency <em>Write Latency</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getReadDataRate <em>Read Data Rate</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWriteDataRate <em>Write Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getDataRate <em>Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPort1 <em>Port1</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPort2 <em>Port2</em>}</li>
  * </ul>
@@ -88,56 +87,30 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	void setWriteLatency(HwLatency value);
 
 	/**
-	 * Returns the value of the '<em><b>Read Data Rate</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Read Data Rate</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Read Data Rate</em>' containment reference.
-	 * @see #setReadDataRate(DataRate)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_ReadDataRate()
+	 * @return the value of the '<em>Data Rate</em>' containment reference.
+	 * @see #setDataRate(DataRate)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_DataRate()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DataRate getReadDataRate();
+	DataRate getDataRate();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getReadDataRate <em>Read Data Rate</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getDataRate <em>Data Rate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Read Data Rate</em>' containment reference.
-	 * @see #getReadDataRate()
+	 * @param value the new value of the '<em>Data Rate</em>' containment reference.
+	 * @see #getDataRate()
 	 * @generated
 	 */
-	void setReadDataRate(DataRate value);
-
-	/**
-	 * Returns the value of the '<em><b>Write Data Rate</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Write Data Rate</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Write Data Rate</em>' containment reference.
-	 * @see #setWriteDataRate(DataRate)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_WriteDataRate()
-	 * @model containment="true"
-	 * @generated
-	 */
-	DataRate getWriteDataRate();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getWriteDataRate <em>Write Data Rate</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Write Data Rate</em>' containment reference.
-	 * @see #getWriteDataRate()
-	 * @generated
-	 */
-	void setWriteDataRate(DataRate value);
+	void setDataRate(DataRate value);
 
 	/**
 	 * Returns the value of the '<em><b>Port1</b></em>' reference.

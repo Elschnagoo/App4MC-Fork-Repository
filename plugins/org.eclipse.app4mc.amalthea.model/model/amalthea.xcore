@@ -1758,8 +1758,7 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
 	//contains HwConverter converter
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
-	contains DataRate readDataRate
-	contains DataRate writeDataRate
+	contains DataRate dataRate
 	refers HwPort port1
 	refers HwPort port2
 	
@@ -1781,8 +1780,7 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
 	contains HwAccessPath[] accessPaths opposite containingAccessElement
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
-	contains DataRate readDataRate
-	contains DataRate writeDataRate
+	contains DataRate dataRate
  }
 
 enum StructureType {
@@ -1856,8 +1854,7 @@ class ConnectionHandlerDefinition extends HwDefinition {
 	SchedPolicy policy
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
-	contains DataRate readDataRate
-	contains DataRate writeDataRate
+	contains DataRate dataRate
 }
 
 class MemoryDefinition extends HwDefinition {
