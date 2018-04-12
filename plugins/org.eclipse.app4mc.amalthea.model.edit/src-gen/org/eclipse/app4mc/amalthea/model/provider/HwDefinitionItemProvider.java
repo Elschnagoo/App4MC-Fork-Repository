@@ -54,7 +54,6 @@ public class HwDefinitionItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTagsPropertyDescriptor(object);
-			addFeaturesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,28 +72,6 @@ public class HwDefinitionItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_ITaggable_tags_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ITaggable_tags_feature", "_UI_ITaggable_type"),
 				 AmaltheaPackage.eINSTANCE.getITaggable_Tags(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Features feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFeaturesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HwDefinition_features_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HwDefinition_features_feature", "_UI_HwDefinition_type"),
-				 AmaltheaPackage.eINSTANCE.getHwDefinition_Features(),
 				 true,
 				 false,
 				 true,

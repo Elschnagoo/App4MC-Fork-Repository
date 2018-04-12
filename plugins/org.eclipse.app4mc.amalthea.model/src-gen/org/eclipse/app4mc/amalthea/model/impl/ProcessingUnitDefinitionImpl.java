@@ -16,6 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
+import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PuType;
 
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitDefinitionImpl#getPuType <em>Pu Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitDefinitionImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessingUnitDefinitionImpl#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -63,6 +65,16 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * @ordered
 	 */
 	protected PuType puType = PU_TYPE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<HwFeatureLiteral> features;
 
 	/**
 	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
@@ -119,6 +131,18 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<HwFeatureLiteral> getFeatures() {
+		if (features == null) {
+			features = new EObjectResolvingEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES);
+		}
+		return features;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<CoreClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS);
@@ -136,6 +160,8 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 		switch (featureID) {
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__PU_TYPE:
 				return getPuType();
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES:
+				return getFeatures();
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS:
 				return getClassifiers();
 		}
@@ -153,6 +179,10 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 		switch (featureID) {
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__PU_TYPE:
 				setPuType((PuType)newValue);
+				return;
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES:
+				getFeatures().clear();
+				getFeatures().addAll((Collection<? extends HwFeatureLiteral>)newValue);
 				return;
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
@@ -173,6 +203,9 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__PU_TYPE:
 				setPuType(PU_TYPE_EDEFAULT);
 				return;
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES:
+				getFeatures().clear();
+				return;
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
 				return;
@@ -190,6 +223,8 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 		switch (featureID) {
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__PU_TYPE:
 				return puType != PU_TYPE_EDEFAULT;
+			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES:
+				return features != null && !features.isEmpty();
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS:
 				return classifiers != null && !classifiers.isEmpty();
 		}

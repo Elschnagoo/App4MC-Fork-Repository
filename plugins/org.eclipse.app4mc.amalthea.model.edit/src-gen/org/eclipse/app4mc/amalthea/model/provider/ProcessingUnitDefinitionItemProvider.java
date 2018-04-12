@@ -56,6 +56,7 @@ public class ProcessingUnitDefinitionItemProvider extends HwDefinitionItemProvid
 			super.getPropertyDescriptors(object);
 
 			addPuTypePropertyDescriptor(object);
+			addFeaturesPropertyDescriptor(object);
 			addClassifiersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -79,6 +80,28 @@ public class ProcessingUnitDefinitionItemProvider extends HwDefinitionItemProvid
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Features feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFeaturesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProcessingUnitDefinition_features_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessingUnitDefinition_features_feature", "_UI_ProcessingUnitDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getProcessingUnitDefinition_Features(),
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

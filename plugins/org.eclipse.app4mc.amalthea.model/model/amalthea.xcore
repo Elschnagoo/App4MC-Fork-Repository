@@ -1841,12 +1841,11 @@ class LatencyDeviation extends HwLatency {
 }
 
 abstract class HwDefinition extends ReferableBaseObject, ITaggable {
-	refers HwFeatureLiteral[] features
-
 }
 
 class ProcessingUnitDefinition extends HwDefinition {
 	PuType puType
+	refers HwFeatureLiteral[] features
 	refers CoreClassifier[] classifiers	// backward compatibility
 }
 

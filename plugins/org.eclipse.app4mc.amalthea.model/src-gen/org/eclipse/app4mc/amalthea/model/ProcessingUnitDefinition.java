@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getPuType <em>Pu Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -60,6 +61,22 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 	 * @generated
 	 */
 	void setPuType(PuType value);
+
+	/**
+	 * Returns the value of the '<em><b>Features</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Features</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Features</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnitDefinition_Features()
+	 * @model
+	 * @generated
+	 */
+	EList<HwFeatureLiteral> getFeatures();
 
 	/**
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.

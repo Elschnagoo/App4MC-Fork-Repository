@@ -16,7 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwDefinition;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
@@ -35,7 +34,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwDefinitionImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwDefinitionImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,16 +48,6 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 	 * @ordered
 	 */
 	protected EList<Tag> tags;
-
-	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<HwFeatureLiteral> features;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,25 +85,11 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwFeatureLiteral> getFeatures() {
-		if (features == null) {
-			features = new EObjectResolvingEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.HW_DEFINITION__FEATURES);
-		}
-		return features;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_DEFINITION__TAGS:
 				return getTags();
-			case AmaltheaPackage.HW_DEFINITION__FEATURES:
-				return getFeatures();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,10 +107,6 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
-			case AmaltheaPackage.HW_DEFINITION__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends HwFeatureLiteral>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -152,9 +122,6 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 			case AmaltheaPackage.HW_DEFINITION__TAGS:
 				getTags().clear();
 				return;
-			case AmaltheaPackage.HW_DEFINITION__FEATURES:
-				getFeatures().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -169,8 +136,6 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 		switch (featureID) {
 			case AmaltheaPackage.HW_DEFINITION__TAGS:
 				return tags != null && !tags.isEmpty();
-			case AmaltheaPackage.HW_DEFINITION__FEATURES:
-				return features != null && !features.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

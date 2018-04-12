@@ -7480,15 +7480,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwDefinition_Features() {
-		return (EReference)hwDefinitionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getProcessingUnitDefinition() {
 		return processingUnitDefinitionEClass;
 	}
@@ -7507,8 +7498,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessingUnitDefinition_Classifiers() {
+	public EReference getProcessingUnitDefinition_Features() {
 		return (EReference)processingUnitDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessingUnitDefinition_Classifiers() {
+		return (EReference)processingUnitDefinitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -13725,10 +13725,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__CYCLES);
 
 		hwDefinitionEClass = createEClass(HW_DEFINITION);
-		createEReference(hwDefinitionEClass, HW_DEFINITION__FEATURES);
 
 		processingUnitDefinitionEClass = createEClass(PROCESSING_UNIT_DEFINITION);
 		createEAttribute(processingUnitDefinitionEClass, PROCESSING_UNIT_DEFINITION__PU_TYPE);
+		createEReference(processingUnitDefinitionEClass, PROCESSING_UNIT_DEFINITION__FEATURES);
 		createEReference(processingUnitDefinitionEClass, PROCESSING_UNIT_DEFINITION__CLASSIFIERS);
 
 		connectionHandlerDefinitionEClass = createEClass(CONNECTION_HANDLER_DEFINITION);
@@ -15656,10 +15656,10 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getLatencyDeviation_Cycles(), g1, null, "cycles", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwDefinition_Features(), this.getHwFeatureLiteral(), null, "features", null, 0, -1, HwDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processingUnitDefinitionEClass, ProcessingUnitDefinition.class, "ProcessingUnitDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessingUnitDefinition_PuType(), this.getPuType(), "puType", null, 0, 1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnitDefinition_Features(), this.getHwFeatureLiteral(), null, "features", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessingUnitDefinition_Classifiers(), this.getCoreClassifier(), null, "classifiers", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

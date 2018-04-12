@@ -12833,22 +12833,13 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_DEFINITION__TAGS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_DEFINITION__FEATURES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Hw Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_DEFINITION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int HW_DEFINITION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -12942,15 +12933,6 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT_DEFINITION__TAGS = HW_DEFINITION__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESSING_UNIT_DEFINITION__FEATURES = HW_DEFINITION__FEATURES;
-
-	/**
 	 * The feature id for the '<em><b>Pu Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12960,13 +12942,22 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT_DEFINITION__PU_TYPE = HW_DEFINITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESSING_UNIT_DEFINITION__FEATURES = HW_DEFINITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Classifiers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT_DEFINITION__CLASSIFIERS = HW_DEFINITION_FEATURE_COUNT + 1;
+	int PROCESSING_UNIT_DEFINITION__CLASSIFIERS = HW_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Processing Unit Definition</em>' class.
@@ -12975,7 +12966,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 2;
+	int PROCESSING_UNIT_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -13067,15 +13058,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTION_HANDLER_DEFINITION__TAGS = HW_DEFINITION__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION_HANDLER_DEFINITION__FEATURES = HW_DEFINITION__FEATURES;
 
 	/**
 	 * The feature id for the '<em><b>Policy</b></em>' attribute.
@@ -13214,15 +13196,6 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_DEFINITION__TAGS = HW_DEFINITION__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_DEFINITION__FEATURES = HW_DEFINITION__FEATURES;
-
-	/**
 	 * The feature id for the '<em><b>Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13357,15 +13330,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CACHE_DEFINITION__TAGS = HW_DEFINITION__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CACHE_DEFINITION__FEATURES = HW_DEFINITION__FEATURES;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' containment reference.
@@ -32844,17 +32808,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getHwDefinition();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.HwDefinition#getFeatures <em>Features</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Features</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwDefinition#getFeatures()
-	 * @see #getHwDefinition()
-	 * @generated
-	 */
-	EReference getHwDefinition_Features();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition <em>Processing Unit Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32874,6 +32827,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProcessingUnitDefinition_PuType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getFeatures <em>Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Features</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getFeatures()
+	 * @see #getProcessingUnitDefinition()
+	 * @generated
+	 */
+	EReference getProcessingUnitDefinition_Features();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition#getClassifiers <em>Classifiers</em>}'.

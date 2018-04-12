@@ -3022,10 +3022,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="features" type="am:HwFeatureLiteral"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
-        <xsd:attribute name="features" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3034,9 +3032,11 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="features" type="am:HwFeatureLiteral"/>
           <xsd:element name="classifiers" type="am:CoreClassifier"/>
         </xsd:choice>
         <xsd:attribute name="puType" type="am:PuType"/>
+        <xsd:attribute name="features" type="xsd:string"/>
         <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
