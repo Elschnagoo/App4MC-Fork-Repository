@@ -57,7 +57,7 @@ public class ProcessEventItemProvider extends EntityEventItemProvider {
 
 			addEventTypePropertyDescriptor(object);
 			addEntityPropertyDescriptor(object);
-			addCorePropertyDescriptor(object);
+			addProcessingUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -107,19 +107,19 @@ public class ProcessEventItemProvider extends EntityEventItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Core feature.
+	 * This adds a property descriptor for the Processing Unit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCorePropertyDescriptor(Object object) {
+	protected void addProcessingUnitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProcessEvent_core_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessEvent_core_feature", "_UI_ProcessEvent_type"),
-				 AmaltheaPackage.eINSTANCE.getProcessEvent_Core(),
+				 getString("_UI_ProcessEvent_processingUnit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessEvent_processingUnit_feature", "_UI_ProcessEvent_type"),
+				 AmaltheaPackage.eINSTANCE.getProcessEvent_ProcessingUnit(),
 				 true,
 				 false,
 				 true,

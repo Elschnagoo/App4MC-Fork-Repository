@@ -1476,26 +1476,26 @@ class StimulusEvent extends EntityEvent
  * Describes the event of a process
  * eventType: The type of the Event
  * entity: The process that fires the event (optional)
- * core: The core that processes the process when the event is fired (optional) 
+ * processingUnit: The processing unit that executes the process when the event is fired (optional) 
  */
 class ProcessEvent extends EntityEvent
 {
 	ProcessEventType[1] eventType
 	refers Process entity
-	refers ProcessingUnit core
+	refers ProcessingUnit processingUnit
 }
 
 /*
  * Describes the event of some process within a process chain
  * eventType: The type of the Event
  * entity: The process that fires the event (optional)
- * core: The core that processes the process when the event is fired (optional) 
+ * processingUnit: The processing unit that executes the process when the event is fired (optional) 
  */
 class ProcessChainEvent extends EntityEvent
 {
 	ProcessEventType[1] eventType
 	refers ProcessChain entity
-	refers ProcessingUnit core
+	refers ProcessingUnit processingUnit
 }
 
 /*
@@ -1503,14 +1503,14 @@ class ProcessChainEvent extends EntityEvent
  * eventType: The type of event
  * entity: The runnable that fires the event (optional)
  * process: The process that executes the runnable (optional)
- * core: The core that processes the runnable (processes the process that executes the runnable) (optional) 
+ * processingUnit: The processing unit that executes the runnable (executes the process that calls the runnable) (optional) 
  */
 class RunnableEvent extends TriggerEvent
 {
 	RunnableEventType[1] eventType
 	refers Runnable entity
 	refers Process process
-	refers ProcessingUnit core
+	refers ProcessingUnit processingUnit
 }
 
 /*
@@ -1549,7 +1549,7 @@ class ChannelEvent extends TriggerEvent
  * entity: The accessed semaphore that fires the event (optional)
  * runnable: The runnable that accesses the semaphore (optional)
  * process: The process that accesses the semaphore (optional)
- * core: The core that processes the process/runnable that accesses the semaphore (optional)
+ * processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)
  */
 class SemaphoreEvent extends EntityEvent
 {
@@ -1557,7 +1557,7 @@ class SemaphoreEvent extends EntityEvent
 	refers Semaphore entity
 	refers Runnable runnable
 	refers Process process
-	refers ProcessingUnit core
+	refers ProcessingUnit processingUnit
 }
 
 /*
@@ -1993,7 +1993,7 @@ class SchedulerAllocation extends BaseObject
 {
 	refers Scheduler[1] scheduler
 	refers ProcessingUnit[+] responsibility
-	refers ProcessingUnit executingCore
+	refers ProcessingUnit executingPU
 }
 
 
@@ -2003,7 +2003,7 @@ class TaskAllocation extends BaseObject
 {
 	refers Task[1] task
 	refers TaskScheduler[1] scheduler
-	refers ProcessingUnit[] coreAffinity
+	refers ProcessingUnit[] affinity
 	
 	contains SchedulingParameters schedulingParameters
 	contains ParameterExtension[] parameterExtensions

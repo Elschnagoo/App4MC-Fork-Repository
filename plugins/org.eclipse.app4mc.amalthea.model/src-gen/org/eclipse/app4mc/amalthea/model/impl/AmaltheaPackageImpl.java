@@ -6571,7 +6571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessEvent_Core() {
+	public EReference getProcessEvent_ProcessingUnit() {
 		return (EReference)processEventEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -6607,7 +6607,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessChainEvent_Core() {
+	public EReference getProcessChainEvent_ProcessingUnit() {
 		return (EReference)processChainEventEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -6652,7 +6652,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnableEvent_Core() {
+	public EReference getRunnableEvent_ProcessingUnit() {
 		return (EReference)runnableEventEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -6796,7 +6796,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSemaphoreEvent_Core() {
+	public EReference getSemaphoreEvent_ProcessingUnit() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -7903,7 +7903,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchedulerAllocation_ExecutingCore() {
+	public EReference getSchedulerAllocation_ExecutingPU() {
 		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -7939,7 +7939,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTaskAllocation_CoreAffinity() {
+	public EReference getTaskAllocation_Affinity() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -13599,18 +13599,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processEventEClass = createEClass(PROCESS_EVENT);
 		createEAttribute(processEventEClass, PROCESS_EVENT__EVENT_TYPE);
 		createEReference(processEventEClass, PROCESS_EVENT__ENTITY);
-		createEReference(processEventEClass, PROCESS_EVENT__CORE);
+		createEReference(processEventEClass, PROCESS_EVENT__PROCESSING_UNIT);
 
 		processChainEventEClass = createEClass(PROCESS_CHAIN_EVENT);
 		createEAttribute(processChainEventEClass, PROCESS_CHAIN_EVENT__EVENT_TYPE);
 		createEReference(processChainEventEClass, PROCESS_CHAIN_EVENT__ENTITY);
-		createEReference(processChainEventEClass, PROCESS_CHAIN_EVENT__CORE);
+		createEReference(processChainEventEClass, PROCESS_CHAIN_EVENT__PROCESSING_UNIT);
 
 		runnableEventEClass = createEClass(RUNNABLE_EVENT);
 		createEAttribute(runnableEventEClass, RUNNABLE_EVENT__EVENT_TYPE);
 		createEReference(runnableEventEClass, RUNNABLE_EVENT__ENTITY);
 		createEReference(runnableEventEClass, RUNNABLE_EVENT__PROCESS);
-		createEReference(runnableEventEClass, RUNNABLE_EVENT__CORE);
+		createEReference(runnableEventEClass, RUNNABLE_EVENT__PROCESSING_UNIT);
 
 		labelEventEClass = createEClass(LABEL_EVENT);
 		createEAttribute(labelEventEClass, LABEL_EVENT__EVENT_TYPE);
@@ -13629,7 +13629,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__ENTITY);
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__RUNNABLE);
 		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__PROCESS);
-		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__CORE);
+		createEReference(semaphoreEventEClass, SEMAPHORE_EVENT__PROCESSING_UNIT);
 
 		componentEventEClass = createEClass(COMPONENT_EVENT);
 		createEAttribute(componentEventEClass, COMPONENT_EVENT__EVENT_TYPE);
@@ -13782,12 +13782,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		schedulerAllocationEClass = createEClass(SCHEDULER_ALLOCATION);
 		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__SCHEDULER);
 		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__RESPONSIBILITY);
-		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__EXECUTING_CORE);
+		createEReference(schedulerAllocationEClass, SCHEDULER_ALLOCATION__EXECUTING_PU);
 
 		taskAllocationEClass = createEClass(TASK_ALLOCATION);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__TASK);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULER);
-		createEReference(taskAllocationEClass, TASK_ALLOCATION__CORE_AFFINITY);
+		createEReference(taskAllocationEClass, TASK_ALLOCATION__AFFINITY);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__SCHEDULING_PARAMETERS);
 		createEReference(taskAllocationEClass, TASK_ALLOCATION__PARAMETER_EXTENSIONS);
 
@@ -15522,18 +15522,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(processEventEClass, ProcessEvent.class, "ProcessEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessEvent_EventType(), this.getProcessEventType(), "eventType", null, 1, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessEvent_Entity(), this.getProcess(), null, "entity", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessEvent_ProcessingUnit(), this.getProcessingUnit(), null, "processingUnit", null, 0, 1, ProcessEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processChainEventEClass, ProcessChainEvent.class, "ProcessChainEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessChainEvent_EventType(), this.getProcessEventType(), "eventType", null, 1, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessChainEvent_Entity(), this.getProcessChain(), null, "entity", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessChainEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessChainEvent_ProcessingUnit(), this.getProcessingUnit(), null, "processingUnit", null, 0, 1, ProcessChainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableEventEClass, RunnableEvent.class, "RunnableEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRunnableEvent_EventType(), this.getRunnableEventType(), "eventType", null, 1, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableEvent_Entity(), this.getRunnable(), null, "entity", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableEvent_Process(), this.getProcess(), null, "process", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnableEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnableEvent_ProcessingUnit(), this.getProcessingUnit(), null, "processingUnit", null, 0, 1, RunnableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEventEClass, LabelEvent.class, "LabelEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLabelEvent_EventType(), this.getLabelEventType(), "eventType", null, 1, 1, LabelEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15552,7 +15552,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSemaphoreEvent_Entity(), this.getSemaphore(), null, "entity", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Runnable(), this.getRunnable(), null, "runnable", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphoreEvent_Process(), this.getProcess(), null, "process", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemaphoreEvent_Core(), this.getProcessingUnit(), null, "core", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemaphoreEvent_ProcessingUnit(), this.getProcessingUnit(), null, "processingUnit", null, 0, 1, SemaphoreEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentEventEClass, ComponentEvent.class, "ComponentEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentEvent_EventType(), this.getComponentEventType(), "eventType", null, 1, 1, ComponentEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15714,12 +15714,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(schedulerAllocationEClass, SchedulerAllocation.class, "SchedulerAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSchedulerAllocation_Scheduler(), this.getScheduler(), null, "scheduler", null, 1, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSchedulerAllocation_Responsibility(), this.getProcessingUnit(), null, "responsibility", null, 1, -1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchedulerAllocation_ExecutingCore(), this.getProcessingUnit(), null, "executingCore", null, 0, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSchedulerAllocation_ExecutingPU(), this.getProcessingUnit(), null, "executingPU", null, 0, 1, SchedulerAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskAllocationEClass, TaskAllocation.class, "TaskAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTaskAllocation_Task(), this.getTask(), null, "task", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_Scheduler(), this.getTaskScheduler(), null, "scheduler", null, 1, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTaskAllocation_CoreAffinity(), this.getProcessingUnit(), null, "coreAffinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskAllocation_Affinity(), this.getProcessingUnit(), null, "affinity", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_SchedulingParameters(), this.getSchedulingParameters(), null, "schedulingParameters", null, 0, 1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskAllocation_ParameterExtensions(), this.getParameterExtension(), null, "parameterExtensions", null, 0, -1, TaskAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

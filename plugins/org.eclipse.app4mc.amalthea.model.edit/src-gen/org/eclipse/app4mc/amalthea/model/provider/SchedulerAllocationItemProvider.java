@@ -55,7 +55,7 @@ public class SchedulerAllocationItemProvider extends BaseObjectItemProvider {
 
 			addSchedulerPropertyDescriptor(object);
 			addResponsibilityPropertyDescriptor(object);
-			addExecutingCorePropertyDescriptor(object);
+			addExecutingPUPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,19 +105,19 @@ public class SchedulerAllocationItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Executing Core feature.
+	 * This adds a property descriptor for the Executing PU feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addExecutingCorePropertyDescriptor(Object object) {
+	protected void addExecutingPUPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SchedulerAllocation_executingCore_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAllocation_executingCore_feature", "_UI_SchedulerAllocation_type"),
-				 AmaltheaPackage.eINSTANCE.getSchedulerAllocation_ExecutingCore(),
+				 getString("_UI_SchedulerAllocation_executingPU_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SchedulerAllocation_executingPU_feature", "_UI_SchedulerAllocation_type"),
+				 AmaltheaPackage.eINSTANCE.getSchedulerAllocation_ExecutingPU(),
 				 true,
 				 false,
 				 true,

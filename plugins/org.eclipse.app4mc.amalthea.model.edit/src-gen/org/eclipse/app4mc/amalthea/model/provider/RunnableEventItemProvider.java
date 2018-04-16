@@ -58,7 +58,7 @@ public class RunnableEventItemProvider extends TriggerEventItemProvider {
 			addEventTypePropertyDescriptor(object);
 			addEntityPropertyDescriptor(object);
 			addProcessPropertyDescriptor(object);
-			addCorePropertyDescriptor(object);
+			addProcessingUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -130,19 +130,19 @@ public class RunnableEventItemProvider extends TriggerEventItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Core feature.
+	 * This adds a property descriptor for the Processing Unit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCorePropertyDescriptor(Object object) {
+	protected void addProcessingUnitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_RunnableEvent_core_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RunnableEvent_core_feature", "_UI_RunnableEvent_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnableEvent_Core(),
+				 getString("_UI_RunnableEvent_processingUnit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RunnableEvent_processingUnit_feature", "_UI_RunnableEvent_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnableEvent_ProcessingUnit(),
 				 true,
 				 false,
 				 true,

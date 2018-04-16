@@ -22,7 +22,7 @@ package org.eclipse.app4mc.amalthea.model;
  * Describes the event of a process
  * eventType: The type of the Event
  * entity: The process that fires the event (optional)
- * core: The core that processes the process when the event is fired (optional)
+ * processingUnit: The processing unit that executes the process when the event is fired (optional)
  * <!-- end-model-doc -->
  *
  * <p>
@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getEventType <em>Event Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getCore <em>Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getProcessingUnit <em>Processing Unit</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessEvent()
@@ -95,29 +95,29 @@ public interface ProcessEvent extends EntityEvent {
 	void setEntity(org.eclipse.app4mc.amalthea.model.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Core</b></em>' reference.
+	 * Returns the value of the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Core</em>' reference isn't clear,
+	 * If the meaning of the '<em>Processing Unit</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core</em>' reference.
-	 * @see #setCore(ProcessingUnit)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessEvent_Core()
+	 * @return the value of the '<em>Processing Unit</em>' reference.
+	 * @see #setProcessingUnit(ProcessingUnit)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessEvent_ProcessingUnit()
 	 * @model
 	 * @generated
 	 */
-	ProcessingUnit getCore();
+	ProcessingUnit getProcessingUnit();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getCore <em>Core</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getProcessingUnit <em>Processing Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Core</em>' reference.
-	 * @see #getCore()
+	 * @param value the new value of the '<em>Processing Unit</em>' reference.
+	 * @see #getProcessingUnit()
 	 * @generated
 	 */
-	void setCore(ProcessingUnit value);
+	void setProcessingUnit(ProcessingUnit value);
 
 } // ProcessEvent

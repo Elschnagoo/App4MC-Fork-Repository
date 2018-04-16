@@ -59,7 +59,7 @@ public class SemaphoreEventItemProvider extends EntityEventItemProvider {
 			addEntityPropertyDescriptor(object);
 			addRunnablePropertyDescriptor(object);
 			addProcessPropertyDescriptor(object);
-			addCorePropertyDescriptor(object);
+			addProcessingUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -153,19 +153,19 @@ public class SemaphoreEventItemProvider extends EntityEventItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Core feature.
+	 * This adds a property descriptor for the Processing Unit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCorePropertyDescriptor(Object object) {
+	protected void addProcessingUnitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SemaphoreEvent_core_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SemaphoreEvent_core_feature", "_UI_SemaphoreEvent_type"),
-				 AmaltheaPackage.eINSTANCE.getSemaphoreEvent_Core(),
+				 getString("_UI_SemaphoreEvent_processingUnit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SemaphoreEvent_processingUnit_feature", "_UI_SemaphoreEvent_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphoreEvent_ProcessingUnit(),
 				 true,
 				 false,
 				 true,

@@ -2575,17 +2575,17 @@ It contains only the stimulus but no event type because a stimulus has only one 
       <xsd:documentation>Describes the event of a process
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2594,7 +2594,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of a process
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ProcessChainEvent">
@@ -2602,17 +2602,17 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of some process within a process chain
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:ProcessChain"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2621,7 +2621,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of some process within a process chain
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableEvent">
@@ -2630,19 +2630,19 @@ core: The core that processes the process when the event is fired (optional)</xs
 eventType: The type of event
 entity: The runnable that fires the event (optional)
 process: The process that executes the runnable (optional)
-core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the runnable (executes the process that calls the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:RunnableEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2652,7 +2652,7 @@ core: The core that processes the runnable (processes the process that executes 
 eventType: The type of event
 entity: The runnable that fires the event (optional)
 process: The process that executes the runnable (optional)
-core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the runnable (executes the process that calls the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LabelEvent">
@@ -2724,7 +2724,7 @@ eventType: The type of event
 entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
-core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
@@ -2732,13 +2732,13 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="entity" type="am:Semaphore"/>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:SemaphoreEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2749,7 +2749,7 @@ eventType: The type of event
 entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
-core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ComponentEvent">
@@ -3168,11 +3168,11 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scheduler" type="am:Scheduler"/>
           <xsd:element name="responsibility" type="am:ProcessingUnit"/>
-          <xsd:element name="executingCore" type="am:ProcessingUnit"/>
+          <xsd:element name="executingPU" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="scheduler" type="xsd:string"/>
         <xsd:attribute name="responsibility" type="xsd:string"/>
-        <xsd:attribute name="executingCore" type="xsd:string"/>
+        <xsd:attribute name="executingPU" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3187,13 +3187,13 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
-          <xsd:element name="coreAffinity" type="am:ProcessingUnit"/>
+          <xsd:element name="affinity" type="am:ProcessingUnit"/>
           <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
           <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
         <xsd:attribute name="task" type="xsd:string"/>
         <xsd:attribute name="scheduler" type="xsd:string"/>
-        <xsd:attribute name="coreAffinity" type="xsd:string"/>
+        <xsd:attribute name="affinity" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

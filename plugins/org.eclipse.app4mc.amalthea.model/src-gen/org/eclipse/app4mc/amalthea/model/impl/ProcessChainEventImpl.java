@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessChainEventImpl#getEventType <em>Event Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessChainEventImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessChainEventImpl#getCore <em>Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessChainEventImpl#getProcessingUnit <em>Processing Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,14 +72,14 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 	protected ProcessChain entity;
 
 	/**
-	 * The cached value of the '{@link #getCore() <em>Core</em>}' reference.
+	 * The cached value of the '{@link #getProcessingUnit() <em>Processing Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCore()
+	 * @see #getProcessingUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProcessingUnit core;
+	protected ProcessingUnit processingUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,16 +164,16 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit getCore() {
-		if (core != null && core.eIsProxy()) {
-			InternalEObject oldCore = (InternalEObject)core;
-			core = (ProcessingUnit)eResolveProxy(oldCore);
-			if (core != oldCore) {
+	public ProcessingUnit getProcessingUnit() {
+		if (processingUnit != null && processingUnit.eIsProxy()) {
+			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
+			processingUnit = (ProcessingUnit)eResolveProxy(oldProcessingUnit);
+			if (processingUnit != oldProcessingUnit) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE, oldCore, core));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 			}
 		}
-		return core;
+		return processingUnit;
 	}
 
 	/**
@@ -181,8 +181,8 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit basicGetCore() {
-		return core;
+	public ProcessingUnit basicGetProcessingUnit() {
+		return processingUnit;
 	}
 
 	/**
@@ -190,11 +190,11 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCore(ProcessingUnit newCore) {
-		ProcessingUnit oldCore = core;
-		core = newCore;
+	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
+		ProcessingUnit oldProcessingUnit = processingUnit;
+		processingUnit = newProcessingUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE, oldCore, core));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 	}
 
 	/**
@@ -210,9 +210,9 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT__ENTITY:
 				if (resolve) return getEntity();
 				return basicGetEntity();
-			case AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE:
-				if (resolve) return getCore();
-				return basicGetCore();
+			case AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT:
+				if (resolve) return getProcessingUnit();
+				return basicGetProcessingUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -231,8 +231,8 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT__ENTITY:
 				setEntity((ProcessChain)newValue);
 				return;
-			case AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE:
-				setCore((ProcessingUnit)newValue);
+			case AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,8 +252,8 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT__ENTITY:
 				setEntity((ProcessChain)null);
 				return;
-			case AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE:
-				setCore((ProcessingUnit)null);
+			case AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -271,8 +271,8 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 				return eventType != EVENT_TYPE_EDEFAULT;
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT__ENTITY:
 				return entity != null;
-			case AmaltheaPackage.PROCESS_CHAIN_EVENT__CORE:
-				return core != null;
+			case AmaltheaPackage.PROCESS_CHAIN_EVENT__PROCESSING_UNIT:
+				return processingUnit != null;
 		}
 		return super.eIsSet(featureID);
 	}

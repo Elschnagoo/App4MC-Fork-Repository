@@ -74,11 +74,11 @@ public class DeploymentUtil {
 				if (schedulers.contains(taskAllocation.getScheduler())) {
 					//check core affinities - if affinities are empty the responsibility counts
 					//otherwise the affinity also needs to contain the core
-					if (taskAllocation.getCoreAffinity().isEmpty()) {
+					if (taskAllocation.getAffinity().isEmpty()) {
 						tasks.add(taskAllocation.getTask());
 					}
 					else {
-						if (taskAllocation.getCoreAffinity().contains(core))
+						if (taskAllocation.getAffinity().contains(core))
 							tasks.add(taskAllocation.getTask());
 					}
 				}
@@ -235,8 +235,8 @@ public class DeploymentUtil {
 					for (TaskAllocation taskAlloc : taskAllocations) {
 						if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
 							//check core affinity -- retain the core affinity with the scheduler responsibility 
-							if (taskAlloc.getCoreAffinity()!= null && !taskAlloc.getCoreAffinity().isEmpty()) {
-								for (ProcessingUnit core : taskAlloc.getCoreAffinity()) {
+							if (taskAlloc.getAffinity()!= null && !taskAlloc.getAffinity().isEmpty()) {
+								for (ProcessingUnit core : taskAlloc.getAffinity()) {
 									if (schedAlloc.getResponsibility().contains(core))
 										result.add(core);
 								}

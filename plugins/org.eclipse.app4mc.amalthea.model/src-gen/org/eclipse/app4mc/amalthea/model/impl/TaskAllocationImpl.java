@@ -47,7 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getScheduler <em>Scheduler</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getCoreAffinity <em>Core Affinity</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getAffinity <em>Affinity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TaskAllocationImpl#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
@@ -76,14 +76,14 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	protected TaskScheduler scheduler;
 
 	/**
-	 * The cached value of the '{@link #getCoreAffinity() <em>Core Affinity</em>}' reference list.
+	 * The cached value of the '{@link #getAffinity() <em>Affinity</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoreAffinity()
+	 * @see #getAffinity()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcessingUnit> coreAffinity;
+	protected EList<ProcessingUnit> affinity;
 
 	/**
 	 * The cached value of the '{@link #getSchedulingParameters() <em>Scheduling Parameters</em>}' containment reference.
@@ -205,11 +205,11 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcessingUnit> getCoreAffinity() {
-		if (coreAffinity == null) {
-			coreAffinity = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY);
+	public EList<ProcessingUnit> getAffinity() {
+		if (affinity == null) {
+			affinity = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TASK_ALLOCATION__AFFINITY);
 		}
-		return coreAffinity;
+		return affinity;
 	}
 
 	/**
@@ -297,8 +297,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				if (resolve) return getScheduler();
 				return basicGetScheduler();
-			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
-				return getCoreAffinity();
+			case AmaltheaPackage.TASK_ALLOCATION__AFFINITY:
+				return getAffinity();
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				return getSchedulingParameters();
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
@@ -323,9 +323,9 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)newValue);
 				return;
-			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
-				getCoreAffinity().clear();
-				getCoreAffinity().addAll((Collection<? extends ProcessingUnit>)newValue);
+			case AmaltheaPackage.TASK_ALLOCATION__AFFINITY:
+				getAffinity().clear();
+				getAffinity().addAll((Collection<? extends ProcessingUnit>)newValue);
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				setSchedulingParameters((SchedulingParameters)newValue);
@@ -351,8 +351,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				setScheduler((TaskScheduler)null);
 				return;
-			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
-				getCoreAffinity().clear();
+			case AmaltheaPackage.TASK_ALLOCATION__AFFINITY:
+				getAffinity().clear();
 				return;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				setSchedulingParameters((SchedulingParameters)null);
@@ -376,8 +376,8 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 				return task != null;
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULER:
 				return scheduler != null;
-			case AmaltheaPackage.TASK_ALLOCATION__CORE_AFFINITY:
-				return coreAffinity != null && !coreAffinity.isEmpty();
+			case AmaltheaPackage.TASK_ALLOCATION__AFFINITY:
+				return affinity != null && !affinity.isEmpty();
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS:
 				return schedulingParameters != null;
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessEventImpl#getEventType <em>Event Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessEventImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessEventImpl#getCore <em>Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProcessEventImpl#getProcessingUnit <em>Processing Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,14 +71,14 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	protected org.eclipse.app4mc.amalthea.model.Process entity;
 
 	/**
-	 * The cached value of the '{@link #getCore() <em>Core</em>}' reference.
+	 * The cached value of the '{@link #getProcessingUnit() <em>Processing Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCore()
+	 * @see #getProcessingUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProcessingUnit core;
+	protected ProcessingUnit processingUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,16 +163,16 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit getCore() {
-		if (core != null && core.eIsProxy()) {
-			InternalEObject oldCore = (InternalEObject)core;
-			core = (ProcessingUnit)eResolveProxy(oldCore);
-			if (core != oldCore) {
+	public ProcessingUnit getProcessingUnit() {
+		if (processingUnit != null && processingUnit.eIsProxy()) {
+			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
+			processingUnit = (ProcessingUnit)eResolveProxy(oldProcessingUnit);
+			if (processingUnit != oldProcessingUnit) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_EVENT__CORE, oldCore, core));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 			}
 		}
-		return core;
+		return processingUnit;
 	}
 
 	/**
@@ -180,8 +180,8 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit basicGetCore() {
-		return core;
+	public ProcessingUnit basicGetProcessingUnit() {
+		return processingUnit;
 	}
 
 	/**
@@ -189,11 +189,11 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCore(ProcessingUnit newCore) {
-		ProcessingUnit oldCore = core;
-		core = newCore;
+	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
+		ProcessingUnit oldProcessingUnit = processingUnit;
+		processingUnit = newProcessingUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_EVENT__CORE, oldCore, core));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 	}
 
 	/**
@@ -209,9 +209,9 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 			case AmaltheaPackage.PROCESS_EVENT__ENTITY:
 				if (resolve) return getEntity();
 				return basicGetEntity();
-			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				if (resolve) return getCore();
-				return basicGetCore();
+			case AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT:
+				if (resolve) return getProcessingUnit();
+				return basicGetProcessingUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,8 +230,8 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 			case AmaltheaPackage.PROCESS_EVENT__ENTITY:
 				setEntity((org.eclipse.app4mc.amalthea.model.Process)newValue);
 				return;
-			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				setCore((ProcessingUnit)newValue);
+			case AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -251,8 +251,8 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 			case AmaltheaPackage.PROCESS_EVENT__ENTITY:
 				setEntity((org.eclipse.app4mc.amalthea.model.Process)null);
 				return;
-			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				setCore((ProcessingUnit)null);
+			case AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -270,8 +270,8 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 				return eventType != EVENT_TYPE_EDEFAULT;
 			case AmaltheaPackage.PROCESS_EVENT__ENTITY:
 				return entity != null;
-			case AmaltheaPackage.PROCESS_EVENT__CORE:
-				return core != null;
+			case AmaltheaPackage.PROCESS_EVENT__PROCESSING_UNIT:
+				return processingUnit != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl#getScheduler <em>Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl#getResponsibility <em>Responsibility</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl#getExecutingCore <em>Executing Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerAllocationImpl#getExecutingPU <em>Executing PU</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,14 +67,14 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	protected EList<ProcessingUnit> responsibility;
 
 	/**
-	 * The cached value of the '{@link #getExecutingCore() <em>Executing Core</em>}' reference.
+	 * The cached value of the '{@link #getExecutingPU() <em>Executing PU</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExecutingCore()
+	 * @see #getExecutingPU()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProcessingUnit executingCore;
+	protected ProcessingUnit executingPU;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,16 +150,16 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit getExecutingCore() {
-		if (executingCore != null && executingCore.eIsProxy()) {
-			InternalEObject oldExecutingCore = (InternalEObject)executingCore;
-			executingCore = (ProcessingUnit)eResolveProxy(oldExecutingCore);
-			if (executingCore != oldExecutingCore) {
+	public ProcessingUnit getExecutingPU() {
+		if (executingPU != null && executingPU.eIsProxy()) {
+			InternalEObject oldExecutingPU = (InternalEObject)executingPU;
+			executingPU = (ProcessingUnit)eResolveProxy(oldExecutingPU);
+			if (executingPU != oldExecutingPU) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE, oldExecutingCore, executingCore));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU, oldExecutingPU, executingPU));
 			}
 		}
-		return executingCore;
+		return executingPU;
 	}
 
 	/**
@@ -167,8 +167,8 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit basicGetExecutingCore() {
-		return executingCore;
+	public ProcessingUnit basicGetExecutingPU() {
+		return executingPU;
 	}
 
 	/**
@@ -176,11 +176,11 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExecutingCore(ProcessingUnit newExecutingCore) {
-		ProcessingUnit oldExecutingCore = executingCore;
-		executingCore = newExecutingCore;
+	public void setExecutingPU(ProcessingUnit newExecutingPU) {
+		ProcessingUnit oldExecutingPU = executingPU;
+		executingPU = newExecutingPU;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE, oldExecutingCore, executingCore));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU, oldExecutingPU, executingPU));
 	}
 
 	/**
@@ -196,9 +196,9 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 				return basicGetScheduler();
 			case AmaltheaPackage.SCHEDULER_ALLOCATION__RESPONSIBILITY:
 				return getResponsibility();
-			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE:
-				if (resolve) return getExecutingCore();
-				return basicGetExecutingCore();
+			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU:
+				if (resolve) return getExecutingPU();
+				return basicGetExecutingPU();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -219,8 +219,8 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 				getResponsibility().clear();
 				getResponsibility().addAll((Collection<? extends ProcessingUnit>)newValue);
 				return;
-			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE:
-				setExecutingCore((ProcessingUnit)newValue);
+			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU:
+				setExecutingPU((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -240,8 +240,8 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 			case AmaltheaPackage.SCHEDULER_ALLOCATION__RESPONSIBILITY:
 				getResponsibility().clear();
 				return;
-			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE:
-				setExecutingCore((ProcessingUnit)null);
+			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU:
+				setExecutingPU((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -259,8 +259,8 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 				return scheduler != null;
 			case AmaltheaPackage.SCHEDULER_ALLOCATION__RESPONSIBILITY:
 				return responsibility != null && !responsibility.isEmpty();
-			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_CORE:
-				return executingCore != null;
+			case AmaltheaPackage.SCHEDULER_ALLOCATION__EXECUTING_PU:
+				return executingPU != null;
 		}
 		return super.eIsSet(featureID);
 	}

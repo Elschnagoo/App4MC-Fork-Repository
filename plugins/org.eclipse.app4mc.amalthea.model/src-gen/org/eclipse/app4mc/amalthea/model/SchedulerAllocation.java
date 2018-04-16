@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getScheduler <em>Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getResponsibility <em>Responsibility</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore <em>Executing Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingPU <em>Executing PU</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAllocation()
@@ -80,29 +80,29 @@ public interface SchedulerAllocation extends BaseObject {
 	EList<ProcessingUnit> getResponsibility();
 
 	/**
-	 * Returns the value of the '<em><b>Executing Core</b></em>' reference.
+	 * Returns the value of the '<em><b>Executing PU</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Executing Core</em>' reference isn't clear,
+	 * If the meaning of the '<em>Executing PU</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Executing Core</em>' reference.
-	 * @see #setExecutingCore(ProcessingUnit)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAllocation_ExecutingCore()
+	 * @return the value of the '<em>Executing PU</em>' reference.
+	 * @see #setExecutingPU(ProcessingUnit)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAllocation_ExecutingPU()
 	 * @model
 	 * @generated
 	 */
-	ProcessingUnit getExecutingCore();
+	ProcessingUnit getExecutingPU();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore <em>Executing Core</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingPU <em>Executing PU</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Executing Core</em>' reference.
-	 * @see #getExecutingCore()
+	 * @param value the new value of the '<em>Executing PU</em>' reference.
+	 * @see #getExecutingPU()
 	 * @generated
 	 */
-	void setExecutingCore(ProcessingUnit value);
+	void setExecutingPU(ProcessingUnit value);
 
 } // SchedulerAllocation

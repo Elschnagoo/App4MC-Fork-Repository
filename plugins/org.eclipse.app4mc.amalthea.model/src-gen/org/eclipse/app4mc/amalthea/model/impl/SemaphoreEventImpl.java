@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreEventImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreEventImpl#getRunnable <em>Runnable</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreEventImpl#getProcess <em>Process</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreEventImpl#getCore <em>Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreEventImpl#getProcessingUnit <em>Processing Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -94,14 +94,14 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	protected org.eclipse.app4mc.amalthea.model.Process process;
 
 	/**
-	 * The cached value of the '{@link #getCore() <em>Core</em>}' reference.
+	 * The cached value of the '{@link #getProcessingUnit() <em>Processing Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCore()
+	 * @see #getProcessingUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProcessingUnit core;
+	protected ProcessingUnit processingUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,16 +262,16 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit getCore() {
-		if (core != null && core.eIsProxy()) {
-			InternalEObject oldCore = (InternalEObject)core;
-			core = (ProcessingUnit)eResolveProxy(oldCore);
-			if (core != oldCore) {
+	public ProcessingUnit getProcessingUnit() {
+		if (processingUnit != null && processingUnit.eIsProxy()) {
+			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
+			processingUnit = (ProcessingUnit)eResolveProxy(oldProcessingUnit);
+			if (processingUnit != oldProcessingUnit) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SEMAPHORE_EVENT__CORE, oldCore, core));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 			}
 		}
-		return core;
+		return processingUnit;
 	}
 
 	/**
@@ -279,8 +279,8 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessingUnit basicGetCore() {
-		return core;
+	public ProcessingUnit basicGetProcessingUnit() {
+		return processingUnit;
 	}
 
 	/**
@@ -288,11 +288,11 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCore(ProcessingUnit newCore) {
-		ProcessingUnit oldCore = core;
-		core = newCore;
+	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
+		ProcessingUnit oldProcessingUnit = processingUnit;
+		processingUnit = newProcessingUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_EVENT__CORE, oldCore, core));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT, oldProcessingUnit, processingUnit));
 	}
 
 	/**
@@ -314,9 +314,9 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESS:
 				if (resolve) return getProcess();
 				return basicGetProcess();
-			case AmaltheaPackage.SEMAPHORE_EVENT__CORE:
-				if (resolve) return getCore();
-				return basicGetCore();
+			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT:
+				if (resolve) return getProcessingUnit();
+				return basicGetProcessingUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -341,8 +341,8 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESS:
 				setProcess((org.eclipse.app4mc.amalthea.model.Process)newValue);
 				return;
-			case AmaltheaPackage.SEMAPHORE_EVENT__CORE:
-				setCore((ProcessingUnit)newValue);
+			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -368,8 +368,8 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESS:
 				setProcess((org.eclipse.app4mc.amalthea.model.Process)null);
 				return;
-			case AmaltheaPackage.SEMAPHORE_EVENT__CORE:
-				setCore((ProcessingUnit)null);
+			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT:
+				setProcessingUnit((ProcessingUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -391,8 +391,8 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 				return runnable != null;
 			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESS:
 				return process != null;
-			case AmaltheaPackage.SEMAPHORE_EVENT__CORE:
-				return core != null;
+			case AmaltheaPackage.SEMAPHORE_EVENT__PROCESSING_UNIT:
+				return processingUnit != null;
 		}
 		return super.eIsSet(featureID);
 	}

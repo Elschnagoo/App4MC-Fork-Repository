@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EMap;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getTask <em>Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getScheduler <em>Scheduler</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity <em>Core Affinity</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getAffinity <em>Affinity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getSchedulingParameters <em>Scheduling Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getParameterExtensions <em>Parameter Extensions</em>}</li>
  * </ul>
@@ -89,20 +89,20 @@ public interface TaskAllocation extends BaseObject {
 	void setScheduler(TaskScheduler value);
 
 	/**
-	 * Returns the value of the '<em><b>Core Affinity</b></em>' reference list.
+	 * Returns the value of the '<em><b>Affinity</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Core Affinity</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Affinity</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core Affinity</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskAllocation_CoreAffinity()
+	 * @return the value of the '<em>Affinity</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskAllocation_Affinity()
 	 * @model
 	 * @generated
 	 */
-	EList<ProcessingUnit> getCoreAffinity();
+	EList<ProcessingUnit> getAffinity();
 
 	/**
 	 * Returns the value of the '<em><b>Scheduling Parameters</b></em>' containment reference.

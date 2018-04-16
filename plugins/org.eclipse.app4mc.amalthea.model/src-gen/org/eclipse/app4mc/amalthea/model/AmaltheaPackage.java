@@ -9847,13 +9847,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_EVENT__ENTITY = ENTITY_EVENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' reference.
+	 * The feature id for the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_EVENT__CORE = ENTITY_EVENT_FEATURE_COUNT + 2;
+	int PROCESS_EVENT__PROCESSING_UNIT = ENTITY_EVENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Process Event</em>' class.
@@ -9983,13 +9983,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_CHAIN_EVENT__ENTITY = ENTITY_EVENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' reference.
+	 * The feature id for the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_CHAIN_EVENT__CORE = ENTITY_EVENT_FEATURE_COUNT + 2;
+	int PROCESS_CHAIN_EVENT__PROCESSING_UNIT = ENTITY_EVENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Process Chain Event</em>' class.
@@ -10128,13 +10128,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_EVENT__PROCESS = TRIGGER_EVENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' reference.
+	 * The feature id for the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_EVENT__CORE = TRIGGER_EVENT_FEATURE_COUNT + 3;
+	int RUNNABLE_EVENT__PROCESSING_UNIT = TRIGGER_EVENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Event</em>' class.
@@ -10572,13 +10572,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_EVENT__PROCESS = ENTITY_EVENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Core</b></em>' reference.
+	 * The feature id for the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_EVENT__CORE = ENTITY_EVENT_FEATURE_COUNT + 4;
+	int SEMAPHORE_EVENT__PROCESSING_UNIT = ENTITY_EVENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Semaphore Event</em>' class.
@@ -13932,13 +13932,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER_ALLOCATION__RESPONSIBILITY = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Executing Core</b></em>' reference.
+	 * The feature id for the '<em><b>Executing PU</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ALLOCATION__EXECUTING_CORE = BASE_OBJECT_FEATURE_COUNT + 2;
+	int SCHEDULER_ALLOCATION__EXECUTING_PU = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Scheduler Allocation</em>' class.
@@ -13996,13 +13996,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_ALLOCATION__SCHEDULER = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Core Affinity</b></em>' reference list.
+	 * The feature id for the '<em><b>Affinity</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_ALLOCATION__CORE_AFFINITY = BASE_OBJECT_FEATURE_COUNT + 2;
+	int TASK_ALLOCATION__AFFINITY = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
@@ -31727,15 +31727,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getProcessEvent_Entity();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ProcessEvent#getProcessingUnit <em>Processing Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessEvent#getCore()
+	 * @return the meta object for the reference '<em>Processing Unit</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessEvent#getProcessingUnit()
 	 * @see #getProcessEvent()
 	 * @generated
 	 */
-	EReference getProcessEvent_Core();
+	EReference getProcessEvent_ProcessingUnit();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessChainEvent <em>Process Chain Event</em>}'.
@@ -31770,15 +31770,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getProcessChainEvent_Entity();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ProcessChainEvent#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ProcessChainEvent#getProcessingUnit <em>Processing Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ProcessChainEvent#getCore()
+	 * @return the meta object for the reference '<em>Processing Unit</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ProcessChainEvent#getProcessingUnit()
 	 * @see #getProcessChainEvent()
 	 * @generated
 	 */
-	EReference getProcessChainEvent_Core();
+	EReference getProcessChainEvent_ProcessingUnit();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.RunnableEvent <em>Runnable Event</em>}'.
@@ -31824,15 +31824,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnableEvent_Process();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.RunnableEvent#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.RunnableEvent#getProcessingUnit <em>Processing Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableEvent#getCore()
+	 * @return the meta object for the reference '<em>Processing Unit</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableEvent#getProcessingUnit()
 	 * @see #getRunnableEvent()
 	 * @generated
 	 */
-	EReference getRunnableEvent_Core();
+	EReference getRunnableEvent_ProcessingUnit();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LabelEvent <em>Label Event</em>}'.
@@ -31997,15 +31997,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getSemaphoreEvent_Process();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getCore <em>Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getProcessingUnit <em>Processing Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getCore()
+	 * @return the meta object for the reference '<em>Processing Unit</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getProcessingUnit()
 	 * @see #getSemaphoreEvent()
 	 * @generated
 	 */
-	EReference getSemaphoreEvent_Core();
+	EReference getSemaphoreEvent_ProcessingUnit();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ComponentEvent <em>Component Event</em>}'.
@@ -33314,15 +33314,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getSchedulerAllocation_Responsibility();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore <em>Executing Core</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingPU <em>Executing PU</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Executing Core</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingCore()
+	 * @return the meta object for the reference '<em>Executing PU</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAllocation#getExecutingPU()
 	 * @see #getSchedulerAllocation()
 	 * @generated
 	 */
-	EReference getSchedulerAllocation_ExecutingCore();
+	EReference getSchedulerAllocation_ExecutingPU();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation <em>Task Allocation</em>}'.
@@ -33357,15 +33357,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTaskAllocation_Scheduler();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity <em>Core Affinity</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getAffinity <em>Affinity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Core Affinity</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TaskAllocation#getCoreAffinity()
+	 * @return the meta object for the reference list '<em>Affinity</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskAllocation#getAffinity()
 	 * @see #getTaskAllocation()
 	 * @generated
 	 */
-	EReference getTaskAllocation_CoreAffinity();
+	EReference getTaskAllocation_Affinity();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TaskAllocation#getSchedulingParameters <em>Scheduling Parameters</em>}'.

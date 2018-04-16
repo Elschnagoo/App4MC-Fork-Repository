@@ -24,7 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * entity: The accessed semaphore that fires the event (optional)
  * runnable: The runnable that accesses the semaphore (optional)
  * process: The process that accesses the semaphore (optional)
- * core: The core that processes the process/runnable that accesses the semaphore (optional)
+ * processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)
  * <!-- end-model-doc -->
  *
  * <p>
@@ -35,7 +35,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getRunnable <em>Runnable</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getProcess <em>Process</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getCore <em>Core</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getProcessingUnit <em>Processing Unit</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreEvent()
@@ -151,29 +151,29 @@ public interface SemaphoreEvent extends EntityEvent {
 	void setProcess(org.eclipse.app4mc.amalthea.model.Process value);
 
 	/**
-	 * Returns the value of the '<em><b>Core</b></em>' reference.
+	 * Returns the value of the '<em><b>Processing Unit</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Core</em>' reference isn't clear,
+	 * If the meaning of the '<em>Processing Unit</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Core</em>' reference.
-	 * @see #setCore(ProcessingUnit)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreEvent_Core()
+	 * @return the value of the '<em>Processing Unit</em>' reference.
+	 * @see #setProcessingUnit(ProcessingUnit)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreEvent_ProcessingUnit()
 	 * @model
 	 * @generated
 	 */
-	ProcessingUnit getCore();
+	ProcessingUnit getProcessingUnit();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getCore <em>Core</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEvent#getProcessingUnit <em>Processing Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Core</em>' reference.
-	 * @see #getCore()
+	 * @param value the new value of the '<em>Processing Unit</em>' reference.
+	 * @see #getProcessingUnit()
 	 * @generated
 	 */
-	void setCore(ProcessingUnit value);
+	void setProcessingUnit(ProcessingUnit value);
 
 } // SemaphoreEvent
