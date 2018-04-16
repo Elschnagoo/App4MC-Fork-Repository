@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements>
+    <memoryClassifiers name="mcl_ext"/>
+  </commonElements>
+  <hwModel>
+    <coreTypes name="cType" bitWidth="0" instructionsPerCycle="0.0"/>
+    <system>
+      <ports xsi:type="am:ComplexPort" name="testPort_Complex" master="true" bitWidth="123" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+      <ports name="testPort"/>
+      <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+      <ports name="b1"/>
+      <ecus>
+        <ports xsi:type="am:ComplexPort" name="t1" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+        <microcontrollers>
+          <memories>
+            <networks>
+              <memories>
+                <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+              </memories>
+              <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+              <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+            </networks>
+            <components>
+              <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+            </components>
+            <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+          </memories>
+          <ports/>
+          <ports xsi:type="am:ComplexPort" master="false" bitWidth="0" baseAddress="0x0" addressRange="0x0" writeCycles="0" readCycles="0" schedValue="0"/>
+        </microcontrollers>
+      </ecus>
+      <quartzes name="testRefQuartz">
+        <frequency value="0.0" unit="MHz"/>
+      </quartzes>
+    </system>
+  </hwModel>
+</am:Amalthea>

@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.app4mc.amalthea.converters090.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters090.utils.HelperUtils_083_090;
@@ -49,5 +53,20 @@ public abstract class AbstractConverter implements IConverter {
 		parentElement.addContent(customPropertiesElement);
 		
 		
+	}
+	
+	protected String encodeNameForReference(final String name) {
+		if (name == null || name.length() == 0) {
+			return "no-name";
+		}
+
+		String result;
+		try {
+			result = URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+		}
+		catch (final UnsupportedEncodingException e) {
+			result = name; // keep old name - we have no better option
+		}
+		return result;
 	}
 }

@@ -23,7 +23,27 @@
                id="converters.090.rootElement">
          </dependent-on-converter>
       </converter>
-      
+        <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters090.impl.HwConverter"
+            enabled="true"
+            id="converters.090.hwconverter"
+            input-model-version="0.8.3"
+            name="namespace"
+            output-model-version="0.9.0">
+         <dependent-on-converter
+               id="converters.090.rootElement">
+         </dependent-on-converter>
+      </converter>
+   </extension>
+   <extension
+         point="org.eclipse.app4mc.amalthea.model.converters.cachebuilders">
+      <CacheBuilder
+            ID="org.eclipse.app4mc.amalthea.converters.090.hwCacheBuilder"
+            class="org.eclipse.app4mc.amalthea.converters090.utils.HWCacheBuilder"
+            enabled="true"
+            input-model-version="0.8.3"
+            name="HWCacheBuilder">
+      </CacheBuilder>
    </extension>
 
 </plugin>

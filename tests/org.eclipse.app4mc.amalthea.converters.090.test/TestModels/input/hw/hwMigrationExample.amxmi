@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements>
+    <memoryClassifiers name="mcl"/>
+  </commonElements>
+  <hwModel>
+    <systemTypes name="Sys1"/>
+    <ecuTypes name="ECU1"/>
+    <mcTypes name="µC1"/>
+    <coreTypes name="CoreDef1" bitWidth="32" instructionsPerCycle="0.8"/>
+    <coreTypes name="CoreDef2" bitWidth="32" instructionsPerCycle="1.0"/>
+    <memoryTypes name="SRAM" type="RAM" classifiers="mcl?type=MemoryClassifier">
+      <size value="4" unit="MB"/>
+    </memoryTypes>
+    <memoryTypes name="DCache" type="CACHE">
+      <size value="256" unit="kB"/>
+      <classifiers href="amlt:/#mcl_ext?type=MemoryClassifier"/>
+      <classifiers href="amlt:/#mcl?type=MemoryClassifier"/>
+    </memoryTypes>
+    <networkTypes xsi:type="am:Bridge" name="testBridge" bitWidth="0">
+      <customProperties key="type">
+        <value xsi:type="am:StringObject" value="BRIDGE"/>
+      </customProperties>
+    </networkTypes>
+    <networkTypes xsi:type="am:Bus" name="" bitWidth="0"/>
+    <networkTypes xsi:type="am:CrossbarSwitch" bitWidth="0" conConnections="0"/>
+    <networkTypes schedPolicy="RROBIN" bitWidth="0"/>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP1" source="Core1?type=Core" target="ExternalRAM?type=Memory">
+      <latencies xsi:type="am:LatencyDeviation" accessType="RW" transferSize="0" quartz="MainClock?type=Quartz">
+        <deviation>
+          <lowerBound xsi:type="am:LongObject" value="1"/>
+          <upperBound xsi:type="am:LongObject" value="10"/>
+          <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.0">
+            <mean xsi:type="am:LongObject" value="3"/>
+          </distribution>
+        </deviation>
+      </latencies>
+    </accessPaths>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP2" source="Core1?type=Core" target="Scratchpad?type=Memory">
+      <latencies xsi:type="am:LatencyConstant" accessType="RW" transferSize="0" quartz="MainClock?type=Quartz" value="0"/>
+    </accessPaths>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP3" source="Core1?type=Core" target="SRAM1?type=Memory">
+      <latencies xsi:type="am:LatencyConstant" accessType="RW" transferSize="0" quartz="MainClock?type=Quartz" value="5"/>
+    </accessPaths>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP4" source="Core2?type=Core" target="ExternalRAM?type=Memory">
+      <latencies xsi:type="am:LatencyConstant" accessType="RW" transferSize="0" quartz="MainClock?type=Quartz" value="9"/>
+    </accessPaths>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP5" source="Core2?type=Core" target="Scratchpad?type=Memory">
+      <latencies xsi:type="am:LatencyConstant" accessType="R" transferSize="0" quartz="MainClock?type=Quartz" value="2"/>
+    </accessPaths>
+    <accessPaths xsi:type="am:LatencyAccessPath" name="LP6" source="Core2?type=Core" target="SRAM1?type=Memory">
+      <latencies xsi:type="am:LatencyConstant" accessType="RW" transferSize="0" quartz="MainClock?type=Quartz" value="5"/>
+    </accessPaths>
+    <system name="TestSystem" systemType="Sys1?type=SystemType">
+      <memories name="test1" type="DCache?type=MemoryType">
+        <prescaler clockRatio="0.0"/>
+        <memories type="DCache?type=MemoryType">
+          <prescaler clockRatio="0.0"/>
+        </memories>
+        <networks>
+          <networks>
+            <components>
+              <networks/>
+            </components>
+          </networks>
+        </networks>
+        <networks>
+          <memories/>
+        </networks>
+        <components>
+          <memories/>
+          <nestedComponents>
+            <memories/>
+          </nestedComponents>
+        </components>
+      </memories>
+      <networks/>
+      <ecus name="TestECU" ecuType="ECU1?type=ECUType">
+        <memories name="ExternalRAM" type="SRAM?type=MemoryType">
+          <prescaler name="ExtRAM_Prescaler" clockRatio="0.5" quartz="MainClock?type=Quartz"/>
+          <memories>
+            <memories>
+              <networks>
+                <memories>
+                  <memories/>
+                </memories>
+              </networks>
+            </memories>
+          </memories>
+          <ports xsi:type="am:ComplexPort" name="P1" master="false" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+        </memories>
+        <microcontrollers name="µC123" microcontrollerType="%C2%B5C1?type=MicrocontrollerType">
+          <memories name="SRAM1" type="SRAM?type=MemoryType">
+            <ports xsi:type="am:ComplexPort" name="P1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+          </memories>
+          <cores name="Core1" coreType="CoreDef1?type=CoreType" lockstepGroup="0">
+            <prescaler name="Core1_Prescaler" clockRatio="1.0" quartz="MainClock?type=Quartz"/>
+            <memories name="Scratchpad" type="SRAM?type=MemoryType">
+              <ports xsi:type="am:ComplexPort" name="P1" master="false" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+            </memories>
+            <memories name="D1_Cache" type="DCache?type=MemoryType"/>
+            <networks/>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+          </cores>
+          <cores name="Core2" lockstepGroup="0">
+            <prescaler name="Core2_Prescaler" clockRatio="1.0" quartz="MainClock?type=Quartz"/>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+            <coreType href="amlt:/#cType?type=CoreType"/>
+          </cores>
+          <cores name="Core3" lockstepGroup="0">
+            <prescaler name="Core2_Prescaler" clockRatio="1.5">
+              <quartz href="amlt:/#testRefQuartz?type=Quartz"/>
+            </prescaler>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+            <coreType href="amlt:/#cType?type=CoreType"/>
+          </cores>
+          <cores name="Core4" lockstepGroup="0">
+            <prescaler name="Core2_Prescaler" clockRatio="1.6">
+              <quartz href="amlt:/#testRefQuartz?type=Quartz"/>
+            </prescaler>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+            <coreType href="amlt:/#cType?type=CoreType"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+      <ecus name="TestECU" ecuType="ECU1?type=ECUType">
+        <memories name="ExternalRAM" type="SRAM?type=MemoryType">
+          <prescaler name="ExtRAM_Prescaler" clockRatio="0.5" quartz="MainClock?type=Quartz"/>
+          <ports xsi:type="am:ComplexPort" name="P1" master="false" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+        </memories>
+        <microcontrollers name="µC123" microcontrollerType="%C2%B5C1?type=MicrocontrollerType">
+          <memories name="SRAM1" type="SRAM?type=MemoryType">
+            <ports xsi:type="am:ComplexPort" name="P1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+          </memories>
+          <cores name="Core1" coreType="CoreDef1?type=CoreType" lockstepGroup="0">
+            <prescaler name="Core1_Prescaler" clockRatio="1.0" quartz="MainClock?type=Quartz"/>
+            <memories name="Scratchpad" type="SRAM?type=MemoryType">
+              <ports xsi:type="am:ComplexPort" name="P1" master="false" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="1" readCycles="1" schedValue="0"/>
+            </memories>
+            <memories name="D1_Cache" type="DCache?type=MemoryType"/>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+          </cores>
+          <cores name="Core2" coreType="CoreDef2?type=CoreType" lockstepGroup="0">
+            <prescaler name="Core2_Prescaler" clockRatio="1.0" quartz="MainClock?type=Quartz"/>
+            <ports xsi:type="am:ComplexPort" name="DataPort_1" master="true" bitWidth="32" baseAddress="0x0" addressRange="0x0" direction="RW" writeCycles="0" readCycles="0" schedValue="0"/>
+          </cores>
+        </microcontrollers>
+      </ecus>
+      <quartzes name="MainClock">
+        <frequency value="200.0" unit="MHz"/>
+      </quartzes>
+      <quartzes/>
+    </system>
+  </hwModel>
+</am:Amalthea>
