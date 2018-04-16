@@ -19,7 +19,6 @@
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
-      <possibleValues value="200.0" unit="MHz"/>
       <defaultValue value="200.0" unit="MHz"/>
     </domains>
   </hwModel>
@@ -67,29 +66,29 @@
     </operatingSystems>
   </osModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Partitioned_FPP?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
-    <taskAllocation task="TaskA1?type=Task" scheduler="GroupA?type=TaskScheduler" coreAffinity="CoreA?type=ProcessingUnit">
+    <schedulerAllocation scheduler="Partitioned_FPP?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
+    <taskAllocation task="TaskA1?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
       <schedulingParameters priority="50"/>
     </taskAllocation>
-    <taskAllocation task="TaskA2?type=Task" scheduler="GroupA?type=TaskScheduler" coreAffinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
+    <taskAllocation task="TaskA2?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
       <schedulingParameters priority="30"/>
     </taskAllocation>
-    <taskAllocation task="TaskB1?type=Task" scheduler="GroupB?type=TaskScheduler" coreAffinity="CoreB?type=ProcessingUnit">
+    <taskAllocation task="TaskB1?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
       <schedulingParameters priority="55"/>
     </taskAllocation>
-    <taskAllocation task="TaskB2?type=Task" scheduler="GroupB?type=TaskScheduler" coreAffinity="CoreB?type=ProcessingUnit">
+    <taskAllocation task="TaskB2?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
       <schedulingParameters priority="60"/>
     </taskAllocation>
-    <taskAllocation task="TaskC1?type=Task" scheduler="GroupC?type=TaskScheduler" coreAffinity="CoreA?type=ProcessingUnit">
+    <taskAllocation task="TaskC1?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
       <schedulingParameters priority="75"/>
     </taskAllocation>
-    <taskAllocation task="TaskC2?type=Task" scheduler="GroupC?type=TaskScheduler" coreAffinity="CoreA?type=ProcessingUnit">
+    <taskAllocation task="TaskC2?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
       <schedulingParameters priority="20"/>
     </taskAllocation>
-    <taskAllocation task="TaskD1?type=Task" scheduler="GroupD?type=TaskScheduler" coreAffinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
+    <taskAllocation task="TaskD1?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
       <schedulingParameters priority="100"/>
     </taskAllocation>
-    <taskAllocation task="TaskD2?type=Task" scheduler="GroupD?type=TaskScheduler" coreAffinity="CoreB?type=ProcessingUnit CoreA?type=ProcessingUnit">
+    <taskAllocation task="TaskD2?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit CoreA?type=ProcessingUnit">
       <schedulingParameters priority="10"/>
     </taskAllocation>
   </mappingModel>

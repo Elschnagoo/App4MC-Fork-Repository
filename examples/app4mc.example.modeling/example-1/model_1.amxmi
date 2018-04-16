@@ -114,7 +114,6 @@
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
-      <possibleValues value="100.0" unit="MHz"/>
       <defaultValue value="100.0" unit="MHz"/>
     </domains>
   </hwModel>

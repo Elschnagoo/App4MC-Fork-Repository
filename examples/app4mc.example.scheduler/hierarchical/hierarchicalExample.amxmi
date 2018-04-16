@@ -19,7 +19,6 @@
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
-      <possibleValues value="200.0" unit="MHz"/>
       <defaultValue value="200.0" unit="MHz"/>
     </domains>
   </hwModel>
@@ -55,11 +54,11 @@
     </operatingSystems>
   </osModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingCore="CoreA?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingCore="CoreB?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingCore="CoreB?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingPU="CoreB?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="CoreB?type=ProcessingUnit" executingPU="CoreB?type=ProcessingUnit"/>
     <taskAllocation task="TaskA1?type=Task" scheduler="OSEKA?type=TaskScheduler">
       <schedulingParameters priority="5"/>
     </taskAllocation>

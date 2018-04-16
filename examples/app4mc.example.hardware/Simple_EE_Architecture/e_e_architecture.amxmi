@@ -107,15 +107,12 @@
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="ECU1_Freq_Domain" clockGating="false">
-      <possibleValues value="500.0" unit="MHz"/>
       <defaultValue value="500.0" unit="MHz"/>
     </domains>
     <domains xsi:type="am:FrequencyDomain" name="ECU2_Freq_Domain" clockGating="false">
-      <possibleValues value="500.0" unit="MHz"/>
       <defaultValue value="500.0" unit="MHz"/>
     </domains>
     <domains xsi:type="am:FrequencyDomain" name="CAN_Freq_Domain" clockGating="false">
-      <possibleValues value="0.0" unit="MHz"/>
       <defaultValue value="0.0" unit="kHz"/>
     </domains>
   </hwModel>
