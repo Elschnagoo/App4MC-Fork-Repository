@@ -12604,13 +12604,13 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_ACCESS_ELEMENT__DESTINATION = ITAGGABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Access Paths</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Access Path</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_ACCESS_ELEMENT__ACCESS_PATHS = ITAGGABLE_FEATURE_COUNT + 3;
+	int HW_ACCESS_ELEMENT__ACCESS_PATH = ITAGGABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Read Latency</b></em>' containment reference.
@@ -32692,15 +32692,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwAccessElement_Destination();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPaths <em>Access Paths</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath <em>Access Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Access Paths</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPaths()
+	 * @return the meta object for the containment reference '<em>Access Path</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath()
 	 * @see #getHwAccessElement()
 	 * @generated
 	 */
-	EReference getHwAccessElement_AccessPaths();
+	EReference getHwAccessElement_AccessPath();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getReadLatency <em>Read Latency</em>}'.

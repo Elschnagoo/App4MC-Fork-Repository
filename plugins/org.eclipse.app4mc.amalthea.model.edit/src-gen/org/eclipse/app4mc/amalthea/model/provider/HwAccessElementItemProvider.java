@@ -182,7 +182,7 @@ public class HwAccessElementItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_AccessPaths());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_AccessPath());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwAccessElement_DataRate());
@@ -260,7 +260,7 @@ public class HwAccessElementItemProvider
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
@@ -300,7 +300,7 @@ public class HwAccessElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessElement_AccessPaths(),
+				(AmaltheaPackage.eINSTANCE.getHwAccessElement_AccessPath(),
 				 AmaltheaFactory.eINSTANCE.createHwAccessPath()));
 
 		newChildDescriptors.add

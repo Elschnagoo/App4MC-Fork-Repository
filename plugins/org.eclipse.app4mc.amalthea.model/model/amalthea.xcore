@@ -1777,7 +1777,7 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable {
  	@GenModel(propertyCategory="Read only")
 	container readonly ProcessingUnit source opposite accessElements
 	refers HwDestination destination
-	contains HwAccessPath[] accessPaths opposite containingAccessElement
+	contains HwAccessPath accessPath opposite containingAccessElement
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
 	contains DataRate dataRate
@@ -1894,7 +1894,7 @@ abstract class HwPath {
 
 class HwAccessPath extends HwPath, INamed {
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly HwAccessElement containingAccessElement opposite accessPaths
+	container readonly HwAccessElement containingAccessElement opposite accessPath
 	
 	refers HwPathElement[+] pathElements
 	Address startAddress = "0"

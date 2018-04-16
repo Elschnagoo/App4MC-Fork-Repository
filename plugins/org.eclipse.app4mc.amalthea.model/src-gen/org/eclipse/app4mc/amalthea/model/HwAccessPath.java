@@ -37,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
 public interface HwAccessPath extends HwPath, INamed {
 	/**
 	 * Returns the value of the '<em><b>Containing Access Element</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPaths <em>Access Paths</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath <em>Access Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Containing Access Element</em>' container reference isn't clear,
@@ -46,8 +46,8 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Access Element</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessPath_ContainingAccessElement()
-	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPaths
-	 * @model opposite="accessPaths" transient="false" changeable="false"
+	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath
+	 * @model opposite="accessPath" transient="false" changeable="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */

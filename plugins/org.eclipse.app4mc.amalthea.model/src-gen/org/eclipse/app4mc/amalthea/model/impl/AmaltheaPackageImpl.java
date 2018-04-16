@@ -7381,7 +7381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwAccessElement_AccessPaths() {
+	public EReference getHwAccessElement_AccessPath() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -13710,7 +13710,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwAccessElementEClass = createEClass(HW_ACCESS_ELEMENT);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__SOURCE);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DESTINATION);
-		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__ACCESS_PATHS);
+		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__ACCESS_PATH);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__READ_LATENCY);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_LATENCY);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
@@ -15637,7 +15637,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(hwAccessElementEClass, HwAccessElement.class, "HwAccessElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_Destination(), this.getHwDestination(), null, "destination", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_AccessPaths(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPaths", null, 0, -1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_AccessPath(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPath", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15692,7 +15692,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEOperation(getHwPath__GetContainingAccessElement(), this.getHwAccessElement(), "getContainingAccessElement", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwAccessPathEClass, HwAccessPath.class, "HwAccessPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwAccessPath_ContainingAccessElement(), this.getHwAccessElement(), this.getHwAccessElement_AccessPaths(), "containingAccessElement", null, 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessPath_ContainingAccessElement(), this.getHwAccessElement(), this.getHwAccessElement_AccessPath(), "containingAccessElement", null, 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessPath_PathElements(), this.getHwPathElement(), null, "pathElements", null, 1, -1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHwAccessPath_StartAddress(), this.getAddress(), "startAddress", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHwAccessPath_EndAddress(), this.getAddress(), "endAddress", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

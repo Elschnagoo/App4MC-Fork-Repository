@@ -36,9 +36,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getDestination <em>Destination</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getAccessPaths <em>Access Paths</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getAccessPath <em>Access Path</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getReadLatency <em>Read Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getWriteLatency <em>Write Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl#getDataRate <em>Data Rate</em>}</li>
@@ -102,14 +100,14 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	protected HwDestination destination;
 
 	/**
-	 * The cached value of the '{@link #getAccessPaths() <em>Access Paths</em>}' containment reference list.
+	 * The cached value of the '{@link #getAccessPath() <em>Access Path</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAccessPaths()
+	 * @see #getAccessPath()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwAccessPath> accessPaths;
+	protected HwAccessPath accessPath;
 
 	/**
 	 * The cached value of the '{@link #getReadLatency() <em>Read Latency</em>}' containment reference.
@@ -256,11 +254,42 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwAccessPath> getAccessPaths() {
-		if (accessPaths == null) {
-			accessPaths = new EObjectContainmentWithInverseEList<HwAccessPath>(HwAccessPath.class, this, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT);
+	public HwAccessPath getAccessPath() {
+		return accessPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAccessPath(HwAccessPath newAccessPath, NotificationChain msgs) {
+		HwAccessPath oldAccessPath = accessPath;
+		accessPath = newAccessPath;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH, oldAccessPath, newAccessPath);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return accessPaths;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAccessPath(HwAccessPath newAccessPath) {
+		if (newAccessPath != accessPath) {
+			NotificationChain msgs = null;
+			if (accessPath != null)
+				msgs = ((InternalEObject)accessPath).eInverseRemove(this, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, HwAccessPath.class, msgs);
+			if (newAccessPath != null)
+				msgs = ((InternalEObject)newAccessPath).eInverseAdd(this, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, HwAccessPath.class, msgs);
+			msgs = basicSetAccessPath(newAccessPath, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH, newAccessPath, newAccessPath));
 	}
 
 	/**
@@ -397,7 +426,6 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -405,8 +433,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE, msgs);
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAccessPaths()).basicAdd(otherEnd, msgs);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				if (accessPath != null)
+					msgs = ((InternalEObject)accessPath).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH, null, msgs);
+				return basicSetAccessPath((HwAccessPath)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -421,8 +451,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 		switch (featureID) {
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE:
 				return eBasicSetContainer(null, AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE, msgs);
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				return ((InternalEList<?>)getAccessPaths()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				return basicSetAccessPath(null, msgs);
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 				return basicSetReadLatency(null, msgs);
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
@@ -465,8 +495,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION:
 				if (resolve) return getDestination();
 				return basicGetDestination();
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				return getAccessPaths();
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				return getAccessPath();
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 				return getReadLatency();
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
@@ -496,9 +526,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION:
 				setDestination((HwDestination)newValue);
 				return;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				getAccessPaths().clear();
-				getAccessPaths().addAll((Collection<? extends HwAccessPath>)newValue);
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				setAccessPath((HwAccessPath)newValue);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 				setReadLatency((HwLatency)newValue);
@@ -530,8 +559,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION:
 				setDestination((HwDestination)null);
 				return;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				getAccessPaths().clear();
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				setAccessPath((HwAccessPath)null);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 				setReadLatency((HwLatency)null);
@@ -562,8 +591,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				return basicGetSource() != null;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DESTINATION:
 				return destination != null;
-			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS:
-				return accessPaths != null && !accessPaths.isEmpty();
+			case AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH:
+				return accessPath != null;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
 				return readLatency != null;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:

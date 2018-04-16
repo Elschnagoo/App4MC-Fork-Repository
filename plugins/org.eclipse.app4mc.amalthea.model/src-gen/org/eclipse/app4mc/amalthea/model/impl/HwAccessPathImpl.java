@@ -315,7 +315,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
-				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS, HwAccessElement.class, msgs);
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH, HwAccessElement.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}

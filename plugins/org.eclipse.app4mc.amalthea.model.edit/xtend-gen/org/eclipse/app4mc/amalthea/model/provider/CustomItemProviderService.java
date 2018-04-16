@@ -2378,7 +2378,7 @@ public class CustomItemProviderService {
         }
       }
       if (!_matched) {
-        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATHS)) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH)) {
           _matched=true;
         }
       }

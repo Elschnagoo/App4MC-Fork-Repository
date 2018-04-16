@@ -2971,7 +2971,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="source" type="am:ProcessingUnit"/>
           <xsd:element name="destination" type="am:HwDestination"/>
-          <xsd:element name="accessPaths" type="am:HwAccessPath"/>
+          <xsd:element name="accessPath" type="am:HwAccessPath"/>
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
           <xsd:element name="dataRate" type="am:DataRate"/>
