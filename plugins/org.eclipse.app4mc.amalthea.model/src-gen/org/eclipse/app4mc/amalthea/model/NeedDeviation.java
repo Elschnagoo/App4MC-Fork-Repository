@@ -15,21 +15,21 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Cost Deviation</b></em>'.
+ * A representation of the model object '<em><b>Need Deviation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CostDeviation#getDeviation <em>Deviation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.NeedDeviation#getDeviation <em>Deviation</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCostDeviation()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNeedDeviation()
  * @model
  * @generated
  */
-public interface CostDeviation extends Cost {
+public interface NeedDeviation extends Need {
 	/**
 	 * Returns the value of the '<em><b>Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -40,14 +40,14 @@ public interface CostDeviation extends Cost {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deviation</em>' containment reference.
 	 * @see #setDeviation(Deviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCostDeviation_Deviation()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNeedDeviation_Deviation()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Deviation<LongObject> getDeviation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CostDeviation#getDeviation <em>Deviation</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation#getDeviation <em>Deviation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Deviation</em>' containment reference.
@@ -56,4 +56,4 @@ public interface CostDeviation extends Cost {
 	 */
 	void setDeviation(Deviation<LongObject> value);
 
-} // CostDeviation
+} // NeedDeviation

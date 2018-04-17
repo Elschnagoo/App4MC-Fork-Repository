@@ -182,7 +182,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHWModel_Features(),
-				 AmaltheaFactory.eINSTANCE.createHwFeature()));
+				 AmaltheaFactory.eINSTANCE.createHwFeatureCategory()));
 
 		newChildDescriptors.add
 			(createChildParameter

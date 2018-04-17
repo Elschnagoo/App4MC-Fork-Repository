@@ -13,9 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -27,18 +27,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cost Deviation</b></em>'.
+ * An implementation of the model object '<em><b>Need Deviation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CostDeviationImpl#getDeviation <em>Deviation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.NeedDeviationImpl#getDeviation <em>Deviation</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CostDeviationImpl extends CostImpl implements CostDeviation {
+public class NeedDeviationImpl extends NeedImpl implements NeedDeviation {
 	/**
 	 * The cached value of the '{@link #getDeviation() <em>Deviation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostDeviationImpl() {
+	protected NeedDeviationImpl() {
 		super();
 	}
 
@@ -65,7 +65,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getCostDeviation();
+		return AmaltheaPackage.eINSTANCE.getNeedDeviation();
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 		Deviation<LongObject> oldDeviation = deviation;
 		deviation = newDeviation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_DEVIATION__DEVIATION, oldDeviation, newDeviation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_DEVIATION__DEVIATION, oldDeviation, newDeviation);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -101,14 +101,14 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 		if (newDeviation != deviation) {
 			NotificationChain msgs = null;
 			if (deviation != null)
-				msgs = ((InternalEObject)deviation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.COST_DEVIATION__DEVIATION, null, msgs);
+				msgs = ((InternalEObject)deviation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.NEED_DEVIATION__DEVIATION, null, msgs);
 			if (newDeviation != null)
-				msgs = ((InternalEObject)newDeviation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.COST_DEVIATION__DEVIATION, null, msgs);
+				msgs = ((InternalEObject)newDeviation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.NEED_DEVIATION__DEVIATION, null, msgs);
 			msgs = basicSetDeviation(newDeviation, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_DEVIATION__DEVIATION, newDeviation, newDeviation));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_DEVIATION__DEVIATION, newDeviation, newDeviation));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				return basicSetDeviation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -133,7 +133,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				return getDeviation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -148,7 +148,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				setDeviation((Deviation<LongObject>)newValue);
 				return;
 		}
@@ -163,7 +163,7 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				setDeviation((Deviation<LongObject>)null);
 				return;
 		}
@@ -178,10 +178,10 @@ public class CostDeviationImpl extends CostImpl implements CostDeviation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				return deviation != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CostDeviationImpl
+} //NeedDeviationImpl

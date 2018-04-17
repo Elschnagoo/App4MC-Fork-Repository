@@ -13,8 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -26,25 +27,29 @@ import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cost Map Entry</b></em>'.
+ * An implementation of the model object '<em><b>Execution Need Extended</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl#getTypedKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<HwFeature,Cost> {
+public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,EMap<HwFeatureCategory, Need>> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -53,24 +58,24 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * @generated
 	 * @ordered
 	 */
-	protected HwFeature key;
+	protected ProcessingUnitDefinition key;
 
 	/**
-	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
+	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected Cost value;
+	protected EMap<HwFeatureCategory, Need> value;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostMapEntryImpl() {
+	protected ExecutionNeedExtendedImpl() {
 		super();
 	}
 
@@ -81,7 +86,7 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getCostMapEntry();
+		return AmaltheaPackage.eINSTANCE.getExecutionNeedExtended();
 	}
 
 	/**
@@ -89,13 +94,13 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeature getTypedKey() {
+	public ProcessingUnitDefinition getTypedKey() {
 		if (key != null && key.eIsProxy()) {
 			InternalEObject oldKey = (InternalEObject)key;
-			key = (HwFeature)eResolveProxy(oldKey);
+			key = (ProcessingUnitDefinition)eResolveProxy(oldKey);
 			if (key != oldKey) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.COST_MAP_ENTRY__KEY, oldKey, key));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY, oldKey, key));
 			}
 		}
 		return key;
@@ -106,7 +111,7 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeature basicGetTypedKey() {
+	public ProcessingUnitDefinition basicGetTypedKey() {
 		return key;
 	}
 
@@ -115,11 +120,11 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(HwFeature newKey) {
-		HwFeature oldKey = key;
+	public void setTypedKey(ProcessingUnitDefinition newKey) {
+		ProcessingUnitDefinition oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_MAP_ENTRY__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY, oldKey, key));
 	}
 
 	/**
@@ -127,42 +132,11 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Cost getTypedValue() {
+	public EMap<HwFeatureCategory, Need> getTypedValue() {
+		if (value == null) {
+			value = new EcoreEMap<HwFeatureCategory,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE);
+		}
 		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTypedValue(Cost newValue, NotificationChain msgs) {
-		Cost oldValue = value;
-		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_MAP_ENTRY__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypedValue(Cost newValue) {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.COST_MAP_ENTRY__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.COST_MAP_ENTRY__VALUE, null, msgs);
-			msgs = basicSetTypedValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_MAP_ENTRY__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -173,8 +147,8 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
-				return basicSetTypedValue(null, msgs);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
+				return ((InternalEList<?>)getTypedValue()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,11 +161,12 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_MAP_ENTRY__KEY:
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY:
 				if (resolve) return getTypedKey();
 				return basicGetTypedKey();
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
-				return getTypedValue();
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
+				if (coreType) return getTypedValue();
+				else return getTypedValue().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -204,11 +179,11 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_MAP_ENTRY__KEY:
-				setTypedKey((HwFeature)newValue);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY:
+				setTypedKey((ProcessingUnitDefinition)newValue);
 				return;
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
-				setTypedValue((Cost)newValue);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
+				((EStructuralFeature.Setting)getTypedValue()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -222,11 +197,11 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_MAP_ENTRY__KEY:
-				setTypedKey((HwFeature)null);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY:
+				setTypedKey((ProcessingUnitDefinition)null);
 				return;
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
-				setTypedValue((Cost)null);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
+				getTypedValue().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -240,10 +215,10 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_MAP_ENTRY__KEY:
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY:
 				return key != null;
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
-				return value != null;
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
+				return value != null && !value.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -282,7 +257,7 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeature getKey() {
+	public ProcessingUnitDefinition getKey() {
 		return getTypedKey();
 	}
 
@@ -291,7 +266,7 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(HwFeature key) {
+	public void setKey(ProcessingUnitDefinition key) {
 		setTypedKey(key);
 	}
 
@@ -300,7 +275,7 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Cost getValue() {
+	public EMap<HwFeatureCategory, Need> getValue() {
 		return getTypedValue();
 	}
 
@@ -309,9 +284,10 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Cost setValue(Cost value) {
-		Cost oldValue = getValue();
-		setTypedValue(value);
+	public EMap<HwFeatureCategory, Need> setValue(EMap<HwFeatureCategory, Need> value) {
+		EMap<HwFeatureCategory, Need> oldValue = getValue();
+		getTypedValue().clear();
+		getTypedValue().addAll(value);
 		return oldValue;
 	}
 
@@ -321,9 +297,9 @@ public class CostMapEntryImpl extends AmaltheaExtendedEObjectImpl implements Bas
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<HwFeature, Cost> getEMap() {
+	public EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<HwFeature, Cost>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>>)container.eGet(eContainmentFeature());
 	}
 
-} //CostMapEntryImpl
+} //ExecutionNeedExtendedImpl

@@ -104,22 +104,22 @@ public interface AmaltheaFactory extends EFactory {
 	InstructionsConstant createInstructionsConstant();
 
 	/**
-	 * Returns a new object of class '<em>Cost Deviation</em>'.
+	 * Returns a new object of class '<em>Need Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cost Deviation</em>'.
+	 * @return a new object of class '<em>Need Deviation</em>'.
 	 * @generated
 	 */
-	CostDeviation createCostDeviation();
+	NeedDeviation createNeedDeviation();
 
 	/**
-	 * Returns a new object of class '<em>Cost Constant</em>'.
+	 * Returns a new object of class '<em>Need Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cost Constant</em>'.
+	 * @return a new object of class '<em>Need Constant</em>'.
 	 * @generated
 	 */
-	CostConstant createCostConstant();
+	NeedConstant createNeedConstant();
 
 	/**
 	 * Returns a new object of class '<em>Time</em>'.
@@ -986,6 +986,15 @@ public interface AmaltheaFactory extends EFactory {
 	Cache createCache();
 
 	/**
+	 * Returns a new object of class '<em>Hw Feature Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hw Feature Category</em>'.
+	 * @generated
+	 */
+	HwFeatureCategory createHwFeatureCategory();
+
+	/**
 	 * Returns a new object of class '<em>Hw Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -993,15 +1002,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	HwFeature createHwFeature();
-
-	/**
-	 * Returns a new object of class '<em>Hw Feature Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Hw Feature Literal</em>'.
-	 * @generated
-	 */
-	HwFeatureLiteral createHwFeatureLiteral();
 
 	/**
 	 * Returns a new object of class '<em>Hw Port</em>'.
@@ -2021,13 +2021,13 @@ public interface AmaltheaFactory extends EFactory {
 	RunnableInstructions createRunnableInstructions();
 
 	/**
-	 * Returns a new object of class '<em>Execution Cost</em>'.
+	 * Returns a new object of class '<em>Execution Need</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Execution Cost</em>'.
+	 * @return a new object of class '<em>Execution Need</em>'.
 	 * @generated
 	 */
-	ExecutionCost createExecutionCost();
+	ExecutionNeed createExecutionNeed();
 
 	/**
 	 * Returns a new object of class '<em>Mode Label Access</em>'.

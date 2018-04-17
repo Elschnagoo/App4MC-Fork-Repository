@@ -31,12 +31,12 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Cost} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Need} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CostItemProvider 
+public class NeedItemProvider 
 	extends AmaltheaExtendedItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -50,7 +50,7 @@ public class CostItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CostItemProvider(AdapterFactory adapterFactory) {
+	public NeedItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -87,7 +87,7 @@ public class CostItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Cost_type");
+		return getString("_UI_Need_type");
 	}
 	
 

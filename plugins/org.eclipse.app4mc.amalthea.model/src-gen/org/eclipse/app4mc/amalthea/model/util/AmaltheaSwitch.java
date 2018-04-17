@@ -75,9 +75,6 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
@@ -128,7 +125,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.ExecutionCost;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -151,7 +148,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
@@ -209,6 +206,9 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -554,23 +554,23 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COST: {
-				Cost cost = (Cost)theEObject;
-				T1 result = caseCost(cost);
+			case AmaltheaPackage.NEED: {
+				Need need = (Need)theEObject;
+				T1 result = caseNeed(need);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COST_DEVIATION: {
-				CostDeviation costDeviation = (CostDeviation)theEObject;
-				T1 result = caseCostDeviation(costDeviation);
-				if (result == null) result = caseCost(costDeviation);
+			case AmaltheaPackage.NEED_DEVIATION: {
+				NeedDeviation needDeviation = (NeedDeviation)theEObject;
+				T1 result = caseNeedDeviation(needDeviation);
+				if (result == null) result = caseNeed(needDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COST_CONSTANT: {
-				CostConstant costConstant = (CostConstant)theEObject;
-				T1 result = caseCostConstant(costConstant);
-				if (result == null) result = caseCost(costConstant);
+			case AmaltheaPackage.NEED_CONSTANT: {
+				NeedConstant needConstant = (NeedConstant)theEObject;
+				T1 result = caseNeedConstant(needConstant);
+				if (result == null) result = caseNeed(needConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1777,6 +1777,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.HW_FEATURE_CATEGORY: {
+				HwFeatureCategory hwFeatureCategory = (HwFeatureCategory)theEObject;
+				T1 result = caseHwFeatureCategory(hwFeatureCategory);
+				if (result == null) result = caseReferableBaseObject(hwFeatureCategory);
+				if (result == null) result = caseIAnnotatable(hwFeatureCategory);
+				if (result == null) result = caseIReferable(hwFeatureCategory);
+				if (result == null) result = caseINamed(hwFeatureCategory);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.HW_FEATURE: {
 				HwFeature hwFeature = (HwFeature)theEObject;
 				T1 result = caseHwFeature(hwFeature);
@@ -1784,16 +1794,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIAnnotatable(hwFeature);
 				if (result == null) result = caseIReferable(hwFeature);
 				if (result == null) result = caseINamed(hwFeature);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_FEATURE_LITERAL: {
-				HwFeatureLiteral hwFeatureLiteral = (HwFeatureLiteral)theEObject;
-				T1 result = caseHwFeatureLiteral(hwFeatureLiteral);
-				if (result == null) result = caseReferableBaseObject(hwFeatureLiteral);
-				if (result == null) result = caseIAnnotatable(hwFeatureLiteral);
-				if (result == null) result = caseIReferable(hwFeatureLiteral);
-				if (result == null) result = caseINamed(hwFeatureLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3182,25 +3182,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.EXECUTION_COST: {
-				ExecutionCost executionCost = (ExecutionCost)theEObject;
-				T1 result = caseExecutionCost(executionCost);
-				if (result == null) result = caseComputationItem(executionCost);
-				if (result == null) result = caseRunnableItem(executionCost);
-				if (result == null) result = caseBaseObject(executionCost);
-				if (result == null) result = caseIAnnotatable(executionCost);
+			case AmaltheaPackage.EXECUTION_NEED: {
+				ExecutionNeed executionNeed = (ExecutionNeed)theEObject;
+				T1 result = caseExecutionNeed(executionNeed);
+				if (result == null) result = caseComputationItem(executionNeed);
+				if (result == null) result = caseRunnableItem(executionNeed);
+				if (result == null) result = caseBaseObject(executionNeed);
+				if (result == null) result = caseIAnnotatable(executionNeed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.EXECUTION_COST_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> executionCostEntry = (Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>>)theEObject;
-				T1 result = caseExecutionCostEntry(executionCostEntry);
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: {
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> executionNeedExtended = (Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>>)theEObject;
+				T1 result = caseExecutionNeedExtended(executionNeedExtended);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.COST_MAP_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<HwFeature, Cost> costMapEntry = (Map.Entry<HwFeature, Cost>)theEObject;
-				T1 result = caseCostMapEntry(costMapEntry);
+			case AmaltheaPackage.NEED_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<HwFeatureCategory, Need> needEntry = (Map.Entry<HwFeatureCategory, Need>)theEObject;
+				T1 result = caseNeedEntry(needEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3899,47 +3899,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cost</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Need</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cost</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Need</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCost(Cost object) {
+	public T1 caseNeed(Need object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cost Deviation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Need Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cost Deviation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Need Deviation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCostDeviation(CostDeviation object) {
+	public T1 caseNeedDeviation(NeedDeviation object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cost Constant</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Need Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cost Constant</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Need Constant</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCostConstant(CostConstant object) {
+	public T1 caseNeedConstant(NeedConstant object) {
 		return null;
 	}
 
@@ -5909,6 +5909,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hw Feature Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hw Feature Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHwFeatureCategory(HwFeatureCategory object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Hw Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5920,21 +5935,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseHwFeature(HwFeature object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Feature Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Feature Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwFeatureLiteral(HwFeatureLiteral object) {
 		return null;
 	}
 
@@ -8099,47 +8099,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Execution Cost</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Need</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Execution Cost</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Need</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseExecutionCost(ExecutionCost object) {
+	public T1 caseExecutionNeed(ExecutionNeed object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Execution Cost Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Need Extended</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Execution Cost Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Need Extended</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseExecutionCostEntry(Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> object) {
+	public T1 caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cost Map Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Need Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cost Map Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Need Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCostMapEntry(Map.Entry<HwFeature, Cost> object) {
+	public T1 caseNeedEntry(Map.Entry<HwFeatureCategory, Need> object) {
 		return null;
 	}
 

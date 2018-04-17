@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Cost</b></em>'.
+ * A representation of the model object '<em><b>Need</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCost()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNeed()
  * @model abstract="true"
  * @generated
  */
-public interface Cost extends EObject {
+public interface Need extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,4 +38,4 @@ public interface Cost extends EObject {
 	 */
 	boolean containerNotificationRequired();
 
-} // Cost
+} // Need

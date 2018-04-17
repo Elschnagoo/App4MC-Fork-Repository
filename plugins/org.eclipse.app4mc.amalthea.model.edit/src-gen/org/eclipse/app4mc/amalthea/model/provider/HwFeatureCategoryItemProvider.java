@@ -15,50 +15,35 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CostMapEntryItemProvider 
-	extends AmaltheaExtendedItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class HwFeatureCategoryItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CostMapEntryItemProvider(AdapterFactory adapterFactory) {
+	public HwFeatureCategoryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -73,29 +58,52 @@ public class CostMapEntryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
+			addFeatureTypePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Key feature.
+	 * This adds a property descriptor for the Feature Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKeyPropertyDescriptor(Object object) {
+	protected void addFeatureTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CostMapEntry_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CostMapEntry_key_feature", "_UI_CostMapEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getCostMapEntry_Key(),
+				 getString("_UI_HwFeatureCategory_featureType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeatureCategory_featureType_feature", "_UI_HwFeatureCategory_type"),
+				 AmaltheaPackage.eINSTANCE.getHwFeatureCategory_FeatureType(),
 				 true,
 				 false,
-				 true,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwFeatureCategory_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeatureCategory_description_feature", "_UI_HwFeatureCategory_type"),
+				 AmaltheaPackage.eINSTANCE.getHwFeatureCategory_Description(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -112,7 +120,7 @@ public class CostMapEntryItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCostMapEntry_Value());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHwFeatureCategory_Features());
 		}
 		return childrenFeatures;
 	}
@@ -131,14 +139,14 @@ public class CostMapEntryItemProvider
 	}
 
 	/**
-	 * This returns CostMapEntry.gif.
+	 * This returns HwFeatureCategory.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CostMapEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/HwFeatureCategory"));
 	}
 
 	/**
@@ -157,19 +165,14 @@ public class CostMapEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
-		Map.Entry<?, ?> costMapEntry = (Map.Entry<?, ?>)object;
-		return "" + costMapEntry.getKey() + " -> " + costMapEntry.getValue();
-	}
-
-	/**
-	 * @generated NOT
-	 */
 	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getCostMapEntryItemProviderText(object, getTextGen(object));
+	public String getText(Object object) {
+		String label = ((HwFeatureCategory)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_HwFeatureCategory_type") :
+			getString("_UI_HwFeatureCategory_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -181,8 +184,12 @@ public class CostMapEntryItemProvider
 	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
-			case AmaltheaPackage.COST_MAP_ENTRY__VALUE:
+		switch (notification.getFeatureID(HwFeatureCategory.class)) {
+			case AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURE_TYPE:
+			case AmaltheaPackage.HW_FEATURE_CATEGORY__DESCRIPTION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -198,7 +205,7 @@ public class CostMapEntryItemProvider
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getCostMapEntryItemProviderNotifications(notification);
+				.getHwFeatureCategoryItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}
@@ -219,24 +226,8 @@ public class CostMapEntryItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getCostMapEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createCostDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getCostMapEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createCostConstant()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
+				(AmaltheaPackage.eINSTANCE.getHwFeatureCategory_Features(),
+				 AmaltheaFactory.eINSTANCE.createHwFeature()));
 	}
 
 }

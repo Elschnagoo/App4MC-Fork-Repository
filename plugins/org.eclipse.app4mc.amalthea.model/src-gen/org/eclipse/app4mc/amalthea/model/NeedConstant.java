@@ -15,21 +15,21 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Cost Constant</b></em>'.
+ * A representation of the model object '<em><b>Need Constant</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CostConstant#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.NeedConstant#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCostConstant()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNeedConstant()
  * @model
  * @generated
  */
-public interface CostConstant extends Cost {
+public interface NeedConstant extends Need {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -41,14 +41,14 @@ public interface CostConstant extends Cost {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCostConstant_Value()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getNeedConstant_Value()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
 	long getValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CostConstant#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.NeedConstant#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -57,4 +57,4 @@ public interface CostConstant extends Cost {
 	 */
 	void setValue(long value);
 
-} // CostConstant
+} // NeedConstant

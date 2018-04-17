@@ -64,7 +64,7 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 
 	/**
 	 * Returns the value of the '<em><b>Features</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Features</em>' reference list isn't clear,
@@ -76,7 +76,7 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 	 * @model
 	 * @generated
 	 */
-	EList<HwFeatureLiteral> getFeatures();
+	EList<HwFeature> getFeatures();
 
 	/**
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.

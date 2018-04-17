@@ -1340,23 +1340,23 @@ public interface AmaltheaPackage extends EPackage {
 	int INSTRUCTIONS_CONSTANT_OPERATION_COUNT = INSTRUCTIONS_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CostImpl <em>Cost</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.NeedImpl <em>Need</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.CostImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCost()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.NeedImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeed()
 	 * @generated
 	 */
-	int COST = 18;
+	int NEED = 18;
 
 	/**
-	 * The number of structural features of the '<em>Cost</em>' class.
+	 * The number of structural features of the '<em>Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_FEATURE_COUNT = 0;
+	int NEED_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -1365,26 +1365,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST___CONTAINER_NOTIFICATION_REQUIRED = 0;
+	int NEED___CONTAINER_NOTIFICATION_REQUIRED = 0;
 
 	/**
-	 * The number of operations of the '<em>Cost</em>' class.
+	 * The number of operations of the '<em>Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_OPERATION_COUNT = 1;
+	int NEED_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CostDeviationImpl <em>Cost Deviation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.NeedDeviationImpl <em>Need Deviation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.CostDeviationImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCostDeviation()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.NeedDeviationImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeedDeviation()
 	 * @generated
 	 */
-	int COST_DEVIATION = 19;
+	int NEED_DEVIATION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Deviation</b></em>' containment reference.
@@ -1393,16 +1393,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_DEVIATION__DEVIATION = COST_FEATURE_COUNT + 0;
+	int NEED_DEVIATION__DEVIATION = NEED_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Cost Deviation</em>' class.
+	 * The number of structural features of the '<em>Need Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_DEVIATION_FEATURE_COUNT = COST_FEATURE_COUNT + 1;
+	int NEED_DEVIATION_FEATURE_COUNT = NEED_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -1411,26 +1411,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = COST___CONTAINER_NOTIFICATION_REQUIRED;
+	int NEED_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = NEED___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
-	 * The number of operations of the '<em>Cost Deviation</em>' class.
+	 * The number of operations of the '<em>Need Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_DEVIATION_OPERATION_COUNT = COST_OPERATION_COUNT + 0;
+	int NEED_DEVIATION_OPERATION_COUNT = NEED_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CostConstantImpl <em>Cost Constant</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.NeedConstantImpl <em>Need Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.CostConstantImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCostConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.NeedConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeedConstant()
 	 * @generated
 	 */
-	int COST_CONSTANT = 20;
+	int NEED_CONSTANT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1439,16 +1439,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_CONSTANT__VALUE = COST_FEATURE_COUNT + 0;
+	int NEED_CONSTANT__VALUE = NEED_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Cost Constant</em>' class.
+	 * The number of structural features of the '<em>Need Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_CONSTANT_FEATURE_COUNT = COST_FEATURE_COUNT + 1;
+	int NEED_CONSTANT_FEATURE_COUNT = NEED_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -1457,16 +1457,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = COST___CONTAINER_NOTIFICATION_REQUIRED;
+	int NEED_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = NEED___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
-	 * The number of operations of the '<em>Cost Constant</em>' class.
+	 * The number of operations of the '<em>Need Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_CONSTANT_OPERATION_COUNT = COST_OPERATION_COUNT + 0;
+	int NEED_CONSTANT_OPERATION_COUNT = NEED_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.QuantityImpl <em>Quantity</em>}' class.
@@ -11878,6 +11878,124 @@ public interface AmaltheaPackage extends EPackage {
 	int CACHE_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureCategoryImpl <em>Hw Feature Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.HwFeatureCategoryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureCategory()
+	 * @generated
+	 */
+	int HW_FEATURE_CATEGORY = 152;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__CUSTOM_PROPERTIES = REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__NAME = REFERABLE_BASE_OBJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Feature Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__FEATURE_TYPE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__DESCRIPTION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY__FEATURES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Hw Feature Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
+
+	/**
+	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
+
+	/**
+	 * The operation id for the '<em>Encode</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The number of operations of the '<em>Hw Feature Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl <em>Hw Feature</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11885,7 +12003,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeature()
 	 * @generated
 	 */
-	int HW_FEATURE = 152;
+	int HW_FEATURE = 153;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11915,31 +12033,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_FEATURE__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Feature Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Containing Category</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE__FEATURE_TYPE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int HW_FEATURE__CONTAINING_CATEGORY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE__DESCRIPTION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE__LITERALS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int HW_FEATURE__VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Hw Feature</em>' class.
@@ -11948,16 +12057,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME;
+	int HW_FEATURE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -11987,122 +12087,13 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_FEATURE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
-	 * The number of operations of the '<em>Hw Feature</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureLiteralImpl <em>Hw Feature Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.HwFeatureLiteralImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureLiteral()
-	 * @generated
-	 */
-	int HW_FEATURE_LITERAL = 153;
-
-	/**
-	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__CUSTOM_PROPERTIES = REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__NAME = REFERABLE_BASE_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Containing Feature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__CONTAINING_FEATURE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__VALUE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Latency</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL__LATENCY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Hw Feature Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL___BASIC_COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
-
-	/**
-	 * The operation id for the '<em>Encode</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_FEATURE_LITERAL___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
-
-	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE_LITERAL___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
+	int HW_FEATURE___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>To String</em>' operation.
@@ -12111,16 +12102,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE_LITERAL___TO_STRING = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 1;
+	int HW_FEATURE___TO_STRING = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Hw Feature Literal</em>' class.
+	 * The number of operations of the '<em>Hw Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_FEATURE_LITERAL_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 2;
+	int HW_FEATURE_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl <em>Hw Port</em>}' class.
@@ -23868,14 +23859,14 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_INSTRUCTIONS_ENTRY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionCostImpl <em>Execution Cost</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedImpl <em>Execution Need</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ExecutionCostImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionCost()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionNeed()
 	 * @generated
 	 */
-	int EXECUTION_COST = 298;
+	int EXECUTION_NEED = 298;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23884,7 +23875,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
+	int EXECUTION_NEED__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' map.
@@ -23893,7 +23884,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST__DEFAULT = COMPUTATION_ITEM_FEATURE_COUNT + 0;
+	int EXECUTION_NEED__DEFAULT = COMPUTATION_ITEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Extended</b></em>' map.
@@ -23902,16 +23893,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST__EXTENDED = COMPUTATION_ITEM_FEATURE_COUNT + 1;
+	int EXECUTION_NEED__EXTENDED = COMPUTATION_ITEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Execution Cost</em>' class.
+	 * The number of structural features of the '<em>Execution Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 2;
+	int EXECUTION_NEED_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Container Notification Required</em>' operation.
@@ -23920,26 +23911,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
+	int EXECUTION_NEED___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
-	 * The number of operations of the '<em>Execution Cost</em>' class.
+	 * The number of operations of the '<em>Execution Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_OPERATION_COUNT = COMPUTATION_ITEM_OPERATION_COUNT + 0;
+	int EXECUTION_NEED_OPERATION_COUNT = COMPUTATION_ITEM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionCostEntryImpl <em>Execution Cost Entry</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl <em>Execution Need Extended</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ExecutionCostEntryImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionCostEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionNeedExtended()
 	 * @generated
 	 */
-	int EXECUTION_COST_ENTRY = 299;
+	int EXECUTION_NEED_EXTENDED = 299;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -23948,7 +23939,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_ENTRY__KEY = 0;
+	int EXECUTION_NEED_EXTENDED__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' map.
@@ -23957,35 +23948,35 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_ENTRY__VALUE = 1;
+	int EXECUTION_NEED_EXTENDED__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Execution Cost Entry</em>' class.
+	 * The number of structural features of the '<em>Execution Need Extended</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_ENTRY_FEATURE_COUNT = 2;
+	int EXECUTION_NEED_EXTENDED_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Execution Cost Entry</em>' class.
+	 * The number of operations of the '<em>Execution Need Extended</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_COST_ENTRY_OPERATION_COUNT = 0;
+	int EXECUTION_NEED_EXTENDED_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl <em>Cost Map Entry</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl <em>Need Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCostMapEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeedEntry()
 	 * @generated
 	 */
-	int COST_MAP_ENTRY = 300;
+	int NEED_ENTRY = 300;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -23994,7 +23985,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_MAP_ENTRY__KEY = 0;
+	int NEED_ENTRY__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -24003,25 +23994,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COST_MAP_ENTRY__VALUE = 1;
+	int NEED_ENTRY__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Cost Map Entry</em>' class.
+	 * The number of structural features of the '<em>Need Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_MAP_ENTRY_FEATURE_COUNT = 2;
+	int NEED_ENTRY_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Cost Map Entry</em>' class.
+	 * The number of operations of the '<em>Need Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COST_MAP_ENTRY_OPERATION_COUNT = 0;
+	int NEED_ENTRY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelAccessImpl <em>Mode Label Access</em>}' class.
@@ -28462,66 +28453,66 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getInstructionsConstant_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Cost <em>Cost</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Need <em>Need</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cost</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Cost
+	 * @return the meta object for class '<em>Need</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Need
 	 * @generated
 	 */
-	EClass getCost();
+	EClass getNeed();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Cost#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Need#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Cost#containerNotificationRequired()
+	 * @see org.eclipse.app4mc.amalthea.model.Need#containerNotificationRequired()
 	 * @generated
 	 */
-	EOperation getCost__ContainerNotificationRequired();
+	EOperation getNeed__ContainerNotificationRequired();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CostDeviation <em>Cost Deviation</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation <em>Need Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cost Deviation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CostDeviation
+	 * @return the meta object for class '<em>Need Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.NeedDeviation
 	 * @generated
 	 */
-	EClass getCostDeviation();
+	EClass getNeedDeviation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.CostDeviation#getDeviation <em>Deviation</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation#getDeviation <em>Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Deviation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CostDeviation#getDeviation()
-	 * @see #getCostDeviation()
+	 * @see org.eclipse.app4mc.amalthea.model.NeedDeviation#getDeviation()
+	 * @see #getNeedDeviation()
 	 * @generated
 	 */
-	EReference getCostDeviation_Deviation();
+	EReference getNeedDeviation_Deviation();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CostConstant <em>Cost Constant</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.NeedConstant <em>Need Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cost Constant</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CostConstant
+	 * @return the meta object for class '<em>Need Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.NeedConstant
 	 * @generated
 	 */
-	EClass getCostConstant();
+	EClass getNeedConstant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.CostConstant#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.NeedConstant#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CostConstant#getValue()
-	 * @see #getCostConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.NeedConstant#getValue()
+	 * @see #getNeedConstant()
 	 * @generated
 	 */
-	EAttribute getCostConstant_Value();
+	EAttribute getNeedConstant_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Quantity <em>Quantity</em>}'.
@@ -32372,6 +32363,49 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getCache_Definition();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory <em>Hw Feature Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hw Feature Category</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory
+	 * @generated
+	 */
+	EClass getHwFeatureCategory();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatureType <em>Feature Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Feature Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatureType()
+	 * @see #getHwFeatureCategory()
+	 * @generated
+	 */
+	EAttribute getHwFeatureCategory_FeatureType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getDescription()
+	 * @see #getHwFeatureCategory()
+	 * @generated
+	 */
+	EAttribute getHwFeatureCategory_Description();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatures <em>Features</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Features</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatures()
+	 * @see #getHwFeatureCategory()
+	 * @generated
+	 */
+	EReference getHwFeatureCategory_Features();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwFeature <em>Hw Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32382,100 +32416,46 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getHwFeature();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getFeatureType <em>Feature Type</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getContainingCategory <em>Containing Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Feature Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getFeatureType()
+	 * @return the meta object for the container reference '<em>Containing Category</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getContainingCategory()
 	 * @see #getHwFeature()
 	 * @generated
 	 */
-	EAttribute getHwFeature_FeatureType();
+	EReference getHwFeature_ContainingCategory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getDescription()
-	 * @see #getHwFeature()
-	 * @generated
-	 */
-	EAttribute getHwFeature_Description();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getLiterals <em>Literals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Literals</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getLiterals()
-	 * @see #getHwFeature()
-	 * @generated
-	 */
-	EReference getHwFeature_Literals();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral <em>Hw Feature Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Hw Feature Literal</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral
-	 * @generated
-	 */
-	EClass getHwFeatureLiteral();
-
-	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature <em>Containing Feature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Containing Feature</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature()
-	 * @see #getHwFeatureLiteral()
-	 * @generated
-	 */
-	EReference getHwFeatureLiteral_ContainingFeature();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getValue()
-	 * @see #getHwFeatureLiteral()
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getValue()
+	 * @see #getHwFeature()
 	 * @generated
 	 */
-	EReference getHwFeatureLiteral_Value();
+	EReference getHwFeature_Value();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getLatency <em>Latency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Latency</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getLatency()
-	 * @see #getHwFeatureLiteral()
-	 * @generated
-	 */
-	EReference getHwFeatureLiteral_Latency();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#computeUniqueName() <em>Compute Unique Name</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#computeUniqueName() <em>Compute Unique Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Compute Unique Name</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#computeUniqueName()
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#computeUniqueName()
 	 * @generated
 	 */
-	EOperation getHwFeatureLiteral__ComputeUniqueName();
+	EOperation getHwFeature__ComputeUniqueName();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#toString() <em>To String</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#toString() <em>To String</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>To String</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#toString()
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#toString()
 	 * @generated
 	 */
-	EOperation getHwFeatureLiteral__ToString();
+	EOperation getHwFeature__ToString();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwPort <em>Hw Port</em>}'.
@@ -37432,48 +37412,48 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnableInstructionsEntry_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ExecutionCost <em>Execution Cost</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed <em>Execution Need</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Execution Cost</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ExecutionCost
+	 * @return the meta object for class '<em>Execution Need</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ExecutionNeed
 	 * @generated
 	 */
-	EClass getExecutionCost();
+	EClass getExecutionNeed();
 
 	/**
-	 * Returns the meta object for the map '{@link org.eclipse.app4mc.amalthea.model.ExecutionCost#getDefault <em>Default</em>}'.
+	 * Returns the meta object for the map '{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getDefault <em>Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>Default</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ExecutionCost#getDefault()
-	 * @see #getExecutionCost()
+	 * @see org.eclipse.app4mc.amalthea.model.ExecutionNeed#getDefault()
+	 * @see #getExecutionNeed()
 	 * @generated
 	 */
-	EReference getExecutionCost_Default();
+	EReference getExecutionNeed_Default();
 
 	/**
-	 * Returns the meta object for the map '{@link org.eclipse.app4mc.amalthea.model.ExecutionCost#getExtended <em>Extended</em>}'.
+	 * Returns the meta object for the map '{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getExtended <em>Extended</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>Extended</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ExecutionCost#getExtended()
-	 * @see #getExecutionCost()
+	 * @see org.eclipse.app4mc.amalthea.model.ExecutionNeed#getExtended()
+	 * @see #getExecutionNeed()
 	 * @generated
 	 */
-	EReference getExecutionCost_Extended();
+	EReference getExecutionNeed_Extended();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Execution Cost Entry</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Execution Need Extended</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Execution Cost Entry</em>'.
+	 * @return the meta object for class '<em>Execution Need Extended</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition" keyRequired="true"
-	 *        valueMapType="org.eclipse.app4mc.amalthea.model.CostMapEntry&lt;org.eclipse.app4mc.amalthea.model.HwFeature, org.eclipse.app4mc.amalthea.model.Cost&gt;"
+	 *        valueMapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.app4mc.amalthea.model.HwFeatureCategory, org.eclipse.app4mc.amalthea.model.Need&gt;"
 	 * @generated
 	 */
-	EClass getExecutionCostEntry();
+	EClass getExecutionNeedExtended();
 
 	/**
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
@@ -37481,10 +37461,10 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getExecutionCostEntry()
+	 * @see #getExecutionNeedExtended()
 	 * @generated
 	 */
-	EReference getExecutionCostEntry_Key();
+	EReference getExecutionNeedExtended_Key();
 
 	/**
 	 * Returns the meta object for the map '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -37492,22 +37472,22 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>Value</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getExecutionCostEntry()
+	 * @see #getExecutionNeedExtended()
 	 * @generated
 	 */
-	EReference getExecutionCostEntry_Value();
+	EReference getExecutionNeedExtended_Value();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Cost Map Entry</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Need Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cost Map Entry</em>'.
+	 * @return the meta object for class '<em>Need Entry</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="org.eclipse.app4mc.amalthea.model.HwFeature" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.Cost" valueContainment="true" valueRequired="true"
+	 * @model keyType="org.eclipse.app4mc.amalthea.model.HwFeatureCategory" keyRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.Need" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
-	EClass getCostMapEntry();
+	EClass getNeedEntry();
 
 	/**
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
@@ -37515,10 +37495,10 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getCostMapEntry()
+	 * @see #getNeedEntry()
 	 * @generated
 	 */
-	EReference getCostMapEntry_Key();
+	EReference getNeedEntry_Key();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -37526,10 +37506,10 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getCostMapEntry()
+	 * @see #getNeedEntry()
 	 * @generated
 	 */
-	EReference getCostMapEntry_Value();
+	EReference getNeedEntry_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess <em>Mode Label Access</em>}'.

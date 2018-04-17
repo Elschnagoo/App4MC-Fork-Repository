@@ -15,50 +15,33 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.NeedDeviation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionCostEntryItemProvider 
-	extends AmaltheaExtendedItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class NeedDeviationItemProvider extends NeedItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionCostEntryItemProvider(AdapterFactory adapterFactory) {
+	public NeedDeviationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -73,31 +56,8 @@ public class ExecutionCostEntryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Key feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ExecutionCostEntry_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionCostEntry_key_feature", "_UI_ExecutionCostEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Key(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -112,7 +72,7 @@ public class ExecutionCostEntryItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Value());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getNeedDeviation_Deviation());
 		}
 		return childrenFeatures;
 	}
@@ -131,14 +91,14 @@ public class ExecutionCostEntryItemProvider
 	}
 
 	/**
-	 * This returns ExecutionCostEntry.gif.
+	 * This returns NeedDeviation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionCostEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/NeedDeviation"));
 	}
 
 	/**
@@ -158,8 +118,7 @@ public class ExecutionCostEntryItemProvider
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		Map.Entry<?, ?> executionCostEntry = (Map.Entry<?, ?>)object;
-		return "" + executionCostEntry.getKey() + " -> " + executionCostEntry.getValue();
+		return getString("_UI_NeedDeviation_type");
 	}
 
 	/**
@@ -168,7 +127,7 @@ public class ExecutionCostEntryItemProvider
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getExecutionCostEntryItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getNeedDeviationItemProviderText(object, getTextGen(object));
 	}
 
 	/**
@@ -181,8 +140,8 @@ public class ExecutionCostEntryItemProvider
 	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
-			case AmaltheaPackage.EXECUTION_COST_ENTRY__VALUE:
+		switch (notification.getFeatureID(NeedDeviation.class)) {
+			case AmaltheaPackage.NEED_DEVIATION__DEVIATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -198,7 +157,7 @@ public class ExecutionCostEntryItemProvider
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getExecutionCostEntryItemProviderNotifications(notification);
+				.getNeedDeviationItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}
@@ -219,19 +178,8 @@ public class ExecutionCostEntryItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getExecutionCostEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getCostMapEntry())));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AmaltheaEditPlugin.INSTANCE;
+				(AmaltheaPackage.eINSTANCE.getNeedDeviation_Deviation(),
+				 AmaltheaFactory.eINSTANCE.createDeviation()));
 	}
 
 }

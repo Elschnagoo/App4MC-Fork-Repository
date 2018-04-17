@@ -856,7 +856,7 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="Cost">
+  <xsd:complexType abstract="true" name="Need">
     <xsd:annotation>
       <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
     </xsd:annotation>
@@ -866,29 +866,29 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
-  <xsd:element name="Cost" type="am:Cost">
+  <xsd:element name="Need" type="am:Need">
     <xsd:annotation>
       <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="CostDeviation">
+  <xsd:complexType name="NeedDeviation">
     <xsd:complexContent>
-      <xsd:extension base="am:Cost">
+      <xsd:extension base="am:Need">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="deviation" type="am:Deviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="CostDeviation" type="am:CostDeviation"/>
-  <xsd:complexType name="CostConstant">
+  <xsd:element name="NeedDeviation" type="am:NeedDeviation"/>
+  <xsd:complexType name="NeedConstant">
     <xsd:complexContent>
-      <xsd:extension base="am:Cost">
+      <xsd:extension base="am:Need">
         <xsd:attribute name="value" type="xsd:long"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="CostConstant" type="am:CostConstant"/>
+  <xsd:element name="NeedConstant" type="am:NeedConstant"/>
   <xsd:complexType abstract="true" name="Quantity">
     <xsd:annotation>
       <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
@@ -2780,7 +2780,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="definitions" type="am:HwDefinition"/>
-          <xsd:element name="features" type="am:HwFeature"/>
+          <xsd:element name="features" type="am:HwFeatureCategory"/>
           <xsd:element name="structures" type="am:HwStructure"/>
           <xsd:element name="domains" type="am:HwDomain"/>
         </xsd:choice>
@@ -2888,31 +2888,30 @@ entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Cache" type="am:Cache"/>
-  <xsd:complexType name="HwFeature">
+  <xsd:complexType name="HwFeatureCategory">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="literals" type="am:HwFeatureLiteral"/>
+          <xsd:element name="features" type="am:HwFeature"/>
         </xsd:choice>
         <xsd:attribute name="featureType" type="am:HwFeatureType"/>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwFeature" type="am:HwFeature"/>
-  <xsd:complexType name="HwFeatureLiteral">
+  <xsd:element name="HwFeatureCategory" type="am:HwFeatureCategory"/>
+  <xsd:complexType name="HwFeature">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="containingFeature" type="am:HwFeature"/>
+          <xsd:element name="containingCategory" type="am:HwFeatureCategory"/>
           <xsd:element name="value" type="am:Value"/>
-          <xsd:element name="latency" type="am:HwLatency"/>
         </xsd:choice>
-        <xsd:attribute name="containingFeature" type="xsd:string"/>
+        <xsd:attribute name="containingCategory" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwFeatureLiteral" type="am:HwFeatureLiteral"/>
+  <xsd:element name="HwFeature" type="am:HwFeature"/>
   <xsd:complexType name="HwPort">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -3032,7 +3031,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="features" type="am:HwFeatureLiteral"/>
+          <xsd:element name="features" type="am:HwFeature"/>
           <xsd:element name="classifiers" type="am:CoreClassifier"/>
         </xsd:choice>
         <xsd:attribute name="puType" type="am:PuType"/>
@@ -5214,39 +5213,39 @@ which are belonging together.</xsd:documentation>
     <xsd:attribute name="key" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="RunnableInstructionsEntry" type="am:RunnableInstructionsEntry"/>
-  <xsd:complexType name="ExecutionCost">
+  <xsd:complexType name="ExecutionNeed">
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="default" type="am:CostMapEntry"/>
-          <xsd:element name="extended" type="am:ExecutionCostEntry"/>
+          <xsd:element name="default" type="am:NeedEntry"/>
+          <xsd:element name="extended" type="am:ExecutionNeedExtended"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ExecutionCost" type="am:ExecutionCost"/>
-  <xsd:complexType name="ExecutionCostEntry">
+  <xsd:element name="ExecutionNeed" type="am:ExecutionNeed"/>
+  <xsd:complexType name="ExecutionNeedExtended">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
-      <xsd:element name="value" type="am:CostMapEntry"/>
+      <xsd:element name="value" type="am:NeedEntry"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="key" type="xsd:string"/>
   </xsd:complexType>
-  <xsd:element name="ExecutionCostEntry" type="am:ExecutionCostEntry"/>
-  <xsd:complexType name="CostMapEntry">
+  <xsd:element name="ExecutionNeedExtended" type="am:ExecutionNeedExtended"/>
+  <xsd:complexType name="NeedEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="key" type="am:HwFeature"/>
-      <xsd:element name="value" type="am:Cost"/>
+      <xsd:element name="key" type="am:HwFeatureCategory"/>
+      <xsd:element name="value" type="am:Need"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="key" type="xsd:string"/>
   </xsd:complexType>
-  <xsd:element name="CostMapEntry" type="am:CostMapEntry"/>
+  <xsd:element name="NeedEntry" type="am:NeedEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>

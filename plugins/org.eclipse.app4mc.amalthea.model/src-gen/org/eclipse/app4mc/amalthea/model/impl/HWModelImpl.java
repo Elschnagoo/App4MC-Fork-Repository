@@ -18,7 +18,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
-import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -66,7 +66,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwFeature> features;
+	protected EList<HwFeatureCategory> features;
 
 	/**
 	 * The cached value of the '{@link #getStructures() <em>Structures</em>}' containment reference list.
@@ -124,9 +124,9 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwFeature> getFeatures() {
+	public EList<HwFeatureCategory> getFeatures() {
 		if (features == null) {
-			features = new EObjectContainmentEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.HW_MODEL__FEATURES);
+			features = new EObjectContainmentEList<HwFeatureCategory>(HwFeatureCategory.class, this, AmaltheaPackage.HW_MODEL__FEATURES);
 		}
 		return features;
 	}
@@ -210,7 +210,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 				return;
 			case AmaltheaPackage.HW_MODEL__FEATURES:
 				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends HwFeature>)newValue);
+				getFeatures().addAll((Collection<? extends HwFeatureCategory>)newValue);
 				return;
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				getStructures().clear();

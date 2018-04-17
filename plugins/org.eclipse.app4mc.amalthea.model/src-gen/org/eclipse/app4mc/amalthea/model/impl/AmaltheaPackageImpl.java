@@ -87,9 +87,6 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -144,7 +141,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.ExecutionCost;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -170,7 +167,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
@@ -239,6 +236,9 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -559,21 +559,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass costEClass = null;
+	private EClass needEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass costDeviationEClass = null;
+	private EClass needDeviationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass costConstantEClass = null;
+	private EClass needConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1497,14 +1497,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwFeatureEClass = null;
+	private EClass hwFeatureCategoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass hwFeatureLiteralEClass = null;
+	private EClass hwFeatureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2519,21 +2519,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass executionCostEClass = null;
+	private EClass executionNeedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass executionCostEntryEClass = null;
+	private EClass executionNeedExtendedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass costMapEntryEClass = null;
+	private EClass needEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3781,8 +3781,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCost() {
-		return costEClass;
+	public EClass getNeed() {
+		return needEClass;
 	}
 
 	/**
@@ -3790,8 +3790,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getCost__ContainerNotificationRequired() {
-		return costEClass.getEOperations().get(0);
+	public EOperation getNeed__ContainerNotificationRequired() {
+		return needEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3799,8 +3799,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCostDeviation() {
-		return costDeviationEClass;
+	public EClass getNeedDeviation() {
+		return needDeviationEClass;
 	}
 
 	/**
@@ -3808,8 +3808,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCostDeviation_Deviation() {
-		return (EReference)costDeviationEClass.getEStructuralFeatures().get(0);
+	public EReference getNeedDeviation_Deviation() {
+		return (EReference)needDeviationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3817,8 +3817,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCostConstant() {
-		return costConstantEClass;
+	public EClass getNeedConstant() {
+		return needConstantEClass;
 	}
 
 	/**
@@ -3826,8 +3826,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCostConstant_Value() {
-		return (EAttribute)costConstantEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNeedConstant_Value() {
+		return (EAttribute)needConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7111,6 +7111,42 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHwFeatureCategory() {
+		return hwFeatureCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwFeatureCategory_FeatureType() {
+		return (EAttribute)hwFeatureCategoryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHwFeatureCategory_Description() {
+		return (EAttribute)hwFeatureCategoryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHwFeatureCategory_Features() {
+		return (EReference)hwFeatureCategoryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHwFeature() {
 		return hwFeatureEClass;
 	}
@@ -7120,8 +7156,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHwFeature_FeatureType() {
-		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(0);
+	public EReference getHwFeature_ContainingCategory() {
+		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7129,8 +7165,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHwFeature_Description() {
-		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(1);
+	public EReference getHwFeature_Value() {
+		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7138,8 +7174,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwFeature_Literals() {
-		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(2);
+	public EOperation getHwFeature__ComputeUniqueName() {
+		return hwFeatureEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -7147,53 +7183,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwFeatureLiteral() {
-		return hwFeatureLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwFeatureLiteral_ContainingFeature() {
-		return (EReference)hwFeatureLiteralEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwFeatureLiteral_Value() {
-		return (EReference)hwFeatureLiteralEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getHwFeatureLiteral_Latency() {
-		return (EReference)hwFeatureLiteralEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getHwFeatureLiteral__ComputeUniqueName() {
-		return hwFeatureLiteralEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getHwFeatureLiteral__ToString() {
-		return hwFeatureLiteralEClass.getEOperations().get(1);
+	public EOperation getHwFeature__ToString() {
+		return hwFeatureEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -11377,8 +11368,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExecutionCost() {
-		return executionCostEClass;
+	public EClass getExecutionNeed() {
+		return executionNeedEClass;
 	}
 
 	/**
@@ -11386,8 +11377,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionCost_Default() {
-		return (EReference)executionCostEClass.getEStructuralFeatures().get(0);
+	public EReference getExecutionNeed_Default() {
+		return (EReference)executionNeedEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11395,8 +11386,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionCost_Extended() {
-		return (EReference)executionCostEClass.getEStructuralFeatures().get(1);
+	public EReference getExecutionNeed_Extended() {
+		return (EReference)executionNeedEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11404,8 +11395,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExecutionCostEntry() {
-		return executionCostEntryEClass;
+	public EClass getExecutionNeedExtended() {
+		return executionNeedExtendedEClass;
 	}
 
 	/**
@@ -11413,8 +11404,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionCostEntry_Key() {
-		return (EReference)executionCostEntryEClass.getEStructuralFeatures().get(0);
+	public EReference getExecutionNeedExtended_Key() {
+		return (EReference)executionNeedExtendedEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11422,8 +11413,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionCostEntry_Value() {
-		return (EReference)executionCostEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getExecutionNeedExtended_Value() {
+		return (EReference)executionNeedExtendedEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11431,8 +11422,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCostMapEntry() {
-		return costMapEntryEClass;
+	public EClass getNeedEntry() {
+		return needEntryEClass;
 	}
 
 	/**
@@ -11440,8 +11431,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCostMapEntry_Key() {
-		return (EReference)costMapEntryEClass.getEStructuralFeatures().get(0);
+	public EReference getNeedEntry_Key() {
+		return (EReference)needEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11449,8 +11440,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCostMapEntry_Value() {
-		return (EReference)costMapEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getNeedEntry_Value() {
+		return (EReference)needEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13171,14 +13162,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
-		costEClass = createEClass(COST);
-		createEOperation(costEClass, COST___CONTAINER_NOTIFICATION_REQUIRED);
+		needEClass = createEClass(NEED);
+		createEOperation(needEClass, NEED___CONTAINER_NOTIFICATION_REQUIRED);
 
-		costDeviationEClass = createEClass(COST_DEVIATION);
-		createEReference(costDeviationEClass, COST_DEVIATION__DEVIATION);
+		needDeviationEClass = createEClass(NEED_DEVIATION);
+		createEReference(needDeviationEClass, NEED_DEVIATION__DEVIATION);
 
-		costConstantEClass = createEClass(COST_CONSTANT);
-		createEAttribute(costConstantEClass, COST_CONSTANT__VALUE);
+		needConstantEClass = createEClass(NEED_CONSTANT);
+		createEAttribute(needConstantEClass, NEED_CONSTANT__VALUE);
 
 		quantityEClass = createEClass(QUANTITY);
 		createEOperation(quantityEClass, QUANTITY___CONTAINER_NOTIFICATION_REQUIRED);
@@ -13675,17 +13666,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		cacheEClass = createEClass(CACHE);
 		createEReference(cacheEClass, CACHE__DEFINITION);
 
-		hwFeatureEClass = createEClass(HW_FEATURE);
-		createEAttribute(hwFeatureEClass, HW_FEATURE__FEATURE_TYPE);
-		createEAttribute(hwFeatureEClass, HW_FEATURE__DESCRIPTION);
-		createEReference(hwFeatureEClass, HW_FEATURE__LITERALS);
+		hwFeatureCategoryEClass = createEClass(HW_FEATURE_CATEGORY);
+		createEAttribute(hwFeatureCategoryEClass, HW_FEATURE_CATEGORY__FEATURE_TYPE);
+		createEAttribute(hwFeatureCategoryEClass, HW_FEATURE_CATEGORY__DESCRIPTION);
+		createEReference(hwFeatureCategoryEClass, HW_FEATURE_CATEGORY__FEATURES);
 
-		hwFeatureLiteralEClass = createEClass(HW_FEATURE_LITERAL);
-		createEReference(hwFeatureLiteralEClass, HW_FEATURE_LITERAL__CONTAINING_FEATURE);
-		createEReference(hwFeatureLiteralEClass, HW_FEATURE_LITERAL__VALUE);
-		createEReference(hwFeatureLiteralEClass, HW_FEATURE_LITERAL__LATENCY);
-		createEOperation(hwFeatureLiteralEClass, HW_FEATURE_LITERAL___COMPUTE_UNIQUE_NAME);
-		createEOperation(hwFeatureLiteralEClass, HW_FEATURE_LITERAL___TO_STRING);
+		hwFeatureEClass = createEClass(HW_FEATURE);
+		createEReference(hwFeatureEClass, HW_FEATURE__CONTAINING_CATEGORY);
+		createEReference(hwFeatureEClass, HW_FEATURE__VALUE);
+		createEOperation(hwFeatureEClass, HW_FEATURE___COMPUTE_UNIQUE_NAME);
+		createEOperation(hwFeatureEClass, HW_FEATURE___TO_STRING);
 
 		hwPortEClass = createEClass(HW_PORT);
 		createEAttribute(hwPortEClass, HW_PORT__BIT_WIDTH);
@@ -14295,17 +14285,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__KEY);
 		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__VALUE);
 
-		executionCostEClass = createEClass(EXECUTION_COST);
-		createEReference(executionCostEClass, EXECUTION_COST__DEFAULT);
-		createEReference(executionCostEClass, EXECUTION_COST__EXTENDED);
+		executionNeedEClass = createEClass(EXECUTION_NEED);
+		createEReference(executionNeedEClass, EXECUTION_NEED__DEFAULT);
+		createEReference(executionNeedEClass, EXECUTION_NEED__EXTENDED);
 
-		executionCostEntryEClass = createEClass(EXECUTION_COST_ENTRY);
-		createEReference(executionCostEntryEClass, EXECUTION_COST_ENTRY__KEY);
-		createEReference(executionCostEntryEClass, EXECUTION_COST_ENTRY__VALUE);
+		executionNeedExtendedEClass = createEClass(EXECUTION_NEED_EXTENDED);
+		createEReference(executionNeedExtendedEClass, EXECUTION_NEED_EXTENDED__KEY);
+		createEReference(executionNeedExtendedEClass, EXECUTION_NEED_EXTENDED__VALUE);
 
-		costMapEntryEClass = createEClass(COST_MAP_ENTRY);
-		createEReference(costMapEntryEClass, COST_MAP_ENTRY__KEY);
-		createEReference(costMapEntryEClass, COST_MAP_ENTRY__VALUE);
+		needEntryEClass = createEClass(NEED_ENTRY);
+		createEReference(needEntryEClass, NEED_ENTRY__KEY);
+		createEReference(needEntryEClass, NEED_ENTRY__VALUE);
 
 		modeLabelAccessEClass = createEClass(MODE_LABEL_ACCESS);
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__DATA);
@@ -14592,8 +14582,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
 		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
-		costDeviationEClass.getESuperTypes().add(this.getCost());
-		costConstantEClass.getESuperTypes().add(this.getCost());
+		needDeviationEClass.getESuperTypes().add(this.getNeed());
+		needConstantEClass.getESuperTypes().add(this.getNeed());
 		abstractTimeEClass.getESuperTypes().add(this.getTimeComparable());
 		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		timeEClass.getESuperTypes().add(this.getQuantity());
@@ -14768,8 +14758,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryEClass.getESuperTypes().add(this.getHwDestination());
 		cacheEClass.getESuperTypes().add(this.getHwModule());
 		cacheEClass.getESuperTypes().add(this.getHwPathElement());
+		hwFeatureCategoryEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwFeatureEClass.getESuperTypes().add(this.getReferableBaseObject());
-		hwFeatureLiteralEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwPortEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwPortEClass.getESuperTypes().add(this.getITaggable());
 		connectionHandlerEClass.getESuperTypes().add(this.getHwModule());
@@ -14922,7 +14912,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableInstructionsEClass.getESuperTypes().add(this.getComputationItem());
-		executionCostEClass.getESuperTypes().add(this.getComputationItem());
+		executionNeedEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
@@ -15053,18 +15043,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(costEClass, Cost.class, "Cost", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(needEClass, Need.class, "Need", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getCost__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getNeed__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(costDeviationEClass, CostDeviation.class, "CostDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(needDeviationEClass, NeedDeviation.class, "NeedDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getLongObject());
 		g1.getETypeArguments().add(g2);
-		initEReference(getCostDeviation_Deviation(), g1, null, "deviation", null, 0, 1, CostDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeedDeviation_Deviation(), g1, null, "deviation", null, 0, 1, NeedDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(costConstantEClass, CostConstant.class, "CostConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCostConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, CostConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(needConstantEClass, NeedConstant.class, "NeedConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNeedConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, NeedConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(quantityEClass, Quantity.class, "Quantity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -15560,7 +15550,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(hwModelEClass, HWModel.class, "HWModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWModel_Definitions(), this.getHwDefinition(), null, "definitions", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_Features(), this.getHwFeature(), null, "features", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_Features(), this.getHwFeatureCategory(), null, "features", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWModel_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWModel_Domains(), this.getHwDomain(), null, "domains", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -15598,19 +15588,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCache_Definition(), this.getCacheDefinition(), null, "definition", null, 0, 1, Cache.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(hwFeatureCategoryEClass, HwFeatureCategory.class, "HwFeatureCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHwFeatureCategory_FeatureType(), this.getHwFeatureType(), "featureType", null, 0, 1, HwFeatureCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwFeatureCategory_Description(), theEcorePackage.getEString(), "description", null, 0, 1, HwFeatureCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwFeatureCategory_Features(), this.getHwFeature(), this.getHwFeature_ContainingCategory(), "features", null, 0, -1, HwFeatureCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(hwFeatureEClass, HwFeature.class, "HwFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHwFeature_FeatureType(), this.getHwFeatureType(), "featureType", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHwFeature_Description(), theEcorePackage.getEString(), "description", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwFeature_Literals(), this.getHwFeatureLiteral(), this.getHwFeatureLiteral_ContainingFeature(), "literals", null, 0, -1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwFeature_ContainingCategory(), this.getHwFeatureCategory(), this.getHwFeatureCategory_Features(), "containingCategory", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwFeature_Value(), this.getValue(), null, "value", null, 1, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(hwFeatureLiteralEClass, HwFeatureLiteral.class, "HwFeatureLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwFeatureLiteral_ContainingFeature(), this.getHwFeature(), this.getHwFeature_Literals(), "containingFeature", null, 0, 1, HwFeatureLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwFeatureLiteral_Value(), this.getValue(), null, "value", null, 1, 1, HwFeatureLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwFeatureLiteral_Latency(), this.getHwLatency(), null, "latency", null, 0, 1, HwFeatureLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(getHwFeature__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getHwFeatureLiteral__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getHwFeatureLiteral__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getHwFeature__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwPortEClass, HwPort.class, "HwPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHwPort_BitWidth(), theEcorePackage.getEInt(), "bitWidth", "0", 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15659,7 +15648,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(processingUnitDefinitionEClass, ProcessingUnitDefinition.class, "ProcessingUnitDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessingUnitDefinition_PuType(), this.getPuType(), "puType", null, 0, 1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessingUnitDefinition_Features(), this.getHwFeatureLiteral(), null, "features", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessingUnitDefinition_Features(), this.getHwFeature(), null, "features", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessingUnitDefinition_Classifiers(), this.getCoreClassifier(), null, "classifiers", null, 0, -1, ProcessingUnitDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16262,17 +16251,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableInstructionsEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnableInstructionsEntry_Value(), this.getInstructions(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(executionCostEClass, ExecutionCost.class, "ExecutionCost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionCost_Default(), this.getCostMapEntry(), null, "default", null, 0, -1, ExecutionCost.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionCost_Extended(), this.getExecutionCostEntry(), null, "extended", null, 0, -1, ExecutionCost.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(executionNeedEClass, ExecutionNeed.class, "ExecutionNeed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutionNeed_Default(), this.getNeedEntry(), null, "default", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionNeed_Extended(), this.getExecutionNeedExtended(), null, "extended", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(executionCostEntryEClass, Map.Entry.class, "ExecutionCostEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionCostEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionCostEntry_Value(), this.getCostMapEntry(), null, "value", null, 1, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(executionNeedExtendedEClass, Map.Entry.class, "ExecutionNeedExtended", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutionNeedExtended_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionNeedExtended_Value(), this.getNeedEntry(), null, "value", null, 1, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(costMapEntryEClass, Map.Entry.class, "CostMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCostMapEntry_Key(), this.getHwFeature(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCostMapEntry_Value(), this.getCost(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(needEntryEClass, Map.Entry.class, "NeedEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNeedEntry_Key(), this.getHwFeatureCategory(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeedEntry_Value(), this.getNeed(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

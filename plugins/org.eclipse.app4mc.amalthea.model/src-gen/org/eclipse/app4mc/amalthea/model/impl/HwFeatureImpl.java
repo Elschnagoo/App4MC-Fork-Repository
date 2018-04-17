@@ -12,12 +12,14 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
+import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
-import org.eclipse.app4mc.amalthea.model.HwFeatureType;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.IReferable;
+import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
+import org.eclipse.app4mc.amalthea.model.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -29,8 +31,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,63 +41,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getFeatureType <em>Feature Type</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getContainingCategory <em>Containing Category</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature {
 	/**
-	 * The default value of the '{@link #getFeatureType() <em>Feature Type</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatureType()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final HwFeatureType FEATURE_TYPE_EDEFAULT = HwFeatureType._UNDEFINED_;
-
-	/**
-	 * The cached value of the '{@link #getFeatureType() <em>Feature Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatureType()
-	 * @generated
-	 * @ordered
-	 */
-	protected HwFeatureType featureType = FEATURE_TYPE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected String description = DESCRIPTION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLiterals()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<HwFeatureLiteral> literals;
+	protected Value value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,8 +82,9 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureType getFeatureType() {
-		return featureType;
+	public HwFeatureCategory getContainingCategory() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY) return null;
+		return (HwFeatureCategory)eContainer();
 	}
 
 	/**
@@ -131,11 +92,9 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFeatureType(HwFeatureType newFeatureType) {
-		HwFeatureType oldFeatureType = featureType;
-		featureType = newFeatureType == null ? FEATURE_TYPE_EDEFAULT : newFeatureType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__FEATURE_TYPE, oldFeatureType, featureType));
+	public HwFeatureCategory basicGetContainingCategory() {
+		if (eContainerFeatureID() != AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY) return null;
+		return (HwFeatureCategory)eInternalContainer();
 	}
 
 	/**
@@ -143,8 +102,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescription() {
-		return description;
+	public Value getValue() {
+		return value;
 	}
 
 	/**
@@ -152,23 +111,14 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__DESCRIPTION, oldDescription, description));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<HwFeatureLiteral> getLiterals() {
-		if (literals == null) {
-			literals = new EObjectContainmentWithInverseEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.HW_FEATURE__LITERALS, AmaltheaPackage.HW_FEATURE_LITERAL__CONTAINING_FEATURE);
+	public NotificationChain basicSetValue(Value newValue, NotificationChain msgs) {
+		Value oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, oldValue, newValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return literals;
+		return msgs;
 	}
 
 	/**
@@ -176,12 +126,78 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	public void setValue(Value newValue) {
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, newValue, newValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String computeUniqueName() {
+		HwFeatureCategory _containingCategory = this.getContainingCategory();
+		String _name = null;
+		if (_containingCategory!=null) {
+			_name=_containingCategory.getName();
+		}
+		return this.basicComputeUniqueNameWithPrefix(_name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		HwFeatureCategory _containingCategory = this.getContainingCategory();
+		String _name = null;
+		if (_containingCategory!=null) {
+			_name=_containingCategory.getName();
+		}
+		final String featureName = _name;
+		String _xifexpression = null;
+		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(featureName);
+		if (_isNullOrEmpty) {
+			_xifexpression = "<category>";
+		}
+		else {
+			_xifexpression = featureName;
+		}
+		String _plus = (_xifexpression + "::");
+		String _xifexpression_1 = null;
+		boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(this.getName());
+		if (_isNullOrEmpty_1) {
+			_xifexpression_1 = "<feature>";
+		}
+		else {
+			_xifexpression_1 = this.getName();
+		}
+		return (_plus + _xifexpression_1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLiterals()).basicAdd(otherEnd, msgs);
+			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -194,8 +210,10 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				return ((InternalEList<?>)getLiterals()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
+				return eBasicSetContainer(null, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
+			case AmaltheaPackage.HW_FEATURE__VALUE:
+				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -206,14 +224,27 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURES, HwFeatureCategory.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__FEATURE_TYPE:
-				return getFeatureType();
-			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
-				return getDescription();
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				return getLiterals();
+			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
+				if (resolve) return getContainingCategory();
+				return basicGetContainingCategory();
+			case AmaltheaPackage.HW_FEATURE__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -223,19 +254,11 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__FEATURE_TYPE:
-				setFeatureType((HwFeatureType)newValue);
-				return;
-			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				getLiterals().clear();
-				getLiterals().addAll((Collection<? extends HwFeatureLiteral>)newValue);
+			case AmaltheaPackage.HW_FEATURE__VALUE:
+				setValue((Value)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,14 +272,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__FEATURE_TYPE:
-				setFeatureType(FEATURE_TYPE_EDEFAULT);
-				return;
-			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				getLiterals().clear();
+			case AmaltheaPackage.HW_FEATURE__VALUE:
+				setValue((Value)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -270,12 +287,10 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__FEATURE_TYPE:
-				return featureType != FEATURE_TYPE_EDEFAULT;
-			case AmaltheaPackage.HW_FEATURE__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case AmaltheaPackage.HW_FEATURE__LITERALS:
-				return literals != null && !literals.isEmpty();
+			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
+				return basicGetContainingCategory() != null;
+			case AmaltheaPackage.HW_FEATURE__VALUE:
+				return value != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -286,16 +301,36 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * @generated
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == IReferable.class) {
+			switch (baseOperationID) {
+				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == ReferableBaseObject.class) {
+			switch (baseOperationID) {
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (featureType: ");
-		result.append(featureType);
-		result.append(", description: ");
-		result.append(description);
-		result.append(')');
-		return result.toString();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME:
+				return computeUniqueName();
+			case AmaltheaPackage.HW_FEATURE___TO_STRING:
+				return toString();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //HwFeatureImpl

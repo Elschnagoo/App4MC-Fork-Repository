@@ -48,9 +48,6 @@ import org.eclipse.app4mc.amalthea.model.Condition;
 import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -75,6 +72,7 @@ import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -88,7 +86,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -125,6 +123,9 @@ import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
@@ -151,7 +152,6 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -190,10 +190,10 @@ import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
-import org.eclipse.app4mc.amalthea.model.impl.CostMapEntryImpl;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
-import org.eclipse.app4mc.amalthea.model.impl.ExecutionCostEntryImpl;
+import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
+import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
 import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -390,17 +390,17 @@ public class CustomItemProviderService {
     return _switchResult;
   }
   
-  private static String getCostText(final Cost cost) {
+  private static String getNeedText(final Need need) {
     String _switchResult = null;
     boolean _matched = false;
-    if (cost instanceof CostConstant) {
+    if (need instanceof NeedConstant) {
       _matched=true;
-      _switchResult = CustomItemProviderService.getCostConstantItemProviderText(cost, null);
+      _switchResult = CustomItemProviderService.getNeedConstantItemProviderText(need, null);
     }
     if (!_matched) {
-      if (cost instanceof CostDeviation) {
+      if (need instanceof NeedDeviation) {
         _matched=true;
-        _switchResult = CustomItemProviderService.getCostDeviationItemProviderText(cost, null);
+        _switchResult = CustomItemProviderService.getNeedDeviationItemProviderText(need, null);
       }
     }
     return _switchResult;
@@ -880,10 +880,10 @@ public class CustomItemProviderService {
   }
   
   /**
-   * CostConstantItemProvider
+   * NeedConstantItemProvider
    */
-  public static String getCostConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof CostConstant)) {
+  public static String getNeedConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof NeedConstant)) {
       final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
       String _xifexpression = null;
       boolean _equals = Objects.equal(feature, "value");
@@ -893,18 +893,18 @@ public class CustomItemProviderService {
         _xifexpression = (feature + " -- ");
       }
       final String s1 = _xifexpression;
-      final String s2 = Long.toString(((CostConstant)object).getValue());
-      return ((s1 + "cost (constant): ") + s2);
+      final String s2 = Long.toString(((NeedConstant)object).getValue());
+      return ((s1 + "need (constant): ") + s2);
     } else {
       return defaultText;
     }
   }
   
   /**
-   * CostDeviationItemProvider
+   * NeedDeviationItemProvider
    */
-  public static String getCostDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof CostDeviation)) {
+  public static String getNeedDeviationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof NeedDeviation)) {
       final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
       String _xifexpression = null;
       boolean _equals = Objects.equal(feature, "value");
@@ -915,8 +915,8 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       Deviation<LongObject> _deviation = null;
-      if (((CostDeviation)object)!=null) {
-        _deviation=((CostDeviation)object).getDeviation();
+      if (((NeedDeviation)object)!=null) {
+        _deviation=((NeedDeviation)object).getDeviation();
       }
       Distribution<LongObject> _distribution = null;
       if (_deviation!=null) {
@@ -939,17 +939,17 @@ public class CustomItemProviderService {
         _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
       }
       final String s2 = _xifexpression_1;
-      return ((s1 + "cost (deviation): ") + s2);
+      return ((s1 + "need (deviation): ") + s2);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getCostDeviationItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getNeedDeviationItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(CostDeviation.class);
+    int _featureID = notification.getFeatureID(NeedDeviation.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.COST_DEVIATION__DEVIATION)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.NEED_DEVIATION__DEVIATION)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
@@ -2280,11 +2280,34 @@ public class CustomItemProviderService {
   }
   
   /**
-   * HwFeatureLiteralItemProvider
+   * HwFeatureCategoryItemProvider
    */
-  public static String getHwFeatureLiteralItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof HwFeatureLiteral)) {
-      return ((HwFeatureLiteral)object).toString();
+  public static List<ViewerNotification> getHwFeatureCategoryItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(HwFeatureCategory.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.HW_FEATURE_CATEGORY__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURES)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
+   * HwFeatureItemProvider
+   */
+  public static String getHwFeatureItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof HwFeature)) {
+      return ((HwFeature)object).toString();
     } else {
       return defaultText;
     }
@@ -3609,9 +3632,9 @@ public class CustomItemProviderService {
       }
     }
     if (!_matched) {
-      if (item instanceof RunnableInstructions) {
+      if (item instanceof ExecutionNeed) {
         _matched=true;
-        _switchResult = "Runnable Instructions";
+        _switchResult = "Execution Need";
       }
     }
     if (!_matched) {
@@ -4132,6 +4155,29 @@ public class CustomItemProviderService {
   }
   
   /**
+   * ModeItemProvider
+   */
+  public static List<ViewerNotification> getModeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Mode.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE__NAME)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE__LITERALS)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+      list.add(_viewerNotification);
+    }
+    return list;
+  }
+  
+  /**
    * ModeLiteralItemProvider
    */
   public static String getModeLiteralItemProviderText(final Object object, final String defaultText) {
@@ -4645,13 +4691,13 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ExecutionCostEntryItemProvider
+   * ExecutionNeedExtendedItemProvider
    */
-  public static String getExecutionCostEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ExecutionCostEntryImpl)) {
+  public static String getExecutionNeedExtendedItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ExecutionNeedExtendedImpl)) {
       ProcessingUnitDefinition _key = null;
-      if (((ExecutionCostEntryImpl)object)!=null) {
-        _key=((ExecutionCostEntryImpl)object).getKey();
+      if (((ExecutionNeedExtendedImpl)object)!=null) {
+        _key=((ExecutionNeedExtendedImpl)object).getKey();
       }
       String _name = null;
       if (_key!=null) {
@@ -4666,25 +4712,25 @@ public class CustomItemProviderService {
         _xifexpression = typeName;
       }
       final String s1 = _xifexpression;
-      final String s2 = "Costs (Map)";
+      final String s2 = "Needs (Map)";
       return ((s1 + " -- ") + s2);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getExecutionCostEntryItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getExecutionNeedExtendedItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Map.Entry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_COST_ENTRY__KEY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_COST_ENTRY__VALUE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
@@ -4695,24 +4741,24 @@ public class CustomItemProviderService {
   }
   
   /**
-   * CostMapEntryItemProvider
+   * NeedEntryItemProvider
    */
-  public static String getCostMapEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof CostMapEntryImpl)) {
-      HwFeature _key = null;
-      if (((CostMapEntryImpl)object)!=null) {
-        _key=((CostMapEntryImpl)object).getKey();
+  public static String getNeedEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof NeedEntryImpl)) {
+      HwFeatureCategory _key = null;
+      if (((NeedEntryImpl)object)!=null) {
+        _key=((NeedEntryImpl)object).getKey();
       }
       String _name = null;
       if (_key!=null) {
         _name=_key.getName();
       }
       final String featureName = _name;
-      Cost _value = null;
-      if (((CostMapEntryImpl)object)!=null) {
-        _value=((CostMapEntryImpl)object).getValue();
+      Need _value = null;
+      if (((NeedEntryImpl)object)!=null) {
+        _value=((NeedEntryImpl)object).getValue();
       }
-      final Cost cost = _value;
+      final Need need = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(featureName);
       if (_isNullOrEmpty) {
@@ -4722,10 +4768,10 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((cost == null)) {
-        _xifexpression_1 = "<cost>";
+      if ((need == null)) {
+        _xifexpression_1 = "<need>";
       } else {
-        _xifexpression_1 = CustomItemProviderService.getCostText(cost);
+        _xifexpression_1 = CustomItemProviderService.getNeedText(need);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);
@@ -4734,18 +4780,18 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getCostMapEntryItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getNeedEntryItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Map.Entry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.COST_MAP_ENTRY__KEY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.NEED_ENTRY__KEY)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.COST_MAP_ENTRY__VALUE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.NEED_ENTRY__VALUE)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);

@@ -16,26 +16,26 @@ import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Execution Cost</b></em>'.
+ * A representation of the model object '<em><b>Execution Need</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionCost#getDefault <em>Default</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionCost#getExtended <em>Extended</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getDefault <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getExtended <em>Extended</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionCost()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed()
  * @model
  * @generated
  */
-public interface ExecutionCost extends ComputationItem {
+public interface ExecutionNeed extends ComputationItem {
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' map.
-	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.HwFeature},
-	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.Cost},
+	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory},
+	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.Need},
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Default</em>' map isn't clear,
@@ -43,16 +43,16 @@ public interface ExecutionCost extends ComputationItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' map.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionCost_Default()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.CostMapEntry&lt;org.eclipse.app4mc.amalthea.model.HwFeature, org.eclipse.app4mc.amalthea.model.Cost&gt;"
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Default()
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.app4mc.amalthea.model.HwFeatureCategory, org.eclipse.app4mc.amalthea.model.Need&gt;"
 	 * @generated
 	 */
-	EMap<HwFeature, Cost> getDefault();
+	EMap<HwFeatureCategory, Need> getDefault();
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' map.
 	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
-	 * and the value is of type list of {@link java.util.Map.Entry<org.eclipse.app4mc.amalthea.model.HwFeature, org.eclipse.app4mc.amalthea.model.Cost>},
+	 * and the value is of type list of {@link java.util.Map.Entry<org.eclipse.app4mc.amalthea.model.HwFeatureCategory, org.eclipse.app4mc.amalthea.model.Need>},
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' map isn't clear,
@@ -60,10 +60,10 @@ public interface ExecutionCost extends ComputationItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' map.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionCost_Extended()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.ExecutionCostEntry&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.CostMapEntry&gt;"
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Extended()
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.ExecutionNeedExtended&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.NeedEntry&gt;"
 	 * @generated
 	 */
-	EMap<ProcessingUnitDefinition, EMap<HwFeature, Cost>> getExtended();
+	EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getExtended();
 
-} // ExecutionCost
+} // ExecutionNeed

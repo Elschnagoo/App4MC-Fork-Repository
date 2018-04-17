@@ -52,7 +52,7 @@ public interface HWModel extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
@@ -64,7 +64,7 @@ public interface HWModel extends BaseObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<HwFeature> getFeatures();
+	EList<HwFeatureCategory> getFeatures();
 
 	/**
 	 * Returns the value of the '<em><b>Structures</b></em>' containment reference list.

@@ -71,9 +71,6 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
@@ -118,7 +115,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.ExecutionCost;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -137,7 +134,7 @@ import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
@@ -192,6 +189,9 @@ import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -394,8 +394,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
-			case AmaltheaPackage.COST_DEVIATION: return createCostDeviation();
-			case AmaltheaPackage.COST_CONSTANT: return createCostConstant();
+			case AmaltheaPackage.NEED_DEVIATION: return createNeedDeviation();
+			case AmaltheaPackage.NEED_CONSTANT: return createNeedConstant();
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
 			case AmaltheaPackage.VOLTAGE: return createVoltage();
@@ -493,8 +493,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PROCESSING_UNIT: return createProcessingUnit();
 			case AmaltheaPackage.MEMORY: return createMemory();
 			case AmaltheaPackage.CACHE: return createCache();
+			case AmaltheaPackage.HW_FEATURE_CATEGORY: return createHwFeatureCategory();
 			case AmaltheaPackage.HW_FEATURE: return createHwFeature();
-			case AmaltheaPackage.HW_FEATURE_LITERAL: return createHwFeatureLiteral();
 			case AmaltheaPackage.HW_PORT: return createHwPort();
 			case AmaltheaPackage.CONNECTION_HANDLER: return createConnectionHandler();
 			case AmaltheaPackage.HW_CONNECTION: return createHwConnection();
@@ -611,9 +611,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: return createRunnableInstructions();
 			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: return (EObject)createRunnableInstructionsEntry();
-			case AmaltheaPackage.EXECUTION_COST: return createExecutionCost();
-			case AmaltheaPackage.EXECUTION_COST_ENTRY: return (EObject)createExecutionCostEntry();
-			case AmaltheaPackage.COST_MAP_ENTRY: return (EObject)createCostMapEntry();
+			case AmaltheaPackage.EXECUTION_NEED: return createExecutionNeed();
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: return (EObject)createExecutionNeedExtended();
+			case AmaltheaPackage.NEED_ENTRY: return (EObject)createNeedEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
@@ -990,9 +990,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CostDeviation createCostDeviation() {
-		CostDeviationImpl costDeviation = new CostDeviationImpl();
-		return costDeviation;
+	public NeedDeviation createNeedDeviation() {
+		NeedDeviationImpl needDeviation = new NeedDeviationImpl();
+		return needDeviation;
 	}
 
 	/**
@@ -1000,9 +1000,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CostConstant createCostConstant() {
-		CostConstantImpl costConstant = new CostConstantImpl();
-		return costConstant;
+	public NeedConstant createNeedConstant() {
+		NeedConstantImpl needConstant = new NeedConstantImpl();
+		return needConstant;
 	}
 
 	/**
@@ -1980,9 +1980,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeature createHwFeature() {
-		HwFeatureImpl hwFeature = new HwFeatureImpl();
-		return hwFeature;
+	public HwFeatureCategory createHwFeatureCategory() {
+		HwFeatureCategoryImpl hwFeatureCategory = new HwFeatureCategoryImpl();
+		return hwFeatureCategory;
 	}
 
 	/**
@@ -1990,9 +1990,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureLiteral createHwFeatureLiteral() {
-		HwFeatureLiteralImpl hwFeatureLiteral = new HwFeatureLiteralImpl();
-		return hwFeatureLiteral;
+	public HwFeature createHwFeature() {
+		HwFeatureImpl hwFeature = new HwFeatureImpl();
+		return hwFeature;
 	}
 
 	/**
@@ -3160,9 +3160,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionCost createExecutionCost() {
-		ExecutionCostImpl executionCost = new ExecutionCostImpl();
-		return executionCost;
+	public ExecutionNeed createExecutionNeed() {
+		ExecutionNeedImpl executionNeed = new ExecutionNeedImpl();
+		return executionNeed;
 	}
 
 	/**
@@ -3170,9 +3170,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> createExecutionCostEntry() {
-		ExecutionCostEntryImpl executionCostEntry = new ExecutionCostEntryImpl();
-		return executionCostEntry;
+	public Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> createExecutionNeedExtended() {
+		ExecutionNeedExtendedImpl executionNeedExtended = new ExecutionNeedExtendedImpl();
+		return executionNeedExtended;
 	}
 
 	/**
@@ -3180,9 +3180,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<HwFeature, Cost> createCostMapEntry() {
-		CostMapEntryImpl costMapEntry = new CostMapEntryImpl();
-		return costMapEntry;
+	public Map.Entry<HwFeatureCategory, Need> createNeedEntry() {
+		NeedEntryImpl needEntry = new NeedEntryImpl();
+		return needEntry;
 	}
 
 	/**

@@ -15,33 +15,50 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.CostDeviation} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CostDeviationItemProvider extends CostItemProvider {
+public class ExecutionNeedExtendedItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CostDeviationItemProvider(AdapterFactory adapterFactory) {
+	public ExecutionNeedExtendedItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,8 +73,31 @@ public class CostDeviationItemProvider extends CostItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addKeyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExecutionNeedExtended_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionNeedExtended_key_feature", "_UI_ExecutionNeedExtended_type"),
+				 AmaltheaPackage.eINSTANCE.getExecutionNeedExtended_Key(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -72,7 +112,7 @@ public class CostDeviationItemProvider extends CostItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getCostDeviation_Deviation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended_Value());
 		}
 		return childrenFeatures;
 	}
@@ -91,14 +131,14 @@ public class CostDeviationItemProvider extends CostItemProvider {
 	}
 
 	/**
-	 * This returns CostDeviation.gif.
+	 * This returns ExecutionNeedExtended.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CostDeviation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionNeedExtended"));
 	}
 
 	/**
@@ -118,7 +158,8 @@ public class CostDeviationItemProvider extends CostItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_CostDeviation_type");
+		Map.Entry<?, ?> executionNeedExtended = (Map.Entry<?, ?>)object;
+		return "" + executionNeedExtended.getKey() + " -> " + executionNeedExtended.getValue();
 	}
 
 	/**
@@ -127,7 +168,7 @@ public class CostDeviationItemProvider extends CostItemProvider {
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getCostDeviationItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getExecutionNeedExtendedItemProviderText(object, getTextGen(object));
 	}
 
 	/**
@@ -140,8 +181,8 @@ public class CostDeviationItemProvider extends CostItemProvider {
 	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CostDeviation.class)) {
-			case AmaltheaPackage.COST_DEVIATION__DEVIATION:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -157,7 +198,7 @@ public class CostDeviationItemProvider extends CostItemProvider {
 
 		// delegate to custom item provider and execute locally
 		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getCostDeviationItemProviderNotifications(notification);
+				.getExecutionNeedExtendedItemProviderNotifications(notification);
 		for (final ViewerNotification vn : notifications) {
 			fireNotifyChanged(vn);
 		}
@@ -178,8 +219,19 @@ public class CostDeviationItemProvider extends CostItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getCostDeviation_Deviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended_Value(),
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getNeedEntry())));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

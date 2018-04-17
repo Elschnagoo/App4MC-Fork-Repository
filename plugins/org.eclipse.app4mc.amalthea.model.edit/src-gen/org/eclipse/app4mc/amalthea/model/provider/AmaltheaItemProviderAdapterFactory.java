@@ -266,49 +266,49 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CostDeviation} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedDeviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostDeviationItemProvider costDeviationItemProvider;
+	protected NeedDeviationItemProvider needDeviationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CostDeviation}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NeedDeviation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCostDeviationAdapter() {
-		if (costDeviationItemProvider == null) {
-			costDeviationItemProvider = new CostDeviationItemProvider(this);
+	public Adapter createNeedDeviationAdapter() {
+		if (needDeviationItemProvider == null) {
+			needDeviationItemProvider = new NeedDeviationItemProvider(this);
 		}
 
-		return costDeviationItemProvider;
+		return needDeviationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CostConstant} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedConstant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostConstantItemProvider costConstantItemProvider;
+	protected NeedConstantItemProvider needConstantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CostConstant}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NeedConstant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCostConstantAdapter() {
-		if (costConstantItemProvider == null) {
-			costConstantItemProvider = new CostConstantItemProvider(this);
+	public Adapter createNeedConstantAdapter() {
+		if (needConstantItemProvider == null) {
+			needConstantItemProvider = new NeedConstantItemProvider(this);
 		}
 
-		return costConstantItemProvider;
+		return needConstantItemProvider;
 	}
 
 	/**
@@ -2543,6 +2543,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HwFeatureCategoryItemProvider hwFeatureCategoryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHwFeatureCategoryAdapter() {
+		if (hwFeatureCategoryItemProvider == null) {
+			hwFeatureCategoryItemProvider = new HwFeatureCategoryItemProvider(this);
+		}
+
+		return hwFeatureCategoryItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwFeature} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2563,29 +2586,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return hwFeatureItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HwFeatureLiteralItemProvider hwFeatureLiteralItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createHwFeatureLiteralAdapter() {
-		if (hwFeatureLiteralItemProvider == null) {
-			hwFeatureLiteralItemProvider = new HwFeatureLiteralItemProvider(this);
-		}
-
-		return hwFeatureLiteralItemProvider;
 	}
 
 	/**
@@ -5257,26 +5257,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ExecutionCost} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ExecutionNeed} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionCostItemProvider executionCostItemProvider;
+	protected ExecutionNeedItemProvider executionNeedItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ExecutionCost}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ExecutionNeed}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExecutionCostAdapter() {
-		if (executionCostItemProvider == null) {
-			executionCostItemProvider = new ExecutionCostItemProvider(this);
+	public Adapter createExecutionNeedAdapter() {
+		if (executionNeedItemProvider == null) {
+			executionNeedItemProvider = new ExecutionNeedItemProvider(this);
 		}
 
-		return executionCostItemProvider;
+		return executionNeedItemProvider;
 	}
 
 	/**
@@ -5285,7 +5285,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionCostEntryItemProvider executionCostEntryItemProvider;
+	protected ExecutionNeedExtendedItemProvider executionNeedExtendedItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
@@ -5294,12 +5294,12 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * @generated
 	 */
 	@Override
-	public Adapter createExecutionCostEntryAdapter() {
-		if (executionCostEntryItemProvider == null) {
-			executionCostEntryItemProvider = new ExecutionCostEntryItemProvider(this);
+	public Adapter createExecutionNeedExtendedAdapter() {
+		if (executionNeedExtendedItemProvider == null) {
+			executionNeedExtendedItemProvider = new ExecutionNeedExtendedItemProvider(this);
 		}
 
-		return executionCostEntryItemProvider;
+		return executionNeedExtendedItemProvider;
 	}
 
 	/**
@@ -5308,7 +5308,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostMapEntryItemProvider costMapEntryItemProvider;
+	protected NeedEntryItemProvider needEntryItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
@@ -5317,12 +5317,12 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * @generated
 	 */
 	@Override
-	public Adapter createCostMapEntryAdapter() {
-		if (costMapEntryItemProvider == null) {
-			costMapEntryItemProvider = new CostMapEntryItemProvider(this);
+	public Adapter createNeedEntryAdapter() {
+		if (needEntryItemProvider == null) {
+			needEntryItemProvider = new NeedEntryItemProvider(this);
 		}
 
-		return costMapEntryItemProvider;
+		return needEntryItemProvider;
 	}
 
 	/**
@@ -6260,8 +6260,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
-		if (costDeviationItemProvider != null) costDeviationItemProvider.dispose();
-		if (costConstantItemProvider != null) costConstantItemProvider.dispose();
+		if (needDeviationItemProvider != null) needDeviationItemProvider.dispose();
+		if (needConstantItemProvider != null) needConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
 		if (voltageItemProvider != null) voltageItemProvider.dispose();
@@ -6359,8 +6359,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (processingUnitItemProvider != null) processingUnitItemProvider.dispose();
 		if (memoryItemProvider != null) memoryItemProvider.dispose();
 		if (cacheItemProvider != null) cacheItemProvider.dispose();
+		if (hwFeatureCategoryItemProvider != null) hwFeatureCategoryItemProvider.dispose();
 		if (hwFeatureItemProvider != null) hwFeatureItemProvider.dispose();
-		if (hwFeatureLiteralItemProvider != null) hwFeatureLiteralItemProvider.dispose();
 		if (hwPortItemProvider != null) hwPortItemProvider.dispose();
 		if (connectionHandlerItemProvider != null) connectionHandlerItemProvider.dispose();
 		if (hwConnectionItemProvider != null) hwConnectionItemProvider.dispose();
@@ -6477,9 +6477,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (runnableInstructionsItemProvider != null) runnableInstructionsItemProvider.dispose();
 		if (runnableInstructionsEntryItemProvider != null) runnableInstructionsEntryItemProvider.dispose();
-		if (executionCostItemProvider != null) executionCostItemProvider.dispose();
-		if (executionCostEntryItemProvider != null) executionCostEntryItemProvider.dispose();
-		if (costMapEntryItemProvider != null) costMapEntryItemProvider.dispose();
+		if (executionNeedItemProvider != null) executionNeedItemProvider.dispose();
+		if (executionNeedExtendedItemProvider != null) executionNeedExtendedItemProvider.dispose();
+		if (needEntryItemProvider != null) needEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();

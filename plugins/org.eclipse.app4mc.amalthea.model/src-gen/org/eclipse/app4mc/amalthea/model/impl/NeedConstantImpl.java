@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -23,18 +23,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cost Constant</b></em>'.
+ * An implementation of the model object '<em><b>Need Constant</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CostConstantImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.NeedConstantImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CostConstantImpl extends CostImpl implements CostConstant {
+public class NeedConstantImpl extends NeedImpl implements NeedConstant {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostConstantImpl() {
+	protected NeedConstantImpl() {
 		super();
 	}
 
@@ -71,7 +71,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getCostConstant();
+		return AmaltheaPackage.eINSTANCE.getNeedConstant();
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 		long oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.COST_CONSTANT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_CONSTANT__VALUE, oldValue, value));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_CONSTANT__VALUE:
+			case AmaltheaPackage.NEED_CONSTANT__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_CONSTANT__VALUE:
+			case AmaltheaPackage.NEED_CONSTANT__VALUE:
 				setValue((Long)newValue);
 				return;
 		}
@@ -132,7 +132,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_CONSTANT__VALUE:
+			case AmaltheaPackage.NEED_CONSTANT__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -147,7 +147,7 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.COST_CONSTANT__VALUE:
+			case AmaltheaPackage.NEED_CONSTANT__VALUE:
 				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -169,4 +169,4 @@ public class CostConstantImpl extends CostImpl implements CostConstant {
 		return result.toString();
 	}
 
-} //CostConstantImpl
+} //NeedConstantImpl

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Cost;
+import org.eclipse.app4mc.amalthea.model.Need;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cost</b></em>'.
+ * An implementation of the model object '<em><b>Need</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class CostImpl extends AmaltheaExtendedEObjectImpl implements Cost {
+public abstract class NeedImpl extends AmaltheaExtendedEObjectImpl implements Need {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CostImpl() {
+	protected NeedImpl() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public abstract class CostImpl extends AmaltheaExtendedEObjectImpl implements Co
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getCost();
+		return AmaltheaPackage.eINSTANCE.getNeed();
 	}
 
 	/**
@@ -67,10 +67,10 @@ public abstract class CostImpl extends AmaltheaExtendedEObjectImpl implements Co
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.COST___CONTAINER_NOTIFICATION_REQUIRED:
+			case AmaltheaPackage.NEED___CONTAINER_NOTIFICATION_REQUIRED:
 				return containerNotificationRequired();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //CostImpl
+} //NeedImpl

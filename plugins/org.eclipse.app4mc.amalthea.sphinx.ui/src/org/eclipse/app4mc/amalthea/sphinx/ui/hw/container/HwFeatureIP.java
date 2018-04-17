@@ -67,7 +67,7 @@ public class HwFeatureIP extends ExtendedSphinxTransientItemProvider {
     protected void collectNewChildDescriptors(
         final Collection<Object> newChildDescriptors, final Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-        newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createHwFeature()));
+        newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createHwFeatureCategory()));
     }
 
 }

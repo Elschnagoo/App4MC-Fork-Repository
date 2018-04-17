@@ -221,19 +221,19 @@ class InstructionsConstant extends Instructions
 /*
  * Abstract description for cost (mostly execution time)
  */
-abstract class Cost
+abstract class Need
 {
 	op boolean containerNotificationRequired() {
 		return true
 	}
 }
 
-class CostDeviation extends Cost
+class NeedDeviation extends Need
 {
 	contains Deviation<LongObject> deviation
 }
 
-class CostConstant extends Cost
+class NeedConstant extends Need
 {
 	long value = "0"
 }
@@ -1657,7 +1657,7 @@ enum ComponentEventType
 class HWModel extends BaseObject
 {
 	contains HwDefinition[] definitions
-	contains HwFeature[] features
+	contains HwFeatureCategory[] features
 	contains HwStructure[] structures
 	contains HwDomain[] domains
 }
@@ -1710,28 +1710,28 @@ class Cache extends HwModule, HwPathElement {
 	refers CacheDefinition definition
 }
 
-class HwFeature extends ReferableBaseObject {
+class HwFeatureCategory extends ReferableBaseObject {
 	HwFeatureType featureType
 	String description
 	
-	contains HwFeatureLiteral [] literals opposite containingFeature
+	contains HwFeature [] features opposite containingCategory
 }
 
-class HwFeatureLiteral extends ReferableBaseObject {
+class HwFeature extends ReferableBaseObject {
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly HwFeature containingFeature opposite literals
+	container readonly HwFeatureCategory containingCategory opposite features
 
 	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingFeature?.name)
+		return basicComputeUniqueNameWithPrefix(containingCategory?.name)
 	}
 	
 	op String toString() {
-		val featureName = containingFeature?.name
-		return (if (featureName.nullOrEmpty) "<feature>" else featureName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
+		val featureName = containingCategory?.name
+		return (if (featureName.nullOrEmpty) "<category>" else featureName) + "::" + (if (name.nullOrEmpty) "<feature>" else name)
 	}
 	
 	contains Value[1] value
-	contains HwLatency latency
+	//contains HwLatency latency
 }
 
 class HwPort extends ReferableBaseObject, ITaggable {
@@ -1845,7 +1845,7 @@ abstract class HwDefinition extends ReferableBaseObject, ITaggable {
 
 class ProcessingUnitDefinition extends HwDefinition {
 	PuType puType
-	refers HwFeatureLiteral[] features
+	refers HwFeature[] features
 	refers CoreClassifier[] classifiers	// backward compatibility
 }
 
@@ -3379,21 +3379,20 @@ class RunnableInstructionsEntry wraps java.util.Map$Entry {
 }
 
 
-class ExecutionCost extends ComputationItem {
-	contains CostMapEntry[] ^default
-	contains ExecutionCostEntry[] extended
+class ExecutionNeed extends ComputationItem {
+	contains NeedEntry[] ^default
+	contains ExecutionNeedExtended[] extended
 }
 
-class ExecutionCostEntry wraps java.util.Map$Entry {
+class ExecutionNeedExtended wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
-	contains CostMapEntry[+] value
+	contains NeedEntry[+] value
 }
 
-class CostMapEntry wraps java.util.Map$Entry {
-	refers HwFeature[1] key
-	contains Cost[1] value
+class NeedEntry wraps java.util.Map$Entry {
+	refers HwFeatureCategory[1] key
+	contains Need[1] value
 }
-
 
 /*
  * Representation of a mode label access of a run entity.

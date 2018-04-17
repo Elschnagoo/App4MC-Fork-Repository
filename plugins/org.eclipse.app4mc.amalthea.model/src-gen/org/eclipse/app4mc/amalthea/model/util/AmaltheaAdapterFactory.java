@@ -75,9 +75,6 @@ import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.CostConstant;
-import org.eclipse.app4mc.amalthea.model.CostDeviation;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
@@ -128,7 +125,7 @@ import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
-import org.eclipse.app4mc.amalthea.model.ExecutionCost;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -151,7 +148,7 @@ import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
@@ -209,6 +206,9 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -489,16 +489,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createInstructionsConstantAdapter();
 			}
 			@Override
-			public Adapter caseCost(Cost object) {
-				return createCostAdapter();
+			public Adapter caseNeed(Need object) {
+				return createNeedAdapter();
 			}
 			@Override
-			public Adapter caseCostDeviation(CostDeviation object) {
-				return createCostDeviationAdapter();
+			public Adapter caseNeedDeviation(NeedDeviation object) {
+				return createNeedDeviationAdapter();
 			}
 			@Override
-			public Adapter caseCostConstant(CostConstant object) {
-				return createCostConstantAdapter();
+			public Adapter caseNeedConstant(NeedConstant object) {
+				return createNeedConstantAdapter();
 			}
 			@Override
 			public Adapter caseQuantity(Quantity object) {
@@ -1025,12 +1025,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createCacheAdapter();
 			}
 			@Override
-			public Adapter caseHwFeature(HwFeature object) {
-				return createHwFeatureAdapter();
+			public Adapter caseHwFeatureCategory(HwFeatureCategory object) {
+				return createHwFeatureCategoryAdapter();
 			}
 			@Override
-			public Adapter caseHwFeatureLiteral(HwFeatureLiteral object) {
-				return createHwFeatureLiteralAdapter();
+			public Adapter caseHwFeature(HwFeature object) {
+				return createHwFeatureAdapter();
 			}
 			@Override
 			public Adapter caseHwPort(HwPort object) {
@@ -1609,16 +1609,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createRunnableInstructionsEntryAdapter();
 			}
 			@Override
-			public Adapter caseExecutionCost(ExecutionCost object) {
-				return createExecutionCostAdapter();
+			public Adapter caseExecutionNeed(ExecutionNeed object) {
+				return createExecutionNeedAdapter();
 			}
 			@Override
-			public Adapter caseExecutionCostEntry(Map.Entry<ProcessingUnitDefinition, EMap<HwFeature, Cost>> object) {
-				return createExecutionCostEntryAdapter();
+			public Adapter caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> object) {
+				return createExecutionNeedExtendedAdapter();
 			}
 			@Override
-			public Adapter caseCostMapEntry(Map.Entry<HwFeature, Cost> object) {
-				return createCostMapEntryAdapter();
+			public Adapter caseNeedEntry(Map.Entry<HwFeatureCategory, Need> object) {
+				return createNeedEntryAdapter();
 			}
 			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
@@ -2069,44 +2069,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Cost <em>Cost</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Need <em>Need</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Cost
+	 * @see org.eclipse.app4mc.amalthea.model.Need
 	 * @generated
 	 */
-	public Adapter createCostAdapter() {
+	public Adapter createNeedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CostDeviation <em>Cost Deviation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation <em>Need Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CostDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.NeedDeviation
 	 * @generated
 	 */
-	public Adapter createCostDeviationAdapter() {
+	public Adapter createNeedDeviationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CostConstant <em>Cost Constant</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NeedConstant <em>Need Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CostConstant
+	 * @see org.eclipse.app4mc.amalthea.model.NeedConstant
 	 * @generated
 	 */
-	public Adapter createCostConstantAdapter() {
+	public Adapter createNeedConstantAdapter() {
 		return null;
 	}
 
@@ -3945,6 +3945,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory <em>Hw Feature Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory
+	 * @generated
+	 */
+	public Adapter createHwFeatureCategoryAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwFeature <em>Hw Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3955,20 +3969,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createHwFeatureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral <em>Hw Feature Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral
-	 * @generated
-	 */
-	public Adapter createHwFeatureLiteralAdapter() {
 		return null;
 	}
 
@@ -5989,21 +5989,21 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ExecutionCost <em>Execution Cost</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed <em>Execution Need</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ExecutionCost
+	 * @see org.eclipse.app4mc.amalthea.model.ExecutionNeed
 	 * @generated
 	 */
-	public Adapter createExecutionCostAdapter() {
+	public Adapter createExecutionNeedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Cost Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Need Extended</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -6012,12 +6012,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createExecutionCostEntryAdapter() {
+	public Adapter createExecutionNeedExtendedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Cost Map Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Need Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -6026,7 +6026,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createCostMapEntryAdapter() {
+	public Adapter createNeedEntryAdapter() {
 		return null;
 	}
 

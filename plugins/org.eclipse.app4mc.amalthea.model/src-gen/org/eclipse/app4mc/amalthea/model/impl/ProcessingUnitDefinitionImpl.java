@@ -16,7 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.HwFeatureLiteral;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PuType;
 
@@ -74,7 +74,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwFeatureLiteral> features;
+	protected EList<HwFeature> features;
 
 	/**
 	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
@@ -131,9 +131,9 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwFeatureLiteral> getFeatures() {
+	public EList<HwFeature> getFeatures() {
 		if (features == null) {
-			features = new EObjectResolvingEList<HwFeatureLiteral>(HwFeatureLiteral.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES);
+			features = new EObjectResolvingEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES);
 		}
 		return features;
 	}
@@ -182,7 +182,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 				return;
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES:
 				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends HwFeatureLiteral>)newValue);
+				getFeatures().addAll((Collection<? extends HwFeature>)newValue);
 				return;
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();

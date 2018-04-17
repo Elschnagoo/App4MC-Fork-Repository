@@ -12,7 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +22,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getFeatureType <em>Feature Type</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getContainingCategory <em>Containing Category</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature()
@@ -34,76 +32,65 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface HwFeature extends ReferableBaseObject {
 	/**
-	 * Returns the value of the '<em><b>Feature Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.HwFeatureType}.
+	 * Returns the value of the '<em><b>Containing Category</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatures <em>Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Feature Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Containing Category</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureType
-	 * @see #setFeatureType(HwFeatureType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_FeatureType()
+	 * @return the value of the '<em>Containing Category</em>' container reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_ContainingCategory()
+	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatures
+	 * @model opposite="features" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @generated
+	 */
+	HwFeatureCategory getContainingCategory();
+
+	/**
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(Value)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Value()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Value getValue();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' containment reference.
+	 * @see #getValue()
+	 * @generated
+	 */
+	void setValue(Value value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingCategory!=null)\n{\n\t_name=_containingCategory.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
-	HwFeatureType getFeatureType();
+	String computeUniqueName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getFeatureType <em>Feature Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureType
-	 * @see #getFeatureType()
-	 * @generated
-	 */
-	void setFeatureType(HwFeatureType value);
-
-	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Description()
 	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingCategory!=null)\n{\n\t_name=_containingCategory.getName();\n}\nfinal &lt;%java.lang.String%&gt; featureName = _name;\n&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(featureName);\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"&lt;category&gt;\";\n}\nelse\n{\n\t_xifexpression = featureName;\n}\n&lt;%java.lang.String%&gt; _plus = (_xifexpression + \"::\");\n&lt;%java.lang.String%&gt; _xifexpression_1 = null;\nboolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(this.getName());\nif (_isNullOrEmpty_1)\n{\n\t_xifexpression_1 = \"&lt;feature&gt;\";\n}\nelse\n{\n\t_xifexpression_1 = this.getName();\n}\nreturn (_plus + _xifexpression_1);'"
 	 * @generated
 	 */
-	String getDescription();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getDescription <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
-	void setDescription(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature <em>Containing Feature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Literals</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Literals()
-	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureLiteral#getContainingFeature
-	 * @model opposite="containingFeature" containment="true"
-	 * @generated
-	 */
-	EList<HwFeatureLiteral> getLiterals();
+	String toString();
 
 } // HwFeature

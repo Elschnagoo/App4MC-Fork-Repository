@@ -337,7 +337,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createExecutionCost()));
+				 AmaltheaFactory.eINSTANCE.createExecutionNeed()));
 
 		newChildDescriptors.add
 			(createChildParameter

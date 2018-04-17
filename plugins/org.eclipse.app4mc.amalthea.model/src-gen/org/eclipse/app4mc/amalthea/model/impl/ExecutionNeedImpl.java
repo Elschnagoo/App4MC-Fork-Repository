@@ -13,9 +13,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Cost;
-import org.eclipse.app4mc.amalthea.model.ExecutionCost;
-import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,19 +31,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Execution Cost</b></em>'.
+ * An implementation of the model object '<em><b>Execution Need</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionCostImpl#getDefault <em>Default</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionCostImpl#getExtended <em>Extended</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedImpl#getDefault <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedImpl#getExtended <em>Extended</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionCost {
+public class ExecutionNeedImpl extends ComputationItemImpl implements ExecutionNeed {
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' map.
 	 * <!-- begin-user-doc -->
@@ -52,7 +52,7 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<HwFeature, Cost> default_;
+	protected EMap<HwFeatureCategory, Need> default_;
 
 	/**
 	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' map.
@@ -62,14 +62,14 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<ProcessingUnitDefinition, EMap<HwFeature, Cost>> extended;
+	protected EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> extended;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionCostImpl() {
+	protected ExecutionNeedImpl() {
 		super();
 	}
 
@@ -80,7 +80,7 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getExecutionCost();
+		return AmaltheaPackage.eINSTANCE.getExecutionNeed();
 	}
 
 	/**
@@ -88,9 +88,9 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<HwFeature, Cost> getDefault() {
+	public EMap<HwFeatureCategory, Need> getDefault() {
 		if (default_ == null) {
-			default_ = new EcoreEMap<HwFeature,Cost>(AmaltheaPackage.eINSTANCE.getCostMapEntry(), CostMapEntryImpl.class, this, AmaltheaPackage.EXECUTION_COST__DEFAULT);
+			default_ = new EcoreEMap<HwFeatureCategory,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__DEFAULT);
 		}
 		return default_;
 	}
@@ -100,9 +100,9 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<ProcessingUnitDefinition, EMap<HwFeature, Cost>> getExtended() {
+	public EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getExtended() {
 		if (extended == null) {
-			extended = new EcoreEMap<ProcessingUnitDefinition,EMap<HwFeature, Cost>>(AmaltheaPackage.eINSTANCE.getExecutionCostEntry(), ExecutionCostEntryImpl.class, this, AmaltheaPackage.EXECUTION_COST__EXTENDED);
+			extended = new EcoreEMap<ProcessingUnitDefinition,EMap<HwFeatureCategory, Need>>(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended(), ExecutionNeedExtendedImpl.class, this, AmaltheaPackage.EXECUTION_NEED__EXTENDED);
 		}
 		return extended;
 	}
@@ -115,9 +115,9 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_COST__DEFAULT:
+			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
 				return ((InternalEList<?>)getDefault()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.EXECUTION_COST__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
 				return ((InternalEList<?>)getExtended()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -131,10 +131,10 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_COST__DEFAULT:
+			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
 				if (coreType) return getDefault();
 				else return getDefault().map();
-			case AmaltheaPackage.EXECUTION_COST__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
 				if (coreType) return getExtended();
 				else return getExtended().map();
 		}
@@ -149,10 +149,10 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_COST__DEFAULT:
+			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
 				((EStructuralFeature.Setting)getDefault()).set(newValue);
 				return;
-			case AmaltheaPackage.EXECUTION_COST__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
 				((EStructuralFeature.Setting)getExtended()).set(newValue);
 				return;
 		}
@@ -167,10 +167,10 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_COST__DEFAULT:
+			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
 				getDefault().clear();
 				return;
-			case AmaltheaPackage.EXECUTION_COST__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
 				getExtended().clear();
 				return;
 		}
@@ -185,12 +185,12 @@ public class ExecutionCostImpl extends ComputationItemImpl implements ExecutionC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_COST__DEFAULT:
+			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
 				return default_ != null && !default_.isEmpty();
-			case AmaltheaPackage.EXECUTION_COST__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
 				return extended != null && !extended.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ExecutionCostImpl
+} //ExecutionNeedImpl
