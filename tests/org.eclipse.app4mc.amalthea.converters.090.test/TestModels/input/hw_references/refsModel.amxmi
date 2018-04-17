@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <sections name="section1"/>
+  </swModel>
+  <constraintsModel>
+    <affinityConstraints xsi:type="am:DataPairingConstraint"/>
+    <affinityConstraints xsi:type="am:DataSeparationConstraint">
+      <target xsi:type="am:TargetMemory">
+        <memories href="amlt:/#cache?type=Memory"/>
+        <memories href="amlt:/#temp?type=Memory"/>
+      </target>
+    </affinityConstraints>
+    <physicalSectionConstraints name="psm" section="section1?type=Section">
+      <memories href="amlt:/#cache?type=Memory"/>
+      <memories href="amlt:/#temp?type=Memory"/>
+    </physicalSectionConstraints>
+  </constraintsModel>
+</am:Amalthea>

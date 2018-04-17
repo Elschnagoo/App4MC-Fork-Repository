@@ -13,6 +13,11 @@ package org.eclipse.app4mc.amalthea.converters090.impl;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
@@ -68,5 +73,148 @@ public abstract class AbstractConverter implements IConverter {
 			result = name; // keep old name - we have no better option
 		}
 		return result;
+	}
+	
+	
+	/**
+	 * This method returns name and type of the element
+	 * @param attributeOrTagName
+	 * @param element
+	 * @return Entry<String, String> key here is name and value is Type
+	 */
+	protected Map<String, String> getMultipleElementsNameandTypeFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
+		
+		
+		String attributeValue = element.getAttributeValue(attributeOrTagName);
+
+		if(attributeValue!=null) {
+			Map<String, String> map=new HashMap<String, String>();
+			
+			String[] references = attributeValue.split("\\s");
+			
+			for (String reference : references) {
+				
+				String name= getElementNameFromReference(reference);
+				String type= getElementTypeFromReference(reference);
+				
+				map.put(name, type);
+			}
+			return map;
+		}else {
+			
+			List<Element> children = element.getChildren(attributeOrTagName);
+
+			if(children.size()>0) {
+				Map<String, String> map=new HashMap<String, String>();
+
+				for (Element child : children) {
+
+					String hrefValue = child.getAttributeValue("href");
+
+					if(hrefValue!=null) {
+						String name= getElementNameFromReference(hrefValue);
+						String type= getElementTypeFromReference(hrefValue);
+						map.put(name, type);
+					}
+				
+				}
+				
+				return map;
+			}
+		
+		}
+		
+		return new HashMap<String, String>();
+	}
+	
+	
+	/**
+	 * This method returns name and type of the element
+	 * @param attributeOrTagName
+	 * @param element
+	 * @return Entry<String, String> key here is name and value is Type
+	 */
+	protected Entry<String, String> getSingleElementsNameandTypeFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
+		
+		
+		String attributeValue = element.getAttributeValue(attributeOrTagName);
+
+		if(attributeValue!=null) {
+			String name= getElementNameFromReference(attributeValue);
+			String type= getElementTypeFromReference(attributeValue);
+			return new AbstractMap.SimpleEntry<String,String>(name, type);
+		}else {
+			Element child = element.getChild(attributeOrTagName);
+
+			if(child!=null) {
+				String hrefValue = child.getAttributeValue("href");
+
+				if(hrefValue!=null) {
+					String name= getElementNameFromReference(hrefValue);
+					String type= getElementTypeFromReference(hrefValue);
+					return new AbstractMap.SimpleEntry<String,String>(name, type);
+				}
+			}
+		}
+		
+		return null;
+	}
+	protected String getSingleElementNameFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
+
+		String attributeValue = element.getAttributeValue(attributeOrTagName);
+
+		if(attributeValue!=null) {
+			return getElementNameFromReference(attributeValue);
+		}else {
+			Element child = element.getChild(attributeOrTagName);
+
+			if(child!=null) {
+				String hrefValue = child.getAttributeValue("href");
+
+				if(hrefValue!=null) {
+					return getElementNameFromReference(hrefValue);
+				}
+			}
+		}
+
+		return null;
+	}
+
+	
+	private String getElementTypeFromReference(String reference) {
+
+		if(reference==null || reference.length()==0) {
+			return "";
+		}
+		int startIndex = reference.indexOf("?type=");
+
+		if(startIndex!=-1) {
+			String type = reference.substring(startIndex+6);
+			 
+			return type;
+		}
+
+		return reference;
+	}
+	
+	
+	private String getElementNameFromReference(String reference) {
+
+		if(reference==null || reference.length()==0) {
+			return "";
+		}
+		int startIndex = reference.indexOf("?type=");
+
+		if(startIndex!=-1) {
+			String name = reference.substring(0, startIndex);
+
+			if(name.startsWith("amlt:/#")) {
+				name=name.replaceFirst("amlt\\:\\/\\#", "");
+				return name;
+			}
+			return name;
+		}
+
+		return reference;
 	}
 }

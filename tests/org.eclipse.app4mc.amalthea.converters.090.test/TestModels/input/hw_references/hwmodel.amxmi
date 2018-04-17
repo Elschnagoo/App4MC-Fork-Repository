@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3">
+  <hwModel>
+    <memoryTypes name="a" type="CACHE"/>
+    <system>
+      <memories name="temp"/>
+      <memories name="cache" type="a?type=MemoryType"/>
+    </system>
+  </hwModel>
+</am:Amalthea>

@@ -11,7 +11,6 @@
 package org.eclipse.app4mc.amalthea.converters090.impl;
 
 import java.io.File;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -82,6 +81,18 @@ public class HwConverter extends AbstractConverter {
 
 		Element oldHWModelElement = rootElement.getChild("hwModel");
 
+		migrateHWModel(rootElement, oldHWModelElement);
+		
+		updateReferencesInModel(rootElement);
+
+		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
+	}
+
+	private void updateReferencesInModel(Element rootElement) {
+		
+	}
+
+	private void migrateHWModel(final Element rootElement, Element oldHWModelElement) {
 		if(oldHWModelElement!=null) {
 
 			final Element newHWModelElement=new Element("hwModel");
@@ -114,8 +125,6 @@ public class HwConverter extends AbstractConverter {
 			rootElement.addContent(indexOf,newHWModelElement);
 
 		}
-
-		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
 
@@ -550,7 +559,7 @@ public class HwConverter extends AbstractConverter {
 						
 						newHW_definitions_type_amalthea_element="CacheDefinition";
 						
-						newHW_Memory_Element.setName("caches");
+//						newHW_Memory_Element.setName("caches");
 						
 						newHW_Memory_Element.setAttribute("type", "am:Cache", this.helper.getGenericNS("xsi"));
 						
@@ -1033,95 +1042,7 @@ public class HwConverter extends AbstractConverter {
 		return newHWElements;
 	}
 
-	/**
-	 * This method returns name and type of the element
-	 * @param attributeOrTagName
-	 * @param element
-	 * @return Entry<String, String> key here is name and value is Type
-	 */
-	private Entry<String, String> getSingleElementsNameandTypeFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
-		
-		
-		String attributeValue = element.getAttributeValue(attributeOrTagName);
 
-		if(attributeValue!=null) {
-			String name= getElementNameFromReference(attributeValue);
-			String type= getElementTypeFromReference(attributeValue);
-			return new AbstractMap.SimpleEntry<String,String>(name, type);
-		}else {
-			Element child = element.getChild(attributeOrTagName);
-
-			if(child!=null) {
-				String hrefValue = child.getAttributeValue("href");
-
-				if(hrefValue!=null) {
-					String name= getElementNameFromReference(attributeValue);
-					String type= getElementTypeFromReference(attributeValue);
-					return new AbstractMap.SimpleEntry<String,String>(name, type);
-				}
-			}
-		}
-		
-		return null;
-	}
-	private String getSingleElementNameFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
-
-		String attributeValue = element.getAttributeValue(attributeOrTagName);
-
-		if(attributeValue!=null) {
-			return getElementNameFromReference(attributeValue);
-		}else {
-			Element child = element.getChild(attributeOrTagName);
-
-			if(child!=null) {
-				String hrefValue = child.getAttributeValue("href");
-
-				if(hrefValue!=null) {
-					return getElementNameFromReference(hrefValue);
-				}
-			}
-		}
-
-		return null;
-	}
-
-	
-	private String getElementTypeFromReference(String reference) {
-
-		if(reference==null || reference.length()==0) {
-			return "";
-		}
-		int startIndex = reference.indexOf("?type=");
-
-		if(startIndex!=-1) {
-			String type = reference.substring(startIndex+6);
-			 
-			return type;
-		}
-
-		return reference;
-	}
-	
-	
-	private String getElementNameFromReference(String reference) {
-
-		if(reference==null || reference.length()==0) {
-			return "";
-		}
-		int startIndex = reference.indexOf("?type=");
-
-		if(startIndex!=-1) {
-			String name = reference.substring(0, startIndex);
-
-			if(name.startsWith("amlt:/#")) {
-				name=name.replaceFirst("amlt\\:\\/\\#", "");
-				return name;
-			}
-			return name;
-		}
-
-		return reference;
-	}
 
 	private String updateReferenceStringWithNewType(String inputString, String newType) {
 
