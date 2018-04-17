@@ -5,6 +5,11 @@
     <system>
       <memories name="temp"/>
       <memories name="cache" type="a?type=MemoryType"/>
+      <ecus>
+        <microcontrollers>
+          <cores name="c1" lockstepGroup="0"/>
+        </microcontrollers>
+      </ecus>
     </system>
   </hwModel>
 </am:Amalthea>

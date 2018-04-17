@@ -5,12 +5,31 @@
     <labels name="l2" constant="false" bVolatile="false"/>
     <sections name="section1"/>
   </swModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" name="pe">
+      <core href="amlt:/#c1?type=Core"/>
+    </events>
+    <events xsi:type="am:ProcessChainEvent" name="pce">
+      <core href="amlt:/#c1?type=Core"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" name="re">
+      <core href="amlt:/#c1?type=Core"/>
+    </events>
+    <events xsi:type="am:SemaphoreEvent" name="se">
+      <core href="amlt:/#c1?type=Core"/>
+    </events>
+  </eventModel>
   <constraintsModel>
     <affinityConstraints xsi:type="am:DataPairingConstraint"/>
     <affinityConstraints xsi:type="am:DataSeparationConstraint">
       <target xsi:type="am:TargetMemory">
         <memories href="amlt:/#cache?type=Memory"/>
         <memories href="amlt:/#temp?type=Memory"/>
+      </target>
+    </affinityConstraints>
+    <affinityConstraints xsi:type="am:RunnablePairingConstraint" name="a">
+      <target xsi:type="am:TargetCore">
+        <cores href="amlt:/#c1?type=Core"/>
       </target>
     </affinityConstraints>
     <physicalSectionConstraints name="psm" section="section1?type=Section">

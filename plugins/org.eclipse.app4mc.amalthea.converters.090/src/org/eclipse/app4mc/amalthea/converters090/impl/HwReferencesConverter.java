@@ -83,8 +83,42 @@ public class HwReferencesConverter extends AbstractConverter {
 		migrateMemoryMapping(rootElement);
 		
 		migratePhysicalSectionMapping(rootElement);
+		
+		migrateTargetCore(rootElement);
+		
+		migrateEvents(rootElement);
 	}
 
+	private void migrateEvents(Element rootElement) {
+		
+		Element eventModel = rootElement.getChild("eventModel");
+		
+		if(eventModel!=null) {
+			
+			List<Element> events = eventModel.getChildren("events");
+			
+			for (Element event : events) {
+				
+				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("core", event);
+
+				event.removeChildren("core");
+				event.removeAttribute("core");
+				
+				for(String coreName:coresMap.keySet()) {
+					 
+					Element memoryElement=new Element("processingUnit");
+					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					event.addContent(memoryElement);
+				
+				}
+				
+			
+			}
+		
+			
+		}
+		
+	}
 	private void migratePhysicalSectionMapping(Element rootElement) {
 		Element mappingModel = rootElement.getChild("mappingModel");
 		
@@ -218,6 +252,41 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 		}
 	}
+	
+	
+	private void migrateTargetCore(Element rootElement) {
+		Element constraintsModel = rootElement.getChild("constraintsModel");
+		
+		if(constraintsModel!=null) {
+			List<Element> affinityConstraints = constraintsModel.getChildren("affinityConstraints");
+			
+			for (Element affinityConstraint : affinityConstraints) {
+				
+				List<Element> targetCores = affinityConstraint.getChildren("target");
+				
+				for (Element targetCore : targetCores) {
+					
+					Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("cores", targetCore);
+
+					targetCore.removeChildren("cores");
+					targetCore.removeAttribute("cores");
+					
+					for(String coreName:coresMap.keySet()) {
+						 
+						Element memoryElement=new Element("cores");
+						memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+						targetCore.addContent(memoryElement);
+					
+					}
+					
+				
+				}
+			}
+			
+			
+		}
+	}
+	
 	
 	/**
 	 * This method is used to get the PeriodicStimulusCacheBuilder object
