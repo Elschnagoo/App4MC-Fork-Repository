@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
+    <labels name="l1" constant="false" bVolatile="false"/>
+    <labels name="l2" constant="false" bVolatile="false"/>
     <sections name="section1"/>
   </swModel>
   <constraintsModel>
@@ -16,4 +18,18 @@
       <memories href="amlt:/#temp?type=Memory"/>
     </physicalSectionConstraints>
   </constraintsModel>
+  <mappingModel>
+    <memoryMapping abstractElement="l1?type=Label" memoryPositionAddress="0x0">
+      <memory href="amlt:/#cache?type=Memory"/>
+    </memoryMapping>
+    <memoryMapping abstractElement="l2?type=Label" memoryPositionAddress="0x0">
+      <memory href="amlt:/#temp?type=Memory"/>
+    </memoryMapping>
+    <physicalSectionMapping name="psm1" origin="section1?type=Section" startAddress="0x0" endAddress="0x0">
+      <memory href="amlt:/#cache?type=Memory"/>
+    </physicalSectionMapping>
+    <physicalSectionMapping name="psm2" origin="section1?type=Section" startAddress="0x0" endAddress="0x0">
+      <memory href="amlt:/#temp?type=Memory"/>
+    </physicalSectionMapping>
+  </mappingModel>
 </am:Amalthea>

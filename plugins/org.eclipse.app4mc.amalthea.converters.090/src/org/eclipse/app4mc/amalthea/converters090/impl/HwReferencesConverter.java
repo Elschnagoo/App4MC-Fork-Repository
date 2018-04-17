@@ -79,8 +79,74 @@ public class HwReferencesConverter extends AbstractConverter {
 		migrateTargetMemory(rootElement);
 		
 		migratePhysicalSectionConstraint(rootElement);
+		
+		migrateMemoryMapping(rootElement);
+		
+		migratePhysicalSectionMapping(rootElement);
 	}
 
+	private void migratePhysicalSectionMapping(Element rootElement) {
+		Element mappingModel = rootElement.getChild("mappingModel");
+		
+		if(mappingModel!=null) {
+			List<Element> physicalSectionMappings = mappingModel.getChildren("physicalSectionMapping");
+			
+			for (Element physicalSectionMapping : physicalSectionMappings) {
+				
+				Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", physicalSectionMapping);
+
+				physicalSectionMapping.removeChildren("memory");
+				physicalSectionMapping.removeAttribute("memory");
+				
+				for(String memoryName:memoriesMap.keySet()) {
+					//verify if the memory name is still transformed in 0.9.0 as Memory only .. as based on certain properties, it could also be transformed as a Cache and it should not be referred
+					
+					if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
+						Element memoryElement=new Element("memory");
+						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+						physicalSectionMapping.addContent(memoryElement);
+					}else {
+						//TODO: log message that memory reference is removed
+					}
+				}
+				
+			}
+			
+			
+		}
+	}
+	
+	private void migrateMemoryMapping(Element rootElement) {
+		Element mappingModel = rootElement.getChild("mappingModel");
+		
+		if(mappingModel!=null) {
+			List<Element> memoryMappings = mappingModel.getChildren("memoryMapping");
+			
+			for (Element memroyMapping : memoryMappings) {
+				
+				Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", memroyMapping);
+
+				memroyMapping.removeChildren("memory");
+				memroyMapping.removeAttribute("memory");
+				
+				for(String memoryName:memoriesMap.keySet()) {
+					//verify if the memory name is still transformed in 0.9.0 as Memory only .. as based on certain properties, it could also be transformed as a Cache and it should not be referred
+					
+					if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
+						Element memoryElement=new Element("memory");
+						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+						memroyMapping.addContent(memoryElement);
+					}else {
+						//TODO: log message that memory reference is removed
+					}
+				}
+				
+			}
+			
+			
+		}
+	}
+	
 	
 	private void migratePhysicalSectionConstraint(Element rootElement) {
 		Element constraintsModel = rootElement.getChild("constraintsModel");
@@ -102,6 +168,8 @@ public class HwReferencesConverter extends AbstractConverter {
 						Element memoryElement=new Element("memories");
 						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
 						physicalSectionContraint.addContent(memoryElement);
+					}else {
+						//TODO: log message that memory reference is removed
 					}
 				}
 				
@@ -138,6 +206,8 @@ public class HwReferencesConverter extends AbstractConverter {
 								Element memoryElement=new Element("memories");
 								memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
 								targetMemory.addContent(memoryElement);
+							}else {
+								//TODO: log message that memory reference is removed
 							}
 						}
 						
