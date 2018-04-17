@@ -27,11 +27,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sphinx.emf.resource.ExtendedResourceSet;
 import org.eclipse.sphinx.emf.resource.ExtendedResourceSetImpl;
 
-
 public class AmaltheaLoader {
 
 	/**
-	 * Static method to load an AMALTHEA model from a file with a given pathname string.
+	 * Static method to load an AMALTHEA model from a file with a given pathname
+	 * string.
 	 * <p>
 	 * Possible path names:
 	 * <ul>
@@ -43,8 +43,11 @@ public class AmaltheaLoader {
 	 * @return AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromFileNamed(String pathname) {
-		final File file = new File(pathname);
-		return loadFromFile(file);
+		if (pathname != null) {
+			final File file = new File(pathname);
+			return loadFromFile(file);
+		}
+		return null;
 	}
 
 	/**
@@ -54,8 +57,11 @@ public class AmaltheaLoader {
 	 * @return AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromFile(File file) {
-		final URI uri = URI.createFileURI(file.getAbsolutePath());
-		return loadFromURI(uri);
+		if (file != null) {
+			final URI uri = URI.createFileURI(file.getAbsolutePath());
+			return loadFromURI(uri);
+		}
+		return null;
 	}
 
 	/**
@@ -65,19 +71,25 @@ public class AmaltheaLoader {
 	 * @return AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromURI(URI uri) {
-		final ResourceSet resSet = initializeResourceSet();
-		
-		java.lang.System.out.println("Reading file: " + uri.toString());
+		if (uri != null) {
+			final ResourceSet resSet = initializeResourceSet();
 
-		final Resource res = resSet.createResource(uri);
-		try {
-			res.load(null);
-		} catch (IOException e) {
-			// ignore
-		}
-		for (final EObject content : res.getContents()) {
-			if (content instanceof Amalthea) {
-				return (Amalthea) content;
+			java.lang.System.out.println("Reading file: " + uri.toString());
+
+			final Resource res = resSet.createResource(uri);
+
+			if (res != null) {
+
+				try {
+					res.load(null);
+				} catch (IOException e) {
+					// ignore
+				}
+				for (final EObject content : res.getContents()) {
+					if (content instanceof Amalthea) {
+						return (Amalthea) content;
+					}
+				}
 			}
 		}
 

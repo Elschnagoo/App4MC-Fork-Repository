@@ -43,8 +43,11 @@ public class AmaltheaWriter {
 	 * @return boolean - true if file is written successfully
 	 */
 	public static boolean writeToFileNamed(Amalthea model, String pathname) {
-		final File file = new File(pathname);
-		return writeToFile(model, file);
+		if(model!=null && pathname!=null) {
+			final File file = new File(pathname);
+			return writeToFile(model, file);
+		}
+		return false;
 	}
 
 	/**
@@ -55,8 +58,11 @@ public class AmaltheaWriter {
 	 * @return boolean - true if file is written successfully
 	 */
 	public static boolean writeToFile(Amalthea model, File file) {
-		final URI uri = URI.createFileURI(file.getAbsolutePath());
-		return writeToURI(model, uri);
+		if(model!=null && file!=null) {
+			final URI uri = URI.createFileURI(file.getAbsolutePath());
+			return writeToURI(model, uri);
+		}
+		return false;
 	}
 
 	/**
@@ -67,19 +73,22 @@ public class AmaltheaWriter {
 	 * @return boolean - true if file is written successfully
 	 */
 	public static boolean writeToURI(Amalthea model, URI uri) {
-		final ResourceSet resSet = initializeResourceSet();
-		
-		java.lang.System.out.println("Writing file: " + uri.toString());
-		
-		final Resource res = resSet.createResource(uri);
-		res.getContents().add(EcoreUtil.copy(model));
-		try {
-			res.save(null);
-		} catch (IOException e) {
-			return false;
+		if(model !=null && uri!=null) {
+			final ResourceSet resSet = initializeResourceSet();
+			
+			java.lang.System.out.println("Writing file: " + uri.toString());
+			
+			final Resource res = resSet.createResource(uri);
+			res.getContents().add(EcoreUtil.copy(model));
+			try {
+				res.save(null);
+			} catch (IOException e) {
+				return false;
+			}
+			
+			return true;
 		}
-		
-		return true;
+		return false;
 	}
 
 	private static ResourceSet initializeResourceSet() {
