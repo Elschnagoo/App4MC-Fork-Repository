@@ -337,14 +337,11 @@ public class SoftwareUtil {
 		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess) {
-				if (result.get(((LabelAccess) ri).getData()) != null)
-					result.get(((LabelAccess) ri).getData()).add((LabelAccess) ri);
-				else
-				{
-					List<LabelAccess> la = new ArrayList<LabelAccess>();
-					la.add((LabelAccess) ri);
-					result.put(((LabelAccess) ri).getData(), la);
+				Label label = ((LabelAccess) ri).getData();
+				if (result.get(label) == null) {
+					result.put(label, new ArrayList<>());
 				}
+				result.get(label).add((LabelAccess) ri);
 			}
 		}
 		return result;
@@ -352,36 +349,44 @@ public class SoftwareUtil {
 	}
 	
 	/**
-	 * Set of all accessed Labels with the corresponding LabelAccessStatistic for one Runnable
+	 * Set of all accessed Labels with the corresponding LabelAccessStatistics for one Runnable
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		Map<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
+	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
 		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null) {
-				result.put(((LabelAccess) ri).getData(), ((LabelAccess) ri).getStatistic());
+				LabelAccess la = (LabelAccess) ri;	
+				if(!result.containsKey(la.getData())) {					
+					result.put(la.getData(), new ArrayList<LabelAccessStatistic>());
+				}
+				result.get(la.getData()).add(la.getStatistic());
 			}
 		}
 		return result;
 	}
 	
 	/**
-	 * Set of all read Labels with the corresponding LabelAccessStatistic for one Runnable
+	 * Set of all read Labels with the corresponding LabelAccessStatistics for one Runnable
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getReadLabelAccessStatisticMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		Map<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
+	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
 		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null && ((LabelAccess) ri).getAccess().equals(LabelAccessEnum.READ)) {
-				result.put(((LabelAccess) ri).getData(), ((LabelAccess) ri).getStatistic());
+				LabelAccess la = (LabelAccess) ri;	
+				if(!result.containsKey(la.getData())) {
+					result.put(la.getData(), new ArrayList<LabelAccessStatistic>());
+				}
+				result.get(la.getData()).add(la.getStatistic());
 			}
 		}
 		return result;
@@ -389,18 +394,22 @@ public class SoftwareUtil {
 	
 	
 	/**
-	 * Set of all written Labels with the corresponding LabelAccessStatistic for one Runnable
+	 * Set of all written Labels with the corresponding LabelAccessStatistics for one Runnable
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getWriteLabelAccessStatisticMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		Map<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
+	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
 		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null && ((LabelAccess) ri).getAccess().equals(LabelAccessEnum.WRITE)) {
-				result.put(((LabelAccess) ri).getData(), ((LabelAccess) ri).getStatistic());
+				LabelAccess la = (LabelAccess) ri;	
+				if(!result.containsKey(la.getData())) {
+					result.put(la.getData(), new ArrayList<LabelAccessStatistic>());
+				}
+				result.get(la.getData()).add(la.getStatistic());		
 			}
 		}
 		return result;
@@ -471,39 +480,59 @@ public class SoftwareUtil {
 	 * @return Map<Label, List<LabelAccess>>
 	 */
 	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Label, List<LabelAccess>> result = new HashMap<>(); 
-		for (Runnable r : getRunnableList(process, modes))
-			result.putAll(getLabelToLabelAccessMap(r, modes));
-		return result;
 		
+		HashMap<Label, List<LabelAccess>> result = new HashMap<>();
+		for (Runnable r : getRunnableList(process, modes)) {
+			Map<Label, List<LabelAccess>> labelToLabelAccessMap = SoftwareUtil.getLabelToLabelAccessMap(r, modes);
+			for(Label label : labelToLabelAccessMap.keySet()) {
+				if(!result.containsKey(label)) {
+					result.put(label, new ArrayList<>());
+				} 
+				result.get(label).addAll(labelToLabelAccessMap.get(label));
+			}
+		}
+		return result;
 	}
 	
 	
 	
-	
 	/**
-	 * Set of all accessed Labels with the corresponding LabelAccessStatistic for one Process
+	 * Set of all accessed Labels with the corresponding LabelAccessStatistics for one Process
 	 * @param Process
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
-		for (Runnable r : getRunnableList(process, modes))
-			result.putAll(getLabelAccessStatisticsMap(r, modes));
+	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
+		for (Runnable r : getRunnableList(process, modes)) {
+			Map<Label, List<LabelAccessStatistic>> labelToLabelAccessMap = SoftwareUtil.getLabelAccessStatisticsMap(r, modes);
+			for(Label l : labelToLabelAccessMap.keySet()) {
+				if(!result.containsKey(l)) {
+					result.put(l, new ArrayList<>());
+				} 
+				result.get(l).addAll(labelToLabelAccessMap.get(l));
+			}
+		}
 		return result;
 	}
 	
 	/**
-	 * Set of all read Labels with the corresponding LabelAccessStatistic for one Process
+	 * Set of all read Labels with the corresponding LabelAccessStatistics for one Process
 	 * @param Process
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getReadLabelAccessStatisticMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
-		for (Runnable r : getRunnableList(process, modes))
-			result.putAll(getReadLabelAccessStatisticMap(r, modes));
+	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
+		for (Runnable r : getRunnableList(process, modes)) {
+			Map<Label, List<LabelAccessStatistic>> readLabelAccessStatisticsMap = SoftwareUtil.getReadLabelAccessStatisticsMap(r, modes);
+			for(Label l : readLabelAccessStatisticsMap.keySet()) {
+				if(!result.containsKey(l)) {
+					result.put(l, new ArrayList<>());
+				} 
+				result.get(l).addAll(readLabelAccessStatisticsMap.get(l));
+			}
+		}
 		return result;
 	}
 	
@@ -512,12 +541,19 @@ public class SoftwareUtil {
 	 * Set of all written Labels with the corresponding LabelAccessStatistic for one Process
 	 * @param process
 	 * @param modeLiterals (optional) - null works
-	 * @return Map<Label, LabelAccessStatistic>
+	 * @return Map<Label, List<LabelAccessStatistic>>
 	 */
-	public static Map<Label, LabelAccessStatistic> getWriteLabelAccessStatisticMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<Label, LabelAccessStatistic> result = new HashMap<Label, LabelAccessStatistic>();
-		for (Runnable r : getRunnableList(process, modes))
-			result.putAll(getWriteLabelAccessStatisticMap(r, modes));
+	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
+		for (Runnable r : getRunnableList(process, modes)) {
+			Map<Label, List<LabelAccessStatistic>> writeLabelAcessStatisticsMap = SoftwareUtil.getWriteLabelAccessStatisticsMap(r, modes);
+			for(Label l : writeLabelAcessStatisticsMap.keySet()) {
+				if(!result.containsKey(l)) {
+					result.put(l, new ArrayList<>());
+				} 
+				result.get(l).addAll(writeLabelAcessStatisticsMap.get(l));
+			}
+		}
 		return result;
 	}	
 
@@ -840,7 +876,6 @@ public class SoftwareUtil {
 							}
 						}
 					}
-					
 				}
 			}
 			else
@@ -949,7 +984,6 @@ public class SoftwareUtil {
 				}
 			}
 		}
-		
 		return result;
 	}
 	
@@ -985,6 +1019,4 @@ public class SoftwareUtil {
 		}
 		return result;
 	}
-
-
 }
