@@ -56,12 +56,24 @@ public abstract class ExtendedSphinxTransientItemProvider extends TransientItemP
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
+	 */
+	@Override
+	protected Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
+		if (this.childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			this.childrenFeatures.add(myFeature());
+		}
+		return this.childrenFeatures;
+	}
+
 
 	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getResourceLocator()
 	 */
 	@Override
-	public ResourceLocator getResourceLocator() {
+	protected ResourceLocator getResourceLocator() {
 		return AmaltheaEditPlugin.INSTANCE.getPluginResourceLocator();
 	}
 

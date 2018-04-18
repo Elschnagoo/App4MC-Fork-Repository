@@ -12,14 +12,14 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended;
 
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.provider.HwFeatureItemProvider;
+import org.eclipse.app4mc.amalthea.model.provider.CacheDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedHWModelItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-public class ExtendedHwFeatureItemProvider extends HwFeatureItemProvider {
+public class ExtendedCacheDefinitionItemProvider extends CacheDefinitionItemProvider {
 
-	public ExtendedHwFeatureItemProvider(final AdapterFactory adapterFactory) {
+	public ExtendedCacheDefinitionItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -31,7 +31,7 @@ public class ExtendedHwFeatureItemProvider extends HwFeatureItemProvider {
 		final Object hwModel = super.getParent(object);
 		final ExtendedHWModelItemProvider hwModelItemProvider = (ExtendedHWModelItemProvider) this.adapterFactory
 				.adapt(hwModel, ITreeItemContentProvider.class);
-		return hwModelItemProvider != null ? hwModelItemProvider.getHWFeatures((HWModel) hwModel) : null;
+		return hwModelItemProvider != null ? hwModelItemProvider.getHwDefinitions((HWModel) hwModel) : null;
 	}
 
 }

@@ -36,23 +36,13 @@ public class ModesIP extends ExtendedSphinxTransientItemProvider {
 	@Override
 	public String getText(final Object object) {
 		assert object instanceof SWModel;
+		
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Modes ("); //$NON-NLS-1$
 		buffer.append(((SWModel) getTarget()).getModes().size());
 		buffer.append(")"); //$NON-NLS-1$
+		
 		return buffer.toString();
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
-		if (this.childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			this.childrenFeatures.add(myFeature());
-		}
-		return this.childrenFeatures;
 	}
 
 	/**

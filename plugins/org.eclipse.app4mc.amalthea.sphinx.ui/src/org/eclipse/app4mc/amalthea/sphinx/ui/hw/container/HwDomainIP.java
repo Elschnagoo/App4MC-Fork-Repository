@@ -15,7 +15,6 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSphinxTransientItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -36,24 +35,14 @@ public class HwDomainIP extends ExtendedSphinxTransientItemProvider {
 	 */
 	@Override
 	public String getText(final Object object) {
-		assert object instanceof HwDomain;
+		assert object instanceof HWModel;
+		
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Domains ("); //$NON-NLS-1$
 		buffer.append(((HWModel) getTarget()).getDomains().size());
 		buffer.append(")"); //$NON-NLS-1$
+		
 		return buffer.toString();
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
-	 */
-	@Override
-	protected Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
-		if (this.childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			this.childrenFeatures.add(myFeature());
-		}
-		return this.childrenFeatures;
 	}
 
 	/**

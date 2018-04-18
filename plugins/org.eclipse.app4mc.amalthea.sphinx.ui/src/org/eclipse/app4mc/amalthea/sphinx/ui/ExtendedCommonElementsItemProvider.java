@@ -79,9 +79,14 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
 		final CommonElements commonElements = (CommonElements) object;
-		children.add(getCoreClassifiers(commonElements));
-		children.add(getMemoryClassifiers(commonElements));
-		children.add(getTags(commonElements));
+
+		// only display virtual folders if not empty
+		if (!commonElements.getCoreClassifiers().isEmpty())
+			children.add(getCoreClassifiers(commonElements));
+		if (!commonElements.getMemoryClassifiers().isEmpty())
+			children.add(getMemoryClassifiers(commonElements));
+		if (!commonElements.getTags().isEmpty())
+			children.add(getTags(commonElements));
 		return children;
 	}
 

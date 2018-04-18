@@ -188,6 +188,8 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
 		final SWModel swModel = (SWModel) object;
+		
+		// only display virtual folders if not empty
 		if (!swModel.getRunnables().isEmpty())
 			children.add(getRunnables(swModel));
 		if (!swModel.getLabels().isEmpty())

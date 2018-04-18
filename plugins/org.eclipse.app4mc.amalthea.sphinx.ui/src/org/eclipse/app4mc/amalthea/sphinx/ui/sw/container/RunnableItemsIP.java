@@ -39,18 +39,6 @@ public class RunnableItemsIP extends ExtendedSphinxTransientItemProvider {
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
-	 */
-	@Override
-	protected Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
-		if (this.childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			this.childrenFeatures.add(myFeature());
-		}
-		return this.childrenFeatures;
-	}
-
-	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#collectNewChildDescriptors(java.util.Collection,
 	 *      java.lang.Object)
 	 */

@@ -35,25 +35,14 @@ public class HwConnectionIP extends ExtendedSphinxTransientItemProvider {
 	 */
 	@Override
 	public String getText(final Object object) {
-		// return getString("_UI_DirectConnection_type"); //$NON-NLS-1$
 		assert object instanceof HwStructure;
+		
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Connections ("); //$NON-NLS-1$
 		buffer.append(((HwStructure) getTarget()).getConnections().size());
 		buffer.append(")"); //$NON-NLS-1$
-		return buffer.toString();
-	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
-	 */
-	@Override
-	protected Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
-		if (this.childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			this.childrenFeatures.add(myFeature());
-		}
-		return this.childrenFeatures;
+		return buffer.toString();
 	}
 
 	/**

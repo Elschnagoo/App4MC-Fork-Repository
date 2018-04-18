@@ -36,23 +36,13 @@ public class CustomEntitiesIP extends ExtendedSphinxTransientItemProvider {
 	@Override
 	public String getText(final Object object) {
 		assert object instanceof SWModel;
+		
 		final StringBuffer buffer = new StringBuffer();
 		buffer.append("Custom Entities ("); //$NON-NLS-1$
 		buffer.append(((SWModel) getTarget()).getCustomEntities().size());
 		buffer.append(")"); //$NON-NLS-1$
+		
 		return buffer.toString();
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildrenFeatures(java.lang.Object)
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
-		if (this.childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			this.childrenFeatures.add(myFeature());
-		}
-		return this.childrenFeatures;
 	}
 
 	/**
