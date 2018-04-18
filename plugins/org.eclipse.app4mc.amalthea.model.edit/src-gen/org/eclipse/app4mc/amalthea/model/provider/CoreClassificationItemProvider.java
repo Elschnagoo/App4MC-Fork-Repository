@@ -146,10 +146,11 @@ public class CoreClassificationItemProvider extends ClassificationItemProvider {
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getCoreClassificationItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
+		final ViewerNotification vn = CustomItemProviderService
+				.getCoreClassificationItemProviderNotification(notification);
+		if (vn != null) {
 			fireNotifyChanged(vn);
+			return;
 		}
 
 		super.notifyChanged(notification);

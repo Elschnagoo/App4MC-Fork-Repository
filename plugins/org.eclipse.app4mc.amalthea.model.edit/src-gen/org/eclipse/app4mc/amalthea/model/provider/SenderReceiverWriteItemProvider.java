@@ -134,10 +134,11 @@ public class SenderReceiverWriteItemProvider extends SenderReceiverCommunication
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getSenderReceiverWriteItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
+		final ViewerNotification vn = CustomItemProviderService
+				.getSenderReceiverWriteItemProviderNotification(notification);
+		if (vn != null) {
 			fireNotifyChanged(vn);
+			return;
 		}
 
 		super.notifyChanged(notification);

@@ -157,10 +157,11 @@ public class PhysicalSectionConstraintItemProvider extends ReferableBaseObjectIt
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomItemProviderService
-				.getPhysicalSectionConstraintItemProviderNotifications(notification);
-		for (final ViewerNotification vn : notifications) {
+		final ViewerNotification vn = CustomItemProviderService
+				.getPhysicalSectionConstraintItemProviderNotification(notification);
+		if (vn != null) {
 			fireNotifyChanged(vn);
+			return;
 		}
 
 		super.notifyChanged(notification);

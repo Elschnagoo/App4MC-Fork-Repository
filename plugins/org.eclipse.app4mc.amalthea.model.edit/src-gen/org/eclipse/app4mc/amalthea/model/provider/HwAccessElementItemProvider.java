@@ -282,9 +282,10 @@ public class HwAccessElementItemProvider
 				.getHwAccessElementItemProviderNotification(notification);
 		if (vn != null) {
 			fireNotifyChanged(vn);
-		} else {
-			super.notifyChanged(notification);			
+			return;
 		}
+		
+		super.notifyChanged(notification);
 	}
 
 	/**

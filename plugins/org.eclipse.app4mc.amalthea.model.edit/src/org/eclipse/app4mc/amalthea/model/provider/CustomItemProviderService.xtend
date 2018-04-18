@@ -292,15 +292,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getCustomPropertyItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getCustomPropertyItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Map.Entry)) {
 			case AmaltheaPackage::CUSTOM_PROPERTY__KEY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::CUSTOM_PROPERTY__VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -486,15 +485,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getDeviationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Deviation)) {
 			case AmaltheaPackage::DEVIATION__LOWER_BOUND,
 			case AmaltheaPackage::DEVIATION__UPPER_BOUND,
 			case AmaltheaPackage::DEVIATION__DISTRIBUTION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -560,13 +558,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getInstructionsDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getInstructionsDeviationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(InstructionsDeviation)) {
 			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -598,13 +595,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getNeedDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getNeedDeviationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(NeedDeviation)) {
 			case AmaltheaPackage::NEED_DEVIATION__DEVIATION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -622,17 +618,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTransmissionPolicyItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getTransmissionPolicyItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TransmissionPolicy)) {
 			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS,
 			case AmaltheaPackage::TRANSMISSION_POLICY__TRANSMIT_RATIO:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_SIZE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -654,16 +648,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getComponentInstanceItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getComponentInstanceItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ComponentInstance)) {
 			case AmaltheaPackage::COMPONENT_INSTANCE__NAME,
 			case AmaltheaPackage::COMPONENT_INSTANCE__TYPE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::COMPONENT_INSTANCE__CUSTOM_PROPERTIES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -717,15 +710,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getQualifiedPortItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getQualifiedPortItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(QualifiedPort)) {
 			case AmaltheaPackage::QUALIFIED_PORT__INSTANCE,
 			case AmaltheaPackage::QUALIFIED_PORT__PORT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -748,15 +739,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getEventConfigItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getEventConfigItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(EventConfig)) {
 			case AmaltheaPackage::EVENT_CONFIG__NAME:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::EVENT_CONFIG__EVENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -784,14 +774,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getComponentScopeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getComponentScopeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ComponentScope)) {
 			case AmaltheaPackage::COMPONENT_SCOPE__COMPONENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -807,14 +795,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getProcessScopeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getProcessScopeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ProcessScope)) {
 			case AmaltheaPackage::PROCESS_SCOPE__PROCESS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -830,14 +816,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableScopeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getRunnableScopeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableScope)) {
 			case AmaltheaPackage::RUNNABLE_SCOPE__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -855,15 +839,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getArchitectureRequirementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getArchitectureRequirementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ArchitectureRequirement)) {
 			case AmaltheaPackage::ARCHITECTURE_REQUIREMENT__NAME,
 			case AmaltheaPackage::ARCHITECTURE_REQUIREMENT__COMPONENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -919,15 +901,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getFrequencyRequirementLimitItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getFrequencyRequirementLimitItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(FrequencyRequirementLimit)) {
 			case AmaltheaPackage::FREQUENCY_REQUIREMENT_LIMIT__METRIC:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::FREQUENCY_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -964,15 +945,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTimeRequirementLimitItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getTimeRequirementLimitItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TimeRequirementLimit)) {
 			case AmaltheaPackage::TIME_REQUIREMENT_LIMIT__METRIC:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::TIME_REQUIREMENT_LIMIT__LIMIT_VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -990,15 +970,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getProcessRequirementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getProcessRequirementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ProcessRequirement)) {
 			case AmaltheaPackage::PROCESS_REQUIREMENT__NAME,
 			case AmaltheaPackage::PROCESS_REQUIREMENT__PROCESS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1016,15 +994,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableRequirementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getRunnableRequirementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableRequirement)) {
 			case AmaltheaPackage::RUNNABLE_REQUIREMENT__NAME,
 			case AmaltheaPackage::RUNNABLE_REQUIREMENT__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1042,15 +1018,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getProcessChainRequirementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getProcessChainRequirementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ProcessChainRequirement)) {
 			case AmaltheaPackage::PROCESS_CHAIN_REQUIREMENT__NAME,
 			case AmaltheaPackage::PROCESS_CHAIN_REQUIREMENT__PROCESS_CHAIN:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1077,14 +1051,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getDataAgeTimeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getDataAgeTimeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(DataAgeTime)) {
 			case AmaltheaPackage::DATA_AGE_TIME__MINIMUM_TIME,
 			case AmaltheaPackage::DATA_AGE_TIME__MAXIMUM_TIME:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1113,17 +1086,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getDataCoherencyGroupItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getDataCoherencyGroupItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(DataCoherencyGroup)) {
 			case AmaltheaPackage::DATA_COHERENCY_GROUP__NAME,
 			case AmaltheaPackage::DATA_COHERENCY_GROUP__DIRECTION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::DATA_COHERENCY_GROUP__SCOPE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1140,13 +1111,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getEventChainReferenceItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getEventChainReferenceItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(EventChainReference)) {
 			case AmaltheaPackage::EVENT_CHAIN_REFERENCE__EVENT_CHAIN:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1164,13 +1134,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getEventChainContainerItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getEventChainContainerItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SubEventChain)) {
 			case AmaltheaPackage::EVENT_CHAIN_CONTAINER__EVENT_CHAIN:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1186,13 +1155,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTagGroupItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getTagGroupItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TagGroup)) {
 			case AmaltheaPackage::TAG_GROUP__TAG:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -1236,19 +1204,16 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getPhysicalSectionConstraintItemProviderNotifications(
-		Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getPhysicalSectionConstraintItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(PhysicalSectionConstraint)) {
 			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__NAME:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, false))
+				return (new ViewerNotification(notification, notification.getNotifier(), false, false))
 			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__SECTION:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 			case AmaltheaPackage::PHYSICAL_SECTION_CONSTRAINT__MEMORIES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -1256,183 +1221,15 @@ class CustomItemProviderService {
 ///// 
 
 	/*****************************************************************************
-	 * 						HwAccessPathItemProvider
-	 *****************************************************************************/
-//	def static String getHwAccessPathItemProviderText(Object object, String defaultText) {
-//		if (object instanceof HwAccessPath) {
-//			val name = object?.name
-//			val sourceName = object?.source?.name
-//			val targetName = object?.target?.name
-//			val s1 = ppName(name, "<path>")
-//			val s2 = ppName(sourceName, "<source>")
-//			val s3 = ppName(targetName, "<target>")
-//			return "AccessPath (Hardware) " + s1 + " : " + s2 + " --> " + s3
-//		} else {
-//			return defaultText
-//		}
-//	}
-//
-//	def static List<ViewerNotification> getHwAccessPathItemProviderNotifications(Notification notification) {
-//		val list = newArrayList
-//
-//		switch notification.getFeatureID(typeof(HwAccessPath)) {
-//			case AmaltheaPackage::HW_ACCESS_PATH__NAME,
-//			case AmaltheaPackage::HW_ACCESS_PATH__SOURCE,
-//			case AmaltheaPackage::HW_ACCESS_PATH__TARGET:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-//			case AmaltheaPackage::HW_ACCESS_PATH__HW_ELEMENTS:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-//		}
-//		return list
-//	}
-	/*****************************************************************************
-	 * 						AccessPathRefItemProvider
-	 *****************************************************************************/
-//	def static String getAccessPathRefItemProviderText(Object object, String defaultText) {
-//		if (object instanceof AccessPathRef) {
-//			val refName = object?.ref?.name
-//			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
-//			return "Ref -> " + s1
-//		} else {
-//			return defaultText
-//		}
-// TODO: use label text of referred element
-//			final AccessPathRef element = (AccessPathRef) object;
-//			if (null != element.getRef()) {
-//				return getString("_UI_AccessPathRef_type") + " -> "
-//						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
-//			}
-//	}
-	/*****************************************************************************
-	 * 						HwAccessPathRefItemProvider
-	 *****************************************************************************/
-//	def static String getHwAccessPathRefItemProviderText(Object object, String defaultText) {
-//		if (object instanceof HwAccessPathRef) {
-//			val refName = object?.ref?.name
-//			val s1 = if(refName.isNullOrEmpty) "<path ref>" else "Path " + refName
-//			return "Ref -> " + s1
-//		} else {
-//			return defaultText
-//		}
-// TODO: use label text of referred element
-//			final HwAccessPathRef element = (HwAccessPathRef) object;
-//			if (null != element.getRef()) {
-//				return getString("_UI_HwAccessPathRef_type") + " -> "
-//						+ new ProviderUtil().getTextForElementByLabelProvider(element.getRef(), getAdapterFactory());
-//			}
-//	}
-//	def static List<ViewerNotification> getHwAccessPathRefItemProviderNotifications(Notification notification) {
-//		val list = newArrayList
-//
-//		switch notification.getFeatureID(typeof(HwAccessPathRef)) {
-//			case AmaltheaPackage::HW_ACCESS_PATH_REF__REF:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-//		}
-//		return list
-//	}
-	/*****************************************************************************
-	 * 						HwElementRefItemProvider
-	 *****************************************************************************/
-//	def static String getHwElementRefItemProviderText(Object object, String defaultText) {
-//		if (object instanceof HwElementRef) {
-//			val portName = object?.port?.name
-//			val s1 = if(portName.isNullOrEmpty) "<port>" else "Port " + portName
-//			return  "Ref -> " + s1
-//		} else {
-//			return defaultText
-//		}
-// TODO: Name Provider and Update
-//	}
-//	def static List<ViewerNotification> getHwElementRefItemProviderNotifications(Notification notification) {
-//		val list = newArrayList
-//		switch notification.getFeatureID(typeof(HwElementRef)) {
-//			case AmaltheaPackage::HW_ELEMENT_REF__PORT:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-//		}
-//		return list
-//	}
-	/*****************************************************************************
-	 * 						LatencyAccessPathItemProvider
-	 *****************************************************************************/
-//	def static String getLatencyAccessPathItemProviderText(Object object, String defaultText) {
-//		if (object instanceof LatencyAccessPath) {
-//			val name = object?.name
-//			val sourceName = object?.source?.name
-//			val targetName = object?.target?.name
-//			val s1 = ppName(name, "<path>")
-//			val s2 = ppName(sourceName, "<source>")
-//			val s3 = ppName(targetName, "<target>")
-//			return "AccessPath (Latency) " + s1 + " : " + s2 + " --> " + s3
-//		} else {
-//			return defaultText
-//		}
-//	}
-//
-//	def static List<ViewerNotification> getLatencyAccessPathItemProviderNotifications(Notification notification) {
-//		val list = newArrayList
-//		switch notification.getFeatureID(typeof(LatencyAccessPath)) {
-//			case AmaltheaPackage::LATENCY_ACCESS_PATH__NAME,
-//			case AmaltheaPackage::LATENCY_ACCESS_PATH__SOURCE,
-//			case AmaltheaPackage::LATENCY_ACCESS_PATH__TARGET:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-//			case AmaltheaPackage::LATENCY_ACCESS_PATH__LATENCIES:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
-//		}
-//		return list
-//	}
-	/*****************************************************************************
-	 * 						LatencyConstantItemProvider
-	 *****************************************************************************/
-//	def static String getLatencyConstantItemProviderText(Object object, String defaultText) {
-//		if (object instanceof LatencyConstant) {
-//			val type = object?.accessType
-//			val value = if(object === null) 0 else object.value
-//			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
-//			val s2 = Long.toString(value)
-//			return "Access: " + s1 + " -- Latency (constant): " + s2
-//		} else {
-//			return defaultText
-//		}
-//	}
-	/*****************************************************************************
-	 * 						LatencyDeviationItemProvider
-	 *****************************************************************************/
-//	def static String getLatencyDeviationItemProviderText(Object object, String defaultText) {
-//		if (object instanceof LatencyDeviation) {
-//			val type = object.accessType
-//			val distName = object?.deviation?.distribution?.eClass?.name
-//			val s1 = if(type === null || type == RWType::_UNDEFINED_) "?" else type.literal
-//			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-//			return "Access: " + s1 + " -- Latency (deviation): " + s2
-//		} else {
-//			return defaultText
-//		}
-//	}
-//
-//	def static List<ViewerNotification> getLatencyDeviationItemProviderNotifications(Notification notification) {
-//		val list = newArrayList
-//
-//		switch notification.getFeatureID(typeof(LatencyDeviation)) {
-//			case AmaltheaPackage::LATENCY_DEVIATION__ACCESS_TYPE:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-//			case AmaltheaPackage::LATENCY_DEVIATION__DEVIATION:
-//				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-//		}
-//		return list
-//	}
-
-	/*****************************************************************************
 	 * 						HwFeatureCategoryItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getHwFeatureCategoryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getHwFeatureCategoryItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(HwFeatureCategory)) {
 			case AmaltheaPackage::HW_FEATURE_CATEGORY__NAME,
 			case AmaltheaPackage::HW_FEATURE_CATEGORY__FEATURES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1588,16 +1385,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSchedulerAllocationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSchedulerAllocationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SchedulerAllocation)) {
 			case AmaltheaPackage::SCHEDULER_ALLOCATION__SCHEDULER,
 			case AmaltheaPackage::SCHEDULER_ALLOCATION__RESPONSIBILITY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::SCHEDULER_ALLOCATION__CUSTOM_PROPERTIES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1615,15 +1411,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getISRAllocationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getISRAllocationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ISRAllocation)) {
 			case AmaltheaPackage::ISR_ALLOCATION__CONTROLLER,
 			case AmaltheaPackage::ISR_ALLOCATION__ISR:
 				// update the label but not the content tree
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1641,15 +1436,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableAllocationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getRunnableAllocationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableAllocation)) {
 			case AmaltheaPackage::RUNNABLE_ALLOCATION__ENTITY,
 			case AmaltheaPackage::RUNNABLE_ALLOCATION__SCHEDULER:
 				// update the label but not the content tree
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1667,19 +1461,18 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTaskAllocationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getTaskAllocationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TaskAllocation)) {
 			case AmaltheaPackage::TASK_ALLOCATION__TASK,
 			case AmaltheaPackage::TASK_ALLOCATION__SCHEDULER:
 				// update the label
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage.TASK_ALLOCATION__SCHEDULING_PARAMETERS,
 			case AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS:
 				// update the content tree
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1697,14 +1490,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getMemoryMappingItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getMemoryMappingItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(MemoryMapping)) {
 			case AmaltheaPackage::MEMORY_MAPPING__MEMORY,
 			case AmaltheaPackage::MEMORY_MAPPING__ABSTRACT_ELEMENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1744,18 +1536,16 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getPhysicalSectionMappingItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getPhysicalSectionMappingItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(PhysicalSectionMapping)) {
 			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__MEMORY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__ORIGIN:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 			case AmaltheaPackage::PHYSICAL_SECTION_MAPPING__NAME:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -1864,13 +1654,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getProcessPrototypeAllocationConstraintItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getProcessPrototypeAllocationConstraintItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ProcessPrototypeAllocationConstraint)) {
 			case AmaltheaPackage::PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT__PROCESS_PROTOTYPE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1886,13 +1675,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getProcessAllocationConstraintItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getProcessAllocationConstraintItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ProcessAllocationConstraint)) {
 			case AmaltheaPackage::PROCESS_ALLOCATION_CONSTRAINT__PROCESS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1908,13 +1696,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableAllocationConstraintItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getRunnableAllocationConstraintItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableAllocationConstraint)) {
 			case AmaltheaPackage::RUNNABLE_ALLOCATION_CONSTRAINT__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1935,16 +1722,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getCoreClassificationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getCoreClassificationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(CoreClassification)) {
 			case AmaltheaPackage::CORE_CLASSIFICATION__CONDITION,
 			case AmaltheaPackage::CORE_CLASSIFICATION__GROUPING,
 			case AmaltheaPackage::CORE_CLASSIFICATION__CLASSIFIERS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1960,14 +1745,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getAbstractElementMappingConstraintItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getAbstractElementMappingConstraintItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(AbstractElementMappingConstraint)) {
 			case AmaltheaPackage::ABSTRACT_ELEMENT_MAPPING_CONSTRAINT__ABSTRACT_ELEMENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -1988,16 +1771,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getMemoryClassificationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getMemoryClassificationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(MemoryClassification)) {
 			case AmaltheaPackage::MEMORY_CLASSIFICATION__CONDITION,
 			case AmaltheaPackage::MEMORY_CLASSIFICATION__GROUPING,
 			case AmaltheaPackage::MEMORY_CLASSIFICATION__CLASSIFIERS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -2053,15 +1834,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeValueItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getModeValueItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeValueImpl)) {
 			case AmaltheaPackage::MODE_VALUE__VALUE_PROVIDER,
 			case AmaltheaPackage::MODE_VALUE__VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2078,17 +1857,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getArrivalCurveEntryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getArrivalCurveEntryItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ArrivalCurveEntry)) {
 			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__NUMBER_OF_OCCURRENCES:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__LOWER_TIME_BORDER,
 			case AmaltheaPackage::ARRIVAL_CURVE_ENTRY__UPPER_TIME_BORDER:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 ///// 
@@ -2131,16 +1908,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getAccessPrecedenceSpecItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getAccessPrecedenceSpecItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(AccessPrecedenceSpec)) {
 			case AmaltheaPackage::ACCESS_PRECEDENCE_SPEC__ORDER_TYPE,
 			case AmaltheaPackage::ACCESS_PRECEDENCE_SPEC__ORIGIN,
 			case AmaltheaPackage::ACCESS_PRECEDENCE_SPEC__TARGET,
 			case AmaltheaPackage::ACCESS_PRECEDENCE_SPEC__LABEL:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2160,15 +1936,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getOrderPrecedenceSpecItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getOrderPrecedenceSpecItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(OrderPrecedenceSpec)) {
 			case AmaltheaPackage::ORDER_PRECEDENCE_SPEC__ORDER_TYPE,
 			case AmaltheaPackage::ORDER_PRECEDENCE_SPEC__ORIGIN,
 			case AmaltheaPackage::ORDER_PRECEDENCE_SPEC__TARGET:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2186,14 +1961,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getAsynchronousServerCallItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getAsynchronousServerCallItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(AsynchronousServerCall)) {
 			case AmaltheaPackage::ASYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE,
 			case AmaltheaPackage::ASYNCHRONOUS_SERVER_CALL__RESULT_RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2211,14 +1985,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSynchronousServerCallItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSynchronousServerCallItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SynchronousServerCall)) {
 			case AmaltheaPackage::SYNCHRONOUS_SERVER_CALL__SERVER_RUNNABLE,
 			case AmaltheaPackage::SYNCHRONOUS_SERVER_CALL__WAITING_BEHAVIOUR:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2236,15 +2009,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getGetResultServerCallItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getGetResultServerCallItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(GetResultServerCall)) {
 			case AmaltheaPackage::GET_RESULT_SERVER_CALL__SERVER_RUNNABLE,
 			case AmaltheaPackage::GET_RESULT_SERVER_CALL__BLOCKING_TYPE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2262,15 +2033,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getChainedProcessPrototypeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getChainedProcessPrototypeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ChainedProcessPrototype)) {
 			case AmaltheaPackage::CHAINED_PROCESS_PROTOTYPE__PROTOTYPE,
 			case AmaltheaPackage::CHAINED_PROCESS_PROTOTYPE__APPLY,
 			case AmaltheaPackage::CHAINED_PROCESS_PROTOTYPE__OFFSET:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2305,26 +2075,24 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getInterProcessTriggerItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getInterProcessTriggerItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(InterProcessTrigger)) {
 			case AmaltheaPackage::INTER_PROCESS_TRIGGER__STIMULUS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
 	 * 						ModeItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getModeItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getModeItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Mode)) {
 			case AmaltheaPackage::MODE__NAME,
 			case AmaltheaPackage::MODE__LITERALS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2353,16 +2121,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeLabelItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getModeLabelItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeLabel)) {
 			case AmaltheaPackage::MODE_LABEL__NAME,
 			case AmaltheaPackage::MODE_LABEL__MODE,
 			case AmaltheaPackage::MODE_LABEL__INITIAL_VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2376,14 +2142,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeSwitchItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getModeSwitchItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeSwitch)) {
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES,
 			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2397,14 +2162,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableModeSwitchItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getRunnableModeSwitchItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableModeSwitch)) {
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES,
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2422,17 +2186,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeSwitchEntryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getModeSwitchEntryItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeSwitchEntry)) {
 			case AmaltheaPackage::MODE_SWITCH_ENTRY__CONDITION,
 			case AmaltheaPackage::MODE_SWITCH_ENTRY__ITEMS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 			case AmaltheaPackage::MODE_SWITCH_ENTRY__NAME:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2455,15 +2217,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTaskRunnableCallItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getTaskRunnableCallItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TaskRunnableCall)) {
 			case AmaltheaPackage::TASK_RUNNABLE_CALL__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::TASK_RUNNABLE_CALL__STATISTIC:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2481,31 +2242,28 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getLabelAccessItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getLabelAccessItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(LabelAccess)) {
 			case AmaltheaPackage::LABEL_ACCESS__ACCESS,
 			case AmaltheaPackage::LABEL_ACCESS__DATA:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::LABEL_ACCESS__STATISTIC:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
 	 * 						ChannelAccessItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getChannelAccessItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getChannelAccessItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ChannelAccess)) {
 			case AmaltheaPackage::CHANNEL_ACCESS__DATA:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::CHANNEL_ACCESS__TRANSMISSION_POLICY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2552,14 +2310,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSemaphoreAccessItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSemaphoreAccessItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SemaphoreAccess)) {
 			case AmaltheaPackage::SEMAPHORE_ACCESS__ACCESS,
 			case AmaltheaPackage::SEMAPHORE_ACCESS__SEMAPHORE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2577,14 +2334,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getModeLabelAccessItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getModeLabelAccessItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeLabelAccess)) {
 			case AmaltheaPackage::MODE_LABEL_ACCESS__ACCESS,
 			case AmaltheaPackage::MODE_LABEL_ACCESS__DATA:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2603,16 +2359,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableInstructionsEntryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getRunnableInstructionsEntryItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Map.Entry)) {
 			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2630,16 +2384,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getExecutionNeedExtendedItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getExecutionNeedExtendedItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Map.Entry)) {
 			case AmaltheaPackage::EXECUTION_NEED_EXTENDED__KEY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::EXECUTION_NEED_EXTENDED__VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2658,16 +2410,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getNeedEntryItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getNeedEntryItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(Map.Entry)) {
 			case AmaltheaPackage::NEED_ENTRY__KEY:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::NEED_ENTRY__VALUE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2683,15 +2433,14 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableCallItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getRunnableCallItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableCall)) {
 			case AmaltheaPackage::RUNNABLE_CALL__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::RUNNABLE_CALL__STATISTIC:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, false))
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2707,14 +2456,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getCustomEventTriggerItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getCustomEventTriggerItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(CustomEventTrigger)) {
 			case AmaltheaPackage::CUSTOM_EVENT_TRIGGER__EVENT:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2730,13 +2477,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSenderReceiverReadItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSenderReceiverReadItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SenderReceiverRead)) {
 			case AmaltheaPackage::SENDER_RECEIVER_READ__LABEL:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2752,13 +2498,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSenderReceiverWriteItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSenderReceiverWriteItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SenderReceiverWrite)) {
 			case AmaltheaPackage::SENDER_RECEIVER_WRITE__LABEL:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2774,13 +2519,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getSetEventItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getSetEventItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(SetEvent)) {
 			case AmaltheaPackage::SET_EVENT__PROCESS:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2846,13 +2590,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTypeRefItemProviderNotifications(Notification notification) {
-		val list = newArrayList
+	def static ViewerNotification getTypeRefItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TypeRef)) {
 			case AmaltheaPackage::TYPE_REF__TYPE_DEF:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2900,14 +2643,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getTaskMeasurementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getTaskMeasurementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TaskMeasurement)) {
 			case AmaltheaPackage::TASK_MEASUREMENT__TASK:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2923,14 +2664,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getRunnableMeasurementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getRunnableMeasurementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(RunnableMeasurement)) {
 			case AmaltheaPackage::RUNNABLE_MEASUREMENT__RUNNABLE:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 	/*****************************************************************************
@@ -2946,14 +2685,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getEventChainMeasurementItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-
+	def static ViewerNotification getEventChainMeasurementItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(EventChainMeasurement)) {
 			case AmaltheaPackage::EVENT_CHAIN_MEASUREMENT__EVENT_CHAIN:
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
-		return list
+		return null
 	}
 
 }

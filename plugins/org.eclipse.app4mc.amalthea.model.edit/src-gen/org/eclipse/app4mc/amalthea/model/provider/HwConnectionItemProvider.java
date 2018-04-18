@@ -237,9 +237,10 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 				.getHwConnectionItemProviderNotification(notification);
 		if (vn != null) {
 			fireNotifyChanged(vn);
-		} else {
-			super.notifyChanged(notification);
+			return;
 		}
+
+		super.notifyChanged(notification);
 	}
 
 	/**
