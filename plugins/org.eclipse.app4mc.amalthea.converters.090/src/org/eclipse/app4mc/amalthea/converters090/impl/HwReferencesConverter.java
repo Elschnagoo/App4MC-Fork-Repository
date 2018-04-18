@@ -87,6 +87,10 @@ public class HwReferencesConverter extends AbstractConverter {
 		migrateTargetCore(rootElement);
 		
 		migrateEvents(rootElement);
+		
+		migrateSchedulerAllocation(rootElement);
+		
+		migrateTaskAllocation(rootElement);
 	}
 
 	private void migrateEvents(Element rootElement) {
@@ -111,14 +115,83 @@ public class HwReferencesConverter extends AbstractConverter {
 					event.addContent(memoryElement);
 				
 				}
-				
-			
 			}
-		
-			
 		}
-		
 	}
+	
+	private void migrateTaskAllocation(Element rootElement) {
+		
+		Element mappingModel = rootElement.getChild("mappingModel");
+		
+		if(mappingModel!=null) {
+			
+			List<Element> taskAllocations = mappingModel.getChildren("taskAllocation");
+			
+			for (Element taskAllocation : taskAllocations) {
+				
+				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("coreAffinity", taskAllocation);
+
+				taskAllocation.removeChildren("coreAffinity");
+				taskAllocation.removeAttribute("coreAffinity");
+				
+				for(String coreName:coresMap.keySet()) {
+					 
+					Element processingUnitElement=new Element("affinity");
+					processingUnitElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					taskAllocation.addContent(processingUnitElement);
+				
+				}
+				
+			}
+		}
+	}
+	
+	private void migrateSchedulerAllocation(Element rootElement) {
+		
+		Element mappingModel = rootElement.getChild("mappingModel");
+		
+		if(mappingModel!=null) {
+			
+			List<Element> schedulerAllocations = mappingModel.getChildren("schedulerAllocation");
+			
+			for (Element schedulerAllocation : schedulerAllocations) {
+				
+				//Step 1:
+				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("responsibility", schedulerAllocation);
+
+				schedulerAllocation.removeChildren("responsibility");
+				schedulerAllocation.removeAttribute("responsibility");
+				
+				for(String coreName:coresMap.keySet()) {
+					 
+					Element memoryElement=new Element("responsibility");
+					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					schedulerAllocation.addContent(memoryElement);
+				
+				}
+				
+				//Step 2: modifying executingCore tag
+				
+				 coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("executingCore", schedulerAllocation);
+
+				schedulerAllocation.removeChildren("executingCore");
+				schedulerAllocation.removeAttribute("executingCore");
+				
+				for(String coreName:coresMap.keySet()) {
+					 
+					Element memoryElement=new Element("executingPU");
+					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					schedulerAllocation.addContent(memoryElement);
+				
+				}
+				
+				
+				
+			}
+		}
+	}
+	
+	
 	private void migratePhysicalSectionMapping(Element rootElement) {
 		Element mappingModel = rootElement.getChild("mappingModel");
 		

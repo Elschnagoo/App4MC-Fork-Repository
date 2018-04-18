@@ -38,6 +38,13 @@
     </physicalSectionConstraints>
   </constraintsModel>
   <mappingModel>
+    <schedulerAllocation>
+      <responsibility href="amlt:/#c1?type=Core"/>
+      <executingCore href="amlt:/#c1?type=Core"/>
+    </schedulerAllocation>
+    <taskAllocation>
+      <coreAffinity href="amlt:/#c1?type=Core"/>
+    </taskAllocation>
     <memoryMapping abstractElement="l1?type=Label" memoryPositionAddress="0x0">
       <memory href="amlt:/#cache?type=Memory"/>
     </memoryMapping>
