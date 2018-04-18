@@ -27,7 +27,7 @@ public class HwFeatureIP extends ExtendedSphinxTransientItemProvider {
     }
 
     protected EStructuralFeature myFeature() {
-        return AmaltheaPackage.eINSTANCE.getHWModel_Features();
+        return AmaltheaPackage.eINSTANCE.getHWModel_FeatureCategories();
     }
 
     /**
@@ -39,7 +39,7 @@ public class HwFeatureIP extends ExtendedSphinxTransientItemProvider {
 
         final StringBuffer buffer = new StringBuffer();
         buffer.append("Features ("); //$NON-NLS-1$
-        buffer.append(((HWModel) getTarget()).getFeatures().size());
+        buffer.append(((HWModel) getTarget()).getFeatureCategories().size());
         buffer.append(")"); //$NON-NLS-1$
 
         return buffer.toString();

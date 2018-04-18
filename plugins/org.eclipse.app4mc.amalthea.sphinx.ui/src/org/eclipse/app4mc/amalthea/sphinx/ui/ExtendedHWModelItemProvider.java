@@ -65,7 +65,7 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		super.getChildrenFeatures(object);
-		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getHWModel_Features());
+		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getHWModel_FeatureCategories());
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getHWModel_Definitions());
 		this.childrenFeatures.remove(AmaltheaPackage.eINSTANCE.getHWModel_Domains());
 		return this.childrenFeatures;
@@ -77,7 +77,7 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 		final HWModel hwModel = (HWModel) object;
 		
 		// only display virtual folders if not empty (on top of the list)
-		if (!hwModel.getFeatures().isEmpty())
+		if (!hwModel.getFeatureCategories().isEmpty())
 			children.add(0, getHwFeatures(hwModel));
 		if (!hwModel.getDomains().isEmpty())
 			children.add(0, getHwDomains(hwModel));
@@ -100,7 +100,7 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__FEATURES
+		if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES
 				|| feature.getFeatureID() == AmaltheaPackage.HW_MODEL__DEFINITIONS
 				|| feature.getFeatureID() == AmaltheaPackage.HW_MODEL__DOMAINS) {
 			return new CommandWrapper(command) {
@@ -108,7 +108,7 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__FEATURES) {
+						if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES) {
 							affected = Collections.singleton(getHwFeatures((HWModel) owner));
 						} else if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__DEFINITIONS) {
 							affected = Collections.singleton(getHwDefinitions((HWModel) owner));
@@ -143,7 +143,7 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HWModel.class)) {
-		case AmaltheaPackage.HW_MODEL__FEATURES:
+		case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
 		case AmaltheaPackage.HW_MODEL__DEFINITIONS:
 		case AmaltheaPackage.HW_MODEL__DOMAINS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));

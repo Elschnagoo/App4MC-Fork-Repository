@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getDefinitions <em>Definitions</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getFeatureCategories <em>Feature Categories</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HWModelImpl#getDomains <em>Domains</em>}</li>
  * </ul>
@@ -59,14 +59,14 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	protected EList<HwDefinition> definitions;
 
 	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
+	 * The cached value of the '{@link #getFeatureCategories() <em>Feature Categories</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
+	 * @see #getFeatureCategories()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HwFeatureCategory> features;
+	protected EList<HwFeatureCategory> featureCategories;
 
 	/**
 	 * The cached value of the '{@link #getStructures() <em>Structures</em>}' containment reference list.
@@ -124,11 +124,11 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HwFeatureCategory> getFeatures() {
-		if (features == null) {
-			features = new EObjectContainmentEList<HwFeatureCategory>(HwFeatureCategory.class, this, AmaltheaPackage.HW_MODEL__FEATURES);
+	public EList<HwFeatureCategory> getFeatureCategories() {
+		if (featureCategories == null) {
+			featureCategories = new EObjectContainmentEList<HwFeatureCategory>(HwFeatureCategory.class, this, AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES);
 		}
-		return features;
+		return featureCategories;
 	}
 
 	/**
@@ -165,8 +165,8 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 		switch (featureID) {
 			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
 				return ((InternalEList<?>)getDefinitions()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.HW_MODEL__FEATURES:
-				return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
+				return ((InternalEList<?>)getFeatureCategories()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				return ((InternalEList<?>)getStructures()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.HW_MODEL__DOMAINS:
@@ -185,8 +185,8 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 		switch (featureID) {
 			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
 				return getDefinitions();
-			case AmaltheaPackage.HW_MODEL__FEATURES:
-				return getFeatures();
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
+				return getFeatureCategories();
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				return getStructures();
 			case AmaltheaPackage.HW_MODEL__DOMAINS:
@@ -208,9 +208,9 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 				getDefinitions().clear();
 				getDefinitions().addAll((Collection<? extends HwDefinition>)newValue);
 				return;
-			case AmaltheaPackage.HW_MODEL__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends HwFeatureCategory>)newValue);
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
+				getFeatureCategories().clear();
+				getFeatureCategories().addAll((Collection<? extends HwFeatureCategory>)newValue);
 				return;
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				getStructures().clear();
@@ -235,8 +235,8 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
 				getDefinitions().clear();
 				return;
-			case AmaltheaPackage.HW_MODEL__FEATURES:
-				getFeatures().clear();
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
+				getFeatureCategories().clear();
 				return;
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				getStructures().clear();
@@ -258,8 +258,8 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 		switch (featureID) {
 			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
 				return definitions != null && !definitions.isEmpty();
-			case AmaltheaPackage.HW_MODEL__FEATURES:
-				return features != null && !features.isEmpty();
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
+				return featureCategories != null && !featureCategories.isEmpty();
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 				return structures != null && !structures.isEmpty();
 			case AmaltheaPackage.HW_MODEL__DOMAINS:

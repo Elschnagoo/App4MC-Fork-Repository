@@ -73,7 +73,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Definitions());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Features());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_FeatureCategories());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Structures());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getHWModel_Domains());
 		}
@@ -139,7 +139,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 
 		switch (notification.getFeatureID(HWModel.class)) {
 			case AmaltheaPackage.HW_MODEL__DEFINITIONS:
-			case AmaltheaPackage.HW_MODEL__FEATURES:
+			case AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES:
 			case AmaltheaPackage.HW_MODEL__STRUCTURES:
 			case AmaltheaPackage.HW_MODEL__DOMAINS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -181,7 +181,7 @@ public class HWModelItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHWModel_Features(),
+				(AmaltheaPackage.eINSTANCE.getHWModel_FeatureCategories(),
 				 AmaltheaFactory.eINSTANCE.createHwFeatureCategory()));
 
 		newChildDescriptors.add

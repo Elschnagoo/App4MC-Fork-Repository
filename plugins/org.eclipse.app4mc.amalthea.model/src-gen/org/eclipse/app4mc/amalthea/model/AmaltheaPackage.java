@@ -10790,13 +10790,13 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_MODEL__DEFINITIONS = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Feature Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_MODEL__FEATURES = BASE_OBJECT_FEATURE_COUNT + 1;
+	int HW_MODEL__FEATURE_CATEGORIES = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Structures</b></em>' containment reference list.
@@ -32052,15 +32052,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHWModel_Definitions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HWModel#getFeatures <em>Features</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HWModel#getFeatureCategories <em>Feature Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Features</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.HWModel#getFeatures()
+	 * @return the meta object for the containment reference list '<em>Feature Categories</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HWModel#getFeatureCategories()
 	 * @see #getHWModel()
 	 * @generated
 	 */
-	EReference getHWModel_Features();
+	EReference getHWModel_FeatureCategories();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.HWModel#getStructures <em>Structures</em>}'.

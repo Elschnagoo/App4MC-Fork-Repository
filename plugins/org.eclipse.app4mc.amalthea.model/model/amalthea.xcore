@@ -1657,7 +1657,7 @@ enum ComponentEventType
 class HWModel extends BaseObject
 {
 	contains HwDefinition[] definitions
-	contains HwFeatureCategory[] features
+	contains HwFeatureCategory[] featureCategories
 	contains HwStructure[] structures
 	contains HwDomain[] domains
 }

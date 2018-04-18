@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getDefinitions <em>Definitions</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getFeatureCategories <em>Feature Categories</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HWModel#getDomains <em>Domains</em>}</li>
  * </ul>
@@ -51,20 +51,20 @@ public interface HWModel extends BaseObject {
 	EList<HwDefinition> getDefinitions();
 
 	/**
-	 * Returns the value of the '<em><b>Features</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Feature Categories</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Feature Categories</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Features</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHWModel_Features()
+	 * @return the value of the '<em>Feature Categories</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHWModel_FeatureCategories()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<HwFeatureCategory> getFeatures();
+	EList<HwFeatureCategory> getFeatureCategories();
 
 	/**
 	 * Returns the value of the '<em><b>Structures</b></em>' containment reference list.

@@ -2780,7 +2780,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="definitions" type="am:HwDefinition"/>
-          <xsd:element name="features" type="am:HwFeatureCategory"/>
+          <xsd:element name="featureCategories" type="am:HwFeatureCategory"/>
           <xsd:element name="structures" type="am:HwStructure"/>
           <xsd:element name="domains" type="am:HwDomain"/>
         </xsd:choice>

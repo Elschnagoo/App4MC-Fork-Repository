@@ -6850,7 +6850,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHWModel_Features() {
+	public EReference getHWModel_FeatureCategories() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -13628,7 +13628,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		hwModelEClass = createEClass(HW_MODEL);
 		createEReference(hwModelEClass, HW_MODEL__DEFINITIONS);
-		createEReference(hwModelEClass, HW_MODEL__FEATURES);
+		createEReference(hwModelEClass, HW_MODEL__FEATURE_CATEGORIES);
 		createEReference(hwModelEClass, HW_MODEL__STRUCTURES);
 		createEReference(hwModelEClass, HW_MODEL__DOMAINS);
 
@@ -15550,7 +15550,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(hwModelEClass, HWModel.class, "HWModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWModel_Definitions(), this.getHwDefinition(), null, "definitions", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHWModel_Features(), this.getHwFeatureCategory(), null, "features", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHWModel_FeatureCategories(), this.getHwFeatureCategory(), null, "featureCategories", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWModel_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWModel_Domains(), this.getHwDomain(), null, "domains", null, 0, -1, HWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
