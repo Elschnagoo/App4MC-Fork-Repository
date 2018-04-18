@@ -104,6 +104,10 @@ private void migrateRunnableInstructionsEntry(Element rootElement) {
 	xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
 	xpathBuffer.append("|");
 	xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
+	xpathBuffer.append("|");
+	xpathBuffer.append("./swModel/tasks//extended");
+	xpathBuffer.append("|");
+	xpathBuffer.append("./swModel/isrs//extended");
 	
 	
 	final List<Element> runnableInstructionsEntries = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),

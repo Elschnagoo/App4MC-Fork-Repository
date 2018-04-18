@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
+    <tasks multipleTaskActivationLimit="0">
+      <callGraph>
+        <graphEntries xsi:type="am:CallSequence"/>
+        <graphEntries xsi:type="am:ModeSwitch"/>
+        <graphEntries xsi:type="am:ProbabilitySwitch"/>
+      </callGraph>
+    </tasks>
     <runnables name="R1" callback="false" service="false">
       <runnableItems xsi:type="am:RunnableInstructions">
-        <extended key="no-name?type=CoreType"/>
+        <extended key="no-name?type=CoreType">
+          <value xsi:type="am:InstructionsConstant" value="55"/>
+        </extended>
+        <extended>
+          <value xsi:type="am:InstructionsDeviation"/>
+        </extended>
       </runnableItems>
       <runnableItems xsi:type="am:Group" ordered="true">
-        <items xsi:type="am:RunnableInstructions"/>
-        <items xsi:type="am:Group" ordered="true">
-          <items xsi:type="am:RunnableInstructions"/>
+        <items xsi:type="am:RunnableInstructions">
+          <extended key="no-name?type=CoreType"/>
         </items>
+        <items xsi:type="am:Group" ordered="true">
+          <items xsi:type="am:RunnableInstructions">
+            <extended key="no-name?type=CoreType"/>
+          </items>
+        </items>
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableModeSwitch"/>
+      <runnableItems xsi:type="am:RunnableModeSwitch">
+        <entries>
+          <items xsi:type="am:RunnableInstructions">
+            <default xsi:type="am:InstructionsConstant" value="0"/>
+            <extended key="no-name?type=CoreType"/>
+          </items>
+          <items xsi:type="am:RunnableInstructions">
+            <default xsi:type="am:InstructionsDeviation">
+              <fetchStatistic/>
+              <deviation/>
+            </default>
+            <extended key="no-name?type=CoreType"/>
+          </items>
+        </entries>
       </runnableItems>
     </runnables>
     <labels name="l1" constant="false" bVolatile="false"/>
