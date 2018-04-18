@@ -11,7 +11,6 @@
 package org.eclipse.app4mc.amalthea.converters090.impl;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -91,7 +90,52 @@ public class HwReferencesConverter extends AbstractConverter {
 		migrateSchedulerAllocation(rootElement);
 		
 		migrateTaskAllocation(rootElement);
+		
+		migrateRunnableInstructionsEntry(rootElement);
 	}
+
+	
+private void migrateRunnableInstructionsEntry(Element rootElement) {
+	
+	final StringBuffer xpathBuffer = new StringBuffer();
+	
+	xpathBuffer.append("./swModel/runnables//extended");
+	xpathBuffer.append("|");
+	xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
+	xpathBuffer.append("|");
+	xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
+	
+	
+	final List<Element> runnableInstructionsEntries = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+			Element.class, this.helper.getGenericNS("xsi"));
+	
+	for (Element runnableInstructionsEntry : runnableInstructionsEntries) {
+		
+		Element item = runnableInstructionsEntry.getParentElement();
+		
+		String itemType = item.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+		
+		if(item!=null && itemType.equals("am:RunnableInstructions")) {
+			
+			Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("key", runnableInstructionsEntry);
+
+			runnableInstructionsEntry.removeChildren("key");
+			runnableInstructionsEntry.removeAttribute("key");
+			
+			for(String coreName:coresMap.keySet()) {
+				 
+				Element puReference=new Element("key");
+				puReference.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnitDefinition");
+				runnableInstructionsEntry.addContent(puReference);
+			
+			}
+		
+		}
+		
+	}
+	 
+	}
+
 
 	private void migrateEvents(Element rootElement) {
 		

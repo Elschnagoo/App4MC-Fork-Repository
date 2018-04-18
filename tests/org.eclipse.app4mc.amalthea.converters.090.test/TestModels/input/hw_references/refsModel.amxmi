@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.8.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
+    <runnables name="R1" callback="false" service="false">
+      <runnableItems xsi:type="am:RunnableInstructions">
+        <extended key="no-name?type=CoreType"/>
+      </runnableItems>
+      <runnableItems xsi:type="am:Group" ordered="true">
+        <items xsi:type="am:RunnableInstructions"/>
+        <items xsi:type="am:Group" ordered="true">
+          <items xsi:type="am:RunnableInstructions"/>
+        </items>
+      </runnableItems>
+    </runnables>
     <labels name="l1" constant="false" bVolatile="false"/>
     <labels name="l2" constant="false" bVolatile="false"/>
     <sections name="section1"/>
   </swModel>
+  <hwModel>
+    <coreTypes bitWidth="0" instructionsPerCycle="0.0"/>
+  </hwModel>
+  <osModel>
+    <operatingSystems>
+      <taskSchedulers name="sch1">
+        <computationItems xsi:type="am:RunnableInstructions">
+          <extended key="no-name?type=CoreType"/>
+        </computationItems>
+      </taskSchedulers>
+      <interruptControllers>
+        <computationItems xsi:type="am:RunnableInstructions">
+          <extended key="no-name?type=CoreType"/>
+        </computationItems>
+      </interruptControllers>
+    </operatingSystems>
+  </osModel>
   <eventModel>
     <events xsi:type="am:ProcessEvent" name="pe">
       <core href="amlt:/#c1?type=Core"/>
