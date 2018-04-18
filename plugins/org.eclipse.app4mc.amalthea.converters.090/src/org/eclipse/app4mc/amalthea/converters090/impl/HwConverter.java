@@ -365,46 +365,50 @@ public class HwConverter extends AbstractConverter {
 
 			if(oldCoreType_ipc!=null) {
 
-				String newHWFeatureName = "IPC";
+				String ipc_value=oldCoreType_ipc;
+				
+				oldCoreType_ipc="IPC_"+ipc_value;
+				
+				String newHWFeatureName = "Instructions";
 
-				Element newHWFeature=new Element("features");
-				newHWFeature.setAttribute("name", newHWFeatureName);
+				Element newHWFeatureCategories=new Element("featureCategories");
+				newHWFeatureCategories.setAttribute("name", newHWFeatureName);
 				
 
 
 				if(hwTransformationCache.new_features_Map.containsKey(newHWFeatureName)) {
-					newHWFeature=hwTransformationCache.new_features_Map.get(newHWFeatureName);
+					newHWFeatureCategories=hwTransformationCache.new_features_Map.get(newHWFeatureName);
 				}else {
-					newHWModelElement.addContent(newHWFeature);
+					newHWModelElement.addContent(newHWFeatureCategories);
 				}
 
 
 
-				newHWFeature.setAttribute("featureType", "performance");
+				newHWFeatureCategories.setAttribute("featureType", "performance");
 				
 				//TODO: Add docu here. In new_feature_literals_Map key is the literal name with convention as : FeatureName/LiteralName
 				if(!hwTransformationCache.new_feature_literals_Map.containsKey(newHWFeatureName+"/"+oldCoreType_ipc)) {
 					
-					Element literalsElement=new Element("literals");
+					Element newHWFeatureElement=new Element("features");
 					
-					literalsElement.setAttribute("name", oldCoreType_ipc);
+					newHWFeatureElement.setAttribute("name", oldCoreType_ipc);
 					
 					Element valueElement=new Element("value");
 
 					valueElement.setAttribute("type", "am:FloatObject", this.helper.getGenericNS("xsi"));
 
-					valueElement.setAttribute("value",oldCoreType_ipc);
+					valueElement.setAttribute("value",ipc_value);
 					
-					literalsElement.addContent(valueElement);
+					newHWFeatureElement.addContent(valueElement);
 					
-					newHWFeature.addContent(literalsElement);
+					newHWFeatureCategories.addContent(newHWFeatureElement);
 					
-					hwTransformationCache.new_feature_literals_Map.put(newHWFeatureName+"/"+oldCoreType_ipc, literalsElement);
+					hwTransformationCache.new_feature_literals_Map.put(newHWFeatureName+"/"+oldCoreType_ipc, newHWFeatureElement);
 				}
 				
-				hwTransformationCache.new_features_Map.put(newHWFeatureName, newHWFeature);
+				hwTransformationCache.new_features_Map.put(newHWFeatureName, newHWFeatureCategories);
 			
-				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeatureLiteral");
+				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
 
 			}
 		}
