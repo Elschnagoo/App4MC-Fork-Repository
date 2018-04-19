@@ -234,6 +234,14 @@ Each entry (path) of a __Runnable Probability Switch__ has a probability-value. 
 !../pictures/model_sw_runnableprobabilityswitch.png!
 
 
+h4. Execution Need
+
+!../pictures/model_sw_executionneed.png!
+
+
+!../pictures/model_sw_hw_features_executionneed.png!
+
+
 h4. Runnable Instructions
 
 __Runnable Instructions__ allow to specify the default instructions and (optional) the instructions for specific core types (e.g. FPGA). These extended instructions are implemented as a map with the core type as the key.

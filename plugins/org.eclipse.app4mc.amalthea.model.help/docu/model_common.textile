@@ -166,6 +166,11 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
 
 
+h3. Needs
+
+__Needs__ are used to express execution needs in the most abstract way. The number characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. In future releases __Needs__ will replace __Instructions__ because they can also represent instructions but are more flexible.
+
+
 h3. Counters
 
 The __Counter__ element describes an activation of a target element that happens only every n<sup>th</sup> time.

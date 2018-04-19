@@ -274,7 +274,6 @@ abstract class AbstractTime extends TimeComparable {
 	}
 	
 	op int compareTo(AbstractTime time){
-		
 		return AmaltheaServices.compareTimeElement(this,time)
 	}
 	

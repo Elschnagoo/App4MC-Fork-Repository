@@ -1,61 +1,56 @@
 
 h2. Hardware Model
 
-_________________________________________________________________________________________________________
+The AMALTHEA hardware model is used to describe hardware systems which usually consist of ECU, microcontrollers, processing units, memories, connections etc. It is accessible through the __HWModel__ element and contains following top level elements:
 
-h3. New Hardware Model %{color:red}- **DRAFT !** -%
+* Definitions
+* Domains
+* Features
+* Structures
 
-h4. Documents
+
+
+
+
+h3. Class Diagrams
+
+h4. Hardware model elements
+
+!(scale)../pictures/model_hw_main.png!
+
+h4. Hardware definitions and features
+
+!(scale)../pictures/model_hw_definition.png!
+
+h4. Hardware modules and access elements
+
+!(scale)../pictures/model_hw_module.png!
+
+h4. Hardware paths and destinations
+
+!(scale)../pictures/model_hw_access.png!
+
+
+
+
+h3. Documents
 
 * "HW Documentation (PDF)":../help-model/docs/Amalthea_HW_Documentation.pdf
 * "HW Model Examples (PDF)":../help-model/docs/Amalthea_HW_Model_Examples.pdf
 * "HW Visualization Plugin (PDF)":../help-model/docs/Amalthea_HW_Visualization_Plugin.pdf
 
-h4. Examples
 
-The following Zip archive contains two simple examples.
-* "Archive":../help-model/examples/new-hw-example-projects.zip
 
-Save the archive via @"Save target as..."@  
-and import it into the workspace via @"Import..." > "Existing Projects into Workspace"@
 
-h4. Class Diagrams
-
-h5. Hardware model elements
-
-!(scale)../pictures/model_hw_main.png!
-
-h5. Hardware definitions and features
-
-!(scale)../pictures/model_hw_definition.png!
-
-h5. Hardware modules and access elements
-
-!(scale)../pictures/model_hw_module.png!
-
-h5. Hardware paths and destinations
-
-!(scale)../pictures/model_hw_access.png!
-
-_________________________________________________________________________________________________________
-_________________________________________________________________________________________________________
+................................................
 
 h3. Former Model (temporarily kept as reference)
 
-The AMALTHEA hardware model is used to describe hardware systems which usually consists of ECUs, microcontrollers, cores, memories, additional peripherals etc. It is central accessible through the __HWModel__ element and contains following elements:
 
-* SystemType
-* ECUType
-* MicrocontrollerType
-* CoreType
-* MemoryType
-* NetworkType
-* HwSystem
-* AccessPath
 
 h3. Structure
 
-A reduced overview of the Meta Model specifying the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherals which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
+An overview of the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherals which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
 
 !(scale)../pictures/model_hw_overview.png!
 
