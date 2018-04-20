@@ -22,7 +22,7 @@ public class HWTransformationCache {
 	public Map<String, Element> old_memory_Types_Definition_Map = new HashMap<String, Element>();
 	public Map<String, Element> old_hwQuartzs_Map = new HashMap<String, Element>();
 	public Map<String, Element> new_hwQuartzs_FrequencyDomain_Map = new HashMap<String, Element>();
+	public Map<String, Element> new_feature_categories_Map = new HashMap<String, Element>();
 	public Map<String, Element> new_features_Map = new HashMap<String, Element>();
-	public Map<String, Element> new_feature_literals_Map = new HashMap<String, Element>();
 
 }

@@ -369,15 +369,15 @@ public class HwConverter extends AbstractConverter {
 				
 				oldCoreType_ipc="IPC_"+ipc_value;
 				
-				String newHWFeatureName = "Instructions";
+				String newHWFeatureCategoryName = "Instructions";
 
 				Element newHWFeatureCategories=new Element("featureCategories");
-				newHWFeatureCategories.setAttribute("name", newHWFeatureName);
+				newHWFeatureCategories.setAttribute("name", newHWFeatureCategoryName);
 				
 
 
-				if(hwTransformationCache.new_features_Map.containsKey(newHWFeatureName)) {
-					newHWFeatureCategories=hwTransformationCache.new_features_Map.get(newHWFeatureName);
+				if(hwTransformationCache.new_feature_categories_Map.containsKey(newHWFeatureCategoryName)) {
+					newHWFeatureCategories=hwTransformationCache.new_feature_categories_Map.get(newHWFeatureCategoryName);
 				}else {
 					newHWModelElement.addContent(newHWFeatureCategories);
 				}
@@ -387,7 +387,7 @@ public class HwConverter extends AbstractConverter {
 				newHWFeatureCategories.setAttribute("featureType", "performance");
 				
 				//TODO: Add docu here. In new_feature_literals_Map key is the literal name with convention as : FeatureName/LiteralName
-				if(!hwTransformationCache.new_feature_literals_Map.containsKey(newHWFeatureName+"/"+oldCoreType_ipc)) {
+				if(!hwTransformationCache.new_features_Map.containsKey(newHWFeatureCategoryName+"/"+oldCoreType_ipc)) {
 					
 					Element newHWFeatureElement=new Element("features");
 					
@@ -403,12 +403,12 @@ public class HwConverter extends AbstractConverter {
 					
 					newHWFeatureCategories.addContent(newHWFeatureElement);
 					
-					hwTransformationCache.new_feature_literals_Map.put(newHWFeatureName+"/"+oldCoreType_ipc, newHWFeatureElement);
+					hwTransformationCache.new_features_Map.put(newHWFeatureCategoryName+"/"+oldCoreType_ipc, newHWFeatureElement);
 				}
 				
-				hwTransformationCache.new_features_Map.put(newHWFeatureName, newHWFeatureCategories);
+				hwTransformationCache.new_feature_categories_Map.put(newHWFeatureCategoryName, newHWFeatureCategories);
 			
-				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
+				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureCategoryName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
 
 			}
 		}

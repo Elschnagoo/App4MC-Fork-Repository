@@ -95,50 +95,162 @@ public class HwReferencesConverter extends AbstractConverter {
 	}
 
 	
-private void migrateRunnableInstructionsEntry(Element rootElement) {
-	
-	final StringBuffer xpathBuffer = new StringBuffer();
-	
-	xpathBuffer.append("./swModel/runnables//extended");
-	xpathBuffer.append("|");
-	xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
-	xpathBuffer.append("|");
-	xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:RunnableInstructions\"]/extended");
-	xpathBuffer.append("|");
-	xpathBuffer.append("./swModel/tasks//extended");
-	xpathBuffer.append("|");
-	xpathBuffer.append("./swModel/isrs//extended");
-	
-	
-	final List<Element> runnableInstructionsEntries = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
-			Element.class, this.helper.getGenericNS("xsi"));
-	
-	for (Element runnableInstructionsEntry : runnableInstructionsEntries) {
-		
-		Element item = runnableInstructionsEntry.getParentElement();
-		
-		String itemType = item.getAttributeValue("type", this.helper.getGenericNS("xsi"));
-		
-		if(item!=null && itemType.equals("am:RunnableInstructions")) {
-			
-			Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("key", runnableInstructionsEntry);
+	private void migrateRunnableInstructionsEntry(Element rootElement) {
 
-			runnableInstructionsEntry.removeChildren("key");
-			runnableInstructionsEntry.removeAttribute("key");
-			
-			for(String coreName:coresMap.keySet()) {
-				 
-				Element puReference=new Element("key");
-				puReference.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnitDefinition");
-				runnableInstructionsEntry.addContent(puReference);
-			
-			}
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		xpathBuffer.append("./swModel/runnables//*[@xsi:type=\"am:RunnableInstructions\"]");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:RunnableInstructions\"]");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:RunnableInstructions\"]");
+
+		final List<Element> runnableInstructionsEntries = this.helper.getXpathResult(rootElement, xpathBuffer.toString(),
+				Element.class, this.helper.getGenericNS("xsi"));
 		
+		if(runnableInstructionsEntries.size()>0) {
+			//in this case, HWFeatureCategory sould be referenced in the newly created ExecutionNeed elements.
+			
+			if(this.hwTransformationCache.new_feature_categories_Map.containsKey("Instructions")==false) {
+				checkAndCreateHWFeatureCategory(rootElement);
+			}
+		}
+
+		for (Element runnableInstruction : runnableInstructionsEntries) {
+
+			Element parentElementOfRunnableInstruction = runnableInstruction.getParentElement();
+
+			String tagName = runnableInstruction.getName();
+
+			int indexOfRunnableInstructions=parentElementOfRunnableInstruction.indexOf(runnableInstruction);
+
+			//		runnableInstructions.detach(); //removing element from parent
+
+			Element executionNeedElement=new Element(tagName);
+
+			executionNeedElement.setAttribute("type", "am:ExecutionNeed", this.helper.getGenericNS("xsi"));
+
+			migrateValueOfRunnableInstructions(runnableInstruction, executionNeedElement,"default");
+
+
+			List<Element> oldExtendedElements = runnableInstruction.getChildren("extended");
+
+			for (Element oldExtendedElement : oldExtendedElements) {
+
+				Element newExtendedSubElement=new Element("extended");
+
+				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("key", oldExtendedElement);
+
+
+				for(String coreName:coresMap.keySet()) {
+
+					Element puReference=new Element("key");
+					puReference.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnitDefinition");
+					newExtendedSubElement.addContent(puReference);
+
+				}
+
+				migrateValueOfRunnableInstructions(oldExtendedElement, newExtendedSubElement, "value");
+
+				//Adding the extended elements to Execution element
+				executionNeedElement.addContent(newExtendedSubElement);
+
+			}
+
+			parentElementOfRunnableInstruction.addContent(indexOfRunnableInstructions,executionNeedElement);
+
+			runnableInstruction.detach();
+
+
+		}
+
+	}
+
+	private void checkAndCreateHWFeatureCategory(Element rootElement) {
+		Element hwModelEleemnt = rootElement.getChild("hwModel");
+		
+		if(hwModelEleemnt==null) {
+			hwModelEleemnt=new Element("hwModel");
+			rootElement.addContent(hwModelEleemnt);
 		}
 		
+		Element featureCategoriesElement=new Element("featureCategories");
+		featureCategoriesElement.setAttribute("name", "Instructions");
+		featureCategoriesElement.setAttribute("featureType", "Performance");
+		hwModelEleemnt.addContent(featureCategoriesElement);
 	}
-	 
-	}
+
+	private void migrateValueOfRunnableInstructions(Element runnableInstruction, Element executionNeedElement, String valueTagName) {
+		Element oldDefaultElement = runnableInstruction.getChild(valueTagName);
+
+		if(oldDefaultElement!=null) {
+
+			String oldElement_defaultType = oldDefaultElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+
+			if(oldElement_defaultType!=null) {
+				if(oldElement_defaultType.equals("am:InstructionsConstant")) {
+
+					String oldDefault_value = oldDefaultElement.getAttributeValue("value");
+
+					if(oldDefault_value!=null) {
+
+						Element newDefaultSubElement=new Element(valueTagName);
+
+						Element newKeyElement=new Element("key");
+
+						newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
+
+						Element newValueElement=new Element("value");
+
+						newValueElement.setAttribute("type", "am:NeedConstant", this.helper.getGenericNS("xsi"));
+
+						newValueElement.setAttribute("value", oldDefault_value);
+
+						newDefaultSubElement.addContent(newKeyElement);
+
+						newDefaultSubElement.addContent(newValueElement);
+
+						//Adding newly created default element here
+						executionNeedElement.addContent(newDefaultSubElement);
+
+					}
+
+				}else if(oldElement_defaultType.equals("am:InstructionsDeviation")) {
+
+					Element newDefaultSubElement=new Element(valueTagName);
+
+					Element newKeyElement=new Element("key");
+
+					newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
+
+					Element newValueElement=new Element("value");
+
+					newValueElement.setAttribute("type", "am:NeedDeviation", this.helper.getGenericNS("xsi"));
+
+					Element oldDeviationElement = oldDefaultElement.getChild("deviation");
+
+					if(oldDeviationElement!=null) {
+
+						Element newDeviationElement = oldDeviationElement.clone();
+
+						newDeviationElement.detach();
+
+						newValueElement.addContent(newDeviationElement);
+
+					}
+
+					newDefaultSubElement.addContent(newKeyElement);
+					newDefaultSubElement.addContent(newValueElement);
+
+
+					//Adding newly created default element here
+					executionNeedElement.addContent(newDefaultSubElement);
+				}
+			}
+
+
+		}
+}
 
 
 	private void migrateEvents(Element rootElement) {
