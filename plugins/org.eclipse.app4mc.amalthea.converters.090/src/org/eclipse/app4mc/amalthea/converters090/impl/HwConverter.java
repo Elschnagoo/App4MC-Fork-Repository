@@ -927,30 +927,48 @@ public class HwConverter extends AbstractConverter {
 				
 				String clockRatio = oldHWPrescaler.getAttributeValue("clockRatio");
 				
+				
 				if(clockRatio==null) {
 					clockRatio="0.0";
 				}
 
-				Element newHW_FrequencyDomain = hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.get(oldHW_quartz_name);
 
-				if( !clockRatio.trim().toString().equals("1.0")) {
+				String newHW_frequencyDomain_name ="";
+				if( clockRatio.trim().toString().equals("1.0")) {
+					newHW_frequencyDomain_name=oldHW_quartz_name;
+				}else {
+					//As the clock ratio is not 1.0, in this case -> cloning standard FrequencyDomain and setting the updated Frequency
+					newHW_frequencyDomain_name= oldHW_quartz_name+"__"+clockRatio;
+				}
+				
+				Element newHW_FrequencyDomain = hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.get(newHW_frequencyDomain_name);
 
 
-					if(newHW_FrequencyDomain!=null) {
-
+				if(newHW_FrequencyDomain==null) {
+					
+					
+					Element newHW_FrequencyDomain_baseFrequency_from_Quartz = hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.get(oldHW_quartz_name);
+					
+					if(newHW_FrequencyDomain_baseFrequency_from_Quartz!=null) {
+						
 						/*-getting parent element of existing FrequencyDomain -> HWModel */
-						Element parentElement = newHW_FrequencyDomain.getParentElement();
+						Element parentElement = newHW_FrequencyDomain_baseFrequency_from_Quartz.getParentElement();
 
-						newHW_FrequencyDomain=	newHW_FrequencyDomain.clone();
+						newHW_FrequencyDomain=	newHW_FrequencyDomain_baseFrequency_from_Quartz.clone();
 
 						newHW_FrequencyDomain.detach();
 
+						newHW_frequencyDomain_name = oldHW_quartz_name+"__"+clockRatio;
+						
+						newHW_FrequencyDomain.setAttribute("name", newHW_frequencyDomain_name);
+						
 						/*-Adding newly created FrequencyDomain to HWModel*/
 
 						parentElement.addContent(newHW_FrequencyDomain);
-
-						//As the clock ratio is not 1.0, in this case -> cloning standard FrequencyDomain and setting the updated Frequency
-						newHW_FrequencyDomain.setAttribute("name", oldHW_quartz_name+"__"+clockRatio);
+						
+						
+						hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put(newHW_frequencyDomain_name,newHW_FrequencyDomain);
+						
 
 						Element newHW_frequency = newHW_FrequencyDomain.getChild("defaultValue");
 
@@ -973,9 +991,17 @@ public class HwConverter extends AbstractConverter {
 
 							}
 						}
-
+						
 					}
+					
+					
+
+				
+
 				}
+			
+				
+				
 				//updating reference
 				if(newHW_FrequencyDomain!=null) {
 					Element newHW_frequencyDoamin_reference=new Element("frequencyDomain");

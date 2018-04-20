@@ -51,7 +51,11 @@ public class HWCacheBuilder implements ICache {
 						
 						for (Element oldHWQuartz : oldHWQuartzes) {
 							
-							cache.old_hwQuartzs_Map.put(oldHWQuartz.getAttributeValue("name"), oldHWQuartz);
+							String attributeValue = oldHWQuartz.getAttributeValue("name");
+							
+							if(attributeValue!=null) {
+								cache.old_hwQuartzs_Map.put(attributeValue, oldHWQuartz);
+							}
 						}
 						
 						List<Element> oldHWECUs = oldHWSystem.getChildren("ecus");
@@ -64,7 +68,10 @@ public class HWCacheBuilder implements ICache {
 								List<Element> oldHWCores = oldHWMicroController.getChildren("cores");
 								
 								for (Element oldHWCore : oldHWCores) {
-									cache.old_cores_Map.put(oldHWCore.getAttributeValue("name"), oldHWCore);
+									String attributeValue = oldHWCore.getAttributeValue("name");
+									if(attributeValue!=null) {
+										cache.old_cores_Map.put(attributeValue, oldHWCore);
+									}
 								}
 								
 							}
@@ -76,7 +83,12 @@ public class HWCacheBuilder implements ICache {
 					List<Element> oldHWMemoryTypes = oldHWModelElement.getChildren("memoryTypes");
 					
 					for (Element oldHWMemoryType : oldHWMemoryTypes) {
-						cache.old_memory_Types_Definition_Map.put(oldHWMemoryType.getAttributeValue("name"), oldHWMemoryType);
+						String attributeValue = oldHWMemoryType.getAttributeValue("name");
+
+						if(attributeValue!=null) {
+							cache.old_memory_Types_Definition_Map.put(attributeValue, oldHWMemoryType);
+							
+						}
 					}
 					
 					
