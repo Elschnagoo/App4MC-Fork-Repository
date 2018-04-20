@@ -563,7 +563,10 @@ public class HwConverter extends AbstractConverter {
 						
 						newHW_definitions_type_amalthea_element="CacheDefinition";
 						
-//						newHW_Memory_Element.setName("caches");
+						if(migrateCache==true && migrateMemory==false) {
+							//In this scenario, Core object is being migrated
+							newHW_Memory_Element.setName("caches");
+						}
 						
 						newHW_Memory_Element.setAttribute("type", "am:Cache", this.helper.getGenericNS("xsi"));
 						
