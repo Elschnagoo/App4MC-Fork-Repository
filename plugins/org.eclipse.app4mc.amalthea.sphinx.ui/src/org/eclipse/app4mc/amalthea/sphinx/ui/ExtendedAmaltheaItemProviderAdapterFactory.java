@@ -41,6 +41,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityIte
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedtemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRItemProvider;
@@ -54,7 +55,6 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivat
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessPrototypeItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableInstructionsItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableModeSwitchItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableProbabilitySwitchItemProvider;
@@ -178,8 +178,7 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 
 	@Override
 	public Adapter createExecutionNeedAdapter() {
-		// TODO Auto-generated method stub
-		return super.createExecutionNeedAdapter();
+		return new ExtendedExecutionNeedtemProvider(this);
 	}
 
 	@Override
@@ -200,11 +199,6 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createRunnableCallAdapter() {
 		return new ExtendedRunnableCallItemProvider(this);
-	}
-
-	@Override
-	public Adapter createRunnableInstructionsAdapter() {
-		return new ExtendedRunnableInstructionsItemProvider(this);
 	}
 
 	@Override
