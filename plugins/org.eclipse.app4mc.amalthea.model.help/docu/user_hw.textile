@@ -1,15 +1,77 @@
 
 h3. Hardware
 
-The AMALTHEA hardware model is used to describe hardware systems. The overall structure of this model is as followed:
+h4. Structural Modeling of Heterogeneous Platforms
 
-* A *System* contains one or more *ECUs*
-* An *ECU* contains one or more *Microcontrollers*
-* A *Microcontroller* contains one or more *Cores*
-* (Optional) Each of these abstractions can contain one or more memories, networks or peripheral elements. 
+To master the rising demands of performance and power efficiency, hardware becomes more and more diverse with a wide spectrum of different cores and hardware accelerators. On the computation front, there is an emergence of specialized processing units that are designed to boost a specific kind of algorithm or set of math operations like "multiply and accumulate". The benefit from specialization is different and leads to nonlinear effects between processing units in terms of performance for algorithms. Furthermore the memory hierarchy in modern embedded microprocessor architectures becomes more complex due to multiple levels of caches, cache coherency support, and the extended use of DRAM. In addition to crossbars, modern SoCs connect the different clusters including different hardware components via a Network on Chip. These characteristics of modern and performant hardware specialized processing units, complex memory hierarchy, network like Interconnects are only partially supported by the former Amalthea hardware model and tools for performance simulation. Therefore, to create models of modern heterogeneous systems, new concepts of representing hardware components in a flexible and easy way are necessary: Beside of modeling a manifold hierarchical structures, domains for power and frequencies are the state of the art. Furthermore cache and memory subsystem modeling is mandatory and the connection between hardware components has to be modeled over different abstraction layers. Only with such an extended modeling approach, a more accurate estimation of the system performance becomes feasible.
 
-Usually, this is also considered the least amount of information which *must* be present in the model. 
+Our intention is to create a hardware model once at the beginning of a development process. Ideally, the hardware model will be provided by the vendor. All performance relevant information regarding the different features of hardware components like a floating point unit or how hardware components are interconnected should be explicitly represented in the model. The main challenge for a hardware/software performance model is then to determine certain costs, e.g., execution time of a software functionality that is mapped to a processing unit. These costs are sometimes very hard to obtain and, in contrast to the hardware structure, may change during development time. Therefore, the inherent costs of the hardware, e.g., latency of an access path, should be decoupled from the mapping or implementation dependent costs of executing functions. We know from experience that it is necessary to refine these costs multiple times in the development process to increase accuracy of performance estimation. Further this refinement should be possible in an efficient way and support model re-use.
 
-Since the hardware model is meant to be utilized for a wide range of use cases, additional information might be required w.r.t. the specific use case. Examples for its usage, as well as the resp. minimal amount of required information, are provided within the example section (*User Guide* -> *Examples* -> *Hwmodel Example*).
 
-The information, which is required in determining a software-to-hardware-mapping with the AMALTHEA Mapping Plugin, is listed in Deliverable D3.4. Examples of hardware models for this use case will be generated during the mapping tutorials (See sections *User Guide* -> *Tutorials* -> *Mapping Example 1/2*). 
+h4. Recipe and Feature concept: An outlook of an upcoming approach
+
+
+h4. General Hardware Model Overview
+
+The design of the new hardware model is focusing on flexibility and variety to cover different kind of designs to cope with future extensions, and also to support different levels of abstraction. To reduce the complexity of the meta model for representing modern hardware architectures, as less elements as possible are introduced. For example, dependent of the abstraction level, a component called _ConnectionHandler_ can express different kind of connection elements, e.g. a crossbar within a SoC or a CAN bus within an E/E-architecture. A simplified overview of the meta model to specify hardware as a model is shown below. The components _ConnectionHandler, ProcessingUnit, Memory_ and _Cache_ are referred in the following as basic components.
+
+!(scale)../pictures/hardware/user_hw_model_class_diagram.png!
+Class diagram of the hardware model
+
+
+The root element of a hardware model is always the _HwModel_ class that contains all domains (power and frequency), definitions, and hardware features of the different component definitions. The hierarchy within the model is represented by the _HwStructure_ class, with the ability to contain further _HwStructure_ elements. Therewith arbitrary levels of hierarchy could be expressed. Red and blue classes in the figure are the definitions and the main components of a system like a memory or a core.
+
+Figure xxx shows the modeling of a processor. The _ProcessingUnitDefiniton_, which is created once, specifies a processing unit with general information (which can be a CPU, GPU, DSP or any kind of hardware accelerator). Using a definition that may be re-used supports quick modeling for multiple homogeneous components within a heterogeneous architecture. _ProcessingUnits_ then represent the physical instances in the hardware model, referencing the _ProcessingUnitDefiniton_ for generic information, supplemented only with instance specific information like the _FrequencyDomain_.
+
+!(scale)../pictures/hardware/user_hw_definition_example.png!
+Link between definitions and module instances (physical components)
+
+
+Yellow represents the power and frequency domains that are always created at the top level of the hardware model. It is possible to model different frequency or voltage values, e.g., when it is possible to set a systems into a power safe mode. All components that reference the domain are then supplied with the corresponding value of the domain.
+
+All the green elements in the figure are related to communication (together with the blue base component _ConnectionHandler_). Green modeling elements represent ports, static connections, and the access elements for the _ProcessingUnits_. These _ProcessingUnits_ are the master modules in the hardware model. The following example shows two _ProcessingUnits_ that are connected via a _ConnectionHandler_ to a _Memory_. There are two different possibilities to specify the access paths for _ProcessingUnits_ like it is shown for ProcessingUnit_2 in figure "[fig:Logical_and_static_connections]":#fig:Logical_and_static_connections. Every time an _HwAccessElement_ is necessary to assign the destination e.g. a _Memory_ component. This _HwAccessElement_ can contain a latency or a data rate dependent on the use case. The second possibility is to create a _HwAccessPath_ within the _HwAccessElement_ which describes the detailed path to the destination by referencing all the _HwConnections_ and _ConnectionHandlers_. It is even possible to reference a cache component within the _HwAccessPath_ to express if the access is cached or non-cached. Furthermore its possible to set addresses for these _HwAccessPath_ to represent the whole address space of a _ProcessingUnit_. A typical approach would be starting with just latency or data rates for the communication between components and enhance the model over time to by switching to the _HwAccessPaths_.
+
+!(scale)../pictures/hardware/user_hw_access_paths.png!
+Access elements in the hardware model
+
+
+h4. Current implementation with features and the connection to the SW Model
+
+h5. Connection between HW Features and Runnables
+
+!(scale)../pictures/hardware/user_hw_feature_runnable_connection.png!
+
+
+!(scale)../pictures/hardware/user_hw_feature_runnable_example.png!
+
+
+
+h4. Interpretation of latencies in the model
+
+In the model read and write access latencies are used. An alternative which is usually used in specifications or by measurements are request and response latencies. The following figure shows a typical communication between two components. The interpretation of a read and write latency for example at _ConnectionHandlers_ is the following:
+
+!(scale)../pictures/hardware/user_hw_latencies.png!
+
+
+* *readLatency* = requestLatency + response Latency
+
+* *writeLatency* = requestLatency
+
+The access latency of a _Memory_ component is always added to the read or write latency from the communication elements, independent if its one latency from an _HwAccessElement_ or multiple latencies from a _HwAccessPath_.
+
+As a concrete example for figure xxx in case using only read and write latencies:
+
+* *totalReadLatency* = readLatency (HwAccessElement) + accessLatency (Memory)
+
+* *totalWriteLatency* = writeLatency (HwAccessElement) + accessLatency (Memory)
+
+As a concrete example for figure xxx in case using an access element with an hw access path:
+
+_n = Number of path elements_
+
+* *totalReadLatency* =  Sum 1..n ( readLatency(p) ) + accessLatency (Memory)
+
+* *totalWriteLatency* = Sum 1..n ( writeLatency(p) )  + accessLatency (Memory)
+
+PathElements could be _Caches_, _ConnectionHandlers_ and _HwConnections_. In very special cases also a _ProcessingUnit_ can be a _PathElement_ the _ProcessingUnit_ has no direct effect on the latency. In case the user want to express a latency it has to be annotated as _HwFeature_.
+

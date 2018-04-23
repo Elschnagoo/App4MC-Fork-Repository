@@ -31,255 +31,336 @@ h4. Hardware paths and destinations
 !(scale)../pictures/model_hw_access.png!
 
 
+h3. Element description
+
+The following tables describe the different model elements and their attributes in detail. For different elements short examples are attached.
+
+h4. HwModel
+
+The _HwModel_ class is the root element of the hardware model. It always contains one or multiple _HwStructures, PowerDomains_ and _FrequencyDomains_ and optionally different _FeaturesCategories_ for the _HwModule_ definitions.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Structures | Containment |HwStructure |* |Hierarchic structure of the hardware model |
+| FeatureCategories | Containment |HwFeatureCategory |* |FeatureCategory for the HwModel |
+| Domains | Containment |HwDomain |* |Frequency- and PowerDomains |
+| Definitions | Containment |HwDefinition |* |Definitions of ProcessingUnits, Memories, Caches and ConnectionHandlers |
 
 
-h3. Documents
+h4. HwStructure
+
+A _HwStructure_ is a hierarchical element which can contain all kind of _HwModules_ , _HwConnections_ and other _HwStructures_ . Different _HwStructures_ can be connected via one or more _HwPorts_ with other structures or modules of a top level _HwStructures_. By combining different _HwStructures_ any kind if hierarchical systems can be expressed. By setting the structure type attribute (e.g. Cluster, ECU) the structural level in the hardware is directly expressible in the model.
+
+!(scale)../pictures/hardware/hw_structure_example.png!
+
+The figure shows an example for creating a hierarchy within an E/E-architecture. The _HwStructure System_ (which is called "System" ) is created as top level structure within the HwModel. It contains three other structures which represents different ECUs. The structures are connected via _HwPorts_, _HwConnections_ and a _ConnectionHandler_. Usually structures in the model can be viewed as black boxes on the top level. _ECU3_ allows a look inside, where additional structures for two SoCs are visible.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String |String | 1 | Name of the hardware structure |
+| StructureType | Enum | StructureType | 1 |Defines the type of the structure (e.g. ECU) |
+| Modules | Containment | HwModule | * |Modules of the structure (e.g. Memory) |
+| Ports | Containment | HwPort | * |Ports to connect the structure |
+| Structures | Containment | HwStructure | * |Hardware structure to build hierarchical designs |
+| Connections | Containment | HwConnection | * |Connections within a structure |
+
+
+h4. Domains
+
+!(scale)../pictures/hardware/hw_domain_example.png!
+
+The figure shows an example for _HwDomain_ (_FrequencyDomain_ and a _PowerDomain_). They are always created at the top level in the root element _HwModel_. Every basic component is able to reference a _FrequencyDomain_ and a _PowerDomain_. _(Note: The link between domains and modules are only a references, there are no visible connections inside the model)_
+
+
+h4. FrequencyDomain
+
+A _FrequencyDomain_ is inherited from _HwDomain_. This element describes a frequency domain which can be referenced by all elements of the type _HwModule_ to define the default frequency value for operation. In future the _FrequencyDomain_ should also contain possibleValues which should specify the different frequencies for different operation modes. For this extension a general Amalthea mode concept is necessary.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| DefaultValue | Containment | Frequency | 1 |Default frequency value |
+| Clock Gating | Boolean | Boolean | 1 | Possibility to power down the domain (default = false) |
+
+
+h4. PowerDomain
+
+A _PowerDomain_ is inherited from _HwDomain_. This element describes a power domain which can be referenced by all elements of the type _HwModule_, to define the default voltage value for operation. In future the _PowerDomain_ should also contain possibleValues which should specify the different voltages for different operation modes. For this extension a general Amalthea mode concept is necessary.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the power domain |
+| DefaultValue | Containment | Voltage | 1 | Default voltage value |
+| PowerGating | Boolean | Boolean | 1 | Possibility to power down the domain (default = false) |
+
+
+h4. ProcessingUnit
+
+A _ProcessingUnit_ is a _HwModule_ that can be used to model a wide set of different hardware components like a GPU, hardware accelerator, CPU, etc. The capability and the functionality of a _ProcessingUnit_ are represented by different _HwFeatures_ within the _ProcessingUnitDefinition_. The _ProcessingUnit_ can be referenced by _AccessPaths_ and _HwAccessElements_. The _ProcessingUnits_ are the master modules in the model and every _ProcessingUnit_ can has their own access space.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the processing unit instance |
+| Ports | Containment | HwPort | * | Ports of the component |
+| Caches | Containment |Cache | * | Included caches by the Processing Unit e.g. L1 Cache |
+| Access Elements | Containment | AccessElement | * |Access element for a specific memory or processing unit |
+| FrequencyDomain | Reference | FrequencyDomain | 1 |Frequency domain which supplies the module with a frequency |
+| PowerDomain | Reference | PowerDomain | 1 | Power domain which supplies the module with a voltage |
+| Definition | Reference | ProcessingUnitDefinition | 1 | Definition with all features for the processing unit instance |
+
+
+h4. Memory
+
+A _Memory_ is a component of type _HwModule_ to express any kind memory like SRAM, DRAM, Flash, etc. in the model, caches are modeled separately. The _Memory_ element can be referenced as destination by an _HwAccessElement_.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the memory instance |
+| Ports | Containment | HwPort | * | Ports of the component |
+| FrequencyDomain | Reference | FrequencyDomain | 1 | Frequency domain which supplies the module with a frequency |
+| PowerDomain | Reference | PowerDomain | 1 | Power domain which supplies the module with a voltage |
+| Definition | Reference | MemoryDefinition | 1 | Definition with all features for the memory instance |
+
+
+h4. Cache
+
+A _Cache_ is a component of type _HwModule_ to express the special behavior of a _Cache_. It is used to create cache topologies within a system. The _Cache_ can be referenced by _AccessPaths_ to express if it is a cached or non-cached access. It is also the only _HwModule_ which can be directly contained by a _ProcessingUnit_.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+
+
+h4. ConnectionHandler
+
+A _ConnectionHandler_ is a component of type HwModule which can be used whenever multiple _HwConnections, (HwPorts)_ have to be combined. It is possible to represent whole bus systems or interconnects with a single _ConnectionHandler_, or elements like small routers within a NoC.
+
+!(scale)../pictures/hardware/hw_connection_handler_example.png!
+
+The figure shows an example where a _ConnectionHandler_ is used as an interconnect within a SoC. Optional it is possible to model _InternalConnections_ inside a _ConnectionHandler_ to model explicit or restrict different connections. However it is also possible to use default read and write latencies of the whole _ConnectionHandlerDefinition_, individual latencies can be attached to_InternalConnections_. A short example where a _ConnectionHandler_ is used as a CAN bus is illustrated in the structure example. For detailed models where all modules connected via _HwConnections_ and different _ConnectionHandlers_, the _ConnectionHandlers_ should be the only module where contentions in the hardware model can occur. A _ConnectionHandler_ can be referenced by _HwAccessPaths_.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String |1 | Name of the connection handler instance |
+| Ports | Containment | HwPort | * | Ports of the component |
+| Internal Connections | Containment | HwConnection | * | Internal connection between the ports |
+| FrequencyDomain | Reference | FrequencyDomain | 1 | Frequency domain which supplies the module with a frequency |
+| PowerDomain | Reference | PowerDomain | 1 | Power domain which supplies the module with a voltage |
+| Definition | Reference | ConnectionHandlerDefinition | 1 | Definition with all features for the connection handler instance |
+
+
+h4. HwAccessElement
+
+A _HwAccessElement_ can be used to specify the access relationship between two _ProcessingUnits_ or a _ProcessingUnit_ and a _Memory_. With multiple _HwAccessElements_ the whole access or even address space of a _ProcessingUnit_ can be represented. A _HwAccessElement_ represents always the view from a specific _ProcessingUnit_. There exist two different approaches to express latency or an data rate for a _HwAccessElement_: 1. directly using latencies or data rates or 2. modeling the exact path to the destination by attaching a _HwAccessPath_ which references the specific connection elements like _ConnectionHandlers_, _HwConnection_, etc. For the second approach it is also possible to work directly with addresses. As a small example for the _HwAccessElement_ figure  #fig:Logical_and_static_connections can be used.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the address element |
+| Destination | Reference | HwDestination | 1 | Destination for the processing unit |
+| AccessPaths | Containment | HwAccessPath | 1 | Access path to the destination |
+| ReadLatency | Containment | HwLatency | 1 | Read latency to the destination |
+| WriteLatency | Containment | HwLatency | 1 | Write latency to the destination |
+| DataRate | Containment | DataRate | 1 | Max. data rate to the destination |
+
+
+h4. HwFeatureCategory
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the hardware feature |
+| Type | Enum | HwFeatureType | 1 | Type to express the purpose of the feature (performance, power, performance_and_power) |
+| Description | String | String | 1 | Textual description of the hardware feature |
+| HwFeature | Containment | HwFeature | * | Hardware feature with a factor |
+
+
+h4. HwFeature
+
+A _HwFeature_ is an abstract element to represent any kind of special functionality. The cost function (_Recipes_) of an algorithm will be placed in an intermediate layer outside of the hardware model in future. However the _HwFeatures_ will be directly referenced by the _Recipes_. All _HwFeatures_ are placed inside a_ProcessingUnitDefinition_, in Future we will extend the Feature concept for _MemoryDefinitions_, _CacheDefinitions_ and _ConnectionHandlerDefinitions_. Specific definitions for the basic components are able to reference such _HwFeatures_ to express their functionality. HwFeatures could be reused several times by different definitions. A _HwFeature_ can contain a value to express static costs in a model. Figure  #fig:hwFeature_example shows an example how recipes are used in a model. <em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
+
+!(scale)../pictures/hardware/hw_feature_example.png!
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the hardware feature |
+| Value | Containment | Value | 1 | assigned factor to the coressponding feature |
+
+
+h4. HwPort
+
+_HwPorts_ are elements which can be connected via _HwConnections_. Every module can contain multiple _HwPorts_. Every communication, input or output is handled via a _HwPort_ of a component. It is only allowed to have one _HwConnection_ per _HwPort_, except the _HwPort_ is categorized as delegated port which means it is just a hierarchical connection between _HwStructures_. In this case the ports can have two _HwConnections_. The second exception is if inside a _ConnectionHandler_, _InternalConnections_ are used.In this case a _HwPort_ can be directed with a _HwConnections_ and an _InternalConnection_. The following figure shows an example with delegated _HwPorts_ and _InternalConnections_.
+
+!(scale)../pictures/hardware/hw_port_example.png!
+
+
+For _HwPorts_ it's always possible to select if the port is an _initiator_ or a _responder_ port. The following example shows that an initiator port is always connected to a responder port (comparable to TLM modeling).
+
+!(scale)../pictures/hardware/hw_port_example_i_r.png!
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the hardware port |
+| BitWidth | Int | Int | 1 | Bit width e.g. 32 bit (default = 0) |
+| Priority | Int | Int | 1 | Priority of the hardware port (default = 0) |
+| Type | Enum | PortType | 1 | Port type (initiator, responder) |
+| Delegated | Bool | Bool | 1 | Delegated ports are hierarchical structure ports |
+| PortInterface | Enum | PortInterface | 1 | Type to express special interfaces for validation |
+
+
+h4. HwConnection
+
+A _HwConnection_ is an element to model structural connections between two _HwPorts_. _HwConnections_ are always placed within _HwStructures_. It is possible to directly annotate a read and write latency at a _HwConnection_. _HwConnections_ can be referenced by _HwAccessPaths_. The HwConnection do not have a reference to a_FrequencyDomain_, the frequency is always provided by the element which is in front of the _HwConnection_ in the _HwAccessPath_.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String |1 | Name of the hardware connection |
+| Port1 | Reference | HwPort | 1 | Port1 for the connection |
+| Port2 | Reference | HwPort | 1 | Port2 for the connection |
+| ReadLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a read access |
+| WriteLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a write access |
+| DataRate | Containment | DataRate | 1 | Max. data rate of the connection (value and unit) |
+
+
+h4. HwAccessPath
+
+A _HwAccessPath_ is an element to describe the connection route of a _ProcessingUnit_ to its destination (_Memory_ or _ProcessingUnit_). The _HwAccessPath_ is defined through an ordered list of IPaths interface elements (_HWConnections, Caches_ and _ConnectionHandlers_) and is a containment of an _HwAccessElement_. The figure shows an example of an _HwAccessPath_, how a _ProcessingUnit_ is connected via two _HwConnections_ and a _ConnectionHandler_ with a _Memory_.
+
+!(scale)../pictures/hardware/hw_access_path_example.png!
+
+In the following example the possible memOffset attribute is explained. Every _ProcessingUnit_ can access a _Memory_ or other _ProcessingUnit_ over a different address. The size of the _Memory_ has to be equal or greater than _endAddress_ minus the _startAddress_.
+
+* memory_size >= endAddress - startAddress
+
+In the case the the _ProcessingUnit_ should not start at address 0 (from the memory point of view) the _memOffset_ attribute can be used. With help of this attribute the access area for the memory can be changed, the figure shows an example.
+
+!(scale)../pictures/hardware/hw_memory_address_example.png!
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the hardware access path |
+| PathElements | Reference | HwPath | * |Path elements for the access path |
+| StartAddress | Long | Long | 1 | Start address for the memory |
+| EndAddress | Long | Long | 1 | End address for the memory |
+| MemOffset | Long | Long | 1 | Offset for accessing only a partition of a memory |
+
+
+h4. ProcessingUnitDefinition
+
+The example in figure xxx is representative for any kind of definition in the model. This means for specifying a compute resource a _ProcessingUnitDefinition_ is created once which is then referenced by the number of _ProcessingUnit_ instances of this kind. For a _ProcessingUnitDefinition_ the references to _HwFeatures_ is on of the key concepts of the hardware model. The concept is explained in figure xxx.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the processing unit definition |
+| PuType | Enum | PuType | 1 | Type of the processing unit e.g. (Core, GPU, etc.) |
+| Features | Reference | HwFeature | * | Hardware features of the definition |
+
+
+h4. MemoryDefinition
+
+The example in figure xxx is representative for any kind of definition in the model. This means for specifying a memory, a _MemoryDefinition_ is created once which is then referenced by the number of _Memory_ instances of this kind.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the memory definition |
+| AccessLatency | Containment | HwLatency | 1 | Constant or distribution of access latency in cycles |
+| DataRate | Containment | DataRate | 1 | Max. data rate for the memory |
+| Size | Containment | Size | 1 | Size of the memory |
+
+
+h4. CacheDefinition
+
+The example in figure xxx is representative for any kind of definition in the model. This means for specifying a cache, a _CacheDefinition_ is created once which is then referenced by the number of _Cache_ instances of this kind.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the memory definition |
+| AccessLatency | Containment | HwLatency | 1 | Constant or distribution of access latency in cycles |
+| Size | Containment | Size | 1 | Size of the memory |
+| CacheType | Enum | CacheType | 1 | Cache type (e.g. data, instruction) |
+| WriteStrategy | Enum | WriteStrategy | 1 | Cache write strategy (e.g. write-back) |
+| Coherency | Bool | Bool | 1 | Cache coherency (default = false) |
+| Exclusive | Bool | Bool | 1 | Exclusive cache (default = false) |
+| Line Size | Int | Int | 1 | Line size in bits |
+| Hit Rate | Double | Double | 1 | Percentag hit rate of the cache(default = 0.0) |
+| NWays | Int | Int | 1 | N ways associative (default = 0) |
+
+
+h4. ConnectionHandlerDefinition
+
+The example in figure xxx is representative for any kind of definition in the model. This means for specifying a bus or Interconnect etc., a _ConnectionHandlerDefinition_ is created once which is then referenced by the number of _ConnectionHandler_ instances of this kind.
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Name | String | String | 1 | Name of the memory definition |
+| SchedPolicy | Enum | SchedPolicy | 1 | Enumeration of different scheduling policies |
+| ReadLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a read access |
+| WriteLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a write access |
+| DataRate | Containment | DataRate | 1 | Max. data rate of the connection (value and unit) |
+
+
+h4. LatencyConstant
+
+A _LatencyConstant_ is used to determine a constant number of clock cycles and can be attached to various other elements e.g. access latencies for a _MemoryDefinition_ or a read latency for a _ConnectionHandlerDefinition_ .
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+|Cycles | Long | Long | 1 | Constant number of clock cycles (default = 0) |
+
+
+
+h4. LatencyDeviation
+
+A _LatencyDeviation_ is an object which allows to create a distribution out of different possibilities e.g. Weibull, Gaussian etc. The_LatencyDeviation_ can be attached to various elements e.g. access latencies for a _MemoryDefinition_ or a read latency for a _ConnectionHandlerDefinition_ .
+
+table(classic). 
+|_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
+| Cycles | Deviation | Deviation | 1 | Deviation for a specific element in clock cycles |
+
+
+h4. Enumerations
+
+In the following all enums are listed. In the case an enum is used by any class the default value of that enum is always _undefined_. That means that in case of an enum there are no default values for interfaces or other kind of types.
+
+In future there will be an option to extend the predefined enums with further port interfaces, hardware structure types etc. by selecting the option _other_. Then a second attribute field will appear to specify a custom entry. Moreover only new enums are explicitly mentioned in this report. Enums and classes which are already part of the existing Amalthea meta model are not described.
+
+*StructureType:*
+
+* <notextile>_undefined_</notextile>, System, ECU, Microcontroller, SoC, Cluster, Group, Array, Area, Region
+
+*CacheType:*
+
+* <notextile>_undefined_</notextile>, instruction, data, unified
+
+*VoltageUnit:*
+
+* <notextile>_undefined_</notextile>, V, mV, uV
+
+*PortType:*
+
+* <notextile>_undefined_</notextile>, initiator, responder
+
+*SchedPolicy:*
+
+* <notextile>_undefined_</notextile>, RoundRobin, FCFS, PriorityBased
+
+*WriteStrategy:*
+
+* <notextile>_undefined_</notextile>, none, writeback, writethrough
+
+*PuType:*
+
+* <notextile>_undefined_</notextile>, GPU, CPU, Accelerator
+
+*PortInterfaces:*
+
+* <notextile>_undefined_</notextile>, custom, can, flexray, lin, most, ethernet, spi, i2c, axi, ahb, apb, swr
+
+*HwFeatureType:*
+
+* <notextile>_undefined_</notextile>, performance, power, performance_and_power
+
+
+
+h3. Additional Documents
 
 * "HW Documentation (PDF)":../help-model/docs/Amalthea_HW_Documentation.pdf
 * "HW Model Examples (PDF)":../help-model/docs/Amalthea_HW_Model_Examples.pdf
 * "HW Visualization Plugin (PDF)":../help-model/docs/Amalthea_HW_Visualization_Plugin.pdf
 
-
-
-
-................................................
-
-h3. Former Model (temporarily kept as reference)
-
-
-
-h3. Structure
-
-An overview of the Hardware Model is shown below. The overall hierarchy within this model is represented by blue classes (HwSystem, ECU, Microcontroller and Core). Red classes indicate type descriptions which contain the parameters of their referencing elements, e.g. it is possible to specify a type of a core with all relevant attributes which will be referenced by core instances. This supports quick modeling of homogeneous architectures and increases the reutilization of already described hardware. Green classes represent additional hardware peripherals which can be described on each of the hardware hierarchies (HwSystem, ECU, Microcontroller and Core). 
-
-!(scale)../pictures/model_hw_overview.png!
-
-The structure of descriptions regarding the network is shown in the following figure. The __ComplexNode__ and each of its specializations (e.g. HwSystems, ECUs, Networks, ...) may contain a list of HwPort elements. The __ComplexPort__ element is a specialization which is attached to exactly one network. More detailed descriptions about the respective elements are given in the following section.
-
-!../pictures/model_hw_network.png!
-
-h4. ComplexNode
-
-The __ComplexNode__ is the generalization of all hardware components. It holds the described components name and contains its nested hardware elements, e.g. memories, networks, ports etc.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| prescaler | Containment | * | __Prescaler__ | Containment for __Prescaler__ (i.e. frequency prescaler) objects located on the specialization of this element. |
-| memories | Containment | * | __Memory__ | Containment for __Memory__ (i.e. memories, such as RAM or ROM) objects located on the specialization of this element. |
-| networks | Containment | * | __Network__ | Containment for __Network__ (i.e. networks, such as LIN, CAN or ETHERNET) objects located on the specialization of this element. |
-| components | Containment | * | __HwComponent__ | Containment for __HwComponent__ (i.e. all other entities of hardware) objects located on the specialization of this element. |
-| ports | Containment | * | __HwPort__ | Containment for __HwPort__ (i.e. interfaces with multiple pins) objects located on the specialization of this element. |
-
-h4. HwSystem
-
-The __HwSystem__ is a specialization of the __ComplexNode__ and represents a cluster of one or more __ECU__ elements which in sum implement a specific system. 
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| systemType | Reference | 1 | __SystemType__ | Refers to a __SystemType__ containing the configuration for this system. |
-| ecus | Containment | + | __ECU__ | Containment for Electronic Control Units (__ECU__) that are part of this system. |
-
-h4. ECU
-
-The __ECU__ (Electronic Control Unit) is a specialization of the __ComplexNode__ and represents any physical electronic hardware on an embedded system level abstraction level.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| ecuType | Reference | 1 | __ECUType__ | Refers to a __ECUType__ containing the configuration for this ECU. |
-| microcontrollers | Containment | + | __Microcontroller__ | Containment for __Microcontrollers__ that are part of this ECU. |
-
-h4. Microcontroller
-
-The __Microcontroller__ is a specialization of the __ComplexNode__ and represents any physical hardware on System on Chip abstraction level, e.g. processors with one or more special or generic purpose cores.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| microcontrollerType | Reference | 1 | __MicrocontrollerType__ | Refers to a __MicrocontrollerType__ containing the configuration for this microcontroller. |
-| cores | Containment | + | __Core__ | Containment for processing cores (__Core__) that are part of this microcontroller. |
-
-h4. Core
-
-The __Core__ is a specialization of the __ComplexNode__ and represents the respective processing units on any type of single- or multi core processor.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| coreType | Reference | 1 | __CoreType__ | Refers to a __CoreType__ containing the configuration for this core. |
-| lockstepGroup | Integer | ? | 0 - 255 | If set, this value defines the lockstep group of the core. All cores with the same lockstep group are operating in lockstep mode together. |
-
-h4. Memory
-
-The __Memory__ is a specialization of the __ComplexNode__ and represents memories. It is used to describe any type of memory module, e.g. Flash, RAM, etc.
-Please note that to specify a memory with the type __CACHE__ (e.g. lv1 cache as part of a core) it is sufficient to specify it within a core. It is not necessary to specify additional networks or ports.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| type | Reference | 1 | __MemoryType__ | Refers to a __MemoryType__ containing the configuration for this memory. |
-
-
-h4. Network
-
-The __Network__ is a specialization of the __ComplexNode__ and represents networks of interconnected __ComplexPort__ elements. 
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| type | Reference | 1 | __NetworkType__ | Refers to a __NetworkType__ containing the configuration for this network. | 
-
-h4. Quartz
-
-The __Quartz__ is defined on __HWSystem__ level and represents a frequency generator. It may be referenced by any number of __Prescalers__.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| type | __QType__ | 1 | STATIC / DYNAMIC | Specifies if the __Quartz__ operates at either a static or dynamic frequency. |
-| frequency | __Frequency__ | 1 |  | Frequency on which this __Quartz__ is operating. |
-
-h4. Component
-
-The __Component__ (or __HwComponent__) is a specialization of the __ComplexNode__ and represent hardware elements which are not further specified. They may contain any number of nested __Components__.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| nestedComponents | Containment | 1 | __HwComponent__ | Containment for __HwComponent__ (i.e. all other entities of hardware) objects located below this component. |
-
-h4. HardwareTypeDescription
-
-The abstract class __HardwareTypeDescription__ is the generalization of all type description for memories, cores, ECUs, networks etc. It allows its specializations to stor information about their features.
-
-h4. AbstractionTypeDescription
-
-The abstract class __AbstractionTypeDescription__ is a specialization of the __HardwareTypeDescription__ and generalization for hardware types which describe hardware abstraction, i.e. the __HwSystem__, __ECU__, __Microcontroller__ and __Core__.
-
-h4. SystemType
-
-The __SystemType__ is a specialization of the __AbstractionTypeDescription__ and used to define a specific type of a system. If multiple systems with the same characteristics exist, it is sufficient to define only one type and reference it by all systems sharing the same type.
-
-h4. ECUType
-
-The __ECUType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of an ECU.
-
-h4. MicrocontrollerType
-
-The __MicrocontrollerType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of a Microcontroller.
-
-h4. CoreType
-
-The __CoreType__ is a specialization of the __AbstractionTypeDescription__ and used to define a type of a Core, i.e. its bit width and ticks per cycle.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| bitWidth | Integer | 1 | 0-255 | The cores architectures bit width (e.g. 32 or 64 bit) |
-| instructionsPerCycle | Integer | 1 | 0-255 | Number of processed (computed) instructions per cycle. |
-
-h4. MemoryType
-
-The __MemoryType__ is a specialization of the __HardwareTypeDescription__ and used to define a type of a memory, i.e. its size, access pattern and type.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| xAccessPattern | String | 1 | String | Timing Architects specific value. Will be used in the future to determine the access pattern of a memory element. |
-| type | __MemoryType__ | 1 | RAM/CACHE/FLASH_INT/FLASH_EXT | Specifies the type of this Memory. |
-| size | Long | 1 | >0 | Size of this memory. |
-
-h4. NetworkType
-
-The __NetworkType__ is a specialization of the __HardwareTypeDescription__ and used to define a type of a Network, i.e. max supported bit width and scheduling policy.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| schedPolicy | __SchedType__ | 1 | RROBIN/PRIORITY | Specifies the scheduling policy which is used on this Network. |
-| bitWidth | Integer | 1 | 0 - 255 | Specifies the max bit width that may be transferred on this network per cycle. |
-
-h4. CrossbarSwitch
-
-The __CrossbarSwitch__ is a specialization of a __NetworkType__ and represents switches, which allow simultaneous/concurrent connections between all types of components
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| conConnections | Integer | 1 | 0 - 255 | Maximum number of concurrent 1:n connections |
-
-h4. Bus
-
-The __Bus__ is a specialization of the __NetworkType__ and represents any kind of bus network, e.g. CAN, LIN etc.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| type | __BusType__ | 1 | CAN/TTCAN/LIN/FLEXRAY/ETHERNET/SPI/NA | Specifies the type of the bus network. |
-
-h4. Bridge
-
-The __Bridge__ is a specialization of a __NetworkType__ and represents bridges or gateways. It is used to transfer data from one network to another and performs a one-way translation, e.g. a __ComplexNode__ containing a __Bridge__ is accessed by its __ComplexPort__ and routes the data to its containing __Bridge__. If a __ComplexNode__ contains more than one __Bridge__, the respective target network is determined by the address range of its connected __ComplexPort__ elements. 
-
-h4. Pin
-
-The __Pin__ represents a single pin and serves as abstract representation for pure informative use, e.g. by a developer describing a port.
-
-h4. ComplexPin
-
-The __ComplexPin__ is a specialization of the __Pin__ and contains detailed information, i.e. the type of the pin, its address and its direction (read/write). 
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| type | __PinType__ | 1 | ANALOG/DIGITAL | Specifies if this pin is either operating in analog or digital mode |
-| baseAddress | Long | 1 | >= 0 | Specifies the address of this pin, i.e. the address this pin is accessed by. |
-| direction | __RWType__ | 1 | R/W/RW | Specifies the direction the data may travel through this pin, e.g. (R)ead only, (W)rite only or both (RW). |
-
-h4. Port
-
-The __Port__ represents groups of pins and may be used to describe simple interfaces, e.g. 8-bit ports etc. Its main purpose is to describe ports which only serve informative use.
-
-h4. ComplexPort
-
-The __ComplexPort__ is a specialization of the __Port__ and represents interfaces on any type of __ComplexNode__ which are connected to a __Network__.
-
-table(classic). 
-|_. Attribute |_. Type |_. Mul. |_. Valid Values |_. Description |
-| network | Reference | 1 | __Network__ | References the network which this ComplexPort is a part of. Only ComplexPorts attached to the same network are capable of communicated directly with each other. If data is transfered over multiple networks, either a valid route (e.g. Port A -> Network A -> Port B and Port C -> Network B -> Port D, with Ports B and C beeing on the same device), or an access path have to be present. |
-| isMaster | Boolean | 1 | TRUE/FALSE | Specifies if this ComplexPort may send requests to a Network (e.g. a processor) or just answer them (e.g. a memory). |
-| bitWidth | Integer | 1 | >0 | Specifies the max bit width that may be transferred via this ComplexPort. |
-| baseAddress | Long | 1 | >0 | Specifies the base address of this ComplexPort, making it addressable through other ComplexPorts in the Network. |
-| addressRange | Long | 1 | >0 | Specifies the size of the addressable area this ComplexPort is addressed by. The address space is determined by the baseAddress offset and this value. |
-| direction | __RWType__ | 1 | R/W/RW | Specifies the direction the data may travel through this port, e.g. (R)ead only, (W)rite only or both (RW). Note that the direction is always related to the isMaster attribute, e.g. Master ports read and write TO the network, while non-master ports are read and written BY the network. |
-| readCycles | Integer | 1 | >0 | Specifies the number of cycles until a read is performed. |
-| writeCycles | Integer | 1 | >0 | Specifies the number of cycles until a write is performed. |
-| schedValue | Integer | 1 | >0 | Optional parameter for the usage in network scheduling policies. The meaning of this attribute depends on the used schedulingPolicy of the referenced Network, e.g. it may be the priority in a priority scheduled network or the order in a round robin scheduled network. |
-
-h4. AbstractType
-
-The __AbstractType__ is an abstract class, allowing attributes to describe data without specifying their data type. It contains the field name to specify the name of the value while the specializations __BoolValue__, __CharValue__, __IntValue__, __LongValue__, __DoubleValue__ and __StringValue__ contain the resp. value types.
-
-h3. AccessPaths
-
-The __AccessPath__ element describes in general the needed time in cycles for a hardware element (__ComplexNode__) A to access a hardware element B.
-It can be configured in two different ways:
-
-# *Latency*: Describes the needed cycles for a given __RWType__ using a __Deviation__ (from common model) or a constant value.
-# *Sequence of ports*: Describes the access path in detail by referencing the __ComplexPorts__ from given Hardware elements. These ports includes the specification for the different access types in cycles, which can then be summed up to get the total value.
-
-Both approaches includes the possibility to reference another given path of the same type, so it is possible for example to describe sub paths, which are then included in a main path.
-
-The following picture shows the structure of these two approaches:
-
-!(scale)../pictures/model_hw_access_path.png!
-
-h4. Latency Overview
-
-To describe a latency for a given core a memory, only these elements are needed inside of the Hardware model.
-The next picture shows a simple overview of a core, which is able to access two memories with different latencies.
-
-!../pictures/model_hw_access_path_latency_sample.png!
-
-Using the provided AMALTHEA model editor this small sample would look like the following picture:
-
-!../pictures/model_hw_access_path_latency_sample_editor.png!
-
-h4. Hardware Access Path
-
-Using the __HwAccessPath__ element to describe an access path, the included elements must be available with the proper __ComplexPorts__. The access path consists with a list of elements, which are referencing existing ports.
-
-The next overview shows a very simple sample, with a core and two memories connected using a network and the proper ports.
-
-!../pictures/model_hw_access_path_hw_element_sample.png!
-
-Configuring the two access paths from Core1 to Memory1 and to Memory2  results in two __HwAccessPaths__ containing the proper ports, showed in the next overview.
-
-!../pictures/model_hw_access_path_hw_element_sample_editor.png!
