@@ -83,14 +83,10 @@ public class HwConverter extends AbstractConverter {
 
 		migrateHWModel(rootElement, oldHWModelElement);
 		
-		updateReferencesInModel(rootElement);
-
 		fileName_documentsMap.put(targetFile.getCanonicalFile(), root);
 	}
 
-	private void updateReferencesInModel(Element rootElement) {
-		
-	}
+	 
 
 	private void migrateHWModel(final Element rootElement, Element oldHWModelElement) {
 		if(oldHWModelElement!=null) {
@@ -123,6 +119,9 @@ public class HwConverter extends AbstractConverter {
 			rootElement.removeContent(oldHWModelElement); 
 
 			rootElement.addContent(indexOf,newHWModelElement);
+			
+			/*-Migrating custom properties */
+			migrateCustomProperties(oldHWModelElement, newHWModelElement);
 
 		}
 	}
@@ -323,6 +322,9 @@ public class HwConverter extends AbstractConverter {
 				newHWNetworkType.setAttribute("policy", policy);	
 			}
 
+			/*-migrating custom properties */
+
+			migrateCustomProperties(oldHWNetworkType, newHWNetworkType);
 
 		}
 	}
@@ -411,6 +413,12 @@ public class HwConverter extends AbstractConverter {
 				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureCategoryName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
 
 			}
+			
+			
+			/*-migrating custom properties */
+			
+			migrateCustomProperties(oldHWCoreType, newHWCoreType);
+			
 		}
 	}
 
@@ -457,6 +465,9 @@ public class HwConverter extends AbstractConverter {
 			newHWMemoryType.addContent(oldMemoryType_size.clone());
 		}
 		
+		/*-migrating custom properties */
+		
+		migrateCustomProperties(oldHWModelElement_MemoryType, newHWMemoryType);
 	
 		}
 
@@ -472,7 +483,7 @@ public class HwConverter extends AbstractConverter {
 		}
 
 		newHWSystem.setAttribute("structureType", "System");
-
+ 
 		newHWModelElement.addContent(newHWSystem);
 
 		hwTransformationCache.new_systems_Map.put(oldHWSystem_name, newHWSystem);
@@ -501,6 +512,13 @@ public class HwConverter extends AbstractConverter {
 		/*-migrate ports*/
 		
 		migratePorts(oldHWSystem, newHWSystem);
+		
+		/*-migrating custom properties */
+
+		migrateCustomProperties(oldHWSystem, newHWSystem);
+
+
+
 	}
 
 	private void migratePorts(Element oldHWElement, Element newHWElement) {
@@ -535,6 +553,13 @@ public class HwConverter extends AbstractConverter {
 			}
 			
 			newHWElement.addContent(newHWPort);
+			
+
+			/*-migrating custom properties */
+
+			migrateCustomProperties(oldHWPort, newHWPort);
+
+			
 			
 		}
 	}
@@ -615,6 +640,9 @@ public class HwConverter extends AbstractConverter {
 			migratePorts(oldHW_Memory, newHW_Memory_Element);
 			
 			
+			/*-migrating custom properties */
+
+			migrateCustomProperties(oldHW_Memory, newHW_Memory_Element);
 			
 			
 			
@@ -652,6 +680,10 @@ public class HwConverter extends AbstractConverter {
 			
 			//Adding network object to newHW
 			newHWStructure.addContent(newHW_network);
+			
+			/*-migrating custom properties */
+
+			migrateCustomProperties(oldHW_network, newHW_network);
 			
 		}
 	}
@@ -786,6 +818,9 @@ public class HwConverter extends AbstractConverter {
 			}
 
 			newHWModel.addContent(newHWFrequencyDomain);
+			
+			/*-migration of custom properties */
+			migrateCustomProperties(oldHWQuartzElement, newHWFrequencyDomain);
 
 			hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put(oldHWQuartz_name, newHWFrequencyDomain);
 		}
@@ -825,6 +860,9 @@ public class HwConverter extends AbstractConverter {
 
 			migrateMicroController(newHWEcu, oldHWMicroController);
 		}
+		
+		/*-migration of custom properties */
+		migrateCustomProperties(oldHWEcu, newHWEcu);
 	}
 
 	private void migrateMicroController(Element newHWEcu, Element oldHWMicroController) {
@@ -874,11 +912,11 @@ public class HwConverter extends AbstractConverter {
 			
 			/*-migrating networks*/
 			migrateNetworks(oldHWCore, newHWMicroController);
-			
-			
-			
 
 		}
+		
+		/*-migration of custom properties */
+		migrateCustomProperties(oldHWMicroController, newHWMicroController);
 	}
 
 	private void migrateCore(Element newHWMicroController, Element oldHWCore) {
@@ -912,6 +950,9 @@ public class HwConverter extends AbstractConverter {
 		migrateMemoriesAndCaches(oldHWCore, newHWCore, true, false);
 		
 		hwTransformationCache.new_cores_Map.put(oldHWCore_name, newHWCore);
+		
+		/*-migration of custom properties */
+		migrateCustomProperties(oldHWCore, newHWCore);
 	}
 
 	/**
@@ -997,9 +1038,6 @@ public class HwConverter extends AbstractConverter {
 						
 					}
 					
-					
-
-				
 
 				}
 			
@@ -1021,7 +1059,7 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
-	public List<Element> migrateAttributeorElementData(Element oldHWElement, String attributeOrChildElementName, String newChildElementName, String newChildElementType){
+	private List<Element> migrateAttributeorElementData(Element oldHWElement, String attributeOrChildElementName, String newChildElementName, String newChildElementType){
 
 		List<Element> newHWElements=new ArrayList<Element>();
 
@@ -1092,6 +1130,21 @@ public class HwConverter extends AbstractConverter {
 			return inputString;
 		}
 		return inputString;
+	}
+	
+	
+	private void migrateCustomProperties(Element oldHwElement, Element newHwElement) {
+		
+		List<Element> customProperties = oldHwElement.getChildren("customProperties");
+		
+		for (Element customProperty : customProperties) {
+			
+			Element newHwCustomProperty = customProperty.clone();
+			
+			newHwCustomProperty.detach();
+			
+			newHwElement.addContent(newHwCustomProperty);
+		}
 	}
 
 	/**
