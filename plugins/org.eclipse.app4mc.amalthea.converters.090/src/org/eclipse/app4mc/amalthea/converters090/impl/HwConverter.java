@@ -395,14 +395,8 @@ public class HwConverter extends AbstractConverter {
 					
 					newHWFeatureElement.setAttribute("name", oldCoreType_ipc);
 					
-					Element valueElement=new Element("value");
-
-					valueElement.setAttribute("type", "am:FloatObject", this.helper.getGenericNS("xsi"));
-
-					valueElement.setAttribute("value",ipc_value);
-					
-					newHWFeatureElement.addContent(valueElement);
-					
+					newHWFeatureElement.setAttribute("value", ipc_value);
+												
 					newHWFeatureCategories.addContent(newHWFeatureElement);
 					
 					hwTransformationCache.new_features_Map.put(newHWFeatureCategoryName+"/"+oldCoreType_ipc, newHWFeatureElement);
