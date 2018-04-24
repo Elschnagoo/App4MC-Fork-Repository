@@ -194,7 +194,6 @@ import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
-import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -4496,64 +4495,6 @@ public class CustomItemProviderService {
     if (_matched) {
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, false, true);
-    }
-    return null;
-  }
-  
-  /**
-   * RunnableInstructionsEntryItemProvider
-   */
-  public static String getRunnableInstructionsEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof RunnableInstructionsEntryImpl)) {
-      ProcessingUnitDefinition _key = null;
-      if (((RunnableInstructionsEntryImpl)object)!=null) {
-        _key=((RunnableInstructionsEntryImpl)object).getKey();
-      }
-      String _name = null;
-      if (_key!=null) {
-        _name=_key.getName();
-      }
-      final String typeName = _name;
-      Instructions _value = null;
-      if (((RunnableInstructionsEntryImpl)object)!=null) {
-        _value=((RunnableInstructionsEntryImpl)object).getValue();
-      }
-      final Instructions instr = _value;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<core type>";
-      } else {
-        _xifexpression = typeName;
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      if ((instr == null)) {
-        _xifexpression_1 = "<instructions>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.getInstructionsText(instr);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + " -- ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getRunnableInstructionsEntryItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(Map.Entry.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__KEY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY__VALUE)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        return new ViewerNotification(notification, _notifier_1, true, true);
-      }
     }
     return null;
   }

@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2017 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -157,20 +157,12 @@ public class RunnableInstructionsEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
+	@Override
+	public String getText(Object object) {
 		Map.Entry<?, ?> runnableInstructionsEntry = (Map.Entry<?, ?>)object;
 		return "" + runnableInstructionsEntry.getKey() + " -> " + runnableInstructionsEntry.getValue();
 	}
 	
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getRunnableInstructionsEntryItemProviderText(object, getTextGen(object));
-	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -179,7 +171,8 @@ public class RunnableInstructionsEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Map.Entry.class)) {
@@ -189,25 +182,6 @@ public class RunnableInstructionsEntryItemProvider
 		}
 		super.notifyChanged(notification);
 	}
-	
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getRunnableInstructionsEntryItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
-			return;
-		}
-
-		super.notifyChanged(notification);
-	}
-	
 
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children

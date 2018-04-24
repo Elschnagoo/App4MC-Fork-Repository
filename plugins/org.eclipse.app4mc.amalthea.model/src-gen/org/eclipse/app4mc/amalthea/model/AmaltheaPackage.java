@@ -12042,7 +12042,7 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_FEATURE__CONTAINING_CATEGORY = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32427,15 +32427,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwFeature_ContainingCategory();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.eclipse.app4mc.amalthea.model.HwFeature#getValue()
 	 * @see #getHwFeature()
 	 * @generated
 	 */
-	EReference getHwFeature_Value();
+	EAttribute getHwFeature_Value();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#computeUniqueName() <em>Compute Unique Name</em>}' operation.

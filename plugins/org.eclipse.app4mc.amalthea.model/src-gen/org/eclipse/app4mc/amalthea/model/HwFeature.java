@@ -50,30 +50,31 @@ public interface HwFeature extends ReferableBaseObject {
 	HwFeatureCategory getContainingCategory();
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(Value)
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_Value()
-	 * @model containment="true" required="true"
+	 * @model default="0.0" unique="false"
 	 * @generated
 	 */
-	Value getValue();
+	double getValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
+	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(Value value);
+	void setValue(double value);
 
 	/**
 	 * <!-- begin-user-doc -->

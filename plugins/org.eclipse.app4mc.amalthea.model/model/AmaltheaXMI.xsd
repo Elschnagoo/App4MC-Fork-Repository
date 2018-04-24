@@ -2905,8 +2905,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="containingCategory" type="am:HwFeatureCategory"/>
-          <xsd:element name="value" type="am:Value"/>
         </xsd:choice>
+        <xsd:attribute name="value" type="xsd:double"/>
         <xsd:attribute name="containingCategory" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5186,7 +5186,7 @@ which are belonging together.</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="RunnableInstructions">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
@@ -5199,7 +5199,7 @@ which are belonging together.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="RunnableInstructions" type="am:RunnableInstructions">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableInstructionsEntry">

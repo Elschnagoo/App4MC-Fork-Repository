@@ -163,7 +163,6 @@ import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
 import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
-import org.eclipse.app4mc.amalthea.model.impl.RunnableInstructionsEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
@@ -2339,32 +2338,6 @@ class CustomItemProviderService {
 			case AmaltheaPackage::MODE_LABEL_ACCESS__ACCESS,
 			case AmaltheaPackage::MODE_LABEL_ACCESS__DATA:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-		}
-		return null
-	}
-
-	/*****************************************************************************
-	 * 						RunnableInstructionsEntryItemProvider
-	 *****************************************************************************/
-	def static String getRunnableInstructionsEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof RunnableInstructionsEntryImpl) {
-			val typeName = object?.getKey()?.name
-			val instr = object?.getValue()
-
-			val s1 = if(typeName.isNullOrEmpty) "<core type>" else typeName
-			val s2 = if(instr === null) "<instructions>" else getInstructionsText(instr)
-			return s1 + " -- " + s2;
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getRunnableInstructionsEntryItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(Map.Entry)) {
-			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__KEY:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-			case AmaltheaPackage::RUNNABLE_INSTRUCTIONS_ENTRY__VALUE:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
 		return null
 	}

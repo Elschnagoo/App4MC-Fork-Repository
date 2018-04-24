@@ -19,7 +19,6 @@ import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
-import org.eclipse.app4mc.amalthea.model.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -49,14 +48,24 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
  */
 public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature {
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected Value value;
+	protected static final double VALUE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected double value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,7 +111,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Value getValue() {
+	public double getValue() {
 		return value;
 	}
 
@@ -111,33 +120,11 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetValue(Value newValue, NotificationChain msgs) {
-		Value oldValue = value;
+	public void setValue(double newValue) {
+		double oldValue = value;
 		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(Value newValue) {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.HW_FEATURE__VALUE, null, msgs);
-			msgs = basicSetValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, newValue, newValue));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -212,8 +199,6 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 		switch (featureID) {
 			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
 				return eBasicSetContainer(null, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
-			case AmaltheaPackage.HW_FEATURE__VALUE:
-				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -258,7 +243,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_FEATURE__VALUE:
-				setValue((Value)newValue);
+				setValue((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,7 +258,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_FEATURE__VALUE:
-				setValue((Value)null);
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -290,7 +275,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
 				return basicGetContainingCategory() != null;
 			case AmaltheaPackage.HW_FEATURE__VALUE:
-				return value != null;
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

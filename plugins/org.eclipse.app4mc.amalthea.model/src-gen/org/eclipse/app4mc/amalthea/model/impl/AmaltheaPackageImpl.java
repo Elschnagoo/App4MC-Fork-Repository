@@ -7165,8 +7165,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHwFeature_Value() {
-		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(1);
+	public EAttribute getHwFeature_Value() {
+		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13673,7 +13673,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		hwFeatureEClass = createEClass(HW_FEATURE);
 		createEReference(hwFeatureEClass, HW_FEATURE__CONTAINING_CATEGORY);
-		createEReference(hwFeatureEClass, HW_FEATURE__VALUE);
+		createEAttribute(hwFeatureEClass, HW_FEATURE__VALUE);
 		createEOperation(hwFeatureEClass, HW_FEATURE___COMPUTE_UNIQUE_NAME);
 		createEOperation(hwFeatureEClass, HW_FEATURE___TO_STRING);
 
@@ -15595,7 +15595,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(hwFeatureEClass, HwFeature.class, "HwFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwFeature_ContainingCategory(), this.getHwFeatureCategory(), this.getHwFeatureCategory_Features(), "containingCategory", null, 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwFeature_Value(), this.getValue(), null, "value", null, 1, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwFeature_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, HwFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHwFeature__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

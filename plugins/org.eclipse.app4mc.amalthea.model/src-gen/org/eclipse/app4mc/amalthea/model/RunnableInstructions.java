@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EMap;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Representation of the execution cost of a Runnable (default and core-specific)
+ * Representation of the execution needs of a Runnable (default and core-specific)
  * <!-- end-model-doc -->
  *
  * <p>
