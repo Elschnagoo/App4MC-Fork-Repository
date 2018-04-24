@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -37,15 +38,19 @@ import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Process;
@@ -53,7 +58,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
@@ -82,67 +86,66 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the number of instructions that the given process would need to execute
-	 * on the given coretype
+	 * get the execution need value that the given process would need to execute
+	 * on the given procUnitDef
 	 * @param process
 	 * @param execTimeType
-	 * @param coreType
+	 * @param procUnitDef
+	 * @param hwFeatures 
 	 * @param modes
-	 * @return instruction count for given process
+	 * @return execution need count for given process
 	 */
-	public static Long getInstructionCountForProcess(Process process, TimeType execTimeType, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Long getExecutionNeedValueCountForProcess(Process process, TimeType execTimeType, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
-		long instructionCount = 0L;
-		
+		long executionNeedCount = 0L;
 		for(Runnable runnable : runnables) {
-			instructionCount += getInstructionCountForRunnable(runnable, execTimeType, coreType, modes);
+			executionNeedCount += getExecutionNeedValueCountForRunnable(runnable, execTimeType, procUnitDef,  hwFeatures, modes);
 		}
 		
-		return instructionCount;
+		return executionNeedCount;
 	}	
 
 	/**
-	 * get the number of instructions that the given runnable would need to execute
-	 * on the given coretype
+	 * get the ExecutionNeed value count that the given runnable/hwFeature set would need to execute
+	 * on the given procUnitDef
 	 * @param runnable
 	 * @param execTimeType
-	 * @param coreType
+	 * @param procUnitDef
 	 * @param modes
-	 * @return instruction count for given runnable
+	 * @param hwFeatures 
+	 * @return ExecutionNeed value count for given runnable
 	 */
-	public static Long getInstructionCountForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Instructions> instructionElements = SoftwareUtil.getInstructionsList(runnable, coreType, modes);
-		return getInstructionCountForInstructionList(instructionElements, execTimeType);
+	public static Long getExecutionNeedValueCountForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		List<Entry<HwFeatureCategory, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef, hwFeatures, modes);
+		return getExecutionNeedValueCountForExecutionNeedList(executionNeedEntries, execTimeType);
 	}
 
 	
 	
 	
 	/**
-	 * converts a list of Instruction elements into a number (instructions executed)
-	 * @param instructionElements
+	 * converts a list of ExecutionNeed-Entry elements into a number (ExecutionNeeds executed)
+	 * @param ExecutionNeedEntries
 	 * @param execTimeType
 	 * @return
 	 */
-	private static Long getInstructionCountForInstructionList(List<Instructions> instructionElements, TimeType execTimeType) {
-		long instructionCount = 0L;
-		
-		for(Instructions inst : instructionElements) {
-			instructionCount = instructionCount + getInstructionCountForInstruction(inst, execTimeType);
+	private static Long getExecutionNeedValueCountForExecutionNeedList(List<Entry<HwFeatureCategory, Need>> executionNeedEntries, TimeType execTimeType) {
+		long result = 0L;
+		for (Entry<HwFeatureCategory, Need> needEntry :executionNeedEntries) {
+			result = result + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
 		}
-		
-		return instructionCount;
+		return result;
 	}
 	
 	/**
-	 * converts an Instruction element into a number (instructions executed)
-	 * @param instruction
+	 * converts a Need element into a number 
+	 * @param needValue
 	 * @param execTimeType
-	 * @return
+	 * @return long 
 	 */
-	private static Long getInstructionCountForInstruction(Instructions instruction, TimeType execTimeType) {
-		if(instruction instanceof InstructionsDeviation) {
-			InstructionsDeviation instDeviation = (InstructionsDeviation)instruction;
+	private static Long getExecutionNeedValueCountForExecutionNeed(Need needValue, TimeType execTimeType) {
+		if(needValue instanceof NeedDeviation) {
+			NeedDeviation instDeviation = (NeedDeviation)needValue;
 			switch(execTimeType) {
 			case ACET: 
 				return getMean(instDeviation.getDeviation().getDistribution(), instDeviation.getDeviation().getLowerBound().getValue(), instDeviation.getDeviation().getUpperBound().getValue());
@@ -152,87 +155,97 @@ public class RuntimeUtil {
 				return instDeviation.getDeviation().getUpperBound().getValue();
 			
 			}
-		} else if(instruction instanceof InstructionsConstant) {
-			return ((InstructionsConstant)instruction).getValue();
+		} else if(needValue instanceof NeedConstant) {
+			return ((NeedConstant)needValue).getValue();
 		}
 		return 0L;
 	}
 
 	
 	/**
-	 * get a map that contains the instructionCounts for all (in the runnables) specified coreTypes
+	 * get a map that contains the value of ExecutionNeedValueCounts for all (in the runnables) specified procUnitDefs
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
-	 * @return map ProcessingUnitDefinition->Instruction count of the extended instructions of the process 
+	 * @param hwFeatures 
+	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the extended ExecutionNeeds of the process 
 	 */
-	public static HashMap<ProcessingUnitDefinition, Long> getInstructionCountExtendedForProcess(Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<ProcessingUnitDefinition, Long> coreTypeToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
+	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForProcess(Process process, TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnitDefinition, Long> procUnitDefToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 		
 		for(Runnable runnable : SoftwareUtil.getRunnableList(process, modes)) {
-			HashMap<ProcessingUnitDefinition, Long> map = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
+			HashMap<ProcessingUnitDefinition, Long> map = getExecutionNeedValueCountExtendedForRunnable(runnable, execTimeType, hwFeatures, modes);
 			
 			for(ProcessingUnitDefinition ct : map.keySet()) {
 				Long ic = 0L;
-				if(coreTypeToIcMap.get(ct) != null) {
-					ic = coreTypeToIcMap.get(ct);
+				if(procUnitDefToIcMap.get(ct) != null) {
+					ic = procUnitDefToIcMap.get(ct);
 				}
 				ic += map.get(ct);
 				
-				coreTypeToIcMap.put(ct, ic);
+				procUnitDefToIcMap.put(ct, ic);
 			}
 		}
 			
-		return coreTypeToIcMap;
+		return procUnitDefToIcMap;
 	}
 		
 	
 	/**
-	 * get a map that contains the instructionCounts for all specified coreTypes
+	 * get a map that contains the ExecutionNeedValueCounts for all specified procUnitDefs
 	 * 
 	 * @param runnable
 	 * @param execTimeType
+	 * @param hwFeatures
 	 * @param modes
-	 * @return map ProcessingUnitDefinition->Instruction count of the extended instructions of the runnable
+	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the extended ExecutionNeeds of the runnable
 	 */
-	public static HashMap<ProcessingUnitDefinition, Long> getInstructionCountExtendedForRunnable(Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<ProcessingUnitDefinition, Long> coreTypeToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
+	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForRunnable(Runnable runnable, TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		HashMap<ProcessingUnitDefinition, Long> procUnitDefToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 		
-
-		for(RunnableInstructions runnableInstruction : SoftwareUtil.getRunnableInstructionsList(runnable, modes)) {
-			if(runnableInstruction.getExtended() != null) {
-				for(ProcessingUnitDefinition ct : runnableInstruction.getExtended().keySet()) {
+		for(ExecutionNeed executionNeed : SoftwareUtil.getExecutionNeedsList(runnable, modes)) {
+			if(executionNeed.getExtended() != null) {
+				for(ProcessingUnitDefinition procUnitDef : executionNeed.getExtended().keySet()) {
 					Long ic = 0L;
-					if(coreTypeToIcMap.get(ct) != null) {
-						ic = coreTypeToIcMap.get(ct);
+					if(procUnitDefToIcMap.get(procUnitDef) != null) {
+						ic = procUnitDefToIcMap.get(procUnitDef);
 					}
-					ic += getInstructionCountForInstruction(runnableInstruction.getExtended().get(ct), execTimeType);
-					
-					coreTypeToIcMap.put(ct, ic);
+					for (Entry<HwFeatureCategory, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
+						if (hwFeatures.contains(needEntry.getKey())) {
+							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+						}
+
+					}
+					procUnitDefToIcMap.put(procUnitDef, ic);
 				}
 			}
-			
-			if(runnableInstruction.getDefault() != null) {
+			if(executionNeed.getDefault() != null) {
 				Long ic = 0L;
-				if(coreTypeToIcMap.get(null) != null) {
-					ic = coreTypeToIcMap.get(null);
+				if(procUnitDefToIcMap.get(null) != null) {
+					ic = procUnitDefToIcMap.get(null);
 				}
-				ic += getInstructionCountForInstruction(runnableInstruction.getDefault(), execTimeType);
-				
-				coreTypeToIcMap.put(null, ic);
+				for (Entry<HwFeatureCategory, Need> needEntry : executionNeed.getDefault()) {
+					if (hwFeatures.contains(needEntry.getKey())) {
+						ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+				}
+
+				}
+				procUnitDefToIcMap.put(null, ic);
 			}
 		}
 
-		return coreTypeToIcMap;
+		return procUnitDefToIcMap;
 	}
 
 	/**
 	 * get the execution time for the given process on the given core
 	 * @param process
 	 * @param execTimeType
+	 * @param core
+	 * @param hwFeatures
 	 * @return execution Time of the given process
 	 */
-	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit core, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		Time executionTime = AmaltheaFactory.eINSTANCE.createTime();
 		executionTime.setValue(new BigInteger("0"));
@@ -240,7 +253,7 @@ public class RuntimeUtil {
 		
 		for(Runnable runnable : runnables) {
 			if(runnable != null) {
-				executionTime = TimeUtil.addTimes(executionTime, getExecutionTimeForRunnable(runnable, execTimeType, core, modes));
+				executionTime = TimeUtil.addTimes(executionTime, getExecutionTimeForRunnable(runnable, execTimeType, core, hwFeatures, modes));
 			}
 		}
 		
@@ -251,36 +264,46 @@ public class RuntimeUtil {
 	 * get the execution time for the given runnable on the given core
 	 * @param runnable
 	 * @param execTimeType
+	 * @param core
+	 * @param hwFeatures
 	 * @return execution time of the given runnable
 	 */
-	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
-		long instructionCount = getInstructionCountForRunnable(runnable, execTimeType, core.getDefinition(), modes);
-		
-		float ipc = 1; //core.getDefinition().getInstructionsPerCycle();
-		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
-		
-	  	Time executionTime =  FactoryUtil.createTime(instructionCount, ipc, frequency);
+	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit core, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		long ExecutionNeedValueCount = getExecutionNeedValueCountForRunnable(runnable, execTimeType, core.getDefinition(), hwFeatures, modes);
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue();
+		List <HwFeature> features = core.getDefinition().getFeatures();
+		Time executionTime =  AmaltheaFactory.eINSTANCE.createTime();
+		//TODO: check
+		double scaleFactor= 0;
+		for (HwFeature feat:features) {
+			if (hwFeatures.contains(feat)) {
+				scaleFactor = feat.getValue();
+				Time currentTime =  FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+				executionTime = TimeUtil.addTimes(executionTime, currentTime);
+			}
+		}
+		//float ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();		
 		return executionTime;
 	}
 	
 
 	/**
-	 * get a map that contains the execution for all core for which a coreType has specified runtime
+	 * get a map that contains the execution for all core for which a procUnitDef has specified runtime
 	 * 
 	 * @param model
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
-	 * @return  map ProcessingUnit->Execution time of the extended instructions of the process
+	 * @return  map ProcessingUnit->Execution time of the extended ExecutionNeeds of the process
 	 */
-	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process, TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 		
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		
 		for(Runnable runnable : runnables) {
 			if(runnable != null) {
-				Map<ProcessingUnit, Time> map = getExecutionTimeExtendedForRunnable(model, runnable, execTimeType, modes);
+				Map<ProcessingUnit, Time> map = getExecutionTimeExtendedForRunnable(model, runnable, execTimeType, hwFeatures, modes);
 				for(ProcessingUnit c : map.keySet()) {
 					Time executionTime = executionTimes.get(c);
 					if(executionTime == null) {
@@ -297,29 +320,25 @@ public class RuntimeUtil {
 	}
 	
 	/**
-	 * Gets execution times for given runnable on all possible cores (with specified coreType)
+	 * Gets execution times for given runnable on all possible cores (with specified procUnitDef)
 	 * @param model
 	 * @param runnable
 	 * @param execTimeType
 	 * @param modes
-	 * @return  map ProcessingUnit->Execution time of the extended instructions of the process for all possible cores
+	 * @return  map ProcessingUnit->Execution time of the extended ExecutionNeeds of the process for all possible cores
 	 */
-	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable, TimeType execTimeType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable, TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 		
-		HashMap<ProcessingUnitDefinition, Long> coreTypeToInstructionCountMap = getInstructionCountExtendedForRunnable(runnable, execTimeType, modes);
+		HashMap<ProcessingUnitDefinition, Long> procUnitDefToExecutionNeedValueCountMap = getExecutionNeedValueCountExtendedForRunnable(runnable, execTimeType, hwFeatures, modes);
 		
-		for(ProcessingUnitDefinition ct : coreTypeToInstructionCountMap.keySet()) {
-			List<ProcessingUnit> coreWithGivenCoreType = HardwareUtil.getAllCoresForCoreType(model, ct);
+		for(ProcessingUnitDefinition ct : procUnitDefToExecutionNeedValueCountMap.keySet()) {
+			List<ProcessingUnit> coreWithGivenprocUnitDef = HardwareUtil.getAllCoresForCoreType(model, ct);
 			
-			for(ProcessingUnit core : coreWithGivenCoreType) {
-				executionTimes.put(core, getExecutionTimeForInstructionCount(coreTypeToInstructionCountMap.get(ct), core, null));
+			for(ProcessingUnit core : coreWithGivenprocUnitDef) {
+				executionTimes.put(core, getExecutionTimeForExecutionNeedValueCount(procUnitDefToExecutionNeedValueCountMap.get(ct), core, hwFeatures, null));
 			}
 		}
-		
-		
-		
-		
 		
 		return executionTimes;
 	}
@@ -329,16 +348,26 @@ public class RuntimeUtil {
 
 
 	/**
-	 * convert a number (instructions) into execution time on the given core
+	 * convert a number (ExecutionNeeds) into execution time on the given core
 	 * @param runnable
 	 * @param execTimeType
-	 * @return time on given core for given instruction count 
+	 * @return time on given core for given ExecutionNeed value count 
 	 */
-	public static Time getExecutionTimeForInstructionCount(long instructionCount, ProcessingUnit core, EMap<ModeLabel, ModeLiteral> modes) {
-		float ipc = 1; //core.getDefinition().getInstructionsPerCycle();
-		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
+	public static Time getExecutionTimeForExecutionNeedValueCount(long ExecutionNeedValueCount, ProcessingUnit core, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		//float ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();
 
-	  	Time executionTime =  FactoryUtil.createTime(instructionCount, ipc, frequency);
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue();
+		List <HwFeature> features = core.getDefinition().getFeatures();
+		Time executionTime =  AmaltheaFactory.eINSTANCE.createTime();
+		//TODO: check
+		double scaleFactor= 0;
+		for (HwFeature feat:features) {
+			if (hwFeatures.contains(feat)) {
+				scaleFactor = feat.getValue();
+				Time currentTime =  FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+				executionTime = TimeUtil.addTimes(executionTime, currentTime);
+			}
+		}
 		return executionTime;
 	}
 	
@@ -350,11 +379,11 @@ public class RuntimeUtil {
 	 * @param modes (optional) - null works
 	 * @return utilization of that core
 	 */
-	public static double getCoreUtilization(ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getCoreUtilization(ProcessingUnit core, Amalthea model, TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 		
 		for(Process proc : DeploymentUtil.getProcessesMappedToCore(core, model)) {
-			utilization += getProcessUtilization(proc, core, model, tt, modes);
+			utilization += getProcessUtilization(proc, core, model, tt, hwFeatures, modes);
 		}
 		
 		return utilization;
@@ -369,14 +398,14 @@ public class RuntimeUtil {
 	 * @param modes (optional) - null works
 	 * @return map core -> utilization
 	 */
-	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnit, Double> utilizations = new HashMap<>(); 
 		
 		
 		Set<ProcessingUnit> cores = DeploymentUtil.getAssignedCoreForProcess(process, model);
 		
 		for(ProcessingUnit core : cores) {
-			double utilization = getProcessUtilization(process, core, model, tt, modes);
+			double utilization = getProcessUtilization(process, core, model, tt,  hwFeatures, modes);
 			utilizations.put(core, utilization); 
 		}
 		
@@ -394,11 +423,11 @@ public class RuntimeUtil {
 	 * @param modes (optional) - if none apply, null should be given
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getProcessUtilization(Process process, ProcessingUnit core, Amalthea model, TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 		
 		List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
-		Time time = getExecutionTimeForProcess(process, tt, core, modes);
+		Time time = getExecutionTimeForProcess(process, tt, core,  hwFeatures, modes);
 		if(time.getValue().compareTo(new BigInteger("0")) < 0) {
 			System.err.println("execTime "+TimeUtil.timeToString(time));
 		}
@@ -422,8 +451,8 @@ public class RuntimeUtil {
 	 * @param modes
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, Time period, ProcessingUnit core, Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
-		Time time = getExecutionTimeForProcess(process, tt, core, modes);
+	public static double getProcessUtilization(Process process, Time period, ProcessingUnit core, Amalthea model, TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		Time time = getExecutionTimeForProcess(process, tt, core, hwFeatures, modes);
 		double utilization = (TimeUtil.divideTimes(time, period));
 		return utilization;
 	}
@@ -433,10 +462,11 @@ public class RuntimeUtil {
 	 * Returns the cumulative process utilization, i.e. runtime on every core summed up
 	 * @param model
 	 * @param tt
+	 * @param hwFeatures
 	 * @param modes
 	 * @return map process -> sum of utilization on all cores
 	 */
-	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Process, Double> utilizations = new HashMap<>();
 		
 		List<Process> procs = new ArrayList<Process>();
@@ -444,7 +474,7 @@ public class RuntimeUtil {
 		procs.addAll(model.getSwModel().getIsrs());
 		
 		for(Process proc : procs) {
-			Map<ProcessingUnit, Double> processUtilization = getProcessUtilization(proc, model, tt, modes);
+			Map<ProcessingUnit, Double> processUtilization = getProcessUtilization(proc, model, tt, hwFeatures, modes);
 			double util = 0.0;
 			for(ProcessingUnit c : processUtilization.keySet()) {
 				util += processUtilization.get(c);
@@ -979,50 +1009,50 @@ public class RuntimeUtil {
 	
 	
 	/**
-	 * This method returns a list of all coreTypes for which the given runnable
-	 * contains runtime in a RunnableInstruction element
+	 * This method returns a list of all procUnitDefs for which the given runnable
+	 * contains runtime in a ExecutionNeed element
 	 * @param runnable
 	 * @param execTimeType
 	 * @param modes
 	 * @return List<ProcessingUnitDefinition>
 	 */
-	public static List<ProcessingUnitDefinition> getCoreTypesWithSpecifiedInstructionsOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		List<ProcessingUnitDefinition> coreTypes = new ArrayList<ProcessingUnitDefinition>();
+	public static List<ProcessingUnitDefinition> getprocUnitDefsWithSpecifiedExecutionNeedsOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		List<ProcessingUnitDefinition> procUnitDefs = new ArrayList<ProcessingUnitDefinition>();
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
-			if(ri instanceof RunnableInstructions) {
-				RunnableInstructions runnableInstruction = (RunnableInstructions)ri;
+			if(ri instanceof ExecutionNeed) {
+				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
 				
-				coreTypes.addAll(runnableInstruction.getExtended().keySet());
+				procUnitDefs.addAll(runnableExecutionNeed.getExtended().keySet());
 			}
 		}
 
-		return coreTypes;
+		return procUnitDefs;
 	}
 	
 	/**
-	 * add Runtime (given as RunnableInstructions) to an existing Runnable
+	 * add Runtime (given as ExecutionNeed) to an existing Runnable
 	 * currently without consideration of modes
 	 * //TODO: Mode-based API 
 	 * @param runnable
-	 * @param instructions
+	 * @param ExecutionNeeds
 	 */
-	public static void addRuntimeToRunnable(Runnable runnable, RunnableInstructions instructions) {
-		runnable.getRunnableItems().add(instructions);
+	public static void addRuntimeToRunnable(Runnable runnable, ExecutionNeed executionNeeds) {
+		runnable.getRunnableItems().add(executionNeeds);
 	}
 	
 	/**
 	 * Create a new Runnable with the given runtime and
 	 * create a Callsequence at beginning / end of the given process
 	 * @param process
-	 * @param instructions
+	 * @param ExecutionNeeds
 	 */
-	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, RunnableInstructions instructions, String runnableName, PositionType positon) {
+	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed executionNeeds, String runnableName, PositionType positon) {
 		
 		Runnable run  = AmaltheaFactory.eINSTANCE.createRunnable();
 		run.setName(runnableName);
-		run.getRunnableItems().add(instructions);
+		run.getRunnableItems().add(executionNeeds);
 		
 		TaskRunnableCall tCall = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();		
 		tCall.setRunnable(run);
@@ -1042,82 +1072,85 @@ public class RuntimeUtil {
 	}
 		
 	/**
-	 * clears all runtime information, for all coreTypes, for all modes
+	 * clears all runtime information, for all procUnitDefs, for all modes
 	 * @param runnable
-	 * if coreType == null, delete all InstructionRunnable from that runnable that has default Instruction,
-	 * if coreType != null, delete only the extended instruction
+	 * if procUnitDef == null, delete all ExecutionNeed from that runnable that has default ExecutionNeed,
+	 * if procUnitDef != null, delete only the extended ExecutionNeed
 	 */
-	public static void clearRuntimeOfRunnable(Runnable runnable, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Instructions> instructionElements = SoftwareUtil.getInstructionsList(runnable, coreType, modes);
-		instructionElements.remove(null);
-		if (coreType == null)
+	public static void clearRuntimeOfRunnable(Runnable runnable, ProcessingUnitDefinition procUnitDef, EMap<ModeLabel, ModeLiteral> modes) {
+		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeedsList(runnable, modes);//getExecutionNeedsList(runnable, procUnitDef, modes);
+		executionNeeds.remove(null);
+		if (procUnitDef == null)
 		{
-			for (Instructions instr : instructionElements){
-				runnable.getRunnableItems().remove(instr.eContainer());
+			for (ExecutionNeed executionNeed : executionNeeds){
+				runnable.getRunnableItems().remove(executionNeed);
 			}			
 		}
 		else
 		{
-			for (Instructions instr : instructionElements){
-				if (!(instr.eContainer() instanceof RunnableInstructions)) {
-					
-					((RunnableInstructions)((instr.eContainer().eContainer()))).getExtended().removeKey(instr);
-				}
-			}			
+			for (ExecutionNeed executionNeed : executionNeeds){
+				executionNeed.getExtended().removeKey(procUnitDef);
+			}
 		}
-		
 			
 	}
 	
 	/**
 	 * Removes all runtimes set in the given process
-	 * If the coreType is null, the complete RunnableInstruction is deleted
-	 * if it is not null, then only the runtime for the given coretype is removed
+	 * If the procUnitDef is null, the complete ExecutionNeed is deleted
+	 * if it is not null, then only the runtime for the given procUnitDef is removed
 	 * @param process
 	 */
-	public static void clearRuntimeOfProcess(Process process, ProcessingUnitDefinition coreType,  EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfProcess(Process process, ProcessingUnitDefinition procUnitDef,  EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for(Runnable runnable : runnables) {
-			clearRuntimeOfRunnable(runnable, coreType, modes);
+			clearRuntimeOfRunnable(runnable, procUnitDef, modes);
 		}
 	}
 	
 	/**
 	 * Removes all runtimes of the whole model
-	 * If the coreType is null, the complete RunnableInstruction is deleted
-	 * if it is not null, then only the runtime for the given coretype is removed
+	 * If the procUnitDef is null, the complete ExecutionNeed is deleted
+	 * if it is not null, then only the runtime for the given procUnitDef is removed
 	 * @param model
 	 */
-	public static void clearRuntimeOfModel(Amalthea model, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfModel(Amalthea model, ProcessingUnitDefinition procUnitDef, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Process> processes = new ArrayList<Process>(); 
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
 		
 		for(Process process : processes) {
-			clearRuntimeOfProcess(process, coreType, modes);
+			clearRuntimeOfProcess(process, procUnitDef, modes);
 		}
 	}
 	
 	/**
-	 * set the runtime of the given runnable to the given runnable instruction
+	 * set the runtime of the given runnable to the given runnable ExecutionNeed
 	 * @param runnable
-	 * @param instructions
+	 * @param ExecutionNeeds
 	 */
-	public static void setRuntimeOfRunnable(Runnable runnable, RunnableInstructions instructions, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
-		clearRuntimeOfRunnable(runnable, coreType, modes);
-		addRuntimeToRunnable(runnable, instructions);
+	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed ExecutionNeeds, ProcessingUnitDefinition procUnitDef, EMap<ModeLabel, ModeLiteral> modes) {
+		clearRuntimeOfRunnable(runnable, procUnitDef, modes);
+		addRuntimeToRunnable(runnable, ExecutionNeeds);
 	}
 	
 	/**
-	 * convert a time into an instruction count
+	 * convert a time into an ExecutionNeed value count
 	 * @param core
 	 * @param time
-	 * @return instruction count
+	 * @return ExecutionNeed value count
 	 */
-	public static LongObject getInstructionCountForTime(ProcessingUnit core, Time time) {
-		LongObject instructions = AmaltheaFactory.eINSTANCE.createLongObject();
-		double ipc = 1; //core.getDefinition().getInstructionsPerCycle();
-		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue(); // TODO
+	public static LongObject getExecutionNeedValueCountForTime(ProcessingUnit core, Time time, HwFeature hwFeature) {
+		LongObject needs = AmaltheaFactory.eINSTANCE.createLongObject();
+		//double ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();
+		long frequency = (long) HardwareUtil.getFrequencyOfCore(core).getValue();
+		double scaleFactor = 1;
+		for (HwFeature feature : core.getDefinition().getFeatures()) {
+			if (feature.equals(hwFeature)) {
+				scaleFactor = feature.getValue();
+			}
+		}
+		
 		int power = TimeUnit.VALUES.indexOf(time.getUnit()) - TimeUnit.VALUES.indexOf(TimeUnit.S) ; 
 		double factor = Math.pow(1000, power);
 		if (factor < 1.0) 
@@ -1127,9 +1160,14 @@ public class RuntimeUtil {
 		//time to ticks
 		double ticks = time.getValue().doubleValue() /multi;
 		//ticks with ipc to instrcutions
-		instructions.setValue((long) (ticks/ipc));
-		return instructions;
+		needs.setValue((long) (ticks/scaleFactor));
+		return needs;
 	}
+	
+
+		
+		
+		
 	
 	
 }

@@ -20,14 +20,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Function;
 
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
-import org.eclipse.app4mc.amalthea.model.Instructions;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
@@ -37,6 +40,7 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
@@ -44,7 +48,6 @@ import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
@@ -901,34 +904,34 @@ public class SoftwareUtil {
 	}
 	
 	/**
-	 * returns a list of all RunnableInstructions for a given runnable
+	 * returns a list of all ExecutionNeeds for a given runnable
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return List<RunnableInstructions>
+	 * @return List<ExecutionNeed>
 	 */
-	public static List<RunnableInstructions> getRunnableInstructionsList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		List<RunnableInstructions> result = new ArrayList<>();
+	public static List<ExecutionNeed> getExecutionNeedsList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		List<ExecutionNeed> result = new ArrayList<>();
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
-			if(ri instanceof RunnableInstructions) {
-				result.add((RunnableInstructions)ri);
+			if(ri instanceof ExecutionNeed) {
+				result.add((ExecutionNeed)ri);
 			}
 		}
 		return result; 
 	}
 	
 	/**
-	 * returns a list of all RunnableInstructions for a given process
+	 * returns a list of all RunnableExecutionNeeds for a given process
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return List<RunnableInstructions>
+	 * @return List<RunnableExecutionNeeds>
 	 */
-	public static List<RunnableInstructions> getRunnableInstructionsList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
-		List<RunnableInstructions> result = new ArrayList<>();
+	public static List<ExecutionNeed> getExecutionNeedsList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+		List<ExecutionNeed> result = new ArrayList<>();
 		List<Runnable> runnableSet = getRunnableList(process, modes);
 		for (Runnable run : runnableSet) {
-			result.addAll(getRunnableInstructionsList(run, modes)) ;
+			result.addAll(getExecutionNeedsList(run, modes)) ;
 		}
 		return result; 
 	}
@@ -937,49 +940,57 @@ public class SoftwareUtil {
 
 
 	/** 
-	 * returns a list of all Instructions for a given process 
+	 * returns a list of all ExecutionNeeds for a given process 
 	 * @param process
+	 * @param hwFeatures 
 	 * @param modeLiterals (optional) - null works
-	 * @return List<Instructions>
+	 * @param procUnitDef - now needed to connect features to procUnits - null returns empty list
+	 * @return List<Entry<HwFeatureCategory, Need>>
 	 */
-	public static List<Instructions> getInstructionsList(Process process, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Entry<HwFeatureCategory, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition ProcessingUnitDef, EMap<ModeLabel, ModeLiteral> modes, List<HwFeature> hwFeatures) {
 		List<Runnable> runnables = getRunnableList(process, modes);
-		List<Instructions> result = new ArrayList<>();
+		List<Entry<HwFeatureCategory, Need>> result = new ArrayList<>();
 		
 		for(Runnable runnable : runnables) {
-			result.addAll(getInstructionsList(runnable, coreType, modes));
+			result.addAll(getExecutionNeedEntryList(runnable, ProcessingUnitDef, hwFeatures, modes));
 		}
-		
 		return result;
 	}
 
 	
 	/** 
-	 * returns a list of all Instructions for a given runnable 
-	 * @param process
+	 * returns a list of all ExecutionNeeds for a given runnable 
+	 * @param runnable
 	 * @param modeLiterals (optional) - null works
-	 * @return List<Instructions>
+	 * @param procUnitDef - now needed to connect features to procUnits - null returns empty list
+	 * @return List<Entry<HwFeatureCategory, Need>>
 	 */
-	public static List<Instructions> getInstructionsList(Runnable runnable, ProcessingUnitDefinition coreType, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Instructions> result = new ArrayList<>();
+	public static List<Entry<HwFeatureCategory, Need>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		List<Entry<HwFeatureCategory, Need>> result = new ArrayList<>();
+		if (procUnitDef == null) {
+			return result;
+		}
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
-			if(ri instanceof RunnableInstructions) {
-				RunnableInstructions runnableInstruction = (RunnableInstructions)ri;
-				
-				if(coreType == null && runnableInstruction.getDefault() != null) {
-					result.add(runnableInstruction.getDefault());
-				} else {
-					//return extended for coreType
-					if(runnableInstruction.getExtended().get(coreType) != null) {
-						result.add(runnableInstruction.getExtended().get(coreType)); //Should contain RunnableInstructions for given coreType
-					} else {
-						//No runtime for coreType available - return default
-						if (runnableInstruction.getDefault() != null)
-							{
-								result.add(runnableInstruction.getDefault());						
+			if(ri instanceof ExecutionNeed) {
+				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
+				if(runnableExecutionNeed.getExtended().get(procUnitDef) != null) {
+					for (Entry<HwFeatureCategory, Need> needEntry :runnableExecutionNeed.getExtended().get(procUnitDef)) {
+						for (HwFeature feature : needEntry.getKey().getFeatures()) {
+							if (hwFeatures.contains(feature)) {
+								result.add(needEntry);
 							}
+						}
+					}
+					 // all should be needed
+				} else if(runnableExecutionNeed.getDefault() != null) {
+					for (Entry<HwFeatureCategory, Need> needEntry : runnableExecutionNeed.getDefault()) {
+						for (HwFeature feature : needEntry.getKey().getFeatures()) {
+							if (hwFeatures.contains(feature)) {
+								result.add(needEntry);
+							}
+						}
 					}
 				}
 			}

@@ -15,17 +15,21 @@
 package org.eclipse.app4mc.amalthea.model.util;
 
 import java.math.BigInteger;
+import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
@@ -88,14 +92,14 @@ public class FactoryUtil {
 	
 	/**
 	 * 
-	 * @param instructionCount	-	absolute number of instructions
-	 * @param ipc				-	integer - should be double/float
+	 * @param executionNeedCount	-	absolute number of executionNeedCount (simular to instructions)
+	 * @param scaleFactor		- simular to ipc	
 	 * @param frequency			-	frequency in Hertz (=1/s)
-	 * Note: the function will round up the runtime e.g if the (instructionCount/ipc) / frequency < 1 => the runtime is 0
+	 * Note: the function will round up the runtime e.g if the (executionNeedCount/ipc) / frequency < 1 => the runtime is 0
 	 * @return
 	 */
-	public static Time createTime(long instructionCount, float ipc, long frequency) {
-		double cycles = (((double)instructionCount)/((double)ipc));
+	public static Time createTime(long executionNeedCount, double scaleFactor, long frequency) {
+		double cycles = (((double)executionNeedCount)/scaleFactor);
 		
 		List<TimeUnit> units = TimeUtil.getTimeUnitList();
 		int timeUnitIndex = units.indexOf(TimeUnit.S);
@@ -151,39 +155,54 @@ public class FactoryUtil {
 	
 	
 	/**
-	 * returns a created Weibull InstructionDeviation.
+	 * returns a created Weibull NeedDeviation.
 	 * @param min
 	 * @param avg
 	 * @param max
 	 * @param promille
 	 * @return  
 	 */
-	public static InstructionsDeviation createInstructionWeibullDeviation(long min, long avg, long max, float promille) {
-		InstructionsDeviation instdev = AmaltheaFactory.eINSTANCE.createInstructionsDeviation();
-		instdev.setDeviation(createWeibullDeviation(min, avg, max, promille));
-		return instdev;
+	public static NeedDeviation createExecutionNeedWeibullDeviation(long min, long avg, long max, float promille) {
+		NeedDeviation needDev = AmaltheaFactory.eINSTANCE.createNeedDeviation();
+		needDev.setDeviation(createWeibullDeviation(min, avg, max, promille));
+		return needDev;
 	}
 	
 	/**
-	 * creates InstructionConstant element
-	 * @param instr
-	 * @return InstructionsConstant
+	 * creates NeedConstant element
+	 * @param needValue
+	 * @return NeedConstant
 	 */
-	public static InstructionsConstant createInstructionConstant(long instr) {
-		InstructionsConstant iConst = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
-		iConst.setValue(instr);
-		return iConst;
+	public static NeedConstant createExecutionNeedConstant(long needValue) {
+		NeedConstant needConst = AmaltheaFactory.eINSTANCE.createNeedConstant();
+		needConst.setValue(needValue);
+		return needConst;
 	}
 	
 	/**
-	 * creates RunnableInstruction from an instruction Element
-	 * @param instDev
-	 * @return RunnableInstructions
+	 * creates ExecutionNeed for a featureCategory, need set
+	 * @param featureCategory
+	 * @param need
+	 * @return ExecutionNeed
 	 */
-	public static RunnableInstructions createRunnableInstructions(Instructions instDev) {
-		RunnableInstructions runInstr = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-		runInstr.setDefault(instDev);
-		return runInstr;
+	public static ExecutionNeed createExecutionNeed(HwFeatureCategory featureCategory, Need need) {
+		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+		exeNeed.getDefault().put(featureCategory, need);
+		return exeNeed;
 	}
+	
+	/**
+	 * creates ExecutionNeed for a feature, need set
+	 * @param feature
+	 * @param need
+	 * @return ExecutionNeed
+	 */
+	public static ExecutionNeed createExecutionNeed(HwFeature feature, Need need) {
+		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+		exeNeed.getDefault().put(feature.getContainingCategory(), need);
+		return exeNeed;
+	}
+	
+
 	
 }

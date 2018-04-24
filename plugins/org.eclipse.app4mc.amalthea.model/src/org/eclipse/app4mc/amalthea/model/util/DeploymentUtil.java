@@ -21,6 +21,8 @@ import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -29,6 +31,7 @@ import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -262,4 +265,38 @@ public class DeploymentUtil {
 		}
 		return result;
 	}
+	
+	
+
+	
+	public List<HwFeatureCategory> getHwFeatureCategoriesForProcessingUnitDefinition (ProcessingUnitDefinition procUnitDef) {
+		List<HwFeatureCategory> result = new ArrayList<>();
+		for (HwFeature feature : procUnitDef.getFeatures()) {
+			if (!result.contains(feature.getContainingCategory())) {
+				result.add(feature.getContainingCategory());
+				}
+		}
+		return result;
+	}
+	
+	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwCategories(HwFeatureCategory hwFeatureCat, List<ProcessingUnitDefinition> procUnitDefinitons) {
+		List<ProcessingUnitDefinition> result = new ArrayList<>();
+		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {
+			for (HwFeature feature : hwFeatureCat.getFeatures()) {
+				if (procUnitDef.getFeatures().contains(feature))
+					result.add(procUnitDef);
+			}
+		}
+		return result;
+	}
+	
+	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwFeature(HwFeature feature, List<ProcessingUnitDefinition> procUnitDefinitons) {
+		List<ProcessingUnitDefinition> result = new ArrayList<>();
+		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {
+			if (procUnitDef.getFeatures().contains(feature))
+				result.add(procUnitDef);
+		}
+		return result;
+	}
+	
 }
