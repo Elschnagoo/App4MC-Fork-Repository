@@ -60,21 +60,21 @@
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="1000000"/>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_2" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="2000000"/>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3_1" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <upperBound xsi:type="am:LongObject" value="5000000"/>
@@ -89,21 +89,21 @@
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="1000000"/>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_3" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="3000000"/>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_2_1" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="1000000"/>
@@ -116,7 +116,7 @@
     </runnables>
     <runnables name="Runnable_1_4" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions?type=HwFeatureCategory">
+        <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="4000000"/>
         </default>
       </runnableItems>

@@ -144,8 +144,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -164,8 +163,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="APedSensor2Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -184,8 +182,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -202,8 +199,7 @@
     <runnables name="BaseFuelMass" tags="SwcEngineController?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -221,8 +217,7 @@
     <runnables name="BrakeActuator" tags="SwcABSCalculation?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -240,8 +235,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -258,8 +252,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -278,8 +271,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -300,8 +292,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -320,8 +311,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -338,8 +328,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -358,8 +347,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -380,8 +368,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -400,8 +387,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -418,8 +404,7 @@
     <runnables name="CheckPlausability" tags="SwcBrakeForceCalculation?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -436,8 +421,7 @@
     <runnables name="CylNumObserver" tags="SwcCylNumObserver?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CylinderNumber?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -455,8 +439,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -473,8 +456,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -493,8 +475,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -511,8 +492,7 @@
     <runnables name="DiagnosisArbiter" tags="SwcBrakeForceCalculation?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -528,8 +508,7 @@
     <runnables name="EcuBrakeActuator" tags="SwcActuators?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -544,8 +523,7 @@
     </runnables>
     <runnables name="EcuBrakePedalSensor" tags="SwcSensors?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="144000"/>
@@ -562,8 +540,7 @@
     </runnables>
     <runnables name="EcuDecelerationSensor" tags="SwcSensors?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="144000"/>
@@ -581,8 +558,7 @@
     <runnables name="EcuStopLightActuator" tags="SwcActuators?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -597,8 +573,7 @@
     </runnables>
     <runnables name="EcuVehicleSpeedSensor" tags="SwcSensors?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -615,8 +590,7 @@
     </runnables>
     <runnables name="EcuWheelSpeedSensor" tags="SwcSensors?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -641,8 +615,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime5?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime6?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -660,8 +633,7 @@
     <runnables name="IgnitionTiming" tags="SwcEngineController?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -687,8 +659,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="InjectionTime7?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="InjectionTime8?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -704,8 +675,7 @@
     <runnables name="MassAirFlowSensor" tags="SwcEngineSensors?type=Tag" activations="Timer_5MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MAFSensorVoltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -722,8 +692,7 @@
     <runnables name="StopLightActuator" tags="SwcABSCalculation?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -740,8 +709,7 @@
     <runnables name="ThrottleActuator" tags="SwcEngineController?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -759,8 +727,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -778,8 +745,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor1Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor2Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -796,8 +762,7 @@
     <runnables name="TotalFuelMass" tags="SwcEngineController?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -814,8 +779,7 @@
     <runnables name="TransientFuelMass" tags="SwcEngineController?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -833,8 +797,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -851,8 +814,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -871,8 +833,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -888,8 +849,7 @@
     </runnables>
     <runnables name="VehicleStateMonitor" tags="SwcBrakeForceCalculation?type=Tag" activations="Timer_10MS?type=PeriodicActivation" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -907,8 +867,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -925,8 +884,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>
@@ -945,8 +903,7 @@
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default>
-          <key href="amlt:/#Instructions?type=HwFeatureCategory"/>
+        <default key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="72000"/>

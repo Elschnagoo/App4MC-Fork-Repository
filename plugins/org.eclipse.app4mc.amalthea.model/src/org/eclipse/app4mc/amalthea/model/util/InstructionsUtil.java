@@ -117,7 +117,7 @@ public class InstructionsUtil {
 	public static long getDefaultNeedConstant(ExecutionNeed execNeed, HwFeatureCategory category) {
 		if (execNeed == null || category == null) return 0;
 		
-		Need need = execNeed.getDefault().get(category);
+		Need need = execNeed.getDefault().get(category.getName());
 		if (need instanceof NeedConstant) {
 			return ((NeedConstant) need).getValue();
 		}
@@ -127,7 +127,7 @@ public class InstructionsUtil {
 	public static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed, HwFeatureCategory category) {
 		if (execNeed == null || category == null) return null;
 		
-		Need need = execNeed.getDefault().get(category);
+		Need need = execNeed.getDefault().get(category.getName());
 		if (need instanceof NeedDeviation) {
 			return ((NeedDeviation) need).getDeviation();
 		}

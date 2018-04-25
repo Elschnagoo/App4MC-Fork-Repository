@@ -13,7 +13,6 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
-import org.eclipse.app4mc.amalthea.sphinx.validation.api.EObjectHelper;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -44,8 +42,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sphinx.emf.edit.ExtendedItemPropertyDescriptor;
 import org.eclipse.sphinx.emf.util.EObjectUtil;
-
-import com.google.common.base.Strings;
 
 /**
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
