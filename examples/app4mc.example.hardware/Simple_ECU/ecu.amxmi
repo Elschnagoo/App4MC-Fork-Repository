@@ -17,10 +17,10 @@
         </cycles>
       </accessLatency>
     </definitions>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="ARMXXX" features="IPC_ARMXXX?type=HwFeature" puType="CPU"/>
-    <features name="IPC_ARMXXX" featureType="performance" description="Instructions per cycle ">
-      <value xsi:type="am:DoubleObject" value="8.0"/>
-    </features>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="ARMXXX" features="Instructions/IPC_ARMXXX?type=HwFeature" puType="CPU"/>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_ARMXXX" value="8.0"/>
+    </featureCategories>
     <structures name="ECU" structureType="ECU">
       <modules xsi:type="am:ProcessingUnit" name="Core1" frequencyDomain="MainClk?type=FrequencyDomain" definition="ARMXXX?type=ProcessingUnitDefinition">
         <accessElements name="Flash" destination="Flash_Mem?type=Memory">

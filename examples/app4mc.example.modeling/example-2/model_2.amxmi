@@ -59,63 +59,77 @@
       </callGraph>
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsConstant" value="1000000"/>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedConstant" value="1000000"/>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_2" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsConstant" value="2000000"/>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedConstant" value="2000000"/>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <upperBound xsi:type="am:LongObject" value="5000000"/>
-            <distribution xsi:type="am:GaussDistribution">
-              <sd xsi:type="am:LongObject" value="50000"/>
-              <mean xsi:type="am:LongObject" value="1000000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <upperBound xsi:type="am:LongObject" value="5000000"/>
+              <distribution xsi:type="am:GaussDistribution">
+                <sd xsi:type="am:LongObject" value="50000"/>
+                <mean xsi:type="am:LongObject" value="1000000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsConstant" value="1000000"/>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedConstant" value="1000000"/>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_3" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsConstant" value="3000000"/>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedConstant" value="3000000"/>
+        </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_2_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="1000000"/>
-            <upperBound xsi:type="am:LongObject" value="5000000"/>
-            <distribution xsi:type="am:UniformDistribution"/>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="1000000"/>
+              <upperBound xsi:type="am:LongObject" value="5000000"/>
+              <distribution xsi:type="am:UniformDistribution"/>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_4" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsConstant" value="4000000"/>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedConstant" value="4000000"/>
+        </default>
       </runnableItems>
     </runnables>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" features="Instructions/IPC_1?type=HwFeature" puType="CPU"/>
     <definitions xsi:type="am:MemoryDefinition" name="Memory_Def">
       <accessLatency xsi:type="am:LatencyConstant" cycles="12"/>
     </definitions>
-    <features name="IPC" featureType="performance" description="instruction per cycle">
-      <value xsi:type="am:DoubleObject" value="1.0"/>
-    </features>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_1" value="1.0"/>
+    </featureCategories>
     <structures name="System">
       <structures name="ECU">
         <modules xsi:type="am:Memory" name="Memory"/>

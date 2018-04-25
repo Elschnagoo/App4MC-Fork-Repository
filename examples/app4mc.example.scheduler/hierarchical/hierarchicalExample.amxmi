@@ -12,8 +12,8 @@
   </swModel>
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" puType="CPU"/>
-    <structures name="System">
-      <structures name="ECU">
+    <structures name="System" structureType="System">
+      <structures name="ECU" structureType="ECU">
         <modules xsi:type="am:ProcessingUnit" name="CoreA" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
         <modules xsi:type="am:ProcessingUnit" name="CoreB" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
       </structures>

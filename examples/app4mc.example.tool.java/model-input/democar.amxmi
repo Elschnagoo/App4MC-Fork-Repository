@@ -88,15 +88,17 @@
       <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="write" dataStability="inherited"/>
@@ -105,15 +107,17 @@
     <runnables name="APedSensor" tags="SwcEngineSensors?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="APedSensor1Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="APedSensor2Voltage?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="write" dataStability="inherited"/>
@@ -122,30 +126,34 @@
     <runnables name="APedVoter" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="APedPosition1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="APedPosition2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="BaseFuelMass" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="write" dataStability="inherited"/>
@@ -153,15 +161,17 @@
     </runnables>
     <runnables name="BrakeActuator" tags="SwcABSCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="write" dataStability="inherited"/>
@@ -169,30 +179,34 @@
     <runnables name="BrakeActuatorMonitor" tags="SwcBrakeForceCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceFeedback?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="BrakeForceActuation" tags="SwcABSCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ABSActivation?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ABSMode?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForce?type=Label" access="write" dataStability="inherited"/>
@@ -201,15 +215,17 @@
     <runnables name="BrakeForceArbiter" tags="SwcBrakeForceArbiter?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyState?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="write" dataStability="inherited"/>
@@ -220,15 +236,17 @@
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="CalculatedBrakeForce?type=Label" access="write" dataStability="inherited"/>
@@ -237,30 +255,34 @@
     <runnables name="BrakePedalSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="BrakePedalSensorTranslation" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="write" dataStability="inherited"/>
@@ -269,15 +291,17 @@
     <runnables name="BrakePedalSensorVoter" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="write" dataStability="inherited"/>
@@ -288,15 +312,17 @@
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeMonitorLevel?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeSafetyLevel?type=Label" access="write" dataStability="inherited"/>
@@ -305,45 +331,51 @@
     <runnables name="CaliperPositionCalculation" tags="SwcABSCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceCurrent?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="CaliperPosition?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="CheckPlausability" tags="SwcBrakeForceCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VotedBrakePedalPosition?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPosition?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="CylNumObserver" tags="SwcCylNumObserver?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="CylinderNumber?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="TriggeredCylinderNumber?type=Label" access="write" dataStability="inherited"/>
@@ -351,30 +383,34 @@
     <runnables name="DecelerationSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="DecelerationSensorTranslation" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="write" dataStability="inherited"/>
@@ -383,72 +419,82 @@
     <runnables name="DecelerationSensorVoter" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationRate2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VotedDecelerationRate?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="DiagnosisArbiter" tags="SwcBrakeForceCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedDiagnosisRequest?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="EcuBrakeActuator" tags="SwcActuators?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakeForceVoltage?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="EcuBrakePedalSensor" tags="SwcSensors?type=Tag" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="144000"/>
-            <upperBound xsi:type="am:LongObject" value="176000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="160000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="144000"/>
+              <upperBound xsi:type="am:LongObject" value="176000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="160000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage1?type=Label" access="write" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="BrakePedalPositionVoltage2?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="EcuDecelerationSensor" tags="SwcSensors?type=Tag" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="144000"/>
-            <upperBound xsi:type="am:LongObject" value="176000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="160000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="144000"/>
+              <upperBound xsi:type="am:LongObject" value="176000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="160000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="DecelerationVoltage1?type=Label" access="write" dataStability="inherited"/>
@@ -456,43 +502,49 @@
     </runnables>
     <runnables name="EcuStopLightActuator" tags="SwcActuators?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="EcuVehicleSpeedSensor" tags="SwcSensors?type=Tag" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="write" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="EcuWheelSpeedSensor" tags="SwcSensors?type=Tag" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="write" dataStability="inherited"/>
@@ -507,15 +559,17 @@
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime4?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime5?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime6?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime7?type=Label" access="write" dataStability="inherited"/>
@@ -523,15 +577,17 @@
     </runnables>
     <runnables name="IgnitionTiming" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MAFRate?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="IgnitionTime?type=Label" access="write" dataStability="inherited"/>
@@ -547,59 +603,67 @@
       <runnableItems xsi:type="am:LabelAccess" data="InjectionTime6?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="InjectionTime7?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="InjectionTime8?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="MassAirFlowSensor" tags="SwcEngineSensors?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="MAFSensorVoltage?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="MassAirFlow?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="StopLightActuator" tags="SwcABSCalculation?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ArbitratedBrakeForce?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="BrakeApplication?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="ThrottleActuator" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePositionVoltage?type=Label" access="write" dataStability="inherited"/>
@@ -607,15 +671,17 @@
     <runnables name="ThrottleController" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VotedAPedPosition?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="DesiredThrottlePosition?type=Label" access="write" dataStability="inherited"/>
@@ -623,45 +689,51 @@
     <runnables name="ThrottleSensor" tags="SwcEngineSensors?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor1Voltage?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="ThrottleSensor2Voltage?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="ThrottlePosition?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="TotalFuelMass" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="TotalFuelMassPerStroke?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="TransientFuelMass" tags="SwcEngineController?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="BaseFuelMassPerStroke?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="TransientFuelMassPerStroke?type=Label" access="write" dataStability="inherited"/>
@@ -669,30 +741,34 @@
     <runnables name="VehicleSpeedSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="VehicleSpeedSensorTranslation" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="write" dataStability="inherited"/>
@@ -701,29 +777,33 @@
     <runnables name="VehicleSpeedSensorVoter" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="VehicleSpeed2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VotedVehicleSpeed?type=Label" access="write" dataStability="inherited"/>
     </runnables>
     <runnables name="VehicleStateMonitor" tags="SwcBrakeForceCalculation?type=Tag" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="MonitoredVehicleState?type=Label" access="write" dataStability="inherited"/>
@@ -731,30 +811,34 @@
     <runnables name="WheelSpeedSensorDiagnosis" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="WheelSpeedSensorTranslation" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeedVoltage2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="write" dataStability="inherited"/>
@@ -763,15 +847,17 @@
     <runnables name="WheelSpeedSensorVoter" tags="SwcSensorPostprocessing?type=Tag" callback="false" service="false">
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed1?type=Label" access="read" dataStability="inherited"/>
       <runnableItems xsi:type="am:LabelAccess" data="WheelSpeed2?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="72000"/>
-            <upperBound xsi:type="am:LongObject" value="88000"/>
-            <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
-              <mean xsi:type="am:LongObject" value="80000"/>
-            </distribution>
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions?type=HwFeatureCategory">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="72000"/>
+              <upperBound xsi:type="am:LongObject" value="88000"/>
+              <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.5">
+                <mean xsi:type="am:LongObject" value="80000"/>
+              </distribution>
+            </deviation>
+          </value>
         </default>
       </runnableItems>
       <runnableItems xsi:type="am:LabelAccess" data="VotedWheelSpeed?type=Label" access="write" dataStability="inherited"/>
@@ -991,14 +1077,14 @@
     </labels>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" puType="CPU" features="Instructions/IPC_1?type=HwFeature"/>
     <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
       <size value="4" unit="MB"/>
       <accessLatency xsi:type="am:LatencyConstant" cycles="2"/>
     </definitions>
-    <features name="IPC" featureType="performance" description="">
-      <value xsi:type="am:DoubleObject" value="1.0"/>
-    </features>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_1" value="1.0"/>
+    </featureCategories>
     <structures name="Democar" structureType="System">
       <structures name="ECU_1" structureType="ECU">
         <structures name="Microcontroller_1" structureType="Microcontroller">
@@ -1021,7 +1107,6 @@
       <taskSchedulers name="Task_Scheduler_Core_1">
         <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
-      <osDataConsistency/>
     </operatingSystems>
   </osModel>
   <stimuliModel>
