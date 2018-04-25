@@ -95,101 +95,117 @@
       </customProperties>
     </tasks>
     <runnables name="Runnable_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="5970000" />
-            <upperBound xsi:type="am:LongObject" value="6000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="5970000" />
+              <upperBound xsi:type="am:LongObject" value="6000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_2" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="17970000" />
-            <upperBound xsi:type="am:LongObject" value="18000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="17970000" />
+              <upperBound xsi:type="am:LongObject" value="18000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="11970000" />
-            <upperBound xsi:type="am:LongObject" value="12000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="11970000" />
+              <upperBound xsi:type="am:LongObject" value="12000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="8970000" />
-            <upperBound xsi:type="am:LongObject" value="9000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="8970000" />
+              <upperBound xsi:type="am:LongObject" value="9000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_5" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="17970000" />
-            <upperBound xsi:type="am:LongObject" value="18000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="17970000" />
+              <upperBound xsi:type="am:LongObject" value="18000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_6" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="23970000" />
-            <upperBound xsi:type="am:LongObject" value="24000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="23970000" />
+              <upperBound xsi:type="am:LongObject" value="24000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_7_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="35977500" />
-            <upperBound xsi:type="am:LongObject" value="36000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="35977500" />
+              <upperBound xsi:type="am:LongObject" value="36000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_7_2" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="11992500" />
-            <upperBound xsi:type="am:LongObject" value="12000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="11992500" />
+              <upperBound xsi:type="am:LongObject" value="12000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU"/>
     <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
     </definitions>
-    <features name="IPC" featureType="performance" description="">
-      <value xsi:type="am:DoubleObject" value="1.0"/>
-    </features>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_1.0" value="1.0" />
+    </featureCategories>
     <structures name="System" structureType="System">
       <structures name="Ecu_1" structureType="ECU">
         <structures name="Processor_1" structureType="Microcontroller">

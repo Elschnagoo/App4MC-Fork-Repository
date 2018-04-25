@@ -154,46 +154,54 @@
       <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_1?type=ModeLiteral" />
     </runnables>
     <runnables name="Runnable_State_0" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="59" />
-            <upperBound xsi:type="am:LongObject" value="60" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="59" />
+              <upperBound xsi:type="am:LongObject" value="60" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="59400" />
-            <upperBound xsi:type="am:LongObject" value="60000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="59400" />
+              <upperBound xsi:type="am:LongObject" value="60000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="29700000" />
-            <upperBound xsi:type="am:LongObject" value="30000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="29700000" />
+              <upperBound xsi:type="am:LongObject" value="30000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
-      <runnableItems xsi:type="am:RunnableInstructions">
-        <default xsi:type="am:InstructionsDeviation">
-          <deviation>
-            <lowerBound xsi:type="am:LongObject" value="5940000" />
-            <upperBound xsi:type="am:LongObject" value="6000000" />
-            <distribution xsi:type="am:UniformDistribution" />
-          </deviation>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="5940000" />
+              <upperBound xsi:type="am:LongObject" value="6000000" />
+              <distribution xsi:type="am:UniformDistribution" />
+            </deviation>
+          </value>
         </default>
       </runnableItems>
     </runnables>
@@ -287,12 +295,12 @@
     </modeLabels>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="IPC?type=HwFeature" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU"/>
     <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
     </definitions>
-    <features name="IPC" featureType="performance" description="">
-      <value xsi:type="am:DoubleObject" value="1.0"/>
-    </features>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_1.0" value="1.0" />
+    </featureCategories>
     <structures name="System" structureType="System">
       <structures name="Ecu_1" structureType="ECU">
         <structures name="Processor_1" structureType="Microcontroller">
