@@ -19,17 +19,21 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
+import org.eclipse.app4mc.amalthea.model.util.ModelUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -210,17 +214,23 @@ public class TaskServiceTest {
 
 	@Test
 	public void testGetAccessedLabelsOfTaskEmptyRunnableOtherRunnabelItem() {
+		Amalthea root = AmaltheaFactory.eINSTANCE.createAmalthea();
+		SWModel sw = ModelUtil.getOrCreateSwModel(root);
+		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
+		sw.getRunnables().add(run);
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
+		sw.getTasks().add(task);
+		
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
 		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
 		cg.getGraphEntries().add(cs);
 		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
 		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
-		RunnableInstructions ri = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-		runn.getRunnableItems().add(ri);
-		trc.setRunnable(runn);
+		
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		run.getRunnableItems().add(execNeed);
+		trc.setRunnable(run);
 		List<Label> result = this.taskS.getAccessedLabelsOfTask(task);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));

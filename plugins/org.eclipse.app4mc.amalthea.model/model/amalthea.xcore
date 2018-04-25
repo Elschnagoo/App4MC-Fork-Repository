@@ -3367,17 +3367,6 @@ abstract class ComputationItem extends RunnableItem
 /*
  * Representation of the execution needs of a Runnable (default and core-specific)
  */
-class RunnableInstructions extends ComputationItem {
-	contains Instructions[1] ^default
-	contains RunnableInstructionsEntry[] extended
-}
-
-class RunnableInstructionsEntry wraps java.util.Map$Entry {
-	refers ProcessingUnitDefinition[1] key
-	contains Instructions[1] value
-}
-
-
 class ExecutionNeed extends ComputationItem {
 	contains NeedEntry[] ^default
 	contains ExecutionNeedExtended[] extended
@@ -3389,7 +3378,8 @@ class ExecutionNeedExtended wraps java.util.Map$Entry {
 }
 
 class NeedEntry wraps java.util.Map$Entry {
-	refers HwFeatureCategory[1] key
+//	refers HwFeatureCategory[1] key
+	String[1] key
 	contains Need[1] value
 }
 

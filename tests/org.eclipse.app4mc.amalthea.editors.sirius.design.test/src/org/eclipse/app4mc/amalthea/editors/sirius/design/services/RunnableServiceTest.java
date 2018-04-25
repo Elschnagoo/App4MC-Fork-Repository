@@ -20,12 +20,16 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
+import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
+import org.eclipse.app4mc.amalthea.model.util.ModelUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,9 +90,12 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetLabelWriteAccessesForRunnableOneOtherRunnableItem() {
+		Amalthea root = AmaltheaFactory.eINSTANCE.createAmalthea();
+		SWModel sw = ModelUtil.getOrCreateSwModel(root);
 		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		RunnableInstructions instr = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-		runnable.getRunnableItems().add(instr);
+		sw.getRunnables().add(runnable);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		runnable.getRunnableItems().add(execNeed);
 		List<Label> result = this.runnS.getLabelWriteAccessesForRunnable(runnable);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
@@ -151,10 +158,13 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetLabelReadAccessesForRunnableOtherItem() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
-		RunnableInstructions instr = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-		runn.getRunnableItems().add(instr);
-		List<Label> result = this.runnS.getLabelReadAccessesForRunnable(runn);
+		Amalthea root = AmaltheaFactory.eINSTANCE.createAmalthea();
+		SWModel sw = ModelUtil.getOrCreateSwModel(root);
+		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		sw.getRunnables().add(runnable);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		runnable.getRunnableItems().add(execNeed);
+		List<Label> result = this.runnS.getLabelReadAccessesForRunnable(runnable);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -166,20 +176,23 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetLabelReadAccessesForRunnableOneReadItem() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
-		RunnableInstructions instr = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-		runn.getRunnableItems().add(instr);
+		Amalthea root = AmaltheaFactory.eINSTANCE.createAmalthea();
+		SWModel sw = ModelUtil.getOrCreateSwModel(root);
+		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		sw.getRunnables().add(runnable);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		runnable.getRunnableItems().add(execNeed);
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
 		LabelAccess labelA = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		labelA.setData(label);
 		labelA.setAccess(LabelAccessEnum.WRITE);
-		runn.getRunnableItems().add(labelA);
+		runnable.getRunnableItems().add(labelA);
 		Label label2 = AmaltheaFactory.eINSTANCE.createLabel();
 		LabelAccess labelA2 = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		labelA2.setData(label2);
 		labelA2.setAccess(LabelAccessEnum.READ);
-		runn.getRunnableItems().add(labelA2);
-		List<Label> result = this.runnS.getLabelReadAccessesForRunnable(runn);
+		runnable.getRunnableItems().add(labelA2);
+		List<Label> result = this.runnS.getLabelReadAccessesForRunnable(runnable);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -205,8 +218,8 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableEmpty() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(runnable);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -218,18 +231,18 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableReadRead() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run1 = AmaltheaFactory.eINSTANCE.createRunnable();
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
-		Runnable runn2 = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run2 = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la.setAccess(LabelAccessEnum.READ);
 		la.setData(label);
-		runn.getRunnableItems().add(la);
+		run1.getRunnableItems().add(la);
 		LabelAccess la2 = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la2.setAccess(LabelAccessEnum.READ);
 		la2.setData(label);
-		runn2.getRunnableItems().add(la2);
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		run2.getRunnableItems().add(la2);
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(run1);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -241,11 +254,11 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableEmptyRead() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la.setAccess(LabelAccessEnum.WRITE);
-		runn.getRunnableItems().add(la);
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		runnable.getRunnableItems().add(la);
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(runnable);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -257,18 +270,18 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableReadWrite() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run1 = AmaltheaFactory.eINSTANCE.createRunnable();
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
-		Runnable runn2 = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run2 = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la.setAccess(LabelAccessEnum.READ);
 		la.setData(label);
-		runn.getRunnableItems().add(la);
+		run1.getRunnableItems().add(la);
 		LabelAccess la2 = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la2.setAccess(LabelAccessEnum.WRITE);
 		la2.setData(label);
-		runn2.getRunnableItems().add(la2);
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		run2.getRunnableItems().add(la2);
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(run1);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -280,18 +293,18 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableWriteWrite() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run1 = AmaltheaFactory.eINSTANCE.createRunnable();
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
-		Runnable runn2 = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run2 = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la.setAccess(LabelAccessEnum.WRITE);
 		la.setData(label);
-		runn.getRunnableItems().add(la);
+		run1.getRunnableItems().add(la);
 		LabelAccess la2 = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la2.setAccess(LabelAccessEnum.WRITE);
 		la2.setData(label);
-		runn2.getRunnableItems().add(la2);
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		run2.getRunnableItems().add(la2);
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(run1);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -303,21 +316,22 @@ public class RunnableServiceTest {
 	 */
 	@Test
 	public void testGetCommunicationForRunnableWriteRead() {
-		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run1 = AmaltheaFactory.eINSTANCE.createRunnable();
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
-		Runnable runn2 = AmaltheaFactory.eINSTANCE.createRunnable();
+		Runnable run2 = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la.setAccess(LabelAccessEnum.WRITE);
 		la.setData(label);
-		runn.getRunnableItems().add(la);
+		run1.getRunnableItems().add(la);
 		LabelAccess la2 = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		la2.setAccess(LabelAccessEnum.READ);
 		la2.setData(label);
-		runn2.getRunnableItems().add(la2);
-		List<Runnable> result = this.runnS.getCommunicationForRunnable(runn);
+		run2.getRunnableItems().add(la2);
+		List<Runnable> result = this.runnS.getCommunicationForRunnable(run1);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
-		assertThat(result.get(0), sameInstance(runn2));
+		assertThat(result.get(0), sameInstance(run2));
 	}
+	
 }

@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -65,12 +64,13 @@ public class MergeRunnablePairings {
 						// TODO: handle multiple activations
 						r.getTags().addAll(run.getTags());
 					}
-					final InstructionsConstant ic = af.createInstructionsConstant();
-					ic.setValue(instrCum);
-					final RunnableInstructions runInst = af.createRunnableInstructions();
-					runInst.setDefault(ic);
-					r.getRunnableItems().add(runInst);
-					modelCopy.getSwModel().getRunnables().add(r);
+// TODO
+//					final InstructionsConstant ic = af.createInstructionsConstant();
+//					ic.setValue(instrCum);
+//					final RunnableInstructions runInst = af.createRunnableInstructions();
+//					runInst.setDefault(ic);
+//					r.getRunnableItems().add(runInst);
+//					modelCopy.getSwModel().getRunnables().add(r);
 
 					// also remove taskrunnablecall refs from tasks
 					for (final Task t : modelCopy.getSwModel().getTasks()) {

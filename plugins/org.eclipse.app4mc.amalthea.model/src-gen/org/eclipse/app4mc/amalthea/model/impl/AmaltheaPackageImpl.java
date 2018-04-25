@@ -317,7 +317,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -2499,20 +2498,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass computationItemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass runnableInstructionsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass runnableInstructionsEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11314,60 +11299,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRunnableInstructions() {
-		return runnableInstructionsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRunnableInstructions_Default() {
-		return (EReference)runnableInstructionsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRunnableInstructions_Extended() {
-		return (EReference)runnableInstructionsEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRunnableInstructionsEntry() {
-		return runnableInstructionsEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRunnableInstructionsEntry_Key() {
-		return (EReference)runnableInstructionsEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRunnableInstructionsEntry_Value() {
-		return (EReference)runnableInstructionsEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getExecutionNeed() {
 		return executionNeedEClass;
 	}
@@ -11431,8 +11362,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNeedEntry_Key() {
-		return (EReference)needEntryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNeedEntry_Key() {
+		return (EAttribute)needEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -14277,14 +14208,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		computationItemEClass = createEClass(COMPUTATION_ITEM);
 
-		runnableInstructionsEClass = createEClass(RUNNABLE_INSTRUCTIONS);
-		createEReference(runnableInstructionsEClass, RUNNABLE_INSTRUCTIONS__DEFAULT);
-		createEReference(runnableInstructionsEClass, RUNNABLE_INSTRUCTIONS__EXTENDED);
-
-		runnableInstructionsEntryEClass = createEClass(RUNNABLE_INSTRUCTIONS_ENTRY);
-		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__KEY);
-		createEReference(runnableInstructionsEntryEClass, RUNNABLE_INSTRUCTIONS_ENTRY__VALUE);
-
 		executionNeedEClass = createEClass(EXECUTION_NEED);
 		createEReference(executionNeedEClass, EXECUTION_NEED__DEFAULT);
 		createEReference(executionNeedEClass, EXECUTION_NEED__EXTENDED);
@@ -14294,7 +14217,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(executionNeedExtendedEClass, EXECUTION_NEED_EXTENDED__VALUE);
 
 		needEntryEClass = createEClass(NEED_ENTRY);
-		createEReference(needEntryEClass, NEED_ENTRY__KEY);
+		createEAttribute(needEntryEClass, NEED_ENTRY__KEY);
 		createEReference(needEntryEClass, NEED_ENTRY__VALUE);
 
 		modeLabelAccessEClass = createEClass(MODE_LABEL_ACCESS);
@@ -14911,7 +14834,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
-		runnableInstructionsEClass.getESuperTypes().add(this.getComputationItem());
 		executionNeedEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
@@ -16243,14 +16165,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(runnableInstructionsEClass, RunnableInstructions.class, "RunnableInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableInstructions_Default(), this.getInstructions(), null, "default", null, 1, 1, RunnableInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnableInstructions_Extended(), this.getRunnableInstructionsEntry(), null, "extended", null, 0, -1, RunnableInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(runnableInstructionsEntryEClass, Map.Entry.class, "RunnableInstructionsEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableInstructionsEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnableInstructionsEntry_Value(), this.getInstructions(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(executionNeedEClass, ExecutionNeed.class, "ExecutionNeed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionNeed_Default(), this.getNeedEntry(), null, "default", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExecutionNeed_Extended(), this.getExecutionNeedExtended(), null, "extended", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16260,7 +16174,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getExecutionNeedExtended_Value(), this.getNeedEntry(), null, "value", null, 1, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(needEntryEClass, Map.Entry.class, "NeedEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNeedEntry_Key(), this.getHwFeatureCategory(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNeedEntry_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNeedEntry_Value(), this.getNeed(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

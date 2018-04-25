@@ -21,15 +21,12 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -57,25 +54,26 @@ public class Helper {
 	 */
 	public long getInstructions(final Runnable r) {
 		long rt = 0;
-		for (final RunnableItem ra : r.getRunnableItems()) {
-			if (ra instanceof RunnableInstructions) {
-				final RunnableInstructions ri = (RunnableInstructions) ra;
-				rt += ri.getDefault() instanceof InstructionsConstant ? ((InstructionsConstant) ri.getDefault()).getValue()
-						: ri.getDefault() instanceof InstructionsDeviation
-								? (((InstructionsDeviation) ri.getDefault()).getDeviation().getLowerBound().getValue()
-										+ ((InstructionsDeviation) ri.getDefault()).getDeviation().getUpperBound().getValue()) / 2
-								: 0;
-			}
-		}
-		if (rt == 0) {
-			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
-			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
-			ic.setValue(1);
-			final RunnableInstructions ri = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
-			ri.setDefault(ic);
-			r.getRunnableItems().add(ri);
-			rt = 1;
-		}
+// TODO
+//		for (final RunnableItem ra : r.getRunnableItems()) {
+//			if (ra instanceof RunnableInstructions) {
+//				final RunnableInstructions ri = (RunnableInstructions) ra;
+//				rt += ri.getDefault() instanceof InstructionsConstant ? ((InstructionsConstant) ri.getDefault()).getValue()
+//						: ri.getDefault() instanceof InstructionsDeviation
+//								? (((InstructionsDeviation) ri.getDefault()).getDeviation().getLowerBound().getValue()
+//										+ ((InstructionsDeviation) ri.getDefault()).getDeviation().getUpperBound().getValue()) / 2
+//								: 0;
+//			}
+//		}
+//		if (rt == 0) {
+//			PartLog.getInstance().log("No instructions constant / deviation found at Runnable " + r.getName() + ". Assuming 1.", null);
+//			final InstructionsConstant ic = AmaltheaFactory.eINSTANCE.createInstructionsConstant();
+//			ic.setValue(1);
+//			final RunnableInstructions ri = AmaltheaFactory.eINSTANCE.createRunnableInstructions();
+//			ri.setDefault(ic);
+//			r.getRunnableItems().add(ri);
+//			rt = 1;
+//		}
 		return rt;
 	}
 

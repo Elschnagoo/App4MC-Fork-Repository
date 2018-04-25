@@ -13,20 +13,24 @@
 package org.eclipse.app4mc.amalthea.model.provider;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
-
+import org.eclipse.app4mc.amalthea.sphinx.validation.api.EObjectHelper;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -36,7 +40,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sphinx.emf.edit.ExtendedItemPropertyDescriptor;
+import org.eclipse.sphinx.emf.util.EObjectUtil;
+
+import com.google.common.base.Strings;
 
 /**
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
@@ -84,7 +93,7 @@ public class NeedEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKeyPropertyDescriptor(Object object) {
+	protected void addKeyPropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -94,10 +103,47 @@ public class NeedEntryItemProvider
 				 AmaltheaPackage.eINSTANCE.getNeedEntry_Key(),
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ExtendedItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NeedEntry_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NeedEntry_key_feature", "_UI_NeedEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getNeedEntry_Key(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null)
+				{
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						Collection<Object> choiceOfValues = new UniqueEList<Object>();
+						choiceOfValues.add(null); // empty entry
+						choiceOfValues.add(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME); // current default
+						// other entries: names of feature categories
+						List<HwFeatureCategory> objectList = EObjectUtil
+								.getAllInstancesOf((EObject) object, HwFeatureCategory.class, true);
+						choiceOfValues.addAll(objectList.stream()
+								.map(i -> i.getName())
+								.filter(i -> i != null)
+								.sorted()
+								.collect(Collectors.toList()));
+						return choiceOfValues;
+					}
+				}
+			);
 	}
 
 	/**
@@ -183,6 +229,9 @@ public class NeedEntryItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.NEED_ENTRY__KEY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

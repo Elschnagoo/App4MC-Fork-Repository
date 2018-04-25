@@ -2372,7 +2372,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getNeedEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof NeedEntryImpl) {
-			val featureName = object?.getKey()?.name
+			val featureName = object?.getKey()
 			val need = object?.getValue()
 
 			val s1 = if(featureName.isNullOrEmpty) "<feature>" else "Feature \"" + featureName + "\""

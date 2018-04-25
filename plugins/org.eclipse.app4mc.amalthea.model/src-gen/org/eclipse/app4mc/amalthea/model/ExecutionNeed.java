@@ -19,6 +19,10 @@ import org.eclipse.emf.common.util.EMap;
  * A representation of the model object '<em><b>Execution Need</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Representation of the execution needs of a Runnable (default and core-specific)
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -34,7 +38,7 @@ import org.eclipse.emf.common.util.EMap;
 public interface ExecutionNeed extends ComputationItem {
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' map.
-	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.HwFeatureCategory},
+	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.Need},
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -44,15 +48,15 @@ public interface ExecutionNeed extends ComputationItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Default()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.app4mc.amalthea.model.HwFeatureCategory, org.eclipse.app4mc.amalthea.model.Need&gt;"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.Need&gt;"
 	 * @generated
 	 */
-	EMap<HwFeatureCategory, Need> getDefault();
+	EMap<String, Need> getDefault();
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' map.
 	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
-	 * and the value is of type list of {@link java.util.Map.Entry<org.eclipse.app4mc.amalthea.model.HwFeatureCategory, org.eclipse.app4mc.amalthea.model.Need>},
+	 * and the value is of type list of {@link java.util.Map.Entry<java.lang.String, org.eclipse.app4mc.amalthea.model.Need>},
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' map isn't clear,
@@ -64,6 +68,6 @@ public interface ExecutionNeed extends ComputationItem {
 	 * @model mapType="org.eclipse.app4mc.amalthea.model.ExecutionNeedExtended&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.NeedEntry&gt;"
 	 * @generated
 	 */
-	EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getExtended();
+	EMap<ProcessingUnitDefinition, EMap<String, Need>> getExtended();
 
 } // ExecutionNeed

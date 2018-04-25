@@ -4551,15 +4551,11 @@ public class CustomItemProviderService {
    */
   public static String getNeedEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof NeedEntryImpl)) {
-      HwFeatureCategory _key = null;
+      String _key = null;
       if (((NeedEntryImpl)object)!=null) {
         _key=((NeedEntryImpl)object).getKey();
       }
-      String _name = null;
-      if (_key!=null) {
-        _name=_key.getName();
-      }
-      final String featureName = _name;
+      final String featureName = _key;
       Need _value = null;
       if (((NeedEntryImpl)object)!=null) {
         _value=((NeedEntryImpl)object).getValue();

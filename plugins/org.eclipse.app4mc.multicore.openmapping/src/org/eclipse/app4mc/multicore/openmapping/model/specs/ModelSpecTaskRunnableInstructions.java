@@ -18,9 +18,9 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -87,7 +87,7 @@ public class ModelSpecTaskRunnableInstructions extends ModelSpec {
 	private boolean checkInstruction(final Runnable run) {
 		boolean found = false;
 		for (final RunnableItem item : run.getRunnableItems()) {
-			if (item instanceof RunnableInstructions) {
+			if (item instanceof ExecutionNeed) {
 				found = true;
 				break;
 			}

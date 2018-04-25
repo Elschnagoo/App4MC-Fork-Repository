@@ -21,12 +21,11 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Task;
@@ -34,6 +33,7 @@ import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
+import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.ta.checks.AmaltheaModelValidator;
 import org.junit.Before;
@@ -186,13 +186,10 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
 
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -218,21 +215,20 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		deviation.setDistribution(distribution);
+
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
-
 		lowerBound.setValue(2);
 		upperBound.setValue(1);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -258,15 +254,13 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final Distribution<LongObject> distribution = fac.createUniformDistribution();
-
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -289,18 +283,17 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
-		final Distribution<LongObject> distribution = fac.createUniformDistribution();
-		final LongObject upperBound = fac.createLongObject();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
 
+		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		deviation.setDistribution(distribution);
+
+		final LongObject upperBound = fac.createLongObject();
 		upperBound.setValue(1);
 		deviation.setUpperBound(upperBound);
-		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -326,18 +319,17 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final Distribution<LongObject> distribution = fac.createUniformDistribution();
-		final LongObject lowerBound = fac.createLongObject();
+		deviation.setDistribution(distribution);
 
+		final LongObject lowerBound = fac.createLongObject();
 		lowerBound.setValue(1);
 		deviation.setLowerBound(lowerBound);
-		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -363,21 +355,20 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final Distribution<LongObject> distribution = fac.createUniformDistribution();
+		deviation.setDistribution(distribution);
+
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
-
 		lowerBound.setValue(1);
 		upperBound.setValue(2);
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
-		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -792,9 +783,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final Distribution<LongObject> distribution = fac.createGaussDistribution();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -804,9 +795,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -833,9 +823,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -851,9 +841,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setSd(sd);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -879,9 +868,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -897,9 +886,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setSd(sd);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -925,9 +913,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final GaussDistribution<LongObject> distribution = fac.createGaussDistribution();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -943,9 +931,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setSd(sd);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1142,15 +1129,13 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
-
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1173,9 +1158,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+
 		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
 		final double kappa = -1;
 		final double lambda = -1;
@@ -1183,9 +1168,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setKappa(kappa);
 		distribution.setLambda(lambda);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1212,9 +1196,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullParameters<LongObject> distribution = fac.createWeibullParameters();
 		final double kappa = 1;
 		final double lambda = 1;
@@ -1222,9 +1206,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setKappa(kappa);
 		distribution.setLambda(lambda);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1247,9 +1230,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final Distribution<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1259,9 +1242,8 @@ public class AmaltheaModelValidatorTests {
 		deviation.setLowerBound(lowerBound);
 		deviation.setUpperBound(upperBound);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1287,9 +1269,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1302,9 +1284,8 @@ public class AmaltheaModelValidatorTests {
 		mean.setValue(0);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1330,9 +1311,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1345,9 +1326,8 @@ public class AmaltheaModelValidatorTests {
 		mean.setValue(3);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1373,9 +1353,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1388,9 +1368,8 @@ public class AmaltheaModelValidatorTests {
 		mean.setValue(2);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1413,18 +1392,17 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject mean = fac.createLongObject();
 
 		mean.setValue(2);
 		distribution.setMean(mean);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1639,9 +1617,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1656,9 +1634,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		distribution.setPRemainPromille(pRemainPromille);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -1684,9 +1661,9 @@ public class AmaltheaModelValidatorTests {
 		final Amalthea amalthea = fac.createAmalthea();
 		final SWModel swModel = fac.createSWModel();
 		final Runnable runnable = fac.createRunnable();
-		final RunnableInstructions runInstr = fac.createRunnableInstructions();
-		final InstructionsDeviation instructions = fac.createInstructionsDeviation();
 		final Deviation<LongObject> deviation = fac.createDeviation();
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		
 		final WeibullEstimators<LongObject> distribution = fac.createWeibullEstimators();
 		final LongObject lowerBound = fac.createLongObject();
 		final LongObject upperBound = fac.createLongObject();
@@ -1701,9 +1678,8 @@ public class AmaltheaModelValidatorTests {
 		distribution.setMean(mean);
 		distribution.setPRemainPromille(pRemainPromille);
 		deviation.setDistribution(distribution);
-		instructions.setDeviation(deviation);
-		runInstr.setDefault(instructions);
-		runnable.getRunnableItems().add(runInstr);
+		
+		runnable.getRunnableItems().add(execNeed);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 

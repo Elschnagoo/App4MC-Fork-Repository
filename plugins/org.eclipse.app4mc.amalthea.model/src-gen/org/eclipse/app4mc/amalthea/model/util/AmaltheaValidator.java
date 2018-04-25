@@ -318,7 +318,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -1079,10 +1078,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateRunnableItem((RunnableItem)value, diagnostics, context);
 			case AmaltheaPackage.COMPUTATION_ITEM:
 				return validateComputationItem((ComputationItem)value, diagnostics, context);
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS:
-				return validateRunnableInstructions((RunnableInstructions)value, diagnostics, context);
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY:
-				return validateRunnableInstructionsEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_NEED:
 				return validateExecutionNeed((ExecutionNeed)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_NEED_EXTENDED:
@@ -3956,24 +3951,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateComputationItem(ComputationItem computationItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(computationItem, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateRunnableInstructions(RunnableInstructions runnableInstructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(runnableInstructions, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateRunnableInstructionsEntry(Map.Entry<?, ?> runnableInstructionsEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)runnableInstructionsEntry, diagnostics, context);
 	}
 
 	/**

@@ -13,7 +13,6 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
@@ -49,7 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,EMap<HwFeatureCategory, Need>> {
+public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,EMap<String, Need>> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -68,7 +67,7 @@ public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<HwFeatureCategory, Need> value;
+	protected EMap<String, Need> value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,9 +131,9 @@ public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<HwFeatureCategory, Need> getTypedValue() {
+	public EMap<String, Need> getTypedValue() {
 		if (value == null) {
-			value = new EcoreEMap<HwFeatureCategory,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE);
+			value = new EcoreEMap<String,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE);
 		}
 		return value;
 	}
@@ -275,7 +274,7 @@ public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<HwFeatureCategory, Need> getValue() {
+	public EMap<String, Need> getValue() {
 		return getTypedValue();
 	}
 
@@ -284,8 +283,8 @@ public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<HwFeatureCategory, Need> setValue(EMap<HwFeatureCategory, Need> value) {
-		EMap<HwFeatureCategory, Need> oldValue = getValue();
+	public EMap<String, Need> setValue(EMap<String, Need> value) {
+		EMap<String, Need> oldValue = getValue();
 		getTypedValue().clear();
 		getTypedValue().addAll(value);
 		return oldValue;
@@ -297,9 +296,9 @@ public class ExecutionNeedExtendedImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getEMap() {
+	public EMap<ProcessingUnitDefinition, EMap<String, Need>> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<ProcessingUnitDefinition, EMap<String, Need>>)container.eGet(eContainmentFeature());
 	}
 
 } //ExecutionNeedExtendedImpl

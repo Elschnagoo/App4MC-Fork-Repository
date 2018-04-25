@@ -2012,15 +2012,6 @@ public interface AmaltheaFactory extends EFactory {
 	Section createSection();
 
 	/**
-	 * Returns a new object of class '<em>Runnable Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Runnable Instructions</em>'.
-	 * @generated
-	 */
-	RunnableInstructions createRunnableInstructions();
-
-	/**
 	 * Returns a new object of class '<em>Execution Need</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

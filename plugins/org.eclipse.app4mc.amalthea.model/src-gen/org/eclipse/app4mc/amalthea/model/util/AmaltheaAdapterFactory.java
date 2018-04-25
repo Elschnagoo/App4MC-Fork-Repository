@@ -278,7 +278,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -1601,23 +1600,15 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createComputationItemAdapter();
 			}
 			@Override
-			public Adapter caseRunnableInstructions(RunnableInstructions object) {
-				return createRunnableInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseRunnableInstructionsEntry(Map.Entry<ProcessingUnitDefinition, Instructions> object) {
-				return createRunnableInstructionsEntryAdapter();
-			}
-			@Override
 			public Adapter caseExecutionNeed(ExecutionNeed object) {
 				return createExecutionNeedAdapter();
 			}
 			@Override
-			public Adapter caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> object) {
+			public Adapter caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> object) {
 				return createExecutionNeedExtendedAdapter();
 			}
 			@Override
-			public Adapter caseNeedEntry(Map.Entry<HwFeatureCategory, Need> object) {
+			public Adapter caseNeedEntry(Map.Entry<String, Need> object) {
 				return createNeedEntryAdapter();
 			}
 			@Override
@@ -5957,34 +5948,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComputationItemAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableInstructions <em>Runnable Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableInstructions
-	 * @generated
-	 */
-	public Adapter createRunnableInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Runnable Instructions Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createRunnableInstructionsEntryAdapter() {
 		return null;
 	}
 

@@ -142,7 +142,6 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
@@ -255,7 +254,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
@@ -609,8 +607,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CHANNEL: return createChannel();
 			case AmaltheaPackage.MODE_LABEL: return createModeLabel();
 			case AmaltheaPackage.SECTION: return createSection();
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: return createRunnableInstructions();
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: return (EObject)createRunnableInstructionsEntry();
 			case AmaltheaPackage.EXECUTION_NEED: return createExecutionNeed();
 			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: return (EObject)createExecutionNeedExtended();
 			case AmaltheaPackage.NEED_ENTRY: return (EObject)createNeedEntry();
@@ -3140,26 +3136,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RunnableInstructions createRunnableInstructions() {
-		RunnableInstructionsImpl runnableInstructions = new RunnableInstructionsImpl();
-		return runnableInstructions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<ProcessingUnitDefinition, Instructions> createRunnableInstructionsEntry() {
-		RunnableInstructionsEntryImpl runnableInstructionsEntry = new RunnableInstructionsEntryImpl();
-		return runnableInstructionsEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ExecutionNeed createExecutionNeed() {
 		ExecutionNeedImpl executionNeed = new ExecutionNeedImpl();
 		return executionNeed;
@@ -3170,7 +3146,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> createExecutionNeedExtended() {
+	public Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> createExecutionNeedExtended() {
 		ExecutionNeedExtendedImpl executionNeedExtended = new ExecutionNeedExtendedImpl();
 		return executionNeedExtended;
 	}
@@ -3180,7 +3156,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<HwFeatureCategory, Need> createNeedEntry() {
+	public Map.Entry<String, Need> createNeedEntry() {
 		NeedEntryImpl needEntry = new NeedEntryImpl();
 		return needEntry;
 	}

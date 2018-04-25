@@ -11,15 +11,11 @@
  *******************************************************************************/
 package org.eclipse.app4mc.multicore.openmapping.model;
 
-import java.util.Iterator;
-
 import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.Instructions;
 import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
 import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.emf.common.util.EList;
@@ -68,31 +64,32 @@ public class OMRunnable {
 	}
 
 	private long parseRunnableItems(final EList<RunnableItem> runnableItemsList) {
-		// Process all RunnableItems and search for instructions
-		final Iterator<RunnableItem> itRunnableItems = runnableItemsList.iterator();
-		while (itRunnableItems.hasNext()) {
-			final RunnableItem runnableItem = itRunnableItems.next();
-
-			if (runnableItem instanceof RunnableInstructions) {
-				final RunnableInstructions runnableInstructions = (RunnableInstructions) runnableItem;
-				final Instructions abstractInstructions = runnableInstructions.getDefault();
-				if (abstractInstructions == null) {
-					UniversalHandler.getInstance().log(" Unexpected SWModel.\nInstructions are not set!\nSkipping...",
-							null);
-					return 0;
-				} else if (abstractInstructions instanceof InstructionsConstant) {
-					return processInstructionsConstant((InstructionsConstant) abstractInstructions);
-				} else if (abstractInstructions instanceof InstructionsDeviation) {
-					return processInstructionsDeviation((InstructionsDeviation) abstractInstructions);
-				} else {
-					// Report the others (Debug info), as we do not handle them
-					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
-				}
-			}
-		}
-
-		UniversalHandler.getInstance()
-				.log("Invalid Software Model, there has been no number of Instructions specified.", null);
+// TODO
+//		// Process all RunnableItems and search for instructions
+//		final Iterator<RunnableItem> itRunnableItems = runnableItemsList.iterator();
+//		while (itRunnableItems.hasNext()) {
+//			final RunnableItem runnableItem = itRunnableItems.next();
+//
+//			if (runnableItem instanceof RunnableInstructions) {
+//				final RunnableInstructions runnableInstructions = (RunnableInstructions) runnableItem;
+//				final Instructions abstractInstructions = runnableInstructions.getDefault();
+//				if (abstractInstructions == null) {
+//					UniversalHandler.getInstance().log(" Unexpected SWModel.\nInstructions are not set!\nSkipping...",
+//							null);
+//					return 0;
+//				} else if (abstractInstructions instanceof InstructionsConstant) {
+//					return processInstructionsConstant((InstructionsConstant) abstractInstructions);
+//				} else if (abstractInstructions instanceof InstructionsDeviation) {
+//					return processInstructionsDeviation((InstructionsDeviation) abstractInstructions);
+//				} else {
+//					// Report the others (Debug info), as we do not handle them
+//					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
+//				}
+//			}
+//		}
+//
+//		UniversalHandler.getInstance()
+//				.log("Invalid Software Model, there has been no number of Instructions specified.", null);
 		return 0;
 	}
 

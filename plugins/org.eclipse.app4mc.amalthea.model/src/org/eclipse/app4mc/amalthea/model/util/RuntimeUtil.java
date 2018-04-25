@@ -210,7 +210,8 @@ public class RuntimeUtil {
 					if(procUnitDefToIcMap.get(procUnitDef) != null) {
 						ic = procUnitDefToIcMap.get(procUnitDef);
 					}
-					for (Entry<HwFeatureCategory, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
+					for (Entry<String, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
+						// TODO
 						if (hwFeatures.contains(needEntry.getKey())) {
 							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
 						}
@@ -224,7 +225,8 @@ public class RuntimeUtil {
 				if(procUnitDefToIcMap.get(null) != null) {
 					ic = procUnitDefToIcMap.get(null);
 				}
-				for (Entry<HwFeatureCategory, Need> needEntry : executionNeed.getDefault()) {
+				for (Entry<String, Need> needEntry : executionNeed.getDefault()) {
+					// TODO
 					if (hwFeatures.contains(needEntry.getKey())) {
 						ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
 				}

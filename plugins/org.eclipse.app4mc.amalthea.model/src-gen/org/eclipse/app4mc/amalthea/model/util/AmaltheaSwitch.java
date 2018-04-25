@@ -278,7 +278,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -3166,22 +3165,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS: {
-				RunnableInstructions runnableInstructions = (RunnableInstructions)theEObject;
-				T1 result = caseRunnableInstructions(runnableInstructions);
-				if (result == null) result = caseComputationItem(runnableInstructions);
-				if (result == null) result = caseRunnableItem(runnableInstructions);
-				if (result == null) result = caseBaseObject(runnableInstructions);
-				if (result == null) result = caseIAnnotatable(runnableInstructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.RUNNABLE_INSTRUCTIONS_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, Instructions> runnableInstructionsEntry = (Map.Entry<ProcessingUnitDefinition, Instructions>)theEObject;
-				T1 result = caseRunnableInstructionsEntry(runnableInstructionsEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.EXECUTION_NEED: {
 				ExecutionNeed executionNeed = (ExecutionNeed)theEObject;
 				T1 result = caseExecutionNeed(executionNeed);
@@ -3193,13 +3176,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> executionNeedExtended = (Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> executionNeedExtended = (Map.Entry<ProcessingUnitDefinition, EMap<String, Need>>)theEObject;
 				T1 result = caseExecutionNeedExtended(executionNeedExtended);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.NEED_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<HwFeatureCategory, Need> needEntry = (Map.Entry<HwFeatureCategory, Need>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<String, Need> needEntry = (Map.Entry<String, Need>)theEObject;
 				T1 result = caseNeedEntry(needEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -8069,36 +8052,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRunnableInstructions(RunnableInstructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Instructions Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Instructions Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRunnableInstructionsEntry(Map.Entry<ProcessingUnitDefinition, Instructions> object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Execution Need</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8124,7 +8077,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> object) {
+	public T1 caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> object) {
 		return null;
 	}
 
@@ -8139,7 +8092,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNeedEntry(Map.Entry<HwFeatureCategory, Need> object) {
+	public T1 caseNeedEntry(Map.Entry<String, Need> object) {
 		return null;
 	}
 

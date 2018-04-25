@@ -786,6 +786,24 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="MemoryClassifier" type="am:MemoryClassifier"/>
+  <xsd:complexType name="TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="chunkSize" type="am:DataSize"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="transmitRatio" type="xsd:double"/>
+  </xsd:complexType>
+  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
+    <xsd:annotation>
+      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
@@ -804,24 +822,6 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="Instructions" type="am:Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TransmissionPolicy">
-    <xsd:annotation>
-      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="chunkSize" type="am:DataSize"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
-    <xsd:attribute name="transmitRatio" type="xsd:double"/>
-  </xsd:complexType>
-  <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
-    <xsd:annotation>
-      <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="InstructionsDeviation">
@@ -856,6 +856,39 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Need">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Need" type="am:Need">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="NeedDeviation">
+    <xsd:complexContent>
+      <xsd:extension base="am:Need">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="deviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="NeedDeviation" type="am:NeedDeviation"/>
+  <xsd:complexType name="NeedConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:Need">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="NeedConstant" type="am:NeedConstant"/>
   <xsd:complexType abstract="true" name="Quantity">
     <xsd:annotation>
       <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
@@ -2542,17 +2575,17 @@ It contains only the stimulus but no event type because a stimulus has only one 
       <xsd:documentation>Describes the event of a process
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2561,7 +2594,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of a process
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ProcessChainEvent">
@@ -2569,17 +2602,17 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of some process within a process chain
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:ProcessChain"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2588,7 +2621,7 @@ core: The core that processes the process when the event is fired (optional)</xs
       <xsd:documentation>Describes the event of some process within a process chain
 eventType: The type of the Event
 entity: The process that fires the event (optional)
-core: The core that processes the process when the event is fired (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process when the event is fired (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="RunnableEvent">
@@ -2597,19 +2630,19 @@ core: The core that processes the process when the event is fired (optional)</xs
 eventType: The type of event
 entity: The runnable that fires the event (optional)
 process: The process that executes the runnable (optional)
-core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the runnable (executes the process that calls the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TriggerEvent">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:RunnableEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2619,7 +2652,7 @@ core: The core that processes the runnable (processes the process that executes 
 eventType: The type of event
 entity: The runnable that fires the event (optional)
 process: The process that executes the runnable (optional)
-core: The core that processes the runnable (processes the process that executes the runnable) (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the runnable (executes the process that calls the runnable) (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LabelEvent">
@@ -2691,7 +2724,7 @@ eventType: The type of event
 entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
-core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:EntityEvent">
@@ -2699,13 +2732,13 @@ core: The core that processes the process/runnable that accesses the semaphore (
           <xsd:element name="entity" type="am:Semaphore"/>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
-          <xsd:element name="core" type="am:ProcessingUnit"/>
+          <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="eventType" type="am:SemaphoreEventType" use="required"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
-        <xsd:attribute name="core" type="xsd:string"/>
+        <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2716,7 +2749,7 @@ eventType: The type of event
 entity: The accessed semaphore that fires the event (optional)
 runnable: The runnable that accesses the semaphore (optional)
 process: The process that accesses the semaphore (optional)
-core: The core that processes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
+processingUnit: The processing unit that executes the process/runnable that accesses the semaphore (optional)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ComponentEvent">
@@ -2747,7 +2780,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="definitions" type="am:HwDefinition"/>
-          <xsd:element name="features" type="am:HwFeature"/>
+          <xsd:element name="featureCategories" type="am:HwFeatureCategory"/>
           <xsd:element name="structures" type="am:HwStructure"/>
           <xsd:element name="domains" type="am:HwDomain"/>
         </xsd:choice>
@@ -2802,7 +2835,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="possibleValues" type="am:Frequency"/>
           <xsd:element name="defaultValue" type="am:Frequency"/>
         </xsd:choice>
         <xsd:attribute name="clockGating" type="xsd:boolean"/>
@@ -2814,7 +2846,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDomain">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="possibleValues" type="am:Voltage"/>
           <xsd:element name="defaultValue" type="am:Voltage"/>
         </xsd:choice>
         <xsd:attribute name="powerGating" type="xsd:boolean"/>
@@ -2857,15 +2888,26 @@ entity: The component that fires the event (optional)</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Cache" type="am:Cache"/>
+  <xsd:complexType name="HwFeatureCategory">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="features" type="am:HwFeature"/>
+        </xsd:choice>
+        <xsd:attribute name="featureType" type="am:HwFeatureType"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="HwFeatureCategory" type="am:HwFeatureCategory"/>
   <xsd:complexType name="HwFeature">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="value" type="am:Value"/>
-          <xsd:element name="latency" type="am:HwLatency"/>
+          <xsd:element name="containingCategory" type="am:HwFeatureCategory"/>
         </xsd:choice>
-        <xsd:attribute name="featureType" type="am:HwFeatureType"/>
-        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="containingCategory" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2904,8 +2946,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
-          <xsd:element name="readDataRate" type="am:DataRate"/>
-          <xsd:element name="writeDataRate" type="am:DataRate"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
           <xsd:element name="port1" type="am:HwPort"/>
           <xsd:element name="port2" type="am:HwPort"/>
         </xsd:choice>
@@ -2929,11 +2970,10 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="source" type="am:ProcessingUnit"/>
           <xsd:element name="destination" type="am:HwDestination"/>
-          <xsd:element name="accessPaths" type="am:HwAccessPath"/>
+          <xsd:element name="accessPath" type="am:HwAccessPath"/>
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
-          <xsd:element name="readDataRate" type="am:DataRate"/>
-          <xsd:element name="writeDataRate" type="am:DataRate"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="source" type="xsd:string"/>
@@ -2981,10 +3021,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="features" type="am:HwFeature"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
-        <xsd:attribute name="features" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -2993,9 +3031,11 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="features" type="am:HwFeature"/>
           <xsd:element name="classifiers" type="am:CoreClassifier"/>
         </xsd:choice>
         <xsd:attribute name="puType" type="am:PuType"/>
+        <xsd:attribute name="features" type="xsd:string"/>
         <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -3007,8 +3047,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="readLatency" type="am:HwLatency"/>
           <xsd:element name="writeLatency" type="am:HwLatency"/>
-          <xsd:element name="readDataRate" type="am:DataRate"/>
-          <xsd:element name="writeDataRate" type="am:DataRate"/>
+          <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="policy" type="am:SchedPolicy"/>
       </xsd:extension>
@@ -3128,11 +3167,11 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="scheduler" type="am:Scheduler"/>
           <xsd:element name="responsibility" type="am:ProcessingUnit"/>
-          <xsd:element name="executingCore" type="am:ProcessingUnit"/>
+          <xsd:element name="executingPU" type="am:ProcessingUnit"/>
         </xsd:choice>
         <xsd:attribute name="scheduler" type="xsd:string"/>
         <xsd:attribute name="responsibility" type="xsd:string"/>
-        <xsd:attribute name="executingCore" type="xsd:string"/>
+        <xsd:attribute name="executingPU" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3147,13 +3186,13 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="task" type="am:Task"/>
           <xsd:element name="scheduler" type="am:TaskScheduler"/>
-          <xsd:element name="coreAffinity" type="am:ProcessingUnit"/>
+          <xsd:element name="affinity" type="am:ProcessingUnit"/>
           <xsd:element name="schedulingParameters" type="am:SchedulingParameters"/>
           <xsd:element name="parameterExtensions" type="am:ParameterExtension"/>
         </xsd:choice>
         <xsd:attribute name="task" type="xsd:string"/>
         <xsd:attribute name="scheduler" type="xsd:string"/>
-        <xsd:attribute name="coreAffinity" type="xsd:string"/>
+        <xsd:attribute name="affinity" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5145,35 +5184,46 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="RunnableInstructions">
+  <xsd:complexType name="ExecutionNeed">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="default" type="am:Instructions"/>
-          <xsd:element name="extended" type="am:RunnableInstructionsEntry"/>
+          <xsd:element name="default" type="am:NeedEntry"/>
+          <xsd:element name="extended" type="am:ExecutionNeedExtended"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="RunnableInstructions" type="am:RunnableInstructions">
+  <xsd:element name="ExecutionNeed" type="am:ExecutionNeed">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution cost of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="RunnableInstructionsEntry">
+  <xsd:complexType name="ExecutionNeedExtended">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
-      <xsd:element name="value" type="am:Instructions"/>
+      <xsd:element name="value" type="am:NeedEntry"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="key" type="xsd:string"/>
   </xsd:complexType>
-  <xsd:element name="RunnableInstructionsEntry" type="am:RunnableInstructionsEntry"/>
+  <xsd:element name="ExecutionNeedExtended" type="am:ExecutionNeedExtended"/>
+  <xsd:complexType name="NeedEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:HwFeatureCategory"/>
+      <xsd:element name="value" type="am:Need"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="NeedEntry" type="am:NeedEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>

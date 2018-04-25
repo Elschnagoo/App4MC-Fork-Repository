@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
+ *  Copyright (c) 2018 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -31,13 +31,10 @@ import org.eclipse.app4mc.amalthea.model.NeedConstant;
 import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
-import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.emf.common.util.EList;
 
 public class InstructionsUtil {
 
-	static final String INSTRUCTIONS_CATEGORY_NAME = "Instructions";
+	public static final String INSTRUCTIONS_CATEGORY_NAME = "Instructions";
 
 	public static HwFeatureCategory getOrCreateInstructionsCategory(Amalthea model) {
 		HWModel hwModel = ModelUtil.getOrCreateHwModel(model);
@@ -56,34 +53,87 @@ public class InstructionsUtil {
 	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, long instructions) {
 		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
 		
-		return createDefaultExecutionNeed(model, category, instructions);
-	}
-
-	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, HwFeatureCategory category, long instructions) {
-		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		need.setValue(instructions);
-		
-		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category, need);
-		
-		return execNeed;
+		return createDefaultExecutionNeed(category, instructions);
 	}
 
 	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, Deviation<LongObject> instructions) {
 		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
 		
-		return createDefaultExecutionNeed(model, category, instructions);
+		return createDefaultExecutionNeed(category, instructions);
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, HwFeatureCategory category, Deviation<LongObject> instructions) {
+	public static Need getDefaultNeed(Amalthea model, ExecutionNeed execNeed) {
+		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
+		
+		return execNeed.getDefault().get(category);
+	}
+	
+	public static long getDefaultNeedConstant(Amalthea model, ExecutionNeed execNeed) {
+		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
+		
+		return getDefaultNeedConstant(execNeed, category);
+	}
+	
+	public static Deviation<LongObject> getDefaultNeedDeviation(Amalthea model, ExecutionNeed execNeed) {
+		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
+		
+		return getDefaultNeedDeviation(execNeed, category);
+	}
+
+
+	public static double getIPC(Amalthea model, ProcessingUnit pu) {
+		List<Double> values = getFeatureValuesOfCategory(pu.getDefinition(), getOrCreateInstructionsCategory(model));
+		if (!values.isEmpty()) {
+			return values.get(0);	// take first value
+		}
+		return 1.0;	// default
+	}
+
+
+	//----------------------- General ----------------------- 
+
+
+	public static ExecutionNeed createDefaultExecutionNeed(HwFeatureCategory category, long instructions) {
+		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
+		need.setValue(instructions);
+		
+		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+		execNeed.getDefault().put(category.getName(), need);
+		
+		return execNeed;
+	}
+
+	public static ExecutionNeed createDefaultExecutionNeed(HwFeatureCategory category, Deviation<LongObject> instructions) {
 		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
 		need.setDeviation(instructions);;
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category, need);
+		execNeed.getDefault().put(category.getName(), need);
 		
 		return execNeed;
 	}
+
+	
+	public static long getDefaultNeedConstant(ExecutionNeed execNeed, HwFeatureCategory category) {
+		if (execNeed == null || category == null) return 0;
+		
+		Need need = execNeed.getDefault().get(category);
+		if (need instanceof NeedConstant) {
+			return ((NeedConstant) need).getValue();
+		}
+		return 0;
+	}
+	
+	public static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed, HwFeatureCategory category) {
+		if (execNeed == null || category == null) return null;
+		
+		Need need = execNeed.getDefault().get(category);
+		if (need instanceof NeedDeviation) {
+			return ((NeedDeviation) need).getDeviation();
+		}
+		return null;
+	}
+
 
 	public static List<HwFeature> getFeaturesOfCategory(ProcessingUnitDefinition puDefinition, HwFeatureCategory category) {
 		if (puDefinition == null || category == null) return Collections.<HwFeature>emptyList();
@@ -102,31 +152,6 @@ public class InstructionsUtil {
 				.collect(Collectors.toList());
 	}
 
-	
-	public static long getDefaultInstructions(Amalthea model, Runnable runnable) {
-		HwFeatureCategory instructionsCategory = getOrCreateInstructionsCategory(model);
-		EList<RunnableItem> executionNeeds = SoftwareUtil.collectRunnableItems(runnable, null,
-				(i -> i instanceof ExecutionNeed));
 
-		long result = 0;
-		for (RunnableItem item : executionNeeds) {
-			Need need = ((ExecutionNeed) item).getDefault().get(instructionsCategory);
-			if (need instanceof NeedConstant) {
-				result = result + ((NeedConstant) need).getValue();
-			} else if (need instanceof NeedDeviation) {
-				// todo
-			}
-		}
-		
-		return result;
-	}
-
-	public static double getIPC(Amalthea model, ProcessingUnit pu) {
-		List<Double> values = getFeatureValuesOfCategory(pu.getDefinition(), getOrCreateInstructionsCategory(model));
-		if (!values.isEmpty()) {
-			return values.get(0);	// take first value
-		}
-		return 1.0;	// default
-	}
 }
 	

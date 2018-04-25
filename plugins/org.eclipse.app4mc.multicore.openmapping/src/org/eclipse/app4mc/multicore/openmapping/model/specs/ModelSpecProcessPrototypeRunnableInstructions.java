@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
@@ -64,7 +64,7 @@ public class ModelSpecProcessPrototypeRunnableInstructions extends ModelSpec {
 	 */
 	private boolean checkInstruction(final Runnable run) {
 		for (final RunnableItem item : run.getRunnableItems()) {
-			if (item instanceof RunnableInstructions) {
+			if (item instanceof ExecutionNeed) {
 				return true;
 			}
 		}

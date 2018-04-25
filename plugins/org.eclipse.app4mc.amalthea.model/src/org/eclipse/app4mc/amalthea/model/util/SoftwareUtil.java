@@ -976,22 +976,23 @@ public class SoftwareUtil {
 			if(ri instanceof ExecutionNeed) {
 				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
 				if(runnableExecutionNeed.getExtended().get(procUnitDef) != null) {
-					for (Entry<HwFeatureCategory, Need> needEntry :runnableExecutionNeed.getExtended().get(procUnitDef)) {
-						for (HwFeature feature : needEntry.getKey().getFeatures()) {
-							if (hwFeatures.contains(feature)) {
-								result.add(needEntry);
-							}
-						}
+					for (Entry<String, Need> needEntry :runnableExecutionNeed.getExtended().get(procUnitDef)) {
+// TODO
+//						for (HwFeature feature : needEntry.getKey().getFeatures()) {
+//							if (hwFeatures.contains(feature)) {
+//								result.add(needEntry);
+//							}
+//						}
 					}
 					 // all should be needed
 				} else if(runnableExecutionNeed.getDefault() != null) {
-					for (Entry<HwFeatureCategory, Need> needEntry : runnableExecutionNeed.getDefault()) {
-						for (HwFeature feature : needEntry.getKey().getFeatures()) {
-							if (hwFeatures.contains(feature)) {
-								result.add(needEntry);
-							}
-						}
-					}
+//					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
+//						for (HwFeature feature : needEntry.getKey().getFeatures()) {
+//							if (hwFeatures.contains(feature)) {
+//								result.add(needEntry);
+//							}
+//						}
+//					}
 				}
 			}
 		}

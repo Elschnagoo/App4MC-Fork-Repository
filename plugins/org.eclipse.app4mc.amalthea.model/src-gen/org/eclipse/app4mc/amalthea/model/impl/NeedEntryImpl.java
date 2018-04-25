@@ -13,7 +13,6 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.Need;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
@@ -44,16 +43,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<HwFeatureCategory,Need> {
+public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,Need> {
 	/**
-	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
+	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
 	 */
-	protected HwFeatureCategory key;
+	protected static final String KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypedKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String key = KEY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
@@ -89,15 +98,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureCategory getTypedKey() {
-		if (key != null && key.eIsProxy()) {
-			InternalEObject oldKey = (InternalEObject)key;
-			key = (HwFeatureCategory)eResolveProxy(oldKey);
-			if (key != oldKey) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.NEED_ENTRY__KEY, oldKey, key));
-			}
-		}
+	public String getTypedKey() {
 		return key;
 	}
 
@@ -106,17 +107,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureCategory basicGetTypedKey() {
-		return key;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypedKey(HwFeatureCategory newKey) {
-		HwFeatureCategory oldKey = key;
+	public void setTypedKey(String newKey) {
+		String oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_ENTRY__KEY, oldKey, key));
@@ -188,8 +180,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.NEED_ENTRY__KEY:
-				if (resolve) return getTypedKey();
-				return basicGetTypedKey();
+				return getTypedKey();
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
 				return getTypedValue();
 		}
@@ -205,7 +196,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.NEED_ENTRY__KEY:
-				setTypedKey((HwFeatureCategory)newValue);
+				setTypedKey((String)newValue);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
 				setTypedValue((Need)newValue);
@@ -223,7 +214,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.NEED_ENTRY__KEY:
-				setTypedKey((HwFeatureCategory)null);
+				setTypedKey(KEY_EDEFAULT);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
 				setTypedValue((Need)null);
@@ -241,11 +232,27 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.NEED_ENTRY__KEY:
-				return key != null;
+				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
 				return value != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (key: ");
+		result.append(key);
+		result.append(')');
+		return result.toString();
 	}
 
 	/**
@@ -282,7 +289,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwFeatureCategory getKey() {
+	public String getKey() {
 		return getTypedKey();
 	}
 
@@ -291,7 +298,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(HwFeatureCategory key) {
+	public void setKey(String key) {
 		setTypedKey(key);
 	}
 
@@ -321,9 +328,9 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<HwFeatureCategory, Need> getEMap() {
+	public EMap<String, Need> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<HwFeatureCategory, Need>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, Need>)container.eGet(eContainmentFeature());
 	}
 
 } //NeedEntryImpl

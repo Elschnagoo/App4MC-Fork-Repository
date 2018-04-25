@@ -11,8 +11,8 @@
 package org.eclipse.app4mc.multicore.partitioning.specs;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableInstructions;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
@@ -40,7 +40,7 @@ public class ModelSpecRunnableInstructions extends ModelSpec {
 	private boolean checkInstruction(final Runnable run) {
 		boolean found = false;
 		for (final RunnableItem item : run.getRunnableItems()) {
-			if (item instanceof RunnableInstructions) {
+			if (item instanceof ExecutionNeed) {
 				found = true;
 				break;
 			}

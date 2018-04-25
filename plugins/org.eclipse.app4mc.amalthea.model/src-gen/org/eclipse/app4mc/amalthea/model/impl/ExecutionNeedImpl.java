@@ -14,7 +14,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
@@ -52,7 +51,7 @@ public class ExecutionNeedImpl extends ComputationItemImpl implements ExecutionN
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<HwFeatureCategory, Need> default_;
+	protected EMap<String, Need> default_;
 
 	/**
 	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' map.
@@ -62,7 +61,7 @@ public class ExecutionNeedImpl extends ComputationItemImpl implements ExecutionN
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> extended;
+	protected EMap<ProcessingUnitDefinition, EMap<String, Need>> extended;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,9 +87,9 @@ public class ExecutionNeedImpl extends ComputationItemImpl implements ExecutionN
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<HwFeatureCategory, Need> getDefault() {
+	public EMap<String, Need> getDefault() {
 		if (default_ == null) {
-			default_ = new EcoreEMap<HwFeatureCategory,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__DEFAULT);
+			default_ = new EcoreEMap<String,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__DEFAULT);
 		}
 		return default_;
 	}
@@ -100,9 +99,9 @@ public class ExecutionNeedImpl extends ComputationItemImpl implements ExecutionN
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<ProcessingUnitDefinition, EMap<HwFeatureCategory, Need>> getExtended() {
+	public EMap<ProcessingUnitDefinition, EMap<String, Need>> getExtended() {
 		if (extended == null) {
-			extended = new EcoreEMap<ProcessingUnitDefinition,EMap<HwFeatureCategory, Need>>(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended(), ExecutionNeedExtendedImpl.class, this, AmaltheaPackage.EXECUTION_NEED__EXTENDED);
+			extended = new EcoreEMap<ProcessingUnitDefinition,EMap<String, Need>>(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended(), ExecutionNeedExtendedImpl.class, this, AmaltheaPackage.EXECUTION_NEED__EXTENDED);
 		}
 		return extended;
 	}
