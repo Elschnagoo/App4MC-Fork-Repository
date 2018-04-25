@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -41,8 +41,6 @@ import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.LongObject;
@@ -86,7 +84,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution need value that the given process would need to execute
+	 * get the execution need value a process would need to execute for a given feature set
 	 * on the given procUnitDef
 	 * @param process
 	 * @param execTimeType
@@ -106,7 +104,7 @@ public class RuntimeUtil {
 	}	
 
 	/**
-	 * get the ExecutionNeed value count that the given runnable/hwFeature set would need to execute
+	 * get the ExecutionNeed value count a runnable would need to execute for a given feature set
 	 * on the given procUnitDef
 	 * @param runnable
 	 * @param execTimeType
@@ -116,7 +114,7 @@ public class RuntimeUtil {
 	 * @return ExecutionNeed value count for given runnable
 	 */
 	public static Long getExecutionNeedValueCountForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Entry<HwFeatureCategory, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef, hwFeatures, modes);
+		List<Entry<String, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef, hwFeatures, modes);
 		return getExecutionNeedValueCountForExecutionNeedList(executionNeedEntries, execTimeType);
 	}
 
@@ -129,9 +127,9 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return
 	 */
-	private static Long getExecutionNeedValueCountForExecutionNeedList(List<Entry<HwFeatureCategory, Need>> executionNeedEntries, TimeType execTimeType) {
+	private static Long getExecutionNeedValueCountForExecutionNeedList(List<Entry<String, Need>> executionNeedEntries, TimeType execTimeType) {
 		long result = 0L;
-		for (Entry<HwFeatureCategory, Need> needEntry :executionNeedEntries) {
+		for (Entry<String, Need> needEntry :executionNeedEntries) {
 			result = result + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
 		}
 		return result;
@@ -211,9 +209,11 @@ public class RuntimeUtil {
 						ic = procUnitDefToIcMap.get(procUnitDef);
 					}
 					for (Entry<String, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
-						// TODO
-						if (hwFeatures.contains(needEntry.getKey())) {
-							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+//						if (hwFeatures.contains(needEntry.getKey())) {
+						for (HwFeature feature : hwFeatures) {
+							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+								ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+							}
 						}
 
 					}
@@ -226,9 +226,11 @@ public class RuntimeUtil {
 					ic = procUnitDefToIcMap.get(null);
 				}
 				for (Entry<String, Need> needEntry : executionNeed.getDefault()) {
-					// TODO
-					if (hwFeatures.contains(needEntry.getKey())) {
-						ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+//					if (hwFeatures.contains(needEntry.getKey())) {
+					for (HwFeature feature : hwFeatures) {
+						if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+						}
 				}
 
 				}

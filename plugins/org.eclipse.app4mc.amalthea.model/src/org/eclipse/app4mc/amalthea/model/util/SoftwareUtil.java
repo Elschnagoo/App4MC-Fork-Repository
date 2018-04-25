@@ -30,7 +30,6 @@ import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
@@ -945,11 +944,11 @@ public class SoftwareUtil {
 	 * @param hwFeatures 
 	 * @param modeLiterals (optional) - null works
 	 * @param procUnitDef - now needed to connect features to procUnits - null returns empty list
-	 * @return List<Entry<HwFeatureCategory, Need>>
+	 * @return List<Entry<String, Need>>
 	 */
-	public static List<Entry<HwFeatureCategory, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition ProcessingUnitDef, EMap<ModeLabel, ModeLiteral> modes, List<HwFeature> hwFeatures) {
+	public static List<Entry<String, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition ProcessingUnitDef, EMap<ModeLabel, ModeLiteral> modes, List<HwFeature> hwFeatures) {
 		List<Runnable> runnables = getRunnableList(process, modes);
-		List<Entry<HwFeatureCategory, Need>> result = new ArrayList<>();
+		List<Entry<String, Need>> result = new ArrayList<>();
 		
 		for(Runnable runnable : runnables) {
 			result.addAll(getExecutionNeedEntryList(runnable, ProcessingUnitDef, hwFeatures, modes));
@@ -963,10 +962,10 @@ public class SoftwareUtil {
 	 * @param runnable
 	 * @param modeLiterals (optional) - null works
 	 * @param procUnitDef - now needed to connect features to procUnits - null returns empty list
-	 * @return List<Entry<HwFeatureCategory, Need>>
+	 * @return List<Entry<String, Need>>
 	 */
-	public static List<Entry<HwFeatureCategory, Need>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Entry<HwFeatureCategory, Need>> result = new ArrayList<>();
+	public static List<Entry<String, Need>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		List<Entry<String, Need>> result = new ArrayList<>();
 		if (procUnitDef == null) {
 			return result;
 		}
@@ -977,22 +976,21 @@ public class SoftwareUtil {
 				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
 				if(runnableExecutionNeed.getExtended().get(procUnitDef) != null) {
 					for (Entry<String, Need> needEntry :runnableExecutionNeed.getExtended().get(procUnitDef)) {
-// TODO
-//						for (HwFeature feature : needEntry.getKey().getFeatures()) {
-//							if (hwFeatures.contains(feature)) {
-//								result.add(needEntry);
-//							}
-//						}
+						for (HwFeature feature : hwFeatures) {
+							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+								result.add(needEntry);
+							}
+						}
 					}
 					 // all should be needed
 				} else if(runnableExecutionNeed.getDefault() != null) {
-//					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
-//						for (HwFeature feature : needEntry.getKey().getFeatures()) {
-//							if (hwFeatures.contains(feature)) {
-//								result.add(needEntry);
-//							}
-//						}
-//					}
+					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
+						for (HwFeature feature : hwFeatures) {
+							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+								result.add(needEntry);
+							}
+						}
+					}
 				}
 			}
 		}

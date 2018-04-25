@@ -15,9 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.util;
 
 import java.math.BigInteger;
-import java.util.AbstractMap;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +23,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.NeedConstant;
@@ -180,14 +177,14 @@ public class FactoryUtil {
 	}
 	
 	/**
-	 * creates ExecutionNeed for a featureCategory, need set
+	 * creates ExecutionNeed for a featureCategoryName, need set
 	 * @param featureCategory
 	 * @param need
 	 * @return ExecutionNeed
 	 */
-	public static ExecutionNeed createExecutionNeed(HwFeatureCategory featureCategory, Need need) {
+	public static ExecutionNeed createExecutionNeed(String featureCategory, Need need) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		exeNeed.getDefault().put(featureCategory.getName(), need);
+		exeNeed.getDefault().put(featureCategory, need);
 		return exeNeed;
 	}
 	
