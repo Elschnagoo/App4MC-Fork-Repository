@@ -151,9 +151,9 @@ public class HwConverter extends AbstractConverter {
 			
 			if(oldHW_AccessPath_Type!=null && oldHW_AccessPath_Type.equals("am:LatencyAccessPath")) {
 				
-				Entry<String, String> oldHW_Source = getSingleElementsNameandTypeFromAttributeOrChildeElement("source", oldHWAccessPath);
+				Entry<String, String> oldHW_Source = this.helper.getSingleElementsNameandTypeFromAttributeOrChildeElement("source", oldHWAccessPath);
 
-				Entry<String, String> oldHW_Target = getSingleElementsNameandTypeFromAttributeOrChildeElement("target", oldHWAccessPath);
+				Entry<String, String> oldHW_Target = this.helper.getSingleElementsNameandTypeFromAttributeOrChildeElement("target", oldHWAccessPath);
 				
 				
 				Element newHW_AccessElements=null;
@@ -190,14 +190,14 @@ public class HwConverter extends AbstractConverter {
 
 						newHW_AccessElements_Destination.setAttribute("type", "am:Memory", this.helper.getGenericNS("xsi"));
 
-						newHW_AccessElements_Destination.setAttribute("href", "amlt://#"+encodeNameForReference(oldHW_element_name)+"?type=Memory" );
+						newHW_AccessElements_Destination.setAttribute("href", "amlt://#"+this.helper.encodeNameForReference(oldHW_element_name)+"?type=Memory" );
 
 					}else if(oldHW_element_type.equals("Core")) {
 						
 						
 						newHW_AccessElements_Destination.setAttribute("type", "am:ProcessingUnit", this.helper.getGenericNS("xsi"));
 
-						newHW_AccessElements_Destination.setAttribute("href", "amlt://#"+encodeNameForReference(oldHW_element_name)+"?type=ProcessingUnit" );
+						newHW_AccessElements_Destination.setAttribute("href", "amlt://#"+this.helper.encodeNameForReference(oldHW_element_name)+"?type=ProcessingUnit" );
 						
 						
 					}else {
@@ -404,7 +404,7 @@ public class HwConverter extends AbstractConverter {
 				
 				hwTransformationCache.new_feature_categories_Map.put(newHWFeatureCategoryName, newHWFeatureCategories);
 			
-				newHWCoreType.setAttribute("features", encodeNameForReference(newHWFeatureCategoryName)+"/"+encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
+				newHWCoreType.setAttribute("features", this.helper.encodeNameForReference(newHWFeatureCategoryName)+"/"+this.helper.encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
 
 			}
 			
@@ -571,7 +571,7 @@ public class HwConverter extends AbstractConverter {
 				newHW_Memory_Element.setAttribute("name", oldHW_Memory_Name);
 			}
 			
-			String hw_memory_typeDefinitionName=getSingleElementNameFromAttributeOrChildeElement("type",oldHW_Memory);
+			String hw_memory_typeDefinitionName=this.helper.getSingleElementNameFromAttributeOrChildeElement("type",oldHW_Memory);
 			
 			String newHW_definitions_type_amalthea_element="MemoryDefinition";
 			
@@ -959,7 +959,7 @@ public class HwConverter extends AbstractConverter {
 
 		if(oldHWPrescaler!=null) {
 
-			String oldHW_quartz_name = getSingleElementNameFromAttributeOrChildeElement("quartz", oldHWPrescaler);
+			String oldHW_quartz_name = this.helper.getSingleElementNameFromAttributeOrChildeElement("quartz", oldHWPrescaler);
 
 			if(oldHW_quartz_name!=null) {
 				
@@ -1041,7 +1041,7 @@ public class HwConverter extends AbstractConverter {
 				if(newHW_FrequencyDomain!=null) {
 					Element newHW_frequencyDoamin_reference=new Element("frequencyDomain");
 					
-					newHW_frequencyDoamin_reference.setAttribute("href", "amlt:/#"+encodeNameForReference(newHW_FrequencyDomain.getAttributeValue("name"))+"?type=FrequencyDomain");
+					newHW_frequencyDoamin_reference.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(newHW_FrequencyDomain.getAttributeValue("name"))+"?type=FrequencyDomain");
 					
 					newHWElement.addContent(newHW_frequencyDoamin_reference);
 				}
@@ -1117,7 +1117,7 @@ public class HwConverter extends AbstractConverter {
 			if(startIndex!=-1) {
 				String oldHWRefElementName = inputString.substring(0, startIndex);
 
-				String newHWRefElementName=encodeNameForReference(oldHWRefElementName)+"?type="+newType;
+				String newHWRefElementName=this.helper.encodeNameForReference(oldHWRefElementName)+"?type="+newType;
 
 				return newHWRefElementName;
 			}

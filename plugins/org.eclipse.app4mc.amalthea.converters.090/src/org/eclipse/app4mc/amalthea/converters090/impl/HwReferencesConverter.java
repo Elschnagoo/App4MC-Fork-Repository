@@ -139,7 +139,7 @@ public class HwReferencesConverter extends AbstractConverter {
 
 				Element newExtendedSubElement=new Element("extended");
 
-				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("key", oldExtendedElement);
+				Map<String, String> coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("key", oldExtendedElement);
 
 
 				for(String coreName:coresMap.keySet()) {
@@ -276,7 +276,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 			for (Element event : events) {
 				
-				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("core", event);
+				Map<String, String> coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("core", event);
 
 				event.removeChildren("core");
 				event.removeAttribute("core");
@@ -302,7 +302,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 			for (Element taskAllocation : taskAllocations) {
 				
-				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("coreAffinity", taskAllocation);
+				Map<String, String> coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("coreAffinity", taskAllocation);
 
 				taskAllocation.removeChildren("coreAffinity");
 				taskAllocation.removeAttribute("coreAffinity");
@@ -330,7 +330,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			for (Element schedulerAllocation : schedulerAllocations) {
 				
 				//Step 1:
-				Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("responsibility", schedulerAllocation);
+				Map<String, String> coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("responsibility", schedulerAllocation);
 
 				schedulerAllocation.removeChildren("responsibility");
 				schedulerAllocation.removeAttribute("responsibility");
@@ -345,7 +345,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				
 				//Step 2: modifying executingCore tag
 				
-				 coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("executingCore", schedulerAllocation);
+				 coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("executingCore", schedulerAllocation);
 
 				schedulerAllocation.removeChildren("executingCore");
 				schedulerAllocation.removeAttribute("executingCore");
@@ -373,7 +373,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 			for (Element physicalSectionMapping : physicalSectionMappings) {
 				
-				Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", physicalSectionMapping);
+				Map<String, String> memoriesMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", physicalSectionMapping);
 
 				physicalSectionMapping.removeChildren("memory");
 				physicalSectionMapping.removeAttribute("memory");
@@ -404,7 +404,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 			for (Element memroyMapping : memoryMappings) {
 				
-				Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", memroyMapping);
+				Map<String, String> memoriesMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("memory", memroyMapping);
 
 				memroyMapping.removeChildren("memory");
 				memroyMapping.removeAttribute("memory");
@@ -436,7 +436,7 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 			for (Element physicalSectionContraint : physicalSectionConstraints) {
 				
-				Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memories", physicalSectionContraint);
+				Map<String, String> memoriesMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("memories", physicalSectionContraint);
 
 				physicalSectionContraint.removeChildren("memories");
 				physicalSectionContraint.removeAttribute("memories");
@@ -474,7 +474,7 @@ public class HwReferencesConverter extends AbstractConverter {
 					String elementType = targetMemory.getAttributeValue("type", this.helper.getGenericNS("xsi"));
 					if(elementType!=null && elementType.equals("am:TargetMemory")) {
 						
-						Map<String, String> memoriesMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("memories", targetMemory);
+						Map<String, String> memoriesMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("memories", targetMemory);
 
 						targetMemory.removeChildren("memories");
 						targetMemory.removeAttribute("memories");
@@ -512,7 +512,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				
 				for (Element targetCore : targetCores) {
 					
-					Map<String, String> coresMap = getMultipleElementsNameandTypeFromAttributeOrChildeElement("cores", targetCore);
+					Map<String, String> coresMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("cores", targetCore);
 
 					targetCore.removeChildren("cores");
 					targetCore.removeAttribute("cores");

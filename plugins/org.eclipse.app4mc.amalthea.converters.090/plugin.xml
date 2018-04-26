@@ -59,5 +59,18 @@
             name="HWCacheBuilder">
       </CacheBuilder>
    </extension>
+   <extension
+         point="org.eclipse.app4mc.amalthea.model.converters.postprocessor">
+      <converters.postprocessor
+            class="org.eclipse.app4mc.amalthea.converters090.utils.UpdateCustomPropsPostProcessor"
+            id="org.eclipse.app4mc.amalthea.converters.090.postprocessor">
+         <input-model-version
+               version="0.8.3">
+         </input-model-version>
+         <output-model-version
+               version="0.9.0">
+         </output-model-version>
+      </converters.postprocessor>
+   </extension>
 
 </plugin>
