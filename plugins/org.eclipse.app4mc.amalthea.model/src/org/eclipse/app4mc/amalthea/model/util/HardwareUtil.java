@@ -1,339 +1,327 @@
-/**
- * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     Robert Bosch GmbH - initial API and implementation
- *
- * *******************************************************************************
- */
-
 package org.eclipse.app4mc.amalthea.model.util;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
+import org.eclipse.app4mc.amalthea.model.HwAccessPath;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.HwModule;
+import org.eclipse.app4mc.amalthea.model.HwPathElement;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
+import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
+import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
+import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.AccessDirection;
+import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
 
 public class HardwareUtil {
 
-	/**
-	 * returns list of all cores in the systems
-	 * @param model
-	 * @return List<ProcessingUnit>
-	 */
-	public static List<ProcessingUnit> getCoresInSystem(Amalthea model) {
-		ArrayList<ProcessingUnit> results = new ArrayList<>();
-//		if (model.getHwModel() != null && model.getHwModel().getSystem() != null && model.getHwModel().getSystem().getEcus() != null) {
-//			
-//			for (ECU ecu : model.getHwModel().getSystem().getEcus()) {
-//				if (ecu.getMicrocontrollers()!= null) {
-//					for (Microcontroller mc :ecu.getMicrocontrollers()) {
-//						results.addAll(mc.getCores());
-//					}
-//				}
-//			}
-//		}
-		return results;
+	public static <T extends HwModule> List<T> getModulesFromHWStructure(Class<T> targetClass, HwStructure structure) {
+		ArrayList<HwModule> results = new ArrayList<>();
+		// Cache
+		if (targetClass.equals(Cache.class)) {
+			for (HwModule module : structure.getModules()) {
+
+				if (module instanceof Cache) {
+					results.add(module);
+				} else if (module instanceof ProcessingUnit) {
+					for (Cache containedCache : ((ProcessingUnit) module).getCaches()) {
+						results.add(containedCache);
+					}
+				}
+
+			}
+		}
+		// ProcessingUnit, Memory and Connection Handler
+		else {
+			for (HwModule module : structure.getModules()) {
+				// ProcessingUnit
+				if (targetClass.equals(ProcessingUnit.class)) {
+					if (module instanceof ProcessingUnit) {
+						results.add(module);
+					}
+				}
+				// Memory
+				else if (targetClass.equals(Memory.class)) {
+					if (module instanceof Memory) {
+						results.add(module);
+					}
+				}
+				// ConnectionHandlerDefiniton
+				else {
+					if (module instanceof ConnectionHandler) {
+						results.add(module);
+					}
+				}
+			}
+		}
+		for (HwStructure hwStruct : structure.getStructures()) {
+			results.addAll(getModulesFromHWStructure(targetClass, hwStruct));
+		}
+		return (List<T>) results;
 	}
-	
+
+	public static <T extends HwModule> List<T> getModulesFromHWModel(Class<T> targetClass, Amalthea model) {
+		List<HwModule> modules = new ArrayList<HwModule>();
+		for (HwStructure structure : model.getHwModel().getStructures()) {
+			modules.addAll(getModulesFromHWStructure(targetClass, structure));
+		}
+		return (List<T>) modules;
+	}
+
+	public static List<ProcessingUnit> getAllProcessingUnitsForProcessingUnitDefinition(Amalthea model,
+			ProcessingUnitDefinition puDef) {
+		List<ProcessingUnit> pusWithGivenPUDefinition = new ArrayList<ProcessingUnit>();
+		List<ProcessingUnit> pusInModel = getModulesFromHWModel(ProcessingUnit.class, model);
+		if (puDef == null) { // null is the key for default values!
+			return new ArrayList<ProcessingUnit>();
+		}
+
+		for (ProcessingUnit pu : pusInModel) {
+			if (puDef.equals(pu.getDefinition())) {
+				pusWithGivenPUDefinition.add(pu);
+			}
+		}
+
+		return pusWithGivenPUDefinition;
+	}
+
 	/**
-	 * returns a list of all cores derived from a coreType  
+	 * returns a list of all cores derived from a coreType
+	 * 
 	 * @param model
 	 * @param coreType
 	 * @return List<ProcessingUnit>
 	 */
-	public static List<ProcessingUnit> getAllCoresForCoreType(Amalthea model, ProcessingUnitDefinition coreType) {
-		List<ProcessingUnit> coresWithGivenCoreType = new ArrayList<ProcessingUnit>();
-		List<ProcessingUnit> coresInSystem = getCoresInSystem(model);
-		
-		if(coreType == null) {				//null is the key for default values!
-			return new ArrayList<ProcessingUnit>();
+
+	public static Map<Memory, Long> getMemoryAccessLatenciesCycles(Amalthea model, TimeType timeType) {
+		HashMap<Memory, Long> result = new HashMap<Memory, Long>();
+		List<Memory> mems = getModulesFromHWModel(Memory.class, model);
+		for (Memory mem : mems) {
+			result.put(mem, calculateLatency(mem.getDefinition().getAccessLatency(), timeType));
 		}
-		
-		for(ProcessingUnit core : coresInSystem) {
-			if(coreType.equals(core.getDefinition())) {
-				coresWithGivenCoreType.add(core);
+		return result;
+	}
+
+	public static Map<Memory, Time> getMemoryAccessLatencyTime(Amalthea model, TimeType timeType) {
+		HashMap<Memory, Time> result = new HashMap<Memory, Time>();
+		Map<Memory, Long> memoryMap = getMemoryAccessLatenciesCycles(model, timeType);
+
+		for (Memory key : memoryMap.keySet()) {
+			Time time = FactoryUtil.createTime(	// TODO Has to be updated in runtimeUtils
+					memoryMap.get(key),
+					1.0F,
+					getFrequencyOfModuleInHz(key)
+					);
+			result.put(key, time);
+		}
+		return result;
+	}
+
+	public static List<HwAccessElement> getAccessElementsToDestination(HwDestination dest, Amalthea model) {
+		List<HwAccessElement> result = new ArrayList<HwAccessElement>();
+		List<ProcessingUnit> pus = getModulesFromHWModel(ProcessingUnit.class, model);
+		for (ProcessingUnit pu : pus) {
+			for (HwAccessElement element : pu.getAccessElements()) {
+				if (element.getDestination().equals(dest)) {
+					result.add(element);
+				}
 			}
 		}
-		
-		return coresWithGivenCoreType;
+		return result;
 	}
-	
+
+	public static Map<ProcessingUnit, HashMap<HwDestination, Time>> getAccessTimes(Amalthea model, TimeType timeType,
+			AccessDirection direction) {
+		Map<ProcessingUnit, HashMap<HwDestination, Time>> coreMemoryLatency = new HashMap<ProcessingUnit, HashMap<HwDestination, Time>>();
+		List<ProcessingUnit> pus = getModulesFromHWModel(ProcessingUnit.class, model);
+		for (ProcessingUnit pu : pus) {
+			HashMap<HwDestination, Time> MemAccessTime = new HashMap<HwDestination, Time>();
+			for (HwAccessElement accessElement : pu.getAccessElements()) {
+				Time latency = null;
+				if (accessElement.getAccessPath() != null) {
+					latency = calculateHwAccessPathTime(accessElement, timeType, direction);
+				} else {
+					latency = calculateLatencyPathTime(accessElement, timeType, direction);
+				}
+				if (!(MemAccessTime.containsKey(accessElement.getDestination())
+						&& (TimeUtil.compareTime(MemAccessTime.get(accessElement.getDestination()), latency) >= 0))) {
+					MemAccessTime.put(accessElement.getDestination(), latency);
+				}
+			}
+			coreMemoryLatency.put(pu, MemAccessTime);
+		}
+		return coreMemoryLatency;
+	}
+
+	public static Time calculateLatencyPathTime(HwAccessElement accessElement, TimeType timeType,
+			AccessDirection direction) {
+		HwLatency latency = null;
+		switch (direction) {
+		case READ:
+			if (accessElement.getReadLatency() != null) {
+				latency = accessElement.getReadLatency();
+			}
+			break;
+		case WRITE:
+			if (accessElement.getWriteLatency() != null) {
+				latency = accessElement.getWriteLatency();
+			}
+			break;
+		default:
+			break;
+		}
+		return FactoryUtil.createTime(
+				calculateLatency(latency, timeType),
+				1.0F,
+				getFrequencyOfModuleInHz(accessElement.getSource())
+				);
+	}
+
+	public static Time calculateHwAccessPathTime(HwAccessElement accessElement, TimeType timeType,
+			AccessDirection direction) {
+		Time result = AmaltheaFactory.eINSTANCE.createTime();
+		Frequency frequency = null;
+		HwLatency latency = null;
+		if (accessElement.getAccessPath() != null) {
+			for (HwPathElement element : accessElement.getAccessPath().getPathElements()) {
+				if (element instanceof ConnectionHandler) {
+					if (direction.equals(AccessDirection.READ))
+						latency = ((ConnectionHandler) element).getDefinition().getReadLatency();
+					else {
+						latency = ((ConnectionHandler) element).getDefinition().getWriteLatency();
+					}
+					frequency = getFrequencyOfModule((ConnectionHandler) element);
+				} else if (element instanceof Cache) {
+					latency = ((Cache) element).getDefinition().getAccessLatency();
+					frequency = getFrequencyOfModule((Cache) element);
+				} else if (element instanceof HwConnection) {
+					if (direction.equals(AccessDirection.READ))
+						latency = ((HwConnection) element).getReadLatency();
+					else {
+						latency = ((HwConnection) element).getWriteLatency();
+					}
+					// Assumption is that if the frequencyOfComponent is null the HwConnection is
+					// the first element in the path, in this case the frequency of the source
+					// (ProcessingUnit)
+					// is the driver for the frequency. In any other case the element in front of
+					// the connection is the driver (The HwPath is an ordered list of path elements)
+					if (frequency == null) {
+						frequency = getFrequencyOfModule(accessElement.getSource());
+					}
+				}
+				// It is not possible to specify a Read or Write Latencies for ProcessingUnits!
+				// In the case this causes some issues in future the interface HwPathElement
+				// could be removed from ProcessingUnit
+				else if (element instanceof ProcessingUnit) {
+					frequency = getFrequencyOfModule((ProcessingUnit) element);
+				}
+				
+				result = TimeUtil.addTimes(
+						result,
+						FactoryUtil.createTime(
+								calculateLatency(latency, timeType),
+								1.0F,
+								AmaltheaServices.convertToHertz(frequency).longValue()
+								)
+						);
+			}
+		}
+		return result;
+	}
+
+	public static Long calculateLatency(HwLatency latency, TimeType timeType) {
+		Long result = 0L;
+		if (latency instanceof LatencyConstant) {
+			result = (((LatencyConstant) latency).getCycles());
+		} else if (latency instanceof LatencyDeviation) {
+			Deviation<LongObject> deviation = ((LatencyDeviation) latency).getCycles();// TODO: Discuss get cycles is
+																						// irritating returns deviation
+			if (timeType == null)
+				result = (RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(),
+						deviation.getUpperBound().getValue()));
+			else {
+				switch (timeType) {
+				case ACET:
+					result = (RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(),
+							deviation.getUpperBound().getValue()));
+					break;
+				case BCET:
+					result = (deviation.getLowerBound().getValue());
+					break;
+				case WCET:
+					result = (deviation.getUpperBound().getValue());
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		return result;
+	}
 
 	/**
-	 * Returns all memories of a model
-	 * @param model
-	 * @return List<Memory>
+	 * get the minimum data rate of an access path
+	 * 
+	 * @param path
+	 *            to analyze
+	 * @return the minimum data rate of a path element
 	 */
-//	public static List<Memory> getMemoriesInSystem(Amalthea model)	{
-//		List<ECU> ecuList = model.getHwModel().getSystem().getEcus();
-//		List<Memory> memoryList= new ArrayList<Memory>();
-//		for (ECU ecu : ecuList) {
-//			List<Microcontroller> ucList = ecu.getMicrocontrollers();
-//			for (Microcontroller microcontroller : ucList) {
-//				memoryList.addAll(microcontroller.getMemories());
-//		        for(ProcessingUnit core : microcontroller.getCores()) {
-//		        	memoryList.addAll(core.getMemories());
-//		        }
-//			}
-//		}
-//		return memoryList;
-//	}
-		
+	public static DataRate getMinDataRateOfHwAccessPath(HwAccessPath path) {
+		DataRate minimum = null;
+		if (path != null) {
+			for (HwPathElement element : path.getPathElements()) {
+				DataRate temp = null;
+				if (element instanceof ConnectionHandler) {
+					temp = ((ConnectionHandler) element).getDefinition().getDataRate();
+				} else if (element instanceof HwConnection) {
+					temp = ((HwConnection) element).getDataRate();
+				}
+				if (temp != null) {
+					if (minimum == null || AmaltheaServices.compareDataRates(temp, minimum) < 0) {
+						minimum = temp;
+					}
+				}
+			}
+		}
+		return minimum;
+	}
+
 	/**
-	 * List of all accessPaths from or to a specified hardware node
-	 * @param hardware node
-	 * @param model
-	 * @return List<AccessPath> 
+	 * returns the frequency of a specific module
+	 * 
+	 * @param module
+	 * @return Frequency
 	 */
-//	public static List<AccessPath> getAccessPathsOfHardwareNode(ComplexNode hardwareNode, Amalthea model) {
-//		List<AccessPath> result = new ArrayList<AccessPath>(); 
-//		for (AccessPath accessPath : model.getHwModel().getAccessPaths()) {
-//			//if (accessPath.getSource().equals(hardwareNode) || accessPath.getTarget().equals(hardwareNode)) {	// 02.05.2017 Anh: update to prevent NullPointerException
-//			if ((accessPath.getSource() != null && accessPath.getSource().equals(hardwareNode)) 
-//					|| (accessPath.getTarget() != null && accessPath.getTarget().equals(hardwareNode))) {
-//				result.add(accessPath);
-//			}
-//		}
-//		return result;
-//	}
+	public static Frequency getFrequencyOfModule(HwModule module) {
+		return module.getFrequencyDomain().getDefaultValue();
+	}
 	
 	/**
-	 * smallest access Latency from complex node to complex node
-	 * @param hardware node
-	 * @param model
+	 * returns the frequency of a specific module in Hertz
+	 * 
+	 * @param module
 	 * @return long
 	 */
-//	public static long getLatency(ComplexNode source, ComplexNode target, Amalthea model) {
-//		Map<ComplexNode, List<Long>> accessLatenciesForHardwareNode = getAccessLatenciesForHardwareNode(source, TimeType.WCET, model);
-//		List<Long> latencies = accessLatenciesForHardwareNode.get(target);
-//		if(latencies == null) {
-//			return 0L;
-//		}
-//		
-//		long latency = Long.MAX_VALUE;
-//		for(Long l : latencies) {
-//			if(l < latency) {
-//				latency = l;
-//			}
-//		}
-//		return latency;
-//	}
-	
-	/**
-	 * 
-	 * @param hardware node
-	 * @param model
-	 * @return List of all LatencyPaths from or to a specified hardware node
-	 */
-//	public static List<LatencyAccessPath> getLatencyAccessPathsOfHardwareNode(ComplexNode hardwareNode, Amalthea model) {
-//		List<LatencyAccessPath> result = new ArrayList<LatencyAccessPath>();
-//		for (AccessPath accessPath : getAccessPathsOfHardwareNode(hardwareNode, model)) {
-//			if (accessPath instanceof LatencyAccessPath) {
-//				LatencyAccessPath latencyPath =  (LatencyAccessPath) accessPath;
-//				result.add(latencyPath);
-//			}
-//		}
-//		return result;
-//	}
-	
-	/**
-	 * returns a map of access latencies from each core to each memory
-	 * @param model
-	 * @return Map<ProcessingUnit, HashMap<Memory, Long>>
-	 */
-	public static Map<ProcessingUnit, HashMap<Memory, Long>> getAccessLatencies(Amalthea model)
-	{
-		Map<ProcessingUnit,HashMap<Memory,Long>> coreMemoryLatency = new HashMap<ProcessingUnit, HashMap<Memory, Long>>();
-//		HashMap<Memory, Long> memoryLatency = null;
-//		List<ProcessingUnit> coreList = HardwareUtil.getCoresInSystem(model);
-//		List<Memory> memoryList = HardwareUtil.getMemoriesInSystem(model);
-//		
-//		for(ProcessingUnit core : coreList)
-//		{
-//			memoryLatency = new HashMap<>();
-//			for(Memory memory : memoryList)
-//			{
-//				//System.out.println("Processing unit " + core.getName() + "  to memory " + memory.getName());
-//				long accessLatency = HardwareUtil.getLatency(core, memory, model);		
-//				if(accessLatency != 0) {
-//					memoryLatency.put(memory, accessLatency);
-//					//logger.info("Processing unit " + core.getName() + "  to memory " + memory.getName() + " latency is " + accessLatency.intValue());
-//				}			
-//			}
-//		  coreMemoryLatency.put(core, memoryLatency);
-//		}
-		
-		return coreMemoryLatency;
-	} 
-	
-	/**
-	 * returns a list of all HwAccessPath from or to a specified hardware node
-	 * @param hardware node
-	 * @param model
-	 * @return List<HwAccessPath>
-	 */
-//	public static List<HwAccessPath> getHardwareAccessPathsOfHardwareNode(ComplexNode hardwareNode, Amalthea model) {
-//		List<HwAccessPath> result = new ArrayList<HwAccessPath>();
-//		for (AccessPath accessPath : getAccessPathsOfHardwareNode(hardwareNode, model)) {
-//			if (accessPath instanceof HwAccessPath) {
-//				HwAccessPath latencyPath =  (HwAccessPath) accessPath;
-//				result.add(latencyPath);
-//			}
-//		}
-//		return result;
-//	}
-	
-	/**
-	 * returns a list of all latencies from or to a specified hardware node - timeType defines the type of latency value (average, BCET, WCET)
-	 * @param hardwareNode
-	 * @param timeType
-	 * @param model
-	 * @return Map<ComplexNode, List<Long>>
-	 * 
-	 */
-//	public static Map<ComplexNode, List<Long>> getAccessLatenciesForHardwareNode(ComplexNode hardwareNode, TimeType timeType, Amalthea model) {
-//		HashMap<ComplexNode, List<Long>> result = new HashMap<ComplexNode, List<Long>>();
-//		List<LatencyAccessPath> latencyAccessPathsOfCore = getLatencyAccessPathsOfHardwareNode(hardwareNode, model);
-//		
-//		for (LatencyAccessPath latencyPath : latencyAccessPathsOfCore) {
-//			ComplexNode target = null;
-//			if (latencyPath.getSource().equals(hardwareNode)) {
-//				if (latencyPath.getTarget() != null) {
-//					target = latencyPath.getTarget();
-//				}
-//			} else {
-//				if (latencyPath.getSource() != null) {
-//					target = latencyPath.getSource();
-//				}
-//			}
-//			
-//			//System.out.println(hardwareNode.getName()+ "  -target "+target.getName());
-//			
-//			List<Long> latList = new ArrayList<Long>();
-//			for (LatencyAccessPathElement latency : latencyPath.getLatencies()) {
-//				if (latency instanceof LatencyConstant) {
-//					latList.add(((LatencyConstant)latency).getValue());
-//				}
-//				else if (latency instanceof LatencyDeviation) {
-//					Deviation<LongObject> deviation = ((LatencyDeviation)latency).getDeviation();
-//					if (timeType == null)
-//						latList.add(RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(), deviation.getUpperBound().getValue()));
-//					else {
-//						switch(timeType) {
-//						case ACET: 
-//							latList.add(RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(), deviation.getUpperBound().getValue()));
-//							break;
-//						case BCET:
-//							latList.add(deviation.getLowerBound().getValue());
-//							break;
-//						case WCET:
-//							latList.add(deviation.getUpperBound().getValue());
-//							break;
-//						default:
-//							break;
-//						}
-//					}
-//				}
-//			}
-//			if (result.get(target) != null) {
-//				result.get(target).addAll(latList);
-//			} else {
-//				result.put(target, latList);
-//			}
-//		}
-//		return result;
-//	}
-	
-	/**
-	 * returns a list of access latencies for a ComplexNode (List Objects are LatencyConstant and LatencyDeviation)
-	 * @param hardwareNode
-	 * @param model
-	 * @return  Map<ComplexNode, List<Object>>
-	 */
-//	public static Map<ComplexNode, List<Object>> getAccessLatencyDeviationsForHardwareNode(ComplexNode hardwareNode, Amalthea model) {
-//		HashMap<ComplexNode, List<Object>> result = new HashMap<ComplexNode, List<Object>>();
-//		List<LatencyAccessPath> latencyAccessPathsOfCore = getLatencyAccessPathsOfHardwareNode(hardwareNode, model);
-//		for (LatencyAccessPath latencyPath : latencyAccessPathsOfCore) {
-////			ComplexNode target;
-////			if (latencyPath.getSource().equals(hardwareNode)) 
-////				target = latencyPath.getTarget();
-////			else
-////				target = latencyPath.getSource();
-//			ComplexNode target = null;
-//			if (latencyPath.getSource().equals(hardwareNode))		//02.05.2017 Anh prevented the null value
-//			{
-//				if (latencyPath.getTarget() != null)
-//				{
-//					target = latencyPath.getTarget();
-//				}
-//			}
-//				
-//			else{
-//				if (latencyPath.getSource() != null)
-//				{
-//					target = latencyPath.getSource();
-//				}
-//			}			
-//			for (LatencyAccessPathElement latency : latencyPath.getLatencies()) {
-//				if (latency instanceof LatencyDeviation)
-//				{
-//					if (result.get(target) != null)
-//						result.get(target).add(latency);
-//					else {
-//						List<Object> tmp = new ArrayList<Object>();
-//						tmp.add(latency);
-//						result.put(target, tmp);
-//					}
-//				}					
-//			}
-//		}
-//		return result;
-//	}
-	
-	/**
-	 * returns the frequency of a specific core
-	 * @param core
-	 * @return long
-	 */
-	public static Frequency getFrequencyOfCore(ProcessingUnit core) {
-//		long preScaler = 1L;
-//		switch (core.getPrescaler().getQuartz().getFrequency().getUnit())
-//	  	{
-//	  		case GHZ:
-//	  			preScaler = 1000000000L;
-//	  			//executionTime.setUnit(TimeUnit.NS);
-//	  			break;
-//	  		case MHZ:
-//	  			preScaler = 1000000L;
-//	  			//executionTime.setUnit(TimeUnit.US);
-//	  			break;
-//	  		case KHZ:
-//	  			preScaler = 1000L;
-//	  			//executionTime.setUnit(TimeUnit.MS);
-//	  			break;
-//	  		case HZ:
-//	  			preScaler = 1L;
-//	  			//executionTime.setUnit(TimeUnit.S);
-//	  			break;
-//	  		default: 
-//	  			preScaler = 1L;
-//	  			//executionTime.setUnit(TimeUnit.S);
-//	  	}
-//		//frequency in Hertz
-//		long frequency = (long)(((core.getPrescaler().getQuartz().getFrequency().getValue())) * preScaler * core.getPrescaler().getClockRatio());
-//	  	return frequency;
-		return core.getFrequencyDomain().getDefaultValue();
+	public static long getFrequencyOfModuleInHz(HwModule module) {
+		return AmaltheaServices.convertToHertz(getFrequencyOfModule(module)).longValue() ;
 	}
 }

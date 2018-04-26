@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="PuDef1" features="category2/feature1?type=HwFeature"/>
+    <definitions xsi:type="am:MemoryDefinition" name="MemDef1">
+      <size value="4" unit="MB"/>
+      <accessLatency xsi:type="am:LatencyConstant" cycles="5"/>
+      <dataRate value="6" unit="GbitPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ChDef1">
+      <readLatency xsi:type="am:LatencyConstant" cycles="6"/>
+      <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
+    </definitions>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="PuDef2" puType="CPU" features="category1/feature2?type=HwFeature"/>
+    <definitions xsi:type="am:CacheDefinition" name="CacheDef1" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="2" unit="MB"/>
+      <lineSize value="64" unit="B"/>
+      <accessLatency xsi:type="am:LatencyConstant" cycles="2"/>
+    </definitions>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test1_def">
+      <readLatency xsi:type="am:LatencyDeviation">
+        <cycles>
+          <lowerBound xsi:type="am:LongObject" value="2"/>
+          <upperBound xsi:type="am:LongObject" value="8"/>
+          <distribution xsi:type="am:GaussDistribution">
+            <mean xsi:type="am:LongObject" value="5"/>
+          </distribution>
+        </cycles>
+      </readLatency>
+      <dataRate value="800" unit="MiBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test2_def">
+      <readLatency xsi:type="am:LatencyDeviation">
+        <cycles>
+          <lowerBound xsi:type="am:LongObject" value="10"/>
+          <upperBound xsi:type="am:LongObject" value="20"/>
+          <distribution xsi:type="am:GaussDistribution">
+            <mean xsi:type="am:LongObject" value="15"/>
+          </distribution>
+        </cycles>
+      </readLatency>
+      <dataRate value="4" unit="GiBPerSecond"/>
+    </definitions>
+    <featureCategories name="category1">
+      <features name="feature2" value="1.0"/>
+    </featureCategories>
+    <featureCategories name="category2" featureType="performance">
+      <features name="feature1" value="2.0"/>
+    </featureCategories>
+    <structures name="Top1">
+      <structures name="Level2">
+        <structures name="Level3">
+          <modules xsi:type="am:ProcessingUnit" name="Pu1_Lev3" frequencyDomain="freq2?type=FrequencyDomain" definition="PuDef1?type=ProcessingUnitDefinition">
+            <ports name="P1" bitWidth="0" priority="0"/>
+            <accessElements name="ae1" destination="Mem1_Lev3?type=Memory">
+              <readLatency xsi:type="am:LatencyConstant" cycles="4"/>
+              <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
+            </accessElements>
+            <accessElements name="ae2" destination="Mem1_top1?type=Memory">
+              <accessPath name="haplev3" pathElements="Top1/con_2_top1?type=HwConnection CH1_top1?type=ConnectionHandler Top1/con_1_top1?type=HwConnection" startAddress="0x0" endAddress="0x0" memOffset="0x0"/>
+            </accessElements>
+            <accessElements name="ae3" destination="Mem1_top2?type=Memory">
+              <readLatency xsi:type="am:LatencyConstant" cycles="30"/>
+              <writeLatency xsi:type="am:LatencyConstant" cycles="15"/>
+              <dataRate value="4" unit="GBPerSecond"/>
+            </accessElements>
+          </modules>
+          <modules xsi:type="am:Memory" name="Mem1_Lev3" frequencyDomain="freq1?type=FrequencyDomain" definition="MemDef1?type=MemoryDefinition">
+            <ports name="P1" bitWidth="0" priority="0"/>
+          </modules>
+        </structures>
+        <modules xsi:type="am:ProcessingUnit" name="Pu1_Lev2" frequencyDomain="freq2?type=FrequencyDomain" definition="PuDef2?type=ProcessingUnitDefinition">
+          <ports name="P1" bitWidth="0" priority="0"/>
+          <accessElements name="ae1" destination="Mem1_Lev3?type=Memory">
+            <readLatency xsi:type="am:LatencyConstant" cycles="4"/>
+            <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
+          </accessElements>
+          <accessElements name="ae2" destination="Mem1_top1?type=Memory">
+            <accessPath name="haplev3" pathElements="Top1/con_3_top1?type=HwConnection CH1_top1?type=ConnectionHandler Top1/con_1_top1?type=HwConnection" startAddress="0x0" endAddress="0x0" memOffset="0x0"/>
+          </accessElements>
+        </modules>
+        <modules xsi:type="am:ProcessingUnit" name="Pu2_Lev2" frequencyDomain="freq2?type=FrequencyDomain" definition="PuDef2?type=ProcessingUnitDefinition">
+          <ports name="P1" bitWidth="0" priority="0"/>
+          <accessElements name="ae1" destination="Mem1_Lev3?type=Memory">
+            <readLatency xsi:type="am:LatencyConstant" cycles="4"/>
+            <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
+          </accessElements>
+          <accessElements name="ae2" destination="Mem1_top1?type=Memory">
+            <accessPath name="haplev3" pathElements="Top1/con_4_top1?type=HwConnection CH1_top1?type=ConnectionHandler Top1/con_1_top1?type=HwConnection" startAddress="0x0" endAddress="0x0" memOffset="0x0"/>
+          </accessElements>
+        </modules>
+      </structures>
+      <modules xsi:type="am:Memory" name="Mem1_top1" frequencyDomain="freq1?type=FrequencyDomain" definition="MemDef1?type=MemoryDefinition">
+        <ports name="P1" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" name="CH1_top1" frequencyDomain="freq1?type=FrequencyDomain" definition="ChDef1?type=ConnectionHandlerDefinition">
+        <ports name="P1" bitWidth="0" priority="0"/>
+        <ports name="P2" bitWidth="0" priority="0"/>
+        <ports name="P3" bitWidth="0" priority="0"/>
+        <ports name="P4" bitWidth="0" priority="0"/>
+      </modules>
+      <connections name="con_1_top1" port1="CH1_top1/P1?type=HwPort" port2="Mem1_top1/P1?type=HwPort"/>
+      <connections name="con_2_top1" port1="Pu1_Lev3/P1?type=HwPort" port2="CH1_top1/P2?type=HwPort">
+        <readLatency xsi:type="am:LatencyConstant" cycles="3"/>
+        <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
+      </connections>
+      <connections name="con_3_top1" port1="Pu1_Lev2/P1?type=HwPort" port2="CH1_top1/P3?type=HwPort">
+        <readLatency xsi:type="am:LatencyConstant" cycles="2"/>
+        <writeLatency xsi:type="am:LatencyConstant" cycles="1"/>
+      </connections>
+      <connections name="con_4_top1" port1="Pu2_Lev2/P1?type=HwPort" port2="CH1_top1/P4?type=HwPort">
+        <dataRate value="1" unit="GBPerSecond"/>
+      </connections>
+    </structures>
+    <structures name="Top2">
+      <structures name="Level2_2">
+        <modules xsi:type="am:ProcessingUnit" name="Pu1_Lev2_2" frequencyDomain="freq2?type=FrequencyDomain" definition="PuDef2?type=ProcessingUnitDefinition">
+          <ports name="P1" bitWidth="0" priority="0"/>
+          <accessElements name="ae1" destination="Mem1_Lev3?type=Memory">
+            <readLatency xsi:type="am:LatencyConstant" cycles="20"/>
+            <writeLatency xsi:type="am:LatencyConstant" cycles="10"/>
+          </accessElements>
+          <accessElements name="ae2" destination="Mem1_top1?type=Memory">
+            <readLatency xsi:type="am:LatencyDeviation">
+              <cycles>
+                <lowerBound xsi:type="am:LongObject" value="24"/>
+                <upperBound xsi:type="am:LongObject" value="32"/>
+                <distribution xsi:type="am:GaussDistribution">
+                  <mean xsi:type="am:LongObject" value="28"/>
+                </distribution>
+              </cycles>
+            </readLatency>
+            <writeLatency xsi:type="am:LatencyConstant" cycles="8"/>
+          </accessElements>
+          <accessElements name="ae3" destination="Mem1_top2?type=Memory">
+            <accessPath name="hap" pathElements="Level2_2/con1_top2?type=HwConnection" startAddress="0x0" endAddress="0x0" memOffset="0x0"/>
+            <dataRate value="4" unit="GBPerSecond"/>
+          </accessElements>
+          <caches name="D-Cache" frequencyDomain="freq1?type=FrequencyDomain" definition="CacheDef1?type=CacheDefinition"/>
+        </modules>
+        <modules xsi:type="am:ProcessingUnit" name="test" frequencyDomain="freq1?type=FrequencyDomain" definition="PuDef1?type=ProcessingUnitDefinition">
+          <accessElements name="testAccessElement" destination="Mem1_top2?type=Memory">
+            <accessPath name="testpath" pathElements="ch1?type=ConnectionHandler ch2?type=ConnectionHandler" startAddress="0x0" endAddress="0x0" memOffset="0x0"/>
+          </accessElements>
+        </modules>
+        <modules xsi:type="am:ConnectionHandler" name="ch1" frequencyDomain="freq1?type=FrequencyDomain" definition="ch_test1_def?type=ConnectionHandlerDefinition"/>
+        <modules xsi:type="am:ConnectionHandler" name="ch2" frequencyDomain="freq1?type=FrequencyDomain" definition="ch_test2_def?type=ConnectionHandlerDefinition"/>
+        <connections name="con1_top2" port1="Pu1_Lev2_2/P1?type=HwPort" port2="Mem1_top2/P1?type=HwPort">
+          <readLatency xsi:type="am:LatencyConstant" cycles="6"/>
+          <writeLatency xsi:type="am:LatencyConstant" cycles="0"/>
+        </connections>
+      </structures>
+      <modules xsi:type="am:Memory" name="Mem1_top2" frequencyDomain="freq2?type=FrequencyDomain" definition="MemDef1?type=MemoryDefinition">
+        <ports name="P1" bitWidth="0" priority="0"/>
+      </modules>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" name="freq1" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" name="freq2" clockGating="false">
+      <defaultValue value="500.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+</am:Amalthea>

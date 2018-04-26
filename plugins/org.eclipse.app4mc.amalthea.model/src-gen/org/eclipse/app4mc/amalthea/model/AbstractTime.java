@@ -103,7 +103,7 @@ public interface AbstractTime extends EObject, Comparable<AbstractTime> {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" timeUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.compareTimeElement(this, time);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.compareTimes(this, time);'"
 	 * @generated
 	 */
 	int compareTo(AbstractTime time);

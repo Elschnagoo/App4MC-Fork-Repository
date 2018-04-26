@@ -27,10 +27,10 @@ public class AmaltheaServices {
 	public static BigInteger convertToBit(DataSize size) {
 		if (size == null || size.getValue() == null)
 			return null;
-	
+
 		BigInteger bitBase = size.getValue();
 		BigInteger byteBase = size.getValue().multiply(BigInteger.valueOf(8));
-	
+
 		switch (size.getUnit()) {
 		case _UNDEFINED_:
 			return null;
@@ -44,7 +44,7 @@ public class AmaltheaServices {
 			return bitBase.multiply(BigInteger.TEN.pow(9));
 		case TBIT:
 			return bitBase.multiply(BigInteger.TEN.pow(12));
-	
+
 		case KIBIT:
 			return bitBase.multiply(BigInteger.valueOf(2).pow(10));
 		case MIBIT:
@@ -53,7 +53,7 @@ public class AmaltheaServices {
 			return bitBase.multiply(BigInteger.valueOf(2).pow(30));
 		case TIBIT:
 			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
-	
+
 		case B:
 			return byteBase;
 		case KB:
@@ -64,7 +64,7 @@ public class AmaltheaServices {
 			return byteBase.multiply(BigInteger.TEN.pow(9));
 		case TB:
 			return byteBase.multiply(BigInteger.TEN.pow(12));
-	
+
 		case KI_B:
 			return byteBase.multiply(BigInteger.valueOf(2).pow(10));
 		case MI_B:
@@ -74,7 +74,61 @@ public class AmaltheaServices {
 		case TI_B:
 			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
 		}
-	
+
+		return null;
+	}
+
+	public static BigInteger convertToBitPerSecond(DataRate rate) {
+		if (rate == null || rate.getValue() == null)
+			return null;
+
+		BigInteger bitBase = rate.getValue();
+		BigInteger byteBase = rate.getValue().multiply(BigInteger.valueOf(8));
+
+		switch (rate.getUnit()) {
+		case _UNDEFINED_:
+			return null;
+		case BIT_PER_SECOND:
+			return bitBase;
+		case KBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.TEN.pow(3));
+		case MBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.TEN.pow(6));
+		case GBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.TEN.pow(9));
+		case TBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.TEN.pow(12));
+
+		case KIBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.valueOf(2).pow(10));
+		case MIBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.valueOf(2).pow(20));
+		case GIBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.valueOf(2).pow(30));
+		case TIBIT_PER_SECOND:
+			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
+
+		case BPER_SECOND:
+			return byteBase;
+		case KB_PER_SECOND:
+			return byteBase.multiply(BigInteger.TEN.pow(3));
+		case MB_PER_SECOND:
+			return byteBase.multiply(BigInteger.TEN.pow(6));
+		case GB_PER_SECOND:
+			return byteBase.multiply(BigInteger.TEN.pow(9));
+		case TB_PER_SECOND:
+			return byteBase.multiply(BigInteger.TEN.pow(12));
+
+		case KI_BPER_SECOND:
+			return byteBase.multiply(BigInteger.valueOf(2).pow(10));
+		case MI_BPER_SECOND:
+			return byteBase.multiply(BigInteger.valueOf(2).pow(20));
+		case GI_BPER_SECOND:
+			return byteBase.multiply(BigInteger.valueOf(2).pow(30));
+		case TI_BPER_SECOND:
+			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
+		}
+
 		return null;
 	}
 
@@ -86,12 +140,12 @@ public class AmaltheaServices {
 	 *            AbstractTime object
 	 * @return value BigInteger in Pico Seconds
 	 */
-	public static BigInteger convertToPS(AbstractTime abstractTime) {
-	
+	public static BigInteger convertToPicoSeconds(AbstractTime abstractTime) {
+
 		BigInteger timeValue = abstractTime.getValue();
-	
+
 		if (timeValue != null) {
-	
+
 			switch (abstractTime.getUnit()) {
 			case _UNDEFINED_:
 				return null;
@@ -106,14 +160,14 @@ public class AmaltheaServices {
 			case S:
 				return timeValue.multiply(BigInteger.TEN.pow(12));
 			}
-	
+
 		}
-	
+
 		return null;
 	}
 
-	public static BigDecimal convertToHz(Frequency frequency) {
-		if (frequency == null || frequency.getValue() == 0.0)
+	public static BigDecimal convertToHertz(Frequency frequency) {
+		if (frequency == null)
 			return null;
 
 		double freqValue = frequency.getValue();
@@ -134,6 +188,26 @@ public class AmaltheaServices {
 		return null;
 	}
 
+	public static BigDecimal convertToMicroVolt(Voltage voltage) {
+		if (voltage == null)
+			return null;
+
+		double voltValue = voltage.getValue();
+
+		switch (voltage.getUnit()) {
+		case _UNDEFINED_:
+			return null;
+		case UV:
+			return BigDecimal.valueOf(voltValue);
+		case MV:
+			return BigDecimal.valueOf(voltValue).multiply(BigDecimal.TEN.pow(3));
+		case V:
+			return BigDecimal.valueOf(voltValue).multiply(BigDecimal.TEN.pow(6));
+		}
+
+		return null;
+	}
+
 	/**
 	 * This method is used to compare AbstractTime objects (Time/TimeObject) on the
 	 * basis of their values (obtained in pico seconds after applying the conversion
@@ -145,31 +219,68 @@ public class AmaltheaServices {
 	 *            AbstractTime object
 	 * @return -1 ,0 or 1
 	 */
-	public static int compareTimeElement(final AbstractTime t1, final AbstractTime t2) {
+	public static int compareTimes(final AbstractTime t1, final AbstractTime t2) {
 		if (t1 == null || t2 == null) {
 			throw new NullPointerException();
 		}
-	
+
 		if (t1.getUnit() == TimeUnit._UNDEFINED_) {
 			throw new RuntimeException("Undefined time unit : " + t1);
 		}
-	
+
 		if (t2.getUnit() == TimeUnit._UNDEFINED_) {
 			throw new RuntimeException("Undefined time unit : " + t2);
 		}
-	
+
 		if (t1 == t2) {
 			return 0;
 		}
-	
-		BigInteger value1 = convertToPS(t1);
-		BigInteger value2 = convertToPS(t2);
-	
+
+		BigInteger value1 = convertToPicoSeconds(t1);
+		BigInteger value2 = convertToPicoSeconds(t2);
+
 		assert value1 != null;
 		assert value2 != null;
-	
+
 		return value1.compareTo(value2);
 	}
+
+	/**
+	 * This method is used to compare DataRate objects on the basis of their values
+	 * (obtained in bit per second after applying the conversion based on DataRateUnit)
+	 * 
+	 * @param r1
+	 *            DataRate object
+	 * @param r2
+	 *            DataRate object
+	 * @return -1 ,0 or 1
+	 */
+	public static int compareDataRates(final DataRate r1, final DataRate r2) {
+		if (r1 == null || r2 == null) {
+			throw new NullPointerException();
+		}
+
+		if (r1.getUnit() == DataRateUnit._UNDEFINED_) {
+			throw new RuntimeException("Undefined data rate unit : " + r1);
+		}
+
+		if (r2.getUnit() == DataRateUnit._UNDEFINED_) {
+			throw new RuntimeException("Undefined data rate unit : " + r2);
+		}
+
+		if (r1 == r2) {
+			return 0;
+		}
+
+		BigInteger value1 = convertToBitPerSecond(r1);
+		BigInteger value2 = convertToBitPerSecond(r2);
+
+		assert value1 != null;
+		assert value2 != null;
+
+		return value1.compareTo(value2);
+	}
+
 
 	public static EList<QualifiedPort> getInnerPorts(ISystem system) {
 		List<QualifiedPort> qualifiedPorts = new ArrayList<QualifiedPort>();

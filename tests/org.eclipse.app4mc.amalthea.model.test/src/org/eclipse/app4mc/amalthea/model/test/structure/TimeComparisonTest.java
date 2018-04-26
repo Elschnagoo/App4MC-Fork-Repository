@@ -126,7 +126,7 @@ public class TimeComparisonTest {
 		boolean isExceptionThrown = false;
 
 		try {
-			AmaltheaServices.compareTimeElement(t1, t2);
+			AmaltheaServices.compareTimes(t1, t2);
 		} catch (NullPointerException e1) {
 			isExceptionThrown = true;
 		}

@@ -175,7 +175,7 @@ public abstract class AbstractTimeImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	public int compareTo(final AbstractTime time) {
-		return AmaltheaServices.compareTimeElement(this, time);
+		return AmaltheaServices.compareTimes(this, time);
 	}
 
 	/**
