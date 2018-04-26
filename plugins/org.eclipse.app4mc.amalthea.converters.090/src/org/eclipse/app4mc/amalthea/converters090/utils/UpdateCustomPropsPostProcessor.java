@@ -36,16 +36,21 @@ public class UpdateCustomPropsPostProcessor implements IPostProcessor {
 				value_customPropertyElement.removeChild("value");
 				
 				if(entry!=null) {
-
-					Element valueElement=new Element("value");
-					
 					String updatedTypeAfterMigration=getUpdatedType(entry.getValue());
+
+					if(values.size()>1) {
+						Element valueElement=new Element("value");
+						
+						
+						valueElement.setAttribute("type", "am:"+updatedTypeAfterMigration, helper.getGenericNS("xsi"));
+						
+						valueElement.setAttribute("href", "amlt:/#"+entry.getKey()+"?"+"type="+updatedTypeAfterMigration);
+						
+						value_customPropertyElement.addContent(valueElement);
+					}else {
+						value_customPropertyElement.setAttribute("value", entry.getKey()+"?type="+updatedTypeAfterMigration);
+					}
 					
-					valueElement.setAttribute("type", "am:"+updatedTypeAfterMigration, helper.getGenericNS("xsi"));
-					
-					valueElement.setAttribute("href", "amlt:/#"+entry.getKey()+"?"+"type="+updatedTypeAfterMigration);
-					
-					value_customPropertyElement.addContent(valueElement);
 					
 				}
 				
