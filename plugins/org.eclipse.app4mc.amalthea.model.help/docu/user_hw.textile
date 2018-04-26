@@ -1,14 +1,31 @@
 
 h3. Hardware
 
+
 h4. Structural Modeling of Heterogeneous Platforms
 
-To master the rising demands of performance and power efficiency, hardware becomes more and more diverse with a wide spectrum of different cores and hardware accelerators. On the computation front, there is an emergence of specialized processing units that are designed to boost a specific kind of algorithm or set of math operations like "multiply and accumulate". The benefit from specialization is different and leads to nonlinear effects between processing units in terms of performance for algorithms. Furthermore the memory hierarchy in modern embedded microprocessor architectures becomes more complex due to multiple levels of caches, cache coherency support, and the extended use of DRAM. In addition to crossbars, modern SoCs connect the different clusters including different hardware components via a Network on Chip. These characteristics of modern and performant hardware specialized processing units, complex memory hierarchy, network like Interconnects are only partially supported by the former Amalthea hardware model and tools for performance simulation. Therefore, to create models of modern heterogeneous systems, new concepts of representing hardware components in a flexible and easy way are necessary: Beside of modeling a manifold hierarchical structures, domains for power and frequencies are the state of the art. Furthermore cache and memory subsystem modeling is mandatory and the connection between hardware components has to be modeled over different abstraction layers. Only with such an extended modeling approach, a more accurate estimation of the system performance becomes feasible.
+To master the rising demands of performance and power efficiency, hardware becomes more and more diverse with a wide spectrum of different cores and hardware accelerators. On the computation front, there is an emergence of specialized processing units that are designed to boost a specific kind of algorithm, like a cryptographic algorithm, or a specific math operation like "multiply and accumulate". As one result, the benefit of a given function from hardware units specialized in different kinds may lead to nonlinear effects between processing units in terms of execution performance of the algorithm: while one function may be processed twice as fast when changing the processing unit, another function may have no benefit at all from the same change. Furthermore the memory hierarchy in modern embedded microprocessor architectures becomes more complex due to multiple levels of caches, cache coherency support, and the extended use of DRAM. In addition to crossbars, modern SoCs connect different clusters of potentially different hardware components via a Network on Chip. Additionally, power and frequency scaling is supported by state of the art SoCs. All these characteristics of modern and performant SoCs (specialized processing units, complex memory hierarchy, network like interconnects and power and frequency scaling) were only partially supported by the former Amalthea hardware model. Therefore, to create models of modern heterogeneous systems, new concepts of representing hardware components in a flexible and easy way are necessary: Our approach supports modeling of manifold hierarchical structures and also domains for power and frequencies. Furthermore, explicit cache modules are available and the possibilities for modeling the whole memory subsystem are extended, the connection between hardware components can be modeled over different abstraction layers. Only with such an extended modeling approach, a more accurate estimation of the system performance of state of the art SoCs becomes feasible.
 
-Our intention is to create a hardware model once at the beginning of a development process. Ideally, the hardware model will be provided by the vendor. All performance relevant information regarding the different features of hardware components like a floating point unit or how hardware components are interconnected should be explicitly represented in the model. The main challenge for a hardware/software performance model is then to determine certain costs, e.g., execution time of a software functionality that is mapped to a processing unit. These costs are sometimes very hard to obtain and, in contrast to the hardware structure, may change during development time. Therefore, the inherent costs of the hardware, e.g., latency of an access path, should be decoupled from the mapping or implementation dependent costs of executing functions. We know from experience that it is necessary to refine these costs multiple times in the development process to increase accuracy of performance estimation. Further this refinement should be possible in an efficient way and support model re-use.
+Our intention is allowing to create a hardware model once at the beginning of a development process. Ideally, the hardware model will be provided by the vendor. All performance relevant attributes regarding the different features of hardware components like a floating point unit or how hardware components are interconnected should be explicitly represented in the model. The main challenge for a hardware/software performance model is then to determine certain costs, e.g. the net execution time of a software functionality mapped to a processing unit. Costs such as execution time, in contrast to the hardware structure, may change during development time - either because the implementation details evolve from initial guess to real-world measurements, the implementation is changed, or the tooling is changed. Therefore, the inherent attributes of the hardware, e.g. latency of an access path, should be decoupled from the mapping or implementation dependent costs of executing functions. We know from experience that it is necessary to refine these costs constantly in the development process to increase accuracy of performance estimation. Refinement denotes incorporation of increasing knowledge about the system. Therefore, such a refinement should be possible in an efficient way and also support re-use of the hardware model. The corresponding concepts are detailed in the following section.
 
 
 h4. Recipe and Feature concept: An outlook of an upcoming approach
+
+_Disclaimer: Please note that the following describes work in progress - what we call "recipes" later is not yet part of the meta-model, and the concept of "features" is not final._
+
+The main driver of the concept described here is separation of implementation dependent details from structural or somehow "solid" information about a hardware/software system. This follows the separation of concerns paradigm, mainly to reduce refinement effort, and foster model re-use: As knowledge about a system grows during development, e.g. by implementing or optimizing functionality as software, the system model should be updated and refined efficiently, while inherent details shall be kept constant and not modified depending on the implementation.
+
+An example should clarify this approach: For timing simulation, we require the net execution time of a software function executed on the processing unit it is mapped onto. This cost of the execution depends on the implementation of the algorithm, for instance, as C++ code, and the tool chain producing the binary code that eventually is executed. In that sense, the *execution needs* of the algorithm (for instance, a certain number of "multiply and accumulate" operations for a matrix operation) are naturally fixed, as well as the *features* provided by the processing unit (for instance, a dedicated MAC unit requiring one tick for one operation, and a generic integer unit requiring 0.5 ticks per operation). However is implementation- and tool-chain-dependent how the actual execution needs of the algorithm are served by the execution units. Without changing the algorithm or the hardware, optimization of the implementation may make better use of the hardware, resulting in reduced execution time. The above naturally draws the lines for our modeling approach: Execution needs (on an algorithmic level) are inherent, as well as features of the hardware. Keeping these information constant in the model is the key for re-use; implementation dependent change of costs, such as lower execution time by an optimized implementation in C++ or better compiler options, change during development and are modeled as *recipe*. A "recipe" thus takes execution needs of software and features of the hardware as input and results in costs, such as the net execution time. Consequently, recipes are the main area of model refinement during development. The concept is illustrated below.
+
+!(scale)../pictures/hardware/user_recipe_concept.png!
+
+Note that flexibility is part of the design of this approach. Execution needs and features are not limited to a given set, and recipes can be almost arbitrary prescripts of computation. This allows to introduce new execution needs when required to favorable detail an algorithm. For instance, the execution need "convolution-VGG16" can be introduced to model a specific need for a deep learning algorithm. The feature "MAC" of the executing processing unit provides costs in ticks corresponding to perform a MAC operation. The recipe valid for the mapping then uses these two attributes to compute the net execution time of "convolution-VGG16" in ticks, for instance, by multiplying the costs of xyz MAC operations with a penalty factor of 0.8. Note that with this approach execution needs may be translated very differently into costs, using different features.
+
+To further motivate this approach, we give some more benefits and examples of beneficial use of the model:
+
+* Given execution needs of a software function that directly correspond the features of processing units, the optimal execution time may be computed (peak performance).
+* While net execution time is the prime example of execution needs, features, and recipes, the concept is not limited to "net execution time recipes", recipes for other performance numbers such as power consumption are possible.
+* Recipes can be attached at different "levels" in the model: At a processing unit and at a mapping. If present, the recipe at mapping level has precedence.
 
 
 h4. General Hardware Model Overview
@@ -18,18 +35,16 @@ The design of the new hardware model is focusing on flexibility and variety to c
 !(scale)../pictures/hardware/user_hw_model_class_diagram.png!
 Class diagram of the hardware model
 
-
 The root element of a hardware model is always the _HwModel_ class that contains all domains (power and frequency), definitions, and hardware features of the different component definitions. The hierarchy within the model is represented by the _HwStructure_ class, with the ability to contain further _HwStructure_ elements. Therewith arbitrary levels of hierarchy could be expressed. Red and blue classes in the figure are the definitions and the main components of a system like a memory or a core.
 
-Figure xxx shows the modeling of a processor. The _ProcessingUnitDefiniton_, which is created once, specifies a processing unit with general information (which can be a CPU, GPU, DSP or any kind of hardware accelerator). Using a definition that may be re-used supports quick modeling for multiple homogeneous components within a heterogeneous architecture. _ProcessingUnits_ then represent the physical instances in the hardware model, referencing the _ProcessingUnitDefiniton_ for generic information, supplemented only with instance specific information like the _FrequencyDomain_.
+The next figure shows the modeling of a processor. The _ProcessingUnitDefiniton_, which is created once, specifies a processing unit with general information (which can be a CPU, GPU, DSP or any kind of hardware accelerator). Using a definition that may be re-used supports quick modeling for multiple homogeneous components within a heterogeneous architecture. _ProcessingUnits_ then represent the physical instances in the hardware model, referencing the _ProcessingUnitDefiniton_ for generic information, supplemented only with instance specific information like the _FrequencyDomain_.
 
 !(scale)../pictures/hardware/user_hw_definition_example.png!
 Link between definitions and module instances (physical components)
 
-
 Yellow represents the power and frequency domains that are always created at the top level of the hardware model. It is possible to model different frequency or voltage values, e.g., when it is possible to set a systems into a power safe mode. All components that reference the domain are then supplied with the corresponding value of the domain.
 
-All the green elements in the figure are related to communication (together with the blue base component _ConnectionHandler_). Green modeling elements represent ports, static connections, and the access elements for the _ProcessingUnits_. These _ProcessingUnits_ are the master modules in the hardware model. The following example shows two _ProcessingUnits_ that are connected via a _ConnectionHandler_ to a _Memory_. There are two different possibilities to specify the access paths for _ProcessingUnits_ like it is shown for ProcessingUnit_2 in figure "[fig:Logical_and_static_connections]":#fig:Logical_and_static_connections. Every time an _HwAccessElement_ is necessary to assign the destination e.g. a _Memory_ component. This _HwAccessElement_ can contain a latency or a data rate dependent on the use case. The second possibility is to create a _HwAccessPath_ within the _HwAccessElement_ which describes the detailed path to the destination by referencing all the _HwConnections_ and _ConnectionHandlers_. It is even possible to reference a cache component within the _HwAccessPath_ to express if the access is cached or non-cached. Furthermore its possible to set addresses for these _HwAccessPath_ to represent the whole address space of a _ProcessingUnit_. A typical approach would be starting with just latency or data rates for the communication between components and enhance the model over time to by switching to the _HwAccessPaths_.
+All the green elements in the figure are related to communication (together with the blue base component _ConnectionHandler_). Green modeling elements represent ports, static connections, and the access elements for the _ProcessingUnits_. These _ProcessingUnits_ are the master modules in the hardware model. The following example shows two _ProcessingUnits_ that are connected via a _ConnectionHandler_ to a _Memory_. There are two different possibilities to specify the access paths for _ProcessingUnits_ like it is shown for ProcessingUnit_2 in figure "[fig:Logical_and_static_connections]":#fig:Logical_and_static_connections. Every time a _HwAccessElement_ is necessary to assign the destination e.g. a _Memory_ component. This _HwAccessElement_ can contain a latency or a data rate dependent on the use case. The second possibility is to create a _HwAccessPath_ within the _HwAccessElement_ which describes the detailed path to the destination by referencing all the _HwConnections_ and _ConnectionHandlers_. It is even possible to reference a cache component within the _HwAccessPath_ to express if the access is cached or non-cached. Furthermore it is possible to set addresses for these _HwAccessPath_ to represent the whole address space of a _ProcessingUnit_. A typical approach would be starting with just latency or data rates for the communication between components and enhance the model over time to by switching to the _HwAccessPaths_.
 
 !(scale)../pictures/hardware/user_hw_access_paths.png!
 Access elements in the hardware model
@@ -37,13 +52,14 @@ Access elements in the hardware model
 
 h4. Current implementation with features and the connection to the SW Model
 
-h5. Connection between HW Features and Runnables
+In the previous chapter the long time goal of the feature and recipe concept is explained. As an intermediate step before introducing the recipes we decided to connect the HwModel and SwModel by referencing to the name of the hardware _FeatureCategories_ from the _ExecutionNeed_ element in a Runnable. The following figure shows this connection between the grey Runnable item block and the white Features block. Due to the mapping (Task or Runnable to ProcessingUnit) the corresponding feature value can be extracted out of the ProcessingUnitDefinition.
 
 !(scale)../pictures/hardware/user_hw_feature_runnable_connection.png!
 
+An example based on the old hardware model is the "instruction per cycle" value (IPC). To model an IPC with the new approach a _HwFeatureCategory_ is created with the name _Instructions_. Inside this category multiple IPC values can be created for different _ProcessingUnitDefinitions_.
 
 !(scale)../pictures/hardware/user_hw_feature_runnable_example.png!
-
+Execution needs example
 
 
 h4. Interpretation of latencies in the model
@@ -59,13 +75,13 @@ In the model read and write access latencies are used. An alternative which is u
 
 The access latency of a _Memory_ component is always added to the read or write latency from the communication elements, independent if its one latency from an _HwAccessElement_ or multiple latencies from a _HwAccessPath_.
 
-As a concrete example for figure xxx in case using only read and write latencies:
+As example in case of using only read and write latencies:
 
 * *totalReadLatency* = readLatency (HwAccessElement) + accessLatency (Memory)
 
 * *totalWriteLatency* = writeLatency (HwAccessElement) + accessLatency (Memory)
 
-As a concrete example for figure xxx in case using an access element with an hw access path:
+An example in case of using an access element with a hardware access path:
 
 _n = Number of path elements_
 
@@ -74,4 +90,5 @@ _n = Number of path elements_
 * *totalWriteLatency* = Sum 1..n ( writeLatency(p) )  + accessLatency (Memory)
 
 PathElements could be _Caches_, _ConnectionHandlers_ and _HwConnections_. In very special cases also a _ProcessingUnit_ can be a _PathElement_ the _ProcessingUnit_ has no direct effect on the latency. In case the user want to express a latency it has to be annotated as _HwFeature_.
+
 

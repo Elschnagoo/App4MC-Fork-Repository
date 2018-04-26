@@ -5215,13 +5215,12 @@ which are belonging together.</xsd:documentation>
   <xsd:element name="ExecutionNeedExtended" type="am:ExecutionNeedExtended"/>
   <xsd:complexType name="NeedEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="key" type="am:HwFeatureCategory"/>
       <xsd:element name="value" type="am:Need"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="key" type="xsd:string"/>
+    <xsd:attribute name="key" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="NeedEntry" type="am:NeedEntry"/>
   <xsd:complexType name="ModeLabelAccess">
