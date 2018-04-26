@@ -170,6 +170,7 @@ import org.eclipse.app4mc.amalthea.model.SenderReceiverWrite;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.StringObject;
+import org.eclipse.app4mc.amalthea.model.StructureType;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.SynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -2223,6 +2224,31 @@ public class CustomItemProviderService {
   }
   
   /**
+   * HwStructureItemProvider
+   */
+  public static String getHwStructureItemProviderImageName(final Object object, final String defaultName) {
+    if ((object instanceof HwStructure)) {
+      StructureType _structureType = ((HwStructure)object).getStructureType();
+      if (_structureType != null) {
+        switch (_structureType) {
+          case SYSTEM:
+            return "HwStructure_System";
+          case ECU:
+            return "HwStructure_ECU";
+          case MICROCONTROLLER:
+            return "HwStructure_Microcontroller";
+          default:
+            return "HwStructure";
+        }
+      } else {
+        return "HwStructure";
+      }
+    } else {
+      return defaultName;
+    }
+  }
+  
+  /**
    * HwFeatureCategoryItemProvider
    */
   public static ViewerNotification getHwFeatureCategoryItemProviderNotification(final Notification notification) {
@@ -3996,7 +4022,7 @@ public class CustomItemProviderService {
     return null;
   }
   
-  public static String getGroupItemProviderImageName(final Object object) {
+  public static String getGroupItemProviderImageName(final Object object, final String defaultName) {
     if ((object instanceof Group)) {
       boolean _xifexpression = false;
       if ((object == null)) {
@@ -4012,8 +4038,9 @@ public class CustomItemProviderService {
         _xifexpression_1 = "unordered";
       }
       return ("Group_" + _xifexpression_1);
+    } else {
+      return defaultName;
     }
-    return null;
   }
   
   /**

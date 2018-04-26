@@ -147,9 +147,18 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object getImage(Object object) {
+	public Object getImageGen(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/HwStructure"));
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public Object getImage(final Object object) {
+		// delegate to custom item provider
+		final String name = CustomItemProviderService.getHwStructureItemProviderImageName(object, "HwStructure");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/" + name));
 	}
 
 	/**

@@ -1220,6 +1220,27 @@ class CustomItemProviderService {
 ///// 
 
 	/*****************************************************************************
+	 * 						HwStructureItemProvider
+	 *****************************************************************************/
+
+	def static String getHwStructureItemProviderImageName(Object object, String defaultName) {
+		if (object instanceof HwStructure) {
+			switch (object.structureType) {
+				case SYSTEM:
+					return "HwStructure_System"
+				case ECU:
+					return "HwStructure_ECU"
+				case MICROCONTROLLER:
+					return "HwStructure_Microcontroller"
+				default:
+					return "HwStructure"
+			}
+		} else {
+			return defaultName
+		}
+	}
+
+	/*****************************************************************************
 	 * 						HwFeatureCategoryItemProvider
 	 *****************************************************************************/
 	def static ViewerNotification getHwFeatureCategoryItemProviderNotification(Notification notification) {
@@ -2054,10 +2075,12 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static String getGroupItemProviderImageName(Object object) {
+	def static String getGroupItemProviderImageName(Object object, String defaultName) {
 		if (object instanceof Group) {
 			val ordered = if(object === null) false else object.isOrdered
 			return "Group_" + if(ordered) "ordered" else "unordered"
+		} else {
+			return defaultName
 		}
 	}
 

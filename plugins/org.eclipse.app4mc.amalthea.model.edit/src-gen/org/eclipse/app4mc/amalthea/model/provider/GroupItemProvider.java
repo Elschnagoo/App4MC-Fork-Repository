@@ -146,7 +146,7 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 	@Override
 	public Object getImage(final Object object) {
 		// delegate to custom item provider
-		final String name = CustomItemProviderService.getGroupItemProviderImageName(object);
+		final String name = CustomItemProviderService.getGroupItemProviderImageName(object, "Group");
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/" + name));
 	}
 
