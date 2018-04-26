@@ -11,6 +11,7 @@
 package org.eclipse.app4mc.amalthea.converters.common.base;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.converters.common.utils.AbstractHelper;
@@ -18,6 +19,9 @@ import org.jdom2.Document;
 
 public interface IPostProcessor {
 
+	public default void addCaches(List<ICache> caches) {
+		
+	}
 	
 	public void process(final Map<File, Document> fileName_documentsMap, final AbstractHelper helper) throws Exception;
 }

@@ -141,14 +141,17 @@ public class ModelMigrationJob extends Job {
 				this.logger.info("=========== START: Migrating AMALTHEA models from : " + entry.getKey() + " to "
 						+ entry.getValue() + " ========== ");
 
-				final Collection<ConverterElement> converterObjects = executeConversion(fileName_documentsMap,
+				/*- Building caches for a specific input model version*/
+				final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
+				
+				final Collection<ConverterElement> converterObjects = executeConversion(caches,fileName_documentsMap,
 						entry.getKey(), entry.getValue());
 
 				allConverters.addAll(converterObjects);
 
 				subMonitor.worked(1);
 
-				executePostProcessors(entry, migStepEntries, allPostProcessorObjectsFromExtensions,
+				executePostProcessors(caches,entry, migStepEntries, allPostProcessorObjectsFromExtensions,
 						fileName_documentsMap);
 
 				this.logger.info("=========== END: Migrating AMALTHEA models from : " + entry.getKey() + " to "
@@ -486,7 +489,7 @@ public class ModelMigrationJob extends Job {
 	 * @param fileName_documentsMap
 	 * @throws Exception
 	 */
-	private void executePostProcessors(final Entry<String, String> executionEntry,
+	private void executePostProcessors(final List<ICache> caches,final Entry<String, String> executionEntry,
 			final List<Entry<String, String>> allEntries,
 			final List<ProcessorElement<IConfigurationElement, List<String>, List<String>>> allPostProcessors,
 			final Map<File, Document> fileName_documentsMap) throws Exception {
@@ -527,8 +530,8 @@ public class ModelMigrationJob extends Job {
 			final Object postProcessor = iConfigurationElement.createExecutableExtension("class");
 
 
+			((IPostProcessor) postProcessor).addCaches(caches);
 			((IPostProcessor) postProcessor).process(fileName_documentsMap, this.helper);
-
 
 		}
 
@@ -758,14 +761,14 @@ public class ModelMigrationJob extends Job {
 		}
 	}
 
-	protected Collection<ConverterElement> executeConversion(final Map<File, Document> fileName_documentsMap,
+	protected Collection<ConverterElement> executeConversion(final List<ICache> caches,final Map<File, Document> fileName_documentsMap,
 			final String inputModelVersion, final String outputModelVersion) throws CoreException, Exception {
 
 		long st;
 		long end;
 		IConfigurationElement[] allConverterExtensions;
 
-		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
+//		final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
 
 		this.logger.trace("Start : Building cache for AMALTHEA models present in : " + inputModelVersion);
 
