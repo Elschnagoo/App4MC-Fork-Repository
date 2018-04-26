@@ -87,7 +87,19 @@ public class HwConverter extends AbstractConverter {
 	}
 
 	 
-
+	/**
+	 * This method is used for the migration of HwModel element inside AMALTHEA model file. 
+	 * Contents of HwModel from 0.8.3 are extracted and are transformed into valid HwModel contents as per 0.9.0.
+	 * <br><b>Note</b>: If multiple AMALTHEA models have HwModel elements, then their contents are extracted and and the below contents are cummilatively stored inside a first HwModel:
+	 * <ol>
+	 * <li>MemoryType</li>
+	 * <li>Quartz</li>
+	 * </ol>
+	 * 
+	 * 
+	 * @param rootElement
+	 * @param oldHWModelElement
+	 */
 	private void migrateHWModel(final Element rootElement, Element oldHWModelElement) {
 		if(oldHWModelElement!=null) {
 
@@ -111,13 +123,16 @@ public class HwConverter extends AbstractConverter {
 				migrateSystem(newHWModelElement, oldHWSystem);
 			}
 
-
 			migrateLatencyAccessPath(oldHWModelElement, newHWModelElement);
 			
 			int indexOf = rootElement.indexOf(oldHWModelElement);
 
+			/*-removal of 0.8.3 HWModel content from AMALTHEA model */
+			
 			rootElement.removeContent(oldHWModelElement); 
 
+			/*-adding newly created hwModel -> 0.9.0 compatible into the AMALTHEA model file */
+			
 			rootElement.addContent(indexOf,newHWModelElement);
 			
 			/*-Migrating custom properties */
@@ -126,7 +141,13 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
-
+/**
+ * This method is used to migrate all the MemoryType elements from 0.8.3 hwModel file to 0.9.0 hwModel
+ * 
+ * <br>Before invocation of HwConverter, HwCacheBuilder is invoked and it has collected all the MemoryType objects across various HwModel's
+ * 
+ * @param newHWModelElement Element. 0.9.0 compatible HwModel element
+ */
 	private void migrateAllMemoryTypes_modelscope(Element newHWModelElement) {
 
 		Collection<Element> oldHW_MemoryType_definitions = hwTransformationCache.old_memory_Types_Definition_Map.values();
@@ -138,7 +159,20 @@ public class HwConverter extends AbstractConverter {
 		
 		
 	}
-
+/**
+ * This method is used to migrate the LatencyAccessPath elements from 0.8.3 to 0.9.0.
+ * 
+ * Equivalent element of LatencyAccessPath in 0.9.0 is : HwAccessElement.
+ * 
+ * <br><b>Note:</b>For HwAccessElement :<ul>
+ * 
+ * <li>source is ProcessingUnit which is containing this HwAccessElement</li>
+ * <li>destination is HwDestination element -> which can be either Memory or ProcessingUnit </li>
+ * </ul>
+ * 
+ * @param oldHWModelElement Element. JDOM Element equivalent to 0.8.3 HwModel 
+ * @param newHWModelElement Element. JDOM Element equivalent to 0.9.0 HwModel
+ */
 	private void migrateLatencyAccessPath(Element oldHWModelElement, Element newHWModelElement) {
 
 		List<Element> oldHWAccessPaths= oldHWModelElement.getChildren("accessPaths");
@@ -176,6 +210,8 @@ public class HwConverter extends AbstractConverter {
 							newHW_Core_ProcessingUnit.addContent(newHW_AccessElements);
 						}
 						
+					}else {
+						this.logger.warn("Unable to migrate LatencyAccessPath from 0.8.3, as the Source type is :"+oldHW_element_type+". Migration is supported only if source element is of type Core");
 					}
 				}
 				
@@ -201,8 +237,8 @@ public class HwConverter extends AbstractConverter {
 						
 						
 					}else {
-						//This destination element can not be migrated, as in new HWModel HWDestination element only support Memory and ProcessingUnit
-						//TODO:log a console message
+						
+						this.logger.warn("Unable to migrate LatencyAccessPath destination from 0.8.3 successfully, as the destination type is :"+oldHW_element_type+". Migration is supported only if target element is of type Memory or Core");
 					}
 					
 					if(newHW_AccessElements!=null) {
@@ -252,8 +288,10 @@ public class HwConverter extends AbstractConverter {
 										newHW_Latency.setAttribute("type", "am:LatencyConstant", this.helper.getGenericNS("xsi"));
 										
 										String oldHW_Latency_Value = oldHW_Latency.getAttributeValue("value");
-										
-										newHW_Latency.setAttribute("cycles", oldHW_Latency_Value);
+
+										if(oldHW_Latency_Value!=null) {
+											newHW_Latency.setAttribute("cycles", oldHW_Latency_Value);
+										}
 										
 									}else if(oldHW_Latency_Type.equals("am:LatencyDeviation")) {
 										newHW_Latency.setAttribute("type", "am:LatencyDeviation", this.helper.getGenericNS("xsi"));
@@ -281,14 +319,20 @@ public class HwConverter extends AbstractConverter {
 				
 			}
 			
-			
-			
-			
 		}
 			
 	}
 
+	/**
+	 * This mehtod is used to migrate NetworkType element from 0.8.3 to ConnectionHandlerDefinition element as per 0.9.0
+	 * 
+	 * @param oldHWModelElement
+	 *            Element. JDOM Element equivalent to 0.8.3 HwModel
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 HwModel
+	 */
 	private void migrateNetworkTypes(Element oldHWModelElement, final Element newHWModelElement) {
+		
 		List<Element> oldHWNetworkTypes = oldHWModelElement.getChildren("networkTypes");
 
 		for (Element oldHWNetworkType : oldHWNetworkTypes) {
@@ -329,7 +373,17 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
-
+	/**
+	 * This mehtod is used to migrate CoreType element from 0.8.3 to ProcessingUnitDefinition element as per 0.9.0
+	 * 
+	 * <b>Note:</b> value of InstructionsPerCycle is converted as HwFeatureCategory and HwFeature#s 
+	 * 		   and the corresponding HwFeature is linked to the ProcessingUnitDefinition
+	 *  
+	 * @param oldHWModelElement
+	 *            Element. JDOM Element equivalent to 0.8.3 HwModel
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 HwModel
+	 */
 	private void migrateCoreTypes(Element oldHWModelElement, final Element newHWModelElement) {
 		List<Element> oldHWCoreTypes = oldHWModelElement.getChildren("coreTypes");
 
@@ -340,6 +394,7 @@ public class HwConverter extends AbstractConverter {
 			Element newHWCoreType=new Element("definitions");
 
 			/*-adding newly created element to the hwmodel*/
+			
 			newHWModelElement.addContent(newHWCoreType);
 
 			newHWCoreType.setAttribute("type", "am:ProcessingUnitDefinition", helper.getGenericNS("xsi"));
@@ -359,6 +414,7 @@ public class HwConverter extends AbstractConverter {
 				List<Element> oldCoreType_Classifiers_List = oldHWCoreType.getChildren("classifiers");
 
 				for (Element oldCoreType_Classifier : oldCoreType_Classifiers_List) {
+					
 					newHWCoreType.addContent(oldCoreType_Classifier.clone());
 				}
 			}
@@ -374,11 +430,11 @@ public class HwConverter extends AbstractConverter {
 				String newHWFeatureCategoryName = "Instructions";
 
 				Element newHWFeatureCategories=new Element("featureCategories");
-				newHWFeatureCategories.setAttribute("name", newHWFeatureCategoryName);
 				
-
+				newHWFeatureCategories.setAttribute("name", newHWFeatureCategoryName);
 
 				if(hwTransformationCache.new_feature_categories_Map.containsKey(newHWFeatureCategoryName)) {
+					
 					newHWFeatureCategories=hwTransformationCache.new_feature_categories_Map.get(newHWFeatureCategoryName);
 				}else {
 					newHWModelElement.addContent(newHWFeatureCategories);
@@ -416,7 +472,16 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
-
+	/**
+	 * This method is used to migrate MemoryType element from 0.8.3 to MemoryDefinition element as per 0.9.0
+	 * 
+	 * <b>Note:</b>If the type of MemoryType element is CACHE, then during the migration CacheDefinition object is created instead of MemoryDefinition
+	 *  
+	 * @param oldHWModelElement_MemoryType
+	 *            Element. JDOM Element equivalent to 0.8.3 MemoryType
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 HwModel
+	 */
 	private void migrateMemoryTypes(Element oldHWModelElement_MemoryType, final Element newHWModelElement) {
 
 		String oldHWMemoryType_name=oldHWModelElement_MemoryType.getAttributeValue("name");
@@ -429,10 +494,15 @@ public class HwConverter extends AbstractConverter {
 		newHWModelElement.addContent(newHWMemoryType);
 		
 		if(oldHWMemoryType_type!=null && oldHWMemoryType_type.equals("CACHE")) {
+			
 			newHWMemoryType.setAttribute("type", "am:CacheDefinition", helper.getGenericNS("xsi"));
+			
 			hwTransformationCache.new_cache_Types_Definition_Map.put(oldHWMemoryType_name, newHWMemoryType);
+			
 		}else {
+			
 			newHWMemoryType.setAttribute("type", "am:MemoryDefinition", helper.getGenericNS("xsi"));
+			
 			hwTransformationCache.new_memory_Types_Definition_Map.put(oldHWMemoryType_name, newHWMemoryType);
 		}
 
@@ -465,10 +535,25 @@ public class HwConverter extends AbstractConverter {
 	
 		}
 
+	 /**
+	 *  This method is used to migrate HwSystem element from 0.8.3 to HwStructure element as per 0.9.0
+	 *  Below are the direct sub-elements of HwSystem which are migrated:
+	 *  
+	 *  <ul>
+	 *  <li>Quartz migrated as FrequencyDomain</li>
+	 *  <li>ECU migrated as HwStructure with type as ECU</li>
+	 *  <li>Memory objects migrated as Memory and Cache based on the type of MemoryDefinition linked to it</li>
+	 *  <li>Network objects migrated as ConnectionHandlers</li>
+	 *  <li>Port objects migrated as HwPort</li>
+	 *  </ul>
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 HwModel
+	 * @param oldHWSystem
+	 *            Element. JDOM Element equivalent to 0.8.3 HwSystem
+	 */
 	private void migrateSystem(final Element newHWModelElement, Element oldHWSystem) {
+		
 		String oldHWSystem_name=oldHWSystem.getAttributeValue("name");
-
-		hwTransformationCache.new_systems_Map.put(oldHWSystem_name, oldHWSystem);
 
 		Element newHWSystem=new Element("structures");
 
@@ -481,7 +566,6 @@ public class HwConverter extends AbstractConverter {
 		newHWModelElement.addContent(newHWSystem);
 
 		hwTransformationCache.new_systems_Map.put(oldHWSystem_name, newHWSystem);
-
 
 		if(!hasProcessedQuartzes) {
 
@@ -514,7 +598,15 @@ public class HwConverter extends AbstractConverter {
 
 
 	}
-
+	 /**
+	 * This mehtod is used to migrate HwPort, ComplexPort element from 0.8.3 to HwPort element as per 0.9.0
+	 * 
+	 * @param oldHWModelElement
+	 *            Element. JDOM Element equivalent to 0.8.3 Core or ECU
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 ProcessingUnit or HwStructure( with type as ECU)
+	 */
+	 
 	private void migratePorts(Element oldHWElement, Element newHWElement) {
 		
 		List<Element> oldHW_ports = oldHWElement.getChildren("ports");
@@ -557,6 +649,23 @@ public class HwConverter extends AbstractConverter {
 			
 		}
 	}
+	
+	 /**
+		 * This mehtod is used to migrate Memory element from 0.8.3 to Memory element or Cache element as per 0.9.0
+		 * 
+		 * Based on the type of MemoryType element (in 0.8.3) -> either Cache element or Memory element are generated in 0.9.0
+		 * 
+		 * -- If type is CACHE, then Cache element is geneerated. For other types, Memory element is generated
+		 * 
+		 * 
+		 * Inside Memory element (of 0.8.3) accordingly, PreScaler and HwPort elements are migrated to appropriate elements in 0.9.0
+		 * 
+		 * @param oldHWModelElement
+		 *            Element. JDOM Element equivalent to 0.8.3 Core or ECU or MicroController or System
+		 * @param newHWModelElement
+		 *            Element. JDOM Element equivalent to 0.9.0 ProcessingUnit or HwStructure( with type as ECU or MicroController or System)
+		 */
+		 
 	
 	private void migrateMemoriesAndCaches(Element oldHWElement, Element newHWStructure_or_PU_Element, boolean migrateCache, boolean migrateMemory) {
 		List<Element> oldHW_Memories = getAllMemories(oldHWElement);
@@ -643,6 +752,17 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 	
+	 /**
+	 * This mehtod is used to migrate Network element from 0.8.3 to ConnectionHandler element as per 0.9.0
+	 * 
+	 *  Inside Memory element (of 0.8.3) accordingly, PreScaler and HwPort elements are migrated to appropriate elements in 0.9.0
+	 *  
+	 * @param oldHWModelElement
+	 *            Element. JDOM Element equivalent to 0.8.3 ECU or MicroController or System
+	 * @param newHWModelElement
+	 *            Element. JDOM Element equivalent to 0.9.0 HwStructure( with type as ECU or MicroController or System)
+	 */
+	
 	private void migrateNetworks(Element oldHWElement, Element newHWStructure) {
 		List<Element> oldHW_Networks = getAllNetworks(oldHWElement);
 
@@ -682,6 +802,11 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
+	/**
+	 * This method is used to fetch all the Network elements inside a ComplexNode of AMALTHEA 0.8.3 - > recursively
+	 * @param oldHW_ComplexNode Element compatible to Network (as per 0.8.3)
+	 * @return List<Element> elements of Network (as per 0.8.3)
+	 */
 	private List<Element> getAllNetworks(Element oldHW_ComplexNode) {
 		List<Element> oldHW_Networks=new ArrayList<Element>();
 		
@@ -699,6 +824,12 @@ public class HwConverter extends AbstractConverter {
 		return oldHW_Networks;
 	}
 	
+	/**
+	 * This method is used to fetch all the Memory elements inside a ComplexNode of AMALTHEA 0.8.3 - > recursively
+	 * @param oldHW_ComplexNode Element compatible to Memory (as per 0.8.3)
+	 * @return List<Element> elements of Memory (as per 0.8.3)
+	 */
+	
 	private List<Element> getAllMemories(Element oldHW_ComplexNode) {
 		List<Element> oldHW_Memories=new ArrayList<Element>();
 		
@@ -715,6 +846,11 @@ public class HwConverter extends AbstractConverter {
 		return oldHW_Memories;
 	}
 
+	/**
+	 * This method is used to fetch all the Sub Memory elements inside a complex node (as per 0.8.3) -> recursively
+	 * @param oldHW_Memories
+	 * @param oldHW_ComplexNodeElements
+	 */
 	private void populateAllSubMemories(List<Element> oldHW_Memories, List<Element> oldHW_ComplexNodeElements) {
 		for (Element oldHWMemory : oldHW_ComplexNodeElements) {
 			
@@ -743,7 +879,11 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 	
-	
+	/**
+	 * This method is used to recursively fetch all Network elements (compatible as per 0.8.3)
+	 * @param oldHW_Networks
+	 * @param oldHW_ComplexNodeElements
+	 */
 	private void populateAllSubNetworks(List<Element> oldHW_Networks, List<Element> oldHW_ComplexNodeElements) {
 		for (Element oldHWNetwork : oldHW_ComplexNodeElements) {
 			
@@ -772,7 +912,11 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
-	
+/**
+ * This method is used to migrate all Core elements present in the model scope as ProcessingUnit elements. 
+ * -- And associate all of them cummilatively inside a single HwStructure (of type MicroController)
+ * @param newHW_MicroController JDOM element ->equivalent to HwStructure element of 0.9.0 
+ */
 	private void migrateAllCores_modelscope(Element newHW_MicroController) {
 		
 		Collection<Element> oldHWCoreElements = hwTransformationCache.old_cores_Map.values();
@@ -783,6 +927,11 @@ public class HwConverter extends AbstractConverter {
 		}
 		
 	}
+	/**
+	 * This method is used to migrate all Quartz elements present in the model scope to FrequencyDomain elements as per 0.9.0
+	 * 
+	 * @param newHWModel JDOM element ->equivalent to HwModel element of 0.9.0 
+	 */
 	private void migrateAllQuartzes_modelscope(Element newHWModel) {
 
 		Collection<Element> oldHWQuartzElements = hwTransformationCache.old_hwQuartzs_Map.values();
@@ -820,6 +969,19 @@ public class HwConverter extends AbstractConverter {
 		}
 	}
 
+	/**
+	 * This method is used to migrate the ECU elements to HwStructure with type as ECU(as per 0.9.0)
+	 * 
+	 * During the migration, below elements contained by the ECU are also migrated:
+	 * <ul>
+	 * <li>Memory to Cache/Memory as per 0.9.0</li>
+	 * <li>Network to ConnectionHandler as per 0.9.0</li>
+	 * <li>HwPort, ComplexPort  to hwPort as per 0.9.0</li>
+	 * <li>MicroController to HwStructure as per 0.9.0</li>
+	 * </ul>
+	 * @param newHWSystem
+	 * @param oldHWEcu
+	 */
 	private void migrateECU(Element newHWSystem, Element oldHWEcu) {
 		String oldHWEcu_name=oldHWEcu.getAttributeValue("name");
 
@@ -859,6 +1021,21 @@ public class HwConverter extends AbstractConverter {
 		migrateCustomProperties(oldHWEcu, newHWEcu);
 	}
 
+	/**
+	 * This method is used to migrate the MicroController to HwStructure with type as MicroController(as per 0.9.0)
+	 * 
+	 * During the migration, below elements contained by the ECU are also migrated:
+	 * <ul>
+	 * <li>Memory to Cache/Memory as per 0.9.0</li>
+	 * <li>Network to ConnectionHandler as per 0.9.0</li>
+	 * <li>HwPort, ComplexPort  to hwPort as per 0.9.0</li>
+	 * <li>MicroController to HwStructure as per 0.9.0</li>
+	 * <li>Core to ProcessingUnit as per 0.9.0</li>
+	 * </ul>
+	 * @param newHWSystem
+	 * @param oldHWEcu
+	 */
+	
 	private void migrateMicroController(Element newHWEcu, Element oldHWMicroController) {
 		String oldHWMicroController_name=oldHWMicroController.getAttributeValue("name");
 
@@ -913,6 +1090,13 @@ public class HwConverter extends AbstractConverter {
 		migrateCustomProperties(oldHWMicroController, newHWMicroController);
 	}
 
+	/**
+	 * This method is used to migrate Core as ProcessingUnit.
+	 * During the migration process, based on the ClockRation of the PreScaler -> appropriate FrequencyDomain is referred to the ProcessingUnit element
+	 * 
+	 * @param newHWMicroController
+	 * @param oldHWCore
+	 */
 	private void migrateCore(Element newHWMicroController, Element oldHWCore) {
 		Element newHWCore=new Element("modules");
 
@@ -950,7 +1134,8 @@ public class HwConverter extends AbstractConverter {
 	}
 
 	/**
-	 * 
+	 * This method is used to migrate a PreScaler to FrequencyDomain.
+	 *  -- ClockRatio of the PreScaler is used to refer appropriate FrequencyDomain 
 	 * @param oldHWElement e.g: Core, Memory
 	 * @param newHWElement
 	 */
