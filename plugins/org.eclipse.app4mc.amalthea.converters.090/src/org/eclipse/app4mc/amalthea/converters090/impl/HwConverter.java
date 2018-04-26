@@ -1072,7 +1072,7 @@ public class HwConverter extends AbstractConverter {
 
 				Element newHWRefElement=new Element(newChildElementName);
 
-				newHWRefElement.setAttribute("href", "amlt:/#"+newHWRefElementName);
+				newHWRefElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(newHWRefElementName));
 
 				newHWElements.add(newHWRefElement);
 

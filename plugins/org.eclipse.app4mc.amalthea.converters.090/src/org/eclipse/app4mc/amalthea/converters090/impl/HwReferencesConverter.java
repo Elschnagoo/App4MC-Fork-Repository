@@ -145,7 +145,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				for(String coreName:coresMap.keySet()) {
 
 					Element puReference=new Element("key");
-					puReference.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnitDefinition");
+					puReference.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnitDefinition");
 					newExtendedSubElement.addContent(puReference);
 
 				}
@@ -284,7 +284,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				for(String coreName:coresMap.keySet()) {
 					 
 					Element memoryElement=new Element("processingUnit");
-					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnit");
 					event.addContent(memoryElement);
 				
 				}
@@ -310,7 +310,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				for(String coreName:coresMap.keySet()) {
 					 
 					Element processingUnitElement=new Element("affinity");
-					processingUnitElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					processingUnitElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnit");
 					taskAllocation.addContent(processingUnitElement);
 				
 				}
@@ -338,7 +338,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				for(String coreName:coresMap.keySet()) {
 					 
 					Element memoryElement=new Element("responsibility");
-					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnit");
 					schedulerAllocation.addContent(memoryElement);
 				
 				}
@@ -353,7 +353,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				for(String coreName:coresMap.keySet()) {
 					 
 					Element memoryElement=new Element("executingPU");
-					memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+					memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnit");
 					schedulerAllocation.addContent(memoryElement);
 				
 				}
@@ -383,7 +383,7 @@ public class HwReferencesConverter extends AbstractConverter {
 					
 					if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
 						Element memoryElement=new Element("memory");
-						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+						memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(memoryName)+"?type=Memory");
 						physicalSectionMapping.addContent(memoryElement);
 					}else {
 						//TODO: log message that memory reference is removed
@@ -414,7 +414,7 @@ public class HwReferencesConverter extends AbstractConverter {
 					
 					if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
 						Element memoryElement=new Element("memory");
-						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+						memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(memoryName)+"?type=Memory");
 						memroyMapping.addContent(memoryElement);
 					}else {
 						//TODO: log message that memory reference is removed
@@ -446,7 +446,7 @@ public class HwReferencesConverter extends AbstractConverter {
 					
 					if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
 						Element memoryElement=new Element("memories");
-						memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+						memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(memoryName)+"?type=Memory");
 						physicalSectionContraint.addContent(memoryElement);
 					}else {
 						//TODO: log message that memory reference is removed
@@ -484,7 +484,7 @@ public class HwReferencesConverter extends AbstractConverter {
 							
 							if(hwTransformationCache.new_memories_Map.containsKey(memoryName)) {
 								Element memoryElement=new Element("memories");
-								memoryElement.setAttribute("href", "amlt:/#"+memoryName+"?type=Memory");
+								memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(memoryName)+"?type=Memory");
 								targetMemory.addContent(memoryElement);
 							}else {
 								//TODO: log message that memory reference is removed
@@ -520,7 +520,7 @@ public class HwReferencesConverter extends AbstractConverter {
 					for(String coreName:coresMap.keySet()) {
 						 
 						Element memoryElement=new Element("cores");
-						memoryElement.setAttribute("href", "amlt:/#"+coreName+"?type=ProcessingUnit");
+						memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(coreName)+"?type=ProcessingUnit");
 						targetCore.addContent(memoryElement);
 					
 					}
