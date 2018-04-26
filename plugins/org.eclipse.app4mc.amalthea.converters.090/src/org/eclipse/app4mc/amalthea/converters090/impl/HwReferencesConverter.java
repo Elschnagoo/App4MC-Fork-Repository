@@ -196,9 +196,16 @@ public class HwReferencesConverter extends AbstractConverter {
 
 						Element newDefaultSubElement=new Element(valueTagName);
 
+						if(valueTagName.equals("default")) {
+							newDefaultSubElement.setAttribute("key", "Instructions");
+						}else {
 						Element newKeyElement=new Element("key");
 
 						newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
+							
+						newDefaultSubElement.addContent(newKeyElement);
+						}
+						
 
 						Element newValueElement=new Element("value");
 
@@ -206,7 +213,6 @@ public class HwReferencesConverter extends AbstractConverter {
 
 						newValueElement.setAttribute("value", oldDefault_value);
 
-						newDefaultSubElement.addContent(newKeyElement);
 
 						newDefaultSubElement.addContent(newValueElement);
 
@@ -219,9 +225,17 @@ public class HwReferencesConverter extends AbstractConverter {
 
 					Element newDefaultSubElement=new Element(valueTagName);
 
-					Element newKeyElement=new Element("key");
+					
+					if(valueTagName.equals("default")) {
+						newDefaultSubElement.setAttribute("key", "Instructions");
+					}else {
+						Element newKeyElement=new Element("key");
 
-					newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
+						newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
+						
+						newDefaultSubElement.addContent(newKeyElement);
+
+					}
 
 					Element newValueElement=new Element("value");
 
@@ -239,7 +253,6 @@ public class HwReferencesConverter extends AbstractConverter {
 
 					}
 
-					newDefaultSubElement.addContent(newKeyElement);
 					newDefaultSubElement.addContent(newValueElement);
 
 
