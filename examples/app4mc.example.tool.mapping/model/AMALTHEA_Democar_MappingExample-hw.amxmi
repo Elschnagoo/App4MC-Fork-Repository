@@ -1,95 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <commonElements>
-    <coreClassifiers name="VLE" description=""/>
-    <coreClassifiers name="PowerArchitectureInstructionSet"/>
-    <coreClassifiers name="FPU"/>
+    <coreClassifiers name="VLE" description="" />
+    <coreClassifiers name="PowerArchitectureInstructionSet" />
+    <coreClassifiers name="FPU" />
   </commonElements>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="e200z6" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU" classifiers="FPU?type=CoreClassifier PowerArchitectureInstructionSet?type=CoreClassifier VLE?type=CoreClassifier"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="e200z0" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU"/>
-    <definitions xsi:type="am:CacheDefinition" name="CACHE_e200z6" nWays="4" coherency="false" exclusive="false" hitRate="0.0">
-      <size value="32" unit="kB"/>
-    </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="SRAM_512KB">
-      <size value="512" unit="kB"/>
+      <size value="512" unit="kB" />
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="SRAM_80KB">
-      <size value="80" unit="kB"/>
+      <size value="80" unit="kB" />
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="FLASH2MB">
-      <size value="2" unit="MB"/>
+      <size value="2" unit="MB" />
     </definitions>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="AMBA_Crossbar" policy="RoundRobin"/>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="AIPS" policy="RoundRobin"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="Ethernet_Definition" puType="Accelerator"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="FlexRay_Definition" puType="Accelerator"/>
+    <definitions xsi:type="am:CacheDefinition" name="CACHE_e200z6">
+      <size value="32" unit="kB" />
+    </definitions>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="e200z0" puType="CPU" classifiers="PowerArchitectureInstructionSet?type=CoreClassifier VLE?type=CoreClassifier FPU?type=CoreClassifier" features="Instructions/IPC_1.0?type=HwFeature" />
     <featureCategories name="Instructions" featureType="performance">
-      <features name="IPC_1.0" value="1.0"/>
+      <features name="IPC_1.0" value="1.0" />
     </featureCategories>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="e200z6" puType="CPU" features="Instructions/IPC_1.0?type=HwFeature" />
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="AMBA_Crossbar" policy="RoundRobin" />
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="AIPS_A" policy="RoundRobin" />
     <structures name="Example System" structureType="System">
-      <structures name="MPC5668G DemoBoard" structureType="ECU">
-        <structures name="MPC5668G" structureType="SoC">
-          <modules xsi:type="am:Memory" name="SRAM_512KB" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="SRAM_512KB?type=MemoryDefinition">
-            <ports name="CONN" bitWidth="64" priority="0" portType="responder"/>
+      <structures name="MPC5668G Demo Board" structureType="ECU">
+        <structures name="MPC5668G" structureType="Microcontroller">
+          <modules name="SRAM_512KB" xsi:type="am:Memory">
+            <definition href="amlt:/#SRAM_512KB%3Ftype%3DMemoryDefinition" />
+            <frequencyDomain href="amlt:/#Q116MHZ?type=FrequencyDomain" />
+            <ports name="CONN_SRAM512KB" bitWidth="64" portType="responder" />
           </modules>
-          <modules xsi:type="am:Memory" name="SRAM_80KB" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="SRAM_80KB?type=MemoryDefinition">
-            <ports name="CONN" bitWidth="64" priority="0" portType="responder"/>
+          <modules name="SRAM_80KB" xsi:type="am:Memory">
+            <definition href="amlt:/#SRAM_80KB%3Ftype%3DMemoryDefinition" />
+            <ports name="CONN_SRAM80KB" bitWidth="64" portType="responder" />
           </modules>
-          <modules xsi:type="am:Memory" name="FLASH2MB">
-            <ports name="CONN_z6" bitWidth="64" priority="0" portType="responder"/>
-            <ports name="CONN_others" bitWidth="64" priority="0" portType="responder"/>
+          <modules name="FLASH2MB" xsi:type="am:Memory">
+            <definition href="amlt:/#FLASH2MB%3Ftype%3DMemoryDefinition" />
+            <frequencyDomain href="amlt:/#Q116MHZ?type=FrequencyDomain" />
+            <ports name="CONN_z6_FLASH2MB" bitWidth="64" portType="responder" />
+            <ports name="CONN_others_FLASH2MB" bitWidth="64" portType="responder" />
           </modules>
-          <modules xsi:type="am:ConnectionHandler" name="AMBA" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="AMBA_Crossbar?type=ConnectionHandlerDefinition">
-            <ports name="e200z0_Port" bitWidth="64" priority="0" portType="responder"/>
-            <ports name="e200z6_Port" bitWidth="64" priority="0" portType="responder"/>
-            <ports name="SRAM80_Port" bitWidth="64" priority="0" portType="initiator"/>
-            <ports name="SRAM512_Port" bitWidth="64" priority="0" portType="initiator"/>
-            <ports name="Flash_Port1" bitWidth="64" priority="0" portType="initiator"/>
-            <ports name="Flash_Port2" bitWidth="64" priority="0" portType="initiator"/>
-            <ports name="FlexRay_Port" bitWidth="64" priority="0" portType="responder"/>
-            <ports name="FET_Port" bitWidth="64" priority="0" portType="responder"/>
-            <ports name="AIPS_A_Port" bitWidth="32" priority="0" portType="initiator"/>
-            <ports name="AIPS_B_Port" bitWidth="32" priority="0" portType="initiator"/>
+          <modules name="Amba Crossbar Switch" xsi:type="am:ConnectionHandler">
+            <definition href="amlt:/#AMBA_Crossbar%3Ftype%3DConnectionHandlerDefinition" />
           </modules>
-          <modules xsi:type="am:ProcessingUnit" name="e200z6" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="e200z6?type=ProcessingUnitDefinition">
-            <ports name="CONN" bitWidth="64" priority="0" portType="initiator"/>
-            <cache name="CACHE_e200z6" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="CACHE_e200z6?type=CacheDefinition"/>
+          <modules name="AIPS_A" xsi:type="am:ConnectionHandler">
+            <definition href="amlt:/#AIPS_A%3Ftype%3DConnectionHandlerDefinition" />
           </modules>
-          <modules xsi:type="am:ProcessingUnit" name="e200z0" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="e200z0?type=ProcessingUnitDefinition>
-            <ports name="CONN" bitWidth="32" priority="0" portType="initiator"/>
+          <modules name="AIPS_B" xsi:type="am:ConnectionHandler">
+            <definition href="amlt:/#AIPS_A%3Ftype%3DConnectionHandlerDefinition" />
           </modules>
-          <modules xsi:type="am:ConnectionHandler" name="AIPS_A" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="AIPS?type=ConnectionHandlerDefinition">
-            <ports name="CONN" bitWidth="32" priority="0" portType="responder"/>
+          <modules xsi:type="am:ProcessingUnit" name="e200z0">
+            <definition href="amlt:/#e200z6%3Ftype%3DProcessingUnitDefinition" />
+            <frequencyDomain href="amlt:/#Q116MHZ__0.5?type=FrequencyDomain" />
+            <ports name="CONN_e200z0" bitWidth="32" portType="initiator" />
           </modules>
-          <modules xsi:type="am:ConnectionHandler" name="AIPS_B" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="AIPS?type=ConnectionHandlerDefinition">
-            <ports name="CONN" bitWidth="32" priority="0" portType="responder"/>
+          <modules xsi:type="am:ProcessingUnit" name="e200z6">
+            <definition href="amlt:/#e200z0%3Ftype%3DProcessingUnitDefinition" />
+            <frequencyDomain href="amlt:/#Q116MHZ?type=FrequencyDomain" />
+            <ports name="CONN_e200z6" bitWidth="64" portType="initiator" />
+            <caches name="CACHE_e200z6" xsi:type="am:Cache">
+              <definition href="amlt:/#CACHE_e200z6%3Ftype%3DCacheDefinition" />
+            </caches>
           </modules>
-          <modules xsi:type="am:ProcessingUnit" name="FlexRay" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="FlexRay_Definition?type=ProcessingUnitDefinition">
-            <ports name="CONN" bitWidth="64" priority="0" portType="initiator"/>
-          </modules>
-          <modules xsi:type="am:ProcessingUnit" name="Ethernet_FEC" frequencyDomain="Q116MHZ?type=FrequencyDomain" definition="Ethernet_Definition?type=ProcessingUnitDefinition">
-            <ports name="CONN" bitWidth="64" priority="0" portType="initiator"/>
-          </modules>
-          <connections name="con1" port1="e200z0/CONN?type=HwPort" port2="AMBA/e200z0_Port?type=HwPort"/>
-          <connections name="con2" port1="e200z6/CONN?type=HwPort" port2="AMBA/e200z6_Port?type=HwPort"/>
-          <connections name="con3" port1="AMBA/SRAM80_Port?type=HwPort" port2="SRAM_80KB/CONN?type=HwPort"/>
-          <connections name="con4" port1="AMBA/SRAM512_Port?type=HwPort" port2="SRAM_512KB/CONN?type=HwPort"/>
-          <connections name="con5" port1="AMBA/Flash_Port1?type=HwPort" port2="FLASH2MB/CONN_z6?type=HwPort"/>
-          <connections name="con6" port1="AMBA/Flash_Port2?type=HwPort" port2="FLASH2MB/CONN_others?type=HwPort"/>
-          <connections name="con7" port1="Ethernet_FEC/CONN?type=HwPort" port2="AMBA/FET_Port?type=HwPort"/>
-          <connections name="con8" port1="FlexRay/CONN?type=HwPort" port2="AMBA/FlexRay_Port?type=HwPort"/>
-          <connections name="con9" port1="AMBA/AIPS_A_Port?type=HwPort" port2="AIPS_A/CONN?type=HwPort"/>
-          <connections name="con10" port1="AMBA/AIPS_B_Port?type=HwPort" port2="AIPS_B/CONN?type=HwPort"/>
+          <modules name="CACHE_e200z6" xsi:type="am:Memory" />
         </structures>
       </structures>
     </structures>
-    <domains xsi:type="am:FrequencyDomain" name="Q116MHZ" clockGating="false">
-      <possibleValues value="116.0" unit="MHz"/>
-      <defaultValue value="116.0" unit="MHz"/>
+    <domains xsi:type="am:FrequencyDomain" name="Q116MHZ">
+      <defaultValue unit="MHz" value="116.0" />
     </domains>
-    <domains xsi:type="am:FrequencyDomain" name="Q58MHZ" clockGating="false">
-      <defaultValue value="58.0" unit="MHz"/>
+    <domains xsi:type="am:FrequencyDomain" name="Q116MHZ__0.5">
+      <defaultValue unit="MHz" value="58.0" />
     </domains>
   </hwModel>
 </am:Amalthea>

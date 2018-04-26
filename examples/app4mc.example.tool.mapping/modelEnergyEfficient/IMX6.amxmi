@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <hwModel>
-    <coreTypes name="Cortex-A9" bitWidth="32" instructionsPerCycle="1">
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="Cortex-A9" puType="CPU" features="Instructions/IPC_1?type=HwFeature">
       <customProperties key="EnEf-Volt_High">
         <value xsi:type="am:DoubleObject" value="1.15" />
       </customProperties>
@@ -14,21 +14,24 @@
       <customProperties key="EnEf-Scale_Low">
         <value xsi:type="am:DoubleObject" value="0.5" />
       </customProperties>
-    </coreTypes>
-    <system name="Homogeneous Example System">
-      <ecus name="Freescale i.MX6 Board">
-        <microcontrollers name="i.MX 6 Series Processor">
-          <cores name="Cortex-A9 #1" coreType="Cortex-A9?type=CoreType">
-            <prescaler name="PS" clockRatio="100.0" quartz="792MHZ+Quartz?type=Quartz" />
-          </cores>
-          <cores name="Cortex-A9 #2" coreType="Cortex-A9?type=CoreType">
-            <prescaler name="PS" clockRatio="100.0" quartz="792MHZ+Quartz?type=Quartz" />
-          </cores>
-        </microcontrollers>
-      </ecus>
-      <quartzes name="792MHZ Quartz" type="DYNAMIC">
-        <frequency unit="MHz" value="792.0" />
-      </quartzes>
-    </system>
+    </definitions>
+    <featureCategories name="Instructions" featureType="performance">
+      <features name="IPC_1" value="1" />
+    </featureCategories>
+    <structures name="Homogeneous Example System" structureType="System">
+      <structures name="Freescale i.MX6 Board" structureType="ECU">
+        <structures name="i.MX 6 Series Processor" structureType="Microcontroller">
+          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #2">
+            <definition href="amlt:/#Cortex-A9%3Ftype%3DProcessingUnitDefinition" />
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #1">
+            <definition href="amlt:/#Cortex-A9%3Ftype%3DProcessingUnitDefinition" />
+          </modules>
+        </structures>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" name="792MHZ Quartz">
+      <defaultValue unit="MHz" value="792.0" />
+    </domains>
   </hwModel>
 </am:Amalthea>
