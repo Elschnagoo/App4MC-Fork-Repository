@@ -20,7 +20,6 @@
         <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="500"/>
         </default>
-        <default/>
         <extended key="Pu2_def?type=ProcessingUnitDefinition">
           <value key="Instructions">
             <value xsi:type="am:NeedConstant" value="800"/>

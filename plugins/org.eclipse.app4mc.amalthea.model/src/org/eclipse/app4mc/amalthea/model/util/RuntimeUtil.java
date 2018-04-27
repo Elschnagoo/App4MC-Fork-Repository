@@ -85,12 +85,12 @@ public class RuntimeUtil {
 
 	/**
 	 * get the execution need value a process would need to execute for a given
-	 * feature set on the given procUnitDef
+	 * feature and the given ProcessUnitdefition 
 	 * 
 	 * @param process
 	 * @param execTimeType
 	 * @param procUnitDef
-	 * @param hwFeatures
+	 * @param hwFeature
 	 * @param modes
 	 * @return execution need count for given process
 	 */
@@ -108,13 +108,13 @@ public class RuntimeUtil {
 
 	/**
 	 * get the ExecutionNeed value count a runnable would need to execute for a
-	 * given feature set on the given procUnitDef
+	 * given feature and the given ProcessUnitdefition
 	 * 
 	 * @param runnable
 	 * @param execTimeType
 	 * @param procUnitDef
 	 * @param modes
-	 * @param hwFeatures
+	 * @param hwFeature
 	 * @return ExecutionNeed value count for given runnable
 	 */
 	public static Long getExecutionNeedValueCountForRunnable(Runnable runnable, TimeType execTimeType,
@@ -172,14 +172,14 @@ public class RuntimeUtil {
 
 	/**
 	 * get a map that contains the value of ExecutionNeedValueCounts for all (in the
-	 * runnables) specified procUnitDefs
+	 * runnables) specified ProcessUnitDefinition
 	 * 
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
-	 * @param hwFeatures
+	 * @param hwFeature
 	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the
-	 *         extended ExecutionNeeds of the process
+	 *         extended ExecutionNeeds of the process for a specific feature
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForProcess(Process process,
 			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
@@ -205,14 +205,13 @@ public class RuntimeUtil {
 
 	/**
 	 * get a map that contains the ExecutionNeedValueCounts for all specified
-	 * procUnitDefs 
-	 * BEWARE: The specified features will be added up without any calculation inbetween
+	 * procUnitDefs - all values will just be added up. No hw-specific transformation
 	 * @param runnable
 	 * @param execTimeType
-	 * @param hwFeatures
+	 * @param hwFeature
 	 * @param modes
 	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the
-	 *         extended ExecutionNeeds of the runnable
+	 *         extended ExecutionNeeds of the runnable for a specific feature
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForRunnable(
 			Runnable runnable, TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
@@ -305,8 +304,10 @@ public class RuntimeUtil {
 			double scaleFactor = 0;
 				if (hwFeatures.contains(feat)) {
 					scaleFactor = feat.getValue();
-					Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
-					executionTime = TimeUtil.addTimes(executionTime, currentTime);
+					if (scaleFactor != 0) {
+						Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+						executionTime = TimeUtil.addTimes(executionTime, currentTime);
+					}
 				}
 		}
 		// float ipc = 1; //procUnit.getDefinition().getExecutionNeedsPerCycle();
@@ -320,9 +321,10 @@ public class RuntimeUtil {
 	 * @param model
 	 * @param process
 	 * @param execTimeType
+	 * @param hwFeature
 	 * @param modes
 	 * @return map ProcessingUnit->Execution time of the extended ExecutionNeeds of
-	 *         the process
+	 *         the process for a specific feature
 	 */
 	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process,
 			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
@@ -356,9 +358,10 @@ public class RuntimeUtil {
 	 * @param model
 	 * @param runnable
 	 * @param execTimeType
+	 * @param hwFeature
 	 * @param modes
 	 * @return map ProcessingUnit->Execution time of the extended ExecutionNeeds of
-	 *         the process for all possible procUnits
+	 *         the process for all possible processingUnits and for a specific feature
 	 */
 	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable,
 			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
@@ -391,11 +394,11 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * convert a number (ExecutionNeeds) into execution time on the given procUnit
+	 * convert a number (ExecutionNeeds) into execution time on the given procUnit for one feature
 	 * 
 	 * @param runnable
 	 * @param execTimeType
-	 * @return time on given procUnit for given ExecutionNeed value count
+	 * @return time on given processing unit and a given feature for ExecutionNeed value count
 	 */
 	public static Time getExecutionTimeForExecutionNeedValueCount(long ExecutionNeedValueCount, ProcessingUnit procUnit,
 			HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
@@ -410,8 +413,10 @@ public class RuntimeUtil {
 		for (HwFeature feat : features) {
 			if (hwFeature.equals(feat)) {
 				scaleFactor = feat.getValue();
-				Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
-				executionTime = TimeUtil.addTimes(executionTime, currentTime);
+				if (scaleFactor != 0) {
+					Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+					executionTime = TimeUtil.addTimes(executionTime, currentTime);
+				}
 			}
 		}
 		return executionTime;
@@ -1230,7 +1235,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * convert a time into an ExecutionNeed value count
+	 * convert a time into an ExecutionNeed value count for one feature
 	 * 
 	 * @param procUnit
 	 * @param time
