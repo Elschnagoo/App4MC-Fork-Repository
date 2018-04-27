@@ -18,7 +18,7 @@ As described above, same scenario is also applicable for AMALTHEA models as they
 
 For each release of AMALTHEA there will be changes in the meta model contents, due to this it is not possible to load models built from previous releases of AMALTHEA into latest tool distribution.
 
-*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous releases (e.g. itea.1.0.3, itea.1.1.0, itea.1.1.1, 0.7.0, 0.7.1, 0.7.2, 0.8.0, 0.8.1, 0.8.2) to the ones which are compatible to the next versions of AMALTHEA meta model.
+*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous releases (e.g. itea.1.0.3, itea.1.1.0, itea.1.1.1, 0.7.0, 0.7.1, 0.7.2, 0.8.0, 0.8.1, 0.8.2,0.8.3) to the ones which are compatible to the next versions of AMALTHEA meta model.
 
 _Only forward migration of models is supported by Model Migration functionality of AMALTHEA_
 

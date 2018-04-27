@@ -499,3 +499,65 @@ table(classic){margin-left:40px}.
 |recurrence, clock |Time|PeriodicStimulus|Stimuli Model|If clock value is *set* for PeriodicStimulus, in this case both recurrence and clock are removed directly from PeriodicStimulus and their values are added inside Scenario element -&gt; contained inside PeriodicStimulus(_which will be migrated to VariableRateStimulus as a part of migration_)|
 |offset |Time|PeriodicStimulus|Stimuli Model|If clock value is *set* for PeriodicStimulus, in this case offset element is removed directly from PeriodicStimulus and its value is added inside Scenario element -&gt; contained inside PeriodicStimulus(_which will be migrated to VariableRateStimulus as a part of migration_) as a CustomProperty with name "offset"|
 |stimulusDeviation|Deviation|PeriodicStimulus |Stimuli Model|If clock value is *set* then stimulusDeviation element is removed from PeriodicStimulus|
+
+h3. Version APP4MC 0.8.3 to APP4MC 0.9.0
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.8.3)_* | *_AMALTHEA Namespace  (version App4MC 0.9.0)_* |
+|http://app4mc.eclipse.org/amalthea/0.8.3 |http://app4mc.eclipse.org/amalthea/0.9.0 |
+
+
+*Below Classes/Interfaces behaviour is changed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.3)_* | *_AMALTHEA sub model_* | *_Changes in behavior (as per 0.9.0)_* |*_Model Migration behavior_* |
+|Memory|HWModel|Memory and Cache are two different elements. Memory can be defined only inside a HwStructure where as Cache can be defined inside HwStructure and ProcessingUnit|Memory element of 0.8.3 is converted either as a Memory elemnt or Cache element based on the type specified for MemoryType element. If the type is specified as *CACHE*, then Memory object _(from 0.8.3)_ is converted as *Cache* element and in other cases it is converted as *Memory*. <br></br>*Note:* _In 0.8.3, Memory element could be contained inside a ComplexNode, as a part of migration : If there is not a possibiity to define either a Cache or Memory inside a specific element then it is added as a part of the corresponding parent HwStructure element_ |
+|HwPort|HWModel|HwPort and ComplexPort elements from 0.8.3 are represented as HwPort in 0.9.0.|For both HwPort and ComplexPort elements, HwPort object is created. Based on the value of attribute master on HwPort or ComplexPort : portType is set either as initiator _(if master=true)_ or responder _(if master=false)_|
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.8.3)_* | *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|RunnableInstructions|SWModel, OSModel|Equivalent element of this class in 0.9.0 is ExecutionNeed.*default* InstructionsConstant,InstructionsDeviation are converted as NeedEntry and the key refers to HwFeatureCategory "Instructions"  |
+|RunnableInstructionsEntry|SWModel, OSModel|Equivalent element of this class in 0.9.0 is ExecutionNeedExtended. Key attribute of ExecutionNeedExtended refer to *ProcessingUnitDefintion* |
+|ECUType|HWModel|There is no equivalent element in 0.9.0|
+|MicroControllerType|HWModel|There is no equivalent element in 0.9.0|
+|SystemType|HWModel|There is no equivalent element in 0.9.0|
+|HWAccessPath|HWModel|There is no equivalent element in 0.9.0. Only LatencyAccessPath is migrated|
+|HWComponent|HWModel|There is no equivalent element in 0.9.0|
+|NestedComponent|HWModel|There is no equivalent element in 0.9.0|
+|PreScaler|HWModel|There is no equivalent element in 0.9.0. Based on to which HW element PreScaler is added ,Quartz of the corresponding element is fetched : value of *clockRatio* is multiplied with the Frequency value of the Quartz and a new FrequencyDomain object is created which contains the obtained Frequency value. Created FrequencyDomain will contain clockratio value in suffix of the name |
+|Quartz|HWModel|Equivalent element of this class in 0.9.0 is FrequencyDomain.|
+|Pin|HWModel|There is no equivalent element in 0.9.0|
+|MemoryType|HWModel|Equivalent element of this class in 0.9.0 is MemoryDefinition. If type is specified as *Cache*, then corresponding element is migrated as *CacheDefinition*, in other cases it will be MemoryDefinition|
+|CoreType|HWModel|Equivalent element of this class in 0.9.0 is ProcessingUnitDefinition.|
+|NetworkType, Bus, Bridge, CrossbarSwitch |HWModel|Equivalent element of these classes in 0.9.0 is ConnectionHandlerDefinition.|
+|LatencyAccessPath|HWModel|Equivalent element of this class in 0.9.0 is HwAccessElement. If the source element of the LatencyAccessPath is Core, in the corresponding ProcessingUnit : HwAccessElement is created and the destination of it is set based on the destination of LatencyAccessPath _(Note: Destination of HwAccessElement can only be Memory or ProcessingUnit)_ |
+|System|HWModel|Equivalent element of this class in 0.9.0 is HwStructure. StructureType is set as System|
+|ECU|HWModel|Equivalent element of this class in 0.9.0 is HwStructure. StructureType is set as ECU|
+|MicroController|HWModel|Equivalent element of this class in 0.9.0 is HwStructure. StructureType is set as Microcontroller|
+|Core|HWModel|Equivalent element of this class in 0.9.0 is ProcessingUnit|
+|Network|HWModel|Equivalent element of this class in 0.9.0 is ConnectionHandler|
+|ComplexPort|HWModel|There is no equivalent element in 0.9.0|
+
+*Below references are removed/changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name(version APP4MC 0.8.3)_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|memories|Memory|TargetMemory|ConstraintsModel|If the Memory object as per 0.8.3 is still Memory in 0.9.0, then reference is unchanged. If Memory in 0.8.3 is migrated as Cache based on the type of MemoryType _(as CACHE in 0.8.3)_ , corresponding reference is removed|
+|memories|Memory|PhysicalSectionConstraint|ConstraintsModel|If the Memory object as per 0.8.3 is still Memory in 0.9.0, then reference is unchanged. If Memory in 0.8.3 is migrated as Cache based on the type of MemoryType _(as CACHE in 0.8.3)_ , corresponding reference is removed|
+|memory|Memory|PhysicalSectionMapping|MappingModel|If the Memory object as per 0.8.3 is still Memory in 0.9.0, then reference is unchanged. If Memory in 0.8.3 is migrated as Cache based on the type of MemoryType _(as CACHE in 0.8.3)_ , corresponding reference is removed|
+|memory|Memory|MemoryMapping|MappingModel|If the Memory object as per 0.8.3 is still Memory in 0.9.0, then reference is unchanged. If Memory in 0.8.3 is migrated as Cache based on the type of MemoryType _(as CACHE in 0.8.3)_ , corresponding reference is removed|
+|cores|Core|TargetCore|ConstraintsModel|instead of Core object, variable Type is updated to corresponding ProcessingUnit element|
+|hardwareContext|ComplexNode|CPUPercentageRequirementLimit|ConstraintModel|variable Type is changed to ProcessingUnit. In 0.8.3 models if an element was referring to any other ComplexNode other than Core, corresponding reference will be removed|
+|core|Core|ProcessEvent|EventModel|variable name is changed from core to processingUnit.Type of the reference is changed to ProcessingUnit|
+|core|Core|ProcessChainEvent|EventModel|variable name is changed from core to processingUnit.Type of the reference is changed to ProcessingUnit|
+|core|Core|RunnableEvent|EventModel|variable name is changed from core to processingUnit.Type of the reference is changed to ProcessingUnit|
+|core|Core|SemaphoreEvent|EventModel|variable name is changed from core to processingUnit.Type of the reference is changed to ProcessingUnit|
+|cores|Core|MicroController|HWModel|variable name is changed from cores to modules.Type of the reference is changed to ProcessingUnit. MicroController class is changed to HwStructure|
+|responsibility|Core|SchdulerAllocation|MappingModel|Type is changed from Core to ProcessingUnit|
+|executingCore|Core|SchdulerAllocation|MappingModel|variable name is changed from executingCore to executingPU. Type is changed from Core to ProcessingUnit|
+|coreAffinity|Core|TaskAllocation|MappingModel|variable name is changed from coreAffinity to affinity. Type is changed from Core to ProcessingUnit|
+|items, runnableItems, computationItems|RunnableInstructions|Group, Runnable, Scheduler|SWModel, OSModel|Type is changed from RunnableInstructions to ExecutionNeed|
