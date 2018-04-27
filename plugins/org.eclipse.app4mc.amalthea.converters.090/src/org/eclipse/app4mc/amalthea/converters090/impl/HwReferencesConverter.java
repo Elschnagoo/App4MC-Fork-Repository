@@ -92,6 +92,8 @@ public class HwReferencesConverter extends AbstractConverter {
 		migrateTaskAllocation(rootElement);
 		
 		migrateRunnableInstructionsEntry(rootElement);
+		
+		migrateCPUPercentageRequirementLimit(rootElement);
 	}
 
 	
@@ -464,6 +466,54 @@ public class HwReferencesConverter extends AbstractConverter {
 			
 		}
 	}
+	
+	
+	private void migrateCPUPercentageRequirementLimit(Element rootElement) {
+		Element constraintsModel = rootElement.getChild("constraintsModel");
+		
+		if(constraintsModel!=null) {
+			List<Element> requirements = constraintsModel.getChildren("requirements");
+			
+			for (Element requirement : requirements) {
+
+				
+				List<Element> limitElements = requirement.getChildren("limit");
+				
+				for (Element limitElement : limitElements) {
+					String limitElementType = limitElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+					if(limitElementType!=null && limitElementType.equals("am:CPUPercentageRequirementLimit")) {
+						
+						Map<String, String> complexNodesMap = this.helper.getMultipleElementsNameandTypeFromAttributeOrChildeElement("hardwareContext", limitElement);
+						
+						limitElement.removeChildren("hardwareContext");
+						limitElement.removeAttribute("hardwareContext");
+						
+						for(String complexNodeName:complexNodesMap.keySet()) {
+							
+							String complexNodeType=complexNodesMap.get(complexNodeName);
+							
+							if(complexNodeType!=null && complexNodeType.equals("Core")) {
+								Element puElement=new Element("hardwareContext");
+								puElement.setAttribute("href", "amlt:/#"+complexNodeName+"?type=ProcessingUnit");
+								limitElement.addContent(puElement);
+							}else {
+								this.helper.logger.warn("As per 0.9.0 : Only ProcessingUnit element can be referred inside CPUPercentageRequirementLimit as a hardwareContext.\r\n Reference of : "+complexNodeName+" of type :" +complexNodeType+" is removed : as it is not valid as per 0.9.0");
+							}
+							
+							 
+						}
+						
+					}
+				}
+			
+				
+				
+			}
+			
+			
+		}
+	}
+	
 	
 	
 	private void migrateTargetMemory(Element rootElement) {
