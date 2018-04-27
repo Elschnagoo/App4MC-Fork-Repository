@@ -236,17 +236,15 @@ Each entry (path) of a __Runnable Probability Switch__ has a probability-value. 
 
 h4. Execution Need
 
+__ExecutionNeed__ allows to specify the required execution "time" in a more abstract way. Multiple __NeedEntries__ can be used to specify execution characteristics. There is a map of default entries and (optional) maps of entries for specific hardware types (e.g. FPGA). These extended entries are also implemented as a map with a processing unit definition as the key.
+
 !../pictures/model_sw_executionneed.png!
 
+A simple approach (equivalent to the __RunnableInstructions__ in older versions of the AMALTHEA model) is the specification of the "number of generic instructions" that have to be executed. Together with the hardware feature "instructions per cycle (IPC)" and the frequency of a processing unit it permits the calculation of the execution time on a specific processing unit.
 
 !../pictures/model_sw_hw_features_executionneed.png!
 
-
-h4. Runnable Instructions
-
-__Runnable Instructions__ allow to specify the default instructions and (optional) the instructions for specific core types (e.g. FPGA). These extended instructions are implemented as a map with the core type as the key.
-
-!../pictures/model_sw_runnableinstructions.png!
+With the generic concept of __ExecutionNeeds__ it is also possible to describe more detailed characteristics, e.g. instruction mixes of floating point operations, integer operations, load/store operations, etc., or any other relevant aspect.
 
 
 h4. Statistical Values
