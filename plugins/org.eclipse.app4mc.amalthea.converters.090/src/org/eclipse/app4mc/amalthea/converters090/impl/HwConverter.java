@@ -459,8 +459,17 @@ public class HwConverter extends AbstractConverter {
 				}
 				
 				hwTransformationCache.new_feature_categories_Map.put(newHWFeatureCategoryName, newHWFeatureCategories);
-			
-				newHWCoreType.setAttribute("features", this.helper.encodeNameForReference(newHWFeatureCategoryName)+"/"+this.helper.encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
+
+				//Adding HwFeature as a part of ProcessingUnitDefinition
+				{
+					
+					Element newHwFeaturesElement=new Element("features");
+					
+					newHwFeaturesElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(newHWFeatureCategoryName)+"/"+this.helper.encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
+					
+					newHWCoreType.addContent(newHwFeaturesElement);
+					
+				}
 
 			}
 			
@@ -504,24 +513,26 @@ public class HwConverter extends AbstractConverter {
 			newHWMemoryType.setAttribute("type", "am:MemoryDefinition", helper.getGenericNS("xsi"));
 			
 			hwTransformationCache.new_memory_Types_Definition_Map.put(oldHWMemoryType_name, newHWMemoryType);
+			
+			Attribute oldHWMemoryType_Classifiers = oldHWModelElement_MemoryType.getAttribute("classifiers");
+
+			if(oldHWMemoryType_Classifiers!=null) {
+
+				newHWMemoryType.setAttribute(oldHWMemoryType_Classifiers.clone());
+			}else {
+				List<Element> oldMemoryType_Classifiers_List = oldHWModelElement_MemoryType.getChildren("classifiers");
+
+				for (Element oldMemoryType_Classifier : oldMemoryType_Classifiers_List) {
+					newHWMemoryType.addContent(oldMemoryType_Classifier.clone());
+				}
+			}
 		}
 
 		if(oldHWMemoryType_name!=null) {
 			newHWMemoryType.setAttribute("name", oldHWMemoryType_name);
 		}
 
-		Attribute oldHWMemoryType_Classifiers = oldHWModelElement_MemoryType.getAttribute("classifiers");
-
-		if(oldHWMemoryType_Classifiers!=null) {
-
-			newHWMemoryType.setAttribute(oldHWMemoryType_Classifiers.clone());
-		}else {
-			List<Element> oldMemoryType_Classifiers_List = oldHWModelElement_MemoryType.getChildren("classifiers");
-
-			for (Element oldMemoryType_Classifier : oldMemoryType_Classifiers_List) {
-				newHWMemoryType.addContent(oldMemoryType_Classifier.clone());
-			}
-		}
+		
 
 		Element oldMemoryType_size = oldHWModelElement_MemoryType.getChild("size");
 
@@ -1257,7 +1268,7 @@ public class HwConverter extends AbstractConverter {
 
 				Element newHWRefElement=new Element(newChildElementName);
 
-				newHWRefElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(newHWRefElementName));
+				newHWRefElement.setAttribute("href", "amlt:/#"+ (newHWRefElementName));
 
 				newHWElements.add(newHWRefElement);
 
@@ -1302,7 +1313,7 @@ public class HwConverter extends AbstractConverter {
 			if(startIndex!=-1) {
 				String oldHWRefElementName = inputString.substring(0, startIndex);
 
-				String newHWRefElementName=this.helper.encodeNameForReference(oldHWRefElementName)+"?type="+newType;
+				String newHWRefElementName= (oldHWRefElementName)+"?type="+newType;
 
 				return newHWRefElementName;
 			}

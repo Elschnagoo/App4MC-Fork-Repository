@@ -487,7 +487,11 @@ public class HwReferencesConverter extends AbstractConverter {
 								memoryElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(memoryName)+"?type=Memory");
 								targetMemory.addContent(memoryElement);
 							}else {
-								//TODO: log message that memory reference is removed
+
+								if(hwTransformationCache.new_caches_Map.containsKey(memoryName)) {
+									this.helper.logger.warn("In 0.8.3, Memory : \""+memoryName+"\" referred as a Target element in AffinityConstraint is no longer a valid Target element. \r\n -- As in 0.9.0 -> this Memory element is transformed to Cache ");
+									
+								}
 							}
 						}
 						
