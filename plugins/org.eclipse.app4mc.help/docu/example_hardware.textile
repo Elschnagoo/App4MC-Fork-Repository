@@ -1,15 +1,36 @@
 
 
-h3. Hwmodel Example
+h3. HwModel Example
 
-This example contains several hardware model examples. These are:
+This example contains two simple hardware models:
 
-*gateway.amxmi*
-which describes how to model master/slave Networks. It shows a Local Interconnect Network(R) (LIN) with one Master, represented by a the microcontroller "Gateway" and two sensors which respond to multiple unique commands. The lin specification is publicly available under "http://www.lin-subbus.org/":http://www.lin-subbus.org/.
+*Example 1: Simple_ECU*
 
-*memory.amxmi*
-which describes how to model memory segments with the AMALTHEA hardware model.
+!(scale)../pictures/example_hw_example_1_diagram.png!
 
-*MPC5668G.amxmi*
-which describes a sample system consisting of a Freescale MPC5668G Demo Board and its SoC.
-It is loosely based on the publicly available information taken from the Freescale website: "Product summary MPC5668G":http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=MPC5668G.
+The example shows a single structure with two identical cores with such an Instruction per cycle feature. The model includes only one frequency domain and no power domain. Each core is connected to all three different memory units via a _HwAccessElement_ with read and write latencies. The memory components include an access latency. This means the total latency for a read and a write access are calculated in the following way:
+
+_TotalReadLatency = readLatency + accessLatency_
+_TotalWriteLatency = writeLatency + accessLatency_
+
+This example shows a very simple hardware modeling approach where no interconnects and ports are necessary. Such a model can be used in a very early design phase where only rough estimations or a limited amount of informations about the system are available.
+
+!../pictures/example_hw_example_1_editor.png!
+
+
+*Example 2: Simple_E_E_Architecture*
+
+!(scale)../pictures/example_hw_example_2_diagram.png!
+
+The second example shows a simple E/E-Architecture out of two identical ECUs. Each ECU contains two cores, one interconnect and a memory component. Both ECUs are connected via a CAN-Bus. In this example both possibilities for a _HwAccessElement_ are shown. The local memory is just connected with read and write latencies and the external memory of the other ECU is connected with the help of a _HwAccessPath_. To use access paths hardware ports and connections between those ports are mandatory. The access paths itself is an ordered list of elements which are used for the connection. As an example for the access path between Core1EC1 and MainMemEC2 following access path elements are referred:
+
+con1 -> internalCan_ECU1 -> con4 -> con9 -> CAN -> con10 -> con8 -> InterconnectEC2 -> con7.
+
+That means the complete access paths includes:
+* 3 x ConnectionHandler
+* 6 x HwConnections
+
+The latency in this case is the sum of all elements of the path plus the access latency of the memory. However latencies at connections are usually only used to account an offset for a specific component. In case a data rate is used the maximum data rate is limited by the lowest data rate in the path. In case of a _ConnectionHandler_ the data rate is usually shared between different accesses.
+The hierarchical ports from both ECUs to connect the CAN Bus with the ECUs as block boxes are not mandatory but recommended. This concept of hierarchical ports increases the number of HwConnections but allows also the structuring of all internal modules within a HwStructure and only connect the hierarchical ports with the rest of the system.
+
+!../pictures/example_hw_example_2_editor.png!
