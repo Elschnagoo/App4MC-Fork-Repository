@@ -946,7 +946,7 @@ public class SoftwareUtil {
 	 * @param procUnitDef - now needed to connect features to procUnits - null returns empty list
 	 * @return List<Entry<String, Need>>
 	 */
-	public static List<Entry<String, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition ProcessingUnitDef, EMap<ModeLabel, ModeLiteral> modes, List<HwFeature> hwFeatures) {
+	public static List<Entry<String, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition ProcessingUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = getRunnableList(process, modes);
 		List<Entry<String, Need>> result = new ArrayList<>();
 		
@@ -966,7 +966,7 @@ public class SoftwareUtil {
 	 */
 	public static List<Entry<String, Need>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Entry<String, Need>> result = new ArrayList<>();
-		if (procUnitDef == null) {
+		if (procUnitDef == null || hwFeatures == null ) {
 			return result;
 		}
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
@@ -977,7 +977,7 @@ public class SoftwareUtil {
 				if(runnableExecutionNeed.getExtended().get(procUnitDef) != null) {
 					for (Entry<String, Need> needEntry :runnableExecutionNeed.getExtended().get(procUnitDef)) {
 						for (HwFeature feature : hwFeatures) {
-							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && procUnitDef.getFeatures().contains(feature)) {
 								result.add(needEntry);
 							}
 						}
@@ -986,7 +986,7 @@ public class SoftwareUtil {
 				} else if(runnableExecutionNeed.getDefault() != null) {
 					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
 						for (HwFeature feature : hwFeatures) {
-							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && procUnitDef.getFeatures().contains(feature)) {
 								result.add(needEntry);
 							}
 						}

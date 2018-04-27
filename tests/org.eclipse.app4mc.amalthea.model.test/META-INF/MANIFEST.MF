@@ -6,6 +6,7 @@ Bundle-Version: 0.9.0.qualifier
 Fragment-Host: org.eclipse.app4mc.amalthea.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.12.0",
- org.apache.log4j;bundle-version="1.2.15"
+ org.apache.log4j;bundle-version="1.2.15",
+ org.eclipse.app4mc.amalthea.model
 Bundle-Vendor: Eclipse APP4MC
 Automatic-Module-Name: org.eclipse.app4mc.amalthea.model.test

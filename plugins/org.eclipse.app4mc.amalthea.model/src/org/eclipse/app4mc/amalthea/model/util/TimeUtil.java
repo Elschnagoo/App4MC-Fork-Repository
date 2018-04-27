@@ -19,7 +19,6 @@ import java.math.BigInteger;
 import java.math.MathContext;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -33,7 +32,7 @@ public class TimeUtil {
 	 * @return 0 if both are equal, >0 if t1>t2, <0 if t1<t2
 	 * 
 	 */
-	public static Long compareTime(AbstractTime t1, AbstractTime t2) {
+	public static Long compareTime(Time t1, Time t2) {
 		List<TimeUnit> unitList = getTimeUnitList();
 		if(t1 == null && t2 == null) {
 			return 0L;
@@ -65,7 +64,7 @@ public class TimeUtil {
 	/**
 	 * Note that: 
 	 * */
-	public static Time addTimes(AbstractTime time1, AbstractTime time2) {
+	public static Time addTimes(Time time1, Time time2) {
 		fixTimeUnit(time1);
 		fixTimeUnit(time2);
 
@@ -75,15 +74,15 @@ public class TimeUtil {
 		
 		int targetIndex = Math.max(unit1index, unit2index);
 	
-		AbstractTime t1 = convertToTimeUnit(time1, units.get(targetIndex));
-		AbstractTime t2 = convertToTimeUnit(time2, units.get(targetIndex));
+		Time t1 = convertToTimeUnit(time1, units.get(targetIndex));
+		Time t2 = convertToTimeUnit(time2, units.get(targetIndex));
 		Time t = adjustTimeUnit(t1.getValue().add(t2.getValue()), units.get(targetIndex));
 		
 		return t;
 	}
 	
 
-	public static AbstractTime subtractTimes(AbstractTime time1, AbstractTime time2) {
+	public static Time subtractTimes(Time time1, Time time2) {
 		fixTimeUnit(time1);
 		fixTimeUnit(time2);
 		
@@ -92,12 +91,12 @@ public class TimeUtil {
 		int unit2index = units.indexOf(time2.getUnit());
 		
 		if(unit1index >= unit2index) {
-			AbstractTime t1 = convertToTimeUnit(time1, time1.getUnit());
-			AbstractTime t2 = convertToTimeUnit(time2, time1.getUnit());
+			Time t1 = convertToTimeUnit(time1, time1.getUnit());
+			Time t2 = convertToTimeUnit(time2, time1.getUnit());
 			return adjustTimeUnit(t1.getValue().subtract(t2.getValue()), time1.getUnit());
 		} else {
-			AbstractTime t1 = convertToTimeUnit(time1, time2.getUnit());
-			AbstractTime t2 = convertToTimeUnit(time2, time2.getUnit());
+			Time t1 = convertToTimeUnit(time1, time2.getUnit());
+			Time t2 = convertToTimeUnit(time2, time2.getUnit());
 			return adjustTimeUnit(t1.getValue().subtract(t2.getValue()), time2.getUnit());
 		}
 	}
@@ -112,7 +111,7 @@ public class TimeUtil {
 	 * @param Value
 	 * @return Time
 	 */
-	public static Time multiplyTime(AbstractTime time, double value) {
+	public static Time multiplyTime(Time time, double value) {
 
 		if(value <= 0) {
 			//should not happen
@@ -133,7 +132,7 @@ public class TimeUtil {
 	 * @param time2
 	 * @return factor between the two times
 	 */
-	public static double divideTimes(AbstractTime time1, AbstractTime time2) {
+	public static double divideTimes(Time time1, Time time2) {
 		List<TimeUnit> units = getTimeUnitList();
 		int unit1index = units.indexOf(time1.getUnit());
 		int unit2index = units.indexOf(time2.getUnit());
@@ -155,7 +154,7 @@ public class TimeUtil {
 	/**
 	 * Prints Time object nicely.
 	 */
-	public static String timeToString(AbstractTime time) {
+	public static String timeToString(Time time) {
 		if(time == null) {
 			return "null";
 		}
@@ -176,7 +175,7 @@ public class TimeUtil {
 	 * I.e. if Value == 0 und TimeUnit is undefined -> set TimeUnit to ms;
 	 * @param time
 	 */
-	private static void fixTimeUnit(AbstractTime time) {
+	private static void fixTimeUnit(Time time) {
 		if(time != null &&
 				time.getValue() != null && 
 				time.getValue().intValue() == 0 && 
@@ -238,7 +237,7 @@ public class TimeUtil {
 	 * Converts a Time object to the given TimeUnit.
 	 * Note: when convert from small unit to bigger unit, the function will round the number e.g 5200Ps = 5Ns
 	 */
-	public static AbstractTime convertToTimeUnit(AbstractTime time, TimeUnit unit) {
+	public static Time convertToTimeUnit(Time time, TimeUnit unit) {
 		if (time.getUnit() == unit) {
 			// Units are the same, no conversion
 			return time;

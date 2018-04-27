@@ -95,11 +95,11 @@ public class RuntimeUtil {
 	 * @return execution need count for given process
 	 */
 	public static Long getExecutionNeedValueCountForProcess(Process process, TimeType execTimeType,
-			ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			ProcessingUnitDefinition procUnitDef, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		long executionNeedCount = 0L;
 		for (Runnable runnable : runnables) {
-			executionNeedCount += getExecutionNeedValueCountForRunnable(runnable, execTimeType, procUnitDef, hwFeatures,
+			executionNeedCount += getExecutionNeedValueCountForRunnable(runnable, execTimeType, procUnitDef, hwFeature,
 					modes);
 		}
 
@@ -118,9 +118,11 @@ public class RuntimeUtil {
 	 * @return ExecutionNeed value count for given runnable
 	 */
 	public static Long getExecutionNeedValueCountForRunnable(Runnable runnable, TimeType execTimeType,
-			ProcessingUnitDefinition procUnitDef, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			ProcessingUnitDefinition procUnitDef, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
+		List<HwFeature> featureList = new ArrayList<>();
+		featureList.add(hwFeature);
 		List<Entry<String, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef,
-				hwFeatures, modes);
+				featureList, modes);
 		return getExecutionNeedValueCountForExecutionNeedList(executionNeedEntries, execTimeType);
 	}
 
@@ -180,12 +182,12 @@ public class RuntimeUtil {
 	 *         extended ExecutionNeeds of the process
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForProcess(Process process,
-			TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnitDefinition, Long> procUnitDefToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 
 		for (Runnable runnable : SoftwareUtil.getRunnableList(process, modes)) {
 			HashMap<ProcessingUnitDefinition, Long> map = getExecutionNeedValueCountExtendedForRunnable(runnable,
-					execTimeType, hwFeatures, modes);
+					execTimeType, hwFeature, modes);
 
 			for (ProcessingUnitDefinition ct : map.keySet()) {
 				Long ic = 0L;
@@ -203,8 +205,8 @@ public class RuntimeUtil {
 
 	/**
 	 * get a map that contains the ExecutionNeedValueCounts for all specified
-	 * procUnitDefs
-	 * 
+	 * procUnitDefs 
+	 * BEWARE: The specified features will be added up without any calculation inbetween
 	 * @param runnable
 	 * @param execTimeType
 	 * @param hwFeatures
@@ -213,7 +215,7 @@ public class RuntimeUtil {
 	 *         extended ExecutionNeeds of the runnable
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForRunnable(
-			Runnable runnable, TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			Runnable runnable, TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnitDefinition, Long> procUnitDefToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 
 		for (ExecutionNeed executionNeed : SoftwareUtil.getExecutionNeedsList(runnable, modes)) {
@@ -224,16 +226,13 @@ public class RuntimeUtil {
 						ic = procUnitDefToIcMap.get(procUnitDef);
 					}
 					for (Entry<String, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
-						// if (hwFeatures.contains(needEntry.getKey())) {
-						for (HwFeature feature : hwFeatures) {
-							if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+							if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey()) &&  procUnitDef.getFeatures().contains(hwFeature)) {
 								ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(),
 										execTimeType);
 							}
-						}
-
 					}
-					procUnitDefToIcMap.put(procUnitDef, ic);
+					if (ic > 0l)
+						procUnitDefToIcMap.put(procUnitDef, ic);
 				}
 			}
 			if (executionNeed.getDefault() != null) {
@@ -243,14 +242,13 @@ public class RuntimeUtil {
 				}
 				for (Entry<String, Need> needEntry : executionNeed.getDefault()) {
 					// if (hwFeatures.contains(needEntry.getKey())) {
-					for (HwFeature feature : hwFeatures) {
-						if (feature.getContainingCategory().getName().equals(needEntry.getKey())) {
+						if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey())) {
 							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
 						}
-					}
-
 				}
-				procUnitDefToIcMap.put(null, ic);
+				if (ic > 0l)
+					procUnitDefToIcMap.put(null, ic);
+				
 			}
 		}
 
@@ -258,15 +256,15 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution time for the given process on the given core
+	 * get the execution time for the given process on the given procUnit
 	 * 
 	 * @param process
 	 * @param execTimeType
-	 * @param core
+	 * @param procUnit
 	 * @param hwFeatures
 	 * @return execution Time of the given process
 	 */
-	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit core,
+	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit procUnit,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		Time executionTime = AmaltheaFactory.eINSTANCE.createTime();
@@ -276,7 +274,7 @@ public class RuntimeUtil {
 		for (Runnable runnable : runnables) {
 			if (runnable != null) {
 				executionTime = TimeUtil.addTimes(executionTime,
-						getExecutionTimeForRunnable(runnable, execTimeType, core, hwFeatures, modes));
+						getExecutionTimeForRunnable(runnable, execTimeType, procUnit, hwFeatures, modes));
 			}
 		}
 
@@ -284,36 +282,39 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution time for the given runnable on the given core
+	 * get the execution time for the given runnable on the given procUnit
 	 * 
 	 * @param runnable
 	 * @param execTimeType
-	 * @param core
+	 * @param procUnit
 	 * @param hwFeatures
 	 * @return execution time of the given runnable
 	 */
-	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit core,
+	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit procUnit,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		long ExecutionNeedValueCount = getExecutionNeedValueCountForRunnable(runnable, execTimeType,
-				core.getDefinition(), hwFeatures, modes);
-		long frequency = HardwareUtil.getFrequencyOfModuleInHz(core);
-		List<HwFeature> features = core.getDefinition().getFeatures();
+		
+		
 		Time executionTime = AmaltheaFactory.eINSTANCE.createTime();
-		// TODO: check
-		double scaleFactor = 0;
+		executionTime.setUnit(TimeUnit.PS);
+		long frequency = HardwareUtil.getFrequencyOfModuleInHz(procUnit);
+		List<HwFeature> features = procUnit.getDefinition().getFeatures();
+		
 		for (HwFeature feat : features) {
-			if (hwFeatures.contains(feat)) {
-				scaleFactor = feat.getValue();
-				Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
-				executionTime = TimeUtil.addTimes(executionTime, currentTime);
-			}
+			long ExecutionNeedValueCount = getExecutionNeedValueCountForRunnable(runnable, execTimeType,
+					procUnit.getDefinition(), feat, modes);
+			double scaleFactor = 0;
+				if (hwFeatures.contains(feat)) {
+					scaleFactor = feat.getValue();
+					Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+					executionTime = TimeUtil.addTimes(executionTime, currentTime);
+				}
 		}
-		// float ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();
+		// float ipc = 1; //procUnit.getDefinition().getExecutionNeedsPerCycle();
 		return executionTime;
 	}
 
 	/**
-	 * get a map that contains the execution for all core for which a procUnitDef
+	 * get a map that contains the execution for all procUnit for which a procUnitDef
 	 * has specified runtime
 	 * 
 	 * @param model
@@ -324,7 +325,7 @@ public class RuntimeUtil {
 	 *         the process
 	 */
 	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process,
-			TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -332,7 +333,7 @@ public class RuntimeUtil {
 		for (Runnable runnable : runnables) {
 			if (runnable != null) {
 				Map<ProcessingUnit, Time> map = getExecutionTimeExtendedForRunnable(model, runnable, execTimeType,
-						hwFeatures, modes);
+						hwFeature, modes);
 				for (ProcessingUnit c : map.keySet()) {
 					Time executionTime = executionTimes.get(c);
 					if (executionTime == null) {
@@ -349,7 +350,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Gets execution times for given runnable on all possible cores (with specified
+	 * Gets execution times for given runnable on all possible procUnits (with specified
 	 * procUnitDef)
 	 * 
 	 * @param model
@@ -357,22 +358,32 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @param modes
 	 * @return map ProcessingUnit->Execution time of the extended ExecutionNeeds of
-	 *         the process for all possible cores
+	 *         the process for all possible procUnits
 	 */
 	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable,
-			TimeType execTimeType, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
+			TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 
+		HashMap<ProcessingUnit, Time> executionTimes = new HashMap<>();
 		HashMap<ProcessingUnitDefinition, Long> procUnitDefToExecutionNeedValueCountMap = getExecutionNeedValueCountExtendedForRunnable(
-				runnable, execTimeType, hwFeatures, modes);
+				runnable, execTimeType, hwFeature, modes);
 
 		for (ProcessingUnitDefinition ct : procUnitDefToExecutionNeedValueCountMap.keySet()) {
-			List<ProcessingUnit> coreWithGivenprocUnitDef = HardwareUtil
+			List<ProcessingUnit> procUnitWithGivenprocUnitDef = HardwareUtil
 					.getAllProcessingUnitsForProcessingUnitDefinition(model, ct);
 
-			for (ProcessingUnit core : coreWithGivenprocUnitDef) {
-				executionTimes.put(core, getExecutionTimeForExecutionNeedValueCount(
-						procUnitDefToExecutionNeedValueCountMap.get(ct), core, hwFeatures, null));
+			for (ProcessingUnit procUnit : procUnitWithGivenprocUnitDef) {
+					if (executionTimes.get(procUnit) == null) {
+					executionTimes.put(procUnit, getExecutionTimeForExecutionNeedValueCount(
+							procUnitDefToExecutionNeedValueCountMap.get(ct), procUnit, hwFeature, null));
+					}
+					else {
+						Time time = null;
+						time = executionTimes.get(procUnit);
+						time = TimeUtil.addTimes(time, 
+								getExecutionTimeForExecutionNeedValueCount(procUnitDefToExecutionNeedValueCountMap.get(ct), procUnit, hwFeature, null));
+						executionTimes.put(procUnit, time);
+						
+					}
 			}
 		}
 
@@ -380,23 +391,24 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * convert a number (ExecutionNeeds) into execution time on the given core
+	 * convert a number (ExecutionNeeds) into execution time on the given procUnit
 	 * 
 	 * @param runnable
 	 * @param execTimeType
-	 * @return time on given core for given ExecutionNeed value count
+	 * @return time on given procUnit for given ExecutionNeed value count
 	 */
-	public static Time getExecutionTimeForExecutionNeedValueCount(long ExecutionNeedValueCount, ProcessingUnit core,
-			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		// float ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();
+	public static Time getExecutionTimeForExecutionNeedValueCount(long ExecutionNeedValueCount, ProcessingUnit procUnit,
+			HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
+		// float ipc = 1; //procUnit.getDefinition().getExecutionNeedsPerCycle();
 
-		long frequency = HardwareUtil.getFrequencyOfModuleInHz(core);
-		List<HwFeature> features = core.getDefinition().getFeatures();
+		long frequency = HardwareUtil.getFrequencyOfModuleInHz(procUnit);
+		List<HwFeature> features = procUnit.getDefinition().getFeatures();
 		Time executionTime = AmaltheaFactory.eINSTANCE.createTime();
+		executionTime.setUnit(TimeUnit.PS);
 		// TODO: check
 		double scaleFactor = 0;
 		for (HwFeature feat : features) {
-			if (hwFeatures.contains(feat)) {
+			if (hwFeature.equals(feat)) {
 				scaleFactor = feat.getValue();
 				Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
 				executionTime = TimeUtil.addTimes(executionTime, currentTime);
@@ -406,21 +418,21 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Calculates the utilization for a given core
+	 * Calculates the utilization for a given procUnit
 	 * 
-	 * @param core
+	 * @param procUnit
 	 * @param model
 	 * @param tt
 	 * @param modes
 	 *            (optional) - null works
-	 * @return utilization of that core
+	 * @return utilization of that procUnit
 	 */
-	public static double getCoreUtilization(ProcessingUnit core, Amalthea model, TimeType tt,
+	public static double getprocUnitUtilization(ProcessingUnit procUnit, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 
-		for (Process proc : DeploymentUtil.getProcessesMappedToCore(core, model)) {
-			utilization += getProcessUtilization(proc, core, model, tt, hwFeatures, modes);
+		for (Process proc : DeploymentUtil.getProcessesMappedToCore(procUnit, model)) {
+			utilization += getProcessUtilization(proc, procUnit, model, tt, hwFeatures, modes);
 		}
 
 		return utilization;
@@ -434,41 +446,41 @@ public class RuntimeUtil {
 	 * @param tt
 	 * @param modes
 	 *            (optional) - null works
-	 * @return map core -> utilization
+	 * @return map procUnit -> utilization
 	 */
 	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnit, Double> utilizations = new HashMap<>();
 
-		Set<ProcessingUnit> cores = DeploymentUtil.getAssignedCoreForProcess(process, model);
+		Set<ProcessingUnit> procUnits = DeploymentUtil.getAssignedCoreForProcess(process, model);
 
-		for (ProcessingUnit core : cores) {
-			double utilization = getProcessUtilization(process, core, model, tt, hwFeatures, modes);
-			utilizations.put(core, utilization);
+		for (ProcessingUnit procUnit : procUnits) {
+			double utilization = getProcessUtilization(process, procUnit, model, tt, hwFeatures, modes);
+			utilizations.put(procUnit, utilization);
 		}
 
 		return utilizations;
 	}
 
 	/**
-	 * Calculates the utilization for a given process on a given core Assumption
-	 * (wrong): All triggers activate the process on all cores together! (at the
+	 * Calculates the utilization for a given process on a given procUnit Assumption
+	 * (wrong): All triggers activate the process on all procUnits together! (at the
 	 * same time)
 	 * 
 	 * @param process
-	 * @param core
+	 * @param procUnit
 	 * @param model
 	 * @param tt
 	 * @param modes
 	 *            (optional) - if none apply, null should be given
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, ProcessingUnit core, Amalthea model, TimeType tt,
+	public static double getProcessUtilization(Process process, ProcessingUnit procUnit, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 
 		List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
-		Time time = getExecutionTimeForProcess(process, tt, core, hwFeatures, modes);
+		Time time = getExecutionTimeForProcess(process, tt, procUnit, hwFeatures, modes);
 		if (time.getValue().compareTo(new BigInteger("0")) < 0) {
 			System.err.println("execTime " + TimeUtil.timeToString(time));
 		}
@@ -488,28 +500,28 @@ public class RuntimeUtil {
 	 * 
 	 * @param process
 	 * @param period
-	 * @param core
+	 * @param procUnit
 	 * @param model
 	 * @param tt
 	 * @param modes
 	 * @return utilization
 	 */
-	public static double getProcessUtilization(Process process, Time period, ProcessingUnit core, Amalthea model,
+	public static double getProcessUtilization(Process process, Time period, ProcessingUnit procUnit, Amalthea model,
 			TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		Time time = getExecutionTimeForProcess(process, tt, core, hwFeatures, modes);
+		Time time = getExecutionTimeForProcess(process, tt, procUnit, hwFeatures, modes);
 		double utilization = (TimeUtil.divideTimes(time, period));
 		return utilization;
 	}
 
 	/**
-	 * Returns the cumulative process utilization, i.e. runtime on every core summed
+	 * Returns the cumulative process utilization, i.e. runtime on every procUnit summed
 	 * up
 	 * 
 	 * @param model
 	 * @param tt
 	 * @param hwFeatures
 	 * @param modes
-	 * @return map process -> sum of utilization on all cores
+	 * @return map process -> sum of utilization on all procUnits
 	 */
 	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -1220,21 +1232,24 @@ public class RuntimeUtil {
 	/**
 	 * convert a time into an ExecutionNeed value count
 	 * 
-	 * @param core
+	 * @param procUnit
 	 * @param time
 	 * @return ExecutionNeed value count
 	 */
-	public static LongObject getExecutionNeedValueCountForTime(ProcessingUnit core, Time time, HwFeature hwFeature) {
+	public static LongObject getExecutionNeedValueCountForTime(ProcessingUnit procUnit, Time time, HwFeature hwFeature) {
 		LongObject needs = AmaltheaFactory.eINSTANCE.createLongObject();
-		// double ipc = 1; //core.getDefinition().getExecutionNeedsPerCycle();
-		long frequency = HardwareUtil.getFrequencyOfModuleInHz(core);
-		double scaleFactor = 1;
-		for (HwFeature feature : core.getDefinition().getFeatures()) {
+		// double ipc = 1; //procUnit.getDefinition().getExecutionNeedsPerCycle();
+		long frequency = HardwareUtil.getFrequencyOfModuleInHz(procUnit);
+		double scaleFactor = 0;
+		for (HwFeature feature : procUnit.getDefinition().getFeatures()) {
 			if (feature.equals(hwFeature)) {
 				scaleFactor = feature.getValue();
 			}
 		}
-
+		if (scaleFactor ==0) {
+			needs.setValue((long)0);
+			return needs;
+		}
 		int power = TimeUnit.VALUES.indexOf(time.getUnit()) - TimeUnit.VALUES.indexOf(TimeUnit.S);
 		double factor = Math.pow(1000, power);
 		if (factor < 1.0)
@@ -1244,7 +1259,7 @@ public class RuntimeUtil {
 		// time to ticks
 		double ticks = time.getValue().doubleValue() / multi;
 		// ticks with ipc to instrcutions
-		needs.setValue((long) (ticks / scaleFactor));
+		needs.setValue((long) (ticks * scaleFactor));
 		return needs;
 	}
 
