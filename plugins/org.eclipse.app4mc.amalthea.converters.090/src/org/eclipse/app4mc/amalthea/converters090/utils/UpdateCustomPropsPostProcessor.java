@@ -19,6 +19,7 @@ public class UpdateCustomPropsPostProcessor implements IPostProcessor {
 
 	private HWTransformationCache hwTransformationCache;
 	
+	
 	public UpdateCustomPropsPostProcessor() {
 	}
 	
@@ -32,6 +33,8 @@ public class UpdateCustomPropsPostProcessor implements IPostProcessor {
 	@Override
 	public void process(Map<File, Document> fileName_documentsMap, AbstractHelper helper) throws Exception {
 
+		List<String> hwTypes_083 =initializeHwTypesList();
+		
 		Collection<Document> values = fileName_documentsMap.values();
 		
 		for (Document document : values) {
@@ -45,12 +48,16 @@ public class UpdateCustomPropsPostProcessor implements IPostProcessor {
 
 				Entry<String, String> entry = helper.getSingleElementsNameandTypeFromAttributeOrChildeElement("value", value_customPropertyElement);
 				
-				value_customPropertyElement.removeAttribute("value");
-				value_customPropertyElement.removeChild("value");
 				
-				if(entry!=null) {
-					String updatedTypeAfterMigration=getUpdatedType(entry.getKey(),entry.getValue());
+				//As the scope of updating references in CustomProperties object is limited to HWModel : Below condition ensures that the type of the element is part of HWModel in 0.8.3
+				if(entry!=null && hwTypes_083.contains(entry.getValue())) {
+					
+					value_customPropertyElement.removeAttribute("value");
+					value_customPropertyElement.removeChild("value");
 
+					String updatedTypeAfterMigration=getUpdatedType(entry.getKey(),entry.getValue());
+					
+					//If more than one file is supplied for model migration: crossdocument references can be used -> due to this reason there is a special convention to generate references with href
 					if(values.size()>1) {
 						Element valueElement=new Element("value");
 						
@@ -70,6 +77,51 @@ public class UpdateCustomPropsPostProcessor implements IPostProcessor {
 			}
 			
 		}
+	}
+
+	/**
+	 * This method initializes a list containing HwModel element types from APP4MC 0.8.3 AMALTHEA model
+	 * @return
+	 */
+	private List<String> initializeHwTypesList() {
+
+		List<String> ls=new ArrayList<String>();
+		
+		ls.add("HWModel");
+		ls.add("ComplexNode");
+		ls.add("HwSystem");
+		ls.add("ECU");
+		ls.add("Microcontroller");
+		ls.add("Core");
+		ls.add("Memory");
+		ls.add("Network");
+		ls.add("Quartz");
+		ls.add("HwComponent");
+		ls.add("HardwareTypeDescription");
+		ls.add("AbstractionType");
+		ls.add("SystemType");
+		ls.add("ECUType");
+		ls.add("MicrocontrollerType");
+		ls.add("CoreType");
+		ls.add("MemoryType");
+		ls.add("NetworkType");
+		ls.add("HwPort");
+		ls.add("Pin");
+		ls.add("ComplexPort");
+		ls.add("ComplexPin");
+		ls.add("Prescaler");
+		ls.add("CrossbarSwitch");
+		ls.add("Bus");
+		ls.add("Bridge");
+		ls.add("LatencyAccessPath");
+		ls.add("HwAccessPath");
+		ls.add("AccessPathRef");
+		ls.add("LatencyConstant");
+		ls.add("LatencyDeviation");
+		ls.add("HwAccessPathRef");
+		ls.add("HwElementRef");
+		
+		return ls;
 	}
 
 	private String getUpdatedType(String name, String value) {
