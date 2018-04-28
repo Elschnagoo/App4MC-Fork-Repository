@@ -142,7 +142,7 @@ public class ModelMigrationJob extends Job {
 						+ entry.getValue() + " ========== ");
 
 				/*- Building caches for a specific input model version*/
-				final List<ICache> caches = getAllCacheObjectsFromExtensions(inputModelVersion);
+				final List<ICache> caches = getAllCacheObjectsFromExtensions(entry.getKey());
 				
 				final Collection<ConverterElement> converterObjects = executeConversion(caches,fileName_documentsMap,
 						entry.getKey(), entry.getValue());
