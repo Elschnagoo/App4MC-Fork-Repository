@@ -11,7 +11,10 @@ Model handling
 * Updated model utilities
 
 Model changes
-* New hardware model
+* *New hardware model*
+* New concept of ExecutionNeed (replaces the former RunnableInstructions)
+
+ __Note: This is the first implementation of the new hardware model. It will be extended in the next version and (minor) changes are expected__.
 
 
 h2. Eclipse APP4MC 0.8.3 (Jan 2018)
