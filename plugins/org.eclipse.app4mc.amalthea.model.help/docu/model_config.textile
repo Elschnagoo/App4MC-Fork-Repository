@@ -1,8 +1,7 @@
 
 h2. Configuration Model
 
-The purpose of the configuration model is to provide a common mechanism for configuration purpose.
-The included configurations can contain elements for further processing or build steps.
+The purpose of the configuration model is to provide a common mechanism for configuration purposes. The included configurations can contain elements for further processing or build steps.
 
 The central element is the __ConfigModel__ class.
 

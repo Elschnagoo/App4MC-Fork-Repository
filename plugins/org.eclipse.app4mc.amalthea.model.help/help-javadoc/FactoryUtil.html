@@ -37,71 +37,76 @@
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor">
-<td class="colFirst"><code>static InstructionsConstant</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createInstructionConstant</a></span>(long&nbsp;instr)</code>
-<div class="block">creates InstructionConstant element</div>
+<tr id="i0" class="altColor"><td class="colFirst"><code>static ExecutionNeed</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createExecutionNeed</a></span>(HwFeature&nbsp;feature,
+                   Need&nbsp;need)</code>
+<div class="block">Creates ExecutionNeed for a feature, need set.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static InstructionsDeviation</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createInstructionWeibullDeviation</a></span>(long&nbsp;min,
-                                 long&nbsp;avg,
-                                 long&nbsp;max,
-                                 float&nbsp;promille)</code>
-<div class="block">returns a created Weibull InstructionDeviation.</div>
+<td class="colFirst"><code>static ExecutionNeed</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createExecutionNeed</a></span>(java.lang.String&nbsp;featureCategory,
+                   Need&nbsp;need)</code>
+<div class="block">Creates ExecutionNeed for a featureCategoryName, need set.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static RunnableInstructions</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createRunnableInstructions</a></span>(Instructions&nbsp;instDev)</code>
-<div class="block">creates RunnableInstruction from an instruction Element</div>
+<td class="colFirst"><code>static NeedConstant</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createExecutionNeedConstant</a></span>(long&nbsp;needValue)</code>
+<div class="block">Creates NeedConstant element.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(java.math.BigInteger&nbsp;value,
-          String&nbsp;unit)</code>&nbsp;</td>
+<td class="colFirst"><code>static NeedDeviation</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createExecutionNeedWeibullDeviation</a></span>(long&nbsp;min,
+                                   long&nbsp;avg,
+                                   long&nbsp;max,
+                                   float&nbsp;promille)</code>
+<div class="block">Returns a created Weibull NeedDeviation.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(int&nbsp;value,
-          String&nbsp;unit)</code>
-<div class="block">creates a time out of a value and a unit given as String (lower case)</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(java.math.BigInteger&nbsp;value,
+          java.lang.String&nbsp;unit)</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(long&nbsp;instructionCount,
-          float&nbsp;ipc,
-          long&nbsp;frequency)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(int&nbsp;value,
+          java.lang.String&nbsp;unit)</code>
+<div class="block">Creates a time out of a value and a unit given as String (lower case).</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(String&nbsp;timeString)</code>
-<div class="block">creates a Time object parsed from a text representation</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(long&nbsp;executionNeedCount,
+          double&nbsp;scaleFactor,
+          long&nbsp;frequency)</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(Time&nbsp;inputTime)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(java.lang.String&nbsp;timeString)</code>
+<div class="block">Creates a Time object parsed from a text representation.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code>static Time</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">createTime</a></span>(Time&nbsp;inputTime)</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static Deviation&lt;LongObject&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">createWeibullDeviation</a></span>(long&nbsp;min,
                       long&nbsp;avg,
                       long&nbsp;max,
                       float&nbsp;promille)</code>
-<div class="block">returns a created Weibull Deviation.</div>
+<div class="block">Returns a created Weibull Deviation.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static WeibullEstimators&lt;LongObject&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">createWeibullEstimator</a></span>(long&nbsp;avgR,
                       float&nbsp;promille)</code>
-<div class="block">returns a created Weibull Estimator.</div>
-</td>
-</tr>
+<div class="block">Returns a created Weibull Estimator.</div></td></tr>
 </tbody></table>
 <ul class="blockList">
 

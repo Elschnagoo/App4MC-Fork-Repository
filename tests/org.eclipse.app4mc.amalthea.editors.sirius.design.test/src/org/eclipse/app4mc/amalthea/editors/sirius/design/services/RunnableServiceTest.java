@@ -94,7 +94,7 @@ public class RunnableServiceTest {
 		SWModel sw = ModelUtil.getOrCreateSwModel(root);
 		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		sw.getRunnables().add(runnable);
-		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(25);
 		runnable.getRunnableItems().add(execNeed);
 		List<Label> result = this.runnS.getLabelWriteAccessesForRunnable(runnable);
 		assertThat(result, notNullValue());
@@ -162,7 +162,7 @@ public class RunnableServiceTest {
 		SWModel sw = ModelUtil.getOrCreateSwModel(root);
 		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		sw.getRunnables().add(runnable);
-		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(25);
 		runnable.getRunnableItems().add(execNeed);
 		List<Label> result = this.runnS.getLabelReadAccessesForRunnable(runnable);
 		assertThat(result, notNullValue());
@@ -180,7 +180,7 @@ public class RunnableServiceTest {
 		SWModel sw = ModelUtil.getOrCreateSwModel(root);
 		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		sw.getRunnables().add(runnable);
-		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(25);
 		runnable.getRunnableItems().add(execNeed);
 		Label label = AmaltheaFactory.eINSTANCE.createLabel();
 		LabelAccess labelA = AmaltheaFactory.eINSTANCE.createLabelAccess();

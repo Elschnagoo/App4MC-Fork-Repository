@@ -28,9 +28,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 public class DeleteElementsUtility {
 
 	/**
-	 * This method is used to perform bulk deletion of EMF model elements inside a specific resource
-	 * @param eObjects Collection<? extends EObject> Elements to be removed
-	 * @param resource Resource. resource to which "elements to be removed" are belonging to 
+	 * Performs bulk deletion of EMF model elements inside a specific resource
+	 * @param eObjects	Collection of elements to be removed
+	 * @param resource	Resource to which "elements to be removed" are belonging to 
 	 */
 	public static void deleteAll(Collection<? extends EObject> eObjects, Resource resource) {
 
@@ -56,9 +56,9 @@ public class DeleteElementsUtility {
 
 	}
 	/**
-	 * This method is used to perform bulk deletion of EMF model elements inside a specific EObject ( e.g: model root like AMALTHEA or SWModel or HWModel)
-	 * @param eObjects Collection<? extends EObject> Elements to be removed
-	 * @param model EObject. Model root 
+	 * Performs bulk deletion of EMF model elements inside a specific EObject ( e.g: model root like AMALTHEA or SWModel or HWModel)
+	 * @param eObjects	Collection of elements to be removed
+	 * @param model		Model root 
 	 */
 	public static void deleteAll(Collection<? extends EObject> eObjects, EObject model) {
 

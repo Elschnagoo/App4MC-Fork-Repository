@@ -69,7 +69,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
 	
@@ -119,7 +119,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
 	
@@ -167,7 +167,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
 	public <T> List<T> getElementsBasedOnType(final Class<T> targetClass) {
@@ -219,7 +219,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<T> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends IReferable> List<T> getElementsBasedOnNameRegex(final Amalthea amalthea,
@@ -287,7 +287,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<T> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends IReferable> List<T> getElementsBasedOnName(final Amalthea amalthea, final String name,
@@ -352,7 +352,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
 
@@ -444,7 +444,7 @@ public class SearchElementsUtility {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from the supplied EObject 
+	 * @return List of matching eObjects from the supplied EObject 
 	 *
 	 */
 	

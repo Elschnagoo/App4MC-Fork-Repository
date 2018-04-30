@@ -228,7 +228,7 @@ public class TaskServiceTest {
 		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
 		
-		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(root, 25);
+		ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(25);
 		run.getRunnableItems().add(execNeed);
 		trc.setRunnable(run);
 		List<Label> result = this.taskS.getAccessedLabelsOfTask(task);

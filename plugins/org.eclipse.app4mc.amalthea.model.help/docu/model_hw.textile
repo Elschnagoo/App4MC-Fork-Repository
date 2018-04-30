@@ -1,7 +1,7 @@
 
 h2. Hardware Model
 
-The AMALTHEA hardware model is used to describe hardware systems which usually consist of ECU, microcontrollers, processing units, memories, connections etc. It is accessible through the __HWModel__ element and contains following top level elements:
+The AMALTHEA hardware model is used to describe hardware systems which usually consist of ECU, micro controllers, processing units, memories, connections etc. It is accessible through the __HWModel__ element and contains following top level elements:
 
 * Definitions
 * Domains

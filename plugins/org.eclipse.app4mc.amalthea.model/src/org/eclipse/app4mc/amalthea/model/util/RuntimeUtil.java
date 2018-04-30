@@ -84,7 +84,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution need value a process would need to execute for a given
+	 * Returns the execution need value a process would need to execute for a given
 	 * feature and the given ProcessUnitdefition 
 	 * 
 	 * @param process
@@ -107,7 +107,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the ExecutionNeed value count a runnable would need to execute for a
+	 * Returns the ExecutionNeed value count a runnable would need to execute for a
 	 * given feature and the given ProcessUnitdefition
 	 * 
 	 * @param runnable
@@ -127,7 +127,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * converts a list of ExecutionNeed-Entry elements into a number (ExecutionNeeds
+	 * Converts a list of ExecutionNeed-Entry elements into a number (ExecutionNeeds
 	 * executed)
 	 * 
 	 * @param ExecutionNeedEntries
@@ -144,7 +144,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * converts a Need element into a number
+	 * Converts a Need element into a number
 	 * 
 	 * @param needValue
 	 * @param execTimeType
@@ -171,14 +171,14 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get a map that contains the value of ExecutionNeedValueCounts for all (in the
+	 * Returns a map that contains the value of ExecutionNeedValueCounts for all (in the
 	 * runnables) specified ProcessUnitDefinition
 	 * 
 	 * @param process
 	 * @param execTimeType
 	 * @param modes
 	 * @param hwFeature
-	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the
+	 * @return Map: ProcessingUnitDefinition -&gt; ExecutionNeed value count of the
 	 *         extended ExecutionNeeds of the process for a specific feature
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForProcess(Process process,
@@ -204,13 +204,13 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get a map that contains the ExecutionNeedValueCounts for all specified
+	 * Returns a map that contains the ExecutionNeedValueCounts for all specified
 	 * procUnitDefs - all values will just be added up. No hw-specific transformation
 	 * @param runnable
 	 * @param execTimeType
 	 * @param hwFeature
 	 * @param modes
-	 * @return map ProcessingUnitDefinition->ExecutionNeed value count of the
+	 * @return Map: ProcessingUnitDefinition -&gt; ExecutionNeed value count of the
 	 *         extended ExecutionNeeds of the runnable for a specific feature
 	 */
 	public static HashMap<ProcessingUnitDefinition, Long> getExecutionNeedValueCountExtendedForRunnable(
@@ -255,12 +255,13 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution time for the given process on the given procUnit
+	 * Returns the execution time for the given process on the given procUnit
 	 * 
 	 * @param process
 	 * @param execTimeType
 	 * @param procUnit
 	 * @param hwFeatures
+	 * @param modes
 	 * @return execution Time of the given process
 	 */
 	public static Time getExecutionTimeForProcess(Process process, TimeType execTimeType, ProcessingUnit procUnit,
@@ -281,12 +282,13 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get the execution time for the given runnable on the given procUnit
+	 * Returns the execution time for the given runnable on the given procUnit
 	 * 
 	 * @param runnable
 	 * @param execTimeType
 	 * @param procUnit
 	 * @param hwFeatures
+	 * @param modes
 	 * @return execution time of the given runnable
 	 */
 	public static Time getExecutionTimeForRunnable(Runnable runnable, TimeType execTimeType, ProcessingUnit procUnit,
@@ -315,7 +317,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get a map that contains the execution for all procUnit for which a procUnitDef
+	 * Returns a map that contains the execution for all procUnit for which a procUnitDef
 	 * has specified runtime
 	 * 
 	 * @param model
@@ -323,7 +325,7 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @param hwFeature
 	 * @param modes
-	 * @return map ProcessingUnit->Execution time of the extended ExecutionNeeds of
+	 * @return Map: ProcessingUnit -&gt; Execution time of the extended ExecutionNeeds of
 	 *         the process for a specific feature
 	 */
 	public static HashMap<ProcessingUnit, Time> getExecutionTimeExtendedForProcess(Amalthea model, Process process,
@@ -360,7 +362,7 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @param hwFeature
 	 * @param modes
-	 * @return map ProcessingUnit->Execution time of the extended ExecutionNeeds of
+	 * @return Map: ProcessingUnit -&gt; Execution time of the extended ExecutionNeeds of
 	 *         the process for all possible processingUnits and for a specific feature
 	 */
 	public static Map<ProcessingUnit, Time> getExecutionTimeExtendedForRunnable(Amalthea model, Runnable runnable,
@@ -394,13 +396,15 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * convert a number (ExecutionNeeds) into execution time on the given procUnit for one feature
+	 * Converts a number (ExecutionNeeds) into execution time on the given procUnit for one feature
 	 * 
-	 * @param runnable
-	 * @param execTimeType
-	 * @return time on given processing unit and a given feature for ExecutionNeed value count
+	 * @param executionNeedValueCount
+	 * @param procUnit
+	 * @param hwFeature
+	 * @param modes
+	 * @return Time on given processing unit and a given feature for ExecutionNeed value count
 	 */
-	public static Time getExecutionTimeForExecutionNeedValueCount(long ExecutionNeedValueCount, ProcessingUnit procUnit,
+	public static Time getExecutionTimeForExecutionNeedValueCount(long executionNeedValueCount, ProcessingUnit procUnit,
 			HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		// float ipc = 1; //procUnit.getDefinition().getExecutionNeedsPerCycle();
 
@@ -414,7 +418,7 @@ public class RuntimeUtil {
 			if (hwFeature.equals(feat)) {
 				scaleFactor = feat.getValue();
 				if (scaleFactor != 0) {
-					Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+					Time currentTime = FactoryUtil.createTime(executionNeedValueCount, scaleFactor, frequency);
 					executionTime = TimeUtil.addTimes(executionTime, currentTime);
 				}
 			}
@@ -449,9 +453,10 @@ public class RuntimeUtil {
 	 * @param process
 	 * @param model
 	 * @param tt
+	 * @param hwFeatures
 	 * @param modes
 	 *            (optional) - null works
-	 * @return map procUnit -> utilization
+	 * @return map procUnit -&gt; utilization
 	 */
 	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -476,6 +481,7 @@ public class RuntimeUtil {
 	 * @param procUnit
 	 * @param model
 	 * @param tt
+	 * @param hwFeatures
 	 * @param modes
 	 *            (optional) - if none apply, null should be given
 	 * @return utilization
@@ -501,7 +507,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * calculate the process utilization
+	 * Calculates the process utilization
 	 * 
 	 * @param process
 	 * @param period
@@ -526,7 +532,7 @@ public class RuntimeUtil {
 	 * @param tt
 	 * @param hwFeatures
 	 * @param modes
-	 * @return map process -> sum of utilization on all procUnits
+	 * @return map process -&gt; sum of utilization on all procUnits
 	 */
 	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -552,7 +558,8 @@ public class RuntimeUtil {
 	 * gets all Period ranges from the model
 	 * 
 	 * @param model
-	 * @return
+	 * @param tt
+	 * @param modes
 	 */
 	public static Map<Process, List<Time>> getPeriodsOfAllProcesses(Amalthea model, TimeType tt,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -577,7 +584,6 @@ public class RuntimeUtil {
 	 * @param process
 	 * @param tt
 	 * @param modes
-	 * @return
 	 */
 	public static List<Time> getPeriodsOfProcess(Amalthea model, Process process, TimeType tt,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -762,12 +768,12 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * this method return all Processes that trigger the given InterProcessStimulus
+	 * Returns all Processes that trigger the given InterProcessStimulus
 	 * 
 	 * @param model
 	 * @param ip
 	 * @param modes
-	 * @return map process -> prescaler value
+	 * @return map process -&gt; prescaler value
 	 */
 	public static Map<Process, Long> getTriggeringProcesses(Amalthea model, InterProcessStimulus ip,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -789,9 +795,8 @@ public class RuntimeUtil {
 	 * Returns a map of all stimuli, triggered by this process, associated with its
 	 * prescaler.
 	 * 
-	 * @param p
-	 *            - the process
-	 * @return
+	 * @param process
+	 * @param modes
 	 */
 	public static HashMap<Stimulus, Long> getTriggeredStimuli(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Stimulus, Long> stimuliMap = new HashMap<Stimulus, Long>();
@@ -812,11 +817,10 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get a Map of all sporadically triggered processes with their prescaler
+	 * Returns a Map of all sporadically triggered processes with their prescaler
 	 * 
 	 * @param model
 	 * @param tt
-	 * @param processes
 	 * @return Map of processes with a sporadic activation and depending on tt the
 	 *         time between activations
 	 */
@@ -847,11 +851,9 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * get a Map of all sporadically triggered processes with their prescaler
+	 * Returns a Map of all sporadically triggered processes with their prescaler
 	 * 
 	 * @param model
-	 * @param tt
-	 * @param processes
 	 * @return Map of processes with a sporadic activation and the deviation of the
 	 *         activations
 	 */
@@ -873,12 +875,11 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * this method returns a map from process to all stimuli (matching filter) that
+	 * Returns a map from process to all stimuli (matching filter) that
 	 * lead to that process with the correct prescaler
 	 * 
 	 * @param model
-	 * @param targetClass
-	 * @return Map<Process, Map<Stimulus, Long>>
+	 * @param filter
 	 */
 	public static <T> Map<Process, Map<Stimulus, Long>> getPlainTriggersForModel(Amalthea model,
 			Function<Stimulus, Boolean> filter) {
@@ -897,14 +898,11 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * this method returns all stimuli (matching filter) that trigger the given
-	 * process
+	 * Returns all stimuli (matching filter) that trigger the given process
 	 * 
 	 * @param model
 	 * @param process
 	 * @param depthCounter
-	 * @param targetClass
-	 * @return Map<Stimulus, Long>
 	 */
 	public static <T> Map<Stimulus, Long> getPlainTriggerForProcess(Amalthea model, Process process, long depthCounter,
 			Function<Stimulus, Boolean> filter) {
@@ -1096,13 +1094,11 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * This method returns a list of all procUnitDefs for which the given runnable
+	 * Returns a list of all ProcessingUnitDefinitions for which the given runnable
 	 * contains runtime in a ExecutionNeed element
 	 * 
 	 * @param runnable
-	 * @param execTimeType
 	 * @param modes
-	 * @return List<ProcessingUnitDefinition>
 	 */
 	public static List<ProcessingUnitDefinition> getprocUnitDefsWithSpecifiedExecutionNeedsOfRunnable(Runnable runnable,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -1121,22 +1117,22 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * add Runtime (given as ExecutionNeed) to an existing Runnable currently
+	 * Adds Runtime (given as ExecutionNeed) to an existing Runnable currently
 	 * without consideration of modes //TODO: Mode-based API
 	 * 
 	 * @param runnable
-	 * @param ExecutionNeeds
+	 * @param executionNeeds
 	 */
 	public static void addRuntimeToRunnable(Runnable runnable, ExecutionNeed executionNeeds) {
 		runnable.getRunnableItems().add(executionNeeds);
 	}
 
 	/**
-	 * Create a new Runnable with the given runtime and create a Callsequence at
+	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
 	 * 
 	 * @param process
-	 * @param ExecutionNeeds
+	 * @param executionNeeds
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed executionNeeds,
 			String runnableName, PositionType positon) {
@@ -1164,7 +1160,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * clears all runtime information, for all procUnitDefs, for all modes
+	 * Clears all runtime information, for all procUnitDefs, for all modes
 	 * 
 	 * @param runnable
 	 *            if procUnitDef == null, delete all ExecutionNeed from that

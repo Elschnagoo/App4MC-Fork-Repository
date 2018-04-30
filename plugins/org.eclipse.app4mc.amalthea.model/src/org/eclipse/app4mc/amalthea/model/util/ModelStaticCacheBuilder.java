@@ -32,11 +32,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 /**
  * This class is used to build the cache of the entire EMF model and fetch the elements accordingly. <br>
  * 
- *		 <t/><i>This approach improves the performance of fetching the model elements based on name.</i><br>
+ *		 <i>This approach improves the performance of fetching the model elements based on name.</i><br>
  * 
  * <b>Note:</b>: Cache is built only once and it is not updated on model changes. <br>
  * 
- * <b>Recommendation:</b> This class shall be used in scenarios where <b>"no" EMF model changes occur </b> --> once the object of this class is created<br>
+ * <b>Recommendation:</b> This class shall be used in scenarios where <b>"no" EMF model changes occur </b> --&gt; once the object of this class is created<br>
  * 
  *
  */
@@ -119,7 +119,7 @@ public class ModelStaticCacheBuilder {
 	 * @param name String. name of the Amalthea model element (e.g: Label name) 
 	 * @param targetClass Class of the Amalthea model element (e.g: Label, Runnable, Task, ISR etc.,) 
 	 *  <br> <i><u>Note</u></i> : Supplied "Class" should be concrete class, for which EObject is created. <br><i>Super class/Interface/Abstract classes are not supported</i> 
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
     @SuppressWarnings("unchecked")
@@ -139,10 +139,10 @@ public class ModelStaticCacheBuilder {
     
     /**
    	 * This method is used to get the Amalthea model elements based on the supplied regex for name and targetClass parameters
-   	 * @param regexForName String. name regex of the Amalthea model element (e.g: Label name) 
+   	 * @param regularExpression String. name regex of the Amalthea model element (e.g: Label name) 
    	 * @param targetClass Class of the Amalthea model element (e.g: Label, Runnable, Task, ISR etc.,) 
    	 *  <br> <i><u>Note</u></i> : Supplied "Class" should be concrete class, for which EObject is created. <br><i>Super class/Interface/Abstract classes are not supported</i> 
-   	 *@return List<EObject> matching eObjects from Amalthea model
+   	 *@return List of matching eObjects from Amalthea model
    	 *
    	 */
     @SuppressWarnings("unchecked")
@@ -180,7 +180,7 @@ public class ModelStaticCacheBuilder {
    	 * This method is used to get the Amalthea model elements based on the supplied targetClass parameter
    	 * @param targetClass Class of the Amalthea model element (e.g: Label, Runnable, Task, ISR etc.,) 
    	 *  <br> <i><u>Note</u></i> : Supplied "Class" should be concrete class, for which EObject is created. <br><i>Super class/Interface/Abstract classes are not supported</i> 
-   	 * @return List<EObject> matching eObjects from Amalthea model
+   	 * @return List of matching eObjects from Amalthea model
    	 *
    	 */
     public <T> List<T> getElementsBasedOnType(final Class<T> targetClass){

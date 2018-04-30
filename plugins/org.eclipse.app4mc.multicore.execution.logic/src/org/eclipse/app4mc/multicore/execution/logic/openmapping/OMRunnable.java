@@ -67,7 +67,6 @@ public class OMRunnable {
 	}
 
 	private long parseRunnableItems(final EList<RunnableItem> runnableItemsList) {
-		Amalthea amalthea = ModelUtil.getParentContainer(runnableRef, Amalthea.class);
 		// Process all RunnableItems and search for instructions
 		final Iterator<RunnableItem> itRunnableItems = runnableItemsList.iterator();
 		while (itRunnableItems.hasNext()) {
@@ -75,7 +74,7 @@ public class OMRunnable {
 
 			if (runnableItem instanceof ExecutionNeed) {
 				final ExecutionNeed execNeed = (ExecutionNeed) runnableItem;
-				final Need abstractNeed = InstructionsUtil.getDefaultNeed(amalthea, execNeed);
+				final Need abstractNeed = InstructionsUtil.getDefaultNeed(execNeed);
 				if (abstractNeed == null) {
 					UniversalHandler.getInstance().log(" Unexpected SWModel.\nexecution need is not set!\nSkipping...",
 							null);

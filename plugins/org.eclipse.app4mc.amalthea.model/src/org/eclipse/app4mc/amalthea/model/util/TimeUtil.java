@@ -26,10 +26,10 @@ import org.eclipse.app4mc.amalthea.model.TimeUnit;
 public class TimeUtil {
 
 	/**
-	 * compares two Times 
-	 * @param Time t1
-	 * @param Time t2
-	 * @return 0 if both are equal, >0 if t1>t2, <0 if t1<t2
+	 * Compares two Times 
+	 * @param t1
+	 * @param t2
+	 * @return 0 if both are equal, positive value if t1 greater than t2, negative value if t1 less than t2
 	 * 
 	 */
 	public static Long compareTime(Time t1, Time t2) {
@@ -107,9 +107,9 @@ public class TimeUtil {
 	 * Multiplies a Time object by a factor of type long. Checks if there
 	 * is an integer overflow.
 	 * 
-	 * @param Time
-	 * @param Value
-	 * @return Time
+	 * @param time
+	 * @param value
+	 * @return time
 	 */
 	public static Time multiplyTime(Time time, double value) {
 
@@ -163,7 +163,7 @@ public class TimeUtil {
 
 	
 	/**
-	 * get a list with all possible Units
+	 * Returns a list with all possible Units
 	 * @return TimeUnit.VALUES
 	 */
 	public static List<TimeUnit> getTimeUnitList() {	
@@ -187,8 +187,8 @@ public class TimeUtil {
 	
 	/**
 	 * This methods adjusts the value to the first storable format
-	 * if (value < 1) then scale by 1000 and check again  
-	 * @param value
+	 * if (value &lt; 1) then scale by 1000 and check again  
+	 * @param runtime
 	 * @param timeUnit
 	 * @return
 	 */

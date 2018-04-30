@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * 
  * This approach improves the performance of fetching the model elements based on name. In case there are modifications in the model data, cache is automatically updated (which could cost additional performance for rebuilding it)
  * 
- * <b>Note:</b>: Cache will be updated (on each model change) --> lazily on the first access of the getter methods after the EMF model change.
+ * <b>Note:</b>: Cache will be updated (on each model change) --&gt; lazily on the first access of the getter methods after the EMF model change.
  * 
  *
  */
@@ -138,7 +138,7 @@ public class ModelDynamicCacheBuilder {
 	 * @param name String. name of the Amalthea model element (e.g: Label name) 
 	 * @param targetClass Class of the Amalthea model element (e.g: Label, Runnable, Task, ISR etc.,) 
 	 *  <br> <i><u>Note</u></i> : Supplied "Class" should be concrete class, for which EObject is created. <br><i>Super class/Interface/Abstract classes are not supported</i> 
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
     @SuppressWarnings("unchecked")
@@ -177,7 +177,7 @@ public class ModelDynamicCacheBuilder {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
     @SuppressWarnings("unchecked")
@@ -227,7 +227,7 @@ public class ModelDynamicCacheBuilder {
 	 *            class, for which EObject is created. <br>
 	 *            <i>Super class/Interface/Abstract classes are not
 	 *            supported</i>
-	 * @return List<EObject> matching eObjects from Amalthea model
+	 * @return List of matching eObjects from Amalthea model
 	 *
 	 */
     public <T> List<T> getElementsBasedOnType(final Class<T> targetClass){

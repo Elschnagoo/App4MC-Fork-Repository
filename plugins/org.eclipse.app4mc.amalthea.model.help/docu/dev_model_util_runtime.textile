@@ -5,6 +5,7 @@ h3. Runtime Utilities
 
 * "RuntimeUtil":../help-javadoc/RuntimeUtil.html
 
+* "RuntimeUtil.AccessDirection":../help-javadoc/RuntimeUtil.AccessDirection.html
 * "RuntimeUtil.PositionType":../help-javadoc/RuntimeUtil.PositionType.html
 * "RuntimeUtil.TimeType":../help-javadoc/RuntimeUtil.TimeType.html
 

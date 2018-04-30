@@ -103,14 +103,6 @@ public class HardwareUtil {
 		return pusWithGivenPUDefinition;
 	}
 
-	/**
-	 * returns a list of all cores derived from a coreType
-	 * 
-	 * @param model
-	 * @param coreType
-	 * @return List<ProcessingUnit>
-	 */
-
 	public static Map<Memory, Long> getMemoryAccessLatenciesCycles(Amalthea model, TimeType timeType) {
 		HashMap<Memory, Long> result = new HashMap<Memory, Long>();
 		List<Memory> mems = getModulesFromHWModel(Memory.class, model);
@@ -278,7 +270,7 @@ public class HardwareUtil {
 	}
 
 	/**
-	 * get the minimum data rate of an access path
+	 * Get the minimum data rate of an access path
 	 * 
 	 * @param path
 	 *            to analyze
@@ -305,7 +297,7 @@ public class HardwareUtil {
 	}
 
 	/**
-	 * returns the frequency of a specific module
+	 * Returns the frequency of a specific module
 	 * 
 	 * @param module
 	 * @return Frequency
@@ -315,7 +307,7 @@ public class HardwareUtil {
 	}
 	
 	/**
-	 * returns the frequency of a specific module in Hertz
+	 * Returns the frequency of a specific module in Hertz
 	 * 
 	 * @param module
 	 * @return long

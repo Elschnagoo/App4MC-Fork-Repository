@@ -37,72 +37,82 @@
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor">
-<td class="colFirst"><code>static Set&lt;Core&gt;</code></td>
+<tr id="i0" class="altColor"><td class="colFirst"><code>static Set&lt;ProcessingUnit&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">getAssignedCoreForProcess</a></span>(Process&nbsp;process,
                          Amalthea&nbsp;model)</code>
-<div class="block">returns the cores the process is assigned to 
- empty core affinities are ignored otherwise the intersection of core affinity and scheduler responsibility is returned</div>
+<div class="block">Returns the cores the process is assigned to.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static Set&lt;ISR&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">getISRsMappedToCore</a></span>(Core&nbsp;core,
-                   Amalthea&nbsp;model)</code>
-<div class="block">returns a set of all ISR mapped to that core</div>
-</td>
+<td class="colFirst"><code>List&lt;HwFeatureCategory&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getFeatureCategories</a></span>(ProcessingUnitDefinition&nbsp;procUnitDef)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>static Set&lt;ISR&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getISRsMappedToCore</a></span>(ProcessingUnit&nbsp;core,
+                   Amalthea&nbsp;model)</code>
+<div class="block">Returns a set of all ISR mapped to that core</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static Set&lt;Memory&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">getLabelMapping</a></span>(Label&nbsp;label)</code>
 <div class="block">Set of memories the label is mapped to (should be only one!)</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static Set&lt;Process&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessesMappedToCore</a></span>(Core&nbsp;core,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessesMappedToCore</a></span>(ProcessingUnit&nbsp;core,
                         Amalthea&nbsp;model)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>List&lt;ProcessingUnitDefinition&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessingUnitDefinitionsForHwCategories</a></span>(HwFeatureCategory&nbsp;hwFeatureCat,
+                                           List&lt;ProcessingUnitDefinition&gt;&nbsp;procUnitDefinitons)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>List&lt;ProcessingUnitDefinition&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessingUnitDefinitionsForHwFeature</a></span>(HwFeature&nbsp;feature,
+                                        List&lt;ProcessingUnitDefinition&gt;&nbsp;procUnitDefinitons)</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static SchedulerAllocation</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">getSchedulerAllocations</a></span>(Scheduler&nbsp;scheduler,
                        MappingModel&nbsp;mappingModel)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static List&lt;TaskAllocation&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">getTaskAllocations</a></span>(Task&nbsp;task,
                   Amalthea&nbsp;model)</code>
-<div class="block">returns a list of all allocations of a task</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>static Set&lt;TaskAllocation&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">getTaskAllocationsForScheduler</a></span>(TaskScheduler&nbsp;taskScheduler,
-                              MappingModel&nbsp;mappingmodel)</code>
-<div class="block">returns a set of all task allocations of a specific scheduler</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>static Set&lt;Task&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">getTasksMappedToCore</a></span>(Core&nbsp;core,
-                    Amalthea&nbsp;model)</code>
-<div class="block">returns a set of tasks mapped to a core.</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">isMapped</a></span>(Label&nbsp;label)</code>
-<div class="block">returns boolean if at least a label mapping exists</div>
+<div class="block">Returns a list of all allocations of a task</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>static Set&lt;TaskAllocation&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getTaskAllocationsForScheduler</a></span>(TaskScheduler&nbsp;taskScheduler,
+                              MappingModel&nbsp;mappingmodel)</code>
+<div class="block">Returns a set of all task allocations of a specific scheduler</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>static Set&lt;Task&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getTasksMappedToCore</a></span>(ProcessingUnit&nbsp;core,
+                    Amalthea&nbsp;model)</code>
+<div class="block">Returns a set of tasks mapped to a core.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">isMapped</a></span>(Label&nbsp;label)</code>
+<div class="block">Returns boolean if at least a label mapping exists</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>static MemoryMapping</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="#">setLabelMapping</a></span>(Label&nbsp;label,
                Memory&nbsp;mem,
                Amalthea&nbsp;model)</code>
-<div class="block">returns a created LabelMapping element which was already added to the model</div>
-</td>
-</tr>
+<div class="block">Returns a created LabelMapping element which was already added to the model</div></td></tr>
 </tbody></table>
 <ul class="blockList">
 

@@ -34,7 +34,7 @@ import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 public class FactoryUtil {
 
 	/**
-	 * creates a time out of a value and a unit given as String (lower case)
+	 * Creates a time out of a value and a unit given as String (lower case).
 	 * @param value
 	 * @param unit
 	 * @return Time
@@ -64,7 +64,7 @@ public class FactoryUtil {
 	}
 	
 	/**
-	 * creates a Time object parsed from a text representation  
+	 * Creates a Time object parsed from a text representation. 
 	 * @param timeString string representation of a time (number follwed by time unit s, ms, us, ns or ps)  
 	 * @return returns the respective Time object
 	 * 
@@ -89,11 +89,10 @@ public class FactoryUtil {
 	
 	/**
 	 * 
-	 * @param executionNeedCount	-	absolute number of executionNeedCount (simular to instructions)
-	 * @param scaleFactor		- simular to ipc	
-	 * @param frequency			-	frequency in Hertz (=1/s)
-	 * Note: the function will round up the runtime e.g if the (executionNeedCount/ipc) / frequency < 1 => the runtime is 0
-	 * @return
+	 * @param executionNeedCount	absolute number of executionNeedCount (simular to instructions)
+	 * @param scaleFactor			simular to ipc	
+	 * @param frequency				frequency in Hertz (=1/s)
+	 * Note: the function will round up the runtime e.g if the (executionNeedCount/ipc) / frequency &lt; 1 =&gt; the runtime is 0
 	 */
 	public static Time createTime(long executionNeedCount, double scaleFactor, long frequency) {
 		double cycles = (((double)executionNeedCount)/scaleFactor);
@@ -112,12 +111,11 @@ public class FactoryUtil {
 	
 
 	/**
-	 * returns a created Weibull Deviation.
+	 * Returns a created Weibull Deviation.
 	 * @param min
 	 * @param avg
 	 * @param max
 	 * @param promille
-	 * @return   
 	 */
 	public static Deviation<LongObject> createWeibullDeviation(long min, long avg, long max, float promille) {
 		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
@@ -134,10 +132,9 @@ public class FactoryUtil {
 	
 	
 	/**
-	 * returns a created Weibull Estimator.
+	 * Returns a created Weibull Estimator.
 	 * @param avgR
 	 * @param promille
-	 * @return WeibullEstimators<LongObject>  
 	 */
 	public static WeibullEstimators<LongObject> createWeibullEstimator(long avgR, float promille) 
 	{
@@ -152,12 +149,11 @@ public class FactoryUtil {
 	
 	
 	/**
-	 * returns a created Weibull NeedDeviation.
+	 * Returns a created Weibull NeedDeviation.
 	 * @param min
 	 * @param avg
 	 * @param max
 	 * @param promille
-	 * @return  
 	 */
 	public static NeedDeviation createExecutionNeedWeibullDeviation(long min, long avg, long max, float promille) {
 		NeedDeviation needDev = AmaltheaFactory.eINSTANCE.createNeedDeviation();
@@ -166,9 +162,8 @@ public class FactoryUtil {
 	}
 	
 	/**
-	 * creates NeedConstant element
+	 * Creates NeedConstant element.
 	 * @param needValue
-	 * @return NeedConstant
 	 */
 	public static NeedConstant createExecutionNeedConstant(long needValue) {
 		NeedConstant needConst = AmaltheaFactory.eINSTANCE.createNeedConstant();
@@ -177,10 +172,9 @@ public class FactoryUtil {
 	}
 	
 	/**
-	 * creates ExecutionNeed for a featureCategoryName, need set
+	 * Creates ExecutionNeed for a featureCategoryName, need set.
 	 * @param featureCategory
 	 * @param need
-	 * @return ExecutionNeed
 	 */
 	public static ExecutionNeed createExecutionNeed(String featureCategory, Need need) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
@@ -189,10 +183,9 @@ public class FactoryUtil {
 	}
 	
 	/**
-	 * creates ExecutionNeed for a feature, need set
+	 * Creates ExecutionNeed for a feature, need set.
 	 * @param feature
 	 * @param need
-	 * @return ExecutionNeed
 	 */
 	public static ExecutionNeed createExecutionNeed(HwFeature feature, Need need) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();

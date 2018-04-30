@@ -182,7 +182,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
@@ -216,7 +216,7 @@ public class BasicValidationTests {
 
 		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
 		final ExecutionNeed en = (ExecutionNeed) run.getRunnableItems().get(0);
-		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(amalthea, en);
+		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(en);
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 72000);
@@ -238,7 +238,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(amalthea, deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
@@ -274,7 +274,7 @@ public class BasicValidationTests {
 		
 		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
 		final ExecutionNeed en = (ExecutionNeed) run.getRunnableItems().get(0);
-		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(amalthea, en);
+		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(en);
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 88000);

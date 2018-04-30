@@ -49,12 +49,12 @@ public class DeploymentUtil {
 	
 	
 	/**
-	 * returns a set of tasks mapped to a core. Depends on responsibilities of schedulers and the task allocated to them
+	 * Returns a set of tasks mapped to a core. Depends on responsibilities of schedulers and the task allocated to them
 	 * Assumption: Scheduler responsibilities are set
 	 * empty core affinities are ignored otherwise the intersection of core affinity and scheduler responsibility is returned  
-	 * @param Core core
-	 * @param Amalthea model
-	 * @return Set<Task>
+	 * @param core
+	 * @param model
+	 * @return Set of tasks
 	 */
 	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) {	/// called it mapping
 		Set<Task> tasks = new HashSet<>();
@@ -91,10 +91,10 @@ public class DeploymentUtil {
 	}
 	
 	/**
-	 * returns a set of all ISR mapped to that core
+	 * Returns a set of all ISR mapped to that core
 	 * @param core
 	 * @param model
-	 * @return Set<ISR>
+	 * @return Set of interrupt service routines (ISR)
 	 */
 	public static Set<ISR> getISRsMappedToCore(ProcessingUnit core, Amalthea model) {
 		Set<ISR> result = new HashSet<>();
@@ -120,10 +120,10 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * returns a list of all allocations of a task 	
+	 * Returns a list of all allocations of a task 	
 	 * @param task
 	 * @param model
-	 * @return List<TaskAllocation>
+	 * @return List of task allocations
 	 */
 	public static List<TaskAllocation> getTaskAllocations(Task task, Amalthea model) {
 		List<TaskAllocation> allocs = new ArrayList<TaskAllocation>();
@@ -140,7 +140,7 @@ public class DeploymentUtil {
 	}
 	
 	/**
-	 * returns boolean if at least a label mapping exists
+	 * Returns boolean if at least a label mapping exists
 	 * @param label
 	 * @return boolean
 	 */
@@ -151,7 +151,7 @@ public class DeploymentUtil {
 	/**
 	 * Set of memories the label is mapped to (should be only one!)
 	 * @param label
-	 * @return Set<Memory>
+	 * @return Set of Memories
 	 */
 	public static Set<Memory> getLabelMapping(Label label) {
 		Set<Memory> locations = new HashSet<>();
@@ -164,8 +164,9 @@ public class DeploymentUtil {
 	}
 	
 	/**
-	 * returns a created LabelMapping element which was already added to the model 
-	 * @param label, Memory
+	 * Returns a created LabelMapping element which was already added to the model 
+	 * @param label
+	 * @param mem
 	 * @return MemoryMapping
 	 */
 	public static MemoryMapping setLabelMapping(Label label, Memory mem, Amalthea model) {
@@ -182,7 +183,7 @@ public class DeploymentUtil {
 	
 	/**
 	 * 
-	 * @param scheduler scheduler
+	 * @param scheduler
 	 * @param mappingModel
 	 * @return All scheduler allocations referencing this scheduler 
 	 */
@@ -198,10 +199,10 @@ public class DeploymentUtil {
 	}
 	
 	/**
-	 * returns a set of all task allocations of a specific scheduler
-	 * @param scheduler  
+	 * Returns a set of all task allocations of a specific scheduler
+	 * @param taskScheduler  
 	 * @param mappingmodel
-	 * @return  Set<TaskAllocation>
+	 * @return  Set of TaskAllocations
 	 */
 	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler, MappingModel mappingmodel) {
 		HashSet<TaskAllocation> taskAllocations = new HashSet<>();
@@ -217,11 +218,11 @@ public class DeploymentUtil {
 	
 	
 	/**
-	 * returns the cores the process is assigned to 
-	 * empty core affinities are ignored otherwise the intersection of core affinity and scheduler responsibility is returned
+	 * Returns the cores the process is assigned to.
+	 * Empty core affinities are ignored, otherwise the intersection of core affinity and scheduler responsibility is returned
 	 * @param process
 	 * @param model
-	 * @return Set<Core>
+	 * @return Set of cores
 	 */
 	public static Set<ProcessingUnit> getAssignedCoreForProcess(Process process, Amalthea model) {
 		Set<ProcessingUnit> result = new HashSet<>();
@@ -269,7 +270,11 @@ public class DeploymentUtil {
 	
 
 	
-	public List<HwFeatureCategory> getHwFeatureCategoriesForProcessingUnitDefinition (ProcessingUnitDefinition procUnitDef) {
+	/**
+	 * @param procUnitDef
+	 * @return
+	 */
+	public List<HwFeatureCategory> getFeatureCategories (ProcessingUnitDefinition procUnitDef) {
 		List<HwFeatureCategory> result = new ArrayList<>();
 		for (HwFeature feature : procUnitDef.getFeatures()) {
 			if (!result.contains(feature.getContainingCategory())) {
@@ -279,6 +284,11 @@ public class DeploymentUtil {
 		return result;
 	}
 	
+	/**
+	 * @param hwFeatureCat
+	 * @param procUnitDefinitons
+	 * @return
+	 */
 	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwCategories(HwFeatureCategory hwFeatureCat, List<ProcessingUnitDefinition> procUnitDefinitons) {
 		List<ProcessingUnitDefinition> result = new ArrayList<>();
 		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {
@@ -290,6 +300,11 @@ public class DeploymentUtil {
 		return result;
 	}
 	
+	/**
+	 * @param feature
+	 * @param procUnitDefinitons
+	 * @return
+	 */
 	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwFeature(HwFeature feature, List<ProcessingUnitDefinition> procUnitDefinitons) {
 		List<ProcessingUnitDefinition> result = new ArrayList<>();
 		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {

@@ -50,34 +50,24 @@ public class InstructionsUtil {
 		return newCategory;
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, long instructions) {
-		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
-		
-		return createDefaultExecutionNeed(category, instructions);
+	public static ExecutionNeed createDefaultExecutionNeed(long instructions) {
+		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(Amalthea model, Deviation<LongObject> instructions) {
-		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
-		
-		return createDefaultExecutionNeed(category, instructions);
+	public static ExecutionNeed createDefaultExecutionNeed(Deviation<LongObject> instructions) {
+		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static Need getDefaultNeed(Amalthea model, ExecutionNeed execNeed) {
-		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
-		
-		return execNeed.getDefault().get(category);
+	public static Need getDefaultNeed(ExecutionNeed execNeed) {
+		return execNeed.getDefault().get(INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static long getDefaultNeedConstant(Amalthea model, ExecutionNeed execNeed) {
-		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
-		
-		return getDefaultNeedConstant(execNeed, category);
+	public static long getDefaultNeedConstant(ExecutionNeed execNeed) {
+		return getDefaultNeedConstant(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static Deviation<LongObject> getDefaultNeedDeviation(Amalthea model, ExecutionNeed execNeed) {
-		HwFeatureCategory category = getOrCreateInstructionsCategory(model);
-		
-		return getDefaultNeedDeviation(execNeed, category);
+	public static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed) {
+		return getDefaultNeedDeviation(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 
 
@@ -93,41 +83,41 @@ public class InstructionsUtil {
 	//----------------------- General ----------------------- 
 
 
-	public static ExecutionNeed createDefaultExecutionNeed(HwFeatureCategory category, long instructions) {
+	private static ExecutionNeed createDefaultExecutionNeed(String category, long instructions) {
 		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
 		need.setValue(instructions);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category.getName(), need);
+		execNeed.getDefault().put(category, need);
 		
 		return execNeed;
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(HwFeatureCategory category, Deviation<LongObject> instructions) {
+	private static ExecutionNeed createDefaultExecutionNeed(String category, Deviation<LongObject> instructions) {
 		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
 		need.setDeviation(instructions);;
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category.getName(), need);
+		execNeed.getDefault().put(category, need);
 		
 		return execNeed;
 	}
 
 	
-	public static long getDefaultNeedConstant(ExecutionNeed execNeed, HwFeatureCategory category) {
+	private static long getDefaultNeedConstant(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return 0;
 		
-		Need need = execNeed.getDefault().get(category.getName());
+		Need need = execNeed.getDefault().get(category);
 		if (need instanceof NeedConstant) {
 			return ((NeedConstant) need).getValue();
 		}
 		return 0;
 	}
 	
-	public static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed, HwFeatureCategory category) {
+	private static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return null;
 		
-		Need need = execNeed.getDefault().get(category.getName());
+		Need need = execNeed.getDefault().get(category);
 		if (need instanceof NeedDeviation) {
 			return ((NeedDeviation) need).getDeviation();
 		}
