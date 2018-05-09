@@ -24,13 +24,4 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface TimeObject extends AbstractTime, Value {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _string = super.toString();\nreturn (\"(Time) \" + _string);'"
-	 * @generated
-	 */
-	String toString();
-
 } // TimeObject

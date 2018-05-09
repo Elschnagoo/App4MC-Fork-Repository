@@ -12,14 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -104,16 +100,6 @@ public class DoubleObjectImpl extends ValueImpl implements DoubleObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String toString() {
-		double _value = this.getValue();
-		return ("(double) " + Double.valueOf(_value));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -173,12 +159,14 @@ public class DoubleObjectImpl extends ValueImpl implements DoubleObject {
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.DOUBLE_OBJECT___TO_STRING:
-				return toString();
-		}
-		return super.eInvoke(operationID, arguments);
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DoubleObjectImpl

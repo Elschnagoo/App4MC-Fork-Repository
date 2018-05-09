@@ -542,6 +542,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateVoltage((Voltage)value, diagnostics, context);
 			case AmaltheaPackage.DATA_SIZE:
 				return validateDataSize((DataSize)value, diagnostics, context);
+			case AmaltheaPackage.DATA_RATE_COMPARABLE:
+				return validateDataRateComparable((Comparable<DataRate>)value, diagnostics, context);
 			case AmaltheaPackage.DATA_RATE:
 				return validateDataRate((DataRate)value, diagnostics, context);
 			case AmaltheaPackage.CUSTOM_PROPERTY:
@@ -1539,6 +1541,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateDataSize(DataSize dataSize, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(dataSize, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataRateComparable(Comparable<DataRate> dataRateComparable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)dataRateComparable, diagnostics, context);
 	}
 
 	/**

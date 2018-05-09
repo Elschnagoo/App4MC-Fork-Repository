@@ -61,13 +61,4 @@ public interface BooleanObject extends Value {
 	 */
 	void setValue(boolean value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='boolean _isValue = this.isValue();\nreturn (\"(boolean) \" + &lt;%java.lang.Boolean%&gt;.valueOf(_isValue));'"
-	 * @generated
-	 */
-	String toString();
-
 } // BooleanObject

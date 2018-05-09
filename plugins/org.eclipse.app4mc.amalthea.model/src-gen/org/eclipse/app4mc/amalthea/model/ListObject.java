@@ -47,13 +47,4 @@ public interface ListObject extends Value {
 	 */
 	EList<Value> getValues();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return \"(List)\";'"
-	 * @generated
-	 */
-	String toString();
-
 } // ListObject

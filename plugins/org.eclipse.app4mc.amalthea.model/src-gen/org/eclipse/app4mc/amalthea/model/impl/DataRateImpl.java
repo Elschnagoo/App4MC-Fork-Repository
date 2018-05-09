@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 
@@ -171,6 +172,15 @@ public class DataRateImpl extends QuantityImpl implements DataRate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int compareTo(final DataRate rate) {
+		return AmaltheaServices.compareDataRates(this, rate);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -244,6 +254,8 @@ public class DataRateImpl extends QuantityImpl implements DataRate {
 		switch (operationID) {
 			case AmaltheaPackage.DATA_RATE___TO_STRING:
 				return toString();
+			case AmaltheaPackage.DATA_RATE___COMPARE_TO__DATARATE:
+				return compareTo((DataRate)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

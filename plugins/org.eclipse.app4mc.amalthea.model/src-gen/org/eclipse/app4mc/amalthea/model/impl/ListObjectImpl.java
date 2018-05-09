@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -90,15 +88,6 @@ public class ListObjectImpl extends ValueImpl implements ListObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String toString() {
-		return "(List)";
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -166,20 +155,6 @@ public class ListObjectImpl extends ValueImpl implements ListObject {
 				return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.LIST_OBJECT___TO_STRING:
-				return toString();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //ListObjectImpl

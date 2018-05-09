@@ -61,13 +61,4 @@ public interface FloatObject extends Value {
 	 */
 	void setValue(float value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='float _value = this.getValue();\nreturn (\"(float) \" + &lt;%java.lang.Float%&gt;.valueOf(_value));'"
-	 * @generated
-	 */
-	String toString();
-
 } // FloatObject

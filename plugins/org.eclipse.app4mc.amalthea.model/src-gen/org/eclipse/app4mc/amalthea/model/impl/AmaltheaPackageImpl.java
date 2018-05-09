@@ -628,6 +628,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dataRateComparableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass dataRateEClass = null;
 
 	/**
@@ -4027,6 +4034,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataRateComparable() {
+		return dataRateComparableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataRate() {
 		return dataRateEClass;
 	}
@@ -4056,6 +4072,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getDataRate__ToString() {
 		return dataRateEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataRate__CompareTo__DataRate() {
+		return dataRateEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4126,15 +4151,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getListObject__ToString() {
-		return listObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getStringObject() {
 		return stringObjectEClass;
 	}
@@ -4146,15 +4162,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getStringObject_Value() {
 		return (EAttribute)stringObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getStringObject__ToString() {
-		return stringObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4180,15 +4187,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getBigIntegerObject__ToString() {
-		return bigIntegerObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getReferenceObject() {
 		return referenceObjectEClass;
 	}
@@ -4200,15 +4198,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getReferenceObject_Value() {
 		return (EReference)referenceObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReferenceObject__ToString() {
-		return referenceObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4234,15 +4223,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIntegerObject__ToString() {
-		return integerObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLongObject() {
 		return longObjectEClass;
 	}
@@ -4254,15 +4234,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getLongObject_Value() {
 		return (EAttribute)longObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getLongObject__ToString() {
-		return longObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4288,15 +4259,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getFloatObject__ToString() {
-		return floatObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDoubleObject() {
 		return doubleObjectEClass;
 	}
@@ -4308,15 +4270,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getDoubleObject_Value() {
 		return (EAttribute)doubleObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDoubleObject__ToString() {
-		return doubleObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4342,26 +4295,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getBooleanObject__ToString() {
-		return booleanObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTimeObject() {
 		return timeObjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTimeObject__ToString() {
-		return timeObjectEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -13132,10 +13067,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BITS);
 		createEOperation(dataSizeEClass, DATA_SIZE___GET_NUMBER_BYTES);
 
+		dataRateComparableEClass = createEClass(DATA_RATE_COMPARABLE);
+
 		dataRateEClass = createEClass(DATA_RATE);
 		createEAttribute(dataRateEClass, DATA_RATE__VALUE);
 		createEAttribute(dataRateEClass, DATA_RATE__UNIT);
 		createEOperation(dataRateEClass, DATA_RATE___TO_STRING);
+		createEOperation(dataRateEClass, DATA_RATE___COMPARE_TO__DATARATE);
 
 		customPropertyEClass = createEClass(CUSTOM_PROPERTY);
 		createEAttribute(customPropertyEClass, CUSTOM_PROPERTY__KEY);
@@ -13146,42 +13084,32 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		listObjectEClass = createEClass(LIST_OBJECT);
 		createEReference(listObjectEClass, LIST_OBJECT__VALUES);
-		createEOperation(listObjectEClass, LIST_OBJECT___TO_STRING);
 
 		stringObjectEClass = createEClass(STRING_OBJECT);
 		createEAttribute(stringObjectEClass, STRING_OBJECT__VALUE);
-		createEOperation(stringObjectEClass, STRING_OBJECT___TO_STRING);
 
 		bigIntegerObjectEClass = createEClass(BIG_INTEGER_OBJECT);
 		createEAttribute(bigIntegerObjectEClass, BIG_INTEGER_OBJECT__VALUE);
-		createEOperation(bigIntegerObjectEClass, BIG_INTEGER_OBJECT___TO_STRING);
 
 		referenceObjectEClass = createEClass(REFERENCE_OBJECT);
 		createEReference(referenceObjectEClass, REFERENCE_OBJECT__VALUE);
-		createEOperation(referenceObjectEClass, REFERENCE_OBJECT___TO_STRING);
 
 		integerObjectEClass = createEClass(INTEGER_OBJECT);
 		createEAttribute(integerObjectEClass, INTEGER_OBJECT__VALUE);
-		createEOperation(integerObjectEClass, INTEGER_OBJECT___TO_STRING);
 
 		longObjectEClass = createEClass(LONG_OBJECT);
 		createEAttribute(longObjectEClass, LONG_OBJECT__VALUE);
-		createEOperation(longObjectEClass, LONG_OBJECT___TO_STRING);
 
 		floatObjectEClass = createEClass(FLOAT_OBJECT);
 		createEAttribute(floatObjectEClass, FLOAT_OBJECT__VALUE);
-		createEOperation(floatObjectEClass, FLOAT_OBJECT___TO_STRING);
 
 		doubleObjectEClass = createEClass(DOUBLE_OBJECT);
 		createEAttribute(doubleObjectEClass, DOUBLE_OBJECT__VALUE);
-		createEOperation(doubleObjectEClass, DOUBLE_OBJECT___TO_STRING);
 
 		booleanObjectEClass = createEClass(BOOLEAN_OBJECT);
 		createEAttribute(booleanObjectEClass, BOOLEAN_OBJECT__VALUE);
-		createEOperation(booleanObjectEClass, BOOLEAN_OBJECT___TO_STRING);
 
 		timeObjectEClass = createEClass(TIME_OBJECT);
-		createEOperation(timeObjectEClass, TIME_OBJECT___TO_STRING);
 
 		deviationEClass = createEClass(DEVIATION);
 		createEReference(deviationEClass, DEVIATION__LOWER_BOUND);
@@ -14514,6 +14442,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		voltageEClass.getESuperTypes().add(this.getQuantity());
 		dataSizeEClass.getESuperTypes().add(this.getQuantity());
 		dataRateEClass.getESuperTypes().add(this.getQuantity());
+		dataRateEClass.getESuperTypes().add(this.getDataRateComparable());
 		listObjectEClass.getESuperTypes().add(this.getValue());
 		stringObjectEClass.getESuperTypes().add(this.getValue());
 		bigIntegerObjectEClass.getESuperTypes().add(this.getValue());
@@ -15017,11 +14946,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDataSize__GetNumberBytes(), theEcorePackage.getELong(), "getNumberBytes", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEClass(dataRateComparableEClass, Comparable.class, "DataRateComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate>");
+
 		initEClass(dataRateEClass, DataRate.class, "DataRate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataRate_Value(), theEcorePackage.getEBigInteger(), "value", "0", 0, 1, DataRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataRate_Unit(), this.getDataRateUnit(), "unit", null, 0, 1, DataRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getDataRate__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDataRate__CompareTo__DataRate(), theEcorePackage.getEInt(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataRate(), "rate", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(customPropertyEClass, Map.Entry.class, "CustomProperty", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomProperty_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15034,51 +14968,31 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(listObjectEClass, ListObject.class, "ListObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getListObject_Values(), this.getValue(), null, "values", null, 0, -1, ListObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getListObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(stringObjectEClass, StringObject.class, "StringObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringObject_Value(), theEcorePackage.getEString(), "value", null, 1, 1, StringObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getStringObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(bigIntegerObjectEClass, BigIntegerObject.class, "BigIntegerObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBigIntegerObject_Value(), theEcorePackage.getEBigInteger(), "value", "0", 1, 1, BigIntegerObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getBigIntegerObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(referenceObjectEClass, ReferenceObject.class, "ReferenceObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReferenceObject_Value(), this.getIReferable(), null, "value", null, 0, 1, ReferenceObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReferenceObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(integerObjectEClass, IntegerObject.class, "IntegerObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntegerObject_Value(), theEcorePackage.getEInt(), "value", "0", 1, 1, IntegerObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getIntegerObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(longObjectEClass, LongObject.class, "LongObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLongObject_Value(), theEcorePackage.getELong(), "value", "0", 1, 1, LongObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getLongObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(floatObjectEClass, FloatObject.class, "FloatObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFloatObject_Value(), theEcorePackage.getEFloat(), "value", "0f", 1, 1, FloatObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getFloatObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(doubleObjectEClass, DoubleObject.class, "DoubleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDoubleObject_Value(), theEcorePackage.getEDouble(), "value", "0.0", 1, 1, DoubleObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getDoubleObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(booleanObjectEClass, BooleanObject.class, "BooleanObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanObject_Value(), theEcorePackage.getEBoolean(), "value", "false", 1, 1, BooleanObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getBooleanObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(timeObjectEClass, TimeObject.class, "TimeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getTimeObject__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(deviationEClass, Deviation.class, "Deviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(deviationEClass_T);

@@ -14,7 +14,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.Value;
@@ -55,16 +54,6 @@ public class TimeObjectImpl extends AbstractTimeImpl implements TimeObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String toString() {
-		String _string = super.toString();
-		return ("(Time) " + _string);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean containerNotificationRequired() {
 		return true;
 	}
@@ -76,12 +65,6 @@ public class TimeObjectImpl extends AbstractTimeImpl implements TimeObject {
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == AbstractTime.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.ABSTRACT_TIME___TO_STRING: return AmaltheaPackage.TIME_OBJECT___TO_STRING;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
-			}
-		}
 		if (baseClass == Value.class) {
 			switch (baseOperationID) {
 				case AmaltheaPackage.VALUE___CONTAINER_NOTIFICATION_REQUIRED: return AmaltheaPackage.TIME_OBJECT___CONTAINER_NOTIFICATION_REQUIRED;
@@ -99,8 +82,6 @@ public class TimeObjectImpl extends AbstractTimeImpl implements TimeObject {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.TIME_OBJECT___TO_STRING:
-				return toString();
 			case AmaltheaPackage.TIME_OBJECT___CONTAINER_NOTIFICATION_REQUIRED:
 				return containerNotificationRequired();
 		}

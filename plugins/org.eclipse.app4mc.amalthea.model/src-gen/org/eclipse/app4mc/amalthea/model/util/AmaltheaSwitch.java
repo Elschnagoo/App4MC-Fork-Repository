@@ -622,10 +622,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.DATA_RATE_COMPARABLE: {
+				@SuppressWarnings("unchecked") Comparable<DataRate> dataRateComparable = (Comparable<DataRate>)theEObject;
+				T1 result = caseDataRateComparable(dataRateComparable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.DATA_RATE: {
 				DataRate dataRate = (DataRate)theEObject;
 				T1 result = caseDataRate(dataRate);
 				if (result == null) result = caseQuantity(dataRate);
+				if (result == null) result = caseDataRateComparable(dataRate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4028,6 +4035,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseDataSize(DataSize object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Rate Comparable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Rate Comparable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDataRateComparable(Comparable<DataRate> object) {
 		return null;
 	}
 

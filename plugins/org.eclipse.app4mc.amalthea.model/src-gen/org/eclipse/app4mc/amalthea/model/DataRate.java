@@ -32,10 +32,10 @@ import java.math.BigInteger;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataRate()
- * @model
+ * @model superTypes="org.eclipse.app4mc.amalthea.model.Quantity org.eclipse.app4mc.amalthea.model.DataRateComparable"
  * @generated
  */
-public interface DataRate extends Quantity {
+public interface DataRate extends Quantity, Comparable<DataRate> {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
@@ -100,5 +100,14 @@ public interface DataRate extends Quantity {
 	 * @generated
 	 */
 	String toString();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" rateUnique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.compareDataRates(this, rate);'"
+	 * @generated
+	 */
+	int compareTo(DataRate rate);
 
 } // DataRate

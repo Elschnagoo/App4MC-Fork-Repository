@@ -61,13 +61,4 @@ public interface IntegerObject extends Value {
 	 */
 	void setValue(int value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='int _value = this.getValue();\nreturn (\"(int) \" + &lt;%java.lang.Integer%&gt;.valueOf(_value));'"
-	 * @generated
-	 */
-	String toString();
-
 } // IntegerObject

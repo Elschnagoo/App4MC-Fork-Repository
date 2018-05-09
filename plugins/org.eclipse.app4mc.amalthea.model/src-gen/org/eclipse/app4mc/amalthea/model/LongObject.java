@@ -61,13 +61,4 @@ public interface LongObject extends Value {
 	 */
 	void setValue(long value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='long _value = this.getValue();\nreturn (\"(long) \" + &lt;%java.lang.Long%&gt;.valueOf(_value));'"
-	 * @generated
-	 */
-	String toString();
-
 } // LongObject

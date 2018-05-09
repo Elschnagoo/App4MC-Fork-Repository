@@ -12,15 +12,11 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -113,27 +109,6 @@ public class ReferenceObjectImpl extends ValueImpl implements ReferenceObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String toString() {
-		IReferable _value = this.getValue();
-		boolean _tripleEquals = (_value == null);
-		if (_tripleEquals) {
-			return "(Reference) null";
-		}
-		else {
-			String _name = this.getValue().eClass().getName();
-			String _plus = ("(Reference) " + _name);
-			String _plus_1 = (_plus + " \"");
-			String _name_1 = this.getValue().getName();
-			String _plus_2 = (_plus_1 + _name_1);
-			return (_plus_2 + "\"");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -186,20 +161,6 @@ public class ReferenceObjectImpl extends ValueImpl implements ReferenceObject {
 				return value != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.REFERENCE_OBJECT___TO_STRING:
-				return toString();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //ReferenceObjectImpl

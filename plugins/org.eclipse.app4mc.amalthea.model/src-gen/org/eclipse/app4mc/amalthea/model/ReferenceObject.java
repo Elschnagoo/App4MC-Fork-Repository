@@ -60,13 +60,4 @@ public interface ReferenceObject extends Value {
 	 */
 	void setValue(IReferable value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.IReferable%&gt; _value = this.getValue();\nboolean _tripleEquals = (_value == null);\nif (_tripleEquals)\n{\n\treturn \"(Reference) null\";\n}\nelse\n{\n\t&lt;%java.lang.String%&gt; _name = this.getValue().eClass().getName();\n\t&lt;%java.lang.String%&gt; _plus = (\"(Reference) \" + _name);\n\t&lt;%java.lang.String%&gt; _plus_1 = (_plus + \" \\\"\");\n\t&lt;%java.lang.String%&gt; _name_1 = this.getValue().getName();\n\t&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + _name_1);\n\treturn (_plus_2 + \"\\\"\");\n}'"
-	 * @generated
-	 */
-	String toString();
-
 } // ReferenceObject

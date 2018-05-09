@@ -168,6 +168,9 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.Value
+import org.eclipse.app4mc.amalthea.model.ReferenceObject
+import org.eclipse.app4mc.amalthea.model.ListObject
 
 class CustomItemProviderService {
 
@@ -276,6 +279,34 @@ class CustomItemProviderService {
 		}
 	}
 
+	private def static getValueText(Value object) {
+		if(object === null) return "null"
+		
+		switch object {
+			BooleanObject:
+				String.valueOf(object.value)
+			IntegerObject:
+				String.valueOf(object.value)
+			LongObject:
+				String.valueOf(object.value)
+			BigIntegerObject:
+				String.valueOf(object.value)
+			FloatObject:
+				String.valueOf(object.value)
+			DoubleObject:
+				String.valueOf(object.value)
+			StringObject:
+				if(object.value === null) "null" else "\"" + object.value + "\""
+			ReferenceObject:
+				if(object.value === null) "null" else object.value.eClass.name + " \"" + ppName(object?.value?.name) + "\""
+			TimeObject:
+				if(object.value === null) "null" else getTimeText(object)
+			ListObject:
+				""
+		}
+	}
+
+
 	/*****************************************************************************
 	 * 						CustomPropertyItemProvider
 	 *****************************************************************************/
@@ -283,9 +314,11 @@ class CustomItemProviderService {
 		if (object instanceof CustomPropertyImpl) {
 			val key = object?.getKey()
 			val value = object?.getValue()
+			val valueType = object?.getValue()?.eClass?.name
 			val s1 = if(key.isNullOrEmpty) "<key>" else "\"" + key + "\""
-			val s2 = if(value === null) "null" else value
-			return s1 + " -> " + s2;
+			val s2 = if(valueType === null) "" else "(" + valueType.replace("Object", "") + ") "
+			val s3 = getValueText(value)
+			return s1 + " -> " + s2 + s3;
 		} else {
 			return defaultText
 		}
@@ -306,7 +339,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getBooleanObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BooleanObject) {
-			return getContainingFeatureName(object) + object
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -317,7 +350,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getDoubleObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof DoubleObject) {
-			return getContainingFeatureName(object) + object
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -328,7 +361,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getFloatObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof FloatObject) {
-			return getContainingFeatureName(object) + object
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -339,7 +372,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getIntegerObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof IntegerObject) {
-			return getContainingFeatureName(object) + object
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -350,7 +383,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getLongObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof LongObject) {
-			return getContainingFeatureName(object) + object
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -372,9 +405,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getStringObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof StringObject) {
-			val s1 = getContainingFeatureName(object)
-			val s2 = if(object?.value === null) "null" else "\"" + object.value + "\"";
-			return s1 + s2
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}
@@ -385,9 +416,7 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getBigIntegerObjectItemProviderText(Object object, String defaultText) {
 		if (object instanceof BigIntegerObject) {
-			val s1 = getContainingFeatureName(object)
-			val s2 = if(object?.value === null) "null" else "\"" + object.value + "\"";
-			return s1 + s2
+			return getContainingFeatureName(object) + getValueText(object)
 		} else {
 			return defaultText
 		}

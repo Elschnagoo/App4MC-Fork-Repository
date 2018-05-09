@@ -90,6 +90,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.INamed;
+import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.Instructions;
@@ -107,6 +108,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LimitType;
+import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryClassification;
@@ -149,6 +151,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessScope;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
+import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -405,6 +408,115 @@ public class CustomItemProviderService {
     return _switchResult;
   }
   
+  private static String getValueText(final Value object) {
+    String _xblockexpression = null;
+    {
+      if ((object == null)) {
+        return "null";
+      }
+      String _switchResult = null;
+      boolean _matched = false;
+      if (object instanceof BooleanObject) {
+        _matched=true;
+        _switchResult = String.valueOf(((BooleanObject)object).isValue());
+      }
+      if (!_matched) {
+        if (object instanceof IntegerObject) {
+          _matched=true;
+          _switchResult = String.valueOf(((IntegerObject)object).getValue());
+        }
+      }
+      if (!_matched) {
+        if (object instanceof LongObject) {
+          _matched=true;
+          _switchResult = String.valueOf(((LongObject)object).getValue());
+        }
+      }
+      if (!_matched) {
+        if (object instanceof BigIntegerObject) {
+          _matched=true;
+          _switchResult = String.valueOf(((BigIntegerObject)object).getValue());
+        }
+      }
+      if (!_matched) {
+        if (object instanceof FloatObject) {
+          _matched=true;
+          _switchResult = String.valueOf(((FloatObject)object).getValue());
+        }
+      }
+      if (!_matched) {
+        if (object instanceof DoubleObject) {
+          _matched=true;
+          _switchResult = String.valueOf(((DoubleObject)object).getValue());
+        }
+      }
+      if (!_matched) {
+        if (object instanceof StringObject) {
+          _matched=true;
+          String _xifexpression = null;
+          String _value = ((StringObject)object).getValue();
+          boolean _tripleEquals = (_value == null);
+          if (_tripleEquals) {
+            _xifexpression = "null";
+          } else {
+            String _value_1 = ((StringObject)object).getValue();
+            String _plus = ("\"" + _value_1);
+            _xifexpression = (_plus + "\"");
+          }
+          _switchResult = _xifexpression;
+        }
+      }
+      if (!_matched) {
+        if (object instanceof ReferenceObject) {
+          _matched=true;
+          String _xifexpression = null;
+          IReferable _value = ((ReferenceObject)object).getValue();
+          boolean _tripleEquals = (_value == null);
+          if (_tripleEquals) {
+            _xifexpression = "null";
+          } else {
+            String _name = ((ReferenceObject)object).getValue().eClass().getName();
+            String _plus = (_name + " \"");
+            IReferable _value_1 = null;
+            if (((ReferenceObject)object)!=null) {
+              _value_1=((ReferenceObject)object).getValue();
+            }
+            String _name_1 = null;
+            if (_value_1!=null) {
+              _name_1=_value_1.getName();
+            }
+            String _ppName = CustomItemProviderService.ppName(_name_1);
+            String _plus_1 = (_plus + _ppName);
+            _xifexpression = (_plus_1 + "\"");
+          }
+          _switchResult = _xifexpression;
+        }
+      }
+      if (!_matched) {
+        if (object instanceof TimeObject) {
+          _matched=true;
+          String _xifexpression = null;
+          BigInteger _value = ((TimeObject)object).getValue();
+          boolean _tripleEquals = (_value == null);
+          if (_tripleEquals) {
+            _xifexpression = "null";
+          } else {
+            _xifexpression = CustomItemProviderService.getTimeText(((AbstractTime)object));
+          }
+          _switchResult = _xifexpression;
+        }
+      }
+      if (!_matched) {
+        if (object instanceof ListObject) {
+          _matched=true;
+          _switchResult = "";
+        }
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
   /**
    * CustomPropertyItemProvider
    */
@@ -420,6 +532,19 @@ public class CustomItemProviderService {
         _value=((CustomPropertyImpl)object).getValue();
       }
       final Value value = _value;
+      Value _value_1 = null;
+      if (((CustomPropertyImpl)object)!=null) {
+        _value_1=((CustomPropertyImpl)object).getValue();
+      }
+      EClass _eClass = null;
+      if (_value_1!=null) {
+        _eClass=_value_1.eClass();
+      }
+      String _name = null;
+      if (_eClass!=null) {
+        _name=_eClass.getName();
+      }
+      final String valueType = _name;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(key);
       if (_isNullOrEmpty) {
@@ -428,14 +553,17 @@ public class CustomItemProviderService {
         _xifexpression = (("\"" + key) + "\"");
       }
       final String s1 = _xifexpression;
-      Object _xifexpression_1 = null;
-      if ((value == null)) {
-        _xifexpression_1 = "null";
+      String _xifexpression_1 = null;
+      if ((valueType == null)) {
+        _xifexpression_1 = "";
       } else {
-        _xifexpression_1 = value;
+        String _replace = valueType.replace("Object", "");
+        String _plus = ("(" + _replace);
+        _xifexpression_1 = (_plus + ") ");
       }
-      final Object s2 = _xifexpression_1;
-      return ((s1 + " -> ") + s2);
+      final String s2 = _xifexpression_1;
+      final String s3 = CustomItemProviderService.getValueText(value);
+      return (((s1 + " -> ") + s2) + s3);
     } else {
       return defaultText;
     }
@@ -465,7 +593,8 @@ public class CustomItemProviderService {
   public static String getBooleanObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof BooleanObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + object);
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -477,7 +606,8 @@ public class CustomItemProviderService {
   public static String getDoubleObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DoubleObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + object);
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -489,7 +619,8 @@ public class CustomItemProviderService {
   public static String getFloatObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof FloatObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + object);
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -501,7 +632,8 @@ public class CustomItemProviderService {
   public static String getIntegerObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof IntegerObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + object);
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -513,7 +645,8 @@ public class CustomItemProviderService {
   public static String getLongObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof LongObject)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      return (_containingFeatureName + object);
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -537,22 +670,9 @@ public class CustomItemProviderService {
    */
   public static String getStringObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof StringObject)) {
-      final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _xifexpression = null;
-      String _value = null;
-      if (((StringObject)object)!=null) {
-        _value=((StringObject)object).getValue();
-      }
-      boolean _tripleEquals = (_value == null);
-      if (_tripleEquals) {
-        _xifexpression = "null";
-      } else {
-        String _value_1 = ((StringObject)object).getValue();
-        String _plus = ("\"" + _value_1);
-        _xifexpression = (_plus + "\"");
-      }
-      final String s2 = _xifexpression;
-      return (s1 + s2);
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }
@@ -563,22 +683,9 @@ public class CustomItemProviderService {
    */
   public static String getBigIntegerObjectItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof BigIntegerObject)) {
-      final String s1 = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _xifexpression = null;
-      BigInteger _value = null;
-      if (((BigIntegerObject)object)!=null) {
-        _value=((BigIntegerObject)object).getValue();
-      }
-      boolean _tripleEquals = (_value == null);
-      if (_tripleEquals) {
-        _xifexpression = "null";
-      } else {
-        BigInteger _value_1 = ((BigIntegerObject)object).getValue();
-        String _plus = ("\"" + _value_1);
-        _xifexpression = (_plus + "\"");
-      }
-      final String s2 = _xifexpression;
-      return (s1 + s2);
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
     } else {
       return defaultText;
     }

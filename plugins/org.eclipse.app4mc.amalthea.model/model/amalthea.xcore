@@ -419,10 +419,12 @@ enum DataRateUnit {
 	TiBPerSecond
 }
 
+interface DataRateComparable wraps java.lang.Comparable<DataRate> {}
+
 /*
  * General data rate class to define rate (value and unit)
  */
-class DataRate extends Quantity {
+class DataRate extends Quantity, DataRateComparable {
 	
 	BigInteger value = "0"
 	DataRateUnit unit
@@ -430,7 +432,10 @@ class DataRate extends Quantity {
 	op String toString() {
 		return value + " " +  if (unit == DataRateUnit::_UNDEFINED_ ) "<unit>" else unit.literal.replace("PerSecond", "/s")
 	}
-	
+
+	op int compareTo(DataRate rate){
+		return AmaltheaServices.compareDataRates(this,rate)
+	}
 }
 
 
@@ -456,9 +461,6 @@ abstract class Value
 
 class ListObject extends Value {
 	contains Value[] values
-	op String toString() {
-		return "(List)"
-	}
 }
 
 /*
@@ -466,12 +468,6 @@ class ListObject extends Value {
  */
 class StringObject extends Value {
 	String[1] value
-	op String toString() {
-		if (value === null)
-			return "(String) null"
-		else
-			return "(String) \"" + value + "\""
-	}
 }
 
 /*
@@ -479,12 +475,6 @@ class StringObject extends Value {
  */
 class BigIntegerObject extends Value { 
 	BigInteger[1] value = "0"
-	op String toString() {
-		if (value === null)
-			return "(BigInteger) null"
-		else
-			return "(BigInteger) \"" + value + "\""
-	}
 }
 
 /*
@@ -492,12 +482,6 @@ class BigIntegerObject extends Value {
  */
 class ReferenceObject extends Value {
 	refers IReferable value
-	op String toString() {
-		if (value === null)
-			return "(Reference) null"
-		else
-			return "(Reference) " + value.eClass.name + " \"" + value.name + "\""
-	}
 }
 
 /*
@@ -505,9 +489,6 @@ class ReferenceObject extends Value {
  */
 class IntegerObject extends Value {
 	int[1] value = "0"
-	op String toString() {
-		return "(int) " + value
-	}
 }
 
 /*
@@ -515,9 +496,6 @@ class IntegerObject extends Value {
  */
 class LongObject extends Value {
 	long[1] value = "0"
-	op String toString() {
-		return "(long) " + value
-	}
 }
 
 /*
@@ -525,9 +503,6 @@ class LongObject extends Value {
  */
 class FloatObject extends Value {
 	float[1] value = "0f"
-	op String toString() {
-		return "(float) " + value
-	}
 }
 
 /*
@@ -535,9 +510,6 @@ class FloatObject extends Value {
  */
 class DoubleObject extends Value {
 	double[1] value = "0.0"
-	op String toString() {
-		return "(double) " + value
-	}
 }
 
 /*
@@ -545,15 +517,9 @@ class DoubleObject extends Value {
  */
 class BooleanObject extends Value {
 	boolean[1] value = "false"
-	op String toString() {
-		return "(boolean) " + value
-	}
 }
 
 class TimeObject extends AbstractTime, Value {
-	op String toString() {
-		return "(Time) " + super.toString
-	}
 }
 
 

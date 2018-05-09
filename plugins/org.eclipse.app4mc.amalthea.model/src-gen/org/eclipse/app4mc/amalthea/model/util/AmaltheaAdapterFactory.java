@@ -528,6 +528,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createDataSizeAdapter();
 			}
 			@Override
+			public Adapter caseDataRateComparable(Comparable<DataRate> object) {
+				return createDataRateComparableAdapter();
+			}
+			@Override
 			public Adapter caseDataRate(DataRate object) {
 				return createDataRateAdapter();
 			}
@@ -2196,6 +2200,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataSizeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate> <em>Data Rate Comparable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate>
+	 * @generated
+	 */
+	public Adapter createDataRateComparableAdapter() {
 		return null;
 	}
 

@@ -982,6 +982,14 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>General data size class to define size (value and unit)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="DataRateComparable">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="DataRateComparable" type="am:DataRateComparable"/>
   <xsd:complexType name="DataRate">
     <xsd:annotation>
       <xsd:documentation>General data rate class to define rate (value and unit)</xsd:documentation>

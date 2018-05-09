@@ -12,16 +12,12 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.math.BigInteger;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -106,24 +102,6 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String toString() {
-		BigInteger _value = this.getValue();
-		boolean _tripleEquals = (_value == null);
-		if (_tripleEquals) {
-			return "(BigInteger) null";
-		}
-		else {
-			BigInteger _value_1 = this.getValue();
-			String _plus = ("(BigInteger) \"" + _value_1);
-			return (_plus + "\"");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -183,12 +161,14 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.BIG_INTEGER_OBJECT___TO_STRING:
-				return toString();
-		}
-		return super.eInvoke(operationID, arguments);
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
 	}
 
 } //BigIntegerObjectImpl
