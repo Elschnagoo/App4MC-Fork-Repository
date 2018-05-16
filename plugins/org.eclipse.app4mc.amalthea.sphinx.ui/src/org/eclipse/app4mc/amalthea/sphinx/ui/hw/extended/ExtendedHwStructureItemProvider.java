@@ -91,15 +91,15 @@ public class ExtendedHwStructureItemProvider extends HwStructureItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (this.feature_CONNECTIONS == feature || this.feature_MODULES == feature) {
+		if (feature == feature_CONNECTIONS || feature == feature_MODULES) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature == AmaltheaPackage.eINSTANCE.getHwStructure_Connections()) {
+						if (feature == feature_CONNECTIONS) {
 							affected = Collections.singleton(getConnections(((HwStructure) owner)));
-						} else if (feature == AmaltheaPackage.eINSTANCE.getHwStructure_Modules()) {
+						} else if (feature == feature_MODULES) {
 							affected = Collections.singleton(getModules(((HwStructure) owner)));
 						}
 					}

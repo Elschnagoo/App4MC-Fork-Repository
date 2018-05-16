@@ -12,13 +12,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Quantity;
 import org.eclipse.app4mc.amalthea.model.Time;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -47,45 +42,6 @@ public class TimeImpl extends AbstractTimeImpl implements Time {
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getTime();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean containerNotificationRequired() {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Quantity.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.QUANTITY___CONTAINER_NOTIFICATION_REQUIRED: return AmaltheaPackage.TIME___CONTAINER_NOTIFICATION_REQUIRED;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.TIME___CONTAINER_NOTIFICATION_REQUIRED:
-				return containerNotificationRequired();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //TimeImpl

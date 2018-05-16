@@ -66,98 +66,98 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		super(adapterFactory);
 	}
 
-	public Object getRunnables(final SWModel swModel) {
+	public RunnablesIP getRunnables(final SWModel swModel) {
 		if (this.runnablesIP == null) {
 			this.runnablesIP = new RunnablesIP(this.adapterFactory, swModel);
 		}
 		return this.runnablesIP;
 	}
 
-	public Object getLabels(final SWModel swModel) {
+	public LabelsIP getLabels(final SWModel swModel) {
 		if (this.labelsIP == null) {
 			this.labelsIP = new LabelsIP(this.adapterFactory, swModel);
 		}
 		return this.labelsIP;
 	}
 
-	public Object getModes(final SWModel swModel) {
+	public ModesIP getModes(final SWModel swModel) {
 		if (this.modesIP == null) {
 			this.modesIP = new ModesIP(this.adapterFactory, swModel);
 		}
 		return this.modesIP;
 	}
 
-	public Object getModeLabels(final SWModel swModel) {
+	public ModeLabelsIP getModeLabels(final SWModel swModel) {
 		if (this.modeLabelsIP == null) {
 			this.modeLabelsIP = new ModeLabelsIP(this.adapterFactory, swModel);
 		}
 		return this.modeLabelsIP;
 	}
 
-	public Object getTasks(final SWModel swModel) {
+	public TasksIP getTasks(final SWModel swModel) {
 		if (this.tasksIP == null) {
 			this.tasksIP = new TasksIP(this.adapterFactory, swModel);
 		}
 		return this.tasksIP;
 	}
 
-	public Object getEvents(final SWModel swModel) {
+	public EventsIP getEvents(final SWModel swModel) {
 		if (this.eventsIP == null) {
 			this.eventsIP = new EventsIP(this.adapterFactory, swModel);
 		}
 		return this.eventsIP;
 	}
 
-	public Object getSections(final SWModel swModel) {
+	public SectionsIP getSections(final SWModel swModel) {
 		if (this.sectionsIP == null) {
 			this.sectionsIP = new SectionsIP(this.adapterFactory, swModel);
 		}
 		return this.sectionsIP;
 	}
 
-	public Object getPrototypes(final SWModel swModel) {
+	public ProcessPrototypesIP getPrototypes(final SWModel swModel) {
 		if (this.prototypesIP == null) {
 			this.prototypesIP = new ProcessPrototypesIP(this.adapterFactory, swModel);
 		}
 		return this.prototypesIP;
 	}
 
-	public Object getProcessChains(final SWModel swModel) {
+	public ProcessChainsIP getProcessChains(final SWModel swModel) {
 		if (this.processChainsIP == null) {
 			this.processChainsIP = new ProcessChainsIP(this.adapterFactory, swModel);
 		}
 		return this.processChainsIP;
 	}
 
-	public Object getISRs(final SWModel swModel) {
+	public ISRsIP getISRs(final SWModel swModel) {
 		if (this.isrsIP == null) {
 			this.isrsIP = new ISRsIP(this.adapterFactory, swModel);
 		}
 		return this.isrsIP;
 	}
 
-	public Object getActivations(final SWModel swModel) {
+	public ActivationsIP getActivations(final SWModel swModel) {
 		if (this.activationsIP == null) {
 			this.activationsIP = new ActivationsIP(this.adapterFactory, swModel);
 		}
 		return this.activationsIP;
 	}
 	
-	public Object getTypes(final SWModel swModel) {
+	public TypeDefinitionsIP getTypes(final SWModel swModel) {
 		if (this.typesIP == null) {
 			this.typesIP = new TypeDefinitionsIP(this.adapterFactory, swModel);
 		}
 		return this.typesIP;
 	}
 
-	public Object getChannels(final SWModel swModel) {
+	public ChannelsIP getChannels(final SWModel swModel) {
 		if (this.channelsIP == null) {
 			this.channelsIP = new ChannelsIP(this.adapterFactory, swModel);
 		}
 		return this.channelsIP;
 	}
 
-	public Object getEntities(final SWModel swModel) {
+	public CustomEntitiesIP getEntities(final SWModel swModel) {
 		if (this.entitiesIP == null) {
 			this.entitiesIP = new CustomEntitiesIP(this.adapterFactory, swModel);
 		}

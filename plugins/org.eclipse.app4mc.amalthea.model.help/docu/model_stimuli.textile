@@ -113,13 +113,13 @@ h4. VariableRateStimulus
 With the _VariableRate_ Stimulus the description of task activation based on e.g. the crankshaft rotation speed or other adaptive variable rate activations.
 
 The _step_ has to be defined as a base value for the following specifications.<br/>
-In the deviation _occurrencesPerStep_ the lower and upper frequency of the variable rate are described. The distribution can be used to describe the standard frequency occurrences. The user can describe that the frequency is distributed e.g. uniformly over the complete frequency band or as another example the occurrences happens mostly at the _Boundaries_ of the frequency band that can be specfied with the _CornerCase_ _samplingType_ in the distribution.<br/>
+In the deviation _occurrencesPerStep_ the lower and upper frequency of the variable rate are described. The distribution can be used to describe the standard frequency occurrences. The user can describe that the frequency is distributed e.g. uniformly over the complete frequency band or as another example the occurrences happens mostly at the _Boundaries_ of the frequency band that can be specified with the _CornerCase_ _samplingType_ in the distribution.<br/>
 The user can set _maxDecrease_ and _maxIncrease_ values to describe the number of additional respectively reduced task activations that can occur within a predefined time _step_. With these values, the maximum acceleration and maximum deceleration of the stimuli can be calculated.
 
 !{width:700px}../pictures/model_stimuli_variableRate.png!
 
 An additional feature for the _variableRate_ Stimulus is the description of _simulationScenario_ that specifies the progression of the _variableRate_ over time.
-In contract to the generic specification via statistical values the scenario defines the computation via the _recurrence_ property that is modified by a factor based on a _clock_.
+In contrast to the generic specification via statistical values the scenario defines the computation via the _recurrence_ property that is modified by a factor based on a _clock_.
 
 
 h3. Clocks

@@ -34,15 +34,12 @@ public class ExtendedRunnableItemProvider extends RunnableItemProvider {
 
 	protected RunnableItemsIP runnableItemsIP;
 
-	private final EStructuralFeature RUNNABLE__RUNNABLE_ITEMS = AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems();
+	private final EStructuralFeature feature_RUNNABLE_ITEMS = AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems();
 
 	public ExtendedRunnableItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getParent(java.lang.Object)
-	 */
 	@Override
 	public Object getParent(final Object object) {
 		final Object swModel = super.getParent(object);
@@ -51,9 +48,6 @@ public class ExtendedRunnableItemProvider extends RunnableItemProvider {
 		return swModelItemProvider != null ? swModelItemProvider.getRunnables((SWModel) swModel) : null;
 	}
 
-	/**
-	 * @return the runnableItemsIP
-	 */
 	public RunnableItemsIP getRunnableItems(final Runnable runnable) {
 		if (null == this.runnableItemsIP) {
 			this.runnableItemsIP = new RunnableItemsIP(this.adapterFactory, runnable);
@@ -61,19 +55,13 @@ public class ExtendedRunnableItemProvider extends RunnableItemProvider {
 		return this.runnableItemsIP;
 	}
 
-	/**
-	 * @see org.eclipse.app4mc.amalthea.model.provider.RunnableItemProvider#getChildrenFeatures(java.lang.Object)
-	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		super.getChildrenFeatures(object);
-		this.childrenFeatures.remove(this.RUNNABLE__RUNNABLE_ITEMS);
+		this.childrenFeatures.remove(this.feature_RUNNABLE_ITEMS);
 		return this.childrenFeatures;
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
-	 */
 	@Override
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
@@ -95,13 +83,13 @@ public class ExtendedRunnableItemProvider extends RunnableItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (this.RUNNABLE__RUNNABLE_ITEMS == feature) {
+		if (feature == feature_RUNNABLE_ITEMS) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature == AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems()) {
+						if (feature == feature_RUNNABLE_ITEMS) {
 							affected = Collections.singleton(getRunnableItems(((Runnable) owner)));
 						}
 					}
@@ -112,9 +100,6 @@ public class ExtendedRunnableItemProvider extends RunnableItemProvider {
 		return command;
 	}
 
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
-	 */
 	@Override
 	public void dispose() {
 		if (null != this.runnableItemsIP) {

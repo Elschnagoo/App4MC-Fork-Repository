@@ -27,9 +27,16 @@ public class ExtendedModeLabelAccessItemProvider extends ModeLabelAccessItemProv
 	 */
 	@Override
 	public Object getParent(final Object object) {
-		final Object runnable = super.getParent(object);
-		final ExtendedRunnableItemProvider runnableItemProvider = (ExtendedRunnableItemProvider) this.adapterFactory
-				.adapt(runnable, ITreeItemContentProvider.class);
-		return null != runnableItemProvider ? runnableItemProvider.getRunnableItems((Runnable) runnable) : null;
+		final Object parent = super.getParent(object);
+
+		if (parent instanceof Runnable) {
+			final Runnable runnable = (Runnable) parent;
+			final ExtendedRunnableItemProvider runnableItemProvider = (ExtendedRunnableItemProvider) this.adapterFactory
+					.adapt(runnable, ITreeItemContentProvider.class);
+			return runnableItemProvider != null ? runnableItemProvider.getRunnableItems((Runnable) runnable) : null;
+		}
+
+		return parent;
 	}
+
 }

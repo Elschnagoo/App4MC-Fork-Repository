@@ -132,10 +132,11 @@ public class ProcessScopeItemProvider extends DataGroupScopeItemProvider {
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getProcessScopeItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
+		final List<ViewerNotification> notifications = CustomItemProviderService.getProcessScopeItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
 			return;
 		}
 

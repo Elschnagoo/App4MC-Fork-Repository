@@ -157,10 +157,11 @@ public class DeviationItemProvider extends AmaltheaExtendedItemProviderAdapter i
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getDeviationItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
+		final List<ViewerNotification> notifications = CustomItemProviderService.getDeviationItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
 			return;
 		}
 

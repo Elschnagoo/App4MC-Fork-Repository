@@ -14,41 +14,38 @@
 
 package org.eclipse.app4mc.amalthea.sphinx;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sphinx.emf.ecore.ExtendedEObjectImpl;
 
 
 public class AmaltheaExtendedEObjectImpl extends ExtendedEObjectImpl {
 
-	/**
-	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotify(org.eclipse.emf.common.notify.Notification)
-	 */
-	@Override
-	public void eNotify(final Notification notification) {
-		super.eNotify(notification);
-
-		// Send additional notifications
-		if (containerNotificationRequired() && (eContainer() != null)) {
-			final Notification n = new ENotificationImpl((InternalEObject) eContainer(), Notification.SET,
-					eContainingFeature(), this, this);
-
-			eContainer().eNotify(n);
-		}
-	}
-
-	/**
-	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotificationRequired()
-	 */
-	@Override
-	public boolean eNotificationRequired() {
-		return super.eNotificationRequired();
-	}
-
-	// default implementation
-	public boolean containerNotificationRequired() {
-		return false;
-	}
+//	/**
+//	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotify(org.eclipse.emf.common.notify.Notification)
+//	 */
+//	@Override
+//	public void eNotify(final Notification notification) {
+//		super.eNotify(notification);
+//
+//		// Send additional notifications
+//		if (containerNotificationRequired() && (eContainer() != null)) {
+//			final Notification n = new ENotificationImpl((InternalEObject) eContainer(), Notification.SET,
+//					eContainingFeature(), this, this);
+//
+//			eContainer().eNotify(n);
+//		}
+//	}
+//
+//	/**
+//	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotificationRequired()
+//	 */
+//	@Override
+//	public boolean eNotificationRequired() {
+//		return super.eNotificationRequired();
+//	}
+//
+//	// default implementation
+//	public boolean containerNotificationRequired() {
+//		return false;
+//	}
 
 }

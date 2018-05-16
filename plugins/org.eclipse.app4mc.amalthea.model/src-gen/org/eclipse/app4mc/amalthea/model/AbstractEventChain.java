@@ -128,13 +128,4 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	 */
 	EList<EventChainItem> getStrands();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
-	 * @generated
-	 */
-	boolean containerNotificationRequired();
-
 } // AbstractEventChain

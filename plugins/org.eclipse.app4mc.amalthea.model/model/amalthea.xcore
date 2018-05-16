@@ -195,10 +195,6 @@ abstract class Instructions
 	 * optional parameter for fetch statistic
 	 */
 	contains InstructionFetch fetchStatistic
-	
-	op boolean containerNotificationRequired() {
-		return true
-	}
 }
 
 /*
@@ -221,12 +217,7 @@ class InstructionsConstant extends Instructions
 /*
  * Abstract description for cost (mostly execution time)
  */
-abstract class Need
-{
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class Need {}
 
 class NeedDeviation extends Need
 {
@@ -242,11 +233,7 @@ class NeedConstant extends Need
 /*
  * Abstract class for Quantities (value + unit)
  */
-abstract class Quantity {
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class Quantity {}
 
 
 /*
@@ -452,12 +439,7 @@ class CustomProperty wraps java.util.Map$Entry
 /*
  * Abstract generalization of a value entry. 
  */
-abstract class Value
-{
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class Value {}
 
 class ListObject extends Value {
 	contains Value[] values
@@ -527,10 +509,6 @@ class Deviation<T> {
 	contains T lowerBound
 	contains T upperBound
 	contains Distribution<T> distribution
-	
-	op boolean containerNotificationRequired() {
-		return true
-	}
 }
 
 /*
@@ -1042,10 +1020,6 @@ abstract class AbstractEventChain extends BaseObject, INamed
 	refers Event response
 	contains EventChainItem[] segments
 	contains EventChainItem[] strands
-	
-	op boolean containerNotificationRequired() {
-		return true
-	}
 }
 
 class EventChain extends AbstractEventChain, IReferable
@@ -1226,10 +1200,6 @@ class ProcessChainRequirement extends Requirement {
 
 abstract class RequirementLimit {
 	LimitType limitType
-	
-	op boolean containerNotificationRequired() {
-		return true
-	}
 }
 
 class CPUPercentageRequirementLimit extends RequirementLimit {
@@ -1354,11 +1324,7 @@ class DataStabilityGroup extends ReferableBaseObject {
 	contains DataGroupScope scope
 }
 
-abstract class DataGroupScope {
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class DataGroupScope {}
 
 class ProcessScope extends DataGroupScope {
 	refers AbstractProcess process
@@ -1791,11 +1757,7 @@ enum WriteStrategy {
 }
 
 
-abstract class HwLatency {
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class HwLatency {}
 
 class LatencyConstant extends HwLatency {
 	long cycles = "0"
@@ -3316,12 +3278,7 @@ class Section extends ReferableBaseObject
 /*
  * Representation of a object that can be executed by a Runnable
  */
-abstract class RunnableItem extends BaseObject
-{
-	op boolean containerNotificationRequired() {
-		return true
-	}
-}
+abstract class RunnableItem extends BaseObject {}
 
 /*
  * Representation of a object that describes computation

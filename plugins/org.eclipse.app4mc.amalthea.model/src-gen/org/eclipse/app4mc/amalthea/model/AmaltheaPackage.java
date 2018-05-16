@@ -1212,22 +1212,13 @@ public interface AmaltheaPackage extends EPackage {
 	int INSTRUCTIONS_FEATURE_COUNT = 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Instructions</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTIONS_OPERATION_COUNT = 1;
+	int INSTRUCTIONS_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.InstructionsDeviationImpl <em>Instructions Deviation</em>}' class.
@@ -1265,15 +1256,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTRUCTIONS_DEVIATION_FEATURE_COUNT = INSTRUCTIONS_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INSTRUCTIONS_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Instructions Deviation</em>' class.
@@ -1322,15 +1304,6 @@ public interface AmaltheaPackage extends EPackage {
 	int INSTRUCTIONS_CONSTANT_FEATURE_COUNT = INSTRUCTIONS_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INSTRUCTIONS_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Instructions Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1359,22 +1332,13 @@ public interface AmaltheaPackage extends EPackage {
 	int NEED_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NEED___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NEED_OPERATION_COUNT = 1;
+	int NEED_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.NeedDeviationImpl <em>Need Deviation</em>}' class.
@@ -1403,15 +1367,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int NEED_DEVIATION_FEATURE_COUNT = NEED_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NEED_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = NEED___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Need Deviation</em>' class.
@@ -1451,15 +1406,6 @@ public interface AmaltheaPackage extends EPackage {
 	int NEED_CONSTANT_FEATURE_COUNT = NEED_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NEED_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = NEED___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Need Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1488,22 +1434,13 @@ public interface AmaltheaPackage extends EPackage {
 	int QUANTITY_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUANTITY___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Quantity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUANTITY_OPERATION_COUNT = 1;
+	int QUANTITY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}' class.
@@ -1653,22 +1590,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME___COMPARE_TO__ABSTRACTTIME = ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME___CONTAINER_NOTIFICATION_REQUIRED = ABSTRACT_TIME_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 1;
+	int TIME_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl <em>Frequency</em>}' class.
@@ -1706,15 +1634,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FREQUENCY_FEATURE_COUNT = QUANTITY_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FREQUENCY___CONTAINER_NOTIFICATION_REQUIRED = QUANTITY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The operation id for the '<em>To String</em>' operation.
@@ -1772,15 +1691,6 @@ public interface AmaltheaPackage extends EPackage {
 	int VOLTAGE_FEATURE_COUNT = QUANTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VOLTAGE___CONTAINER_NOTIFICATION_REQUIRED = QUANTITY___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The operation id for the '<em>To String</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1834,15 +1744,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_SIZE_FEATURE_COUNT = QUANTITY_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_SIZE___CONTAINER_NOTIFICATION_REQUIRED = QUANTITY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The operation id for the '<em>To String</em>' operation.
@@ -1946,15 +1847,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_RATE_FEATURE_COUNT = QUANTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RATE___CONTAINER_NOTIFICATION_REQUIRED = QUANTITY___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The operation id for the '<em>To String</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2047,22 +1939,13 @@ public interface AmaltheaPackage extends EPackage {
 	int VALUE_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OPERATION_COUNT = 1;
+	int VALUE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ListObjectImpl <em>List Object</em>}' class.
@@ -2091,15 +1974,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>List Object</em>' class.
@@ -2139,15 +2013,6 @@ public interface AmaltheaPackage extends EPackage {
 	int STRING_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>String Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2183,15 +2048,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BIG_INTEGER_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_INTEGER_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Big Integer Object</em>' class.
@@ -2231,15 +2087,6 @@ public interface AmaltheaPackage extends EPackage {
 	int REFERENCE_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REFERENCE_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Reference Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2275,15 +2122,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Integer Object</em>' class.
@@ -2323,15 +2161,6 @@ public interface AmaltheaPackage extends EPackage {
 	int LONG_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LONG_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Long Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2367,15 +2196,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOAT_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOAT_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Float Object</em>' class.
@@ -2415,15 +2235,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DOUBLE_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Double Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2459,15 +2270,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = VALUE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Boolean Object</em>' class.
@@ -2534,22 +2336,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_OBJECT___COMPARE_TO__ABSTRACTTIME = ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT___CONTAINER_NOTIFICATION_REQUIRED = ABSTRACT_TIME_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Time Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_OBJECT_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 1;
+	int TIME_OBJECT_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl <em>Deviation</em>}' class.
@@ -2598,22 +2391,13 @@ public interface AmaltheaPackage extends EPackage {
 	int DEVIATION_FEATURE_COUNT = 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEVIATION_OPERATION_COUNT = 1;
+	int DEVIATION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DistributionImpl <em>Distribution</em>}' class.
@@ -6260,22 +6044,13 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_EVENT_CHAIN_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED = BASE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Abstract Event Chain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_EVENT_CHAIN_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
+	int ABSTRACT_EVENT_CHAIN_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.EventChainImpl <em>Event Chain</em>}' class.
@@ -6358,15 +6133,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_CHAIN_FEATURE_COUNT = ABSTRACT_EVENT_CHAIN_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED = ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -6485,15 +6251,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SUB_EVENT_CHAIN_FEATURE_COUNT = ABSTRACT_EVENT_CHAIN_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED = ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Sub Event Chain</em>' class.
@@ -8245,22 +8002,13 @@ public interface AmaltheaPackage extends EPackage {
 	int REQUIREMENT_LIMIT_FEATURE_COUNT = 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Requirement Limit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_LIMIT_OPERATION_COUNT = 1;
+	int REQUIREMENT_LIMIT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CPUPercentageRequirementLimitImpl <em>CPU Percentage Requirement Limit</em>}' class.
@@ -8318,15 +8066,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CPU_PERCENTAGE_REQUIREMENT_LIMIT_FEATURE_COUNT = REQUIREMENT_LIMIT_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CPU_PERCENTAGE_REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>CPU Percentage Requirement Limit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8380,15 +8119,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FREQUENCY_REQUIREMENT_LIMIT_FEATURE_COUNT = REQUIREMENT_LIMIT_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FREQUENCY_REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Frequency Requirement Limit</em>' class.
@@ -8446,15 +8176,6 @@ public interface AmaltheaPackage extends EPackage {
 	int PERCENTAGE_REQUIREMENT_LIMIT_FEATURE_COUNT = REQUIREMENT_LIMIT_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERCENTAGE_REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Percentage Requirement Limit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8510,15 +8231,6 @@ public interface AmaltheaPackage extends EPackage {
 	int COUNT_REQUIREMENT_LIMIT_FEATURE_COUNT = REQUIREMENT_LIMIT_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COUNT_REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Count Requirement Limit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8572,15 +8284,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_REQUIREMENT_LIMIT_FEATURE_COUNT = REQUIREMENT_LIMIT_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED = REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Time Requirement Limit</em>' class.
@@ -8838,22 +8541,13 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_GROUP_SCOPE_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Data Group Scope</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_GROUP_SCOPE_OPERATION_COUNT = 1;
+	int DATA_GROUP_SCOPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ProcessScopeImpl <em>Process Scope</em>}' class.
@@ -8882,15 +8576,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_SCOPE_FEATURE_COUNT = DATA_GROUP_SCOPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_SCOPE___CONTAINER_NOTIFICATION_REQUIRED = DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Process Scope</em>' class.
@@ -8930,15 +8615,6 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_SCOPE_FEATURE_COUNT = DATA_GROUP_SCOPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_SCOPE___CONTAINER_NOTIFICATION_REQUIRED = DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Runnable Scope</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8974,15 +8650,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_SCOPE_FEATURE_COUNT = DATA_GROUP_SCOPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_SCOPE___CONTAINER_NOTIFICATION_REQUIRED = DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Component Scope</em>' class.
@@ -12624,22 +12291,13 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_LATENCY_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED = 0;
-
-	/**
 	 * The number of operations of the '<em>Hw Latency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_LATENCY_OPERATION_COUNT = 1;
+	int HW_LATENCY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.LatencyConstantImpl <em>Latency Constant</em>}' class.
@@ -12668,15 +12326,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LATENCY_CONSTANT_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LATENCY_CONSTANT___CONTAINER_NOTIFICATION_REQUIRED = HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Latency Constant</em>' class.
@@ -12714,15 +12363,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LATENCY_DEVIATION_FEATURE_COUNT = HW_LATENCY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LATENCY_DEVIATION___CONTAINER_NOTIFICATION_REQUIRED = HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Latency Deviation</em>' class.
@@ -23641,22 +23281,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED = BASE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Runnable Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
+	int RUNNABLE_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ComputationItemImpl <em>Computation Item</em>}' class.
@@ -23685,15 +23316,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPUTATION_ITEM_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Computation Item</em>' class.
@@ -23749,15 +23371,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION_NEED_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_NEED___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Execution Need</em>' class.
@@ -23916,15 +23529,6 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_LABEL_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE_LABEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Mode Label Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23978,15 +23582,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_MODE_SWITCH_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_MODE_SWITCH___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Runnable Mode Switch</em>' class.
@@ -24089,15 +23684,6 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 7;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = COMPUTATION_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Label Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24171,15 +23757,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Channel Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24251,15 +23828,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_SEND_FEATURE_COUNT = CHANNEL_ACCESS_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_SEND___CONTAINER_NOTIFICATION_REQUIRED = CHANNEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Channel Send</em>' class.
@@ -24371,15 +23939,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_RECEIVE_FEATURE_COUNT = CHANNEL_ACCESS_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_RECEIVE___CONTAINER_NOTIFICATION_REQUIRED = CHANNEL_ACCESS___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Channel Receive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24453,15 +24012,6 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE_ACCESS___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Semaphore Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24526,15 +24076,6 @@ public interface AmaltheaPackage extends EPackage {
 	int SENDER_RECEIVER_COMMUNICATION_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENDER_RECEIVER_COMMUNICATION___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Sender Receiver Communication</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24597,15 +24138,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER_RECEIVER_READ_FEATURE_COUNT = SENDER_RECEIVER_COMMUNICATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENDER_RECEIVER_READ___CONTAINER_NOTIFICATION_REQUIRED = SENDER_RECEIVER_COMMUNICATION___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Sender Receiver Read</em>' class.
@@ -24681,15 +24213,6 @@ public interface AmaltheaPackage extends EPackage {
 	int SENDER_RECEIVER_WRITE_FEATURE_COUNT = SENDER_RECEIVER_COMMUNICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENDER_RECEIVER_WRITE___CONTAINER_NOTIFICATION_REQUIRED = SENDER_RECEIVER_COMMUNICATION___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Sender Receiver Write</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24743,15 +24266,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVER_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Server Call</em>' class.
@@ -24818,15 +24332,6 @@ public interface AmaltheaPackage extends EPackage {
 	int SYNCHRONOUS_SERVER_CALL_FEATURE_COUNT = SERVER_CALL_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYNCHRONOUS_SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED = SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Synchronous Server Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24889,15 +24394,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASYNCHRONOUS_SERVER_CALL_FEATURE_COUNT = SERVER_CALL_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASYNCHRONOUS_SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED = SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Asynchronous Server Call</em>' class.
@@ -24964,15 +24460,6 @@ public interface AmaltheaPackage extends EPackage {
 	int GET_RESULT_SERVER_CALL_FEATURE_COUNT = SERVER_CALL_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_RESULT_SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED = SERVER_CALL___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Get Result Server Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25017,15 +24504,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_PROBABILITY_SWITCH_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_PROBABILITY_SWITCH___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Runnable Probability Switch</em>' class.
@@ -25092,15 +24570,6 @@ public interface AmaltheaPackage extends EPackage {
 	int GROUP_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25165,15 +24634,6 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_CALL___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
-
-	/**
 	 * The number of operations of the '<em>Runnable Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25227,15 +24687,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_EVENT_TRIGGER_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Container Notification Required</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_EVENT_TRIGGER___CONTAINER_NOTIFICATION_REQUIRED = RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED;
 
 	/**
 	 * The number of operations of the '<em>Custom Event Trigger</em>' class.
@@ -28247,16 +27698,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getInstructions_FetchStatistic();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Instructions#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Instructions#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getInstructions__ContainerNotificationRequired();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation <em>Instructions Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28309,16 +27750,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getNeed();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Need#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Need#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getNeed__ContainerNotificationRequired();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation <em>Need Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28369,16 +27800,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getQuantity();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Quantity#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Quantity#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getQuantity__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}'.
@@ -28707,16 +28128,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getValue();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Value#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Value#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getValue__ContainerNotificationRequired();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ListObject <em>List Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28957,16 +28368,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDeviation_Distribution();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Deviation#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.Deviation#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getDeviation__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Distribution <em>Distribution</em>}'.
@@ -30299,16 +29700,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getAbstractEventChain_Strands();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.AbstractEventChain#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractEventChain#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getAbstractEventChain__ContainerNotificationRequired();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.EventChain <em>Event Chain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30978,16 +30369,6 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getRequirementLimit_LimitType();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.RequirementLimit#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.RequirementLimit#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getRequirementLimit__ContainerNotificationRequired();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit <em>CPU Percentage Requirement Limit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31242,16 +30623,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDataGroupScope();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DataGroupScope#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DataGroupScope#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getDataGroupScope__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ProcessScope <em>Process Scope</em>}'.
@@ -32491,16 +31862,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHwLatency();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwLatency#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.HwLatency#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getHwLatency__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.LatencyConstant <em>Latency Constant</em>}'.
@@ -37091,16 +36452,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRunnableItem();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.RunnableItem#containerNotificationRequired() <em>Container Notification Required</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Container Notification Required</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableItem#containerNotificationRequired()
-	 * @generated
-	 */
-	EOperation getRunnableItem__ContainerNotificationRequired();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.

@@ -45,21 +45,21 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 		super(adapterFactory);
 	}
 
-	public Object getCoreClassifiers(final CommonElements owner) {
+	public CoreClassifiersIP getCoreClassifiers(final CommonElements owner) {
 		if (this.coreClassifiersIP == null) {
 			this.coreClassifiersIP = new CoreClassifiersIP(this.adapterFactory, owner);
 		}
 		return this.coreClassifiersIP;
 	}
 
-	public Object getMemoryClassifiers(final CommonElements owner) {
+	public MemoryClassifiersIP getMemoryClassifiers(final CommonElements owner) {
 		if (this.memoryClassifiersIP == null) {
 			this.memoryClassifiersIP = new MemoryClassifiersIP(this.adapterFactory, owner);
 		}
 		return this.memoryClassifiersIP;
 	}
 
-	public Object getTags(final CommonElements owner) {
+	public TagsIP getTags(final CommonElements owner) {
 		if (this.tagsIP == null) {
 			this.tagsIP = new TagsIP(this.adapterFactory, owner);
 		}

@@ -3728,15 +3728,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getInstructions__ContainerNotificationRequired() {
-		return instructionsEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getInstructionsDeviation() {
 		return instructionsDeviationEClass;
 	}
@@ -3782,15 +3773,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getNeed__ContainerNotificationRequired() {
-		return needEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getNeedDeviation() {
 		return needDeviationEClass;
 	}
@@ -3829,15 +3811,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getQuantity() {
 		return quantityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getQuantity__ContainerNotificationRequired() {
-		return quantityEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4124,15 +4097,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getValue__ContainerNotificationRequired() {
-		return valueEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getListObject() {
 		return listObjectEClass;
 	}
@@ -4333,15 +4297,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getDeviation_Distribution() {
 		return (EReference)deviationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDeviation__ContainerNotificationRequired() {
-		return deviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5483,15 +5438,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAbstractEventChain__ContainerNotificationRequired() {
-		return abstractEventChainEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getEventChain() {
 		return eventChainEClass;
 	}
@@ -6059,15 +6005,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRequirementLimit__ContainerNotificationRequired() {
-		return requirementLimitEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCPUPercentageRequirementLimit() {
 		return cpuPercentageRequirementLimitEClass;
 	}
@@ -6277,15 +6214,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getDataGroupScope() {
 		return dataGroupScopeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDataGroupScope__ContainerNotificationRequired() {
-		return dataGroupScopeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -7330,15 +7258,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getHwLatency() {
 		return hwLatencyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getHwLatency__ContainerNotificationRequired() {
-		return hwLatencyEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -11216,15 +11135,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRunnableItem__ContainerNotificationRequired() {
-		return runnableItemEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getComputationItem() {
 		return computationItemEClass;
 	}
@@ -13020,7 +12930,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		instructionsEClass = createEClass(INSTRUCTIONS);
 		createEReference(instructionsEClass, INSTRUCTIONS__FETCH_STATISTIC);
-		createEOperation(instructionsEClass, INSTRUCTIONS___CONTAINER_NOTIFICATION_REQUIRED);
 
 		instructionsDeviationEClass = createEClass(INSTRUCTIONS_DEVIATION);
 		createEReference(instructionsDeviationEClass, INSTRUCTIONS_DEVIATION__DEVIATION);
@@ -13029,7 +12938,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
 		needEClass = createEClass(NEED);
-		createEOperation(needEClass, NEED___CONTAINER_NOTIFICATION_REQUIRED);
 
 		needDeviationEClass = createEClass(NEED_DEVIATION);
 		createEReference(needDeviationEClass, NEED_DEVIATION__DEVIATION);
@@ -13038,7 +12946,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(needConstantEClass, NEED_CONSTANT__VALUE);
 
 		quantityEClass = createEClass(QUANTITY);
-		createEOperation(quantityEClass, QUANTITY___CONTAINER_NOTIFICATION_REQUIRED);
 
 		timeComparableEClass = createEClass(TIME_COMPARABLE);
 
@@ -13080,7 +12987,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(customPropertyEClass, CUSTOM_PROPERTY__VALUE);
 
 		valueEClass = createEClass(VALUE);
-		createEOperation(valueEClass, VALUE___CONTAINER_NOTIFICATION_REQUIRED);
 
 		listObjectEClass = createEClass(LIST_OBJECT);
 		createEReference(listObjectEClass, LIST_OBJECT__VALUES);
@@ -13115,7 +13021,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(deviationEClass, DEVIATION__LOWER_BOUND);
 		createEReference(deviationEClass, DEVIATION__UPPER_BOUND);
 		createEReference(deviationEClass, DEVIATION__DISTRIBUTION);
-		createEOperation(deviationEClass, DEVIATION___CONTAINER_NOTIFICATION_REQUIRED);
 
 		distributionEClass = createEClass(DISTRIBUTION);
 
@@ -13295,7 +13200,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__RESPONSE);
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__SEGMENTS);
 		createEReference(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN__STRANDS);
-		createEOperation(abstractEventChainEClass, ABSTRACT_EVENT_CHAIN___CONTAINER_NOTIFICATION_REQUIRED);
 
 		eventChainEClass = createEClass(EVENT_CHAIN);
 
@@ -13382,7 +13286,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		requirementLimitEClass = createEClass(REQUIREMENT_LIMIT);
 		createEAttribute(requirementLimitEClass, REQUIREMENT_LIMIT__LIMIT_TYPE);
-		createEOperation(requirementLimitEClass, REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED);
 
 		cpuPercentageRequirementLimitEClass = createEClass(CPU_PERCENTAGE_REQUIREMENT_LIMIT);
 		createEAttribute(cpuPercentageRequirementLimitEClass, CPU_PERCENTAGE_REQUIREMENT_LIMIT__METRIC);
@@ -13415,7 +13318,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataStabilityGroupEClass, DATA_STABILITY_GROUP__SCOPE);
 
 		dataGroupScopeEClass = createEClass(DATA_GROUP_SCOPE);
-		createEOperation(dataGroupScopeEClass, DATA_GROUP_SCOPE___CONTAINER_NOTIFICATION_REQUIRED);
 
 		processScopeEClass = createEClass(PROCESS_SCOPE);
 		createEReference(processScopeEClass, PROCESS_SCOPE__PROCESS);
@@ -13565,7 +13467,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
 
 		hwLatencyEClass = createEClass(HW_LATENCY);
-		createEOperation(hwLatencyEClass, HW_LATENCY___CONTAINER_NOTIFICATION_REQUIRED);
 
 		latencyConstantEClass = createEClass(LATENCY_CONSTANT);
 		createEAttribute(latencyConstantEClass, LATENCY_CONSTANT__CYCLES);
@@ -14132,7 +14033,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(sectionEClass, SECTION__ASIL_LEVEL);
 
 		runnableItemEClass = createEClass(RUNNABLE_ITEM);
-		createEOperation(runnableItemEClass, RUNNABLE_ITEM___CONTAINER_NOTIFICATION_REQUIRED);
 
 		computationItemEClass = createEClass(COMPUTATION_ITEM);
 
@@ -14883,8 +14783,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(instructionsEClass, Instructions.class, "Instructions", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInstructions_FetchStatistic(), this.getInstructionFetch(), null, "fetchStatistic", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getInstructions__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(instructionsDeviationEClass, InstructionsDeviation.class, "InstructionsDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getLongObject());
@@ -14896,8 +14794,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(needEClass, Need.class, "Need", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getNeed__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(needDeviationEClass, NeedDeviation.class, "NeedDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getDeviation());
 		g2 = createEGenericType(this.getLongObject());
@@ -14908,8 +14804,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getNeedConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, NeedConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(quantityEClass, Quantity.class, "Quantity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getQuantity__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(timeComparableEClass, Comparable.class, "TimeComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>");
 
@@ -14963,8 +14857,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getValue__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(listObjectEClass, ListObject.class, "ListObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getListObject_Values(), this.getValue(), null, "values", null, 0, -1, ListObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -15003,8 +14895,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g2 = createEGenericType(deviationEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getDeviation_Distribution(), g1, null, "distribution", null, 0, 1, Deviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getDeviation__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(distributionEClass, Distribution.class, "Distribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -15191,8 +15081,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getAbstractEventChain_Segments(), this.getEventChainItem(), null, "segments", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractEventChain_Strands(), this.getEventChainItem(), null, "strands", null, 0, -1, AbstractEventChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getAbstractEventChain__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(eventChainEClass, EventChain.class, "EventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(subEventChainEClass, SubEventChain.class, "SubEventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -15280,8 +15168,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(requirementLimitEClass, RequirementLimit.class, "RequirementLimit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRequirementLimit_LimitType(), this.getLimitType(), "limitType", null, 0, 1, RequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getRequirementLimit__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(cpuPercentageRequirementLimitEClass, CPUPercentageRequirementLimit.class, "CPUPercentageRequirementLimit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCPUPercentageRequirementLimit_Metric(), this.getCPUPercentageMetric(), "metric", null, 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCPUPercentageRequirementLimit_LimitValue(), theEcorePackage.getEDouble(), "limitValue", "0.0", 0, 1, CPUPercentageRequirementLimit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15313,8 +15199,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataStabilityGroup_Scope(), this.getDataGroupScope(), null, "scope", null, 0, 1, DataStabilityGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataGroupScopeEClass, DataGroupScope.class, "DataGroupScope", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getDataGroupScope__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(processScopeEClass, ProcessScope.class, "ProcessScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessScope_Process(), this.getAbstractProcess(), null, "process", null, 0, 1, ProcessScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15468,8 +15352,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getHwLatency__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(latencyConstantEClass, LatencyConstant.class, "LatencyConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLatencyConstant_Cycles(), theEcorePackage.getELong(), "cycles", "0", 0, 1, LatencyConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16074,8 +15956,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getSection_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableItemEClass, RunnableItem.class, "RunnableItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getRunnableItem__ContainerNotificationRequired(), theEcorePackage.getEBoolean(), "containerNotificationRequired", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

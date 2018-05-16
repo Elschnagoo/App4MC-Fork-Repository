@@ -132,10 +132,11 @@ public class ComponentScopeItemProvider extends DataGroupScopeItemProvider {
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getComponentScopeItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
+		final List<ViewerNotification> notifications = CustomItemProviderService.getComponentScopeItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
 			return;
 		}
 

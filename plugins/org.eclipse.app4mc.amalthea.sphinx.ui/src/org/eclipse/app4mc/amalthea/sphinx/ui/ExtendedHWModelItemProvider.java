@@ -41,21 +41,21 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 		super(adapterFactory);
 	}
 
-	public Object getHwFeatures(final HWModel hwModel) {
+	public HwFeatureIP getHwFeatures(final HWModel hwModel) {
 		if (this.hwFeatureIP == null) {
 			this.hwFeatureIP = new HwFeatureIP(this.adapterFactory, hwModel);
 		}
 		return this.hwFeatureIP;
 	}
 
-	public Object getHwDefinitions(final HWModel hwModel) {
+	public HwDefinitionIP getHwDefinitions(final HWModel hwModel) {
 		if (this.hwDefinitionIP == null) {
 			this.hwDefinitionIP = new HwDefinitionIP(this.adapterFactory, hwModel);
 		}
 		return this.hwDefinitionIP;
 	}
 
-	public Object getHwDomains(final HWModel hwModel) {
+	public HwDomainIP getHwDomains(final HWModel hwModel) {
 		if (this.hwDomainIP == null) {
 			this.hwDomainIP = new HwDomainIP(this.adapterFactory, hwModel);
 		}

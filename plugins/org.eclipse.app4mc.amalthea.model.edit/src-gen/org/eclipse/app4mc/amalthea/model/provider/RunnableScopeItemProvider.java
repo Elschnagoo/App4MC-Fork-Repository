@@ -132,10 +132,11 @@ public class RunnableScopeItemProvider extends DataGroupScopeItemProvider {
 		updateChildren(notification);
 
 		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getRunnableScopeItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
+		final List<ViewerNotification> notifications = CustomItemProviderService.getRunnableScopeItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
 			return;
 		}
 

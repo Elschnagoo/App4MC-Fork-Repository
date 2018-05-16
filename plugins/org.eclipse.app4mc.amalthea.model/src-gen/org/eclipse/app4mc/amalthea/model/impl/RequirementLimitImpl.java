@@ -12,8 +12,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.RequirementLimit;
@@ -21,8 +19,6 @@ import org.eclipse.app4mc.amalthea.model.RequirementLimit;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -107,15 +103,6 @@ public abstract class RequirementLimitImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean containerNotificationRequired() {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -167,20 +154,6 @@ public abstract class RequirementLimitImpl extends AmaltheaExtendedEObjectImpl i
 				return limitType != LIMIT_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AmaltheaPackage.REQUIREMENT_LIMIT___CONTAINER_NOTIFICATION_REQUIRED:
-				return containerNotificationRequired();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

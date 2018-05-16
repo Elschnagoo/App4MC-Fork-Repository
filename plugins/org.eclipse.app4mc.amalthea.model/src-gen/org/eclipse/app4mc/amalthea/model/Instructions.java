@@ -60,13 +60,4 @@ public interface Instructions extends EObject {
 	 */
 	void setFetchStatistic(InstructionFetch value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
-	 * @generated
-	 */
-	boolean containerNotificationRequired();
-
 } // Instructions

@@ -60,13 +60,4 @@ public interface RequirementLimit extends EObject {
 	 */
 	void setLimitType(LimitType value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return true;'"
-	 * @generated
-	 */
-	boolean containerNotificationRequired();
-
 } // RequirementLimit

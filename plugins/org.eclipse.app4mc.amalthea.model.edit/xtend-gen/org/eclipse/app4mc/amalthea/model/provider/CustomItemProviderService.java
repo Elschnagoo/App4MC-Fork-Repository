@@ -192,6 +192,8 @@ import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.Voltage;
+import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
@@ -206,6 +208,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -232,6 +235,20 @@ public class CustomItemProviderService {
   
   private static String getContainingFeatureName(final EObject object) {
     return CustomItemProviderService.getContainingFeatureName(object, "", ": ");
+  }
+  
+  private static void addParentLabelNotification(final List<ViewerNotification> list, final Notification notification) {
+    CustomItemProviderService.addParentLabelNotification(list, notification, 1);
+  }
+  
+  private static void addParentLabelNotification(final List<ViewerNotification> list, final Notification notification, final int number) {
+    Object _notifier = notification.getNotifier();
+    EObject obj = ((EObject) _notifier);
+    int i = 0;
+    while ((((i = (i + 1)) <= number) && ((obj = obj.eContainer()) != null))) {
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, obj, false, true);
+      list.add(0, _viewerNotification);
+    }
   }
   
   private static String getLabelProviderText(final Object object, final AdapterFactory rootAF) {
@@ -274,23 +291,6 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
-  }
-  
-  private static String getFrequencyText(final Frequency frequency) {
-    if ((frequency == null)) {
-      return "<frequency>";
-    }
-    final String value = Double.toString(frequency.getValue());
-    String _xifexpression = null;
-    FrequencyUnit _unit = frequency.getUnit();
-    boolean _equals = Objects.equal(_unit, FrequencyUnit._UNDEFINED_);
-    if (_equals) {
-      _xifexpression = "<unit>";
-    } else {
-      _xifexpression = frequency.getUnit().getLiteral();
-    }
-    final String unit = _xifexpression;
-    return ((value + " ") + unit);
   }
   
   private static String getTimeText(final AbstractTime time) {
@@ -367,6 +367,62 @@ public class CustomItemProviderService {
     final String unit = _xifexpression_1;
     String _replace = unit.replace("PerSecond", "/s");
     return ((value + " ") + _replace);
+  }
+  
+  private static String getFrequencyText(final Frequency frequency) {
+    if ((frequency == null)) {
+      return "<frequency>";
+    }
+    final String value = Double.toString(frequency.getValue());
+    String _xifexpression = null;
+    FrequencyUnit _unit = frequency.getUnit();
+    boolean _equals = Objects.equal(_unit, FrequencyUnit._UNDEFINED_);
+    if (_equals) {
+      _xifexpression = "<unit>";
+    } else {
+      _xifexpression = frequency.getUnit().getLiteral();
+    }
+    final String unit = _xifexpression;
+    return ((value + " ") + unit);
+  }
+  
+  private static String getVoltageText(final Voltage voltage) {
+    if ((voltage == null)) {
+      return "<voltage>";
+    }
+    final String value = Double.toString(voltage.getValue());
+    String _xifexpression = null;
+    VoltageUnit _unit = voltage.getUnit();
+    boolean _equals = Objects.equal(_unit, VoltageUnit._UNDEFINED_);
+    if (_equals) {
+      _xifexpression = "<unit>";
+    } else {
+      _xifexpression = voltage.getUnit().getLiteral();
+    }
+    final String unit = _xifexpression;
+    return ((value + " ") + unit);
+  }
+  
+  private static String getDeviationBoundText(final Object bound) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (bound instanceof LongObject) {
+      _matched=true;
+      _switchResult = String.valueOf(((LongObject)bound).getValue());
+    }
+    if (!_matched) {
+      if (bound instanceof DoubleObject) {
+        _matched=true;
+        _switchResult = String.valueOf(((DoubleObject)bound).getValue());
+      }
+    }
+    if (!_matched) {
+      if (bound instanceof Time) {
+        _matched=true;
+        _switchResult = CustomItemProviderService.getTimeText(((AbstractTime)bound));
+      }
+    }
+    return _switchResult;
   }
   
   private static String trimDistName(final String name) {
@@ -600,6 +656,20 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getBooleanObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(BooleanObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.BOOLEAN_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * DoubleObjectItemProvider
    */
@@ -611,6 +681,20 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getDoubleObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(DoubleObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.DOUBLE_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -626,6 +710,20 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getFloatObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(FloatObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.FLOAT_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * IntegerObjectItemProvider
    */
@@ -637,6 +735,20 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getIntegerObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(IntegerObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.INTEGER_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -652,6 +764,20 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getLongObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(LongObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.LONG_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * TimeObjectItemProvider
    */
@@ -663,6 +789,27 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getTimeObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(TimeObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TIME_OBJECT__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TIME_OBJECT__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -678,6 +825,20 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getStringObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(StringObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.STRING_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * BigIntegerObjectItemProvider
    */
@@ -689,6 +850,47 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getBigIntegerObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(BigIntegerObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.BIG_INTEGER_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
+  /**
+   * ReferenceObjectItemProvider
+   */
+  public static String getReferenceObjectItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ReferenceObject)) {
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _valueText = CustomItemProviderService.getValueText(((Value)object));
+      return (_containingFeatureName + _valueText);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getReferenceObjectItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(ReferenceObject.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.REFERENCE_OBJECT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -746,6 +948,61 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getFrequencyItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Frequency.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.FREQUENCY__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.FREQUENCY__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
+  /**
+   * VoltageItemProvider
+   */
+  public static String getVoltageItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof Voltage)) {
+      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
+      String _voltageText = CustomItemProviderService.getVoltageText(((Voltage)object));
+      return (_containingFeatureName + _voltageText);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getVoltageItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Voltage.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.VOLTAGE__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.VOLTAGE__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * DataSizeItemProvider
    */
@@ -759,6 +1016,27 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getDataSizeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(DataSize.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_SIZE__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * DataRateItemProvider
    */
@@ -770,6 +1048,27 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getDataRateItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(DataRate.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.DATA_RATE__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DATA_RATE__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -813,14 +1112,16 @@ public class CustomItemProviderService {
       if ((lower == null)) {
         _xifexpression_1 = "";
       } else {
-        _xifexpression_1 = (" lowerBound: " + lower);
+        String _deviationBoundText = CustomItemProviderService.getDeviationBoundText(lower);
+        _xifexpression_1 = (" lowerBound: " + _deviationBoundText);
       }
       final String s2 = _xifexpression_1;
       String _xifexpression_2 = null;
       if ((upper == null)) {
         _xifexpression_2 = "";
       } else {
-        _xifexpression_2 = (" upperBound: " + upper);
+        String _deviationBoundText_1 = CustomItemProviderService.getDeviationBoundText(upper);
+        _xifexpression_2 = (" upperBound: " + _deviationBoundText_1);
       }
       final String s3 = _xifexpression_2;
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
@@ -833,7 +1134,8 @@ public class CustomItemProviderService {
     return null;
   }
   
-  public static ViewerNotification getDeviationItemProviderNotification(final Notification notification) {
+  public static List<ViewerNotification> getDeviationItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Deviation.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__LOWER_BOUND)) {
@@ -851,9 +1153,11 @@ public class CustomItemProviderService {
     }
     if (_matched) {
       Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, true, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification, 2);
     }
-    return null;
+    return list;
   }
   
   /**
@@ -901,6 +1205,27 @@ public class CustomItemProviderService {
     }
   }
   
+  public static List<ViewerNotification> getTimeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Time.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TIME__VALUE)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TIME__UNIT)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
   /**
    * InstructionsConstantItemProvider
    */
@@ -920,6 +1245,20 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getInstructionsConstantItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(InstructionsConstant.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_CONSTANT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -997,6 +1336,20 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  public static List<ViewerNotification> getNeedConstantItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(NeedConstant.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.NEED_CONSTANT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
   }
   
   /**
@@ -1376,15 +1729,18 @@ public class CustomItemProviderService {
     }
   }
   
-  public static ViewerNotification getComponentScopeItemProviderNotification(final Notification notification) {
+  public static List<ViewerNotification> getComponentScopeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ComponentScope.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.COMPONENT_SCOPE__COMPONENT)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
     }
-    return null;
+    return list;
   }
   
   /**
@@ -1418,15 +1774,18 @@ public class CustomItemProviderService {
     }
   }
   
-  public static ViewerNotification getProcessScopeItemProviderNotification(final Notification notification) {
+  public static List<ViewerNotification> getProcessScopeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(ProcessScope.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.PROCESS_SCOPE__PROCESS)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
     }
-    return null;
+    return list;
   }
   
   /**
@@ -1457,15 +1816,18 @@ public class CustomItemProviderService {
     }
   }
   
-  public static ViewerNotification getRunnableScopeItemProviderNotification(final Notification notification) {
+  public static List<ViewerNotification> getRunnableScopeItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(RunnableScope.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_SCOPE__RUNNABLE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
     }
-    return null;
+    return list;
   }
   
   /**
@@ -2561,6 +2923,25 @@ public class CustomItemProviderService {
     if (_matched) {
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, false, true);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__READ_LATENCY)) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY)) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_CONNECTION__DATA_RATE)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        Object _notifier_1 = notification.getNotifier();
+        return new ViewerNotification(notification, _notifier_1, true, false);
+      }
     }
     return null;
   }
@@ -4239,11 +4620,6 @@ public class CustomItemProviderService {
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__NAME)) {
       _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__MODE)) {
-        _matched=true;
-      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__INITIAL_VALUE)) {

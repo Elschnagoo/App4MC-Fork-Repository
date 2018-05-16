@@ -22,7 +22,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -263,6 +263,20 @@ public class AbstractEventChainItemProvider extends BaseObjectItemProvider {
 				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void fireNotifyChanged(final Notification notification) {
+		super.fireNotifyChanged(notification);
+		
+		// update parent label
+	    EObject object = (EObject)notification.getNotifier();
+	    if (object.eContainer() != null) {
+	    	super.fireNotifyChanged(new ViewerNotification(notification, object.eContainer(), false, true));
+	    }
 	}
 
 }

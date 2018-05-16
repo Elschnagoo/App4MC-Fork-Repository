@@ -171,6 +171,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification
 import org.eclipse.app4mc.amalthea.model.Value
 import org.eclipse.app4mc.amalthea.model.ReferenceObject
 import org.eclipse.app4mc.amalthea.model.ListObject
+import org.eclipse.app4mc.amalthea.model.Voltage
+import org.eclipse.app4mc.amalthea.model.VoltageUnit
 
 class CustomItemProviderService {
 
@@ -182,6 +184,18 @@ class CustomItemProviderService {
 
 	private def static getContainingFeatureName(EObject object) {
 		return getContainingFeatureName(object, "", ": ")
+	}
+
+	private def static addParentLabelNotification(List<ViewerNotification> list, Notification notification) {
+		addParentLabelNotification(list, notification, 1)
+	}
+
+	private def static addParentLabelNotification(List<ViewerNotification> list, Notification notification, int number) {
+	    var obj = notification.getNotifier() as EObject
+	    var i = 0
+	    while ((i=i+1) <= number && (obj=obj.eContainer) !== null) {
+	    	list.add(0, new ViewerNotification(notification, obj, false, true))
+	    }
 	}
 
 	private def static getLabelProviderText(Object object, AdapterFactory rootAF) {
@@ -227,14 +241,6 @@ class CustomItemProviderService {
 ///// _________________________ Common _________________________
 ///// 
 
-	private def static getFrequencyText(Frequency frequency) {
-		if(frequency === null) return "<frequency>"
-
-		val value = Double.toString(frequency.value)
-		val unit = if(frequency.unit == FrequencyUnit::_UNDEFINED_) "<unit>" else frequency.unit.literal
-		return value + " " + unit
-	}
-
 	private def static getTimeText(AbstractTime time) {
 		if(time === null) return "<time>"
 
@@ -257,6 +263,33 @@ class CustomItemProviderService {
 		val value = if(rate.value === null) "???" else rate.value.toString
 		val unit = if(rate.unit == DataRateUnit::_UNDEFINED_) "<unit>" else rate.unit.literal
 		return value + " " + unit.replace("PerSecond", "/s")
+	}
+
+	private def static getFrequencyText(Frequency frequency) {
+		if(frequency === null) return "<frequency>"
+
+		val value = Double.toString(frequency.value)
+		val unit = if(frequency.unit == FrequencyUnit::_UNDEFINED_) "<unit>" else frequency.unit.literal
+		return value + " " + unit
+	}
+
+	private def static getVoltageText(Voltage voltage) {
+		if(voltage === null) return "<voltage>"
+
+		val value = Double.toString(voltage.value)
+		val unit = if(voltage.unit == VoltageUnit::_UNDEFINED_) "<unit>" else voltage.unit.literal
+		return value + " " + unit
+	}
+
+	private def static getDeviationBoundText(Object bound) {
+		switch bound {
+			LongObject:
+				String.valueOf(bound.value)
+			DoubleObject:
+				String.valueOf(bound.value)
+			Time:
+				getTimeText(bound)
+			}
 	}
 
 	private def static trimDistName(String name) {
@@ -345,6 +378,17 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getBooleanObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(BooleanObject)) {
+			case AmaltheaPackage::BOOLEAN_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						DoubleObjectItemProvider
 	 *****************************************************************************/
@@ -354,6 +398,17 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getDoubleObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(DoubleObject)) {
+			case AmaltheaPackage::DOUBLE_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -367,6 +422,17 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getFloatObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(FloatObject)) {
+			case AmaltheaPackage::FLOAT_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						IntegerObjectItemProvider
 	 *****************************************************************************/
@@ -376,6 +442,17 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getIntegerObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(IntegerObject)) {
+			case AmaltheaPackage::INTEGER_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -389,6 +466,17 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getLongObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(LongObject)) {
+			case AmaltheaPackage::LONG_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						TimeObjectItemProvider
 	 *****************************************************************************/
@@ -398,6 +486,18 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getTimeObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(TimeObject)) {
+			case AmaltheaPackage::TIME_OBJECT__VALUE,
+			case AmaltheaPackage::TIME_OBJECT__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -411,6 +511,17 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getStringObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(StringObject)) {
+			case AmaltheaPackage::STRING_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						BigIntegerObjectItemProvider
 	 *****************************************************************************/
@@ -420,6 +531,39 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getBigIntegerObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(BigIntegerObject)) {
+			case AmaltheaPackage::BIG_INTEGER_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						ReferenceObjectItemProvider
+	 *****************************************************************************/
+	def static String getReferenceObjectItemProviderText(Object object, String defaultText) {
+		if (object instanceof ReferenceObject) {
+			return getContainingFeatureName(object) + getValueText(object)
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getReferenceObjectItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(ReferenceObject)) {
+			case AmaltheaPackage::REFERENCE_OBJECT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -475,6 +619,41 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getFrequencyItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(Frequency)) {
+			case AmaltheaPackage::FREQUENCY__VALUE,
+			case AmaltheaPackage::FREQUENCY__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						VoltageItemProvider
+	 *****************************************************************************/
+	def static String getVoltageItemProviderText(Object object, String defaultText) {
+		if (object instanceof Voltage) {
+			return getContainingFeatureName(object) + getVoltageText(object)
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getVoltageItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(Voltage)) {
+			case AmaltheaPackage::VOLTAGE__VALUE,
+			case AmaltheaPackage::VOLTAGE__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						DataSizeItemProvider
 	 *****************************************************************************/
@@ -484,6 +663,18 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getDataSizeItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(DataSize)) {
+			case AmaltheaPackage::DATA_SIZE__VALUE,
+			case AmaltheaPackage::DATA_SIZE__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -497,6 +688,18 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getDataRateItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(DataRate)) {
+			case AmaltheaPackage::DATA_RATE__VALUE,
+			case AmaltheaPackage::DATA_RATE__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						DeviationItemProvider
 	 *****************************************************************************/
@@ -506,21 +709,24 @@ class CustomItemProviderService {
 			val lower = object?.lowerBound
 			val upper = object?.upperBound
 			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
-			val s2 = if(lower === null) "" else " lowerBound: " + lower
-			val s3 = if(upper === null) "" else " upperBound: " + upper
+			val s2 = if(lower === null) "" else " lowerBound: " + getDeviationBoundText(lower)
+			val s3 = if(upper === null) "" else " upperBound: " + getDeviationBoundText(upper)
 
 			return getContainingFeatureName(object) + "(" + s1 + ")" + s2 + s3
 		}
 	}
 
-	def static ViewerNotification getDeviationItemProviderNotification(Notification notification) {
+	def static List<ViewerNotification> getDeviationItemProviderNotifications(Notification notification) {
+		val list = newArrayList
 		switch notification.getFeatureID(typeof(Deviation)) {
 			case AmaltheaPackage::DEVIATION__LOWER_BOUND,
 			case AmaltheaPackage::DEVIATION__UPPER_BOUND,
-			case AmaltheaPackage::DEVIATION__DISTRIBUTION:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
+			case AmaltheaPackage::DEVIATION__DISTRIBUTION: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+				addParentLabelNotification(list, notification, 2)
+				}
 		}
-		return null
+		return list
 	}
 
 	/*****************************************************************************
@@ -557,6 +763,18 @@ class CustomItemProviderService {
 		}
 	}
 
+	def static List<ViewerNotification> getTimeItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(Time)) {
+			case AmaltheaPackage::TIME__VALUE,
+			case AmaltheaPackage::TIME__UNIT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
 	/*****************************************************************************
 	 * 						InstructionsConstantItemProvider
 	 *****************************************************************************/
@@ -569,6 +787,17 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getInstructionsConstantItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(InstructionsConstant)) {
+			case AmaltheaPackage::INSTRUCTIONS_CONSTANT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -606,6 +835,17 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	def static List<ViewerNotification> getNeedConstantItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(NeedConstant)) {
+			case AmaltheaPackage::NEED_CONSTANT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
 	}
 
 	/*****************************************************************************
@@ -802,12 +1042,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static ViewerNotification getComponentScopeItemProviderNotification(Notification notification) {
+	def static List<ViewerNotification> getComponentScopeItemProviderNotifications(Notification notification) {
+		val list = newArrayList
 		switch notification.getFeatureID(typeof(ComponentScope)) {
-			case AmaltheaPackage::COMPONENT_SCOPE__COMPONENT:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage::COMPONENT_SCOPE__COMPONENT: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
 		}
-		return null
+		return list
 	}
 
 	/*****************************************************************************
@@ -823,12 +1066,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static ViewerNotification getProcessScopeItemProviderNotification(Notification notification) {
+	def static List<ViewerNotification> getProcessScopeItemProviderNotifications(Notification notification) {
+		val list = newArrayList
 		switch notification.getFeatureID(typeof(ProcessScope)) {
-			case AmaltheaPackage::PROCESS_SCOPE__PROCESS:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage::PROCESS_SCOPE__PROCESS: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
 		}
-		return null
+		return list
 	}
 
 	/*****************************************************************************
@@ -844,12 +1090,15 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static ViewerNotification getRunnableScopeItemProviderNotification(Notification notification) {
+	def static List<ViewerNotification> getRunnableScopeItemProviderNotifications(Notification notification) {
+		val list = newArrayList
 		switch notification.getFeatureID(typeof(RunnableScope)) {
-			case AmaltheaPackage::RUNNABLE_SCOPE__RUNNABLE:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage::RUNNABLE_SCOPE__RUNNABLE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
 		}
-		return null
+		return list
 	}
 
 	/*****************************************************************************
@@ -1375,6 +1624,10 @@ class CustomItemProviderService {
 			case AmaltheaPackage::HW_CONNECTION__PORT1,
 			case AmaltheaPackage::HW_CONNECTION__PORT2:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY,
+			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY,
+			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
 		return null
 	}
@@ -2175,7 +2428,6 @@ class CustomItemProviderService {
 	def static ViewerNotification getModeLabelItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeLabel)) {
 			case AmaltheaPackage::MODE_LABEL__NAME,
-			case AmaltheaPackage::MODE_LABEL__MODE,
 			case AmaltheaPackage::MODE_LABEL__INITIAL_VALUE:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
