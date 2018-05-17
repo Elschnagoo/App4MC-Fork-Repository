@@ -51,12 +51,10 @@ public class AmaltheaExtendedItemProviderAdapter extends ExtendedItemProviderAda
 	@Override
 	public String getCreateChildText(final Object owner, final Object feature, final Object child,
 			final Collection<?> selection, final boolean qualified) {
-		EStructuralFeature childFeature;
-		Object childObject;
 
 		if ((feature instanceof EStructuralFeature) && (child instanceof EObject)) {
-			childFeature = (EStructuralFeature) feature;
-			childObject = child;
+			EStructuralFeature childFeature = (EStructuralFeature) feature;
+			Object childObject = child;
 
 			// Handle FeatureMaps
 			if (FeatureMapUtil.isFeatureMap(childFeature)) {
@@ -86,9 +84,13 @@ public class AmaltheaExtendedItemProviderAdapter extends ExtendedItemProviderAda
 			}
 
 			// Plural+Singular ==> Use type name as action text
-			final String substring = childTypeText.substring(0, childTypeText.length() - 1);
+			String trimmedType = childTypeText;
+			if (childTypeText.toUpperCase().startsWith("HW ") || childTypeText.toUpperCase().startsWith("OS ")) {
+				trimmedType = childTypeText.substring(3);
+			}
+			String substring = trimmedType.substring(0, trimmedType.length() - 1);
 			if (childFeature.isMany() && featureText.toLowerCase().startsWith(substring.toLowerCase())) {
-				return childTypeText;
+				return trimmedType;
 			}
 
 			// flat default
