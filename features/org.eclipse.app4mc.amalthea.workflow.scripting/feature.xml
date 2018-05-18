@@ -16,6 +16,10 @@
 All rights reserved.
    </copyright>
 
+   <includes
+         id="org.eclipse.app4mc.amalthea.models"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.ease" version="0.3.0" match="greaterOrEqual"/>
@@ -26,6 +30,26 @@ All rights reserved.
 
    <plugin
          id="org.eclipse.app4mc.amalthea.workflow.ease"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.workflow.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.app4mc.amalthea.workflow.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.app4mc.workflow.examples.installer"
          download-size="0"
          install-size="0"
          version="0.0.0"

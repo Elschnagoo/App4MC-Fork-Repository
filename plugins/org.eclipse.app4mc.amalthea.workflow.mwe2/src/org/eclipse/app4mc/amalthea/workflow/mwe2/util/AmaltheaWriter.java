@@ -62,7 +62,7 @@ import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
  *
  *
  */
-@SuppressWarnings("javadoc")
+
 public class AmaltheaWriter extends AmaltheaWorkflow {
 
 	private boolean singleFile = true;
@@ -72,7 +72,6 @@ public class AmaltheaWriter extends AmaltheaWorkflow {
 	private final Map<String, EObject> cache = new HashMap<String, EObject>();
 	private final Map<URI, Resource> cache2 = new HashMap<URI, Resource>();
 
-	@SuppressWarnings("javadoc")
 	public AmaltheaWriter() {
 		super();
 		this.log = Logger.getLogger("AmaltheaWriter");

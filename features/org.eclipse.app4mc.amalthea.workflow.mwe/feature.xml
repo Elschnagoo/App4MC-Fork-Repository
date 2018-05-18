@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.app4mc.amalthea.workflow"
-      label="APP4MC AMALTHEA Workflow"
+      id="org.eclipse.app4mc.amalthea.workflow.mwe"
+      label="APP4MC AMALTHEA Workflow MWE"
       version="0.9.0.qualifier"
       provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
@@ -33,19 +33,6 @@ All rights reserved.
 
    <plugin
          id="org.eclipse.app4mc.amalthea.workflow.mwe2"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.app4mc.amalthea.workflow.help"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.app4mc.workflow.examples.installer"
          download-size="0"
          install-size="0"
          version="0.0.0"

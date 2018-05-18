@@ -52,7 +52,6 @@ public class AmaltheaReader extends AmaltheaWorkflow {
 
 	private final List<String> fileNames = new ArrayList<String>();
 
-	@SuppressWarnings("javadoc")
 	public AmaltheaReader() {
 		super();
 		this.log = Logger.getLogger("AmaltheaReader");

@@ -41,10 +41,6 @@ All rights reserved.
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.app4mc.amalthea.workflow.sdk"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.app4mc.examples.sdk"
          version="0.0.0"/>
 
@@ -69,7 +65,7 @@ All rights reserved.
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.app4mc.amalthea.workflow.common.sdk"
+         id="org.eclipse.app4mc.amalthea.workflow.mwe.sdk"
          version="0.0.0"/>
 
    <includes

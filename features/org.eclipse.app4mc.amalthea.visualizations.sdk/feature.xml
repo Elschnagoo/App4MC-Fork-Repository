@@ -16,6 +16,10 @@
 All rights reserved.
    </copyright>
 
+   <includes
+         id="org.eclipse.app4mc.amalthea.visualizations"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="com.google.guava" version="12.0.0" match="greaterOrEqual"/>
@@ -31,12 +35,6 @@ All rights reserved.
 
    <plugin
          id="org.eclipse.app4mc.amalthea.visualization.hw.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="net.sourceforge.plantuml"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

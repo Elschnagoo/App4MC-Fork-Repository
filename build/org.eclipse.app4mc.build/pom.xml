@@ -154,10 +154,8 @@
 		<module>../../features/org.eclipse.app4mc.amalthea.models.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.visualizations</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.visualizations.sdk</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.workflow</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.workflow.sdk</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.workflow.common</module>
-		<module>../../features/org.eclipse.app4mc.amalthea.workflow.common.sdk</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.mwe</module>
+		<module>../../features/org.eclipse.app4mc.amalthea.workflow.mwe.sdk</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.workflow.scripting</module>
 		<module>../../features/org.eclipse.app4mc.amalthea.workflow.scripting.sdk</module>
 		<module>../../features/org.eclipse.app4mc.docu</module>

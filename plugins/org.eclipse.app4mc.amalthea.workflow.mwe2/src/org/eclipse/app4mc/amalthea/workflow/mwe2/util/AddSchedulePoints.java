@@ -35,7 +35,6 @@ import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
  */
 public class AddSchedulePoints extends AmaltheaWorkflow {
 
-	@SuppressWarnings("javadoc")
 	public AddSchedulePoints() {
 		super();
 		this.log = Logger.getLogger("AddSchedulePoints");

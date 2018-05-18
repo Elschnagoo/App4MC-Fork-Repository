@@ -21,7 +21,7 @@ All rights reserved.
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.app4mc.amalthea.workflow.sdk"
+         id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk"
          version="0.0.0"/>
 
    <includes
