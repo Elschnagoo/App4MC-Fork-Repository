@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.8.3.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipse.app4mc.platform.ide/about.png"/>
@@ -11,7 +11,7 @@
 (c) Copyright Eclipse APP4MC contributors and others. 2016. 
 All rights reserved.
 
-Version 0.8.0
+Version 0.9.0
       </text>
    </aboutInfo>
 
@@ -270,8 +270,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/" enabled="true" name="Orbit Mars.2"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.5" enabled="true" name="Eclipse 4.5"/>
       <repository location="http://download.eclipse.org/releases/mars" enabled="true" name="MARS"/>
-      <repository location="http://updates.yakindu.org/mars/releases" enabled="false" name="Yakindu"/>
-      <repository location="http://updates.yakindu.org/sct/mars/releases/" enabled="false" name="Yakindu SCT"/>
    </repositories>
 
    <preferencesInfo>
