@@ -11,7 +11,7 @@
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.app4mc.amalthea.workflow.sdk</artifactId>
+	<artifactId>org.eclipse.app4mc.amalthea.workflow.mwe.sdk</artifactId>
 	<packaging>eclipse-feature</packaging>
 
 </project>
