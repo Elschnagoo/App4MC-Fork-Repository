@@ -305,10 +305,10 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <feature id="org.eclipse.app4mc.amalthea.workflow.mwe.sdk"/>
       <feature id="org.eclipse.app4mc.amalthea.workflow.scripting"/>
       <feature id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk"/>
-      <feature id="org.eclipse.app4mc.amalthea.multicore"/>
-      <feature id="org.eclipse.app4mc.amalthea.multicore.sdk"/>
       <feature id="org.eclipse.app4mc.amalthea.converters"/>
       <feature id="org.eclipse.app4mc.amalthea.converters.sdk"/>
+      <feature id="org.eclipse.app4mc.multicore"/>
+      <feature id="org.eclipse.app4mc.multicore.sdk"/>
       <feature id="org.eclipse.app4mc.validation"/>
       <feature id="org.eclipse.app4mc.validation.sdk"/>
       <feature id="org.eclipse.app4mc.tracing"/>

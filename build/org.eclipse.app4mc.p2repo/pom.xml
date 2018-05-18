@@ -104,14 +104,12 @@
 							</symbols>
 
 							<associateSites>
-								<site>http://hudson.eclipse.org/hudson/job/damos-master/lastSuccessfulBuild/artifact/update-site</site>
 								<site>http://download.eclipse.org/modeling/emf/emf/updates/releases</site>
 								<site>http://download.eclipse.org/modeling/emf/compare/updates/releases</site>
 								<site>http://download.eclipse.org/rmf/updates</site>
 								<site>http://download.eclipse.org/sphinx/updates/interim</site>
 								<site>http://download.eclipse.org/ease/update/release</site>
 								<site>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases</site>
-								<site>http://franca.github.io/franca/update_site/releases</site>
 							</associateSites>
 						</configuration>
 					</execution>

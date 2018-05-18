@@ -21,12 +21,7 @@ All rights reserved.
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.app4mc.amalthea.multicore.sdk"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.app4mc.amalthea.models.sdk"
          version="0.0.0"/>
-
 
 </feature>

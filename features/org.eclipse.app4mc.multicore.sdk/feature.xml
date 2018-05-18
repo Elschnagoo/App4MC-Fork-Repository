@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.app4mc.amalthea.multicore.sdk"
-      label="APP4MC AMALTHEA Multicore Support SDK"
+      id="org.eclipse.app4mc.multicore.sdk"
+      label="APP4MC Multicore Support SDK"
       version="0.9.0.qualifier"
       provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
@@ -17,15 +17,15 @@ All rights reserved.
    </copyright>
 
    <includes
-         id="org.eclipse.app4mc.amalthea.multicore"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk"
          version="0.0.0"/>
 
    <includes
          id="org.eclipse.app4mc.amalthea.models.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.app4mc.multicore"
          version="0.0.0"/>
 
    <plugin

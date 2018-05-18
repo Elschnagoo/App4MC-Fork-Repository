@@ -12,11 +12,11 @@
    <feature url="features/org.eclipse.app4mc.amalthea.editors.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors.sdk" version="0.9.0.qualifier">
       <category name="org.eclipse.app4mc.amalthea.editors"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.multicore_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.multicore" version="0.9.0.qualifier">
-      <category name="org.eclipse.app4mc.amalthea.multicore"/>
+   <feature url="features/org.eclipse.app4mc.multicore_0.9.0.qualifier.jar" id="org.eclipse.app4mc.multicore" version="0.9.0.qualifier">
+      <category name="org.eclipse.app4mc.multicore"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.multicore.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.multicore.sdk" version="0.9.0.qualifier">
-      <category name="org.eclipse.app4mc.amalthea.multicore"/>
+   <feature url="features/org.eclipse.app4mc.multicore.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.multicore.sdk" version="0.9.0.qualifier">
+      <category name="org.eclipse.app4mc.multicore"/>
    </feature>
    <feature url="features/org.eclipse.app4mc.amalthea.export_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.export" version="0.9.0.qualifier">
       <category name="org.eclipse.app4mc.amalthea.export"/>
@@ -91,9 +91,9 @@
    <category-def name="org.eclipse.app4mc.amalthea.edit" label="APP4MC Edit Support"/>
    <category-def name="org.eclipse.app4mc.amalthea.editors" label="APP4MC Editors"/>
    <category-def name="org.eclipse.app4mc.amalthea.workflow" label="APP4MC Workflow"/>
-   <category-def name="org.eclipse.app4mc.amalthea.multicore" label="APP4MC Multicore Support"/>
    <category-def name="org.eclipse.app4mc.amalthea.import" label="APP4MC Import"/>
    <category-def name="org.eclipse.app4mc.amalthea.export" label="APP4MC Export"/>
+   <category-def name="org.eclipse.app4mc.multicore" label="APP4MC Multicore Support"/>
    <category-def name="org.eclipse.app4mc.tracing" label="APP4MC Tracing"/>
    <category-def name="org.eclipse.app4mc.validation" label="APP4MC Validation"/>
    <category-def name="org.eclipse.app4mc.examples" label="APP4MC Examples"/>
