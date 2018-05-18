@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.app4mc.amalthea.multicore"
-      label="APP4MC AMALTHEA Multicore Support"
+      id="org.eclipse.app4mc.multicore"
+      label="APP4MC Multicore Support"
       version="0.9.0.qualifier"
       provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
