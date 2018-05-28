@@ -41,6 +41,7 @@
       <anchor id="app4mc.docu.dev.multicore"/>
       <anchor id="app4mc.docu.dev.utilities"/>
       <anchor id="app4mc.docu.dev.misc"/>
+      <link toc="toc/dev_atdb-toc.xml"/>
    </topic>
    <link toc="toc/release_notes-toc.xml"/>
    <link toc="toc/roadmap-toc.xml"/>
