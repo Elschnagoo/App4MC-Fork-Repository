@@ -163,8 +163,8 @@ public interface Semaphore extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semaphore Accesses</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphore_SemaphoreAccesses()
-	 * @model opposite="semaphoreLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.SemaphoreAccess%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getSemaphoreAccess_Semaphore());'"
 	 * @generated
 	 */
 	EList<SemaphoreAccess> getSemaphoreAccesses();

@@ -29,9 +29,6 @@ package org.eclipse.app4mc.amalthea.model;
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannelAccess()
  * @model abstract="true"
- *        features="dataLinkInt" 
- *        dataLinkIntType="org.eclipse.app4mc.amalthea.model.Channel" dataLinkIntOpposite="channelAccesses" dataLinkIntRequired="true" dataLinkIntTransient="true" dataLinkIntSuppressedGetVisibility="true" dataLinkIntSuppressedSetVisibility="true"
- *        dataLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
  * @generated
  */
 public interface ChannelAccess extends RunnableItem {

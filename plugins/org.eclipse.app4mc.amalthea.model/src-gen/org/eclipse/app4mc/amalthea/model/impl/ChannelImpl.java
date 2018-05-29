@@ -12,11 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 
@@ -29,9 +28,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -120,16 +116,6 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * @ordered
 	 */
 	protected int maxElements = MAX_ELEMENTS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getChannelAccesses() <em>Channel Accesses</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChannelAccesses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ChannelAccess> channelAccesses;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,25 +248,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * @generated
 	 */
 	public EList<ChannelAccess> getChannelAccesses() {
-		if (channelAccesses == null) {
-			channelAccesses = new EObjectWithInverseResolvingEList<ChannelAccess>(ChannelAccess.class, this, AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES, AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT);
-		}
-		return channelAccesses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getChannelAccesses()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return CrossReferenceUtil.<ChannelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getChannelAccess_Data());
 	}
 
 	/**
@@ -293,8 +261,6 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 		switch (featureID) {
 			case AmaltheaPackage.CHANNEL__ELEMENT_TYPE:
 				return basicSetElementType(null, msgs);
-			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
-				return ((InternalEList<?>)getChannelAccesses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -326,7 +292,6 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -341,10 +306,6 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 				return;
 			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
 				setMaxElements((Integer)newValue);
-				return;
-			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
-				getChannelAccesses().clear();
-				getChannelAccesses().addAll((Collection<? extends ChannelAccess>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -370,9 +331,6 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
 				setMaxElements(MAX_ELEMENTS_EDEFAULT);
 				return;
-			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
-				getChannelAccesses().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -394,7 +352,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 			case AmaltheaPackage.CHANNEL__MAX_ELEMENTS:
 				return maxElements != MAX_ELEMENTS_EDEFAULT;
 			case AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES:
-				return channelAccesses != null && !channelAccesses.isEmpty();
+				return !getChannelAccesses().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

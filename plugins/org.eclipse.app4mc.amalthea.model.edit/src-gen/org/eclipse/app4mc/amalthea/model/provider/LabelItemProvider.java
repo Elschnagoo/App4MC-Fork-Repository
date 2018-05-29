@@ -195,7 +195,7 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 				 AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

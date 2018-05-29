@@ -172,7 +172,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				 AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {
@@ -196,7 +196,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				 AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

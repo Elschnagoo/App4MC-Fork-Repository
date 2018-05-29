@@ -35,9 +35,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess()
- * @model features="dataLinkInt" 
- *        dataLinkIntType="org.eclipse.app4mc.amalthea.model.Label" dataLinkIntOpposite="labelAccesses" dataLinkIntRequired="true" dataLinkIntTransient="true" dataLinkIntSuppressedGetVisibility="true" dataLinkIntSuppressedSetVisibility="true"
- *        dataLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface LabelAccess extends ComputationItem {

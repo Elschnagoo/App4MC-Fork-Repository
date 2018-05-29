@@ -125,8 +125,8 @@ public interface Channel extends AbstractMemoryElement, IDisplayName {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channel Accesses</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannel_ChannelAccesses()
-	 * @model opposite="dataLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ChannelAccess%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getChannelAccess_Data());'"
 	 * @generated
 	 */
 	EList<ChannelAccess> getChannelAccesses();

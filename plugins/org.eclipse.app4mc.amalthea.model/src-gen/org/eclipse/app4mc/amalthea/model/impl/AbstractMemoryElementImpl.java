@@ -16,6 +16,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
@@ -32,8 +33,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,16 +69,6 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * @ordered
 	 */
 	protected DataSize size;
-
-	/**
-	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMappings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MemoryMapping> mappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,25 +150,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		if (mappings == null) {
-			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT);
-		}
-		return mappings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMappings()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return CrossReferenceUtil.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getMemoryMapping_AbstractElement());
 	}
 
 	/**
@@ -192,8 +163,6 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 		switch (featureID) {
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				return basicSetSize(null, msgs);
-			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
-				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -232,10 +201,6 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				setSize((DataSize)newValue);
 				return;
-			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
-				getMappings().clear();
-				getMappings().addAll((Collection<? extends MemoryMapping>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -254,9 +219,6 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				setSize((DataSize)null);
 				return;
-			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
-				getMappings().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -274,7 +236,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__SIZE:
 				return size != null;
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__MAPPINGS:
-				return mappings != null && !mappings.isEmpty();
+				return !getMappings().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

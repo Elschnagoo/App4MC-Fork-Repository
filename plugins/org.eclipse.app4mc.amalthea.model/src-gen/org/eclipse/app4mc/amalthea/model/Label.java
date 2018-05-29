@@ -37,9 +37,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel()
- * @model features="sectionLinkInt" 
- *        sectionLinkIntType="org.eclipse.app4mc.amalthea.model.Section" sectionLinkIntOpposite="labels" sectionLinkIntTransient="true" sectionLinkIntSuppressedGetVisibility="true" sectionLinkIntSuppressedSetVisibility="true"
- *        sectionLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface Label extends AbstractMemoryElement, IDisplayName {
@@ -189,8 +187,8 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Label Accesses</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_LabelAccesses()
-	 * @model opposite="dataLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.LabelAccess%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getLabelAccess_Data());'"
 	 * @generated
 	 */
 	EList<LabelAccess> getLabelAccesses();

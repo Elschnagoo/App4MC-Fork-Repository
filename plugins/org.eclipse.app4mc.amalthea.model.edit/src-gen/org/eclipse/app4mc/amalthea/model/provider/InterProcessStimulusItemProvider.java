@@ -77,7 +77,7 @@ public class InterProcessStimulusItemProvider extends StimulusItemProvider {
 				 AmaltheaPackage.eINSTANCE.getInterProcessStimulus_ExplicitTriggers(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

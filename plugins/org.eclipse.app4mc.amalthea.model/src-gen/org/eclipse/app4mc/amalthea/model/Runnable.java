@@ -39,9 +39,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable()
- * @model features="sectionLinkInt" 
- *        sectionLinkIntType="org.eclipse.app4mc.amalthea.model.Section" sectionLinkIntOpposite="runnables" sectionLinkIntTransient="true" sectionLinkIntSuppressedGetVisibility="true" sectionLinkIntSuppressedSetVisibility="true"
- *        sectionLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface Runnable extends AbstractMemoryElement {
@@ -193,8 +191,8 @@ public interface Runnable extends AbstractMemoryElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableCalls()
-	 * @model opposite="runnableLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getRunnableCall_Runnable());'"
 	 * @generated
 	 */
 	EList<RunnableCall> getRunnableCalls();
@@ -210,8 +208,8 @@ public interface Runnable extends AbstractMemoryElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
-	 * @model opposite="runnableLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskRunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getTaskRunnableCall_Runnable());'"
 	 * @generated
 	 */
 	EList<TaskRunnableCall> getTaskRunnableCalls();

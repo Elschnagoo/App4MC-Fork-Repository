@@ -148,7 +148,7 @@ public class ChannelItemProvider extends AbstractMemoryElementItemProvider {
 				 AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

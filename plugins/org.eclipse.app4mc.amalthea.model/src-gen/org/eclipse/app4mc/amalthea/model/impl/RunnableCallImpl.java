@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getRunnable <em>Runnable</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getStatistic <em>Statistic</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getRunnableLinkInt <em>Runnable Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,16 +58,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * @ordered
 	 */
 	protected RunEntityCallStatistic statistic;
-
-	/**
-	 * The cached value of the '{@link #getRunnableLinkInt() <em>Runnable Link Int</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRunnableLinkInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.eclipse.app4mc.amalthea.model.Runnable runnableLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,8 +114,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 		runnable = newRunnable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE, oldRunnable, runnable));
- 		//Additional setting transient value for transient bi-directional reference
- 		setRunnableLinkInt(newRunnable);
 	}
 
 	/**
@@ -177,89 +164,11 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.eclipse.app4mc.amalthea.model.Runnable getRunnableLinkInt() {
-		if (runnableLinkInt != null && runnableLinkInt.eIsProxy()) {
-			InternalEObject oldRunnableLinkInt = (InternalEObject)runnableLinkInt;
-			runnableLinkInt = (org.eclipse.app4mc.amalthea.model.Runnable)eResolveProxy(oldRunnableLinkInt);
-			if (runnableLinkInt != oldRunnableLinkInt) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT, oldRunnableLinkInt, runnableLinkInt));
-			}
-		}
-		return runnableLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.app4mc.amalthea.model.Runnable basicGetRunnableLinkInt() {
-		return runnableLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRunnableLinkInt(org.eclipse.app4mc.amalthea.model.Runnable newRunnableLinkInt, NotificationChain msgs) {
-		org.eclipse.app4mc.amalthea.model.Runnable oldRunnableLinkInt = runnableLinkInt;
-		runnableLinkInt = newRunnableLinkInt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT, oldRunnableLinkInt, newRunnableLinkInt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRunnableLinkInt(org.eclipse.app4mc.amalthea.model.Runnable newRunnableLinkInt) {
-		if (newRunnableLinkInt != runnableLinkInt) {
-			NotificationChain msgs = null;
-			if (runnableLinkInt != null)
-				msgs = ((InternalEObject)runnableLinkInt).eInverseRemove(this, AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS, org.eclipse.app4mc.amalthea.model.Runnable.class, msgs);
-			if (newRunnableLinkInt != null)
-				msgs = ((InternalEObject)newRunnableLinkInt).eInverseAdd(this, AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS, org.eclipse.app4mc.amalthea.model.Runnable.class, msgs);
-			msgs = basicSetRunnableLinkInt(newRunnableLinkInt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT, newRunnableLinkInt, newRunnableLinkInt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				if (runnableLinkInt != null)
-					msgs = ((InternalEObject)runnableLinkInt).eInverseRemove(this, AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS, org.eclipse.app4mc.amalthea.model.Runnable.class, msgs);
-				return basicSetRunnableLinkInt((org.eclipse.app4mc.amalthea.model.Runnable)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return basicSetStatistic(null, msgs);
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				return basicSetRunnableLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -277,9 +186,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 				return basicGetRunnable();
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return getStatistic();
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				if (resolve) return getRunnableLinkInt();
-				return basicGetRunnableLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -297,9 +203,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 				return;
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				setStatistic((RunEntityCallStatistic)newValue);
-				return;
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				setRunnableLinkInt((org.eclipse.app4mc.amalthea.model.Runnable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -319,9 +222,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				setStatistic((RunEntityCallStatistic)null);
 				return;
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				setRunnableLinkInt((org.eclipse.app4mc.amalthea.model.Runnable)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,8 +238,6 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 				return runnable != null;
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return statistic != null;
-			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT:
-				return runnableLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

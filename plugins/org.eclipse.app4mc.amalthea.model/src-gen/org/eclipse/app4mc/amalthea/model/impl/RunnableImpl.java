@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -59,7 +59,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSectionLinkInt <em>Section Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -156,26 +155,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	protected ASILType asilLevel = ASIL_LEVEL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRunnableCalls() <em>Runnable Calls</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRunnableCalls()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RunnableCall> runnableCalls;
-
-	/**
-	 * The cached value of the '{@link #getTaskRunnableCalls() <em>Task Runnable Calls</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTaskRunnableCalls()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TaskRunnableCall> taskRunnableCalls;
-
-	/**
 	 * The cached value of the '{@link #getSection() <em>Section</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,16 +163,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @ordered
 	 */
 	protected Section section;
-
-	/**
-	 * The cached value of the '{@link #getSectionLinkInt() <em>Section Link Int</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSectionLinkInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected Section sectionLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -350,10 +319,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<RunnableCall> getRunnableCalls() {
-		if (runnableCalls == null) {
-			runnableCalls = new EObjectWithInverseResolvingEList<RunnableCall>(RunnableCall.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS, AmaltheaPackage.RUNNABLE_CALL__RUNNABLE_LINK_INT);
-		}
-		return runnableCalls;
+		return CrossReferenceUtil.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
 	}
 
 	/**
@@ -362,10 +328,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		if (taskRunnableCalls == null) {
-			taskRunnableCalls = new EObjectWithInverseResolvingEList<TaskRunnableCall>(TaskRunnableCall.class, this, AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS, AmaltheaPackage.TASK_RUNNABLE_CALL__RUNNABLE_LINK_INT);
-		}
-		return taskRunnableCalls;
+		return CrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
 	}
 
 	/**
@@ -404,68 +367,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 		section = newSection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION, oldSection, section));
- 		//Additional setting transient value for transient bi-directional reference
- 		setSectionLinkInt(newSection);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Section getSectionLinkInt() {
-		if (sectionLinkInt != null && sectionLinkInt.eIsProxy()) {
-			InternalEObject oldSectionLinkInt = (InternalEObject)sectionLinkInt;
-			sectionLinkInt = (Section)eResolveProxy(oldSectionLinkInt);
-			if (sectionLinkInt != oldSectionLinkInt) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, oldSectionLinkInt, sectionLinkInt));
-			}
-		}
-		return sectionLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Section basicGetSectionLinkInt() {
-		return sectionLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSectionLinkInt(Section newSectionLinkInt, NotificationChain msgs) {
-		Section oldSectionLinkInt = sectionLinkInt;
-		sectionLinkInt = newSectionLinkInt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, oldSectionLinkInt, newSectionLinkInt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSectionLinkInt(Section newSectionLinkInt) {
-		if (newSectionLinkInt != sectionLinkInt) {
-			NotificationChain msgs = null;
-			if (sectionLinkInt != null)
-				msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
-			if (newSectionLinkInt != null)
-				msgs = ((InternalEObject)newSectionLinkInt).eInverseAdd(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
-			msgs = basicSetSectionLinkInt(newSectionLinkInt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT, newSectionLinkInt, newSectionLinkInt));
 	}
 
 	/**
@@ -482,27 +383,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRunnableCalls()).basicAdd(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskRunnableCalls()).basicAdd(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				if (sectionLinkInt != null)
-					msgs = ((InternalEObject)sectionLinkInt).eInverseRemove(this, AmaltheaPackage.SECTION__RUNNABLES, Section.class, msgs);
-				return basicSetSectionLinkInt((Section)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -510,12 +390,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return ((InternalEList<?>)getRunnableItems()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				return basicSetDeadline(null, msgs);
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
-				return ((InternalEList<?>)getRunnableCalls()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				return ((InternalEList<?>)getTaskRunnableCalls()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				return basicSetSectionLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -547,9 +421,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				if (resolve) return getSection();
 				return basicGetSection();
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				if (resolve) return getSectionLinkInt();
-				return basicGetSectionLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -583,19 +454,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				setAsilLevel((ASILType)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
-				getRunnableCalls().clear();
-				getRunnableCalls().addAll((Collection<? extends RunnableCall>)newValue);
-				return;
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				getTaskRunnableCalls().clear();
-				getTaskRunnableCalls().addAll((Collection<? extends TaskRunnableCall>)newValue);
-				return;
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				setSection((Section)newValue);
-				return;
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				setSectionLinkInt((Section)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -627,17 +487,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				setAsilLevel(ASIL_LEVEL_EDEFAULT);
 				return;
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
-				getRunnableCalls().clear();
-				return;
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				getTaskRunnableCalls().clear();
-				return;
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				setSection((Section)null);
-				return;
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				setSectionLinkInt((Section)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -664,13 +515,11 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				return asilLevel != ASIL_LEVEL_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
-				return runnableCalls != null && !runnableCalls.isEmpty();
+				return !getRunnableCalls().isEmpty();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				return taskRunnableCalls != null && !taskRunnableCalls.isEmpty();
+				return !getTaskRunnableCalls().isEmpty();
 			case AmaltheaPackage.RUNNABLE__SECTION:
 				return section != null;
-			case AmaltheaPackage.RUNNABLE__SECTION_LINK_INT:
-				return sectionLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

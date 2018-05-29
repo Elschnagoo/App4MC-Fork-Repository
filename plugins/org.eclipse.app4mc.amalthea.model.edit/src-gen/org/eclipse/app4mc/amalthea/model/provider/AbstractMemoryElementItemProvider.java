@@ -101,7 +101,7 @@ public class AbstractMemoryElementItemProvider extends ReferableBaseObjectItemPr
 				 AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Mappings(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

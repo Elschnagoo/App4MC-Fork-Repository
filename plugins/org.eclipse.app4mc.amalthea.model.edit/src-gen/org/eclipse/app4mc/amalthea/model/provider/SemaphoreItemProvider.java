@@ -168,7 +168,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 				 AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

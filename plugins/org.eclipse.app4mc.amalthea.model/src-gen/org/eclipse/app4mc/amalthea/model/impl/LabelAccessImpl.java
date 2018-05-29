@@ -43,7 +43,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getImplementation <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataLinkInt <em>Data Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -140,16 +139,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	protected LabelAccessImplementation implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDataLinkInt() <em>Data Link Int</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataLinkInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected Label dataLinkInt;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -204,8 +193,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 		data = newData;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DATA, oldData, data));
- 		//Additional setting transient value for transient bi-directional reference
- 		setDataLinkInt(newData);
 	}
 
 	/**
@@ -362,82 +349,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Label getDataLinkInt() {
-		if (dataLinkInt != null && dataLinkInt.eIsProxy()) {
-			InternalEObject oldDataLinkInt = (InternalEObject)dataLinkInt;
-			dataLinkInt = (Label)eResolveProxy(oldDataLinkInt);
-			if (dataLinkInt != oldDataLinkInt) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT, oldDataLinkInt, dataLinkInt));
-			}
-		}
-		return dataLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Label basicGetDataLinkInt() {
-		return dataLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDataLinkInt(Label newDataLinkInt, NotificationChain msgs) {
-		Label oldDataLinkInt = dataLinkInt;
-		dataLinkInt = newDataLinkInt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT, oldDataLinkInt, newDataLinkInt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDataLinkInt(Label newDataLinkInt) {
-		if (newDataLinkInt != dataLinkInt) {
-			NotificationChain msgs = null;
-			if (dataLinkInt != null)
-				msgs = ((InternalEObject)dataLinkInt).eInverseRemove(this, AmaltheaPackage.LABEL__LABEL_ACCESSES, Label.class, msgs);
-			if (newDataLinkInt != null)
-				msgs = ((InternalEObject)newDataLinkInt).eInverseAdd(this, AmaltheaPackage.LABEL__LABEL_ACCESSES, Label.class, msgs);
-			msgs = basicSetDataLinkInt(newDataLinkInt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT, newDataLinkInt, newDataLinkInt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				if (dataLinkInt != null)
-					msgs = ((InternalEObject)dataLinkInt).eInverseRemove(this, AmaltheaPackage.LABEL__LABEL_ACCESSES, Label.class, msgs);
-				return basicSetDataLinkInt((Label)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -445,8 +356,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return basicSetStatistic(null, msgs);
 			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
 				return basicSetTransmissionPolicy(null, msgs);
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				return basicSetDataLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -472,9 +381,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return getDataStability();
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				return getImplementation();
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				if (resolve) return getDataLinkInt();
-				return basicGetDataLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -504,9 +410,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return;
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				setImplementation((LabelAccessImplementation)newValue);
-				return;
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				setDataLinkInt((Label)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -538,9 +441,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				setImplementation(IMPLEMENTATION_EDEFAULT);
 				return;
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				setDataLinkInt((Label)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -565,8 +465,6 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				return implementation != IMPLEMENTATION_EDEFAULT;
-			case AmaltheaPackage.LABEL_ACCESS__DATA_LINK_INT:
-				return dataLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

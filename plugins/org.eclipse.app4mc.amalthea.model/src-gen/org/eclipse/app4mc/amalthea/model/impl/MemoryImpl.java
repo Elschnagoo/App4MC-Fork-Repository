@@ -12,15 +12,13 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -28,9 +26,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,16 +51,6 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * @ordered
 	 */
 	protected MemoryDefinition definition;
-
-	/**
-	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMappings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MemoryMapping> mappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,39 +115,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		if (mappings == null) {
-			mappings = new EObjectWithInverseResolvingEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.MEMORY__MAPPINGS, AmaltheaPackage.MEMORY_MAPPING__MEMORY_LINK_INT);
-		}
-		return mappings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.MEMORY__MAPPINGS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMappings()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.MEMORY__MAPPINGS:
-				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		return CrossReferenceUtil.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getMemoryMapping_Memory());
 	}
 
 	/**
@@ -187,16 +140,11 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.MEMORY__DEFINITION:
 				setDefinition((MemoryDefinition)newValue);
-				return;
-			case AmaltheaPackage.MEMORY__MAPPINGS:
-				getMappings().clear();
-				getMappings().addAll((Collection<? extends MemoryMapping>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,9 +161,6 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 			case AmaltheaPackage.MEMORY__DEFINITION:
 				setDefinition((MemoryDefinition)null);
 				return;
-			case AmaltheaPackage.MEMORY__MAPPINGS:
-				getMappings().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -231,7 +176,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 			case AmaltheaPackage.MEMORY__DEFINITION:
 				return definition != null;
 			case AmaltheaPackage.MEMORY__MAPPINGS:
-				return mappings != null && !mappings.isEmpty();
+				return !getMappings().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -12,25 +12,19 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Section;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,26 +42,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SectionImpl extends ReferableBaseObjectImpl implements Section {
-	/**
-	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabels()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Label> labels;
-
-	/**
-	 * The cached value of the '{@link #getRunnables() <em>Runnables</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRunnables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<org.eclipse.app4mc.amalthea.model.Runnable> runnables;
-
 	/**
 	 * The default value of the '{@link #getAsilLevel() <em>Asil Level</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -113,10 +87,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<Label> getLabels() {
-		if (labels == null) {
-			labels = new EObjectWithInverseResolvingEList<Label>(Label.class, this, AmaltheaPackage.SECTION__LABELS, AmaltheaPackage.LABEL__SECTION_LINK_INT);
-		}
-		return labels;
+		return CrossReferenceUtil.<Label>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_Section());
 	}
 
 	/**
@@ -125,10 +96,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
-		if (runnables == null) {
-			runnables = new EObjectWithInverseResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.SECTION__RUNNABLES, AmaltheaPackage.RUNNABLE__SECTION_LINK_INT);
-		}
-		return runnables;
+		return CrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_Section());
 	}
 
 	/**
@@ -157,39 +125,6 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.SECTION__LABELS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLabels()).basicAdd(otherEnd, msgs);
-			case AmaltheaPackage.SECTION__RUNNABLES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRunnables()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.SECTION__LABELS:
-				return ((InternalEList<?>)getLabels()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.SECTION__RUNNABLES:
-				return ((InternalEList<?>)getRunnables()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -208,18 +143,9 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SECTION__LABELS:
-				getLabels().clear();
-				getLabels().addAll((Collection<? extends Label>)newValue);
-				return;
-			case AmaltheaPackage.SECTION__RUNNABLES:
-				getRunnables().clear();
-				getRunnables().addAll((Collection<? extends org.eclipse.app4mc.amalthea.model.Runnable>)newValue);
-				return;
 			case AmaltheaPackage.SECTION__ASIL_LEVEL:
 				setAsilLevel((ASILType)newValue);
 				return;
@@ -235,12 +161,6 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SECTION__LABELS:
-				getLabels().clear();
-				return;
-			case AmaltheaPackage.SECTION__RUNNABLES:
-				getRunnables().clear();
-				return;
 			case AmaltheaPackage.SECTION__ASIL_LEVEL:
 				setAsilLevel(ASIL_LEVEL_EDEFAULT);
 				return;
@@ -257,9 +177,9 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.SECTION__LABELS:
-				return labels != null && !labels.isEmpty();
+				return !getLabels().isEmpty();
 			case AmaltheaPackage.SECTION__RUNNABLES:
-				return runnables != null && !runnables.isEmpty();
+				return !getRunnables().isEmpty();
 			case AmaltheaPackage.SECTION__ASIL_LEVEL:
 				return asilLevel != ASIL_LEVEL_EDEFAULT;
 		}

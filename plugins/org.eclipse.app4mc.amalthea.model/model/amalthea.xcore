@@ -1389,9 +1389,10 @@ class CustomEvent extends TriggerEvent
 	String eventType
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient CustomEventTrigger[] explicitTriggers opposite eventLinkInt 
+	refers transient readonly volatile derived CustomEventTrigger[] explicitTriggers get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.customEventTrigger_Event)
+	}
 }
 
 /*
@@ -1630,11 +1631,12 @@ class ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 
 class Memory extends HwModule, HwDestination {
 	refers MemoryDefinition definition
-		
+
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient MemoryMapping[] mappings opposite memoryLinkInt
+	refers transient readonly volatile derived MemoryMapping[] mappings get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_Memory)
+	}
 }
 
 class Cache extends HwModule, HwPathElement {
@@ -1966,14 +1968,6 @@ class MemoryMapping extends BaseObject
 	 * The position of the element in the mapped memory
 	 */
 	Address memoryPositionAddress = "0"
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient AbstractMemoryElement abstractElementLinkInt opposite mappings
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Memory memoryLinkInt opposite mappings
 }
 
 class PhysicalSectionMapping extends ReferableBaseObject
@@ -2069,9 +2063,10 @@ class Semaphore extends ReferableBaseObject
 	boolean priorityCeilingProtocol = "false"
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient SemaphoreAccess[] semaphoreAccesses opposite semaphoreLinkInt
+	refers transient readonly volatile derived SemaphoreAccess[] semaphoreAccesses get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.semaphoreAccess_Semaphore)
+	}
 }
 
 enum SemaphoreType {
@@ -2098,12 +2093,13 @@ class TaskScheduler extends Scheduler
 	contains TaskSchedulingAlgorithm schedulingAlgorithm
 	
 	contains SchedulerAssociation parentAssociation opposite child
-	
+
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient SchedulerAssociation[] childAssociations opposite parentLinkInt 
-	
+	refers transient readonly volatile derived SchedulerAssociation[] childAssociations get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.schedulerAssociation_Parent)
+	}
+
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler parentScheduler get {
 		return parentAssociation?.parent
@@ -2120,10 +2116,6 @@ class SchedulerAssociation {
 	container readonly TaskScheduler child opposite parentAssociation
 	
 	refers TaskScheduler parent
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient TaskScheduler parentLinkInt opposite childAssociations
 	
 	contains SchedulingParameters schedulingParameters
 	contains ParameterExtension[] parameterExtensions
@@ -2672,9 +2664,10 @@ class InterProcessStimulus extends Stimulus
 	contains Counter counter
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient InterProcessTrigger[] explicitTriggers opposite stimulusLinkInt 
+	refers transient readonly volatile derived InterProcessTrigger[] explicitTriggers get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.interProcessTrigger_Stimulus)
+	}
 }
 
 /*
@@ -2799,9 +2792,10 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 	contains DataSize size
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient MemoryMapping[] mappings opposite abstractElementLinkInt
+	refers transient readonly volatile derived MemoryMapping[] mappings get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_AbstractElement)
+	}
 }
 
 abstract class AbstractProcess extends AbstractMemoryElement
@@ -2985,10 +2979,6 @@ class OsEvent extends ReferableBaseObject, ITaggable
 class InterProcessTrigger extends CallSequenceItem
 {
 	refers InterProcessStimulus[1] stimulus
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient InterProcessStimulus[1] stimulusLinkInt opposite explicitTriggers
 }
 
 /*
@@ -3006,10 +2996,6 @@ class TaskRunnableCall extends CallSequenceItem
 {
 	refers Runnable[1] runnable
 	contains RunEntityCallStatistic statistic
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Runnable[1] runnableLinkInt opposite taskRunnableCalls
 }
 
 /*
@@ -3169,20 +3155,18 @@ class Runnable extends AbstractMemoryElement
 	ASILType asilLevel
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient RunnableCall[] runnableCalls opposite runnableLinkInt
+	refers transient readonly volatile derived RunnableCall[] runnableCalls get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnableCall_Runnable)
+	}
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
-	
+	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable)
+	}
+
 	refers Section section
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Section sectionLinkInt opposite runnables
 }
 
 /*
@@ -3206,17 +3190,14 @@ class Label extends AbstractMemoryElement, IDisplayName
 	LabelDataStability dataStability
 	
 	DataStabilityLevel stabilityLevel
-	
+		
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient LabelAccess[] labelAccesses opposite dataLinkInt
+	refers transient readonly volatile derived LabelAccess[] labelAccesses get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.labelAccess_Data)
+	}
 	
 	refers Section section
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Section sectionLinkInt opposite labels
 }
 
 class Channel extends AbstractMemoryElement, IDisplayName
@@ -3227,9 +3208,11 @@ class Channel extends AbstractMemoryElement, IDisplayName
 	int maxElements = "0"
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient ChannelAccess[] channelAccesses opposite dataLinkInt
+	refers transient readonly volatile derived ChannelAccess[] channelAccesses get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.channelAccess_Data)
+	}
+
 }
 
 
@@ -3257,18 +3240,19 @@ enum LabelDataStability {
  * which are belonging together.
  */
 class Section extends ReferableBaseObject
-{
+{	
+	// back pointer (readonly)
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Label[] labels get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.label_Section)
+	}
 	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient Label[] labels opposite sectionLinkInt 
-	
-	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient Runnable[] runnables opposite sectionLinkInt 
-	
+	refers transient readonly volatile derived Runnable[] runnables get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_Section)
+	}
+
 	/*
 	 * for specifying the ASIL level for the "virtual memory sections"
 	 */
@@ -3350,10 +3334,6 @@ class LabelAccess extends ComputationItem
 	LabelAccessDataStability dataStability
 
 	LabelAccessImplementation implementation
-
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Label[1] dataLinkInt opposite labelAccesses
 }
 
 abstract class ChannelAccess extends RunnableItem
@@ -3363,10 +3343,6 @@ abstract class ChannelAccess extends RunnableItem
 	int elements = "0"
 	
 	contains TransmissionPolicy transmissionPolicy
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Channel[1] dataLinkInt opposite channelAccesses
 }
 
 class ChannelSend extends ChannelAccess
@@ -3428,10 +3404,6 @@ class SemaphoreAccess extends RunnableItem
 	refers Semaphore[1] semaphore
 	SemaphoreAccessEnum access
 	WaitingBehaviour waitingBehaviour
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Semaphore[1] semaphoreLinkInt opposite semaphoreAccesses
 }
 
 /*
@@ -3548,10 +3520,6 @@ class RunnableCall extends RunnableItem
 {
 	refers Runnable[1] runnable
 	contains RunEntityCallStatistic statistic
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient Runnable[1] runnableLinkInt opposite runnableCalls
 }
 
 /*
@@ -3588,10 +3556,6 @@ enum ConcurrencyType
 class CustomEventTrigger extends RunnableItem
 {
 	refers CustomEvent[1] event
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true")
-	refers transient CustomEvent[1] eventLinkInt opposite explicitTriggers
 }
 
 

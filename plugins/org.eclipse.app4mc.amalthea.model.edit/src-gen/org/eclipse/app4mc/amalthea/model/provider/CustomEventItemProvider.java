@@ -99,7 +99,7 @@ public class CustomEventItemProvider extends TriggerEventItemProvider {
 				 AmaltheaPackage.eINSTANCE.getCustomEvent_ExplicitTriggers(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

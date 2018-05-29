@@ -80,7 +80,7 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(),
 				 false,
 				 false,
-				 true,
+				 false,
 				 null,
 				 getString("_UI_ReadonlyPropertyCategory"),
 				 new String[] {

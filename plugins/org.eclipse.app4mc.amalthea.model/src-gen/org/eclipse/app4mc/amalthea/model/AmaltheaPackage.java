@@ -13793,31 +13793,13 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_MAPPING__MEMORY_POSITION_ADDRESS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Abstract Element Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_MAPPING__ABSTRACT_ELEMENT_LINK_INT = BASE_OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Memory Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_MAPPING__MEMORY_LINK_INT = BASE_OBJECT_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Memory Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_MAPPING_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 5;
+	int MEMORY_MAPPING_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Memory Mapping</em>' class.
@@ -14648,22 +14630,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER_ASSOCIATION__PARENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Parent Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULER_ASSOCIATION__PARENT_LINK_INT = 2;
-
-	/**
 	 * The feature id for the '<em><b>Scheduling Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS = 3;
+	int SCHEDULER_ASSOCIATION__SCHEDULING_PARAMETERS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Extensions</b></em>' map.
@@ -14672,7 +14645,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS = 4;
+	int SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Scheduler Association</em>' class.
@@ -14681,7 +14654,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_ASSOCIATION_FEATURE_COUNT = 5;
+	int SCHEDULER_ASSOCIATION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Scheduler Association</em>' class.
@@ -21419,22 +21392,13 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_TRIGGER__STIMULUS = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Stimulus Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTER_PROCESS_TRIGGER__STIMULUS_LINK_INT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Inter Process Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_TRIGGER_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 2;
+	int INTER_PROCESS_TRIGGER_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Inter Process Trigger</em>' class.
@@ -21547,22 +21511,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_RUNNABLE_CALL__STATISTIC = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Runnable Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_RUNNABLE_CALL__RUNNABLE_LINK_INT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Task Runnable Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_RUNNABLE_CALL_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 3;
+	int TASK_RUNNABLE_CALL_FEATURE_COUNT = CALL_SEQUENCE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Task Runnable Call</em>' class.
@@ -22556,22 +22511,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Section Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
-
-	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 10;
+	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -22764,22 +22710,13 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Section Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__SECTION_LINK_INT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
 	 * The number of structural features of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
+	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23666,22 +23603,13 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_ACCESS__IMPLEMENTATION = COMPUTATION_ITEM_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL_ACCESS__DATA_LINK_INT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>Label Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 7;
+	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Label Access</em>' class.
@@ -23739,22 +23667,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_ACCESS__TRANSMISSION_POLICY = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_ACCESS__DATA_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Channel Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 4;
+	int CHANNEL_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Channel Access</em>' class.
@@ -23810,15 +23729,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_SEND__TRANSMISSION_POLICY = CHANNEL_ACCESS__TRANSMISSION_POLICY;
-
-	/**
-	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_SEND__DATA_LINK_INT = CHANNEL_ACCESS__DATA_LINK_INT;
 
 	/**
 	 * The number of structural features of the '<em>Channel Send</em>' class.
@@ -23883,15 +23793,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_RECEIVE__TRANSMISSION_POLICY = CHANNEL_ACCESS__TRANSMISSION_POLICY;
-
-	/**
-	 * The feature id for the '<em><b>Data Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL_RECEIVE__DATA_LINK_INT = CHANNEL_ACCESS__DATA_LINK_INT;
 
 	/**
 	 * The feature id for the '<em><b>Receive Operation</b></em>' attribute.
@@ -23994,22 +23895,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS__WAITING_BEHAVIOUR = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Semaphore Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE_ACCESS__SEMAPHORE_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Semaphore Access</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 4;
+	int SEMAPHORE_ACCESS_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Semaphore Access</em>' class.
@@ -24616,22 +24508,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_CALL__STATISTIC = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Runnable Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE_CALL__RUNNABLE_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Runnable Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
+	int RUNNABLE_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Runnable Call</em>' class.
@@ -24671,22 +24554,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_EVENT_TRIGGER__EVENT = RUNNABLE_ITEM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Event Link Int</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_EVENT_TRIGGER__EVENT_LINK_INT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Custom Event Trigger</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_EVENT_TRIGGER_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int CUSTOM_EVENT_TRIGGER_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Custom Event Trigger</em>' class.
@@ -32616,28 +32490,6 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getMemoryMapping_MemoryPositionAddress();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Abstract Element Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Abstract Element Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping
-	 * @see #getMemoryMapping()
-	 * @generated
-	 */
-	EReference getMemoryMapping_AbstractElementLinkInt();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.MemoryMapping <em>Memory Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Memory Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryMapping
-	 * @see #getMemoryMapping()
-	 * @generated
-	 */
-	EReference getMemoryMapping_MemoryLinkInt();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping <em>Physical Section Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33088,17 +32940,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSchedulerAssociation_Parent();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation <em>Parent Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SchedulerAssociation
-	 * @see #getSchedulerAssociation()
-	 * @generated
-	 */
-	EReference getSchedulerAssociation_ParentLinkInt();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getSchedulingParameters <em>Scheduling Parameters</em>}'.
@@ -35713,17 +35554,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getInterProcessTrigger_Stimulus();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger <em>Stimulus Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Stimulus Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.InterProcessTrigger
-	 * @see #getInterProcessTrigger()
-	 * @generated
-	 */
-	EReference getInterProcessTrigger_StimulusLinkInt();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.EnforcedMigration <em>Enforced Migration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35775,17 +35605,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskRunnableCall_Statistic();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall <em>Runnable Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Runnable Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TaskRunnableCall
-	 * @see #getTaskRunnableCall()
-	 * @generated
-	 */
-	EReference getTaskRunnableCall_RunnableLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SchedulePoint <em>Schedule Point</em>}'.
@@ -36196,17 +36015,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnable_Section();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Runnable <em>Section Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Runnable
-	 * @see #getRunnable()
-	 * @generated
-	 */
-	EReference getRunnable_SectionLinkInt();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getFirstActivation() <em>Get First Activation</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36302,17 +36110,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLabel_Section();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Label <em>Section Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Label
-	 * @see #getLabel()
-	 * @generated
-	 */
-	EReference getLabel_SectionLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Channel <em>Channel</em>}'.
@@ -36715,17 +36512,6 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getLabelAccess_Implementation();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.LabelAccess <em>Data Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Data Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelAccess
-	 * @see #getLabelAccess()
-	 * @generated
-	 */
-	EReference getLabelAccess_DataLinkInt();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ChannelAccess <em>Channel Access</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36767,17 +36553,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getChannelAccess_TransmissionPolicy();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.ChannelAccess <em>Data Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Data Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ChannelAccess
-	 * @see #getChannelAccess()
-	 * @generated
-	 */
-	EReference getChannelAccess_DataLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ChannelSend <em>Channel Send</em>}'.
@@ -36885,17 +36660,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSemaphoreAccess_WaitingBehaviour();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccess <em>Semaphore Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Semaphore Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreAccess
-	 * @see #getSemaphoreAccess()
-	 * @generated
-	 */
-	EReference getSemaphoreAccess_SemaphoreLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SenderReceiverCommunication <em>Sender Receiver Communication</em>}'.
@@ -37163,17 +36927,6 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnableCall_Statistic();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.RunnableCall <em>Runnable Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Runnable Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableCall
-	 * @see #getRunnableCall()
-	 * @generated
-	 */
-	EReference getRunnableCall_RunnableLinkInt();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger <em>Custom Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37193,17 +36946,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCustomEventTrigger_Event();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger <em>Event Link Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Event Link Int</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CustomEventTrigger
-	 * @see #getCustomEventTrigger()
-	 * @generated
-	 */
-	EReference getCustomEventTrigger_EventLinkInt();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataType <em>Data Type</em>}'.

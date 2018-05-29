@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelAccessImpl#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelAccessImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelAccessImpl#getTransmissionPolicy <em>Transmission Policy</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ChannelAccessImpl#getDataLinkInt <em>Data Link Int</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,16 +80,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * @ordered
 	 */
 	protected TransmissionPolicy transmissionPolicy;
-
-	/**
-	 * The cached value of the '{@link #getDataLinkInt() <em>Data Link Int</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataLinkInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected Channel dataLinkInt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,8 +136,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 		data = newData;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL_ACCESS__DATA, oldData, data));
- 		//Additional setting transient value for transient bi-directional reference
- 		setDataLinkInt(newData);
 	}
 
 	/**
@@ -220,89 +207,11 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Channel getDataLinkInt() {
-		if (dataLinkInt != null && dataLinkInt.eIsProxy()) {
-			InternalEObject oldDataLinkInt = (InternalEObject)dataLinkInt;
-			dataLinkInt = (Channel)eResolveProxy(oldDataLinkInt);
-			if (dataLinkInt != oldDataLinkInt) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT, oldDataLinkInt, dataLinkInt));
-			}
-		}
-		return dataLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Channel basicGetDataLinkInt() {
-		return dataLinkInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDataLinkInt(Channel newDataLinkInt, NotificationChain msgs) {
-		Channel oldDataLinkInt = dataLinkInt;
-		dataLinkInt = newDataLinkInt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT, oldDataLinkInt, newDataLinkInt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDataLinkInt(Channel newDataLinkInt) {
-		if (newDataLinkInt != dataLinkInt) {
-			NotificationChain msgs = null;
-			if (dataLinkInt != null)
-				msgs = ((InternalEObject)dataLinkInt).eInverseRemove(this, AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES, Channel.class, msgs);
-			if (newDataLinkInt != null)
-				msgs = ((InternalEObject)newDataLinkInt).eInverseAdd(this, AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES, Channel.class, msgs);
-			msgs = basicSetDataLinkInt(newDataLinkInt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT, newDataLinkInt, newDataLinkInt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				if (dataLinkInt != null)
-					msgs = ((InternalEObject)dataLinkInt).eInverseRemove(this, AmaltheaPackage.CHANNEL__CHANNEL_ACCESSES, Channel.class, msgs);
-				return basicSetDataLinkInt((Channel)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
 				return basicSetTransmissionPolicy(null, msgs);
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				return basicSetDataLinkInt(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -322,9 +231,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 				return getElements();
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
 				return getTransmissionPolicy();
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				if (resolve) return getDataLinkInt();
-				return basicGetDataLinkInt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -345,9 +251,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 				return;
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
 				setTransmissionPolicy((TransmissionPolicy)newValue);
-				return;
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				setDataLinkInt((Channel)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -370,9 +273,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
 				setTransmissionPolicy((TransmissionPolicy)null);
 				return;
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				setDataLinkInt((Channel)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -391,8 +291,6 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 				return elements != ELEMENTS_EDEFAULT;
 			case AmaltheaPackage.CHANNEL_ACCESS__TRANSMISSION_POLICY:
 				return transmissionPolicy != null;
-			case AmaltheaPackage.CHANNEL_ACCESS__DATA_LINK_INT:
-				return dataLinkInt != null;
 		}
 		return super.eIsSet(featureID);
 	}

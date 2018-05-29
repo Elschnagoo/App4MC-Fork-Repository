@@ -69,8 +69,8 @@ public interface Memory extends HwModule, HwDestination {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mappings</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemory_Mappings()
-	 * @model opposite="memoryLinkInt" transient="true" suppressedSetVisibility="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='Readonly' propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.MemoryMapping%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getMemoryMapping_Memory());'"
 	 * @generated
 	 */
 	EList<MemoryMapping> getMappings();

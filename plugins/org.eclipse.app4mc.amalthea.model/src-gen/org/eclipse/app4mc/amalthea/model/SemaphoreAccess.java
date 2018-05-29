@@ -32,9 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreAccess()
- * @model features="semaphoreLinkInt" 
- *        semaphoreLinkIntType="org.eclipse.app4mc.amalthea.model.Semaphore" semaphoreLinkIntOpposite="semaphoreAccesses" semaphoreLinkIntRequired="true" semaphoreLinkIntTransient="true" semaphoreLinkIntSuppressedGetVisibility="true" semaphoreLinkIntSuppressedSetVisibility="true"
- *        semaphoreLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface SemaphoreAccess extends RunnableItem {

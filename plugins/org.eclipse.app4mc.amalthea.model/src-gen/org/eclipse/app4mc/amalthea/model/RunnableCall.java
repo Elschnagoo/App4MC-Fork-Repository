@@ -31,9 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableCall()
- * @model features="runnableLinkInt" 
- *        runnableLinkIntType="org.eclipse.app4mc.amalthea.model.Runnable" runnableLinkIntOpposite="runnableCalls" runnableLinkIntRequired="true" runnableLinkIntTransient="true" runnableLinkIntSuppressedGetVisibility="true" runnableLinkIntSuppressedSetVisibility="true"
- *        runnableLinkIntAnnotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
+ * @model
  * @generated
  */
 public interface RunnableCall extends RunnableItem {

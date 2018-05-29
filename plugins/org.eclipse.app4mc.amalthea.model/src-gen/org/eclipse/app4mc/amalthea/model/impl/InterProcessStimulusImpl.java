@@ -12,10 +12,9 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 
@@ -28,9 +27,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,16 +52,6 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * @ordered
 	 */
 	protected Counter counter;
-
-	/**
-	 * The cached value of the '{@link #getExplicitTriggers() <em>Explicit Triggers</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExplicitTriggers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<InterProcessTrigger> explicitTriggers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,25 +121,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * @generated
 	 */
 	public EList<InterProcessTrigger> getExplicitTriggers() {
-		if (explicitTriggers == null) {
-			explicitTriggers = new EObjectWithInverseResolvingEList<InterProcessTrigger>(InterProcessTrigger.class, this, AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS, AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS_LINK_INT);
-		}
-		return explicitTriggers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExplicitTriggers()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return CrossReferenceUtil.<InterProcessTrigger>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus());
 	}
 
 	/**
@@ -166,8 +134,6 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return basicSetCounter(null, msgs);
-			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
-				return ((InternalEList<?>)getExplicitTriggers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -193,16 +159,11 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)newValue);
-				return;
-			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
-				getExplicitTriggers().clear();
-				getExplicitTriggers().addAll((Collection<? extends InterProcessTrigger>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,9 +180,6 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				setCounter((Counter)null);
 				return;
-			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
-				getExplicitTriggers().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -237,7 +195,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__COUNTER:
 				return counter != null;
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS__EXPLICIT_TRIGGERS:
-				return explicitTriggers != null && !explicitTriggers.isEmpty();
+				return !getExplicitTriggers().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
