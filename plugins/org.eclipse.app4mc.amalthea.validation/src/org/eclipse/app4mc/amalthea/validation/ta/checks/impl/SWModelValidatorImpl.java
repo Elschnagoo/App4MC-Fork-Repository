@@ -147,10 +147,13 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 			final EObject elem = amaIter.next();
 			if (elem instanceof Runnable) {
 				final Runnable runnable = (Runnable) elem;
-				for (final RunnableCall runnableCall : runnable.getRunnableCalls()) {
-					call2Runnable.put(runnableCall, runnable);
-					if (null != runnableCall) {
-						runnableCalls.add(runnableCall);
+				for (final RunnableItem runnableItem : runnable.getRunnableItems()) {
+					if (runnableItem instanceof RunnableCall) {
+						RunnableCall runnableCall = (RunnableCall) runnableItem;
+						call2Runnable.put(runnableCall, runnable);
+						if (null != runnableCall) {
+							runnableCalls.add(runnableCall);
+						}
 					}
 				}
 			} else if (elem instanceof SWModel) {

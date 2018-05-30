@@ -413,7 +413,8 @@ public class CPP {
 	 */
 	private long getCommunicationOverhead(final Runnable r) {
 		int co = 0;
-		// Runnable is called by one processprototye
+		// Runnable is called by one processprototype
+		// TODO the following line should use getTaskRunnableCalls() !!
 		if (r.getRunnableCalls().size() > 1) {
 			PartLog.getInstance().log("Runnable is called multiple times", null);
 			return 0;

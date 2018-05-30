@@ -478,6 +478,7 @@ public class Helper {
 
 	public boolean tRCsAreConsist(final SWModel swm) {
 		for (final Runnable r : swm.getRunnables()) {
+			// TODO the following line should use getTaskRunnableCalls() !!
 			if (r.getRunnableCalls().size() > 1) {
 				return false;
 			}

@@ -374,7 +374,7 @@ public class SWModelValidatorTests {
 		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		final RunnableCall runnableCall = AmaltheaFactory.eINSTANCE.createRunnableCall();
 
-		runnable.getRunnableCalls().add(runnableCall);
+		runnable.getRunnableItems().add(runnableCall);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -403,7 +403,7 @@ public class SWModelValidatorTests {
 		final RunnableCall runnableCall = AmaltheaFactory.eINSTANCE.createRunnableCall();
 
 		runnableCall.setRunnable(runnable2);
-		runnable.getRunnableCalls().add(runnableCall);
+		runnable.getRunnableItems().add(runnableCall);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
@@ -432,7 +432,7 @@ public class SWModelValidatorTests {
 		final RunnableCall runnableCall = AmaltheaFactory.eINSTANCE.createRunnableCall();
 
 		runnableCall.setRunnable(runnable2);
-		runnable.getRunnableCalls().add(runnableCall);
+		runnable.getRunnableItems().add(runnableCall);
 		swModel.getRunnables().add(runnable);
 		swModel.getRunnables().add(runnable2);
 		amalthea.setSwModel(swModel);
@@ -457,8 +457,9 @@ public class SWModelValidatorTests {
 		final Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
 		final RunnableCall runnableCall = AmaltheaFactory.eINSTANCE.createRunnableCall();
 
+		
 		runnableCall.setRunnable(runnable);
-		runnable.getRunnableCalls().add(runnableCall);
+		runnable.getRunnableItems().add(runnableCall);
 		swModel.getRunnables().add(runnable);
 		amalthea.setSwModel(swModel);
 
