@@ -184,11 +184,10 @@ public interface Runnable extends AbstractMemoryElement {
 	 * Returns the value of the '<em><b>Runnable Calls</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableCall}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable Calls</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of callers (RunnableCalls)</b></p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableCalls()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -201,11 +200,10 @@ public interface Runnable extends AbstractMemoryElement {
 	 * Returns the value of the '<em><b>Task Runnable Calls</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Task Runnable Calls</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls)</b></p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"

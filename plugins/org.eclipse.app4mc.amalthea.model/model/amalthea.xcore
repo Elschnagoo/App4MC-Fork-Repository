@@ -3155,12 +3155,14 @@ class Runnable extends AbstractMemoryElement
 	ASILType asilLevel
 	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (RunnableCalls)</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived RunnableCall[] runnableCalls get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnableCall_Runnable)
 	}
 	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls)</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable)
