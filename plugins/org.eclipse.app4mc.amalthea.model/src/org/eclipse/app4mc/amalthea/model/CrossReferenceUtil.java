@@ -39,7 +39,7 @@ public final class CrossReferenceUtil {
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference eReference) {
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
-		Notifier target = eObject;
+		Notifier target = rootContainer;
 		if (resource != null) {
 			target = resource;
 			final ResourceSet resourceSet = resource.getResourceSet();

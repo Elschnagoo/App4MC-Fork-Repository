@@ -1,5 +1,5 @@
 /*********************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2016-2018 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -20,11 +20,13 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,16 +37,14 @@ import org.junit.Test;
  */
 public class LabelServiceTest {
 
-	private LabelService labelS = null;
-	private Label label = null;
+	private LabelService labelService = null;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		this.labelS = new LabelService();
-		this.label = AmaltheaFactory.eINSTANCE.createLabel();
+		this.labelService = new LabelService();
 	}
 
 	/**
@@ -52,10 +52,36 @@ public class LabelServiceTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		this.labelS = null;
-		this.label = null;
+		this.labelService = null;
 	}
 
+	private SWModel createModelWithSWModel() {
+		Amalthea model = AmaltheaFactory.eINSTANCE.createAmalthea();
+		SWModel sw = AmaltheaFactory.eINSTANCE.createSWModel();
+		model.setSwModel(sw);
+		return sw;
+	}
+	
+	private Runnable createRunnable(SWModel sw) {
+		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
+		sw.getRunnables().add(run);
+		return run;
+	}
+	
+	private Label createLabel(SWModel sw) {
+		Label label = AmaltheaFactory.eINSTANCE.createLabel();
+		sw.getLabels().add(label);
+		return label;
+	}
+	
+	private LabelAccess createLabelAccess(Runnable run, Label label) {
+		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
+		la.setData(label);
+		run.getRunnableItems().add(la);
+		return la;
+	}
+	
+	
 	/**
 	 * Test method for
 	 * {@link org.eclipse.app4mc.amalthea.editors.sirius.design.services.LabelService#getRunnablesFromLabelAccesses(org.eclipse.app4mc.amalthea.model.Label)}
@@ -63,7 +89,8 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetRunnablesFromLabelAccessesNull() {
-		List<Runnable> result = this.labelS.getRunnablesFromLabelAccesses(null);
+		List<Runnable> result = this.labelService.getRunnablesFromLabelAccesses(null);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -75,7 +102,11 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetRunnablesFromLabelAccessesEmptyAccesses() {
-		List<Runnable> result = this.labelS.getRunnablesFromLabelAccesses(this.label);
+		SWModel sw = createModelWithSWModel();
+		Label label = createLabel(sw);
+		
+		List<Runnable> result = this.labelService.getRunnablesFromLabelAccesses(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -87,11 +118,13 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetRunnablesFromLabelAccessesOneAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getRunnablesFromLabelAccesses(this.label);
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		createLabelAccess(runnable, label);
+		
+		List<Runnable> result = this.labelService.getRunnablesFromLabelAccesses(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -105,7 +138,8 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetReadAccessRunnableForLabelNull() {
-		List<Runnable> result = this.labelS.getReadAccessRunnableForLabel(null);
+		List<Runnable> result = this.labelService.getReadAccessRunnableForLabel(null);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -117,7 +151,11 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetReadAccessRunnableForLabelEmptyAccesses() {
-		List<Runnable> result = this.labelS.getReadAccessRunnableForLabel(this.label);
+		SWModel sw = createModelWithSWModel();
+		Label label = createLabel(sw);
+		
+		List<Runnable> result = this.labelService.getReadAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -129,12 +167,14 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetReadAccessRunnableForLabelReadAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		LabelAccess la = createLabelAccess(runnable, label);
 		la.setAccess(LabelAccessEnum.READ);
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getReadAccessRunnableForLabel(this.label);
+		
+		List<Runnable> result = this.labelService.getReadAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -148,12 +188,14 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetReadAccessRunnableForLabelWriteAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		LabelAccess la = createLabelAccess(runnable, label);
 		la.setAccess(LabelAccessEnum.WRITE);
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getReadAccessRunnableForLabel(this.label);
+		
+		List<Runnable> result = this.labelService.getReadAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -165,11 +207,13 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetReadAccessRunnableForLabelUndefinedAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getReadAccessRunnableForLabel(this.label);
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		createLabelAccess(runnable, label);
+		
+		List<Runnable> result = this.labelService.getReadAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -181,7 +225,8 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetWriteAccessRunnableForLabelNull() {
-		List<Runnable> result = this.labelS.getWriteAccessRunnableForLabel(null);
+		List<Runnable> result = this.labelService.getWriteAccessRunnableForLabel(null);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -193,7 +238,11 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetWriteAccessRunnableForLabelEmptyAccesses() {
-		List<Runnable> result = this.labelS.getWriteAccessRunnableForLabel(this.label);
+		SWModel sw = createModelWithSWModel();
+		Label label = createLabel(sw);
+		
+		List<Runnable> result = this.labelService.getWriteAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -205,12 +254,14 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetWriteAccessRunnableForLabelReadAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		LabelAccess la = createLabelAccess(runnable, label);
 		la.setAccess(LabelAccessEnum.READ);
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getWriteAccessRunnableForLabel(this.label);
+		
+		List<Runnable> result = this.labelService.getWriteAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
@@ -222,12 +273,14 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetWriteAccessRunnableForLabelWriteAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		LabelAccess la = createLabelAccess(runnable, label);
 		la.setAccess(LabelAccessEnum.WRITE);
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getWriteAccessRunnableForLabel(this.label);
+				
+		List<Runnable> result = this.labelService.getWriteAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), not(true));
 		assertThat(result.size(), is(1));
@@ -241,12 +294,13 @@ public class LabelServiceTest {
 	 */
 	@Test
 	public void testGetWriteAccessRunnableForLabelUndefinedAccesses() {
-		Runnable runnable = AmaltheaFactory.eINSTANCE.createRunnable();
-		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		la.setAccess(LabelAccessEnum._UNDEFINED_);
-		la.setData(this.label);
-		runnable.getRunnableItems().add(la);
-		List<Runnable> result = this.labelS.getWriteAccessRunnableForLabel(this.label);
+		SWModel sw = createModelWithSWModel();
+		Runnable runnable = createRunnable(sw);
+		Label label = createLabel(sw);
+		createLabelAccess(runnable, label);
+		
+		List<Runnable> result = this.labelService.getWriteAccessRunnableForLabel(label);
+		
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
