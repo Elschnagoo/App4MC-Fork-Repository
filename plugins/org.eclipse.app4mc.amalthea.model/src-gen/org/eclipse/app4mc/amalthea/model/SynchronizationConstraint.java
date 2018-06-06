@@ -75,7 +75,7 @@ public interface SynchronizationConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Tolerance</em>' containment reference.
 	 * @see #setTolerance(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSynchronizationConstraint_Tolerance()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getTolerance();

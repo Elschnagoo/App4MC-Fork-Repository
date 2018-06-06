@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This contraints is used to limit a section in  Memories
+ * This contraints is used to limit a section in Memories
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,7 +47,7 @@ public interface PhysicalSectionConstraint extends ReferableBaseObject {
 	 * @return the value of the '<em>Section</em>' reference.
 	 * @see #setSection(Section)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionConstraint_Section()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Section getSection();

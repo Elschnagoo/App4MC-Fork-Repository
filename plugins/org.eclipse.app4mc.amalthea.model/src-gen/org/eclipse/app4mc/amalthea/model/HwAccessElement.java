@@ -23,7 +23,7 @@ package org.eclipse.app4mc.amalthea.model;
  * 	contains HwLatency latency
  * 	refers FrequencyDomain[1] sourceFrequencyDomain
  * 	refers FrequencyDomain[1] targetFrequencyDomain
- * }
+ *  }
  * <!-- end-model-doc -->
  *
  * <p>
@@ -72,7 +72,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #setDestination(HwDestination)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_Destination()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	HwDestination getDestination();

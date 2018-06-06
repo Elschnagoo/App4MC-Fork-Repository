@@ -41,7 +41,7 @@ public interface RunnableRequirement extends Requirement {
 	 * @return the value of the '<em>Runnable</em>' reference.
 	 * @see #setRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableRequirement_Runnable()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	org.eclipse.app4mc.amalthea.model.Runnable getRunnable();

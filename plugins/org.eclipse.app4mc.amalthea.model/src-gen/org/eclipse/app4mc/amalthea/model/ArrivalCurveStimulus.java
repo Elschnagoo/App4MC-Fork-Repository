@@ -46,7 +46,7 @@ public interface ArrivalCurveStimulus extends Stimulus {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArrivalCurveStimulus_Entries()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<ArrivalCurveEntry> getEntries();

@@ -78,7 +78,7 @@ public interface DelayConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(EntityEvent)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDelayConstraint_Source()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EntityEvent getSource();
@@ -104,7 +104,7 @@ public interface DelayConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(EntityEvent)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDelayConstraint_Target()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EntityEvent getTarget();

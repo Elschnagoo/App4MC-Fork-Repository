@@ -50,7 +50,7 @@ public interface ComponentEvent extends EntityEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.ComponentEventType
 	 * @see #setEventType(ComponentEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponentEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	ComponentEventType getEventType();

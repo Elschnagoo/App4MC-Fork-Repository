@@ -41,7 +41,7 @@ public interface ProcessRequirement extends Requirement {
 	 * @return the value of the '<em>Process</em>' reference.
 	 * @see #setProcess(AbstractProcess)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessRequirement_Process()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	AbstractProcess getProcess();

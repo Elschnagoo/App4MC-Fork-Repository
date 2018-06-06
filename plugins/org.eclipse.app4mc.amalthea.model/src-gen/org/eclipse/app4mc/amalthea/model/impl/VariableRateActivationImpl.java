@@ -35,8 +35,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl#getStep <em>Step</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.VariableRateActivationImpl#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,16 +63,6 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOccurrencesPerStep() <em>Occurrences Per Step</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOccurrencesPerStep()
-	 * @generated
-	 * @ordered
-	 */
-	protected Deviation<DoubleObject> occurrencesPerStep;
-
-	/**
 	 * The cached value of the '{@link #getStep() <em>Step</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,6 +71,16 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * @ordered
 	 */
 	protected Time step;
+
+	/**
+	 * The cached value of the '{@link #getOccurrencesPerStep() <em>Occurrences Per Step</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccurrencesPerStep()
+	 * @generated
+	 * @ordered
+	 */
+	protected Deviation<DoubleObject> occurrencesPerStep;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,49 +120,6 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION, oldDescription, description));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deviation<DoubleObject> getOccurrencesPerStep() {
-		return occurrencesPerStep;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep, NotificationChain msgs) {
-		Deviation<DoubleObject> oldOccurrencesPerStep = occurrencesPerStep;
-		occurrencesPerStep = newOccurrencesPerStep;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep) {
-		if (newOccurrencesPerStep != occurrencesPerStep) {
-			NotificationChain msgs = null;
-			if (occurrencesPerStep != null)
-				msgs = ((InternalEObject)occurrencesPerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, null, msgs);
-			if (newOccurrencesPerStep != null)
-				msgs = ((InternalEObject)newOccurrencesPerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, null, msgs);
-			msgs = basicSetOccurrencesPerStep(newOccurrencesPerStep, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, newOccurrencesPerStep, newOccurrencesPerStep));
 	}
 
 	/**
@@ -213,13 +170,56 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Deviation<DoubleObject> getOccurrencesPerStep() {
+		return occurrencesPerStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep, NotificationChain msgs) {
+		Deviation<DoubleObject> oldOccurrencesPerStep = occurrencesPerStep;
+		occurrencesPerStep = newOccurrencesPerStep;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep) {
+		if (newOccurrencesPerStep != occurrencesPerStep) {
+			NotificationChain msgs = null;
+			if (occurrencesPerStep != null)
+				msgs = ((InternalEObject)occurrencesPerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, null, msgs);
+			if (newOccurrencesPerStep != null)
+				msgs = ((InternalEObject)newOccurrencesPerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, null, msgs);
+			msgs = basicSetOccurrencesPerStep(newOccurrencesPerStep, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, newOccurrencesPerStep, newOccurrencesPerStep));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				return basicSetOccurrencesPerStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
 				return basicSetStep(null, msgs);
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
+				return basicSetOccurrencesPerStep(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -234,10 +234,10 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 		switch (featureID) {
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION:
 				return getDescription();
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				return getOccurrencesPerStep();
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
 				return getStep();
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
+				return getOccurrencesPerStep();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -254,11 +254,11 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)newValue);
-				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
 				setStep((Time)newValue);
+				return;
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
+				setOccurrencesPerStep((Deviation<DoubleObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,11 +275,11 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)null);
-				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
 				setStep((Time)null);
+				return;
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
+				setOccurrencesPerStep((Deviation<DoubleObject>)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -295,10 +295,10 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 		switch (featureID) {
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				return occurrencesPerStep != null;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
 				return step != null;
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
+				return occurrencesPerStep != null;
 		}
 		return super.eIsSet(featureID);
 	}

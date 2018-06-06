@@ -42,7 +42,7 @@ public interface AccessPrecedenceSpec extends GeneralPrecedence {
 	 * @return the value of the '<em>Label</em>' reference.
 	 * @see #setLabel(Label)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAccessPrecedenceSpec_Label()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Label getLabel();

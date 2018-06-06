@@ -46,7 +46,7 @@ public interface EventSet extends Event {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventSet_Events()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<EntityEvent> getEvents();

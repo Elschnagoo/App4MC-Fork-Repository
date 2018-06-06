@@ -100,7 +100,7 @@ public interface PeriodicActivation extends Activation {
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicActivation_Recurrence()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getRecurrence();
@@ -126,7 +126,7 @@ public interface PeriodicActivation extends Activation {
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicActivation_Offset()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getOffset();

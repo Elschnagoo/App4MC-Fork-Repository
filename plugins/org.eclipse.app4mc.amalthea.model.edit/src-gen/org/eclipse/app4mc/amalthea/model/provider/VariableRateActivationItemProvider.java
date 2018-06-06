@@ -97,8 +97,8 @@ public class VariableRateActivationItemProvider extends ActivationItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateActivation_Step());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep());
 		}
 		return childrenFeatures;
 	}
@@ -167,8 +167,8 @@ public class VariableRateActivationItemProvider extends ActivationItemProvider {
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__STEP:
+			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,13 +188,13 @@ public class VariableRateActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_Step(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_Step(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
+				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createDeviation()));
 	}
 
 }

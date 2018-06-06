@@ -41,7 +41,7 @@ public interface ProcessChainRequirement extends Requirement {
 	 * @return the value of the '<em>Process Chain</em>' reference.
 	 * @see #setProcessChain(ProcessChain)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessChainRequirement_ProcessChain()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	ProcessChain getProcessChain();

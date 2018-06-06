@@ -46,7 +46,7 @@ public interface ProcessPairingConstraint extends PairingConstraint, ProcessCons
 	 * @return the value of the '<em>Group</em>' containment reference.
 	 * @see #setGroup(ProcessGroup)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPairingConstraint_Group()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ProcessGroup getGroup();

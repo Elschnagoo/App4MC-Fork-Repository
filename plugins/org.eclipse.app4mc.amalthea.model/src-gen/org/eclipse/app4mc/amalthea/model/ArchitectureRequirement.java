@@ -41,7 +41,7 @@ public interface ArchitectureRequirement extends Requirement {
 	 * @return the value of the '<em>Component</em>' reference.
 	 * @see #setComponent(Component)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getArchitectureRequirement_Component()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Component getComponent();

@@ -50,7 +50,7 @@ public interface VariableRateStimulus extends Stimulus {
 	 * @return the value of the '<em>Step</em>' containment reference.
 	 * @see #setStep(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_Step()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getStep();

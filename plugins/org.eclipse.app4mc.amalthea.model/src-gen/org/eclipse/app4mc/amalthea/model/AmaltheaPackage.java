@@ -20981,13 +20981,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_SEQUENCE_ITEM__CONTAINING_TASK = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_SEQUENCE_ITEM__COUNTER = BASE_OBJECT_FEATURE_COUNT + 0;
+	int CALL_SEQUENCE_ITEM__COUNTER = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Call Sequence Item</em>' class.
@@ -20996,7 +21005,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_SEQUENCE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
+	int CALL_SEQUENCE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Call Sequence Item</em>' class.
@@ -21025,6 +21034,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int WAIT_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAIT_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21100,6 +21118,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SET_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+
+	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21162,6 +21189,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLEAR_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21374,6 +21410,15 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_TRIGGER__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_TRIGGER__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+
+	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21429,6 +21474,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ENFORCED_MIGRATION__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENFORCED_MIGRATION__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+
+	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21482,6 +21536,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK_RUNNABLE_CALL__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_RUNNABLE_CALL__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21548,6 +21611,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULE_POINT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_POINT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+
+	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21592,6 +21664,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINATE_PROCESS__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINATE_PROCESS__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -23209,13 +23290,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_ITEM__CONTAINING_RUNNABLE = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Runnable Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
+	int RUNNABLE_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Runnable Item</em>' class.
@@ -23244,6 +23334,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPUTATION_ITEM__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPUTATION_ITEM__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The number of structural features of the '<em>Computation Item</em>' class.
@@ -23281,6 +23380,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION_NEED__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_NEED__CONTAINING_RUNNABLE = COMPUTATION_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' map.
@@ -23430,6 +23538,15 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_LABEL_ACCESS__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LABEL_ACCESS__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23494,6 +23611,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_MODE_SWITCH__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_MODE_SWITCH__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23547,6 +23673,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LABEL_ACCESS__CUSTOM_PROPERTIES = COMPUTATION_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_ACCESS__CONTAINING_RUNNABLE = COMPUTATION_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
@@ -23640,6 +23775,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_ACCESS__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_ACCESS__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23704,6 +23848,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL_SEND__CUSTOM_PROPERTIES = CHANNEL_ACCESS__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_SEND__CONTAINING_RUNNABLE = CHANNEL_ACCESS__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23766,6 +23919,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_RECEIVE__CUSTOM_PROPERTIES = CHANNEL_ACCESS__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_RECEIVE__CONTAINING_RUNNABLE = CHANNEL_ACCESS__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
@@ -23868,6 +24030,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_ACCESS__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_ACCESS__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Semaphore</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -23930,6 +24101,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER_RECEIVER_COMMUNICATION__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_COMMUNICATION__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Buffered</b></em>' attribute.
@@ -23996,6 +24176,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SENDER_RECEIVER_READ__CUSTOM_PROPERTIES = SENDER_RECEIVER_COMMUNICATION__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_READ__CONTAINING_RUNNABLE = SENDER_RECEIVER_COMMUNICATION__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Buffered</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24058,6 +24247,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER_RECEIVER_WRITE__CUSTOM_PROPERTIES = SENDER_RECEIVER_COMMUNICATION__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENDER_RECEIVER_WRITE__CONTAINING_RUNNABLE = SENDER_RECEIVER_COMMUNICATION__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Buffered</b></em>' attribute.
@@ -24133,6 +24331,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SERVER_CALL__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_CALL__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Server Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24186,6 +24393,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNCHRONOUS_SERVER_CALL__CUSTOM_PROPERTIES = SERVER_CALL__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONOUS_SERVER_CALL__CONTAINING_RUNNABLE = SERVER_CALL__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Server Runnable</b></em>' reference.
@@ -24252,6 +24468,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ASYNCHRONOUS_SERVER_CALL__CUSTOM_PROPERTIES = SERVER_CALL__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASYNCHRONOUS_SERVER_CALL__CONTAINING_RUNNABLE = SERVER_CALL__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Server Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24314,6 +24539,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_RESULT_SERVER_CALL__CUSTOM_PROPERTIES = SERVER_CALL__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_RESULT_SERVER_CALL__CONTAINING_RUNNABLE = SERVER_CALL__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Server Runnable</b></em>' reference.
@@ -24380,6 +24614,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_PROBABILITY_SWITCH__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_PROBABILITY_SWITCH__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24424,6 +24667,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int GROUP__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -24490,6 +24742,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_CALL__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_CALL__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
+
+	/**
 	 * The feature id for the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24543,6 +24804,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_EVENT_TRIGGER__CUSTOM_PROPERTIES = RUNNABLE_ITEM__CUSTOM_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT_TRIGGER__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
 
 	/**
 	 * The feature id for the '<em><b>Event</b></em>' reference.
@@ -25522,22 +25792,22 @@ public interface AmaltheaPackage extends EPackage {
 	int VARIABLE_RATE_ACTIVATION__DESCRIPTION = ACTIVATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Occurrences Per Step</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP = ACTIVATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RATE_ACTIVATION__STEP = ACTIVATION_FEATURE_COUNT + 2;
+	int VARIABLE_RATE_ACTIVATION__STEP = ACTIVATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Occurrences Per Step</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP = ACTIVATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Variable Rate Activation</em>' class.
@@ -27964,7 +28234,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @return the meta object for class '<em>Custom Property</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyUnique="false" keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.Value" valueContainment="true" valueRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.Value" valueContainment="true"
 	 * @generated
 	 */
 	EClass getCustomProperty();
@@ -35384,6 +35654,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getCallSequenceItem();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingTask <em>Containing Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Containing Task</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingTask()
+	 * @see #getCallSequenceItem()
+	 * @generated
+	 */
+	EReference getCallSequenceItem_ContainingTask();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getCounter <em>Counter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36251,6 +36532,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getRunnableItem();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.RunnableItem#getContainingRunnable <em>Containing Runnable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Containing Runnable</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableItem#getContainingRunnable()
+	 * @see #getRunnableItem()
+	 * @generated
+	 */
+	EReference getRunnableItem_ContainingRunnable();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36298,7 +36590,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Execution Need Extended</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition" keyRequired="true"
+	 * @model keyType="org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition"
 	 *        valueMapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.Need&gt;"
 	 * @generated
 	 */
@@ -37275,17 +37567,6 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getVariableRateActivation_Description();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Occurrences Per Step</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep()
-	 * @see #getVariableRateActivation()
-	 * @generated
-	 */
-	EReference getVariableRateActivation_OccurrencesPerStep();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getStep <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37295,6 +37576,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getVariableRateActivation_Step();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Occurrences Per Step</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep()
+	 * @see #getVariableRateActivation()
+	 * @generated
+	 */
+	EReference getVariableRateActivation_OccurrencesPerStep();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation <em>Sporadic Activation</em>}'.

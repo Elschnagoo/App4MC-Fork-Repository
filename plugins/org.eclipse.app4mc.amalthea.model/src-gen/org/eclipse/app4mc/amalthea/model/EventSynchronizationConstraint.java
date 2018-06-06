@@ -46,7 +46,7 @@ public interface EventSynchronizationConstraint extends SynchronizationConstrain
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventSynchronizationConstraint_Events()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<EntityEvent> getEvents();

@@ -42,7 +42,7 @@ public interface Scenario extends BaseObject {
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_Recurrence()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getRecurrence();

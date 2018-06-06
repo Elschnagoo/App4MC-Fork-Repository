@@ -54,7 +54,7 @@ public interface ChannelEvent extends TriggerEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.ChannelEventType
 	 * @see #setEventType(ChannelEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getChannelEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	ChannelEventType getEventType();

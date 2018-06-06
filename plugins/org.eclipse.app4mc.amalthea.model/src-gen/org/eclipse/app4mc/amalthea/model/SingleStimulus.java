@@ -45,7 +45,7 @@ public interface SingleStimulus extends Stimulus {
 	 * @return the value of the '<em>Occurrence</em>' containment reference.
 	 * @see #setOccurrence(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSingleStimulus_Occurrence()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getOccurrence();

@@ -13,8 +13,10 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.Counter;
+import org.eclipse.app4mc.amalthea.model.Task;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CallSequenceItemImpl#getContainingTask <em>Containing Task</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CallSequenceItemImpl#getCounter <em>Counter</em>}</li>
  * </ul>
  *
@@ -65,6 +68,15 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getCallSequenceItem();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Task getContainingTask() {
+		return AmaltheaServices.<Task>getContainerOfType(this, Task.class);
 	}
 
 	/**
@@ -132,6 +144,8 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.CALL_SEQUENCE_ITEM__CONTAINING_TASK:
+				return getContainingTask();
 			case AmaltheaPackage.CALL_SEQUENCE_ITEM__COUNTER:
 				return getCounter();
 		}
@@ -176,6 +190,8 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.CALL_SEQUENCE_ITEM__CONTAINING_TASK:
+				return getContainingTask() != null;
 			case AmaltheaPackage.CALL_SEQUENCE_ITEM__COUNTER:
 				return counter != null;
 		}

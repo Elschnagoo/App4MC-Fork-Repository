@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -37,6 +36,9 @@ public final class CrossReferenceUtil {
 	}
 
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference eReference) {
+		
+		// Find root element (EObject, Resource or Resource Set)
+		
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
 		Notifier target = rootContainer;
@@ -48,22 +50,26 @@ public final class CrossReferenceUtil {
 			}
 		}
 
-		ECrossReferenceAdapter eCrossReferenceAdapter = null;
+		// Get or create Amalthea adapter
+		
+		AmaltheaCrossReferenceAdapter amaltheaAdapter = null;
 		final EList<Adapter> adapters = target.eAdapters();
 		for (final Adapter adapter : adapters) {
-			if (adapter instanceof ECrossReferenceAdapter) {
-				eCrossReferenceAdapter = (ECrossReferenceAdapter) adapter;
+			if (adapter instanceof AmaltheaCrossReferenceAdapter) {
+				amaltheaAdapter = (AmaltheaCrossReferenceAdapter) adapter;
 				break;
 			}
 		}
 
-		if (eCrossReferenceAdapter == null) {
-			eCrossReferenceAdapter = new ECrossReferenceAdapter();
-			adapters.add(eCrossReferenceAdapter);
+		if (amaltheaAdapter == null) {
+			amaltheaAdapter = new AmaltheaCrossReferenceAdapter();
+			adapters.add(amaltheaAdapter);
 		}
 
+		// Get references from adapter
+		
 		final List<EObject> result = new ArrayList<EObject>();
-		final Collection<Setting> nonNavigableInverseReferences = eCrossReferenceAdapter
+		final Collection<Setting> nonNavigableInverseReferences = amaltheaAdapter
 				.getNonNavigableInverseReferences(eObject);
 		for (final Setting setting : nonNavigableInverseReferences) {
 			if (setting.getEStructuralFeature() == eReference) {
@@ -71,6 +77,8 @@ public final class CrossReferenceUtil {
 			}
 		}
 
+		// Return immutable list
+		
 		final int size = result.size();
 		final Object[] values = result.toArray();
 		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, eReference, size, values);

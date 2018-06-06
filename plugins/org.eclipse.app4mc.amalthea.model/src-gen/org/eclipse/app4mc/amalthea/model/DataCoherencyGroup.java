@@ -44,7 +44,7 @@ public interface DataCoherencyGroup extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataCoherencyGroup_Labels()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Label> getLabels();

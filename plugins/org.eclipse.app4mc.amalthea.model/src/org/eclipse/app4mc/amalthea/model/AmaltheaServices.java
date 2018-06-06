@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2016 Robert Bosch GmbH and others.
+ *  Copyright (c) 2016-2018 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -21,9 +21,20 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 public class AmaltheaServices {
 
+	public static <T extends EObject> T getContainerOfType(EObject object, Class<T> type) {
+		if (type == null || object == null) return null;
+		
+		for (EObject parent = object.eContainer(); parent != null; parent = parent.eContainer()) {
+			if (type.isInstance(parent))
+				return type.cast(parent);
+		}
+		return null;
+	}
+	
 	public static BigInteger convertToBit(DataSize size) {
 		if (size == null || size.getValue() == null)
 			return null;

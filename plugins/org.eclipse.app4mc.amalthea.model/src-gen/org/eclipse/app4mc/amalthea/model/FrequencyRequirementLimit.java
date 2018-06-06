@@ -71,7 +71,7 @@ public interface FrequencyRequirementLimit extends RequirementLimit {
 	 * @return the value of the '<em>Limit Value</em>' containment reference.
 	 * @see #setLimitValue(Frequency)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequencyRequirementLimit_LimitValue()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Frequency getLimitValue();

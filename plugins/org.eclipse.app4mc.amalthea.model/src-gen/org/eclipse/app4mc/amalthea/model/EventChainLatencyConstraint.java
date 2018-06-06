@@ -52,7 +52,7 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Scope</em>' reference.
 	 * @see #setScope(EventChain)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventChainLatencyConstraint_Scope()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EventChain getScope();

@@ -54,7 +54,7 @@ public interface RunnableEvent extends TriggerEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.RunnableEventType
 	 * @see #setEventType(RunnableEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	RunnableEventType getEventType();

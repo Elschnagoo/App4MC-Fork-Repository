@@ -56,7 +56,7 @@ public interface SemaphoreEvent extends EntityEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreEventType
 	 * @see #setEventType(SemaphoreEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSemaphoreEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	SemaphoreEventType getEventType();

@@ -48,7 +48,7 @@ public interface PeriodicBurstStimulus extends Stimulus, FixedPeriodic {
 	 * @return the value of the '<em>Burst Length</em>' containment reference.
 	 * @see #setBurstLength(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicBurstStimulus_BurstLength()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getBurstLength();

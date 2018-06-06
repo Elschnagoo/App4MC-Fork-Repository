@@ -50,7 +50,7 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * @return the value of the '<em>Event</em>' reference.
 	 * @see #setEvent(EntityEvent)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRepetitionConstraint_Event()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EntityEvent getEvent();

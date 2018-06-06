@@ -52,7 +52,7 @@ public interface ProcessChainEvent extends EntityEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.ProcessEventType
 	 * @see #setEventType(ProcessEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessChainEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	ProcessEventType getEventType();

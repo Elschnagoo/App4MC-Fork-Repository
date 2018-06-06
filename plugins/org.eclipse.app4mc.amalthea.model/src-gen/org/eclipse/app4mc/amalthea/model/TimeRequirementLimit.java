@@ -71,7 +71,7 @@ public interface TimeRequirementLimit extends RequirementLimit {
 	 * @return the value of the '<em>Limit Value</em>' containment reference.
 	 * @see #setLimitValue(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeRequirementLimit_LimitValue()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getLimitValue();

@@ -43,7 +43,7 @@ public interface DataStabilityGroup extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataStabilityGroup_Labels()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Label> getLabels();

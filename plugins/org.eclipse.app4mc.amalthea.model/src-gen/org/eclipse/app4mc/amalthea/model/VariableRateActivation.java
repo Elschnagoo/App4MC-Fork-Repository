@@ -27,8 +27,8 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getStep <em>Step</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateActivation()
@@ -63,32 +63,6 @@ public interface VariableRateActivation extends Activation {
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Occurrences Per Step</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrences Per Step</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #setOccurrencesPerStep(Deviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateActivation_OccurrencesPerStep()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Deviation<DoubleObject> getOccurrencesPerStep();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #getOccurrencesPerStep()
-	 * @generated
-	 */
-	void setOccurrencesPerStep(Deviation<DoubleObject> value);
-
-	/**
 	 * Returns the value of the '<em><b>Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -99,7 +73,7 @@ public interface VariableRateActivation extends Activation {
 	 * @return the value of the '<em>Step</em>' containment reference.
 	 * @see #setStep(Time)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateActivation_Step()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Time getStep();
@@ -113,5 +87,31 @@ public interface VariableRateActivation extends Activation {
 	 * @generated
 	 */
 	void setStep(Time value);
+
+	/**
+	 * Returns the value of the '<em><b>Occurrences Per Step</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Occurrences Per Step</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
+	 * @see #setOccurrencesPerStep(Deviation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateActivation_OccurrencesPerStep()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Deviation<DoubleObject> getOccurrencesPerStep();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Occurrences Per Step</em>' containment reference.
+	 * @see #getOccurrencesPerStep()
+	 * @generated
+	 */
+	void setOccurrencesPerStep(Deviation<DoubleObject> value);
 
 } // VariableRateActivation

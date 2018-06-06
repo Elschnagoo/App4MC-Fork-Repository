@@ -54,7 +54,7 @@ public interface LabelEvent extends TriggerEvent {
 	 * @see org.eclipse.app4mc.amalthea.model.LabelEventType
 	 * @see #setEventType(LabelEventType)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelEvent_EventType()
-	 * @model unique="false" required="true"
+	 * @model unique="false"
 	 * @generated
 	 */
 	LabelEventType getEventType();
