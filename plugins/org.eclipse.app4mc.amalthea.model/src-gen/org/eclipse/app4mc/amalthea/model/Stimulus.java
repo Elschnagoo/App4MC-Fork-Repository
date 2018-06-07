@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getSetModeValueList <em>Set Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getAffectedProcesses <em>Affected Processes</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus()
@@ -115,5 +117,21 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	 * @generated
 	 */
 	void setDisablingModeValueList(ModeValueDisjunction value);
+
+	/**
+	 * Returns the value of the '<em><b>Affected Processes</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Process}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of affected processes (Process).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Affected Processes</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_AffectedProcesses()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getProcess_Stimuli());'"
+	 * @generated
+	 */
+	EList<org.eclipse.app4mc.amalthea.model.Process> getAffectedProcesses();
 
 } // Stimulus

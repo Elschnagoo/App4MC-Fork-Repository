@@ -63,8 +63,8 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 			addBVolatilePropertyDescriptor(object);
 			addDataStabilityPropertyDescriptor(object);
 			addStabilityLevelPropertyDescriptor(object);
-			addLabelAccessesPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
+			addLabelAccessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

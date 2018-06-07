@@ -53,9 +53,9 @@ public class SectionItemProvider extends ReferableBaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addAsilLevelPropertyDescriptor(object);
 			addLabelsPropertyDescriptor(object);
 			addRunnablesPropertyDescriptor(object);
-			addAsilLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

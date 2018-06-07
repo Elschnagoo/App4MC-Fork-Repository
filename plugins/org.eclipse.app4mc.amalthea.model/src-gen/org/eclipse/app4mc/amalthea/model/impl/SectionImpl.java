@@ -34,9 +34,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SectionImpl#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SectionImpl#getLabels <em>Labels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SectionImpl#getRunnables <em>Runnables</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SectionImpl#getAsilLevel <em>Asil Level</em>}</li>
  * </ul>
  *
  * @generated
@@ -86,24 +86,6 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Label> getLabels() {
-		return CrossReferenceUtil.<Label>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_Section());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
-		return CrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_Section());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ASILType getAsilLevel() {
 		return asilLevel;
 	}
@@ -125,15 +107,33 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Label> getLabels() {
+		return CrossReferenceUtil.<Label>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_Section());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
+		return CrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_Section());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.SECTION__ASIL_LEVEL:
+				return getAsilLevel();
 			case AmaltheaPackage.SECTION__LABELS:
 				return getLabels();
 			case AmaltheaPackage.SECTION__RUNNABLES:
 				return getRunnables();
-			case AmaltheaPackage.SECTION__ASIL_LEVEL:
-				return getAsilLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,12 +176,12 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.SECTION__ASIL_LEVEL:
+				return asilLevel != ASIL_LEVEL_EDEFAULT;
 			case AmaltheaPackage.SECTION__LABELS:
 				return !getLabels().isEmpty();
 			case AmaltheaPackage.SECTION__RUNNABLES:
 				return !getRunnables().isEmpty();
-			case AmaltheaPackage.SECTION__ASIL_LEVEL:
-				return asilLevel != ASIL_LEVEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

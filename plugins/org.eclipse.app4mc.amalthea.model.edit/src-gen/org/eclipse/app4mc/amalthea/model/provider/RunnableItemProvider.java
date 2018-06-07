@@ -61,9 +61,9 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			addCallbackPropertyDescriptor(object);
 			addServicePropertyDescriptor(object);
 			addAsilLevelPropertyDescriptor(object);
+			addSectionPropertyDescriptor(object);
 			addRunnableCallsPropertyDescriptor(object);
 			addTaskRunnableCallsPropertyDescriptor(object);
-			addSectionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

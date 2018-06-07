@@ -9236,6 +9236,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStimulus_AffectedProcesses() {
+		return (EReference)stimulusEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModeValueList() {
 		return modeValueListEClass;
 	}
@@ -10856,7 +10865,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_RunnableCalls() {
+	public EReference getRunnable_Section() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -10865,7 +10874,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_TaskRunnableCalls() {
+	public EReference getRunnable_RunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -10874,7 +10883,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRunnable_Section() {
+	public EReference getRunnable_TaskRunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -10946,7 +10955,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabel_LabelAccesses() {
+	public EReference getLabel_Section() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -10955,7 +10964,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLabel_Section() {
+	public EReference getLabel_LabelAccesses() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -11045,8 +11054,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSection_Labels() {
-		return (EReference)sectionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSection_AsilLevel() {
+		return (EAttribute)sectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11054,7 +11063,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSection_Runnables() {
+	public EReference getSection_Labels() {
 		return (EReference)sectionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -11063,8 +11072,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSection_AsilLevel() {
-		return (EAttribute)sectionEClass.getEStructuralFeatures().get(2);
+	public EReference getSection_Runnables() {
+		return (EReference)sectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -13669,6 +13678,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(stimulusEClass, STIMULUS__SET_MODE_VALUE_LIST);
 		createEReference(stimulusEClass, STIMULUS__ENABLING_MODE_VALUE_LIST);
 		createEReference(stimulusEClass, STIMULUS__DISABLING_MODE_VALUE_LIST);
+		createEReference(stimulusEClass, STIMULUS__AFFECTED_PROCESSES);
 
 		modeValueListEClass = createEClass(MODE_VALUE_LIST);
 		createEReference(modeValueListEClass, MODE_VALUE_LIST__ENTRIES);
@@ -13907,9 +13917,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(runnableEClass, RUNNABLE__CALLBACK);
 		createEAttribute(runnableEClass, RUNNABLE__SERVICE);
 		createEAttribute(runnableEClass, RUNNABLE__ASIL_LEVEL);
+		createEReference(runnableEClass, RUNNABLE__SECTION);
 		createEReference(runnableEClass, RUNNABLE__RUNNABLE_CALLS);
 		createEReference(runnableEClass, RUNNABLE__TASK_RUNNABLE_CALLS);
-		createEReference(runnableEClass, RUNNABLE__SECTION);
 		createEOperation(runnableEClass, RUNNABLE___GET_FIRST_ACTIVATION);
 
 		labelEClass = createEClass(LABEL);
@@ -13918,8 +13928,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(labelEClass, LABEL__BVOLATILE);
 		createEAttribute(labelEClass, LABEL__DATA_STABILITY);
 		createEAttribute(labelEClass, LABEL__STABILITY_LEVEL);
-		createEReference(labelEClass, LABEL__LABEL_ACCESSES);
 		createEReference(labelEClass, LABEL__SECTION);
+		createEReference(labelEClass, LABEL__LABEL_ACCESSES);
 
 		channelEClass = createEClass(CHANNEL);
 		createEReference(channelEClass, CHANNEL__ELEMENT_TYPE);
@@ -13932,9 +13942,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(modeLabelEClass, MODE_LABEL__INITIAL_VALUE);
 
 		sectionEClass = createEClass(SECTION);
+		createEAttribute(sectionEClass, SECTION__ASIL_LEVEL);
 		createEReference(sectionEClass, SECTION__LABELS);
 		createEReference(sectionEClass, SECTION__RUNNABLES);
-		createEAttribute(sectionEClass, SECTION__ASIL_LEVEL);
 
 		runnableItemEClass = createEClass(RUNNABLE_ITEM);
 		createEReference(runnableItemEClass, RUNNABLE_ITEM__CONTAINING_RUNNABLE);
@@ -15549,6 +15559,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getStimulus_SetModeValueList(), this.getModeValueList(), null, "setModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStimulus_EnablingModeValueList(), this.getModeValueDisjunction(), null, "enablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStimulus_DisablingModeValueList(), this.getModeValueDisjunction(), null, "disablingModeValueList", null, 0, 1, Stimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStimulus_AffectedProcesses(), this.getProcess(), null, "affectedProcesses", null, 0, -1, Stimulus.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeValueListEClass, ModeValueList.class, "ModeValueList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeValueList_Entries(), this.getModeValue(), null, "entries", null, 0, -1, ModeValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15819,9 +15830,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getRunnable_Callback(), theEcorePackage.getEBoolean(), "callback", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Service(), theEcorePackage.getEBoolean(), "service", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnable_Section(), this.getSection(), null, "section", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_RunnableCalls(), this.getRunnableCall(), null, "runnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_TaskRunnableCalls(), this.getTaskRunnableCall(), null, "taskRunnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnable_Section(), this.getSection(), null, "section", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRunnable__GetFirstActivation(), this.getActivation(), "getFirstActivation", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15831,8 +15842,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getLabel_BVolatile(), theEcorePackage.getEBoolean(), "bVolatile", "false", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_DataStability(), this.getLabelDataStability(), "dataStability", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_StabilityLevel(), this.getDataStabilityLevel(), "stabilityLevel", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLabel_LabelAccesses(), this.getLabelAccess(), null, "labelAccesses", null, 0, -1, Label.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_Section(), this.getSection(), null, "section", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLabel_LabelAccesses(), this.getLabelAccess(), null, "labelAccesses", null, 0, -1, Label.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChannel_ElementType(), this.getDataType(), null, "elementType", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15845,9 +15856,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getModeLabel_InitialValue(), this.getModeLiteral(), null, "initialValue", null, 1, 1, ModeLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sectionEClass, Section.class, "Section", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSection_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Labels(), this.getLabel(), null, "labels", null, 0, -1, Section.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, Section.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSection_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, Section.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableItemEClass, RunnableItem.class, "RunnableItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableItem_ContainingRunnable(), this.getRunnable(), null, "containingRunnable", null, 0, 1, RunnableItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);

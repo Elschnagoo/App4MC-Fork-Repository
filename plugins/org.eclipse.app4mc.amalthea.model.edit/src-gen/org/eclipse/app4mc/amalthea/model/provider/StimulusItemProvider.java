@@ -58,6 +58,7 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTagsPropertyDescriptor(object);
+			addAffectedProcessesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +83,30 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 				 null,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Affected Processes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAffectedProcessesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Stimulus_affectedProcesses_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Stimulus_affectedProcesses_feature", "_UI_Stimulus_type"),
+				 AmaltheaPackage.eINSTANCE.getStimulus_AffectedProcesses(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

@@ -196,7 +196,7 @@ abstract class Instructions
  */
 class InstructionsDeviation extends Instructions
 {
-	contains Deviation<LongObject>deviation
+	contains Deviation<LongObject> deviation
 }
 
 /*
@@ -214,7 +214,7 @@ abstract class Need {}
 
 class NeedDeviation extends Need
 {
-	contains Deviation<LongObject>deviation
+	contains Deviation<LongObject> deviation
 }
 
 class NeedConstant extends Need
@@ -246,6 +246,7 @@ abstract class AbstractTime extends TimeComparable
 {
 	BigInteger value = "0"
 	TimeUnit unit
+	
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
@@ -279,6 +280,7 @@ class Frequency extends Quantity
 {
 	double value = "0.0"
 	FrequencyUnit unit
+	
 	op String toString() {
 		return value + " " + if (unit == FrequencyUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
@@ -302,6 +304,7 @@ class Voltage extends Quantity
 {
 	double value = "0.0"
 	VoltageUnit unit
+	
 	op String toString() {
 		return value + " " + if (unit == VoltageUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
@@ -318,15 +321,18 @@ enum DataSizeUnit
 	Mbit
 	Gbit
 	Tbit
+	
 	Kibit
 	Mibit
 	Gibit
 	Tibit
+	
 	B
 	kB
 	MB
 	GB
 	TB
+	
 	KiB
 	MiB
 	GiB
@@ -340,9 +346,11 @@ class DataSize extends Quantity
 {
 	BigInteger value = "0"
 	DataSizeUnit unit
+	
 	op String toString() {
 		return value + " " + if (unit == DataSizeUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
+	
 	/*
 	 * Convenience methods to retrieve the size in Bits and Bytes
 	 */
@@ -367,15 +375,18 @@ enum DataRateUnit
 	MbitPerSecond
 	GbitPerSecond
 	TbitPerSecond
+	
 	KibitPerSecond
 	MibitPerSecond
 	GibitPerSecond
 	TibitPerSecond
+	
 	BPerSecond
 	kBPerSecond
 	MBPerSecond
 	GBPerSecond
 	TBPerSecond
+	
 	KiBPerSecond
 	MiBPerSecond
 	GiBPerSecond
@@ -391,9 +402,9 @@ class DataRate extends Quantity, DataRateComparable
 {
 	BigInteger value = "0"
 	DataRateUnit unit
+	
 	op String toString() {
-		return value + " " +
-			if (unit == DataRateUnit::_UNDEFINED_) "<unit>" else unit.literal.replace("PerSecond", "/s")
+		return value + " " + if (unit == DataRateUnit::_UNDEFINED_) "<unit>" else unit.literal.replace("PerSecond", "/s")
 	}
 	op int compareTo(DataRate rate) {
 		return AmaltheaServices.compareDataRates(this, rate)
@@ -489,7 +500,7 @@ class Deviation<T>
 {
 	contains T lowerBound
 	contains T upperBound
-	contains Distribution<T>distribution
+	contains Distribution<T> distribution
 }
 
 /*
@@ -645,6 +656,7 @@ interface ISystem
 	contains ComponentInstance[] componentInstances
 	contains Connector[] connectors
 	contains QualifiedPort[] groundedPorts
+	
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers derived readonly QualifiedPort[] innerPorts get {
 		AmaltheaServices.getInnerPorts(this);
@@ -1348,7 +1360,9 @@ abstract class TriggerEvent extends EntityEvent
 class CustomEvent extends TriggerEvent
 {
 	String eventType
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of triggers (CustomEventTrigger).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived CustomEventTrigger[] explicitTriggers get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.customEventTrigger_Event)
@@ -1596,7 +1610,9 @@ class ProcessingUnit extends HwModule, HwDestination, HwPathElement
 class Memory extends HwModule, HwDestination
 {
 	refers MemoryDefinition definition
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of mappings (MemoryMapping).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived MemoryMapping[] mappings get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_Memory)
@@ -1626,8 +1642,7 @@ class HwFeature extends ReferableBaseObject
 	}
 	op String toString() {
 		val featureName = containingCategory?.name
-		return (if (featureName.nullOrEmpty) "<category>" else featureName) + "::" +
-			(if (name.nullOrEmpty) "<feature>" else name)
+		return (if (featureName.nullOrEmpty) "<category>" else featureName) + "::" + (if (name.nullOrEmpty) "<feature>" else name)
 	}
 	double value = "0.0"
 // contains HwLatency latency
@@ -2026,7 +2041,9 @@ class Semaphore extends ReferableBaseObject
 	int initialValue = "0"
 	int maxValue = "0"
 	boolean priorityCeilingProtocol = "false"
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (SemaphoreAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived SemaphoreAccess[] semaphoreAccesses get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.semaphoreAccess_Semaphore)
@@ -2056,7 +2073,9 @@ class TaskScheduler extends Scheduler
 {
 	contains TaskSchedulingAlgorithm schedulingAlgorithm
 	contains SchedulerAssociation parentAssociation opposite child
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of child associations (SchedulerAssociation).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived SchedulerAssociation[] childAssociations get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.schedulerAssociation_Parent)
@@ -2431,6 +2450,13 @@ abstract class Stimulus extends ReferableBaseObject, ITaggable
 	contains ModeValueList setModeValueList
 	contains ModeValueDisjunction enablingModeValueList
 	contains ModeValueDisjunction disablingModeValueList
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of affected processes (Process).</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Process[] affectedProcesses get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.process_Stimuli)
+	}
 }
 
 class ModeValueList extends BaseObject
@@ -2567,7 +2593,9 @@ class SingleStimulus extends Stimulus
 class InterProcessStimulus extends Stimulus
 {
 	contains Counter counter
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of triggers (InterProcessTrigger).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived InterProcessTrigger[] explicitTriggers get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.interProcessTrigger_Stimulus)
@@ -2693,7 +2721,9 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 	 * Specifying the size of the element corresponding to the needed memory allocation
 	 */
 	contains DataSize size
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of mappings (MemoryMapping).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived MemoryMapping[] mappings get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_AbstractElement)
@@ -3061,19 +3091,21 @@ class Runnable extends AbstractMemoryElement
 	 * ASIL level for the runnable entity
 	 */
 	ASILType asilLevel
+	
+	refers Section section
+	
 	// back pointer (readonly)
-	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (RunnableCalls)</b></p>")
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (RunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived RunnableCall[] runnableCalls get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnableCall_Runnable)
 	}
 	// back pointer (readonly)
-	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls)</b></p>")
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable)
 	}
-	refers Section section
 }
 
 /*
@@ -3095,12 +3127,15 @@ class Label extends AbstractMemoryElement, IDisplayName
 	 */
 	LabelDataStability dataStability
 	DataStabilityLevel stabilityLevel
+	
+	refers Section section
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (LabelAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived LabelAccess[] labelAccesses get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.labelAccess_Data)
 	}
-	refers Section section
 }
 
 class Channel extends AbstractMemoryElement, IDisplayName
@@ -3108,7 +3143,9 @@ class Channel extends AbstractMemoryElement, IDisplayName
 	contains DataType elementType
 	int defaultElements = "0"
 	int maxElements = "0"
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (ChannelAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived ChannelAccess[] channelAccesses get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.channelAccess_Data)
@@ -3140,12 +3177,16 @@ enum LabelDataStability
  */
 class Section extends ReferableBaseObject
 {
+	ASILType asilLevel
+	
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of labels (Label).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Label[] labels get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.label_Section)
 	}
 	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of runnables (Runnable).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Runnable[] runnables get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_Section)
@@ -3153,7 +3194,6 @@ class Section extends ReferableBaseObject
 	/*
 	 * for specifying the ASIL level for the "virtual memory sections"
 	 */
-	ASILType asilLevel
 }
 
 /*

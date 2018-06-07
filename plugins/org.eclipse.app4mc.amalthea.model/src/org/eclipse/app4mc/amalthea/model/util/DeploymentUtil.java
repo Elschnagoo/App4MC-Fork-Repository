@@ -56,39 +56,37 @@ public class DeploymentUtil {
 	 * @param model
 	 * @return Set of tasks
 	 */
-	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) {	/// called it mapping
+	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) { /// called it mapping
 		Set<Task> tasks = new HashSet<>();
+		MappingModel mappingModel = model.getMappingModel();
+		if (mappingModel == null) return tasks;
+
+		// first find all schedulers responsible for the core
 		Set<TaskScheduler> schedulers = new HashSet<>();
-		if (model.getMappingModel()!= null) {
-			if (model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty()) {
-				//first find all schedulers responsible for the core 
-				for (SchedulerAllocation schedAllocRun: model.getMappingModel().getSchedulerAllocation()) {
-					if (schedAllocRun.getScheduler() instanceof TaskScheduler) {
-						if (schedAllocRun.getResponsibility().contains(core)) {
-							schedulers.add((TaskScheduler) schedAllocRun.getScheduler());
-						}
-					}	
+		for (SchedulerAllocation schedAlloc : mappingModel.getSchedulerAllocation()) {
+			if (schedAlloc.getScheduler() instanceof TaskScheduler) {
+				if (schedAlloc.getResponsibility().contains(core)) {
+					schedulers.add((TaskScheduler) schedAlloc.getScheduler());
 				}
 			}
 		}
-		//check for all task allocations if the assigned scheduler is in the list
-		if (model.getMappingModel().getTaskAllocation() != null && !model.getMappingModel().getTaskAllocation().isEmpty()) {
-			for (TaskAllocation taskAllocation : model.getMappingModel().getTaskAllocation()) {
-				if (schedulers.contains(taskAllocation.getScheduler())) {
-					//check core affinities - if affinities are empty the responsibility counts
-					//otherwise the affinity also needs to contain the core
-					if (taskAllocation.getAffinity().isEmpty()) {
-						tasks.add(taskAllocation.getTask());
-					}
-					else {
-						if (taskAllocation.getAffinity().contains(core))
-							tasks.add(taskAllocation.getTask());
-					}
+
+		// check for all task allocations if the assigned scheduler is in the list
+		for (TaskAllocation taskAlloc : mappingModel.getTaskAllocation()) {
+			if (schedulers.contains(taskAlloc.getScheduler())) {
+				// check core affinities - if affinities are empty the responsibility counts
+				// otherwise the affinity also needs to contain the core
+				if (taskAlloc.getAffinity().isEmpty()) {
+					tasks.add(taskAlloc.getTask());
+				} else {
+					if (taskAlloc.getAffinity().contains(core))
+						tasks.add(taskAlloc.getTask());
 				}
 			}
 		}
 		return tasks;
 	}
+	
 	
 	/**
 	 * Returns a set of all ISR mapped to that core
@@ -97,10 +95,11 @@ public class DeploymentUtil {
 	 * @return Set of interrupt service routines (ISR)
 	 */
 	public static Set<ISR> getISRsMappedToCore(ProcessingUnit core, Amalthea model) {
-		Set<ISR> result = new HashSet<>();
 		if (core == null || model.getSwModel() == null || model.getSwModel().getIsrs() == null || 
 				model.getMappingModel() ==null || model.getMappingModel().getIsrAllocation() == null)
-			return result;
+			return null;
+		
+		Set<ISR> result = new HashSet<>();
 		EList<ISRAllocation> isrAlloc = model.getMappingModel().getIsrAllocation();
 		EList<SchedulerAllocation> schedulerAllocs = model.getMappingModel().getSchedulerAllocation();
 		for (ISR isr : model.getSwModel().getIsrs()) {
@@ -119,6 +118,7 @@ public class DeploymentUtil {
 		return result;
 	}
 
+	
 	/**
 	 * Returns a list of all allocations of a task 	
 	 * @param task
@@ -127,17 +127,14 @@ public class DeploymentUtil {
 	 */
 	public static List<TaskAllocation> getTaskAllocations(Task task, Amalthea model) {
 		List<TaskAllocation> allocs = new ArrayList<TaskAllocation>();
-		
-		if (model.getMappingModel().getTaskAllocation() != null && !model.getMappingModel().getTaskAllocation().isEmpty()) {
-			for (TaskAllocation ta : model.getMappingModel().getTaskAllocation()) {
-				if (ta.getTask().equals(task)) {
-					allocs.add(ta);
-				}
+		for (TaskAllocation ta : model.getMappingModel().getTaskAllocation()) {
+			if (ta.getTask().equals(task)) {
+				allocs.add(ta);
 			}
 		}
-		
 		return allocs;
 	}
+	
 	
 	/**
 	 * Returns boolean if at least a label mapping exists
@@ -148,6 +145,7 @@ public class DeploymentUtil {
 		return !getLabelMapping(label).isEmpty();
 	}
 	
+	
 	/**
 	 * Set of memories the label is mapped to (should be only one!)
 	 * @param label
@@ -155,13 +153,12 @@ public class DeploymentUtil {
 	 */
 	public static Set<Memory> getLabelMapping(Label label) {
 		Set<Memory> locations = new HashSet<>();
-		if (label.getMappings()!= null) {
-			for (MemoryMapping map :label.getMappings()) {
-				locations.add(map.getMemory());
-			}
+		for (MemoryMapping mapping :label.getMappings()) {
+			locations.add(mapping.getMemory());
 		}
 		return locations;
 	}
+	
 	
 	/**
 	 * Returns a created LabelMapping element which was already added to the model 
@@ -170,15 +167,15 @@ public class DeploymentUtil {
 	 * @return MemoryMapping
 	 */
 	public static MemoryMapping setLabelMapping(Label label, Memory mem, Amalthea model) {
-		MemoryMapping result = AmaltheaFactory.eINSTANCE.createMemoryMapping();
 		if (mem == null || label == null)
-			return result;
-		result.setAbstractElement(label);
-		result.setMemory(mem);
-		ModelUtil.getOrCreateMappingModel(model).getMemoryMapping().add(result);
-		return result;
+			return null;
+		
+		MemoryMapping mapping = AmaltheaFactory.eINSTANCE.createMemoryMapping();
+		mapping.setAbstractElement(label);
+		mapping.setMemory(mem);
+		ModelUtil.getOrCreateMappingModel(model).getMemoryMapping().add(mapping);
+		return mapping;
 	}
-	
 	
 	
 	/**
@@ -188,31 +185,28 @@ public class DeploymentUtil {
 	 * @return All scheduler allocations referencing this scheduler 
 	 */
 	public static SchedulerAllocation getSchedulerAllocations(Scheduler scheduler, MappingModel mappingModel) {
-		if (mappingModel.getSchedulerAllocation() != null) {
-			for (SchedulerAllocation sa : mappingModel.getSchedulerAllocation()) {
-				if (sa.getScheduler().equals(scheduler)) {
-					return sa;
-				}
+		for (SchedulerAllocation sa : mappingModel.getSchedulerAllocation()) {
+			if (sa.getScheduler().equals(scheduler)) {
+				return sa;
 			}
-		}		
+		}
 		return null;	
 	}
+	
 	
 	/**
 	 * Returns a set of all task allocations of a specific scheduler
 	 * @param taskScheduler  
 	 * @param mappingmodel
-	 * @return  Set of TaskAllocations
+	 * @return Set of TaskAllocations
 	 */
 	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler, MappingModel mappingmodel) {
 		HashSet<TaskAllocation> taskAllocations = new HashSet<>();
-		if (mappingmodel.getTaskAllocation() != null && !mappingmodel.getTaskAllocation().isEmpty()) {
-			for (TaskAllocation taRun : mappingmodel.getTaskAllocation()) {
-				if (taRun.getScheduler()!= null && taRun.getScheduler().equals(taskScheduler)) {
-					taskAllocations.add(taRun);
-				}
+		for (TaskAllocation taRun : mappingmodel.getTaskAllocation()) {
+			if (taRun.getScheduler()!= null && taRun.getScheduler().equals(taskScheduler)) {
+				taskAllocations.add(taRun);
 			}
-		}		
+		}
 		return taskAllocations;	
 	}
 	
@@ -225,50 +219,50 @@ public class DeploymentUtil {
 	 * @return Set of cores
 	 */
 	public static Set<ProcessingUnit> getAssignedCoreForProcess(Process process, Amalthea model) {
-		Set<ProcessingUnit> result = new HashSet<>();
-		if(process == null && model.getMappingModel() == null) 
-			return result;
+		final MappingModel mappingModel = model.getMappingModel();
+		if(process == null || mappingModel == null) 
+			return null;
+		
 		Set<TaskAllocation> taskAllocations = new HashSet<>();
-		if (model.getMappingModel().getTaskAllocation() != null && process instanceof Task && !model.getMappingModel().getTaskAllocation().isEmpty()) {
-			for (TaskAllocation taskAlloc : model.getMappingModel().getTaskAllocation()) {
+		Set<ProcessingUnit> processingUnits = new HashSet<>();
+		if (process instanceof Task) {
+			for (TaskAllocation taskAlloc : mappingModel.getTaskAllocation()) {
 				if (taskAlloc.getTask().equals(process))
 					taskAllocations.add(taskAlloc);
 			}
-			if (model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty() ) {
-				for (SchedulerAllocation schedAlloc: model.getMappingModel().getSchedulerAllocation()) {
-					for (TaskAllocation taskAlloc : taskAllocations) {
-						if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
-							//check core affinity -- retain the core affinity with the scheduler responsibility 
-							if (taskAlloc.getAffinity()!= null && !taskAlloc.getAffinity().isEmpty()) {
-								for (ProcessingUnit core : taskAlloc.getAffinity()) {
-									if (schedAlloc.getResponsibility().contains(core))
-										result.add(core);
-								}
+
+			for (SchedulerAllocation schedAlloc : mappingModel.getSchedulerAllocation()) {
+				for (TaskAllocation taskAlloc : taskAllocations) {
+					if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
+						// check core affinity -- retain the core affinity with the scheduler responsibility
+						if (!taskAlloc.getAffinity().isEmpty()) {
+							for (ProcessingUnit core : taskAlloc.getAffinity()) {
+								if (schedAlloc.getResponsibility().contains(core))
+									processingUnits.add(core);
 							}
-							//responsibility defines core mapping
-							else 
-								result.addAll(schedAlloc.getResponsibility());
-					}
-				}					
+						}
+						// responsibility defines core mapping
+						else
+							processingUnits.addAll(schedAlloc.getResponsibility());
+				}
 			}
-			return result;
 		}
-		if (model.getMappingModel().getIsrAllocation() != null && process instanceof ISR && !model.getMappingModel().getIsrAllocation().isEmpty()) {
-			for (ISRAllocation isrAlloc : model.getMappingModel().getIsrAllocation()) {
-				if (isrAlloc.getIsr().equals(process) && model.getMappingModel().getSchedulerAllocation() != null && !model.getMappingModel().getSchedulerAllocation().isEmpty()) {
-					for (SchedulerAllocation coreAlloc : model.getMappingModel().getSchedulerAllocation()) {
+		
+		if (process instanceof ISR) {
+			for (ISRAllocation isrAlloc : mappingModel.getIsrAllocation()) {
+				if (isrAlloc.getIsr().equals(process)) {
+					for (SchedulerAllocation coreAlloc : mappingModel.getSchedulerAllocation()) {
 						if (coreAlloc.getScheduler().equals(isrAlloc.getController())) {
-							result.addAll(coreAlloc.getResponsibility());
+							processingUnits.addAll(coreAlloc.getResponsibility());
 						}
 					}
 				}
-			}			
+			}
 		}
-		return result;
+		
+		return processingUnits;
 	}
 	
-	
-
 	
 	/**
 	 * @param procUnitDef
@@ -283,6 +277,7 @@ public class DeploymentUtil {
 		}
 		return result;
 	}
+	
 	
 	/**
 	 * @param hwFeatureCat
@@ -299,6 +294,7 @@ public class DeploymentUtil {
 		}
 		return result;
 	}
+	
 	
 	/**
 	 * @param feature

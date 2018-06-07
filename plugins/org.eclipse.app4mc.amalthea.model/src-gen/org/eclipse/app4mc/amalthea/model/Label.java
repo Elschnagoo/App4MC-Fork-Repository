@@ -32,8 +32,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#isBVolatile <em>BVolatile</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getStabilityLevel <em>Stability Level</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getSection <em>Section</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel()
@@ -177,23 +177,6 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	void setStabilityLevel(DataStabilityLevel value);
 
 	/**
-	 * Returns the value of the '<em><b>Label Accesses</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.LabelAccess}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Label Accesses</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Label Accesses</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_LabelAccesses()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.LabelAccess%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getLabelAccess_Data());'"
-	 * @generated
-	 */
-	EList<LabelAccess> getLabelAccesses();
-
-	/**
 	 * Returns the value of the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -218,5 +201,21 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	 * @generated
 	 */
 	void setSection(Section value);
+
+	/**
+	 * Returns the value of the '<em><b>Label Accesses</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.LabelAccess}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of accesses (LabelAccess).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Label Accesses</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabel_LabelAccesses()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.LabelAccess%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getLabelAccess_Data());'"
+	 * @generated
+	 */
+	EList<LabelAccess> getLabelAccesses();
 
 } // Label

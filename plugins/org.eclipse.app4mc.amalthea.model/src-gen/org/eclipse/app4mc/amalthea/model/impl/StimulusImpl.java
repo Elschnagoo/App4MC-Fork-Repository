@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getSetModeValueList <em>Set Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getAffectedProcesses <em>Affected Processes</em>}</li>
  * </ul>
  *
  * @generated
@@ -255,6 +257,15 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<org.eclipse.app4mc.amalthea.model.Process> getAffectedProcesses() {
+		return CrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getProcess_Stimuli());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -284,6 +295,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				return getEnablingModeValueList();
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
 				return getDisablingModeValueList();
+			case AmaltheaPackage.STIMULUS__AFFECTED_PROCESSES:
+				return getAffectedProcesses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -354,6 +367,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				return enablingModeValueList != null;
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
 				return disablingModeValueList != null;
+			case AmaltheaPackage.STIMULUS__AFFECTED_PROCESSES:
+				return !getAffectedProcesses().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

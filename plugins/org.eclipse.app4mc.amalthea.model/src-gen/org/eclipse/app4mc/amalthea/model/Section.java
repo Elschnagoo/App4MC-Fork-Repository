@@ -29,9 +29,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getLabels <em>Labels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getRunnables <em>Runnables</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection()
@@ -40,47 +40,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Section extends ReferableBaseObject {
 	/**
-	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Labels</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Labels</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Labels()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Label%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getLabel_Section());'"
-	 * @generated
-	 */
-	EList<Label> getLabels();
-
-	/**
-	 * Returns the value of the '<em><b>Runnables</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnables</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Runnables</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Runnables()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getRunnable_Section());'"
-	 * @generated
-	 */
-	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();
-
-	/**
 	 * Returns the value of the '<em><b>Asil Level</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ASILType}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Asil Level</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * for specifying the ASIL level for the "virtual memory sections"
-	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Asil Level</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ASILType
 	 * @see #setAsilLevel(ASILType)
@@ -100,5 +67,37 @@ public interface Section extends ReferableBaseObject {
 	 * @generated
 	 */
 	void setAsilLevel(ASILType value);
+
+	/**
+	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of labels (Label).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Labels</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Labels()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Label%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getLabel_Section());'"
+	 * @generated
+	 */
+	EList<Label> getLabels();
+
+	/**
+	 * Returns the value of the '<em><b>Runnables</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of runnables (Runnable).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Runnables</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSection_Runnables()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getRunnable_Section());'"
+	 * @generated
+	 */
+	EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables();
 
 } // Section

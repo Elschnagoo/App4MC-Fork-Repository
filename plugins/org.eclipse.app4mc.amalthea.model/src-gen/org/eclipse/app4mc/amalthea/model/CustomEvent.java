@@ -62,11 +62,10 @@ public interface CustomEvent extends TriggerEvent {
 	 * Returns the value of the '<em><b>Explicit Triggers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CustomEventTrigger}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Explicit Triggers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of triggers (CustomEventTrigger).</b></p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Explicit Triggers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCustomEvent_ExplicitTriggers()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"

@@ -46,8 +46,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#isBVolatile <em>BVolatile</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getStabilityLevel <em>Stability Level</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
  * </ul>
  *
  * @generated
@@ -345,15 +345,6 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LabelAccess> getLabelAccesses() {
-		return CrossReferenceUtil.<LabelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabelAccess_Data());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Section getSection() {
 		if (section != null && section.eIsProxy()) {
 			InternalEObject oldSection = (InternalEObject)section;
@@ -392,6 +383,15 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LabelAccess> getLabelAccesses() {
+		return CrossReferenceUtil.<LabelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabelAccess_Data());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -421,11 +421,11 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return getDataStability();
 			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
 				return getStabilityLevel();
-			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
-				return getLabelAccesses();
 			case AmaltheaPackage.LABEL__SECTION:
 				if (resolve) return getSection();
 				return basicGetSection();
+			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
+				return getLabelAccesses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -516,10 +516,10 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL__STABILITY_LEVEL:
 				return stabilityLevel != STABILITY_LEVEL_EDEFAULT;
-			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
-				return !getLabelAccesses().isEmpty();
 			case AmaltheaPackage.LABEL__SECTION:
 				return section != null;
+			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
+				return !getLabelAccesses().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -17197,13 +17197,22 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS__DISABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS__AFFECTED_PROCESSES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -17682,6 +17691,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17845,6 +17863,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RELATIVE_PERIODIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIVE_PERIODIC_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17988,6 +18015,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int VARIABLE_RATE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
 
 	/**
 	 * The feature id for the '<em><b>Step</b></em>' containment reference.
@@ -18217,6 +18253,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_SYNTHETIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_SYNTHETIC_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18371,6 +18416,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18507,6 +18561,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SINGLE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18641,6 +18704,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTER_PROCESS_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -18786,6 +18858,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERIODIC_BURST_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_BURST_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
@@ -18960,6 +19041,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
 
 	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
+
+	/**
 	 * The feature id for the '<em><b>Triggering Events</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19103,6 +19193,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARRIVAL_CURVE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+
+	/**
+	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_CURVE_STIMULUS__AFFECTED_PROCESSES = STIMULUS__AFFECTED_PROCESSES;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -22565,13 +22664,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__ASIL_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Section</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The feature id for the '<em><b>Runnable Calls</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Task Runnable Calls</b></em>' reference list.
@@ -22580,16 +22688,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Section</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
@@ -22773,22 +22872,22 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL__STABILITY_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Label Accesses</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__LABEL_ACCESSES = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
 	 * The feature id for the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
+	int LABEL__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Label Accesses</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__LABEL_ACCESSES = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Label</em>' class.
@@ -23190,13 +23289,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SECTION__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Asil Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION__ASIL_LEVEL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Labels</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION__LABELS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int SECTION__LABELS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Runnables</b></em>' reference list.
@@ -23205,16 +23313,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECTION__RUNNABLES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Asil Level</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECTION__ASIL_LEVEL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int SECTION__RUNNABLES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Section</em>' class.
@@ -34344,6 +34443,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getStimulus_DisablingModeValueList();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getAffectedProcesses <em>Affected Processes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Affected Processes</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Stimulus#getAffectedProcesses()
+	 * @see #getStimulus()
+	 * @generated
+	 */
+	EReference getStimulus_AffectedProcesses();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeValueList <em>Mode Value List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36263,6 +36373,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getRunnable_AsilLevel();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Section</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getSection()
+	 * @see #getRunnable()
+	 * @generated
+	 */
+	EReference getRunnable_Section();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36283,17 +36404,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRunnable_TaskRunnableCalls();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Section</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getSection()
-	 * @see #getRunnable()
-	 * @generated
-	 */
-	EReference getRunnable_Section();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getFirstActivation() <em>Get First Activation</em>}' operation.
@@ -36371,17 +36481,6 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getLabel_StabilityLevel();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Label Accesses</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses()
-	 * @see #getLabel()
-	 * @generated
-	 */
-	EReference getLabel_LabelAccesses();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Label#getSection <em>Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36391,6 +36490,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLabel_Section();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses <em>Label Accesses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Label Accesses</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Label#getLabelAccesses()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EReference getLabel_LabelAccesses();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Channel <em>Channel</em>}'.
@@ -36489,6 +36599,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getSection();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Asil Level</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Section#getAsilLevel()
+	 * @see #getSection()
+	 * @generated
+	 */
+	EAttribute getSection_AsilLevel();
+
+	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Section#getLabels <em>Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36509,17 +36630,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSection_Runnables();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Section#getAsilLevel <em>Asil Level</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Asil Level</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Section#getAsilLevel()
-	 * @see #getSection()
-	 * @generated
-	 */
-	EAttribute getSection_AsilLevel();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.RunnableItem <em>Runnable Item</em>}'.

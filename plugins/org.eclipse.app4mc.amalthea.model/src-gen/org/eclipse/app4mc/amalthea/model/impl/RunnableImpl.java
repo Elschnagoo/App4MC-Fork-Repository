@@ -56,9 +56,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getAsilLevel <em>Asil Level</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
  * </ul>
  *
  * @generated
@@ -318,24 +318,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<RunnableCall> getRunnableCalls() {
-		return CrossReferenceUtil.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		return CrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Section getSection() {
 		if (section != null && section.eIsProxy()) {
 			InternalEObject oldSection = (InternalEObject)section;
@@ -367,6 +349,24 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 		section = newSection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__SECTION, oldSection, section));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<RunnableCall> getRunnableCalls() {
+		return CrossReferenceUtil.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TaskRunnableCall> getTaskRunnableCalls() {
+		return CrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
 	}
 
 	/**
@@ -414,13 +414,13 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return isService();
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				return getAsilLevel();
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				if (resolve) return getSection();
+				return basicGetSection();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return getRunnableCalls();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return getTaskRunnableCalls();
-			case AmaltheaPackage.RUNNABLE__SECTION:
-				if (resolve) return getSection();
-				return basicGetSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -514,12 +514,12 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return service != SERVICE_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				return asilLevel != ASIL_LEVEL_EDEFAULT;
+			case AmaltheaPackage.RUNNABLE__SECTION:
+				return section != null;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return !getRunnableCalls().isEmpty();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return !getTaskRunnableCalls().isEmpty();
-			case AmaltheaPackage.RUNNABLE__SECTION:
-				return section != null;
 		}
 		return super.eIsSet(featureID);
 	}

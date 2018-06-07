@@ -33,9 +33,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable()
@@ -181,38 +181,6 @@ public interface Runnable extends AbstractMemoryElement {
 	void setAsilLevel(ASILType value);
 
 	/**
-	 * Returns the value of the '<em><b>Runnable Calls</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableCall}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * <p><b>Returns an <em>immutable</em> list of callers (RunnableCalls)</b></p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Runnable Calls</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableCalls()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getRunnableCall_Runnable());'"
-	 * @generated
-	 */
-	EList<RunnableCall> getRunnableCalls();
-
-	/**
-	 * Returns the value of the '<em><b>Task Runnable Calls</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * <p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls)</b></p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskRunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getTaskRunnableCall_Runnable());'"
-	 * @generated
-	 */
-	EList<TaskRunnableCall> getTaskRunnableCalls();
-
-	/**
 	 * Returns the value of the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -237,6 +205,38 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	void setSection(Section value);
+
+	/**
+	 * Returns the value of the '<em><b>Runnable Calls</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableCall}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of callers (RunnableCalls).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Runnable Calls</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableCalls()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getRunnableCall_Runnable());'"
+	 * @generated
+	 */
+	EList<RunnableCall> getRunnableCalls();
+
+	/**
+	 * Returns the value of the '<em><b>Task Runnable Calls</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskRunnableCall%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getTaskRunnableCall_Runnable());'"
+	 * @generated
+	 */
+	EList<TaskRunnableCall> getTaskRunnableCalls();
 
 	/**
 	 * <!-- begin-user-doc -->
