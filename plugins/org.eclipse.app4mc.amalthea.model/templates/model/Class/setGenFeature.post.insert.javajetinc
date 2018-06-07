@@ -1,6 +1,0 @@
-<%for (GenFeature genFeatureLocal : genClass.getImplementedGenFeatures()) {%>
-<%if (genFeature.getAccessorName().concat("LinkInt").equals(genFeatureLocal.getAccessorName()) && genFeatureLocal.getRawType().equals(genFeature.getType(genClass))) {%>
- 		//Additional setting transient value for transient bi-directional reference
- 		set<%=genFeatureLocal.getAccessorName()%>(<%="new" + genFeature.getCapName()%>);
-<%}%>
-<%}%>
