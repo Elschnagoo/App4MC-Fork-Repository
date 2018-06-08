@@ -22691,13 +22691,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__REFERRING_COMPONENTS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
+	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -22890,13 +22899,22 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL__LABEL_ACCESSES = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__REFERRING_COMPONENTS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+	int LABEL_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -36406,6 +36424,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getRunnable_TaskRunnableCalls();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Runnable#getReferringComponents <em>Referring Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referring Components</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getReferringComponents()
+	 * @see #getRunnable()
+	 * @generated
+	 */
+	EReference getRunnable_ReferringComponents();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getFirstActivation() <em>Get First Activation</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36501,6 +36530,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLabel_LabelAccesses();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Label#getReferringComponents <em>Referring Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referring Components</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Label#getReferringComponents()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EReference getLabel_ReferringComponents();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Channel <em>Channel</em>}'.

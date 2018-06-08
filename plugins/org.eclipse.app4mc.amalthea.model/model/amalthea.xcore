@@ -3106,6 +3106,12 @@ class Runnable extends AbstractMemoryElement
 	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable)
 	}
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the runnable belongs to.</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Component[] referringComponents get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.component_Runnables)
+	}
 }
 
 /*
@@ -3136,6 +3142,13 @@ class Label extends AbstractMemoryElement, IDisplayName
 	refers transient readonly volatile derived LabelAccess[] labelAccesses get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.labelAccess_Data)
 	}
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the label belongs to.</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Component[] referringComponents get {
+		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.component_Labels)
+	}
+
 }
 
 class Channel extends AbstractMemoryElement, IDisplayName
@@ -3177,6 +3190,9 @@ enum LabelDataStability
  */
 class Section extends ReferableBaseObject
 {
+	/*
+	 * for specifying the ASIL level for the "virtual memory sections"
+	 */
 	ASILType asilLevel
 	
 	// back pointer (readonly)
@@ -3191,9 +3207,6 @@ class Section extends ReferableBaseObject
 	refers transient readonly volatile derived Runnable[] runnables get {
 		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_Section)
 	}
-	/*
-	 * for specifying the ASIL level for the "virtual memory sections"
-	 */
 }
 
 /*

@@ -10892,6 +10892,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRunnable_ReferringComponents() {
+		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getRunnable__GetFirstActivation() {
 		return runnableEClass.getEOperations().get(0);
 	}
@@ -10966,6 +10975,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EReference getLabel_LabelAccesses() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLabel_ReferringComponents() {
+		return (EReference)labelEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -13920,6 +13938,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableEClass, RUNNABLE__SECTION);
 		createEReference(runnableEClass, RUNNABLE__RUNNABLE_CALLS);
 		createEReference(runnableEClass, RUNNABLE__TASK_RUNNABLE_CALLS);
+		createEReference(runnableEClass, RUNNABLE__REFERRING_COMPONENTS);
 		createEOperation(runnableEClass, RUNNABLE___GET_FIRST_ACTIVATION);
 
 		labelEClass = createEClass(LABEL);
@@ -13930,6 +13949,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(labelEClass, LABEL__STABILITY_LEVEL);
 		createEReference(labelEClass, LABEL__SECTION);
 		createEReference(labelEClass, LABEL__LABEL_ACCESSES);
+		createEReference(labelEClass, LABEL__REFERRING_COMPONENTS);
 
 		channelEClass = createEClass(CHANNEL);
 		createEReference(channelEClass, CHANNEL__ELEMENT_TYPE);
@@ -15833,6 +15853,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnable_Section(), this.getSection(), null, "section", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_RunnableCalls(), this.getRunnableCall(), null, "runnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_TaskRunnableCalls(), this.getTaskRunnableCall(), null, "taskRunnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnable_ReferringComponents(), this.getComponent(), null, "referringComponents", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRunnable__GetFirstActivation(), this.getActivation(), "getFirstActivation", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15844,6 +15865,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getLabel_StabilityLevel(), this.getDataStabilityLevel(), "stabilityLevel", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_Section(), this.getSection(), null, "section", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_LabelAccesses(), this.getLabelAccess(), null, "labelAccesses", null, 0, -1, Label.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getLabel_ReferringComponents(), this.getComponent(), null, "referringComponents", null, 0, -1, Label.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChannel_ElementType(), this.getDataType(), null, "elementType", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

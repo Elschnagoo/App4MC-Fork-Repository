@@ -43,11 +43,10 @@ public interface Section extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Asil Level</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ASILType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Asil Level</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * for specifying the ASIL level for the "virtual memory sections"
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Asil Level</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ASILType
 	 * @see #setAsilLevel(ASILType)

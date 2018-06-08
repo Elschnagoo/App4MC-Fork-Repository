@@ -36,6 +36,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable()
@@ -237,6 +238,22 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	EList<TaskRunnableCall> getTaskRunnableCalls();
+
+	/**
+	 * Returns the value of the '<em><b>Referring Components</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Component}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of components the runnable belongs to.</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Referring Components</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_ReferringComponents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Component%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getComponent_Runnables());'"
+	 * @generated
+	 */
+	EList<Component> getReferringComponents();
 
 	/**
 	 * <!-- begin-user-doc -->

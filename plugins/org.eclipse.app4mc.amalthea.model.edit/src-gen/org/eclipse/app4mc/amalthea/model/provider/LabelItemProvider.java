@@ -65,6 +65,7 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 			addStabilityLevelPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
 			addLabelAccessesPropertyDescriptor(object);
+			addReferringComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -193,6 +194,30 @@ public class LabelItemProvider extends AbstractMemoryElementItemProvider {
 				 getString("_UI_Label_labelAccesses_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Label_labelAccesses_feature", "_UI_Label_type"),
 				 AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Referring Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferringComponentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_referringComponents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_referringComponents_feature", "_UI_Label_type"),
+				 AmaltheaPackage.eINSTANCE.getLabel_ReferringComponents(),
 				 false,
 				 false,
 				 false,

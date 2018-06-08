@@ -13,6 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
 import org.eclipse.app4mc.amalthea.model.DataType;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getStabilityLevel <em>Stability Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getLabelAccesses <em>Label Accesses</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelImpl#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
  * @generated
@@ -392,6 +394,15 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Component> getReferringComponents() {
+		return CrossReferenceUtil.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getComponent_Labels());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -426,6 +437,8 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return basicGetSection();
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return getLabelAccesses();
+			case AmaltheaPackage.LABEL__REFERRING_COMPONENTS:
+				return getReferringComponents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -520,6 +533,8 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 				return section != null;
 			case AmaltheaPackage.LABEL__LABEL_ACCESSES:
 				return !getLabelAccesses().isEmpty();
+			case AmaltheaPackage.LABEL__REFERRING_COMPONENTS:
+				return !getReferringComponents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

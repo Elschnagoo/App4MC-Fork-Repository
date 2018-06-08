@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
@@ -59,6 +60,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
  * @generated
@@ -374,6 +376,15 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Component> getReferringComponents() {
+		return CrossReferenceUtil.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getComponent_Runnables());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Activation getFirstActivation() {
 		return IterableExtensions.<Activation>head(this.getActivations());
 	}
@@ -421,6 +432,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return getRunnableCalls();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return getTaskRunnableCalls();
+			case AmaltheaPackage.RUNNABLE__REFERRING_COMPONENTS:
+				return getReferringComponents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -520,6 +533,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return !getRunnableCalls().isEmpty();
 			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
 				return !getTaskRunnableCalls().isEmpty();
+			case AmaltheaPackage.RUNNABLE__REFERRING_COMPONENTS:
+				return !getReferringComponents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -64,6 +64,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			addSectionPropertyDescriptor(object);
 			addRunnableCallsPropertyDescriptor(object);
 			addTaskRunnableCallsPropertyDescriptor(object);
+			addReferringComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -194,6 +195,30 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				 getString("_UI_Runnable_taskRunnableCalls_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_taskRunnableCalls_feature", "_UI_Runnable_type"),
 				 AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Referring Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferringComponentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Runnable_referringComponents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_referringComponents_feature", "_UI_Runnable_type"),
+				 AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(),
 				 false,
 				 false,
 				 false,

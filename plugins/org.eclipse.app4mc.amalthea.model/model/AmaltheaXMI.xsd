@@ -5132,7 +5132,11 @@ which are belonging together.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
-        <xsd:attribute name="asilLevel" type="am:ASILType"/>
+        <xsd:attribute name="asilLevel" type="am:ASILType">
+          <xsd:annotation>
+            <xsd:documentation>for specifying the ASIL level for the "virtual memory sections"</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
