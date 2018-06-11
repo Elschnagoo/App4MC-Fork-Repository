@@ -13,9 +13,13 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -30,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TagImpl#getTagType <em>Tag Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TagImpl#getTaggedObjects <em>Tagged Objects</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,11 +105,22 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ITaggable> getTaggedObjects() {
+		return CrossReferenceUtil.<ITaggable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getITaggable_Tags());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.TAG__TAG_TYPE:
 				return getTagType();
+			case AmaltheaPackage.TAG__TAGGED_OBJECTS:
+				return getTaggedObjects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,6 +165,8 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 		switch (featureID) {
 			case AmaltheaPackage.TAG__TAG_TYPE:
 				return TAG_TYPE_EDEFAULT == null ? tagType != null : !TAG_TYPE_EDEFAULT.equals(tagType);
+			case AmaltheaPackage.TAG__TAGGED_OBJECTS:
+				return !getTaggedObjects().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

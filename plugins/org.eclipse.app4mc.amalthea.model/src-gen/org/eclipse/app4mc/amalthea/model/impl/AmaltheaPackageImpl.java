@@ -3638,6 +3638,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTag_TaggedObjects() {
+		return (EReference)tagEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassifier() {
 		return classifierEClass;
 	}
@@ -12852,6 +12861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		tagEClass = createEClass(TAG);
 		createEAttribute(tagEClass, TAG__TAG_TYPE);
+		createEReference(tagEClass, TAG__TAGGED_OBJECTS);
 
 		classifierEClass = createEClass(CLASSIFIER);
 		createEAttribute(classifierEClass, CLASSIFIER__DESCRIPTION);
@@ -14597,6 +14607,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
+		labelAccessEClass.getESuperTypes().add(this.getITaggable());
 		channelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		channelSendEClass.getESuperTypes().add(this.getChannelAccess());
 		channelReceiveEClass.getESuperTypes().add(this.getChannelAccess());
@@ -14611,6 +14622,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
+		runnableCallEClass.getESuperTypes().add(this.getITaggable());
 		customEventTriggerEClass.getESuperTypes().add(this.getRunnableItem());
 		compoundTypeEClass.getESuperTypes().add(this.getDataType());
 		structEClass.getESuperTypes().add(this.getCompoundType());
@@ -14697,6 +14709,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(tagEClass, Tag.class, "Tag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTag_TagType(), theEcorePackage.getEString(), "tagType", null, 0, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTag_TaggedObjects(), this.getITaggable(), null, "taggedObjects", null, 0, -1, Tag.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(classifierEClass, Classifier.class, "Classifier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassifier_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

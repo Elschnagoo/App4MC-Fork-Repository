@@ -38,7 +38,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface LabelAccess extends ComputationItem {
+public interface LabelAccess extends ComputationItem, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->

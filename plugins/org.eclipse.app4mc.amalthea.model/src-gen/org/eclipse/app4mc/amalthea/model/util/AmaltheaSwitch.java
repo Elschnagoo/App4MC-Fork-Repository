@@ -3216,6 +3216,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				LabelAccess labelAccess = (LabelAccess)theEObject;
 				T1 result = caseLabelAccess(labelAccess);
 				if (result == null) result = caseComputationItem(labelAccess);
+				if (result == null) result = caseITaggable(labelAccess);
 				if (result == null) result = caseRunnableItem(labelAccess);
 				if (result == null) result = caseBaseObject(labelAccess);
 				if (result == null) result = caseIAnnotatable(labelAccess);
@@ -3350,6 +3351,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				RunnableCall runnableCall = (RunnableCall)theEObject;
 				T1 result = caseRunnableCall(runnableCall);
 				if (result == null) result = caseRunnableItem(runnableCall);
+				if (result == null) result = caseITaggable(runnableCall);
 				if (result == null) result = caseBaseObject(runnableCall);
 				if (result == null) result = caseIAnnotatable(runnableCall);
 				if (result == null) result = defaultCase(theEObject);

@@ -12,22 +12,30 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.util.Collection;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessImplementation;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
+import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getStatistic <em>Statistic</em>}</li>
@@ -48,6 +57,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess {
+	/**
+	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTags()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Tag> tags;
+
 	/**
 	 * The cached value of the '{@link #getData() <em>Data</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -155,6 +174,18 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getLabelAccess();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Tag> getTags() {
+		if (tags == null) {
+			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.LABEL_ACCESS__TAGS);
+		}
+		return tags;
 	}
 
 	/**
@@ -368,6 +399,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL_ACCESS__TAGS:
+				return getTags();
 			case AmaltheaPackage.LABEL_ACCESS__DATA:
 				if (resolve) return getData();
 				return basicGetData();
@@ -390,9 +423,14 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL_ACCESS__TAGS:
+				getTags().clear();
+				getTags().addAll((Collection<? extends Tag>)newValue);
+				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA:
 				setData((Label)newValue);
 				return;
@@ -423,6 +461,9 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL_ACCESS__TAGS:
+				getTags().clear();
+				return;
 			case AmaltheaPackage.LABEL_ACCESS__DATA:
 				setData((Label)null);
 				return;
@@ -453,6 +494,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.LABEL_ACCESS__TAGS:
+				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.LABEL_ACCESS__DATA:
 				return data != null;
 			case AmaltheaPackage.LABEL_ACCESS__ACCESS:
@@ -467,6 +510,38 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return implementation != IMPLEMENTATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.LABEL_ACCESS__TAGS: return AmaltheaPackage.ITAGGABLE__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ITaggable.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ITAGGABLE__TAGS: return AmaltheaPackage.LABEL_ACCESS__TAGS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

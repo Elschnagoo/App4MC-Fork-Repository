@@ -5261,6 +5261,7 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="data" type="am:Label"/>
           <xsd:element name="statistic" type="am:LabelAccessStatistic">
             <xsd:annotation>
@@ -5273,6 +5274,7 @@ It can be used to define which mode value is written to the label.</xsd:document
             </xsd:annotation>
           </xsd:element>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="access" type="am:LabelAccessEnum"/>
         <xsd:attribute name="dataStability" type="am:LabelAccessDataStability">
           <xsd:annotation>
@@ -5510,9 +5512,11 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="statistic" type="am:RunEntityCallStatistic"/>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

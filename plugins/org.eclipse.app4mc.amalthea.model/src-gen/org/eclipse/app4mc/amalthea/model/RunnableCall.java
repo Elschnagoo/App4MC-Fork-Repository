@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface RunnableCall extends RunnableItem {
+public interface RunnableCall extends RunnableItem, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->

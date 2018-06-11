@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +28,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Tag#getTagType <em>Tag Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Tag#getTaggedObjects <em>Tagged Objects</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTag()
@@ -59,5 +61,21 @@ public interface Tag extends ReferableBaseObject {
 	 * @generated
 	 */
 	void setTagType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Tagged Objects</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ITaggable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of objects (ITaggable) referring to the this tag.</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Tagged Objects</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTag_TaggedObjects()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.CrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ITaggable%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getITaggable_Tags());'"
+	 * @generated
+	 */
+	EList<ITaggable> getTaggedObjects();
 
 } // Tag

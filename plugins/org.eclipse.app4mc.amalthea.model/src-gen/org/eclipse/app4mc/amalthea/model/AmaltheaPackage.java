@@ -775,13 +775,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TAG__TAG_TYPE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Tagged Objects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__TAGGED_OBJECTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Tag</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TAG_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int TAG_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -23801,13 +23810,22 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_ACCESS__CONTAINING_RUNNABLE = COMPUTATION_ITEM__CONTAINING_RUNNABLE;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_ACCESS__TAGS = COMPUTATION_ITEM_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA = COMPUTATION_ITEM_FEATURE_COUNT + 0;
+	int LABEL_ACCESS__DATA = COMPUTATION_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Access</b></em>' attribute.
@@ -23816,7 +23834,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__ACCESS = COMPUTATION_ITEM_FEATURE_COUNT + 1;
+	int LABEL_ACCESS__ACCESS = COMPUTATION_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Statistic</b></em>' containment reference.
@@ -23825,7 +23843,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__STATISTIC = COMPUTATION_ITEM_FEATURE_COUNT + 2;
+	int LABEL_ACCESS__STATISTIC = COMPUTATION_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Transmission Policy</b></em>' containment reference.
@@ -23834,7 +23852,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__TRANSMISSION_POLICY = COMPUTATION_ITEM_FEATURE_COUNT + 3;
+	int LABEL_ACCESS__TRANSMISSION_POLICY = COMPUTATION_ITEM_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Data Stability</b></em>' attribute.
@@ -23843,7 +23861,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__DATA_STABILITY = COMPUTATION_ITEM_FEATURE_COUNT + 4;
+	int LABEL_ACCESS__DATA_STABILITY = COMPUTATION_ITEM_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
@@ -23852,7 +23870,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS__IMPLEMENTATION = COMPUTATION_ITEM_FEATURE_COUNT + 5;
+	int LABEL_ACCESS__IMPLEMENTATION = COMPUTATION_ITEM_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Label Access</em>' class.
@@ -23861,7 +23879,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 6;
+	int LABEL_ACCESS_FEATURE_COUNT = COMPUTATION_ITEM_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Label Access</em>' class.
@@ -24868,13 +24886,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_CALL__CONTAINING_RUNNABLE = RUNNABLE_ITEM__CONTAINING_RUNNABLE;
 
 	/**
+	 * The feature id for the '<em><b>Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_CALL__TAGS = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_CALL__RUNNABLE = RUNNABLE_ITEM_FEATURE_COUNT + 0;
+	int RUNNABLE_CALL__RUNNABLE = RUNNABLE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Statistic</b></em>' containment reference.
@@ -24883,7 +24910,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_CALL__STATISTIC = RUNNABLE_ITEM_FEATURE_COUNT + 1;
+	int RUNNABLE_CALL__STATISTIC = RUNNABLE_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Call</em>' class.
@@ -24892,7 +24919,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 2;
+	int RUNNABLE_CALL_FEATURE_COUNT = RUNNABLE_ITEM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Runnable Call</em>' class.
@@ -27852,6 +27879,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTag_TagType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Tag#getTaggedObjects <em>Tagged Objects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Tagged Objects</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Tag#getTaggedObjects()
+	 * @see #getTag()
+	 * @generated
+	 */
+	EReference getTag_TaggedObjects();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Classifier <em>Classifier</em>}'.

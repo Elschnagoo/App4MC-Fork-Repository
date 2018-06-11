@@ -56,6 +56,7 @@ public class TagItemProvider extends ReferableBaseObjectItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTagTypePropertyDescriptor(object);
+			addTaggedObjectsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -80,6 +81,30 @@ public class TagItemProvider extends ReferableBaseObjectItemProvider {
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Tagged Objects feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTaggedObjectsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Tag_taggedObjects_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Tag_taggedObjects_feature", "_UI_Tag_type"),
+				 AmaltheaPackage.eINSTANCE.getTag_TaggedObjects(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**
