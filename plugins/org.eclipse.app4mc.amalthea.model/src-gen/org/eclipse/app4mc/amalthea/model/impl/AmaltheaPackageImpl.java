@@ -10361,7 +10361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCallSequenceItem_ContainingTask() {
+	public EReference getCallSequenceItem_ContainingProcess() {
 		return (EReference)callSequenceItemEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13870,7 +13870,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(counterEClass, COUNTER__OFFSET);
 
 		callSequenceItemEClass = createEClass(CALL_SEQUENCE_ITEM);
-		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__CONTAINING_TASK);
+		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__CONTAINING_PROCESS);
 		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__COUNTER);
 
 		waitEventEClass = createEClass(WAIT_EVENT);
@@ -15788,7 +15788,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getCounter_Offset(), theEcorePackage.getELong(), "offset", "0", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callSequenceItemEClass, CallSequenceItem.class, "CallSequenceItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallSequenceItem_ContainingTask(), this.getTask(), null, "containingTask", null, 0, 1, CallSequenceItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getCallSequenceItem_ContainingProcess(), this.getProcess(), null, "containingProcess", null, 0, 1, CallSequenceItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getCallSequenceItem_Counter(), this.getCounter(), null, "counter", null, 0, 1, CallSequenceItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(waitEventEClass, WaitEvent.class, "WaitEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

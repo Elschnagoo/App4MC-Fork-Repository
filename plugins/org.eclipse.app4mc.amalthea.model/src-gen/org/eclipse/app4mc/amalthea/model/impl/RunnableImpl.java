@@ -18,9 +18,9 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
+import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
-import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -359,7 +359,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<RunnableCall> getRunnableCalls() {
-		return CrossReferenceUtil.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
+		return AmaltheaCrossReferenceUtil.<RunnableCall>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(), AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
 	}
 
 	/**
@@ -368,7 +369,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		return CrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
+		return AmaltheaCrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
 	}
 
 	/**
@@ -377,7 +379,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return CrossReferenceUtil.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getComponent_Runnables());
+		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Runnables());
 	}
 
 	/**

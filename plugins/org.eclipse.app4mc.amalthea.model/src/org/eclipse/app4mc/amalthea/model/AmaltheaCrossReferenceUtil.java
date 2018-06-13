@@ -30,15 +30,16 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-public final class CrossReferenceUtil {
+public final class AmaltheaCrossReferenceUtil {
 
-	private CrossReferenceUtil() {
+	private AmaltheaCrossReferenceUtil() {
 	}
 
-	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference eReference) {
-		
+	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
+			final EReference targetEReference) {
+
 		// Find root element (EObject, Resource or Resource Set)
-		
+
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
 		Notifier target = rootContainer;
@@ -51,7 +52,7 @@ public final class CrossReferenceUtil {
 		}
 
 		// Get or create Amalthea adapter
-		
+
 		AmaltheaCrossReferenceAdapter amaltheaAdapter = null;
 		final EList<Adapter> adapters = target.eAdapters();
 		for (final Adapter adapter : adapters) {
@@ -67,20 +68,20 @@ public final class CrossReferenceUtil {
 		}
 
 		// Get references from adapter
-		
+
 		final List<EObject> result = new ArrayList<EObject>();
 		final Collection<Setting> nonNavigableInverseReferences = amaltheaAdapter
 				.getNonNavigableInverseReferences(eObject);
 		for (final Setting setting : nonNavigableInverseReferences) {
-			if (setting.getEStructuralFeature() == eReference) {
+			if (setting.getEStructuralFeature() == targetEReference) {
 				result.add(setting.getEObject());
 			}
 		}
 
 		// Return immutable list
-		
+
 		final int size = result.size();
 		final Object[] values = result.toArray();
-		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, eReference, size, values);
+		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, resultEReference, size, values);
 	}
 }

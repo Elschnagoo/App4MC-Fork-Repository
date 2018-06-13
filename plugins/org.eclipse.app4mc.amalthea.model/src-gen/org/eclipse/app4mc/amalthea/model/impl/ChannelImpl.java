@@ -12,10 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
-import org.eclipse.app4mc.amalthea.model.CrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.DataType;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 
@@ -248,7 +248,8 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * @generated
 	 */
 	public EList<ChannelAccess> getChannelAccesses() {
-		return CrossReferenceUtil.<ChannelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getChannelAccess_Data());
+		return AmaltheaCrossReferenceUtil.<ChannelAccess>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(), AmaltheaPackage.eINSTANCE.getChannelAccess_Data());
 	}
 
 	/**

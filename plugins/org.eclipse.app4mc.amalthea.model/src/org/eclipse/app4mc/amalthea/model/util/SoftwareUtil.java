@@ -223,7 +223,7 @@ public class SoftwareUtil {
 	 */
 	public static Set<Label> getAccessedLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		HashSet<Label> result = new HashSet<>(); 
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess)
@@ -241,7 +241,7 @@ public class SoftwareUtil {
 	 */
 	public static Set<Label> getWriteLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		HashSet<Label> result = new HashSet<>();
 		for (RunnableItem ri : runItem) {
 			if ((ri instanceof LabelAccess) && ((LabelAccess)ri).getAccess().equals(LabelAccessEnum.WRITE)) {
@@ -259,7 +259,7 @@ public class SoftwareUtil {
 	 */
 	public static List<LabelAccess> getWriteLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		List<LabelAccess> result = new ArrayList<LabelAccess>();
 		for (RunnableItem ri : runItem) {
 			if ((ri instanceof LabelAccess) && ((LabelAccess)ri).getAccess().equals(LabelAccessEnum.WRITE)) {
@@ -278,7 +278,7 @@ public class SoftwareUtil {
 	 */
 	public static Set<Label> getReadLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		HashSet<Label> result = new HashSet<>();
 		for (RunnableItem ri : runItem) {
 			if ((ri instanceof LabelAccess) && ((LabelAccess)ri).getAccess().equals(LabelAccessEnum.READ)) {
@@ -297,7 +297,7 @@ public class SoftwareUtil {
 	 */
 	public static List<LabelAccess> getReadLabelAccessesList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		List<LabelAccess> result = new ArrayList<LabelAccess>();
 		for (RunnableItem ri : runItem) {
 			if ((ri instanceof LabelAccess) && ((LabelAccess)ri).getAccess().equals(LabelAccessEnum.READ)) {
@@ -316,7 +316,7 @@ public class SoftwareUtil {
 	public static List<LabelAccess> getLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<LabelAccess> result = new ArrayList<>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess) {
 				result.add((LabelAccess) ri);
@@ -336,7 +336,7 @@ public class SoftwareUtil {
 	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		Map<Label, List<LabelAccess>> result = new HashMap<>(); 
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess) {
 				Label label = ((LabelAccess) ri).getData();
@@ -359,7 +359,7 @@ public class SoftwareUtil {
 	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null) {
 				LabelAccess la = (LabelAccess) ri;	
@@ -381,7 +381,7 @@ public class SoftwareUtil {
 	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null && ((LabelAccess) ri).getAccess().equals(LabelAccessEnum.READ)) {
 				LabelAccess la = (LabelAccess) ri;	
@@ -404,7 +404,7 @@ public class SoftwareUtil {
 	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		Map<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof LabelAccess && ((LabelAccess) ri).getStatistic() != null && ((LabelAccess) ri).getAccess().equals(LabelAccessEnum.WRITE)) {
 				LabelAccess la = (LabelAccess) ri;	
@@ -713,7 +713,7 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.READ)) {
 				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
-				if (modes == null || modes.isEmpty() || (SoftwareUtil.collectRunnableItems(run, modes)).contains(la)) {
+				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
 					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
 				}
 			}
@@ -806,7 +806,7 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.WRITE)) {
 				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
-				if (modes == null || modes.isEmpty() || (SoftwareUtil.collectRunnableItems(run, modes)).contains(la)) {
+				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
 					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
 				}
 			}
@@ -847,7 +847,9 @@ public class SoftwareUtil {
 	public static List<Process> getProcesses(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Process> result = new ArrayList<>();
 		for (TaskRunnableCall trc : runnable.getTaskRunnableCalls()) {
-			Process proc = ModelUtil.getParentContainer(trc, Process.class);
+			Process proc = trc.getContainingProcess(); // null if container is not of type Process
+			if (proc == null) continue;
+			
 			if (modes != null && !modes.isEmpty()) {
 				if (getRunnableList(proc, modes).contains(runnable)) {
 					result.add((Process) proc);
@@ -868,9 +870,11 @@ public class SoftwareUtil {
 	public static List<Runnable> getRunnableCallParents(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (RunnableCall rc : runnable.getRunnableCalls()) {
-			Runnable run = ModelUtil.getParentContainer(rc, Runnable.class);
+			Runnable run = rc.getContainingRunnable();
+			if (run == null) continue;
+			
 			if (modes != null && !modes.isEmpty()) {
-				EList<RunnableItem> runItems = SoftwareUtil.collectRunnableItems(run, modes);
+				EList<RunnableItem> runItems = collectRunnableItems(run, modes);
 				if (runItems != null  && runItems.isEmpty() ) {
 					for (RunnableItem runItem : runItems) {
 						if (runItem instanceof RunnableCall) {
@@ -895,7 +899,7 @@ public class SoftwareUtil {
 	 */
 	public static List<Runnable> getCalledRunnables(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> result = new ArrayList<Runnable>();
-		List<RunnableItem> collectRunnableItems = SoftwareUtil.collectRunnableItems(runnable, modes);
+		List<RunnableItem> collectRunnableItems = collectRunnableItems(runnable, modes);
 		for (RunnableItem runItem : collectRunnableItems) {
 			if (runItem instanceof RunnableCall)
 				result.add(((RunnableCall)runItem).getRunnable());
@@ -911,7 +915,7 @@ public class SoftwareUtil {
 	 */
 	public static List<ExecutionNeed> getExecutionNeedsList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> result = new ArrayList<>();
-		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
+		List<RunnableItem> runnableItems = collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
 			if(ri instanceof ExecutionNeed) {
@@ -970,7 +974,7 @@ public class SoftwareUtil {
 		if (puDefinition == null || hwFeatures == null ) {
 			return result;
 		}
-		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes) ;
+		List<RunnableItem> runnableItems = collectRunnableItems(runnable, modes) ;
 		
 		for(RunnableItem ri : runnableItems) {
 			if(ri instanceof ExecutionNeed) {
@@ -1021,7 +1025,7 @@ public class SoftwareUtil {
 	 */
 	public static Set<ServerCall> getServerCallSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<RunnableItem> runItem = new ArrayList<>();
-		runItem.addAll(SoftwareUtil.collectRunnableItems(runnable, modes));
+		runItem.addAll(collectRunnableItems(runnable, modes));
 		HashSet<ServerCall> result = new HashSet<>(); 
 		for (RunnableItem ri : runItem) {
 			if (ri instanceof ServerCall) {

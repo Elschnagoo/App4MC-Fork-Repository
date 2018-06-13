@@ -157,7 +157,9 @@ class Tag extends ReferableBaseObject
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of objects (ITaggable) referring to the this tag.</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived ITaggable[] taggedObjects get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.ITaggable_Tags)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.tag_TaggedObjects, AmaltheaPackage.eINSTANCE.ITaggable_Tags
+		)
 	}
 }
 
@@ -1372,7 +1374,9 @@ class CustomEvent extends TriggerEvent
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of triggers (CustomEventTrigger).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived CustomEventTrigger[] explicitTriggers get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.customEventTrigger_Event)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.customEvent_ExplicitTriggers, AmaltheaPackage.eINSTANCE.customEventTrigger_Event
+		)
 	}
 }
 
@@ -1622,7 +1626,9 @@ class Memory extends HwModule, HwDestination
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of mappings (MemoryMapping).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived MemoryMapping[] mappings get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_Memory)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.memory_Mappings, AmaltheaPackage.eINSTANCE.memoryMapping_Memory
+		)
 	}
 }
 
@@ -2053,7 +2059,9 @@ class Semaphore extends ReferableBaseObject
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (SemaphoreAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived SemaphoreAccess[] semaphoreAccesses get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.semaphoreAccess_Semaphore)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.semaphore_SemaphoreAccesses, AmaltheaPackage.eINSTANCE.semaphoreAccess_Semaphore
+		)
 	}
 }
 
@@ -2085,7 +2093,9 @@ class TaskScheduler extends Scheduler
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of child associations (SchedulerAssociation).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived SchedulerAssociation[] childAssociations get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.schedulerAssociation_Parent)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.taskScheduler_ChildAssociations, AmaltheaPackage.eINSTANCE.schedulerAssociation_Parent
+		)
 	}
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler parentScheduler get {
@@ -2462,7 +2472,9 @@ abstract class Stimulus extends ReferableBaseObject, ITaggable
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of affected processes (Process).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Process[] affectedProcesses get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.process_Stimuli)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.stimulus_AffectedProcesses, AmaltheaPackage.eINSTANCE.process_Stimuli
+		)
 	}
 }
 
@@ -2605,7 +2617,9 @@ class InterProcessStimulus extends Stimulus
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of triggers (InterProcessTrigger).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived InterProcessTrigger[] explicitTriggers get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.interProcessTrigger_Stimulus)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.interProcessStimulus_ExplicitTriggers, AmaltheaPackage.eINSTANCE.interProcessTrigger_Stimulus
+		)
 	}
 }
 
@@ -2733,7 +2747,9 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of mappings (MemoryMapping).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived MemoryMapping[] mappings get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.memoryMapping_AbstractElement)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.abstractMemoryElement_Mappings, AmaltheaPackage.eINSTANCE.memoryMapping_AbstractElement
+		)
 	}
 }
 
@@ -2850,8 +2866,8 @@ abstract class CallSequenceItem extends BaseObject
 {
 	// container (read only)
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers local readonly derived Task containingTask get {
-		AmaltheaServices.getContainerOfType(this, Task)
+	refers local readonly derived Process containingProcess get {
+		AmaltheaServices.getContainerOfType(this, Process)
 	}
 	
 	contains Counter counter
@@ -3105,19 +3121,25 @@ class Runnable extends AbstractMemoryElement
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (RunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived RunnableCall[] runnableCalls get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnableCall_Runnable)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.runnable_RunnableCalls, AmaltheaPackage.eINSTANCE.runnableCall_Runnable
+		)
 	}
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.runnable_TaskRunnableCalls, AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable
+		)
 	}
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the runnable belongs to.</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Component[] referringComponents get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.component_Runnables)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.runnable_ReferringComponents, AmaltheaPackage.eINSTANCE.component_Runnables
+		)
 	}
 }
 
@@ -3147,13 +3169,17 @@ class Label extends AbstractMemoryElement, IDisplayName
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (LabelAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived LabelAccess[] labelAccesses get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.labelAccess_Data)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.label_LabelAccesses, AmaltheaPackage.eINSTANCE.labelAccess_Data
+		)
 	}
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the label belongs to.</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Component[] referringComponents get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.component_Labels)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.label_ReferringComponents, AmaltheaPackage.eINSTANCE.component_Labels
+		)
 	}
 
 }
@@ -3168,7 +3194,9 @@ class Channel extends AbstractMemoryElement, IDisplayName
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of accesses (ChannelAccess).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived ChannelAccess[] channelAccesses get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.channelAccess_Data)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.channel_ChannelAccesses, AmaltheaPackage.eINSTANCE.channelAccess_Data
+		)
 	}
 }
 
@@ -3206,13 +3234,17 @@ class Section extends ReferableBaseObject
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of labels (Label).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Label[] labels get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.label_Section)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.section_Labels, AmaltheaPackage.eINSTANCE.label_Section
+		)
 	}
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of runnables (Runnable).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived Runnable[] runnables get {
-		CrossReferenceUtil.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_Section)
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.section_Runnables, AmaltheaPackage.eINSTANCE.runnable_Section
+		)
 	}
 }
 

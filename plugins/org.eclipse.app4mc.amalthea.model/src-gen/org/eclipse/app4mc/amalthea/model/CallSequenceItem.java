@@ -26,7 +26,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingTask <em>Containing Task</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingProcess <em>Containing Process</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getCounter <em>Counter</em>}</li>
  * </ul>
  *
@@ -36,20 +36,20 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface CallSequenceItem extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Containing Task</b></em>' reference.
+	 * Returns the value of the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Task</em>' reference isn't clear,
+	 * If the meaning of the '<em>Containing Process</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Containing Task</em>' reference.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem_ContainingTask()
+	 * @return the value of the '<em>Containing Process</em>' reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem_ContainingProcess()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Task%&gt;&gt;getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Task%&gt;.class);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%&gt;&gt;getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Process%&gt;.class);'"
 	 * @generated
 	 */
-	Task getContainingTask();
+	org.eclipse.app4mc.amalthea.model.Process getContainingProcess();
 
 	/**
 	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.

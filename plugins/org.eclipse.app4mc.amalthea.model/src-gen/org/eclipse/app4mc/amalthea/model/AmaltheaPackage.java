@@ -21089,13 +21089,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_SEQUENCE_ITEM__CONTAINING_TASK = BASE_OBJECT_FEATURE_COUNT + 0;
+	int CALL_SEQUENCE_ITEM__CONTAINING_PROCESS = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21144,13 +21144,13 @@ public interface AmaltheaPackage extends EPackage {
 	int WAIT_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WAIT_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int WAIT_EVENT__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21226,13 +21226,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SET_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int SET_EVENT__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21299,13 +21299,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CLEAR_EVENT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLEAR_EVENT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int CLEAR_EVENT__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21518,13 +21518,13 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_TRIGGER__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_TRIGGER__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int INTER_PROCESS_TRIGGER__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21582,13 +21582,13 @@ public interface AmaltheaPackage extends EPackage {
 	int ENFORCED_MIGRATION__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENFORCED_MIGRATION__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int ENFORCED_MIGRATION__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21646,13 +21646,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_RUNNABLE_CALL__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_RUNNABLE_CALL__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int TASK_RUNNABLE_CALL__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21719,13 +21719,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULE_POINT__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_POINT__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int SCHEDULE_POINT__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -21774,13 +21774,13 @@ public interface AmaltheaPackage extends EPackage {
 	int TERMINATE_PROCESS__CUSTOM_PROPERTIES = CALL_SEQUENCE_ITEM__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Containing Task</b></em>' reference.
+	 * The feature id for the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINATE_PROCESS__CONTAINING_TASK = CALL_SEQUENCE_ITEM__CONTAINING_TASK;
+	int TERMINATE_PROCESS__CONTAINING_PROCESS = CALL_SEQUENCE_ITEM__CONTAINING_PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
@@ -35820,15 +35820,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getCallSequenceItem();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingTask <em>Containing Task</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingProcess <em>Containing Process</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Containing Task</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingTask()
+	 * @return the meta object for the reference '<em>Containing Process</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingProcess()
 	 * @see #getCallSequenceItem()
 	 * @generated
 	 */
-	EReference getCallSequenceItem_ContainingTask();
+	EReference getCallSequenceItem_ContainingProcess();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getCounter <em>Counter</em>}'.
