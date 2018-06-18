@@ -12,7 +12,7 @@
  * *******************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.model.test.structure;
+package org.eclipse.app4mc.amalthea.model.test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
