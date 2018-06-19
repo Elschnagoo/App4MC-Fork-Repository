@@ -614,9 +614,7 @@ class Mode extends ReferableBaseObject
 
 class ModeLiteral extends ReferableBaseObject
 {
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly Mode containingMode opposite literals
+	container Mode containingMode opposite literals
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingMode?.name)
@@ -674,9 +672,7 @@ interface ISystem
 
 abstract class Port extends ReferableBaseObject, ITaggable
 {
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly Component containingComponent opposite ports
+	container Component containingComponent opposite ports
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingComponent?.name)
@@ -1646,9 +1642,7 @@ class HwFeatureCategory extends ReferableBaseObject
 
 class HwFeature extends ReferableBaseObject
 {
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly HwFeatureCategory containingCategory opposite features
+	container HwFeatureCategory containingCategory opposite features
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingCategory?.name)
@@ -1824,9 +1818,7 @@ abstract class HwPath
 
 class HwAccessPath extends HwPath, INamed
 {
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly HwAccessElement containingAccessElement opposite accessPath
+	container HwAccessElement containingAccessElement opposite accessPath
 	
 	refers HwPathElement[+] pathElements
 	Address startAddress = "0"
@@ -2061,6 +2053,14 @@ class Semaphore extends ReferableBaseObject
 	refers transient readonly volatile derived SemaphoreAccess[] semaphoreAccesses get {
 		AmaltheaCrossReferenceUtil.getInverseReferences(this,
 			AmaltheaPackage.eINSTANCE.semaphore_SemaphoreAccesses, AmaltheaPackage.eINSTANCE.semaphoreAccess_Semaphore
+		)
+	}
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the semaphore belongs to.</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Component[] referringComponents get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.semaphore_ReferringComponents, AmaltheaPackage.eINSTANCE.component_Semaphores
 		)
 	}
 }
@@ -2755,6 +2755,14 @@ abstract class AbstractMemoryElement extends ReferableBaseObject, ITaggable
 
 abstract class AbstractProcess extends AbstractMemoryElement
 {
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the abstract process belongs to.</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Component[] referringComponents get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.abstractProcess_ReferringComponents, AmaltheaPackage.eINSTANCE.component_Tasks
+		)
+	}	
 }
 
 /*
@@ -2931,6 +2939,15 @@ class EventMask extends BaseObject
 class OsEvent extends ReferableBaseObject, ITaggable
 {
 	int communicationOverheadInBit = "0"
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the OS event belongs to.</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived Component[] referringComponents get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.osEvent_ReferringComponents, AmaltheaPackage.eINSTANCE.component_OsEvents
+		)
+	}
 }
 
 /*

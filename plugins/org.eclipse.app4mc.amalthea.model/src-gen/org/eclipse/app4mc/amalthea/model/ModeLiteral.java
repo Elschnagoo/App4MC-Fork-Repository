@@ -40,13 +40,23 @@ public interface ModeLiteral extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Mode</em>' container reference.
+	 * @see #setContainingMode(Mode)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral_ContainingMode()
 	 * @see org.eclipse.app4mc.amalthea.model.Mode#getLiterals
-	 * @model opposite="literals" transient="false" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="literals" transient="false"
 	 * @generated
 	 */
 	Mode getContainingMode();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeLiteral#getContainingMode <em>Containing Mode</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Containing Mode</em>' container reference.
+	 * @see #getContainingMode()
+	 * @generated
+	 */
+	void setContainingMode(Mode value);
 
 	/**
 	 * <!-- begin-user-doc -->

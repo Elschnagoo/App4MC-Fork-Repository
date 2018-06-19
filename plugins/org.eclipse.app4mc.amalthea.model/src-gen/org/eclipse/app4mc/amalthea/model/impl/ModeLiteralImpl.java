@@ -20,12 +20,17 @@ import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -87,6 +92,37 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainingMode(Mode newContainingMode, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainingMode, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContainingMode(Mode newContainingMode) {
+		if (newContainingMode != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE && newContainingMode != null)) {
+			if (EcoreUtil.isAncestor(this, newContainingMode))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newContainingMode != null)
+				msgs = ((InternalEObject)newContainingMode).eInverseAdd(this, AmaltheaPackage.MODE__LITERALS, Mode.class, msgs);
+			msgs = basicSetContainingMode(newContainingMode, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, newContainingMode, newContainingMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String computeUniqueName() {
 		Mode _containingMode = this.getContainingMode();
 		String _name = null;
@@ -139,7 +175,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, msgs);
+				return basicSetContainingMode((Mode)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -153,7 +189,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
-				return eBasicSetContainer(null, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE, msgs);
+				return basicSetContainingMode(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -185,6 +221,36 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 				return basicGetContainingMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				setContainingMode((Mode)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
+				setContainingMode((Mode)null);
+				return;
+		}
+		super.eUnset(featureID);
 	}
 
 	/**

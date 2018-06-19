@@ -2095,7 +2095,7 @@ strands: alternative event paths</xsd:documentation>
   <xsd:element name="TimingConstraint" type="am:TimingConstraint"/>
   <xsd:complexType name="PhysicalSectionConstraint">
     <xsd:annotation>
-      <xsd:documentation>This contraints is used to limit a section in  Memories</xsd:documentation>
+      <xsd:documentation>This contraints is used to limit a section in Memories</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -2110,7 +2110,7 @@ strands: alternative event paths</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="PhysicalSectionConstraint" type="am:PhysicalSectionConstraint">
     <xsd:annotation>
-      <xsd:documentation>This contraints is used to limit a section in  Memories</xsd:documentation>
+      <xsd:documentation>This contraints is used to limit a section in Memories</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="SynchronizationConstraint">
@@ -2591,7 +2591,7 @@ processingUnit: The processing unit that executes the process when the event is 
           <xsd:element name="entity" type="am:Process"/>
           <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:ProcessEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
@@ -2618,7 +2618,7 @@ processingUnit: The processing unit that executes the process when the event is 
           <xsd:element name="entity" type="am:ProcessChain"/>
           <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:ProcessEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:ProcessEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="processingUnit" type="xsd:string"/>
       </xsd:extension>
@@ -2647,7 +2647,7 @@ processingUnit: The processing unit that executes the runnable (executes the pro
           <xsd:element name="process" type="am:Process"/>
           <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:RunnableEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:RunnableEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
         <xsd:attribute name="processingUnit" type="xsd:string"/>
@@ -2678,7 +2678,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:LabelEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:LabelEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
@@ -2709,7 +2709,7 @@ process: The process that accesses the label (optional)</xsd:documentation>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="process" type="am:Process"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:ChannelEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:ChannelEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
@@ -2742,7 +2742,7 @@ processingUnit: The processing unit that executes the process/runnable that acce
           <xsd:element name="process" type="am:Process"/>
           <xsd:element name="processingUnit" type="am:ProcessingUnit"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:SemaphoreEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:SemaphoreEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
         <xsd:attribute name="process" type="xsd:string"/>
@@ -2771,7 +2771,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entity" type="am:Component"/>
         </xsd:choice>
-        <xsd:attribute name="eventType" type="am:ComponentEventType" use="required"/>
+        <xsd:attribute name="eventType" type="am:ComponentEventType"/>
         <xsd:attribute name="entity" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -2971,7 +2971,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
 	contains HwLatency latency
 	refers FrequencyDomain[1] sourceFrequencyDomain
 	refers FrequencyDomain[1] targetFrequencyDomain
-}</xsd:documentation>
+ }</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ITaggable">
@@ -2995,7 +2995,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
 	contains HwLatency latency
 	refers FrequencyDomain[1] sourceFrequencyDomain
 	refers FrequencyDomain[1] targetFrequencyDomain
-}</xsd:documentation>
+ }</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="HwLatency">
@@ -3120,30 +3120,11 @@ entity: The component that fires the event (optional)</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="HwAccessPath" type="am:HwAccessPath"/>
   <xsd:complexType abstract="true" name="HwPathElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwLogicalPath extends HwPath, INamed {
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly AddressElement containingAddressElement opposite logicalPaths
-	contains DataRate dataRate
-	contains HwLatency readLatency
-	contains HwLatency writeLatency
-}</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:IReferable"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwPathElement" type="am:HwPathElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwLogicalPath extends HwPath, INamed {
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	container readonly AddressElement containingAddressElement opposite logicalPaths
-	contains DataRate dataRate
-	contains HwLatency readLatency
-	contains HwLatency writeLatency
-}</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="HwPathElement" type="am:HwPathElement"/>
   <xsd:complexType abstract="true" name="HwDestination">
     <xsd:complexContent>
       <xsd:extension base="am:IReferable"/>
@@ -5280,6 +5261,7 @@ It can be used to define which mode value is written to the label.</xsd:document
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="data" type="am:Label"/>
           <xsd:element name="statistic" type="am:LabelAccessStatistic">
             <xsd:annotation>
@@ -5292,6 +5274,7 @@ It can be used to define which mode value is written to the label.</xsd:document
             </xsd:annotation>
           </xsd:element>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="access" type="am:LabelAccessEnum"/>
         <xsd:attribute name="dataStability" type="am:LabelAccessDataStability">
           <xsd:annotation>
@@ -5529,9 +5512,11 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="runnable" type="am:Runnable"/>
           <xsd:element name="statistic" type="am:RunEntityCallStatistic"/>
         </xsd:choice>
+        <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="runnable" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5785,8 +5770,8 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
           <xsd:element name="step" type="am:Time"/>
+          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>

@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -206,6 +207,37 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainingAccessElement(HwAccessElement newContainingAccessElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainingAccessElement, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContainingAccessElement(HwAccessElement newContainingAccessElement) {
+		if (newContainingAccessElement != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT && newContainingAccessElement != null)) {
+			if (EcoreUtil.isAncestor(this, newContainingAccessElement))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newContainingAccessElement != null)
+				msgs = ((InternalEObject)newContainingAccessElement).eInverseAdd(this, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH, HwAccessElement.class, msgs);
+			msgs = basicSetContainingAccessElement(newContainingAccessElement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, newContainingAccessElement, newContainingAccessElement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<HwPathElement> getPathElements() {
 		if (pathElements == null) {
 			pathElements = new EObjectResolvingEList<HwPathElement>(HwPathElement.class, this, AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS);
@@ -287,7 +319,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, msgs);
+				return basicSetContainingAccessElement((HwAccessElement)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -301,7 +333,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
-				return eBasicSetContainer(null, AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT, msgs);
+				return basicSetContainingAccessElement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -357,6 +389,9 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				setName((String)newValue);
 				return;
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				setContainingAccessElement((HwAccessElement)newValue);
+				return;
 			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
 				getPathElements().clear();
 				getPathElements().addAll((Collection<? extends HwPathElement>)newValue);
@@ -384,6 +419,9 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 		switch (featureID) {
 			case AmaltheaPackage.HW_ACCESS_PATH__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT:
+				setContainingAccessElement((HwAccessElement)null);
 				return;
 			case AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS:
 				getPathElements().clear();

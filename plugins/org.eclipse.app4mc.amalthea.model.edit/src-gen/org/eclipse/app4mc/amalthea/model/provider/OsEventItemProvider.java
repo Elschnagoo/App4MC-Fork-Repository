@@ -57,6 +57,7 @@ public class OsEventItemProvider extends ReferableBaseObjectItemProvider {
 
 			addTagsPropertyDescriptor(object);
 			addCommunicationOverheadInBitPropertyDescriptor(object);
+			addReferringComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -103,6 +104,30 @@ public class OsEventItemProvider extends ReferableBaseObjectItemProvider {
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Referring Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferringComponentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OsEvent_referringComponents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OsEvent_referringComponents_feature", "_UI_OsEvent_type"),
+				 AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

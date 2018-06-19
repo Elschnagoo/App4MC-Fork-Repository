@@ -14,7 +14,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -39,6 +41,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsEventImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsEventImpl#getCommunicationOverheadInBit <em>Communication Overhead In Bit</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.OsEventImpl#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
  * @generated
@@ -131,6 +134,16 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Component> getReferringComponents() {
+		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_OsEvents());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -138,6 +151,8 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 				return getTags();
 			case AmaltheaPackage.OS_EVENT__COMMUNICATION_OVERHEAD_IN_BIT:
 				return getCommunicationOverheadInBit();
+			case AmaltheaPackage.OS_EVENT__REFERRING_COMPONENTS:
+				return getReferringComponents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,6 +207,8 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.OS_EVENT__COMMUNICATION_OVERHEAD_IN_BIT:
 				return communicationOverheadInBit != COMMUNICATION_OVERHEAD_IN_BIT_EDEFAULT;
+			case AmaltheaPackage.OS_EVENT__REFERRING_COMPONENTS:
+				return !getReferringComponents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

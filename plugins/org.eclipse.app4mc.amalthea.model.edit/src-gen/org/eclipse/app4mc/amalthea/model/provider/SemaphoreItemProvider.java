@@ -60,6 +60,7 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 			addMaxValuePropertyDescriptor(object);
 			addPriorityCeilingProtocolPropertyDescriptor(object);
 			addSemaphoreAccessesPropertyDescriptor(object);
+			addReferringComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -166,6 +167,30 @@ public class SemaphoreItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_Semaphore_semaphoreAccesses_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_semaphoreAccesses_feature", "_UI_Semaphore_type"),
 				 AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Referring Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferringComponentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Semaphore_referringComponents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Semaphore_referringComponents_feature", "_UI_Semaphore_type"),
+				 AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(),
 				 false,
 				 false,
 				 false,

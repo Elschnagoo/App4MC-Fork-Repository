@@ -95,14 +95,12 @@ public class PortItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_Port_containingComponent_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Port_containingComponent_feature", "_UI_Port_type"),
 				 AmaltheaPackage.eINSTANCE.getPort_ContainingComponent(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**

@@ -14,6 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 import org.eclipse.app4mc.amalthea.model.SemaphoreAccess;
 import org.eclipse.app4mc.amalthea.model.SemaphoreType;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getMaxValue <em>Max Value</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#isPriorityCeilingProtocol <em>Priority Ceiling Protocol</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getSemaphoreAccesses <em>Semaphore Accesses</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SemaphoreImpl#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
  * @generated
@@ -242,6 +244,16 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Component> getReferringComponents() {
+		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Semaphores());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -255,6 +267,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 				return isPriorityCeilingProtocol();
 			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
 				return getSemaphoreAccesses();
+			case AmaltheaPackage.SEMAPHORE__REFERRING_COMPONENTS:
+				return getReferringComponents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -325,6 +339,8 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 				return priorityCeilingProtocol != PRIORITY_CEILING_PROTOCOL_EDEFAULT;
 			case AmaltheaPackage.SEMAPHORE__SEMAPHORE_ACCESSES:
 				return !getSemaphoreAccesses().isEmpty();
+			case AmaltheaPackage.SEMAPHORE__REFERRING_COMPONENTS:
+				return !getReferringComponents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

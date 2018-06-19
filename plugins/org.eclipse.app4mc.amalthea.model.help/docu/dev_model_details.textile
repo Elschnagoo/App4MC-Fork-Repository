@@ -26,11 +26,53 @@ They provide basic common functionality for all objects, which are extending it,
 !(scale)../pictures/model_common_interfaces_base_objects.png!
 
 
+h3. Derived references
+
+Some derived references are introduces to simplify a multi-level navigation. They are read only.
+
+| |{text-align:center}. Reference | |
+| @ModeLabel@ |>. *mode* &#8594; | @Mode@ |
+| @ISystem@ |>. *innerPorts* &#8594; | @QualifiedPort@ |
+| @HwPath@ |>. *source* &#8594; | @ProcessingUnit@ |
+| @HwPath@ |>. *destination* &#8594; | @HwDestination@ |
+| @TaskScheduler@ |>. *childSchedulers* &#8594; | @TaskScheduler@ |
+| @TaskScheduler@ |>. *parentScheduler* &#8594; | @TaskScheduler@ |
+
 h3. Transient back pointers
 
-AMALTHEA maintains a (small) number of back pointers in the model. A transient reference of an object 'points back' to the object referring to it. This allows easier navigation, at the expense of greater memory use.
+AMALTHEA maintains a number of back pointers in the model. These transient references of an object 'point back' to the object referring to it. 
 
-h4. Current back pointers
+h4. Container references
+
+Container references provide an easier access to the eContainer of an object.
+
+The following references are specified as opposite references and can be modified.
+By the prefix "containing" they clearly indicate that a containment is changed.
+
+| | Container reference |>. Containment reference | |
+| @Component@ |{color:green}. &#8592; *containingComponent* |>. *ports* &#8594; | @Port@ |
+| @Mode@ |{color:green}. &#8592; *containingMode* |>. *literals* &#8594; | @ModeLiteral@ |
+| @HwFeatureCategory@ |{color:green}. &#8592; *containingCategory* |>. *features* &#8594; | @HwFeature@ |
+| @HwAccessElement@ |{color:green}. &#8592; *containingAccessElement* |>. *accessPath* &#8594; | @HwAccessPath@ |
+
+The following references are specified as opposite references.
+
+| | Container reference (read only) |>. Reference | |
+| @ProcessingUnit@ |{color:green}. &#8592; *source* |>. *accessElements* &#8594; | @HwAccessElement@ |
+| @TaskScheduler@ |{color:green}. &#8592; *child* |>. *parentAssociation* &#8594; | @SchedulerAssociation@ |
+
+
+The following container references are a special case. Because of the nested structure of sub elements the access to a dedicated container object is computed by traversing multiple eContainer references.
+
+| | Container reference (read only) |>. Containment reference | |
+| @Runnable@ |{color:green}. &#8592; *containingRunnable* |>. *runnableItems ...* &#8594; | @RunnableItem@ |
+| @Process@ |{color:green}. &#8592; *containingProcess* |>. *callGraph ...* &#8594; | @CallSequenceItem@ |
+
+
+h4. References (via inverse index)
+
+The inverse index allows easier and faster navigation, at the expense of greater memory consumption.
+The index is built on demand. 
 
 The data model has some intermediate objects to express the call of a runnable or the access to a label.
 These objects are containments of __Task__ or __Runnable__ and can have additional attributes. The back pointers support an easy way to answer queries like "Which tasks call runnable x ?" or "Which functions read label y ?".
@@ -42,11 +84,11 @@ These objects are containments of __Task__ or __Runnable__ and can have addition
 | @TaskRunnableCall@ |{color:green}. &#8592; *taskRunnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 | @RunnableCall@ |{color:green}. &#8592; *runnableCalls* |>. *runnable* &#8594; | @Runnable@ |
 
-All elements with memory representation (e.g. labels, runnables) can be mapped to exactly one memory. The back pointer provides a list of all elements that are assigned to a specific memory.
+All elements with memory representation (e.g. labels, runnables) can be mapped to a memory via a MemoryMapping. The back pointers provides a list of all mapping elements that refer to a specific memory or a specific MemoryElement.
 
 | | Back pointer (read only) |>. Reference | |
-| @Mapping@ |{color:green}. &#8592; *mappings* |>. *memory* &#8594; | @Memory@ |
-| @AbstractElementMapping@ |{color:green}. &#8592; *mappings* |>. *abstractElement* &#8594; | @AbstractElementMemoryInformation@ |
+| @MemoryMapping@ |{color:green}. &#8592; *mappings* |>. *memory* &#8594; | @Memory@ |
+| @MemoryMapping@ |{color:green}. &#8592; *mappings* |>. *abstractElement* &#8594; | @AbstractMemoryElement@ |
 
 Labels and runnables can be located in exactly one section. The back pointer provides a list of all elements that are assigned to a specific section.
 
@@ -60,49 +102,44 @@ CustomEvent and InterProcessStimulus can have explicit triggers. The pointer is 
 | @CustomEventTrigger@ |{color:green}. &#8592; *explicitTriggers* |>. *event* &#8594; | @CustomEvent@ |
 | @InterProcessTrigger@ |{color:green}. &#8592; *explicitTriggers* |>. *stimulus* &#8594; | @InterProcessStimulus@ |
 
+Components define lists of included software elements (e.g. labels, runnables, semaphores). The back pointer provides access to all referring components.
+
+| | Back pointer (read only) |>. Reference | |
+| @Component@ |{color:green}. &#8592; *referringComponents* |>. *labels* &#8594; | @Label@ |
+| @Component@ |{color:green}. &#8592; *referringComponents* |>. *runnables* &#8594; | @Runnable@ |
+| @Component@ |{color:green}. &#8592; *referringComponents* |>. *tasks* &#8594; | @AbstractProcess@ |
+| @Component@ |{color:green}. &#8592; *referringComponents* |>. *semaphores* &#8594; | @Semaphore@ |
+| @Component@ |{color:green}. &#8592; *referringComponents* |>. *osEvents* &#8594; | @OsEvent@ |
+
+Some other useful back references.
+
+| | Back pointer (read only) |>. Reference | |
+| @Process@ |{color:green}. &#8592; *affectedProcesses* |>. *stimuli* &#8594; | @Stimulus@ |
+| @ITaggable@ |{color:green}. &#8592; *taggedObjects* |>. *tags* &#8594; | @Tag@ |
+| @SchedulerAssociation@ |{color:green}. &#8592; *childAssociations* |>. *parent* &#8594; | @TaskScheduler@ |
+
+
 h4. Implementation
 
 **Xcore:**
 
-In addition to a reference %*&lt;reference&gt;*% there is a transient reference named  %*&lt;reference&gt;LinkInt*%.
+A derived back pointer is computed by %*AmaltheaCrossReferenceUtil.getInverseReferences(...)*%.
 The visiblity in the generated code and in the user interface is controlled by %*@GenModel*% annotations.
 
-bc.. 
-class TaskRunnableCall extends CallSequenceItem
-{	...
-	refers Runnable[1] runnable
-	
-	// hidden link (internal)
-	@GenModel(property="None", suppressedGetVisibility="true", suppressedSetVisibility="true"))
-	refers transient Runnable[1] runnableLinkInt opposite taskRunnableCalls
-}
+Example
 
-class Runnable extends AbstractElementMemoryInformation
+bc.. 
+class Runnable extends AbstractMemoryElement
 {	...	
 	// back pointer (readonly)
-	@GenModel(property="Readonly", suppressedSetVisibility="true")
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient TaskRunnableCall[] taskRunnableCalls opposite runnableLinkInt 
-}
-p. 
-
-**Classes and references:**
-
-!../pictures/impl/model_transient_backpointer.png!
-
-**Generated code:**
-
-EMF code generation allows the use of dynamic templates. AMALTHEA uses this technology to additionally set the transient value in the  setter code of the standard value. The dynamic template is triggered by the name pattern %'&lt;reference&gt;%' and %'&lt;reference&gt;LinkInt'%.
-
-bc.. 
-public class TaskRunnableCallImpl ... {
-	...
-	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
-		...
- 		//Additional setting transient value for transient bi-directional reference
- 		setRunnableLinkInt(newRunnable);
+	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.runnable_TaskRunnableCalls,
+			AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable
+		)
 	}
-}
 p. 
 
 h4. User Interface

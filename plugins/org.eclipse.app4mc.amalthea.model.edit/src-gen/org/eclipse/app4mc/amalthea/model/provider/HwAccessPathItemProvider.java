@@ -101,14 +101,12 @@ public class HwAccessPathItemProvider extends HwPathItemProvider {
 				 getString("_UI_HwAccessPath_containingAccessElement_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_containingAccessElement_feature", "_UI_HwAccessPath_type"),
 				 AmaltheaPackage.eINSTANCE.getHwAccessPath_ContainingAccessElement(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**

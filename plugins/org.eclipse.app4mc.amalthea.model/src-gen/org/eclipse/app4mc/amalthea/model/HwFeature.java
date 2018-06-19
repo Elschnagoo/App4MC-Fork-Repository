@@ -41,13 +41,23 @@ public interface HwFeature extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Category</em>' container reference.
+	 * @see #setContainingCategory(HwFeatureCategory)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeature_ContainingCategory()
 	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureCategory#getFeatures
-	 * @model opposite="features" transient="false" changeable="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
+	 * @model opposite="features" transient="false"
 	 * @generated
 	 */
 	HwFeatureCategory getContainingCategory();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getContainingCategory <em>Containing Category</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Containing Category</em>' container reference.
+	 * @see #getContainingCategory()
+	 * @generated
+	 */
+	void setContainingCategory(HwFeatureCategory value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.

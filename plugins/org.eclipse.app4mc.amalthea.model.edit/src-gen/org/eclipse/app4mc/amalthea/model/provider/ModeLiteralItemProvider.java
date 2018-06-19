@@ -68,14 +68,12 @@ public class ModeLiteralItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_ModeLiteral_containingMode_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLiteral_containingMode_feature", "_UI_ModeLiteral_type"),
 				 AmaltheaPackage.eINSTANCE.getModeLiteral_ContainingMode(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**

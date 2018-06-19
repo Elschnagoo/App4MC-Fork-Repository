@@ -73,14 +73,12 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_HwFeature_containingCategory_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeature_containingCategory_feature", "_UI_HwFeature_type"),
 				 AmaltheaPackage.eINSTANCE.getHwFeature_ContainingCategory(),
+				 true,
 				 false,
-				 false,
-				 false,
+				 true,
 				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
+				 null,
+				 null));
 	}
 
 	/**

@@ -14294,13 +14294,22 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE__SEMAPHORE_ACCESSES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE__REFERRING_COMPONENTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Semaphore</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+	int SEMAPHORE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -20194,13 +20203,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_PROCESS__MAPPINGS = ABSTRACT_MEMORY_ELEMENT__MAPPINGS;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROCESS__REFERRING_COMPONENTS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Process</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PROCESS_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_PROCESS_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -20537,6 +20555,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
+
+	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS__REFERRING_COMPONENTS = ABSTRACT_PROCESS__REFERRING_COMPONENTS;
 
 	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
@@ -21445,13 +21472,22 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_EVENT__COMMUNICATION_OVERHEAD_IN_BIT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_EVENT__REFERRING_COMPONENTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Os Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OS_EVENT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+	int OS_EVENT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -21874,6 +21910,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK__MAPPINGS = PROCESS__MAPPINGS;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__REFERRING_COMPONENTS = PROCESS__REFERRING_COMPONENTS;
+
+	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22028,6 +22073,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ISR__MAPPINGS = PROCESS__MAPPINGS;
 
 	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR__REFERRING_COMPONENTS = PROCESS__REFERRING_COMPONENTS;
+
+	/**
 	 * The feature id for the '<em><b>Call Graph</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22171,6 +22225,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PROTOTYPE__MAPPINGS = ABSTRACT_PROCESS__MAPPINGS;
+
+	/**
+	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PROTOTYPE__REFERRING_COMPONENTS = ABSTRACT_PROCESS__REFERRING_COMPONENTS;
 
 	/**
 	 * The feature id for the '<em><b>Preemption</b></em>' attribute.
@@ -33239,6 +33302,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getSemaphore_SemaphoreAccesses();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Semaphore#getReferringComponents <em>Referring Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referring Components</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Semaphore#getReferringComponents()
+	 * @see #getSemaphore()
+	 * @generated
+	 */
+	EReference getSemaphore_ReferringComponents();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Scheduler <em>Scheduler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35503,6 +35577,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getAbstractProcess();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.AbstractProcess#getReferringComponents <em>Referring Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referring Components</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.AbstractProcess#getReferringComponents()
+	 * @see #getAbstractProcess()
+	 * @generated
+	 */
+	EReference getAbstractProcess_ReferringComponents();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.CustomEntity <em>Custom Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35978,6 +36063,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOsEvent_CommunicationOverheadInBit();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.OsEvent#getReferringComponents <em>Referring Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referring Components</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.OsEvent#getReferringComponents()
+	 * @see #getOsEvent()
+	 * @generated
+	 */
+	EReference getOsEvent_ReferringComponents();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger <em>Inter Process Trigger</em>}'.
