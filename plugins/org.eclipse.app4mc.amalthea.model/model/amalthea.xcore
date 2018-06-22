@@ -23,7 +23,7 @@
 
 @Ecore(
 	nsPrefix="am",
-	nsURI="http://app4mc.eclipse.org/amalthea/0.9.0"
+	nsURI="http://app4mc.eclipse.org/amalthea/0.9.1"
 )
 
 package org.eclipse.app4mc.amalthea.model
@@ -45,7 +45,7 @@ import java.nio.charset.StandardCharsets
 class Amalthea extends BaseObject
 {
 	derived readonly String version get {
-		return "0.9.0"
+		return "0.9.1"
 	}
 	
 	contains CommonElements commonElements
