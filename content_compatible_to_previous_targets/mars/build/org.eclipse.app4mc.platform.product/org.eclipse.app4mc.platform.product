@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.9.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipse.app4mc.platform.ide/about.png"/>
       <text>
          APP4MC Tool Platform
 
-(c) Copyright Eclipse APP4MC contributors and others. 2016. 
+(c) Copyright Eclipse APP4MC contributors and others. 2018. 
 All rights reserved.
 
-Version 0.9.0
+Version 0.9.1
       </text>
    </aboutInfo>
 
