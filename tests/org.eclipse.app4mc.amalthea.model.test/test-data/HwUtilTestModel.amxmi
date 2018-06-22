@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="PuDef1" features="category2/feature1?type=HwFeature"/>
     <definitions xsi:type="am:MemoryDefinition" name="MemDef1">
