@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.app4mc.platform_0.9.0.qualifier.jar" id="org.eclipse.app4mc.platform" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.platform_0.9.1.qualifier.jar" id="org.eclipse.app4mc.platform" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.platform"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.platform.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.platform.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.platform.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.platform.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.platform"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.editors_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.editors_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.editors"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.editors.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.editors.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.editors"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.multicore_0.9.0.qualifier.jar" id="org.eclipse.app4mc.multicore" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.multicore_0.9.1.qualifier.jar" id="org.eclipse.app4mc.multicore" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.multicore"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.multicore.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.multicore.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.multicore.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.multicore.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.multicore"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.export_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.export" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.export_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.export" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.export"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.export.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.export.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.export.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.export.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.export"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.tracing_0.9.0.qualifier.jar" id="org.eclipse.app4mc.tracing" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.tracing_0.9.1.qualifier.jar" id="org.eclipse.app4mc.tracing" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.tracing"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.tracing.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.tracing.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.tracing.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.tracing.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.tracing"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.examples_0.9.0.qualifier.jar" id="org.eclipse.app4mc.examples" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.examples_0.9.1.qualifier.jar" id="org.eclipse.app4mc.examples" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.examples"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.examples.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.examples.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.examples.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.examples.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.examples"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.import_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.import" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.import_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.import" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.import"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.import.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.import.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.import.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.import.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.import"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.validation_0.9.0.qualifier.jar" id="org.eclipse.app4mc.validation" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.validation_0.9.1.qualifier.jar" id="org.eclipse.app4mc.validation" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.validation"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.validation.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.validation.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.validation.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.validation.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.validation"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.models_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.models" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.models_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.models" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.model"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.models.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.models.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.models.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.models.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.model"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.converters_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.converters_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.converters"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.converters.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.converters.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.converters.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.converters"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.edit_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.edit" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.edit_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.edit" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.edit"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.edit.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.edit.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.edit.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.edit.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.edit"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.docu_0.9.0.qualifier.jar" id="org.eclipse.app4mc.docu" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.docu_0.9.1.qualifier.jar" id="org.eclipse.app4mc.docu" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.docu"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.docu.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.docu.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.docu.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.docu.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.docu"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.workflow.mwe_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.mwe" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.workflow.mwe_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.mwe" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.workflow"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.workflow.scripting_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.scripting" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.workflow.scripting_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.scripting" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.workflow"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.workflow.mwe.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.mwe.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.workflow.mwe.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.mwe.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.workflow"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.amalthea.workflow.scripting.sdk_0.9.0.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk" version="0.9.0.qualifier">
+   <feature url="features/org.eclipse.app4mc.amalthea.workflow.scripting.sdk_0.9.1.qualifier.jar" id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk" version="0.9.1.qualifier">
       <category name="org.eclipse.app4mc.amalthea.workflow"/>
    </feature>
    <category-def name="org.eclipse.app4mc.platform" label="APP4MC Tool Platform"/>

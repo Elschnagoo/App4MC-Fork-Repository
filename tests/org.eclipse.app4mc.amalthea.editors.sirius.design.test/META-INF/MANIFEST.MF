@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Sirius Editors Test
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.editors.sirius.design.test
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 0.9.1.qualifier
 Fragment-Host: org.eclipse.app4mc.amalthea.editors.sirius.design
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse APP4MC
