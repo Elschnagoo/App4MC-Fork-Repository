@@ -16,10 +16,13 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -28,7 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * --> <!-- end-user-doc -->
  * @generated
  */
-public class TimeItemProvider extends AbstractTimeItemProvider {
+public class TimeItemProvider extends QuantityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -48,13 +51,60 @@ public class TimeItemProvider extends AbstractTimeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addValuePropertyDescriptor(object);
+			addUnitPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Time_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Time_value_feature", "_UI_Time_type"),
+				 AmaltheaPackage.eINSTANCE.getTime_Value(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unit feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnitPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Time_unit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Time_unit_feature", "_UI_Time_type"),
+				 AmaltheaPackage.eINSTANCE.getTime_Unit(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Time.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -102,6 +152,13 @@ public class TimeItemProvider extends AbstractTimeItemProvider {
 	 */
 	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Time.class)) {
+			case AmaltheaPackage.TIME__VALUE:
+			case AmaltheaPackage.TIME__UNIT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

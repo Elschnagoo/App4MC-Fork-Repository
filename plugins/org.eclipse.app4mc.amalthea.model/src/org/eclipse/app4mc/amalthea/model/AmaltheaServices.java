@@ -147,17 +147,17 @@ public class AmaltheaServices {
 	 * This method is used to convert the value of Time/TimeObject element's value
 	 * to BigInteger in Pico Seconds
 	 * 
-	 * @param abstractTime
-	 *            AbstractTime object
+	 * @param time
+	 *            Time object
 	 * @return value BigInteger in Pico Seconds
 	 */
-	public static BigInteger convertToPicoSeconds(AbstractTime abstractTime) {
+	public static BigInteger convertToPicoSeconds(Time time) {
 
-		BigInteger timeValue = abstractTime.getValue();
+		BigInteger timeValue = time.getValue();
 
 		if (timeValue != null) {
 
-			switch (abstractTime.getUnit()) {
+			switch (time.getUnit()) {
 			case _UNDEFINED_:
 				return null;
 			case PS:
@@ -220,17 +220,16 @@ public class AmaltheaServices {
 	}
 
 	/**
-	 * This method is used to compare AbstractTime objects (Time/TimeObject) on the
-	 * basis of their values (obtained in pico seconds after applying the conversion
-	 * based on TimeUnit)
+	 * This method is used to compare Time objects on the basis of their values
+	 * (obtained in pico seconds after applying the conversion based on TimeUnit)
 	 * 
 	 * @param t1
-	 *            AbstractTime object
+	 *            Time object
 	 * @param t2
-	 *            AbstractTime object
+	 *            Time object
 	 * @return -1 ,0 or 1
 	 */
-	public static int compareTimes(final AbstractTime t1, final AbstractTime t2) {
+	public static int compareTimes(final Time t1, final Time t2) {
 		if (t1 == null || t2 == null) {
 			throw new NullPointerException();
 		}

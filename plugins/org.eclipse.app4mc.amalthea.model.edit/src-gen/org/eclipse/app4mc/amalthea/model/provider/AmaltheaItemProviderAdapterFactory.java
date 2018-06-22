@@ -657,29 +657,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeObject} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TimeObjectItemProvider timeObjectItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTimeObjectAdapter() {
-		if (timeObjectItemProvider == null) {
-			timeObjectItemProvider = new TimeObjectItemProvider(this);
-		}
-
-		return timeObjectItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Deviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6231,7 +6208,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (floatObjectItemProvider != null) floatObjectItemProvider.dispose();
 		if (doubleObjectItemProvider != null) doubleObjectItemProvider.dispose();
 		if (booleanObjectItemProvider != null) booleanObjectItemProvider.dispose();
-		if (timeObjectItemProvider != null) timeObjectItemProvider.dispose();
 		if (deviationItemProvider != null) deviationItemProvider.dispose();
 		if (weibullParametersItemProvider != null) weibullParametersItemProvider.dispose();
 		if (weibullEstimatorsItemProvider != null) weibullEstimatorsItemProvider.dispose();

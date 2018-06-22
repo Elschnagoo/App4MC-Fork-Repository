@@ -20,7 +20,6 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -185,7 +184,6 @@ import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
@@ -293,7 +291,7 @@ public class CustomItemProviderService {
     }
   }
   
-  private static String getTimeText(final AbstractTime time) {
+  private static String getTimeText(final Time time) {
     if ((time == null)) {
       return "<time>";
     }
@@ -419,7 +417,7 @@ public class CustomItemProviderService {
     if (!_matched) {
       if (bound instanceof Time) {
         _matched=true;
-        _switchResult = CustomItemProviderService.getTimeText(((AbstractTime)bound));
+        _switchResult = CustomItemProviderService.getTimeText(((Time)bound));
       }
     }
     return _switchResult;
@@ -549,15 +547,15 @@ public class CustomItemProviderService {
         }
       }
       if (!_matched) {
-        if (object instanceof TimeObject) {
+        if (object instanceof Time) {
           _matched=true;
           String _xifexpression = null;
-          BigInteger _value = ((TimeObject)object).getValue();
+          BigInteger _value = ((Time)object).getValue();
           boolean _tripleEquals = (_value == null);
           if (_tripleEquals) {
             _xifexpression = "null";
           } else {
-            _xifexpression = CustomItemProviderService.getTimeText(((AbstractTime)object));
+            _xifexpression = CustomItemProviderService.getTimeText(((Time)object));
           }
           _switchResult = _xifexpression;
         }
@@ -770,40 +768,6 @@ public class CustomItemProviderService {
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.LONG_OBJECT__VALUE)) {
       _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-      CustomItemProviderService.addParentLabelNotification(list, notification);
-    }
-    return list;
-  }
-  
-  /**
-   * TimeObjectItemProvider
-   */
-  public static String getTimeObjectItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof TimeObject)) {
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
-      return (_containingFeatureName + _timeText);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getTimeObjectItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(TimeObject.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TIME_OBJECT__VALUE)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TIME_OBJECT__UNIT)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
@@ -1198,7 +1162,7 @@ public class CustomItemProviderService {
   public static String getTimeItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof Time)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeText = CustomItemProviderService.getTimeText(((AbstractTime)object));
+      String _timeText = CustomItemProviderService.getTimeText(((Time)object));
       return (_containingFeatureName + _timeText);
     } else {
       return defaultText;

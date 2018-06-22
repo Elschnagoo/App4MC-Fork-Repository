@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
@@ -331,7 +330,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
@@ -504,12 +502,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createQuantityAdapter();
 			}
 			@Override
-			public Adapter caseTimeComparable(Comparable<AbstractTime> object) {
+			public Adapter caseTimeComparable(Comparable<Time> object) {
 				return createTimeComparableAdapter();
-			}
-			@Override
-			public Adapter caseAbstractTime(AbstractTime object) {
-				return createAbstractTimeAdapter();
 			}
 			@Override
 			public Adapter caseTime(Time object) {
@@ -578,10 +572,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBooleanObject(BooleanObject object) {
 				return createBooleanObjectAdapter();
-			}
-			@Override
-			public Adapter caseTimeObject(TimeObject object) {
-				return createTimeObjectAdapter();
 			}
 			@Override
 			public <T> Adapter caseDeviation(Deviation<T> object) {
@@ -2120,30 +2110,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>
+	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
 	 * @generated
 	 */
 	public Adapter createTimeComparableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.AbstractTime <em>Abstract Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime
-	 * @generated
-	 */
-	public Adapter createAbstractTimeAdapter() {
 		return null;
 	}
 
@@ -2382,20 +2358,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBooleanObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeObject <em>Time Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeObject
-	 * @generated
-	 */
-	public Adapter createTimeObjectAdapter() {
 		return null;
 	}
 

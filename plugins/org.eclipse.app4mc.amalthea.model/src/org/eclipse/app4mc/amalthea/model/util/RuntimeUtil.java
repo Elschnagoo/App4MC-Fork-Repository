@@ -27,7 +27,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.commons.math3.special.Gamma;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
@@ -1003,7 +1002,7 @@ public class RuntimeUtil {
 		} else if (distribution instanceof GaussDistribution) {
 			GaussDistribution<? extends Time> gd = (GaussDistribution<? extends Time>) distribution;
 			// mean = gd.getMean();
-			if (gd.getMean() == null || !(gd.getMean() instanceof AbstractTime)) {
+			if (gd.getMean() == null || !(gd.getMean() instanceof Time)) {
 				mean = TimeUtil.multiplyTime(TimeUtil.addTimes(lowerBound, upperBound), 0.5);
 			} else {
 				mean = gd.getMean();

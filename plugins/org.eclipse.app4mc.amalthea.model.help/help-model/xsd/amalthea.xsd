@@ -912,21 +912,15 @@ Needs to be extended by other classes.</xsd:documentation>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
   <xsd:element name="TimeComparable" type="am:TimeComparable"/>
-  <xsd:complexType abstract="true" name="AbstractTime">
-    <xsd:complexContent>
-      <xsd:extension base="am:TimeComparable">
-        <xsd:attribute name="value" type="xsd:string"/>
-        <xsd:attribute name="unit" type="am:TimeUnit"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="AbstractTime" type="am:AbstractTime"/>
   <xsd:complexType name="Time">
     <xsd:annotation>
       <xsd:documentation>General time class to define time value and unit.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
+      <xsd:extension base="am:Quantity">
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="unit" type="am:TimeUnit"/>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Time" type="am:Time">
@@ -1171,12 +1165,6 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Object for using the elementary datatype boolean as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TimeObject">
-    <xsd:complexContent>
-      <xsd:extension base="am:AbstractTime"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TimeObject" type="am:TimeObject"/>
   <xsd:complexType name="Deviation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="lowerBound" type="ecore:EObject"/>

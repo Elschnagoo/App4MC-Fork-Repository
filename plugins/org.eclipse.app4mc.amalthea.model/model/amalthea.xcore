@@ -249,9 +249,12 @@ enum TimeUnit
 	ps
 }
 
-interface TimeComparable wraps java.lang.Comparable<AbstractTime> {}
+interface TimeComparable wraps java.lang.Comparable<Time> {}
 
-abstract class AbstractTime extends TimeComparable
+/*
+ * General time class to define time value and unit.
+ */
+class Time extends Quantity, Value, TimeComparable
 {
 	BigInteger value = "0"
 	TimeUnit unit
@@ -259,15 +262,11 @@ abstract class AbstractTime extends TimeComparable
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
-	op int compareTo(AbstractTime time) {
+	op int compareTo(Time time) {
 		return AmaltheaServices.compareTimes(this, time)
 	}
 }
 
-/*
- * General time class to define time value and unit.
- */
-class Time extends AbstractTime, Quantity {}
 
 /*
  * Frequency units (enumeration of available units)
@@ -503,7 +502,6 @@ class BooleanObject extends Value
 	boolean[1] value = "false"
 }
 
-class TimeObject extends AbstractTime, Value {}
 
 class Deviation<T>
 {

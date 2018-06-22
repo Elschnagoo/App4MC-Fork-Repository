@@ -18,7 +18,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
@@ -331,7 +330,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
@@ -580,23 +578,16 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.TIME_COMPARABLE: {
-				@SuppressWarnings("unchecked") Comparable<AbstractTime> timeComparable = (Comparable<AbstractTime>)theEObject;
+				@SuppressWarnings("unchecked") Comparable<Time> timeComparable = (Comparable<Time>)theEObject;
 				T1 result = caseTimeComparable(timeComparable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.ABSTRACT_TIME: {
-				AbstractTime abstractTime = (AbstractTime)theEObject;
-				T1 result = caseAbstractTime(abstractTime);
-				if (result == null) result = caseTimeComparable(abstractTime);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME: {
 				Time time = (Time)theEObject;
 				T1 result = caseTime(time);
-				if (result == null) result = caseAbstractTime(time);
 				if (result == null) result = caseQuantity(time);
+				if (result == null) result = caseValue(time);
 				if (result == null) result = caseTimeComparable(time);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -708,15 +699,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				BooleanObject booleanObject = (BooleanObject)theEObject;
 				T1 result = caseBooleanObject(booleanObject);
 				if (result == null) result = caseValue(booleanObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIME_OBJECT: {
-				TimeObject timeObject = (TimeObject)theEObject;
-				T1 result = caseTimeObject(timeObject);
-				if (result == null) result = caseAbstractTime(timeObject);
-				if (result == null) result = caseValue(timeObject);
-				if (result == null) result = caseTimeComparable(timeObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3961,22 +3943,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeComparable(Comparable<AbstractTime> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Time</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseAbstractTime(AbstractTime object) {
+	public T1 caseTimeComparable(Comparable<Time> object) {
 		return null;
 	}
 
@@ -4232,21 +4199,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseBooleanObject(BooleanObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTimeObject(TimeObject object) {
 		return null;
 	}
 

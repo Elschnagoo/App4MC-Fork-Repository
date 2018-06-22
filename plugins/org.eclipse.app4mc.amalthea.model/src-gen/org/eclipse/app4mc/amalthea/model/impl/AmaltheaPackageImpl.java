@@ -19,7 +19,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -380,7 +379,6 @@ import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
@@ -593,13 +591,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractTimeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass timeEClass = null;
 
 	/**
@@ -713,13 +704,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass booleanObjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass timeObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3836,53 +3820,44 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAbstractTime() {
-		return abstractTimeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractTime_Value() {
-		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractTime_Unit() {
-		return (EAttribute)abstractTimeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAbstractTime__ToString() {
-		return abstractTimeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAbstractTime__CompareTo__AbstractTime() {
-		return abstractTimeEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTime() {
 		return timeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTime_Value() {
+		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTime_Unit() {
+		return (EAttribute)timeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__ToString() {
+		return timeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__CompareTo__Time() {
+		return timeEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4261,15 +4236,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getBooleanObject_Value() {
 		return (EAttribute)booleanObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTimeObject() {
-		return timeObjectEClass;
 	}
 
 	/**
@@ -12923,13 +12889,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		timeComparableEClass = createEClass(TIME_COMPARABLE);
 
-		abstractTimeEClass = createEClass(ABSTRACT_TIME);
-		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__VALUE);
-		createEAttribute(abstractTimeEClass, ABSTRACT_TIME__UNIT);
-		createEOperation(abstractTimeEClass, ABSTRACT_TIME___TO_STRING);
-		createEOperation(abstractTimeEClass, ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME);
-
 		timeEClass = createEClass(TIME);
+		createEAttribute(timeEClass, TIME__VALUE);
+		createEAttribute(timeEClass, TIME__UNIT);
+		createEOperation(timeEClass, TIME___TO_STRING);
+		createEOperation(timeEClass, TIME___COMPARE_TO__TIME);
 
 		frequencyEClass = createEClass(FREQUENCY);
 		createEAttribute(frequencyEClass, FREQUENCY__VALUE);
@@ -12988,8 +12952,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		booleanObjectEClass = createEClass(BOOLEAN_OBJECT);
 		createEAttribute(booleanObjectEClass, BOOLEAN_OBJECT__VALUE);
-
-		timeObjectEClass = createEClass(TIME_OBJECT);
 
 		deviationEClass = createEClass(DEVIATION);
 		createEReference(deviationEClass, DEVIATION__LOWER_BOUND);
@@ -14305,9 +14267,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
 		needDeviationEClass.getESuperTypes().add(this.getNeed());
 		needConstantEClass.getESuperTypes().add(this.getNeed());
-		abstractTimeEClass.getESuperTypes().add(this.getTimeComparable());
-		timeEClass.getESuperTypes().add(this.getAbstractTime());
 		timeEClass.getESuperTypes().add(this.getQuantity());
+		timeEClass.getESuperTypes().add(this.getValue());
+		timeEClass.getESuperTypes().add(this.getTimeComparable());
 		frequencyEClass.getESuperTypes().add(this.getQuantity());
 		voltageEClass.getESuperTypes().add(this.getQuantity());
 		dataSizeEClass.getESuperTypes().add(this.getQuantity());
@@ -14322,8 +14284,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		floatObjectEClass.getESuperTypes().add(this.getValue());
 		doubleObjectEClass.getESuperTypes().add(this.getValue());
 		booleanObjectEClass.getESuperTypes().add(this.getValue());
-		timeObjectEClass.getESuperTypes().add(this.getAbstractTime());
-		timeObjectEClass.getESuperTypes().add(this.getValue());
 		EGenericType g1 = createEGenericType(this.getDistribution());
 		EGenericType g2 = createEGenericType(weibullDistributionEClass_T);
 		g1.getETypeArguments().add(g2);
@@ -14778,18 +14738,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(quantityEClass, Quantity.class, "Quantity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(timeComparableEClass, Comparable.class, "TimeComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>");
-
-		initEClass(abstractTimeEClass, AbstractTime.class, "AbstractTime", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractTime_Value(), theEcorePackage.getEBigInteger(), "value", "0", 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, AbstractTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAbstractTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getAbstractTime__CompareTo__AbstractTime(), theEcorePackage.getEInt(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAbstractTime(), "time", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEClass(timeComparableEClass, Comparable.class, "TimeComparable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>");
 
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTime_Value(), theEcorePackage.getEBigInteger(), "value", "0", 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTime_Unit(), this.getTimeUnit(), "unit", null, 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__CompareTo__Time(), theEcorePackage.getEInt(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTime(), "time", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(frequencyEClass, Frequency.class, "Frequency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrequency_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -14856,8 +14814,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(booleanObjectEClass, BooleanObject.class, "BooleanObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanObject_Value(), theEcorePackage.getEBoolean(), "value", "false", 1, 1, BooleanObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(timeObjectEClass, TimeObject.class, "TimeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(deviationEClass, Deviation.class, "Deviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(deviationEClass_T);

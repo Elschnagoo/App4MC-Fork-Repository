@@ -14,13 +14,30 @@
 
 package org.eclipse.app4mc.amalthea.validation.checks.impl;
 
-import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.*;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_SINUS_FUNCTION;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_SINUS_FUNCTION__PERIOD;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__PERIOD;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVATION;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVATION__MAX;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVATION__MIN;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVATION__OFFSET;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVATION__RECURRENCE;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS__OFFSET;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.RUNNABLE;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.RUNNABLE__DEADLINE;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION__MAX;
+import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION__MIN;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataRate;
@@ -136,10 +153,10 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkUnits(final Amalthea model) {
 
-		// AbstractTime -> TimeUnit
-		for (final AbstractTime element : getObjectHelper().getAllInstancesAndInheritedOf(model, AbstractTime.class)) {
+		// Time -> TimeUnit
+		for (final Time element : getObjectHelper().getAllInstancesAndInheritedOf(model, Time.class)) {
 			if (element.getUnit() == TimeUnit._UNDEFINED_) {
-				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getAbstractTime_Unit(),
+				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getTime_Unit(),
 						getObjectHelper().getClassName(element), getObjectHelper().getName(element.eContainer()));
 			}
 		}
@@ -204,7 +221,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 				if (!found) found = (classID == CLOCK_MULTIPLIER_LIST_ENTRY && featureID == CLOCK_MULTIPLIER_LIST_ENTRY__TIME);
 				
 				if (found) {
-					this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getAbstractTime_Value(),
+					this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getTime_Value(),
 							eClass.getName(), getObjectHelper().getName(element.eContainer()),
 							eFeature.getName(), "greater than zero");
 				}
@@ -223,7 +240,7 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 				if (!found) found = (classID == PERIODIC_STIMULUS && featureID == PERIODIC_STIMULUS__OFFSET);
 				
 				if (found) {
-					this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getAbstractTime_Value(),
+					this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getTime_Value(),
 							eClass.getName(), getObjectHelper().getName(element.eContainer()),
 							eFeature.getName(), "positive or zero");
 				}

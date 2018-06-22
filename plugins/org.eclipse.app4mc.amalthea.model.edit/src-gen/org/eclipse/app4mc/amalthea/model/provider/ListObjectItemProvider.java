@@ -156,6 +156,11 @@ public class ListObjectItemProvider extends ValueItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
 				 AmaltheaFactory.eINSTANCE.createListObject()));
 
 		newChildDescriptors.add
@@ -197,11 +202,6 @@ public class ListObjectItemProvider extends ValueItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
 				 AmaltheaFactory.eINSTANCE.createBooleanObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getListObject_Values(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 }

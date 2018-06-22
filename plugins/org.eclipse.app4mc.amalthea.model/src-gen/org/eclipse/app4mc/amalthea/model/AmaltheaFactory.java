@@ -248,15 +248,6 @@ public interface AmaltheaFactory extends EFactory {
 	BooleanObject createBooleanObject();
 
 	/**
-	 * Returns a new object of class '<em>Time Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time Object</em>'.
-	 * @generated
-	 */
-	TimeObject createTimeObject();
-
-	/**
 	 * Returns a new object of class '<em>Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

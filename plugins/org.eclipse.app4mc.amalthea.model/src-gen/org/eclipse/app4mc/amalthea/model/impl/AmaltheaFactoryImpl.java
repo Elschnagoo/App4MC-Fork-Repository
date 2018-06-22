@@ -309,7 +309,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
@@ -409,7 +408,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.FLOAT_OBJECT: return createFloatObject();
 			case AmaltheaPackage.DOUBLE_OBJECT: return createDoubleObject();
 			case AmaltheaPackage.BOOLEAN_OBJECT: return createBooleanObject();
-			case AmaltheaPackage.TIME_OBJECT: return createTimeObject();
 			case AmaltheaPackage.DEVIATION: return createDeviation();
 			case AmaltheaPackage.WEIBULL_PARAMETERS: return createWeibullParameters();
 			case AmaltheaPackage.WEIBULL_ESTIMATORS: return createWeibullEstimators();
@@ -1149,16 +1147,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public BooleanObject createBooleanObject() {
 		BooleanObjectImpl booleanObject = new BooleanObjectImpl();
 		return booleanObject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TimeObject createTimeObject() {
-		TimeObjectImpl timeObject = new TimeObjectImpl();
-		return timeObject;
 	}
 
 	/**

@@ -1452,10 +1452,10 @@ public interface AmaltheaPackage extends EPackage {
 	int QUANTITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}' class.
+	 * The meta object id for the '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>
+	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeComparable()
 	 * @generated
 	 */
@@ -1480,70 +1480,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_COMPARABLE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.AbstractTimeImpl <em>Abstract Time</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AbstractTimeImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractTime()
-	 * @generated
-	 */
-	int ABSTRACT_TIME = 23;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME__VALUE = TIME_COMPARABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME__UNIT = TIME_COMPARABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Abstract Time</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME_FEATURE_COUNT = TIME_COMPARABLE_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>To String</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME___TO_STRING = TIME_COMPARABLE_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Compare To</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME = TIME_COMPARABLE_OPERATION_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Abstract Time</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME_OPERATION_COUNT = TIME_COMPARABLE_OPERATION_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeImpl <em>Time</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1551,7 +1487,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTime()
 	 * @generated
 	 */
-	int TIME = 24;
+	int TIME = 23;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1560,7 +1496,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME__VALUE = ABSTRACT_TIME__VALUE;
+	int TIME__VALUE = QUANTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -1569,7 +1505,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME__UNIT = ABSTRACT_TIME__UNIT;
+	int TIME__UNIT = QUANTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Time</em>' class.
@@ -1578,7 +1514,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FEATURE_COUNT = ABSTRACT_TIME_FEATURE_COUNT + 0;
+	int TIME_FEATURE_COUNT = QUANTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>To String</em>' operation.
@@ -1587,7 +1523,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME___TO_STRING = ABSTRACT_TIME___TO_STRING;
+	int TIME___TO_STRING = QUANTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Compare To</em>' operation.
@@ -1596,7 +1532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME___COMPARE_TO__ABSTRACTTIME = ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME;
+	int TIME___COMPARE_TO__TIME = QUANTITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Time</em>' class.
@@ -1605,7 +1541,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 0;
+	int TIME_OPERATION_COUNT = QUANTITY_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl <em>Frequency</em>}' class.
@@ -1615,7 +1551,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequency()
 	 * @generated
 	 */
-	int FREQUENCY = 25;
+	int FREQUENCY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1670,7 +1606,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVoltage()
 	 * @generated
 	 */
-	int VOLTAGE = 26;
+	int VOLTAGE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1725,7 +1661,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSize()
 	 * @generated
 	 */
-	int DATA_SIZE = 27;
+	int DATA_SIZE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1798,7 +1734,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRateComparable()
 	 * @generated
 	 */
-	int DATA_RATE_COMPARABLE = 28;
+	int DATA_RATE_COMPARABLE = 27;
 
 	/**
 	 * The number of structural features of the '<em>Data Rate Comparable</em>' class.
@@ -1826,7 +1762,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRate()
 	 * @generated
 	 */
-	int DATA_RATE = 29;
+	int DATA_RATE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1890,7 +1826,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomProperty()
 	 * @generated
 	 */
-	int CUSTOM_PROPERTY = 30;
+	int CUSTOM_PROPERTY = 29;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1936,7 +1872,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 31;
+	int VALUE = 30;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -1964,7 +1900,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getListObject()
 	 * @generated
 	 */
-	int LIST_OBJECT = 32;
+	int LIST_OBJECT = 31;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -2001,7 +1937,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStringObject()
 	 * @generated
 	 */
-	int STRING_OBJECT = 33;
+	int STRING_OBJECT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2038,7 +1974,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBigIntegerObject()
 	 * @generated
 	 */
-	int BIG_INTEGER_OBJECT = 34;
+	int BIG_INTEGER_OBJECT = 33;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2075,7 +2011,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReferenceObject()
 	 * @generated
 	 */
-	int REFERENCE_OBJECT = 35;
+	int REFERENCE_OBJECT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' reference.
@@ -2112,7 +2048,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIntegerObject()
 	 * @generated
 	 */
-	int INTEGER_OBJECT = 36;
+	int INTEGER_OBJECT = 35;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2149,7 +2085,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLongObject()
 	 * @generated
 	 */
-	int LONG_OBJECT = 37;
+	int LONG_OBJECT = 36;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2186,7 +2122,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFloatObject()
 	 * @generated
 	 */
-	int FLOAT_OBJECT = 38;
+	int FLOAT_OBJECT = 37;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2223,7 +2159,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDoubleObject()
 	 * @generated
 	 */
-	int DOUBLE_OBJECT = 39;
+	int DOUBLE_OBJECT = 38;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2260,7 +2196,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBooleanObject()
 	 * @generated
 	 */
-	int BOOLEAN_OBJECT = 40;
+	int BOOLEAN_OBJECT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2290,70 +2226,6 @@ public interface AmaltheaPackage extends EPackage {
 	int BOOLEAN_OBJECT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeObjectImpl <em>Time Object</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeObjectImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeObject()
-	 * @generated
-	 */
-	int TIME_OBJECT = 41;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT__VALUE = ABSTRACT_TIME__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT__UNIT = ABSTRACT_TIME__UNIT;
-
-	/**
-	 * The number of structural features of the '<em>Time Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT_FEATURE_COUNT = ABSTRACT_TIME_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>To String</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT___TO_STRING = ABSTRACT_TIME___TO_STRING;
-
-	/**
-	 * The operation id for the '<em>Compare To</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT___COMPARE_TO__ABSTRACTTIME = ABSTRACT_TIME___COMPARE_TO__ABSTRACTTIME;
-
-	/**
-	 * The number of operations of the '<em>Time Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_OBJECT_OPERATION_COUNT = ABSTRACT_TIME_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl <em>Deviation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2361,7 +2233,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeviation()
 	 * @generated
 	 */
-	int DEVIATION = 42;
+	int DEVIATION = 40;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
@@ -2416,7 +2288,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDistribution()
 	 * @generated
 	 */
-	int DISTRIBUTION = 43;
+	int DISTRIBUTION = 41;
 
 	/**
 	 * The number of structural features of the '<em>Distribution</em>' class.
@@ -2444,7 +2316,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullDistribution()
 	 * @generated
 	 */
-	int WEIBULL_DISTRIBUTION = 44;
+	int WEIBULL_DISTRIBUTION = 42;
 
 	/**
 	 * The number of structural features of the '<em>Weibull Distribution</em>' class.
@@ -2472,7 +2344,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullParameters()
 	 * @generated
 	 */
-	int WEIBULL_PARAMETERS = 45;
+	int WEIBULL_PARAMETERS = 43;
 
 	/**
 	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
@@ -2518,7 +2390,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullEstimators()
 	 * @generated
 	 */
-	int WEIBULL_ESTIMATORS = 46;
+	int WEIBULL_ESTIMATORS = 44;
 
 	/**
 	 * The feature id for the '<em><b>Mean</b></em>' containment reference.
@@ -2564,7 +2436,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getUniformDistribution()
 	 * @generated
 	 */
-	int UNIFORM_DISTRIBUTION = 47;
+	int UNIFORM_DISTRIBUTION = 45;
 
 	/**
 	 * The number of structural features of the '<em>Uniform Distribution</em>' class.
@@ -2592,7 +2464,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundaries()
 	 * @generated
 	 */
-	int BOUNDARIES = 48;
+	int BOUNDARIES = 46;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
@@ -2629,7 +2501,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGaussDistribution()
 	 * @generated
 	 */
-	int GAUSS_DISTRIBUTION = 49;
+	int GAUSS_DISTRIBUTION = 47;
 
 	/**
 	 * The feature id for the '<em><b>Sd</b></em>' containment reference.
@@ -2675,7 +2547,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBetaDistribution()
 	 * @generated
 	 */
-	int BETA_DISTRIBUTION = 50;
+	int BETA_DISTRIBUTION = 48;
 
 	/**
 	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
@@ -2721,7 +2593,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNumericStatistic()
 	 * @generated
 	 */
-	int NUMERIC_STATISTIC = 51;
+	int NUMERIC_STATISTIC = 49;
 
 	/**
 	 * The number of structural features of the '<em>Numeric Statistic</em>' class.
@@ -2749,7 +2621,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMinAvgMaxStatistic()
 	 * @generated
 	 */
-	int MIN_AVG_MAX_STATISTIC = 52;
+	int MIN_AVG_MAX_STATISTIC = 50;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' attribute.
@@ -2804,7 +2676,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleValueStatistic()
 	 * @generated
 	 */
-	int SINGLE_VALUE_STATISTIC = 53;
+	int SINGLE_VALUE_STATISTIC = 51;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2841,7 +2713,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 54;
+	int MODE = 52;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -2941,7 +2813,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLiteral()
 	 * @generated
 	 */
-	int MODE_LITERAL = 55;
+	int MODE_LITERAL = 53;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3050,7 +2922,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentsModel()
 	 * @generated
 	 */
-	int COMPONENTS_MODEL = 56;
+	int COMPONENTS_MODEL = 54;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3105,7 +2977,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISystem()
 	 * @generated
 	 */
-	int ISYSTEM = 57;
+	int ISYSTEM = 55;
 
 	/**
 	 * The feature id for the '<em><b>Component Instances</b></em>' containment reference list.
@@ -3169,7 +3041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 58;
+	int PORT = 56;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3278,7 +3150,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponent()
 	 * @generated
 	 */
-	int COMPONENT = 59;
+	int COMPONENT = 57;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3432,7 +3304,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComposite()
 	 * @generated
 	 */
-	int COMPOSITE = 60;
+	int COMPOSITE = 58;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3622,7 +3494,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 61;
+	int SYSTEM = 59;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3758,7 +3630,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentInstance()
 	 * @generated
 	 */
-	int COMPONENT_INSTANCE = 62;
+	int COMPONENT_INSTANCE = 60;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3867,7 +3739,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnector()
 	 * @generated
 	 */
-	int CONNECTOR = 63;
+	int CONNECTOR = 61;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3940,7 +3812,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getQualifiedPort()
 	 * @generated
 	 */
-	int QUALIFIED_PORT = 64;
+	int QUALIFIED_PORT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3995,7 +3867,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfacePort()
 	 * @generated
 	 */
-	int INTERFACE_PORT = 65;
+	int INTERFACE_PORT = 63;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4122,7 +3994,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConfigModel()
 	 * @generated
 	 */
-	int CONFIG_MODEL = 66;
+	int CONFIG_MODEL = 64;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4168,7 +4040,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventConfig()
 	 * @generated
 	 */
-	int EVENT_CONFIG = 67;
+	int EVENT_CONFIG = 65;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4223,7 +4095,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstraintsModel()
 	 * @generated
 	 */
-	int CONSTRAINTS_MODEL = 68;
+	int CONSTRAINTS_MODEL = 66;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4341,7 +4213,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableSequencingConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_SEQUENCING_CONSTRAINT = 69;
+	int RUNNABLE_SEQUENCING_CONSTRAINT = 67;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4459,7 +4331,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAffinityConstraint()
 	 * @generated
 	 */
-	int AFFINITY_CONSTRAINT = 70;
+	int AFFINITY_CONSTRAINT = 68;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4550,7 +4422,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSeparationConstraint()
 	 * @generated
 	 */
-	int SEPARATION_CONSTRAINT = 71;
+	int SEPARATION_CONSTRAINT = 69;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4641,7 +4513,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPairingConstraint()
 	 * @generated
 	 */
-	int PAIRING_CONSTRAINT = 72;
+	int PAIRING_CONSTRAINT = 70;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4732,7 +4604,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessConstraint()
 	 * @generated
 	 */
-	int PROCESS_CONSTRAINT = 73;
+	int PROCESS_CONSTRAINT = 71;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4769,7 +4641,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_CONSTRAINT = 74;
+	int RUNNABLE_CONSTRAINT = 72;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4806,7 +4678,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataConstraint()
 	 * @generated
 	 */
-	int DATA_CONSTRAINT = 75;
+	int DATA_CONSTRAINT = 73;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4843,7 +4715,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableSeparationConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_SEPARATION_CONSTRAINT = 76;
+	int RUNNABLE_SEPARATION_CONSTRAINT = 74;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4952,7 +4824,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessSeparationConstraint()
 	 * @generated
 	 */
-	int PROCESS_SEPARATION_CONSTRAINT = 77;
+	int PROCESS_SEPARATION_CONSTRAINT = 75;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5061,7 +4933,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSeparationConstraint()
 	 * @generated
 	 */
-	int DATA_SEPARATION_CONSTRAINT = 78;
+	int DATA_SEPARATION_CONSTRAINT = 76;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5170,7 +5042,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnablePairingConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_PAIRING_CONSTRAINT = 79;
+	int RUNNABLE_PAIRING_CONSTRAINT = 77;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5279,7 +5151,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPairingConstraint()
 	 * @generated
 	 */
-	int PROCESS_PAIRING_CONSTRAINT = 80;
+	int PROCESS_PAIRING_CONSTRAINT = 78;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5388,7 +5260,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataPairingConstraint()
 	 * @generated
 	 */
-	int DATA_PAIRING_CONSTRAINT = 81;
+	int DATA_PAIRING_CONSTRAINT = 79;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5497,7 +5369,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableConstraintTarget()
 	 * @generated
 	 */
-	int RUNNABLE_CONSTRAINT_TARGET = 82;
+	int RUNNABLE_CONSTRAINT_TARGET = 80;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Constraint Target</em>' class.
@@ -5525,7 +5397,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessConstraintTarget()
 	 * @generated
 	 */
-	int PROCESS_CONSTRAINT_TARGET = 83;
+	int PROCESS_CONSTRAINT_TARGET = 81;
 
 	/**
 	 * The number of structural features of the '<em>Process Constraint Target</em>' class.
@@ -5553,7 +5425,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataConstraintTarget()
 	 * @generated
 	 */
-	int DATA_CONSTRAINT_TARGET = 84;
+	int DATA_CONSTRAINT_TARGET = 82;
 
 	/**
 	 * The number of structural features of the '<em>Data Constraint Target</em>' class.
@@ -5581,7 +5453,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetMemory()
 	 * @generated
 	 */
-	int TARGET_MEMORY = 85;
+	int TARGET_MEMORY = 83;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5627,7 +5499,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetCore()
 	 * @generated
 	 */
-	int TARGET_CORE = 86;
+	int TARGET_CORE = 84;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5673,7 +5545,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetScheduler()
 	 * @generated
 	 */
-	int TARGET_SCHEDULER = 87;
+	int TARGET_SCHEDULER = 85;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5719,7 +5591,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelGroup()
 	 * @generated
 	 */
-	int LABEL_GROUP = 88;
+	int LABEL_GROUP = 86;
 
 	/**
 	 * The number of structural features of the '<em>Label Group</em>' class.
@@ -5747,7 +5619,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableGroup()
 	 * @generated
 	 */
-	int RUNNABLE_GROUP = 89;
+	int RUNNABLE_GROUP = 87;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Group</em>' class.
@@ -5775,7 +5647,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessGroup()
 	 * @generated
 	 */
-	int PROCESS_GROUP = 90;
+	int PROCESS_GROUP = 88;
 
 	/**
 	 * The number of structural features of the '<em>Process Group</em>' class.
@@ -5803,7 +5675,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEntityGroup()
 	 * @generated
 	 */
-	int LABEL_ENTITY_GROUP = 91;
+	int LABEL_ENTITY_GROUP = 89;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5849,7 +5721,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEntityGroup()
 	 * @generated
 	 */
-	int RUNNABLE_ENTITY_GROUP = 92;
+	int RUNNABLE_ENTITY_GROUP = 90;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5895,7 +5767,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEntityGroup()
 	 * @generated
 	 */
-	int PROCESS_ENTITY_GROUP = 93;
+	int PROCESS_ENTITY_GROUP = 91;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5941,7 +5813,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTagGroup()
 	 * @generated
 	 */
-	int TAG_GROUP = 94;
+	int TAG_GROUP = 92;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5987,7 +5859,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractEventChain()
 	 * @generated
 	 */
-	int ABSTRACT_EVENT_CHAIN = 95;
+	int ABSTRACT_EVENT_CHAIN = 93;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6069,7 +5941,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChain()
 	 * @generated
 	 */
-	int EVENT_CHAIN = 96;
+	int EVENT_CHAIN = 94;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6196,7 +6068,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSubEventChain()
 	 * @generated
 	 */
-	int SUB_EVENT_CHAIN = 97;
+	int SUB_EVENT_CHAIN = 95;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6278,7 +6150,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainItem()
 	 * @generated
 	 */
-	int EVENT_CHAIN_ITEM = 98;
+	int EVENT_CHAIN_ITEM = 96;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6324,7 +6196,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainReference()
 	 * @generated
 	 */
-	int EVENT_CHAIN_REFERENCE = 99;
+	int EVENT_CHAIN_REFERENCE = 97;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6379,7 +6251,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainContainer()
 	 * @generated
 	 */
-	int EVENT_CHAIN_CONTAINER = 100;
+	int EVENT_CHAIN_CONTAINER = 98;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6434,7 +6306,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimingConstraint()
 	 * @generated
 	 */
-	int TIMING_CONSTRAINT = 101;
+	int TIMING_CONSTRAINT = 99;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6525,7 +6397,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPhysicalSectionConstraint()
 	 * @generated
 	 */
-	int PHYSICAL_SECTION_CONSTRAINT = 102;
+	int PHYSICAL_SECTION_CONSTRAINT = 100;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6634,7 +6506,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronizationConstraint()
 	 * @generated
 	 */
-	int SYNCHRONIZATION_CONSTRAINT = 103;
+	int SYNCHRONIZATION_CONSTRAINT = 101;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6743,7 +6615,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventSynchronizationConstraint()
 	 * @generated
 	 */
-	int EVENT_SYNCHRONIZATION_CONSTRAINT = 104;
+	int EVENT_SYNCHRONIZATION_CONSTRAINT = 102;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6861,7 +6733,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainSynchronizationConstraint()
 	 * @generated
 	 */
-	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT = 105;
+	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT = 103;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6988,7 +6860,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDelayConstraint()
 	 * @generated
 	 */
-	int DELAY_CONSTRAINT = 106;
+	int DELAY_CONSTRAINT = 104;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7124,7 +6996,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainLatencyConstraint()
 	 * @generated
 	 */
-	int EVENT_CHAIN_LATENCY_CONSTRAINT = 107;
+	int EVENT_CHAIN_LATENCY_CONSTRAINT = 105;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7251,7 +7123,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRepetitionConstraint()
 	 * @generated
 	 */
-	int REPETITION_CONSTRAINT = 108;
+	int REPETITION_CONSTRAINT = 106;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7396,7 +7268,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeConstraint()
 	 * @generated
 	 */
-	int DATA_AGE_CONSTRAINT = 109;
+	int DATA_AGE_CONSTRAINT = 107;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7514,7 +7386,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAge()
 	 * @generated
 	 */
-	int DATA_AGE = 110;
+	int DATA_AGE = 108;
 
 	/**
 	 * The number of structural features of the '<em>Data Age</em>' class.
@@ -7542,7 +7414,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeCycle()
 	 * @generated
 	 */
-	int DATA_AGE_CYCLE = 111;
+	int DATA_AGE_CYCLE = 109;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cycle</b></em>' attribute.
@@ -7588,7 +7460,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeTime()
 	 * @generated
 	 */
-	int DATA_AGE_TIME = 112;
+	int DATA_AGE_TIME = 110;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Time</b></em>' containment reference.
@@ -7634,7 +7506,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRequirement()
 	 * @generated
 	 */
-	int REQUIREMENT = 113;
+	int REQUIREMENT = 111;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7698,7 +7570,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessRequirement()
 	 * @generated
 	 */
-	int PROCESS_REQUIREMENT = 114;
+	int PROCESS_REQUIREMENT = 112;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7771,7 +7643,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableRequirement()
 	 * @generated
 	 */
-	int RUNNABLE_REQUIREMENT = 115;
+	int RUNNABLE_REQUIREMENT = 113;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7844,7 +7716,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArchitectureRequirement()
 	 * @generated
 	 */
-	int ARCHITECTURE_REQUIREMENT = 116;
+	int ARCHITECTURE_REQUIREMENT = 114;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7917,7 +7789,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChainRequirement()
 	 * @generated
 	 */
-	int PROCESS_CHAIN_REQUIREMENT = 117;
+	int PROCESS_CHAIN_REQUIREMENT = 115;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7990,7 +7862,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRequirementLimit()
 	 * @generated
 	 */
-	int REQUIREMENT_LIMIT = 118;
+	int REQUIREMENT_LIMIT = 116;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8027,7 +7899,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCPUPercentageRequirementLimit()
 	 * @generated
 	 */
-	int CPU_PERCENTAGE_REQUIREMENT_LIMIT = 119;
+	int CPU_PERCENTAGE_REQUIREMENT_LIMIT = 117;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8091,7 +7963,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyRequirementLimit()
 	 * @generated
 	 */
-	int FREQUENCY_REQUIREMENT_LIMIT = 120;
+	int FREQUENCY_REQUIREMENT_LIMIT = 118;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8146,7 +8018,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPercentageRequirementLimit()
 	 * @generated
 	 */
-	int PERCENTAGE_REQUIREMENT_LIMIT = 121;
+	int PERCENTAGE_REQUIREMENT_LIMIT = 119;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8201,7 +8073,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCountRequirementLimit()
 	 * @generated
 	 */
-	int COUNT_REQUIREMENT_LIMIT = 122;
+	int COUNT_REQUIREMENT_LIMIT = 120;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8256,7 +8128,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeRequirementLimit()
 	 * @generated
 	 */
-	int TIME_REQUIREMENT_LIMIT = 123;
+	int TIME_REQUIREMENT_LIMIT = 121;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8311,7 +8183,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataCoherencyGroup()
 	 * @generated
 	 */
-	int DATA_COHERENCY_GROUP = 124;
+	int DATA_COHERENCY_GROUP = 122;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8429,7 +8301,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStabilityGroup()
 	 * @generated
 	 */
-	int DATA_STABILITY_GROUP = 125;
+	int DATA_STABILITY_GROUP = 123;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8538,7 +8410,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataGroupScope()
 	 * @generated
 	 */
-	int DATA_GROUP_SCOPE = 126;
+	int DATA_GROUP_SCOPE = 124;
 
 	/**
 	 * The number of structural features of the '<em>Data Group Scope</em>' class.
@@ -8566,7 +8438,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessScope()
 	 * @generated
 	 */
-	int PROCESS_SCOPE = 127;
+	int PROCESS_SCOPE = 125;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' reference.
@@ -8603,7 +8475,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableScope()
 	 * @generated
 	 */
-	int RUNNABLE_SCOPE = 128;
+	int RUNNABLE_SCOPE = 126;
 
 	/**
 	 * The feature id for the '<em><b>Runnable</b></em>' reference.
@@ -8640,7 +8512,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentScope()
 	 * @generated
 	 */
-	int COMPONENT_SCOPE = 129;
+	int COMPONENT_SCOPE = 127;
 
 	/**
 	 * The feature id for the '<em><b>Component</b></em>' reference.
@@ -8677,7 +8549,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventModel()
 	 * @generated
 	 */
-	int EVENT_MODEL = 130;
+	int EVENT_MODEL = 128;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8723,7 +8595,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 131;
+	int EVENT = 129;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8832,7 +8704,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventSet()
 	 * @generated
 	 */
-	int EVENT_SET = 132;
+	int EVENT_SET = 130;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8950,7 +8822,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEntityEvent()
 	 * @generated
 	 */
-	int ENTITY_EVENT = 133;
+	int ENTITY_EVENT = 131;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9059,7 +8931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTriggerEvent()
 	 * @generated
 	 */
-	int TRIGGER_EVENT = 134;
+	int TRIGGER_EVENT = 132;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9168,7 +9040,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEvent()
 	 * @generated
 	 */
-	int CUSTOM_EVENT = 135;
+	int CUSTOM_EVENT = 133;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9295,7 +9167,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimulusEvent()
 	 * @generated
 	 */
-	int STIMULUS_EVENT = 136;
+	int STIMULUS_EVENT = 134;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9413,7 +9285,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEvent()
 	 * @generated
 	 */
-	int PROCESS_EVENT = 137;
+	int PROCESS_EVENT = 135;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9549,7 +9421,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChainEvent()
 	 * @generated
 	 */
-	int PROCESS_CHAIN_EVENT = 138;
+	int PROCESS_CHAIN_EVENT = 136;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9685,7 +9557,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEvent()
 	 * @generated
 	 */
-	int RUNNABLE_EVENT = 139;
+	int RUNNABLE_EVENT = 137;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9830,7 +9702,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEvent()
 	 * @generated
 	 */
-	int LABEL_EVENT = 140;
+	int LABEL_EVENT = 138;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9975,7 +9847,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelEvent()
 	 * @generated
 	 */
-	int CHANNEL_EVENT = 141;
+	int CHANNEL_EVENT = 139;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10120,7 +9992,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreEvent()
 	 * @generated
 	 */
-	int SEMAPHORE_EVENT = 142;
+	int SEMAPHORE_EVENT = 140;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10274,7 +10146,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentEvent()
 	 * @generated
 	 */
-	int COMPONENT_EVENT = 143;
+	int COMPONENT_EVENT = 141;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10401,7 +10273,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHWModel()
 	 * @generated
 	 */
-	int HW_MODEL = 144;
+	int HW_MODEL = 142;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10474,7 +10346,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwStructure()
 	 * @generated
 	 */
-	int HW_STRUCTURE = 145;
+	int HW_STRUCTURE = 143;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10619,7 +10491,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwModule()
 	 * @generated
 	 */
-	int HW_MODULE = 146;
+	int HW_MODULE = 144;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10746,7 +10618,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDomain()
 	 * @generated
 	 */
-	int HW_DOMAIN = 147;
+	int HW_DOMAIN = 145;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10846,7 +10718,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyDomain()
 	 * @generated
 	 */
-	int FREQUENCY_DOMAIN = 148;
+	int FREQUENCY_DOMAIN = 146;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10964,7 +10836,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPowerDomain()
 	 * @generated
 	 */
-	int POWER_DOMAIN = 149;
+	int POWER_DOMAIN = 147;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11082,7 +10954,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessingUnit()
 	 * @generated
 	 */
-	int PROCESSING_UNIT = 150;
+	int PROCESSING_UNIT = 148;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11236,7 +11108,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemory()
 	 * @generated
 	 */
-	int MEMORY = 151;
+	int MEMORY = 149;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11381,7 +11253,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCache()
 	 * @generated
 	 */
-	int CACHE = 152;
+	int CACHE = 150;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11517,7 +11389,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureCategory()
 	 * @generated
 	 */
-	int HW_FEATURE_CATEGORY = 153;
+	int HW_FEATURE_CATEGORY = 151;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11635,7 +11507,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeature()
 	 * @generated
 	 */
-	int HW_FEATURE = 154;
+	int HW_FEATURE = 152;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11753,7 +11625,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPort()
 	 * @generated
 	 */
-	int HW_PORT = 155;
+	int HW_PORT = 153;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11898,7 +11770,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnectionHandler()
 	 * @generated
 	 */
-	int CONNECTION_HANDLER = 156;
+	int CONNECTION_HANDLER = 154;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12043,7 +11915,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwConnection()
 	 * @generated
 	 */
-	int HW_CONNECTION = 157;
+	int HW_CONNECTION = 155;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12188,7 +12060,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwAccessElement()
 	 * @generated
 	 */
-	int HW_ACCESS_ELEMENT = 158;
+	int HW_ACCESS_ELEMENT = 156;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' reference list.
@@ -12288,7 +12160,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwLatency()
 	 * @generated
 	 */
-	int HW_LATENCY = 159;
+	int HW_LATENCY = 157;
 
 	/**
 	 * The number of structural features of the '<em>Hw Latency</em>' class.
@@ -12316,7 +12188,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyConstant()
 	 * @generated
 	 */
-	int LATENCY_CONSTANT = 160;
+	int LATENCY_CONSTANT = 158;
 
 	/**
 	 * The feature id for the '<em><b>Cycles</b></em>' attribute.
@@ -12353,7 +12225,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyDeviation()
 	 * @generated
 	 */
-	int LATENCY_DEVIATION = 161;
+	int LATENCY_DEVIATION = 159;
 
 	/**
 	 * The feature id for the '<em><b>Cycles</b></em>' containment reference.
@@ -12390,7 +12262,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDefinition()
 	 * @generated
 	 */
-	int HW_DEFINITION = 162;
+	int HW_DEFINITION = 160;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12490,7 +12362,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessingUnitDefinition()
 	 * @generated
 	 */
-	int PROCESSING_UNIT_DEFINITION = 163;
+	int PROCESSING_UNIT_DEFINITION = 161;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12617,7 +12489,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnectionHandlerDefinition()
 	 * @generated
 	 */
-	int CONNECTION_HANDLER_DEFINITION = 164;
+	int CONNECTION_HANDLER_DEFINITION = 162;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12753,7 +12625,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryDefinition()
 	 * @generated
 	 */
-	int MEMORY_DEFINITION = 165;
+	int MEMORY_DEFINITION = 163;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12889,7 +12761,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCacheDefinition()
 	 * @generated
 	 */
-	int CACHE_DEFINITION = 166;
+	int CACHE_DEFINITION = 164;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13070,7 +12942,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPath()
 	 * @generated
 	 */
-	int HW_PATH = 167;
+	int HW_PATH = 165;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -13125,7 +12997,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwAccessPath()
 	 * @generated
 	 */
-	int HW_ACCESS_PATH = 168;
+	int HW_ACCESS_PATH = 166;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -13234,7 +13106,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPathElement()
 	 * @generated
 	 */
-	int HW_PATH_ELEMENT = 169;
+	int HW_PATH_ELEMENT = 167;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -13316,7 +13188,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDestination()
 	 * @generated
 	 */
-	int HW_DESTINATION = 170;
+	int HW_DESTINATION = 168;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -13398,7 +13270,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMappingModel()
 	 * @generated
 	 */
-	int MAPPING_MODEL = 171;
+	int MAPPING_MODEL = 169;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13498,7 +13370,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulerAllocation()
 	 * @generated
 	 */
-	int SCHEDULER_ALLOCATION = 172;
+	int SCHEDULER_ALLOCATION = 170;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13562,7 +13434,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskAllocation()
 	 * @generated
 	 */
-	int TASK_ALLOCATION = 173;
+	int TASK_ALLOCATION = 171;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13644,7 +13516,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRAllocation()
 	 * @generated
 	 */
-	int ISR_ALLOCATION = 174;
+	int ISR_ALLOCATION = 172;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13708,7 +13580,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableAllocation()
 	 * @generated
 	 */
-	int RUNNABLE_ALLOCATION = 175;
+	int RUNNABLE_ALLOCATION = 173;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13763,7 +13635,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryMapping()
 	 * @generated
 	 */
-	int MEMORY_MAPPING = 176;
+	int MEMORY_MAPPING = 174;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13827,7 +13699,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPhysicalSectionMapping()
 	 * @generated
 	 */
-	int PHYSICAL_SECTION_MAPPING = 177;
+	int PHYSICAL_SECTION_MAPPING = 175;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13972,7 +13844,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOSModel()
 	 * @generated
 	 */
-	int OS_MODEL = 178;
+	int OS_MODEL = 176;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14036,7 +13908,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsDataConsistency()
 	 * @generated
 	 */
-	int OS_DATA_CONSISTENCY = 179;
+	int OS_DATA_CONSISTENCY = 177;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14100,7 +13972,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStability()
 	 * @generated
 	 */
-	int DATA_STABILITY = 180;
+	int DATA_STABILITY = 178;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -14164,7 +14036,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonAtomicDataCoherency()
 	 * @generated
 	 */
-	int NON_ATOMIC_DATA_COHERENCY = 181;
+	int NON_ATOMIC_DATA_COHERENCY = 179;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -14219,7 +14091,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphore()
 	 * @generated
 	 */
-	int SEMAPHORE = 182;
+	int SEMAPHORE = 180;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14364,7 +14236,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getScheduler()
 	 * @generated
 	 */
-	int SCHEDULER = 183;
+	int SCHEDULER = 181;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14473,7 +14345,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskScheduler()
 	 * @generated
 	 */
-	int TASK_SCHEDULER = 184;
+	int TASK_SCHEDULER = 182;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14627,7 +14499,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulerAssociation()
 	 * @generated
 	 */
-	int SCHEDULER_ASSOCIATION = 185;
+	int SCHEDULER_ASSOCIATION = 183;
 
 	/**
 	 * The feature id for the '<em><b>Child</b></em>' container reference.
@@ -14691,7 +14563,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterruptController()
 	 * @generated
 	 */
-	int INTERRUPT_CONTROLLER = 186;
+	int INTERRUPT_CONTROLLER = 184;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14809,7 +14681,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulingParameters()
 	 * @generated
 	 */
-	int SCHEDULING_PARAMETERS = 187;
+	int SCHEDULING_PARAMETERS = 185;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -14873,7 +14745,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getParameterExtension()
 	 * @generated
 	 */
-	int PARAMETER_EXTENSION = 188;
+	int PARAMETER_EXTENSION = 186;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -14919,7 +14791,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAlgorithm()
 	 * @generated
 	 */
-	int ALGORITHM = 189;
+	int ALGORITHM = 187;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14956,7 +14828,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterruptSchedulingAlgorithm()
 	 * @generated
 	 */
-	int INTERRUPT_SCHEDULING_ALGORITHM = 190;
+	int INTERRUPT_SCHEDULING_ALGORITHM = 188;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14993,7 +14865,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskSchedulingAlgorithm()
 	 * @generated
 	 */
-	int TASK_SCHEDULING_ALGORITHM = 191;
+	int TASK_SCHEDULING_ALGORITHM = 189;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15030,7 +14902,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriority()
 	 * @generated
 	 */
-	int FIXED_PRIORITY = 192;
+	int FIXED_PRIORITY = 190;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15067,7 +14939,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriorityPreemptive()
 	 * @generated
 	 */
-	int FIXED_PRIORITY_PREEMPTIVE = 193;
+	int FIXED_PRIORITY_PREEMPTIVE = 191;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15104,7 +14976,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriorityPreemptiveWithBudgetEnforcement()
 	 * @generated
 	 */
-	int FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT = 194;
+	int FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT = 192;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15141,7 +15013,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOSEK()
 	 * @generated
 	 */
-	int OSEK = 195;
+	int OSEK = 193;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15178,7 +15050,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeadlineMonotonic()
 	 * @generated
 	 */
-	int DEADLINE_MONOTONIC = 196;
+	int DEADLINE_MONOTONIC = 194;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15215,7 +15087,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRateMonotonic()
 	 * @generated
 	 */
-	int RATE_MONOTONIC = 197;
+	int RATE_MONOTONIC = 195;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15252,7 +15124,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPfair()
 	 * @generated
 	 */
-	int PFAIR = 198;
+	int PFAIR = 196;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15298,7 +15170,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPfairPD2()
 	 * @generated
 	 */
-	int PFAIR_PD2 = 199;
+	int PFAIR_PD2 = 197;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15344,7 +15216,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPartlyPFairPD2()
 	 * @generated
 	 */
-	int PARTLY_PFAIR_PD2 = 200;
+	int PARTLY_PFAIR_PD2 = 198;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15390,7 +15262,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEarlyReleaseFairPD2()
 	 * @generated
 	 */
-	int EARLY_RELEASE_FAIR_PD2 = 201;
+	int EARLY_RELEASE_FAIR_PD2 = 199;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15436,7 +15308,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPartlyEarlyReleaseFairPD2()
 	 * @generated
 	 */
-	int PARTLY_EARLY_RELEASE_FAIR_PD2 = 202;
+	int PARTLY_EARLY_RELEASE_FAIR_PD2 = 200;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15482,7 +15354,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDynamicPriority()
 	 * @generated
 	 */
-	int DYNAMIC_PRIORITY = 203;
+	int DYNAMIC_PRIORITY = 201;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15519,7 +15391,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLeastLocalRemainingExecutionTimeFirst()
 	 * @generated
 	 */
-	int LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST = 204;
+	int LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST = 202;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15556,7 +15428,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEarliestDeadlineFirst()
 	 * @generated
 	 */
-	int EARLIEST_DEADLINE_FIRST = 205;
+	int EARLIEST_DEADLINE_FIRST = 203;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15593,7 +15465,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPriorityBasedRoundRobin()
 	 * @generated
 	 */
-	int PRIORITY_BASED_ROUND_ROBIN = 206;
+	int PRIORITY_BASED_ROUND_ROBIN = 204;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15630,7 +15502,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReservationBasedServer()
 	 * @generated
 	 */
-	int RESERVATION_BASED_SERVER = 207;
+	int RESERVATION_BASED_SERVER = 205;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15667,7 +15539,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeferrableServer()
 	 * @generated
 	 */
-	int DEFERRABLE_SERVER = 208;
+	int DEFERRABLE_SERVER = 206;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15704,7 +15576,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPollingPeriodicServer()
 	 * @generated
 	 */
-	int POLLING_PERIODIC_SERVER = 209;
+	int POLLING_PERIODIC_SERVER = 207;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15741,7 +15613,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSporadicServer()
 	 * @generated
 	 */
-	int SPORADIC_SERVER = 210;
+	int SPORADIC_SERVER = 208;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15778,7 +15650,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstantBandwidthServer()
 	 * @generated
 	 */
-	int CONSTANT_BANDWIDTH_SERVER = 211;
+	int CONSTANT_BANDWIDTH_SERVER = 209;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15815,7 +15687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstantBandwidthServerWithCASH()
 	 * @generated
 	 */
-	int CONSTANT_BANDWIDTH_SERVER_WITH_CASH = 212;
+	int CONSTANT_BANDWIDTH_SERVER_WITH_CASH = 210;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15852,7 +15724,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGrouping()
 	 * @generated
 	 */
-	int GROUPING = 213;
+	int GROUPING = 211;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15889,7 +15761,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getUserSpecificSchedulingAlgorithm()
 	 * @generated
 	 */
-	int USER_SPECIFIC_SCHEDULING_ALGORITHM = 214;
+	int USER_SPECIFIC_SCHEDULING_ALGORITHM = 212;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15935,7 +15807,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPriorityBased()
 	 * @generated
 	 */
-	int PRIORITY_BASED = 215;
+	int PRIORITY_BASED = 213;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15972,7 +15844,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOperatingSystem()
 	 * @generated
 	 */
-	int OPERATING_SYSTEM = 216;
+	int OPERATING_SYSTEM = 214;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16054,7 +15926,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVendorOperatingSystem()
 	 * @generated
 	 */
-	int VENDOR_OPERATING_SYSTEM = 217;
+	int VENDOR_OPERATING_SYSTEM = 215;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16163,7 +16035,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsInstructions()
 	 * @generated
 	 */
-	int OS_INSTRUCTIONS = 218;
+	int OS_INSTRUCTIONS = 216;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16281,7 +16153,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsAPIInstructions()
 	 * @generated
 	 */
-	int OS_API_INSTRUCTIONS = 219;
+	int OS_API_INSTRUCTIONS = 217;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16489,7 +16361,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsISRInstructions()
 	 * @generated
 	 */
-	int OS_ISR_INSTRUCTIONS = 220;
+	int OS_ISR_INSTRUCTIONS = 218;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16544,7 +16416,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPropertyConstraintsModel()
 	 * @generated
 	 */
-	int PROPERTY_CONSTRAINTS_MODEL = 221;
+	int PROPERTY_CONSTRAINTS_MODEL = 219;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16599,7 +16471,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreAllocationConstraint()
 	 * @generated
 	 */
-	int CORE_ALLOCATION_CONSTRAINT = 222;
+	int CORE_ALLOCATION_CONSTRAINT = 220;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16645,7 +16517,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryMappingConstraint()
 	 * @generated
 	 */
-	int MEMORY_MAPPING_CONSTRAINT = 223;
+	int MEMORY_MAPPING_CONSTRAINT = 221;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16691,7 +16563,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessAllocationConstraint()
 	 * @generated
 	 */
-	int PROCESS_ALLOCATION_CONSTRAINT = 224;
+	int PROCESS_ALLOCATION_CONSTRAINT = 222;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16746,7 +16618,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPrototypeAllocationConstraint()
 	 * @generated
 	 */
-	int PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT = 225;
+	int PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT = 223;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16801,7 +16673,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableAllocationConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_ALLOCATION_CONSTRAINT = 226;
+	int RUNNABLE_ALLOCATION_CONSTRAINT = 224;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16856,7 +16728,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractElementMappingConstraint()
 	 * @generated
 	 */
-	int ABSTRACT_ELEMENT_MAPPING_CONSTRAINT = 227;
+	int ABSTRACT_ELEMENT_MAPPING_CONSTRAINT = 225;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16911,7 +16783,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClassification()
 	 * @generated
 	 */
-	int CLASSIFICATION = 228;
+	int CLASSIFICATION = 226;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16966,7 +16838,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreClassification()
 	 * @generated
 	 */
-	int CORE_CLASSIFICATION = 229;
+	int CORE_CLASSIFICATION = 227;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17030,7 +16902,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryClassification()
 	 * @generated
 	 */
-	int MEMORY_CLASSIFICATION = 230;
+	int MEMORY_CLASSIFICATION = 228;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17094,7 +16966,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimuliModel()
 	 * @generated
 	 */
-	int STIMULI_MODEL = 231;
+	int STIMULI_MODEL = 229;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17149,7 +17021,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimulus()
 	 * @generated
 	 */
-	int STIMULUS = 232;
+	int STIMULUS = 230;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17285,7 +17157,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueList()
 	 * @generated
 	 */
-	int MODE_VALUE_LIST = 233;
+	int MODE_VALUE_LIST = 231;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17331,7 +17203,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueMapEntry()
 	 * @generated
 	 */
-	int MODE_VALUE_MAP_ENTRY = 234;
+	int MODE_VALUE_MAP_ENTRY = 232;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -17377,7 +17249,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueDisjunction()
 	 * @generated
 	 */
-	int MODE_VALUE_DISJUNCTION = 235;
+	int MODE_VALUE_DISJUNCTION = 233;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17432,7 +17304,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueDisjunctionEntry()
 	 * @generated
 	 */
-	int MODE_VALUE_DISJUNCTION_ENTRY = 236;
+	int MODE_VALUE_DISJUNCTION_ENTRY = 234;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17478,7 +17350,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValue()
 	 * @generated
 	 */
-	int MODE_VALUE = 237;
+	int MODE_VALUE = 235;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17542,7 +17414,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueConjunction()
 	 * @generated
 	 */
-	int MODE_VALUE_CONJUNCTION = 238;
+	int MODE_VALUE_CONJUNCTION = 236;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17597,7 +17469,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPeriodic()
 	 * @generated
 	 */
-	int FIXED_PERIODIC = 239;
+	int FIXED_PERIODIC = 237;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
@@ -17643,7 +17515,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicStimulus()
 	 * @generated
 	 */
-	int PERIODIC_STIMULUS = 240;
+	int PERIODIC_STIMULUS = 238;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17815,7 +17687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRelativePeriodicStimulus()
 	 * @generated
 	 */
-	int RELATIVE_PERIODIC_STIMULUS = 241;
+	int RELATIVE_PERIODIC_STIMULUS = 239;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17969,7 +17841,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVariableRateStimulus()
 	 * @generated
 	 */
-	int VARIABLE_RATE_STIMULUS = 242;
+	int VARIABLE_RATE_STIMULUS = 240;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18150,7 +18022,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getScenario()
 	 * @generated
 	 */
-	int SCENARIO = 243;
+	int SCENARIO = 241;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18205,7 +18077,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicSyntheticStimulus()
 	 * @generated
 	 */
-	int PERIODIC_SYNTHETIC_STIMULUS = 244;
+	int PERIODIC_SYNTHETIC_STIMULUS = 242;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18368,7 +18240,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomStimulus()
 	 * @generated
 	 */
-	int CUSTOM_STIMULUS = 245;
+	int CUSTOM_STIMULUS = 243;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18513,7 +18385,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleStimulus()
 	 * @generated
 	 */
-	int SINGLE_STIMULUS = 246;
+	int SINGLE_STIMULUS = 244;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18658,7 +18530,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterProcessStimulus()
 	 * @generated
 	 */
-	int INTER_PROCESS_STIMULUS = 247;
+	int INTER_PROCESS_STIMULUS = 245;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18812,7 +18684,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicBurstStimulus()
 	 * @generated
 	 */
-	int PERIODIC_BURST_STIMULUS = 248;
+	int PERIODIC_BURST_STIMULUS = 246;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18993,7 +18865,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventStimulus()
 	 * @generated
 	 */
-	int EVENT_STIMULUS = 249;
+	int EVENT_STIMULUS = 247;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19147,7 +19019,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArrivalCurveStimulus()
 	 * @generated
 	 */
-	int ARRIVAL_CURVE_STIMULUS = 250;
+	int ARRIVAL_CURVE_STIMULUS = 248;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19292,7 +19164,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArrivalCurveEntry()
 	 * @generated
 	 */
-	int ARRIVAL_CURVE_ENTRY = 251;
+	int ARRIVAL_CURVE_ENTRY = 249;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19356,7 +19228,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClock()
 	 * @generated
 	 */
-	int CLOCK = 252;
+	int CLOCK = 250;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19447,7 +19319,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockTriangleFunction()
 	 * @generated
 	 */
-	int CLOCK_TRIANGLE_FUNCTION = 253;
+	int CLOCK_TRIANGLE_FUNCTION = 251;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19574,7 +19446,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockSinusFunction()
 	 * @generated
 	 */
-	int CLOCK_SINUS_FUNCTION = 254;
+	int CLOCK_SINUS_FUNCTION = 252;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19701,7 +19573,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockMultiplierList()
 	 * @generated
 	 */
-	int CLOCK_MULTIPLIER_LIST = 255;
+	int CLOCK_MULTIPLIER_LIST = 253;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19801,7 +19673,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockMultiplierListEntry()
 	 * @generated
 	 */
-	int CLOCK_MULTIPLIER_LIST_ENTRY = 256;
+	int CLOCK_MULTIPLIER_LIST_ENTRY = 254;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19856,7 +19728,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSWModel()
 	 * @generated
 	 */
-	int SW_MODEL = 257;
+	int SW_MODEL = 255;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20028,7 +19900,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractMemoryElement()
 	 * @generated
 	 */
-	int ABSTRACT_MEMORY_ELEMENT = 258;
+	int ABSTRACT_MEMORY_ELEMENT = 256;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20146,7 +20018,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractProcess()
 	 * @generated
 	 */
-	int ABSTRACT_PROCESS = 259;
+	int ABSTRACT_PROCESS = 257;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20273,7 +20145,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEntity()
 	 * @generated
 	 */
-	int CUSTOM_ENTITY = 260;
+	int CUSTOM_ENTITY = 258;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20400,7 +20272,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChain()
 	 * @generated
 	 */
-	int PROCESS_CHAIN = 261;
+	int PROCESS_CHAIN = 259;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20500,7 +20372,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcess()
 	 * @generated
 	 */
-	int PROCESS = 262;
+	int PROCESS = 260;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20645,7 +20517,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallGraph()
 	 * @generated
 	 */
-	int CALL_GRAPH = 263;
+	int CALL_GRAPH = 261;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20691,7 +20563,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGraphEntryBase()
 	 * @generated
 	 */
-	int GRAPH_ENTRY_BASE = 264;
+	int GRAPH_ENTRY_BASE = 262;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20728,7 +20600,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallSequence()
 	 * @generated
 	 */
-	int CALL_SEQUENCE = 265;
+	int CALL_SEQUENCE = 263;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20783,7 +20655,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitch()
 	 * @generated
 	 */
-	int MODE_SWITCH = 266;
+	int MODE_SWITCH = 264;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20838,7 +20710,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchEntry()
 	 * @generated
 	 */
-	int MODE_SWITCH_ENTRY = 267;
+	int MODE_SWITCH_ENTRY = 265;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20902,7 +20774,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchDefault()
 	 * @generated
 	 */
-	int MODE_SWITCH_DEFAULT = 268;
+	int MODE_SWITCH_DEFAULT = 266;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20948,7 +20820,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitch()
 	 * @generated
 	 */
-	int PROBABILITY_SWITCH = 269;
+	int PROBABILITY_SWITCH = 267;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20994,7 +20866,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitchEntry()
 	 * @generated
 	 */
-	int PROBABILITY_SWITCH_ENTRY = 270;
+	int PROBABILITY_SWITCH_ENTRY = 268;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21049,7 +20921,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCounter()
 	 * @generated
 	 */
-	int COUNTER = 271;
+	int COUNTER = 269;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21104,7 +20976,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallSequenceItem()
 	 * @generated
 	 */
-	int CALL_SEQUENCE_ITEM = 272;
+	int CALL_SEQUENCE_ITEM = 270;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21159,7 +21031,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEvent()
 	 * @generated
 	 */
-	int WAIT_EVENT = 273;
+	int WAIT_EVENT = 271;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21241,7 +21113,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSetEvent()
 	 * @generated
 	 */
-	int SET_EVENT = 274;
+	int SET_EVENT = 272;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21314,7 +21186,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClearEvent()
 	 * @generated
 	 */
-	int CLEAR_EVENT = 275;
+	int CLEAR_EVENT = 273;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21378,7 +21250,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventMask()
 	 * @generated
 	 */
-	int EVENT_MASK = 276;
+	int EVENT_MASK = 274;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21424,7 +21296,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsEvent()
 	 * @generated
 	 */
-	int OS_EVENT = 277;
+	int OS_EVENT = 275;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21542,7 +21414,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterProcessTrigger()
 	 * @generated
 	 */
-	int INTER_PROCESS_TRIGGER = 278;
+	int INTER_PROCESS_TRIGGER = 276;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21606,7 +21478,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEnforcedMigration()
 	 * @generated
 	 */
-	int ENFORCED_MIGRATION = 279;
+	int ENFORCED_MIGRATION = 277;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21670,7 +21542,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskRunnableCall()
 	 * @generated
 	 */
-	int TASK_RUNNABLE_CALL = 280;
+	int TASK_RUNNABLE_CALL = 278;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21743,7 +21615,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulePoint()
 	 * @generated
 	 */
-	int SCHEDULE_POINT = 281;
+	int SCHEDULE_POINT = 279;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21798,7 +21670,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTerminateProcess()
 	 * @generated
 	 */
-	int TERMINATE_PROCESS = 282;
+	int TERMINATE_PROCESS = 280;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21853,7 +21725,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 283;
+	int TASK = 281;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22016,7 +21888,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISR()
 	 * @generated
 	 */
-	int ISR = 284;
+	int ISR = 282;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22170,7 +22042,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPrototype()
 	 * @generated
 	 */
-	int PROCESS_PROTOTYPE = 285;
+	int PROCESS_PROTOTYPE = 283;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22369,7 +22241,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChainedProcessPrototype()
 	 * @generated
 	 */
-	int CHAINED_PROCESS_PROTOTYPE = 286;
+	int CHAINED_PROCESS_PROTOTYPE = 284;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22433,7 +22305,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGeneralPrecedence()
 	 * @generated
 	 */
-	int GENERAL_PRECEDENCE = 287;
+	int GENERAL_PRECEDENCE = 285;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22488,7 +22360,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceSpec()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_SPEC = 288;
+	int ACCESS_PRECEDENCE_SPEC = 286;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22561,7 +22433,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderPrecedenceSpec()
 	 * @generated
 	 */
-	int ORDER_PRECEDENCE_SPEC = 289;
+	int ORDER_PRECEDENCE_SPEC = 287;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22625,7 +22497,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnable()
 	 * @generated
 	 */
-	int RUNNABLE = 290;
+	int RUNNABLE = 288;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22842,7 +22714,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 291;
+	int LABEL = 289;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23041,7 +22913,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 292;
+	int CHANNEL = 290;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23204,7 +23076,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabel()
 	 * @generated
 	 */
-	int MODE_LABEL = 293;
+	int MODE_LABEL = 291;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23349,7 +23221,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSection()
 	 * @generated
 	 */
-	int SECTION = 294;
+	int SECTION = 292;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23467,7 +23339,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableItem()
 	 * @generated
 	 */
-	int RUNNABLE_ITEM = 295;
+	int RUNNABLE_ITEM = 293;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23513,7 +23385,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComputationItem()
 	 * @generated
 	 */
-	int COMPUTATION_ITEM = 296;
+	int COMPUTATION_ITEM = 294;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23559,7 +23431,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionNeed()
 	 * @generated
 	 */
-	int EXECUTION_NEED = 297;
+	int EXECUTION_NEED = 295;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23623,7 +23495,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionNeedExtended()
 	 * @generated
 	 */
-	int EXECUTION_NEED_EXTENDED = 298;
+	int EXECUTION_NEED_EXTENDED = 296;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -23669,7 +23541,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeedEntry()
 	 * @generated
 	 */
-	int NEED_ENTRY = 299;
+	int NEED_ENTRY = 297;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -23715,7 +23587,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabelAccess()
 	 * @generated
 	 */
-	int MODE_LABEL_ACCESS = 300;
+	int MODE_LABEL_ACCESS = 298;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23788,7 +23660,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableModeSwitch()
 	 * @generated
 	 */
-	int RUNNABLE_MODE_SWITCH = 301;
+	int RUNNABLE_MODE_SWITCH = 299;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23852,7 +23724,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccess()
 	 * @generated
 	 */
-	int LABEL_ACCESS = 302;
+	int LABEL_ACCESS = 300;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23961,7 +23833,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelAccess()
 	 * @generated
 	 */
-	int CHANNEL_ACCESS = 303;
+	int CHANNEL_ACCESS = 301;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24034,7 +23906,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelSend()
 	 * @generated
 	 */
-	int CHANNEL_SEND = 304;
+	int CHANNEL_SEND = 302;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24107,7 +23979,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelReceive()
 	 * @generated
 	 */
-	int CHANNEL_RECEIVE = 305;
+	int CHANNEL_RECEIVE = 303;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24216,7 +24088,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccess()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS = 306;
+	int SEMAPHORE_ACCESS = 304;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24289,7 +24161,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverCommunication()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_COMMUNICATION = 307;
+	int SENDER_RECEIVER_COMMUNICATION = 305;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24362,7 +24234,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverRead()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_READ = 308;
+	int SENDER_RECEIVER_READ = 306;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24435,7 +24307,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverWrite()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_WRITE = 309;
+	int SENDER_RECEIVER_WRITE = 307;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24517,7 +24389,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getServerCall()
 	 * @generated
 	 */
-	int SERVER_CALL = 310;
+	int SERVER_CALL = 308;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24581,7 +24453,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronousServerCall()
 	 * @generated
 	 */
-	int SYNCHRONOUS_SERVER_CALL = 311;
+	int SYNCHRONOUS_SERVER_CALL = 309;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24654,7 +24526,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAsynchronousServerCall()
 	 * @generated
 	 */
-	int ASYNCHRONOUS_SERVER_CALL = 312;
+	int ASYNCHRONOUS_SERVER_CALL = 310;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24727,7 +24599,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGetResultServerCall()
 	 * @generated
 	 */
-	int GET_RESULT_SERVER_CALL = 313;
+	int GET_RESULT_SERVER_CALL = 311;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24800,7 +24672,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableProbabilitySwitch()
 	 * @generated
 	 */
-	int RUNNABLE_PROBABILITY_SWITCH = 314;
+	int RUNNABLE_PROBABILITY_SWITCH = 312;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24855,7 +24727,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroup()
 	 * @generated
 	 */
-	int GROUP = 315;
+	int GROUP = 313;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24928,7 +24800,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableCall()
 	 * @generated
 	 */
-	int RUNNABLE_CALL = 316;
+	int RUNNABLE_CALL = 314;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25001,7 +24873,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEventTrigger()
 	 * @generated
 	 */
-	int CUSTOM_EVENT_TRIGGER = 317;
+	int CUSTOM_EVENT_TRIGGER = 315;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25056,7 +24928,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 318;
+	int DATA_TYPE = 316;
 
 	/**
 	 * The number of structural features of the '<em>Data Type</em>' class.
@@ -25084,7 +24956,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCompoundType()
 	 * @generated
 	 */
-	int COMPOUND_TYPE = 319;
+	int COMPOUND_TYPE = 317;
 
 	/**
 	 * The number of structural features of the '<em>Compound Type</em>' class.
@@ -25112,7 +24984,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStruct()
 	 * @generated
 	 */
-	int STRUCT = 320;
+	int STRUCT = 318;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25158,7 +25030,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStructEntry()
 	 * @generated
 	 */
-	int STRUCT_ENTRY = 321;
+	int STRUCT_ENTRY = 319;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25213,7 +25085,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArray()
 	 * @generated
 	 */
-	int ARRAY = 322;
+	int ARRAY = 320;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25268,7 +25140,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPointer()
 	 * @generated
 	 */
-	int POINTER = 323;
+	int POINTER = 321;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25314,7 +25186,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTypeRef()
 	 * @generated
 	 */
-	int TYPE_REF = 324;
+	int TYPE_REF = 322;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25360,7 +25232,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataPlatformMapping()
 	 * @generated
 	 */
-	int DATA_PLATFORM_MAPPING = 325;
+	int DATA_PLATFORM_MAPPING = 323;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25415,7 +25287,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTypeDefinition()
 	 * @generated
 	 */
-	int TYPE_DEFINITION = 326;
+	int TYPE_DEFINITION = 324;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25506,7 +25378,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataTypeDefinition()
 	 * @generated
 	 */
-	int DATA_TYPE_DEFINITION = 327;
+	int DATA_TYPE_DEFINITION = 325;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25606,7 +25478,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBaseTypeDefinition()
 	 * @generated
 	 */
-	int BASE_TYPE_DEFINITION = 328;
+	int BASE_TYPE_DEFINITION = 326;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25715,7 +25587,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getActivation()
 	 * @generated
 	 */
-	int ACTIVATION = 329;
+	int ACTIVATION = 327;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25815,7 +25687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicActivation()
 	 * @generated
 	 */
-	int PERIODIC_ACTIVATION = 330;
+	int PERIODIC_ACTIVATION = 328;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25951,7 +25823,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVariableRateActivation()
 	 * @generated
 	 */
-	int VARIABLE_RATE_ACTIVATION = 331;
+	int VARIABLE_RATE_ACTIVATION = 329;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26078,7 +25950,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSporadicActivation()
 	 * @generated
 	 */
-	int SPORADIC_ACTIVATION = 332;
+	int SPORADIC_ACTIVATION = 330;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26196,7 +26068,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleActivation()
 	 * @generated
 	 */
-	int SINGLE_ACTIVATION = 333;
+	int SINGLE_ACTIVATION = 331;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26314,7 +26186,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventActivation()
 	 * @generated
 	 */
-	int EVENT_ACTIVATION = 334;
+	int EVENT_ACTIVATION = 332;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26432,7 +26304,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomActivation()
 	 * @generated
 	 */
-	int CUSTOM_ACTIVATION = 335;
+	int CUSTOM_ACTIVATION = 333;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26541,7 +26413,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessStatistic()
 	 * @generated
 	 */
-	int LABEL_ACCESS_STATISTIC = 336;
+	int LABEL_ACCESS_STATISTIC = 334;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26596,7 +26468,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructionFetch()
 	 * @generated
 	 */
-	int INSTRUCTION_FETCH = 337;
+	int INSTRUCTION_FETCH = 335;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26660,7 +26532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunEntityCallStatistic()
 	 * @generated
 	 */
-	int RUN_ENTITY_CALL_STATISTIC = 338;
+	int RUN_ENTITY_CALL_STATISTIC = 336;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26706,7 +26578,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMeasurementModel()
 	 * @generated
 	 */
-	int MEASUREMENT_MODEL = 339;
+	int MEASUREMENT_MODEL = 337;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26752,7 +26624,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMeasurement()
 	 * @generated
 	 */
-	int MEASUREMENT = 340;
+	int MEASUREMENT = 338;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26807,7 +26679,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainMeasurement()
 	 * @generated
 	 */
-	int EVENT_CHAIN_MEASUREMENT = 341;
+	int EVENT_CHAIN_MEASUREMENT = 339;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26871,7 +26743,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskMeasurement()
 	 * @generated
 	 */
-	int TASK_MEASUREMENT = 342;
+	int TASK_MEASUREMENT = 340;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26935,7 +26807,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableMeasurement()
 	 * @generated
 	 */
-	int RUNNABLE_MEASUREMENT = 343;
+	int RUNNABLE_MEASUREMENT = 341;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26999,7 +26871,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeUnit()
 	 * @generated
 	 */
-	int TIME_UNIT = 344;
+	int TIME_UNIT = 342;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyUnit <em>Frequency Unit</em>}' enum.
@@ -27009,7 +26881,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyUnit()
 	 * @generated
 	 */
-	int FREQUENCY_UNIT = 345;
+	int FREQUENCY_UNIT = 343;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.VoltageUnit <em>Voltage Unit</em>}' enum.
@@ -27019,7 +26891,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVoltageUnit()
 	 * @generated
 	 */
-	int VOLTAGE_UNIT = 346;
+	int VOLTAGE_UNIT = 344;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataSizeUnit <em>Data Size Unit</em>}' enum.
@@ -27029,7 +26901,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSizeUnit()
 	 * @generated
 	 */
-	int DATA_SIZE_UNIT = 347;
+	int DATA_SIZE_UNIT = 345;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataRateUnit <em>Data Rate Unit</em>}' enum.
@@ -27039,7 +26911,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRateUnit()
 	 * @generated
 	 */
-	int DATA_RATE_UNIT = 348;
+	int DATA_RATE_UNIT = 346;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SamplingType <em>Sampling Type</em>}' enum.
@@ -27049,7 +26921,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSamplingType()
 	 * @generated
 	 */
-	int SAMPLING_TYPE = 349;
+	int SAMPLING_TYPE = 347;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.InterfaceKind <em>Interface Kind</em>}' enum.
@@ -27059,7 +26931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfaceKind()
 	 * @generated
 	 */
-	int INTERFACE_KIND = 350;
+	int INTERFACE_KIND = 348;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableOrderType <em>Runnable Order Type</em>}' enum.
@@ -27069,7 +26941,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableOrderType()
 	 * @generated
 	 */
-	int RUNNABLE_ORDER_TYPE = 351;
+	int RUNNABLE_ORDER_TYPE = 349;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SynchronizationType <em>Synchronization Type</em>}' enum.
@@ -27079,7 +26951,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronizationType()
 	 * @generated
 	 */
-	int SYNCHRONIZATION_TYPE = 352;
+	int SYNCHRONIZATION_TYPE = 350;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MappingType <em>Mapping Type</em>}' enum.
@@ -27089,7 +26961,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMappingType()
 	 * @generated
 	 */
-	int MAPPING_TYPE = 353;
+	int MAPPING_TYPE = 351;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LatencyType <em>Latency Type</em>}' enum.
@@ -27099,7 +26971,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyType()
 	 * @generated
 	 */
-	int LATENCY_TYPE = 354;
+	int LATENCY_TYPE = 352;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Severity <em>Severity</em>}' enum.
@@ -27109,7 +26981,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSeverity()
 	 * @generated
 	 */
-	int SEVERITY = 355;
+	int SEVERITY = 353;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LimitType <em>Limit Type</em>}' enum.
@@ -27119,7 +26991,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLimitType()
 	 * @generated
 	 */
-	int LIMIT_TYPE = 356;
+	int LIMIT_TYPE = 354;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.TimeMetric <em>Time Metric</em>}' enum.
@@ -27129,7 +27001,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeMetric()
 	 * @generated
 	 */
-	int TIME_METRIC = 357;
+	int TIME_METRIC = 355;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CountMetric <em>Count Metric</em>}' enum.
@@ -27139,7 +27011,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCountMetric()
 	 * @generated
 	 */
-	int COUNT_METRIC = 358;
+	int COUNT_METRIC = 356;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PercentageMetric <em>Percentage Metric</em>}' enum.
@@ -27149,7 +27021,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPercentageMetric()
 	 * @generated
 	 */
-	int PERCENTAGE_METRIC = 359;
+	int PERCENTAGE_METRIC = 357;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CPUPercentageMetric <em>CPU Percentage Metric</em>}' enum.
@@ -27159,7 +27031,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCPUPercentageMetric()
 	 * @generated
 	 */
-	int CPU_PERCENTAGE_METRIC = 360;
+	int CPU_PERCENTAGE_METRIC = 358;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyMetric <em>Frequency Metric</em>}' enum.
@@ -27169,7 +27041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyMetric()
 	 * @generated
 	 */
-	int FREQUENCY_METRIC = 361;
+	int FREQUENCY_METRIC = 359;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CoherencyDirection <em>Coherency Direction</em>}' enum.
@@ -27179,7 +27051,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoherencyDirection()
 	 * @generated
 	 */
-	int COHERENCY_DIRECTION = 362;
+	int COHERENCY_DIRECTION = 360;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ProcessEventType <em>Process Event Type</em>}' enum.
@@ -27189,7 +27061,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEventType()
 	 * @generated
 	 */
-	int PROCESS_EVENT_TYPE = 363;
+	int PROCESS_EVENT_TYPE = 361;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableEventType <em>Runnable Event Type</em>}' enum.
@@ -27199,7 +27071,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEventType()
 	 * @generated
 	 */
-	int RUNNABLE_EVENT_TYPE = 364;
+	int RUNNABLE_EVENT_TYPE = 362;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelEventType <em>Label Event Type</em>}' enum.
@@ -27209,7 +27081,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEventType()
 	 * @generated
 	 */
-	int LABEL_EVENT_TYPE = 365;
+	int LABEL_EVENT_TYPE = 363;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ChannelEventType <em>Channel Event Type</em>}' enum.
@@ -27219,7 +27091,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelEventType()
 	 * @generated
 	 */
-	int CHANNEL_EVENT_TYPE = 366;
+	int CHANNEL_EVENT_TYPE = 364;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEventType <em>Semaphore Event Type</em>}' enum.
@@ -27229,7 +27101,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreEventType()
 	 * @generated
 	 */
-	int SEMAPHORE_EVENT_TYPE = 367;
+	int SEMAPHORE_EVENT_TYPE = 365;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ComponentEventType <em>Component Event Type</em>}' enum.
@@ -27239,7 +27111,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentEventType()
 	 * @generated
 	 */
-	int COMPONENT_EVENT_TYPE = 368;
+	int COMPONENT_EVENT_TYPE = 366;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.StructureType <em>Structure Type</em>}' enum.
@@ -27249,7 +27121,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStructureType()
 	 * @generated
 	 */
-	int STRUCTURE_TYPE = 369;
+	int STRUCTURE_TYPE = 367;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CacheType <em>Cache Type</em>}' enum.
@@ -27259,7 +27131,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCacheType()
 	 * @generated
 	 */
-	int CACHE_TYPE = 370;
+	int CACHE_TYPE = 368;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PortType <em>Port Type</em>}' enum.
@@ -27269,7 +27141,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPortType()
 	 * @generated
 	 */
-	int PORT_TYPE = 371;
+	int PORT_TYPE = 369;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SchedPolicy <em>Sched Policy</em>}' enum.
@@ -27279,7 +27151,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedPolicy()
 	 * @generated
 	 */
-	int SCHED_POLICY = 372;
+	int SCHED_POLICY = 370;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WriteStrategy <em>Write Strategy</em>}' enum.
@@ -27289,7 +27161,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWriteStrategy()
 	 * @generated
 	 */
-	int WRITE_STRATEGY = 373;
+	int WRITE_STRATEGY = 371;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PuType <em>Pu Type</em>}' enum.
@@ -27299,7 +27171,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPuType()
 	 * @generated
 	 */
-	int PU_TYPE = 374;
+	int PU_TYPE = 372;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PortInterface <em>Port Interface</em>}' enum.
@@ -27309,7 +27181,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPortInterface()
 	 * @generated
 	 */
-	int PORT_INTERFACE = 375;
+	int PORT_INTERFACE = 373;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.HwFeatureType <em>Hw Feature Type</em>}' enum.
@@ -27319,7 +27191,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureType()
 	 * @generated
 	 */
-	int HW_FEATURE_TYPE = 376;
+	int HW_FEATURE_TYPE = 374;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType <em>Memory Address Mapping Type</em>}' enum.
@@ -27329,7 +27201,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryAddressMappingType()
 	 * @generated
 	 */
-	int MEMORY_ADDRESS_MAPPING_TYPE = 377;
+	int MEMORY_ADDRESS_MAPPING_TYPE = 375;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode <em>Os Data Consistency Mode</em>}' enum.
@@ -27339,7 +27211,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsDataConsistencyMode()
 	 * @generated
 	 */
-	int OS_DATA_CONSISTENCY_MODE = 378;
+	int OS_DATA_CONSISTENCY_MODE = 376;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessMultiplicity <em>Access Multiplicity</em>}' enum.
@@ -27349,7 +27221,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessMultiplicity()
 	 * @generated
 	 */
-	int ACCESS_MULTIPLICITY = 379;
+	int ACCESS_MULTIPLICITY = 377;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataStabilityLevel <em>Data Stability Level</em>}' enum.
@@ -27359,7 +27231,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStabilityLevel()
 	 * @generated
 	 */
-	int DATA_STABILITY_LEVEL = 380;
+	int DATA_STABILITY_LEVEL = 378;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreType <em>Semaphore Type</em>}' enum.
@@ -27369,7 +27241,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreType()
 	 * @generated
 	 */
-	int SEMAPHORE_TYPE = 381;
+	int SEMAPHORE_TYPE = 379;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Condition <em>Condition</em>}' enum.
@@ -27379,7 +27251,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 382;
+	int CONDITION = 380;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.GroupingType <em>Grouping Type</em>}' enum.
@@ -27389,7 +27261,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroupingType()
 	 * @generated
 	 */
-	int GROUPING_TYPE = 383;
+	int GROUPING_TYPE = 381;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitEventType <em>Wait Event Type</em>}' enum.
@@ -27399,7 +27271,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEventType()
 	 * @generated
 	 */
-	int WAIT_EVENT_TYPE = 384;
+	int WAIT_EVENT_TYPE = 382;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour <em>Waiting Behaviour</em>}' enum.
@@ -27409,7 +27281,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitingBehaviour()
 	 * @generated
 	 */
-	int WAITING_BEHAVIOUR = 385;
+	int WAITING_BEHAVIOUR = 383;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}' enum.
@@ -27419,7 +27291,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRCategory()
 	 * @generated
 	 */
-	int ISR_CATEGORY = 386;
+	int ISR_CATEGORY = 384;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}' enum.
@@ -27429,7 +27301,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceType()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_TYPE = 387;
+	int ACCESS_PRECEDENCE_TYPE = 385;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OrderType <em>Order Type</em>}' enum.
@@ -27439,7 +27311,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderType()
 	 * @generated
 	 */
-	int ORDER_TYPE = 388;
+	int ORDER_TYPE = 386;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelDataStability <em>Label Data Stability</em>}' enum.
@@ -27449,7 +27321,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelDataStability()
 	 * @generated
 	 */
-	int LABEL_DATA_STABILITY = 389;
+	int LABEL_DATA_STABILITY = 387;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ReceiveOperation <em>Receive Operation</em>}' enum.
@@ -27459,7 +27331,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReceiveOperation()
 	 * @generated
 	 */
-	int RECEIVE_OPERATION = 390;
+	int RECEIVE_OPERATION = 388;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability <em>Label Access Data Stability</em>}' enum.
@@ -27469,7 +27341,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessDataStability()
 	 * @generated
 	 */
-	int LABEL_ACCESS_DATA_STABILITY = 391;
+	int LABEL_ACCESS_DATA_STABILITY = 389;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum <em>Label Access Enum</em>}' enum.
@@ -27479,7 +27351,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessEnum()
 	 * @generated
 	 */
-	int LABEL_ACCESS_ENUM = 392;
+	int LABEL_ACCESS_ENUM = 390;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessImplementation <em>Label Access Implementation</em>}' enum.
@@ -27489,7 +27361,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessImplementation()
 	 * @generated
 	 */
-	int LABEL_ACCESS_IMPLEMENTATION = 393;
+	int LABEL_ACCESS_IMPLEMENTATION = 391;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
@@ -27499,7 +27371,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 394;
+	int SEMAPHORE_ACCESS_ENUM = 392;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.BlockingType <em>Blocking Type</em>}' enum.
@@ -27509,7 +27381,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBlockingType()
 	 * @generated
 	 */
-	int BLOCKING_TYPE = 395;
+	int BLOCKING_TYPE = 393;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -27519,7 +27391,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 396;
+	int PREEMPTION = 394;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -27529,7 +27401,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 397;
+	int CONCURRENCY_TYPE = 395;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -27539,7 +27411,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 398;
+	int ASIL_TYPE = 396;
 
 	/**
 	 * The meta object id for the '<em>Address</em>' data type.
@@ -27548,7 +27420,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAddress()
 	 * @generated
 	 */
-	int ADDRESS = 399;
+	int ADDRESS = 397;
 
 
 	/**
@@ -28164,67 +28036,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getQuantity();
 
 	/**
-	 * Returns the meta object for class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime> <em>Time Comparable</em>}'.
+	 * Returns the meta object for class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Time Comparable</em>'.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.AbstractTime>
-	 * @model instanceClass="java.lang.Comparable&lt;org.eclipse.app4mc.amalthea.model.AbstractTime&gt;"
+	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
+	 * @model instanceClass="java.lang.Comparable&lt;org.eclipse.app4mc.amalthea.model.Time&gt;"
 	 * @generated
 	 */
 	EClass getTimeComparable();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.AbstractTime <em>Abstract Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abstract Time</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime
-	 * @generated
-	 */
-	EClass getAbstractTime();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.AbstractTime#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime#getValue()
-	 * @see #getAbstractTime()
-	 * @generated
-	 */
-	EAttribute getAbstractTime_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.AbstractTime#getUnit <em>Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unit</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime#getUnit()
-	 * @see #getAbstractTime()
-	 * @generated
-	 */
-	EAttribute getAbstractTime_Unit();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.AbstractTime#toString() <em>To String</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>To String</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime#toString()
-	 * @generated
-	 */
-	EOperation getAbstractTime__ToString();
-
-	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.AbstractTime#compareTo(org.eclipse.app4mc.amalthea.model.AbstractTime) <em>Compare To</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Compare To</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.AbstractTime#compareTo(org.eclipse.app4mc.amalthea.model.AbstractTime)
-	 * @generated
-	 */
-	EOperation getAbstractTime__CompareTo__AbstractTime();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Time <em>Time</em>}'.
@@ -28235,6 +28055,48 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Time#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#getValue()
+	 * @see #getTime()
+	 * @generated
+	 */
+	EAttribute getTime_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Time#getUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#getUnit()
+	 * @see #getTime()
+	 * @generated
+	 */
+	EAttribute getTime_Unit();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#toString() <em>To String</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>To String</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#toString()
+	 * @generated
+	 */
+	EOperation getTime__ToString();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#compareTo(org.eclipse.app4mc.amalthea.model.Time) <em>Compare To</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Compare To</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#compareTo(org.eclipse.app4mc.amalthea.model.Time)
+	 * @generated
+	 */
+	EOperation getTime__CompareTo__Time();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Frequency <em>Frequency</em>}'.
@@ -28677,16 +28539,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBooleanObject_Value();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeObject <em>Time Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time Object</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeObject
-	 * @generated
-	 */
-	EClass getTimeObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Deviation <em>Deviation</em>}'.

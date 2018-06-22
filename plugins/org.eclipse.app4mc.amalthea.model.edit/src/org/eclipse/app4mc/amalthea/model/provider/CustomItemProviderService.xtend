@@ -16,7 +16,6 @@ import java.util.List
 import java.util.Map
 import org.apache.commons.lang.StringUtils
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
-import org.eclipse.app4mc.amalthea.model.AbstractTime
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
 import org.eclipse.app4mc.amalthea.model.Amalthea
@@ -90,6 +89,7 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
 import org.eclipse.app4mc.amalthea.model.LatencyConstant
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
+import org.eclipse.app4mc.amalthea.model.ListObject
 import org.eclipse.app4mc.amalthea.model.LongObject
 import org.eclipse.app4mc.amalthea.model.MemoryClassification
 import org.eclipse.app4mc.amalthea.model.MemoryMapping
@@ -125,6 +125,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototypeAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement
 import org.eclipse.app4mc.amalthea.model.ProcessScope
 import org.eclipse.app4mc.amalthea.model.QualifiedPort
+import org.eclipse.app4mc.amalthea.model.ReferenceObject
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
@@ -151,12 +152,14 @@ import org.eclipse.app4mc.amalthea.model.TaskMeasurement
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.TimeMetric
-import org.eclipse.app4mc.amalthea.model.TimeObject
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit
 import org.eclipse.app4mc.amalthea.model.TimeUnit
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy
 import org.eclipse.app4mc.amalthea.model.TypeDefinition
 import org.eclipse.app4mc.amalthea.model.TypeRef
+import org.eclipse.app4mc.amalthea.model.Value
+import org.eclipse.app4mc.amalthea.model.Voltage
+import org.eclipse.app4mc.amalthea.model.VoltageUnit
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
@@ -168,11 +171,6 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.Value
-import org.eclipse.app4mc.amalthea.model.ReferenceObject
-import org.eclipse.app4mc.amalthea.model.ListObject
-import org.eclipse.app4mc.amalthea.model.Voltage
-import org.eclipse.app4mc.amalthea.model.VoltageUnit
 
 class CustomItemProviderService {
 
@@ -241,7 +239,7 @@ class CustomItemProviderService {
 ///// _________________________ Common _________________________
 ///// 
 
-	private def static getTimeText(AbstractTime time) {
+	private def static getTimeText(Time time) {
 		if(time === null) return "<time>"
 
 		val value = if(time.value === null) "???" else time.value.toString
@@ -332,7 +330,7 @@ class CustomItemProviderService {
 				if(object.value === null) "null" else "\"" + object.value + "\""
 			ReferenceObject:
 				if(object.value === null) "null" else object.value.eClass.name + " \"" + ppName(object?.value?.name) + "\""
-			TimeObject:
+			Time:
 				if(object.value === null) "null" else getTimeText(object)
 			ListObject:
 				""
@@ -470,29 +468,6 @@ class CustomItemProviderService {
 		val list = newArrayList
 		switch notification.getFeatureID(typeof(LongObject)) {
 			case AmaltheaPackage::LONG_OBJECT__VALUE: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-				addParentLabelNotification(list, notification)
-				}
-		}
-		return list
-	}
-
-	/*****************************************************************************
-	 * 						TimeObjectItemProvider
-	 *****************************************************************************/
-	def static String getTimeObjectItemProviderText(Object object, String defaultText) {
-		if (object instanceof TimeObject) {
-			return getContainingFeatureName(object) + getTimeText(object)
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getTimeObjectItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(TimeObject)) {
-			case AmaltheaPackage::TIME_OBJECT__VALUE,
-			case AmaltheaPackage::TIME_OBJECT__UNIT: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}

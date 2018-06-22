@@ -209,6 +209,11 @@ public class CustomPropertyItemProvider extends AmaltheaExtendedItemProviderAdap
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
 				 AmaltheaFactory.eINSTANCE.createListObject()));
 
 		newChildDescriptors.add
@@ -250,11 +255,6 @@ public class CustomPropertyItemProvider extends AmaltheaExtendedItemProviderAdap
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
 				 AmaltheaFactory.eINSTANCE.createBooleanObject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getCustomProperty_Value(),
-				 AmaltheaFactory.eINSTANCE.createTimeObject()));
 	}
 
 	/**

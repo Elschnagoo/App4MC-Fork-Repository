@@ -19,7 +19,6 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AbstractTime;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
@@ -381,7 +380,6 @@ import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
-import org.eclipse.app4mc.amalthea.model.TimeObject;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
@@ -531,9 +529,7 @@ public class AmaltheaValidator extends EObjectValidator {
 			case AmaltheaPackage.QUANTITY:
 				return validateQuantity((Quantity)value, diagnostics, context);
 			case AmaltheaPackage.TIME_COMPARABLE:
-				return validateTimeComparable((Comparable<AbstractTime>)value, diagnostics, context);
-			case AmaltheaPackage.ABSTRACT_TIME:
-				return validateAbstractTime((AbstractTime)value, diagnostics, context);
+				return validateTimeComparable((Comparable<Time>)value, diagnostics, context);
 			case AmaltheaPackage.TIME:
 				return validateTime((Time)value, diagnostics, context);
 			case AmaltheaPackage.FREQUENCY:
@@ -568,8 +564,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateDoubleObject((DoubleObject)value, diagnostics, context);
 			case AmaltheaPackage.BOOLEAN_OBJECT:
 				return validateBooleanObject((BooleanObject)value, diagnostics, context);
-			case AmaltheaPackage.TIME_OBJECT:
-				return validateTimeObject((TimeObject)value, diagnostics, context);
 			case AmaltheaPackage.DEVIATION:
 				return validateDeviation((Deviation<?>)value, diagnostics, context);
 			case AmaltheaPackage.DISTRIBUTION:
@@ -1494,17 +1488,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTimeComparable(Comparable<AbstractTime> timeComparable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateTimeComparable(Comparable<Time> timeComparable, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint((EObject)timeComparable, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAbstractTime(AbstractTime abstractTime, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(abstractTime, diagnostics, context);
 	}
 
 	/**
@@ -1658,15 +1643,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateBooleanObject(BooleanObject booleanObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(booleanObject, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimeObject(TimeObject timeObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeObject, diagnostics, context);
 	}
 
 	/**
