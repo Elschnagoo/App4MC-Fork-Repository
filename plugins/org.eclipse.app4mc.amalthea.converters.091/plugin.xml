@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.app4mc.amalthea.model.converters">
+     
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters091.impl.RootElementConverter"
+            enabled="true"
+            id="converters.091.rootElement"
+            input-model-version="0.9.0"
+            name="rootElement"
+            output-model-version="0.9.1">
+      </converter>
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters091.impl.NamespaceConverter"
+            enabled="true"
+            id="converters.091.namespace"
+            input-model-version="0.9.0"
+            name="namespace"
+            output-model-version="0.9.1">
+         <dependent-on-converter
+               id="converters.091.rootElement">
+         </dependent-on-converter>
+      </converter>
+      
+      
+      
+   </extension>
+
+</plugin>

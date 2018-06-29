@@ -76,6 +76,26 @@ public abstract class AbstractHelper {
 		return false;
 
 	}
+
+	public boolean isNS_AvailableIn_091(final Namespace namespace) {
+
+		if (namespace != null) {
+
+			final String ns_prefix = namespace.getPrefix();
+
+			final String ns_uri = namespace.getURI();
+
+			if (enumTypeContainsIn091(ns_prefix)) {
+
+				if (ns_uri.equals(NameSpace_091.valueOf(ns_prefix).getNSValue())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+	
 	
 	public boolean isNS_AvailableIn_090(final Namespace namespace) {
 
@@ -392,6 +412,15 @@ public abstract class AbstractHelper {
 
 		return Namespace.getNamespace("", "");
 	}
+
+	public Namespace getNS_091(final String prefix) {
+
+		if (enumTypeContainsIn091(prefix)) {
+			return Namespace.getNamespace(prefix, NameSpace_091.valueOf(prefix).getNSValue());
+		}
+
+		return Namespace.getNamespace("", "");
+	}
 	
 	public boolean enumTypeContainsIn110(final String s) {
 		try {
@@ -505,6 +534,15 @@ public abstract class AbstractHelper {
 		return true;
 	}
 	
+	public boolean enumTypeContainsIn091(final String s) {
+		try {
+			NameSpace_091.valueOf(s);
+		}
+		catch (final IllegalArgumentException iae) {
+			return false;
+		}
+		return true;
+	}
 	public Namespace getGenericNS(final String prefix) {
 
 		if ("xsi".equals(prefix)) {
