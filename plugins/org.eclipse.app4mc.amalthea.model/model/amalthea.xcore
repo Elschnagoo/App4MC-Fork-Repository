@@ -2080,6 +2080,24 @@ abstract class Scheduler extends ReferableBaseObject
 	contains ComputationItem[] computationItems
 	op Algorithm getSchedulingAlgorithm() {
 	}
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of scheduler allocations (SchedulerAllocation).</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived SchedulerAllocation[] schedulerAllocations get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.scheduler_SchedulerAllocations, AmaltheaPackage.eINSTANCE.schedulerAllocation_Scheduler
+		)
+	}
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of runnable allocations (RunnableAllocation).</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived RunnableAllocation[] runnableAllocations get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.scheduler_RunnableAllocations, AmaltheaPackage.eINSTANCE.runnableAllocation_Scheduler
+		)
+	}
 }
 
 class TaskScheduler extends Scheduler
@@ -2095,10 +2113,21 @@ class TaskScheduler extends Scheduler
 			AmaltheaPackage.eINSTANCE.taskScheduler_ChildAssociations, AmaltheaPackage.eINSTANCE.schedulerAssociation_Parent
 		)
 	}
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of task allocations (TaskAllocation).</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived TaskAllocation[] taskAllocations get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.taskScheduler_TaskAllocations, AmaltheaPackage.eINSTANCE.taskAllocation_Scheduler
+		)
+	}
+	
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler parentScheduler get {
 		return parentAssociation?.parent
 	}
+	
 	@GenModel(propertyCategory="Read only")
 	refers derived readonly TaskScheduler[] childSchedulers get {
 		return childAssociations.map[child]
@@ -2119,6 +2148,15 @@ class SchedulerAssociation
 class InterruptController extends Scheduler
 {
 	contains InterruptSchedulingAlgorithm schedulingAlgorithm
+	
+	// back pointer (readonly)
+	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of ISR allocations (ISRAllocation).</b></p>")
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers transient readonly volatile derived ISRAllocation[] isrAllocations get {
+		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+			AmaltheaPackage.eINSTANCE.interruptController_IsrAllocations, AmaltheaPackage.eINSTANCE.ISRAllocation_Controller
+		)
+	}	
 }
 
 /*

@@ -14275,13 +14275,31 @@ public interface AmaltheaPackage extends EPackage {
 	int SCHEDULER__COMPUTATION_ITEMS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Scheduler Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER__SCHEDULER_ALLOCATIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Runnable Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER__RUNNABLE_ALLOCATIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Scheduler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULER_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
+	int SCHEDULER_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14384,6 +14402,24 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_SCHEDULER__COMPUTATION_ITEMS = SCHEDULER__COMPUTATION_ITEMS;
 
 	/**
+	 * The feature id for the '<em><b>Scheduler Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER__SCHEDULER_ALLOCATIONS = SCHEDULER__SCHEDULER_ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Runnable Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER__RUNNABLE_ALLOCATIONS = SCHEDULER__RUNNABLE_ALLOCATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Scheduling Algorithm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14411,13 +14447,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK_SCHEDULER__CHILD_ASSOCIATIONS = SCHEDULER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Task Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER__TASK_ALLOCATIONS = SCHEDULER_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Parent Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_SCHEDULER__PARENT_SCHEDULER = SCHEDULER_FEATURE_COUNT + 3;
+	int TASK_SCHEDULER__PARENT_SCHEDULER = SCHEDULER_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Child Schedulers</b></em>' reference list.
@@ -14426,7 +14471,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_SCHEDULER__CHILD_SCHEDULERS = SCHEDULER_FEATURE_COUNT + 4;
+	int TASK_SCHEDULER__CHILD_SCHEDULERS = SCHEDULER_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Task Scheduler</em>' class.
@@ -14435,7 +14480,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_SCHEDULER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 5;
+	int TASK_SCHEDULER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14602,6 +14647,24 @@ public interface AmaltheaPackage extends EPackage {
 	int INTERRUPT_CONTROLLER__COMPUTATION_ITEMS = SCHEDULER__COMPUTATION_ITEMS;
 
 	/**
+	 * The feature id for the '<em><b>Scheduler Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER__SCHEDULER_ALLOCATIONS = SCHEDULER__SCHEDULER_ALLOCATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Runnable Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER__RUNNABLE_ALLOCATIONS = SCHEDULER__RUNNABLE_ALLOCATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Scheduling Algorithm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14611,13 +14674,22 @@ public interface AmaltheaPackage extends EPackage {
 	int INTERRUPT_CONTROLLER__SCHEDULING_ALGORITHM = SCHEDULER_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Isr Allocations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER__ISR_ALLOCATIONS = SCHEDULER_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Interrupt Controller</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERRUPT_CONTROLLER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 1;
+	int INTERRUPT_CONTROLLER_FEATURE_COUNT = SCHEDULER_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -33186,6 +33258,28 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getScheduler_ComputationItems();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulerAllocations <em>Scheduler Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Scheduler Allocations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulerAllocations()
+	 * @see #getScheduler()
+	 * @generated
+	 */
+	EReference getScheduler_SchedulerAllocations();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getRunnableAllocations <em>Runnable Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Runnable Allocations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Scheduler#getRunnableAllocations()
+	 * @see #getScheduler()
+	 * @generated
+	 */
+	EReference getScheduler_RunnableAllocations();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Scheduler#getSchedulingAlgorithm() <em>Get Scheduling Algorithm</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33237,6 +33331,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskScheduler_ChildAssociations();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getTaskAllocations <em>Task Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Task Allocations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TaskScheduler#getTaskAllocations()
+	 * @see #getTaskScheduler()
+	 * @generated
+	 */
+	EReference getTaskScheduler_TaskAllocations();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentScheduler <em>Parent Scheduler</em>}'.
@@ -33334,6 +33439,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterruptController_SchedulingAlgorithm();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.InterruptController#getIsrAllocations <em>Isr Allocations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Isr Allocations</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.InterruptController#getIsrAllocations()
+	 * @see #getInterruptController()
+	 * @generated
+	 */
+	EReference getInterruptController_IsrAllocations();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SchedulingParameters <em>Scheduling Parameters</em>}'.

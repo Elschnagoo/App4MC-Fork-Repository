@@ -12,6 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.InterruptController#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.InterruptController#getIsrAllocations <em>Isr Allocations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterruptController()
@@ -55,5 +57,21 @@ public interface InterruptController extends Scheduler {
 	 * @generated
 	 */
 	void setSchedulingAlgorithm(InterruptSchedulingAlgorithm value);
+
+	/**
+	 * Returns the value of the '<em><b>Isr Allocations</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ISRAllocation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of ISR allocations (ISRAllocation).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Isr Allocations</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterruptController_IsrAllocations()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ISRAllocation%&gt;&gt;getInverseReferences(this, \n\t&lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getInterruptController_IsrAllocations(), &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getISRAllocation_Controller());'"
+	 * @generated
+	 */
+	EList<ISRAllocation> getIsrAllocations();
 
 } // InterruptController

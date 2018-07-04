@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
+ *  Copyright (c) 2018 Robert Bosch GmbH and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -46,12 +46,13 @@ public class DeploymentUtil {
 		result.addAll(getISRsMappedToCore(core, model));
 		return result;
 	}
-	
-	
+
 	/**
-	 * Returns a set of tasks mapped to a core. Depends on responsibilities of schedulers and the task allocated to them
-	 * Assumption: Scheduler responsibilities are set
-	 * empty core affinities are ignored otherwise the intersection of core affinity and scheduler responsibility is returned  
+	 * Returns a set of tasks mapped to a core. Depends on responsibilities of
+	 * schedulers and the task allocated to them Assumption: Scheduler
+	 * responsibilities are set empty core affinities are ignored otherwise the
+	 * intersection of core affinity and scheduler responsibility is returned
+	 * 
 	 * @param core
 	 * @param model
 	 * @return Set of tasks
@@ -59,7 +60,8 @@ public class DeploymentUtil {
 	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) { /// called it mapping
 		Set<Task> tasks = new HashSet<>();
 		MappingModel mappingModel = model.getMappingModel();
-		if (mappingModel == null) return tasks;
+		if (mappingModel == null)
+			return tasks;
 
 		// first find all schedulers responsible for the core
 		Set<TaskScheduler> schedulers = new HashSet<>();
@@ -86,41 +88,41 @@ public class DeploymentUtil {
 		}
 		return tasks;
 	}
-	
-	
+
 	/**
 	 * Returns a set of all ISR mapped to that core
+	 * 
 	 * @param core
 	 * @param model
 	 * @return Set of interrupt service routines (ISR)
 	 */
 	public static Set<ISR> getISRsMappedToCore(ProcessingUnit core, Amalthea model) {
-		if (core == null || model.getSwModel() == null || model.getSwModel().getIsrs() == null || 
-				model.getMappingModel() ==null || model.getMappingModel().getIsrAllocation() == null)
+		if (core == null || model.getSwModel() == null || model.getSwModel().getIsrs() == null
+				|| model.getMappingModel() == null || model.getMappingModel().getIsrAllocation() == null)
 			return null;
-		
+
 		Set<ISR> result = new HashSet<>();
 		EList<ISRAllocation> isrAlloc = model.getMappingModel().getIsrAllocation();
 		EList<SchedulerAllocation> schedulerAllocs = model.getMappingModel().getSchedulerAllocation();
 		for (ISR isr : model.getSwModel().getIsrs()) {
 			for (ISRAllocation ia : isrAlloc) {
-				if (ia.getIsr().equals(isr)){
-					for(SchedulerAllocation coreAlloc : schedulerAllocs) {
-						if(coreAlloc.getResponsibility().contains(core)) {
-							if(coreAlloc.getScheduler() == ia.getController()) {
+				if (ia.getIsr().equals(isr)) {
+					for (SchedulerAllocation coreAlloc : schedulerAllocs) {
+						if (coreAlloc.getResponsibility().contains(core)) {
+							if (coreAlloc.getScheduler() == ia.getController()) {
 								result.add(isr);
 							}
 						}
 					}
-				}	
+				}
 			}
 		}
 		return result;
 	}
 
-	
 	/**
-	 * Returns a list of all allocations of a task 	
+	 * Returns a list of all allocations of a task
+	 * 
 	 * @param task
 	 * @param model
 	 * @return List of task allocations
@@ -134,34 +136,34 @@ public class DeploymentUtil {
 		}
 		return allocs;
 	}
-	
-	
+
 	/**
 	 * Returns boolean if at least a label mapping exists
+	 * 
 	 * @param label
 	 * @return boolean
 	 */
 	public static boolean isMapped(Label label) {
 		return !getLabelMapping(label).isEmpty();
 	}
-	
-	
+
 	/**
 	 * Set of memories the label is mapped to (should be only one!)
+	 * 
 	 * @param label
 	 * @return Set of Memories
 	 */
 	public static Set<Memory> getLabelMapping(Label label) {
 		Set<Memory> locations = new HashSet<>();
-		for (MemoryMapping mapping :label.getMappings()) {
+		for (MemoryMapping mapping : label.getMappings()) {
 			locations.add(mapping.getMemory());
 		}
 		return locations;
 	}
-	
-	
+
 	/**
-	 * Returns a created LabelMapping element which was already added to the model 
+	 * Returns a created LabelMapping element which was already added to the model
+	 * 
 	 * @param label
 	 * @param mem
 	 * @return MemoryMapping
@@ -169,60 +171,58 @@ public class DeploymentUtil {
 	public static MemoryMapping setLabelMapping(Label label, Memory mem, Amalthea model) {
 		if (mem == null || label == null)
 			return null;
-		
+
 		MemoryMapping mapping = AmaltheaFactory.eINSTANCE.createMemoryMapping();
 		mapping.setAbstractElement(label);
 		mapping.setMemory(mem);
 		ModelUtil.getOrCreateMappingModel(model).getMemoryMapping().add(mapping);
 		return mapping;
 	}
-	
-	
+
 	/**
-	 * 
-	 * @param scheduler
-	 * @param mappingModel
-	 * @return All scheduler allocations referencing this scheduler 
+	 * @deprecated (0.9.1) use {@link Scheduler#getSchedulerAllocations()} instead.
 	 */
+	@Deprecated
 	public static SchedulerAllocation getSchedulerAllocations(Scheduler scheduler, MappingModel mappingModel) {
 		for (SchedulerAllocation sa : mappingModel.getSchedulerAllocation()) {
 			if (sa.getScheduler().equals(scheduler)) {
 				return sa;
 			}
 		}
-		return null;	
+		return null;
 	}
-	
-	
+
 	/**
 	 * Returns a set of all task allocations of a specific scheduler
-	 * @param taskScheduler  
-	 * @param mappingmodel
-	 * @return Set of TaskAllocations
+	 * 
+	 * @deprecated (0.9.1) use {@link TaskScheduler#getTaskAllocations()} instead.
 	 */
-	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler, MappingModel mappingmodel) {
+	@Deprecated
+	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler,
+			MappingModel mappingmodel) {
 		HashSet<TaskAllocation> taskAllocations = new HashSet<>();
 		for (TaskAllocation taRun : mappingmodel.getTaskAllocation()) {
-			if (taRun.getScheduler()!= null && taRun.getScheduler().equals(taskScheduler)) {
+			if (taRun.getScheduler() != null && taRun.getScheduler().equals(taskScheduler)) {
 				taskAllocations.add(taRun);
 			}
 		}
-		return taskAllocations;	
+		return taskAllocations;
 	}
-	
-	
+
 	/**
-	 * Returns the cores the process is assigned to.
-	 * Empty core affinities are ignored, otherwise the intersection of core affinity and scheduler responsibility is returned
-	 * @param process
-	 * @param model
+	 * Returns the cores the process is assigned to. Empty core affinities are
+	 * ignored, otherwise the intersection of core affinity and scheduler
+	 * responsibility is returned.
+	 * 
+	 * @param process Task or ISR
+	 * @param model The containing model
 	 * @return Set of cores
 	 */
 	public static Set<ProcessingUnit> getAssignedCoreForProcess(Process process, Amalthea model) {
 		final MappingModel mappingModel = model.getMappingModel();
-		if(process == null || mappingModel == null) 
+		if (process == null || mappingModel == null)
 			return null;
-		
+
 		Set<TaskAllocation> taskAllocations = new HashSet<>();
 		Set<ProcessingUnit> processingUnits = new HashSet<>();
 		if (process instanceof Task) {
@@ -234,7 +234,8 @@ public class DeploymentUtil {
 			for (SchedulerAllocation schedAlloc : mappingModel.getSchedulerAllocation()) {
 				for (TaskAllocation taskAlloc : taskAllocations) {
 					if (schedAlloc.getScheduler().equals(taskAlloc.getScheduler()))
-						// check core affinity -- retain the core affinity with the scheduler responsibility
+						// check core affinity -- retain the core affinity with the scheduler
+						// responsibility
 						if (!taskAlloc.getAffinity().isEmpty()) {
 							for (ProcessingUnit core : taskAlloc.getAffinity()) {
 								if (schedAlloc.getResponsibility().contains(core))
@@ -247,7 +248,7 @@ public class DeploymentUtil {
 				}
 			}
 		}
-		
+
 		if (process instanceof ISR) {
 			for (ISRAllocation isrAlloc : mappingModel.getIsrAllocation()) {
 				if (isrAlloc.getIsr().equals(process)) {
@@ -259,32 +260,31 @@ public class DeploymentUtil {
 				}
 			}
 		}
-		
+
 		return processingUnits;
 	}
-	
-	
+
 	/**
-	 * @param procUnitDef
-	 * @return
+	 * @param procUnitDef Definition of a processing unit
+	 * @return List of feature categories
 	 */
-	public List<HwFeatureCategory> getFeatureCategories (ProcessingUnitDefinition procUnitDef) {
+	public List<HwFeatureCategory> getFeatureCategories(ProcessingUnitDefinition procUnitDef) {
 		List<HwFeatureCategory> result = new ArrayList<>();
 		for (HwFeature feature : procUnitDef.getFeatures()) {
 			if (!result.contains(feature.getContainingCategory())) {
 				result.add(feature.getContainingCategory());
-				}
+			}
 		}
 		return result;
 	}
-	
-	
+
 	/**
 	 * @param hwFeatureCat
 	 * @param procUnitDefinitons
 	 * @return
 	 */
-	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwCategories(HwFeatureCategory hwFeatureCat, List<ProcessingUnitDefinition> procUnitDefinitons) {
+	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwCategories(HwFeatureCategory hwFeatureCat,
+			List<ProcessingUnitDefinition> procUnitDefinitons) {
 		List<ProcessingUnitDefinition> result = new ArrayList<>();
 		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {
 			for (HwFeature feature : hwFeatureCat.getFeatures()) {
@@ -294,14 +294,14 @@ public class DeploymentUtil {
 		}
 		return result;
 	}
-	
-	
+
 	/**
 	 * @param feature
 	 * @param procUnitDefinitons
 	 * @return
 	 */
-	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwFeature(HwFeature feature, List<ProcessingUnitDefinition> procUnitDefinitons) {
+	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwFeature(HwFeature feature,
+			List<ProcessingUnitDefinition> procUnitDefinitons) {
 		List<ProcessingUnitDefinition> result = new ArrayList<>();
 		for (ProcessingUnitDefinition procUnitDef : procUnitDefinitons) {
 			if (procUnitDef.getFeatures().contains(feature))
@@ -309,5 +309,5 @@ public class DeploymentUtil {
 		}
 		return result;
 	}
-	
+
 }
