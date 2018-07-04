@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
@@ -235,7 +235,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * @generated
 	 */
 	public EList<SemaphoreAccess> getSemaphoreAccesses() {
-		return AmaltheaCrossReferenceUtil.<SemaphoreAccess>getInverseReferences(this, 
+		return AmaltheaIndex.<SemaphoreAccess>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(), AmaltheaPackage.eINSTANCE.getSemaphoreAccess_Semaphore());
 	}
 
@@ -245,7 +245,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+		return AmaltheaIndex.<Component>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Semaphores());
 	}
 

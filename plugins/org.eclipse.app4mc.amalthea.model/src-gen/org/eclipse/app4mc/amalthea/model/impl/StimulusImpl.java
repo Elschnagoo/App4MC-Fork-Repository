@@ -14,7 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
@@ -258,7 +258,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Process> getAffectedProcesses() {
-		return AmaltheaCrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, 
+		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getStimulus_AffectedProcesses(), AmaltheaPackage.eINSTANCE.getProcess_Stimuli());
 	}
 

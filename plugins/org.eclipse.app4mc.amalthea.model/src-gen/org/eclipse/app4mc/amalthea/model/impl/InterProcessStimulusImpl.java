@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
@@ -121,7 +121,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * @generated
 	 */
 	public EList<InterProcessTrigger> getExplicitTriggers() {
-		return AmaltheaCrossReferenceUtil.<InterProcessTrigger>getInverseReferences(this, 
+		return AmaltheaIndex.<InterProcessTrigger>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getInterProcessStimulus_ExplicitTriggers(), AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus());
 	}
 

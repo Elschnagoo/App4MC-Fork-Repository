@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
 import org.eclipse.app4mc.amalthea.model.CustomEventTrigger;
@@ -106,7 +106,7 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * @generated
 	 */
 	public EList<CustomEventTrigger> getExplicitTriggers() {
-		return AmaltheaCrossReferenceUtil.<CustomEventTrigger>getInverseReferences(this, 
+		return AmaltheaIndex.<CustomEventTrigger>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getCustomEvent_ExplicitTriggers(), AmaltheaPackage.eINSTANCE.getCustomEventTrigger_Event());
 	}
 

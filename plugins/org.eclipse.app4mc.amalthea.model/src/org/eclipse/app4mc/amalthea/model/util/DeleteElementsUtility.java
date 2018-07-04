@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -25,12 +26,24 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 
+
+/**
+ * @deprecated (0.9.1) use {@link AmaltheaIndex#deleteAll(Collection)} instead.
+ *
+ */
+
+@Deprecated
 public class DeleteElementsUtility {
 
 	/**
 	 * Performs bulk deletion of EMF model elements inside a specific resource
-	 * @param eObjects	Collection of elements to be removed
-	 * @param resource	Resource to which "elements to be removed" are belonging to 
+	 * 
+	 * @param eObjects
+	 *            Collection of elements to be removed
+	 * @param resource
+	 *            Resource to which "elements to be removed" are belonging to
+	 * 
+	 * @deprecated (0.9.1) use {@link AmaltheaIndex#deleteAll(Collection)} instead.
 	 */
 	public static void deleteAll(Collection<? extends EObject> eObjects, Resource resource) {
 
@@ -55,10 +68,17 @@ public class DeleteElementsUtility {
 		}
 
 	}
+
 	/**
-	 * Performs bulk deletion of EMF model elements inside a specific EObject ( e.g: model root like AMALTHEA or SWModel or HWModel)
-	 * @param eObjects	Collection of elements to be removed
-	 * @param model		Model root 
+	 * Performs bulk deletion of EMF model elements inside a specific EObject ( e.g:
+	 * model root like AMALTHEA or SWModel or HWModel)
+	 * 
+	 * @param eObjects
+	 *            Collection of elements to be removed
+	 * @param model
+	 *            Model root
+	 * 
+	 * @deprecated (0.9.1) use {@link AmaltheaIndex#deleteAll(Collection)} instead.
 	 */
 	public static void deleteAll(Collection<? extends EObject> eObjects, EObject model) {
 

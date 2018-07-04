@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -183,7 +183,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public EList<SchedulerAssociation> getChildAssociations() {
-		return AmaltheaCrossReferenceUtil.<SchedulerAssociation>getInverseReferences(this, 
+		return AmaltheaIndex.<SchedulerAssociation>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(), AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Parent());
 	}
 
@@ -193,7 +193,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public EList<TaskAllocation> getTaskAllocations() {
-		return AmaltheaCrossReferenceUtil.<TaskAllocation>getInverseReferences(this, 
+		return AmaltheaIndex.<TaskAllocation>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getTaskScheduler_TaskAllocations(), AmaltheaPackage.eINSTANCE.getTaskAllocation_Scheduler());
 	}
 

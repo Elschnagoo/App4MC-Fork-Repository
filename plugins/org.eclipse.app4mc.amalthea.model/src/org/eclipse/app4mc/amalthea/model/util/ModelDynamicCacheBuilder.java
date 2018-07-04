@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -39,8 +40,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * 
  * <b>Note:</b>: Cache will be updated (on each model change) --&gt; lazily on the first access of the getter methods after the EMF model change.
  * 
- *
+ * @deprecated (0.9.1) {@link AmaltheaIndex} uses a cache automatically.
  */
+
+@Deprecated
 public class ModelDynamicCacheBuilder {
 	
 	private final Map<String, Map<String, List<EObject>>> cacheMap = new HashMap<String, Map<String, List<EObject>>>();

@@ -14,7 +14,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
@@ -135,7 +135,7 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+		return AmaltheaIndex.<Component>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_OsEvents());
 	}
 

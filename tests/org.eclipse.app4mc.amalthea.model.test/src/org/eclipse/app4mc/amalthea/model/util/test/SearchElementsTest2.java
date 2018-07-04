@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -69,15 +69,15 @@ public class SearchElementsTest2 {
 			 runnable0.getRunnableItems().add(la);
 		 }
 		 
-		 Set<? extends Label> elementsBasedOnName = AmaltheaCrossReferenceUtil.getElements(model, "d0", Label.class);
+		 Set<? extends Label> elementsBasedOnName = AmaltheaIndex.getElements(model, "d0", Label.class);
 		 
 		 assertEquals("Label d0 present in the model, but not found by search utility", 1, elementsBasedOnName.size());
 		 
-		 Set<? extends Label> elementsBasedOnRegex = AmaltheaCrossReferenceUtil.getElements(model, Pattern.compile("d\\d"), Label.class);
+		 Set<? extends Label> elementsBasedOnRegex = AmaltheaIndex.getElements(model, Pattern.compile("d\\d"), Label.class);
 		 
 		 assertEquals("Label d0, d1 present in the model, but not found by search utility", 2, elementsBasedOnRegex.size());
 		 
-		 Set<? extends Label> elementsBasedOnType = AmaltheaCrossReferenceUtil.getElements(model, Pattern.compile(".*"), Label.class);
+		 Set<? extends Label> elementsBasedOnType = AmaltheaIndex.getElements(model, Pattern.compile(".*"), Label.class);
 		 
 		 assertEquals("Label d0, d1 present in the model, but not found by search utility", 2, elementsBasedOnType.size());
 		 

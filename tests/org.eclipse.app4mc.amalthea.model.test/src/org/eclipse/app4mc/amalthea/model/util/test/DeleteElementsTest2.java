@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.stream.Stream;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -83,9 +83,9 @@ public class DeleteElementsTest2 {
 		 mappingModel.getMemoryMapping().add(elementMapping);
 
 		 
-		 assertEquals("label d0 is present in the model", 1, AmaltheaCrossReferenceUtil.getElements(model, "d0", Label.class).size());
+		 assertEquals("label d0 is present in the model", 1, AmaltheaIndex.getElements(model, "d0", Label.class).size());
 
-		AmaltheaCrossReferenceUtil.deleteAll(model.getSwModel().getLabels());
+		AmaltheaIndex.deleteAll(model.getSwModel().getLabels());
 
 		EList<RunnableItem> runnableItems=runnable0.getRunnableItems();
 		
@@ -94,7 +94,7 @@ public class DeleteElementsTest2 {
 		assertEquals("runnable0 should not contain reference to Label in LabelAccess - as all labels are deleted", 0, filteredItems.count()); 
 
 		
-		assertEquals("label d0 is not removed from model", 0, AmaltheaCrossReferenceUtil.getElements(model, "d0", Label.class).size());
+		assertEquals("label d0 is not removed from model", 0, AmaltheaIndex.getElements(model, "d0", Label.class).size());
 	}
 	
  

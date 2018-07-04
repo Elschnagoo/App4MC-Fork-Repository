@@ -18,7 +18,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -359,7 +359,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<RunnableCall> getRunnableCalls() {
-		return AmaltheaCrossReferenceUtil.<RunnableCall>getInverseReferences(this, 
+		return AmaltheaIndex.<RunnableCall>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(), AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
 	}
 
@@ -369,7 +369,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		return AmaltheaCrossReferenceUtil.<TaskRunnableCall>getInverseReferences(this, 
+		return AmaltheaIndex.<TaskRunnableCall>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
 	}
 
@@ -379,7 +379,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+		return AmaltheaIndex.<Component>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Runnables());
 	}
 
