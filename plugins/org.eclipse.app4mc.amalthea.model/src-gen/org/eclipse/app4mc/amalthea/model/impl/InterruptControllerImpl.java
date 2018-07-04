@@ -12,12 +12,16 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.InterruptSchedulingAlgorithm;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -33,6 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterruptControllerImpl#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterruptControllerImpl#getIsrAllocations <em>Isr Allocations</em>}</li>
  * </ul>
  *
  * @generated
@@ -115,6 +120,16 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ISRAllocation> getIsrAllocations() {
+		return AmaltheaCrossReferenceUtil.<ISRAllocation>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getInterruptController_IsrAllocations(), AmaltheaPackage.eINSTANCE.getISRAllocation_Controller());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -134,6 +149,8 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 		switch (featureID) {
 			case AmaltheaPackage.INTERRUPT_CONTROLLER__SCHEDULING_ALGORITHM:
 				return getSchedulingAlgorithm();
+			case AmaltheaPackage.INTERRUPT_CONTROLLER__ISR_ALLOCATIONS:
+				return getIsrAllocations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,6 +195,8 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 		switch (featureID) {
 			case AmaltheaPackage.INTERRUPT_CONTROLLER__SCHEDULING_ALGORITHM:
 				return schedulingAlgorithm != null;
+			case AmaltheaPackage.INTERRUPT_CONTROLLER__ISR_ALLOCATIONS:
+				return !getIsrAllocations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

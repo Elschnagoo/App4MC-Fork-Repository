@@ -111,6 +111,14 @@ Components define lists of included software elements (e.g. labels, runnables, s
 | @Component@ |{color:green}. &#8592; *referringComponents* |>. *semaphores* &#8594; | @Semaphore@ |
 | @Component@ |{color:green}. &#8592; *referringComponents* |>. *osEvents* &#8594; | @OsEvent@ |
 
+Allocations refer to a scheduler (Scheduler, TaskScheduler, InterruptController). The back pointer provides access from the scheduler to the allocations.
+
+| | Back pointer (read only) |>. Reference | |
+| @SchedulerAllocation@ |{color:green}. &#8592; *schedulerAllocations* |>. *scheduler* &#8594; | @Scheduler@ |
+| @RunnableAllocation@ |{color:green}. &#8592; *runnableAllocations* |>. *scheduler* &#8594; | @Scheduler@ |
+| @TaskAllocation@ |{color:green}. &#8592; *taskAllocations* |>. *scheduler* &#8594; | @TaskScheduler@ |
+| @ISRAllocation@ |{color:green}. &#8592; *isrAllocations* |>. *controller* &#8594; | @InterruptController@ |
+
 Some other useful back references.
 
 | | Back pointer (read only) |>. Reference | |

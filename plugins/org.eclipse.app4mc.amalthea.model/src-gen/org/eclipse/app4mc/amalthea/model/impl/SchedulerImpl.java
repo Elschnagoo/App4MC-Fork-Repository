@@ -17,9 +17,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ComputationItem;
+import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -40,6 +43,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getComputationItems <em>Computation Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getSchedulerAllocations <em>Scheduler Allocations</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.SchedulerImpl#getRunnableAllocations <em>Runnable Allocations</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +96,26 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<SchedulerAllocation> getSchedulerAllocations() {
+		return AmaltheaCrossReferenceUtil.<SchedulerAllocation>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getScheduler_SchedulerAllocations(), AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<RunnableAllocation> getRunnableAllocations() {
+		return AmaltheaCrossReferenceUtil.<RunnableAllocation>getInverseReferences(this, 
+			AmaltheaPackage.eINSTANCE.getScheduler_RunnableAllocations(), AmaltheaPackage.eINSTANCE.getRunnableAllocation_Scheduler());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Algorithm getSchedulingAlgorithm() {
 		return null;
 	}
@@ -119,6 +144,10 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 		switch (featureID) {
 			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
 				return getComputationItems();
+			case AmaltheaPackage.SCHEDULER__SCHEDULER_ALLOCATIONS:
+				return getSchedulerAllocations();
+			case AmaltheaPackage.SCHEDULER__RUNNABLE_ALLOCATIONS:
+				return getRunnableAllocations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +194,10 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 		switch (featureID) {
 			case AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS:
 				return computationItems != null && !computationItems.isEmpty();
+			case AmaltheaPackage.SCHEDULER__SCHEDULER_ALLOCATIONS:
+				return !getSchedulerAllocations().isEmpty();
+			case AmaltheaPackage.SCHEDULER__RUNNABLE_ALLOCATIONS:
+				return !getRunnableAllocations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

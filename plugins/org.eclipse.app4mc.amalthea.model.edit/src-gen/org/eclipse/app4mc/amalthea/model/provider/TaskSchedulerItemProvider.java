@@ -58,6 +58,7 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addChildAssociationsPropertyDescriptor(object);
+			addTaskAllocationsPropertyDescriptor(object);
 			addParentSchedulerPropertyDescriptor(object);
 			addChildSchedulersPropertyDescriptor(object);
 		}
@@ -78,6 +79,30 @@ public class TaskSchedulerItemProvider extends SchedulerItemProvider {
 				 getString("_UI_TaskScheduler_childAssociations_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_childAssociations_feature", "_UI_TaskScheduler_type"),
 				 AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
+	}
+
+	/**
+	 * This adds a property descriptor for the Task Allocations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTaskAllocationsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TaskScheduler_taskAllocations_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TaskScheduler_taskAllocations_feature", "_UI_TaskScheduler_type"),
+				 AmaltheaPackage.eINSTANCE.getTaskScheduler_TaskAllocations(),
 				 false,
 				 false,
 				 false,

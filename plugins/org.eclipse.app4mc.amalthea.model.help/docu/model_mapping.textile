@@ -34,7 +34,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 
 h4. RunnableAllocation
 
-The __RunnableAllocation__ is a specialization of the __ExecutableAllocation__. It is used to associate a __Runnable__, specified within an existing software model, with a __Scheduler__.
+The __RunnableAllocation__ is used to associate a __Runnable__, specified within an existing software model, with a __Scheduler__.
 
 h4. TaskAllocation
 

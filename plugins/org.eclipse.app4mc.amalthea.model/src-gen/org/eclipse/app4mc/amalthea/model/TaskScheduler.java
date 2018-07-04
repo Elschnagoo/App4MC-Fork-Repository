@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getSchedulingAlgorithm <em>Scheduling Algorithm</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildAssociations <em>Child Associations</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getTaskAllocations <em>Task Allocations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentScheduler <em>Parent Scheduler</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getChildSchedulers <em>Child Schedulers</em>}</li>
  * </ul>
@@ -104,6 +105,22 @@ public interface TaskScheduler extends Scheduler {
 	 * @generated
 	 */
 	EList<SchedulerAssociation> getChildAssociations();
+
+	/**
+	 * Returns the value of the '<em><b>Task Allocations</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskAllocation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of task allocations (TaskAllocation).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Task Allocations</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_TaskAllocations()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskAllocation%&gt;&gt;getInverseReferences(this, \n\t&lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getTaskScheduler_TaskAllocations(), &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getTaskAllocation_Scheduler());'"
+	 * @generated
+	 */
+	EList<TaskAllocation> getTaskAllocations();
 
 	/**
 	 * Returns the value of the '<em><b>Parent Scheduler</b></em>' reference.
