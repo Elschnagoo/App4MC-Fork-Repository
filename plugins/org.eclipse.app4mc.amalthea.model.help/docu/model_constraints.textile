@@ -16,18 +16,37 @@ Requirements are divided into the following types depending on the entity type f
 * Runnable Requirements for runnables
 
 The Severity attribute is used to describe the quality impact if the requirement is not fulfilled.
-The Limit defines the metric, the value and if the value for the metric is an upper limit or a lower limit. 
-Depending on the metric unit, the following Limits can be specified
-* Count Requirement Limit for metrics like __Preemptions__
-* CPU Percentage Requirement Limit for metrics like __CPULoad__
-* Frequency Requirement Limit for metrics like __CacheMissFrequency__
-* Percentage Requirement Limit for metrics like __OsOverheadRelative__
-* Time Requirement Limit for metrics like __ResponseTime__
+The Limit defines the metric, the value, and whether the value for the metric is an upper or a lower bound. 
+Depending on the metric unit, the following Limits can be distinguished:
+* Count Requirement Limit for metrics that count system actions
+* CPU Percentage Requirement Limit for metrics that specify relative CPU characteristics
+* Frequency Requirement Limit for metrics that measure the frequency of system actions
+* Percentage Requirement Limit for metrics that specify relative system characteristics
+* Time Requirement Limit for metrics that describe time intervals
 
 !(scale)../pictures/model_constraints_requirements.png!
 
-An example for a requirement is the Deadline for a task. The Deadline is specified by an upper limit for the response time of the respective task.
+Time Metrics are metrics that describe time intervals of an individual process instance or between two succeeding process instances and are defined as follows:
+* __ActivateToActivate__: This metric indicates the distance between two successive activations of a task or isr. The __ActivateToActivate__ metric of process instance n measures the time between the activation moment of process instance n and that of instance n+1. 
+* __CoreExecutionTime__
+* __EndToEnd__: This metric indicates the time interval between two successive ends of a process. The __EndToEnd__ metric of process instance n measures the time between the termination moment of process instance n and that of instance n+1.
+* __EndToStart__: This metric indicates the time interval between two successive process instances. The __EndToStart__ metric of process instance n measures the time between the termination moment of process instance n and the start moment of instance n+1.
+* __GrossExecutionTime__: This metric indicates the time interval between the start moment and the termination moment of a process instance.
+* __Lateness__: This metric indicates whether a process instance misses its deadline. It measures the time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa.
+* __MemoryAccessTime__
+* __NetExecutionTime__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it measures the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered.
+* __OsOverhead__
+* __ParkingTime__
+* __PollingTime__
+* __ReadyTime__
+* __ReadyTime__
+* __ResponseTime__: The response time of a task or isr instance is defined as the time between the moment of its activation and its termination. Thus, it measures the whole life cycle of a process instance.
+* __RunningTime__
+* __StartDelay__: This metric measures the delay of the start time of a process instance which is defined as the time interval between the activation moment of this process instance and its start moment.
+* __StartToStart__: This metric indicates the time interval between two successive starts of a process. The __StartToStart__ metric of process instance n measures the time between the start moment of process instance n and that of instance n+1.
+* __WaitingTime__: This metric measures the amount of time that a process instance spends waiting for the access of a resource.
 
+An example for a requirement is the deadline for a task. The deadline is specified by an upper limit for the response time of the respective task.
 
 h3. Runnable Sequencing Constraints
 
