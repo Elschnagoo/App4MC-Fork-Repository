@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 
@@ -60,7 +60,7 @@ public abstract class AbstractProcessImpl extends AbstractMemoryElementImpl impl
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+		return AmaltheaIndex.<Component>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getAbstractProcess_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Tasks());
 	}
 

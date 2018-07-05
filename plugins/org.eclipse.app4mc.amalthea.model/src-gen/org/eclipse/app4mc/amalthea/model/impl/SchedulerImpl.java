@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.Algorithm;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
@@ -97,7 +97,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	public EList<SchedulerAllocation> getSchedulerAllocations() {
-		return AmaltheaCrossReferenceUtil.<SchedulerAllocation>getInverseReferences(this, 
+		return AmaltheaIndex.<SchedulerAllocation>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getScheduler_SchedulerAllocations(), AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler());
 	}
 
@@ -107,7 +107,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	public EList<RunnableAllocation> getRunnableAllocations() {
-		return AmaltheaCrossReferenceUtil.<RunnableAllocation>getInverseReferences(this, 
+		return AmaltheaIndex.<RunnableAllocation>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getScheduler_RunnableAllocations(), AmaltheaPackage.eINSTANCE.getRunnableAllocation_Scheduler());
 	}
 

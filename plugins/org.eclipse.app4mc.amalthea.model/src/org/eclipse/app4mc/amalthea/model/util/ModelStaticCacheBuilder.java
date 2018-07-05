@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -38,8 +39,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * 
  * <b>Recommendation:</b> This class shall be used in scenarios where <b>"no" EMF model changes occur </b> --&gt; once the object of this class is created<br>
  * 
- *
+ * @deprecated (0.9.1) {@link AmaltheaIndex} uses a cache automatically.
  */
+
+@Deprecated
 public class ModelStaticCacheBuilder {
 	
 	private final Map<String, Map<String, List<EObject>>> cacheMap = new HashMap<String, Map<String, List<EObject>>>();

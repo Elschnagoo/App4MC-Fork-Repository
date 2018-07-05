@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -106,7 +106,7 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * @generated
 	 */
 	public EList<ITaggable> getTaggedObjects() {
-		return AmaltheaCrossReferenceUtil.<ITaggable>getInverseReferences(this, 
+		return AmaltheaIndex.<ITaggable>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getTag_TaggedObjects(), AmaltheaPackage.eINSTANCE.getITaggable_Tags());
 	}
 

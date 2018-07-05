@@ -33,9 +33,18 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-public final class AmaltheaCrossReferenceUtil {
+/**
+ * This class provides static methods for efficient model navigation, search and delete.
+ * <p>
+ * An {@link AmaltheaCrossReferenceAdapter} is created and attached to the root context of the model.
+ * The adapter maintains an index that allows fast access to inverse references and an index based on object name.
+ * <p>
+ */
 
-	private AmaltheaCrossReferenceUtil() {
+public final class AmaltheaIndex {
+
+	// Suppress default constructor
+	private AmaltheaIndex() {
 	}
 
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
@@ -62,6 +71,16 @@ public final class AmaltheaCrossReferenceUtil {
 		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, resultEReference, size, values);
 	}
 
+
+	/**
+	 * Deletes the objects from their {@link EObject#eResource containing} resource
+	 * and/or their {@link EObject#eContainer containing} object as well as from any
+	 * other feature that references it within the enclosing resource set, resource,
+	 * or root object.
+	 * 
+	 * @param eObjects
+	 *            objects to delete
+	 */
 	public static void deleteAll(final Collection<? extends EObject> eObjects) {
 		Notifier target = null;
 		for (final EObject eObject : eObjects) {
@@ -91,11 +110,33 @@ public final class AmaltheaCrossReferenceUtil {
 		}
 	}
 
+	/**
+	 * Finds elements by name and class
+	 * 
+	 * @param context
+	 *            EObject, Resource or ResourceSet
+	 * @param name
+	 *            String
+	 * @param targetClass
+	 *            for example: <code>Label.class</code>
+	 * @return Set of IReferable objects
+	 */
 	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final String name,
 			final Class<T> targetClass) {
 		return getAmaltheaAdapter(getRootContext(context)).getElements(name, targetClass);
 	}
 
+	/**
+	 * Finds elements by name pattern and class
+	 * 
+	 * @param context
+	 *            EObject, Resource or ResourceSet
+	 * @param namePattern
+	 *            for example: <code>Pattern.compile("Prefix_.*")</code>
+	 * @param targetClass
+	 *            for example: <code>Label.class</code>
+	 * @return Set of IReferable objects
+	 */
 	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
 			final Class<T> targetClass) {
 		return getAmaltheaAdapter(getRootContext(context)).getElements(namePattern, targetClass);
@@ -130,31 +171,31 @@ public final class AmaltheaCrossReferenceUtil {
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
 		if (resource != null) {
-			final ResourceSet resourceSet = resource.getResourceSet();
-			if (resourceSet != null) {
-				return resourceSet;
-			}
-
-			return resource;
+			return getRootContext(resource);
 		}
 
 		return rootContainer;
 	}
 
+	private static Notifier getRootContext(final Resource resource) {
+		if (resource == null) return null;
+		
+		final ResourceSet resourceSet = resource.getResourceSet();
+		if (resourceSet != null) {
+			return resourceSet;
+		}
+		
+		return resource;
+	}
+	
 	private static Notifier getRootContext(final Notifier notifier) {
 		if (notifier instanceof EObject) {
 			return getRootContext((EObject) notifier);
 		}
 		else if (notifier instanceof Resource) {
-			final Resource resource = (Resource) notifier;
-			final ResourceSet resourceSet = resource.getResourceSet();
-			if (resourceSet != null) {
-				return resourceSet;
-			}
-			return resource;
+			return getRootContext((Resource) notifier);
 		}
-		else {
-			return notifier;
-		}
+
+		return notifier;
 	}
 }

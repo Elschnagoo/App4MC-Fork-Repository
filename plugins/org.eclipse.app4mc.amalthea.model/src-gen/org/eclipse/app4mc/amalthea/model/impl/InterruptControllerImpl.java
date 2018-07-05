@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
@@ -121,7 +121,7 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * @generated
 	 */
 	public EList<ISRAllocation> getIsrAllocations() {
-		return AmaltheaCrossReferenceUtil.<ISRAllocation>getInverseReferences(this, 
+		return AmaltheaIndex.<ISRAllocation>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getInterruptController_IsrAllocations(), AmaltheaPackage.eINSTANCE.getISRAllocation_Controller());
 	}
 

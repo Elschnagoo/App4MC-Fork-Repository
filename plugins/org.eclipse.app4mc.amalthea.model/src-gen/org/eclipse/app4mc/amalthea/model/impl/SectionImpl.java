@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -108,7 +108,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<Label> getLabels() {
-		return AmaltheaCrossReferenceUtil.<Label>getInverseReferences(this, 
+		return AmaltheaIndex.<Label>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getSection_Labels(), AmaltheaPackage.eINSTANCE.getLabel_Section());
 	}
 
@@ -118,7 +118,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
-		return AmaltheaCrossReferenceUtil.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, 
+		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getSection_Runnables(), AmaltheaPackage.eINSTANCE.getRunnable_Section());
 	}
 

@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
@@ -150,7 +150,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		return AmaltheaCrossReferenceUtil.<MemoryMapping>getInverseReferences(this, 
+		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Mappings(), AmaltheaPackage.eINSTANCE.getMemoryMapping_AbstractElement());
 	}
 

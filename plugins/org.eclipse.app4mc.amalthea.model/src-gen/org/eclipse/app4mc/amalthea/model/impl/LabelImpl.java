@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.DataStabilityLevel;
@@ -386,7 +386,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * @generated
 	 */
 	public EList<LabelAccess> getLabelAccesses() {
-		return AmaltheaCrossReferenceUtil.<LabelAccess>getInverseReferences(this, 
+		return AmaltheaIndex.<LabelAccess>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(), AmaltheaPackage.eINSTANCE.getLabelAccess_Data());
 	}
 
@@ -396,7 +396,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaCrossReferenceUtil.<Component>getInverseReferences(this, 
+		return AmaltheaIndex.<Component>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getLabel_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Labels());
 	}
 

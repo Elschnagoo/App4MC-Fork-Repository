@@ -12,7 +12,7 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaCrossReferenceUtil;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
@@ -115,7 +115,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		return AmaltheaCrossReferenceUtil.<MemoryMapping>getInverseReferences(this, 
+		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, 
 			AmaltheaPackage.eINSTANCE.getMemory_Mappings(), AmaltheaPackage.eINSTANCE.getMemoryMapping_Memory());
 	}
 
