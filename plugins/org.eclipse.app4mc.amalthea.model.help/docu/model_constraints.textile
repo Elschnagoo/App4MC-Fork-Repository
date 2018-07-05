@@ -26,25 +26,50 @@ Depending on the metric unit, the following Limits can be distinguished:
 
 !(scale)../pictures/model_constraints_requirements.png!
 
-Time Metrics are metrics that describe time intervals of an individual process instance or between two succeeding process instances and are defined as follows:
-* __ActivateToActivate__: This metric indicates the distance between two successive activations of a task or isr. The __ActivateToActivate__ metric of process instance n measures the time between the activation moment of process instance n and that of instance n+1. 
-* __CoreExecutionTime__
-* __EndToEnd__: This metric indicates the time interval between two successive ends of a process. The __EndToEnd__ metric of process instance n measures the time between the termination moment of process instance n and that of instance n+1.
-* __EndToStart__: This metric indicates the time interval between two successive process instances. The __EndToStart__ metric of process instance n measures the time between the termination moment of process instance n and the start moment of instance n+1.
+Time Metric groups all metrics that describe time intervals of an individual process instance or between two succeeding process instances and are defined as follows:
+* __ActivateToActivate__: This metric indicates the distance between two successive activations of a task or isr. The __ActivateToActivate__ metric of process instance n quantifies the time between the activation moment of process instance n and that of instance n+1. 
+* __CoreExecutionTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on a specific processing unit.
+* __EndToEnd__: This metric indicates the time interval between two successive ends of a process. The __EndToEnd__ metric of process instance n quantifies the time between the termination moment of process instance n and that of instance n+1.
+* __EndToStart__: This metric indicates the time interval between two successive process instances. The __EndToStart__ metric of process instance n quantifies the time between the termination moment of process instance n and the start moment of instance n+1.
 * __GrossExecutionTime__: This metric indicates the time interval between the start moment and the termination moment of a process instance.
-* __Lateness__: This metric indicates whether a process instance misses its deadline. It measures the time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa.
-* __MemoryAccessTime__
-* __NetExecutionTime__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it measures the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered.
-* __OsOverhead__
-* __ParkingTime__
-* __PollingTime__
-* __ReadyTime__
-* __ReadyTime__
+* __Lateness__: This metric indicates whether a process instance misses its deadline. It quantifies the amount of time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa.
+* __MemoryAccessTime__: This metric quantifies the amount of time that is required by a process for transferring data from or to the memory.
+* __NetExecutionTime__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it quantifies the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered.
+* __OsOverhead__: This metric indicates the execution time that is consumed by functions that are part of the operating system.
+* __ParkingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for the access of a resource.
+* __PollingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination actively waiting for the access of a resource.
+* __ReadyTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is not actively executed on any processing unit.
 * __ResponseTime__: The response time of a task or isr instance is defined as the time between the moment of its activation and its termination. Thus, it measures the whole life cycle of a process instance.
-* __RunningTime__
-* __StartDelay__: This metric measures the delay of the start time of a process instance which is defined as the time interval between the activation moment of this process instance and its start moment.
-* __StartToStart__: This metric indicates the time interval between two successive starts of a process. The __StartToStart__ metric of process instance n measures the time between the start moment of process instance n and that of instance n+1.
-* __WaitingTime__: This metric measures the amount of time that a process instance spends waiting for the access of a resource.
+* __RunningTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on any processing unit.
+* __StartDelay__: This metric quantifies the delay of the start time of a process instance which is defined as the time interval between the activation moment of this process instance and its start moment.
+* __StartToStart__: This metric indicates the time interval between two successive starts of a process. The __StartToStart__ metric of process instance n quantifies the time between the start moment of process instance n and that of instance n+1.
+* __WaitingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for an OS event.
+
+Count Metrics are metrics that describe absolutely how often system characteristics occur and are defined as follows:
+* __Activations__: This metric quantifies the number of times a process is activated.
+* __BoundedMigrations__: This metric quantifies the number of times a process instance starts executing on a processing unit that is different to the processing unit on which the previous process instance terminated.
+* __CacheHit__: This metric quantifies the amount of times that data requested by a process is found in the cache memory.
+* __CacheMiss__: This metric quantifies the amount of times that data requested by a process is not stored in the cache memory and has to be fetched from somewhere else.
+* __FullMigrations__: This metric quantifies the number of times a process instance migrates from one processing unit to another triggered by a schedule point.
+* __MtaLimitExceeding__: This metric quantifies the number of times a process is not activated during runtime because this would violate the maximum number of concurrently activated processes (MTA).
+* __Preemptions__: This metric quantifies the number of times a process is preempted by another task or ISR.
+
+Frequency Metric groups all metrics that describe the rate in which system characteristics occur and are defined as follows:
+* __CacheHitFrequency__: This metric quantifies how often per unit of time data requested by a process is found in the cache memory.
+* __CacheMissFrequency__: This metric quantifies how often per unit of time data requested by a process is not found in the cache memory.
+
+CPU Percentage Metric groups all metrics that describe a ratio between the amount of time a processing unit is in a certain state for a specific process and the maximum capacity of the considered processing unit and are defined as follows:
+* __CPUBuffering__: This metric quantifies the ration between the amount of time a processing unit is in the state buffering for a specific process and the maximum capacity of the considered processing unit.
+* __CPULoad__: This metric quantifies the ration of the load of a processing unit caused by a process and the maximum capacity of the considered processing unit.
+* __CPUParking__: This metric quantifies the ration between the amount of time a processing unit is in the state parking for a specific process and the maximum capacity of the considered processing unit.
+* __CPUPolling__: This metric quantifies the ratio between the amount of time a processing unit is in the state polling for a specific process and the maximum capacity of the considered processing unit. 
+* __CPUReady__: This metric quantifies the ratio between the amount of time a processing unit is in the state ready for a specific process and the maximum capacity of the considered processing unit.
+* __CPURunning__: This metric quantifies the ratio between the amount of time a processing unit is in the state running for a specific process and the maximum capacity of the considered processing unit.
+* __CPUWaiting__: This metric quantifies the ratio between the amount of time a processing unit is in the state waiting for a specific process and the maximum capacity of the considered processing unit.
+
+Percentage Metric groups all metrics that describe a relationship between two system characteristics and are defined as follows: 
+* __CacheHitRatio__: This metric quantifies how often data requested by a process is found in the cache memory in comparison to how often it is not found.
+* __CacheMissRatio__: This metric quantifies how often data requested by a process is not found in the cache memory in comparison to how often it is found.
 
 An example for a requirement is the deadline for a task. The deadline is specified by an upper limit for the response time of the respective task.
 
