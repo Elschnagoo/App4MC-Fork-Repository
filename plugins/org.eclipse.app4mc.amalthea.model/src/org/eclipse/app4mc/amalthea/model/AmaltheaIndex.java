@@ -15,7 +15,9 @@
 package org.eclipse.app4mc.amalthea.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -23,6 +25,7 @@ import java.util.regex.Pattern;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -50,7 +53,7 @@ public final class AmaltheaIndex {
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
 			final EReference targetEReference) {
 
-		final AmaltheaCrossReferenceAdapter amaltheaAdapter = getAmaltheaAdapter(eObject);
+		final AmaltheaCrossReferenceAdapter amaltheaAdapter = getOrCreateAmaltheaAdapter(eObject);
 
 		// Get references from adapter
 
@@ -73,100 +76,144 @@ public final class AmaltheaIndex {
 
 
 	/**
+	 * Deletes the object from its {@link EObject#eResource containing} resource
+	 * and/or its {@link EObject#eContainer containing} object as well as from any
+	 * other feature that references it within the enclosing root context
+	 * (resource set, resource or root object). Contained children of the object
+	 * are similarly removed from any features that reference them.
+	 * 
+	 * @param eObject object to delete
+	 */
+	public static void delete(final EObject eObject) {
+		deleteAll(Arrays.asList(eObject), true);
+	}
+
+
+	/**
 	 * Deletes the objects from their {@link EObject#eResource containing} resource
 	 * and/or their {@link EObject#eContainer containing} object as well as from any
-	 * other feature that references it within the enclosing resource set, resource,
-	 * or root object.
+	 * other feature that references it within the enclosing root context
+	 * (resource set, resource or root object). Contained children of the object
+	 * are similarly removed from any features that reference them.
 	 * 
-	 * @param eObjects
-	 *            objects to delete
+	 * @param eObjects objects to delete
 	 */
 	public static void deleteAll(final Collection<? extends EObject> eObjects) {
+		deleteAll(eObjects, true);
+	}
+
+
+	/**
+	 * Deletes the objects from their {@link EObject#eResource containing} resource
+	 * and/or their {@link EObject#eContainer containing} object as well as from any
+	 * other feature that references it within the enclosing root context
+	 * (resource set, resource or root object).
+	 * If recursive is true, contained children of the object are similarly removed
+	 * from any features that reference them.
+	 * 
+	 * @param eObjects objects to delete
+	 * @param recursive true: contained children should also be deleted
+	 */
+	public static void deleteAll(final Collection<? extends EObject> eObjects, boolean recursive) {
+		
+		// find the common context
+		
 		Notifier target = null;
 		for (final EObject eObject : eObjects) {
 			final Notifier context = getRootContext(eObject);
 			if (target == null) {
 				target = context;
-			}
-			else if (target != context) {
+			} else if (target != context) {
 				throw new IllegalArgumentException("Objects don't share a common context");
 			}
 		}
+		if (target == null)
+			return;
+		
+		// collect objects to delete
 
-		if (target != null) {
-			final AmaltheaCrossReferenceAdapter amaltheaAdapter = getAmaltheaAdapter(target);
-			for (final EObject eObject : eObjects) {
-				final Collection<Setting> inverseReferences = amaltheaAdapter.getInverseReferences(eObject);
-				for (final EStructuralFeature.Setting settingObject : inverseReferences) {
-					if (settingObject.getEStructuralFeature().isChangeable()) {
-						// remove the reference relation
-						EcoreUtil.remove(settingObject, eObject);
-					}
+		Set<EObject> eAllObjects = new HashSet<EObject>();
+		if (recursive) {
+			// add contained objects
+			for (EObject eObject : eObjects) {
+				for (TreeIterator<EObject> j = eObject.eAllContents(); j.hasNext();) {
+					InternalEObject childEObject = (InternalEObject) j.next();
+					eAllObjects.add(childEObject);
 				}
-
-				// remove the element
-				EcoreUtil.remove(eObject);
 			}
 		}
+		// add original objects
+		eAllObjects.addAll(eObjects);
+		
+		// delete the objects
+		
+		final AmaltheaCrossReferenceAdapter amaltheaAdapter = getOrCreateAmaltheaAdapter(target);
+		for (final EObject eObject : eAllObjects) {
+			final Collection<Setting> inverseReferences = amaltheaAdapter.getInverseReferences(eObject);
+			for (final EStructuralFeature.Setting settingObject : inverseReferences) {
+				if (settingObject.getEStructuralFeature().isChangeable()) {
+					// remove the reference relation
+					EcoreUtil.remove(settingObject, eObject);
+				}
+			}
+
+			// remove the element
+			EcoreUtil.remove(eObject);
+		}
 	}
+
 
 	/**
 	 * Finds elements by name and class
 	 * 
-	 * @param context
-	 *            EObject, Resource or ResourceSet
-	 * @param name
-	 *            String
-	 * @param targetClass
-	 *            for example: <code>Label.class</code>
+	 * @param context EObject, Resource or ResourceSet
+	 * @param name String
+	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of IReferable objects
 	 */
 	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final String name,
 			final Class<T> targetClass) {
-		return getAmaltheaAdapter(getRootContext(context)).getElements(name, targetClass);
+		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(name, targetClass);
 	}
+
 
 	/**
 	 * Finds elements by name pattern and class
 	 * 
-	 * @param context
-	 *            EObject, Resource or ResourceSet
-	 * @param namePattern
-	 *            for example: <code>Pattern.compile("Prefix_.*")</code>
-	 * @param targetClass
-	 *            for example: <code>Label.class</code>
+	 * @param context EObject, Resource or ResourceSet
+	 * @param namePattern for example: <code>Pattern.compile("Prefix_.*")</code>
+	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of IReferable objects
 	 */
 	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
 			final Class<T> targetClass) {
-		return getAmaltheaAdapter(getRootContext(context)).getElements(namePattern, targetClass);
+		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(namePattern, targetClass);
 	}
 
-	private static AmaltheaCrossReferenceAdapter getAmaltheaAdapter(final EObject eObject) {
-		// Find root element (EObject, Resource or Resource Set)
 
+	private static AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final EObject eObject) {
 		final Notifier target = getRootContext(eObject);
-
-		// Get or create Amalthea adapter
-		return getAmaltheaAdapter(target);
+		return getOrCreateAmaltheaAdapter(target);
 	}
 
-	private static AmaltheaCrossReferenceAdapter getAmaltheaAdapter(final Notifier target) {
-
-		// Get or create Amalthea adapter
-
+	private static AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final Notifier target) {
+		// Try to get Amalthea adapter
 		final EList<Adapter> adapters = target.eAdapters();
 		for (final Adapter adapter : adapters) {
 			if (adapter instanceof AmaltheaCrossReferenceAdapter) {
 				return (AmaltheaCrossReferenceAdapter) adapter;
 			}
 		}
-
+		
+		// Create Amalthea adapter
 		final AmaltheaCrossReferenceAdapter amaltheaAdapter = new AmaltheaCrossReferenceAdapter();
 		adapters.add(amaltheaAdapter);
 		return amaltheaAdapter;
 	}
 
+	/**
+	 * Gets the root context (EObject, Resource or Resource Set)
+	 */
 	private static Notifier getRootContext(final EObject eObject) {
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
@@ -177,6 +224,9 @@ public final class AmaltheaIndex {
 		return rootContainer;
 	}
 
+	/**
+	 * Gets the root context (EObject, Resource or Resource Set)
+	 */
 	private static Notifier getRootContext(final Resource resource) {
 		if (resource == null) return null;
 		
@@ -188,6 +238,9 @@ public final class AmaltheaIndex {
 		return resource;
 	}
 	
+	/**
+	 * Gets the root context (EObject, Resource or Resource Set)
+	 */
 	private static Notifier getRootContext(final Notifier notifier) {
 		if (notifier instanceof EObject) {
 			return getRootContext((EObject) notifier);
