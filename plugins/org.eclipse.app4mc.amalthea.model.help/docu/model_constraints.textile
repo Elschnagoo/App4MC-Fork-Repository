@@ -35,7 +35,7 @@ Time Metric groups all metrics that describe time intervals of an individual pro
 * __Lateness__: This metric indicates whether a process instance misses its deadline. It quantifies the amount of time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa.
 * __MemoryAccessTime__: This metric quantifies the amount of time that is required by a process for transferring data from or to the memory.
 * __NetExecutionTime__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it quantifies the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered.
-* __OsOverhead__: This metric indicates the execution time that is consumed by functions that are part of the operating system.
+* __OsOverhead__: This metric indicates the amount of execution time that is consumed by functions that are part of the operating system.
 * __ParkingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for the access of a resource.
 * __PollingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination actively waiting for the access of a resource.
 * __ReadyTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is not actively executed on any processing unit.
@@ -59,9 +59,9 @@ Frequency Metric groups all metrics that describe the rate in which system chara
 * __CacheMissFrequency__: This metric quantifies how often per unit of time data requested by a process is not found in the cache memory.
 
 CPU Percentage Metric groups all metrics that describe a ratio between the amount of time a processing unit is in a certain state for a specific process and the maximum capacity of the considered processing unit and are defined as follows:
-* __CPUBuffering__: This metric quantifies the ration between the amount of time a processing unit is in the state buffering for a specific process and the maximum capacity of the considered processing unit.
-* __CPULoad__: This metric quantifies the ration of the load of a processing unit caused by a process and the maximum capacity of the considered processing unit.
-* __CPUParking__: This metric quantifies the ration between the amount of time a processing unit is in the state parking for a specific process and the maximum capacity of the considered processing unit.
+* __CPUBuffering__: This metric quantifies the ratio between the amount of time a processing unit is in the state buffering for a specific process and the maximum capacity of the considered processing unit.
+* __CPULoad__: This metric quantifies the ratio of the load of a processing unit caused by a process and the maximum capacity of the considered processing unit.
+* __CPUParking__: This metric quantifies the ratio between the amount of time a processing unit is in the state parking for a specific process and the maximum capacity of the considered processing unit.
 * __CPUPolling__: This metric quantifies the ratio between the amount of time a processing unit is in the state polling for a specific process and the maximum capacity of the considered processing unit. 
 * __CPUReady__: This metric quantifies the ratio between the amount of time a processing unit is in the state ready for a specific process and the maximum capacity of the considered processing unit.
 * __CPURunning__: This metric quantifies the ratio between the amount of time a processing unit is in the state running for a specific process and the maximum capacity of the considered processing unit.
@@ -70,6 +70,9 @@ CPU Percentage Metric groups all metrics that describe a ratio between the amoun
 Percentage Metric groups all metrics that describe a relationship between two system characteristics and are defined as follows: 
 * __CacheHitRatio__: This metric quantifies how often data requested by a process is found in the cache memory in comparison to how often it is not found.
 * __CacheMissRatio__: This metric quantifies how often data requested by a process is not found in the cache memory in comparison to how often it is found.
+* __NormalizedLateness__: This metric quantifies the lateness of a process instance in comparison to the process's maximum response time which is defined by its deadline.
+* __NormalizedResponseTime__: This metric quantifies the response time of a process instance in comparison to the process's maximum response time which is defined by its deadline.
+* __OsOverheadRelative__: This metric quantifies the amount of execution time that is consumed by functions that are part of the operating system in comparison to net execution time of the process in whose context the functions are called.
 
 An example for a requirement is the deadline for a task. The deadline is specified by an upper limit for the response time of the respective task.
 
