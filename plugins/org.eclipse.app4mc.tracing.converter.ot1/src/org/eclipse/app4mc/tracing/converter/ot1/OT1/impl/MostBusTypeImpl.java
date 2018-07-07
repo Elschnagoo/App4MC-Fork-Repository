@@ -1,15 +1,18 @@
 /**
- * *******************************************************************************
- *  Copyright (c) 2013 Timing-Architects Embedded Systems GmbH and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ ********************************************************************************
+ * Copyright (c) 2013 Timing-Architects Embedded Systems GmbH and others.
  * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ *  
  *     Generated using Eclipse EMF
  * 
- * *******************************************************************************
+ ********************************************************************************
  */
+
 package org.eclipse.app4mc.tracing.converter.ot1.OT1.impl;
 
 import org.eclipse.app4mc.tracing.converter.ot1.OT1.MostBusType;

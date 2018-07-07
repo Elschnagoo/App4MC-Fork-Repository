@@ -1,31 +1,32 @@
 /**
- * *******************************************************************************
- *  Copyright (c) 2017 Robert Bosch GmbH and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
+ ********************************************************************************
+ * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
  * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ *  
  * Contributors:
  *     Robert Bosch GmbH - initial API and implementation
  *     
- * *******************************************************************************
+ ********************************************************************************
  */
+
 package org.eclipse.app4mc.amalthea.model.util.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.util.SearchElementsUtility;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
