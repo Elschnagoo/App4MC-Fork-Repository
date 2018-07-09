@@ -143,7 +143,7 @@ class Runnable extends AbstractMemoryElement
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
-		AmaltheaCrossReferenceUtil.getInverseReferences(this,
+		AmaltheaIndex.getInverseReferences(this,
 			AmaltheaPackage.eINSTANCE.runnable_TaskRunnableCalls,
 			AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable
 		)
