@@ -61,6 +61,7 @@ public class StimuliConverter extends AbstractConverter {
 		
 		final Element rootElement = root.getRootElement();
 
+		migrateVariableRateStimulus(rootElement);
 
 		migrateSyntheticStimulus(rootElement);
 		
@@ -451,6 +452,8 @@ public class StimuliConverter extends AbstractConverter {
 			Attribute typeAttribute = sporadicStimulusElement.getAttribute("type", helper.getGenericNS("xsi"));
 
 			typeAttribute.setValue("am:RelativePeriodicStimulus");
+			
+			sporadicStimulusElement.removeAttribute("description");
 
 			//changing of stimulusDeviation to nextOccurrence
 			Element stimulusDeviationElement = sporadicStimulusElement.getChild("stimulusDeviation");
@@ -466,6 +469,28 @@ public class StimuliConverter extends AbstractConverter {
 	}
 
 	
+	/**
+	 * This method is used to migrate the contents of VariableRateStimulus based on the changes introduced as per Bug 529831
+	 *
+	 * @param rootElement
+	 *            Amalthea root element
+	 */
+	private void migrateVariableRateStimulus(Element rootElement) {
+		
+		final StringBuffer xpathBufferForDefinition = new StringBuffer();
+
+		xpathBufferForDefinition.append("./stimuliModel/stimuli[@xsi:type=\"am:VariableRateStimulus\"]");
+		 
+		
+		final List<Element> stimulusElements = this.helper.getXpathResult(rootElement, xpathBufferForDefinition.toString(),
+				Element.class, this.helper.getGenericNS("xsi"),this.helper.getNS_083("am") );
+		
+		for (Element stimulusElement : stimulusElements) { 
+			stimulusElement.removeChild("stimulusDeviation");
+		}
+		
+	}
+
 	
 	
 	/**
