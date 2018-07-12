@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements>
+    <tags name="SwcEngineController" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcActuators" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceArbiter" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcABSCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcSensorPostprocessing" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcCylNumObserver" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcBrakeForceCalculation" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcEngineSensors" tagType="SOFTWARE_COMPONENT"/>
+    <tags name="SwcInjIgnActuation" tagType="SOFTWARE_COMPONENT"/>
+  </commonElements>
+  <swModel>
+    
+    <runnables name="ABSCalculation" tags="SwcABSCalculation?type=Tag" callback="false" service="false">
+      <customProperties key="KEY">
+        <value xsi:type="am:TimeObject" value="20" unit="ms"/>
+      </customProperties>
+      <customProperties key="ListKey">
+        <value xsi:type="am:ListObject">
+          <values xsi:type="am:StringObject" value="V1"/>
+          <values xsi:type="am:ListObject">
+            <values xsi:type="am:TimeObject" value="20" unit="ms"/>
+          </values>
+        </value>
+      </customProperties>
+    </runnables>
+    <labels name="ABSActivation" constant="false" bVolatile="false" dataStability="noProtection">
+      <size value="8" unit="bit"/>
+    </labels>
+  </swModel>
+  
+</am:Amalthea>

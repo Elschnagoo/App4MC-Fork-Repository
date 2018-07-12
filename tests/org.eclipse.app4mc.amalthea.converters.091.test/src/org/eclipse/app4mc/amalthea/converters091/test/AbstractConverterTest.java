@@ -40,6 +40,7 @@ import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_080;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_081;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_082;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_083;
+import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_090;
 import org.eclipse.app4mc.amalthea.converters091.utils.HelperUtils_090_091;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -390,6 +391,13 @@ public abstract class AbstractConverterTest {
 		for (final NameSpace_083 namespace : ns6) {
 
 			nsList.add(this.helper.getNS_082(namespace.name()));
+		}
+		
+		final NameSpace_090[] ns7 = NameSpace_090.values();
+
+		for (final NameSpace_090 namespace : ns7) {
+
+			nsList.add(this.helper.getNS_090(namespace.name()));
 		}
 		
 		
