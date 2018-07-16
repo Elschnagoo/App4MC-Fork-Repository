@@ -15,6 +15,11 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.editors.search;
 
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.messages.Messages;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -55,17 +60,38 @@ public class ModelHitCollector implements ISearchQuery {
 	@Override
 	public IStatus run(final IProgressMonitor monitor) throws OperationCanceledException {
 		this.searchResult.removeAll();
-		final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(this.model, true);
-		while (iterator.hasNext()) {
-			final EObject element = iterator.next();
-			final EStructuralFeature feature = element.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
-			if (null != feature) {
-				final String name = (String) element.eGet(feature);
-				if (null != name && name.toLowerCase().indexOf(this.query.toLowerCase()) >= 0) {
-					this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+		
+		//TODO:  Decide if this can still be present with hidden mechanism (d: as prefix)?
+		if(query!=null && query.startsWith("d:")) {
+			
+			//Previously used element search mechanism.
+		String	modQuery=query.substring(2);
+			
+			final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(this.model, true);
+			while (iterator.hasNext()) {
+				final EObject element = iterator.next();
+				final EStructuralFeature feature = element.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
+				if (null != feature) {
+					final String name = (String) element.eGet(feature);
+					if (null != name && name.toLowerCase().indexOf( modQuery.toLowerCase()) >= 0) {
+						this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+					}
 				}
 			}
+		}else {
+			//optimized search with Amalthea Index
+			Pattern pattern=Pattern.compile("(?i).*"+Pattern.quote(query)+".*");
+			
+			Set<? extends IReferable> resultSet = AmaltheaIndex.getElements(model, pattern, IReferable.class);
+			
+			for (IReferable element : resultSet) {
+				//TODO: As the search is based on the opened file in editor. Should the search results be restricted for the current file ? 
+				this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+			}
+			
 		}
+		
+	
 		return Status.OK_STATUS;
 	}
 
