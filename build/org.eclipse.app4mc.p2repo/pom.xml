@@ -104,6 +104,7 @@
 							</symbols>
 
 							<associateSites>
+								<site>http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository</site>
 								<site>http://download.eclipse.org/modeling/emf/emf/updates/releases</site>
 								<site>http://download.eclipse.org/modeling/emf/compare/updates/releases</site>
 								<site>http://download.eclipse.org/rmf/updates</site>
