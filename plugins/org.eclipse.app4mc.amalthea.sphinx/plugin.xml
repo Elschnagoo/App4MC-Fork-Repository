@@ -36,4 +36,10 @@
          </applicableFor>
       </provider>
    </extension>
+   <extension
+         point="org.eclipse.sphinx.emf.workspace.editingDomains">
+      <mapping
+            class="org.eclipse.app4mc.amalthea.sphinx.AmaltheaWorkspaceEditingDomainMapping">
+      </mapping>
+   </extension>
 </plugin>
