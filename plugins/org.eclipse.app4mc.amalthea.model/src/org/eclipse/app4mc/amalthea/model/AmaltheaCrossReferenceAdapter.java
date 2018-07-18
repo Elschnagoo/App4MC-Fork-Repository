@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -68,14 +68,14 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 			switch (notification.getEventType()) {
 			case Notification.UNSET: {
 				final String oldValue = notification.getOldStringValue();
-				remove(referable, oldValue);
+				removeFromNameIndex(referable, oldValue);
 				break;
 			}
 			case Notification.SET: {
 				final String oldValue = notification.getOldStringValue();
-				remove(referable, oldValue);
+				removeFromNameIndex(referable, oldValue);
 				final String newValue = notification.getNewStringValue();
-				add(referable, newValue);
+				addToNameIndex(referable, newValue);
 				break;
 			}
 			}
@@ -92,7 +92,7 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		if (target instanceof IReferable) {
 			// Add the IReferable's name to the name index.
 			final IReferable referable = (IReferable) target;
-			add(referable, referable.getName());
+			addToNameIndex(referable, referable.getName());
 		}
 	}
 
@@ -103,28 +103,28 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		if (target instanceof IReferable) {
 			// Remove the IReferable's name to the name index.
 			final IReferable referable = (IReferable) target;
-			remove(referable, referable.getName());
+			removeFromNameIndex(referable, referable.getName());
 		}
 	}
 
-	private void add(final IReferable eObject, final String value) {
-		if (value != null) {
-			Set<IReferable> eObjects = this.nameIndex.get(value);
-			if (eObjects == null) {
-				eObjects = new HashSet<>();
-				this.nameIndex.put(value, eObjects);
+	private void addToNameIndex(final IReferable eObject, final String name) {
+		if (name != null) {
+			Set<IReferable> objSet = this.nameIndex.get(name);
+			if (objSet == null) {
+				objSet = new HashSet<>();
+				this.nameIndex.put(name, objSet);
 			}
-			eObjects.add(eObject);
+			objSet.add(eObject);
 		}
 	}
 
-	private void remove(final IReferable eObject, final String value) {
-		if (value != null) {
-			final Set<IReferable> eObjects = this.nameIndex.get(value);
-			if (eObjects != null) {
-				eObjects.remove(eObject);
-				if (eObjects.isEmpty()) {
-					this.nameIndex.remove(value);
+	private void removeFromNameIndex(final IReferable eObject, final String name) {
+		if (name != null) {
+			final Set<IReferable> objSet = this.nameIndex.get(name);
+			if (objSet != null) {
+				objSet.remove(eObject);
+				if (objSet.isEmpty()) {
+					this.nameIndex.remove(name);
 				}
 			}
 		}
