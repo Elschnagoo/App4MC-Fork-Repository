@@ -19,6 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.INamed;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -212,6 +213,38 @@ public class CallSequenceImpl extends GraphEntryBaseImpl implements CallSequence
 				return calls != null && !calls.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.CALL_SEQUENCE__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.CALL_SEQUENCE__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

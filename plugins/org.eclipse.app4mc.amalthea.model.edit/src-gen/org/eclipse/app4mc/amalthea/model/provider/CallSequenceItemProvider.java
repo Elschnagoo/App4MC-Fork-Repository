@@ -76,14 +76,14 @@ public class CallSequenceItemProvider extends GraphEntryBaseItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CallSequence_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CallSequence_name_feature", "_UI_CallSequence_type"),
-				 AmaltheaPackage.eINSTANCE.getCallSequence_Name(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_MainPropertyCategory"),
 				 null));
 	}
 

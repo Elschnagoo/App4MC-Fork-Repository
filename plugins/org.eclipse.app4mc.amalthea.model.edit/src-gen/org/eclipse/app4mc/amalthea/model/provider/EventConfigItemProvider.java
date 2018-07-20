@@ -72,14 +72,14 @@ public class EventConfigItemProvider extends BaseObjectItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EventConfig_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EventConfig_name_feature", "_UI_EventConfig_type"),
-				 AmaltheaPackage.eINSTANCE.getEventConfig_Name(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_MainPropertyCategory"),
 				 null));
 	}
 

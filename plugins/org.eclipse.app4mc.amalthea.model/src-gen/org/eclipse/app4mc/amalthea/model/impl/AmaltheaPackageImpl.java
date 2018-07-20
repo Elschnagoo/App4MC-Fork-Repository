@@ -4857,17 +4857,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEventConfig_Name() {
-		return (EAttribute)eventConfigEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEventConfig_Event() {
-		return (EReference)eventConfigEClass.getEStructuralFeatures().get(1);
+		return (EReference)eventConfigEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5865,7 +5856,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRequirement_Name() {
+	public EAttribute getRequirement_Severity() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -5874,17 +5865,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRequirement_Severity() {
-		return (EAttribute)requirementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getRequirement_Limit() {
-		return (EReference)requirementEClass.getEStructuralFeatures().get(2);
+		return (EReference)requirementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8673,17 +8655,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperatingSystem_Name() {
-		return (EAttribute)operatingSystemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOperatingSystem_Overhead() {
-		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(1);
+		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -8692,7 +8665,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getOperatingSystem_TaskSchedulers() {
-		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(2);
+		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8701,7 +8674,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getOperatingSystem_InterruptControllers() {
-		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(3);
+		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -8710,7 +8683,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	public EReference getOperatingSystem_OsDataConsistency() {
-		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(4);
+		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -10212,17 +10185,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCallSequence_Name() {
-		return (EAttribute)callSequenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCallSequence_Calls() {
-		return (EReference)callSequenceEClass.getEStructuralFeatures().get(1);
+		return (EReference)callSequenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11670,7 +11634,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGroup_Name() {
+	public EAttribute getGroup_Ordered() {
 		return (EAttribute)groupEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -11679,17 +11643,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGroup_Ordered() {
-		return (EAttribute)groupEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getGroup_Items() {
-		return (EReference)groupEClass.getEStructuralFeatures().get(2);
+		return (EReference)groupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11787,17 +11742,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStructEntry_Name() {
-		return (EAttribute)structEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getStructEntry_DataType() {
-		return (EReference)structEntryEClass.getEStructuralFeatures().get(1);
+		return (EReference)structEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13084,7 +13030,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(configModelEClass, CONFIG_MODEL__EVENTS_TO_TRACE);
 
 		eventConfigEClass = createEClass(EVENT_CONFIG);
-		createEAttribute(eventConfigEClass, EVENT_CONFIG__NAME);
 		createEReference(eventConfigEClass, EVENT_CONFIG__EVENT);
 
 		constraintsModelEClass = createEClass(CONSTRAINTS_MODEL);
@@ -13242,7 +13187,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataAgeTimeEClass, DATA_AGE_TIME__MAXIMUM_TIME);
 
 		requirementEClass = createEClass(REQUIREMENT);
-		createEAttribute(requirementEClass, REQUIREMENT__NAME);
 		createEAttribute(requirementEClass, REQUIREMENT__SEVERITY);
 		createEReference(requirementEClass, REQUIREMENT__LIMIT);
 
@@ -13657,7 +13601,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		priorityBasedEClass = createEClass(PRIORITY_BASED);
 
 		operatingSystemEClass = createEClass(OPERATING_SYSTEM);
-		createEAttribute(operatingSystemEClass, OPERATING_SYSTEM__NAME);
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__OVERHEAD);
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__TASK_SCHEDULERS);
 		createEReference(operatingSystemEClass, OPERATING_SYSTEM__INTERRUPT_CONTROLLERS);
@@ -13877,7 +13820,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		graphEntryBaseEClass = createEClass(GRAPH_ENTRY_BASE);
 
 		callSequenceEClass = createEClass(CALL_SEQUENCE);
-		createEAttribute(callSequenceEClass, CALL_SEQUENCE__NAME);
 		createEReference(callSequenceEClass, CALL_SEQUENCE__CALLS);
 
 		modeSwitchEClass = createEClass(MODE_SWITCH);
@@ -14089,7 +14031,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableProbabilitySwitchEClass, RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
 
 		groupEClass = createEClass(GROUP);
-		createEAttribute(groupEClass, GROUP__NAME);
 		createEAttribute(groupEClass, GROUP__ORDERED);
 		createEReference(groupEClass, GROUP__ITEMS);
 
@@ -14108,7 +14049,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(structEClass, STRUCT__ENTRIES);
 
 		structEntryEClass = createEClass(STRUCT_ENTRY);
-		createEAttribute(structEntryEClass, STRUCT_ENTRY__NAME);
 		createEReference(structEntryEClass, STRUCT_ENTRY__DATA_TYPE);
 
 		arrayEClass = createEClass(ARRAY);
@@ -14377,6 +14317,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		interfacePortEClass.getESuperTypes().add(this.getPort());
 		configModelEClass.getESuperTypes().add(this.getBaseObject());
 		eventConfigEClass.getESuperTypes().add(this.getBaseObject());
+		eventConfigEClass.getESuperTypes().add(this.getINamed());
 		constraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		runnableSequencingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		affinityConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -14437,6 +14378,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		dataAgeCycleEClass.getESuperTypes().add(this.getDataAge());
 		dataAgeTimeEClass.getESuperTypes().add(this.getDataAge());
 		requirementEClass.getESuperTypes().add(this.getBaseObject());
+		requirementEClass.getESuperTypes().add(this.getINamed());
 		processRequirementEClass.getESuperTypes().add(this.getRequirement());
 		runnableRequirementEClass.getESuperTypes().add(this.getRequirement());
 		architectureRequirementEClass.getESuperTypes().add(this.getRequirement());
@@ -14547,6 +14489,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		userSpecificSchedulingAlgorithmEClass.getESuperTypes().add(this.getInterruptSchedulingAlgorithm());
 		priorityBasedEClass.getESuperTypes().add(this.getInterruptSchedulingAlgorithm());
 		operatingSystemEClass.getESuperTypes().add(this.getBaseObject());
+		operatingSystemEClass.getESuperTypes().add(this.getINamed());
 		vendorOperatingSystemEClass.getESuperTypes().add(this.getOperatingSystem());
 		osInstructionsEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osAPIInstructionsEClass.getESuperTypes().add(this.getBaseObject());
@@ -14599,6 +14542,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		callGraphEClass.getESuperTypes().add(this.getBaseObject());
 		graphEntryBaseEClass.getESuperTypes().add(this.getBaseObject());
 		callSequenceEClass.getESuperTypes().add(this.getGraphEntryBase());
+		callSequenceEClass.getESuperTypes().add(this.getINamed());
 		modeSwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getINamed());
@@ -14653,6 +14597,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		getResultServerCallEClass.getESuperTypes().add(this.getServerCall());
 		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		groupEClass.getESuperTypes().add(this.getRunnableItem());
+		groupEClass.getESuperTypes().add(this.getINamed());
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableCallEClass.getESuperTypes().add(this.getITaggable());
 		customEventTriggerEClass.getESuperTypes().add(this.getRunnableItem());
@@ -14660,6 +14605,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		structEClass.getESuperTypes().add(this.getCompoundType());
 		structEClass.getESuperTypes().add(this.getBaseObject());
 		structEntryEClass.getESuperTypes().add(this.getBaseObject());
+		structEntryEClass.getESuperTypes().add(this.getINamed());
 		arrayEClass.getESuperTypes().add(this.getCompoundType());
 		arrayEClass.getESuperTypes().add(this.getBaseObject());
 		pointerEClass.getESuperTypes().add(this.getCompoundType());
@@ -14961,7 +14907,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConfigModel_EventsToTrace(), this.getEventConfig(), null, "eventsToTrace", null, 0, -1, ConfigModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventConfigEClass, EventConfig.class, "EventConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEventConfig_Name(), theEcorePackage.getEString(), "name", null, 0, 1, EventConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventConfig_Event(), this.getEntityEvent(), null, "event", null, 1, 1, EventConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintsModelEClass, ConstraintsModel.class, "ConstraintsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -15120,7 +15065,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataAgeTime_MaximumTime(), this.getTime(), null, "maximumTime", null, 0, 1, DataAgeTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requirementEClass, Requirement.class, "Requirement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRequirement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_Severity(), this.getSeverity(), "severity", null, 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRequirement_Limit(), this.getRequirementLimit(), null, "limit", null, 1, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -15544,7 +15488,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(priorityBasedEClass, PriorityBased.class, "PriorityBased", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(operatingSystemEClass, OperatingSystem.class, "OperatingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperatingSystem_Name(), theEcorePackage.getEString(), "name", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_Overhead(), this.getOsInstructions(), null, "overhead", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_TaskSchedulers(), this.getTaskScheduler(), null, "taskSchedulers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_InterruptControllers(), this.getInterruptController(), null, "interruptControllers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15784,7 +15727,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(graphEntryBaseEClass, GraphEntryBase.class, "GraphEntryBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(callSequenceEClass, CallSequence.class, "CallSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCallSequence_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallSequence_Calls(), this.getCallSequenceItem(), null, "calls", null, 0, -1, CallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEClass, ModeSwitch.class, "ModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16018,7 +15960,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnableProbabilitySwitch_Entries(), g1, null, "entries", null, 0, -1, RunnableProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGroup_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGroup_Ordered(), theEcorePackage.getEBoolean(), "ordered", "true", 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_Items(), this.getRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -16037,7 +15978,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getStruct_Entries(), this.getStructEntry(), null, "entries", null, 0, -1, Struct.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(structEntryEClass, StructEntry.class, "StructEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStructEntry_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StructEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStructEntry_DataType(), this.getDataType(), null, "dataType", null, 0, 1, StructEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arrayEClass, Array.class, "Array", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

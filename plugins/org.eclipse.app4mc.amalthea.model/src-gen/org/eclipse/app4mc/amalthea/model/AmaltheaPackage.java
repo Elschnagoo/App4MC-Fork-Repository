@@ -29334,17 +29334,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getEventConfig();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.EventConfig#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.EventConfig#getName()
-	 * @see #getEventConfig()
-	 * @generated
-	 */
-	EAttribute getEventConfig_Name();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.EventConfig#getEvent <em>Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30517,17 +30506,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRequirement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Requirement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Requirement#getName()
-	 * @see #getRequirement()
-	 * @generated
-	 */
-	EAttribute getRequirement_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Requirement#getSeverity <em>Severity</em>}'.
@@ -33844,17 +33822,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getOperatingSystem();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.OperatingSystem#getName()
-	 * @see #getOperatingSystem()
-	 * @generated
-	 */
-	EAttribute getOperatingSystem_Name();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOverhead <em>Overhead</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35673,17 +35640,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getCallSequence();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.CallSequence#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.CallSequence#getName()
-	 * @see #getCallSequence()
-	 * @generated
-	 */
-	EAttribute getCallSequence_Name();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.CallSequence#getCalls <em>Calls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37408,17 +37364,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Group#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Group#getName()
-	 * @see #getGroup()
-	 * @generated
-	 */
-	EAttribute getGroup_Name();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Group#isOrdered <em>Ordered</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37543,17 +37488,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStructEntry();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.StructEntry#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.StructEntry#getName()
-	 * @see #getStructEntry()
-	 * @generated
-	 */
-	EAttribute getStructEntry_Name();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.StructEntry#getDataType <em>Data Type</em>}'.

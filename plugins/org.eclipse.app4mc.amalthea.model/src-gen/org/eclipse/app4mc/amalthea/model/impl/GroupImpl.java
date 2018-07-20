@@ -18,6 +18,7 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -264,6 +265,38 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.GROUP__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.GROUP__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

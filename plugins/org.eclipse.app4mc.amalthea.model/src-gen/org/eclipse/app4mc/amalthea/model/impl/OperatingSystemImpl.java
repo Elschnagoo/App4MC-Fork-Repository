@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
@@ -377,6 +378,38 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				return osDataConsistency != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.OPERATING_SYSTEM__NAME: return AmaltheaPackage.INAMED__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == INamed.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.OPERATING_SYSTEM__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

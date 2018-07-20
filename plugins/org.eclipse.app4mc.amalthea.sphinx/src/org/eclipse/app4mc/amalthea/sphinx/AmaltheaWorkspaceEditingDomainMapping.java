@@ -30,127 +30,132 @@ import org.eclipse.sphinx.emf.workspace.domain.factory.IExtendedTransactionalEdi
 import org.eclipse.sphinx.emf.workspace.domain.mapping.AbstractWorkspaceEditingDomainMapping;
 import org.eclipse.sphinx.platform.messages.PlatformMessages;
 
-public class AmaltheaWorkspaceEditingDomainMapping extends AbstractWorkspaceEditingDomainMapping { 
+public class AmaltheaWorkspaceEditingDomainMapping extends AbstractWorkspaceEditingDomainMapping {
 
-	 
-	/**
-	 * In case of Amalthea metamodel descriptor's: TransactionalEditingDomain's are mapped to the IContainer
-	 */
-	protected    Map<IContainer,TransactionalEditingDomain>  amlt_mappedEditingDomains = Collections
-			.synchronizedMap(  new HashMap<IContainer,TransactionalEditingDomain> ());
+	protected Map<IMetaModelDescriptor, HashMap<IContainer, TransactionalEditingDomain>> mappedEditingDomains = Collections
+			.synchronizedMap(new HashMap<IMetaModelDescriptor, HashMap<IContainer, TransactionalEditingDomain>>());
 
-	/**
-	 * In case of non Amalthea metamodel descriptor's: Map associating one editing domain to each type of meta-model.
-	 */
-	protected Map<IMetaModelDescriptor, TransactionalEditingDomain> mappedEditingDomains = Collections
-			.synchronizedMap(new HashMap<IMetaModelDescriptor, TransactionalEditingDomain>());
-	
-	 
 	@Override
 	protected TransactionalEditingDomain createEditingDomain(IExtendedTransactionalEditingDomainFactory factory,
 			Collection<IMetaModelDescriptor> mmDescriptors) {
 		if (mmDescriptors.size() != 1) {
-			throw new IllegalArgumentException(NLS.bind(PlatformMessages.error_unexpectedArrayLength, mmDescriptors.size(), 1));
+			throw new IllegalArgumentException(
+					NLS.bind(PlatformMessages.error_unexpectedArrayLength, mmDescriptors.size(), 1));
 		}
 		return super.createEditingDomain(factory, mmDescriptors);
 	}
- 
+
 	@Override
 	public TransactionalEditingDomain getEditingDomain(IContainer container, IMetaModelDescriptor mmDescriptor) {
-		if (mmDescriptor == null) {
+		if (mmDescriptor == null)
 			return null;
-		}
-		if(mmDescriptor instanceof AmaltheaMetaModelDescriptor) {
-			synchronized (amlt_mappedEditingDomains) {
 
-				TransactionalEditingDomain  transactionalEditingDomain = amlt_mappedEditingDomains.get(container);
+		synchronized (mappedEditingDomains) {
+			TransactionalEditingDomain transactionalEditingDomain = null;
+			HashMap<IContainer, TransactionalEditingDomain> editingDomainsMap = mappedEditingDomains.get(mmDescriptor);
 
-				if(transactionalEditingDomain !=null) {
+			// try to get existing editing domain
+			if (editingDomainsMap != null) {
+				transactionalEditingDomain = editingDomainsMap.get(container);
+				if (transactionalEditingDomain != null)
 					return transactionalEditingDomain;
-				}else {
-					IExtendedTransactionalEditingDomainFactory factory = getEditingDomainFactory(mmDescriptor);
-
-					TransactionalEditingDomain editingDomain = createEditingDomain(factory, Collections.singleton(mmDescriptor));
-
-					amlt_mappedEditingDomains.put(container, editingDomain);
-
-					return editingDomain;
-				}
 			}
-		}else {
-			synchronized (mappedEditingDomains) {
-				TransactionalEditingDomain editingDomain = mappedEditingDomains.get(mmDescriptor);
-				if (editingDomain == null) {
-					// Obtain the right editing domain factory
-					IExtendedTransactionalEditingDomainFactory factory = getEditingDomainFactory(mmDescriptor);
-					// Ask for the creation of a new editing domain
-					editingDomain = createEditingDomain(factory, Collections.singleton(mmDescriptor));
-					// Register the newly created editing domain
-					mappedEditingDomains.put(mmDescriptor, editingDomain);
-				}
-				return editingDomain;
-			}
+			
+			// create new editing domain
+			return createNewTransactionalEditingDomain(container, mmDescriptor);	
+		}
+	}
 
+	private TransactionalEditingDomain createNewTransactionalEditingDomain(IContainer container,
+			IMetaModelDescriptor mmDescriptor) {
+
+		IExtendedTransactionalEditingDomainFactory factory = getEditingDomainFactory(mmDescriptor);
+		TransactionalEditingDomain editingDomain = createEditingDomain(factory, Collections.singleton(mmDescriptor));
+
+		HashMap<IContainer, TransactionalEditingDomain> hashMap = mappedEditingDomains.get(mmDescriptor);
+
+		if (hashMap == null) {
+			hashMap = new HashMap<IContainer, TransactionalEditingDomain>();
+			mappedEditingDomains.put(mmDescriptor, hashMap);
 		}
 
+		hashMap.put(container, editingDomain);
+
+		return editingDomain;
 	}
- 
 
 	/*
-	 * @see org.eclipse.sphinx.emf.workspace.domain.mapping.IWorkspaceEditingDomainMapping#getEditingDomains()
+	 * @see org.eclipse.sphinx.emf.workspace.domain.mapping.
+	 * IWorkspaceEditingDomainMapping#getEditingDomains()
 	 */
 	@Override
 	public List<TransactionalEditingDomain> getEditingDomains() {
-		
-		
-		List<TransactionalEditingDomain> allTransactionalEditingDomains=new ArrayList<TransactionalEditingDomain>();
-		
-		allTransactionalEditingDomains.addAll(amlt_mappedEditingDomains.values());
-		allTransactionalEditingDomains.addAll(mappedEditingDomains.values());
-		
-		return Collections.unmodifiableList(allTransactionalEditingDomains);
+
+		List<TransactionalEditingDomain> all = allOriginalEditingDomains();
+		return Collections.unmodifiableList(all);
+	}
+
+	private List<TransactionalEditingDomain> allOriginalEditingDomains() {
+		Collection<HashMap<IContainer, TransactionalEditingDomain>> values = mappedEditingDomains.values();
+
+		List<TransactionalEditingDomain> all = new ArrayList<TransactionalEditingDomain>();
+
+		for (HashMap<IContainer, TransactionalEditingDomain> hashMap : values) {
+			all.addAll(hashMap.values());
+		}
+		return all;
 	}
 
 	/*
-	 * @see
-	 * org.eclipse.sphinx.emf.workspace.domain.mapping.AbstractWorkspaceEditingDomainMapping#preDisposeEditingDomain
-	 * (org. eclipse.emf.transaction.TransactionalEditingDomain)
+	 * @see org.eclipse.sphinx.emf.workspace.domain.mapping.
+	 * AbstractWorkspaceEditingDomainMapping#preDisposeEditingDomain (org.
+	 * eclipse.emf.transaction.TransactionalEditingDomain)
 	 */
 	@Override
 	public void preDisposeEditingDomain(TransactionalEditingDomain editingDomain) {
 		// Remove EditingDomain to be disposed from mapping
-		
-		//Case 1: inside Amalthea Metamodel based group
 
-		amlt_mappedEditingDomains.values().remove(editingDomain);
-		
-		//case 2: inside non Amalthea Metamodel based group
-		
-		mappedEditingDomains.values().remove(editingDomain);
-		
-		
+		Collection<HashMap<IContainer, TransactionalEditingDomain>> values = mappedEditingDomains.values();
+
+		for (HashMap<IContainer, TransactionalEditingDomain> hashMap : values) {
+
+			// cloning the master map, as direct modification of master map during iteration
+			// will cause concurrent modification exception
+			HashMap<IContainer, TransactionalEditingDomain> mapClone = new HashMap<IContainer, TransactionalEditingDomain>(
+					hashMap);
+
+			for (IContainer scope : mapClone.keySet()) {
+				TransactionalEditingDomain transactionalEditingDomain = mapClone.get(scope);
+
+				if (transactionalEditingDomain == editingDomain) {
+
+					// removing contents from the master map
+					hashMap.remove(scope);
+				}
+			}
+		}
+
 		super.preDisposeEditingDomain(editingDomain);
 	}
 
 	/*
-	 * @see org.eclipse.sphinx.emf.workspace.domain.mapping.AbstractWorkspaceEditingDomainMapping#dispose()
+	 * @see org.eclipse.sphinx.emf.workspace.domain.mapping.
+	 * AbstractWorkspaceEditingDomainMapping#dispose()
 	 */
 	@Override
 	public void dispose() {
 		/*
-		 * !! Important Note !! Perform iteration over unsynchronized copy of mapped editing domain set in order to
-		 * avoid deadlocks between this thread intending to dispose all mapped editing domains and concurrent threads
-		 * needing to access synchronized mapped editing domains meanwhile.
+		 * !! Important Note !! Perform iteration over unsynchronized copy of mapped
+		 * editing domain set in order to avoid deadlocks between this thread intending
+		 * to dispose all mapped editing domains and concurrent threads needing to
+		 * access synchronized mapped editing domains meanwhile.
 		 */
-		List<TransactionalEditingDomain> unsynchronizedMappedEditingDomains = new ArrayList<TransactionalEditingDomain>(amlt_mappedEditingDomains.values());
-		for (TransactionalEditingDomain editingDomain : unsynchronizedMappedEditingDomains) {
-			editingDomain.dispose();
-		}
-		
-		unsynchronizedMappedEditingDomains = new ArrayList<TransactionalEditingDomain>(mappedEditingDomains.values());
+		List<TransactionalEditingDomain> unsynchronizedMappedEditingDomains = new ArrayList<TransactionalEditingDomain>(
+				allOriginalEditingDomains());
 		for (TransactionalEditingDomain editingDomain : unsynchronizedMappedEditingDomains) {
 			editingDomain.dispose();
 		}
 		super.dispose();
 	}
+
 }

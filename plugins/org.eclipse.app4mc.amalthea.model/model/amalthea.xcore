@@ -152,7 +152,6 @@ interface IDisplayName
  */
 class Tag extends ReferableBaseObject
 {
-	// String tagName -> replaced by attribute "name"
 	String tagType
 	
 	// back pointer (readonly)
@@ -739,9 +738,8 @@ class ConfigModel extends BaseObject
 	contains EventConfig[] eventsToTrace
 }
 
-class EventConfig extends BaseObject
+class EventConfig extends BaseObject, INamed
 {
-	String name
 	refers EntityEvent[1] event
 }
 
@@ -1135,9 +1133,8 @@ class DataAgeTime extends DataAge
 }
 
 ////////////////////////// Requirements
-abstract class Requirement extends BaseObject 
+abstract class Requirement extends BaseObject, INamed
 {
-	String name
 	Severity severity
 	contains RequirementLimit[1] limit
 }
@@ -2324,9 +2321,8 @@ class UserSpecificSchedulingAlgorithm extends TaskSchedulingAlgorithm, Interrupt
  */
 class PriorityBased extends InterruptSchedulingAlgorithm {}
 
-class OperatingSystem extends BaseObject
+class OperatingSystem extends BaseObject, INamed
 {
-	String name
 	refers OsInstructions overhead
 	contains TaskScheduler[] taskSchedulers
 	contains InterruptController[] interruptControllers
@@ -2848,9 +2844,8 @@ abstract class GraphEntryBase extends BaseObject
 /*
  * A sequence of callable items that can be placed in the call graph 
  */
-class CallSequence extends GraphEntryBase
+class CallSequence extends GraphEntryBase, INamed
 {
-	String name
 	contains CallSequenceItem[] calls
 }
 
@@ -3547,9 +3542,8 @@ class RunnableProbabilitySwitch extends RunnableItem
  * Describes a group of deviation runnable items
  * It can be also a group of runnable items without deviation, because the deviation is optional for each item
  */
-class Group extends RunnableItem
+class Group extends RunnableItem, INamed
 {
-	String name
 	boolean ordered = "true"
 	contains RunnableItem[] items
 }
@@ -3624,9 +3618,8 @@ class Struct extends CompoundType, BaseObject
 /*
  * Representation of one struct entry
  */
-class StructEntry extends BaseObject
+class StructEntry extends BaseObject, INamed
 {
-	String name
 	contains DataType dataType
 }
 

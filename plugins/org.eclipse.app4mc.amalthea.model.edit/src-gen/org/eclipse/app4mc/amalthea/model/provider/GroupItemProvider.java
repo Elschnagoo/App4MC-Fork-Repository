@@ -72,14 +72,14 @@ public class GroupItemProvider extends RunnableItemItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Group_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Group_name_feature", "_UI_Group_type"),
-				 AmaltheaPackage.eINSTANCE.getGroup_Name(),
+				 getString("_UI_INamed_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_INamed_name_feature", "_UI_INamed_type"),
+				 AmaltheaPackage.eINSTANCE.getINamed_Name(),
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_MainPropertyCategory"),
 				 null));
 	}
 

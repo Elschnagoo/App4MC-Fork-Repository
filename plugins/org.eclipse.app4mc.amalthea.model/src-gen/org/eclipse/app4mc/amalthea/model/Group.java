@@ -30,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Group#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Group#isOrdered <em>Ordered</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Group#getItems <em>Items</em>}</li>
  * </ul>
@@ -39,33 +38,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Group extends RunnableItem {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGroup_Name()
-	 * @model unique="false"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Group#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
+public interface Group extends RunnableItem, INamed {
 	/**
 	 * Returns the value of the '<em><b>Ordered</b></em>' attribute.
 	 * The default value is <code>"true"</code>.

@@ -921,6 +921,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				EventConfig eventConfig = (EventConfig)theEObject;
 				T1 result = caseEventConfig(eventConfig);
 				if (result == null) result = caseBaseObject(eventConfig);
+				if (result == null) result = caseINamed(eventConfig);
 				if (result == null) result = caseIAnnotatable(eventConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1357,6 +1358,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Requirement requirement = (Requirement)theEObject;
 				T1 result = caseRequirement(requirement);
 				if (result == null) result = caseBaseObject(requirement);
+				if (result == null) result = caseINamed(requirement);
 				if (result == null) result = caseIAnnotatable(requirement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1366,6 +1368,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseProcessRequirement(processRequirement);
 				if (result == null) result = caseRequirement(processRequirement);
 				if (result == null) result = caseBaseObject(processRequirement);
+				if (result == null) result = caseINamed(processRequirement);
 				if (result == null) result = caseIAnnotatable(processRequirement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1375,6 +1378,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseRunnableRequirement(runnableRequirement);
 				if (result == null) result = caseRequirement(runnableRequirement);
 				if (result == null) result = caseBaseObject(runnableRequirement);
+				if (result == null) result = caseINamed(runnableRequirement);
 				if (result == null) result = caseIAnnotatable(runnableRequirement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1384,6 +1388,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseArchitectureRequirement(architectureRequirement);
 				if (result == null) result = caseRequirement(architectureRequirement);
 				if (result == null) result = caseBaseObject(architectureRequirement);
+				if (result == null) result = caseINamed(architectureRequirement);
 				if (result == null) result = caseIAnnotatable(architectureRequirement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1393,6 +1398,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseProcessChainRequirement(processChainRequirement);
 				if (result == null) result = caseRequirement(processChainRequirement);
 				if (result == null) result = caseBaseObject(processChainRequirement);
+				if (result == null) result = caseINamed(processChainRequirement);
 				if (result == null) result = caseIAnnotatable(processChainRequirement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -2374,6 +2380,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				OperatingSystem operatingSystem = (OperatingSystem)theEObject;
 				T1 result = caseOperatingSystem(operatingSystem);
 				if (result == null) result = caseBaseObject(operatingSystem);
+				if (result == null) result = caseINamed(operatingSystem);
 				if (result == null) result = caseIAnnotatable(operatingSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -2383,6 +2390,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseVendorOperatingSystem(vendorOperatingSystem);
 				if (result == null) result = caseOperatingSystem(vendorOperatingSystem);
 				if (result == null) result = caseBaseObject(vendorOperatingSystem);
+				if (result == null) result = caseINamed(vendorOperatingSystem);
 				if (result == null) result = caseIAnnotatable(vendorOperatingSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -2848,6 +2856,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				CallSequence callSequence = (CallSequence)theEObject;
 				T1 result = caseCallSequence(callSequence);
 				if (result == null) result = caseGraphEntryBase(callSequence);
+				if (result == null) result = caseINamed(callSequence);
 				if (result == null) result = caseBaseObject(callSequence);
 				if (result == null) result = caseIAnnotatable(callSequence);
 				if (result == null) result = defaultCase(theEObject);
@@ -3326,6 +3335,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				Group group = (Group)theEObject;
 				T1 result = caseGroup(group);
 				if (result == null) result = caseRunnableItem(group);
+				if (result == null) result = caseINamed(group);
 				if (result == null) result = caseBaseObject(group);
 				if (result == null) result = caseIAnnotatable(group);
 				if (result == null) result = defaultCase(theEObject);
@@ -3377,6 +3387,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				StructEntry structEntry = (StructEntry)theEObject;
 				T1 result = caseStructEntry(structEntry);
 				if (result == null) result = caseBaseObject(structEntry);
+				if (result == null) result = caseINamed(structEntry);
 				if (result == null) result = caseIAnnotatable(structEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
