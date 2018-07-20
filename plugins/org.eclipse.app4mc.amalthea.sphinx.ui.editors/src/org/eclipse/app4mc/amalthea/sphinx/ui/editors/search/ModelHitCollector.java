@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
-import org.eclipse.app4mc.amalthea.model.IReferable;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.messages.Messages;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -78,17 +78,16 @@ public class ModelHitCollector implements ISearchQuery {
 					}
 				}
 			}
-		}else {
+		} else {
 			//optimized search with Amalthea Index
 			Pattern pattern=Pattern.compile("(?i).*"+Pattern.quote(query)+".*");
 			
-			Set<? extends IReferable> resultSet = AmaltheaIndex.getElements(model, pattern, IReferable.class);
+			Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
 			
-			for (IReferable element : resultSet) {
+			for (INamed element : resultSet) {
 				//TODO: As the search is based on the opened file in editor. Should the search results be restricted for the current file ? 
 				this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
 			}
-			
 		}
 		
 	

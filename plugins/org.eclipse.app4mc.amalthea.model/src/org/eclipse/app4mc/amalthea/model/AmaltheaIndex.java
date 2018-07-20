@@ -172,7 +172,7 @@ public final class AmaltheaIndex {
 	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of IReferable objects
 	 */
-	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final String name,
+	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final String name,
 			final Class<T> targetClass) {
 		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(name, targetClass);
 	}
@@ -186,7 +186,7 @@ public final class AmaltheaIndex {
 	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of IReferable objects
 	 */
-	public static <T extends IReferable> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
+	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
 			final Class<T> targetClass) {
 		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(namePattern, targetClass);
 	}

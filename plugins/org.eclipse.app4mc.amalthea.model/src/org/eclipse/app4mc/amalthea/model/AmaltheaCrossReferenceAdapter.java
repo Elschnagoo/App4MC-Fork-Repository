@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 
 public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 
-	private final Map<String, Set<IReferable>> nameIndex = new HashMap<>();
+	private final Map<String, Set<INamed>> nameIndex = new HashMap<>();
 
-	public <T extends IReferable> Set<? extends T> getElements(final String name, final Class<T> targetClass) {
+	public <T extends INamed> Set<? extends T> getElements(final String name, final Class<T> targetClass) {
 		final Set<T> result = new HashSet<>();
-		final Set<IReferable> values = this.nameIndex.get(name);
+		final Set<INamed> values = this.nameIndex.get(name);
 		if (values != null) {
-			for (final IReferable referable : values) {
+			for (final INamed referable : values) {
 				if (targetClass.isInstance(referable)) {
 					result.add(targetClass.cast(referable));
 				}
@@ -45,11 +45,11 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		return result;
 	}
 
-	public <T extends IReferable> Set<? extends T> getElements(final Pattern namePattern, final Class<T> targetClass) {
+	public <T extends INamed> Set<? extends T> getElements(final Pattern namePattern, final Class<T> targetClass) {
 		final Set<T> result = new HashSet<>();
-		for (final Map.Entry<String, Set<IReferable>> entry : this.nameIndex.entrySet()) {
+		for (final Map.Entry<String, Set<INamed>> entry : this.nameIndex.entrySet()) {
 			if (namePattern.matcher(entry.getKey()).matches()) {
-				for (final IReferable referable : entry.getValue()) {
+				for (final INamed referable : entry.getValue()) {
 					if (targetClass.isInstance(referable)) {
 						result.add(targetClass.cast(referable));
 					}
@@ -62,20 +62,20 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 	@Override
 	protected void selfAdapt(final Notification notification) {
 		final Object notifier = notification.getNotifier();
-		if (notifier instanceof IReferable && notification.getFeature() == AmaltheaPackage.eINSTANCE.getINamed_Name()) {
-			// Update the name index if an IReferable's name is changed.
-			final IReferable referable = (IReferable) notifier;
+		if (notifier instanceof INamed && notification.getFeature() == AmaltheaPackage.eINSTANCE.getINamed_Name()) {
+			// Update the name index if an INamed's name is changed.
+			final INamed namedObj = (INamed) notifier;
 			switch (notification.getEventType()) {
 			case Notification.UNSET: {
 				final String oldValue = notification.getOldStringValue();
-				removeFromNameIndex(referable, oldValue);
+				removeFromNameIndex(namedObj, oldValue);
 				break;
 			}
 			case Notification.SET: {
 				final String oldValue = notification.getOldStringValue();
-				removeFromNameIndex(referable, oldValue);
+				removeFromNameIndex(namedObj, oldValue);
 				final String newValue = notification.getNewStringValue();
-				addToNameIndex(referable, newValue);
+				addToNameIndex(namedObj, newValue);
 				break;
 			}
 			}
@@ -89,10 +89,10 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 	protected void setTarget(final EObject target) {
 		super.setTarget(target);
 
-		if (target instanceof IReferable) {
-			// Add the IReferable's name to the name index.
-			final IReferable referable = (IReferable) target;
-			addToNameIndex(referable, referable.getName());
+		if (target instanceof INamed) {
+			// Add the INamed's name to the name index.
+			final INamed namedObj = (INamed) target;
+			addToNameIndex(namedObj, namedObj.getName());
 		}
 	}
 
@@ -100,16 +100,16 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 	protected void unsetTarget(final EObject target) {
 		super.unsetTarget(target);
 
-		if (target instanceof IReferable) {
-			// Remove the IReferable's name to the name index.
-			final IReferable referable = (IReferable) target;
-			removeFromNameIndex(referable, referable.getName());
+		if (target instanceof INamed) {
+			// Remove the INamed's name to the name index.
+			final INamed namedObj = (INamed) target;
+			removeFromNameIndex(namedObj, namedObj.getName());
 		}
 	}
 
-	private void addToNameIndex(final IReferable eObject, final String name) {
+	private void addToNameIndex(final INamed eObject, final String name) {
 		if (name != null) {
-			Set<IReferable> objSet = this.nameIndex.get(name);
+			Set<INamed> objSet = this.nameIndex.get(name);
 			if (objSet == null) {
 				objSet = new HashSet<>();
 				this.nameIndex.put(name, objSet);
@@ -118,9 +118,9 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		}
 	}
 
-	private void removeFromNameIndex(final IReferable eObject, final String name) {
+	private void removeFromNameIndex(final INamed eObject, final String name) {
 		if (name != null) {
-			final Set<IReferable> objSet = this.nameIndex.get(name);
+			final Set<INamed> objSet = this.nameIndex.get(name);
 			if (objSet != null) {
 				objSet.remove(eObject);
 				if (objSet.isEmpty()) {
