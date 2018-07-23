@@ -40,6 +40,7 @@ import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -90,6 +91,7 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
@@ -283,6 +285,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -3087,6 +3090,22 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.DATA_DEPENDENCY: {
+				DataDependency dataDependency = (DataDependency)theEObject;
+				T1 result = caseDataDependency(dataDependency);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.RUNNABLE_PARAMETER: {
+				RunnableParameter runnableParameter = (RunnableParameter)theEObject;
+				T1 result = caseRunnableParameter(runnableParameter);
+				if (result == null) result = caseReferableBaseObject(runnableParameter);
+				if (result == null) result = caseIAnnotatable(runnableParameter);
+				if (result == null) result = caseIReferable(runnableParameter);
+				if (result == null) result = caseINamed(runnableParameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.RUNNABLE: {
 				org.eclipse.app4mc.amalthea.model.Runnable runnable = (org.eclipse.app4mc.amalthea.model.Runnable)theEObject;
 				T1 result = caseRunnable(runnable);
@@ -3338,6 +3357,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseINamed(group);
 				if (result == null) result = caseBaseObject(group);
 				if (result == null) result = caseIAnnotatable(group);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CALL_ARGUMENT: {
+				CallArgument callArgument = (CallArgument)theEObject;
+				T1 result = caseCallArgument(callArgument);
+				if (result == null) result = caseReferableObject(callArgument);
+				if (result == null) result = caseIReferable(callArgument);
+				if (result == null) result = caseINamed(callArgument);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7936,6 +7964,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Dependency</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Dependency</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDataDependency(DataDependency object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Runnable Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Runnable Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseRunnableParameter(RunnableParameter object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Runnable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -8322,6 +8380,21 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseGroup(Group object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Call Argument</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Call Argument</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCallArgument(CallArgument object) {
 		return null;
 	}
 

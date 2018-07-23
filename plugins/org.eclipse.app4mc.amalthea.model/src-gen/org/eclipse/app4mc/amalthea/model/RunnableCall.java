@@ -14,6 +14,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableCall#getRunnable <em>Runnable</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableCall#getArguments <em>Arguments</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.RunnableCall#getStatistic <em>Statistic</em>}</li>
  * </ul>
  *
@@ -62,6 +64,24 @@ public interface RunnableCall extends RunnableItem, ITaggable {
 	 * @generated
 	 */
 	void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable value);
+
+	/**
+	 * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CallArgument}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.CallArgument#getContainingCall <em>Containing Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Arguments</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arguments</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableCall_Arguments()
+	 * @see org.eclipse.app4mc.amalthea.model.CallArgument#getContainingCall
+	 * @model opposite="containingCall" containment="true"
+	 * @generated
+	 */
+	EList<CallArgument> getArguments();
 
 	/**
 	 * Returns the value of the '<em><b>Statistic</b></em>' containment reference.

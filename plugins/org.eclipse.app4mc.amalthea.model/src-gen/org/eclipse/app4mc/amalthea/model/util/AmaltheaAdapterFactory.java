@@ -40,6 +40,7 @@ import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -90,6 +91,7 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
@@ -283,6 +285,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -1568,6 +1571,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createOrderPrecedenceSpecAdapter();
 			}
 			@Override
+			public Adapter caseDataDependency(DataDependency object) {
+				return createDataDependencyAdapter();
+			}
+			@Override
+			public Adapter caseRunnableParameter(RunnableParameter object) {
+				return createRunnableParameterAdapter();
+			}
+			@Override
 			public Adapter caseRunnable(org.eclipse.app4mc.amalthea.model.Runnable object) {
 				return createRunnableAdapter();
 			}
@@ -1670,6 +1681,10 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseGroup(Group object) {
 				return createGroupAdapter();
+			}
+			@Override
+			public Adapter caseCallArgument(CallArgument object) {
+				return createCallArgumentAdapter();
 			}
 			@Override
 			public Adapter caseRunnableCall(RunnableCall object) {
@@ -5836,6 +5851,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataDependency <em>Data Dependency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DataDependency
+	 * @generated
+	 */
+	public Adapter createDataDependencyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableParameter <em>Runnable Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableParameter
+	 * @generated
+	 */
+	public Adapter createRunnableParameterAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Runnable <em>Runnable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -6196,6 +6239,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CallArgument <em>Call Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.CallArgument
+	 * @generated
+	 */
+	public Adapter createCallArgumentAdapter() {
 		return null;
 	}
 

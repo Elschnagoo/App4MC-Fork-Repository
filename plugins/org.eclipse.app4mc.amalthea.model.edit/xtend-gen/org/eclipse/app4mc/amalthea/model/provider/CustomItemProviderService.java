@@ -35,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
@@ -65,6 +66,7 @@ import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
@@ -159,6 +161,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -5108,6 +5111,13 @@ public class CustomItemProviderService {
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_CALL__STATISTIC)) {
         _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS)) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
         Object _notifier_1 = notification.getNotifier();
         return new ViewerNotification(notification, _notifier_1, true, false);
       }
@@ -5405,6 +5415,73 @@ public class CustomItemProviderService {
     } else {
       return defaultText;
     }
+  }
+  
+  /**
+   * RunnableParameterProvider
+   */
+  public static String getRunnableParameterItemProviderImageName(final Object object, final String defaultName) {
+    if ((object instanceof RunnableParameter)) {
+      String _xifexpression = null;
+      DirectionType _direction = ((RunnableParameter)object).getDirection();
+      boolean _equals = Objects.equal(_direction, DirectionType._UNDEFINED_);
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        String _literal = ((RunnableParameter)object).getDirection().getLiteral();
+        _xifexpression = ("_" + _literal);
+      }
+      final String direction = _xifexpression;
+      return ("RunnableParameter" + direction);
+    } else {
+      return defaultName;
+    }
+  }
+  
+  /**
+   * CallArgumentItemProvider
+   */
+  public static String getCallArgumentItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof CallArgument)) {
+      RunnableParameter _parameter = null;
+      if (((CallArgument)object)!=null) {
+        _parameter=((CallArgument)object).getParameter();
+      }
+      final RunnableParameter param = _parameter;
+      DirectionType _direction = null;
+      if (param!=null) {
+        _direction=param.getDirection();
+      }
+      final DirectionType dir = _direction;
+      String _xifexpression = null;
+      if (((dir == null) || Objects.equal(dir, DirectionType._UNDEFINED_))) {
+        _xifexpression = "???";
+      } else {
+        _xifexpression = dir.getLiteral().toUpperCase();
+      }
+      final String s1 = _xifexpression;
+      Object _xifexpression_1 = null;
+      if ((param == null)) {
+        _xifexpression_1 = "<argument>";
+      } else {
+        _xifexpression_1 = param;
+      }
+      final Object s2 = _xifexpression_1;
+      return ((("(" + s1) + ") ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static ViewerNotification getCallArgumentItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(CallArgument.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.CALL_ARGUMENT__PARAMETER)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
+    }
+    return null;
   }
   
   /**

@@ -175,6 +175,9 @@ import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.RunnableParameter
+import org.eclipse.app4mc.amalthea.model.DirectionType
+import org.eclipse.app4mc.amalthea.model.CallArgument
 
 class CustomItemProviderService {
 
@@ -2693,7 +2696,8 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(RunnableCall)) {
 			case AmaltheaPackage::RUNNABLE_CALL__RUNNABLE:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-			case AmaltheaPackage::RUNNABLE_CALL__STATISTIC:
+			case AmaltheaPackage::RUNNABLE_CALL__STATISTIC,
+			case AmaltheaPackage::RUNNABLE_CALL__ARGUMENTS:
 				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
 		return null
@@ -2880,6 +2884,42 @@ class CustomItemProviderService {
 		} else {
 			return defaultText
 		}
+	}
+
+	/*****************************************************************************
+	 * 						RunnableParameterProvider
+	 *****************************************************************************/
+	def static String getRunnableParameterItemProviderImageName(Object object, String defaultName) {
+		if (object instanceof RunnableParameter) {
+			val direction = if (object.direction == DirectionType::_UNDEFINED_) "" else "_" + object.direction.literal
+			return "RunnableParameter" + direction
+		} else {
+			return defaultName
+		}
+	}
+
+	/*****************************************************************************
+	 * 						CallArgumentItemProvider
+	 *****************************************************************************/
+	def static String getCallArgumentItemProviderText(Object object, String defaultText) {
+		if (object instanceof CallArgument) {
+			val param = object?.parameter
+			val dir = param?.direction
+
+			val s1 = if(dir === null || dir == DirectionType::_UNDEFINED_) "???" else dir.literal.toUpperCase
+			val s2 = if(param === null) "<argument>" else param
+			return "(" + s1 + ") " + s2;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static ViewerNotification getCallArgumentItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(CallArgument)) {
+			case AmaltheaPackage::CALL_ARGUMENT__PARAMETER:
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+		}
+		return null
 	}
 
 ///// 

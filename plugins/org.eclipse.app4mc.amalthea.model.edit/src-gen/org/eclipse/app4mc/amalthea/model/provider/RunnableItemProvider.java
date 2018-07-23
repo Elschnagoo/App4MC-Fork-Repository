@@ -265,6 +265,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Parameters());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Deadline());
 		}
@@ -337,6 +338,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			case AmaltheaPackage.RUNNABLE__ASIL_LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -355,6 +357,11 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRunnable_Parameters(),
+				 AmaltheaFactory.eINSTANCE.createRunnableParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter

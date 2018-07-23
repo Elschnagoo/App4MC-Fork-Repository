@@ -618,6 +618,7 @@ class ModeLiteral extends ReferableBaseObject
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingMode?.name)
 	}
+	
 	op String toString() {
 		val modeName = containingMode?.name
 		return (if (modeName.nullOrEmpty) "<mode>" else modeName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
@@ -1644,25 +1645,29 @@ class HwFeature extends ReferableBaseObject
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingCategory?.name)
 	}
+	
 	op String toString() {
 		val featureName = containingCategory?.name
 		return (if (featureName.nullOrEmpty) "<category>" else featureName) + "::" + (if (name.nullOrEmpty) "<feature>" else name)
 	}
+	
 	double value = "0.0"
 // contains HwLatency latency
 }
 
 class HwPort extends ReferableBaseObject, ITaggable
 {
+	op String computeUniqueName() {
+		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
+	}
+	
 	int bitWidth = "0"
 	int priority = "0"
 	PortType portType
 	PortInterface portInterface
+	
 	derived readonly boolean delegated get {
 		eContainer instanceof HwStructure
-	}
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
 	}
 }
 
@@ -1674,15 +1679,16 @@ class ConnectionHandler extends HwModule, HwPathElement
 
 class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 {
+	op String computeUniqueName() {
+		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
+	}
+	
 	// contains HwConverter converter
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
 	contains DataRate dataRate
 	refers HwPort port1
 	refers HwPort port2
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
-	}
 }
 
 /*class HwConverter extends INamed {
@@ -3138,11 +3144,46 @@ enum OrderType
 	endSequence
 }
 
+enum DirectionType
+{
+	_undefined_ // Display: "<direction>“
+	in
+	out
+	inout	
+}
+
+class DataDependency
+{
+	refers Label[] labels
+	refers RunnableParameter[] parameters
+	refers CallArgument[] callArguments
+}
+
+class RunnableParameter extends ReferableBaseObject
+{
+	container Runnable containingRunnable opposite parameters
+	
+	op String computeUniqueName() {
+		return basicComputeUniqueNameWithPrefix(containingRunnable?.name)
+	}
+	
+	DirectionType direction
+	refers TypeDefinition dataType
+	contains DataDependency dependsOn
+	
+	op String toString() {
+		val runName = containingRunnable?.name
+		return (if (runName.nullOrEmpty) "<runnable>" else runName) + "::" + (if (name.nullOrEmpty) "<parameter>" else name)
+	}	
+}
+
+
 /*
  * Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms.
  */
 class Runnable extends AbstractMemoryElement
 {
+	contains RunnableParameter[] parameters opposite containingRunnable
 	contains RunnableItem[] runnableItems
 	refers Activation[] activations
 	op Activation getFirstActivation() {
@@ -3364,19 +3405,24 @@ class LabelAccess extends ComputationItem, ITaggable
 {
 	refers Label[1] data
 	LabelAccessEnum access
+
 	/*
 	 * Optional parameter for statistic values
 	 */
 	contains LabelAccessStatistic statistic
+
 	/*
 	 * Optional parameter for transmission policy of larger data
 	 */
 	contains TransmissionPolicy transmissionPolicy
+
 	/*
 	 * Defines the data stability needs of the label access
 	 */
 	LabelAccessDataStability dataStability
-	LabelAccessImplementation implementation
+	LabelAccessImplementation implementation	 
+		
+	contains DataDependency dependsOn
 }
 
 abstract class ChannelAccess extends RunnableItem
@@ -3548,12 +3594,32 @@ class Group extends RunnableItem, INamed
 	contains RunnableItem[] items
 }
 
+class CallArgument extends ReferableObject
+{
+	container RunnableCall containingCall opposite arguments
+	
+	op String getName() {
+		if (super.name.nullOrEmpty) "access.1" else super.name
+	}
+	
+	op String computeUniqueName() {
+		return encode(containingCall?.containingRunnable?.name)
+				+ "/calls/" + encode(containingCall?.runnable?.name)
+				+ "/param/" + encode(parameter?.name) + "/" + encode(name)
+				+ "?type=" + eClass.name
+	}
+	
+	refers RunnableParameter parameter
+	contains DataDependency dependsOn
+}
+
 /*
  * Representation of a runnable call of a run entity.
  */
 class RunnableCall extends RunnableItem, ITaggable
 {
 	refers Runnable[1] runnable
+	contains CallArgument[] arguments opposite containingCall
 	contains RunEntityCallStatistic statistic
 }
 

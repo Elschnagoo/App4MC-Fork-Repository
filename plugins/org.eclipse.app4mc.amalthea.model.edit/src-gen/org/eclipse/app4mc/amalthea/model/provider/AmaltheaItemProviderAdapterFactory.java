@@ -5075,6 +5075,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataDependency} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataDependencyItemProvider dataDependencyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataDependency}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataDependencyAdapter() {
+		if (dataDependencyItemProvider == null) {
+			dataDependencyItemProvider = new DataDependencyItemProvider(this);
+		}
+
+		return dataDependencyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableParameterItemProvider runnableParameterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableParameter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRunnableParameterAdapter() {
+		if (runnableParameterItemProvider == null) {
+			runnableParameterItemProvider = new RunnableParameterItemProvider(this);
+		}
+
+		return runnableParameterItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Runnable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5555,6 +5601,29 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return groupItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CallArgument} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CallArgumentItemProvider callArgumentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CallArgument}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCallArgumentAdapter() {
+		if (callArgumentItemProvider == null) {
+			callArgumentItemProvider = new CallArgumentItemProvider(this);
+		}
+
+		return callArgumentItemProvider;
 	}
 
 	/**
@@ -6402,6 +6471,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (chainedProcessPrototypeItemProvider != null) chainedProcessPrototypeItemProvider.dispose();
 		if (accessPrecedenceSpecItemProvider != null) accessPrecedenceSpecItemProvider.dispose();
 		if (orderPrecedenceSpecItemProvider != null) orderPrecedenceSpecItemProvider.dispose();
+		if (dataDependencyItemProvider != null) dataDependencyItemProvider.dispose();
+		if (runnableParameterItemProvider != null) runnableParameterItemProvider.dispose();
 		if (runnableItemProvider != null) runnableItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
 		if (channelItemProvider != null) channelItemProvider.dispose();
@@ -6423,6 +6494,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (getResultServerCallItemProvider != null) getResultServerCallItemProvider.dispose();
 		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
+		if (callArgumentItemProvider != null) callArgumentItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();
 		if (customEventTriggerItemProvider != null) customEventTriggerItemProvider.dispose();
 		if (structItemProvider != null) structItemProvider.dispose();

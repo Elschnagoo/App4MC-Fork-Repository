@@ -29,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableItems <em>Runnable Items</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}</li>
@@ -46,6 +47,24 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Runnable extends AbstractMemoryElement {
+	/**
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableParameter}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.RunnableParameter#getContainingRunnable <em>Containing Runnable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Parameters()
+	 * @see org.eclipse.app4mc.amalthea.model.RunnableParameter#getContainingRunnable
+	 * @model opposite="containingRunnable" containment="true"
+	 * @generated
+	 */
+	EList<RunnableParameter> getParameters();
+
 	/**
 	 * Returns the value of the '<em><b>Runnable Items</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.

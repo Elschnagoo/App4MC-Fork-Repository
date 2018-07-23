@@ -46,6 +46,7 @@ import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
@@ -102,6 +103,7 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataConstraint;
 import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
+import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
@@ -119,6 +121,7 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -324,6 +327,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -1062,6 +1066,10 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateAccessPrecedenceSpec((AccessPrecedenceSpec)value, diagnostics, context);
 			case AmaltheaPackage.ORDER_PRECEDENCE_SPEC:
 				return validateOrderPrecedenceSpec((OrderPrecedenceSpec)value, diagnostics, context);
+			case AmaltheaPackage.DATA_DEPENDENCY:
+				return validateDataDependency((DataDependency)value, diagnostics, context);
+			case AmaltheaPackage.RUNNABLE_PARAMETER:
+				return validateRunnableParameter((RunnableParameter)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE:
 				return validateRunnable((org.eclipse.app4mc.amalthea.model.Runnable)value, diagnostics, context);
 			case AmaltheaPackage.LABEL:
@@ -1114,6 +1122,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateRunnableProbabilitySwitch((RunnableProbabilitySwitch)value, diagnostics, context);
 			case AmaltheaPackage.GROUP:
 				return validateGroup((Group)value, diagnostics, context);
+			case AmaltheaPackage.CALL_ARGUMENT:
+				return validateCallArgument((CallArgument)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_CALL:
 				return validateRunnableCall((RunnableCall)value, diagnostics, context);
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER:
@@ -1260,6 +1270,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateAccessPrecedenceType((AccessPrecedenceType)value, diagnostics, context);
 			case AmaltheaPackage.ORDER_TYPE:
 				return validateOrderType((OrderType)value, diagnostics, context);
+			case AmaltheaPackage.DIRECTION_TYPE:
+				return validateDirectionType((DirectionType)value, diagnostics, context);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return validateLabelDataStability((LabelDataStability)value, diagnostics, context);
 			case AmaltheaPackage.RECEIVE_OPERATION:
@@ -3884,6 +3896,24 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateDataDependency(DataDependency dataDependency, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataDependency, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRunnableParameter(RunnableParameter runnableParameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(runnableParameter, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateRunnable(org.eclipse.app4mc.amalthea.model.Runnable runnable, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(runnable, diagnostics, context);
 	}
@@ -4111,6 +4141,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateGroup(Group group, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(group, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCallArgument(CallArgument callArgument, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(callArgument, diagnostics, context);
 	}
 
 	/**
@@ -4767,6 +4806,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOrderType(OrderType orderType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDirectionType(DirectionType directionType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

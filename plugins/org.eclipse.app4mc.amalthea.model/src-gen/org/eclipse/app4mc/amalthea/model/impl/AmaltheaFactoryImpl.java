@@ -40,6 +40,7 @@ import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
@@ -85,6 +86,7 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
+import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
 import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
@@ -100,6 +102,7 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
@@ -260,6 +263,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
@@ -602,6 +606,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE: return createChainedProcessPrototype();
 			case AmaltheaPackage.ACCESS_PRECEDENCE_SPEC: return createAccessPrecedenceSpec();
 			case AmaltheaPackage.ORDER_PRECEDENCE_SPEC: return createOrderPrecedenceSpec();
+			case AmaltheaPackage.DATA_DEPENDENCY: return createDataDependency();
+			case AmaltheaPackage.RUNNABLE_PARAMETER: return createRunnableParameter();
 			case AmaltheaPackage.RUNNABLE: return createRunnable();
 			case AmaltheaPackage.LABEL: return createLabel();
 			case AmaltheaPackage.CHANNEL: return createChannel();
@@ -623,6 +629,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.GET_RESULT_SERVER_CALL: return createGetResultServerCall();
 			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
+			case AmaltheaPackage.CALL_ARGUMENT: return createCallArgument();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER: return createCustomEventTrigger();
 			case AmaltheaPackage.STRUCT: return createStruct();
@@ -749,6 +756,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createAccessPrecedenceTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ORDER_TYPE:
 				return createOrderTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.DIRECTION_TYPE:
+				return createDirectionTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return createLabelDataStabilityFromString(eDataType, initialValue);
 			case AmaltheaPackage.RECEIVE_OPERATION:
@@ -874,6 +883,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertAccessPrecedenceTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ORDER_TYPE:
 				return convertOrderTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.DIRECTION_TYPE:
+				return convertDirectionTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return convertLabelDataStabilityToString(eDataType, instanceValue);
 			case AmaltheaPackage.RECEIVE_OPERATION:
@@ -3076,6 +3087,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataDependency createDataDependency() {
+		DataDependencyImpl dataDependency = new DataDependencyImpl();
+		return dataDependency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RunnableParameter createRunnableParameter() {
+		RunnableParameterImpl runnableParameter = new RunnableParameterImpl();
+		return runnableParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.eclipse.app4mc.amalthea.model.Runnable createRunnable() {
 		RunnableImpl runnable = new RunnableImpl();
 		return runnable;
@@ -3279,6 +3310,16 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Group createGroup() {
 		GroupImpl group = new GroupImpl();
 		return group;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CallArgument createCallArgument() {
+		CallArgumentImpl callArgument = new CallArgumentImpl();
+		return callArgument;
 	}
 
 	/**
@@ -4408,6 +4449,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertOrderTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DirectionType createDirectionTypeFromString(EDataType eDataType, String initialValue) {
+		DirectionType result = DirectionType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDirectionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

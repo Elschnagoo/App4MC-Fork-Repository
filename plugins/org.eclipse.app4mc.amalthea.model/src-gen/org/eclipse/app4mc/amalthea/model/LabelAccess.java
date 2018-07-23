@@ -34,6 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getImplementation <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDependsOn <em>Depends On</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess()
@@ -202,5 +203,31 @@ public interface LabelAccess extends ComputationItem, ITaggable {
 	 * @generated
 	 */
 	void setImplementation(LabelAccessImplementation value);
+
+	/**
+	 * Returns the value of the '<em><b>Depends On</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Depends On</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Depends On</em>' containment reference.
+	 * @see #setDependsOn(DataDependency)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getLabelAccess_DependsOn()
+	 * @model containment="true"
+	 * @generated
+	 */
+	DataDependency getDependsOn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.LabelAccess#getDependsOn <em>Depends On</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Depends On</em>' containment reference.
+	 * @see #getDependsOn()
+	 * @generated
+	 */
+	void setDependsOn(DataDependency value);
 
 } // LabelAccess

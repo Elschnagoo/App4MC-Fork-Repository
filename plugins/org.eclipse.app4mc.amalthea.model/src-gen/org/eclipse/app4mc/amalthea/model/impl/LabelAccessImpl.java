@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -54,6 +55,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getTransmissionPolicy <em>Transmission Policy</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDataStability <em>Data Stability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getImplementation <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.LabelAccessImpl#getDependsOn <em>Depends On</em>}</li>
  * </ul>
  *
  * @generated
@@ -158,6 +160,16 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * @ordered
 	 */
 	protected LabelAccessImplementation implementation = IMPLEMENTATION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDependsOn() <em>Depends On</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDependsOn()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataDependency dependsOn;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -382,6 +394,49 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataDependency getDependsOn() {
+		return dependsOn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDependsOn(DataDependency newDependsOn, NotificationChain msgs) {
+		DataDependency oldDependsOn = dependsOn;
+		dependsOn = newDependsOn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON, oldDependsOn, newDependsOn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDependsOn(DataDependency newDependsOn) {
+		if (newDependsOn != dependsOn) {
+			NotificationChain msgs = null;
+			if (dependsOn != null)
+				msgs = ((InternalEObject)dependsOn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON, null, msgs);
+			if (newDependsOn != null)
+				msgs = ((InternalEObject)newDependsOn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON, null, msgs);
+			msgs = basicSetDependsOn(newDependsOn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON, newDependsOn, newDependsOn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -389,6 +444,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return basicSetStatistic(null, msgs);
 			case AmaltheaPackage.LABEL_ACCESS__TRANSMISSION_POLICY:
 				return basicSetTransmissionPolicy(null, msgs);
+			case AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON:
+				return basicSetDependsOn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -416,6 +473,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return getDataStability();
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				return getImplementation();
+			case AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON:
+				return getDependsOn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -451,6 +510,9 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				setImplementation((LabelAccessImplementation)newValue);
 				return;
+			case AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON:
+				setDependsOn((DataDependency)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -484,6 +546,9 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				setImplementation(IMPLEMENTATION_EDEFAULT);
 				return;
+			case AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON:
+				setDependsOn((DataDependency)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -510,6 +575,8 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 				return dataStability != DATA_STABILITY_EDEFAULT;
 			case AmaltheaPackage.LABEL_ACCESS__IMPLEMENTATION:
 				return implementation != IMPLEMENTATION_EDEFAULT;
+			case AmaltheaPackage.LABEL_ACCESS__DEPENDS_ON:
+				return dependsOn != null;
 		}
 		return super.eIsSet(featureID);
 	}

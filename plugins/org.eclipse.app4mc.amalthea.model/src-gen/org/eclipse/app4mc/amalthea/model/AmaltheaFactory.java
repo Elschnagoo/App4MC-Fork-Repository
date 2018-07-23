@@ -1960,6 +1960,24 @@ public interface AmaltheaFactory extends EFactory {
 	OrderPrecedenceSpec createOrderPrecedenceSpec();
 
 	/**
+	 * Returns a new object of class '<em>Data Dependency</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Dependency</em>'.
+	 * @generated
+	 */
+	DataDependency createDataDependency();
+
+	/**
+	 * Returns a new object of class '<em>Runnable Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runnable Parameter</em>'.
+	 * @generated
+	 */
+	RunnableParameter createRunnableParameter();
+
+	/**
 	 * Returns a new object of class '<em>Runnable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2129,6 +2147,15 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	Group createGroup();
+
+	/**
+	 * Returns a new object of class '<em>Call Argument</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Call Argument</em>'.
+	 * @generated
+	 */
+	CallArgument createCallArgument();
 
 	/**
 	 * Returns a new object of class '<em>Runnable Call</em>'.

@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -53,6 +55,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableItems <em>Runnable Items</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getDeadline <em>Deadline</em>}</li>
@@ -68,6 +71,16 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * @generated
  */
 public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclipse.app4mc.amalthea.model.Runnable {
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<RunnableParameter> parameters;
+
 	/**
 	 * The cached value of the '{@link #getRunnableItems() <em>Runnable Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -185,6 +198,18 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getRunnable();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<RunnableParameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentWithInverseEList<RunnableParameter>(RunnableParameter.class, this, AmaltheaPackage.RUNNABLE__PARAMETERS, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE);
+		}
+		return parameters;
 	}
 
 	/**
@@ -399,9 +424,26 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return ((InternalEList<?>)getRunnableItems()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__DEADLINE:
@@ -418,6 +460,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				return getParameters();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return getRunnableItems();
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
@@ -452,6 +496,10 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				getParameters().clear();
+				getParameters().addAll((Collection<? extends RunnableParameter>)newValue);
+				return;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				getRunnableItems().clear();
 				getRunnableItems().addAll((Collection<? extends RunnableItem>)newValue);
@@ -487,6 +535,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				getParameters().clear();
+				return;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				getRunnableItems().clear();
 				return;
@@ -520,6 +571,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__PARAMETERS:
+				return parameters != null && !parameters.isEmpty();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return runnableItems != null && !runnableItems.isEmpty();
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:

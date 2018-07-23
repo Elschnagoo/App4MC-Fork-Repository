@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -32,7 +33,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,6 +47,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getRunnable <em>Runnable</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getArguments <em>Arguments</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableCallImpl#getStatistic <em>Statistic</em>}</li>
  * </ul>
  *
@@ -69,6 +73,16 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * @ordered
 	 */
 	protected org.eclipse.app4mc.amalthea.model.Runnable runnable;
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CallArgument> arguments;
 
 	/**
 	 * The cached value of the '{@link #getStatistic() <em>Statistic</em>}' containment reference.
@@ -154,6 +168,18 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<CallArgument> getArguments() {
+		if (arguments == null) {
+			arguments = new EObjectContainmentWithInverseEList<CallArgument>(CallArgument.class, this, AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL);
+		}
+		return arguments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RunEntityCallStatistic getStatistic() {
 		return statistic;
 	}
@@ -197,9 +223,26 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getArguments()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return basicSetStatistic(null, msgs);
 		}
@@ -219,6 +262,8 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE:
 				if (resolve) return getRunnable();
 				return basicGetRunnable();
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				return getArguments();
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return getStatistic();
 		}
@@ -241,6 +286,10 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE:
 				setRunnable((org.eclipse.app4mc.amalthea.model.Runnable)newValue);
 				return;
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				getArguments().clear();
+				getArguments().addAll((Collection<? extends CallArgument>)newValue);
+				return;
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				setStatistic((RunEntityCallStatistic)newValue);
 				return;
@@ -262,6 +311,9 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE:
 				setRunnable((org.eclipse.app4mc.amalthea.model.Runnable)null);
 				return;
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				getArguments().clear();
+				return;
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				setStatistic((RunEntityCallStatistic)null);
 				return;
@@ -281,6 +333,8 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.RUNNABLE_CALL__RUNNABLE:
 				return runnable != null;
+			case AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS:
+				return arguments != null && !arguments.isEmpty();
 			case AmaltheaPackage.RUNNABLE_CALL__STATISTIC:
 				return statistic != null;
 		}
