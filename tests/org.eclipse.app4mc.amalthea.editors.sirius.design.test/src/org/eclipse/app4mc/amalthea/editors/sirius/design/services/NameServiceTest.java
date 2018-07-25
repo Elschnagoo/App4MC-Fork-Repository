@@ -67,7 +67,7 @@ public class NameServiceTest {
 	public void testLengthOfNameEmptyObject() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		int result = this.nameS.lengthOfName(task);
-		assertThat(result, is(0));
+		assertThat(result, is(2));
 	}
 
 	/**
