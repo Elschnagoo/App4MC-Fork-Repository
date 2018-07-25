@@ -26,7 +26,6 @@ import org.eclipse.app4mc.amalthea.model.Port;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.Tag;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -34,10 +33,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -120,37 +116,6 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContainingComponent(Component newContainingComponent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingComponent, AmaltheaPackage.PORT__CONTAINING_COMPONENT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainingComponent(Component newContainingComponent) {
-		if (newContainingComponent != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.PORT__CONTAINING_COMPONENT && newContainingComponent != null)) {
-			if (EcoreUtil.isAncestor(this, newContainingComponent))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainingComponent != null)
-				msgs = ((InternalEObject)newContainingComponent).eInverseAdd(this, AmaltheaPackage.COMPONENT__PORTS, Component.class, msgs);
-			msgs = basicSetContainingComponent(newContainingComponent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PORT__CONTAINING_COMPONENT, newContainingComponent, newContainingComponent));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String computeUniqueName() {
 		Component _containingComponent = this.getContainingComponent();
 		String _name = null;
@@ -171,7 +136,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingComponent((Component)otherEnd, msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.PORT__CONTAINING_COMPONENT, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -185,7 +150,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
-				return basicSetContainingComponent(null, msgs);
+				return eBasicSetContainer(null, AmaltheaPackage.PORT__CONTAINING_COMPONENT, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -234,9 +199,6 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 				getTags().clear();
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
-			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
-				setContainingComponent((Component)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -251,9 +213,6 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 		switch (featureID) {
 			case AmaltheaPackage.PORT__TAGS:
 				getTags().clear();
-				return;
-			case AmaltheaPackage.PORT__CONTAINING_COMPONENT:
-				setContainingComponent((Component)null);
 				return;
 		}
 		super.eUnset(featureID);

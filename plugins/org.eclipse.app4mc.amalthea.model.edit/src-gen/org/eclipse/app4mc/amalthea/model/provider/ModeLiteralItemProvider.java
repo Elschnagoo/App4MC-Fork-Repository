@@ -70,11 +70,11 @@ public class ModeLiteralItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_ModeLiteral_containingMode_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLiteral_containingMode_feature", "_UI_ModeLiteral_type"),
 				 AmaltheaPackage.eINSTANCE.getModeLiteral_ContainingMode(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 

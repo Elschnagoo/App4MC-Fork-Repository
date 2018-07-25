@@ -44,23 +44,13 @@ public interface CallArgument extends ReferableObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Call</em>' container reference.
-	 * @see #setContainingCall(RunnableCall)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallArgument_ContainingCall()
 	 * @see org.eclipse.app4mc.amalthea.model.RunnableCall#getArguments
-	 * @model opposite="arguments" transient="false"
+	 * @model opposite="arguments" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	RunnableCall getContainingCall();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CallArgument#getContainingCall <em>Containing Call</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Call</em>' container reference.
-	 * @see #getContainingCall()
-	 * @generated
-	 */
-	void setContainingCall(RunnableCall value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
@@ -73,7 +63,7 @@ public interface CallArgument extends ReferableObject {
 	 * @return the value of the '<em>Parameter</em>' reference.
 	 * @see #setParameter(RunnableParameter)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallArgument_Parameter()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Main'"
 	 * @generated
 	 */
 	RunnableParameter getParameter();

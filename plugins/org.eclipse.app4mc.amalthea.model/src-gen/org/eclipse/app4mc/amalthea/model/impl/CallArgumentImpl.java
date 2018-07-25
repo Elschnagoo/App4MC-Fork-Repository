@@ -34,8 +34,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
@@ -111,37 +109,6 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	public RunnableCall basicGetContainingCall() {
 		if (eContainerFeatureID() != AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL) return null;
 		return (RunnableCall)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContainingCall(RunnableCall newContainingCall, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingCall, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainingCall(RunnableCall newContainingCall) {
-		if (newContainingCall != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL && newContainingCall != null)) {
-			if (EcoreUtil.isAncestor(this, newContainingCall))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainingCall != null)
-				msgs = ((InternalEObject)newContainingCall).eInverseAdd(this, AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS, RunnableCall.class, msgs);
-			msgs = basicSetContainingCall(newContainingCall, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL, newContainingCall, newContainingCall));
 	}
 
 	/**
@@ -297,7 +264,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 			case AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingCall((RunnableCall)otherEnd, msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -311,7 +278,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL:
-				return basicSetContainingCall(null, msgs);
+				return eBasicSetContainer(null, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL, msgs);
 			case AmaltheaPackage.CALL_ARGUMENT__DEPENDS_ON:
 				return basicSetDependsOn(null, msgs);
 		}
@@ -360,9 +327,6 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL:
-				setContainingCall((RunnableCall)newValue);
-				return;
 			case AmaltheaPackage.CALL_ARGUMENT__PARAMETER:
 				setParameter((RunnableParameter)newValue);
 				return;
@@ -381,9 +345,6 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL:
-				setContainingCall((RunnableCall)null);
-				return;
 			case AmaltheaPackage.CALL_ARGUMENT__PARAMETER:
 				setParameter((RunnableParameter)null);
 				return;

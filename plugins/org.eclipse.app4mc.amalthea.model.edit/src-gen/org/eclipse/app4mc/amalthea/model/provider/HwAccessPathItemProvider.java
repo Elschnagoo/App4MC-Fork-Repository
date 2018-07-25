@@ -103,11 +103,11 @@ public class HwAccessPathItemProvider extends HwPathItemProvider {
 				 getString("_UI_HwAccessPath_containingAccessElement_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_HwAccessPath_containingAccessElement_feature", "_UI_HwAccessPath_type"),
 				 AmaltheaPackage.eINSTANCE.getHwAccessPath_ContainingAccessElement(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 

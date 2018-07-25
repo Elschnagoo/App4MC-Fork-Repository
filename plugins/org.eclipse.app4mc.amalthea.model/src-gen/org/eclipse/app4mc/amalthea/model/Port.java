@@ -42,23 +42,13 @@ public interface Port extends ReferableBaseObject, ITaggable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Component</em>' container reference.
-	 * @see #setContainingComponent(Component)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPort_ContainingComponent()
 	 * @see org.eclipse.app4mc.amalthea.model.Component#getPorts
-	 * @model opposite="ports" transient="false"
+	 * @model opposite="ports" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	Component getContainingComponent();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Port#getContainingComponent <em>Containing Component</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Component</em>' container reference.
-	 * @see #getContainingComponent()
-	 * @generated
-	 */
-	void setContainingComponent(Component value);
 
 	/**
 	 * <!-- begin-user-doc -->

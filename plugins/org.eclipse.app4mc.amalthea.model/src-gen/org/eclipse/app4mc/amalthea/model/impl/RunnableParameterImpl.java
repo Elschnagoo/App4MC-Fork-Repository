@@ -34,8 +34,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
@@ -132,37 +130,6 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	public org.eclipse.app4mc.amalthea.model.Runnable basicGetContainingRunnable() {
 		if (eContainerFeatureID() != AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE) return null;
 		return (org.eclipse.app4mc.amalthea.model.Runnable)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContainingRunnable(org.eclipse.app4mc.amalthea.model.Runnable newContainingRunnable, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingRunnable, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainingRunnable(org.eclipse.app4mc.amalthea.model.Runnable newContainingRunnable) {
-		if (newContainingRunnable != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE && newContainingRunnable != null)) {
-			if (EcoreUtil.isAncestor(this, newContainingRunnable))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainingRunnable != null)
-				msgs = ((InternalEObject)newContainingRunnable).eInverseAdd(this, AmaltheaPackage.RUNNABLE__PARAMETERS, org.eclipse.app4mc.amalthea.model.Runnable.class, msgs);
-			msgs = basicSetContainingRunnable(newContainingRunnable, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE, newContainingRunnable, newContainingRunnable));
 	}
 
 	/**
@@ -324,7 +291,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 			case AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingRunnable((org.eclipse.app4mc.amalthea.model.Runnable)otherEnd, msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -338,7 +305,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE:
-				return basicSetContainingRunnable(null, msgs);
+				return eBasicSetContainer(null, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE, msgs);
 			case AmaltheaPackage.RUNNABLE_PARAMETER__DEPENDS_ON:
 				return basicSetDependsOn(null, msgs);
 		}
@@ -389,9 +356,6 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE:
-				setContainingRunnable((org.eclipse.app4mc.amalthea.model.Runnable)newValue);
-				return;
 			case AmaltheaPackage.RUNNABLE_PARAMETER__DIRECTION:
 				setDirection((DirectionType)newValue);
 				return;
@@ -413,9 +377,6 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE:
-				setContainingRunnable((org.eclipse.app4mc.amalthea.model.Runnable)null);
-				return;
 			case AmaltheaPackage.RUNNABLE_PARAMETER__DIRECTION:
 				setDirection(DIRECTION_EDEFAULT);
 				return;

@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface INamed extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
@@ -48,7 +49,7 @@ public interface INamed extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getINamed_Name()
-	 * @model unique="false"
+	 * @model default="" unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Main'"
 	 * @generated
 	 */

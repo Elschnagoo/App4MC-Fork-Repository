@@ -47,23 +47,13 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Access Element</em>' container reference.
-	 * @see #setContainingAccessElement(HwAccessElement)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessPath_ContainingAccessElement()
 	 * @see org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath
-	 * @model opposite="accessPath" transient="false"
+	 * @model opposite="accessPath" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	HwAccessElement getContainingAccessElement();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwAccessPath#getContainingAccessElement <em>Containing Access Element</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Access Element</em>' container reference.
-	 * @see #getContainingAccessElement()
-	 * @generated
-	 */
-	void setContainingAccessElement(HwAccessElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Path Elements</b></em>' reference list.

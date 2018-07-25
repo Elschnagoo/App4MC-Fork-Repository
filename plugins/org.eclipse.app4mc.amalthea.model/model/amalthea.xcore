@@ -114,7 +114,7 @@ interface ITaggable
 interface INamed
 {
 	@GenModel(propertyCategory="Main")
-	String name
+	String name = ""
 }
 
 /*
@@ -613,7 +613,8 @@ class Mode extends ReferableBaseObject
 
 class ModeLiteral extends ReferableBaseObject
 {
-	container Mode containingMode opposite literals
+	@GenModel(propertyCategory="Read only")
+	container readonly Mode containingMode opposite literals
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingMode?.name)
@@ -672,7 +673,8 @@ interface ISystem
 
 abstract class Port extends ReferableBaseObject, ITaggable
 {
-	container Component containingComponent opposite ports
+	@GenModel(propertyCategory="Read only")
+	container readonly Component containingComponent opposite ports
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingComponent?.name)
@@ -1640,7 +1642,8 @@ class HwFeatureCategory extends ReferableBaseObject
 
 class HwFeature extends ReferableBaseObject
 {
-	container HwFeatureCategory containingCategory opposite features
+	@GenModel(propertyCategory="Read only")
+	container readonly HwFeatureCategory containingCategory opposite features
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingCategory?.name)
@@ -1821,7 +1824,8 @@ abstract class HwPath
 
 class HwAccessPath extends HwPath, INamed
 {
-	container HwAccessElement containingAccessElement opposite accessPath
+	@GenModel(propertyCategory="Read only")
+	container readonly HwAccessElement containingAccessElement opposite accessPath
 	
 	refers HwPathElement[+] pathElements
 	Address startAddress = "0"
@@ -3161,7 +3165,8 @@ class DataDependency
 
 class RunnableParameter extends ReferableBaseObject
 {
-	container Runnable containingRunnable opposite parameters
+	@GenModel(propertyCategory="Read only")
+	container readonly Runnable containingRunnable opposite parameters
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingRunnable?.name)
@@ -3596,7 +3601,8 @@ class Group extends RunnableItem, INamed
 
 class CallArgument extends ReferableObject
 {
-	container RunnableCall containingCall opposite arguments
+	@GenModel(propertyCategory="Read only")
+	container readonly RunnableCall containingCall opposite arguments
 	
 	op String getName() {
 		if (super.name.nullOrEmpty) "access.1" else super.name
@@ -3609,7 +3615,9 @@ class CallArgument extends ReferableObject
 				+ "?type=" + eClass.name
 	}
 	
+	@GenModel(propertyCategory="Main")
 	refers RunnableParameter parameter
+	
 	contains DataDependency dependsOn
 }
 

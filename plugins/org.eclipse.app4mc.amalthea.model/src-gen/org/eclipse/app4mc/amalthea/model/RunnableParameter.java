@@ -45,23 +45,13 @@ public interface RunnableParameter extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Runnable</em>' container reference.
-	 * @see #setContainingRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableParameter_ContainingRunnable()
 	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getParameters
-	 * @model opposite="parameters" transient="false"
+	 * @model opposite="parameters" transient="false" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RunnableParameter#getContainingRunnable <em>Containing Runnable</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Runnable</em>' container reference.
-	 * @see #getContainingRunnable()
-	 * @generated
-	 */
-	void setContainingRunnable(org.eclipse.app4mc.amalthea.model.Runnable value);
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.

@@ -32,8 +32,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
@@ -115,37 +113,6 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContainingCategory(HwFeatureCategory newContainingCategory, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingCategory, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainingCategory(HwFeatureCategory newContainingCategory) {
-		if (newContainingCategory != eInternalContainer() || (eContainerFeatureID() != AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY && newContainingCategory != null)) {
-			if (EcoreUtil.isAncestor(this, newContainingCategory))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainingCategory != null)
-				msgs = ((InternalEObject)newContainingCategory).eInverseAdd(this, AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURES, HwFeatureCategory.class, msgs);
-			msgs = basicSetContainingCategory(newContainingCategory, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, newContainingCategory, newContainingCategory));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public double getValue() {
 		return value;
 	}
@@ -219,7 +186,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingCategory((HwFeatureCategory)otherEnd, msgs);
+				return eBasicSetContainer(otherEnd, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -233,7 +200,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
-				return basicSetContainingCategory(null, msgs);
+				return eBasicSetContainer(null, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -277,9 +244,6 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
-				setContainingCategory((HwFeatureCategory)newValue);
-				return;
 			case AmaltheaPackage.HW_FEATURE__VALUE:
 				setValue((Double)newValue);
 				return;
@@ -295,9 +259,6 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY:
-				setContainingCategory((HwFeatureCategory)null);
-				return;
 			case AmaltheaPackage.HW_FEATURE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;

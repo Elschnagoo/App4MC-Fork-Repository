@@ -75,11 +75,11 @@ public class HwFeatureItemProvider extends ReferableBaseObjectItemProvider {
 				 getString("_UI_HwFeature_containingCategory_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_HwFeature_containingCategory_feature", "_UI_HwFeature_type"),
 				 AmaltheaPackage.eINSTANCE.getHwFeature_ContainingCategory(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 
