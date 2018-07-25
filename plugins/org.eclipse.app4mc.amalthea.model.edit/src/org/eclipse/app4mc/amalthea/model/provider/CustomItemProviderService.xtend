@@ -2903,12 +2903,14 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getCallArgumentItemProviderText(Object object, String defaultText) {
 		if (object instanceof CallArgument) {
-			val param = object?.parameter
+			val name = object.name
+			val param = object.parameter
 			val dir = param?.direction
 
-			val s1 = if(dir === null || dir == DirectionType::_UNDEFINED_) "???" else dir.literal.toUpperCase
-			val s2 = if(param === null) "<argument>" else param
-			return "(" + s1 + ") " + s2;
+			val s1 = if(name.nullOrEmpty) "???" else name
+			val s2 = if(dir === null || dir == DirectionType::_UNDEFINED_) "???" else dir.literal.toUpperCase
+			val s3 = if(param === null) "<argument>" else param
+			return s1 + ": (" + s2 + ") " + s3;
 		} else {
 			return defaultText
 		}
@@ -2918,6 +2920,8 @@ class CustomItemProviderService {
 		switch notification.getFeatureID(typeof(CallArgument)) {
 			case AmaltheaPackage::CALL_ARGUMENT__PARAMETER:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage::CALL_ARGUMENT__DEPENDS_ON:
+				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
 		return null
 	}

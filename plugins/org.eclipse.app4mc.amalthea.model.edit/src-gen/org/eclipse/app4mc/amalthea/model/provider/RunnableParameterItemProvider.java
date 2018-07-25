@@ -81,11 +81,11 @@ public class RunnableParameterItemProvider extends ReferableBaseObjectItemProvid
 				 getString("_UI_RunnableParameter_containingRunnable_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_RunnableParameter_containingRunnable_feature", "_UI_RunnableParameter_type"),
 				 AmaltheaPackage.eINSTANCE.getRunnableParameter_ContainingRunnable(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 

@@ -5443,31 +5443,36 @@ public class CustomItemProviderService {
    */
   public static String getCallArgumentItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof CallArgument)) {
-      RunnableParameter _parameter = null;
-      if (((CallArgument)object)!=null) {
-        _parameter=((CallArgument)object).getParameter();
-      }
-      final RunnableParameter param = _parameter;
+      final String name = ((CallArgument)object).getName();
+      final RunnableParameter param = ((CallArgument)object).getParameter();
       DirectionType _direction = null;
       if (param!=null) {
         _direction=param.getDirection();
       }
       final DirectionType dir = _direction;
       String _xifexpression = null;
-      if (((dir == null) || Objects.equal(dir, DirectionType._UNDEFINED_))) {
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
+      if (_isNullOrEmpty) {
         _xifexpression = "???";
       } else {
-        _xifexpression = dir.getLiteral().toUpperCase();
+        _xifexpression = name;
       }
       final String s1 = _xifexpression;
-      Object _xifexpression_1 = null;
-      if ((param == null)) {
-        _xifexpression_1 = "<argument>";
+      String _xifexpression_1 = null;
+      if (((dir == null) || Objects.equal(dir, DirectionType._UNDEFINED_))) {
+        _xifexpression_1 = "???";
       } else {
-        _xifexpression_1 = param;
+        _xifexpression_1 = dir.getLiteral().toUpperCase();
       }
-      final Object s2 = _xifexpression_1;
-      return ((("(" + s1) + ") ") + s2);
+      final String s2 = _xifexpression_1;
+      Object _xifexpression_2 = null;
+      if ((param == null)) {
+        _xifexpression_2 = "<argument>";
+      } else {
+        _xifexpression_2 = param;
+      }
+      final Object s3 = _xifexpression_2;
+      return ((((s1 + ": (") + s2) + ") ") + s3);
     } else {
       return defaultText;
     }
@@ -5480,6 +5485,13 @@ public class CustomItemProviderService {
       _matched=true;
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, false, true);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CALL_ARGUMENT__DEPENDS_ON)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        return new ViewerNotification(notification, _notifier_1, true, false);
+      }
     }
     return null;
   }

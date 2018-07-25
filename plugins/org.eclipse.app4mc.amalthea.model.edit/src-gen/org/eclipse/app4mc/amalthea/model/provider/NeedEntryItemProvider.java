@@ -18,21 +18,14 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -42,8 +35,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sphinx.emf.edit.ExtendedItemPropertyDescriptor;
-import org.eclipse.sphinx.emf.util.EObjectUtil;
 
 /**
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
@@ -112,7 +103,7 @@ public class NeedEntryItemProvider
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(new ExtendedItemPropertyDescriptor
+			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_NeedEntry_key_feature"),
@@ -127,18 +118,7 @@ public class NeedEntryItemProvider
 				{
 					@Override
 					public Collection<?> getChoiceOfValues(Object object) {
-						Collection<Object> choiceOfValues = new UniqueEList<Object>();
-						choiceOfValues.add(null); // empty entry
-						choiceOfValues.add(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME); // current default
-						// other entries: names of feature categories
-						List<HwFeatureCategory> objectList = EObjectUtil
-								.getAllInstancesOf((EObject) object, HwFeatureCategory.class, true);
-						choiceOfValues.addAll(objectList.stream()
-								.map(i -> i.getName())
-								.filter(i -> i != null)
-								.sorted()
-								.collect(Collectors.toList()));
-						return choiceOfValues;
+						return CustomPropertyDescriptorService.getNeedEntryValuesForKey(object);
 					}
 				}
 			);

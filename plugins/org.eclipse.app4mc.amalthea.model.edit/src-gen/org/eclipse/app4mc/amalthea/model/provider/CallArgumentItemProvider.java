@@ -21,14 +21,12 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -79,11 +77,11 @@ public class CallArgumentItemProvider extends ReferableObjectItemProvider {
 				 getString("_UI_CallArgument_containingCall_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallArgument_containingCall_feature", "_UI_CallArgument_type"),
 				 AmaltheaPackage.eINSTANCE.getCallArgument_ContainingCall(),
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 
@@ -93,7 +91,7 @@ public class CallArgumentItemProvider extends ReferableObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParameterPropertyDescriptor(Object object) {
+	protected void addParameterPropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -105,8 +103,34 @@ public class CallArgumentItemProvider extends ReferableObjectItemProvider {
 				 false,
 				 true,
 				 null,
-				 null,
+				 getString("_UI_MainPropertyCategory"),
 				 null));
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addParameterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CallArgument_parameter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CallArgument_parameter_feature", "_UI_CallArgument_type"),
+				 AmaltheaPackage.eINSTANCE.getCallArgument_Parameter(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 getString("_UI_MainPropertyCategory"),
+				 null)
+				{
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getCallArgumentValuesForParameter(object);
+					}
+				}
+			);	
 	}
 
 	/**

@@ -19,14 +19,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -34,6 +30,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.DataDependency} object.
@@ -105,7 +102,7 @@ public class DataDependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParametersPropertyDescriptor(Object object) {
+	protected void addParametersPropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -122,12 +119,38 @@ public class DataDependencyItemProvider
 	}
 
 	/**
+	 * @generated NOT
+	 */
+	protected void addParametersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataDependency_parameters_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataDependency_parameters_feature", "_UI_DataDependency_type"),
+				 AmaltheaPackage.eINSTANCE.getDataDependency_Parameters(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null)
+				{
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getDataDependencyValuesForParameters(object);
+					}
+				}
+			);	
+	}
+
+	/**
 	 * This adds a property descriptor for the Call Arguments feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCallArgumentsPropertyDescriptor(Object object) {
+	protected void addCallArgumentsPropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -142,6 +165,33 @@ public class DataDependencyItemProvider
 				 null,
 				 null));
 	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addCallArgumentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataDependency_callArguments_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataDependency_callArguments_feature", "_UI_DataDependency_type"),
+				 AmaltheaPackage.eINSTANCE.getDataDependency_CallArguments(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null)
+				{
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getDataDependencyValuesForCallArguments(object);
+					}
+				}
+			);	
+	}
+
 
 	/**
 	 * This returns DataDependency.gif.
