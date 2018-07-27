@@ -104,4 +104,28 @@
     message="&quot;{0}&quot;"
     categories="HardwareModel"/>
 
+  <constraints
+    id="HardwareConnection"
+    label="Hardware Connection Checks"
+    description="Checks the correctness of HwConnection definitions"
+    severity="Error"
+    message="HW Connection &quot;{0}&quot;: {1}"
+    categories="HardwareModel"/>
+
+  <constraints
+    id="HardwarePort"
+    label="Hardware Port Checks"
+    description="Checks the correctness of HwPort definitions"
+    severity="Error"
+    message="HW Port &quot;{0}&quot;: {1}"
+    categories="HardwareModel"/>
+
+  <constraints
+    id="HardwareAccessPath"
+    label="Hardware Access Path Checks"
+    description="Checks the correctness of HwAccessPath definitions"
+    severity="Error"
+    message="HW Access Path &quot;{0}&quot;: {1}"
+    categories="HardwareModel"/>
+
 </cc:Catalog>

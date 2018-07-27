@@ -16,6 +16,9 @@
 package org.eclipse.app4mc.amalthea.validation.checks;
 
 import org.eclipse.app4mc.amalthea.model.HWModel;
+import org.eclipse.app4mc.amalthea.model.HwAccessPath;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.checks.impl.HardwareModelCheckValidatorImpl;
 import org.eclipse.emf.ecore.EObject;
@@ -51,4 +54,20 @@ public class HardwareModelCheckValidator extends AbstractCheckValidator implemen
 	public void checkSystemStructure(final HWModel model) {
 		this.hardwareModelImpl.checkSystemStructure(model);
 	}
+	
+	@Check(constraint = "HardwareConnection", categories = { "HardwareModel" })
+	public void checkHwConnection(final HwConnection connection) {
+		this.hardwareModelImpl.checkHwConnection(connection);
+	}
+
+	@Check(constraint = "HardwarePort", categories = { "HardwareModel" })
+	public void checkHwPort(final HwPort port) {
+		this.hardwareModelImpl.checkHwPort(port);
+	}
+	
+	@Check(constraint = "HardwareAccessPath", categories = { "HardwareModel" })
+	public void checkAccessPath(final HwAccessPath path) {
+		this.hardwareModelImpl.checkAccessPath(path);
+	}
+
 }
