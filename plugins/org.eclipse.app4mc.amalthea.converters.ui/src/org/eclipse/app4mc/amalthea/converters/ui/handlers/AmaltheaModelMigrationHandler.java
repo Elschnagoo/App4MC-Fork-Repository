@@ -295,7 +295,10 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 											|| inputModelVersion.equals("0.8.1")
 											|| inputModelVersion.equals("0.8.2")
 											|| inputModelVersion.equals("0.8.3")
-											|| inputModelVersion.equals("0.9.0")))) {
+											|| inputModelVersion.equals("0.9.0")
+											|| inputModelVersion.equals("0.9.1")
+											
+											))) {
 
 										list.add(migModelFile);
 									}
