@@ -7661,6 +7661,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getHwDestination__GetPorts() {
+		return hwDestinationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMappingModel() {
 		return mappingModelEClass;
 	}
@@ -13698,6 +13707,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(hwPathElementEClass, HW_PATH_ELEMENT___GET_PORTS);
 
 		hwDestinationEClass = createEClass(HW_DESTINATION);
+		createEOperation(hwDestinationEClass, HW_DESTINATION___GET_PORTS);
 
 		mappingModelEClass = createEClass(MAPPING_MODEL);
 		createEReference(mappingModelEClass, MAPPING_MODEL__SCHEDULER_ALLOCATION);
@@ -14731,8 +14741,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		cacheDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
 		hwAccessPathEClass.getESuperTypes().add(this.getHwPath());
 		hwAccessPathEClass.getESuperTypes().add(this.getINamed());
-		hwPathElementEClass.getESuperTypes().add(this.getIReferable());
-		hwDestinationEClass.getESuperTypes().add(this.getIReferable());
+		hwPathElementEClass.getESuperTypes().add(this.getINamed());
+		hwDestinationEClass.getESuperTypes().add(this.getINamed());
 		mappingModelEClass.getESuperTypes().add(this.getBaseObject());
 		schedulerAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		taskAllocationEClass.getESuperTypes().add(this.getBaseObject());
@@ -15618,6 +15628,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEOperation(getHwPathElement__GetPorts(), this.getHwPort(), "getPorts", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwDestinationEClass, HwDestination.class, "HwDestination", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getHwDestination__GetPorts(), this.getHwPort(), "getPorts", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mappingModelEClass, MappingModel.class, "MappingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMappingModel_SchedulerAllocation(), this.getSchedulerAllocation(), null, "schedulerAllocation", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

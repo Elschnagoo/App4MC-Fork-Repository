@@ -500,6 +500,14 @@
       <xsd:enumeration value="endSequence"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="DirectionType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="in"/>
+      <xsd:enumeration value="out"/>
+      <xsd:enumeration value="inout"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="LabelDataStability">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -2049,14 +2057,16 @@ strands: alternative event paths</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="SubEventChain" type="am:SubEventChain"/>
   <xsd:complexType abstract="true" name="EventChainItem">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
-    </xsd:complexContent>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
   <xsd:element name="EventChainItem" type="am:EventChainItem"/>
   <xsd:complexType name="EventChainReference">
     <xsd:complexContent>
-      <xsd:extension base="am:EventChainItem">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventChain" type="am:EventChain"/>
         </xsd:choice>
@@ -2067,7 +2077,7 @@ strands: alternative event paths</xsd:documentation>
   <xsd:element name="EventChainReference" type="am:EventChainReference"/>
   <xsd:complexType name="EventChainContainer">
     <xsd:complexContent>
-      <xsd:extension base="am:EventChainItem">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventChain" type="am:SubEventChain"/>
         </xsd:choice>
@@ -3109,13 +3119,13 @@ entity: The component that fires the event (optional)</xsd:documentation>
   <xsd:element name="HwAccessPath" type="am:HwAccessPath"/>
   <xsd:complexType abstract="true" name="HwPathElement">
     <xsd:complexContent>
-      <xsd:extension base="am:IReferable"/>
+      <xsd:extension base="am:INamed"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwPathElement" type="am:HwPathElement"/>
   <xsd:complexType abstract="true" name="HwDestination">
     <xsd:complexContent>
-      <xsd:extension base="am:IReferable"/>
+      <xsd:extension base="am:INamed"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwDestination" type="am:HwDestination"/>
@@ -5010,6 +5020,36 @@ The final state can be several Tasks, which can be computed using provided infor
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="OrderPrecedenceSpec" type="am:OrderPrecedenceSpec"/>
+  <xsd:complexType name="DataDependency">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="parameters" type="am:RunnableParameter"/>
+          <xsd:element name="callArguments" type="am:CallArgument"/>
+        </xsd:choice>
+        <xsd:attribute name="labels" type="xsd:string"/>
+        <xsd:attribute name="parameters" type="xsd:string"/>
+        <xsd:attribute name="callArguments" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DataDependency" type="am:DataDependency"/>
+  <xsd:complexType name="RunnableParameter">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingRunnable" type="am:Runnable"/>
+          <xsd:element name="dataType" type="am:TypeDefinition"/>
+          <xsd:element name="dependsOn" type="am:DataDependency"/>
+        </xsd:choice>
+        <xsd:attribute name="direction" type="am:DirectionType"/>
+        <xsd:attribute name="containingRunnable" type="xsd:string"/>
+        <xsd:attribute name="dataType" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RunnableParameter" type="am:RunnableParameter"/>
   <xsd:complexType name="Runnable">
     <xsd:annotation>
       <xsd:documentation>Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms.</xsd:documentation>
@@ -5017,6 +5057,7 @@ The final state can be several Tasks, which can be computed using provided infor
     <xsd:complexContent>
       <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="parameters" type="am:RunnableParameter"/>
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
           <xsd:element name="activations" type="am:Activation"/>
           <xsd:element name="deadline" type="am:Time">
@@ -5261,6 +5302,7 @@ It can be used to define which mode value is written to the label.</xsd:document
               <xsd:documentation>Optional parameter for transmission policy of larger data</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
+          <xsd:element name="dependsOn" type="am:DataDependency"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
         <xsd:attribute name="access" type="am:LabelAccessEnum"/>
@@ -5493,6 +5535,20 @@ It can be also a group of runnable items without deviation, because the deviatio
 It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="CallArgument">
+    <xsd:complexContent>
+      <xsd:extension base="am:ReferableObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="containingCall" type="am:RunnableCall"/>
+          <xsd:element name="parameter" type="am:RunnableParameter"/>
+          <xsd:element name="dependsOn" type="am:DataDependency"/>
+        </xsd:choice>
+        <xsd:attribute name="containingCall" type="xsd:string"/>
+        <xsd:attribute name="parameter" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="CallArgument" type="am:CallArgument"/>
   <xsd:complexType name="RunnableCall">
     <xsd:annotation>
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
@@ -5502,6 +5558,7 @@ It can be also a group of runnable items without deviation, because the deviatio
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="runnable" type="am:Runnable"/>
+          <xsd:element name="arguments" type="am:CallArgument"/>
           <xsd:element name="statistic" type="am:RunEntityCallStatistic"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>

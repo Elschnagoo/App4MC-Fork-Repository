@@ -11091,7 +11091,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT___GET_PORTS = HW_MODULE_OPERATION_COUNT + 0;
+	int PROCESSING_UNIT___GET_PORTS = HW_MODULE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Processing Unit</em>' class.
@@ -11100,7 +11100,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 1;
+	int PROCESSING_UNIT_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.MemoryImpl <em>Memory</em>}' class.
@@ -11239,13 +11239,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY___GET_PORTS = HW_MODULE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Memory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 0;
+	int MEMORY_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CacheImpl <em>Cache</em>}' class.
@@ -13162,16 +13171,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PATH_ELEMENT__NAME = IREFERABLE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_PATH_ELEMENT__UNIQUE_NAME = IREFERABLE__UNIQUE_NAME;
+	int HW_PATH_ELEMENT__NAME = INAMED__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Hw Path Element</em>' class.
@@ -13180,43 +13180,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PATH_ELEMENT_FEATURE_COUNT = IREFERABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_PATH_ELEMENT___COMPUTE_UNIQUE_NAME = IREFERABLE___COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_PATH_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_PATH_ELEMENT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
-
-	/**
-	 * The operation id for the '<em>Encode</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_PATH_ELEMENT___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
+	int HW_PATH_ELEMENT_FEATURE_COUNT = INAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
@@ -13225,7 +13189,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PATH_ELEMENT___GET_PORTS = IREFERABLE_OPERATION_COUNT + 0;
+	int HW_PATH_ELEMENT___GET_PORTS = INAMED_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Hw Path Element</em>' class.
@@ -13234,7 +13198,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PATH_ELEMENT_OPERATION_COUNT = IREFERABLE_OPERATION_COUNT + 1;
+	int HW_PATH_ELEMENT_OPERATION_COUNT = INAMED_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.HwDestination <em>Hw Destination</em>}' class.
@@ -13253,16 +13217,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_DESTINATION__NAME = IREFERABLE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Unique Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_DESTINATION__UNIQUE_NAME = IREFERABLE__UNIQUE_NAME;
+	int HW_DESTINATION__NAME = INAMED__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Hw Destination</em>' class.
@@ -13271,43 +13226,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_DESTINATION_FEATURE_COUNT = IREFERABLE_FEATURE_COUNT + 0;
+	int HW_DESTINATION_FEATURE_COUNT = INAMED_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Compute Unique Name</em>' operation.
+	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_DESTINATION___COMPUTE_UNIQUE_NAME = IREFERABLE___COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_DESTINATION___BASIC_COMPUTE_UNIQUE_NAME = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME;
-
-	/**
-	 * The operation id for the '<em>Basic Compute Unique Name With Prefix</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_DESTINATION___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING = IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
-
-	/**
-	 * The operation id for the '<em>Encode</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_DESTINATION___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
+	int HW_DESTINATION___GET_PORTS = INAMED_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Hw Destination</em>' class.
@@ -13316,7 +13244,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_DESTINATION_OPERATION_COUNT = IREFERABLE_OPERATION_COUNT + 0;
+	int HW_DESTINATION_OPERATION_COUNT = INAMED_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.MappingModelImpl <em>Mapping Model</em>}' class.
@@ -33018,6 +32946,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHwDestination();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwDestination#getPorts() <em>Get Ports</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Ports</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.HwDestination#getPorts()
+	 * @generated
+	 */
+	EOperation getHwDestination__GetPorts();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.MappingModel <em>Mapping Model</em>}'.

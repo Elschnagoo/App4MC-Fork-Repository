@@ -1934,7 +1934,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.HW_PATH_ELEMENT: {
 				HwPathElement hwPathElement = (HwPathElement)theEObject;
 				T1 result = caseHwPathElement(hwPathElement);
-				if (result == null) result = caseIReferable(hwPathElement);
 				if (result == null) result = caseINamed(hwPathElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1942,7 +1941,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.HW_DESTINATION: {
 				HwDestination hwDestination = (HwDestination)theEObject;
 				T1 result = caseHwDestination(hwDestination);
-				if (result == null) result = caseIReferable(hwDestination);
 				if (result == null) result = caseINamed(hwDestination);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

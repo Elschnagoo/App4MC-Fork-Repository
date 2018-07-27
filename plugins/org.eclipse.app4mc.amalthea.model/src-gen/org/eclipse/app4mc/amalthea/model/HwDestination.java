@@ -14,6 +14,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,5 +26,13 @@ package org.eclipse.app4mc.amalthea.model;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface HwDestination extends IReferable {
+public interface HwDestination extends INamed {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	EList<HwPort> getPorts();
+
 } // HwDestination
