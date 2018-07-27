@@ -14,6 +14,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,4 +27,12 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface HwPathElement extends IReferable {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	EList<HwPort> getPorts();
+
 } // HwPathElement

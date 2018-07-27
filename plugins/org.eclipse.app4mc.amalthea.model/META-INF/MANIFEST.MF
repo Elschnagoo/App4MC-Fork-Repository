@@ -14,6 +14,7 @@ Bundle-Vendor: Eclipse APP4MC
 Bundle-Localization: plugin
 Require-Bundle: org.apache.commons.math3;visibility:=reexport,
  org.eclipse.core.runtime,
+ org.eclipse.emf.common;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.ecore.xcore.lib;visibility:=reexport,

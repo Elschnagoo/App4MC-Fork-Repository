@@ -25,6 +25,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -110,8 +111,9 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<Label> getLabels() {
-		return AmaltheaIndex.<Label>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getSection_Labels(), AmaltheaPackage.eINSTANCE.getLabel_Section());
+		EReference _label_Section = AmaltheaPackage.eINSTANCE.getLabel_Section();
+		return AmaltheaIndex.<Label>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSection_Labels(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_label_Section)));
 	}
 
 	/**
@@ -120,8 +122,9 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * @generated
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
-		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getSection_Runnables(), AmaltheaPackage.eINSTANCE.getRunnable_Section());
+		EReference _runnable_Section = AmaltheaPackage.eINSTANCE.getRunnable_Section();
+		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSection_Runnables(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_runnable_Section)));
 	}
 
 	/**

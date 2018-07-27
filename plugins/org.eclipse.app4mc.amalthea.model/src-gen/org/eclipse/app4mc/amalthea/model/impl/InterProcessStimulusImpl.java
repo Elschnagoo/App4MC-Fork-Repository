@@ -26,6 +26,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -123,8 +124,9 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * @generated
 	 */
 	public EList<InterProcessTrigger> getExplicitTriggers() {
-		return AmaltheaIndex.<InterProcessTrigger>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getInterProcessStimulus_ExplicitTriggers(), AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus());
+		EReference _interProcessTrigger_Stimulus = AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus();
+		return AmaltheaIndex.<InterProcessTrigger>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getInterProcessStimulus_ExplicitTriggers(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_interProcessTrigger_Stimulus)));
 	}
 
 	/**

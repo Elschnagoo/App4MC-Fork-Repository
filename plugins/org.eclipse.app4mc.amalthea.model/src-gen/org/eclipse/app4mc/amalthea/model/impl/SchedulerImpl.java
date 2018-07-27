@@ -31,6 +31,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -99,8 +100,9 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	public EList<SchedulerAllocation> getSchedulerAllocations() {
-		return AmaltheaIndex.<SchedulerAllocation>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getScheduler_SchedulerAllocations(), AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler());
+		EReference _schedulerAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler();
+		return AmaltheaIndex.<SchedulerAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getScheduler_SchedulerAllocations(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_schedulerAllocation_Scheduler)));
 	}
 
 	/**
@@ -109,8 +111,9 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * @generated
 	 */
 	public EList<RunnableAllocation> getRunnableAllocations() {
-		return AmaltheaIndex.<RunnableAllocation>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getScheduler_RunnableAllocations(), AmaltheaPackage.eINSTANCE.getRunnableAllocation_Scheduler());
+		EReference _runnableAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getRunnableAllocation_Scheduler();
+		return AmaltheaIndex.<RunnableAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getScheduler_RunnableAllocations(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_runnableAllocation_Scheduler)));
 	}
 
 	/**

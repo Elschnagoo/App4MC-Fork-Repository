@@ -26,6 +26,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -237,8 +238,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * @generated
 	 */
 	public EList<SemaphoreAccess> getSemaphoreAccesses() {
-		return AmaltheaIndex.<SemaphoreAccess>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(), AmaltheaPackage.eINSTANCE.getSemaphoreAccess_Semaphore());
+		EReference _semaphoreAccess_Semaphore = AmaltheaPackage.eINSTANCE.getSemaphoreAccess_Semaphore();
+		return AmaltheaIndex.<SemaphoreAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_semaphoreAccess_Semaphore)));
 	}
 
 	/**
@@ -247,8 +249,9 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaIndex.<Component>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Semaphores());
+		EReference _component_Semaphores = AmaltheaPackage.eINSTANCE.getComponent_Semaphores();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Semaphores)));
 	}
 
 	/**

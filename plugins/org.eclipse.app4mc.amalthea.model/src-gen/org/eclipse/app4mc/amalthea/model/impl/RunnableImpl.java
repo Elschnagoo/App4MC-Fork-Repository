@@ -36,6 +36,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -386,8 +387,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<RunnableCall> getRunnableCalls() {
-		return AmaltheaIndex.<RunnableCall>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(), AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
+		EReference _runnableCall_Runnable = AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable();
+		return AmaltheaIndex.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_runnableCall_Runnable)));
 	}
 
 	/**
@@ -396,8 +398,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		return AmaltheaIndex.<TaskRunnableCall>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
+		EReference _taskRunnableCall_Runnable = AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable();
+		return AmaltheaIndex.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_taskRunnableCall_Runnable)));
 	}
 
 	/**
@@ -406,8 +409,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaIndex.<Component>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Runnables());
+		EReference _component_Runnables = AmaltheaPackage.eINSTANCE.getComponent_Runnables();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Runnables)));
 	}
 
 	/**

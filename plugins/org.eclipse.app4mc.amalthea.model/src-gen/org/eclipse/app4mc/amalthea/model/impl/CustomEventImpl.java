@@ -24,6 +24,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -108,8 +109,9 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * @generated
 	 */
 	public EList<CustomEventTrigger> getExplicitTriggers() {
-		return AmaltheaIndex.<CustomEventTrigger>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getCustomEvent_ExplicitTriggers(), AmaltheaPackage.eINSTANCE.getCustomEventTrigger_Event());
+		EReference _customEventTrigger_Event = AmaltheaPackage.eINSTANCE.getCustomEventTrigger_Event();
+		return AmaltheaIndex.<CustomEventTrigger>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getCustomEvent_ExplicitTriggers(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_customEventTrigger_Event)));
 	}
 
 	/**

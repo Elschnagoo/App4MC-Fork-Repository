@@ -2057,14 +2057,16 @@ strands: alternative event paths</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="SubEventChain" type="am:SubEventChain"/>
   <xsd:complexType abstract="true" name="EventChainItem">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
-    </xsd:complexContent>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
   <xsd:element name="EventChainItem" type="am:EventChainItem"/>
   <xsd:complexType name="EventChainReference">
     <xsd:complexContent>
-      <xsd:extension base="am:EventChainItem">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventChain" type="am:EventChain"/>
         </xsd:choice>
@@ -2075,7 +2077,7 @@ strands: alternative event paths</xsd:documentation>
   <xsd:element name="EventChainReference" type="am:EventChainReference"/>
   <xsd:complexType name="EventChainContainer">
     <xsd:complexContent>
-      <xsd:extension base="am:EventChainItem">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventChain" type="am:SubEventChain"/>
         </xsd:choice>
@@ -5019,17 +5021,18 @@ The final state can be several Tasks, which can be computed using provided infor
   </xsd:complexType>
   <xsd:element name="OrderPrecedenceSpec" type="am:OrderPrecedenceSpec"/>
   <xsd:complexType name="DataDependency">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="labels" type="am:Label"/>
-      <xsd:element name="parameters" type="am:RunnableParameter"/>
-      <xsd:element name="callArguments" type="am:CallArgument"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="labels" type="xsd:string"/>
-    <xsd:attribute name="parameters" type="xsd:string"/>
-    <xsd:attribute name="callArguments" type="xsd:string"/>
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="labels" type="am:Label"/>
+          <xsd:element name="parameters" type="am:RunnableParameter"/>
+          <xsd:element name="callArguments" type="am:CallArgument"/>
+        </xsd:choice>
+        <xsd:attribute name="labels" type="xsd:string"/>
+        <xsd:attribute name="parameters" type="xsd:string"/>
+        <xsd:attribute name="callArguments" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="DataDependency" type="am:DataDependency"/>
   <xsd:complexType name="RunnableParameter">

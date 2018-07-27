@@ -31,6 +31,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -388,8 +389,9 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * @generated
 	 */
 	public EList<LabelAccess> getLabelAccesses() {
-		return AmaltheaIndex.<LabelAccess>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(), AmaltheaPackage.eINSTANCE.getLabelAccess_Data());
+		EReference _labelAccess_Data = AmaltheaPackage.eINSTANCE.getLabelAccess_Data();
+		return AmaltheaIndex.<LabelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_labelAccess_Data)));
 	}
 
 	/**
@@ -398,8 +400,9 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaIndex.<Component>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getLabel_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Labels());
+		EReference _component_Labels = AmaltheaPackage.eINSTANCE.getComponent_Labels();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Labels)));
 	}
 
 	/**

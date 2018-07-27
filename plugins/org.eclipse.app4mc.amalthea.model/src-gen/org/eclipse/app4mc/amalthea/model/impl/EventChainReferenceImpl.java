@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class EventChainReferenceImpl extends EventChainItemImpl implements EventChainReference {
+public class EventChainReferenceImpl extends BaseObjectImpl implements EventChainReference {
 	/**
 	 * The cached value of the '{@link #getEventChain() <em>Event Chain</em>}' reference.
 	 * <!-- begin-user-doc -->

@@ -28,6 +28,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -137,8 +138,9 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaIndex.<Component>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_OsEvents());
+		EReference _component_OsEvents = AmaltheaPackage.eINSTANCE.getComponent_OsEvents();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_OsEvents)));
 	}
 
 	/**

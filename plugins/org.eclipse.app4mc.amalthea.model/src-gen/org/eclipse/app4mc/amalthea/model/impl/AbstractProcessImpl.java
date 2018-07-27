@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,8 +63,9 @@ public abstract class AbstractProcessImpl extends AbstractMemoryElementImpl impl
 	 * @generated
 	 */
 	public EList<Component> getReferringComponents() {
-		return AmaltheaIndex.<Component>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getAbstractProcess_ReferringComponents(), AmaltheaPackage.eINSTANCE.getComponent_Tasks());
+		EReference _component_Tasks = AmaltheaPackage.eINSTANCE.getComponent_Tasks();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getAbstractProcess_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Tasks)));
 	}
 
 	/**

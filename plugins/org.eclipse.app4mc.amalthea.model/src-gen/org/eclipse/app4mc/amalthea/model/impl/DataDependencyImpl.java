@@ -22,8 +22,6 @@ import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -45,7 +43,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class DataDependencyImpl extends AmaltheaExtendedEObjectImpl implements DataDependency {
+public class DataDependencyImpl extends BaseObjectImpl implements DataDependency {
 	/**
 	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' reference list.
 	 * <!-- begin-user-doc -->

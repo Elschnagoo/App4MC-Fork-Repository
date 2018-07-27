@@ -25,6 +25,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -117,8 +118,9 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getMemory_Mappings(), AmaltheaPackage.eINSTANCE.getMemoryMapping_Memory());
+		EReference _memoryMapping_Memory = AmaltheaPackage.eINSTANCE.getMemoryMapping_Memory();
+		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getMemory_Mappings(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_memoryMapping_Memory)));
 	}
 
 	/**

@@ -24,6 +24,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -108,8 +109,9 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * @generated
 	 */
 	public EList<ITaggable> getTaggedObjects() {
-		return AmaltheaIndex.<ITaggable>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getTag_TaggedObjects(), AmaltheaPackage.eINSTANCE.getITaggable_Tags());
+		EReference _iTaggable_Tags = AmaltheaPackage.eINSTANCE.getITaggable_Tags();
+		return AmaltheaIndex.<ITaggable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTag_TaggedObjects(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_iTaggable_Tags)));
 	}
 
 	/**

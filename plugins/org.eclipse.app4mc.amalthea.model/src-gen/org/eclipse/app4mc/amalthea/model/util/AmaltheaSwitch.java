@@ -1216,16 +1216,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.EVENT_CHAIN_ITEM: {
 				EventChainItem eventChainItem = (EventChainItem)theEObject;
 				T1 result = caseEventChainItem(eventChainItem);
-				if (result == null) result = caseBaseObject(eventChainItem);
-				if (result == null) result = caseIAnnotatable(eventChainItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: {
 				EventChainReference eventChainReference = (EventChainReference)theEObject;
 				T1 result = caseEventChainReference(eventChainReference);
-				if (result == null) result = caseEventChainItem(eventChainReference);
 				if (result == null) result = caseBaseObject(eventChainReference);
+				if (result == null) result = caseEventChainItem(eventChainReference);
 				if (result == null) result = caseIAnnotatable(eventChainReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1233,8 +1231,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.EVENT_CHAIN_CONTAINER: {
 				EventChainContainer eventChainContainer = (EventChainContainer)theEObject;
 				T1 result = caseEventChainContainer(eventChainContainer);
-				if (result == null) result = caseEventChainItem(eventChainContainer);
 				if (result == null) result = caseBaseObject(eventChainContainer);
+				if (result == null) result = caseEventChainItem(eventChainContainer);
 				if (result == null) result = caseIAnnotatable(eventChainContainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -3093,6 +3091,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.DATA_DEPENDENCY: {
 				DataDependency dataDependency = (DataDependency)theEObject;
 				T1 result = caseDataDependency(dataDependency);
+				if (result == null) result = caseBaseObject(dataDependency);
+				if (result == null) result = caseIAnnotatable(dataDependency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

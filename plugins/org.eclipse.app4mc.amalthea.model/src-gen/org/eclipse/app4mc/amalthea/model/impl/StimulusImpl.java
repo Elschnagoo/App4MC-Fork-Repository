@@ -30,6 +30,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -260,8 +261,9 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	public EList<org.eclipse.app4mc.amalthea.model.Process> getAffectedProcesses() {
-		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getStimulus_AffectedProcesses(), AmaltheaPackage.eINSTANCE.getProcess_Stimuli());
+		EReference _process_Stimuli = AmaltheaPackage.eINSTANCE.getProcess_Stimuli();
+		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getStimulus_AffectedProcesses(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_process_Stimuli)));
 	}
 
 	/**

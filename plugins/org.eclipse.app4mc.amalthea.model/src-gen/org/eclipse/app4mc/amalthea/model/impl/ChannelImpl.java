@@ -27,6 +27,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -250,8 +251,9 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * @generated
 	 */
 	public EList<ChannelAccess> getChannelAccesses() {
-		return AmaltheaIndex.<ChannelAccess>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(), AmaltheaPackage.eINSTANCE.getChannelAccess_Data());
+		EReference _channelAccess_Data = AmaltheaPackage.eINSTANCE.getChannelAccess_Data();
+		return AmaltheaIndex.<ChannelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_channelAccess_Data)));
 	}
 
 	/**

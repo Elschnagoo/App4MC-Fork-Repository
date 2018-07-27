@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
@@ -33,6 +34,7 @@ import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -42,6 +44,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +62,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getDataRate <em>Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getPort1 <em>Port1</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#getPort2 <em>Port2</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl#isInternal <em>Internal</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,6 +127,16 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * @ordered
 	 */
 	protected HwPort port2;
+
+	/**
+	 * The default value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInternal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INTERNAL_EDEFAULT = false;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -363,6 +379,16 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isInternal() {
+		EObject _eContainer = this.eContainer();
+		return (_eContainer instanceof ConnectionHandler);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String computeUniqueName() {
 		EObject _eContainer = this.eContainer();
 		String _name = null;
@@ -370,6 +396,15 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 			_name=((INamed) _eContainer).getName();
 		}
 		return this.basicComputeUniqueNameWithPrefix(_name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<HwPort> getPorts() {
+		return ECollections.<HwPort>unmodifiableEList(ECollections.<HwPort>toEList(IterableExtensions.<HwPort>filterNull(CollectionLiterals.<HwPort>newArrayList(this.getPort1(), this.getPort2()))));
 	}
 
 	/**
@@ -412,6 +447,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 			case AmaltheaPackage.HW_CONNECTION__PORT2:
 				if (resolve) return getPort2();
 				return basicGetPort2();
+			case AmaltheaPackage.HW_CONNECTION__INTERNAL:
+				return isInternal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -498,6 +535,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 				return port1 != null;
 			case AmaltheaPackage.HW_CONNECTION__PORT2:
 				return port2 != null;
+			case AmaltheaPackage.HW_CONNECTION__INTERNAL:
+				return isInternal() != INTERNAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -565,6 +604,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 		}
 		if (baseClass == HwPathElement.class) {
 			switch (baseOperationID) {
+				case AmaltheaPackage.HW_PATH_ELEMENT___GET_PORTS: return AmaltheaPackage.HW_CONNECTION___GET_PORTS;
 				default: return -1;
 			}
 		}
@@ -586,6 +626,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 		switch (operationID) {
 			case AmaltheaPackage.HW_CONNECTION___COMPUTE_UNIQUE_NAME:
 				return computeUniqueName();
+			case AmaltheaPackage.HW_CONNECTION___GET_PORTS:
+				return getPorts();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

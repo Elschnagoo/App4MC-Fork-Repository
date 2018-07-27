@@ -16,8 +16,6 @@ package org.eclipse.app4mc.amalthea.model;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Dependency</b></em>'.
@@ -36,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DataDependency extends EObject {
+public interface DataDependency extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.

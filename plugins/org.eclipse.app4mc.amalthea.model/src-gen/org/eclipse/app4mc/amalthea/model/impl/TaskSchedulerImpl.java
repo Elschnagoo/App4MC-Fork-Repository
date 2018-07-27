@@ -14,6 +14,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.Iterable;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
@@ -27,13 +29,18 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreEList.UnmodifiableEList;
+
 import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -185,8 +192,9 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public EList<SchedulerAssociation> getChildAssociations() {
-		return AmaltheaIndex.<SchedulerAssociation>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(), AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Parent());
+		EReference _schedulerAssociation_Parent = AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Parent();
+		return AmaltheaIndex.<SchedulerAssociation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_schedulerAssociation_Parent)));
 	}
 
 	/**
@@ -195,8 +203,9 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * @generated
 	 */
 	public EList<TaskAllocation> getTaskAllocations() {
-		return AmaltheaIndex.<TaskAllocation>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getTaskScheduler_TaskAllocations(), AmaltheaPackage.eINSTANCE.getTaskAllocation_Scheduler());
+		EReference _taskAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getTaskAllocation_Scheduler();
+		return AmaltheaIndex.<TaskAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskScheduler_TaskAllocations(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_taskAllocation_Scheduler)));
 	}
 
 	/**
@@ -234,7 +243,11 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 				return it.getChild();
 			}
 		};
-		return XcoreEListExtensions.<SchedulerAssociation, TaskScheduler>map(this.getChildAssociations(), _function);
+		final Iterable<TaskScheduler> result = IterableExtensions.<TaskScheduler>filterNull(XcoreEListExtensions.<SchedulerAssociation, TaskScheduler>map(this.getChildAssociations(), _function));
+		EReference _taskScheduler_ChildSchedulers = AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildSchedulers();
+		int _size = IterableExtensions.size(result);
+		Object[] _array = IterableExtensions.<TaskScheduler>toList(result).toArray();
+		return new UnmodifiableEList<TaskScheduler>(((InternalEObject) this), _taskScheduler_ChildSchedulers, _size, _array);
 	}
 
 	/**

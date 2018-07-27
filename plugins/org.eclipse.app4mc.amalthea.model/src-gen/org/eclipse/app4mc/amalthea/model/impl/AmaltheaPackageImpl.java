@@ -7085,6 +7085,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHwPort_Connections() {
+		return (EReference)hwPortEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getHwPort__ComputeUniqueName() {
 		return hwPortEClass.getEOperations().get(0);
 	}
@@ -7175,8 +7184,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getHwConnection_Internal() {
+		return (EAttribute)hwConnectionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getHwConnection__ComputeUniqueName() {
 		return hwConnectionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getHwConnection__GetPorts() {
+		return hwConnectionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -7609,6 +7636,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EClass getHwPathElement() {
 		return hwPathElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getHwPathElement__GetPorts() {
+		return hwPathElementEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -13583,6 +13619,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(hwPortEClass, HW_PORT__PORT_TYPE);
 		createEAttribute(hwPortEClass, HW_PORT__PORT_INTERFACE);
 		createEAttribute(hwPortEClass, HW_PORT__DELEGATED);
+		createEReference(hwPortEClass, HW_PORT__CONNECTIONS);
 		createEOperation(hwPortEClass, HW_PORT___COMPUTE_UNIQUE_NAME);
 
 		connectionHandlerEClass = createEClass(CONNECTION_HANDLER);
@@ -13595,7 +13632,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwConnectionEClass, HW_CONNECTION__DATA_RATE);
 		createEReference(hwConnectionEClass, HW_CONNECTION__PORT1);
 		createEReference(hwConnectionEClass, HW_CONNECTION__PORT2);
+		createEAttribute(hwConnectionEClass, HW_CONNECTION__INTERNAL);
 		createEOperation(hwConnectionEClass, HW_CONNECTION___COMPUTE_UNIQUE_NAME);
+		createEOperation(hwConnectionEClass, HW_CONNECTION___GET_PORTS);
 
 		hwAccessElementEClass = createEClass(HW_ACCESS_ELEMENT);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__SOURCE);
@@ -13656,6 +13695,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(hwAccessPathEClass, HW_ACCESS_PATH__MEM_OFFSET);
 
 		hwPathElementEClass = createEClass(HW_PATH_ELEMENT);
+		createEOperation(hwPathElementEClass, HW_PATH_ELEMENT___GET_PORTS);
 
 		hwDestinationEClass = createEClass(HW_DESTINATION);
 
@@ -14608,8 +14648,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
 		eventChainEClass.getESuperTypes().add(this.getIReferable());
 		subEventChainEClass.getESuperTypes().add(this.getAbstractEventChain());
-		eventChainItemEClass.getESuperTypes().add(this.getBaseObject());
+		eventChainReferenceEClass.getESuperTypes().add(this.getBaseObject());
 		eventChainReferenceEClass.getESuperTypes().add(this.getEventChainItem());
+		eventChainContainerEClass.getESuperTypes().add(this.getBaseObject());
 		eventChainContainerEClass.getESuperTypes().add(this.getEventChainItem());
 		timingConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
 		physicalSectionConstraintEClass.getESuperTypes().add(this.getReferableBaseObject());
@@ -14814,6 +14855,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		generalPrecedenceEClass.getESuperTypes().add(this.getBaseObject());
 		accessPrecedenceSpecEClass.getESuperTypes().add(this.getGeneralPrecedence());
 		orderPrecedenceSpecEClass.getESuperTypes().add(this.getGeneralPrecedence());
+		dataDependencyEClass.getESuperTypes().add(this.getBaseObject());
 		runnableParameterEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		labelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
@@ -15248,7 +15290,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(subEventChainEClass, SubEventChain.class, "SubEventChain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(eventChainItemEClass, EventChainItem.class, "EventChainItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(eventChainItemEClass, EventChainItem.class, "EventChainItem", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getEventChainItem__GetEventChain(), this.getAbstractEventChain(), "getEventChain", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15489,6 +15531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getHwPort_PortType(), this.getPortType(), "portType", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHwPort_PortInterface(), this.getPortInterface(), "portInterface", null, 0, 1, HwPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHwPort_Delegated(), theEcorePackage.getEBoolean(), "delegated", null, 0, 1, HwPort.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getHwPort_Connections(), this.getHwConnection(), null, "connections", null, 0, -1, HwPort.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHwPort__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -15502,8 +15545,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHwConnection_Internal(), theEcorePackage.getEBoolean(), "internal", null, 0, 1, HwConnection.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getHwConnection__ComputeUniqueName(), theEcorePackage.getEString(), "computeUniqueName", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getHwConnection__GetPorts(), this.getHwPort(), "getPorts", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwAccessElementEClass, HwAccessElement.class, "HwAccessElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -15568,6 +15614,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getHwAccessPath_MemOffset(), this.getAddress(), "memOffset", "0", 0, 1, HwAccessPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPathElementEClass, HwPathElement.class, "HwPathElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getHwPathElement__GetPorts(), this.getHwPort(), "getPorts", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwDestinationEClass, HwDestination.class, "HwDestination", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

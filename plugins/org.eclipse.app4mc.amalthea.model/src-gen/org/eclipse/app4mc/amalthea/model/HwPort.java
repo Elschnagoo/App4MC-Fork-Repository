@@ -14,6 +14,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#getPortType <em>Port Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#getPortInterface <em>Port Interface</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#isDelegated <em>Delegated</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwPort#getConnections <em>Connections</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort()
@@ -159,10 +161,26 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * @return the value of the '<em>Delegated</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_Delegated()
 	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.HwStructure%&gt;);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.HwStructure%&gt;);'"
 	 * @generated
 	 */
 	boolean isDelegated();
+
+	/**
+	 * Returns the value of the '<em><b>Connections</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwConnection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p><b>Returns an <em>immutable</em> list of connections (HwConnection).</b></p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Connections</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_Connections()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='&lt;%org.eclipse.emf.ecore.EReference%&gt; _hwConnection_Port1 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwConnection_Port1();\n&lt;%org.eclipse.emf.ecore.EReference%&gt; _hwConnection_Port2 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwConnection_Port2();\nreturn &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwConnection%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwPort_Connections(), \n\tjava.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%&gt;&gt;unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%&gt;&gt;newHashSet(_hwConnection_Port1, _hwConnection_Port2)));'"
+	 * @generated
+	 */
+	EList<HwConnection> getConnections();
 
 	/**
 	 * <!-- begin-user-doc -->

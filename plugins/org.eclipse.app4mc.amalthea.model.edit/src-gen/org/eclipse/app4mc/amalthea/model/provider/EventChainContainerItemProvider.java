@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EventChainContainerItemProvider extends EventChainItemItemProvider {
+public class EventChainContainerItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

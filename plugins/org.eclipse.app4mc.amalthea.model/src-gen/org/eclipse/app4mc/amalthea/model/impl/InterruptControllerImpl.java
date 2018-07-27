@@ -26,6 +26,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -123,8 +124,9 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * @generated
 	 */
 	public EList<ISRAllocation> getIsrAllocations() {
-		return AmaltheaIndex.<ISRAllocation>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getInterruptController_IsrAllocations(), AmaltheaPackage.eINSTANCE.getISRAllocation_Controller());
+		EReference _iSRAllocation_Controller = AmaltheaPackage.eINSTANCE.getISRAllocation_Controller();
+		return AmaltheaIndex.<ISRAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getInterruptController_IsrAllocations(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_iSRAllocation_Controller)));
 	}
 
 	/**

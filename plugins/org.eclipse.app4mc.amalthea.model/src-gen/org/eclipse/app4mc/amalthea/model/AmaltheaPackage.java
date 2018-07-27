@@ -6145,23 +6145,14 @@ public interface AmaltheaPackage extends EPackage {
 	int SUB_EVENT_CHAIN_OPERATION_COUNT = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.EventChainItemImpl <em>Event Chain Item</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.EventChainItem <em>Event Chain Item</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.EventChainItemImpl
+	 * @see org.eclipse.app4mc.amalthea.model.EventChainItem
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainItem()
 	 * @generated
 	 */
 	int EVENT_CHAIN_ITEM = 96;
-
-	/**
-	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_CHAIN_ITEM__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The number of structural features of the '<em>Event Chain Item</em>' class.
@@ -6170,7 +6161,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_ITEM_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
+	int EVENT_CHAIN_ITEM_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Get Event Chain</em>' operation.
@@ -6179,7 +6170,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_ITEM___GET_EVENT_CHAIN = BASE_OBJECT_OPERATION_COUNT + 0;
+	int EVENT_CHAIN_ITEM___GET_EVENT_CHAIN = 0;
 
 	/**
 	 * The number of operations of the '<em>Event Chain Item</em>' class.
@@ -6188,7 +6179,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_ITEM_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
+	int EVENT_CHAIN_ITEM_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.EventChainReferenceImpl <em>Event Chain Reference</em>}' class.
@@ -6207,7 +6198,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_REFERENCE__CUSTOM_PROPERTIES = EVENT_CHAIN_ITEM__CUSTOM_PROPERTIES;
+	int EVENT_CHAIN_REFERENCE__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Event Chain</b></em>' reference.
@@ -6216,7 +6207,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_REFERENCE__EVENT_CHAIN = EVENT_CHAIN_ITEM_FEATURE_COUNT + 0;
+	int EVENT_CHAIN_REFERENCE__EVENT_CHAIN = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Event Chain Reference</em>' class.
@@ -6225,7 +6216,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_REFERENCE_FEATURE_COUNT = EVENT_CHAIN_ITEM_FEATURE_COUNT + 1;
+	int EVENT_CHAIN_REFERENCE_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Event Chain</em>' operation.
@@ -6234,7 +6225,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_REFERENCE___GET_EVENT_CHAIN = EVENT_CHAIN_ITEM___GET_EVENT_CHAIN;
+	int EVENT_CHAIN_REFERENCE___GET_EVENT_CHAIN = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Event Chain Reference</em>' class.
@@ -6243,7 +6234,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_REFERENCE_OPERATION_COUNT = EVENT_CHAIN_ITEM_OPERATION_COUNT + 0;
+	int EVENT_CHAIN_REFERENCE_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.EventChainContainerImpl <em>Event Chain Container</em>}' class.
@@ -6262,7 +6253,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_CONTAINER__CUSTOM_PROPERTIES = EVENT_CHAIN_ITEM__CUSTOM_PROPERTIES;
+	int EVENT_CHAIN_CONTAINER__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Event Chain</b></em>' containment reference.
@@ -6271,7 +6262,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_CONTAINER__EVENT_CHAIN = EVENT_CHAIN_ITEM_FEATURE_COUNT + 0;
+	int EVENT_CHAIN_CONTAINER__EVENT_CHAIN = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Event Chain Container</em>' class.
@@ -6280,7 +6271,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_CONTAINER_FEATURE_COUNT = EVENT_CHAIN_ITEM_FEATURE_COUNT + 1;
+	int EVENT_CHAIN_CONTAINER_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Event Chain</em>' operation.
@@ -6289,7 +6280,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_CONTAINER___GET_EVENT_CHAIN = EVENT_CHAIN_ITEM___GET_EVENT_CHAIN;
+	int EVENT_CHAIN_CONTAINER___GET_EVENT_CHAIN = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Event Chain Container</em>' class.
@@ -6298,7 +6289,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_CONTAINER_OPERATION_COUNT = EVENT_CHAIN_ITEM_OPERATION_COUNT + 0;
+	int EVENT_CHAIN_CONTAINER_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimingConstraintImpl <em>Timing Constraint</em>}' class.
@@ -11094,13 +11085,22 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESSING_UNIT___GET_PORTS = HW_MODULE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Processing Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESSING_UNIT_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 0;
+	int PROCESSING_UNIT_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.MemoryImpl <em>Memory</em>}' class.
@@ -11375,13 +11375,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CACHE___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE___GET_PORTS = HW_MODULE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Cache</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 0;
+	int CACHE_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwFeatureCategoryImpl <em>Hw Feature Category</em>}' class.
@@ -11711,13 +11720,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_PORT__DELEGATED = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Connections</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PORT__CONNECTIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Hw Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+	int HW_PORT_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -11901,13 +11919,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER___GET_PORTS = HW_MODULE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Connection Handler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 0;
+	int CONNECTION_HANDLER_OPERATION_COUNT = HW_MODULE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwConnectionImpl <em>Hw Connection</em>}' class.
@@ -12001,13 +12028,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_CONNECTION__PORT2 = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_CONNECTION__INTERNAL = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Hw Connection</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+	int HW_CONNECTION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Basic Compute Unique Name</em>' operation.
@@ -12043,7 +12079,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 0;
+	int HW_CONNECTION___COMPUTE_UNIQUE_NAME = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_CONNECTION___GET_PORTS = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Hw Connection</em>' class.
@@ -12052,7 +12097,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_CONNECTION_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 1;
+	int HW_CONNECTION_OPERATION_COUNT = REFERABLE_BASE_OBJECT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.HwAccessElementImpl <em>Hw Access Element</em>}' class.
@@ -13174,13 +13219,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_PATH_ELEMENT___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Get Ports</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PATH_ELEMENT___GET_PORTS = IREFERABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Hw Path Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PATH_ELEMENT_OPERATION_COUNT = IREFERABLE_OPERATION_COUNT + 0;
+	int HW_PATH_ELEMENT_OPERATION_COUNT = IREFERABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.HwDestination <em>Hw Destination</em>}' class.
@@ -22574,13 +22628,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_DEPENDENCY = 288;
 
 	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_DEPENDENCY__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Labels</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY__LABELS = 0;
+	int DATA_DEPENDENCY__LABELS = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
@@ -22589,7 +22652,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY__PARAMETERS = 1;
+	int DATA_DEPENDENCY__PARAMETERS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Call Arguments</b></em>' reference list.
@@ -22598,7 +22661,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY__CALL_ARGUMENTS = 2;
+	int DATA_DEPENDENCY__CALL_ARGUMENTS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Data Dependency</em>' class.
@@ -22607,7 +22670,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY_FEATURE_COUNT = 3;
+	int DATA_DEPENDENCY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Data Dependency</em>' class.
@@ -22616,7 +22679,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY_OPERATION_COUNT = 0;
+	int DATA_DEPENDENCY_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.RunnableParameterImpl <em>Runnable Parameter</em>}' class.
@@ -32273,6 +32336,17 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getHwPort_Delegated();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.HwPort#getConnections <em>Connections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Connections</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwPort#getConnections()
+	 * @see #getHwPort()
+	 * @generated
+	 */
+	EReference getHwPort_Connections();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwPort#computeUniqueName() <em>Compute Unique Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32380,6 +32454,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getHwConnection_Port2();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.HwConnection#isInternal <em>Internal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#isInternal()
+	 * @see #getHwConnection()
+	 * @generated
+	 */
+	EAttribute getHwConnection_Internal();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwConnection#computeUniqueName() <em>Compute Unique Name</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32388,6 +32473,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getHwConnection__ComputeUniqueName();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPorts() <em>Get Ports</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Ports</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.HwConnection#getPorts()
+	 * @generated
+	 */
+	EOperation getHwConnection__GetPorts();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement <em>Hw Access Element</em>}'.
@@ -32903,6 +32998,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHwPathElement();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.HwPathElement#getPorts() <em>Get Ports</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Ports</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.HwPathElement#getPorts()
+	 * @generated
+	 */
+	EOperation getHwPathElement__GetPorts();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwDestination <em>Hw Destination</em>}'.

@@ -14,6 +14,7 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getDataRate <em>Data Rate</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPort1 <em>Port1</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#getPort2 <em>Port2</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwConnection#isInternal <em>Internal</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection()
@@ -167,6 +169,22 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	void setPort2(HwPort value);
 
 	/**
+	 * Returns the value of the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Internal</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Internal</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_Internal()
+	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.ConnectionHandler%&gt;);'"
+	 * @generated
+	 */
+	boolean isInternal();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
@@ -174,5 +192,14 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	 * @generated
 	 */
 	String computeUniqueName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;unmodifiableEList(&lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;toEList(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;filterNull(&lt;%org.eclipse.xtext.xbase.lib.CollectionLiterals%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;newArrayList(this.getPort1(), this.getPort2()))));'"
+	 * @generated
+	 */
+	EList<HwPort> getPorts();
 
 } // HwConnection

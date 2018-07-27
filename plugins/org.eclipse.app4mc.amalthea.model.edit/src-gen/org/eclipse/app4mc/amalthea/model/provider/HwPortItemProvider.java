@@ -61,6 +61,7 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 			addPortTypePropertyDescriptor(object);
 			addPortInterfacePropertyDescriptor(object);
 			addDelegatedPropertyDescriptor(object);
+			addConnectionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -171,8 +172,32 @@ public class HwPortItemProvider extends ReferableBaseObjectItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Connections feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConnectionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwPort_connections_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwPort_connections_feature", "_UI_HwPort_type"),
+				 AmaltheaPackage.eINSTANCE.getHwPort_Connections(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

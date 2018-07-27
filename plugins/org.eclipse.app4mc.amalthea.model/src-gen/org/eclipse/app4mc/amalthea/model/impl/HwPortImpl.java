@@ -18,7 +18,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.INamed;
@@ -35,6 +37,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -54,6 +57,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPortType <em>Port Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getPortInterface <em>Port Interface</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#isDelegated <em>Delegated</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwPortImpl#getConnections <em>Connections</em>}</li>
  * </ul>
  *
  * @generated
@@ -289,6 +293,18 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<HwConnection> getConnections() {
+		EReference _hwConnection_Port1 = AmaltheaPackage.eINSTANCE.getHwConnection_Port1();
+		EReference _hwConnection_Port2 = AmaltheaPackage.eINSTANCE.getHwConnection_Port2();
+		return AmaltheaIndex.<HwConnection>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getHwPort_Connections(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_hwConnection_Port1, _hwConnection_Port2)));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String computeUniqueName() {
 		EObject _eContainer = this.eContainer();
 		String _name = null;
@@ -318,6 +334,8 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 				return getPortInterface();
 			case AmaltheaPackage.HW_PORT__DELEGATED:
 				return isDelegated();
+			case AmaltheaPackage.HW_PORT__CONNECTIONS:
+				return getConnections();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -398,6 +416,8 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 				return portInterface != PORT_INTERFACE_EDEFAULT;
 			case AmaltheaPackage.HW_PORT__DELEGATED:
 				return isDelegated() != DELEGATED_EDEFAULT;
+			case AmaltheaPackage.HW_PORT__CONNECTIONS:
+				return !getConnections().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -52,7 +52,7 @@ public final class AmaltheaIndex {
 	}
 
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
-			final EReference targetEReference) {
+			final Set<EReference> targetEReferences) {
 
 		final AmaltheaCrossReferenceAdapter amaltheaAdapter = getOrCreateAmaltheaAdapter(eObject);
 
@@ -62,7 +62,7 @@ public final class AmaltheaIndex {
 		final Collection<Setting> nonNavigableInverseReferences = amaltheaAdapter
 				.getNonNavigableInverseReferences(eObject);
 		for (final Setting setting : nonNavigableInverseReferences) {
-			if (setting.getEStructuralFeature() == targetEReference) {
+			if (targetEReferences.contains(setting.getEStructuralFeature())) {
 				final EObject targetEObject = setting.getEObject();
 				result.add(targetEObject);
 			}

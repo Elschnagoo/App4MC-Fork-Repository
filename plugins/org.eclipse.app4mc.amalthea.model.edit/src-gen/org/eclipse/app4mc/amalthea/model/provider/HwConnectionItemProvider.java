@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -62,6 +63,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 			addTagsPropertyDescriptor(object);
 			addPort1PropertyDescriptor(object);
 			addPort2PropertyDescriptor(object);
+			addInternalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -129,6 +131,28 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 				 true,
 				 null,
 				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Internal feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInternalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwConnection_internal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwConnection_internal_feature", "_UI_HwConnection_type"),
+				 AmaltheaPackage.eINSTANCE.getHwConnection_Internal(),
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 getString("_UI_ReadonlyPropertyCategory"),
 				 null));
 	}
 
@@ -218,6 +242,9 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HwConnection.class)) {
+			case AmaltheaPackage.HW_CONNECTION__INTERNAL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
 			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
 			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:

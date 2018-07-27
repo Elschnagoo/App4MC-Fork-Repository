@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface EventChainContainer extends EventChainItem {
+public interface EventChainContainer extends BaseObject, EventChainItem {
 	/**
 	 * Returns the value of the '<em><b>Event Chain</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class EventChainContainerImpl extends EventChainItemImpl implements EventChainContainer {
+public class EventChainContainerImpl extends BaseObjectImpl implements EventChainContainer {
 	/**
 	 * The cached value of the '{@link #getEventChain() <em>Event Chain</em>}' containment reference.
 	 * <!-- begin-user-doc -->

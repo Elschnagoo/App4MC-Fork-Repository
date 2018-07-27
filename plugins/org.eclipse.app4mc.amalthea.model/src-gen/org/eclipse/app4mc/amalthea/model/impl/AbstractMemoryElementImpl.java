@@ -30,6 +30,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -152,8 +153,9 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * @generated
 	 */
 	public EList<MemoryMapping> getMappings() {
-		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, 
-			AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Mappings(), AmaltheaPackage.eINSTANCE.getMemoryMapping_AbstractElement());
+		EReference _memoryMapping_AbstractElement = AmaltheaPackage.eINSTANCE.getMemoryMapping_AbstractElement();
+		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Mappings(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_memoryMapping_AbstractElement)));
 	}
 
 	/**
