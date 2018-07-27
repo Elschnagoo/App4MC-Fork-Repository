@@ -18,7 +18,6 @@ package org.eclipse.app4mc.amalthea.validation.checks.impl;
 import java.util.Collections;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
@@ -114,7 +113,7 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 	 * Checks the correctness of HwPort definitions
 	 * 
 	 * <ul>
-	 * <li>A A HwPort can only have one (non internal) HwConnection</li>
+	 * <li>A HwPort can only have one (non internal) HwConnection</li>
 	 * </ul>
 	 */
 	public void checkHwPort(final HwPort port) {

@@ -23,6 +23,10 @@
     id="HardwareModel"
     label="Hardware Model Checks"/>
    
+  <categories
+    id="SoftwareModel"
+    label="Software Model Checks"/>
+   
 
   <constraints
     id="DuplicateUniqueName"
@@ -127,5 +131,21 @@
     severity="Error"
     message="HW Access Path &quot;{0}&quot;: {1}"
     categories="HardwareModel"/>
+
+  <constraints
+    id="DataDependency"
+    label="Data Dependency Checks"
+    description="Checks the correctness of the &quot;depends on&quot; references"
+    severity="Error"
+    message="Data dependency: {0}"
+    categories="SoftwareModel"/>
+
+  <constraints
+    id="CallArgument"
+    label="Call Argument Checks"
+    description="Checks the correctness of CallArguments definitions"
+    severity="Error"
+    message="Call argument: {0}"
+    categories="SoftwareModel"/>
 
 </cc:Catalog>

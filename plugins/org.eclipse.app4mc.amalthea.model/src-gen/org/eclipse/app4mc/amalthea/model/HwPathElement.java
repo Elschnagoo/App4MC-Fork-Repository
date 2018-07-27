@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface HwPathElement extends INamed {
+public interface HwPathElement extends IReferable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

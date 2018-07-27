@@ -14741,8 +14741,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		cacheDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
 		hwAccessPathEClass.getESuperTypes().add(this.getHwPath());
 		hwAccessPathEClass.getESuperTypes().add(this.getINamed());
-		hwPathElementEClass.getESuperTypes().add(this.getINamed());
-		hwDestinationEClass.getESuperTypes().add(this.getINamed());
+		hwPathElementEClass.getESuperTypes().add(this.getIReferable());
+		hwDestinationEClass.getESuperTypes().add(this.getIReferable());
 		mappingModelEClass.getESuperTypes().add(this.getBaseObject());
 		schedulerAllocationEClass.getESuperTypes().add(this.getBaseObject());
 		taskAllocationEClass.getESuperTypes().add(this.getBaseObject());

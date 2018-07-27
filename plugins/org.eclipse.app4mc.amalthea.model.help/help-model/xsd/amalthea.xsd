@@ -3119,13 +3119,13 @@ entity: The component that fires the event (optional)</xsd:documentation>
   <xsd:element name="HwAccessPath" type="am:HwAccessPath"/>
   <xsd:complexType abstract="true" name="HwPathElement">
     <xsd:complexContent>
-      <xsd:extension base="am:INamed"/>
+      <xsd:extension base="am:IReferable"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwPathElement" type="am:HwPathElement"/>
   <xsd:complexType abstract="true" name="HwDestination">
     <xsd:complexContent>
-      <xsd:extension base="am:INamed"/>
+      <xsd:extension base="am:IReferable"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="HwDestination" type="am:HwDestination"/>

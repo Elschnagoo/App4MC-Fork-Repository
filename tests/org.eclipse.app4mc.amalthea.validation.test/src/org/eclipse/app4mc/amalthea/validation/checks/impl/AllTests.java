@@ -20,9 +20,13 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BasicValidationTests.class, ConstraintsModelTests.class, EventModelTests.class,
-		MappingModelTests.class,
-		HardwareModelTests.class })
+@SuiteClasses({
+	BasicValidationTests.class,
+	ConstraintsModelTests.class,
+	EventModelTests.class,
+	HardwareModelTests.class,
+	MappingModelTests.class
+	})
 public class AllTests {
 	// empty class to start test suite
 }

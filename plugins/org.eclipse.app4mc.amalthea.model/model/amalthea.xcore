@@ -1859,12 +1859,12 @@ class HwAccessPath extends HwPath, INamed
 //	contains HwLatency writeLatency
 // }
  
-interface HwPathElement extends INamed
+interface HwPathElement extends IReferable
 {
 	op HwPort[] getPorts()
 }
 
-interface HwDestination extends INamed
+interface HwDestination extends IReferable
 {
 	op HwPort[] getPorts()
 }

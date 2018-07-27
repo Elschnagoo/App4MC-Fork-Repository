@@ -4,9 +4,18 @@
    <extension
          name="AMALTHEA Common Sphinx Validator"
          point="org.eclipse.sphinx.emf.check.checkvalidators">
+
       <validator
             catalog="catalog/Amalthea.checkcatalog"
             class="org.eclipse.app4mc.amalthea.validation.checks.BasicCheckValidator">
+      </validator>
+      <validator
+            catalog="catalog/Amalthea.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.checks.HardwareModelCheckValidator">
+      </validator>
+      <validator
+            catalog="catalog/Amalthea.checkcatalog"
+            class="org.eclipse.app4mc.amalthea.validation.checks.SoftwareModelCheckValidator">
       </validator>
       <validator
             catalog="catalog/Amalthea.checkcatalog"
@@ -18,12 +27,9 @@
       </validator>
       <validator
             catalog="catalog/Amalthea.checkcatalog"
-            class="org.eclipse.app4mc.amalthea.validation.checks.HardwareModelCheckValidator">
-      </validator>
-      <validator
-            catalog="catalog/Amalthea.checkcatalog"
             class="org.eclipse.app4mc.amalthea.validation.checks.MappingModelCheckValidator">
       </validator>
+
       <validator
             catalog="catalog/TA.checkcatalog"
             class="org.eclipse.app4mc.amalthea.validation.ta.checks.HWModelValidator">
