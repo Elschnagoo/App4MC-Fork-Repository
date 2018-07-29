@@ -311,7 +311,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (numberOfOccurrences: ");
 		result.append(numberOfOccurrences);
 		result.append(')');

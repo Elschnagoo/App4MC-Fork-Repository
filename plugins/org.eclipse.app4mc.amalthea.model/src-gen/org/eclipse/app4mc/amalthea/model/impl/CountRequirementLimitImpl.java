@@ -217,7 +217,7 @@ public class CountRequirementLimitImpl extends RequirementLimitImpl implements C
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (metric: ");
 		result.append(metric);
 		result.append(", limitValue: ");

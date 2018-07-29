@@ -47,6 +47,9 @@ public enum AccessPrecedenceType implements Enumerator {
 	 * The '<em><b>Default WR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Writer of label has to be performed before the reader.
+	 * <!-- end-model-doc -->
 	 * @see #DEFAULT_WR_VALUE
 	 * @generated
 	 * @ordered
@@ -57,6 +60,9 @@ public enum AccessPrecedenceType implements Enumerator {
 	 * The '<em><b>Ignore WR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Dependency between writer and reader can be ignored.
+	 * <!-- end-model-doc -->
 	 * @see #IGNORE_WR_VALUE
 	 * @generated
 	 * @ordered
@@ -67,6 +73,9 @@ public enum AccessPrecedenceType implements Enumerator {
 	 * The '<em><b>Enforce RW</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Reader of label has to be performed before the writer (delay unit of controller).
+	 * <!-- end-model-doc -->
 	 * @see #ENFORCE_RW_VALUE
 	 * @generated
 	 * @ordered

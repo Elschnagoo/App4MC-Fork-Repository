@@ -359,7 +359,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (semaphoreType: ");
 		result.append(semaphoreType);
 		result.append(", initialValue: ");

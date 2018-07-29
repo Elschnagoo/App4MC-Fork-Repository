@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: APP4MC Amalthea Model Edit Support
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.model.edit;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.app4mc.amalthea.model.provider.AmaltheaEditPlugin$Implementation
-Bundle-Vendor: Eclipse APP4MC
+Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.amalthea.model.provider

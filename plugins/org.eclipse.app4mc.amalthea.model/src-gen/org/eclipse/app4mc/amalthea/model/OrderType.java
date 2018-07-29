@@ -44,6 +44,9 @@ public enum OrderType implements Enumerator {
 	 * The '<em><b>Order</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines a general order, the included elements must not follow directly
+	 * <!-- end-model-doc -->
 	 * @see #ORDER_VALUE
 	 * @generated
 	 * @ordered
@@ -54,6 +57,9 @@ public enum OrderType implements Enumerator {
 	 * The '<em><b>Direct Order</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The defined elements must follow directly
+	 * <!-- end-model-doc -->
 	 * @see #DIRECT_ORDER_VALUE
 	 * @generated
 	 * @ordered

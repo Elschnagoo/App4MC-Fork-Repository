@@ -321,7 +321,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (receiveOperation: ");
 		result.append(receiveOperation);
 		result.append(", dataMustBeNew: ");

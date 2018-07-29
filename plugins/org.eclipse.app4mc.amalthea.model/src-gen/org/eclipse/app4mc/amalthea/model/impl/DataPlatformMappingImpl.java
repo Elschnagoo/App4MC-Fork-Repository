@@ -216,7 +216,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (platformName: ");
 		result.append(platformName);
 		result.append(", platformType: ");

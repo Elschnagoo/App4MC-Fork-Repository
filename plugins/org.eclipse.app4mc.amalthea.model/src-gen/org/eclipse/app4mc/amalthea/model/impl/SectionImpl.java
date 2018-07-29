@@ -202,7 +202,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (asilLevel: ");
 		result.append(asilLevel);
 		result.append(')');

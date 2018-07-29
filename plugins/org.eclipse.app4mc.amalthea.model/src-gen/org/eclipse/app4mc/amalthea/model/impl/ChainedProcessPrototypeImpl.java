@@ -278,7 +278,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (apply: ");
 		result.append(apply);
 		result.append(", offset: ");

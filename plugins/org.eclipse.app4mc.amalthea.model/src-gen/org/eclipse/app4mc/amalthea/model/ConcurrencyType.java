@@ -47,6 +47,9 @@ public enum ConcurrencyType implements Enumerator {
 	 * The '<em><b>Single Core Safe</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Safe for access inside of the same core
+	 * <!-- end-model-doc -->
 	 * @see #SINGLE_CORE_SAFE_VALUE
 	 * @generated
 	 * @ordered
@@ -57,6 +60,9 @@ public enum ConcurrencyType implements Enumerator {
 	 * The '<em><b>Multi Core Safe</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Safe for access from another core
+	 * <!-- end-model-doc -->
 	 * @see #MULTI_CORE_SAFE_VALUE
 	 * @generated
 	 * @ordered

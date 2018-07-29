@@ -624,7 +624,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (callback: ");
 		result.append(callback);
 		result.append(", service: ");

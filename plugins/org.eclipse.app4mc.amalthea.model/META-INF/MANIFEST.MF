@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: APP4MC Amalthea Model
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.model;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Bundle-ClassPath: .
@@ -10,7 +10,7 @@ Export-Package: org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.model.impl,
  org.eclipse.app4mc.amalthea.model.io,
  org.eclipse.app4mc.amalthea.model.util
-Bundle-Vendor: Eclipse APP4MC
+Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.apache.commons.math3;visibility:=reexport,
  org.eclipse.core.runtime,

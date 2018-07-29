@@ -185,7 +185,7 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (tagType: ");
 		result.append(tagType);
 		result.append(')');

@@ -165,7 +165,7 @@ public class BoundariesImpl<T> extends DistributionImpl<T> implements Boundaries
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (samplingType: ");
 		result.append(samplingType);
 		result.append(')');

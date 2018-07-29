@@ -75,10 +75,10 @@ public class HWBlockDiagramCreator {
                           _builder.append("\t");
                           _builder.append("\t");
                           _builder.append("[");
-                          String _convertFluxString_3 = this.convertFluxString(m.getName());
+                          String _convertFluxString_3 = this.convertFluxString(((Memory)m).getName());
                           _builder.append(_convertFluxString_3, "\t\t");
                           _builder.append("] as ");
-                          String _convertFluxString_4 = this.convertFluxString(m.getName());
+                          String _convertFluxString_4 = this.convertFluxString(((Memory)m).getName());
                           _builder.append(_convertFluxString_4, "\t\t");
                           _builder.append(" <<Memory>>");
                           _builder.newLineIfNotEmpty();
@@ -87,10 +87,10 @@ public class HWBlockDiagramCreator {
                             _builder.append("\t");
                             _builder.append("\t");
                             _builder.append("[");
-                            String _convertFluxString_5 = this.convertFluxString(m.getName());
+                            String _convertFluxString_5 = this.convertFluxString(((ConnectionHandler)m).getName());
                             _builder.append(_convertFluxString_5, "\t\t");
                             _builder.append("] as ");
-                            String _convertFluxString_6 = this.convertFluxString(m.getName());
+                            String _convertFluxString_6 = this.convertFluxString(((ConnectionHandler)m).getName());
                             _builder.append(_convertFluxString_6, "\t\t");
                             _builder.append(" <<ConnectionHandler>>");
                             _builder.newLineIfNotEmpty();

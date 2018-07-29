@@ -324,7 +324,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (enabled: ");
 		result.append(enabled);
 		result.append(", algorithm: ");

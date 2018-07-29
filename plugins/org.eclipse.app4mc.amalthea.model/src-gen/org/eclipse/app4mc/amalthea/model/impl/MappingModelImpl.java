@@ -409,7 +409,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (addressMappingType: ");
 		result.append(addressMappingType);
 		result.append(')');

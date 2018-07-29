@@ -2127,13 +2127,13 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.lang.Comparable <em>Time Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
+	 * @see java.lang.Comparable
 	 * @generated
 	 */
 	public Adapter createTimeComparableAdapter() {
@@ -2197,13 +2197,13 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate> <em>Data Rate Comparable</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.lang.Comparable <em>Data Rate Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate>
+	 * @see java.lang.Comparable
 	 * @generated
 	 */
 	public Adapter createDataRateComparableAdapter() {

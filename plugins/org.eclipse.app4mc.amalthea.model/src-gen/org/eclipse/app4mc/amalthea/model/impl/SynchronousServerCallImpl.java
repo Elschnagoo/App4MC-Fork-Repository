@@ -165,7 +165,7 @@ public class SynchronousServerCallImpl extends ServerCallImpl implements Synchro
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (waitingBehaviour: ");
 		result.append(waitingBehaviour);
 		result.append(')');

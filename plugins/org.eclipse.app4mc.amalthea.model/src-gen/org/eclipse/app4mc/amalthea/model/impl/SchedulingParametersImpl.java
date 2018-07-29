@@ -379,7 +379,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (priority: ");
 		result.append(priority);
 		result.append(')');

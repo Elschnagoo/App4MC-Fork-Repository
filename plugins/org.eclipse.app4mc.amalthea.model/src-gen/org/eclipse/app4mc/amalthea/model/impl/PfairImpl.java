@@ -164,7 +164,7 @@ public abstract class PfairImpl extends TaskSchedulingAlgorithmImpl implements P
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (quantSizeNs: ");
 		result.append(quantSizeNs);
 		result.append(')');

@@ -216,7 +216,7 @@ public class BetaDistributionImpl<T> extends DistributionImpl<T> implements Beta
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (alpha: ");
 		result.append(alpha);
 		result.append(", beta: ");

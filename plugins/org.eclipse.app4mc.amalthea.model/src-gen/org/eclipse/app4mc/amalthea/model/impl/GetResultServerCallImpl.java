@@ -165,7 +165,7 @@ public class GetResultServerCallImpl extends ServerCallImpl implements GetResult
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (blockingType: ");
 		result.append(blockingType);
 		result.append(')');

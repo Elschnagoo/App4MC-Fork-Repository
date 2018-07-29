@@ -288,7 +288,7 @@ public class ProcessChainEventImpl extends EntityEventImpl implements ProcessCha
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (eventType: ");
 		result.append(eventType);
 		result.append(')');

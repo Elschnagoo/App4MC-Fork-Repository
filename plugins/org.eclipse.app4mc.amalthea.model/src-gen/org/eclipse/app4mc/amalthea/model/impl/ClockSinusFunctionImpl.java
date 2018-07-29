@@ -363,7 +363,7 @@ public class ClockSinusFunctionImpl extends ClockImpl implements ClockSinusFunct
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (amplitude: ");
 		result.append(amplitude);
 		result.append(", yOffset: ");

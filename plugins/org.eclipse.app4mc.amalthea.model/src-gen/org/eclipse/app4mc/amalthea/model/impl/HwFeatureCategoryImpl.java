@@ -291,7 +291,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (featureType: ");
 		result.append(featureType);
 		result.append(", description: ");

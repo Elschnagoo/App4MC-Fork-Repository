@@ -34,6 +34,18 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * *
+ * *******************************************************************************
+ * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * *******************************************************************************
+ * <!-- end-model-doc -->
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/emf/2002/GenModel modelName='Amalthea' prefix='Amalthea' editDirectory='/org.eclipse.app4mc.amalthea.model.edit/src-gen' rootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl' providerRootExtendsClass='org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter' creationIcons='false' forceOverwrite='true' creationSubmenus='true' generateSchema='true' loadInitialization='false' copyrightText='*******************************************************************************\r\n Copyright (c) 2015-2018 Robert Bosch GmbH and others.\r\n\r\n This program and the accompanying materials are made\r\n available under the terms of the Eclipse Public License 2.0\r\n which is available at https://www.eclipse.org/legal/epl-2.0/\r\n\r\n SPDX-License-Identifier: EPL-2.0\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************' basePackage='org.eclipse.app4mc.amalthea'"

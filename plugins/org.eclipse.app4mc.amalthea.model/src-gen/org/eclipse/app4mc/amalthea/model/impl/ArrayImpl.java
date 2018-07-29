@@ -334,7 +334,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (numberElements: ");
 		result.append(numberElements);
 		result.append(')');

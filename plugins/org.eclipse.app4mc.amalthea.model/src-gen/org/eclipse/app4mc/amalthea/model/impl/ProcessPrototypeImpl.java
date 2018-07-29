@@ -516,7 +516,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (preemption: ");
 		result.append(preemption);
 		result.append(')');

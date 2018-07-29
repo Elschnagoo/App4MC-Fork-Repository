@@ -299,7 +299,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (chunkProcessingInstructions: ");
 		result.append(chunkProcessingInstructions);
 		result.append(", transmitRatio: ");

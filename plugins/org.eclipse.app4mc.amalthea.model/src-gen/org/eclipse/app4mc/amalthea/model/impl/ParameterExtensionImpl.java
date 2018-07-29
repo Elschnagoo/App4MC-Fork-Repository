@@ -221,7 +221,7 @@ public class ParameterExtensionImpl extends AmaltheaExtendedEObjectImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (key: ");
 		result.append(key);
 		result.append(", value: ");
