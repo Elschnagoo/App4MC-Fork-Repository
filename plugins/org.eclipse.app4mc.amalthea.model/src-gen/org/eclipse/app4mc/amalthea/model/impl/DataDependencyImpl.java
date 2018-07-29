@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataDependencyImpl#getLabels <em>Labels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataDependencyImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataDependencyImpl#getCallArguments <em>Call Arguments</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataDependencyImpl#getContainingRunnable <em>Containing Runnable</em>}</li>
  * </ul>
  *
  * @generated
@@ -134,6 +136,15 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable() {
+		return AmaltheaServices.<org.eclipse.app4mc.amalthea.model.Runnable>getContainerOfType(this, org.eclipse.app4mc.amalthea.model.Runnable.class);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +154,8 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 				return getParameters();
 			case AmaltheaPackage.DATA_DEPENDENCY__CALL_ARGUMENTS:
 				return getCallArguments();
+			case AmaltheaPackage.DATA_DEPENDENCY__CONTAINING_RUNNABLE:
+				return getContainingRunnable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -207,6 +220,8 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 				return parameters != null && !parameters.isEmpty();
 			case AmaltheaPackage.DATA_DEPENDENCY__CALL_ARGUMENTS:
 				return callArguments != null && !callArguments.isEmpty();
+			case AmaltheaPackage.DATA_DEPENDENCY__CONTAINING_RUNNABLE:
+				return getContainingRunnable() != null;
 		}
 		return super.eIsSet(featureID);
 	}

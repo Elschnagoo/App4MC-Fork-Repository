@@ -3174,6 +3174,12 @@ class DataDependency extends BaseObject
 	refers Label[] labels
 	refers RunnableParameter[] parameters
 	refers CallArgument[] callArguments
+	
+	// container (read only)
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers local readonly derived Runnable containingRunnable get {
+		AmaltheaServices.getContainerOfType(this, Runnable)
+	}
 }
 
 class RunnableParameter extends ReferableBaseObject

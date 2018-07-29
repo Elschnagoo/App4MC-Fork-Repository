@@ -14,8 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
-import java.lang.Iterable;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;

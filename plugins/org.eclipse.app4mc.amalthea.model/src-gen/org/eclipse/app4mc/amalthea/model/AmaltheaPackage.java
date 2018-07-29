@@ -1454,10 +1454,10 @@ public interface AmaltheaPackage extends EPackage {
 	int QUANTITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}' class.
+	 * The meta object id for the '{@link java.lang.Comparable <em>Time Comparable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
+	 * @see java.lang.Comparable
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeComparable()
 	 * @generated
 	 */
@@ -1729,10 +1729,10 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_SIZE_OPERATION_COUNT = QUANTITY_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate> <em>Data Rate Comparable</em>}' class.
+	 * The meta object id for the '{@link java.lang.Comparable <em>Data Rate Comparable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate>
+	 * @see java.lang.Comparable
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRateComparable()
 	 * @generated
 	 */
@@ -22682,13 +22682,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_DEPENDENCY__CALL_ARGUMENTS = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_DEPENDENCY__CONTAINING_RUNNABLE = BASE_OBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Data Dependency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_DEPENDENCY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
+	int DATA_DEPENDENCY_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Data Dependency</em>' class.
@@ -28537,11 +28546,11 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getQuantity();
 
 	/**
-	 * Returns the meta object for class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time> <em>Time Comparable</em>}'.
+	 * Returns the meta object for class '{@link java.lang.Comparable <em>Time Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Time Comparable</em>'.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.Time>
+	 * @see java.lang.Comparable
 	 * @model instanceClass="java.lang.Comparable&lt;org.eclipse.app4mc.amalthea.model.Time&gt;"
 	 * @generated
 	 */
@@ -28746,11 +28755,11 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getDataSize__GetNumberBytes();
 
 	/**
-	 * Returns the meta object for class '{@link java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate> <em>Data Rate Comparable</em>}'.
+	 * Returns the meta object for class '{@link java.lang.Comparable <em>Data Rate Comparable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Rate Comparable</em>'.
-	 * @see java.lang.Comparable<org.eclipse.app4mc.amalthea.model.DataRate>
+	 * @see java.lang.Comparable
 	 * @model instanceClass="java.lang.Comparable&lt;org.eclipse.app4mc.amalthea.model.DataRate&gt;"
 	 * @generated
 	 */
@@ -36897,6 +36906,17 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getDataDependency_CallArguments();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.DataDependency#getContainingRunnable <em>Containing Runnable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Containing Runnable</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DataDependency#getContainingRunnable()
+	 * @see #getDataDependency()
+	 * @generated
+	 */
+	EReference getDataDependency_ContainingRunnable();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.RunnableParameter <em>Runnable Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39361,6 +39381,9 @@ public interface AmaltheaPackage extends EPackage {
 	 * Returns the meta object for data type '<em>Address</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Hardware Address (long; specified as hexadecimal value)
+     * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Address</em>'.
 	 * @model instanceClass="long"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='&lt;%java.lang.Long%&gt; _xifexpression = null;\nif ((it != null))\n{\n\t&lt;%java.lang.Long%&gt; _xifexpression_1 = null;\n\tif ((it.startsWith(\"-\") || it.startsWith(\"+\")))\n\t{\n\t\tthrow new &lt;%java.lang.NumberFormatException%&gt;(\"Sign character\");\n\t}\n\telse\n\t{\n\t\t_xifexpression_1 = &lt;%java.lang.Long%&gt;.decode(it);\n\t}\n\t_xifexpression = _xifexpression_1;\n}\nreturn (_xifexpression).longValue();' convert='&lt;%java.lang.String%&gt; _hexString = &lt;%java.lang.Long%&gt;.toHexString(it);\nreturn (\"0x\" + _hexString);'"

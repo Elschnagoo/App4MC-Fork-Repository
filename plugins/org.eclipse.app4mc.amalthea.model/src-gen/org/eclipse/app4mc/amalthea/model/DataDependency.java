@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DataDependency#getLabels <em>Labels</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DataDependency#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.DataDependency#getCallArguments <em>Call Arguments</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.DataDependency#getContainingRunnable <em>Containing Runnable</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency()
@@ -82,5 +83,21 @@ public interface DataDependency extends BaseObject {
 	 * @generated
 	 */
 	EList<CallArgument> getCallArguments();
+
+	/**
+	 * Returns the value of the '<em><b>Containing Runnable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Containing Runnable</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Containing Runnable</em>' reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency_ContainingRunnable()
+	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;&gt;getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;.class);'"
+	 * @generated
+	 */
+	org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable();
 
 } // DataDependency

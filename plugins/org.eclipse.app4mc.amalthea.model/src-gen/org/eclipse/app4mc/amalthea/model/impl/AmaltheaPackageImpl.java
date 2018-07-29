@@ -3273,7 +3273,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link AmaltheaPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -3287,7 +3287,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		if (isInited) return (AmaltheaPackage)EPackage.Registry.INSTANCE.getEPackage(AmaltheaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		AmaltheaPackageImpl theAmaltheaPackage = (AmaltheaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AmaltheaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AmaltheaPackageImpl());
+		Object registeredAmaltheaPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		AmaltheaPackageImpl theAmaltheaPackage = registeredAmaltheaPackage instanceof AmaltheaPackageImpl ? (AmaltheaPackageImpl)registeredAmaltheaPackage : new AmaltheaPackageImpl();
 
 		isInited = true;
 
@@ -3302,7 +3303,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put
-			(theAmaltheaPackage, 
+			(theAmaltheaPackage,
 			 new EValidator.Descriptor() {
 				 public EValidator getEValidator() {
 					 return AmaltheaValidator.INSTANCE;
@@ -3312,7 +3313,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		// Mark meta-data to indicate it can't be changed
 		theAmaltheaPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(AmaltheaPackage.eNS_URI, theAmaltheaPackage);
 		return theAmaltheaPackage;
@@ -10919,6 +10919,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataDependency_ContainingRunnable() {
+		return (EReference)dataDependencyEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRunnableParameter() {
 		return runnableParameterEClass;
 	}
@@ -14189,6 +14198,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataDependencyEClass, DATA_DEPENDENCY__LABELS);
 		createEReference(dataDependencyEClass, DATA_DEPENDENCY__PARAMETERS);
 		createEReference(dataDependencyEClass, DATA_DEPENDENCY__CALL_ARGUMENTS);
+		createEReference(dataDependencyEClass, DATA_DEPENDENCY__CONTAINING_RUNNABLE);
 
 		runnableParameterEClass = createEClass(RUNNABLE_PARAMETER);
 		createEReference(runnableParameterEClass, RUNNABLE_PARAMETER__CONTAINING_RUNNABLE);
@@ -16144,6 +16154,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataDependency_Labels(), this.getLabel(), null, "labels", null, 0, -1, DataDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataDependency_Parameters(), this.getRunnableParameter(), null, "parameters", null, 0, -1, DataDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataDependency_CallArguments(), this.getCallArgument(), null, "callArguments", null, 0, -1, DataDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataDependency_ContainingRunnable(), this.getRunnable(), null, "containingRunnable", null, 0, 1, DataDependency.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableParameterEClass, RunnableParameter.class, "RunnableParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnableParameter_ContainingRunnable(), this.getRunnable(), this.getRunnable_Parameters(), "containingRunnable", null, 0, 1, RunnableParameter.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16827,25 +16838,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-		   });
 	}
 
 	/**
@@ -16855,12 +16849,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 		addAnnotation
-		  (addressEDataType, 
-		   source, 
+		  (addressEDataType,
+		   source,
 		   new String[] {
-			 "minInclusive", "0"
+			   "minInclusive", "0"
 		   });
 	}
 
