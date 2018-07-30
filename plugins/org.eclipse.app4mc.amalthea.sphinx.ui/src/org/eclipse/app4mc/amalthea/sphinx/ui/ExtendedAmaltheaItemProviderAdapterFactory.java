@@ -16,58 +16,61 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui;
 
 import org.eclipse.app4mc.amalthea.model.provider.AmaltheaItemProviderAdapterFactory;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedCoreClassifierItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedMemoryClassifierItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedTagItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedCacheDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedCacheItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedConnectionHandlerDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedConnectionHandlerItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedFrequencyDomainItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwConnectionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwFeatureCategoryItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwStructureItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedMemoryDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedMemoryItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedPowerDomainItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelReceiveItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelSendItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedtemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessPrototypeItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableModeSwitchItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableProbabilitySwitchItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSectionItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSemaphoreAccessItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverReadItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverWriteItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSingleActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSporadicActivationItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSynchronousServerCallItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedTaskItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedVariableRateActivationItemProvider;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedCoreClassifierIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedMemoryClassifierIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.extended.ExtendedTagIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedCacheDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedCacheIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedConnectionHandlerDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedConnectionHandlerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedFrequencyDomainIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwConnectionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwFeatureCategoryIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedHwStructureIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedMemoryDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedMemoryIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedPowerDomainIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCallArgumentIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelReceiveIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelSendIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedNeedEntryIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessPrototypeIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableCallIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableModeSwitchIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableParameterIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableProbabilitySwitchIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSectionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSemaphoreAccessIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverReadIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverWriteIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSingleActivationIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSporadicActivationIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSynchronousServerCallIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedTaskIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedVariableRateActivationIP;
 import org.eclipse.emf.common.notify.Adapter;
 
 public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProviderAdapterFactory {
@@ -76,70 +79,70 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 
 	@Override
 	public Adapter createProcessingUnitDefinitionAdapter() {
-		return new ExtendedProcessingUnitDefinitionItemProvider(this);
+		return new ExtendedProcessingUnitDefinitionIP(this);
 	}
 
 	@Override
 	public Adapter createMemoryDefinitionAdapter() {
-		return new ExtendedMemoryDefinitionItemProvider(this);
+		return new ExtendedMemoryDefinitionIP(this);
 	}
 
 	@Override
 	public Adapter createCacheDefinitionAdapter() {
-		return new ExtendedCacheDefinitionItemProvider(this);
+		return new ExtendedCacheDefinitionIP(this);
 	}
 
 	@Override
 	public Adapter createConnectionHandlerDefinitionAdapter() {
-		return new ExtendedConnectionHandlerDefinitionItemProvider(this);
+		return new ExtendedConnectionHandlerDefinitionIP(this);
 	}
 
 // HWModel Domains
 
 	@Override
 	public Adapter createFrequencyDomainAdapter() {
-		return new ExtendedFrequencyDomainItemProvider(this);
+		return new ExtendedFrequencyDomainIP(this);
 	}
 
 	@Override
 	public Adapter createPowerDomainAdapter() {
-		return new ExtendedPowerDomainItemProvider(this);
+		return new ExtendedPowerDomainIP(this);
 	}
 
 // HWModel Features
 
 	@Override
 	public Adapter createHwFeatureCategoryAdapter() {
-		return new ExtendedHwFeatureCategoryItemProvider(this);
+		return new ExtendedHwFeatureCategoryIP(this);
 	}
 
 // HWModel Structure Modules
 
 	@Override
 	public Adapter createProcessingUnitAdapter() {
-		return new ExtendedProcessingUnitItemProvider(this);
+		return new ExtendedProcessingUnitIP(this);
 	}
 
 	@Override
 	public Adapter createMemoryAdapter() {
-		return new ExtendedMemoryItemProvider(this);
+		return new ExtendedMemoryIP(this);
 	}
 
 	@Override
 	public Adapter createCacheAdapter() {
-		return new ExtendedCacheItemProvider(this);
+		return new ExtendedCacheIP(this);
 	}
 
 	@Override
 	public Adapter createConnectionHandlerAdapter() {
-		return new ExtendedConnectionHandlerItemProvider(this);
+		return new ExtendedConnectionHandlerIP(this);
 	}
 
 // HWModel Structure Connections
 
 	@Override
 	public Adapter createHwConnectionAdapter() {
-		return new ExtendedHwConnectionItemProvider(this);
+		return new ExtendedHwConnectionIP(this);
 	}
 
 // CommonElements
@@ -147,205 +150,220 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	// @Override
 	@Override
 	public Adapter createTagAdapter() {
-		return new ExtendedTagItemProvider(this);
+		return new ExtendedTagIP(this);
 	}
 
 	@Override
 	public Adapter createCoreClassifierAdapter() {
-		return new ExtendedCoreClassifierItemProvider(this);
+		return new ExtendedCoreClassifierIP(this);
 	}
 
 	@Override
 	public Adapter createMemoryClassifierAdapter() {
-		return new ExtendedMemoryClassifierItemProvider(this);
+		return new ExtendedMemoryClassifierIP(this);
 	}
 
 // SWModel Runnable Items
 
 	@Override
 	public Adapter createChannelReceiveAdapter() {
-		return new ExtendedChannelReceiveItemProvider(this);
+		return new ExtendedChannelReceiveIP(this);
 	}
 
 	@Override
 	public Adapter createChannelSendAdapter() {
-		return new ExtendedChannelSendItemProvider(this);
+		return new ExtendedChannelSendIP(this);
 	}
 
 	@Override
 	public Adapter createCustomEventTriggerAdapter() {
-		return new ExtendedCustomEventTriggerItemProvider(this);
+		return new ExtendedCustomEventTriggerIP(this);
 	}
 
 	@Override
 	public Adapter createExecutionNeedAdapter() {
-		return new ExtendedExecutionNeedtemProvider(this);
+		return new ExtendedExecutionNeedIP(this);
 	}
 
 	@Override
 	public Adapter createGroupAdapter() {
-		return new ExtendedGroupItemProvider(this);
+		return new ExtendedGroupIP(this);
 	}
 
 	@Override
 	public Adapter createLabelAccessAdapter() {
-		return new ExtendedLabelAccessItemProvider(this);
+		return new ExtendedLabelAccessIP(this);
 	}
 
 	@Override
 	public Adapter createModeLabelAccessAdapter() {
-		return new ExtendedModeLabelAccessItemProvider(this);
+		return new ExtendedModeLabelAccessIP(this);
 	}
 
 	@Override
 	public Adapter createRunnableCallAdapter() {
-		return new ExtendedRunnableCallItemProvider(this);
+		return new ExtendedRunnableCallIP(this);
 	}
 
 	@Override
 	public Adapter createRunnableModeSwitchAdapter() {
-		return new ExtendedRunnableModeSwitchItemProvider(this);
+		return new ExtendedRunnableModeSwitchIP(this);
 	}
 
 	@Override
 	public Adapter createRunnableProbabilitySwitchAdapter() {
-		return new ExtendedRunnableProbabilitySwitchItemProvider(this);
+		return new ExtendedRunnableProbabilitySwitchIP(this);
 	}
 
 	@Override
 	public Adapter createSemaphoreAccessAdapter() {
-		return new ExtendedSemaphoreAccessItemProvider(this);
+		return new ExtendedSemaphoreAccessIP(this);
 	}
 
 	@Override
 	public Adapter createSynchronousServerCallAdapter() {
-		return new ExtendedSynchronousServerCallItemProvider(this);
+		return new ExtendedSynchronousServerCallIP(this);
 	}
 
 	@Override
 	public Adapter createAsynchronousServerCallAdapter() {
-		return new ExtendedAsynchronousServerCallItemProvider(this);
+		return new ExtendedAsynchronousServerCallIP(this);
 	}
 
 	@Override
 	public Adapter createGetResultServerCallAdapter() {
-		return new ExtendedGetResultServerCallItemProvider(this);
+		return new ExtendedGetResultServerCallIP(this);
 	}
 
 	@Override
 	public Adapter createSenderReceiverReadAdapter() {
-		return new ExtendedSenderReceiverReadItemProvider(this);
+		return new ExtendedSenderReceiverReadIP(this);
 	}
 
 	@Override
 	public Adapter createSenderReceiverWriteAdapter() {
-		return new ExtendedSenderReceiverWriteItemProvider(this);
+		return new ExtendedSenderReceiverWriteIP(this);
 	}
 
 // SWModel Type Definitions
 
 	@Override
 	public Adapter createBaseTypeDefinitionAdapter() {
-		return new ExtendedBaseTypeDefinitionItemProvider(this);
+		return new ExtendedBaseTypeDefinitionIP(this);
 	}
 
 	@Override
 	public Adapter createDataTypeDefinitionAdapter() {
-		return new ExtendedDataTypeDefinitionItemProvider(this);
+		return new ExtendedDataTypeDefinitionIP(this);
 	}
 
 // SWModel Activations
 
 	@Override
 	public Adapter createCustomActivationAdapter() {
-		return new ExtendedCustomActivationItemProvider(this);
+		return new ExtendedCustomActivationIP(this);
 	}
 
 	@Override
 	public Adapter createEventActivationAdapter() {
-		return new ExtendedEventActivationItemProvider(this);
+		return new ExtendedEventActivationIP(this);
 	}
 
 	@Override
 	public Adapter createPeriodicActivationAdapter() {
-		return new ExtendedPeriodicActivationItemProvider(this);
+		return new ExtendedPeriodicActivationIP(this);
 	}
 	
 	@Override
 	public Adapter createSingleActivationAdapter() {
-		return new ExtendedSingleActivationItemProvider(this);
+		return new ExtendedSingleActivationIP(this);
 	}
 
 	@Override
 	public Adapter createSporadicActivationAdapter() {
-		return new ExtendedSporadicActivationItemProvider(this);
+		return new ExtendedSporadicActivationIP(this);
 	}
 
 	@Override
 	public Adapter createVariableRateActivationAdapter() {
-		return new ExtendedVariableRateActivationItemProvider(this);
+		return new ExtendedVariableRateActivationIP(this);
 	}
 
 // SWModel (simple containers with only one type)
 
 	@Override
 	public Adapter createChannelAdapter() {
-		return new ExtendedChannelItemProvider(this);
+		return new ExtendedChannelIP(this);
 	}
 
 	@Override
 	public Adapter createCustomEntityAdapter() {
-		return new ExtendedCustomEntityItemProvider(this);
+		return new ExtendedCustomEntityIP(this);
 	}
 
 	@Override
 	public Adapter createOsEventAdapter() {
-		return new ExtendedOsEventItemProvider(this);
+		return new ExtendedOsEventIP(this);
 	}
 
 	@Override
 	public Adapter createISRAdapter() {
-		return new ExtendedISRItemProvider(this);
+		return new ExtendedISRIP(this);
 	}
 
 	@Override
 	public Adapter createLabelAdapter() {
-		return new ExtendedLabelItemProvider(this);
+		return new ExtendedLabelIP(this);
 	}
 
 	@Override
 	public Adapter createModeAdapter() {
-		return new ExtendedModeItemProvider(this);
+		return new ExtendedModeIP(this);
 	}
 
 	@Override
 	public Adapter createModeLabelAdapter() {
-		return new ExtendedModeLabelItemProvider(this);
+		return new ExtendedModeLabelIP(this);
 	}
 
 	@Override
 	public Adapter createProcessChainAdapter() {
-		return new ExtendedProcessChainItemProvider(this);
+		return new ExtendedProcessChainIP(this);
 	}
 
 	@Override
 	public Adapter createProcessPrototypeAdapter() {
-		return new ExtendedProcessPrototypeItemProvider(this);
+		return new ExtendedProcessPrototypeIP(this);
 	}
 
 	@Override
 	public Adapter createRunnableAdapter() {
-		return new ExtendedRunnableItemProvider(this);
+		return new ExtendedRunnableIP(this);
 	}
 
 	@Override
 	public Adapter createSectionAdapter() {
-		return new ExtendedSectionItemProvider(this);
+		return new ExtendedSectionIP(this);
 	}
 
 	@Override
 	public Adapter createTaskAdapter() {
-		return new ExtendedTaskItemProvider(this);
+		return new ExtendedTaskIP(this);
+	}
+
+	@Override
+	public Adapter createRunnableParameterAdapter() {
+		return new ExtendedRunnableParameterIP(this);
+	}
+
+	@Override
+	public Adapter createCallArgumentAdapter() {
+		return new ExtendedCallArgumentIP(this);
+	}
+
+	@Override
+	public Adapter createNeedEntryAdapter() {
+		return new ExtendedNeedEntryIP(this);
 	}
 
 // Other nodes with virtual sub folders
@@ -367,7 +385,7 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 
 	@Override
 	public Adapter createHwStructureAdapter() {
-		return new ExtendedHwStructureItemProvider(this);
+		return new ExtendedHwStructureIP(this);
 	}
 
 }

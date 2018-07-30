@@ -20,9 +20,9 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.provider.HWModelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwDefinitionIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwDomainIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwFeatureIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwDefinitionContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwDomainContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.hw.container.HwFeatureContainerIP;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -34,33 +34,33 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 
-	protected HwFeatureIP hwFeatureIP;
-	protected HwDefinitionIP hwDefinitionIP;
-	protected HwDomainIP hwDomainIP;
+	protected HwFeatureContainerIP hwFeatureCIP;
+	protected HwDefinitionContainerIP hwDefinitionCIP;
+	protected HwDomainContainerIP hwDomainCIP;
 
 	public ExtendedHWModelItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-	public HwFeatureIP getHwFeatures(final HWModel hwModel) {
-		if (this.hwFeatureIP == null) {
-			this.hwFeatureIP = new HwFeatureIP(this.adapterFactory, hwModel);
+	public HwFeatureContainerIP getHwFeaturesContainerIP(final HWModel hwModel) {
+		if (this.hwFeatureCIP == null) {
+			this.hwFeatureCIP = new HwFeatureContainerIP(this.adapterFactory, hwModel);
 		}
-		return this.hwFeatureIP;
+		return this.hwFeatureCIP;
 	}
 
-	public HwDefinitionIP getHwDefinitions(final HWModel hwModel) {
-		if (this.hwDefinitionIP == null) {
-			this.hwDefinitionIP = new HwDefinitionIP(this.adapterFactory, hwModel);
+	public HwDefinitionContainerIP getHwDefinitionsContainerIP(final HWModel hwModel) {
+		if (this.hwDefinitionCIP == null) {
+			this.hwDefinitionCIP = new HwDefinitionContainerIP(this.adapterFactory, hwModel);
 		}
-		return this.hwDefinitionIP;
+		return this.hwDefinitionCIP;
 	}
 
-	public HwDomainIP getHwDomains(final HWModel hwModel) {
-		if (this.hwDomainIP == null) {
-			this.hwDomainIP = new HwDomainIP(this.adapterFactory, hwModel);
+	public HwDomainContainerIP getHwDomainsContainerIP(final HWModel hwModel) {
+		if (this.hwDomainCIP == null) {
+			this.hwDomainCIP = new HwDomainContainerIP(this.adapterFactory, hwModel);
 		}
-		return this.hwDomainIP;
+		return this.hwDomainCIP;
 	}
 
 	@Override
@@ -79,11 +79,11 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 		
 		// only display virtual folders if not empty (on top of the list)
 		if (!hwModel.getFeatureCategories().isEmpty())
-			children.add(0, getHwFeatures(hwModel));
+			children.add(0, getHwFeaturesContainerIP(hwModel));
 		if (!hwModel.getDomains().isEmpty())
-			children.add(0, getHwDomains(hwModel));
+			children.add(0, getHwDomainsContainerIP(hwModel));
 		if (!hwModel.getDefinitions().isEmpty())
-			children.add(0, getHwDefinitions(hwModel));
+			children.add(0, getHwDefinitionsContainerIP(hwModel));
 		return children;
 	}
 
@@ -110,11 +110,11 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
 						if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES) {
-							affected = Collections.singleton(getHwFeatures((HWModel) owner));
+							affected = Collections.singleton(getHwFeaturesContainerIP((HWModel) owner));
 						} else if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__DEFINITIONS) {
-							affected = Collections.singleton(getHwDefinitions((HWModel) owner));
+							affected = Collections.singleton(getHwDefinitionsContainerIP((HWModel) owner));
 						} else if (feature.getFeatureID() == AmaltheaPackage.HW_MODEL__DOMAINS) {
-							affected = Collections.singleton(getHwDomains((HWModel) owner));
+							affected = Collections.singleton(getHwDomainsContainerIP((HWModel) owner));
 						}
 					}
 					return affected;
@@ -126,14 +126,14 @@ public class ExtendedHWModelItemProvider extends HWModelItemProvider {
 
 	@Override
 	public void dispose() {
-		if (this.hwFeatureIP != null) {
-			this.hwFeatureIP.dispose();
+		if (this.hwFeatureCIP != null) {
+			this.hwFeatureCIP.dispose();
 		}
-		if (this.hwDefinitionIP != null) {
-			this.hwDefinitionIP.dispose();
+		if (this.hwDefinitionCIP != null) {
+			this.hwDefinitionCIP.dispose();
 		}
-		if (this.hwDomainIP != null) {
-			this.hwDomainIP.dispose();
+		if (this.hwDomainCIP != null) {
+			this.hwDomainCIP.dispose();
 		}
 
 		super.dispose();

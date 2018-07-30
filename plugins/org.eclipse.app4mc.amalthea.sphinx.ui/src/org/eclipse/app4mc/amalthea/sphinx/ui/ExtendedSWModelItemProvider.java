@@ -23,20 +23,20 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.SWModelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ActivationsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ChannelsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.CustomEntitiesIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.EventsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ISRsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.LabelsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ModeLabelsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ModesIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessChainsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessPrototypesIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.RunnablesIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.SectionsIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TasksIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TypeDefinitionsIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ActivationsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ChannelsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.CustomEntitiesContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.EventsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ISRsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.LabelsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ModeLabelsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ModesContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessChainsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.ProcessPrototypesContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.RunnablesContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.SectionsContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TasksContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.TypeDefinitionsContainerIP;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -48,121 +48,121 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 
-	protected RunnablesIP runnablesIP;
-	protected LabelsIP labelsIP;
-	protected ModesIP modesIP;
-	protected ModeLabelsIP modeLabelsIP;
-	protected TasksIP tasksIP;
-	protected EventsIP eventsIP;
-	protected SectionsIP sectionsIP;
-	protected ProcessChainsIP processChainsIP;
-	protected ProcessPrototypesIP prototypesIP;
-	protected ISRsIP isrsIP;
-	protected ActivationsIP activationsIP;
-	protected TypeDefinitionsIP typesIP;
-	protected ChannelsIP channelsIP;
-	protected CustomEntitiesIP entitiesIP;
+	protected RunnablesContainerIP runnablesCIP;
+	protected LabelsContainerIP labelsCIP;
+	protected ModesContainerIP modesCIP;
+	protected ModeLabelsContainerIP modeLabelsCIP;
+	protected TasksContainerIP tasksCIP;
+	protected EventsContainerIP eventsCIP;
+	protected SectionsContainerIP sectionsCIP;
+	protected ProcessChainsContainerIP processChainsCIP;
+	protected ProcessPrototypesContainerIP prototypesCIP;
+	protected ISRsContainerIP isrsCIP;
+	protected ActivationsContainerIP activationsCIP;
+	protected TypeDefinitionsContainerIP typesCIP;
+	protected ChannelsContainerIP channelsCIP;
+	protected CustomEntitiesContainerIP entitiesCIP;
 
 	public ExtendedSWModelItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-	public RunnablesIP getRunnables(final SWModel swModel) {
-		if (this.runnablesIP == null) {
-			this.runnablesIP = new RunnablesIP(this.adapterFactory, swModel);
+	public RunnablesContainerIP getRunnablesContainerIP(final SWModel swModel) {
+		if (this.runnablesCIP == null) {
+			this.runnablesCIP = new RunnablesContainerIP(this.adapterFactory, swModel);
 		}
-		return this.runnablesIP;
+		return this.runnablesCIP;
 	}
 
-	public LabelsIP getLabels(final SWModel swModel) {
-		if (this.labelsIP == null) {
-			this.labelsIP = new LabelsIP(this.adapterFactory, swModel);
+	public LabelsContainerIP getLabelsContainerIP(final SWModel swModel) {
+		if (this.labelsCIP == null) {
+			this.labelsCIP = new LabelsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.labelsIP;
+		return this.labelsCIP;
 	}
 
-	public ModesIP getModes(final SWModel swModel) {
-		if (this.modesIP == null) {
-			this.modesIP = new ModesIP(this.adapterFactory, swModel);
+	public ModesContainerIP getModesContainerIP(final SWModel swModel) {
+		if (this.modesCIP == null) {
+			this.modesCIP = new ModesContainerIP(this.adapterFactory, swModel);
 		}
-		return this.modesIP;
+		return this.modesCIP;
 	}
 
-	public ModeLabelsIP getModeLabels(final SWModel swModel) {
-		if (this.modeLabelsIP == null) {
-			this.modeLabelsIP = new ModeLabelsIP(this.adapterFactory, swModel);
+	public ModeLabelsContainerIP getModeLabelsContainerIP(final SWModel swModel) {
+		if (this.modeLabelsCIP == null) {
+			this.modeLabelsCIP = new ModeLabelsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.modeLabelsIP;
+		return this.modeLabelsCIP;
 	}
 
-	public TasksIP getTasks(final SWModel swModel) {
-		if (this.tasksIP == null) {
-			this.tasksIP = new TasksIP(this.adapterFactory, swModel);
+	public TasksContainerIP getTasksContainerIP(final SWModel swModel) {
+		if (this.tasksCIP == null) {
+			this.tasksCIP = new TasksContainerIP(this.adapterFactory, swModel);
 		}
-		return this.tasksIP;
+		return this.tasksCIP;
 	}
 
-	public EventsIP getEvents(final SWModel swModel) {
-		if (this.eventsIP == null) {
-			this.eventsIP = new EventsIP(this.adapterFactory, swModel);
+	public EventsContainerIP getEventsContainerIP(final SWModel swModel) {
+		if (this.eventsCIP == null) {
+			this.eventsCIP = new EventsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.eventsIP;
+		return this.eventsCIP;
 	}
 
-	public SectionsIP getSections(final SWModel swModel) {
-		if (this.sectionsIP == null) {
-			this.sectionsIP = new SectionsIP(this.adapterFactory, swModel);
+	public SectionsContainerIP getSectionsContainerIP(final SWModel swModel) {
+		if (this.sectionsCIP == null) {
+			this.sectionsCIP = new SectionsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.sectionsIP;
+		return this.sectionsCIP;
 	}
 
-	public ProcessPrototypesIP getPrototypes(final SWModel swModel) {
-		if (this.prototypesIP == null) {
-			this.prototypesIP = new ProcessPrototypesIP(this.adapterFactory, swModel);
+	public ProcessPrototypesContainerIP getPrototypesContainerIP(final SWModel swModel) {
+		if (this.prototypesCIP == null) {
+			this.prototypesCIP = new ProcessPrototypesContainerIP(this.adapterFactory, swModel);
 		}
-		return this.prototypesIP;
+		return this.prototypesCIP;
 	}
 
-	public ProcessChainsIP getProcessChains(final SWModel swModel) {
-		if (this.processChainsIP == null) {
-			this.processChainsIP = new ProcessChainsIP(this.adapterFactory, swModel);
+	public ProcessChainsContainerIP getProcessChainsContainerIP(final SWModel swModel) {
+		if (this.processChainsCIP == null) {
+			this.processChainsCIP = new ProcessChainsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.processChainsIP;
+		return this.processChainsCIP;
 	}
 
-	public ISRsIP getISRs(final SWModel swModel) {
-		if (this.isrsIP == null) {
-			this.isrsIP = new ISRsIP(this.adapterFactory, swModel);
+	public ISRsContainerIP getISRsContainerIP(final SWModel swModel) {
+		if (this.isrsCIP == null) {
+			this.isrsCIP = new ISRsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.isrsIP;
+		return this.isrsCIP;
 	}
 
-	public ActivationsIP getActivations(final SWModel swModel) {
-		if (this.activationsIP == null) {
-			this.activationsIP = new ActivationsIP(this.adapterFactory, swModel);
+	public ActivationsContainerIP getActivationsContainerIP(final SWModel swModel) {
+		if (this.activationsCIP == null) {
+			this.activationsCIP = new ActivationsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.activationsIP;
+		return this.activationsCIP;
 	}
 	
-	public TypeDefinitionsIP getTypes(final SWModel swModel) {
-		if (this.typesIP == null) {
-			this.typesIP = new TypeDefinitionsIP(this.adapterFactory, swModel);
+	public TypeDefinitionsContainerIP getTypeDefinitionsContainerIP(final SWModel swModel) {
+		if (this.typesCIP == null) {
+			this.typesCIP = new TypeDefinitionsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.typesIP;
+		return this.typesCIP;
 	}
 
-	public ChannelsIP getChannels(final SWModel swModel) {
-		if (this.channelsIP == null) {
-			this.channelsIP = new ChannelsIP(this.adapterFactory, swModel);
+	public ChannelsContainerIP getChannelsContainerIP(final SWModel swModel) {
+		if (this.channelsCIP == null) {
+			this.channelsCIP = new ChannelsContainerIP(this.adapterFactory, swModel);
 		}
-		return this.channelsIP;
+		return this.channelsCIP;
 	}
 
-	public CustomEntitiesIP getEntities(final SWModel swModel) {
-		if (this.entitiesIP == null) {
-			this.entitiesIP = new CustomEntitiesIP(this.adapterFactory, swModel);
+	public CustomEntitiesContainerIP getEntitiesContainerIP(final SWModel swModel) {
+		if (this.entitiesCIP == null) {
+			this.entitiesCIP = new CustomEntitiesContainerIP(this.adapterFactory, swModel);
 		}
-		return this.entitiesIP;
+		return this.entitiesCIP;
 	}
 
 	@Override
@@ -192,33 +192,33 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 		
 		// only display virtual folders if not empty
 		if (!swModel.getRunnables().isEmpty())
-			children.add(getRunnables(swModel));
+			children.add(getRunnablesContainerIP(swModel));
 		if (!swModel.getLabels().isEmpty())
-			children.add(getLabels(swModel));
+			children.add(getLabelsContainerIP(swModel));
 		if (!swModel.getTasks().isEmpty())
-			children.add(getTasks(swModel));
+			children.add(getTasksContainerIP(swModel));
 		if (!swModel.getIsrs().isEmpty())
-			children.add(getISRs(swModel));
+			children.add(getISRsContainerIP(swModel));
 		if (!swModel.getEvents().isEmpty())
-			children.add(getEvents(swModel));
+			children.add(getEventsContainerIP(swModel));
 		if (!swModel.getProcessChains().isEmpty())
-			children.add(getProcessChains(swModel));
+			children.add(getProcessChainsContainerIP(swModel));
 		if (!swModel.getProcessPrototypes().isEmpty())
-			children.add(getPrototypes(swModel));
+			children.add(getPrototypesContainerIP(swModel));
 		if (!swModel.getActivations().isEmpty())
-			children.add(getActivations(swModel));
+			children.add(getActivationsContainerIP(swModel));
 		if (!swModel.getSections().isEmpty())
-			children.add(getSections(swModel));
+			children.add(getSectionsContainerIP(swModel));
 		if (!swModel.getModes().isEmpty())
-			children.add(getModes(swModel));
+			children.add(getModesContainerIP(swModel));
 		if (!swModel.getModeLabels().isEmpty())
-			children.add(getModeLabels(swModel));
+			children.add(getModeLabelsContainerIP(swModel));
 		if (!swModel.getTypeDefinitions().isEmpty())
-			children.add(getTypes(swModel));
+			children.add(getTypeDefinitionsContainerIP(swModel));
 		if (!swModel.getChannels().isEmpty())
-			children.add(getChannels(swModel));
+			children.add(getChannelsContainerIP(swModel));
 		if (!swModel.getCustomEntities().isEmpty())
-			children.add(getEntities(swModel));
+			children.add(getEntitiesContainerIP(swModel));
 		return children;
 	}
 
@@ -236,66 +236,67 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__RUNNABLES
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__LABELS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODES
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODE_LABELS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TASKS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__EVENTS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__SECTIONS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_CHAINS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ISRS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ACTIVATIONS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CHANNELS
-				|| feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
+		int featureID = feature.getFeatureID();
+		if (featureID == AmaltheaPackage.SW_MODEL__RUNNABLES
+				|| featureID == AmaltheaPackage.SW_MODEL__LABELS
+				|| featureID == AmaltheaPackage.SW_MODEL__MODES
+				|| featureID == AmaltheaPackage.SW_MODEL__MODE_LABELS
+				|| featureID == AmaltheaPackage.SW_MODEL__TASKS
+				|| featureID == AmaltheaPackage.SW_MODEL__EVENTS
+				|| featureID == AmaltheaPackage.SW_MODEL__SECTIONS
+				|| featureID == AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES
+				|| featureID == AmaltheaPackage.SW_MODEL__PROCESS_CHAINS
+				|| featureID == AmaltheaPackage.SW_MODEL__ISRS
+				|| featureID == AmaltheaPackage.SW_MODEL__ACTIVATIONS
+				|| featureID == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS
+				|| featureID == AmaltheaPackage.SW_MODEL__CHANNELS
+				|| featureID == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__RUNNABLES) {
-							affected = Collections.singleton(getRunnables((SWModel) owner));
+						if (featureID == AmaltheaPackage.SW_MODEL__RUNNABLES) {
+							affected = Collections.singleton(getRunnablesContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__LABELS) {
-							affected = Collections.singleton(getLabels((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__LABELS) {
+							affected = Collections.singleton(getLabelsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODES) {
-							affected = Collections.singleton(getModes((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__MODES) {
+							affected = Collections.singleton(getModesContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__MODE_LABELS) {
-							affected = Collections.singleton(getModeLabels((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__MODE_LABELS) {
+							affected = Collections.singleton(getModeLabelsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TASKS) {
-							affected = Collections.singleton(getTasks((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__TASKS) {
+							affected = Collections.singleton(getTasksContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__EVENTS) {
-							affected = Collections.singleton(getEvents((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__EVENTS) {
+							affected = Collections.singleton(getEventsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__SECTIONS) {
-							affected = Collections.singleton(getSections((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__SECTIONS) {
+							affected = Collections.singleton(getSectionsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES) {
-							affected = Collections.singleton(getPrototypes((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES) {
+							affected = Collections.singleton(getPrototypesContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__PROCESS_CHAINS) {
-							affected = Collections.singleton(getProcessChains((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__PROCESS_CHAINS) {
+							affected = Collections.singleton(getProcessChainsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ISRS) {
-							affected = Collections.singleton(getISRs((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__ISRS) {
+							affected = Collections.singleton(getISRsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__ACTIVATIONS) {
-							affected = Collections.singleton(getActivations((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__ACTIVATIONS) {
+							affected = Collections.singleton(getActivationsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS) {
-							affected = Collections.singleton(getTypes((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS) {
+							affected = Collections.singleton(getTypeDefinitionsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CHANNELS) {
-							affected = Collections.singleton(getChannels((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__CHANNELS) {
+							affected = Collections.singleton(getChannelsContainerIP((SWModel) owner));
 						}
-						else if (feature.getFeatureID() == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
-							affected = Collections.singleton(getEntities((SWModel) owner));
+						else if (featureID == AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES) {
+							affected = Collections.singleton(getEntitiesContainerIP((SWModel) owner));
 						}
 					}
 					return affected;
@@ -307,47 +308,47 @@ public class ExtendedSWModelItemProvider extends SWModelItemProvider {
 
 	@Override
 	public void dispose() {
-		if (this.runnablesIP != null) {
-			this.runnablesIP.dispose();
+		if (this.runnablesCIP != null) {
+			this.runnablesCIP.dispose();
 		}
-		if (this.labelsIP != null) {
-			this.labelsIP.dispose();
+		if (this.labelsCIP != null) {
+			this.labelsCIP.dispose();
 		}
-		if (this.modesIP != null) {
-			this.modesIP.dispose();
+		if (this.modesCIP != null) {
+			this.modesCIP.dispose();
 		}
-		if (this.modeLabelsIP != null) {
-			this.modeLabelsIP.dispose();
+		if (this.modeLabelsCIP != null) {
+			this.modeLabelsCIP.dispose();
 		}
-		if (this.tasksIP != null) {
-			this.tasksIP.dispose();
+		if (this.tasksCIP != null) {
+			this.tasksCIP.dispose();
 		}
-		if (this.eventsIP != null) {
-			this.eventsIP.dispose();
+		if (this.eventsCIP != null) {
+			this.eventsCIP.dispose();
 		}
-		if (this.sectionsIP != null) {
-			this.sectionsIP.dispose();
+		if (this.sectionsCIP != null) {
+			this.sectionsCIP.dispose();
 		}
-		if (this.prototypesIP != null) {
-			this.prototypesIP.dispose();
+		if (this.prototypesCIP != null) {
+			this.prototypesCIP.dispose();
 		}
-		if (this.processChainsIP != null) {
-			this.processChainsIP.dispose();
+		if (this.processChainsCIP != null) {
+			this.processChainsCIP.dispose();
 		}
-		if (this.isrsIP != null) {
-			this.isrsIP.dispose();
+		if (this.isrsCIP != null) {
+			this.isrsCIP.dispose();
 		}
-		if (this.activationsIP != null) {
-			this.activationsIP.dispose();
+		if (this.activationsCIP != null) {
+			this.activationsCIP.dispose();
 		}
-		if (this.typesIP != null) {
-			this.typesIP.dispose();
+		if (this.typesCIP != null) {
+			this.typesCIP.dispose();
 		}
-		if (this.channelsIP != null) {
-			this.channelsIP.dispose();
+		if (this.channelsCIP != null) {
+			this.channelsCIP.dispose();
 		}
-		if (this.entitiesIP != null) {
-			this.entitiesIP.dispose();
+		if (this.entitiesCIP != null) {
+			this.entitiesCIP.dispose();
 		}
 		super.dispose();
 	}

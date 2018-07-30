@@ -24,9 +24,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.CommonElementsItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.CoreClassifiersIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.MemoryClassifiersIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.TagsIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.CoreClassifiersContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.MemoryClassifiersContainerIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.common.container.TagsContainerIP;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -38,33 +38,33 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvider {
 
-	protected CoreClassifiersIP coreClassifiersIP;
-	protected MemoryClassifiersIP memoryClassifiersIP;
-	protected TagsIP tagsIP;
+	protected CoreClassifiersContainerIP coreClassifiersCIP;
+	protected MemoryClassifiersContainerIP memoryClassifiersCIP;
+	protected TagsContainerIP tagsCIP;
 	
 	public ExtendedCommonElementsItemProvider(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-	public CoreClassifiersIP getCoreClassifiers(final CommonElements owner) {
-		if (this.coreClassifiersIP == null) {
-			this.coreClassifiersIP = new CoreClassifiersIP(this.adapterFactory, owner);
+	public CoreClassifiersContainerIP getCoreClassifiersContainerIP(final CommonElements owner) {
+		if (this.coreClassifiersCIP == null) {
+			this.coreClassifiersCIP = new CoreClassifiersContainerIP(this.adapterFactory, owner);
 		}
-		return this.coreClassifiersIP;
+		return this.coreClassifiersCIP;
 	}
 
-	public MemoryClassifiersIP getMemoryClassifiers(final CommonElements owner) {
-		if (this.memoryClassifiersIP == null) {
-			this.memoryClassifiersIP = new MemoryClassifiersIP(this.adapterFactory, owner);
+	public MemoryClassifiersContainerIP getMemoryClassifiersContainerIP(final CommonElements owner) {
+		if (this.memoryClassifiersCIP == null) {
+			this.memoryClassifiersCIP = new MemoryClassifiersContainerIP(this.adapterFactory, owner);
 		}
-		return this.memoryClassifiersIP;
+		return this.memoryClassifiersCIP;
 	}
 
-	public TagsIP getTags(final CommonElements owner) {
-		if (this.tagsIP == null) {
-			this.tagsIP = new TagsIP(this.adapterFactory, owner);
+	public TagsContainerIP getTagsContainerIP(final CommonElements owner) {
+		if (this.tagsCIP == null) {
+			this.tagsCIP = new TagsContainerIP(this.adapterFactory, owner);
 		}
-		return this.tagsIP;
+		return this.tagsCIP;
 	}
 
 	@Override
@@ -83,11 +83,11 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 
 		// only display virtual folders if not empty
 		if (!commonElements.getCoreClassifiers().isEmpty())
-			children.add(getCoreClassifiers(commonElements));
+			children.add(getCoreClassifiersContainerIP(commonElements));
 		if (!commonElements.getMemoryClassifiers().isEmpty())
-			children.add(getMemoryClassifiers(commonElements));
+			children.add(getMemoryClassifiersContainerIP(commonElements));
 		if (!commonElements.getTags().isEmpty())
-			children.add(getTags(commonElements));
+			children.add(getTagsContainerIP(commonElements));
 		return children;
 	}
 
@@ -114,13 +114,13 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
 						if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS) {
-							affected = Collections.singleton(getCoreClassifiers((CommonElements) owner));
+							affected = Collections.singleton(getCoreClassifiersContainerIP((CommonElements) owner));
 						}
 						else if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS) {
-							affected = Collections.singleton(getMemoryClassifiers((CommonElements) owner));
+							affected = Collections.singleton(getMemoryClassifiersContainerIP((CommonElements) owner));
 						}
 						else if (feature.getFeatureID() == AmaltheaPackage.COMMON_ELEMENTS__TAGS) {
-							affected = Collections.singleton(getTags((CommonElements) owner));
+							affected = Collections.singleton(getTagsContainerIP((CommonElements) owner));
 						}
 					}
 					return affected;
@@ -132,14 +132,14 @@ public class ExtendedCommonElementsItemProvider extends CommonElementsItemProvid
 
 	@Override
 	public void dispose() {
-		if (this.coreClassifiersIP != null) {
-			this.coreClassifiersIP.dispose();
+		if (this.coreClassifiersCIP != null) {
+			this.coreClassifiersCIP.dispose();
 		}
-		if (this.memoryClassifiersIP != null) {
-			this.memoryClassifiersIP.dispose();
+		if (this.memoryClassifiersCIP != null) {
+			this.memoryClassifiersCIP.dispose();
 		}
-		if (this.tagsIP != null) {
-			this.tagsIP.dispose();
+		if (this.tagsCIP != null) {
+			this.tagsCIP.dispose();
 		}
 		super.dispose();
 	}
