@@ -100,7 +100,7 @@ h3. Runnables and Services
 Both elements, runnables and services, are an abstraction of an executable entity. They are both represented by the __Runnable__ element and are distinguished by using the service attribute of type boolean.
 Instead of tasks, which are providing a context for the operating system, runnables and services are including the instructions to perform. They include an abstraction of these instructions using different algorithms, based on performance data.
 The difference between runnables and functions is based on their activation and type of calling. While the initial activation of a runnable can only be performed by a task or another runnable, services can only be activated by runnables or other services.
-Runnables and Services in the AMALTHEA model currently have no call parameters. __Remark: Under discussion for one of the next releases.__
+Runnables and Services in the AMALTHEA model have call parameters. 
 
 Based on these types of information, an additional analysis can be performed.
 The next picture is showing the call graph of task, runnable and services.

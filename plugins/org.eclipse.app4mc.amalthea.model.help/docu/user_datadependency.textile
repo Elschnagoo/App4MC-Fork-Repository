@@ -1,0 +1,20 @@
+
+h3. Data Dependencies
+
+
+h4. Overview
+
+With version 0.9.1 it is possible to specify potential data dependencies for written data. More specifically, it is now possible to annotate at write accesses what other data potentially have influenced the written data. A typical "influence" would be usage of data for computing a written value. As such data often comes from parameters when calling a runnable, it is now also possible to specify runnable parameters in Amalthea and their potential influence on written data.
+
+Semantics of the new attributes in Amalthea is described in detail below. In general, these data dependency extensions are considered as a way to explicitly model details that help for visualization or expert reviews. For use cases such as timing simulation the data dependency extensions are of no importance and should be ignored. 
+
+
+h4. Internal Dataflow
+
+In Embedded Systems, external dataflow is specified with reads and writes to labels, which are visible globally. This is sufficient for describing the inter-runnable communication and other use-cases like memory optimization. Nevertheless, for description of signal flows along an event chain, it is also necessary to specify the internal dataflow so that the connection between the read labels and the written labels in made. 
+Internal dataflow is specified as dependency of label writes to other labels, parameters of the runnable or event return values of called runnables.  With this information, the connection of reads to writes of label can be drawn.
+
+!../pictures/user_sw_data_dependency_view.png!
+
+The internal dependencies are typically generated through source code analysis. The analysis parses the code and determines all writes to labels. For each of those positions, a backward slicing is made on the abstract syntax tree to derive all reads that influence this write. This collection is then stored as dependency at the write access.  
+Based upon this data a developer can now track a signal flow along from the sensor over several other runnables to the actuator. Existing event-chains can be automatically validated to contain a valid flow by checking if the segments containing a read label event and write label event within the same runnable are connected by an internal dependency. Without internal dependencies, this would introduce a huge manual effort. Afterwards the event-chains can be simulated and their end-to-end latencies determined with the usual tools. 
