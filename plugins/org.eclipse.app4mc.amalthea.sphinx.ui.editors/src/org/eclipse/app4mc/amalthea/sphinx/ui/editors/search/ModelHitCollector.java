@@ -61,36 +61,40 @@ public class ModelHitCollector implements ISearchQuery {
 	public IStatus run(final IProgressMonitor monitor) throws OperationCanceledException {
 		this.searchResult.removeAll();
 		
-		//TODO:  Decide if this can still be present with hidden mechanism (d: as prefix)?
-		if(query!=null && query.startsWith("d:")) {
-			
-			//Previously used element search mechanism.
-		String	modQuery=query.substring(2);
-			
-			final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(this.model, true);
-			while (iterator.hasNext()) {
-				final EObject element = iterator.next();
-				final EStructuralFeature feature = element.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
-				if (null != feature) {
-					final String name = (String) element.eGet(feature);
-					if (null != name && name.toLowerCase().indexOf( modQuery.toLowerCase()) >= 0) {
-						this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+		if (query != null) {
+			if(query.startsWith("i:")) {
+				// New (experimental) search based on Amalthea index (activate with i: as prefix)
+				String modQuery = query.substring(2);
+				
+				// ***** Search with Amalthea index
+				
+				// TODO open customized search dialog
+				// case sensitive, regular expression, file scope vs. folder scope, restrict types, ...
+				
+				Pattern pattern = Pattern.compile("(?i).*" + Pattern.quote(modQuery) + ".*");
+				
+				Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
+				
+				for (INamed element : resultSet) {
+					this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+				}
+			} else {
+				// ***** Previously used element search mechanism (default)
+				
+				final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(this.model, true);
+				while (iterator.hasNext()) {
+					final EObject element = iterator.next();
+					final EStructuralFeature feature = element.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
+					if (null != feature) {
+						final String name = (String) element.eGet(feature);
+						if (null != name && name.toLowerCase().indexOf( query.toLowerCase()) >= 0) {
+							this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+						}
 					}
 				}
 			}
-		} else {
-			//optimized search with Amalthea Index
-			Pattern pattern=Pattern.compile("(?i).*"+Pattern.quote(query)+".*");
-			
-			Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
-			
-			for (INamed element : resultSet) {
-				//TODO: As the search is based on the opened file in editor. Should the search results be restricted for the current file ? 
-				this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
-			}
 		}
 		
-	
 		return Status.OK_STATUS;
 	}
 
