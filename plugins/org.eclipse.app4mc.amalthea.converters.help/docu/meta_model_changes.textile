@@ -561,3 +561,17 @@ table(classic){margin-left:40px}.
 |executingCore|Core|SchdulerAllocation|MappingModel|variable name is changed from executingCore to executingPU. Type is changed from Core to ProcessingUnit|
 |coreAffinity|Core|TaskAllocation|MappingModel|variable name is changed from coreAffinity to affinity. Type is changed from Core to ProcessingUnit|
 |items, runnableItems, computationItems|RunnableInstructions|Group, Runnable, Scheduler|SWModel, OSModel|Type is changed from RunnableInstructions to ExecutionNeed|
+
+h3. Version APP4MC 0.9.0 to APP4MC 0.9.1
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.9.0)_* | *_AMALTHEA Namespace  (version App4MC 0.9.1)_* |
+|http://app4mc.eclipse.org/amalthea/0.9.0 |http://app4mc.eclipse.org/amalthea/0.9.1 |
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.9.0)_* | *_Model Migration behavior_* |
+|TimeObject|Equivalent element of this class in 0.9.1 is Time |
