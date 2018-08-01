@@ -133,6 +133,14 @@
     categories="HardwareModel"/>
 
   <constraints
+    id="UndefinedHardware"
+    label="Undefined Hardware "
+    description="Checks for missing definitions"
+    severity="Warning"
+    message="Hardware model: {0}"
+    categories="HardwareModel"/>
+
+  <constraints
     id="DataDependency"
     label="Data Dependency Checks"
     description="Checks the correctness of the &quot;depends on&quot; references"

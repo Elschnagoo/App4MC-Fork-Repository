@@ -18,10 +18,13 @@ package org.eclipse.app4mc.amalthea.validation.checks.impl;
 import java.util.Collections;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Cache;
+import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.Memory;
@@ -91,19 +94,18 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 		
 		// ***** HwConnections must be linked to HwPorts of the same Interface
 
-		if (port1.getPortInterface() != port2.getPortInterface()
+		if (!connection.isInternal() // internal connection -> no error
 			&& port1.getPortInterface() != PortInterface._UNDEFINED_ // undefined -> no error
-			&& port2.getPortInterface() != PortInterface._UNDEFINED_) {
+			&& port2.getPortInterface() != PortInterface._UNDEFINED_
+			&& port1.getPortInterface() != port2.getPortInterface()) {
 			this.issueCreator.issue(connection, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
 					connection.getName(), "Port interfaces do not match");
 		}
 
 		// ***** HwConnections always need one Initiator and one Responder HwPort
 
-		if ((port1.getPortType() != PortType.INITIATOR || port2.getPortType() != PortType.RESPONDER)
-			&& (port1.getPortType() != PortType.RESPONDER || port2.getPortType() != PortType.INITIATOR)
-			&& port1.getPortType() != PortType._UNDEFINED_ // undefined -> no error
-			&& port2.getPortType() != PortType._UNDEFINED_) {
+		if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.INITIATOR)
+			|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.RESPONDER)) {
 			this.issueCreator.issue(connection, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
 					connection.getName(), "Port types do not fulfill initiator -> responder");
 		}
@@ -229,4 +231,79 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 		}
 	}
 
+	/**
+	 * Checks the correctness of HwPort enumerations
+	 * 
+	 * <ul>
+	 * <li>PortType must be set</li>
+	 * <li>PortInterface must be set</li>
+	 * </ul>
+	 */
+	public void checkPortForUndefined(HwPort port) {
+		
+		// ***** PortType must be set
+		
+		if (port.getPortType() == PortType._UNDEFINED_) {
+			this.issueCreator.issue(port, AmaltheaPackage.eINSTANCE.getHwPort_PortType(),
+					"Port \"" + port.getName() + "\" - undefined port type");
+		}
+
+		// ***** PortInterface must be set
+
+		if (port.getPortInterface() == PortInterface._UNDEFINED_) {
+			this.issueCreator.issue(port, AmaltheaPackage.eINSTANCE.getHwPort_PortInterface(),
+					"Port \"" + port.getName() + "\" - undefined port interface");
+		}
+	}
+
+	/**
+	 * Checks the correctness of HwModule definitions
+	 * 
+	 * <ul>
+	 * <li>Memory definition must be set</li>
+	 * <li>ProcessingUnit definition must be set</li>
+	 * <li>ConnectionHandler definition must be set</li>
+	 * <li>Cache definition must be set</li>
+	 * </ul>
+	 */
+	public void checkModuleForMissingDefinition(HwModule module) {
+
+		// ***** Memory definition must be set
+		
+		if (module instanceof Memory) {
+			if (((Memory) module).getDefinition() == null) {
+				this.issueCreator.issue(module, AmaltheaPackage.eINSTANCE.getMemory_Definition(),
+						"Memory \"" + module.getName() + "\" - missing definition");
+			}	
+		}
+		
+		// ***** ProcessingUnit definition must be set
+		
+		if (module instanceof ProcessingUnit) {
+			if (((ProcessingUnit) module).getDefinition() == null) {
+				this.issueCreator.issue(module, AmaltheaPackage.eINSTANCE.getProcessingUnit_Definition(),
+						"ProcessingUnit \"" + module.getName() + "\" - missing definition");
+			}	
+		}
+		
+		// ***** ConnectionHandler definition must be set
+		
+		if (module instanceof ConnectionHandler) {
+			if (((ConnectionHandler) module).getDefinition() == null) {
+				this.issueCreator.issue(module, AmaltheaPackage.eINSTANCE.getConnectionHandler_Definition(),
+						"ConnectionHandler \"" + module.getName() + "\" - missing definition");
+			}	
+		}
+		
+		// ***** Cache definition must be set
+		
+		if (module instanceof Cache) {
+			if (((Cache) module).getDefinition() == null) {
+				this.issueCreator.issue(module, AmaltheaPackage.eINSTANCE.getCache_Definition(),
+						"Cache \"" + module.getName() + "\" - missing definition");
+			}	
+		}
+	}
+		
 }
+

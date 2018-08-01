@@ -18,6 +18,7 @@ package org.eclipse.app4mc.amalthea.validation.checks;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.app4mc.amalthea.validation.checks.impl.HardwareModelCheckValidatorImpl;
@@ -68,6 +69,16 @@ public class HardwareModelCheckValidator extends AbstractCheckValidator implemen
 	@Check(constraint = "HardwareAccessPath", categories = { "HardwareModel" })
 	public void checkAccessPath(final HwAccessPath path) {
 		this.hardwareModelImpl.checkAccessPath(path);
+	}
+	
+	@Check(constraint = "UndefinedHardware", categories = { "HardwareModel" })
+	public void checkPortForUndefined(final HwPort port) {
+		this.hardwareModelImpl.checkPortForUndefined(port);
+	}
+	
+	@Check(constraint = "UndefinedHardware", categories = { "HardwareModel" })
+	public void checkModuleForMissingDefinition(final HwModule module) {
+		this.hardwareModelImpl.checkModuleForMissingDefinition(module);
 	}
 
 }
