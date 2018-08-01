@@ -37,16 +37,6 @@ public class WorkflowModule extends AbstractScriptModule {
 
 	}
 
-	/**
-	 * Adds a Log4J logger to the output of the current used output of the EASE script engine.
-	 * 
-	 * @param loggerName
-	 *            {@link String} to be added
-	 */
-	@WrapToScript
-	public void addLoggerToConsole(String loggerName) {
-		addLoggerToConsole(loggerName, "%d{ISO8601} %-5p [%c]: %m%n");
-	}
 
 	/**
 	 * Adds a Log4J logger to the output of the current used output of the EASE script engine.
@@ -57,7 +47,7 @@ public class WorkflowModule extends AbstractScriptModule {
 	 *            {@link String} to be used, see {@link PatternLayout} for more details
 	 */
 	@WrapToScript
-	public void addLoggerToConsole(String loggerName, String pattern) {
+	public void addLoggerToConsole_withParams(String loggerName, String pattern) {
 		Logger rootLogger = Logger.getRootLogger();
 		Logger logger = rootLogger.getLoggerRepository().getLogger(loggerName);
 		@SuppressWarnings("unchecked")
@@ -75,6 +65,18 @@ public class WorkflowModule extends AbstractScriptModule {
 			logger.addAppender(consoleAppender);
 			logger.setLevel(Level.INFO);
 		}
+	}
+	
+
+	/**
+	 * Adds a Log4J logger to the output of the current used output of the EASE script engine.
+	 * 
+	 * @param loggerName
+	 *            {@link String} to be added
+	 */
+	@WrapToScript
+	public void addLoggerToConsole(String loggerName) {
+		addLoggerToConsole_withParams(loggerName, "%d{ISO8601} %-5p [%c]: %m%n");
 	}
 
 	/**
