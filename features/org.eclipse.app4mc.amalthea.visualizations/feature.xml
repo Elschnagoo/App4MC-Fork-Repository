@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.app4mc.amalthea.visualizations"
-      label="Amalthea Visualizations"
+      label="APP4MC AMALTHEA Visualizations"
       version="0.9.1.qualifier"
       provider-name="Eclipse APP4MC"
       license-feature="org.eclipse.license"
