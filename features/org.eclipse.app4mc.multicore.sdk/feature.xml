@@ -60,10 +60,6 @@ All rights reserved.
          install-size="0"
          version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.app4mc.multicore.examples.installer.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
+  
 
 </feature>
