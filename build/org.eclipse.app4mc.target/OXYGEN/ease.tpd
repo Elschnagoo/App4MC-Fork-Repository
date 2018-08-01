@@ -1,0 +1,11 @@
+target "ease"
+
+location "http://download.eclipse.org/ease/update/release" {
+	org.eclipse.ease.feature.feature.group
+	//org.eclipse.ease.javascript.feature.feature.group
+	org.eclipse.ease.lang.javascript.feature.feature.group
+	org.eclipse.ease.lang.jvm.feature.feature.group
+	org.eclipse.ease.modules.feature.feature.group
+	org.eclipse.ease.ui.feature.feature.group
+
+}

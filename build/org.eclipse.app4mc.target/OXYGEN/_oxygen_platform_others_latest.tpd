@@ -1,0 +1,28 @@
+target "Oxygen-Platform"
+
+include "oxygen_platform.tpd"
+
+include "oxygen_platform_addon.tpd"
+
+include "oxygen_orbit.tpd"
+
+include "webtools.tpd"
+
+include "ease.tpd"
+
+include "efx.tpd"
+
+include "emfcompare.tpd"
+
+include "xtext.tpd"
+
+include "sirius.tpd"
+
+include "cbi.tpd"
+
+//include "emf.tpd"
+
+//include "acceleo.tpd"
+
+
+

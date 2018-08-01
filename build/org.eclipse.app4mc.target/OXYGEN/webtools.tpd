@@ -1,0 +1,23 @@
+target "webtools"
+
+location "http://download.eclipse.org/webtools/downloads/drops/R3.9.5/R-3.9.5-20180409100740/repository" {
+
+	org.eclipse.wst.jsdt.chromium.debug.feature.feature.group
+	org.eclipse.wst.jsdt.feature.feature.group
+	org.eclipse.jst.server_ui.feature.feature.group
+	org.eclipse.jst.server_core.feature.feature.group
+	org.eclipse.jst.server_adapters.feature.feature.group
+	org.eclipse.jst.server_adapters.ext.feature.feature.group
+	org.eclipse.jst.common.fproj.enablement.jdt.feature.group
+	org.eclipse.wst.server_ui.feature.feature.group
+	org.eclipse.wst.server_core.feature.feature.group
+	org.eclipse.wst.server_adapters.feature.feature.group
+	org.eclipse.wst.common_ui.feature.feature.group
+	org.eclipse.wst.common_core.feature.feature.group
+	org.eclipse.wst.common.fproj.feature.group
+
+}
+location "http://download.eclipse.org/releases/oxygen/201706021000" {
+	org.eclipse.wst.jsdt.nashorn.extension
+
+}

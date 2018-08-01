@@ -33,10 +33,10 @@
 							<artifacts>
 								<artifact>
 									<!--<file>Neon-4.6.3.target</file>-->
-									<file>dev.target</file>
+									<file>./OXYGEN/_gen/_oxygen_platform_others_latest.target</file>
 									
 									<type>target</type>
-									<classifier>dev</classifier>
+									<classifier>_oxygen_platform_others_latest</classifier>
 								</artifact>
 							</artifacts>
 						</configuration>
