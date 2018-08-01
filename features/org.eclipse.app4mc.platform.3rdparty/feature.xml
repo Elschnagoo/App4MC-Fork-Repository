@@ -36,7 +36,6 @@ All rights reserved.
       <import plugin="org.eclipse.emf.mwe2.runtime"/>
       <import plugin="org.eclipse.equinox.common"/>
       <import plugin="org.eclipse.xtext"/>
-      <import plugin="org.eclipse.xtext.common.types"/>
       <import plugin="org.apache.commons.cli"/>
       <import plugin="com.google.inject"/>
       <import plugin="org.eclipse.swt"/>
@@ -83,6 +82,14 @@ All rights reserved.
       <import plugin="org.jaxen" match="greaterOrEqual"/>
       <import plugin="org.apache.batik.util.gui"/>
       <import plugin="org.apache.xalan"/>
+      <import plugin="org.eclipse.ecf.osgi.services.distribution"/>
+      <import plugin="org.eclipse.ecf.osgi.services.remoteserviceadmin"/>
+      <import plugin="org.eclipse.ecf.osgi.services.remoteserviceadmin.proxy"/>
+      <import plugin="org.eclipse.osgi.services.remoteserviceadmin"/>
+      <import plugin="org.eclipse.osgi.services.source"/>
+      <import plugin="org.eclipse.ecf.provider.r_osgi"/>
+      <import plugin="org.eclipse.fx.osgi.util"/>
+      <import plugin="org.eclipse.osgi.util"/>
    </requires>
 
    <plugin
@@ -300,15 +307,36 @@ All rights reserved.
          version="0.0.0"
          unpack="false"/>
 
-  <!-- <plugin
-         id="org.slf4j.apis.log4j"
+   <plugin
+         id="com.google.gson"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>-->
+         unpack="false"/>
+
+   <plugin
+         id="com.google.protobuf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.objectweb.asm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.ds"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.osgi.services"
          download-size="0"
          install-size="0"
          version="0.0.0"
