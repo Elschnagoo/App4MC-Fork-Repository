@@ -15,11 +15,12 @@
 
 package app4mc.example.tool.java;
 
-import java.util.List;
+import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
@@ -29,7 +30,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.util.SearchElementsUtility;
 
 public class EnumExample {
 
@@ -75,7 +75,7 @@ public class EnumExample {
 		
 		modeLabel.setInitialValue(mode.getLiterals().get(0));
 
-		List<Mode> modeList = SearchElementsUtility.getElementsBasedOnName(model, "Shape", Mode.class);
+		Set<? extends Mode> modeSet = AmaltheaIndex.getElements(model, "Shape", Mode.class);
 		
 		
 //		if (modeLabel.getInitialValue() == sw.getModeLiteral("Shape::Line"))
