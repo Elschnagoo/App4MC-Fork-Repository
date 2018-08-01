@@ -100,7 +100,8 @@ h3. Runnables and Services
 Both elements, runnables and services, are an abstraction of an executable entity. They are both represented by the __Runnable__ element and are distinguished by using the service attribute of type boolean.
 Instead of tasks, which are providing a context for the operating system, runnables and services are including the instructions to perform. They include an abstraction of these instructions using different algorithms, based on performance data.
 The difference between runnables and functions is based on their activation and type of calling. While the initial activation of a runnable can only be performed by a task or another runnable, services can only be activated by runnables or other services.
-Runnables and Services in the AMALTHEA model have call parameters. 
+
+Runnables and Services in the AMALTHEA model have call parameters. It is possible to specify the arguments of a service call and potential data dependencies.
 
 Based on these types of information, an additional analysis can be performed.
 The next picture is showing the call graph of task, runnable and services.
@@ -442,4 +443,33 @@ Below are properties of Section element:
 With this type of information available, the complexity of mapping software components to memories can be reduced. The next picture gives an overview about the general idea of the mapping with Sections.
 
 !../pictures/model_section_memory.png!
+
+
+h3. Data Dependencies and Runnable Parameters
+
+h4. Overview
+
+The purpose of following model elements is to describe a high level data flow. Parameters of runnables (or services) and specific call arguments allow to model a behavior that depends on the call tree but the detailed computation and the control flow within a runnable are not taken into account. Therefore only "potential" influences are modeled. The following picture shows this data flow with dashed lines.
+
+!../pictures/model_sw_dataflow_overview.png!
+
+h4. Elements with data dependency
+
+The data flow is specified with "depends on" references. Elements that can specify a dependency are:
+
+* __**LabelAccess**__ of type "WRITE"
+* __**CallArgument**__ that refers to an "IN" (or "INOUT") parameter
+* __**RunnableParameter**__ with direction "OUT" (or "INOUT")
+
+!../pictures/model_sw_depends_on.png!
+
+h4. Data Dependency
+
+A data dependency defines the elements that can influence a value that is written or transferred. Possible origins are:
+
+* __**Label**__
+* __**RunnableParameter**__ with direction "IN" (or "INOUT")
+* __**CallArgument**__ that refers to an "OUT" (or "INOUT") parameter
+
+!../pictures/model_sw_data_dependency.png!
 
