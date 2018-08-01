@@ -12,7 +12,7 @@ The Requirements are used to specify quality requirements for the dynamic archit
 Requirements are divided into the following types depending on the entity type for which the requirement is specified:
 * Architecture Requirements for components
 * Process Chain Requirements for process chains
-* Process Requirements for tasks and isrs
+* Process Requirements for tasks and ISRs
 * Runnable Requirements for runnables
 
 The Severity attribute is used to describe the quality impact if the requirement is not fulfilled.
@@ -27,52 +27,52 @@ Depending on the metric unit, the following Limits can be distinguished:
 !(scale)../pictures/model_constraints_requirements.png!
 
 Time Metric groups all metrics that describe time intervals of an individual process instance or between two succeeding process instances and are defined as follows:
-* __ActivateToActivate__: This metric indicates the distance between two successive activations of a task or isr. The __ActivateToActivate__ metric of process instance n quantifies the time between the activation moment of process instance n and that of instance n+1. !../pictures/model_constraints_metric_activatetoactivate.png!
-* __CoreExecutionTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on a specific processing unit.
-* __EndToEnd__: This metric indicates the time interval between two successive ends of a process. The __EndToEnd__ metric of process instance n quantifies the time between the termination moment of process instance n and that of instance n+1. !../pictures/model_constraints_metric_endtoend.png!
-* __EndToStart__: This metric indicates the time interval between two successive process instances. The __EndToStart__ metric of process instance n quantifies the time between the termination moment of process instance n and the start moment of instance n+1. !../pictures/model_constraints_metric_endtostart.png!
-* __GrossExecutionTime__: This metric indicates the time interval between the start moment and the termination moment of a process instance. !../pictures/model_constraints_metric_grossexecutiontime.png!
-* __Lateness__: This metric indicates whether a process instance misses its deadline. It quantifies the amount of time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa. !../pictures/model_constraints_metric_lateness.png!
-* __MemoryAccessTime__: This metric quantifies the amount of time that is required by a process for transferring data from or to the memory.
-* __NetExecutionTime__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it quantifies the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered. !../pictures/model_constraints_metric_netexecutiontime.png!
-* __OsOverhead__: This metric indicates the amount of execution time that is consumed by functions that are part of the operating system.
-* __ParkingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for the access of a resource.
-* __PollingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination actively waiting for the access of a resource. !../pictures/model_constraints_metric_pollingtime.png!
-* __ReadyTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is not actively executed on any processing unit. !../pictures/model_constraints_metric_readytime.png!
-* __ResponseTime__: The response time of a task or isr instance is defined as the time between the moment of its activation and its termination. Thus, it measures the whole life cycle of a process instance. !../pictures/model_constraints_metric_responsetime.png!
-* __RunningTime__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on any processing unit. !../pictures/model_constraints_metric_runningtime.png!
-* __StartDelay__: This metric quantifies the delay of the start time of a process instance which is defined as the time interval between the activation moment of this process instance and its start moment. !../pictures/model_constraints_metric_startdelay.png!
-* __StartToStart__: This metric indicates the time interval between two successive starts of a process. The __StartToStart__ metric of process instance n quantifies the time between the start moment of process instance n and that of instance n+1. !../pictures/model_constraints_metric_starttostart.png!
-* __WaitingTime__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for an OS event. !../pictures/model_constraints_metric_waitingtime.png!
+* __**ActivateToActivate**__: This metric indicates the distance between two successive activations of a task or isr. The __ActivateToActivate__ metric of process instance n quantifies the time between the activation moment of process instance n and that of instance n+1.<br/> !../pictures/model_constraints_metric_activatetoactivate.png!
+* __**CoreExecutionTime**__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on a specific processing unit.
+* __**EndToEnd**__: This metric indicates the time interval between two successive ends of a process. The __EndToEnd__ metric of process instance n quantifies the time between the termination moment of process instance n and that of instance n+1.<br/> !../pictures/model_constraints_metric_endtoend.png!
+* __**EndToStart**__: This metric indicates the time interval between two successive process instances. The __EndToStart__ metric of process instance n quantifies the time between the termination moment of process instance n and the start moment of instance n+1.<br/> !../pictures/model_constraints_metric_endtostart.png!
+* __**GrossExecutionTime**__: This metric indicates the time interval between the start moment and the termination moment of a process instance.<br/> !../pictures/model_constraints_metric_grossexecutiontime.png!
+* __**Lateness**__: This metric indicates whether a process instance misses its deadline. It quantifies the amount of time between the termination moment of the process instance and its deadline. Thus, the resulting lateness is negative and indicates that no deadline miss occurred if the termination moment of the process instance is before the deadline and vice versa.<br/> !../pictures/model_constraints_metric_lateness.png!
+* __**MemoryAccessTime**__: This metric quantifies the amount of time that is required by a process for transferring data from or to the memory.
+* __**NetExecutionTime**__: The net execution time indicates the actual execution time of a process instance, i.e., the time it is occupying a processing unit. Thus, it quantifies the time from the start moment of a process instance to its termination moment excluding the time the process instance is interfered.<br/> !../pictures/model_constraints_metric_netexecutiontime.png!
+* __**OsOverhead**__: This metric indicates the amount of execution time that is consumed by functions that are part of the operating system.
+* __**ParkingTime**__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for the access of a resource.
+* __**PollingTime**__: This metric quantifies the amount of time that a process instance spends between its start and termination actively waiting for the access of a resource.<br/> !../pictures/model_constraints_metric_pollingtime.png!
+* __**ReadyTime**__: This metric quantifies the amount of time of a process instance between its start and termination in which it is not actively executed on any processing unit.<br/> !../pictures/model_constraints_metric_readytime.png!
+* __**ResponseTime**__: The response time of a task or ISR instance is defined as the time between the moment of its activation and its termination. Thus, it measures the whole life cycle of a process instance.<br/> !../pictures/model_constraints_metric_responsetime.png!
+* __**RunningTime**__: This metric quantifies the amount of time of a process instance between its start and termination in which it is actively executed on any processing unit.<br/> !../pictures/model_constraints_metric_runningtime.png!
+* __**StartDelay**__: This metric quantifies the delay of the start time of a process instance which is defined as the time interval between the activation moment of this process instance and its start moment.<br/> !../pictures/model_constraints_metric_startdelay.png!
+* __**StartToStart**__: This metric indicates the time interval between two successive starts of a process. The __StartToStart__ metric of process instance n quantifies the time between the start moment of process instance n and that of instance n+1.<br/> !../pictures/model_constraints_metric_starttostart.png!
+* __**WaitingTime**__: This metric quantifies the amount of time that a process instance spends between its start and termination passively waiting for an OS event.<br/> !../pictures/model_constraints_metric_waitingtime.png!
 
 Count Metrics are metrics that describe absolutely how often system characteristics occur and are defined as follows:
-* __Activations__: This metric quantifies the number of times a process is activated.
-* __BoundedMigrations__: This metric quantifies the number of times a process instance starts executing on a processing unit that is different to the processing unit on which the previous process instance terminated.
-* __CacheHit__: This metric quantifies the amount of times that data requested by a process is found in the cache memory.
-* __CacheMiss__: This metric quantifies the amount of times that data requested by a process is not stored in the cache memory and has to be fetched from somewhere else.
-* __FullMigrations__: This metric quantifies the number of times a process instance migrates from one processing unit to another triggered by a schedule point.
-* __MtaLimitExceeding__: This metric quantifies the number of times a process is not activated during runtime because this would violate the maximum number of concurrently activated processes (MTA).
-* __Preemptions__: This metric quantifies the number of times a process is preempted by another task or ISR.
+* __**Activations**__: This metric quantifies the number of times a process is activated.
+* __**BoundedMigrations**__: This metric quantifies the number of times a process instance starts executing on a processing unit that is different to the processing unit on which the previous process instance terminated.
+* __**CacheHit**__: This metric quantifies the amount of times that data requested by a process is found in the cache memory.
+* __**CacheMiss**__: This metric quantifies the amount of times that data requested by a process is not stored in the cache memory and has to be fetched from somewhere else.
+* __**FullMigrations**__: This metric quantifies the number of times a process instance migrates from one processing unit to another triggered by a schedule point.
+* __**MtaLimitExceeding**__: This metric quantifies the number of times a process is not activated during runtime because this would violate the maximum number of concurrently activated processes (MTA).
+* __**Preemptions**__: This metric quantifies the number of times a process is preempted by another task or ISR.
 
 Frequency Metric groups all metrics that describe the rate in which system characteristics occur and are defined as follows:
-* __CacheHitFrequency__: This metric quantifies how often per unit of time data requested by a process is found in the cache memory.
-* __CacheMissFrequency__: This metric quantifies how often per unit of time data requested by a process is not found in the cache memory.
+* __**CacheHitFrequency**__: This metric quantifies how often per unit of time data requested by a process is found in the cache memory.
+* __**CacheMissFrequency**__: This metric quantifies how often per unit of time data requested by a process is not found in the cache memory.
 
 CPU Percentage Metric groups all metrics that describe a ratio between the amount of time a processing unit is in a certain state for a specific process and the maximum capacity of the considered processing unit and are defined as follows:
-* __CPUBuffering__: This metric quantifies the ratio between the amount of time a processing unit is in the state buffering for a specific process and the maximum capacity of the considered processing unit.
-* __CPULoad__: This metric quantifies the ratio of the load of a processing unit caused by a process and the maximum capacity of the considered processing unit.
-* __CPUParking__: This metric quantifies the ratio between the amount of time a processing unit is in the state parking for a specific process and the maximum capacity of the considered processing unit.
-* __CPUPolling__: This metric quantifies the ratio between the amount of time a processing unit is in the state polling for a specific process and the maximum capacity of the considered processing unit. 
-* __CPUReady__: This metric quantifies the ratio between the amount of time a processing unit is in the state ready for a specific process and the maximum capacity of the considered processing unit.
-* __CPURunning__: This metric quantifies the ratio between the amount of time a processing unit is in the state running for a specific process and the maximum capacity of the considered processing unit.
-* __CPUWaiting__: This metric quantifies the ratio between the amount of time a processing unit is in the state waiting for a specific process and the maximum capacity of the considered processing unit.
+* __**CPUBuffering**__: This metric quantifies the ratio between the amount of time a processing unit is in the state buffering for a specific process and the maximum capacity of the considered processing unit.
+* __**CPULoad**__: This metric quantifies the ratio of the load of a processing unit caused by a process and the maximum capacity of the considered processing unit.
+* __**CPUParking**__: This metric quantifies the ratio between the amount of time a processing unit is in the state parking for a specific process and the maximum capacity of the considered processing unit.
+* __**CPUPolling**__: This metric quantifies the ratio between the amount of time a processing unit is in the state polling for a specific process and the maximum capacity of the considered processing unit. 
+* __**CPUReady**__: This metric quantifies the ratio between the amount of time a processing unit is in the state ready for a specific process and the maximum capacity of the considered processing unit.
+* __**CPURunning**__: This metric quantifies the ratio between the amount of time a processing unit is in the state running for a specific process and the maximum capacity of the considered processing unit.
+* __**CPUWaiting**__: This metric quantifies the ratio between the amount of time a processing unit is in the state waiting for a specific process and the maximum capacity of the considered processing unit.
 
 Percentage Metric groups all metrics that describe a relationship between two system characteristics and are defined as follows: 
-* __CacheHitRatio__: This metric quantifies how often data requested by a process is found in the cache memory in comparison to how often it is not found.
-* __CacheMissRatio__: This metric quantifies how often data requested by a process is not found in the cache memory in comparison to how often it is found.
-* __NormalizedLateness__: This metric quantifies the lateness of a process instance in comparison to the process's maximum response time which is defined by its deadline.
-* __NormalizedResponseTime__: This metric quantifies the response time of a process instance in comparison to the process's maximum response time which is defined by its deadline.
-* __OsOverheadRelative__: This metric quantifies the amount of execution time that is consumed by functions that are part of the operating system in comparison to net execution time of the process in whose context the functions are called.
+* __**CacheHitRatio**__: This metric quantifies how often data requested by a process is found in the cache memory in comparison to how often it is not found.
+* __**CacheMissRatio**__: This metric quantifies how often data requested by a process is not found in the cache memory in comparison to how often it is found.
+* __**NormalizedLateness**__: This metric quantifies the lateness of a process instance in comparison to the process's maximum response time which is defined by its deadline.
+* __**NormalizedResponseTime**__: This metric quantifies the response time of a process instance in comparison to the process's maximum response time which is defined by its deadline.
+* __**OsOverheadRelative**__: This metric quantifies the amount of execution time that is consumed by functions that are part of the operating system in comparison to net execution time of the process in whose context the functions are called.
 
 An example for a requirement is the deadline for a task. The deadline is specified by an upper limit for the response time of the respective task.
 
@@ -213,11 +213,11 @@ h4. Delay Constraint
 A Delay Constraint imposes limits between the occurrences of an event called source and an event called target.
 Every instance of source must be matched by an instance of target within a time window starting at lower and ending at upper time units relative to the source occurrence.
 A __MappingType__ defines whether there is a strong ( __OneToOne__ ), neutral ( __Reaction__ ), or weak ( __UniqueReaction__ ) delay relation between the events:
-* __OneToOne__: According to page 18f of "TIMMO-2-USE Deliverable D11 'Language Syntax, Semantics, Metamodel V2'":https://itea3.org/project/workpackage/document/download/850/09033-TIMMO-2-USE-WP-2-D11Languagesyntax,semantics,metamodelV2, a constraint with this mapping type is satisfied if and only if __source__ and __target__ have the same number of occurrences and for each index __i__, if there is an __i__-th occurrence of source at time __x__ there is also an __i__-th occurrence of __target__ at time __y__ such that __lower__ &le; __y__ – __x__ &le; __upper__. This means that the source event and the target event have the same number of occurrences and no stray target occurrences are accepted. !../pictures/model_constraints_delayconstraint_onetoone.png!
+* __**OneToOne**__: According to page 18f of "TIMMO-2-USE Deliverable D11 'Language Syntax, Semantics, Metamodel V2'":https://itea3.org/project/workpackage/document/download/850/09033-TIMMO-2-USE-WP-2-D11Languagesyntax,semantics,metamodelV2, a constraint with this mapping type is satisfied if and only if __source__ and __target__ have the same number of occurrences and for each index __i__, if there is an __i__-th occurrence of source at time __x__ there is also an __i__-th occurrence of __target__ at time __y__ such that __lower__ &le; __y__ – __x__ &le; __upper__. This means that the source event and the target event have the same number of occurrences and no stray target occurrences are accepted. !../pictures/model_constraints_delayconstraint_onetoone.png!
 
-* __Reaction__: According to page 17f of "TIMMO-2-USE Deliverable D11 'Language Syntax, Semantics, Metamodel V2'":https://itea3.org/project/workpackage/document/download/850/09033-TIMMO-2-USE-WP-2-D11Languagesyntax,semantics,metamodelV2, a constraint with this mapping type is satisfied if and only if for each occurrence __x__ of __source__, there is an occurrence __y__ of __target__ such that __lower__ &le; __y__ – __x__ &le; __upper__. This means that multiple source event occurrences may be mapped to the same target event and stray target event occurrences are ignored. !../pictures/model_constraints_delayconstraint_reaction.png!
+* __**Reaction**__: According to page 17f of "TIMMO-2-USE Deliverable D11 'Language Syntax, Semantics, Metamodel V2'":https://itea3.org/project/workpackage/document/download/850/09033-TIMMO-2-USE-WP-2-D11Languagesyntax,semantics,metamodelV2, a constraint with this mapping type is satisfied if and only if for each occurrence __x__ of __source__, there is an occurrence __y__ of __target__ such that __lower__ &le; __y__ – __x__ &le; __upper__. This means that multiple source event occurrences may be mapped to the same target event and stray target event occurrences are ignored. !../pictures/model_constraints_delayconstraint_reaction.png!
 
-* __UniqueReaction__: This mapping type is a mixture of the previous types by specifying that for every occurrence of the source event exactly one target event must occur within the defined time span. Thus, target events may not be shared between source events and stray target events violate the requirement. In contrast to the __OneToOne__ mapping case, the source event is not mapped to the first source event but is dropped as a violation, if a target event is missed. !../pictures/model_constraints_delayconstraint_uniquereaction.png!
+* __**UniqueReaction**__: This mapping type is a mixture of the previous types by specifying that for every occurrence of the source event exactly one target event must occur within the defined time span. Thus, target events may not be shared between source events and stray target events violate the requirement. In contrast to the __OneToOne__ mapping case, the source event is not mapped to the first source event but is dropped as a violation, if a target event is missed. !../pictures/model_constraints_delayconstraint_uniquereaction.png!
 
 h4. Event Chain Latency Constraint
 

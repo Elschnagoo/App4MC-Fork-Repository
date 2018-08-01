@@ -4,7 +4,7 @@ h1. Release Notes
 h2. Eclipse APP4MC 0.9.1 (Jul 2018)
 
 General
-* New Eclipse Oxygen.3a based product
+* New Eclipse Oxygen.3a based product (compatible with Java 8, Java 9 and Java 10)
 * License change from EPL-1.0 to EPL-2.0
 
 Model handling
