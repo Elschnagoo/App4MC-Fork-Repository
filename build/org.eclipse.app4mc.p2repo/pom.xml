@@ -100,17 +100,20 @@
 							<!-- Symbols are used while expanding index.html template -->
 							<symbols>
 								<update.site.name>${project.parent.name}</update.site.name>
-								<target.eclipse.version>Neon.3 (4.6.3)</target.eclipse.version>
+								<target.eclipse.version>Oxygen.3a (4.7.3a)</target.eclipse.version>
 							</symbols>
 
 							<associateSites>
-								<site>http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository</site>
-								<site>http://download.eclipse.org/modeling/emf/emf/updates/releases</site>
-								<site>http://download.eclipse.org/modeling/emf/compare/updates/releases</site>
-								<site>http://download.eclipse.org/rmf/updates</site>
-								<site>http://download.eclipse.org/sphinx/updates/interim</site>
+								<site>http://download.eclipse.org/eclipse/updates/4.7</site>
+								<site>http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository</site>
+								<site>http://download.eclipse.org/webtools/downloads/drops/R3.9.5/R-3.9.5-20180409100740/repository</site>
+								<site>http://download.eclipse.org/releases/oxygen/201706021000</site>
 								<site>http://download.eclipse.org/ease/update/release</site>
-								<site>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases</site>
+								<site>http://download.eclipse.org/modeling/emf/compare/updates/releases/3.3</site>
+								<site>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0</site>
+								<site>http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen</site>
+								<site>http://download.eclipse.org/releases/oxygen</site>
+								<site>http://download.eclipse.org/cbi/updates/license</site>
 							</associateSites>
 						</configuration>
 					</execution>
