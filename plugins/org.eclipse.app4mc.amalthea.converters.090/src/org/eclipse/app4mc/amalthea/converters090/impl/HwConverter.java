@@ -48,7 +48,7 @@ public class HwConverter extends AbstractConverter {
 
 	private boolean hasProcessedQuartzes;
 
-	private boolean hasProcessedCores;
+//	private boolean hasProcessedCores;
 
 	private boolean hasProcessedMemoryTypes;
 
@@ -932,7 +932,7 @@ public class HwConverter extends AbstractConverter {
  * This method is used to migrate all Core elements present in the model scope as ProcessingUnit elements. 
  * -- And associate all of them cummilatively inside a single HwStructure (of type MicroController)
  * @param newHW_MicroController JDOM element ->equivalent to HwStructure element of 0.9.0 
- */
+ */@Deprecated
 	private void migrateAllCores_modelscope(Element newHW_MicroController) {
 		
 		Collection<Element> oldHWCoreElements = hwTransformationCache.old_cores_Map.values();
@@ -1079,18 +1079,24 @@ public class HwConverter extends AbstractConverter {
 
 		migratePorts(oldHWMicroController, newHWMicroController);
 
+		
  
-		if (!hasProcessedCores) {
+		/*if (!hasProcessedCores) {
 
 			hasProcessedCores = true;
 
 			migrateAllCores_modelscope(newHWMicroController);
 		}
-
+		 */
 		List<Element> oldHWCores = oldHWMicroController.getChildren("cores");
 		
 		for (Element oldHWCore : oldHWCores) {
 
+			/*migrating cores belonging to specific Microcontroller*/
+			
+			migrateCore(newHWMicroController, oldHWCore);
+			
+			
 			/*-migrating memories*/
 			
 			//TODO: cross check : As in case of new HW Model, core can not contain memories, corresponding memories of core are added to the HWStructure (microcontroller type)
