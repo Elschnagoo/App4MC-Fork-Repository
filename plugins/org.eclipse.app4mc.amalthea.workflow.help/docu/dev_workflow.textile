@@ -107,9 +107,9 @@ p.
 
 h3. Other Components
 
-h4. Create Tasks
+h4(#component-create-tasks). Create Tasks
 
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":./examples.html#example-task-creation. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":../../org.eclipse.app4mc.multicore.help/help/tutorial_create_task.html#example-task-creation. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
 
 !../pictures/uml_create_tasks.png!
 
@@ -120,9 +120,9 @@ CreateTasks ct = new CreateTasks();
 ct.run(ctx);
 p. 
 
-h4. Generate Mapping
+h4(#component-generate-mapping). Generate Mapping
 
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":./examples.html#example-mapping-1. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
+The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":../../org.eclipse.app4mc.multicore.help/help/tutorial_mapping_1.html#example-mapping-1. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
 Parameter:
 
 * @String@ @mappingAlg@ with the value of either __dfg__ or __ilp_lb__ or __ilp_energy__ or __ga_lb__
@@ -252,15 +252,15 @@ var labelsCreationComponent = createInstance("workspace://com.ease.example/src/o
 
 h3. Overall Sample
 
-A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":./examples.html#example-task-creation and "Mapping example":./examples.html#example-mapping-1, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
+A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":../../org.eclipse.app4mc.multicore.help/help/tutorial_create_task.html#example-task-creation and "Mapping example":../../org.eclipse.app4mc.multicore.help/help/tutorial_mapping_1.html#example-mapping-1, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
 The following steps are performed in the sample configuration:
 
 # Read the files __AMALTHEA_Democar_MappingExample.amxmi__ and __AMALTHEA_Democar_MappingExample-hw.amxmi__ inside if the model folder. Result model is saved in the default @AMALTHEA_SLOT@.
-# Perform the "Create Tasks":#CreateTasks component
+# Perform the "Create Tasks":#component-create-tasks component
 # Write the result model available in the __createtasks__ model slot to a single model file __createtasks__ in the directory __workflow-output__.
-# Perform the "Generate Mapping":#GenerateMapping component with the dfg algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@.
+# Perform the "Generate Mapping":#component-generate-mapping component with the dfg algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@.
 # Write the result model available in the __mapping__ model slot to a single model file __mapping_dfg__ in the directory __workflow-output__.
-# Perform the "Generate Mapping":#GenerateMapping component with the ilp algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@. In addition the result slot is overwritten by @resultSlot = "mappingilp"@, as the previous run of Generate Mapping is already stored in the mapping slot.
+# Perform the "Generate Mapping":#component-generate-mapping component with the ilp algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@. In addition the result slot is overwritten by @resultSlot = "mappingilp"@, as the previous run of Generate Mapping is already stored in the mapping slot.
 # Write the result model available in the __mapping_ilp__ model slot to a single model file __mapping_ilp__ in the directory __workflow-output__.
 
 The following diagram shows a snippet of this workflow:

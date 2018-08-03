@@ -1,5 +1,5 @@
 
-h2(#meta model-changes). AMALTHEA meta model changes
+h2(#meta-model-changes). AMALTHEA meta model changes
 
 
 Based on the changes in AMALTHEA meta model across various releases, below description contains the differences in detail which are considered for model migration:

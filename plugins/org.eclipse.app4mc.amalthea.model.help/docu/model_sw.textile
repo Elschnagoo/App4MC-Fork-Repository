@@ -54,7 +54,7 @@ h4. General Information
 The AMALTHEA data model supports meta information for base data types. Therefore the element __BaseTypeDefinition__ exists in the software part of the model. It consists of the name and number of bits to define a data type. Additional information to store is the mapping information of these data types for a target platform, represented by the __DataPlatformMapping__ element, like AUTOSAR or any other one.
 
 The compound data types are data structures, based on given or defined base types.
-In the literature they are also often named composite or derived types "see Wiki":http://en.wikipedia.org/wiki/Data_type.
+In the literature they are also often named composite or derived types "see Wiki":https://en.wikipedia.org/wiki/Data_type.
 The result of this type of definition is an own data type, which can be used as base data types.
 They can consist of static structures or dynamic ones, like arrays or stacks.
 

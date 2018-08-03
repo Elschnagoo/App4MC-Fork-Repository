@@ -13,7 +13,7 @@ Below were the releases of AMALTHEA meta model during its phase of being as a IT
 * 1.1.0
 * 1.1.1
 
-From below version, AMALTHEA meta model is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc )
+From below version, AMALTHEA meta model is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc/ )
 
 * 0.7.0
 

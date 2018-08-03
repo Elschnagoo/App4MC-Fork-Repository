@@ -131,7 +131,7 @@ h4. Implementation
 
 **Xcore:**
 
-A derived back pointer is computed by %*AmaltheaCrossReferenceUtil.getInverseReferences(...)*%.
+A derived back pointer is computed by %*AmaltheaIndex.getInverseReferences(...)*%.
 The visiblity in the generated code and in the user interface is controlled by %*@GenModel*% annotations.
 
 Example
