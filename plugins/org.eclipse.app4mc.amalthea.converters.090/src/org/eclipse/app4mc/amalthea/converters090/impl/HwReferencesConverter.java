@@ -116,7 +116,7 @@ public class HwReferencesConverter extends AbstractConverter {
 				Element.class, this.helper.getGenericNS("xsi"));
 		
 		if(runnableInstructionsEntries.size()>0) {
-			//in this case, HWFeatureCategory sould be referenced in the newly created ExecutionNeed elements.
+			//in this case, HWFeatureCategory should be referenced in the newly created ExecutionNeed elements.
 			
 			if(this.hwTransformationCache.new_feature_categories_Map.containsKey("Instructions")==false) {
 				checkAndCreateHWFeatureCategory(rootElement);
@@ -183,7 +183,7 @@ public class HwReferencesConverter extends AbstractConverter {
 		
 		Element featureCategoriesElement=new Element("featureCategories");
 		featureCategoriesElement.setAttribute("name", "Instructions");
-		featureCategoriesElement.setAttribute("featureType", "Performance");
+		featureCategoriesElement.setAttribute("featureType", "performance");
 		hwModelEleemnt.addContent(featureCategoriesElement);
 	}
 
