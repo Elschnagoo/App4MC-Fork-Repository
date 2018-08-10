@@ -37,7 +37,7 @@ Tha same as ProcessAllocationConstraint but for process prototypes in an earlier
 
 h3. MemoryMappingConstraint
 
-The __MemoryMappingConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Memory__. The actual constraint on the core is described by the __HwMemoryConstraint__.
+The __MemoryMappingConstraint__ is an abstract class for describing constraints which affect the selection of a suitable __Memory__. The actual constraint on the core is described by the __AbstractElementMappingConstraint__.
 
 
 h4. AbstractElementMappingConstraint
