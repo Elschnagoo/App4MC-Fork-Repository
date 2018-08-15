@@ -25,12 +25,16 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.URIUtil;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.search.ui.ISearchQuery;
 import org.eclipse.search.ui.ISearchResult;
+import org.eclipse.sphinx.emf.ui.util.EcoreUIUtil;
 import org.eclipse.ui.IEditorInput;
 
 public class ModelHitCollector implements ISearchQuery {
@@ -64,6 +68,7 @@ public class ModelHitCollector implements ISearchQuery {
 		if (query != null) {
 			if(query.startsWith("i:")) {
 				// New (experimental) search based on Amalthea index (activate with i: as prefix)
+				
 				String modQuery = query.substring(2);
 				
 				// ***** Search with Amalthea index
@@ -75,8 +80,18 @@ public class ModelHitCollector implements ISearchQuery {
 				
 				Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
 				
+				// Intermediate solution: filter potential results (folder scope)
+				URI folderUri = model.eResource().getURI().trimSegments(1);
 				for (INamed element : resultSet) {
-					this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
+					// same folder
+					if (element.eResource().getURI().trimSegments(1).equals(folderUri)) {
+						IEditorInput input = this.editorInput;
+						// different file
+						if (model.eResource() != element.eResource()) {
+							input = EcoreUIUtil.createURIEditorInput(element.eResource());							
+						}
+						this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));						
+					}
 				}
 			} else {
 				// ***** Previously used element search mechanism (default)
