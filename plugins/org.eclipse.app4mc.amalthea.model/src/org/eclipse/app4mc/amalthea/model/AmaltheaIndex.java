@@ -22,11 +22,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -170,11 +172,23 @@ public final class AmaltheaIndex {
 	 * @param context EObject, Resource or ResourceSet
 	 * @param name String
 	 * @param targetClass for example: <code>Label.class</code>
-	 * @return Set of IReferable objects
+	 * @return Set of named objects (IName)
 	 */
 	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final String name,
 			final Class<T> targetClass) {
-		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(name, targetClass);
+		Notifier rootContext = getRootContext(context);
+		Set<? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(name, targetClass);
+		
+		Resource resource = getResource(context);
+		if (rootContext instanceof ResourceSet && resource != null) {
+			// remove elements out of scope (to handle larger editing domains)
+			URI folderUri = resource.getURI().trimSegments(1);
+			return elements.stream()
+					.filter(e -> e.eResource().getURI().trimSegments(1).equals(folderUri))
+					.collect(Collectors.toSet());
+		}
+		
+		return elements;
 	}
 
 
@@ -184,11 +198,23 @@ public final class AmaltheaIndex {
 	 * @param context EObject, Resource or ResourceSet
 	 * @param namePattern for example: <code>Pattern.compile("Prefix_.*")</code>
 	 * @param targetClass for example: <code>Label.class</code>
-	 * @return Set of IReferable objects
+	 * @return Set of named objects (IName)
 	 */
 	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
 			final Class<T> targetClass) {
-		return getOrCreateAmaltheaAdapter(getRootContext(context)).getElements(namePattern, targetClass);
+		Notifier rootContext = getRootContext(context);
+		Set<? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(namePattern, targetClass);
+		
+		Resource resource = getResource(context);
+		if (rootContext instanceof ResourceSet && resource != null) {
+			// remove elements out of scope (to handle larger editing domains)
+			URI folderUri = resource.getURI().trimSegments(1);
+			return elements.stream()
+					.filter(e -> e.eResource().getURI().trimSegments(1).equals(folderUri))
+					.collect(Collectors.toSet());
+		}
+		
+		return elements;
 	}
 
 
@@ -213,7 +239,7 @@ public final class AmaltheaIndex {
 	}
 
 	/**
-	 * Gets the root context (EObject, Resource or Resource Set)
+	 * Gets the root context of an EObject
 	 */
 	private static Notifier getRootContext(final EObject eObject) {
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
@@ -226,7 +252,7 @@ public final class AmaltheaIndex {
 	}
 
 	/**
-	 * Gets the root context (EObject, Resource or Resource Set)
+	 * Gets the root context of a Resource
 	 */
 	private static Notifier getRootContext(final Resource resource) {
 		if (resource == null) return null;
@@ -240,7 +266,7 @@ public final class AmaltheaIndex {
 	}
 	
 	/**
-	 * Gets the root context (EObject, Resource or Resource Set)
+	 * Gets the root context of a Notifier (EObject, Resource or Resource Set)
 	 */
 	private static Notifier getRootContext(final Notifier notifier) {
 		if (notifier instanceof EObject) {
@@ -251,5 +277,19 @@ public final class AmaltheaIndex {
 		}
 
 		return notifier;
+	}
+	
+	/**
+	 * Gets the resource of a Notifier (EObject, Resource or Resource Set)
+	 */
+	private static Resource getResource(final Notifier notifier) {
+		if (notifier instanceof EObject) {
+			return((EObject) notifier).eResource();
+		}
+		else if (notifier instanceof Resource) {
+			return (Resource) notifier;
+		}
+
+		return null;
 	}
 }

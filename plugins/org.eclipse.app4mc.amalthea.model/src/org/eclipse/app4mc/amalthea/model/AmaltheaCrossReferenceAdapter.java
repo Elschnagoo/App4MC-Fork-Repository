@@ -36,9 +36,9 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		final Set<T> result = new HashSet<>();
 		final Set<INamed> values = this.nameIndex.get(name);
 		if (values != null) {
-			for (final INamed referable : values) {
-				if (targetClass.isInstance(referable)) {
-					result.add(targetClass.cast(referable));
+			for (final INamed namedObject : values) {
+				if (targetClass.isInstance(namedObject)) {
+					result.add(targetClass.cast(namedObject));
 				}
 			}
 		}
@@ -49,9 +49,9 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		final Set<T> result = new HashSet<>();
 		for (final Map.Entry<String, Set<INamed>> entry : this.nameIndex.entrySet()) {
 			if (namePattern.matcher(entry.getKey()).matches()) {
-				for (final INamed referable : entry.getValue()) {
-					if (targetClass.isInstance(referable)) {
-						result.add(targetClass.cast(referable));
+				for (final INamed namedObject : entry.getValue()) {
+					if (targetClass.isInstance(namedObject)) {
+						result.add(targetClass.cast(namedObject));
 					}
 				}
 			}

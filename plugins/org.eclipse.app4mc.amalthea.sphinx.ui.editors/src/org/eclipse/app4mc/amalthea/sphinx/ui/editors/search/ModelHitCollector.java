@@ -80,18 +80,16 @@ public class ModelHitCollector implements ISearchQuery {
 				
 				Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
 				
-				// Intermediate solution: filter potential results (folder scope)
-				URI folderUri = model.eResource().getURI().trimSegments(1);
 				for (INamed element : resultSet) {
-					// same folder
-					if (element.eResource().getURI().trimSegments(1).equals(folderUri)) {
-						IEditorInput input = this.editorInput;
-						// different file
-						if (model.eResource() != element.eResource()) {
-							input = EcoreUIUtil.createURIEditorInput(element.eResource());							
-						}
-						this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));						
+					IEditorInput input;
+					if (model.eResource() == element.eResource()) {
+						// element is opened in current editor
+						input = this.editorInput;
+					} else {
+						// element is in a different file
+						input = EcoreUIUtil.createURIEditorInput(element.eResource());
 					}
+					this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));
 				}
 			} else {
 				// ***** Previously used element search mechanism (default)
