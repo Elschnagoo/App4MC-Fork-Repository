@@ -1629,6 +1629,15 @@ class Memory extends HwModule, HwDestination
 	}
 }
 
+enum MemoryTypeEnum
+{
+	_undefined_
+	RAM
+	CACHE
+	FLASH_INT
+	FLASH_EXT
+}
+
 class Cache extends HwModule, HwPathElement
 {
 	refers CacheDefinition definition

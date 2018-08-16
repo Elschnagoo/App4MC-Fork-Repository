@@ -227,6 +227,7 @@ import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
+import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -3020,6 +3021,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum componentEventTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum memoryTypeEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -12755,6 +12763,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getMemoryTypeEnum() {
+		return memoryTypeEnumEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getStructureType() {
 		return structureTypeEEnum;
 	}
@@ -14460,6 +14477,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		channelEventTypeEEnum = createEEnum(CHANNEL_EVENT_TYPE);
 		semaphoreEventTypeEEnum = createEEnum(SEMAPHORE_EVENT_TYPE);
 		componentEventTypeEEnum = createEEnum(COMPONENT_EVENT_TYPE);
+		memoryTypeEnumEEnum = createEEnum(MEMORY_TYPE_ENUM);
 		structureTypeEEnum = createEEnum(STRUCTURE_TYPE);
 		cacheTypeEEnum = createEEnum(CACHE_TYPE);
 		portTypeEEnum = createEEnum(PORT_TYPE);
@@ -16628,6 +16646,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType._ALL_);
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.START);
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.END);
+
+		initEEnum(memoryTypeEnumEEnum, MemoryTypeEnum.class, "MemoryTypeEnum");
+		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum._UNDEFINED_);
+		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.RAM);
+		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.CACHE);
+		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_INT);
+		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_EXT);
 
 		initEEnum(structureTypeEEnum, StructureType.class, "StructureType");
 		addEEnumLiteral(structureTypeEEnum, StructureType._UNDEFINED_);
