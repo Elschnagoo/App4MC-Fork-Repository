@@ -329,7 +329,7 @@ public class HwConverter extends AbstractConverter {
 	}
 
 	/**
-	 * This mehtod is used to migrate NetworkType element from 0.8.3 to ConnectionHandlerDefinition element as per 0.9.0
+	 * This method is used to migrate NetworkType element from 0.8.3 to ConnectionHandlerDefinition element as per 0.9.0
 	 * 
 	 * @param oldHWModelElement
 	 *            Element. JDOM Element equivalent to 0.8.3 HwModel
@@ -379,7 +379,7 @@ public class HwConverter extends AbstractConverter {
 	}
 
 	/**
-	 * This mehtod is used to migrate CoreType element from 0.8.3 to ProcessingUnitDefinition element as per 0.9.0
+	 * This method is used to migrate CoreType element from 0.8.3 to ProcessingUnitDefinition element as per 0.9.0
 	 * 
 	 * <b>Note:</b> value of InstructionsPerCycle is converted as HwFeatureCategory and HwFeature#s 
 	 * 		   and the corresponding HwFeature is linked to the ProcessingUnitDefinition
@@ -615,7 +615,7 @@ public class HwConverter extends AbstractConverter {
 
 	}
 	 /**
-	 * This mehtod is used to migrate HwPort, ComplexPort element from 0.8.3 to HwPort element as per 0.9.0
+	 * This method is used to migrate HwPort, ComplexPort element from 0.8.3 to HwPort element as per 0.9.0
 	 * 
 	 * @param oldHWModelElement
 	 *            Element. JDOM Element equivalent to 0.8.3 Core or ECU
@@ -667,11 +667,11 @@ public class HwConverter extends AbstractConverter {
 	}
 	
 	 /**
-		 * This mehtod is used to migrate Memory element from 0.8.3 to Memory element or Cache element as per 0.9.0
+		 * This method is used to migrate Memory element from 0.8.3 to Memory element or Cache element as per 0.9.0
 		 * 
 		 * Based on the type of MemoryType element (in 0.8.3) -> either Cache element or Memory element are generated in 0.9.0
 		 * 
-		 * -- If type is CACHE, then Cache element is geneerated. For other types, Memory element is generated
+		 * -- If type is CACHE, then Cache element is generated. For other types, Memory element is generated
 		 * 
 		 * 
 		 * Inside Memory element (of 0.8.3) accordingly, PreScaler and HwPort elements are migrated to appropriate elements in 0.9.0
@@ -679,7 +679,7 @@ public class HwConverter extends AbstractConverter {
 		 * @param oldHWModelElement
 		 *            Element. JDOM Element equivalent to 0.8.3 Core or ECU or MicroController or System
 		 * @param newHWModelElement
-		 *            Element. JDOM Element equivalent to 0.9.0 ProcessingUnit or HwStructure( with type as ECU or MicroController or System)
+		 *            Element. JDOM Element equivalent to 0.9.0 ProcessingUnit or HwStructure (with type as ECU or MicroController or System)
 		 */
 		 
 	
@@ -733,7 +733,7 @@ public class HwConverter extends AbstractConverter {
 						}
 				}
 				
-			}else {
+			} else {
 				if(migrateMemory) {
 					newHW_Memory_Element.setAttribute("type", "am:Memory", this.helper.getGenericNS("xsi"));
 					
@@ -744,6 +744,8 @@ public class HwConverter extends AbstractConverter {
 					
 				}
 			}
+			
+			// TODO When should the following loop be executed ?
 			
 			List<Element> newHWMemoryDefinitions = migrateAttributeorElementData(oldHW_Memory, "type", "definition", newHW_definitions_type_amalthea_element);
 
@@ -763,13 +765,11 @@ public class HwConverter extends AbstractConverter {
 
 			migrateCustomProperties(oldHW_Memory, newHW_Memory_Element);
 			
-			
-			
 		}
 	}
 	
 	 /**
-	 * This mehtod is used to migrate Network element from 0.8.3 to ConnectionHandler element as per 0.9.0
+	 * This method is used to migrate Network element from 0.8.3 to ConnectionHandler element as per 0.9.0
 	 * 
 	 *  Inside Memory element (of 0.8.3) accordingly, PreScaler and HwPort elements are migrated to appropriate elements in 0.9.0
 	 *  
@@ -1146,7 +1146,9 @@ public class HwConverter extends AbstractConverter {
 
 		migratePorts(oldHWCore, newHWCore);
 		
-		
+		// TODO PROBLEM
+		// if local memory of a core is transformed
+		// then link to definition is empty
 		migrateMemoriesAndCaches(oldHWCore, newHWCore, true, false);
 		
 		hwTransformationCache.new_cores_Map.put(oldHWCore_name, newHWCore);
