@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Multicore Execution Logic
 Bundle-SymbolicName: org.eclipse.app4mc.multicore.execution.logic
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.eclipse.app4mc.multicore.execution.logic.Activator
 Require-Bundle: org.apache.commons.math,
  org.junit,
