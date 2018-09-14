@@ -524,21 +524,10 @@ version(s), and exceptions or additional permissions here}.&quot;
    </configurations>
 
    <repositories>
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" />
-      <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/neon" enabled="true" />
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository" enabled="true" />
+      <repository location="http://download.eclipse.org/eclipse/updates/4.7" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/oxygen" enabled="true" />
+
    </repositories>
 
    <preferencesInfo>
