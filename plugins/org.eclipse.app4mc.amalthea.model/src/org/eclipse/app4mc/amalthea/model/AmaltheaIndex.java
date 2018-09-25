@@ -223,7 +223,7 @@ public final class AmaltheaIndex {
 		return getOrCreateAmaltheaAdapter(target);
 	}
 
-	private static AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final Notifier target) {
+	private static synchronized AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final Notifier target) {
 		// Try to get Amalthea adapter
 		final EList<Adapter> adapters = target.eAdapters();
 		for (final Adapter adapter : adapters) {
