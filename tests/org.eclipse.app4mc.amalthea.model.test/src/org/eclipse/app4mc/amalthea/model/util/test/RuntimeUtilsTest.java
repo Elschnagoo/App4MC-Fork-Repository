@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
@@ -41,7 +42,6 @@ import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaLoader;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
-import org.eclipse.app4mc.amalthea.model.util.SearchElementsUtility;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.model.util.TimeUtil;
 import org.junit.Before;
@@ -79,18 +79,19 @@ public class RuntimeUtilsTest {
 		executionNeedsR1 = new ArrayList<ExecutionNeed>();
 		executionNeedsR2 = new ArrayList<ExecutionNeed>();
 		
-		r1 = (Runnable) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "r1", Runnable.class).get(0);
-		r2 = (Runnable) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "r2", Runnable.class ).get(0);
+		r1 = (Runnable) AmaltheaIndex.getElements(amaltheaModel, "r1", Runnable.class).iterator().next();
+		System.out.println(r1.getName());
+		r2 = (Runnable) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "r2", Runnable.class).iterator().next();
 		
-		t1 = (Task) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "t1", Task.class).get(0);
-		t2 = (Task) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "t2", Task.class ).get(0);
+		t1 = (Task) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t1", Task.class).iterator().next();
+		t2 = (Task) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t2", Task.class).iterator().next();
 		
-		Pu1_def = (ProcessingUnitDefinition) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "Pu1_def", ProcessingUnitDefinition.class ).get(0);
-		Pu2_def = (ProcessingUnitDefinition) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "Pu2_def", ProcessingUnitDefinition.class ).get(0);
+		Pu1_def = (ProcessingUnitDefinition) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu1_def", ProcessingUnitDefinition.class ).iterator().next();
+		Pu2_def = (ProcessingUnitDefinition) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu2_def", ProcessingUnitDefinition.class ).iterator().next();
 		
-		featureIPC_12 = (HwFeature) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "IPC_1.2", HwFeature.class ).get(0);
-		featureIPC_08 = (HwFeature) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "IPC_0.8", HwFeature.class ).get(0);
-		featureMAC_Operations = (HwFeature) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "MacUnit_factor", HwFeature.class ).get(0);
+		featureIPC_12 = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "IPC_1.2", HwFeature.class ).iterator().next();
+		featureIPC_08 = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "IPC_0.8", HwFeature.class ).iterator().next();
+		featureMAC_Operations = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "MacUnit_factor", HwFeature.class).iterator().next();
 
 		
 		
@@ -352,10 +353,9 @@ public class RuntimeUtilsTest {
 		featureTest2.add(featureMAC_Operations);
 		//testList empty
 		List<HwFeature> featureTest3= new ArrayList<HwFeature>();
-		
-		Time time;		
-		ProcessingUnit core1 = (ProcessingUnit) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "core1", ProcessingUnit.class).get(0);
-		ProcessingUnit core2 = (ProcessingUnit) SearchElementsUtility.getElementsBasedOnName(amaltheaModel, "core2", ProcessingUnit.class).get(0);
+		Time time;
+		ProcessingUnit core1 = (ProcessingUnit) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core1", ProcessingUnit.class).iterator().next();
+		ProcessingUnit core2 = (ProcessingUnit) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core2", ProcessingUnit.class).iterator().next();
 		
 		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core1, featureIPC_08, null);
 		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
