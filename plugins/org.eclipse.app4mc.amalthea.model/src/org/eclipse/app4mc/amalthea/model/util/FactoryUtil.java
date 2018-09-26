@@ -21,18 +21,113 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.DataSize;
+import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.Frequency;
+import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.LatencyConstant;
+import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.NeedConstant;
 import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TypeDefinition;
+import org.eclipse.app4mc.amalthea.model.TypeRef;
+import org.eclipse.app4mc.amalthea.model.Voltage;
+import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 
 public class FactoryUtil {
+
+	/**
+	 * Creates a data size out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return DataSize
+	 */
+	public static DataSize createDataSize(long value, DataSizeUnit unit) {
+		DataSize size = AmaltheaFactory.eINSTANCE.createDataSize();
+		size.setValue(BigInteger.valueOf(value));
+		size.setUnit(unit);
+		return size;
+	}
+	
+	/**
+	 * Creates a frequency out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return Frequency
+	 */
+	public static Frequency createFrequency(double value, FrequencyUnit unit) {
+		Frequency frequency = AmaltheaFactory.eINSTANCE.createFrequency();
+		frequency.setValue(value);
+		frequency.setUnit(unit);
+		return frequency;
+	}
+	
+	/**
+	 * Creates a voltage out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return Voltage
+	 */
+	public static Voltage createVoltage(double value, VoltageUnit unit) {
+		Voltage voltage = AmaltheaFactory.eINSTANCE.createVoltage();
+		voltage.setValue(value);
+		voltage.setUnit(unit);
+		return voltage;
+	}
+
+	/**
+	 * Creates a time out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return Time
+	 */
+	public static Time createTime(long value, TimeUnit unit) {
+		Time time = AmaltheaFactory.eINSTANCE.createTime();
+		time.setValue(BigInteger.valueOf(value));
+		time.setUnit(unit);
+		return time;
+	}
+
+	/**
+	 * Creates a TypeRef object that refers to a type definition
+	 * @param typeDefinition
+	 * @return TypeRef
+	 */
+	public static TypeRef createTypeRef(TypeDefinition typeDefinition) {
+		TypeRef refObj = AmaltheaFactory.eINSTANCE.createTypeRef();
+		refObj.setTypeDef(typeDefinition);;
+		return refObj;
+	}
+
+	/**
+	 * Creates a HwLatency with constant cycles
+	 * @param cycles
+	 * @return LatencyConstant
+	 */
+	public static LatencyConstant createLatency(long cycles) {
+		LatencyConstant latency = AmaltheaFactory.eINSTANCE.createLatencyConstant();
+		latency.setCycles(cycles);
+		return latency;
+	}
+
+	/**
+	 * Creates a HwLatency with a deviation of cycles
+	 * @param cycles
+	 * @return LatencyDeviation
+	 */
+	public static LatencyDeviation createLatency(Deviation<LongObject> cycles) {
+		LatencyDeviation latency = AmaltheaFactory.eINSTANCE.createLatencyDeviation();
+		latency.setCycles(cycles);;
+		return latency;
+	}
 
 	/**
 	 * Creates a time out of a value and a unit given as String (lower case).
@@ -51,7 +146,7 @@ public class FactoryUtil {
 		
 		return TimeUtil.adjustTimeUnit(BigInteger.valueOf(value), tu);
 	}
-	
+
 	public static Time createTime(BigInteger value, String unit) {
 		TimeUnit tu = null;
 		if(unit.toLowerCase().equals("ps")) tu = TimeUnit.PS;
@@ -63,7 +158,7 @@ public class FactoryUtil {
 		
 		return TimeUtil.adjustTimeUnit(new BigInteger(value.toByteArray()), tu);
 	}
-	
+
 	/**
 	 * Creates a Time object parsed from a text representation. 
 	 * @param timeString string representation of a time (number follwed by time unit s, ms, us, ns or ps)  
@@ -87,7 +182,7 @@ public class FactoryUtil {
 		time.setUnit(inputTime.getUnit());
 		return time;
 	}
-	
+
 	/**
 	 * 
 	 * @param executionNeedCount	absolute number of executionNeedCount (simular to instructions)
@@ -109,7 +204,6 @@ public class FactoryUtil {
 
 		return TimeUtil.adjustTimeUnit(runtime, units.get(timeUnitIndex));
 	}
-	
 
 	/**
 	 * Returns a created Weibull Deviation.
@@ -129,9 +223,7 @@ public class FactoryUtil {
 		result.setLowerBound(lB);
 		return result;
 	}
-	
-	
-	
+
 	/**
 	 * Returns a created Weibull Estimator.
 	 * @param avgR
