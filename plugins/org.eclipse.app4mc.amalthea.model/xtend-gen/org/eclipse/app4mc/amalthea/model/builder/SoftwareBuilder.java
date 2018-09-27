@@ -1,3 +1,15 @@
+/**
+ * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ */
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
@@ -37,272 +49,498 @@ public class SoftwareBuilder {
     return this.<SWModel>init(AmaltheaFactory.eINSTANCE.createSWModel(), initializer);
   }
   
-  public boolean isr(final SWModel container, final Procedure1<? super ISR> initializer) {
-    EList<ISR> _isrs = container.getIsrs();
-    ISR _init = this.<ISR>init(AmaltheaFactory.eINSTANCE.createISR(), initializer);
-    return _isrs.add(_init);
+  public ISR isr(final SWModel container, final Procedure1<? super ISR> initializer) {
+    ISR _xblockexpression = null;
+    {
+      final ISR obj = AmaltheaFactory.eINSTANCE.createISR();
+      EList<ISR> _isrs = container.getIsrs();
+      _isrs.add(obj);
+      _xblockexpression = this.<ISR>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean task(final SWModel container, final Procedure1<? super Task> initializer) {
-    EList<Task> _tasks = container.getTasks();
-    Task _init = this.<Task>init(AmaltheaFactory.eINSTANCE.createTask(), initializer);
-    return _tasks.add(_init);
+  public Task task(final SWModel container, final Procedure1<? super Task> initializer) {
+    Task _xblockexpression = null;
+    {
+      final Task obj = AmaltheaFactory.eINSTANCE.createTask();
+      EList<Task> _tasks = container.getTasks();
+      _tasks.add(obj);
+      _xblockexpression = this.<Task>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnable(final SWModel container, final Procedure1<? super org.eclipse.app4mc.amalthea.model.Runnable> initializer) {
-    EList<org.eclipse.app4mc.amalthea.model.Runnable> _runnables = container.getRunnables();
-    org.eclipse.app4mc.amalthea.model.Runnable _init = this.<org.eclipse.app4mc.amalthea.model.Runnable>init(AmaltheaFactory.eINSTANCE.createRunnable(), initializer);
-    return _runnables.add(_init);
+  public org.eclipse.app4mc.amalthea.model.Runnable runnable(final SWModel container, final Procedure1<? super org.eclipse.app4mc.amalthea.model.Runnable> initializer) {
+    org.eclipse.app4mc.amalthea.model.Runnable _xblockexpression = null;
+    {
+      final org.eclipse.app4mc.amalthea.model.Runnable obj = AmaltheaFactory.eINSTANCE.createRunnable();
+      EList<org.eclipse.app4mc.amalthea.model.Runnable> _runnables = container.getRunnables();
+      _runnables.add(obj);
+      _xblockexpression = this.<org.eclipse.app4mc.amalthea.model.Runnable>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean label(final SWModel container, final Procedure1<? super Label> initializer) {
-    EList<Label> _labels = container.getLabels();
-    Label _init = this.<Label>init(AmaltheaFactory.eINSTANCE.createLabel(), initializer);
-    return _labels.add(_init);
+  public Label label(final SWModel container, final Procedure1<? super Label> initializer) {
+    Label _xblockexpression = null;
+    {
+      final Label obj = AmaltheaFactory.eINSTANCE.createLabel();
+      EList<Label> _labels = container.getLabels();
+      _labels.add(obj);
+      _xblockexpression = this.<Label>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean channel(final SWModel container, final Procedure1<? super Channel> initializer) {
-    EList<Channel> _channels = container.getChannels();
-    Channel _init = this.<Channel>init(AmaltheaFactory.eINSTANCE.createChannel(), initializer);
-    return _channels.add(_init);
+  public Channel channel(final SWModel container, final Procedure1<? super Channel> initializer) {
+    Channel _xblockexpression = null;
+    {
+      final Channel obj = AmaltheaFactory.eINSTANCE.createChannel();
+      EList<Channel> _channels = container.getChannels();
+      _channels.add(obj);
+      _xblockexpression = this.<Channel>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean processPrototype(final SWModel container, final Procedure1<? super ProcessPrototype> initializer) {
-    EList<ProcessPrototype> _processPrototypes = container.getProcessPrototypes();
-    ProcessPrototype _init = this.<ProcessPrototype>init(AmaltheaFactory.eINSTANCE.createProcessPrototype(), initializer);
-    return _processPrototypes.add(_init);
+  public ProcessPrototype processPrototype(final SWModel container, final Procedure1<? super ProcessPrototype> initializer) {
+    ProcessPrototype _xblockexpression = null;
+    {
+      final ProcessPrototype obj = AmaltheaFactory.eINSTANCE.createProcessPrototype();
+      EList<ProcessPrototype> _processPrototypes = container.getProcessPrototypes();
+      _processPrototypes.add(obj);
+      _xblockexpression = this.<ProcessPrototype>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean section(final SWModel container, final Procedure1<? super Section> initializer) {
-    EList<Section> _sections = container.getSections();
-    Section _init = this.<Section>init(AmaltheaFactory.eINSTANCE.createSection(), initializer);
-    return _sections.add(_init);
+  public Section section(final SWModel container, final Procedure1<? super Section> initializer) {
+    Section _xblockexpression = null;
+    {
+      final Section obj = AmaltheaFactory.eINSTANCE.createSection();
+      EList<Section> _sections = container.getSections();
+      _sections.add(obj);
+      _xblockexpression = this.<Section>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_Single(final SWModel container, final Procedure1<? super SingleActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    SingleActivation _init = this.<SingleActivation>init(AmaltheaFactory.eINSTANCE.createSingleActivation(), initializer);
-    return _activations.add(_init);
+  public SingleActivation activation_Single(final SWModel container, final Procedure1<? super SingleActivation> initializer) {
+    SingleActivation _xblockexpression = null;
+    {
+      final SingleActivation obj = AmaltheaFactory.eINSTANCE.createSingleActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<SingleActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_Sporadic(final SWModel container, final Procedure1<? super SporadicActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    SporadicActivation _init = this.<SporadicActivation>init(AmaltheaFactory.eINSTANCE.createSporadicActivation(), initializer);
-    return _activations.add(_init);
+  public SporadicActivation activation_Sporadic(final SWModel container, final Procedure1<? super SporadicActivation> initializer) {
+    SporadicActivation _xblockexpression = null;
+    {
+      final SporadicActivation obj = AmaltheaFactory.eINSTANCE.createSporadicActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<SporadicActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_Periodic(final SWModel container, final Procedure1<? super PeriodicActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    PeriodicActivation _init = this.<PeriodicActivation>init(AmaltheaFactory.eINSTANCE.createPeriodicActivation(), initializer);
-    return _activations.add(_init);
+  public PeriodicActivation activation_Periodic(final SWModel container, final Procedure1<? super PeriodicActivation> initializer) {
+    PeriodicActivation _xblockexpression = null;
+    {
+      final PeriodicActivation obj = AmaltheaFactory.eINSTANCE.createPeriodicActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<PeriodicActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_Event(final SWModel container, final Procedure1<? super EventActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    EventActivation _init = this.<EventActivation>init(AmaltheaFactory.eINSTANCE.createEventActivation(), initializer);
-    return _activations.add(_init);
+  public EventActivation activation_Event(final SWModel container, final Procedure1<? super EventActivation> initializer) {
+    EventActivation _xblockexpression = null;
+    {
+      final EventActivation obj = AmaltheaFactory.eINSTANCE.createEventActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<EventActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_VariableRate(final SWModel container, final Procedure1<? super VariableRateActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    VariableRateActivation _init = this.<VariableRateActivation>init(AmaltheaFactory.eINSTANCE.createVariableRateActivation(), initializer);
-    return _activations.add(_init);
+  public VariableRateActivation activation_VariableRate(final SWModel container, final Procedure1<? super VariableRateActivation> initializer) {
+    VariableRateActivation _xblockexpression = null;
+    {
+      final VariableRateActivation obj = AmaltheaFactory.eINSTANCE.createVariableRateActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<VariableRateActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean activation_Custom(final SWModel container, final Procedure1<? super CustomActivation> initializer) {
-    EList<Activation> _activations = container.getActivations();
-    CustomActivation _init = this.<CustomActivation>init(AmaltheaFactory.eINSTANCE.createCustomActivation(), initializer);
-    return _activations.add(_init);
+  public CustomActivation activation_Custom(final SWModel container, final Procedure1<? super CustomActivation> initializer) {
+    CustomActivation _xblockexpression = null;
+    {
+      final CustomActivation obj = AmaltheaFactory.eINSTANCE.createCustomActivation();
+      EList<Activation> _activations = container.getActivations();
+      _activations.add(obj);
+      _xblockexpression = this.<CustomActivation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean mode(final SWModel container, final Procedure1<? super Mode> initializer) {
-    EList<Mode> _modes = container.getModes();
-    Mode _init = this.<Mode>init(AmaltheaFactory.eINSTANCE.createMode(), initializer);
-    return _modes.add(_init);
+  public Mode mode(final SWModel container, final Procedure1<? super Mode> initializer) {
+    Mode _xblockexpression = null;
+    {
+      final Mode obj = AmaltheaFactory.eINSTANCE.createMode();
+      EList<Mode> _modes = container.getModes();
+      _modes.add(obj);
+      _xblockexpression = this.<Mode>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeLabel(final SWModel container, final Procedure1<? super ModeLabel> initializer) {
-    EList<ModeLabel> _modeLabels = container.getModeLabels();
-    ModeLabel _init = this.<ModeLabel>init(AmaltheaFactory.eINSTANCE.createModeLabel(), initializer);
-    return _modeLabels.add(_init);
+  public ModeLabel modeLabel(final SWModel container, final Procedure1<? super ModeLabel> initializer) {
+    ModeLabel _xblockexpression = null;
+    {
+      final ModeLabel obj = AmaltheaFactory.eINSTANCE.createModeLabel();
+      EList<ModeLabel> _modeLabels = container.getModeLabels();
+      _modeLabels.add(obj);
+      _xblockexpression = this.<ModeLabel>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean literal(final Mode container, final Procedure1<? super ModeLiteral> initializer) {
-    EList<ModeLiteral> _literals = container.getLiterals();
-    ModeLiteral _init = this.<ModeLiteral>init(AmaltheaFactory.eINSTANCE.createModeLiteral(), initializer);
-    return _literals.add(_init);
+  public ModeLiteral literal(final Mode container, final Procedure1<? super ModeLiteral> initializer) {
+    ModeLiteral _xblockexpression = null;
+    {
+      final ModeLiteral obj = AmaltheaFactory.eINSTANCE.createModeLiteral();
+      EList<ModeLiteral> _literals = container.getLiterals();
+      _literals.add(obj);
+      _xblockexpression = this.<ModeLiteral>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean parameter(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableParameter> initializer) {
-    EList<RunnableParameter> _parameters = container.getParameters();
-    RunnableParameter _init = this.<RunnableParameter>init(AmaltheaFactory.eINSTANCE.createRunnableParameter(), initializer);
-    return _parameters.add(_init);
+  public RunnableParameter parameter(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableParameter> initializer) {
+    RunnableParameter _xblockexpression = null;
+    {
+      final RunnableParameter obj = AmaltheaFactory.eINSTANCE.createRunnableParameter();
+      EList<RunnableParameter> _parameters = container.getParameters();
+      _parameters.add(obj);
+      _xblockexpression = this.<RunnableParameter>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean group(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super Group> initializer) {
-    EList<RunnableItem> _runnableItems = container.getRunnableItems();
-    Group _init = this.<Group>init(AmaltheaFactory.eINSTANCE.createGroup(), initializer);
-    return _runnableItems.add(_init);
+  public Group group(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super Group> initializer) {
+    Group _xblockexpression = null;
+    {
+      final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<Group>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean group(final Group container, final Procedure1<? super Group> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    Group _init = this.<Group>init(AmaltheaFactory.eINSTANCE.createGroup(), initializer);
-    return _items.add(_init);
+  public Group group(final Group container, final Procedure1<? super Group> initializer) {
+    Group _xblockexpression = null;
+    {
+      final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<Group>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean group(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super Group> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    Group _init = this.<Group>init(AmaltheaFactory.eINSTANCE.createGroup(), initializer);
-    return _items.add(_init);
+  public Group group(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super Group> initializer) {
+    Group _xblockexpression = null;
+    {
+      final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<Group>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean group(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super Group> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    Group _init = this.<Group>init(AmaltheaFactory.eINSTANCE.createGroup(), initializer);
-    return _items.add(_init);
+  public Group group(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super Group> initializer) {
+    Group _xblockexpression = null;
+    {
+      final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<Group>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean group(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super Group> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    Group _init = this.<Group>init(AmaltheaFactory.eINSTANCE.createGroup(), initializer);
-    return _items.add(_init);
+  public Group group(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super Group> initializer) {
+    Group _xblockexpression = null;
+    {
+      final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<Group>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeSwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableModeSwitch> initializer) {
-    EList<RunnableItem> _runnableItems = container.getRunnableItems();
-    RunnableModeSwitch _init = this.<RunnableModeSwitch>init(AmaltheaFactory.eINSTANCE.createRunnableModeSwitch(), initializer);
-    return _runnableItems.add(_init);
+  public RunnableModeSwitch modeSwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableModeSwitch> initializer) {
+    RunnableModeSwitch _xblockexpression = null;
+    {
+      final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<RunnableModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeSwitch(final Group container, final Procedure1<? super RunnableModeSwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableModeSwitch _init = this.<RunnableModeSwitch>init(AmaltheaFactory.eINSTANCE.createRunnableModeSwitch(), initializer);
-    return _items.add(_init);
+  public RunnableModeSwitch modeSwitch(final Group container, final Procedure1<? super RunnableModeSwitch> initializer) {
+    RunnableModeSwitch _xblockexpression = null;
+    {
+      final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeSwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableModeSwitch _init = this.<RunnableModeSwitch>init(AmaltheaFactory.eINSTANCE.createRunnableModeSwitch(), initializer);
-    return _items.add(_init);
+  public RunnableModeSwitch modeSwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+    RunnableModeSwitch _xblockexpression = null;
+    {
+      final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeSwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableModeSwitch _init = this.<RunnableModeSwitch>init(AmaltheaFactory.eINSTANCE.createRunnableModeSwitch(), initializer);
-    return _items.add(_init);
+  public RunnableModeSwitch modeSwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+    RunnableModeSwitch _xblockexpression = null;
+    {
+      final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean modeSwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableModeSwitch _init = this.<RunnableModeSwitch>init(AmaltheaFactory.eINSTANCE.createRunnableModeSwitch(), initializer);
-    return _items.add(_init);
+  public RunnableModeSwitch modeSwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+    RunnableModeSwitch _xblockexpression = null;
+    {
+      final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean entry(final RunnableModeSwitch container, final Procedure1<? super ModeSwitchEntry<RunnableItem>> initializer) {
-    EList<ModeSwitchEntry<RunnableItem>> _entries = container.getEntries();
-    ModeSwitchEntry<RunnableItem> _init = this.<ModeSwitchEntry<RunnableItem>>init(AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchEntry(), initializer);
-    return _entries.add(_init);
+  public ModeSwitchEntry<RunnableItem> entry(final RunnableModeSwitch container, final Procedure1<? super ModeSwitchEntry<RunnableItem>> initializer) {
+    ModeSwitchEntry<RunnableItem> _xblockexpression = null;
+    {
+      final ModeSwitchEntry<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchEntry();
+      EList<ModeSwitchEntry<RunnableItem>> _entries = container.getEntries();
+      _entries.add(obj);
+      _xblockexpression = this.<ModeSwitchEntry<RunnableItem>>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void defaultEntry(final RunnableModeSwitch container, final Procedure1<? super ModeSwitchDefault<RunnableItem>> initializer) {
-    container.setDefaultEntry(this.<ModeSwitchDefault<RunnableItem>>init(AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchDefault(), initializer));
+  public ModeSwitchDefault<RunnableItem> defaultEntry(final RunnableModeSwitch container, final Procedure1<? super ModeSwitchDefault<RunnableItem>> initializer) {
+    ModeSwitchDefault<RunnableItem> _xblockexpression = null;
+    {
+      final ModeSwitchDefault<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchDefault();
+      container.setDefaultEntry(obj);
+      _xblockexpression = this.<ModeSwitchDefault<RunnableItem>>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean probabilitySwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
-    EList<RunnableItem> _runnableItems = container.getRunnableItems();
-    RunnableProbabilitySwitch _init = this.<RunnableProbabilitySwitch>init(AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch(), initializer);
-    return _runnableItems.add(_init);
+  public RunnableProbabilitySwitch probabilitySwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+    RunnableProbabilitySwitch _xblockexpression = null;
+    {
+      final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<RunnableProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean probabilitySwitch(final Group container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableProbabilitySwitch _init = this.<RunnableProbabilitySwitch>init(AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch(), initializer);
-    return _items.add(_init);
+  public RunnableProbabilitySwitch probabilitySwitch(final Group container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+    RunnableProbabilitySwitch _xblockexpression = null;
+    {
+      final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean probabilitySwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableProbabilitySwitch _init = this.<RunnableProbabilitySwitch>init(AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch(), initializer);
-    return _items.add(_init);
+  public RunnableProbabilitySwitch probabilitySwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+    RunnableProbabilitySwitch _xblockexpression = null;
+    {
+      final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean probabilitySwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableProbabilitySwitch _init = this.<RunnableProbabilitySwitch>init(AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch(), initializer);
-    return _items.add(_init);
+  public RunnableProbabilitySwitch probabilitySwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+    RunnableProbabilitySwitch _xblockexpression = null;
+    {
+      final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean probabilitySwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableProbabilitySwitch _init = this.<RunnableProbabilitySwitch>init(AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch(), initializer);
-    return _items.add(_init);
+  public RunnableProbabilitySwitch probabilitySwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+    RunnableProbabilitySwitch _xblockexpression = null;
+    {
+      final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean entry(final RunnableProbabilitySwitch container, final Procedure1<? super ProbabilitySwitchEntry<RunnableItem>> initializer) {
-    EList<ProbabilitySwitchEntry<RunnableItem>> _entries = container.getEntries();
-    ProbabilitySwitchEntry<RunnableItem> _init = this.<ProbabilitySwitchEntry<RunnableItem>>init(AmaltheaFactory.eINSTANCE.<RunnableItem>createProbabilitySwitchEntry(), initializer);
-    return _entries.add(_init);
+  public ProbabilitySwitchEntry<RunnableItem> entry(final RunnableProbabilitySwitch container, final Procedure1<? super ProbabilitySwitchEntry<RunnableItem>> initializer) {
+    ProbabilitySwitchEntry<RunnableItem> _xblockexpression = null;
+    {
+      final ProbabilitySwitchEntry<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createProbabilitySwitchEntry();
+      EList<ProbabilitySwitchEntry<RunnableItem>> _entries = container.getEntries();
+      _entries.add(obj);
+      _xblockexpression = this.<ProbabilitySwitchEntry<RunnableItem>>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super LabelAccess> initializer) {
-    EList<RunnableItem> _runnableItems = container.getRunnableItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _runnableItems.add(_init);
+  public LabelAccess labelAccess(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final Group container, final Procedure1<? super LabelAccess> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _items.add(_init);
+  public LabelAccess labelAccess(final Group container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _items.add(_init);
+  public LabelAccess labelAccess(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _items.add(_init);
+  public LabelAccess labelAccess(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _items.add(_init);
+  public LabelAccess labelAccess(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnableCall(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableCall> initializer) {
-    EList<RunnableItem> _runnableItems = container.getRunnableItems();
-    RunnableCall _init = this.<RunnableCall>init(AmaltheaFactory.eINSTANCE.createRunnableCall(), initializer);
-    return _runnableItems.add(_init);
+  public RunnableCall runnableCall(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableCall> initializer) {
+    RunnableCall _xblockexpression = null;
+    {
+      final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnableCall(final Group container, final Procedure1<? super RunnableCall> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableCall _init = this.<RunnableCall>init(AmaltheaFactory.eINSTANCE.createRunnableCall(), initializer);
-    return _items.add(_init);
+  public RunnableCall runnableCall(final Group container, final Procedure1<? super RunnableCall> initializer) {
+    RunnableCall _xblockexpression = null;
+    {
+      final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnableCall(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableCall _init = this.<RunnableCall>init(AmaltheaFactory.eINSTANCE.createRunnableCall(), initializer);
-    return _items.add(_init);
+  public RunnableCall runnableCall(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
+    RunnableCall _xblockexpression = null;
+    {
+      final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnableCall(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableCall _init = this.<RunnableCall>init(AmaltheaFactory.eINSTANCE.createRunnableCall(), initializer);
-    return _items.add(_init);
+  public RunnableCall runnableCall(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
+    RunnableCall _xblockexpression = null;
+    {
+      final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean runnableCall(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
-    EList<RunnableItem> _items = container.getItems();
-    RunnableCall _init = this.<RunnableCall>init(AmaltheaFactory.eINSTANCE.createRunnableCall(), initializer);
-    return _items.add(_init);
+  public RunnableCall runnableCall(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableCall> initializer) {
+    RunnableCall _xblockexpression = null;
+    {
+      final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
   private <T extends Object> T init(final T obj, final Procedure1<? super T> init) {

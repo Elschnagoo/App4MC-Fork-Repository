@@ -1,3 +1,18 @@
+/**
+ ********************************************************************************
+ * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ ********************************************************************************
+ */
+
 package org.eclipse.app4mc.amalthea.model.builder
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
@@ -25,45 +40,65 @@ class OperatingSystemBuilder {
 	// ********** Top level elements **********
 
 	def operatingSystem(OSModel container, (OperatingSystem)=>void initializer) {
-		container.operatingSystems += AmaltheaFactory.eINSTANCE.createOperatingSystem.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOperatingSystem
+		container.operatingSystems += obj
+		obj.init(initializer)
 	}
 
 	def operatingSystem_Vendor(OSModel container, (VendorOperatingSystem)=>void initializer) {
-		container.operatingSystems += AmaltheaFactory.eINSTANCE.createVendorOperatingSystem.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createVendorOperatingSystem
+		container.operatingSystems += obj
+		obj.init(initializer)
 	}
 
 	def semaphore(OSModel container, (Semaphore)=>void initializer) {
-		container.semaphores += AmaltheaFactory.eINSTANCE.createSemaphore.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSemaphore
+		container.semaphores += obj
+		obj.init(initializer)
 	}
 
 	def osOverhead(OSModel container, (OsInstructions)=>void initializer) {
-		container.osOverheads += AmaltheaFactory.eINSTANCE.createOsInstructions.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOsInstructions
+		container.osOverheads += obj
+		obj.init(initializer)
 	}
 
 	// ********** Operating system **********
 
 	def taskScheduler(OperatingSystem container, (TaskScheduler)=>void initializer) {
-		container.taskSchedulers += AmaltheaFactory.eINSTANCE.createTaskScheduler.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createTaskScheduler
+		container.taskSchedulers += obj
+		obj.init(initializer)
 	}
 
 	def interruptController(OperatingSystem container, (InterruptController)=>void initializer) {
-		container.interruptControllers += AmaltheaFactory.eINSTANCE.createInterruptController.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createInterruptController
+		container.interruptControllers += obj
+		obj.init(initializer)
 	}
 
 	def dataConsistency(OperatingSystem container, (OsDataConsistency)=>void initializer) {
-		container.osDataConsistency = AmaltheaFactory.eINSTANCE.createOsDataConsistency.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOsDataConsistency
+		container.osDataConsistency = obj
+		obj.init(initializer)
 	}
 
 	def labelAccess(Scheduler container, (LabelAccess)=>void initializer) {
-		container.computationItems += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.computationItems += obj
+		obj.init(initializer)
 	}
 
 	def parentAssociation(TaskScheduler container, (SchedulerAssociation)=>void initializer) {
-		container.parentAssociation = AmaltheaFactory.eINSTANCE.createSchedulerAssociation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSchedulerAssociation
+		container.parentAssociation = obj
+		obj.init(initializer)
 	}
 
 	def schedulingParameters(SchedulerAssociation container, (SchedulingParameters)=>void initializer) {
-		container.schedulingParameters = AmaltheaFactory.eINSTANCE.createSchedulingParameters.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSchedulingParameters
+		container.schedulingParameters = obj
+		obj.init(initializer)
 	}
 
 	def parameter_extension(SchedulerAssociation container, String key, String value) {
@@ -74,15 +109,21 @@ class OperatingSystemBuilder {
 	// ********** OS instructions (overhead) **********
 
 	def apiOverhead(OsInstructions container, (OsAPIInstructions)=>void initializer) {
-		container.apiOverhead = AmaltheaFactory.eINSTANCE.createOsAPIInstructions.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOsAPIInstructions
+		container.apiOverhead = obj
+		obj.init(initializer)
 	}
 
 	def isrOverheadCat1(OsInstructions container, (OsISRInstructions)=>void initializer) {
-		container.isrCategory1Overhead = AmaltheaFactory.eINSTANCE.createOsISRInstructions.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions
+		container.isrCategory1Overhead = obj
+		obj.init(initializer)
 	}
 
 	def isrOverheadCat2(OsInstructions container, (OsISRInstructions)=>void initializer) {
-		container.isrCategory2Overhead = AmaltheaFactory.eINSTANCE.createOsISRInstructions.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions
+		container.isrCategory2Overhead = obj
+		obj.init(initializer)
 	}
 
 	// ********** private **********
