@@ -1,3 +1,18 @@
+/**
+ ********************************************************************************
+ * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ ********************************************************************************
+ */
+
 package org.eclipse.app4mc.amalthea.model.builder
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
@@ -38,197 +53,287 @@ class SoftwareBuilder {
 	// ********** Top level elements **********
 
 	def isr(SWModel container, (ISR)=>void initializer) {
-		container.isrs += AmaltheaFactory.eINSTANCE.createISR.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createISR
+		container.isrs += obj
+		obj.init(initializer)
 	}
 
 	def task(SWModel container, (Task)=>void initializer) {
-		container.tasks += AmaltheaFactory.eINSTANCE.createTask.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createTask
+		container.tasks += obj
+		obj.init(initializer)
 	}
 
 	def runnable(SWModel container, (Runnable)=>void initializer) {
-		container.runnables += AmaltheaFactory.eINSTANCE.createRunnable.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnable
+		container.runnables += obj
+		obj.init(initializer)
 	}
 
 	def label(SWModel container, (Label)=>void initializer) {
-		container.labels += AmaltheaFactory.eINSTANCE.createLabel.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabel
+		container.labels += obj
+		obj.init(initializer)
 	}
 
 	def channel(SWModel container, (Channel)=>void initializer) {
-		container.channels += AmaltheaFactory.eINSTANCE.createChannel.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createChannel
+		container.channels += obj
+		obj.init(initializer)
 	}
 
 	def processPrototype(SWModel container, (ProcessPrototype)=>void initializer) {
-		container.processPrototypes += AmaltheaFactory.eINSTANCE.createProcessPrototype.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createProcessPrototype
+		container.processPrototypes += obj
+		obj.init(initializer)
 	}
 
 	def section(SWModel container, (Section)=>void initializer) {
-		container.sections += AmaltheaFactory.eINSTANCE.createSection.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSection
+		container.sections += obj
+		obj.init(initializer)
 	}
 
 	def activation_Single(SWModel container, (SingleActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createSingleActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSingleActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def activation_Sporadic(SWModel container, (SporadicActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createSporadicActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createSporadicActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def activation_Periodic(SWModel container, (PeriodicActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createPeriodicActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createPeriodicActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def activation_Event(SWModel container, (EventActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createEventActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createEventActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def activation_VariableRate(SWModel container, (VariableRateActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createVariableRateActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createVariableRateActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def activation_Custom(SWModel container, (CustomActivation)=>void initializer) {
-		container.activations += AmaltheaFactory.eINSTANCE.createCustomActivation.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createCustomActivation
+		container.activations += obj
+		obj.init(initializer)
 	}
 
 	def mode(SWModel container, (Mode)=>void initializer) {
-		container.modes += AmaltheaFactory.eINSTANCE.createMode.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createMode
+		container.modes += obj
+		obj.init(initializer)
 	}
 
 	def modeLabel(SWModel container, (ModeLabel)=>void initializer) {
-		container.modeLabels += AmaltheaFactory.eINSTANCE.createModeLabel.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createModeLabel
+		container.modeLabels += obj
+		obj.init(initializer)
 	}
 
 	// ********** Mode Literals **********
 
 	def literal(Mode container, (ModeLiteral)=>void initializer) {
-		container.literals += AmaltheaFactory.eINSTANCE.createModeLiteral.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createModeLiteral
+		container.literals += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Parameters **********
 
 	def parameter(Runnable container, (RunnableParameter)=>void initializer) {
-		container.parameters += AmaltheaFactory.eINSTANCE.createRunnableParameter.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableParameter
+		container.parameters += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - Container - Group **********
 
 	def group(Runnable container, (Group)=>void initializer) {
-		container.runnableItems += AmaltheaFactory.eINSTANCE.createGroup.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createGroup
+		container.runnableItems += obj
+		obj.init(initializer)
 	}
 
 	def group(Group container, (Group)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createGroup.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createGroup
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def group(ModeSwitchDefault<RunnableItem> container, (Group)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createGroup.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createGroup
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def group(ModeSwitchEntry<RunnableItem> container, (Group)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createGroup.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createGroup
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def group(ProbabilitySwitchEntry<RunnableItem> container, (Group)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createGroup.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createGroup
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - Container - RunnableModeSwitch **********
 
 	def modeSwitch(Runnable container, (RunnableModeSwitch)=>void initializer) {
-		container.runnableItems += AmaltheaFactory.eINSTANCE.createRunnableModeSwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
+		container.runnableItems += obj
+		obj.init(initializer)
 	}
 
 	def modeSwitch(Group container, (RunnableModeSwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableModeSwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def modeSwitch(ModeSwitchDefault<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableModeSwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def modeSwitch(ModeSwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableModeSwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def modeSwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableModeSwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def entry(RunnableModeSwitch container, (ModeSwitchEntry<RunnableItem>)=>void initializer) {
-		container.entries += AmaltheaFactory.eINSTANCE.createModeSwitchEntry.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitchEntry
+		container.entries += obj
+		obj.init(initializer)
 	}
 
 	def defaultEntry(RunnableModeSwitch container, (ModeSwitchDefault<RunnableItem>)=>void initializer) {
-		container.defaultEntry = AmaltheaFactory.eINSTANCE.createModeSwitchDefault.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitchDefault
+		container.defaultEntry = obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - Container - RunnableProbabilitySwitch **********
 
 	def probabilitySwitch(Runnable container, (RunnableProbabilitySwitch)=>void initializer) {
-		container.runnableItems += AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
+		container.runnableItems += obj
+		obj.init(initializer)
 	}
 
 	def probabilitySwitch(Group container, (RunnableProbabilitySwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def probabilitySwitch(ModeSwitchDefault<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def probabilitySwitch(ModeSwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def probabilitySwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def entry(RunnableProbabilitySwitch container, (ProbabilitySwitchEntry<RunnableItem>)=>void initializer) {
-		container.entries += AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry
+		container.entries += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - Label access **********
 
 	def labelAccess(Runnable container, (LabelAccess)=>void initializer) {
-		container.runnableItems += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.runnableItems += obj
+		obj.init(initializer)
 	}
 
 	def labelAccess(Group container, (LabelAccess)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def labelAccess(ModeSwitchDefault<RunnableItem> container, (LabelAccess)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def labelAccess(ModeSwitchEntry<RunnableItem> container, (LabelAccess)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def labelAccess(ProbabilitySwitchEntry<RunnableItem> container, (LabelAccess)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createLabelAccess.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createLabelAccess
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - Runnable call **********
 
 	def runnableCall(Runnable container, (RunnableCall)=>void initializer) {
-		container.runnableItems += AmaltheaFactory.eINSTANCE.createRunnableCall.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableCall
+		container.runnableItems += obj
+		obj.init(initializer)
 	}
 
 	def runnableCall(Group container, (RunnableCall)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableCall.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableCall
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def runnableCall(ModeSwitchDefault<RunnableItem> container, (RunnableCall)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableCall.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableCall
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def runnableCall(ModeSwitchEntry<RunnableItem> container, (RunnableCall)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableCall.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableCall
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	def runnableCall(ProbabilitySwitchEntry<RunnableItem> container, (RunnableCall)=>void initializer) {
-		container.items += AmaltheaFactory.eINSTANCE.createRunnableCall.init(initializer)
+		val obj = AmaltheaFactory.eINSTANCE.createRunnableCall
+		container.items += obj
+		obj.init(initializer)
 	}
 
 	// ********** Runnable Items - TODO **********

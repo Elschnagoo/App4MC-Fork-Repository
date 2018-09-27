@@ -1,3 +1,15 @@
+/**
+ * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ */
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -25,74 +37,145 @@ public class OperatingSystemBuilder {
     return this.<OSModel>init(AmaltheaFactory.eINSTANCE.createOSModel(), initializer);
   }
   
-  public boolean operatingSystem(final OSModel container, final Procedure1<? super OperatingSystem> initializer) {
-    EList<OperatingSystem> _operatingSystems = container.getOperatingSystems();
-    OperatingSystem _init = this.<OperatingSystem>init(AmaltheaFactory.eINSTANCE.createOperatingSystem(), initializer);
-    return _operatingSystems.add(_init);
+  public OperatingSystem operatingSystem(final OSModel container, final Procedure1<? super OperatingSystem> initializer) {
+    OperatingSystem _xblockexpression = null;
+    {
+      final OperatingSystem obj = AmaltheaFactory.eINSTANCE.createOperatingSystem();
+      EList<OperatingSystem> _operatingSystems = container.getOperatingSystems();
+      _operatingSystems.add(obj);
+      _xblockexpression = this.<OperatingSystem>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean operatingSystem_Vendor(final OSModel container, final Procedure1<? super VendorOperatingSystem> initializer) {
-    EList<OperatingSystem> _operatingSystems = container.getOperatingSystems();
-    VendorOperatingSystem _init = this.<VendorOperatingSystem>init(AmaltheaFactory.eINSTANCE.createVendorOperatingSystem(), initializer);
-    return _operatingSystems.add(_init);
+  public VendorOperatingSystem operatingSystem_Vendor(final OSModel container, final Procedure1<? super VendorOperatingSystem> initializer) {
+    VendorOperatingSystem _xblockexpression = null;
+    {
+      final VendorOperatingSystem obj = AmaltheaFactory.eINSTANCE.createVendorOperatingSystem();
+      EList<OperatingSystem> _operatingSystems = container.getOperatingSystems();
+      _operatingSystems.add(obj);
+      _xblockexpression = this.<VendorOperatingSystem>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean semaphore(final OSModel container, final Procedure1<? super Semaphore> initializer) {
-    EList<Semaphore> _semaphores = container.getSemaphores();
-    Semaphore _init = this.<Semaphore>init(AmaltheaFactory.eINSTANCE.createSemaphore(), initializer);
-    return _semaphores.add(_init);
+  public Semaphore semaphore(final OSModel container, final Procedure1<? super Semaphore> initializer) {
+    Semaphore _xblockexpression = null;
+    {
+      final Semaphore obj = AmaltheaFactory.eINSTANCE.createSemaphore();
+      EList<Semaphore> _semaphores = container.getSemaphores();
+      _semaphores.add(obj);
+      _xblockexpression = this.<Semaphore>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean osOverhead(final OSModel container, final Procedure1<? super OsInstructions> initializer) {
-    EList<OsInstructions> _osOverheads = container.getOsOverheads();
-    OsInstructions _init = this.<OsInstructions>init(AmaltheaFactory.eINSTANCE.createOsInstructions(), initializer);
-    return _osOverheads.add(_init);
+  public OsInstructions osOverhead(final OSModel container, final Procedure1<? super OsInstructions> initializer) {
+    OsInstructions _xblockexpression = null;
+    {
+      final OsInstructions obj = AmaltheaFactory.eINSTANCE.createOsInstructions();
+      EList<OsInstructions> _osOverheads = container.getOsOverheads();
+      _osOverheads.add(obj);
+      _xblockexpression = this.<OsInstructions>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean taskScheduler(final OperatingSystem container, final Procedure1<? super TaskScheduler> initializer) {
-    EList<TaskScheduler> _taskSchedulers = container.getTaskSchedulers();
-    TaskScheduler _init = this.<TaskScheduler>init(AmaltheaFactory.eINSTANCE.createTaskScheduler(), initializer);
-    return _taskSchedulers.add(_init);
+  public TaskScheduler taskScheduler(final OperatingSystem container, final Procedure1<? super TaskScheduler> initializer) {
+    TaskScheduler _xblockexpression = null;
+    {
+      final TaskScheduler obj = AmaltheaFactory.eINSTANCE.createTaskScheduler();
+      EList<TaskScheduler> _taskSchedulers = container.getTaskSchedulers();
+      _taskSchedulers.add(obj);
+      _xblockexpression = this.<TaskScheduler>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean interruptController(final OperatingSystem container, final Procedure1<? super InterruptController> initializer) {
-    EList<InterruptController> _interruptControllers = container.getInterruptControllers();
-    InterruptController _init = this.<InterruptController>init(AmaltheaFactory.eINSTANCE.createInterruptController(), initializer);
-    return _interruptControllers.add(_init);
+  public InterruptController interruptController(final OperatingSystem container, final Procedure1<? super InterruptController> initializer) {
+    InterruptController _xblockexpression = null;
+    {
+      final InterruptController obj = AmaltheaFactory.eINSTANCE.createInterruptController();
+      EList<InterruptController> _interruptControllers = container.getInterruptControllers();
+      _interruptControllers.add(obj);
+      _xblockexpression = this.<InterruptController>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void dataConsistency(final OperatingSystem container, final Procedure1<? super OsDataConsistency> initializer) {
-    container.setOsDataConsistency(this.<OsDataConsistency>init(AmaltheaFactory.eINSTANCE.createOsDataConsistency(), initializer));
+  public OsDataConsistency dataConsistency(final OperatingSystem container, final Procedure1<? super OsDataConsistency> initializer) {
+    OsDataConsistency _xblockexpression = null;
+    {
+      final OsDataConsistency obj = AmaltheaFactory.eINSTANCE.createOsDataConsistency();
+      container.setOsDataConsistency(obj);
+      _xblockexpression = this.<OsDataConsistency>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public boolean labelAccess(final Scheduler container, final Procedure1<? super LabelAccess> initializer) {
-    EList<ComputationItem> _computationItems = container.getComputationItems();
-    LabelAccess _init = this.<LabelAccess>init(AmaltheaFactory.eINSTANCE.createLabelAccess(), initializer);
-    return _computationItems.add(_init);
+  public LabelAccess labelAccess(final Scheduler container, final Procedure1<? super LabelAccess> initializer) {
+    LabelAccess _xblockexpression = null;
+    {
+      final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
+      EList<ComputationItem> _computationItems = container.getComputationItems();
+      _computationItems.add(obj);
+      _xblockexpression = this.<LabelAccess>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void parentAssociation(final TaskScheduler container, final Procedure1<? super SchedulerAssociation> initializer) {
-    container.setParentAssociation(this.<SchedulerAssociation>init(AmaltheaFactory.eINSTANCE.createSchedulerAssociation(), initializer));
+  public SchedulerAssociation parentAssociation(final TaskScheduler container, final Procedure1<? super SchedulerAssociation> initializer) {
+    SchedulerAssociation _xblockexpression = null;
+    {
+      final SchedulerAssociation obj = AmaltheaFactory.eINSTANCE.createSchedulerAssociation();
+      container.setParentAssociation(obj);
+      _xblockexpression = this.<SchedulerAssociation>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void schedulingParameters(final SchedulerAssociation container, final Procedure1<? super SchedulingParameters> initializer) {
-    container.setSchedulingParameters(this.<SchedulingParameters>init(AmaltheaFactory.eINSTANCE.createSchedulingParameters(), initializer));
+  public SchedulingParameters schedulingParameters(final SchedulerAssociation container, final Procedure1<? super SchedulingParameters> initializer) {
+    SchedulingParameters _xblockexpression = null;
+    {
+      final SchedulingParameters obj = AmaltheaFactory.eINSTANCE.createSchedulingParameters();
+      container.setSchedulingParameters(obj);
+      _xblockexpression = this.<SchedulingParameters>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
   public String parameter_extension(final SchedulerAssociation container, final String key, final String value) {
     return container.getParameterExtensions().put(key, value);
   }
   
-  public void apiOverhead(final OsInstructions container, final Procedure1<? super OsAPIInstructions> initializer) {
-    container.setApiOverhead(this.<OsAPIInstructions>init(AmaltheaFactory.eINSTANCE.createOsAPIInstructions(), initializer));
+  public OsAPIInstructions apiOverhead(final OsInstructions container, final Procedure1<? super OsAPIInstructions> initializer) {
+    OsAPIInstructions _xblockexpression = null;
+    {
+      final OsAPIInstructions obj = AmaltheaFactory.eINSTANCE.createOsAPIInstructions();
+      container.setApiOverhead(obj);
+      _xblockexpression = this.<OsAPIInstructions>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void isrOverheadCat1(final OsInstructions container, final Procedure1<? super OsISRInstructions> initializer) {
-    container.setIsrCategory1Overhead(this.<OsISRInstructions>init(AmaltheaFactory.eINSTANCE.createOsISRInstructions(), initializer));
+  public OsISRInstructions isrOverheadCat1(final OsInstructions container, final Procedure1<? super OsISRInstructions> initializer) {
+    OsISRInstructions _xblockexpression = null;
+    {
+      final OsISRInstructions obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions();
+      container.setIsrCategory1Overhead(obj);
+      _xblockexpression = this.<OsISRInstructions>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
-  public void isrOverheadCat2(final OsInstructions container, final Procedure1<? super OsISRInstructions> initializer) {
-    container.setIsrCategory2Overhead(this.<OsISRInstructions>init(AmaltheaFactory.eINSTANCE.createOsISRInstructions(), initializer));
+  public OsISRInstructions isrOverheadCat2(final OsInstructions container, final Procedure1<? super OsISRInstructions> initializer) {
+    OsISRInstructions _xblockexpression = null;
+    {
+      final OsISRInstructions obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions();
+      container.setIsrCategory2Overhead(obj);
+      _xblockexpression = this.<OsISRInstructions>init(obj, initializer);
+    }
+    return _xblockexpression;
   }
   
   private <T extends Object> T init(final T obj, final Procedure1<? super T> init) {
