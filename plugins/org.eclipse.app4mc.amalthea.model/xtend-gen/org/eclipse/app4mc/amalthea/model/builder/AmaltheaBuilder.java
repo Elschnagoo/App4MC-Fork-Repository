@@ -22,7 +22,7 @@ import org.eclipse.app4mc.amalthea.model.ComponentsModel;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.HWModel;
-import org.eclipse.app4mc.amalthea.model.IReferable;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
@@ -35,7 +35,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class AmaltheaBuilder {
-  private final HashMap<String, IReferable> objectRegistry = CollectionLiterals.<String, IReferable>newHashMap();
+  private final HashMap<String, EObject> objectRegistry = CollectionLiterals.<String, EObject>newHashMap();
   
   public Amalthea amalthea(final Procedure1<? super Amalthea> initializer) {
     return this.<Amalthea>init(AmaltheaFactory.eINSTANCE.createAmalthea(), initializer);
@@ -141,20 +141,20 @@ public class AmaltheaBuilder {
     return _xblockexpression;
   }
   
-  public <T extends IReferable> void _reg(final T obj, final String name) {
+  public <T extends EObject> void _reg(final T obj, final String name) {
     this.objectRegistry.put(name, obj);
   }
   
-  public <T extends IReferable> T _ref(final Class<T> cl, final String name) {
+  public <T extends EObject> T _ref(final Class<T> cl, final String name) {
     T _xblockexpression = null;
     {
-      final IReferable obj = this.objectRegistry.get(name);
+      final EObject obj = this.objectRegistry.get(name);
       _xblockexpression = cl.cast(obj);
     }
     return _xblockexpression;
   }
   
-  public <T extends IReferable> T _find(final EObject context, final Class<T> cl, final String name) {
+  public <T extends INamed> T _find(final EObject context, final Class<T> cl, final String name) {
     T _xblockexpression = null;
     {
       final Set<? extends T> resultSet = AmaltheaIndex.<T>getElements(context, name, cl);

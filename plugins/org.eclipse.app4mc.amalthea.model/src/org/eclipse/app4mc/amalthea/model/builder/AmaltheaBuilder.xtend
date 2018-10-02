@@ -23,7 +23,7 @@ import org.eclipse.app4mc.amalthea.model.ComponentsModel
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel
 import org.eclipse.app4mc.amalthea.model.EventModel
 import org.eclipse.app4mc.amalthea.model.HWModel
-import org.eclipse.app4mc.amalthea.model.IReferable
+import org.eclipse.app4mc.amalthea.model.INamed
 import org.eclipse.app4mc.amalthea.model.MappingModel
 import org.eclipse.app4mc.amalthea.model.OSModel
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject
 
 class AmaltheaBuilder {
 
-	val objectRegistry = <String, IReferable> newHashMap
+	val objectRegistry = <String, EObject> newHashMap
 
 	def amalthea((Amalthea)=>void initializer) {
 		AmaltheaFactory.eINSTANCE.createAmalthea.init(initializer)
@@ -103,11 +103,11 @@ class AmaltheaBuilder {
 
 	// ********** Cross reference registry **********
 	
-	def <T extends IReferable> void _reg(T obj, String name) {
+	def <T extends EObject> void _reg(T obj, String name) {
 		objectRegistry.put(name, obj)
 	}
 	
-	def <T extends IReferable> T _ref(Class<T> cl, String name) {
+	def <T extends EObject> T _ref(Class<T> cl, String name) {
 		val obj = objectRegistry.get(name)
 		// TODO handle NULL
 		cl.cast(obj)
@@ -115,7 +115,7 @@ class AmaltheaBuilder {
 
 	// ********** Cross reference finder (via name based index search) **********
 	
-		def <T extends IReferable> T _find(EObject context, Class<T> cl, String name) {
+		def <T extends INamed> T _find(EObject context, Class<T> cl, String name) {
 		val resultSet = AmaltheaIndex.getElements(context, name, cl)
 		// TODO handle NULL
 		resultSet.head

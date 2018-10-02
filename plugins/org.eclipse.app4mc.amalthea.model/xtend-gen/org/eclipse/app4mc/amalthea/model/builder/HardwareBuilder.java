@@ -19,6 +19,8 @@ import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.HWModel;
+import org.eclipse.app4mc.amalthea.model.HwAccessElement;
+import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
@@ -257,6 +259,38 @@ public class HardwareBuilder {
       EList<HwPort> _ports = container.getPorts();
       _ports.add(obj);
       _xblockexpression = this.<HwPort>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public Cache cache(final ProcessingUnit container, final Procedure1<? super Cache> initializer) {
+    Cache _xblockexpression = null;
+    {
+      final Cache obj = AmaltheaFactory.eINSTANCE.createCache();
+      EList<Cache> _caches = container.getCaches();
+      _caches.add(obj);
+      _xblockexpression = this.<Cache>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public HwAccessElement access(final ProcessingUnit container, final Procedure1<? super HwAccessElement> initializer) {
+    HwAccessElement _xblockexpression = null;
+    {
+      final HwAccessElement obj = AmaltheaFactory.eINSTANCE.createHwAccessElement();
+      EList<HwAccessElement> _accessElements = container.getAccessElements();
+      _accessElements.add(obj);
+      _xblockexpression = this.<HwAccessElement>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public HwAccessPath path(final HwAccessElement container, final Procedure1<? super HwAccessPath> initializer) {
+    HwAccessPath _xblockexpression = null;
+    {
+      final HwAccessPath obj = AmaltheaFactory.eINSTANCE.createHwAccessPath();
+      container.setAccessPath(obj);
+      _xblockexpression = this.<HwAccessPath>init(obj, initializer);
     }
     return _xblockexpression;
   }

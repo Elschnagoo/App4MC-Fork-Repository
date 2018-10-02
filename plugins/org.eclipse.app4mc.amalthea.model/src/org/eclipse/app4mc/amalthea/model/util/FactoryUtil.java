@@ -21,12 +21,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
+import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
@@ -56,7 +60,20 @@ public class FactoryUtil {
 		size.setUnit(unit);
 		return size;
 	}
-	
+
+	/**
+	 * Creates a data rate out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return DataRate
+	 */
+	public static DataRate createDataRate(long value, DataRateUnit unit) {
+		DataRate rate = AmaltheaFactory.eINSTANCE.createDataRate();
+		rate.setValue(BigInteger.valueOf(value));
+		rate.setUnit(unit);
+		return rate;
+	}
+
 	/**
 	 * Creates a frequency out of a value and a unit
 	 * @param value
@@ -127,6 +144,49 @@ public class FactoryUtil {
 		LatencyDeviation latency = AmaltheaFactory.eINSTANCE.createLatencyDeviation();
 		latency.setCycles(cycles);;
 		return latency;
+	}
+
+	/**
+	 * Returns a newly created Deviation.
+	 * @param dist
+	 */
+	public static Deviation<LongObject> createDeviation(Distribution<LongObject> dist) {
+		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
+		// set distribution
+		result.setDistribution(dist);
+		return result;
+	}
+
+	/**
+	 * Returns a newly created Deviation.
+	 * @param dist
+	 * @param min
+	 * @param max
+	 */
+	public static Deviation<LongObject> createDeviation(Distribution<LongObject> dist, long min, long max) {
+		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
+		// set distribution
+		result.setDistribution(dist);
+		// set bounds (clipping)
+		LongObject upperBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		upperBound.setValue(max);
+		LongObject lowerBound = AmaltheaFactory.eINSTANCE.createLongObject();
+		lowerBound.setValue(min);
+		result.setUpperBound(upperBound);
+		result.setLowerBound(lowerBound);
+		return result;
+	}
+
+	public static GaussDistribution<LongObject> createGaussDistribution(long mean, long sd) {
+		GaussDistribution<LongObject> result = AmaltheaFactory.eINSTANCE.createGaussDistribution();
+		// set parameters
+		LongObject meanObj = AmaltheaFactory.eINSTANCE.createLongObject();
+		meanObj.setValue(mean);
+		result.setMean(meanObj);
+		LongObject sdObj = AmaltheaFactory.eINSTANCE.createLongObject();
+		sdObj.setValue(sd);
+		result.setSd(sdObj);
+		return result;
 	}
 
 	/**

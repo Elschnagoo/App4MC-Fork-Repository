@@ -32,6 +32,8 @@ import org.eclipse.app4mc.amalthea.model.MemoryDefinition
 import org.eclipse.app4mc.amalthea.model.PowerDomain
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
+import org.eclipse.app4mc.amalthea.model.HwAccessElement
+import org.eclipse.app4mc.amalthea.model.HwAccessPath
 
 class HardwareBuilder {
 
@@ -164,6 +166,26 @@ class HardwareBuilder {
 		container.ports += obj
 		obj.init(initializer)
 	}
+
+	def cache(ProcessingUnit container, (Cache)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createCache
+		container.caches += obj
+		obj.init(initializer)
+	}
+
+	def access(ProcessingUnit container, (HwAccessElement)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createHwAccessElement
+		container.accessElements += obj
+		obj.init(initializer)
+	}
+
+	def path(HwAccessElement container, (HwAccessPath)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createHwAccessPath
+		container.accessPath = obj
+		obj.init(initializer)
+	}
+
+
 
 	// ********** private **********
 
