@@ -700,6 +700,8 @@ public class HwConverter extends AbstractConverter {
 			
 			String newHW_definitions_type_amalthea_element="MemoryDefinition";
 			
+			boolean isElementAddedToTheParent=false;
+			
 			if(hw_memory_typeDefinitionName!=null) {
 				
 				if(migrateCache) {
@@ -718,6 +720,7 @@ public class HwConverter extends AbstractConverter {
 						
 						//Adding memory object to newHW
 						newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
+						isElementAddedToTheParent=true;
 						
 					}	
 				}
@@ -730,6 +733,7 @@ public class HwConverter extends AbstractConverter {
 							
 							//Adding memory object to newHW
 							newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
+							isElementAddedToTheParent=true;
 						}
 				}
 				
@@ -741,29 +745,35 @@ public class HwConverter extends AbstractConverter {
 					
 					//Adding memory object to newHW
 					newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
+					isElementAddedToTheParent=true;
 					
 				}
 			}
 			
 			// TODO When should the following loop be executed ?
 			
-			List<Element> newHWMemoryDefinitions = migrateAttributeorElementData(oldHW_Memory, "type", "definition", newHW_definitions_type_amalthea_element);
-
-			for (Element newHWMemoryDefinition : newHWMemoryDefinitions) {
+			if(isElementAddedToTheParent) {
 				
-				newHW_Memory_Element.addContent(newHWMemoryDefinition);
+				List<Element> newHWMemoryDefinitions = migrateAttributeorElementData(oldHW_Memory, "type", "definition", newHW_definitions_type_amalthea_element);
+
+				for (Element newHWMemoryDefinition : newHWMemoryDefinitions) {
+					
+					newHW_Memory_Element.addContent(newHWMemoryDefinition);
+				}
+				
+				migratePrescaler(oldHW_Memory, newHW_Memory_Element);
+				
+				/*-migrate ports*/
+
+				migratePorts(oldHW_Memory, newHW_Memory_Element);
+				
+				
+				/*-migrating custom properties */
+
+				migrateCustomProperties(oldHW_Memory, newHW_Memory_Element);
 			}
 			
-			migratePrescaler(oldHW_Memory, newHW_Memory_Element);
 			
-			/*-migrate ports*/
-
-			migratePorts(oldHW_Memory, newHW_Memory_Element);
-			
-			
-			/*-migrating custom properties */
-
-			migrateCustomProperties(oldHW_Memory, newHW_Memory_Element);
 			
 		}
 	}
