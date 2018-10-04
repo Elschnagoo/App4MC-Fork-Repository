@@ -64,7 +64,7 @@
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
     <repository
-        url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/latest/"/>
+        url="http://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/latest/"/>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
