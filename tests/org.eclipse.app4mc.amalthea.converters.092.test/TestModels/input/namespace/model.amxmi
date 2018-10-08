@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <hwModel>
+    <memoryTypes name="memType1" />
+    <memoryTypes name="memType2" />
+    <memoryTypes name="memType3" />
+    <memoryTypes name="memType4" />
+    <memoryTypes name="memType5" />
+    <memoryTypes name="memType6" />
+    <memoryTypes name="memType7" />
+    <memoryTypes name="memType8" />
+  </hwModel>
+</am:Amalthea>

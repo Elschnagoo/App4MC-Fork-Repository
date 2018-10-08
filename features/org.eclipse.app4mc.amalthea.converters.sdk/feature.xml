@@ -65,63 +65,74 @@ All rights reserved.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.app4mc.amalthea.converters.071.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.app4mc.amalthea.converters.072.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-    <plugin
+
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.080.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-     <plugin
+
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.081.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-     <plugin
+
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.082.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-      <plugin
+
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.083.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-        <plugin
+
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.090.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
-        <plugin
+   <plugin
          id="org.eclipse.app4mc.amalthea.converters.091.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
-             
+   <plugin
+         id="org.eclipse.app4mc.amalthea.converters.092.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
    <plugin
          id="org.jaxen.source"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>         
+         version="0.0.0"/>
 
 </feature>

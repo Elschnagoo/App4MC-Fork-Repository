@@ -113,6 +113,8 @@
                   </enumeration>
                   <enumeration value="0.9.0">
                   </enumeration>
+                  <enumeration value="0.9.1">
+                  </enumeration>
                </restriction>
             </simpleType>
          </attribute>
