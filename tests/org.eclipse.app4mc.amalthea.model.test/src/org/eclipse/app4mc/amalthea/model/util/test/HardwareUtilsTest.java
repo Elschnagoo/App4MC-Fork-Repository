@@ -36,10 +36,10 @@ import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.io.AmaltheaLoader;
 import org.eclipse.app4mc.amalthea.model.util.HardwareUtil;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.AccessDirection;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
+import org.eclipse.app4mc.amalthea.models.HardwareModels;
 import org.eclipse.emf.common.util.EList;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,7 +50,7 @@ public class HardwareUtilsTest {
 	
 	@Before
 	public void initalizeModel() {
-		amaltheaModel = AmaltheaLoader.loadFromFileNamed("test-data/HwUtilTestModel.amxmi");
+		amaltheaModel = HardwareModels.hwModel1();
 	}
 
 	@Test

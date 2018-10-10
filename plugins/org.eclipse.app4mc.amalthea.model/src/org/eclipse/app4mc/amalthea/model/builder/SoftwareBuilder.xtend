@@ -16,21 +16,31 @@
 package org.eclipse.app4mc.amalthea.model.builder
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.CallSequence
 import org.eclipse.app4mc.amalthea.model.Channel
+import org.eclipse.app4mc.amalthea.model.ClearEvent
 import org.eclipse.app4mc.amalthea.model.CustomActivation
+import org.eclipse.app4mc.amalthea.model.EnforcedMigration
 import org.eclipse.app4mc.amalthea.model.EventActivation
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed
+import org.eclipse.app4mc.amalthea.model.GraphEntryBase
 import org.eclipse.app4mc.amalthea.model.Group
 import org.eclipse.app4mc.amalthea.model.ISR
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.Label
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.Mode
 import org.eclipse.app4mc.amalthea.model.ModeLabel
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
+import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
+import org.eclipse.app4mc.amalthea.model.Need
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 import org.eclipse.app4mc.amalthea.model.Runnable
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
@@ -38,11 +48,17 @@ import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableParameter
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.SWModel
+import org.eclipse.app4mc.amalthea.model.SchedulePoint
 import org.eclipse.app4mc.amalthea.model.Section
+import org.eclipse.app4mc.amalthea.model.SetEvent
 import org.eclipse.app4mc.amalthea.model.SingleActivation
 import org.eclipse.app4mc.amalthea.model.SporadicActivation
 import org.eclipse.app4mc.amalthea.model.Task
+import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
+import org.eclipse.app4mc.amalthea.model.TerminateProcess
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation
+import org.eclipse.app4mc.amalthea.model.WaitEvent
+import org.eclipse.emf.common.util.BasicEMap
 
 class SoftwareBuilder {
 
@@ -150,6 +166,154 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 
+	// ********** Task - Container - Call Sequence **********
+
+	def callSequence(Task container, (CallSequence)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createCallSequence
+		if (container.callGraph === null) container.callGraph = AmaltheaFactory.eINSTANCE.createCallGraph
+		container.callGraph.graphEntries += obj
+		obj.init(initializer)
+	}
+
+	def callSequence(ModeSwitchDefault<GraphEntryBase> container, (CallSequence)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createCallSequence
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def callSequence(ModeSwitchEntry<GraphEntryBase> container, (CallSequence)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createCallSequence
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def callSequence(ProbabilitySwitchEntry<GraphEntryBase> container, (CallSequence)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createCallSequence
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	// ********** Task - Container - ModeSwitch **********
+
+	def modeSwitch(Task container, (ModeSwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitch
+		if (container.callGraph === null) container.callGraph = AmaltheaFactory.eINSTANCE.createCallGraph
+		container.callGraph.graphEntries += obj
+		obj.init(initializer)
+	}
+
+	def modeSwitch(ModeSwitchDefault<GraphEntryBase> container, (ModeSwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def modeSwitch(ModeSwitchEntry<GraphEntryBase> container, (ModeSwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def modeSwitch(ProbabilitySwitchEntry<GraphEntryBase> container, (ModeSwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def entry(ModeSwitch container, (ModeSwitchEntry<GraphEntryBase>)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitchEntry
+		container.entries += obj
+		obj.init(initializer)
+	}
+
+	def defaultEntry(ModeSwitch container, (ModeSwitchDefault<GraphEntryBase>)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createModeSwitchDefault
+		container.defaultEntry = obj
+		obj.init(initializer)
+	}
+
+	// ********** Task - Container - ProbabilitySwitch **********
+
+	def probabilitySwitch(Task container, (ProbabilitySwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch
+		if (container.callGraph === null) container.callGraph = AmaltheaFactory.eINSTANCE.createCallGraph
+		container.callGraph.graphEntries += obj
+		obj.init(initializer)
+	}
+
+	def probabilitySwitch(ModeSwitchDefault<GraphEntryBase> container, (ProbabilitySwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def probabilitySwitch(ModeSwitchEntry<GraphEntryBase> container, (ProbabilitySwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def probabilitySwitch(ProbabilitySwitchEntry<GraphEntryBase> container, (ProbabilitySwitch)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def entry(ProbabilitySwitch container, (ProbabilitySwitchEntry<GraphEntryBase>)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry
+		container.entries += obj
+		obj.init(initializer)
+	}
+
+	// ********** Call Sequence Items **********
+
+	def runnableCall(CallSequence container, (TaskRunnableCall)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createTaskRunnableCall
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def schedulePoint(CallSequence container, (SchedulePoint)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createSchedulePoint
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def interProcessTrigger(CallSequence container, (InterProcessTrigger)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createInterProcessTrigger
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def enforcedMigration(CallSequence container, (EnforcedMigration)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createEnforcedMigration
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def terminateProcess(CallSequence container, (TerminateProcess)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createTerminateProcess
+		container.calls += obj
+		obj.init(initializer)
+	}
+	def clearEvent(CallSequence container, (ClearEvent)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createClearEvent
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def waitEvent(CallSequence container, (WaitEvent)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createWaitEvent
+		container.calls += obj
+		obj.init(initializer)
+	}
+
+	def setEvent(CallSequence container, (SetEvent)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createSetEvent
+		container.calls += obj
+		obj.init(initializer)
+	}
+
 	// ********** Runnable Parameters **********
 
 	def parameter(Runnable container, (RunnableParameter)=>void initializer) {
@@ -192,31 +356,31 @@ class SoftwareBuilder {
 
 	// ********** Runnable Items - Container - RunnableModeSwitch **********
 
-	def modeSwitch(Runnable container, (RunnableModeSwitch)=>void initializer) {
+	def runModeSwitch(Runnable container, (RunnableModeSwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
 		container.runnableItems += obj
 		obj.init(initializer)
 	}
 
-	def modeSwitch(Group container, (RunnableModeSwitch)=>void initializer) {
+	def runModeSwitch(Group container, (RunnableModeSwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def modeSwitch(ModeSwitchDefault<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
+	def runModeSwitch(ModeSwitchDefault<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def modeSwitch(ModeSwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
+	def runModeSwitch(ModeSwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def modeSwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
+	def runModeSwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableModeSwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch
 		container.items += obj
 		obj.init(initializer)
@@ -236,31 +400,31 @@ class SoftwareBuilder {
 
 	// ********** Runnable Items - Container - RunnableProbabilitySwitch **********
 
-	def probabilitySwitch(Runnable container, (RunnableProbabilitySwitch)=>void initializer) {
+	def runProbabilitySwitch(Runnable container, (RunnableProbabilitySwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
 		container.runnableItems += obj
 		obj.init(initializer)
 	}
 
-	def probabilitySwitch(Group container, (RunnableProbabilitySwitch)=>void initializer) {
+	def runProbabilitySwitch(Group container, (RunnableProbabilitySwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def probabilitySwitch(ModeSwitchDefault<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
+	def runProbabilitySwitch(ModeSwitchDefault<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def probabilitySwitch(ModeSwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
+	def runProbabilitySwitch(ModeSwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
 		container.items += obj
 		obj.init(initializer)
 	}
 
-	def probabilitySwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
+	def runProbabilitySwitch(ProbabilitySwitchEntry<RunnableItem> container, (RunnableProbabilitySwitch)=>void initializer) {
 		val obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch
 		container.items += obj
 		obj.init(initializer)
@@ -336,7 +500,50 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 
-	// ********** Runnable Items - TODO **********
+	// ********** Runnable Items - Execution need **********
+
+	def execNeed(Runnable container, (ExecutionNeed)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createExecutionNeed
+		container.runnableItems += obj
+		obj.init(initializer)
+	}
+
+	def execNeed(Group container, (ExecutionNeed)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createExecutionNeed
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def execNeed(ModeSwitchDefault<RunnableItem> container, (ExecutionNeed)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createExecutionNeed
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def execNeed(ModeSwitchEntry<RunnableItem> container, (ExecutionNeed)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createExecutionNeed
+		container.items += obj
+		obj.init(initializer)
+	}
+
+	def execNeed(ProbabilitySwitchEntry<RunnableItem> container, (ExecutionNeed)=>void initializer) {
+		val obj = AmaltheaFactory.eINSTANCE.createExecutionNeed
+		container.items += obj
+		obj.init(initializer)
+	}
+	
+	def default_Need(ExecutionNeed container, String key, Need need) {
+		container.^default.put(key, need)
+	}
+
+	def extended_Need(ExecutionNeed container, ProcessingUnitDefinition puDef, String key, Need need) {
+		if (container.extended.containsKey(puDef) == false) {
+			container.extended.put(puDef, new BasicEMap<String, Need>());
+		}
+		container.extended.get(puDef).put(key, need)
+	}
+
+	// ********** Runnable Items - to be extended **********
 
 
 

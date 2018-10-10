@@ -14,33 +14,52 @@ package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
+import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.Channel;
+import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
+import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.ISR;
+import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
+import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
+import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.SWModel;
+import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Section;
+import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Task;
+import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
+import org.eclipse.app4mc.amalthea.model.WaitEvent;
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
@@ -225,6 +244,273 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
+  public CallSequence callSequence(final Task container, final Procedure1<? super CallSequence> initializer) {
+    CallSequence _xblockexpression = null;
+    {
+      final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
+      CallGraph _callGraph = container.getCallGraph();
+      boolean _tripleEquals = (_callGraph == null);
+      if (_tripleEquals) {
+        container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
+      }
+      EList<GraphEntryBase> _graphEntries = container.getCallGraph().getGraphEntries();
+      _graphEntries.add(obj);
+      _xblockexpression = this.<CallSequence>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public CallSequence callSequence(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<? super CallSequence> initializer) {
+    CallSequence _xblockexpression = null;
+    {
+      final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<CallSequence>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public CallSequence callSequence(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<? super CallSequence> initializer) {
+    CallSequence _xblockexpression = null;
+    {
+      final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<CallSequence>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public CallSequence callSequence(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<? super CallSequence> initializer) {
+    CallSequence _xblockexpression = null;
+    {
+      final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<CallSequence>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitch modeSwitch(final Task container, final Procedure1<? super ModeSwitch> initializer) {
+    ModeSwitch _xblockexpression = null;
+    {
+      final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
+      CallGraph _callGraph = container.getCallGraph();
+      boolean _tripleEquals = (_callGraph == null);
+      if (_tripleEquals) {
+        container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
+      }
+      EList<GraphEntryBase> _graphEntries = container.getCallGraph().getGraphEntries();
+      _graphEntries.add(obj);
+      _xblockexpression = this.<ModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitch modeSwitch(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<? super ModeSwitch> initializer) {
+    ModeSwitch _xblockexpression = null;
+    {
+      final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitch modeSwitch(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<? super ModeSwitch> initializer) {
+    ModeSwitch _xblockexpression = null;
+    {
+      final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitch modeSwitch(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<? super ModeSwitch> initializer) {
+    ModeSwitch _xblockexpression = null;
+    {
+      final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ModeSwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitchEntry<GraphEntryBase> entry(final ModeSwitch container, final Procedure1<? super ModeSwitchEntry<GraphEntryBase>> initializer) {
+    ModeSwitchEntry<GraphEntryBase> _xblockexpression = null;
+    {
+      final ModeSwitchEntry<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createModeSwitchEntry();
+      EList<ModeSwitchEntry<GraphEntryBase>> _entries = container.getEntries();
+      _entries.add(obj);
+      _xblockexpression = this.<ModeSwitchEntry<GraphEntryBase>>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ModeSwitchDefault<GraphEntryBase> defaultEntry(final ModeSwitch container, final Procedure1<? super ModeSwitchDefault<GraphEntryBase>> initializer) {
+    ModeSwitchDefault<GraphEntryBase> _xblockexpression = null;
+    {
+      final ModeSwitchDefault<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createModeSwitchDefault();
+      container.setDefaultEntry(obj);
+      _xblockexpression = this.<ModeSwitchDefault<GraphEntryBase>>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ProbabilitySwitch probabilitySwitch(final Task container, final Procedure1<? super ProbabilitySwitch> initializer) {
+    ProbabilitySwitch _xblockexpression = null;
+    {
+      final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
+      CallGraph _callGraph = container.getCallGraph();
+      boolean _tripleEquals = (_callGraph == null);
+      if (_tripleEquals) {
+        container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
+      }
+      EList<GraphEntryBase> _graphEntries = container.getCallGraph().getGraphEntries();
+      _graphEntries.add(obj);
+      _xblockexpression = this.<ProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ProbabilitySwitch probabilitySwitch(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<? super ProbabilitySwitch> initializer) {
+    ProbabilitySwitch _xblockexpression = null;
+    {
+      final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ProbabilitySwitch probabilitySwitch(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<? super ProbabilitySwitch> initializer) {
+    ProbabilitySwitch _xblockexpression = null;
+    {
+      final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ProbabilitySwitch probabilitySwitch(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<? super ProbabilitySwitch> initializer) {
+    ProbabilitySwitch _xblockexpression = null;
+    {
+      final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
+      EList<GraphEntryBase> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ProbabilitySwitch>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ProbabilitySwitchEntry<GraphEntryBase> entry(final ProbabilitySwitch container, final Procedure1<? super ProbabilitySwitchEntry<GraphEntryBase>> initializer) {
+    ProbabilitySwitchEntry<GraphEntryBase> _xblockexpression = null;
+    {
+      final ProbabilitySwitchEntry<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createProbabilitySwitchEntry();
+      EList<ProbabilitySwitchEntry<GraphEntryBase>> _entries = container.getEntries();
+      _entries.add(obj);
+      _xblockexpression = this.<ProbabilitySwitchEntry<GraphEntryBase>>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public TaskRunnableCall runnableCall(final CallSequence container, final Procedure1<? super TaskRunnableCall> initializer) {
+    TaskRunnableCall _xblockexpression = null;
+    {
+      final TaskRunnableCall obj = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<TaskRunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public SchedulePoint schedulePoint(final CallSequence container, final Procedure1<? super SchedulePoint> initializer) {
+    SchedulePoint _xblockexpression = null;
+    {
+      final SchedulePoint obj = AmaltheaFactory.eINSTANCE.createSchedulePoint();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<SchedulePoint>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public InterProcessTrigger interProcessTrigger(final CallSequence container, final Procedure1<? super InterProcessTrigger> initializer) {
+    InterProcessTrigger _xblockexpression = null;
+    {
+      final InterProcessTrigger obj = AmaltheaFactory.eINSTANCE.createInterProcessTrigger();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<InterProcessTrigger>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public EnforcedMigration enforcedMigration(final CallSequence container, final Procedure1<? super EnforcedMigration> initializer) {
+    EnforcedMigration _xblockexpression = null;
+    {
+      final EnforcedMigration obj = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<EnforcedMigration>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public TerminateProcess terminateProcess(final CallSequence container, final Procedure1<? super TerminateProcess> initializer) {
+    TerminateProcess _xblockexpression = null;
+    {
+      final TerminateProcess obj = AmaltheaFactory.eINSTANCE.createTerminateProcess();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<TerminateProcess>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ClearEvent clearEvent(final CallSequence container, final Procedure1<? super ClearEvent> initializer) {
+    ClearEvent _xblockexpression = null;
+    {
+      final ClearEvent obj = AmaltheaFactory.eINSTANCE.createClearEvent();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<ClearEvent>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public WaitEvent waitEvent(final CallSequence container, final Procedure1<? super WaitEvent> initializer) {
+    WaitEvent _xblockexpression = null;
+    {
+      final WaitEvent obj = AmaltheaFactory.eINSTANCE.createWaitEvent();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<WaitEvent>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public SetEvent setEvent(final CallSequence container, final Procedure1<? super SetEvent> initializer) {
+    SetEvent _xblockexpression = null;
+    {
+      final SetEvent obj = AmaltheaFactory.eINSTANCE.createSetEvent();
+      EList<CallSequenceItem> _calls = container.getCalls();
+      _calls.add(obj);
+      _xblockexpression = this.<SetEvent>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
   public RunnableParameter parameter(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableParameter> initializer) {
     RunnableParameter _xblockexpression = null;
     {
@@ -291,7 +577,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableModeSwitch modeSwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableModeSwitch> initializer) {
+  public RunnableModeSwitch runModeSwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableModeSwitch> initializer) {
     RunnableModeSwitch _xblockexpression = null;
     {
       final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
@@ -302,7 +588,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableModeSwitch modeSwitch(final Group container, final Procedure1<? super RunnableModeSwitch> initializer) {
+  public RunnableModeSwitch runModeSwitch(final Group container, final Procedure1<? super RunnableModeSwitch> initializer) {
     RunnableModeSwitch _xblockexpression = null;
     {
       final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
@@ -313,7 +599,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableModeSwitch modeSwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+  public RunnableModeSwitch runModeSwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
     RunnableModeSwitch _xblockexpression = null;
     {
       final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
@@ -324,7 +610,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableModeSwitch modeSwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+  public RunnableModeSwitch runModeSwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
     RunnableModeSwitch _xblockexpression = null;
     {
       final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
@@ -335,7 +621,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableModeSwitch modeSwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
+  public RunnableModeSwitch runModeSwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableModeSwitch> initializer) {
     RunnableModeSwitch _xblockexpression = null;
     {
       final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
@@ -367,7 +653,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableProbabilitySwitch probabilitySwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+  public RunnableProbabilitySwitch runProbabilitySwitch(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
     RunnableProbabilitySwitch _xblockexpression = null;
     {
       final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
@@ -378,7 +664,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableProbabilitySwitch probabilitySwitch(final Group container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+  public RunnableProbabilitySwitch runProbabilitySwitch(final Group container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
     RunnableProbabilitySwitch _xblockexpression = null;
     {
       final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
@@ -389,7 +675,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableProbabilitySwitch probabilitySwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+  public RunnableProbabilitySwitch runProbabilitySwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
     RunnableProbabilitySwitch _xblockexpression = null;
     {
       final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
@@ -400,7 +686,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableProbabilitySwitch probabilitySwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+  public RunnableProbabilitySwitch runProbabilitySwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
     RunnableProbabilitySwitch _xblockexpression = null;
     {
       final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
@@ -411,7 +697,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public RunnableProbabilitySwitch probabilitySwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
+  public RunnableProbabilitySwitch runProbabilitySwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super RunnableProbabilitySwitch> initializer) {
     RunnableProbabilitySwitch _xblockexpression = null;
     {
       final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
@@ -539,6 +825,80 @@ public class SoftwareBuilder {
       EList<RunnableItem> _items = container.getItems();
       _items.add(obj);
       _xblockexpression = this.<RunnableCall>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ExecutionNeed execNeed(final org.eclipse.app4mc.amalthea.model.Runnable container, final Procedure1<? super ExecutionNeed> initializer) {
+    ExecutionNeed _xblockexpression = null;
+    {
+      final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+      EList<RunnableItem> _runnableItems = container.getRunnableItems();
+      _runnableItems.add(obj);
+      _xblockexpression = this.<ExecutionNeed>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ExecutionNeed execNeed(final Group container, final Procedure1<? super ExecutionNeed> initializer) {
+    ExecutionNeed _xblockexpression = null;
+    {
+      final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ExecutionNeed>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ExecutionNeed execNeed(final ModeSwitchDefault<RunnableItem> container, final Procedure1<? super ExecutionNeed> initializer) {
+    ExecutionNeed _xblockexpression = null;
+    {
+      final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ExecutionNeed>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ExecutionNeed execNeed(final ModeSwitchEntry<RunnableItem> container, final Procedure1<? super ExecutionNeed> initializer) {
+    ExecutionNeed _xblockexpression = null;
+    {
+      final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ExecutionNeed>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public ExecutionNeed execNeed(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<? super ExecutionNeed> initializer) {
+    ExecutionNeed _xblockexpression = null;
+    {
+      final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
+      EList<RunnableItem> _items = container.getItems();
+      _items.add(obj);
+      _xblockexpression = this.<ExecutionNeed>init(obj, initializer);
+    }
+    return _xblockexpression;
+  }
+  
+  public Need default_Need(final ExecutionNeed container, final String key, final Need need) {
+    return container.getDefault().put(key, need);
+  }
+  
+  public Need extended_Need(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final String key, final Need need) {
+    Need _xblockexpression = null;
+    {
+      boolean _containsKey = container.getExtended().containsKey(puDef);
+      boolean _equals = (_containsKey == false);
+      if (_equals) {
+        EMap<ProcessingUnitDefinition, EMap<String, Need>> _extended = container.getExtended();
+        BasicEMap<String, Need> _basicEMap = new BasicEMap<String, Need>();
+        _extended.put(puDef, _basicEMap);
+      }
+      _xblockexpression = container.getExtended().get(puDef).put(key, need);
     }
     return _xblockexpression;
   }

@@ -16,139 +16,73 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ComputationItem;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
-import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.NeedConstant;
+import org.eclipse.app4mc.amalthea.model.NeedDeviation;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class InstructionsBuilder {
-  public boolean execNeed_default_Instructions(final org.eclipse.app4mc.amalthea.model.Runnable container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _runnableItems = container.getRunnableItems();
-      _xblockexpression = _runnableItems.add(obj);
-    }
-    return _xblockexpression;
+  public NeedConstant default_Instructions(final ExecutionNeed container, final long instructions) {
+    final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
+    container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+    return need;
   }
   
-  public boolean execNeed_default_Instructions(final org.eclipse.app4mc.amalthea.model.Runnable container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _runnableItems = container.getRunnableItems();
-      _xblockexpression = _runnableItems.add(obj);
-    }
-    return _xblockexpression;
+  public NeedDeviation default_Instructions(final ExecutionNeed container, final Deviation<LongObject> instructions) {
+    final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
+    container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+    return need;
   }
   
-  public boolean execNeed_default_Instructions(final Group container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
+  public NeedConstant extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final long instructions) {
+    final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
+    boolean _containsKey = container.getExtended().containsKey(puDef);
+    boolean _equals = (_containsKey == false);
+    if (_equals) {
+      EMap<ProcessingUnitDefinition, EMap<String, Need>> _extended = container.getExtended();
+      BasicEMap<String, Need> _basicEMap = new BasicEMap<String, Need>();
+      _extended.put(puDef, _basicEMap);
     }
-    return _xblockexpression;
+    container.getExtended().get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+    return need;
   }
   
-  public boolean execNeed_default_Instructions(final Group container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
+  public NeedDeviation extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final Deviation<LongObject> instructions) {
+    final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
+    boolean _containsKey = container.getExtended().containsKey(puDef);
+    boolean _equals = (_containsKey == false);
+    if (_equals) {
+      EMap<ProcessingUnitDefinition, EMap<String, Need>> _extended = container.getExtended();
+      BasicEMap<String, Need> _basicEMap = new BasicEMap<String, Need>();
+      _extended.put(puDef, _basicEMap);
     }
-    return _xblockexpression;
+    container.getExtended().get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+    return need;
   }
   
-  public boolean execNeed_default_Instructions(final ModeSwitchDefault<RunnableItem> container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
+  public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final long instructions) {
+    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions);
+    EList<ComputationItem> _computationItems = container.getComputationItems();
+    _computationItems.add(execNeed);
+    return execNeed;
   }
   
-  public boolean execNeed_default_Instructions(final ModeSwitchDefault<RunnableItem> container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final ModeSwitchEntry<RunnableItem> container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final ModeSwitchEntry<RunnableItem> container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final ProbabilitySwitchEntry<RunnableItem> container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final ProbabilitySwitchEntry<RunnableItem> container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<RunnableItem> _items = container.getItems();
-      _xblockexpression = _items.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final Scheduler container, final long instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<ComputationItem> _computationItems = container.getComputationItems();
-      _xblockexpression = _computationItems.add(obj);
-    }
-    return _xblockexpression;
-  }
-  
-  public boolean execNeed_default_Instructions(final Scheduler container, final Deviation<LongObject> instructions) {
-    boolean _xblockexpression = false;
-    {
-      final ExecutionNeed obj = InstructionsUtil.createDefaultExecutionNeed(instructions);
-      EList<ComputationItem> _computationItems = container.getComputationItems();
-      _xblockexpression = _computationItems.add(obj);
-    }
-    return _xblockexpression;
+  public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final Deviation<LongObject> instructions) {
+    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions);
+    EList<ComputationItem> _computationItems = container.getComputationItems();
+    _computationItems.add(execNeed);
+    return execNeed;
   }
   
   public HwFeatureCategory featureCategory_Instructions(final HWModel container, final Procedure1<? super HwFeatureCategory> initializer) {

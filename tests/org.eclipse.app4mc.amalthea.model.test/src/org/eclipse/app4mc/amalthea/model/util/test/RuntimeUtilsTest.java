@@ -74,7 +74,7 @@ public class RuntimeUtilsTest {
 	
 	@Before
 	public void initalizeModel() {
-		amaltheaModel = AmaltheaLoader.loadFromFileNamed("test-data/RuntimeUtilsTestModel.amxmi");
+		amaltheaModel = AmaltheaLoader.loadFromFileNamed("test-data/RuntimeUtilTestModel.amxmi");
 		
 		executionNeedsR1 = new ArrayList<ExecutionNeed>();
 		executionNeedsR2 = new ArrayList<ExecutionNeed>();

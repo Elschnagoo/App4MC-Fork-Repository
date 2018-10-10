@@ -22,6 +22,8 @@ import org.eclipse.app4mc.amalthea.model.ConnectionHandler
 import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain
 import org.eclipse.app4mc.amalthea.model.HWModel
+import org.eclipse.app4mc.amalthea.model.HwAccessElement
+import org.eclipse.app4mc.amalthea.model.HwAccessPath
 import org.eclipse.app4mc.amalthea.model.HwConnection
 import org.eclipse.app4mc.amalthea.model.HwFeature
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory
@@ -32,8 +34,6 @@ import org.eclipse.app4mc.amalthea.model.MemoryDefinition
 import org.eclipse.app4mc.amalthea.model.PowerDomain
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
-import org.eclipse.app4mc.amalthea.model.HwAccessElement
-import org.eclipse.app4mc.amalthea.model.HwAccessPath
 
 class HardwareBuilder {
 

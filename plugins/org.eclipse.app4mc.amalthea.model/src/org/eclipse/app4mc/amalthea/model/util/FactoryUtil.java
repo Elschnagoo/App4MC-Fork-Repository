@@ -308,7 +308,7 @@ public class FactoryUtil {
 	 * @param max
 	 * @param promille
 	 */
-	public static NeedDeviation createExecutionNeedWeibullDeviation(long min, long avg, long max, float promille) {
+	public static NeedDeviation createNeedWeibullDeviation(long min, long avg, long max, float promille) {
 		NeedDeviation needDev = AmaltheaFactory.eINSTANCE.createNeedDeviation();
 		needDev.setDeviation(createWeibullDeviation(min, avg, max, promille));
 		return needDev;
@@ -316,14 +316,24 @@ public class FactoryUtil {
 	
 	/**
 	 * Creates NeedConstant element.
-	 * @param needValue
+	 * @param value
 	 */
-	public static NeedConstant createExecutionNeedConstant(long needValue) {
+	public static NeedConstant createNeedConstant(long value) {
 		NeedConstant needConst = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		needConst.setValue(needValue);
+		needConst.setValue(value);
 		return needConst;
 	}
-	
+
+	/**
+	 * Creates NeedDeviation element.
+	 * @param deviation
+	 */
+	public static NeedDeviation createNeedDeviation(Deviation<LongObject> deviation) {
+		NeedDeviation needDeviation = AmaltheaFactory.eINSTANCE.createNeedDeviation();
+		needDeviation.setDeviation(deviation);
+		return needDeviation;
+	}
+
 	/**
 	 * Creates ExecutionNeed for a featureCategoryName, need set.
 	 * @param featureCategory

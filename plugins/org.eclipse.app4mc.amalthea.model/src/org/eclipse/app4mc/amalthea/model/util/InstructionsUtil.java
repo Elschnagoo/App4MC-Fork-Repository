@@ -32,6 +32,9 @@ import org.eclipse.app4mc.amalthea.model.NeedConstant;
 import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
+import org.eclipse.emf.common.util.BasicEMap;
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EMap;
 
 public class InstructionsUtil {
 
@@ -59,6 +62,14 @@ public class InstructionsUtil {
 		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
+	public static Need addExtendedExecutionNeed(ExecutionNeed need, ProcessingUnitDefinition key, long instructions) {
+		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
+	}
+
+	public static Need addExtendedExecutionNeed(ExecutionNeed need, ProcessingUnitDefinition key, Deviation<LongObject> instructions) {
+		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
+	}
+
 	public static Need getDefaultNeed(ExecutionNeed execNeed) {
 		return execNeed.getDefault().get(INSTRUCTIONS_CATEGORY_NAME);
 	}
@@ -84,9 +95,9 @@ public class InstructionsUtil {
 	//----------------------- General ----------------------- 
 
 
-	private static ExecutionNeed createDefaultExecutionNeed(String category, long instructions) {
+	private static ExecutionNeed createDefaultExecutionNeed(String category, long value) {
 		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		need.setValue(instructions);
+		need.setValue(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		execNeed.getDefault().put(category, need);
@@ -94,9 +105,21 @@ public class InstructionsUtil {
 		return execNeed;
 	}
 
-	private static ExecutionNeed createDefaultExecutionNeed(String category, Deviation<LongObject> instructions) {
+	private static Need addExtendedExecutionNeed(ExecutionNeed execNeed, ProcessingUnitDefinition key,
+			String instructionsCategoryName, long value) {
+		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
+		need.setValue(value);
+		
+		if (execNeed.getExtended().containsKey(key) == false) {
+			execNeed.getExtended().put(key, new BasicEMap<String, Need>());
+		}
+		
+		return execNeed.getExtended().get(key).put(instructionsCategoryName, need);
+	}
+
+	private static ExecutionNeed createDefaultExecutionNeed(String category, Deviation<LongObject> value) {
 		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
-		need.setDeviation(instructions);;
+		need.setDeviation(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		execNeed.getDefault().put(category, need);
@@ -104,7 +127,18 @@ public class InstructionsUtil {
 		return execNeed;
 	}
 
-	
+	private static Need addExtendedExecutionNeed(ExecutionNeed execNeed, ProcessingUnitDefinition key,
+			String instructionsCategoryName, Deviation<LongObject> value) {
+		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
+		need.setDeviation(value);
+		
+		if (execNeed.getExtended().containsKey(key) == false) {
+			execNeed.getExtended().put(key, new BasicEMap<String, Need>());
+		}
+		
+		return execNeed.getExtended().get(key).put(instructionsCategoryName, need);
+	}
+
 	private static long getDefaultNeedConstant(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return 0;
 		

@@ -17,81 +17,63 @@ package org.eclipse.app4mc.amalthea.model.builder
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
 import org.eclipse.app4mc.amalthea.model.Deviation
-import org.eclipse.app4mc.amalthea.model.Group
+import org.eclipse.app4mc.amalthea.model.ExecutionNeed
 import org.eclipse.app4mc.amalthea.model.HWModel
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory
 import org.eclipse.app4mc.amalthea.model.LongObject
-import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault
-import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
-import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry
-import org.eclipse.app4mc.amalthea.model.Runnable
-import org.eclipse.app4mc.amalthea.model.RunnableItem
+import org.eclipse.app4mc.amalthea.model.Need
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 import org.eclipse.app4mc.amalthea.model.Scheduler
+import org.eclipse.app4mc.amalthea.model.util.FactoryUtil
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil
+import org.eclipse.emf.common.util.BasicEMap
 
 class InstructionsBuilder {
 
-	// ********** Runnable Items - Execution Need **********
+	// ********** Execution Need (Runnable items) **********
 
-	def execNeed_default_Instructions(Runnable container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.runnableItems += obj
+	def default_Instructions(ExecutionNeed container, long instructions) {
+		val need = FactoryUtil.createNeedConstant(instructions)
+		container.^default.put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
+		return need
 	}
 
-	def execNeed_default_Instructions(Runnable container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.runnableItems += obj
+	def default_Instructions(ExecutionNeed container, Deviation<LongObject> instructions) {
+		val need = FactoryUtil.createNeedDeviation(instructions)
+		container.^default.put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
+		return need
 	}
 
-	def execNeed_default_Instructions(Group container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-	def execNeed_default_Instructions(Group container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-
-	def execNeed_default_Instructions(ModeSwitchDefault<RunnableItem> container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
+	def extended_Instructions(ExecutionNeed container, ProcessingUnitDefinition puDef, long instructions) {
+		val need = FactoryUtil.createNeedConstant(instructions)
+		if (container.extended.containsKey(puDef) == false) {
+			container.extended.put(puDef, new BasicEMap<String, Need>());
+		}
+		container.extended.get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
+		return need
 	}
 
-	def execNeed_default_Instructions(ModeSwitchDefault<RunnableItem> container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
+	def extended_Instructions(ExecutionNeed container, ProcessingUnitDefinition puDef, Deviation<LongObject> instructions) {
+		val need = FactoryUtil.createNeedDeviation(instructions)
+		if (container.extended.containsKey(puDef) == false) {
+			container.extended.put(puDef, new BasicEMap<String, Need>());
+		}
+		container.extended.get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
+		return need
 	}
 
-	def execNeed_default_Instructions(ModeSwitchEntry<RunnableItem> container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-
-	def execNeed_default_Instructions(ModeSwitchEntry<RunnableItem> container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-
-	def execNeed_default_Instructions(ProbabilitySwitchEntry<RunnableItem> container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-
-	def execNeed_default_Instructions(ProbabilitySwitchEntry<RunnableItem> container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.items += obj
-	}
-
-	// ********** Computation Items - Execution Need **********
+	// ********** Execution Need (Computation Items) **********
 
 	def execNeed_default_Instructions(Scheduler container, long instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.computationItems += obj
+		val execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions)
+		container.computationItems += execNeed
+		return execNeed
 	}
 
 	def execNeed_default_Instructions(Scheduler container, Deviation<LongObject> instructions) {
-		val obj = InstructionsUtil.createDefaultExecutionNeed(instructions)
-		container.computationItems += obj
+		val execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions)
+		container.computationItems += execNeed
+		return execNeed
 	}
 
 	// ********** Hardware Feature Category **********
