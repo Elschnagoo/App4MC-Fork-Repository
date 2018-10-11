@@ -69,6 +69,7 @@ table(classic).
 | AccessLatency | Containment | HwLatency | 1 | Constant or distribution of access latency in cycles |
 | DataRate | Containment | DataRate | 1 | Max. data rate for the memory |
 | Size | Containment | Size | 1 | Size of the memory |
+| MemoryType | Enum | MemoryType | 1 | type of the memory (DRAM, Flash, SRAM, PCM) |
 
 
 h5. CacheDefinition
@@ -100,6 +101,9 @@ table(classic).
 | ReadLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a read access |
 | WriteLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a write access |
 | DataRate | Containment | DataRate | 1 | Max. data rate of the connection (value and unit) |
+| BurstSize | Int | Int | 1 | Maximum burst size of a ConnectionHandler (default = 1) | 
+| BitWidth | Int | Int | 1 | Bit width of the ConnectionHandler |
+| ParallelTransactions | Int | Int | 1 | Number of parallel transactions from different initiator to responder ports (default = 1) | 
 
 
 h4. HwStructure
@@ -372,6 +376,9 @@ In future there will be an option to extend the predefined enums with further po
 *HwFeatureType:*
 
 * <notextile>_undefined_</notextile>, performance, power, performance_and_power
+
+*MemoryType:*
+* <notextile>_undefined_</notextile>, DRAM, SRAM, FLASH, PCM
 
 
 
