@@ -95,13 +95,13 @@ h5. ConnectionHandlerDefinition
 
 For specifying a bus or Interconnect etc., a _ConnectionHandlerDefinition_ is created once which is afterwards referenced by the number of _ConnectionHandler_ instances of this kind. 
 
-!(scale)../pictures/hardware/ConnectionHandler_parallel_accesses.png!
+!(scale)../pictures/hardware/hw_connection_handler_parallel_accesses_1.png!
 
 The figures shows an example of the attribute _ParallelTransactions_ with the default value 1. This means that all _ConnectionHandlers_ which are referencing this _ConnectionHandlerDefinition_ can only handle 1 active transaction request at a time. All other requests have to wait until the current transaction has finished. 
 
 The next figure shows an example with a number of _ParallelTransactions_ of 3. In this case the _ConnectionHandler_ can handle up to 3 requests in parallel.
 
-!(scale)../pictures/hardware/ConnectionHandler_parallel_accesses_3.png!
+!(scale)../pictures/hardware/hw_connection_handler_parallel_accesses_3.png!
 
 The value for _ParallelTransactions_ has to be smaller or equal then the min(initiator ports, responder ports). 
 
@@ -281,7 +281,7 @@ For _HwPorts_ it's always possible to select if the port is an _initiator_ or a 
 
 In case of a delegated port (which is used as hierarchical port at a _HwStructure_) the _PortType_ of the module inside the structure is reflected. The following figure shows four different examples. The ports which are delegated are marked grey.
 
-!(scale)../pictures/hardware/Initiator_Responder_with_DelegatedPorts.png!
+!(scale)../pictures/hardware/hw_port_example_i_r_with_delegated_ports.png!
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
