@@ -12632,13 +12632,40 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER_DEFINITION__DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Bit Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER_DEFINITION__BIT_WIDTH = HW_DEFINITION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Burst Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER_DEFINITION__BURST_SIZE = HW_DEFINITION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Parallel Transactions</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS = HW_DEFINITION_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Connection Handler Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 4;
+	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -12759,13 +12786,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY_DEFINITION__DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Memory Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_DEFINITION__MEMORY_TYPE = HW_DEFINITION_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Classifiers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_DEFINITION__CLASSIFIERS = HW_DEFINITION_FEATURE_COUNT + 3;
+	int MEMORY_DEFINITION__CLASSIFIERS = HW_DEFINITION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Memory Definition</em>' class.
@@ -12774,7 +12810,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMORY_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 4;
+	int MEMORY_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -27626,14 +27662,14 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPONENT_EVENT_TYPE = 369;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryTypeEnum <em>Memory Type Enum</em>}' enum.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryType <em>Memory Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryTypeEnum
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryTypeEnum()
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryType()
 	 * @generated
 	 */
-	int MEMORY_TYPE_ENUM = 370;
+	int MEMORY_TYPE = 370;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.StructureType <em>Structure Type</em>}' enum.
@@ -32769,6 +32805,39 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getConnectionHandlerDefinition_DataRate();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth <em>Bit Width</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bit Width</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth()
+	 * @see #getConnectionHandlerDefinition()
+	 * @generated
+	 */
+	EAttribute getConnectionHandlerDefinition_BitWidth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize <em>Burst Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Burst Size</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize()
+	 * @see #getConnectionHandlerDefinition()
+	 * @generated
+	 */
+	EAttribute getConnectionHandlerDefinition_BurstSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions <em>Parallel Transactions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Parallel Transactions</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions()
+	 * @see #getConnectionHandlerDefinition()
+	 * @generated
+	 */
+	EAttribute getConnectionHandlerDefinition_ParallelTransactions();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition <em>Memory Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32810,6 +32879,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMemoryDefinition_DataRate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryType <em>Memory Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryType()
+	 * @see #getMemoryDefinition()
+	 * @generated
+	 */
+	EAttribute getMemoryDefinition_MemoryType();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getClassifiers <em>Classifiers</em>}'.
@@ -39090,14 +39170,14 @@ public interface AmaltheaPackage extends EPackage {
 	EEnum getComponentEventType();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.MemoryTypeEnum <em>Memory Type Enum</em>}'.
+	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.MemoryType <em>Memory Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Memory Type Enum</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.MemoryTypeEnum
+	 * @return the meta object for enum '<em>Memory Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
 	 * @generated
 	 */
-	EEnum getMemoryTypeEnum();
+	EEnum getMemoryType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.app4mc.amalthea.model.StructureType <em>Structure Type</em>}'.

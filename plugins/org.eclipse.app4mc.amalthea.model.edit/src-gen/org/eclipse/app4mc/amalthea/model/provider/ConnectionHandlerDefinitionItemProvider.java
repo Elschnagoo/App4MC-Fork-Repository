@@ -61,6 +61,9 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 			super.getPropertyDescriptors(object);
 
 			addPolicyPropertyDescriptor(object);
+			addBitWidthPropertyDescriptor(object);
+			addBurstSizePropertyDescriptor(object);
+			addParallelTransactionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,6 +86,72 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bit Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBitWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ConnectionHandlerDefinition_bitWidth_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_bitWidth_feature", "_UI_ConnectionHandlerDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_BitWidth(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Burst Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBurstSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ConnectionHandlerDefinition_burstSize_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_burstSize_feature", "_UI_ConnectionHandlerDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_BurstSize(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Parallel Transactions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addParallelTransactionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ConnectionHandlerDefinition_parallelTransactions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_parallelTransactions_feature", "_UI_ConnectionHandlerDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ParallelTransactions(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -168,6 +237,9 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 
 		switch (notification.getFeatureID(ConnectionHandlerDefinition.class)) {
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__POLICY:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY:

@@ -22,14 +22,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Memory Type Enum</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Memory Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryTypeEnum()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryType()
  * @model
  * @generated
  */
-public enum MemoryTypeEnum implements Enumerator {
+public enum MemoryType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -41,44 +41,44 @@ public enum MemoryTypeEnum implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>RAM</b></em>' literal object.
+	 * The '<em><b>DRAM</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #RAM_VALUE
+	 * @see #DRAM_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	RAM(0, "RAM", "RAM"),
+	DRAM(0, "DRAM", "DRAM"),
 
 	/**
-	 * The '<em><b>CACHE</b></em>' literal object.
+	 * The '<em><b>SRAM</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CACHE_VALUE
+	 * @see #SRAM_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CACHE(0, "CACHE", "CACHE"),
+	SRAM(0, "SRAM", "SRAM"),
 
 	/**
-	 * The '<em><b>FLASH INT</b></em>' literal object.
+	 * The '<em><b>FLASH</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FLASH_INT_VALUE
+	 * @see #FLASH_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FLASH_INT(0, "FLASH_INT", "FLASH_INT"),
+	FLASH(0, "FLASH", "FLASH"),
 
 	/**
-	 * The '<em><b>FLASH EXT</b></em>' literal object.
+	 * The '<em><b>PCM</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FLASH_EXT_VALUE
+	 * @see #PCM_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FLASH_EXT(0, "FLASH_EXT", "FLASH_EXT");
+	PCM(0, "PCM", "PCM");
 
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
@@ -96,99 +96,99 @@ public enum MemoryTypeEnum implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>RAM</b></em>' literal value.
+	 * The '<em><b>DRAM</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>RAM</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>DRAM</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #RAM
+	 * @see #DRAM
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RAM_VALUE = 0;
+	public static final int DRAM_VALUE = 0;
 
 	/**
-	 * The '<em><b>CACHE</b></em>' literal value.
+	 * The '<em><b>SRAM</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>CACHE</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>SRAM</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #CACHE
+	 * @see #SRAM
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CACHE_VALUE = 0;
+	public static final int SRAM_VALUE = 0;
 
 	/**
-	 * The '<em><b>FLASH INT</b></em>' literal value.
+	 * The '<em><b>FLASH</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>FLASH INT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>FLASH</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FLASH_INT
+	 * @see #FLASH
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FLASH_INT_VALUE = 0;
+	public static final int FLASH_VALUE = 0;
 
 	/**
-	 * The '<em><b>FLASH EXT</b></em>' literal value.
+	 * The '<em><b>PCM</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>FLASH EXT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>PCM</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FLASH_EXT
+	 * @see #PCM
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FLASH_EXT_VALUE = 0;
+	public static final int PCM_VALUE = 0;
 
 	/**
-	 * An array of all the '<em><b>Memory Type Enum</b></em>' enumerators.
+	 * An array of all the '<em><b>Memory Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MemoryTypeEnum[] VALUES_ARRAY =
-		new MemoryTypeEnum[] {
+	private static final MemoryType[] VALUES_ARRAY =
+		new MemoryType[] {
 			_UNDEFINED_,
-			RAM,
-			CACHE,
-			FLASH_INT,
-			FLASH_EXT,
+			DRAM,
+			SRAM,
+			FLASH,
+			PCM,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Memory Type Enum</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Memory Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MemoryTypeEnum> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MemoryType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Memory Type Enum</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Memory Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MemoryTypeEnum get(String literal) {
+	public static MemoryType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MemoryTypeEnum result = VALUES_ARRAY[i];
+			MemoryType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -197,16 +197,16 @@ public enum MemoryTypeEnum implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Memory Type Enum</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Memory Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MemoryTypeEnum getByName(String name) {
+	public static MemoryType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MemoryTypeEnum result = VALUES_ARRAY[i];
+			MemoryType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -215,14 +215,14 @@ public enum MemoryTypeEnum implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Memory Type Enum</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Memory Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MemoryTypeEnum get(int value) {
+	public static MemoryType get(int value) {
 		switch (value) {
 			case _UNDEFINED__VALUE: return _UNDEFINED_;
 		}
@@ -256,7 +256,7 @@ public enum MemoryTypeEnum implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MemoryTypeEnum(int value, String name, String literal) {
+	private MemoryType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -300,4 +300,4 @@ public enum MemoryTypeEnum implements Enumerator {
 		return literal;
 	}
 	
-} //MemoryTypeEnum
+} //MemoryType

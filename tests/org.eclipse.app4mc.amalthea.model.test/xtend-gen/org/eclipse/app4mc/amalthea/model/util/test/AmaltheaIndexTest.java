@@ -64,15 +64,15 @@ public class AmaltheaIndexTest {
     final Amalthea model = this.createTestModel();
     Set<? extends Label> labelsBasedOnName = AmaltheaIndex.<Label>getElements(model, "d0", Label.class);
     Assert.assertEquals(
-      "Label d0 should already be present in the model.", 1, labelsBasedOnName.size());
+      "Label d0 should be present in the model.", 1, labelsBasedOnName.size());
     Set<? extends org.eclipse.app4mc.amalthea.model.Runnable> runnablesBasedOnName = AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class);
     Assert.assertEquals(
-      "Runnable r0 should already be present in the model.", 1, runnablesBasedOnName.size());
+      "Runnable r0 should be present in the model.", 1, runnablesBasedOnName.size());
     List<EObject> elements_to_be_deleted = new ArrayList<EObject>();
     elements_to_be_deleted.addAll(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class));
     elements_to_be_deleted.addAll(AmaltheaIndex.<Label>getElements(model, Pattern.compile("d\\d"), Label.class));
     Assert.assertEquals(
-      "Elements to delete should be runnable r0 and labels l0 and l1. ", 3, elements_to_be_deleted.size());
+      "Elements to delete should be runnable r0 and labels l0 and l1.", 3, elements_to_be_deleted.size());
     AmaltheaIndex.deleteAll(elements_to_be_deleted);
     runnablesBasedOnName = AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class);
     Assert.assertEquals(
@@ -88,29 +88,28 @@ public class AmaltheaIndexTest {
   @Test
   public void testRemoveAllLabels() {
     final Amalthea model = this.createTestModel();
-    Assert.assertEquals("label d0 is present in the model", 1, AmaltheaIndex.<Label>getElements(model, "d0", Label.class).size());
     AmaltheaIndex.deleteAll(model.getSwModel().getLabels());
-    Assert.assertEquals("label d0 is not removed from model", 0, AmaltheaIndex.<Label>getElements(model, "d0", Label.class).size());
+    Assert.assertEquals("Label d0 is not removed from model.", 0, AmaltheaIndex.<Label>getElements(model, "d0", Label.class).size());
     final org.eclipse.app4mc.amalthea.model.Runnable runnable0 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class));
     final EList<RunnableItem> runnableItems = runnable0.getRunnableItems();
     final Function1<RunnableItem, Boolean> _function = (RunnableItem s) -> {
       return Boolean.valueOf(((s instanceof LabelAccess) && (((LabelAccess) s).getData() != null)));
     };
     final Iterable<RunnableItem> filteredItems = IterableExtensions.<RunnableItem>filter(runnableItems, _function);
-    Assert.assertEquals("runnable0 should not contain reference to Label in LabelAccess - as all labels are deleted", 0, IterableExtensions.size(filteredItems));
+    Assert.assertEquals("Runnable runnable0 should not contain reference to Label in LabelAccess - as all labels are deleted.", 0, IterableExtensions.size(filteredItems));
   }
   
   private Amalthea createTestModel() {
     final Amalthea model = AmaltheaFactory.eINSTANCE.createAmalthea();
     final SWModel sw = ModelUtil.getOrCreateSwModel(model);
     final MappingModel map = ModelUtil.getOrCreateMappingModel(model);
-    Label label0 = AmaltheaFactory.eINSTANCE.createLabel();
+    final Label label0 = AmaltheaFactory.eINSTANCE.createLabel();
     label0.setName("d0");
     sw.getLabels().add(label0);
-    Label label1 = AmaltheaFactory.eINSTANCE.createLabel();
+    final Label label1 = AmaltheaFactory.eINSTANCE.createLabel();
     label1.setName("d1");
     sw.getLabels().add(label1);
-    org.eclipse.app4mc.amalthea.model.Runnable runnable0 = AmaltheaFactory.eINSTANCE.createRunnable();
+    final org.eclipse.app4mc.amalthea.model.Runnable runnable0 = AmaltheaFactory.eINSTANCE.createRunnable();
     runnable0.setName("r0");
     sw.getRunnables().add(runnable0);
     for (int i = 0; (i < 10); i++) {
@@ -120,7 +119,7 @@ public class AmaltheaIndexTest {
         runnable0.getRunnableItems().add(la);
       }
     }
-    MemoryMapping elementMapping = AmaltheaFactory.eINSTANCE.createMemoryMapping();
+    final MemoryMapping elementMapping = AmaltheaFactory.eINSTANCE.createMemoryMapping();
     elementMapping.setAbstractElement(label0);
     map.getMemoryMapping().add(elementMapping);
     return model;

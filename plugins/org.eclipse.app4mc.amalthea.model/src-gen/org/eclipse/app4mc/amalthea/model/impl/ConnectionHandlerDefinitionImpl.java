@@ -40,6 +40,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getReadLatency <em>Read Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getWriteLatency <em>Write Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getDataRate <em>Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getBitWidth <em>Bit Width</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getBurstSize <em>Burst Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ConnectionHandlerDefinitionImpl#getParallelTransactions <em>Parallel Transactions</em>}</li>
  * </ul>
  *
  * @generated
@@ -94,6 +97,66 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * @ordered
 	 */
 	protected DataRate dataRate;
+
+	/**
+	 * The default value of the '{@link #getBitWidth() <em>Bit Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBitWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int BIT_WIDTH_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getBitWidth() <em>Bit Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBitWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected int bitWidth = BIT_WIDTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBurstSize() <em>Burst Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBurstSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int BURST_SIZE_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getBurstSize() <em>Burst Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBurstSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected int burstSize = BURST_SIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getParallelTransactions() <em>Parallel Transactions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParallelTransactions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PARALLEL_TRANSACTIONS_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getParallelTransactions() <em>Parallel Transactions</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParallelTransactions()
+	 * @generated
+	 * @ordered
+	 */
+	protected int parallelTransactions = PARALLEL_TRANSACTIONS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,6 +332,69 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getBitWidth() {
+		return bitWidth;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBitWidth(int newBitWidth) {
+		int oldBitWidth = bitWidth;
+		bitWidth = newBitWidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH, oldBitWidth, bitWidth));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getBurstSize() {
+		return burstSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBurstSize(int newBurstSize) {
+		int oldBurstSize = burstSize;
+		burstSize = newBurstSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE, oldBurstSize, burstSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getParallelTransactions() {
+		return parallelTransactions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParallelTransactions(int newParallelTransactions) {
+		int oldParallelTransactions = parallelTransactions;
+		parallelTransactions = newParallelTransactions;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS, oldParallelTransactions, parallelTransactions));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -298,6 +424,12 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 				return getWriteLatency();
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				return getDataRate();
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
+				return getBitWidth();
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
+				return getBurstSize();
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
+				return getParallelTransactions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -321,6 +453,15 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)newValue);
+				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
+				setBitWidth((Integer)newValue);
+				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
+				setBurstSize((Integer)newValue);
+				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
+				setParallelTransactions((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -346,6 +487,15 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)null);
 				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
+				setBitWidth(BIT_WIDTH_EDEFAULT);
+				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
+				setBurstSize(BURST_SIZE_EDEFAULT);
+				return;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
+				setParallelTransactions(PARALLEL_TRANSACTIONS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -366,6 +516,12 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 				return writeLatency != null;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				return dataRate != null;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
+				return bitWidth != BIT_WIDTH_EDEFAULT;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
+				return burstSize != BURST_SIZE_EDEFAULT;
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
+				return parallelTransactions != PARALLEL_TRANSACTIONS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -382,6 +538,12 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (policy: ");
 		result.append(policy);
+		result.append(", bitWidth: ");
+		result.append(bitWidth);
+		result.append(", burstSize: ");
+		result.append(burstSize);
+		result.append(", parallelTransactions: ");
+		result.append(parallelTransactions);
 		result.append(')');
 		return result.toString();
 	}

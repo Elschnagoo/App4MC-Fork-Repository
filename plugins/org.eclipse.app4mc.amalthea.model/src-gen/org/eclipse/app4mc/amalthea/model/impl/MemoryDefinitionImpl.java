@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
+import org.eclipse.app4mc.amalthea.model.MemoryType;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -46,6 +47,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getAccessLatency <em>Access Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getDataRate <em>Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getMemoryType <em>Memory Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.MemoryDefinitionImpl#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -81,6 +83,26 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * @ordered
 	 */
 	protected DataRate dataRate;
+
+	/**
+	 * The default value of the '{@link #getMemoryType() <em>Memory Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemoryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final MemoryType MEMORY_TYPE_EDEFAULT = MemoryType._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getMemoryType() <em>Memory Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemoryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected MemoryType memoryType = MEMORY_TYPE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getClassifiers() <em>Classifiers</em>}' reference list.
@@ -245,6 +267,27 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MemoryType getMemoryType() {
+		return memoryType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMemoryType(MemoryType newMemoryType) {
+		MemoryType oldMemoryType = memoryType;
+		memoryType = newMemoryType == null ? MEMORY_TYPE_EDEFAULT : newMemoryType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__MEMORY_TYPE, oldMemoryType, memoryType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<MemoryClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS);
@@ -284,6 +327,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return getAccessLatency();
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				return getDataRate();
+			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_TYPE:
+				return getMemoryType();
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				return getClassifiers();
 		}
@@ -307,6 +352,9 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)newValue);
+				return;
+			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_TYPE:
+				setMemoryType((MemoryType)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
@@ -333,6 +381,9 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)null);
 				return;
+			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_TYPE:
+				setMemoryType(MEMORY_TYPE_EDEFAULT);
+				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				getClassifiers().clear();
 				return;
@@ -354,10 +405,28 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				return accessLatency != null;
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				return dataRate != null;
+			case AmaltheaPackage.MEMORY_DEFINITION__MEMORY_TYPE:
+				return memoryType != MEMORY_TYPE_EDEFAULT;
 			case AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS:
 				return classifiers != null && !classifiers.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (memoryType: ");
+		result.append(memoryType);
+		result.append(')');
+		return result.toString();
 	}
 
 } //MemoryDefinitionImpl

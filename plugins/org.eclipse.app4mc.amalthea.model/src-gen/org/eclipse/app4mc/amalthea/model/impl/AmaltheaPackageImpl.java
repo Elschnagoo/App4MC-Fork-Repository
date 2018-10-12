@@ -227,7 +227,7 @@ import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
+import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -3027,7 +3027,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum memoryTypeEnumEEnum = null;
+	private EEnum memoryTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -7417,6 +7417,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConnectionHandlerDefinition_BitWidth() {
+		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnectionHandlerDefinition_BurstSize() {
+		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConnectionHandlerDefinition_ParallelTransactions() {
+		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMemoryDefinition() {
 		return memoryDefinitionEClass;
 	}
@@ -7453,8 +7480,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMemoryDefinition_MemoryType() {
+		return (EAttribute)memoryDefinitionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getMemoryDefinition_Classifiers() {
-		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(3);
+		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -12763,8 +12799,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getMemoryTypeEnum() {
-		return memoryTypeEnumEEnum;
+	public EEnum getMemoryType() {
+		return memoryTypeEEnum;
 	}
 
 	/**
@@ -13699,11 +13735,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__READ_LATENCY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__DATA_RATE);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__BIT_WIDTH);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__BURST_SIZE);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS);
 
 		memoryDefinitionEClass = createEClass(MEMORY_DEFINITION);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__SIZE);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__ACCESS_LATENCY);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__DATA_RATE);
+		createEAttribute(memoryDefinitionEClass, MEMORY_DEFINITION__MEMORY_TYPE);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__CLASSIFIERS);
 
 		cacheDefinitionEClass = createEClass(CACHE_DEFINITION);
@@ -14477,7 +14517,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		channelEventTypeEEnum = createEEnum(CHANNEL_EVENT_TYPE);
 		semaphoreEventTypeEEnum = createEEnum(SEMAPHORE_EVENT_TYPE);
 		componentEventTypeEEnum = createEEnum(COMPONENT_EVENT_TYPE);
-		memoryTypeEnumEEnum = createEEnum(MEMORY_TYPE_ENUM);
+		memoryTypeEEnum = createEEnum(MEMORY_TYPE);
 		structureTypeEEnum = createEEnum(STRUCTURE_TYPE);
 		cacheTypeEEnum = createEEnum(CACHE_TYPE);
 		portTypeEEnum = createEEnum(PORT_TYPE);
@@ -15620,11 +15660,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_BitWidth(), theEcorePackage.getEInt(), "bitWidth", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_BurstSize(), theEcorePackage.getEInt(), "burstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_ParallelTransactions(), theEcorePackage.getEInt(), "parallelTransactions", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMemoryDefinition_MemoryType(), this.getMemoryType(), "memoryType", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16647,12 +16691,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.START);
 		addEEnumLiteral(componentEventTypeEEnum, ComponentEventType.END);
 
-		initEEnum(memoryTypeEnumEEnum, MemoryTypeEnum.class, "MemoryTypeEnum");
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum._UNDEFINED_);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.RAM);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.CACHE);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_INT);
-		addEEnumLiteral(memoryTypeEnumEEnum, MemoryTypeEnum.FLASH_EXT);
+		initEEnum(memoryTypeEEnum, MemoryType.class, "MemoryType");
+		addEEnumLiteral(memoryTypeEEnum, MemoryType._UNDEFINED_);
+		addEEnumLiteral(memoryTypeEEnum, MemoryType.DRAM);
+		addEEnumLiteral(memoryTypeEEnum, MemoryType.SRAM);
+		addEEnumLiteral(memoryTypeEEnum, MemoryType.FLASH);
+		addEEnumLiteral(memoryTypeEEnum, MemoryType.PCM);
 
 		initEEnum(structureTypeEEnum, StructureType.class, "StructureType");
 		addEEnumLiteral(structureTypeEEnum, StructureType._UNDEFINED_);
@@ -16880,6 +16924,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		   source,
 		   new String[] {
 			   "minInclusive", "0"
+		   });
+		addAnnotation
+		  (getConnectionHandlerDefinition_BurstSize(),
+		   source,
+		   new String[] {
+			   "minInclusive", "1"
+		   });
+		addAnnotation
+		  (getConnectionHandlerDefinition_ParallelTransactions(),
+		   source,
+		   new String[] {
+			   "minInclusive", "1"
 		   });
 	}
 

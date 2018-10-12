@@ -1629,13 +1629,13 @@ class Memory extends HwModule, HwDestination
 	}
 }
 
-enum MemoryTypeEnum
+enum MemoryType
 {
 	_undefined_
-	RAM
-	CACHE
-	FLASH_INT
-	FLASH_EXT
+	DRAM
+	SRAM
+	FLASH
+	PCM
 }
 
 class Cache extends HwModule, HwPathElement
@@ -1814,6 +1814,12 @@ class ConnectionHandlerDefinition extends HwDefinition
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
 	contains DataRate dataRate
+	int bitWidth
+	@ExtendedMetaData(minInclusive="1")
+	int burstSize = "1"
+	@ExtendedMetaData(minInclusive="1")
+	int parallelTransactions = "1"
+	
 }
 
 class MemoryDefinition extends HwDefinition
@@ -1821,6 +1827,7 @@ class MemoryDefinition extends HwDefinition
 	contains DataSize size
 	contains HwLatency accessLatency
 	contains DataRate dataRate
+	MemoryType memoryType
 	refers MemoryClassifier[] classifiers // backward compatibility
 }
 

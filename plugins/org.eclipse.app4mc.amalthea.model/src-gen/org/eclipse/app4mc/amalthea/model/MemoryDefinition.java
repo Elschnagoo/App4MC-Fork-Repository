@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getSize <em>Size</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getAccessLatency <em>Access Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getDataRate <em>Data Rate</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryType <em>Memory Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getClassifiers <em>Classifiers</em>}</li>
  * </ul>
  *
@@ -113,6 +114,35 @@ public interface MemoryDefinition extends HwDefinition {
 	 * @generated
 	 */
 	void setDataRate(DataRate value);
+
+	/**
+	 * Returns the value of the '<em><b>Memory Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.MemoryType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Memory Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Memory Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
+	 * @see #setMemoryType(MemoryType)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryDefinition_MemoryType()
+	 * @model unique="false"
+	 * @generated
+	 */
+	MemoryType getMemoryType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getMemoryType <em>Memory Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory Type</em>' attribute.
+	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
+	 * @see #getMemoryType()
+	 * @generated
+	 */
+	void setMemoryType(MemoryType value);
 
 	/**
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.

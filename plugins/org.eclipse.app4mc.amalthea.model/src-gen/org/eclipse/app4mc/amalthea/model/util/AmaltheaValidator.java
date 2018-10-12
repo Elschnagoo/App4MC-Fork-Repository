@@ -227,7 +227,7 @@ import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
-import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
+import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -1231,8 +1231,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateSemaphoreEventType((SemaphoreEventType)value, diagnostics, context);
 			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
 				return validateComponentEventType((ComponentEventType)value, diagnostics, context);
-			case AmaltheaPackage.MEMORY_TYPE_ENUM:
-				return validateMemoryTypeEnum((MemoryTypeEnum)value, diagnostics, context);
+			case AmaltheaPackage.MEMORY_TYPE:
+				return validateMemoryType((MemoryType)value, diagnostics, context);
 			case AmaltheaPackage.STRUCTURE_TYPE:
 				return validateStructureType((StructureType)value, diagnostics, context);
 			case AmaltheaPackage.CACHE_TYPE:
@@ -4637,7 +4637,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMemoryTypeEnum(MemoryTypeEnum memoryTypeEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMemoryType(MemoryType memoryType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

@@ -181,7 +181,7 @@ import org.eclipse.app4mc.amalthea.model.MemoryClassification;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
-import org.eclipse.app4mc.amalthea.model.MemoryTypeEnum;
+import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -717,8 +717,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createSemaphoreEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
 				return createComponentEventTypeFromString(eDataType, initialValue);
-			case AmaltheaPackage.MEMORY_TYPE_ENUM:
-				return createMemoryTypeEnumFromString(eDataType, initialValue);
+			case AmaltheaPackage.MEMORY_TYPE:
+				return createMemoryTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.STRUCTURE_TYPE:
 				return createStructureTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.CACHE_TYPE:
@@ -846,8 +846,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertSemaphoreEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.COMPONENT_EVENT_TYPE:
 				return convertComponentEventTypeToString(eDataType, instanceValue);
-			case AmaltheaPackage.MEMORY_TYPE_ENUM:
-				return convertMemoryTypeEnumToString(eDataType, instanceValue);
+			case AmaltheaPackage.MEMORY_TYPE:
+				return convertMemoryTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.STRUCTURE_TYPE:
 				return convertStructureTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.CACHE_TYPE:
@@ -4062,8 +4062,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MemoryTypeEnum createMemoryTypeEnumFromString(EDataType eDataType, String initialValue) {
-		MemoryTypeEnum result = MemoryTypeEnum.get(initialValue);
+	public MemoryType createMemoryTypeFromString(EDataType eDataType, String initialValue) {
+		MemoryType result = MemoryType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -4073,7 +4073,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMemoryTypeEnumToString(EDataType eDataType, Object instanceValue) {
+	public String convertMemoryTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

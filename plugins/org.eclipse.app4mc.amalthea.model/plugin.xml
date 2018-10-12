@@ -24,4 +24,11 @@
             genModel="model/amalthea.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated amalthea -->
+      <parser
+            type="amalthea"
+            class="org.eclipse.app4mc.amalthea.model.util.AmaltheaResourceFactoryImpl"/>
+   </extension>
+
 </plugin>
