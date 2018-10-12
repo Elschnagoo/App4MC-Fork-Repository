@@ -47,10 +47,11 @@ table(classic).
 
 h4. HwDefinition
 
+Additional information about the definition concept in general can be found in the User Guide --> Concepts --> Hardware --> General Hardware Model Overview 
 
 h5. ProcessingUnitDefinition
 
-The example in figure xxx is representative for any kind of definition in the model. This means for specifying a compute resource a _ProcessingUnitDefinition_ is created once which is then referenced by the number of _ProcessingUnit_ instances of this kind. For a _ProcessingUnitDefinition_ the references to _HwFeatures_ is on of the key concepts of the hardware model.
+For specifying a compute resource a _ProcessingUnitDefinition_ is created, which is afterwards referenced by the number of _ProcessingUnit_ instances of this kind. A _ProcessingUnitDefinition_ can reference multiple _HwFeatures_ to express different costs for different operations.
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -61,7 +62,7 @@ table(classic).
 
 h5. MemoryDefinition
 
-The example in figure xxx is representative for any kind of definition in the model. This means for specifying a memory, a _MemoryDefinition_ is created once which is then referenced by the number of _Memory_ instances of this kind.
+For specifying a memory, a _MemoryDefinition_ is created, which is afterwards referenced by the number of _Memory_ instances of this kind.
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -69,12 +70,12 @@ table(classic).
 | AccessLatency | Containment | HwLatency | 1 | Constant or distribution of access latency in cycles |
 | DataRate | Containment | DataRate | 1 | Max. data rate for the memory |
 | Size | Containment | Size | 1 | Size of the memory |
-| MemoryType | Enum | MemoryType | 1 | type of the memory (DRAM, Flash, SRAM, PCM) |
+| MemoryType | Enum | MemoryType | 1 | type of the memory (e.g. DRAM, Flash, SRAM, PCM) |
 
 
 h5. CacheDefinition
 
-For specifying a cache, a _CacheDefinition_ is created once which is then referenced by the number of _Cache_ instances of this kind.
+For specifying a cache, a _CacheDefinition_ is created, which is afterwards referenced by the number of _Cache_ instances of this kind.
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -86,13 +87,23 @@ table(classic).
 | Coherency | Bool | Bool | 1 | Cache coherency (default = false) |
 | Exclusive | Bool | Bool | 1 | Exclusive cache (default = false) |
 | Line Size | Int | Int | 1 | Line size in bits |
-| Hit Rate | Double | Double | 1 | Percentag hit rate of the cache(default = 0.0) |
+| Hit Rate | Double | Double | 1 | Percentage hit rate of the cache(default = 0.0) |
 | NWays | Int | Int | 1 | N ways associative (default = 0) |
 
 
 h5. ConnectionHandlerDefinition
 
-For specifying a bus or Interconnect etc., a _ConnectionHandlerDefinition_ is created once which is then referenced by the number of _ConnectionHandler_ instances of this kind.
+For specifying a bus or Interconnect etc., a _ConnectionHandlerDefinition_ is created once which is afterwards referenced by the number of _ConnectionHandler_ instances of this kind. 
+
+!(scale)../pictures/hardware/ConnectionHandler_parallel_accesses.png!
+
+The figures shows an example of the attribute _ParallelTransactions_ with the default value 1. This means that all _ConnectionHandlers_ which are referencing this _ConnectionHandlerDefinition_ can only handle 1 active transaction request at a time. All other requests have to wait until the current transaction has finished. 
+
+The next figure shows an example with a number of _ParallelTransactions_ of 3. In this case the _ConnectionHandler_ can handle up to 3 requests in parallel.
+
+!(scale)../pictures/hardware/ConnectionHandler_parallel_accesses_3.png!
+
+The value for _ParallelTransactions_ has to be smaller or equal then the min(initiator ports, responder ports). 
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -158,7 +169,7 @@ table(classic).
 h4. HwFeature
 
 
-A _HwFeature_ is an abstract element to represent any kind of special functionality. The cost function (_Recipes_) of an algorithm will be placed in an intermediate layer outside of the hardware model in future. However the _HwFeatures_ will be directly referenced by the _Recipes_. All _HwFeatures_ are placed inside a_ProcessingUnitDefinition_, in Future we will extend the Feature concept for _MemoryDefinitions_, _CacheDefinitions_ and _ConnectionHandlerDefinitions_. Specific definitions for the basic components are able to reference such _HwFeatures_ to express their functionality. HwFeatures could be reused several times by different definitions. A _HwFeature_ can contain a value to express static costs in a model. Figure  #fig:hwFeature_example shows an example how recipes are used in a model. <em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
+A _HwFeature_ is an abstract element to represent any kind of special functionality. The cost function (_Recipes_) of an algorithm will be placed in an intermediate layer outside of the hardware model in future. However the _HwFeatures_ will be directly referenced by the _Recipes_. All _HwFeatures_ are placed inside a_ProcessingUnitDefinition_, in Future we will extend the Feature concept for _MemoryDefinitions_, _CacheDefinitions_ and _ConnectionHandlerDefinitions_. Specific definitions for the basic components are able to reference such _HwFeatures_ to express their functionality. HwFeatures could be reused several times by different definitions. A _HwFeature_ can contain a value to express static costs in a model. More information can be found in the User Guide --> Concepts --> Hardware. <em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
 
 !(scale)../pictures/hardware/hw_feature_example.png!
 
@@ -169,6 +180,8 @@ table(classic).
 
 
 h5. HwFeatureCategory
+
+The _HwFeatureCategory_ is a element to collect the same kind of _HwFeatures_ with different values. The _HwFeatureCategories_ can be referenced by the _ExecutionNeeds_ in the Software Model. 
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -266,6 +279,10 @@ For _HwPorts_ it's always possible to select if the port is an _initiator_ or a 
 
 !(scale)../pictures/hardware/hw_port_example_i_r.png!
 
+In case of a delegated port (which is used as hierarchical port at a _HwStructure_) the _PortType_ of the module inside the structure is reflected. The following figure shows four different examples. The ports which are delegated are marked grey.
+
+!(scale)../pictures/hardware/Initiator_Responder_with_DelegatedPorts.png!
+
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
 | Name | String | String | 1 | Name of the hardware port |
@@ -278,7 +295,7 @@ table(classic).
 
 h4. HwConnection
 
-A _HwConnection_ is an element to model structural connections between two _HwPorts_. _HwConnections_ are always placed within _HwStructures_. It is possible to directly annotate a read and write latency at a _HwConnection_. _HwConnections_ can be referenced by _HwAccessPaths_. The HwConnection do not have a reference to a_FrequencyDomain_, the frequency is always provided by the element which is in front of the _HwConnection_ in the _HwAccessPath_.
+A _HwConnection_ is an element to model structural connections between two _HwPorts_. _HwConnections_ are always placed within _HwStructures_. It is possible to directly annotate a read and write latency at a _HwConnection_. _HwConnections_ can be referenced by _HwAccessPaths_. The HwConnection do not have a reference to a _FrequencyDomain_, the frequency is always provided by the element which is in front of the _HwConnection_ in the _HwAccessPath_.
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -328,7 +345,7 @@ table(classic).
 
 h5. LatencyDeviation
 
-A _LatencyDeviation_ is an object which allows to create a distribution out of different possibilities e.g. Weibull, Gaussian etc. The_LatencyDeviation_ can be attached to various elements e.g. access latencies for a _MemoryDefinition_ or a read latency for a _ConnectionHandlerDefinition_ .
+A _LatencyDeviation_ is an object which allows to create a distribution out of different possibilities e.g. Weibull, Gaussian etc. The _LatencyDeviation_ can be attached to various elements e.g. access latencies for a _MemoryDefinition_ or a read latency for a _ConnectionHandlerDefinition_ .
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
