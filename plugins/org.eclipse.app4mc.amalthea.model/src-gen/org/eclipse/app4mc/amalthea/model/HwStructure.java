@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getModules <em>Modules</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getConnections <em>Connections</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.HwStructure#getInnerPorts <em>Inner Ports</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwStructure()
@@ -129,5 +130,22 @@ public interface HwStructure extends ReferableBaseObject, ITaggable {
 	 * @generated
 	 */
 	EList<HwConnection> getConnections();
+
+	/**
+	 * Returns the value of the '<em><b>Inner Ports</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwPort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inner Ports</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inner Ports</em>' reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwStructure_InnerPorts()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.getInnerPorts(this);'"
+	 * @generated
+	 */
+	EList<HwPort> getInnerPorts();
 
 } // HwStructure

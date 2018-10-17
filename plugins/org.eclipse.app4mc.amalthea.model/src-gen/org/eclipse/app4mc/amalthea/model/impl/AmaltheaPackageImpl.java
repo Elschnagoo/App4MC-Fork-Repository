@@ -6778,6 +6778,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHwStructure_InnerPorts() {
+		return (EReference)hwStructureEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHwModule() {
 		return hwModuleEClass;
 	}
@@ -13645,6 +13654,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwStructureEClass, HW_STRUCTURE__STRUCTURES);
 		createEReference(hwStructureEClass, HW_STRUCTURE__MODULES);
 		createEReference(hwStructureEClass, HW_STRUCTURE__CONNECTIONS);
+		createEReference(hwStructureEClass, HW_STRUCTURE__INNER_PORTS);
 
 		hwModuleEClass = createEClass(HW_MODULE);
 		createEReference(hwModuleEClass, HW_MODULE__PORTS);
@@ -15562,6 +15572,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwStructure_Structures(), this.getHwStructure(), null, "structures", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Modules(), this.getHwModule(), null, "modules", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwStructure_Connections(), this.getHwConnection(), null, "connections", null, 0, -1, HwStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwStructure_InnerPorts(), this.getHwPort(), null, "innerPorts", null, 0, -1, HwStructure.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwModuleEClass, HwModule.class, "HwModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHwModule_Ports(), this.getHwPort(), null, "ports", null, 0, -1, HwModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

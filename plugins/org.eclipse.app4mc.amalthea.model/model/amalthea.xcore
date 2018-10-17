@@ -1584,6 +1584,11 @@ class HwStructure extends ReferableBaseObject, ITaggable
 	contains HwStructure[] structures
 	contains HwModule[] modules
 	contains HwConnection[] connections
+	
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers derived readonly HwPort[] innerPorts get {
+		AmaltheaServices.getInnerPorts(this);
+	}
 }
 
 abstract class HwModule extends ReferableBaseObject, ITaggable

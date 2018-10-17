@@ -2736,7 +2736,7 @@ public class CustomItemProviderService {
       final String cType = _xifexpression;
       final String s1 = CustomItemProviderService.ppName(cName, cType);
       final String s2 = CustomItemProviderService.ppName(name, "<port>");
-      return ((s1 + "_") + s2);
+      return ((s1 + " -- ") + s2);
     } else {
       return defaultText;
     }

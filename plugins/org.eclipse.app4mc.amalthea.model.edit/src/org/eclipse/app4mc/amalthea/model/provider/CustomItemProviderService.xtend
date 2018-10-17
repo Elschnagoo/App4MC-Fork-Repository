@@ -1534,7 +1534,7 @@ class CustomItemProviderService {
 
 			val s1 = ppName(cName, cType)
 			val s2 = ppName(name, "<port>")
-			return s1 + "_" + s2
+			return s1 + " -- " + s2
 		} else {
 			return defaultText
 		}

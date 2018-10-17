@@ -10435,13 +10435,22 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_STRUCTURE__CONNECTIONS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Inner Ports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_STRUCTURE__INNER_PORTS = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Hw Structure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_STRUCTURE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 6;
+	int HW_STRUCTURE_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -32046,6 +32055,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHwStructure_Connections();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.HwStructure#getInnerPorts <em>Inner Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inner Ports</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.HwStructure#getInnerPorts()
+	 * @see #getHwStructure()
+	 * @generated
+	 */
+	EReference getHwStructure_InnerPorts();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.HwModule <em>Hw Module</em>}'.

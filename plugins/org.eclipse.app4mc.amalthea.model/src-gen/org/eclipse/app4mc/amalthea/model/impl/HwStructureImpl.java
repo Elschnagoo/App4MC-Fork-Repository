@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPort;
@@ -53,6 +54,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getStructures <em>Structures</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.HwStructureImpl#getInnerPorts <em>Inner Ports</em>}</li>
  * </ul>
  *
  * @generated
@@ -233,6 +235,15 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<HwPort> getInnerPorts() {
+		return AmaltheaServices.getInnerPorts(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -268,6 +279,8 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 				return getModules();
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				return getConnections();
+			case AmaltheaPackage.HW_STRUCTURE__INNER_PORTS:
+				return getInnerPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -358,6 +371,8 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 				return modules != null && !modules.isEmpty();
 			case AmaltheaPackage.HW_STRUCTURE__CONNECTIONS:
 				return connections != null && !connections.isEmpty();
+			case AmaltheaPackage.HW_STRUCTURE__INNER_PORTS:
+				return !getInnerPorts().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

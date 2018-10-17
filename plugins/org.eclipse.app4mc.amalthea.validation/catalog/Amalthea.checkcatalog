@@ -103,9 +103,9 @@
   <constraints
     id="SystemStructure"
     label="System Structure Checks"
-    description="Checks on HwModel for ..."
+    description="Checks on HwModel for consistent system structure"
     severity="Error"
-    message="&quot;{0}&quot;"
+    message="{0} &quot;{1}&quot;: {2}"
     categories="HardwareModel"/>
 
   <constraints
@@ -130,6 +130,14 @@
     description="Checks the correctness of HwAccessPath definitions"
     severity="Error"
     message="HW Access Path &quot;{0}&quot;: {1}"
+    categories="HardwareModel"/>
+
+  <constraints
+    id="HardwareDefinition"
+    label="Hardware Definition Checks"
+    description="Checks the correctness of hardware definitions"
+    severity="Error"
+    message="HW Definition &quot;{0}&quot;: {1}"
     categories="HardwareModel"/>
 
   <constraints

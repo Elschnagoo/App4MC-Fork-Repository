@@ -292,7 +292,6 @@ public class AmaltheaServices {
 		return value1.compareTo(value2);
 	}
 
-
 	public static EList<QualifiedPort> getInnerPorts(ISystem system) {
 		List<QualifiedPort> qualifiedPorts = new ArrayList<QualifiedPort>();
 		for (ComponentInstance inst : system.getComponentInstances()) {
@@ -305,11 +304,36 @@ public class AmaltheaServices {
 				}
 			}
 		}
+		return unmodifiableEList(qualifiedPorts);
+	}
 
-		if (qualifiedPorts.isEmpty()) {
+	public static EList<HwPort> getInnerPorts(HwStructure struct) {
+		List<HwPort> ports = new ArrayList<HwPort>();
+		for (HwStructure subStruct : struct.getStructures()) {
+			ports.addAll(subStruct.getPorts());
+		}
+		for (HwModule module : getAllModules(struct)) {
+			ports.addAll(module.getPorts());
+		}
+		return unmodifiableEList(ports);
+	}
+
+	public static EList<HwModule> getAllModules(HwStructure struct) {
+		List<HwModule> moduleList = new ArrayList<HwModule>();
+		for (HwModule module : struct.getModules()) {
+			moduleList.add(module);
+			if (module instanceof ProcessingUnit) {
+				moduleList.addAll(((ProcessingUnit) module).getCaches());
+			}
+		}
+		return unmodifiableEList(moduleList);
+	}
+
+	private static <T> EList<T> unmodifiableEList(List<? extends T> list) {
+		if (list.isEmpty()) {
 			return ECollections.emptyEList();
 		} else {
-			return ECollections.unmodifiableEList(qualifiedPorts);
+			return ECollections.unmodifiableEList(list);
 		}
 	}
 

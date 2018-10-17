@@ -62,6 +62,7 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 
 			addTagsPropertyDescriptor(object);
 			addStructureTypePropertyDescriptor(object);
+			addInnerPortsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -108,6 +109,30 @@ public class HwStructureItemProvider extends ReferableBaseObjectItemProvider {
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inner Ports feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInnerPortsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HwStructure_innerPorts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HwStructure_innerPorts_feature", "_UI_HwStructure_type"),
+				 AmaltheaPackage.eINSTANCE.getHwStructure_InnerPorts(),
+				 false,
+				 false,
+				 false,
+				 null,
+				 getString("_UI_ReadonlyPropertyCategory"),
+				 new String[] {
+					"org.eclipse.ui.views.properties.expert"
+				 }));
 	}
 
 	/**

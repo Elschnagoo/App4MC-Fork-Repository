@@ -16,26 +16,35 @@
 package org.eclipse.app4mc.amalthea.validation.checks.impl;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
-import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
+import org.eclipse.app4mc.amalthea.model.HwDefinition;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
+import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
+import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.PortInterface;
 import org.eclipse.app4mc.amalthea.model.PortType;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 
@@ -49,10 +58,64 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 
 
 	/*
-	 * Checks for the entire AMALTHEA Hardware model instance if ...
+	 * Checks structures of the hardware model
 	 */
-	public void checkSystemStructure(final HWModel hwModel) {
+	public void checkSystemStructure(final HwStructure structure) {
+		HashSet<HwModule> subModules = new HashSet<HwModule>(AmaltheaServices.getAllModules(structure));
+		HashSet<HwStructure> subStructures = new HashSet<HwStructure>(structure.getStructures());
+		
+		// check for each connection of structure
+		for (HwConnection conn : structure.getConnections()) {
+			boolean p1InnerPort = false;
+			boolean p1OuterPort = false;
+			boolean p2InnerPort = false;
+			boolean p2OuterPort = false;
+			
+			HwPort port1 = conn.getPort1();
+			HwPort port2 = conn.getPort2();
+			// fundamental checks are handled in method checkHwConnection(HwConnection)
+			if (port1 == null || port2 == null || port1 == port2) return;
+			
+			
+			EObject container1 = port1.eContainer();
+			if (subModules.contains(container1) || subStructures.contains(container1)) {
+				p1InnerPort = true;
+			} else if (container1 == structure) {
+				p1OuterPort = true;
+			} else {
+				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
+						"HW Connection", conn.getName(), "Port 1 is not contained in structure");
+			}
+			
+			EObject container2 = port2.eContainer();
+			if (subModules.contains(container2) || subStructures.contains(container2)) {
+				p2InnerPort = true;
+			} else if (container2 == structure) {
+				p2OuterPort = true;
+			} else {
+				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port2(),
+						"HW Connection", conn.getName(), "Port 2 is not contained in structure");
+			}
+			
+			if ((p1InnerPort && p2InnerPort) || (p1OuterPort && p2OuterPort)) {
 
+				// ***** regular test: HwConnections always need one Initiator and one Responder HwPort
+				if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.INITIATOR)
+						|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.RESPONDER)) {
+					this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
+							"HW Connection", conn.getName(), "Port types do not fulfill initiator -> responder");
+				}
+				
+			} else if ((p1InnerPort && p2OuterPort) || (p1OuterPort && p2InnerPort)) {
+				
+				// ***** delegate test: HwConnections always need one Initiator and one Responder HwPort
+				if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.RESPONDER)
+						|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.INITIATOR)) {
+					this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
+							"HW Connection", conn.getName(), "Port types of delegate connection do not match");
+				}
+			}
+		}
 	}
 
 	/**
@@ -100,14 +163,6 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 			&& port1.getPortInterface() != port2.getPortInterface()) {
 			this.issueCreator.issue(connection, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
 					connection.getName(), "Port interfaces do not match");
-		}
-
-		// ***** HwConnections always need one Initiator and one Responder HwPort
-
-		if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.INITIATOR)
-			|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.RESPONDER)) {
-			this.issueCreator.issue(connection, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
-					connection.getName(), "Port types do not fulfill initiator -> responder");
 		}
 	}
 
@@ -304,6 +359,40 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 			}	
 		}
 	}
-		
+
+	/**
+	 * Checks the correctness of HwDefinitions
+	 * 
+	 * <ul>
+	 * <li>Only one feature of a category can be referred</li>
+	 * </ul>
+	 */
+	public void checkDefinitions(HwDefinition definition) {
+		// currently only ProcessingUnitDefinitions have references to HwFeatures
+		if (definition instanceof ProcessingUnitDefinition) {
+			ProcessingUnitDefinition puDef = (ProcessingUnitDefinition) definition;
+			// Map of category -> first feature of category
+			final Map<HwFeatureCategory, HwFeature> visitedCategories = new HashMap<HwFeatureCategory, HwFeature>();
+			for (final HwFeature feature : puDef.getFeatures()) {
+				final HwFeatureCategory category = feature.getContainingCategory();
+				
+				if (visitedCategories.containsKey(category)) {
+					final HwFeature firstFeature = visitedCategories.put(category, null);
+					if (firstFeature != null) {
+						// report error for first occurrence
+						this.issueCreator.issue(definition, AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+								definition.getName(), "Reference to multiple features of one category - " + category.getName() + "::" + firstFeature.getName());
+					}
+					// report error for current occurrence
+					this.issueCreator.issue(definition, AmaltheaPackage.eINSTANCE.getHWModel_Definitions(),
+							definition.getName(), "Reference to multiple features of one category - " + category.getName() + "::" + feature.getName());
+				} else {
+					// first occurrence
+					visitedCategories.put(category, feature);
+				}
+			}
+		}
+	}
+
 }
 
