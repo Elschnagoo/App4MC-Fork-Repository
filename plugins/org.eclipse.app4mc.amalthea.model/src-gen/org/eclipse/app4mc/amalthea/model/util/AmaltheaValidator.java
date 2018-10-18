@@ -1297,6 +1297,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateASILType((ASILType)value, diagnostics, context);
 			case AmaltheaPackage.ADDRESS:
 				return validateAddress((Long)value, diagnostics, context);
+			case AmaltheaPackage.POSITIVE_INT:
+				return validatePositiveInt((Integer)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -4948,6 +4950,37 @@ public class AmaltheaValidator extends EObjectValidator {
 		boolean result = address >= ADDRESS__MIN__VALUE;
 		if (!result && diagnostics != null)
 			reportMinViolation(AmaltheaPackage.eINSTANCE.getAddress(), address, ADDRESS__MIN__VALUE, true, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveInt(int positiveInt, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validatePositiveInt_Min(positiveInt, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validatePositiveInt_Min
+	 */
+	public static final int POSITIVE_INT__MIN__VALUE = 1;
+
+	/**
+	 * Validates the Min constraint of '<em>Positive Int</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveInt_Min(int positiveInt, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = positiveInt >= POSITIVE_INT__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveInt(), positiveInt, POSITIVE_INT__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 

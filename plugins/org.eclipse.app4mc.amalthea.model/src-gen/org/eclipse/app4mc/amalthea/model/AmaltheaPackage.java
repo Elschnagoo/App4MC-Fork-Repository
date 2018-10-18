@@ -27999,6 +27999,15 @@ public interface AmaltheaPackage extends EPackage {
 	 */
 	int ADDRESS = 402;
 
+	/**
+	 * The meta object id for the '<em>Positive Int</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPositiveInt()
+	 * @generated
+	 */
+	int POSITIVE_INT = 403;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Amalthea <em>Amalthea</em>}'.
@@ -39523,6 +39532,20 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getAddress();
+
+	/**
+	 * Returns the meta object for data type '<em>Positive Int</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Positive Integer (int)
+     * <!-- end-model-doc -->
+	 * @return the meta object for data type '<em>Positive Int</em>'.
+	 * @model instanceClass="int"
+	 *        extendedMetaData="minInclusive='1'"
+	 * @generated
+	 */
+	EDataType getPositiveInt();
 
 	/**
 	 * Returns the factory that creates the instances of the model.

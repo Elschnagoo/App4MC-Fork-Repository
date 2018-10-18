@@ -19,7 +19,7 @@
 	forceOverwrite="true",
 	creationSubmenus="true",
 	generateSchema="true",
-	loadInitialization="false",	// can be removed with Neon.3 target / runtime
+	loadInitialization="false",	// can be removed with Neon.3 ??
 //	dynamicTemplates="true",
 //	templateDirectory="org.eclipse.app4mc.amalthea.model/templates",
 	copyrightText="*******************************************************************************\r\n Copyright (c) 2015-2018 Robert Bosch GmbH and others.\r\n\r\n This program and the accompanying materials are made\r\n available under the terms of the Eclipse Public License 2.0\r\n which is available at https://www.eclipse.org/legal/epl-2.0/\r\n\r\n SPDX-License-Identifier: EPL-2.0\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************"
@@ -646,6 +646,11 @@ convert {
 	"0x" + Long.toHexString(it)
 }
 
+/*
+ * Positive Integer (int)
+ */
+@ExtendedMetaData(minInclusive="1")
+type PositiveInt wraps int
 
 // ===============================================================================
 // ===============================================================================
@@ -1820,11 +1825,8 @@ class ConnectionHandlerDefinition extends HwDefinition
 	contains HwLatency writeLatency
 	contains DataRate dataRate
 	int bitWidth
-	@ExtendedMetaData(minInclusive="1")
-	int burstSize = "1"
-	@ExtendedMetaData(minInclusive="1")
-	int parallelTransactions = "1"
-	
+	PositiveInt burstSize = "1"
+	PositiveInt parallelTransactions = "1"
 }
 
 class MemoryDefinition extends HwDefinition

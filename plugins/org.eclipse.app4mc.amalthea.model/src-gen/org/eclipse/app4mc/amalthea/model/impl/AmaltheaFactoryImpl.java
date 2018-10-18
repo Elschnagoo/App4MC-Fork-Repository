@@ -783,6 +783,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createASILTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.ADDRESS:
 				return createAddressFromString(eDataType, initialValue);
+			case AmaltheaPackage.POSITIVE_INT:
+				return createPositiveIntFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -912,6 +914,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertASILTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.ADDRESS:
 				return convertAddressToString(eDataType, instanceValue);
+			case AmaltheaPackage.POSITIVE_INT:
+				return convertPositiveIntToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -4743,6 +4747,24 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 */
 	public String convertAddressToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : convertAddress((Long)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createPositiveIntFromString(EDataType eDataType, String initialValue) {
+		return (Integer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPositiveIntToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

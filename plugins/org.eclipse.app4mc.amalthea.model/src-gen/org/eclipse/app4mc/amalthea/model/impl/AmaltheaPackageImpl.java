@@ -3254,6 +3254,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	private EDataType addressEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType positiveIntEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -13105,6 +13112,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getPositiveInt() {
+		return positiveIntEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AmaltheaFactory getAmaltheaFactory() {
 		return (AmaltheaFactory)getEFactoryInstance();
 	}
@@ -14562,6 +14578,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Create data types
 		addressEDataType = createEDataType(ADDRESS);
+		positiveIntEDataType = createEDataType(POSITIVE_INT);
 	}
 
 	/**
@@ -15672,8 +15689,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_BitWidth(), theEcorePackage.getEInt(), "bitWidth", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectionHandlerDefinition_BurstSize(), theEcorePackage.getEInt(), "burstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectionHandlerDefinition_ParallelTransactions(), theEcorePackage.getEInt(), "parallelTransactions", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_BurstSize(), this.getPositiveInt(), "burstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_ParallelTransactions(), this.getPositiveInt(), "parallelTransactions", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16913,6 +16930,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		// Initialize data types
 		initEDataType(addressEDataType, long.class, "Address", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(positiveIntEDataType, int.class, "PositiveInt", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -16937,13 +16955,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 			   "minInclusive", "0"
 		   });
 		addAnnotation
-		  (getConnectionHandlerDefinition_BurstSize(),
-		   source,
-		   new String[] {
-			   "minInclusive", "1"
-		   });
-		addAnnotation
-		  (getConnectionHandlerDefinition_ParallelTransactions(),
+		  (positiveIntEDataType,
 		   source,
 		   new String[] {
 			   "minInclusive", "1"

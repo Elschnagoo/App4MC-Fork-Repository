@@ -315,13 +315,13 @@ SPDX-License-Identifier: EPL-2.0
       <xsd:enumeration value="end"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="MemoryTypeEnum">
+  <xsd:simpleType name="MemoryType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
-      <xsd:enumeration value="RAM"/>
-      <xsd:enumeration value="CACHE"/>
-      <xsd:enumeration value="FLASH_INT"/>
-      <xsd:enumeration value="FLASH_EXT"/>
+      <xsd:enumeration value="DRAM"/>
+      <xsd:enumeration value="SRAM"/>
+      <xsd:enumeration value="FLASH"/>
+      <xsd:enumeration value="PCM"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="StructureType">
@@ -3077,6 +3077,9 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="policy" type="am:SchedPolicy"/>
+        <xsd:attribute name="bitWidth" type="xsd:int"/>
+        <xsd:attribute name="burstSize" type="xsd:string"/>
+        <xsd:attribute name="parallelTransactions" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3090,6 +3093,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="dataRate" type="am:DataRate"/>
           <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
+        <xsd:attribute name="memoryType" type="am:MemoryType"/>
         <xsd:attribute name="classifiers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

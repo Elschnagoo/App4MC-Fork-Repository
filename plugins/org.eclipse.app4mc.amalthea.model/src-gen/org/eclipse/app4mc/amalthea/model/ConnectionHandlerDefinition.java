@@ -183,8 +183,7 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * @return the value of the '<em>Burst Size</em>' attribute.
 	 * @see #setBurstSize(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_BurstSize()
-	 * @model default="1" unique="false"
-	 *        extendedMetaData="minInclusive='1'"
+	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveInt"
 	 * @generated
 	 */
 	int getBurstSize();
@@ -211,8 +210,7 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * @return the value of the '<em>Parallel Transactions</em>' attribute.
 	 * @see #setParallelTransactions(int)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_ParallelTransactions()
-	 * @model default="1" unique="false"
-	 *        extendedMetaData="minInclusive='1'"
+	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveInt"
 	 * @generated
 	 */
 	int getParallelTransactions();
