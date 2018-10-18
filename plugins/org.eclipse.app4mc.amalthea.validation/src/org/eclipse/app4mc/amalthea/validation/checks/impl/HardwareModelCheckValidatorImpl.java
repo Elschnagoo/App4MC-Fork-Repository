@@ -57,12 +57,17 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 	}
 
 
-	/*
+	/**
 	 * Checks structures of the hardware model
+	 * <ul>
+	 * <li>Connections must only refer to contained HwPorts</li>
+	 * <li>Inner connections always need one Initiator and one Responder HwPort</li>
+	 * <li>Delegated connections always connect HwPorts of the same type</li>
+	 * </ul>
 	 */
 	public void checkSystemStructure(final HwStructure structure) {
-		HashSet<HwModule> subModules = new HashSet<HwModule>(AmaltheaServices.getAllModules(structure));
-		HashSet<HwStructure> subStructures = new HashSet<HwStructure>(structure.getStructures());
+		final HashSet<HwModule> subModules = new HashSet<HwModule>(AmaltheaServices.getAllModules(structure));
+		final HashSet<HwStructure> subStructures = new HashSet<HwStructure>(structure.getStructures());
 		
 		// check for each connection of structure
 		for (HwConnection conn : structure.getConnections()) {
@@ -74,7 +79,7 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 			HwPort port1 = conn.getPort1();
 			HwPort port2 = conn.getPort2();
 			// fundamental checks are handled in method checkHwConnection(HwConnection)
-			if (port1 == null || port2 == null || port1 == port2) return;
+			if (port1 == null || port2 == null || port1 == port2) break;
 			
 			
 			EObject container1 = port1.eContainer();
@@ -124,7 +129,6 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 	 * <ul>
 	 * <li>HwConnections must refer to two HwPorts</li>
 	 * <li>HwConnections must be linked to HwPorts of the same Interface</li>
-	 * <li>HwConnections always need one Initiator and one Responder HwPort</li>
 	 * </ul>
 	 */
 	public void checkHwConnection(final HwConnection connection) {
