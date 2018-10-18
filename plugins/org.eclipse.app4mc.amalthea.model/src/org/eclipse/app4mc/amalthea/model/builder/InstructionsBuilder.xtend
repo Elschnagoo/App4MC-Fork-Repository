@@ -32,19 +32,19 @@ class InstructionsBuilder {
 
 	// ********** Execution Need (Runnable items) **********
 
-	def default_Instructions(ExecutionNeed container, long instructions) {
+	def default_InstructionsConstant(ExecutionNeed container, long instructions) {
 		val need = FactoryUtil.createNeedConstant(instructions)
 		container.^default.put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
 		return need
 	}
 
-	def default_Instructions(ExecutionNeed container, Deviation<LongObject> instructions) {
+	def default_InstructionsDeviation(ExecutionNeed container, Deviation<LongObject> instructions) {
 		val need = FactoryUtil.createNeedDeviation(instructions)
 		container.^default.put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need)
 		return need
 	}
 
-	def extended_Instructions(ExecutionNeed container, ProcessingUnitDefinition puDef, long instructions) {
+	def extended_InstructionsConstant(ExecutionNeed container, ProcessingUnitDefinition puDef, long instructions) {
 		val need = FactoryUtil.createNeedConstant(instructions)
 		if (container.extended.containsKey(puDef) == false) {
 			container.extended.put(puDef, new BasicEMap<String, Need>());
@@ -53,7 +53,7 @@ class InstructionsBuilder {
 		return need
 	}
 
-	def extended_Instructions(ExecutionNeed container, ProcessingUnitDefinition puDef, Deviation<LongObject> instructions) {
+	def extended_InstructionsDeviation(ExecutionNeed container, ProcessingUnitDefinition puDef, Deviation<LongObject> instructions) {
 		val need = FactoryUtil.createNeedDeviation(instructions)
 		if (container.extended.containsKey(puDef) == false) {
 			container.extended.put(puDef, new BasicEMap<String, Need>());
@@ -64,14 +64,14 @@ class InstructionsBuilder {
 
 	// ********** Execution Need (Computation Items) **********
 
-	def execNeed_default_Instructions(Scheduler container, long instructions) {
-		val execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions)
+	def execNeed_default_InstructionsConstant(Scheduler container, long instructions) {
+		val execNeed = InstructionsUtil.createDefaultExecutionNeedConstant(instructions)
 		container.computationItems += execNeed
 		return execNeed
 	}
 
-	def execNeed_default_Instructions(Scheduler container, Deviation<LongObject> instructions) {
-		val execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions)
+	def execNeed_default_InstructionsDeviation(Scheduler container, Deviation<LongObject> instructions) {
+		val execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(instructions)
 		container.computationItems += execNeed
 		return execNeed
 	}

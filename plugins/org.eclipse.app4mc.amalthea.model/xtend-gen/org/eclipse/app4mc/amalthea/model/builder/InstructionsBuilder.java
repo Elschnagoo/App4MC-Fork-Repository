@@ -33,19 +33,19 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class InstructionsBuilder {
-  public NeedConstant default_Instructions(final ExecutionNeed container, final long instructions) {
+  public NeedConstant default_InstructionsConstant(final ExecutionNeed container, final long instructions) {
     final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
     container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
     return need;
   }
   
-  public NeedDeviation default_Instructions(final ExecutionNeed container, final Deviation<LongObject> instructions) {
+  public NeedDeviation default_InstructionsDeviation(final ExecutionNeed container, final Deviation<LongObject> instructions) {
     final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
     container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
     return need;
   }
   
-  public NeedConstant extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final long instructions) {
+  public NeedConstant extended_InstructionsConstant(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final long instructions) {
     final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
     boolean _containsKey = container.getExtended().containsKey(puDef);
     boolean _equals = (_containsKey == false);
@@ -58,7 +58,7 @@ public class InstructionsBuilder {
     return need;
   }
   
-  public NeedDeviation extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final Deviation<LongObject> instructions) {
+  public NeedDeviation extended_InstructionsDeviation(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final Deviation<LongObject> instructions) {
     final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
     boolean _containsKey = container.getExtended().containsKey(puDef);
     boolean _equals = (_containsKey == false);
@@ -71,15 +71,15 @@ public class InstructionsBuilder {
     return need;
   }
   
-  public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final long instructions) {
-    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions);
+  public ExecutionNeed execNeed_default_InstructionsConstant(final Scheduler container, final long instructions) {
+    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedConstant(instructions);
     EList<ComputationItem> _computationItems = container.getComputationItems();
     _computationItems.add(execNeed);
     return execNeed;
   }
   
-  public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final Deviation<LongObject> instructions) {
-    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(instructions);
+  public ExecutionNeed execNeed_default_InstructionsDeviation(final Scheduler container, final Deviation<LongObject> instructions) {
+    final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(instructions);
     EList<ComputationItem> _computationItems = container.getComputationItems();
     _computationItems.add(execNeed);
     return execNeed;

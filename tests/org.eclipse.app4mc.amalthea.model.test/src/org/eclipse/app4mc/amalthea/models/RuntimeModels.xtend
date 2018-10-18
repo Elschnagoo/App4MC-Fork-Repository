@@ -109,10 +109,10 @@ class RuntimeModels {
 				runnable [
 					name = "r1"
 					execNeed [
-						default_Instructions(500)
-						extended_Instructions(_find(ProcessingUnitDefinition, "Pu2_def"), 800)
+						default_InstructionsConstant(500)
+						extended_InstructionsConstant(_find(ProcessingUnitDefinition, "Pu2_def"), 800)
 					]
-					execNeed [default_Instructions(createDeviation(createGaussDistribution(500, 2), 250, 750))]
+					execNeed [default_InstructionsDeviation(createDeviation(createGaussDistribution(500, 2), 250, 750))]
 					execNeed [default_Need("MAC_Operations", createNeedConstant(2000))]
 				]
 				runnable [

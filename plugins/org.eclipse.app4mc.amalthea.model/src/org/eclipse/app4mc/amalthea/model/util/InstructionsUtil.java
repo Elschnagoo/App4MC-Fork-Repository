@@ -33,8 +33,6 @@ import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.emf.common.util.BasicEMap;
-import org.eclipse.emf.common.util.ECollections;
-import org.eclipse.emf.common.util.EMap;
 
 public class InstructionsUtil {
 
@@ -54,19 +52,19 @@ public class InstructionsUtil {
 		return newCategory;
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(long instructions) {
+	public static ExecutionNeed createDefaultExecutionNeedConstant(long instructions) {
 		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeed(Deviation<LongObject> instructions) {
+	public static ExecutionNeed createDefaultExecutionNeedDeviation(Deviation<LongObject> instructions) {
 		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static Need addExtendedExecutionNeed(ExecutionNeed need, ProcessingUnitDefinition key, long instructions) {
+	public static Need addExtendedExecutionNeedConstant(ExecutionNeed need, ProcessingUnitDefinition key, long instructions) {
 		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static Need addExtendedExecutionNeed(ExecutionNeed need, ProcessingUnitDefinition key, Deviation<LongObject> instructions) {
+	public static Need addExtendedExecutionNeedDeviation(ExecutionNeed need, ProcessingUnitDefinition key, Deviation<LongObject> instructions) {
 		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 

@@ -183,7 +183,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
@@ -239,7 +239,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeed(deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
