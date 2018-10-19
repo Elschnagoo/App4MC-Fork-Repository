@@ -54,7 +54,7 @@ public class HWCacheBuilder implements ICache {
 							String attributeValue = oldHWQuartz.getAttributeValue("name");
 							
 							if(attributeValue!=null) {
-								cache.old_hwQuartzs_Map.put(attributeValue, oldHWQuartz);
+								cache.old_hwQuartzs_Map.put(helper.encodeName(attributeValue), oldHWQuartz);
 							}
 						}
 						
@@ -70,7 +70,7 @@ public class HWCacheBuilder implements ICache {
 								for (Element oldHWCore : oldHWCores) {
 									String attributeValue = oldHWCore.getAttributeValue("name");
 									if(attributeValue!=null) {
-										cache.old_cores_Map.put(attributeValue, oldHWCore);
+										cache.old_cores_Map.put(helper.encodeName(attributeValue), oldHWCore);
 									}
 								}
 								
@@ -86,7 +86,7 @@ public class HWCacheBuilder implements ICache {
 						String attributeValue = oldHWMemoryType.getAttributeValue("name");
 
 						if(attributeValue!=null) {
-							cache.old_memory_Types_Definition_Map.put(attributeValue, oldHWMemoryType);
+							cache.old_memory_Types_Definition_Map.put(helper.encodeName(attributeValue), oldHWMemoryType);
 							
 						}
 					}

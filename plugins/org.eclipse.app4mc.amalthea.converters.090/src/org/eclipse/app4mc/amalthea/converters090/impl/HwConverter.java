@@ -470,7 +470,7 @@ public class HwConverter extends AbstractConverter {
 					
 					Element newHwFeaturesElement=new Element("features");
 					
-					newHwFeaturesElement.setAttribute("href", "amlt:/#"+this.helper.encodeNameForReference(newHWFeatureCategoryName)+"/"+this.helper.encodeNameForReference(oldCoreType_ipc)+"?type=HwFeature");
+					newHwFeaturesElement.setAttribute("href", "amlt:/#"+ (newHWFeatureCategoryName)+"/"+ (oldCoreType_ipc)+"?type=HwFeature");
 					
 					newHWCoreType.addContent(newHwFeaturesElement);
 					
@@ -511,13 +511,13 @@ public class HwConverter extends AbstractConverter {
 			
 			newHWMemoryType.setAttribute("type", "am:CacheDefinition", helper.getGenericNS("xsi"));
 			
-			hwTransformationCache.new_cache_Types_Definition_Map.put(oldHWMemoryType_name, newHWMemoryType);
+			hwTransformationCache.new_cache_Types_Definition_Map.put(helper.encodeName(oldHWMemoryType_name), newHWMemoryType);
 			
 		}else {
 			
 			newHWMemoryType.setAttribute("type", "am:MemoryDefinition", helper.getGenericNS("xsi"));
 			
-			hwTransformationCache.new_memory_Types_Definition_Map.put(oldHWMemoryType_name, newHWMemoryType);
+			hwTransformationCache.new_memory_Types_Definition_Map.put(helper.encodeName(oldHWMemoryType_name), newHWMemoryType);
 			
 			Attribute oldHWMemoryType_Classifiers = oldHWModelElement_MemoryType.getAttribute("classifiers");
 
@@ -581,7 +581,7 @@ public class HwConverter extends AbstractConverter {
  
 		newHWModelElement.addContent(newHWSystem);
 
-		hwTransformationCache.new_systems_Map.put(oldHWSystem_name, newHWSystem);
+		hwTransformationCache.new_systems_Map.put(helper.encodeName(oldHWSystem_name), newHWSystem);
 
 		if(!hasProcessedQuartzes) {
 
@@ -716,7 +716,7 @@ public class HwConverter extends AbstractConverter {
 						
 						newHW_Memory_Element.setAttribute("type", "am:Cache", this.helper.getGenericNS("xsi"));
 						
-						hwTransformationCache.new_caches_Map.put(oldHW_Memory_Name, newHW_Memory_Element);
+						hwTransformationCache.new_caches_Map.put(helper.encodeName(oldHW_Memory_Name), newHW_Memory_Element);
 						
 						//Adding memory object to newHW
 						newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
@@ -729,7 +729,7 @@ public class HwConverter extends AbstractConverter {
 					  if(hwTransformationCache.new_memory_Types_Definition_Map.containsKey(hw_memory_typeDefinitionName)) {
 							newHW_Memory_Element.setAttribute("type", "am:Memory", this.helper.getGenericNS("xsi"));
 							
-							hwTransformationCache.new_memories_Map.put(oldHW_Memory_Name, newHW_Memory_Element);
+							hwTransformationCache.new_memories_Map.put(helper.encodeName(oldHW_Memory_Name), newHW_Memory_Element);
 							
 							//Adding memory object to newHW
 							newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
@@ -741,7 +741,7 @@ public class HwConverter extends AbstractConverter {
 				if(migrateMemory) {
 					newHW_Memory_Element.setAttribute("type", "am:Memory", this.helper.getGenericNS("xsi"));
 					
-					hwTransformationCache.new_memories_Map.put(oldHW_Memory_Name, newHW_Memory_Element);
+					hwTransformationCache.new_memories_Map.put(helper.encodeName(oldHW_Memory_Name), newHW_Memory_Element);
 					
 					//Adding memory object to newHW
 					newHWStructure_or_PU_Element.addContent(newHW_Memory_Element);
@@ -991,7 +991,7 @@ public class HwConverter extends AbstractConverter {
 			/*-migration of custom properties */
 			migrateCustomProperties(oldHWQuartzElement, newHWFrequencyDomain);
 
-			hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put(oldHWQuartz_name, newHWFrequencyDomain);
+			hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put(helper.encodeName(oldHWQuartz_name), newHWFrequencyDomain);
 		}
 	}
 
@@ -1011,7 +1011,7 @@ public class HwConverter extends AbstractConverter {
 	private void migrateECU(Element newHWSystem, Element oldHWEcu) {
 		String oldHWEcu_name=oldHWEcu.getAttributeValue("name");
 
-		hwTransformationCache.old_ecus_Map.put(oldHWEcu_name, oldHWEcu);
+		hwTransformationCache.old_ecus_Map.put(helper.encodeName(oldHWEcu_name), oldHWEcu);
 
 		Element newHWEcu=new Element("structures");
 
@@ -1023,7 +1023,7 @@ public class HwConverter extends AbstractConverter {
 
 		newHWSystem.addContent(newHWEcu);
 
-		hwTransformationCache.new_ecus_Map.put(oldHWEcu_name, newHWEcu);
+		hwTransformationCache.new_ecus_Map.put(helper.encodeName(oldHWEcu_name), newHWEcu);
 		
 		
 		/*-migrating memories*/
@@ -1065,7 +1065,7 @@ public class HwConverter extends AbstractConverter {
 	private void migrateMicroController(Element newHWEcu, Element oldHWMicroController) {
 		String oldHWMicroController_name=oldHWMicroController.getAttributeValue("name");
 
-		hwTransformationCache.old_microControllers_Map.put(oldHWMicroController_name, oldHWMicroController);
+		hwTransformationCache.old_microControllers_Map.put(helper.encodeName(oldHWMicroController_name), oldHWMicroController);
 
 		Element newHWMicroController=new Element("structures");
 
@@ -1077,7 +1077,7 @@ public class HwConverter extends AbstractConverter {
 
 		newHWEcu.addContent(newHWMicroController);
 
-		hwTransformationCache.new_microControllers_Map.put(oldHWMicroController_name, newHWMicroController);
+		hwTransformationCache.new_microControllers_Map.put(helper.encodeName(oldHWMicroController_name), newHWMicroController);
 
 		/*-migrating memories*/
 		migrateMemoriesAndCaches(oldHWMicroController, newHWMicroController,true,true);
@@ -1161,7 +1161,7 @@ public class HwConverter extends AbstractConverter {
 		// then link to definition is empty
 		migrateMemoriesAndCaches(oldHWCore, newHWCore, true, false);
 		
-		hwTransformationCache.new_cores_Map.put(oldHWCore_name, newHWCore);
+		hwTransformationCache.new_cores_Map.put(helper.encodeName(oldHWCore_name), newHWCore);
 		
 		/*-migration of custom properties */
 		migrateCustomProperties(oldHWCore, newHWCore);
@@ -1224,7 +1224,7 @@ public class HwConverter extends AbstractConverter {
 						parentElement.addContent(newHW_FrequencyDomain);
 						
 						
-						hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put(newHW_frequencyDomain_name,newHW_FrequencyDomain);
+						hwTransformationCache.new_hwQuartzs_FrequencyDomain_Map.put((newHW_frequencyDomain_name),newHW_FrequencyDomain);
 						
 
 						Element newHW_frequency = newHW_FrequencyDomain.getChild("defaultValue");
