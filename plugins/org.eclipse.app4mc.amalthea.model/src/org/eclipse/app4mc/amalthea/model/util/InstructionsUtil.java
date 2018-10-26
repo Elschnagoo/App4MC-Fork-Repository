@@ -41,14 +41,15 @@ public class InstructionsUtil {
 	public static HwFeatureCategory getOrCreateInstructionsCategory(Amalthea model) {
 		HWModel hwModel = ModelUtil.getOrCreateHwModel(model);
 		for (HwFeatureCategory category : hwModel.getFeatureCategories()) {
-			if (category.getName() == INSTRUCTIONS_CATEGORY_NAME) return category;
+			if (null != category.getName() && category.getName().equals(INSTRUCTIONS_CATEGORY_NAME))
+				return category;
 		}
-		
+
 		// create missing category
 		HwFeatureCategory newCategory = AmaltheaFactory.eINSTANCE.createHwFeatureCategory();
 		newCategory.setName(INSTRUCTIONS_CATEGORY_NAME);
 		hwModel.getFeatureCategories().add(newCategory);
-		
+
 		return newCategory;
 	}
 
