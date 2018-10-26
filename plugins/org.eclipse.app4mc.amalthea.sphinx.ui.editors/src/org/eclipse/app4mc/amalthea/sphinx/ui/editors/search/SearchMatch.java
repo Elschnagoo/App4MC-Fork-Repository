@@ -27,14 +27,12 @@ public class SearchMatch extends Match {
 
 	private final IEditorInput editorInput;
 
-	@SuppressWarnings("javadoc")
 	public SearchMatch(final Object element, final int offset, final int length, final IEditorInput editorInput) {
 		super(element, offset, length);
 		this.editorInput = editorInput;
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public SearchMatch(final Object element, final int unit, final int offset, final int length,
 			final IEditorInput editorInput) {
 		super(element, unit, offset, length);

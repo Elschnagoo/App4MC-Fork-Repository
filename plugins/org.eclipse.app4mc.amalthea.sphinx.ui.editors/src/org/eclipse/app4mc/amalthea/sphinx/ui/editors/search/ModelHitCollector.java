@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2013 Robert Bosch GmbH and others.
+ * Copyright (c) 2013-2018 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -25,13 +25,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.URIUtil;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.search.ui.ISearchQuery;
 import org.eclipse.search.ui.ISearchResult;
 import org.eclipse.sphinx.emf.ui.util.EcoreUIUtil;
@@ -40,74 +34,47 @@ import org.eclipse.ui.IEditorInput;
 public class ModelHitCollector implements ISearchQuery {
 
 	private final ModelSearchResult searchResult;
-
+	private final Pattern namePattern;
+	private final Class<INamed> filterClass;
+	private final boolean fileScope;
+	private final EObject model;
 	private final IEditorInput editorInput;
 
-	private final String query;
-
-	private final EObject model;
-
-	@SuppressWarnings("javadoc")
-	public ModelHitCollector(final String query, final EObject model, final IEditorInput input) {
+	public ModelHitCollector(final Pattern pattern, final Class<INamed> filter, final boolean isFileScope, final EObject model, final IEditorInput input) {
 		this.searchResult = new ModelSearchResult(this);
-		this.query = query;
+		this.namePattern = pattern;
+		this.filterClass = filter;
+		this.fileScope = isFileScope;
 		this.model = model;
 		this.editorInput = input;
 	}
 
 	/**
 	 * Performs the search. Current implementation checks all elements with a name attribute of type {@link String} if
-	 * the given query matches.
+	 * the given namePattern matches.
 	 *
 	 * @see org.eclipse.search.ui.ISearchQuery#run(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public IStatus run(final IProgressMonitor monitor) throws OperationCanceledException {
 		this.searchResult.removeAll();
-		
-		if (query != null) {
-			if(query.startsWith("i:")) {
-				// New (experimental) search based on Amalthea index (activate with i: as prefix)
-				
-				String modQuery = query.substring(2);
-				
-				// ***** Search with Amalthea index
-				
-				// TODO open customized search dialog
-				// case sensitive, regular expression, file scope vs. folder scope, restrict types, ...
-				
-				Pattern pattern = Pattern.compile("(?i).*" + Pattern.quote(modQuery) + ".*");
-				
-				Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, pattern, INamed.class);
-				
-				for (INamed element : resultSet) {
-					IEditorInput input;
-					if (model.eResource() == element.eResource()) {
-						// element is opened in current editor
-						input = this.editorInput;
-					} else {
-						// element is in a different file
-						input = EcoreUIUtil.createURIEditorInput(element.eResource());
-					}
-					this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));
-				}
+
+		// search the index
+		Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, namePattern, filterClass);
+
+		for (INamed element : resultSet) {
+			if (model.eResource() == element.eResource()) {
+				// element is opened in current editor
+				this.searchResult.addMatch(new SearchMatch(element, 0, 0, editorInput));
 			} else {
-				// ***** Previously used element search mechanism (default)
-				
-				final TreeIterator<EObject> iterator = EcoreUtil.getAllContents(this.model, true);
-				while (iterator.hasNext()) {
-					final EObject element = iterator.next();
-					final EStructuralFeature feature = element.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
-					if (null != feature) {
-						final String name = (String) element.eGet(feature);
-						if (null != name && name.toLowerCase().indexOf( query.toLowerCase()) >= 0) {
-							this.searchResult.addMatch(new SearchMatch(element, 0, 0, this.editorInput));
-						}
-					}
+				// element is in a different file
+				if (fileScope == false) {
+					IEditorInput input = EcoreUIUtil.createURIEditorInput(element.eResource());
+					this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));
 				}
 			}
 		}
-		
+	
 		return Status.OK_STATUS;
 	}
 

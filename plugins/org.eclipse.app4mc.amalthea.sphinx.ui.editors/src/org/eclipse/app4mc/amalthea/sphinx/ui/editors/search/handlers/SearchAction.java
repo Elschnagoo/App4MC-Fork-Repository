@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2013 Robert Bosch GmbH and others.
+ * Copyright (c) 2013-2018 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,8 @@
  */
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.handlers;
+
+import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.SphinxSupportPlugin;
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.editor.ExtendedBasicTransactionalFormEditor;
@@ -49,14 +51,15 @@ public class SearchAction extends Action {
 	@Override
 	public void run() {
 		final IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		final SearchGUI gui = new SearchGUI(window.getShell());
+		final SearchDialogSettings settings = new SearchDialogSettings();
+		final SearchDialog gui = new SearchDialog(window.getShell(), settings);
 		gui.create();
 		if (gui.open() == Window.OK) {
-			final String searchValue = gui.getSearchInput();
-			if (null != searchValue && searchValue.length() > 0 && !searchValue.equals(" ")) { //$NON-NLS-1$
+			final Pattern searchPattern = settings.computeSearchPattern();
+			if (searchPattern != null) {
 				// getting current open model
 				final Object input = this.editor.getEditorInputObject();
-				if (null != input) {
+				if (input != null) {
 					EObject model = null;
 					if (input instanceof EObject) {
 						model = (EObject) input;
@@ -66,8 +69,12 @@ public class SearchAction extends Action {
 							model = ((Resource) input).getContents().get(0);
 						}
 					}
-					if (null != model) {
-						final ModelHitCollector query = new ModelHitCollector(searchValue, model,
+					if (model != null) {
+						final ModelHitCollector query = new ModelHitCollector (
+								searchPattern,
+								settings.computeFilterClass(),
+								settings.m_restrictToFile,
+								model,
 								this.editor.getEditorInput());
 						NewSearchUI.runQueryInBackground(query);
 					}

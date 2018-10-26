@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2013 Robert Bosch GmbH and others.
+ * Copyright (c) 2013-2018 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -45,14 +45,13 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	private SearchResultTreeContentProvider contentTreeProvider;
 	private final ToggleGroupViewAction toggleGroupViewAction;
 
-	@SuppressWarnings("javadoc")
 	public ModelSearchResultView() {
 		super(FLAG_LAYOUT_FLAT + FLAG_LAYOUT_TREE);
 		this.toggleGroupViewAction = new ToggleGroupViewAction("Group by Type"); //$NON-NLS-1$
 		// image taken from
 		// https://github.com/eclipse/mylyn.commons/blob/d95886e9e377efa663da5901661d20e5e0da9a49/org.eclipse.mylyn.commons.ui/icons/etool16/presentation.gif
-		this.toggleGroupViewAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(
-				SphinxSupportPlugin.getPluginId(), "/icons/full/obj16/presentation.gif")); //$NON-NLS-1$
+		this.toggleGroupViewAction.setImageDescriptor(AbstractUIPlugin
+				.imageDescriptorFromPlugin(SphinxSupportPlugin.getPluginId(), "/icons/full/obj16/presentation.gif")); //$NON-NLS-1$
 	}
 
 	/**
@@ -64,8 +63,7 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 			if (null != this.contentProvider) {
 				this.contentProvider.updateElements(objects);
 			}
-		}
-		else {
+		} else {
 			if (null != this.contentTreeProvider) {
 				this.contentTreeProvider.updateElements(objects);
 			}
@@ -104,8 +102,7 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 			if (null != this.contentProvider) {
 				this.contentProvider.clear();
 			}
-		}
-		else {
+		} else {
 			if (null != this.contentTreeProvider) {
 				this.contentTreeProvider.clear();
 			}
@@ -120,8 +117,8 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	protected void configureTreeViewer(final TreeViewer viewer) {
 		this.contentTreeProvider = new SearchResultTreeContentProvider();
 		viewer.setContentProvider(this.contentTreeProvider);
-		viewer.setLabelProvider(new DecoratingStyledCellLabelProvider(new SearchResultTreeLabelProvider(), PlatformUI
-				.getWorkbench().getDecoratorManager().getLabelDecorator(), null));
+		viewer.setLabelProvider(new DecoratingStyledCellLabelProvider(new SearchResultTreeLabelProvider(),
+				PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator(), null));
 	}
 
 	/**
@@ -136,12 +133,12 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	}
 
 	/**
-	 * @see org.eclipse.search.ui.text.AbstractTextSearchViewPage#showMatch(org.eclipse.search.ui.text.Match, int, int,
-	 *      boolean)
+	 * @see org.eclipse.search.ui.text.AbstractTextSearchViewPage#showMatch(org.eclipse.search.ui.text.Match,
+	 *      int, int, boolean)
 	 */
 	@Override
-	protected void showMatch(final Match match, final int currentOffset, final int currentLength, final boolean activate)
-			throws PartInitException {
+	protected void showMatch(final Match match, final int currentOffset, final int currentLength,
+			final boolean activate) throws PartInitException {
 		final EObject element = (EObject) match.getElement();
 		final URIEditorInput input = EcoreUIUtil.createURIEditorInput(element.eResource());
 		if (null != input) {
@@ -149,12 +146,12 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 			IEditorInput editorInput = null;
 			if (match instanceof SearchMatch) {
 				editorInput = ((SearchMatch) match).getEditorInput();
-			}
-			else {
+			} else {
 				// fallback
 				editorInput = EcoreUIUtil.createURIEditorInput(element.eResource());
 			}
-			final IEditorPart part1 = page.openEditor(editorInput, "org.eclipse.app4mc.amalthea.sphinx.ui.editor", true); //$NON-NLS-1$
+			final IEditorPart part1 = page.openEditor(editorInput, "org.eclipse.app4mc.amalthea.sphinx.ui.editor", //$NON-NLS-1$
+					true);
 			if (part1 instanceof BasicTransactionalFormEditor) {
 				((BasicTransactionalFormEditor) part1).setSelectionToViewer(Collections.singleton(element));
 			}

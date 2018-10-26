@@ -26,14 +26,12 @@ import org.eclipse.search.ui.text.IEditorMatchAdapter;
 import org.eclipse.search.ui.text.IFileMatchAdapter;
 
 /**
- * 
- * 
+ *  @see org.eclipse.search.ui.text.AbstractTextSearchResult
  */
 public class ModelSearchResult extends AbstractTextSearchResult {
 
 	private final ISearchQuery query;
 
-	@SuppressWarnings("javadoc")
 	public ModelSearchResult(final ISearchQuery query) {
 		this.query = query;
 	}
