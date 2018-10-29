@@ -12641,31 +12641,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER_DEFINITION__DATA_RATE = HW_DEFINITION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Bit Width</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Burst Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION__BIT_WIDTH = HW_DEFINITION_FEATURE_COUNT + 4;
+	int CONNECTION_HANDLER_DEFINITION__MAX_BURST_SIZE = HW_DEFINITION_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Burst Size</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Concurrent Transfers</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION__BURST_SIZE = HW_DEFINITION_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Parallel Transactions</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS = HW_DEFINITION_FEATURE_COUNT + 6;
+	int CONNECTION_HANDLER_DEFINITION__MAX_CONCURRENT_TRANSFERS = HW_DEFINITION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Connection Handler Definition</em>' class.
@@ -12674,7 +12665,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 7;
+	int CONNECTION_HANDLER_DEFINITION_FEATURE_COUNT = HW_DEFINITION_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -32834,37 +32825,26 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getConnectionHandlerDefinition_DataRate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth <em>Bit Width</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxBurstSize <em>Max Burst Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bit Width</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth()
+	 * @return the meta object for the attribute '<em>Max Burst Size</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxBurstSize()
 	 * @see #getConnectionHandlerDefinition()
 	 * @generated
 	 */
-	EAttribute getConnectionHandlerDefinition_BitWidth();
+	EAttribute getConnectionHandlerDefinition_MaxBurstSize();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize <em>Burst Size</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxConcurrentTransfers <em>Max Concurrent Transfers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Burst Size</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize()
+	 * @return the meta object for the attribute '<em>Max Concurrent Transfers</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxConcurrentTransfers()
 	 * @see #getConnectionHandlerDefinition()
 	 * @generated
 	 */
-	EAttribute getConnectionHandlerDefinition_BurstSize();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions <em>Parallel Transactions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Parallel Transactions</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions()
-	 * @see #getConnectionHandlerDefinition()
-	 * @generated
-	 */
-	EAttribute getConnectionHandlerDefinition_ParallelTransactions();
+	EAttribute getConnectionHandlerDefinition_MaxConcurrentTransfers();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition <em>Memory Definition</em>}'.

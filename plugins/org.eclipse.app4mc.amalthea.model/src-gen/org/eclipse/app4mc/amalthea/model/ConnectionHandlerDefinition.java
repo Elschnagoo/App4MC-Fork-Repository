@@ -28,9 +28,8 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getReadLatency <em>Read Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getWriteLatency <em>Write Latency</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getDataRate <em>Data Rate</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth <em>Bit Width</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize <em>Burst Size</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions <em>Parallel Transactions</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxBurstSize <em>Max Burst Size</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxConcurrentTransfers <em>Max Concurrent Transfers</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition()
@@ -146,83 +145,57 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	void setDataRate(DataRate value);
 
 	/**
-	 * Returns the value of the '<em><b>Bit Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Bit Width</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bit Width</em>' attribute.
-	 * @see #setBitWidth(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_BitWidth()
-	 * @model unique="false"
-	 * @generated
-	 */
-	int getBitWidth();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBitWidth <em>Bit Width</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bit Width</em>' attribute.
-	 * @see #getBitWidth()
-	 * @generated
-	 */
-	void setBitWidth(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Burst Size</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Burst Size</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Burst Size</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Max Burst Size</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Burst Size</em>' attribute.
-	 * @see #setBurstSize(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_BurstSize()
+	 * @return the value of the '<em>Max Burst Size</em>' attribute.
+	 * @see #setMaxBurstSize(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_MaxBurstSize()
 	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveInt"
 	 * @generated
 	 */
-	int getBurstSize();
+	int getMaxBurstSize();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getBurstSize <em>Burst Size</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxBurstSize <em>Max Burst Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Burst Size</em>' attribute.
-	 * @see #getBurstSize()
+	 * @param value the new value of the '<em>Max Burst Size</em>' attribute.
+	 * @see #getMaxBurstSize()
 	 * @generated
 	 */
-	void setBurstSize(int value);
+	void setMaxBurstSize(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Parallel Transactions</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Concurrent Transfers</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parallel Transactions</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Max Concurrent Transfers</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parallel Transactions</em>' attribute.
-	 * @see #setParallelTransactions(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_ParallelTransactions()
+	 * @return the value of the '<em>Max Concurrent Transfers</em>' attribute.
+	 * @see #setMaxConcurrentTransfers(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getConnectionHandlerDefinition_MaxConcurrentTransfers()
 	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveInt"
 	 * @generated
 	 */
-	int getParallelTransactions();
+	int getMaxConcurrentTransfers();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getParallelTransactions <em>Parallel Transactions</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition#getMaxConcurrentTransfers <em>Max Concurrent Transfers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parallel Transactions</em>' attribute.
-	 * @see #getParallelTransactions()
+	 * @param value the new value of the '<em>Max Concurrent Transfers</em>' attribute.
+	 * @see #getMaxConcurrentTransfers()
 	 * @generated
 	 */
-	void setParallelTransactions(int value);
+	void setMaxConcurrentTransfers(int value);
 
 } // ConnectionHandlerDefinition

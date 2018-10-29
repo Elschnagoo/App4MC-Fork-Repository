@@ -7433,7 +7433,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConnectionHandlerDefinition_BitWidth() {
+	public EAttribute getConnectionHandlerDefinition_MaxBurstSize() {
 		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -7442,17 +7442,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConnectionHandlerDefinition_BurstSize() {
+	public EAttribute getConnectionHandlerDefinition_MaxConcurrentTransfers() {
 		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getConnectionHandlerDefinition_ParallelTransactions() {
-		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -13761,9 +13752,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__READ_LATENCY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY);
 		createEReference(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__DATA_RATE);
-		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__BIT_WIDTH);
-		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__BURST_SIZE);
-		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__MAX_BURST_SIZE);
+		createEAttribute(connectionHandlerDefinitionEClass, CONNECTION_HANDLER_DEFINITION__MAX_CONCURRENT_TRANSFERS);
 
 		memoryDefinitionEClass = createEClass(MEMORY_DEFINITION);
 		createEReference(memoryDefinitionEClass, MEMORY_DEFINITION__SIZE);
@@ -15688,9 +15678,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectionHandlerDefinition_BitWidth(), theEcorePackage.getEInt(), "bitWidth", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectionHandlerDefinition_BurstSize(), this.getPositiveInt(), "burstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConnectionHandlerDefinition_ParallelTransactions(), this.getPositiveInt(), "parallelTransactions", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_MaxBurstSize(), this.getPositiveInt(), "maxBurstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnectionHandlerDefinition_MaxConcurrentTransfers(), this.getPositiveInt(), "maxConcurrentTransfers", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1824,9 +1824,8 @@ class ConnectionHandlerDefinition extends HwDefinition
 	contains HwLatency readLatency
 	contains HwLatency writeLatency
 	contains DataRate dataRate
-	int bitWidth
-	PositiveInt burstSize = "1"
-	PositiveInt parallelTransactions = "1"
+	PositiveInt maxBurstSize = "1"
+	PositiveInt maxConcurrentTransfers = "1"
 }
 
 class MemoryDefinition extends HwDefinition

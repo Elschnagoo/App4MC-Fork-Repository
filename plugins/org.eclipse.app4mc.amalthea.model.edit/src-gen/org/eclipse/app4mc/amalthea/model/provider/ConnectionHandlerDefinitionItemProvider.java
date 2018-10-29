@@ -61,9 +61,8 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 			super.getPropertyDescriptors(object);
 
 			addPolicyPropertyDescriptor(object);
-			addBitWidthPropertyDescriptor(object);
-			addBurstSizePropertyDescriptor(object);
-			addParallelTransactionsPropertyDescriptor(object);
+			addMaxBurstSizePropertyDescriptor(object);
+			addMaxConcurrentTransfersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,19 +90,19 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 	}
 
 	/**
-	 * This adds a property descriptor for the Bit Width feature.
+	 * This adds a property descriptor for the Max Burst Size feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBitWidthPropertyDescriptor(Object object) {
+	protected void addMaxBurstSizePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ConnectionHandlerDefinition_bitWidth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_bitWidth_feature", "_UI_ConnectionHandlerDefinition_type"),
-				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_BitWidth(),
+				 getString("_UI_ConnectionHandlerDefinition_maxBurstSize_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_maxBurstSize_feature", "_UI_ConnectionHandlerDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_MaxBurstSize(),
 				 true,
 				 false,
 				 false,
@@ -113,41 +112,19 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 	}
 
 	/**
-	 * This adds a property descriptor for the Burst Size feature.
+	 * This adds a property descriptor for the Max Concurrent Transfers feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBurstSizePropertyDescriptor(Object object) {
+	protected void addMaxConcurrentTransfersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ConnectionHandlerDefinition_burstSize_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_burstSize_feature", "_UI_ConnectionHandlerDefinition_type"),
-				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_BurstSize(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Parallel Transactions feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addParallelTransactionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ConnectionHandlerDefinition_parallelTransactions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_parallelTransactions_feature", "_UI_ConnectionHandlerDefinition_type"),
-				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ParallelTransactions(),
+				 getString("_UI_ConnectionHandlerDefinition_maxConcurrentTransfers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConnectionHandlerDefinition_maxConcurrentTransfers_feature", "_UI_ConnectionHandlerDefinition_type"),
+				 AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_MaxConcurrentTransfers(),
 				 true,
 				 false,
 				 false,
@@ -237,9 +214,8 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 
 		switch (notification.getFeatureID(ConnectionHandlerDefinition.class)) {
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__POLICY:
-			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BIT_WIDTH:
-			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__BURST_SIZE:
-			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__PARALLEL_TRANSACTIONS:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__MAX_BURST_SIZE:
+			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__MAX_CONCURRENT_TRANSFERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY:

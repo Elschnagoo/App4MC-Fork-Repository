@@ -3077,9 +3077,8 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="policy" type="am:SchedPolicy"/>
-        <xsd:attribute name="bitWidth" type="xsd:int"/>
-        <xsd:attribute name="burstSize" type="xsd:string"/>
-        <xsd:attribute name="parallelTransactions" type="xsd:string"/>
+        <xsd:attribute name="maxBurstSize" type="xsd:string"/>
+        <xsd:attribute name="maxConcurrentTransfers" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
