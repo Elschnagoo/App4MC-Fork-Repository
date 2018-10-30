@@ -88,8 +88,9 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 			} else if (container1 == structure) {
 				p1OuterPort = true;
 			} else {
-				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
-						"HW Connection", conn.getName(), "Port 1 is not contained in structure");
+// It is only a recommendation (perhaps a future warning)
+//				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port1(),
+//						"HW Connection", conn.getName(), "Port 1 is not contained in structure");
 			}
 			
 			EObject container2 = port2.eContainer();
@@ -98,8 +99,9 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 			} else if (container2 == structure) {
 				p2OuterPort = true;
 			} else {
-				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port2(),
-						"HW Connection", conn.getName(), "Port 2 is not contained in structure");
+// It is only a recommendation (perhaps a future warning)
+//				this.issueCreator.issue(conn, AmaltheaPackage.eINSTANCE.getHwConnection_Port2(),
+//						"HW Connection", conn.getName(), "Port 2 is not contained in structure");
 			}
 			
 			if ((p1InnerPort && p2InnerPort) || (p1OuterPort && p2OuterPort)) {
