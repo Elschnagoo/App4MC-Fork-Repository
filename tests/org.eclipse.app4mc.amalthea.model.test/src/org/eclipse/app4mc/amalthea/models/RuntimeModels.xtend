@@ -19,9 +19,12 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
 import org.eclipse.app4mc.amalthea.model.HwFeature
 import org.eclipse.app4mc.amalthea.model.HwFeatureType
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 import org.eclipse.app4mc.amalthea.model.Runnable
 import org.eclipse.app4mc.amalthea.model.StructureType
+import org.eclipse.app4mc.amalthea.model.Task
+import org.eclipse.app4mc.amalthea.model.TaskScheduler
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder
 import org.eclipse.app4mc.amalthea.model.builder.InstructionsBuilder
@@ -31,9 +34,6 @@ import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter
 
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
-import org.eclipse.app4mc.amalthea.model.ProcessingUnit
-import org.eclipse.app4mc.amalthea.model.TaskScheduler
-import org.eclipse.app4mc.amalthea.model.Task
 
 class RuntimeModels {
 
@@ -109,10 +109,10 @@ class RuntimeModels {
 				runnable [
 					name = "r1"
 					execNeed [
-						default_InstructionsConstant(500)
-						extended_InstructionsConstant(_find(ProcessingUnitDefinition, "Pu2_def"), 800)
+						default_Instructions(500)
+						extended_Instructions(_find(ProcessingUnitDefinition, "Pu2_def"), 800)
 					]
-					execNeed [default_InstructionsDeviation(createDeviation(createGaussDistribution(500, 2), 250, 750))]
+					execNeed [default_Instructions(createDeviation(createGaussDistribution(500, 2), 250, 750))]
 					execNeed [default_Need("MAC_Operations", createNeedConstant(2000))]
 				]
 				runnable [

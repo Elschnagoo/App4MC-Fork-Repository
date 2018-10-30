@@ -7,7 +7,7 @@
       <accessLatency xsi:type="am:LatencyConstant" cycles="5"/>
       <dataRate value="6" unit="GbitPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ChDef1">
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ChDef1" maxBurstSize="1" maxConcurrentTransfers="1">
       <readLatency xsi:type="am:LatencyConstant" cycles="6"/>
       <writeLatency xsi:type="am:LatencyConstant" cycles="3"/>
     </definitions>
@@ -17,7 +17,7 @@
       <lineSize value="64" unit="B"/>
       <accessLatency xsi:type="am:LatencyConstant" cycles="2"/>
     </definitions>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test1_def">
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test1_def" maxBurstSize="1" maxConcurrentTransfers="1">
       <readLatency xsi:type="am:LatencyDeviation">
         <cycles>
           <lowerBound xsi:type="am:LongObject" value="2"/>
@@ -30,7 +30,7 @@
       </readLatency>
       <dataRate value="800" unit="MiBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test2_def">
+    <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test2_def" maxBurstSize="1" maxConcurrentTransfers="1">
       <readLatency xsi:type="am:LatencyDeviation">
         <cycles>
           <lowerBound xsi:type="am:LongObject" value="10"/>

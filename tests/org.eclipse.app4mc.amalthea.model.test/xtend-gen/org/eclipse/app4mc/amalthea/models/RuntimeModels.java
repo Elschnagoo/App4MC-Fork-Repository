@@ -148,12 +148,12 @@ public class RuntimeModels {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r1");
           final Procedure1<ExecutionNeed> _function_4 = (ExecutionNeed it_3) -> {
-            this.b4.default_InstructionsConstant(it_3, 500);
-            this.b4.extended_InstructionsConstant(it_3, this.b1.<ProcessingUnitDefinition>_find(it_3, ProcessingUnitDefinition.class, "Pu2_def"), 800);
+            this.b4.default_Instructions(it_3, 500);
+            this.b4.extended_Instructions(it_3, this.b1.<ProcessingUnitDefinition>_find(it_3, ProcessingUnitDefinition.class, "Pu2_def"), 800);
           };
           this.b3.execNeed(it_2, _function_4);
           final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b4.default_InstructionsDeviation(it_3, FactoryUtil.createDeviation(FactoryUtil.createGaussDistribution(500, 2), 250, 750));
+            this.b4.default_Instructions(it_3, FactoryUtil.createDeviation(FactoryUtil.createGaussDistribution(500, 2), 250, 750));
           };
           this.b3.execNeed(it_2, _function_5);
           final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_3) -> {
