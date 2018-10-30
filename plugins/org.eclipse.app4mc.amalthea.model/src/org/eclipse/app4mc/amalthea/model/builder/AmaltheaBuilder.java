@@ -1,4 +1,5 @@
 /**
+ ********************************************************************************
  * Copyright (c) 2018 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
@@ -9,6 +10,7 @@
  * 
  * Contributors:
  *     Robert Bosch GmbH - initial API and implementation
+ ********************************************************************************
  */
 
 package org.eclipse.app4mc.amalthea.model.builder;
