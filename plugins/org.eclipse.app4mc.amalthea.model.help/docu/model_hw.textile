@@ -97,13 +97,15 @@ For specifying a bus or Interconnect etc., a _ConnectionHandlerDefinition_ is cr
 
 !(scale)../pictures/hardware/hw_connection_handler_parallel_accesses_1.png!
 
-The figures shows an example of the attribute _ParallelTransactions_ with the default value 1. This means that all _ConnectionHandlers_ which are referencing this _ConnectionHandlerDefinition_ can only handle 1 active transaction request at a time. All other requests have to wait until the current transaction has finished. 
+The figures shows an example of the attribute _MaxConcurrentTransfers_ with the default value 1. This means that all _ConnectionHandlers_ which are referencing this _ConnectionHandlerDefinition_ can only handle 1 active transfer request at a time. All other requests have to wait until the current transfers has finished. 
 
-The next figure shows an example with a number of _ParallelTransactions_ of 3. In this case the _ConnectionHandler_ can handle up to 3 requests in parallel.
+The next figure shows an example with a number of _MaxConcurrentTransfers_ of 3. In this case the _ConnectionHandler_ can handle up to 3 concurrent requests.
 
 !(scale)../pictures/hardware/hw_connection_handler_parallel_accesses_3.png!
 
-The value for _ParallelTransactions_ has to be smaller or equal then the min(initiator ports, responder ports). 
+The value for _MaxConcurrentTransfers_ has to be smaller or equal then the min(initiator ports, responder ports). 
+
+The values for _DataRate_, _ReadLatency_, and WriteLatency are default values for all _ConnectionHandlers_ of this kind. For a specific _InternalConnection_ in a _ConnectionHandler_ other values can be set. 
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -112,9 +114,8 @@ table(classic).
 | ReadLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a read access |
 | WriteLatency | Containment | HwLatency | 1 | Constant or distribution in cycles for a write access |
 | DataRate | Containment | DataRate | 1 | Max. data rate of the connection (value and unit) |
-| BurstSize | Int | Int | 1 | Maximum burst size of a ConnectionHandler (default = 1) | 
-| BitWidth | Int | Int | 1 | Bit width of the ConnectionHandler |
-| ParallelTransactions | Int | Int | 1 | Number of parallel transactions from different initiator to responder ports (default = 1) | 
+| MaxBurstSize | Int | Int | 1 | Maximum burst size of a ConnectionHandler (default = 1) | 
+| MaxConcurrentTransfers | Int | Int | 1 | Number of concurrent transfers from different initiator to responder ports (default = 1) | 
 
 
 h4. HwStructure
@@ -169,7 +170,9 @@ table(classic).
 h4. HwFeature
 
 
-A _HwFeature_ is an abstract element to represent any kind of special functionality. The cost function (_Recipes_) of an algorithm will be placed in an intermediate layer outside of the hardware model in future. However the _HwFeatures_ will be directly referenced by the _Recipes_. All _HwFeatures_ are placed inside a_ProcessingUnitDefinition_, in Future we will extend the Feature concept for _MemoryDefinitions_, _CacheDefinitions_ and _ConnectionHandlerDefinitions_. Specific definitions for the basic components are able to reference such _HwFeatures_ to express their functionality. HwFeatures could be reused several times by different definitions. A _HwFeature_ can contain a value to express static costs in a model. More information can be found in the User Guide --> Concepts --> Hardware. <em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
+A _HwFeature_ is an abstract element to represent any kind of special functionality. The cost function (_Recipes_) of an algorithm will be placed in an intermediate layer outside of the hardware model in future. However the _HwFeatures_ will be directly referenced by the _Recipes_. All _HwFeatures_ are placed inside a _ProcessingUnitDefinition_, in Future we may extend the Feature concept for _MemoryDefinitions_, _CacheDefinitions_ and _ConnectionHandlerDefinitions_. Specific definitions for the basic components are able to reference such _HwFeatures_ to express their functionality. HwFeatures could be reused several times by different definitions. More information can be found in the User Guide --> Concepts --> Hardware. 
+
+<em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
 
 !(scale)../pictures/hardware/hw_feature_example.png!
 
@@ -181,7 +184,8 @@ table(classic).
 
 h5. HwFeatureCategory
 
-The _HwFeatureCategory_ is a element to collect the same kind of _HwFeatures_ with different values. The _HwFeatureCategories_ can be referenced by the _ExecutionNeeds_ in the Software Model. 
+The _HwFeatureCategory_ is a element to collect the same kind of _HwFeatures_ with different values. 
+The _HwFeatureCategories_ can be referenced by the _ExecutionNeeds_ in the Software Model. 
 
 table(classic). 
 |_. Attribute |_. Type |_. Value |_. Mul. |_. Description |
@@ -274,6 +278,7 @@ _HwPorts_ are elements which can be connected via _HwConnections_. Every module 
 
 !(scale)../pictures/hardware/hw_port_example.png!
 
+In case the _BitWidth_ becomes important (e.g. to calculate the amount of data which is transfered over an _ConnectionHandler_) the minimum _BithWidth_ of all included Ports have to be accounted.
 
 For _HwPorts_ it's always possible to select if the port is an _initiator_ or a _responder_ port. The following example shows that an initiator port is always connected to a responder port (comparable to TLM modeling).
 
@@ -396,11 +401,3 @@ In future there will be an option to extend the predefined enums with further po
 
 *MemoryType:*
 * <notextile>_undefined_</notextile>, DRAM, SRAM, FLASH, PCM
-
-
-
-h3. Additional Documents
-
-* "HW Documentation (PDF)":../help-docs/amalthea_hardware_model.pdf
-
-
