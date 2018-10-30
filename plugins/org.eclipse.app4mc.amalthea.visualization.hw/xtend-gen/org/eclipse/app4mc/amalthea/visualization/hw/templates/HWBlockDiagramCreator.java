@@ -39,6 +39,7 @@ public class HWBlockDiagramCreator {
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(s.getName());
       boolean _not = (!_isNullOrEmpty);
       if (_not) {
+        _builder.newLine();
         _builder.append("\t");
         _builder.append("frame \"");
         String _name = s.getName();
@@ -52,6 +53,8 @@ public class HWBlockDiagramCreator {
           boolean _isEmpty = s.getModules().isEmpty();
           boolean _not_1 = (!_isEmpty);
           if (_not_1) {
+            _builder.append("\t");
+            _builder.newLine();
             {
               EList<HwModule> _modules = s.getModules();
               for(final HwModule m : _modules) {
@@ -132,20 +135,17 @@ public class HWBlockDiagramCreator {
           EList<HwStructure> _structures = s.getStructures();
           for(final HwStructure su : _structures) {
             _builder.append("\t");
-            _builder.append("\t");
             CharSequence _generateLevel = this.generateLevel(model, su, errorCheck);
-            _builder.append(_generateLevel, "\t\t");
+            _builder.append(_generateLevel, "\t");
             _builder.newLineIfNotEmpty();
           }
         }
       } else {
-        _builder.append("\t");
         Shell _activeShell_1 = Display.getDefault().getActiveShell();
         String _string_1 = s.toString();
         String _plus_1 = ("Name of HwStructure is missing " + _string_1);
         MessageDialog.openError(_activeShell_1, "AMALTHEA HW Visualization", _plus_1);
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         errorCheck.setErrorFlag(Boolean.valueOf(true));
         _builder.newLineIfNotEmpty();
       }
@@ -153,65 +153,54 @@ public class HWBlockDiagramCreator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\' add physical connections:");
-    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateRoutes(final HWModel model, final HwStructure s, final ModelToTextResult errorCheck) {
+    StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _isEmpty_1 = s.getConnections().isEmpty();
-      boolean _not_3 = (!_isEmpty_1);
-      if (_not_3) {
+      boolean _isEmpty = s.getConnections().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.newLine();
+        _builder.append("\' add physical connections of structure ");
+        String _name = s.getName();
+        _builder.append(_name);
+        _builder.append(":");
+        _builder.newLineIfNotEmpty();
         {
           EList<HwConnection> _connections = s.getConnections();
           for(final HwConnection c : _connections) {
             {
-              boolean _isNullOrEmpty_2 = StringExtensions.isNullOrEmpty(c.getName());
-              boolean _not_4 = (!_isNullOrEmpty_2);
-              if (_not_4) {
+              boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(c.getName());
+              boolean _not_1 = (!_isNullOrEmpty);
+              if (_not_1) {
+                _builder.newLine();
                 _builder.append("\t");
-                _builder.append("\' ");
                 EObject _eContainer = c.getPort1().eContainer();
-                String _convertFluxString_9 = this.convertFluxString(((ReferableBaseObject) _eContainer).getName());
-                _builder.append(_convertFluxString_9, "\t");
-                _builder.append(" - ");
-                EObject _eContainer_1 = c.getPort2().eContainer();
-                String _convertFluxString_10 = this.convertFluxString(((ReferableBaseObject) _eContainer_1).getName());
-                _builder.append(_convertFluxString_10, "\t");
-                _builder.newLineIfNotEmpty();
-                _builder.append("\t");
-                EObject _eContainer_2 = c.getPort1().eContainer();
-                String _convertFluxString_11 = this.convertFluxString(((ReferableBaseObject) _eContainer_2).getName());
-                _builder.append(_convertFluxString_11, "\t");
+                String _convertFluxString = this.convertFluxString(((ReferableBaseObject) _eContainer).getName());
+                _builder.append(_convertFluxString, "\t");
                 _builder.append(" -- ");
-                EObject _eContainer_3 = c.getPort2().eContainer();
-                String _convertFluxString_12 = this.convertFluxString(((ReferableBaseObject) _eContainer_3).getName());
-                _builder.append(_convertFluxString_12, "\t");
+                EObject _eContainer_1 = c.getPort2().eContainer();
+                String _convertFluxString_1 = this.convertFluxString(((ReferableBaseObject) _eContainer_1).getName());
+                _builder.append(_convertFluxString_1, "\t");
                 _builder.append(" : ");
                 String _name_1 = c.getName();
                 _builder.append(_name_1, "\t");
                 _builder.newLineIfNotEmpty();
               } else {
+                _builder.newLine();
                 _builder.append("\t");
-                _builder.append("\' ");
-                EObject _eContainer_4 = c.getPort1().eContainer();
-                String _convertFluxString_13 = this.convertFluxString(((ReferableBaseObject) _eContainer_4).getName());
-                _builder.append(_convertFluxString_13, "\t");
-                _builder.append(" - ");
-                EObject _eContainer_5 = c.getPort2().eContainer();
-                String _convertFluxString_14 = this.convertFluxString(((ReferableBaseObject) _eContainer_5).getName());
-                _builder.append(_convertFluxString_14, "\t");
-                _builder.newLineIfNotEmpty();
-                _builder.append("\t");
-                EObject _eContainer_6 = c.getPort1().eContainer();
-                String _convertFluxString_15 = this.convertFluxString(((ReferableBaseObject) _eContainer_6).getName());
-                _builder.append(_convertFluxString_15, "\t");
+                EObject _eContainer_2 = c.getPort1().eContainer();
+                String _convertFluxString_2 = this.convertFluxString(((ReferableBaseObject) _eContainer_2).getName());
+                _builder.append(_convertFluxString_2, "\t");
                 _builder.append(" -- ");
-                EObject _eContainer_7 = c.getPort2().eContainer();
-                String _convertFluxString_16 = this.convertFluxString(((ReferableBaseObject) _eContainer_7).getName());
-                _builder.append(_convertFluxString_16, "\t");
+                EObject _eContainer_3 = c.getPort2().eContainer();
+                String _convertFluxString_3 = this.convertFluxString(((ReferableBaseObject) _eContainer_3).getName());
+                _builder.append(_convertFluxString_3, "\t");
                 _builder.append(" : ");
-                String _string_2 = c.toString();
-                _builder.append(_string_2, "\t");
+                String _string = c.toString();
+                _builder.append(_string, "\t");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -219,17 +208,10 @@ public class HWBlockDiagramCreator {
         }
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence generateLogicalRoutes(final HWModel model, final HwStructure s, final ModelToTextResult errorCheck) {
-    StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _isEmpty = s.getModules().isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
+      boolean _isEmpty_1 = s.getModules().isEmpty();
+      boolean _not_2 = (!_isEmpty_1);
+      if (_not_2) {
         {
           EList<HwModule> _modules = s.getModules();
           for(final HwModule m : _modules) {
@@ -238,57 +220,73 @@ public class HWBlockDiagramCreator {
                 final ProcessingUnit pUnit = ((ProcessingUnit) m);
                 _builder.newLineIfNotEmpty();
                 {
-                  EList<HwAccessElement> _accessElements = pUnit.getAccessElements();
-                  for(final HwAccessElement ae : _accessElements) {
+                  boolean _isEmpty_2 = pUnit.getAccessElements().isEmpty();
+                  boolean _not_3 = (!_isEmpty_2);
+                  if (_not_3) {
+                    _builder.newLine();
+                    _builder.append("\' add logical connections of processing unit ");
+                    String _name_2 = pUnit.getName();
+                    _builder.append(_name_2);
+                    _builder.append(":");
+                    _builder.newLineIfNotEmpty();
                     {
-                      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(ae.getName());
-                      boolean _not_1 = (!_isNullOrEmpty);
-                      if (_not_1) {
+                      EList<HwAccessElement> _accessElements = pUnit.getAccessElements();
+                      for(final HwAccessElement ae : _accessElements) {
                         {
-                          HwDestination _destination = ae.getDestination();
-                          boolean _tripleNotEquals = (_destination != null);
-                          if (_tripleNotEquals) {
-                            String _convertFluxString = this.convertFluxString(pUnit.getName());
-                            _builder.append(_convertFluxString);
-                            _builder.append(" ..>");
-                            String _convertFluxString_1 = this.convertFluxString(ae.getDestination().getName());
-                            _builder.append(_convertFluxString_1);
-                            _builder.append(" : ");
-                            String _name = ae.getName();
-                            _builder.append(_name);
-                            _builder.newLineIfNotEmpty();
+                          boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(ae.getName());
+                          boolean _not_4 = (!_isNullOrEmpty_1);
+                          if (_not_4) {
+                            {
+                              HwDestination _destination = ae.getDestination();
+                              boolean _tripleNotEquals = (_destination != null);
+                              if (_tripleNotEquals) {
+                                _builder.newLine();
+                                _builder.append("\t");
+                                String _convertFluxString_4 = this.convertFluxString(pUnit.getName());
+                                _builder.append(_convertFluxString_4, "\t");
+                                _builder.append(" ..>");
+                                String _convertFluxString_5 = this.convertFluxString(ae.getDestination().getName());
+                                _builder.append(_convertFluxString_5, "\t");
+                                _builder.append(" : ");
+                                String _name_3 = ae.getName();
+                                _builder.append(_name_3, "\t");
+                                _builder.newLineIfNotEmpty();
+                              } else {
+                                Shell _activeShell = Display.getDefault().getActiveShell();
+                                String _name_4 = ae.getName();
+                                String _plus = ("Missing Destination of AccessElement:" + _name_4);
+                                MessageDialog.openError(_activeShell, "AMALTHEA HW Visualization", _plus);
+                                _builder.newLineIfNotEmpty();
+                                errorCheck.setErrorFlag(Boolean.valueOf(true));
+                                _builder.newLineIfNotEmpty();
+                              }
+                            }
                           } else {
-                            Shell _activeShell = Display.getDefault().getActiveShell();
-                            String _name_1 = ae.getName();
-                            String _plus = ("Missing Destination of AccessElement:" + _name_1);
-                            MessageDialog.openError(_activeShell, "AMALTHEA HW Visualization", _plus);
-                            _builder.newLineIfNotEmpty();
-                            errorCheck.setErrorFlag(Boolean.valueOf(true));
-                            _builder.newLineIfNotEmpty();
-                          }
-                        }
-                      } else {
-                        {
-                          HwDestination _destination_1 = ae.getDestination();
-                          boolean _tripleNotEquals_1 = (_destination_1 != null);
-                          if (_tripleNotEquals_1) {
-                            String _convertFluxString_2 = this.convertFluxString(pUnit.getName());
-                            _builder.append(_convertFluxString_2);
-                            _builder.append(" ..>");
-                            String _convertFluxString_3 = this.convertFluxString(ae.getDestination().getName());
-                            _builder.append(_convertFluxString_3);
-                            _builder.append(" : ");
-                            String _string = ae.toString();
-                            _builder.append(_string);
-                            _builder.newLineIfNotEmpty();
-                          } else {
-                            Shell _activeShell_1 = Display.getDefault().getActiveShell();
-                            String _string_1 = ae.toString();
-                            String _plus_1 = ("Missing Destination of AccessElement:" + _string_1);
-                            MessageDialog.openError(_activeShell_1, "AMALTHEA HW Visualization", _plus_1);
-                            _builder.newLineIfNotEmpty();
-                            errorCheck.setErrorFlag(Boolean.valueOf(true));
-                            _builder.newLineIfNotEmpty();
+                            {
+                              HwDestination _destination_1 = ae.getDestination();
+                              boolean _tripleNotEquals_1 = (_destination_1 != null);
+                              if (_tripleNotEquals_1) {
+                                _builder.newLine();
+                                _builder.append("\t");
+                                String _convertFluxString_6 = this.convertFluxString(pUnit.getName());
+                                _builder.append(_convertFluxString_6, "\t");
+                                _builder.append(" ..>");
+                                String _convertFluxString_7 = this.convertFluxString(ae.getDestination().getName());
+                                _builder.append(_convertFluxString_7, "\t");
+                                _builder.append(" : ");
+                                String _string_1 = ae.toString();
+                                _builder.append(_string_1, "\t");
+                                _builder.newLineIfNotEmpty();
+                              } else {
+                                Shell _activeShell_1 = Display.getDefault().getActiveShell();
+                                String _string_2 = ae.toString();
+                                String _plus_1 = ("Missing Destination of AccessElement:" + _string_2);
+                                MessageDialog.openError(_activeShell_1, "AMALTHEA HW Visualization", _plus_1);
+                                _builder.newLineIfNotEmpty();
+                                errorCheck.setErrorFlag(Boolean.valueOf(true));
+                                _builder.newLineIfNotEmpty();
+                              }
+                            }
                           }
                         }
                       }
@@ -302,11 +300,17 @@ public class HWBlockDiagramCreator {
       }
     }
     {
-      EList<HwStructure> _structures = s.getStructures();
-      for(final HwStructure su : _structures) {
-        CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, su, errorCheck);
-        _builder.append(_generateLogicalRoutes);
-        _builder.newLineIfNotEmpty();
+      boolean _isEmpty_3 = s.getStructures().isEmpty();
+      boolean _not_5 = (!_isEmpty_3);
+      if (_not_5) {
+        {
+          EList<HwStructure> _structures = s.getStructures();
+          for(final HwStructure su : _structures) {
+            CharSequence _generateRoutes = this.generateRoutes(model, su, errorCheck);
+            _builder.append(_generateRoutes);
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     return _builder;
@@ -320,16 +324,25 @@ public class HWBlockDiagramCreator {
       boolean _isEmpty = model.getStructures().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
+        _builder.newLine();
+        _builder.append("\' ===== FRAMES =====");
+        _builder.newLine();
         {
           EList<HwStructure> _structures = model.getStructures();
           for(final HwStructure s : _structures) {
             CharSequence _generateLevel = this.generateLevel(model, s, errorCheck);
             _builder.append(_generateLevel);
             _builder.newLineIfNotEmpty();
-            _builder.append("\' add logical connections:");
-            _builder.newLine();
-            CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, s, errorCheck);
-            _builder.append(_generateLogicalRoutes);
+          }
+        }
+        _builder.newLine();
+        _builder.append("\' ===== ROUTES =====");
+        _builder.newLine();
+        {
+          EList<HwStructure> _structures_1 = model.getStructures();
+          for(final HwStructure s_1 : _structures_1) {
+            CharSequence _generateRoutes = this.generateRoutes(model, s_1, errorCheck);
+            _builder.append(_generateRoutes);
             _builder.newLineIfNotEmpty();
           }
         }
@@ -374,7 +387,6 @@ public class HWBlockDiagramCreator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("@enduml");
-    _builder.newLine();
     _builder.newLine();
     return _builder;
   }
