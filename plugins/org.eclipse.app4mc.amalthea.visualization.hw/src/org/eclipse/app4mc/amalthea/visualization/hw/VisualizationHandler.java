@@ -91,34 +91,46 @@ public class VisualizationHandler extends AbstractHandler {
 
 							String absPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString()
 									+ folder.getFullPath().toString();
+							
+							final ModelToTextResult errorCheck = new ModelToTextResult();
 
-							CharSequence umlOutput = umlDiagramCreator.generatePlantUmlContent(hwModel);
+							CharSequence umlOutput = umlDiagramCreator.generatePlantUmlContent(hwModel, errorCheck);
+							
+							if(errorCheck.getErrorFlag() == false)
+							{
 
-							createDiagramFile.createfile(umlOutput, absPath, plantumlFileName);
-
-							System.out.println("diagram.plantuml created");
-							System.out.println(umlOutput);
-
-							try {
-								OutputStream diagramFile = new FileOutputStream(absPath + "/" + diagramFileName);
-								SourceStringReader reader = new SourceStringReader(umlOutput.toString());
-								reader.generateImage(diagramFile, new FileFormatOption(FileFormat.SVG));
-								diagramFile.close();
-
-								folder.refreshLocal(1, new NullProgressMonitor());
-
-								MessageDialog.openInformation(Display.getDefault().getActiveShell(),
-										"AMALTHEA HW Visualization",
-										"Successfully generated HW Visualization for amalthea model file");
-
-							} catch (Exception e) {
+								createDiagramFile.createfile(umlOutput, absPath, plantumlFileName);
+	
+								System.out.println("diagram.plantuml created");
+								System.out.println(umlOutput);
+	
+								try {
+									OutputStream diagramFile = new FileOutputStream(absPath + "/" + diagramFileName);
+									SourceStringReader reader = new SourceStringReader(umlOutput.toString());
+									reader.generateImage(diagramFile, new FileFormatOption(FileFormat.SVG));
+									diagramFile.close();
+	
+									folder.refreshLocal(1, new NullProgressMonitor());
+	
+									MessageDialog.openInformation(Display.getDefault().getActiveShell(),
+											"AMALTHEA HW Visualization",
+											"Successfully generated HW Visualization for amalthea model file");
+	
+								} catch (Exception e) {
+									MessageDialog.openError(Display.getDefault().getActiveShell(),
+											"AMALTHEA HW Visualization",
+											"Unable to generate HW Visualization for selected AMALTHEA model file");
+									e.printStackTrace();
+								}
+	
+							}
+							else {
 								MessageDialog.openError(Display.getDefault().getActiveShell(),
 										"AMALTHEA HW Visualization",
-										"Unable to generate HW Visualization for selected AMALTHEA model file");
-								e.printStackTrace();
+										"Due to errors unable to generate HW Visualization for selected AMALTHEA model file");
 							}
-
 						}
+							
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

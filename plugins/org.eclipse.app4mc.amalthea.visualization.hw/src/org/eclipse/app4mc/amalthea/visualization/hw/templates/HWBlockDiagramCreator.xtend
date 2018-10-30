@@ -23,10 +23,11 @@ import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject
 import org.eclipse.jface.dialogs.MessageDialog
 import org.eclipse.swt.widgets.Display
+import org.eclipse.app4mc.amalthea.visualization.hw.ModelToTextResult
 
 class HWBlockDiagramCreator {
 	
-	def CharSequence generateLevel(HWModel model, HwStructure s) '''
+	def CharSequence generateLevel(HWModel model, HwStructure s, ModelToTextResult errorCheck) '''
 		«IF !(s.name.nullOrEmpty)»
 		frame "«s.name»" as «convertFluxString(s.name)» {
 			«IF !s.modules.empty»
@@ -43,14 +44,16 @@ class HWBlockDiagramCreator {
 						«ENDIF»
 					«ELSE»
 						«MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "Missing HW Module name: " + m.toString)»
+						«errorCheck.errorFlag = true»
 					«ENDIF»
 				«ENDFOR»
 			«ENDIF»
 			«FOR su : s.structures»
-				«generateLevel(model, su)»
+				«generateLevel(model, su, errorCheck)»
 			«ENDFOR»
 		«ELSE»
 			«MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "Name of HwStructure is missing " + s.toString)»
+			«errorCheck.errorFlag = true»
 		«ENDIF»
 		}
 		
@@ -69,7 +72,7 @@ class HWBlockDiagramCreator {
 		
 	'''
 	
-	def CharSequence generateLogicalRoutes(HWModel model, HwStructure s) '''
+	def CharSequence generateLogicalRoutes(HWModel model, HwStructure s, ModelToTextResult errorCheck) '''
 				«IF !s.modules.empty»
 					«FOR m: s.modules»
 						«IF m instanceof ProcessingUnit»
@@ -80,12 +83,14 @@ class HWBlockDiagramCreator {
 										«convertFluxString(pUnit.name)» ..>«convertFluxString(ae.destination.name)» : «ae.name»
 									«ELSE»
 										«MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "Missing Destination of AccessElement:" + ae.name)»
+										«errorCheck.errorFlag = true»
 									«ENDIF»	
 								«ELSE»
 									«IF ae.destination !== null»
 										«convertFluxString(pUnit.name)» ..>«convertFluxString(ae.destination.name)» : «ae.toString»
 									«ELSE»
 										«MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "Missing Destination of AccessElement:" + ae.toString)»
+										«errorCheck.errorFlag = true»
 									«ENDIF»	
 								«ENDIF»
 							«ENDFOR»
@@ -93,20 +98,21 @@ class HWBlockDiagramCreator {
 					«ENDFOR»
 				«ENDIF»
 				«FOR su : s.structures»
-					«generateLogicalRoutes(model, su)»
+					«generateLogicalRoutes(model, su, errorCheck)»
 				«ENDFOR»
 	'''
 	
-	def generatePlantUmlContent(HWModel model) '''
+	def generatePlantUmlContent(HWModel model, ModelToTextResult errorCheck) '''
 		@startuml
 		«IF !model.structures.empty»
 			«FOR s : model.structures»
-				«generateLevel(model, s)»
+				«generateLevel(model, s, errorCheck)»
 				' add logical connections:
-				«generateLogicalRoutes(model, s)»
+				«generateLogicalRoutes(model, s, errorCheck)»
 			«ENDFOR»
 		«ELSE»
 			«MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "No Structure in the model")»
+			«errorCheck.errorFlag = true»
 		«ENDIF»
 		
 		skinparam component {
@@ -170,8 +176,27 @@ class HWBlockDiagramCreator {
 	
 	        val String Regex11 = '\\.';
 	        val tmpstr11 = tmpstr10.replaceAll(Regex11, replacestring); 
+	        
+	        val String Regex12 = '#';
+	        val tmpstr12 = tmpstr11.replaceAll(Regex12, replacestring); 
+	        
+	        val String Regex13 = '"';
+	        val tmpstr13 = tmpstr12.replaceAll(Regex13, replacestring); 
+	        
+	        val String Regex14 = '$';
+	        val tmpstr14 = tmpstr13.replaceAll(Regex14, replacestring); 
+	        
+	        val String Regex15 = '~';
+	        val tmpstr15 = tmpstr14.replaceAll(Regex15, replacestring); 
+	        
+	        val String Regex16 = '%';
+	        val tmpstr16 = tmpstr15.replaceAll(Regex16, replacestring); 
+	        
+	        val String Regex17 = '&';
+	        val tmpstr17 = tmpstr16.replaceAll(Regex17, replacestring); 
 	
-			return tmpstr11;       
+			return tmpstr17;  
+   
 		} 
 				
 }

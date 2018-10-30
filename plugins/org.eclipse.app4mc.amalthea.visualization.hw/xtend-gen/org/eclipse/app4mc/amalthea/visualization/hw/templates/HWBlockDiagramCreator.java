@@ -22,6 +22,7 @@ import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
+import org.eclipse.app4mc.amalthea.visualization.hw.ModelToTextResult;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -32,7 +33,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class HWBlockDiagramCreator {
-  public CharSequence generateLevel(final HWModel model, final HwStructure s) {
+  public CharSequence generateLevel(final HWModel model, final HwStructure s, final ModelToTextResult errorCheck) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(s.getName());
@@ -117,6 +118,10 @@ public class HWBlockDiagramCreator {
                     String _plus = ("Missing HW Module name: " + _string);
                     MessageDialog.openError(_activeShell, "AMALTHEA HW Visualization", _plus);
                     _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\t");
+                    errorCheck.setErrorFlag(Boolean.valueOf(true));
+                    _builder.newLineIfNotEmpty();
                   }
                 }
               }
@@ -128,7 +133,7 @@ public class HWBlockDiagramCreator {
           for(final HwStructure su : _structures) {
             _builder.append("\t");
             _builder.append("\t");
-            CharSequence _generateLevel = this.generateLevel(model, su);
+            CharSequence _generateLevel = this.generateLevel(model, su, errorCheck);
             _builder.append(_generateLevel, "\t\t");
             _builder.newLineIfNotEmpty();
           }
@@ -139,6 +144,9 @@ public class HWBlockDiagramCreator {
         String _string_1 = s.toString();
         String _plus_1 = ("Name of HwStructure is missing " + _string_1);
         MessageDialog.openError(_activeShell_1, "AMALTHEA HW Visualization", _plus_1);
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        errorCheck.setErrorFlag(Boolean.valueOf(true));
         _builder.newLineIfNotEmpty();
       }
     }
@@ -216,7 +224,7 @@ public class HWBlockDiagramCreator {
     return _builder;
   }
   
-  public CharSequence generateLogicalRoutes(final HWModel model, final HwStructure s) {
+  public CharSequence generateLogicalRoutes(final HWModel model, final HwStructure s, final ModelToTextResult errorCheck) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _isEmpty = s.getModules().isEmpty();
@@ -255,6 +263,8 @@ public class HWBlockDiagramCreator {
                             String _plus = ("Missing Destination of AccessElement:" + _name_1);
                             MessageDialog.openError(_activeShell, "AMALTHEA HW Visualization", _plus);
                             _builder.newLineIfNotEmpty();
+                            errorCheck.setErrorFlag(Boolean.valueOf(true));
+                            _builder.newLineIfNotEmpty();
                           }
                         }
                       } else {
@@ -277,6 +287,8 @@ public class HWBlockDiagramCreator {
                             String _plus_1 = ("Missing Destination of AccessElement:" + _string_1);
                             MessageDialog.openError(_activeShell_1, "AMALTHEA HW Visualization", _plus_1);
                             _builder.newLineIfNotEmpty();
+                            errorCheck.setErrorFlag(Boolean.valueOf(true));
+                            _builder.newLineIfNotEmpty();
                           }
                         }
                       }
@@ -292,7 +304,7 @@ public class HWBlockDiagramCreator {
     {
       EList<HwStructure> _structures = s.getStructures();
       for(final HwStructure su : _structures) {
-        CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, su);
+        CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, su, errorCheck);
         _builder.append(_generateLogicalRoutes);
         _builder.newLineIfNotEmpty();
       }
@@ -300,7 +312,7 @@ public class HWBlockDiagramCreator {
     return _builder;
   }
   
-  public CharSequence generatePlantUmlContent(final HWModel model) {
+  public CharSequence generatePlantUmlContent(final HWModel model, final ModelToTextResult errorCheck) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("@startuml");
     _builder.newLine();
@@ -311,18 +323,20 @@ public class HWBlockDiagramCreator {
         {
           EList<HwStructure> _structures = model.getStructures();
           for(final HwStructure s : _structures) {
-            CharSequence _generateLevel = this.generateLevel(model, s);
+            CharSequence _generateLevel = this.generateLevel(model, s, errorCheck);
             _builder.append(_generateLevel);
             _builder.newLineIfNotEmpty();
             _builder.append("\' add logical connections:");
             _builder.newLine();
-            CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, s);
+            CharSequence _generateLogicalRoutes = this.generateLogicalRoutes(model, s, errorCheck);
             _builder.append(_generateLogicalRoutes);
             _builder.newLineIfNotEmpty();
           }
         }
       } else {
         MessageDialog.openError(Display.getDefault().getActiveShell(), "AMALTHEA HW Visualization", "No Structure in the model");
+        _builder.newLineIfNotEmpty();
+        errorCheck.setErrorFlag(Boolean.valueOf(true));
         _builder.newLineIfNotEmpty();
       }
     }
@@ -395,6 +409,18 @@ public class HWBlockDiagramCreator {
     final String tmpstr10 = tmpstr9.replaceAll(Regex10, replacestring);
     final String Regex11 = "\\.";
     final String tmpstr11 = tmpstr10.replaceAll(Regex11, replacestring);
-    return tmpstr11;
+    final String Regex12 = "#";
+    final String tmpstr12 = tmpstr11.replaceAll(Regex12, replacestring);
+    final String Regex13 = "\"";
+    final String tmpstr13 = tmpstr12.replaceAll(Regex13, replacestring);
+    final String Regex14 = "$";
+    final String tmpstr14 = tmpstr13.replaceAll(Regex14, replacestring);
+    final String Regex15 = "~";
+    final String tmpstr15 = tmpstr14.replaceAll(Regex15, replacestring);
+    final String Regex16 = "%";
+    final String tmpstr16 = tmpstr15.replaceAll(Regex16, replacestring);
+    final String Regex17 = "&";
+    final String tmpstr17 = tmpstr16.replaceAll(Regex17, replacestring);
+    return tmpstr17;
   }
 }
