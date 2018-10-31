@@ -19,16 +19,16 @@ package org.eclipse.app4mc.amalthea.sphinx.ui.editors.search;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.graphics.Image;
 
-/**
- * 
- * 
- */
 public class SearchResultLabelProvider extends ColumnLabelProvider {
+
+	protected ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	/**
 	 * @see org.eclipse.jface.viewers.ColumnLabelProvider#getText(java.lang.Object)
@@ -36,11 +36,9 @@ public class SearchResultLabelProvider extends ColumnLabelProvider {
 	@Override
 	public String getText(final Object element) {
 		if (element instanceof EObject) {
-			final EObject elem = (EObject) element;
-			final IItemLabelProvider labelProvider = (IItemLabelProvider) Util.getAdapterFactoryForType(elem,
-					IItemLabelProvider.class);
-			if (null != labelProvider) {
-				return labelProvider.getText(elem);
+			final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
+			if (labelProvider != null) {
+				return labelProvider.getText(element);
 			}
 		}
 		return super.getText(element);
@@ -51,11 +49,10 @@ public class SearchResultLabelProvider extends ColumnLabelProvider {
 	 */
 	@Override
 	public Image getImage(final Object element) {
-		final IItemLabelProvider labelProvider = (IItemLabelProvider) Util.getAdapterFactoryForType((EObject) element,
-				IItemLabelProvider.class);
-		if (null != labelProvider) {
-			final ImageDescriptor image = ImageDescriptor.createFromURL((URL) labelProvider.getImage(element));
-			return image.createImage();
+		final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
+		if (labelProvider != null) {
+			final ImageDescriptor imageDesc = ImageDescriptor.createFromURL((URL) labelProvider.getImage(element));
+			return ExtendedImageRegistry.INSTANCE.getImage(imageDesc);
 		}
 		return super.getImage(element);
 	}

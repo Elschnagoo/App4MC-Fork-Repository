@@ -15,6 +15,8 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.editors.search;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -26,6 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.search.ui.ISearchQuery;
 import org.eclipse.search.ui.ISearchResult;
 import org.eclipse.sphinx.emf.ui.util.EcoreUIUtil;
@@ -62,6 +65,8 @@ public class ModelHitCollector implements ISearchQuery {
 		// search the index
 		Set<? extends INamed> resultSet = AmaltheaIndex.getElements(model, namePattern, filterClass);
 
+		// distinguish between results from local file and scope
+		Map<Resource, IEditorInput> editorInputMap = new HashMap<Resource, IEditorInput>();
 		for (INamed element : resultSet) {
 			if (model.eResource() == element.eResource()) {
 				// element is opened in current editor
@@ -69,12 +74,17 @@ public class ModelHitCollector implements ISearchQuery {
 			} else {
 				// element is in a different file
 				if (fileScope == false) {
-					IEditorInput input = EcoreUIUtil.createURIEditorInput(element.eResource());
+					IEditorInput input = editorInputMap.get(element.eResource());
+					if (input == null) {
+						// create and cache editor input
+						input = EcoreUIUtil.createURIEditorInput(element.eResource());
+						editorInputMap.put(element.eResource(), input);
+					}
 					this.searchResult.addMatch(new SearchMatch(element, 0, 0, input));
 				}
 			}
 		}
-	
+		
 		return Status.OK_STATUS;
 	}
 

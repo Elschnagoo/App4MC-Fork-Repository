@@ -19,27 +19,16 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.app4mc.amalthea.sphinx.ui.editors.messages.messages"; //$NON-NLS-1$
-	@SuppressWarnings("javadoc")
 	public static String ExtendedContentsTreePage_title;
-	@SuppressWarnings("javadoc")
 	public static String ModelHitCollector_label;
-	@SuppressWarnings("javadoc")
 	public static String ModelSearchResult_label;
-	@SuppressWarnings("javadoc")
 	public static String ModelSearchResult_results;
-	@SuppressWarnings("javadoc")
 	public static String SearchAction_title;
-	@SuppressWarnings("javadoc")
 	public static String SearchGUI_button;
-	@SuppressWarnings("javadoc")
 	public static String SearchGUI_description;
-	@SuppressWarnings("javadoc")
 	public static String SearchGUI_label;
-	@SuppressWarnings("javadoc")
 	public static String SearchGUI_title;
-	@SuppressWarnings("javadoc")
 	public static String ShowTypesAction_title;
-	@SuppressWarnings("javadoc")
 	public static String ShowTypesAction_tooltip;
 
 	static {

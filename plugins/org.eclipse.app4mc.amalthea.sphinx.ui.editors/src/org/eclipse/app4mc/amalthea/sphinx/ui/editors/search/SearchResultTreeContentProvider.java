@@ -71,7 +71,6 @@ public class SearchResultTreeContentProvider extends TreeNodeContentProvider {
 		}
 	}
 
-	@SuppressWarnings("javadoc")
 	public void updateElements(final Object[] newElements) {
 		for (final Object element : newElements) {
 			boolean toAdd = false;
@@ -122,12 +121,12 @@ public class SearchResultTreeContentProvider extends TreeNodeContentProvider {
 		Collections.sort(tmp, new ObjectComparator());
 		this.elements.clear();
 		this.elements.addAll(tmp);
-		// sorting cilds of types
+		// sorting children of types
 		for (final TreeNode node : this.types.values()) {
 			if (node.hasChildren()) {
-				final List<TreeNode> childs = new ArrayList<>(Arrays.asList(node.getChildren()));
-				Collections.sort(childs, new ObjectComparator());
-				node.setChildren(childs.toArray(new TreeNode[childs.size()]));
+				final List<TreeNode> childList = new ArrayList<>(Arrays.asList(node.getChildren()));
+				Collections.sort(childList, new ObjectComparator());
+				node.setChildren(childList.toArray(new TreeNode[childList.size()]));
 			}
 		}
 	}

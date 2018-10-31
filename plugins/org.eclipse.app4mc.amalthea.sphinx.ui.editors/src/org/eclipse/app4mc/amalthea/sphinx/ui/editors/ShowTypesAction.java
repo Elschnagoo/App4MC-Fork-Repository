@@ -27,7 +27,6 @@ public class ShowTypesAction extends Action {
 
 	private final StructuredViewer viewer;
 
-	@SuppressWarnings("javadoc")
 	public ShowTypesAction(final ExtendedBasicTransactionalFormEditor editor, final StructuredViewer viewer) {
 		super(Messages.ShowTypesAction_title, AS_CHECK_BOX);
 		this.editor = editor;

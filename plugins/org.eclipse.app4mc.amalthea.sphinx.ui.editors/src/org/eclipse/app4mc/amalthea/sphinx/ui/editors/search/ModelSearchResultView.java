@@ -179,7 +179,6 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 		/**
 		 * @see org.eclipse.jface.action.Action#run()
 		 */
-		@SuppressWarnings("synthetic-access")
 		@Override
 		public void run() {
 			final SearchResultTreeContentProvider contentProvider = (SearchResultTreeContentProvider) getViewer()

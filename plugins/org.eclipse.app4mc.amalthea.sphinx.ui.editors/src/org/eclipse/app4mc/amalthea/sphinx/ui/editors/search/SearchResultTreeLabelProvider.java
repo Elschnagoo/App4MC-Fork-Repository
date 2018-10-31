@@ -19,7 +19,9 @@ import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -29,10 +31,7 @@ import org.eclipse.swt.graphics.Image;
 
 public class SearchResultTreeLabelProvider implements IStyledLabelProvider {
 
-	@SuppressWarnings("javadoc")
-	public SearchResultTreeLabelProvider() {
-
-	}
+	protected ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 	/**
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
@@ -76,12 +75,11 @@ public class SearchResultTreeLabelProvider implements IStyledLabelProvider {
 			final TreeNode node = (TreeNode) element;
 			if (node.getValue() instanceof EClass) {
 				final EClass value = (EClass) node.getValue();
-				return new StyledString(value.getName());
+				return new StyledString(value.getName() + " (" + node.getChildren().length + ")");
 			}
 			else if (node.getValue() instanceof EObject) {
 				final EObject elem = (EObject) ((TreeNode) element).getValue();
-				final IItemLabelProvider labelProvider = (IItemLabelProvider) Util.getAdapterFactoryForType(elem,
-						IItemLabelProvider.class);
+				final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(elem, IItemLabelProvider.class);
 				if (null != labelProvider) {
 					return new StyledString(labelProvider.getText(elem));
 				}
@@ -103,9 +101,9 @@ public class SearchResultTreeLabelProvider implements IStyledLabelProvider {
 			if (((node).getValue() instanceof EClass)) {
 				// try to get image from children
 				if (node.hasChildren()) {
-					final TreeNode[] childs = node.getChildren();
-					if (null != childs && childs.length > 0) {
-						return getImageForObject((EObject) childs[0].getValue());
+					final TreeNode[] kids = node.getChildren();
+					if (null != kids && kids.length > 0) {
+						return getImageForObject((EObject) kids[0].getValue());
 					}
 				}
 			}
@@ -117,11 +115,10 @@ public class SearchResultTreeLabelProvider implements IStyledLabelProvider {
 	}
 
 	private Image getImageForObject(final EObject element) {
-		final IItemLabelProvider labelProvider = (IItemLabelProvider) Util.getAdapterFactoryForType(element,
-				IItemLabelProvider.class);
-		if (null != labelProvider) {
-			final ImageDescriptor image = ImageDescriptor.createFromURL((URL) labelProvider.getImage(element));
-			return image.createImage();
+		final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
+		if (labelProvider != null) {
+			final ImageDescriptor imageDesc = ImageDescriptor.createFromURL((URL) labelProvider.getImage(element));
+			return ExtendedImageRegistry.INSTANCE.getImage(imageDesc);
 		}
 		return null;
 	}

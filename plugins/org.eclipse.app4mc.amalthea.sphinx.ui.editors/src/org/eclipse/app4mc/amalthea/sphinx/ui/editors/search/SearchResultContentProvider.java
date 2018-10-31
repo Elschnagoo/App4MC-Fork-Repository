@@ -65,7 +65,6 @@ public class SearchResultContentProvider implements IStructuredContentProvider {
 		}
 	}
 
-	@SuppressWarnings("javadoc")
 	public void updateElements(final Object[] newElements) {
 		for (final Object element : newElements) {
 			boolean toAdd = false;

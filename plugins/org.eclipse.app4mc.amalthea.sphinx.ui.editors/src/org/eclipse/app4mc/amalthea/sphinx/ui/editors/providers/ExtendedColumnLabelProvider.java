@@ -52,7 +52,6 @@ public class ExtendedColumnLabelProvider extends ColumnLabelProvider {
 
 	private final ILabelDecorator labelDecorator;
 
-	@SuppressWarnings("javadoc")
 	public ExtendedColumnLabelProvider(final ExtendedBasicTransactionalFormEditor editor,
 			final TransactionalAdapterFactoryLabelProvider delegate) {
 		super();
@@ -183,6 +182,10 @@ public class ExtendedColumnLabelProvider extends ColumnLabelProvider {
 		return image;
 	}
 
+	
+	//TODO Mc: use org.eclipse.emf.edit.ui.provider.DiagnosticDecorator decorate(Image image, Diagnostic diagnostic)
+	
+	
 	/**
 	 * Add overlay image depending upon the type of error/warning marker TODO: Move this to a clean up LabelDecorator
 	 * Implementation because not stable enough
