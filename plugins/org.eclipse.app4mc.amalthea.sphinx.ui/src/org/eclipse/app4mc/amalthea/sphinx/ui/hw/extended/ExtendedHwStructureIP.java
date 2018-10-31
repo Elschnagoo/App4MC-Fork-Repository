@@ -71,10 +71,15 @@ public class ExtendedHwStructureIP extends HwStructureItemProvider {
 		HwStructure hwStruct = (HwStructure) object;
 		
 		// only display virtual folders if not empty (on top of the list)
-		if (hwStruct.getConnections().size() > 0)
-			children.add(0, getConnectionsContainerIP(hwStruct));
 		if (hwStruct.getModules().size() > 0)
 			children.add(0, getModulesContainerIP(hwStruct));
+		if (hwStruct.getConnections().size() > 0)
+			children.add(0, getConnectionsContainerIP(hwStruct));
+
+		// move ports to top of the list
+		children.removeAll(hwStruct.getPorts());
+		children.addAll(0, hwStruct.getPorts());
+
 		return children;
 	}
 
