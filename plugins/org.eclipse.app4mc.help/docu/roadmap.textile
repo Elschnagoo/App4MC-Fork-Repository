@@ -11,5 +11,5 @@ All new releases are provided by "Eclipse APP4MC":https://projects.eclipse.org/p
 
 For details see:
 
-* "Bugzilla entries for version 0.9.2":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.9.2
+* "Bugzilla entries for version 0.9.3":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.9.3
 
