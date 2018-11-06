@@ -83,7 +83,7 @@ Note: The picture shows the activated element types for better understanding!
 h3. Activations
 
 Activations are used to specify the intended activation behavior of __Runnables__ and __ProcessPrototypes__. Typically they are defined before the creation of tasks (and the runnable to task mappings). So if there are no tasks defined, or if the mapping of runnables to tasks is not done, this is a way to document when the runnables should be executed.  
-Activations are independent of other top level elements in the AMALTHEA model. Single, periodic, sporadic, event or custom (free textual description) activation pattern can be defined. This information can be used in the following development steps to create tasks, stimuli and the mappings to dedicated hardware.
+Activations are independent of other top level elements in the AMALTHEA model. Single, periodic, sporadic, event or custom (free textual description only, no predefined semantic) activation pattern can be defined. This information can be used in the following development steps to create tasks, stimuli and the mappings to dedicated hardware.
 
 !../pictures/model_sw_activation.png!
 
@@ -122,7 +122,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __deadline__ | Information in __Time__ at which the element must be finished / terminated. |
 | __runnableItems__ | List containing __RunnableItem__ objects, representing instructions, label accesses, other __Runnable__ accesses. The possibilities are described below. |
 | __tags__ | Can be used to annotate or group special kind of __Runnables__ |
-| __activation__ | Although runnables in the simulation can be only activated by tasks, it is possible to specify an activation pattern for a runnable. |
+| __activation__ | Although runnables in the simulation can only be called by tasks, it is possible to specify an activation pattern for a runnable. |
 | __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
 
 *(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!

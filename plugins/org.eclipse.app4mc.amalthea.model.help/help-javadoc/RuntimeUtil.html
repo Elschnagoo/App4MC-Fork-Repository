@@ -38,15 +38,15 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">RuntimeUtil.AccessDirection</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="RuntimeUtil.AccessDirection.html">RuntimeUtil.AccessDirection</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">RuntimeUtil.PositionType</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="RuntimeUtil.PositionType.html">RuntimeUtil.PositionType</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#">RuntimeUtil.TimeType</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="RuntimeUtil.TimeType.html">RuntimeUtil.TimeType</a></span></code>&nbsp;</td>
 </tr>
 </tbody></table>
 </li>
@@ -60,22 +60,23 @@
 <h3>Method Summary</h3>
 <table class="memberSummary" summary="Method Summary table, listing methods, and an explanation" cellspacing="0" cellpadding="3" border="0">
 <caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span class="tabEnd">&nbsp;</span></span></caption>
-<tbody><tr>
+<tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor"><td class="colFirst"><code>static Runnable</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#addRuntimeToProcessAsNewRunnable-Process-ExecutionNeed-String-util.RuntimeUtil.PositionType-">addRuntimeToProcessAsNewRunnable</a></span>(Process&nbsp;process,
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>static Runnable</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">addRuntimeToProcessAsNewRunnable</a></span>(Process&nbsp;process,
                                 ExecutionNeed&nbsp;executionNeeds,
                                 String&nbsp;runnableName,
-                                <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.PositionType.html" title="enum in util">RuntimeUtil.PositionType</a>&nbsp;positon)</code>
+                                <a href="RuntimeUtil.PositionType.html" title="enum in util">RuntimeUtil.PositionType</a>&nbsp;positon)</code>
 <div class="block">Creates a new Runnable with the given runtime and create a CallSequence at
  beginning / end of the given process</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#addRuntimeToRunnable-Runnable-ExecutionNeed-">addRuntimeToRunnable</a></span>(Runnable&nbsp;runnable,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">addRuntimeToRunnable</a></span>(Runnable&nbsp;runnable,
                     ExecutionNeed&nbsp;executionNeeds)</code>
 <div class="block">Adds Runtime (given as ExecutionNeed) to an existing Runnable currently
  without consideration of modes //TODO: Mode-based API</div>
@@ -83,9 +84,9 @@
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#clearRuntimeOfModel-Amalthea-ProcessingUnitDefinition-org.eclipse.emf.common.util.EMap-">clearRuntimeOfModel</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">clearRuntimeOfModel</a></span>(Amalthea&nbsp;model,
                    ProcessingUnitDefinition&nbsp;procUnitDef,
-                   org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                   EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Removes all runtimes of the whole model If the procUnitDef is null, the
  complete ExecutionNeed is deleted if it is not null, then only the runtime
  for the given procUnitDef is removed</div>
@@ -93,9 +94,9 @@
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#clearRuntimeOfProcess-Process-ProcessingUnitDefinition-org.eclipse.emf.common.util.EMap-">clearRuntimeOfProcess</a></span>(Process&nbsp;process,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">clearRuntimeOfProcess</a></span>(Process&nbsp;process,
                      ProcessingUnitDefinition&nbsp;procUnitDef,
-                     org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                     EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Removes all runtimes set in the given process If the procUnitDef is null, the
  complete ExecutionNeed is deleted if it is not null, then only the runtime
  for the given procUnitDef is removed</div>
@@ -103,70 +104,70 @@
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#clearRuntimeOfRunnable-Runnable-ProcessingUnitDefinition-org.eclipse.emf.common.util.EMap-">clearRuntimeOfRunnable</a></span>(Runnable&nbsp;runnable,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">clearRuntimeOfRunnable</a></span>(Runnable&nbsp;runnable,
                       ProcessingUnitDefinition&nbsp;procUnitDef,
-                      org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                      EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Clears all runtime information, for all procUnitDefs, for all modes</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#customStimulusFilter-Stimulus-">customStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">customStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static Map&lt;Process,Double&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getCumulativeProcessUtilizations-Amalthea-util.RuntimeUtil.TimeType-List-org.eclipse.emf.common.util.EMap-">getCumulativeProcessUtilizations</a></span>(Amalthea&nbsp;model,
-                                <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getCumulativeProcessUtilizations</a></span>(Amalthea&nbsp;model,
+                                <a href="RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
                                 List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                                org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns the cumulative process utilization, i.e.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>static HashMap&lt;ProcessingUnitDefinition,Long&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionNeedValueCountExtendedForProcess-Process-util.RuntimeUtil.TimeType-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionNeedValueCountExtendedForProcess</a></span>(Process&nbsp;process,
-                                            <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionNeedValueCountExtendedForProcess</a></span>(Process&nbsp;process,
+                                            <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                             HwFeature&nbsp;hwFeature,
-                                            org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                            EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a map that contains the value of ExecutionNeedValueCounts for all (in the
  runnables) specified ProcessUnitDefinition</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>static HashMap&lt;ProcessingUnitDefinition,Long&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionNeedValueCountExtendedForRunnable-Runnable-util.RuntimeUtil.TimeType-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionNeedValueCountExtendedForRunnable</a></span>(Runnable&nbsp;runnable,
-                                             <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionNeedValueCountExtendedForRunnable</a></span>(Runnable&nbsp;runnable,
+                                             <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                              HwFeature&nbsp;hwFeature,
-                                             org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                             EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a map that contains the ExecutionNeedValueCounts for all specified
  procUnitDefs - all values will just be added up.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>static Long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionNeedValueCountForProcess-Process-util.RuntimeUtil.TimeType-ProcessingUnitDefinition-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionNeedValueCountForProcess</a></span>(Process&nbsp;process,
-                                    <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionNeedValueCountForProcess</a></span>(Process&nbsp;process,
+                                    <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                     ProcessingUnitDefinition&nbsp;procUnitDef,
                                     HwFeature&nbsp;hwFeature,
-                                    org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                    EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns the execution need value a process would need to execute for a given
  feature and the given ProcessUnitdefition</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>static Long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionNeedValueCountForRunnable-Runnable-util.RuntimeUtil.TimeType-ProcessingUnitDefinition-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionNeedValueCountForRunnable</a></span>(Runnable&nbsp;runnable,
-                                     <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionNeedValueCountForRunnable</a></span>(Runnable&nbsp;runnable,
+                                     <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                      ProcessingUnitDefinition&nbsp;procUnitDef,
                                      HwFeature&nbsp;hwFeature,
-                                     org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                     EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns the ExecutionNeed value count a runnable would need to execute for a
  given feature and the given ProcessUnitdefition</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>static LongObject</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionNeedValueCountForTime-ProcessingUnit-Time-HwFeature-">getExecutionNeedValueCountForTime</a></span>(ProcessingUnit&nbsp;procUnit,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionNeedValueCountForTime</a></span>(ProcessingUnit&nbsp;procUnit,
                                  Time&nbsp;time,
                                  HwFeature&nbsp;hwFeature)</code>
 <div class="block">convert a time into an ExecutionNeed value count for one feature</div>
@@ -174,91 +175,91 @@
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>static HashMap&lt;ProcessingUnit,Time&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionTimeExtendedForProcess-Amalthea-Process-util.RuntimeUtil.TimeType-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionTimeExtendedForProcess</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionTimeExtendedForProcess</a></span>(Amalthea&nbsp;model,
                                   Process&nbsp;process,
-                                  <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+                                  <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                   HwFeature&nbsp;hwFeature,
-                                  org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                  EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a map that contains the execution for all procUnit for which a procUnitDef
  has specified runtime</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>static Map&lt;ProcessingUnit,Time&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionTimeExtendedForRunnable-Amalthea-Runnable-util.RuntimeUtil.TimeType-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionTimeExtendedForRunnable</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionTimeExtendedForRunnable</a></span>(Amalthea&nbsp;model,
                                    Runnable&nbsp;runnable,
-                                   <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+                                   <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                                    HwFeature&nbsp;hwFeature,
-                                   org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                   EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Gets execution times for given runnable on all possible procUnits (with specified
  procUnitDef)</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionTimeForExecutionNeedValueCount-long-ProcessingUnit-HwFeature-org.eclipse.emf.common.util.EMap-">getExecutionTimeForExecutionNeedValueCount</a></span>(long&nbsp;executionNeedValueCount,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionTimeForExecutionNeedValueCount</a></span>(long&nbsp;executionNeedValueCount,
                                           ProcessingUnit&nbsp;procUnit,
                                           HwFeature&nbsp;hwFeature,
-                                          org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                                          EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Converts a number (ExecutionNeeds) into execution time on the given procUnit for one feature</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionTimeForProcess-Process-util.RuntimeUtil.TimeType-ProcessingUnit-List-org.eclipse.emf.common.util.EMap-">getExecutionTimeForProcess</a></span>(Process&nbsp;process,
-                          <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionTimeForProcess</a></span>(Process&nbsp;process,
+                          <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                           ProcessingUnit&nbsp;procUnit,
                           List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                          org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                          EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns the execution time for the given process on the given procUnit</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getExecutionTimeForRunnable-Runnable-util.RuntimeUtil.TimeType-ProcessingUnit-List-org.eclipse.emf.common.util.EMap-">getExecutionTimeForRunnable</a></span>(Runnable&nbsp;runnable,
-                           <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getExecutionTimeForRunnable</a></span>(Runnable&nbsp;runnable,
+                           <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;execTimeType,
                            ProcessingUnit&nbsp;procUnit,
                            List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                           org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                           EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns the execution time for the given runnable on the given procUnit</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getMean-Deviation-">getMean</a></span>(Deviation&lt;? extends Time&gt;&nbsp;deviation)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getMean</a></span>(Deviation&lt;? extends Time&gt;&nbsp;deviation)</code>&nbsp;</td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>static Time</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getMean-Distribution-Time-Time-">getMean</a></span>(Distribution&lt;? extends Time&gt;&nbsp;distribution2,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getMean</a></span>(Distribution&lt;? extends Time&gt;&nbsp;distribution2,
        Time&nbsp;lowerBound,
        Time&nbsp;upperBound)</code>&nbsp;</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getMean-Distribution-long-long-">getMean</a></span>(Distribution&lt;T&gt;&nbsp;distribution,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getMean</a></span>(Distribution&lt;T&gt;&nbsp;distribution,
        long&nbsp;lowerBound,
        long&nbsp;upperBound)</code>&nbsp;</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>static Map&lt;Process,List&lt;Time&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getPeriodsOfAllProcesses-Amalthea-util.RuntimeUtil.TimeType-org.eclipse.emf.common.util.EMap-">getPeriodsOfAllProcesses</a></span>(Amalthea&nbsp;model,
-                        <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
-                        org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getPeriodsOfAllProcesses</a></span>(Amalthea&nbsp;model,
+                        <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                        EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">gets all Period ranges from the model</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>static List&lt;Time&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getPeriodsOfProcess-Amalthea-Process-util.RuntimeUtil.TimeType-org.eclipse.emf.common.util.EMap-">getPeriodsOfProcess</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getPeriodsOfProcess</a></span>(Amalthea&nbsp;model,
                    Process&nbsp;process,
-                   <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
-                   org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                   <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                   EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a list of all triggering periods.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;Map&lt;Stimulus,Long&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getPlainTriggerForProcess-Amalthea-Process-long-function.Function-">getPlainTriggerForProcess</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getPlainTriggerForProcess</a></span>(Amalthea&nbsp;model,
                          Process&nbsp;process,
                          long&nbsp;depthCounter,
                          function.Function&lt;Stimulus,Boolean&gt;&nbsp;filter)</code>
@@ -267,7 +268,7 @@
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;Map&lt;Process,Map&lt;Stimulus,Long&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getPlainTriggersForModel-Amalthea-function.Function-">getPlainTriggersForModel</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getPlainTriggersForModel</a></span>(Amalthea&nbsp;model,
                         function.Function&lt;Stimulus,Boolean&gt;&nbsp;filter)</code>
 <div class="block">Returns a map from process to all stimuli (matching filter) that
  lead to that process with the correct prescaler</div>
@@ -275,35 +276,35 @@
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>static Map&lt;Process,List&lt;Deviation&lt;Time&gt;&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getProcessesWithRelativePeriodicStimulus-Amalthea-">getProcessesWithRelativePeriodicStimulus</a></span>(Amalthea&nbsp;model)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessesWithRelativePeriodicStimulus</a></span>(Amalthea&nbsp;model)</code>
 <div class="block">Returns a Map of all sporadically triggered processes with their prescaler</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>static Map&lt;Process,List&lt;Time&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getProcessesWithRelativePeriodicStimulus-Amalthea-util.RuntimeUtil.TimeType-">getProcessesWithRelativePeriodicStimulus</a></span>(Amalthea&nbsp;model,
-                                        <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessesWithRelativePeriodicStimulus</a></span>(Amalthea&nbsp;model,
+                                        <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt)</code>
 <div class="block">Returns a Map of all sporadically triggered processes with their prescaler</div>
 </td>
 </tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>static Map&lt;ProcessingUnit,Double&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getProcessUtilization-Process-Amalthea-util.RuntimeUtil.TimeType-List-org.eclipse.emf.common.util.EMap-">getProcessUtilization</a></span>(Process&nbsp;process,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessUtilization</a></span>(Process&nbsp;process,
                      Amalthea&nbsp;model,
-                     <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                     <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
                      List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                     org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                     EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Calculates the utilization for a given process</div>
 </td>
 </tr>
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getProcessUtilization-Process-ProcessingUnit-Amalthea-util.RuntimeUtil.TimeType-List-org.eclipse.emf.common.util.EMap-">getProcessUtilization</a></span>(Process&nbsp;process,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessUtilization</a></span>(Process&nbsp;process,
                      ProcessingUnit&nbsp;procUnit,
                      Amalthea&nbsp;model,
-                     <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                     <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
                      List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                     org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                     EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Calculates the utilization for a given process on a given procUnit Assumption
  (wrong): All triggers activate the process on all procUnits together! (at the
  same time)</div>
@@ -311,72 +312,73 @@
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getProcessUtilization-Process-Time-ProcessingUnit-Amalthea-util.RuntimeUtil.TimeType-List-org.eclipse.emf.common.util.EMap-">getProcessUtilization</a></span>(Process&nbsp;process,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getProcessUtilization</a></span>(Process&nbsp;process,
                      Time&nbsp;period,
                      ProcessingUnit&nbsp;procUnit,
                      Amalthea&nbsp;model,
-                     <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                     <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
                      List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                     org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                     EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Calculates the process utilization</div>
 </td>
 </tr>
 <tr id="i29" class="rowColor">
 <td class="colFirst"><code>static List&lt;ProcessingUnitDefinition&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getprocUnitDefsWithSpecifiedExecutionNeedsOfRunnable-Runnable-org.eclipse.emf.common.util.EMap-">getprocUnitDefsWithSpecifiedExecutionNeedsOfRunnable</a></span>(Runnable&nbsp;runnable,
-                                                    org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getprocUnitDefsWithSpecifiedExecutionNeedsOfRunnable</a></span>(Runnable&nbsp;runnable,
+                                                    EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a list of all ProcessingUnitDefinitions for which the given runnable
  contains runtime in a ExecutionNeed element</div>
 </td>
 </tr>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getprocUnitUtilization-ProcessingUnit-Amalthea-util.RuntimeUtil.TimeType-List-org.eclipse.emf.common.util.EMap-">getprocUnitUtilization</a></span>(ProcessingUnit&nbsp;procUnit,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getprocUnitUtilization</a></span>(ProcessingUnit&nbsp;procUnit,
                       Amalthea&nbsp;model,
-                      <a href="file:///D:/workspace/javadoc/org/eclipse/app4mc/amalthea/model/util/RuntimeUtil.TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
+                      <a href="TimeType.html" title="enum in util">RuntimeUtil.TimeType</a>&nbsp;tt,
                       List&lt;HwFeature&gt;&nbsp;hwFeatures,
-                      org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                      EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Calculates the utilization for a given procUnit</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>static HashMap&lt;Stimulus,Long&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getTriggeredStimuli-Process-org.eclipse.emf.common.util.EMap-">getTriggeredStimuli</a></span>(Process&nbsp;process,
-                   org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getTriggeredStimuli</a></span>(Process&nbsp;process,
+                   EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns a map of all stimuli, triggered by this process, associated with its
  prescaler.</div>
 </td>
 </tr>
 <tr id="i32" class="altColor">
 <td class="colFirst"><code>static Map&lt;Process,Long&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#getTriggeringProcesses-Amalthea-InterProcessStimulus-org.eclipse.emf.common.util.EMap-">getTriggeringProcesses</a></span>(Amalthea&nbsp;model,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">getTriggeringProcesses</a></span>(Amalthea&nbsp;model,
                       InterProcessStimulus&nbsp;ip,
-                      org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                      EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">Returns all Processes that trigger the given InterProcessStimulus</div>
 </td>
 </tr>
 <tr id="i33" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#periodicStimulusFilter-Stimulus-">periodicStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">periodicStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#setMean-Distribution-long-">setMean</a></span>(Distribution&lt;T&gt;&nbsp;distribution,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">setMean</a></span>(Distribution&lt;T&gt;&nbsp;distribution,
        long&nbsp;l)</code>&nbsp;</td>
 </tr>
 <tr id="i35" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#setRuntimeOfRunnable-Runnable-ExecutionNeed-ProcessingUnitDefinition-org.eclipse.emf.common.util.EMap-">setRuntimeOfRunnable</a></span>(Runnable&nbsp;runnable,
+<td class="colLast"><code><span class="memberNameLink"><a href="#">setRuntimeOfRunnable</a></span>(Runnable&nbsp;runnable,
                     ExecutionNeed&nbsp;ExecutionNeeds,
                     ProcessingUnitDefinition&nbsp;procUnitDef,
-                    org.eclipse.emf.common.util.EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
+                    EMap&lt;ModeLabel,ModeLiteral&gt;&nbsp;modes)</code>
 <div class="block">set the runtime of the given runnable to the given runnable ExecutionNeed</div>
 </td>
 </tr>
 <tr id="i36" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="#sporadicStimulusFilter-Stimulus-">sporadicStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td></tr>
-</tbody></table>
+<td class="colLast"><code><span class="memberNameLink"><a href="#">sporadicStimulusFilter</a></span>(Stimulus&nbsp;stimulus)</code>&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 
 </ul>

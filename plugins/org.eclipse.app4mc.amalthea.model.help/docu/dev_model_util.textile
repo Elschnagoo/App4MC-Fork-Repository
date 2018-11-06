@@ -3,13 +3,12 @@ h3. Overview
 
 The model utilities provide implementations for typical usage scenarios:
 
-
-- *General Helper Classes* := Support for search, delete and caches
+- *General Helper Classes* := Support for search and delete
 - *Common Utilities* := Support for creation of elements and handling of custom properties
 - *Software Utilities* := Call graph traversal, accesses, calls
 - *Runtime Utilities* := Runtime, utilization, instructions
 - *Deployment Utilities* := Mapping of tasks to cores and data to memory
-- *Hardware Utilities* := Access pathes and latencies
+- *Hardware Utilities* := Access paths and latencies
 
 
 
