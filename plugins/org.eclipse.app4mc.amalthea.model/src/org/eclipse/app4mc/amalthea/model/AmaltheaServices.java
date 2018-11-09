@@ -23,6 +23,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EcoreEList;
 
 public class AmaltheaServices {
 
@@ -304,7 +307,7 @@ public class AmaltheaServices {
 				}
 			}
 		}
-		return unmodifiableEList(qualifiedPorts);
+		return unmodifiableEcoreEList(system, AmaltheaPackage.eINSTANCE.getISystem_InnerPorts(), qualifiedPorts);
 	}
 
 	public static EList<HwPort> getInnerPorts(HwStructure struct) {
@@ -315,7 +318,7 @@ public class AmaltheaServices {
 		for (HwModule module : getAllModules(struct)) {
 			ports.addAll(module.getPorts());
 		}
-		return unmodifiableEList(ports);
+		return unmodifiableEcoreEList(struct, AmaltheaPackage.eINSTANCE.getHwStructure_InnerPorts(), ports);
 	}
 
 	public static EList<HwModule> getAllModules(HwStructure struct) {
@@ -327,6 +330,12 @@ public class AmaltheaServices {
 			}
 		}
 		return unmodifiableEList(moduleList);
+	}
+
+	private static <T> EList<T> unmodifiableEcoreEList(final EObject eObject, final EReference eReference, List<? extends T> result) {
+		final int size = result.size();
+		final Object[] values = result.toArray();
+		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, eReference, size, values);
 	}
 
 	private static <T> EList<T> unmodifiableEList(List<? extends T> list) {
