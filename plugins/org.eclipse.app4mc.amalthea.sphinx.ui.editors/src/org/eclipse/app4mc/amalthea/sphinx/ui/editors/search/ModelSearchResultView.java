@@ -24,6 +24,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeNode;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -61,11 +62,11 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	protected void elementsChanged(final Object[] objects) {
 		if (getLayout() == FLAG_LAYOUT_FLAT) {
 			if (null != this.contentProvider) {
-				this.contentProvider.updateElements(objects);
+				this.contentProvider.addElements(objects);
 			}
 		} else {
 			if (null != this.contentTreeProvider) {
-				this.contentTreeProvider.updateElements(objects);
+				this.contentTreeProvider.addElements(objects);
 			}
 		}
 		getViewer().refresh();
@@ -126,10 +127,9 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	 */
 	@Override
 	protected void configureTableViewer(final TableViewer viewer) {
-		final SearchResultLabelProvider labelProvider = new SearchResultLabelProvider();
-		viewer.setLabelProvider(labelProvider);
 		this.contentProvider = new SearchResultContentProvider();
 		viewer.setContentProvider(this.contentProvider);
+		viewer.setLabelProvider(new SearchResultLabelProvider());
 	}
 
 	/**
@@ -159,20 +159,35 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 	}
 
 	/**
+	 * @see org.eclipse.search.ui.text.AbstractTextSearchViewPage#setLayout(int)
+	 */
+	@Override
+	public void setLayout(int layout) {
+		if (!isLayoutSupported(layout))
+			return;
+		if (getLayout() == layout)
+			return;
+
+		getViewer().setSelection(StructuredSelection.EMPTY, false);
+
+		super.setLayout(layout);
+	}
+
+	/**
 	 * @see org.eclipse.search.ui.text.AbstractTextSearchViewPage#fillToolbar(org.eclipse.jface.action.IToolBarManager)
 	 */
 	@Override
 	protected void fillToolbar(final IToolBarManager tbm) {
 		super.fillToolbar(tbm);
-		if (getLayout() == FLAG_LAYOUT_TREE) {
-			tbm.appendToGroup(IContextMenuConstants.GROUP_VIEWER_SETUP, this.toggleGroupViewAction);
-		}
+
+		tbm.appendToGroup(IContextMenuConstants.GROUP_VIEWER_SETUP, this.toggleGroupViewAction);
 	}
 
 	private class ToggleGroupViewAction extends Action {
 
 		public ToggleGroupViewAction(final String text) {
 			super(text, IAction.AS_CHECK_BOX);
+			setChecked(getLayout() == FLAG_LAYOUT_TREE);
 			setToolTipText(text);
 		}
 
@@ -181,9 +196,12 @@ public class ModelSearchResultView extends AbstractTextSearchViewPage {
 		 */
 		@Override
 		public void run() {
-			final SearchResultTreeContentProvider contentProvider = (SearchResultTreeContentProvider) getViewer()
-					.getContentProvider();
-			contentProvider.setGroupByTypes(isChecked());
+			if (isChecked()) {
+				setLayout(FLAG_LAYOUT_TREE);
+			} else {
+				setLayout(FLAG_LAYOUT_FLAT);
+			}
+
 			getViewer().refresh();
 		}
 	}
