@@ -216,7 +216,7 @@ public class EcoreGenericsHelper {
 		ArrayList<EObject> childObjects = new ArrayList<EObject>();
 		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
 		
-		
+		childObjects.add(factory.createDoubleObject());
 		childObjects.add(factory.createLongObject());
 		childObjects.add(factory.createTime());
 		
