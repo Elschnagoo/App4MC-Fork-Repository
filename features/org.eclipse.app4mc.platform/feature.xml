@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.app4mc.platform"
       label="APP4MC Tool Platform"
-      version="0.9.2.qualifier"
+      version="0.9.3.qualifier"
       provider-name="Eclipse APP4MC"
       plugin="org.eclipse.app4mc.platform.ide"
       license-feature="org.eclipse.license"
