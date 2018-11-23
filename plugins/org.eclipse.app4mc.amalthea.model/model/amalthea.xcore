@@ -27,7 +27,7 @@
 
 @Ecore(
 	nsPrefix="am",
-	nsURI="http://app4mc.eclipse.org/amalthea/0.9.2"
+	nsURI="http://app4mc.eclipse.org/amalthea/0.9.3"
 )
 
 package org.eclipse.app4mc.amalthea.model
@@ -50,7 +50,7 @@ import org.eclipse.emf.ecore.util.EcoreEList$UnmodifiableEList
 class Amalthea extends BaseObject
 {
 	derived readonly String version get {
-		return "0.9.2"
+		return "0.9.3"
 	}
 	
 	contains CommonElements commonElements

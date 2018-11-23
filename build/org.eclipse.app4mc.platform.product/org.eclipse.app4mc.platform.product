@@ -11,7 +11,7 @@
 (c) Copyright Eclipse APP4MC contributors and others. 2015 - 2018. 
 All rights reserved.
 
-Version 0.9.2
+Version 0.9.3
       </text>
    </aboutInfo>
 
@@ -527,7 +527,6 @@ version(s), and exceptions or additional permissions here}.&quot;
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository" enabled="true" />
       <repository location="http://download.eclipse.org/eclipse/updates/4.7" enabled="true" />
       <repository location="http://download.eclipse.org/releases/oxygen" enabled="true" />
-
    </repositories>
 
    <preferencesInfo>
