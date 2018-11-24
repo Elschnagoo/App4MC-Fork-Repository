@@ -97,7 +97,6 @@ public interface Frequency extends Quantity {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='double _value = this.getValue();\n&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Double%&gt;.valueOf(_value) + \" \");\n&lt;%java.lang.String%&gt; _xifexpression = null;\n&lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%&gt; _unit = this.getUnit();\nboolean _equals = &lt;%com.google.common.base.Objects%&gt;.equal(_unit, &lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%&gt;._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"&lt;unit&gt;\";\n}\nelse\n{\n\t_xifexpression = this.getUnit().getLiteral();\n}\nreturn (_plus + _xifexpression);'"
 	 * @generated
 	 */
 	String toString();

@@ -98,7 +98,6 @@ public interface Time extends Quantity, Value, Comparable<Time> {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.math.BigInteger%&gt; _value = this.getValue();\n&lt;%java.lang.String%&gt; _plus = (_value + \" \");\n&lt;%java.lang.String%&gt; _xifexpression = null;\n&lt;%org.eclipse.app4mc.amalthea.model.TimeUnit%&gt; _unit = this.getUnit();\nboolean _equals = &lt;%com.google.common.base.Objects%&gt;.equal(_unit, &lt;%org.eclipse.app4mc.amalthea.model.TimeUnit%&gt;._UNDEFINED_);\nif (_equals)\n{\n\t_xifexpression = \"&lt;unit&gt;\";\n}\nelse\n{\n\t_xifexpression = this.getUnit().getLiteral();\n}\nreturn (_plus + _xifexpression);'"
 	 * @generated
 	 */
 	String toString();
@@ -107,7 +106,6 @@ public interface Time extends Quantity, Value, Comparable<Time> {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" timeUnique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.compareTimes(this, time);'"
 	 * @generated
 	 */
 	int compareTo(Time time);

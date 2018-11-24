@@ -161,7 +161,7 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * @return the value of the '<em>Delegated</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_Delegated()
 	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.HwStructure%&gt;);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	boolean isDelegated();
@@ -177,7 +177,7 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * @return the value of the '<em>Connections</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_Connections()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='&lt;%org.eclipse.emf.ecore.EReference%&gt; _hwConnection_Port1 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwConnection_Port1();\n&lt;%org.eclipse.emf.ecore.EReference%&gt; _hwConnection_Port2 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwConnection_Port2();\nreturn &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwConnection%&gt;&gt;getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%&gt;.eINSTANCE.getHwPort_Connections(), \n\tjava.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%&gt;&gt;unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%&gt;&gt;newHashSet(_hwConnection_Port1, _hwConnection_Port2)));'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	EList<HwConnection> getConnections();
@@ -186,7 +186,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.String%&gt; _name = null;\nif (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer)!=null)\n{\n\t_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer).getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();

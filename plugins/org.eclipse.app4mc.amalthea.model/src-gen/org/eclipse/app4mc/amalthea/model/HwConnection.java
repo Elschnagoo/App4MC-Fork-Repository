@@ -179,7 +179,7 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	 * @return the value of the '<em>Internal</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_Internal()
 	 * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\nreturn (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.ConnectionHandler%&gt;);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	boolean isInternal();
@@ -188,7 +188,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();\n&lt;%java.lang.String%&gt; _name = null;\nif (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer)!=null)\n{\n\t_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer).getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
@@ -197,7 +196,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;unmodifiableEList(&lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;toEList(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;filterNull(&lt;%org.eclipse.xtext.xbase.lib.CollectionLiterals%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;newArrayList(this.getPort1(), this.getPort2()))));'"
 	 * @generated
 	 */
 	EList<HwPort> getPorts();

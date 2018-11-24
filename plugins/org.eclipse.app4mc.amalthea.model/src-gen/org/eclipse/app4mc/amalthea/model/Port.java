@@ -54,7 +54,6 @@ public interface Port extends ReferableBaseObject, ITaggable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Component%&gt; _containingComponent = this.getContainingComponent();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingComponent!=null)\n{\n\t_name=_containingComponent.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();

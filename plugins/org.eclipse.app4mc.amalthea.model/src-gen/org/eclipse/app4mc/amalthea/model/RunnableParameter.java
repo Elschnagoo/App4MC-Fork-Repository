@@ -138,7 +138,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _containingRunnable = this.getContainingRunnable();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingRunnable!=null)\n{\n\t_name=_containingRunnable.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
@@ -147,7 +146,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _containingRunnable = this.getContainingRunnable();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingRunnable!=null)\n{\n\t_name=_containingRunnable.getName();\n}\nfinal &lt;%java.lang.String%&gt; runName = _name;\n&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(runName);\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"&lt;runnable&gt;\";\n}\nelse\n{\n\t_xifexpression = runName;\n}\n&lt;%java.lang.String%&gt; _plus = (_xifexpression + \"::\");\n&lt;%java.lang.String%&gt; _xifexpression_1 = null;\nboolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(this.getName());\nif (_isNullOrEmpty_1)\n{\n\t_xifexpression_1 = \"&lt;parameter&gt;\";\n}\nelse\n{\n\t_xifexpression_1 = this.getName();\n}\nreturn (_plus + _xifexpression_1);'"
 	 * @generated
 	 */
 	String toString();

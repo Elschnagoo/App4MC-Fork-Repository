@@ -47,7 +47,7 @@ public interface RunnableItem extends BaseObject {
 	 * @return the value of the '<em>Containing Runnable</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableItem_ContainingRunnable()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;&gt;getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt;.class);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable();

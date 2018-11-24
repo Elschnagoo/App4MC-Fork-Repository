@@ -45,7 +45,7 @@ public interface HwPath extends EObject {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPath_Source()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='return this.getContainingAccessElement().getSource();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	ProcessingUnit getSource();
@@ -61,7 +61,7 @@ public interface HwPath extends EObject {
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPath_Destination()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' get='return this.getContainingAccessElement().getDestination();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
 	HwDestination getDestination();
@@ -70,7 +70,6 @@ public interface HwPath extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return null;'"
 	 * @generated
 	 */
 	HwAccessElement getContainingAccessElement();

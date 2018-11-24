@@ -44,7 +44,7 @@ public interface ModeLabel extends AbstractMemoryElement, IDisplayName {
 	 * @return the value of the '<em>Mode</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabel_Mode()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert' get='&lt;%org.eclipse.app4mc.amalthea.model.ModeLiteral%&gt; _initialValue = this.getInitialValue();\n&lt;%org.eclipse.app4mc.amalthea.model.Mode%&gt; _containingMode = null;\nif (_initialValue!=null)\n{\n\t_containingMode=_initialValue.getContainingMode();\n}\nreturn _containingMode;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
 	Mode getMode();

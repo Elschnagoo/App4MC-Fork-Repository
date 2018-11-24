@@ -108,7 +108,6 @@ public interface CallArgument extends ReferableObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(super.getName());\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"access.1\";\n}\nelse\n{\n\t_xifexpression = super.getName();\n}\nreturn _xifexpression;'"
 	 * @generated
 	 */
 	String getName();
@@ -117,7 +116,6 @@ public interface CallArgument extends ReferableObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%&gt; _containingCall = this.getContainingCall();\n&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _containingRunnable = null;\nif (_containingCall!=null)\n{\n\t_containingRunnable=_containingCall.getContainingRunnable();\n}\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingRunnable!=null)\n{\n\t_name=_containingRunnable.getName();\n}\n&lt;%java.lang.String%&gt; _encode = this.encode(_name);\n&lt;%java.lang.String%&gt; _plus = (_encode + \"/calls/\");\n&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%&gt; _containingCall_1 = this.getContainingCall();\n&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _runnable = null;\nif (_containingCall_1!=null)\n{\n\t_runnable=_containingCall_1.getRunnable();\n}\n&lt;%java.lang.String%&gt; _name_1 = null;\nif (_runnable!=null)\n{\n\t_name_1=_runnable.getName();\n}\n&lt;%java.lang.String%&gt; _encode_1 = this.encode(_name_1);\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + _encode_1);\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \"/param/\");\n&lt;%org.eclipse.app4mc.amalthea.model.RunnableParameter%&gt; _parameter = this.getParameter();\n&lt;%java.lang.String%&gt; _name_2 = null;\nif (_parameter!=null)\n{\n\t_name_2=_parameter.getName();\n}\n&lt;%java.lang.String%&gt; _encode_2 = this.encode(_name_2);\n&lt;%java.lang.String%&gt; _plus_3 = (_plus_2 + _encode_2);\n&lt;%java.lang.String%&gt; _plus_4 = (_plus_3 + \"/\");\n&lt;%java.lang.String%&gt; _encode_3 = this.encode(this.getName());\n&lt;%java.lang.String%&gt; _plus_5 = (_plus_4 + _encode_3);\n&lt;%java.lang.String%&gt; _plus_6 = (_plus_5 + \"?type=\");\n&lt;%java.lang.String%&gt; _name_3 = this.eClass().getName();\nreturn (_plus_6 + _name_3);'"
 	 * @generated
 	 */
 	String computeUniqueName();

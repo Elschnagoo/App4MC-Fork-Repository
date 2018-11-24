@@ -54,7 +54,6 @@ public interface ModeValueDisjunction extends BaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry%&gt;&gt; _entries = this.getEntries();\nfor (final &lt;%org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry%&gt; entry : _entries)\n{\n\tboolean _isSatisfiedBy = entry.isSatisfiedBy(assignment);\n\tif (_isSatisfiedBy)\n\t{\n\t\treturn true;\n\t}\n}\nreturn false;'"
 	 * @generated
 	 */
 	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);

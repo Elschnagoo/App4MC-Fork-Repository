@@ -82,7 +82,6 @@ public interface HwFeature extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingCategory!=null)\n{\n\t_name=_containingCategory.getName();\n}\nreturn this.basicComputeUniqueNameWithPrefix(_name);'"
 	 * @generated
 	 */
 	String computeUniqueName();
@@ -91,7 +90,6 @@ public interface HwFeature extends ReferableBaseObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();\n&lt;%java.lang.String%&gt; _name = null;\nif (_containingCategory!=null)\n{\n\t_name=_containingCategory.getName();\n}\nfinal &lt;%java.lang.String%&gt; featureName = _name;\n&lt;%java.lang.String%&gt; _xifexpression = null;\nboolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(featureName);\nif (_isNullOrEmpty)\n{\n\t_xifexpression = \"&lt;category&gt;\";\n}\nelse\n{\n\t_xifexpression = featureName;\n}\n&lt;%java.lang.String%&gt; _plus = (_xifexpression + \"::\");\n&lt;%java.lang.String%&gt; _xifexpression_1 = null;\nboolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%&gt;.isNullOrEmpty(this.getName());\nif (_isNullOrEmpty_1)\n{\n\t_xifexpression_1 = \"&lt;feature&gt;\";\n}\nelse\n{\n\t_xifexpression_1 = this.getName();\n}\nreturn (_plus + _xifexpression_1);'"
 	 * @generated
 	 */
 	String toString();
