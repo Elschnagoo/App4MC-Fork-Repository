@@ -194,6 +194,27 @@ class TransmissionPolicy
 }
 
 /*
+ * Abstract description for a set of execution cycles (ticks)
+ */
+abstract class Ticks {}
+
+/*
+ * Deviated set of execution cycles (ticks)
+ */
+class TicksDeviation extends Ticks
+{
+	contains Deviation<LongObject> deviation
+}
+
+/*
+ * Constant set of execution cycles (ticks)
+ */
+class TicksConstant extends Ticks
+{
+	long value = "0"
+}
+
+/*
  * Abstract description for a set of execution cycles
  */
 abstract class Instructions
@@ -3416,6 +3437,17 @@ class NeedEntry wraps java.util.Map$Entry
 //	refers HwFeatureCategory[1] key
 	String[1] key
 	contains Need[1] value
+}
+/*
+ * Representation of the execution ticks of a Runnable (default and core-specific)
+ */
+class ExecutionTicks extends ComputationItem {
+	contains Ticks ^default
+	contains TicksEntry[] extended
+}
+class TicksEntry wraps java.util.Map$Entry {
+	refers ProcessingUnitDefinition[1] key
+	contains Ticks[1] value
 }
 
 /*

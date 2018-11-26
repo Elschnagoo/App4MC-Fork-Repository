@@ -121,6 +121,7 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptiveWithBudgetEnforcement;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
@@ -314,6 +315,9 @@ import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
+import org.eclipse.app4mc.amalthea.model.Ticks;
+import org.eclipse.app4mc.amalthea.model.TicksConstant;
+import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
@@ -396,6 +400,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CORE_CLASSIFIER: return createCoreClassifier();
 			case AmaltheaPackage.MEMORY_CLASSIFIER: return createMemoryClassifier();
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
+			case AmaltheaPackage.TICKS_DEVIATION: return createTicksDeviation();
+			case AmaltheaPackage.TICKS_CONSTANT: return createTicksConstant();
 			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
 			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.NEED_DEVIATION: return createNeedDeviation();
@@ -617,6 +623,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EXECUTION_NEED: return createExecutionNeed();
 			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: return (EObject)createExecutionNeedExtended();
 			case AmaltheaPackage.NEED_ENTRY: return (EObject)createNeedEntry();
+			case AmaltheaPackage.EXECUTION_TICKS: return createExecutionTicks();
+			case AmaltheaPackage.TICKS_ENTRY: return (EObject)createTicksEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
@@ -979,6 +987,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TransmissionPolicy createTransmissionPolicy() {
 		TransmissionPolicyImpl transmissionPolicy = new TransmissionPolicyImpl();
 		return transmissionPolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TicksDeviation createTicksDeviation() {
+		TicksDeviationImpl ticksDeviation = new TicksDeviationImpl();
+		return ticksDeviation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TicksConstant createTicksConstant() {
+		TicksConstantImpl ticksConstant = new TicksConstantImpl();
+		return ticksConstant;
 	}
 
 	/**
@@ -3189,6 +3217,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public Map.Entry<String, Need> createNeedEntry() {
 		NeedEntryImpl needEntry = new NeedEntryImpl();
 		return needEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionTicks createExecutionTicks() {
+		ExecutionTicksImpl executionTicks = new ExecutionTicksImpl();
+		return executionTicks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<ProcessingUnitDefinition, Ticks> createTicksEntry() {
+		TicksEntryImpl ticksEntry = new TicksEntryImpl();
+		return ticksEntry;
 	}
 
 	/**

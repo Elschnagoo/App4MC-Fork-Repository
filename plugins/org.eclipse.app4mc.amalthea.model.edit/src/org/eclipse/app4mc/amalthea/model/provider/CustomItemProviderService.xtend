@@ -33,6 +33,7 @@ import org.eclipse.app4mc.amalthea.model.BlockingType
 import org.eclipse.app4mc.amalthea.model.BooleanObject
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit
+import org.eclipse.app4mc.amalthea.model.CallArgument
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype
 import org.eclipse.app4mc.amalthea.model.ChannelAccess
 import org.eclipse.app4mc.amalthea.model.ChannelReceive
@@ -58,12 +59,14 @@ import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
+import org.eclipse.app4mc.amalthea.model.DirectionType
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric
@@ -136,6 +139,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
+import org.eclipse.app4mc.amalthea.model.RunnableParameter
 import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
@@ -154,6 +158,9 @@ import org.eclipse.app4mc.amalthea.model.TagGroup
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
+import org.eclipse.app4mc.amalthea.model.Ticks
+import org.eclipse.app4mc.amalthea.model.TicksConstant
+import org.eclipse.app4mc.amalthea.model.TicksDeviation
 import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit
@@ -170,14 +177,12 @@ import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
 import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
+import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.RunnableParameter
-import org.eclipse.app4mc.amalthea.model.DirectionType
-import org.eclipse.app4mc.amalthea.model.CallArgument
 
 class CustomItemProviderService {
 
@@ -307,6 +312,13 @@ class CustomItemProviderService {
 		switch instr {
 			InstructionsConstant: getInstructionsConstantItemProviderText(instr, null)
 			InstructionsDeviation: getInstructionsDeviationItemProviderText(instr, null)
+		}
+	}
+
+	private def static getTicksText(Ticks ticks) {
+		switch ticks {
+			TicksConstant: getTicksConstantItemProviderText(ticks, null)
+			TicksDeviation: getTicksDeviationItemProviderText(ticks, null)
 		}
 	}
 
@@ -848,6 +860,54 @@ class CustomItemProviderService {
 	def static ViewerNotification getNeedDeviationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(NeedDeviation)) {
 			case AmaltheaPackage::NEED_DEVIATION__DEVIATION:
+				return new ViewerNotification(notification, notification.getNotifier(), true, true)
+		}
+		return null
+	}
+
+	/*****************************************************************************
+	 * 						TicksConstantItemProvider
+	 *****************************************************************************/
+	def static String getTicksConstantItemProviderText(Object object, String defaultText) {
+		if (object instanceof TicksConstant) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val s2 = Long.toString(object.value)
+			return s1 + "ticks (constant): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getTicksConstantItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+		switch notification.getFeatureID(typeof(TicksConstant)) {
+			case AmaltheaPackage::TICKS_CONSTANT__VALUE: {
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				addParentLabelNotification(list, notification)
+				}
+		}
+		return list
+	}
+
+	/*****************************************************************************
+	 * 						TicksDeviationItemProvider
+	 *****************************************************************************/
+	def static String getTicksDeviationItemProviderText(Object object, String defaultText) {
+		if (object instanceof TicksDeviation) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(feature == "value") "" else feature + " -- "
+			val distName = object?.deviation?.distribution?.eClass?.name
+			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
+			return s1 + "ticks (deviation): " + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	def static ViewerNotification getTicksDeviationItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(TicksDeviation)) {
+			case AmaltheaPackage::TICKS_DEVIATION__DEVIATION:
 				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
 		return null
@@ -2161,6 +2221,7 @@ class CustomItemProviderService {
 			LabelAccess: getLabelAccessItemProviderText(item, null)
 			RunnableCall: getRunnableCallItemProviderText(item, null)
 			ExecutionNeed: "Execution Need"
+			ExecutionTicks: "Execution Ticks"
 			Group: getGroupItemProviderText(item, null)
 			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
 			RunnableProbabilitySwitch: "Probability Switch"
@@ -2626,6 +2687,33 @@ class CustomItemProviderService {
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
 		return null
+	}
+	/*****************************************************************************
+	 * 						TicksEntryItemProvider
+	 *****************************************************************************/
+	def static String getTicksEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof TicksEntryImpl) {
+			val typeName = object?.getKey()?.name
+			val ticks = object?.getValue()
+
+			val s1 = if(typeName.isNullOrEmpty) "<pu definition>" else "Definition " + typeName
+			val s2 = if(ticks === null) "<ticks>" else getTicksText(ticks)
+			return s1 + " -- " + s2;
+		} else {
+			return defaultText
+		}
+	}
+
+	def static List<ViewerNotification> getTicksEntryItemProviderNotifications(Notification notification) {
+		val list = newArrayList
+
+		switch notification.getFeatureID(typeof(Map.Entry)) {
+			case AmaltheaPackage::TICKS_ENTRY__KEY:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+			case AmaltheaPackage::TICKS_ENTRY__VALUE:
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
+		}
+		return list
 	}
 
 	/*****************************************************************************

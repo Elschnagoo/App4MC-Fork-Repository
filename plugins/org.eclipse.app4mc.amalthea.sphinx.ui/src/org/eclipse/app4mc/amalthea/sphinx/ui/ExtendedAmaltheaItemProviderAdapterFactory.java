@@ -44,6 +44,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTrig
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionTicksIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRIP;
@@ -185,6 +186,11 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 		return new ExtendedExecutionNeedIP(this);
 	}
 
+	@Override
+	public Adapter createExecutionTicksAdapter() {
+		return new ExtendedExecutionTicksIP(this);
+	}
+	
 	@Override
 	public Adapter createGroupAdapter() {
 		return new ExtendedGroupIP(this);

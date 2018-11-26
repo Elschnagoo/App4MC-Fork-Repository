@@ -129,6 +129,7 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -334,6 +335,9 @@ import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
+import org.eclipse.app4mc.amalthea.model.Ticks;
+import org.eclipse.app4mc.amalthea.model.TicksConstant;
+import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
@@ -533,6 +537,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TRANSMISSION_POLICY: {
 				TransmissionPolicy transmissionPolicy = (TransmissionPolicy)theEObject;
 				T1 result = caseTransmissionPolicy(transmissionPolicy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TICKS: {
+				Ticks ticks = (Ticks)theEObject;
+				T1 result = caseTicks(ticks);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TICKS_DEVIATION: {
+				TicksDeviation ticksDeviation = (TicksDeviation)theEObject;
+				T1 result = caseTicksDeviation(ticksDeviation);
+				if (result == null) result = caseTicks(ticksDeviation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TICKS_CONSTANT: {
+				TicksConstant ticksConstant = (TicksConstant)theEObject;
+				T1 result = caseTicksConstant(ticksConstant);
+				if (result == null) result = caseTicks(ticksConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3206,6 +3230,22 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.EXECUTION_TICKS: {
+				ExecutionTicks executionTicks = (ExecutionTicks)theEObject;
+				T1 result = caseExecutionTicks(executionTicks);
+				if (result == null) result = caseComputationItem(executionTicks);
+				if (result == null) result = caseRunnableItem(executionTicks);
+				if (result == null) result = caseBaseObject(executionTicks);
+				if (result == null) result = caseIAnnotatable(executionTicks);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TICKS_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, Ticks> ticksEntry = (Map.Entry<ProcessingUnitDefinition, Ticks>)theEObject;
+				T1 result = caseTicksEntry(ticksEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.MODE_LABEL_ACCESS: {
 				ModeLabelAccess modeLabelAccess = (ModeLabelAccess)theEObject;
 				T1 result = caseModeLabelAccess(modeLabelAccess);
@@ -3865,6 +3905,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTransmissionPolicy(TransmissionPolicy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticks</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticks</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTicks(Ticks object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticks Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticks Deviation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTicksDeviation(TicksDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticks Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticks Constant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTicksConstant(TicksConstant object) {
 		return null;
 	}
 
@@ -8140,6 +8225,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseNeedEntry(Map.Entry<String, Need> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Ticks</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Ticks</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseExecutionTicks(ExecutionTicks object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticks Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticks Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTicksEntry(Map.Entry<ProcessingUnitDefinition, Ticks> object) {
 		return null;
 	}
 

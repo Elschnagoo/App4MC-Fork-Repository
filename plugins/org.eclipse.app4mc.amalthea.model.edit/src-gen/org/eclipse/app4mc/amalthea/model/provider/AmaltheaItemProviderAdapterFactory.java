@@ -222,6 +222,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TicksDeviation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TicksDeviationItemProvider ticksDeviationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TicksDeviation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTicksDeviationAdapter() {
+		if (ticksDeviationItemProvider == null) {
+			ticksDeviationItemProvider = new TicksDeviationItemProvider(this);
+		}
+
+		return ticksDeviationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TicksConstant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TicksConstantItemProvider ticksConstantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TicksConstant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTicksConstantAdapter() {
+		if (ticksConstantItemProvider == null) {
+			ticksConstantItemProvider = new TicksConstantItemProvider(this);
+		}
+
+		return ticksConstantItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5305,6 +5351,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ExecutionTicks} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionTicksItemProvider executionTicksItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ExecutionTicks}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExecutionTicksAdapter() {
+		if (executionTicksItemProvider == null) {
+			executionTicksItemProvider = new ExecutionTicksItemProvider(this);
+		}
+
+		return executionTicksItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TicksEntryItemProvider ticksEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTicksEntryAdapter() {
+		if (ticksEntryItemProvider == null) {
+			ticksEntryItemProvider = new TicksEntryItemProvider(this);
+		}
+
+		return ticksEntryItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6260,6 +6352,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (coreClassifierItemProvider != null) coreClassifierItemProvider.dispose();
 		if (memoryClassifierItemProvider != null) memoryClassifierItemProvider.dispose();
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
+		if (ticksDeviationItemProvider != null) ticksDeviationItemProvider.dispose();
+		if (ticksConstantItemProvider != null) ticksConstantItemProvider.dispose();
 		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
 		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (needDeviationItemProvider != null) needDeviationItemProvider.dispose();
@@ -6481,6 +6575,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (executionNeedItemProvider != null) executionNeedItemProvider.dispose();
 		if (executionNeedExtendedItemProvider != null) executionNeedExtendedItemProvider.dispose();
 		if (needEntryItemProvider != null) needEntryItemProvider.dispose();
+		if (executionTicksItemProvider != null) executionTicksItemProvider.dispose();
+		if (ticksEntryItemProvider != null) ticksEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();

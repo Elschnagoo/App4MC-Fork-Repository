@@ -88,6 +88,24 @@ public interface AmaltheaFactory extends EFactory {
 	TransmissionPolicy createTransmissionPolicy();
 
 	/**
+	 * Returns a new object of class '<em>Ticks Deviation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticks Deviation</em>'.
+	 * @generated
+	 */
+	TicksDeviation createTicksDeviation();
+
+	/**
+	 * Returns a new object of class '<em>Ticks Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticks Constant</em>'.
+	 * @generated
+	 */
+	TicksConstant createTicksConstant();
+
+	/**
 	 * Returns a new object of class '<em>Instructions Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2030,6 +2048,15 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	ExecutionNeed createExecutionNeed();
+
+	/**
+	 * Returns a new object of class '<em>Execution Ticks</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution Ticks</em>'.
+	 * @generated
+	 */
+	ExecutionTicks createExecutionTicks();
 
 	/**
 	 * Returns a new object of class '<em>Mode Label Access</em>'.

@@ -76,6 +76,7 @@ import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -187,6 +188,9 @@ import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.Ticks;
+import org.eclipse.app4mc.amalthea.model.TicksConstant;
+import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
@@ -203,6 +207,7 @@ import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
+import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -446,6 +451,22 @@ public class CustomItemProviderService {
       if (instr instanceof InstructionsDeviation) {
         _matched=true;
         _switchResult = CustomItemProviderService.getInstructionsDeviationItemProviderText(instr, null);
+      }
+    }
+    return _switchResult;
+  }
+  
+  private static String getTicksText(final Ticks ticks) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (ticks instanceof TicksConstant) {
+      _matched=true;
+      _switchResult = CustomItemProviderService.getTicksConstantItemProviderText(ticks, null);
+    }
+    if (!_matched) {
+      if (ticks instanceof TicksDeviation) {
+        _matched=true;
+        _switchResult = CustomItemProviderService.getTicksDeviationItemProviderText(ticks, null);
       }
     }
     return _switchResult;
@@ -1370,6 +1391,97 @@ public class CustomItemProviderService {
     int _featureID = notification.getFeatureID(NeedDeviation.class);
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.NEED_DEVIATION__DEVIATION)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, true, true);
+    }
+    return null;
+  }
+  
+  /**
+   * TicksConstantItemProvider
+   */
+  public static String getTicksConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TicksConstant)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      final String s2 = Long.toString(((TicksConstant)object).getValue());
+      return ((s1 + "ticks (constant): ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getTicksConstantItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(TicksConstant.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TICKS_CONSTANT__VALUE)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+      CustomItemProviderService.addParentLabelNotification(list, notification);
+    }
+    return list;
+  }
+  
+  /**
+   * TicksDeviationItemProvider
+   */
+  public static String getTicksDeviationItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TicksDeviation)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(feature, "value");
+      if (_equals) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      Deviation<LongObject> _deviation = null;
+      if (((TicksDeviation)object)!=null) {
+        _deviation=((TicksDeviation)object).getDeviation();
+      }
+      Distribution<LongObject> _distribution = null;
+      if (_deviation!=null) {
+        _distribution=_deviation.getDistribution();
+      }
+      EClass _eClass = null;
+      if (_distribution!=null) {
+        _eClass=_distribution.eClass();
+      }
+      String _name = null;
+      if (_eClass!=null) {
+        _name=_eClass.getName();
+      }
+      final String distName = _name;
+      String _xifexpression_1 = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
+      if (_isNullOrEmpty) {
+        _xifexpression_1 = "<distribution>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
+      }
+      final String s2 = _xifexpression_1;
+      return ((s1 + "ticks (deviation): ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static ViewerNotification getTicksDeviationItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(TicksDeviation.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TICKS_DEVIATION__DEVIATION)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, true, true);
@@ -4029,6 +4141,12 @@ public class CustomItemProviderService {
       }
     }
     if (!_matched) {
+      if (item instanceof ExecutionTicks) {
+        _matched=true;
+        _switchResult = "Execution Ticks";
+      }
+    }
+    if (!_matched) {
       if (item instanceof Group) {
         _matched=true;
         _switchResult = CustomItemProviderService.getGroupItemProviderText(item, null);
@@ -4976,6 +5094,67 @@ public class CustomItemProviderService {
       return new ViewerNotification(notification, _notifier, false, true);
     }
     return null;
+  }
+  
+  /**
+   * TicksEntryItemProvider
+   */
+  public static String getTicksEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TicksEntryImpl)) {
+      ProcessingUnitDefinition _key = null;
+      if (((TicksEntryImpl)object)!=null) {
+        _key=((TicksEntryImpl)object).getKey();
+      }
+      String _name = null;
+      if (_key!=null) {
+        _name=_key.getName();
+      }
+      final String typeName = _name;
+      Ticks _value = null;
+      if (((TicksEntryImpl)object)!=null) {
+        _value=((TicksEntryImpl)object).getValue();
+      }
+      final Ticks ticks = _value;
+      String _xifexpression = null;
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<pu definition>";
+      } else {
+        _xifexpression = ("Definition " + typeName);
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      if ((ticks == null)) {
+        _xifexpression_1 = "<ticks>";
+      } else {
+        _xifexpression_1 = CustomItemProviderService.getTicksText(ticks);
+      }
+      final String s2 = _xifexpression_1;
+      return ((s1 + " -- ") + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static List<ViewerNotification> getTicksEntryItemProviderNotifications(final Notification notification) {
+    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
+    int _featureID = notification.getFeatureID(Map.Entry.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.TICKS_ENTRY__KEY)) {
+      _matched=true;
+      Object _notifier = notification.getNotifier();
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      list.add(_viewerNotification);
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TICKS_ENTRY__VALUE)) {
+        _matched=true;
+        Object _notifier_1 = notification.getNotifier();
+        ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);
+        list.add(_viewerNotification_1);
+      }
+    }
+    return list;
   }
   
   /**

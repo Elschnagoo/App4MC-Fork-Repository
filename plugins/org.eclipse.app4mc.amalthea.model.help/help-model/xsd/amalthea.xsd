@@ -833,6 +833,53 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="Ticks">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Ticks" type="am:Ticks">
+    <xsd:annotation>
+      <xsd:documentation>Abstract description for a set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TicksDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Ticks">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="deviation" type="am:Deviation"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TicksDeviation" type="am:TicksDeviation">
+    <xsd:annotation>
+      <xsd:documentation>Deviated set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TicksConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:Ticks">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TicksConstant" type="am:TicksConstant">
+    <xsd:annotation>
+      <xsd:documentation>Constant set of execution cycles (ticks)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType abstract="true" name="Instructions">
     <xsd:annotation>
       <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
@@ -5265,6 +5312,35 @@ which are belonging together.</xsd:documentation>
     <xsd:attribute name="key" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="NeedEntry" type="am:NeedEntry"/>
+  <xsd:complexType name="ExecutionTicks">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution ticks of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ComputationItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="default" type="am:Ticks"/>
+          <xsd:element name="extended" type="am:TicksEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ExecutionTicks" type="am:ExecutionTicks">
+    <xsd:annotation>
+      <xsd:documentation>Representation of the execution ticks of a Runnable (default and core-specific)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TicksEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
+      <xsd:element name="value" type="am:Ticks"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="key" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="TicksEntry" type="am:TicksEntry"/>
   <xsd:complexType name="ModeLabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
