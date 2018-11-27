@@ -18,65 +18,36 @@ package org.eclipse.app4mc.amalthea.model.builder;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.NeedConstant;
 import org.eclipse.app4mc.amalthea.model.NeedDeviation;
-import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
-import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
-import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
+/**
+ * Creates Need entries for Instructions 
+ * 
+ * @deprecated (0.9.3) use {@link ExecutionTicks} instead.
+ */
+@Deprecated
 public class InstructionsBuilder {
 
 	// ********** Execution Need (Runnable items) **********
 
-	public NeedConstant default_Instructions(final ExecutionNeed container, final long instructions) {
+	public NeedConstant instructions(final ExecutionNeed container, final long instructions) {
 		final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
-		container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
 		return need;
 	}
 
-	public NeedDeviation default_Instructions(final ExecutionNeed container, final Deviation<LongObject> instructions) {
+	public NeedDeviation instructions(final ExecutionNeed container, final Deviation<LongObject> instructions) {
 		final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
-		container.getDefault().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
+		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
 		return need;
-	}
-
-	public NeedConstant extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final long instructions) {
-		final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
-		if (container.getExtended().containsKey(puDef) == false) {
-			container.getExtended().put(puDef, new BasicEMap<String, Need>());
-		}
-		container.getExtended().get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
-		return need;
-	}
-
-	public NeedDeviation extended_Instructions(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final Deviation<LongObject> instructions) {
-		final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
-		if (container.getExtended().containsKey(puDef) == false) {
-			container.getExtended().put(puDef, new BasicEMap<String, Need>());
-		}
-		container.getExtended().get(puDef).put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
-		return need;
-	}
-
-	// ********** Execution Need (Computation Items) **********
-
-	public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final long instructions) {
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedConstant(instructions);
-		container.getComputationItems().add(execNeed);
-		return execNeed;
-	}
-
-	public ExecutionNeed execNeed_default_Instructions(final Scheduler container, final Deviation<LongObject> instructions) {
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(instructions);
-		container.getComputationItems().add(execNeed);
-		return execNeed;
 	}
 
 	// ********** Hardware Feature Category **********

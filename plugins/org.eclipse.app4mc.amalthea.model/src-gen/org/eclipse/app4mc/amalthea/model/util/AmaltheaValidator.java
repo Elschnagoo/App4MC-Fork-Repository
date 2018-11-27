@@ -1097,8 +1097,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateComputationItem((ComputationItem)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_NEED:
 				return validateExecutionNeed((ExecutionNeed)value, diagnostics, context);
-			case AmaltheaPackage.EXECUTION_NEED_EXTENDED:
-				return validateExecutionNeedExtended((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.NEED_ENTRY:
 				return validateNeedEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_TICKS:
@@ -4025,15 +4023,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateExecutionNeed(ExecutionNeed executionNeed, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(executionNeed, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateExecutionNeedExtended(Map.Entry<?, ?> executionNeedExtended, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)executionNeedExtended, diagnostics, context);
 	}
 
 	/**

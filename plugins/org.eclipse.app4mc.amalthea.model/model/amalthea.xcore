@@ -3420,16 +3420,9 @@ abstract class ComputationItem extends RunnableItem {}
 /*
  * Representation of the execution needs of a Runnable (default and core-specific)
  */
-class ExecutionNeed extends ComputationItem
+class ExecutionNeed extends RunnableItem
 {
-	contains NeedEntry[] ^default
-	contains ExecutionNeedExtended[] extended
-}
-
-class ExecutionNeedExtended wraps java.util.Map$Entry
-{
-	refers ProcessingUnitDefinition key
-	contains NeedEntry[+] value
+	contains NeedEntry[] needs
 }
 
 class NeedEntry wraps java.util.Map$Entry
@@ -3438,6 +3431,7 @@ class NeedEntry wraps java.util.Map$Entry
 	String[1] key
 	contains Need[1] value
 }
+
 /*
  * Representation of the execution ticks of a Runnable (default and core-specific)
  */
@@ -3445,6 +3439,7 @@ class ExecutionTicks extends ComputationItem {
 	contains Ticks ^default
 	contains TicksEntry[] extended
 }
+
 class TicksEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
 	contains Ticks[1] value

@@ -357,8 +357,6 @@ import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -3211,16 +3209,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.EXECUTION_NEED: {
 				ExecutionNeed executionNeed = (ExecutionNeed)theEObject;
 				T1 result = caseExecutionNeed(executionNeed);
-				if (result == null) result = caseComputationItem(executionNeed);
 				if (result == null) result = caseRunnableItem(executionNeed);
 				if (result == null) result = caseBaseObject(executionNeed);
 				if (result == null) result = caseIAnnotatable(executionNeed);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> executionNeedExtended = (Map.Entry<ProcessingUnitDefinition, EMap<String, Need>>)theEObject;
-				T1 result = caseExecutionNeedExtended(executionNeedExtended);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -8195,21 +8186,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseExecutionNeed(ExecutionNeed object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Execution Need Extended</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Execution Need Extended</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> object) {
 		return null;
 	}
 

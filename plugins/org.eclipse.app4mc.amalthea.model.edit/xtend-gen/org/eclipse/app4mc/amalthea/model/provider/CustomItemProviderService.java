@@ -204,7 +204,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
-import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
 import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl;
@@ -5155,53 +5154,6 @@ public class CustomItemProviderService {
       }
     }
     return list;
-  }
-  
-  /**
-   * ExecutionNeedExtendedItemProvider
-   */
-  public static String getExecutionNeedExtendedItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ExecutionNeedExtendedImpl)) {
-      ProcessingUnitDefinition _key = null;
-      if (((ExecutionNeedExtendedImpl)object)!=null) {
-        _key=((ExecutionNeedExtendedImpl)object).getKey();
-      }
-      String _name = null;
-      if (_key!=null) {
-        _name=_key.getName();
-      }
-      final String typeName = _name;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "<core type>";
-      } else {
-        _xifexpression = typeName;
-      }
-      final String s1 = _xifexpression;
-      final String s2 = "Needs (Map)";
-      return ((s1 + " -- ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getExecutionNeedExtendedItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(Map.Entry.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_NEED_EXTENDED__KEY)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_NEED_EXTENDED__VALUE)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        return new ViewerNotification(notification, _notifier_1, true, true);
-      }
-    }
-    return null;
   }
   
   /**

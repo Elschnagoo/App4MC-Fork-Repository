@@ -53,7 +53,6 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedNeedEntryIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainIP;
@@ -367,10 +366,6 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 		return new ExtendedCallArgumentIP(this);
 	}
 
-	@Override
-	public Adapter createNeedEntryAdapter() {
-		return new ExtendedNeedEntryIP(this);
-	}
 
 // Other nodes with virtual sub folders
 

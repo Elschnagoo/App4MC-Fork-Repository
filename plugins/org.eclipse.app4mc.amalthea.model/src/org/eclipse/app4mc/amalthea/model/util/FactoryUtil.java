@@ -341,7 +341,7 @@ public class FactoryUtil {
 	 */
 	public static ExecutionNeed createExecutionNeed(String featureCategory, Need need) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		exeNeed.getDefault().put(featureCategory, need);
+		exeNeed.getNeeds().put(featureCategory, need);
 		return exeNeed;
 	}
 	
@@ -352,7 +352,7 @@ public class FactoryUtil {
 	 */
 	public static ExecutionNeed createExecutionNeed(HwFeature feature, Need need) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		exeNeed.getDefault().put(feature.getContainingCategory().getName(), need);
+		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), need);
 		return exeNeed;
 	}
 	

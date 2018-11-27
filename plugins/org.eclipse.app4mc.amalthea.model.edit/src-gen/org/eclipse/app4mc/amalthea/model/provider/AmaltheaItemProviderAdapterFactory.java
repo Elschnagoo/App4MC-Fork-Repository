@@ -5310,29 +5310,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionNeedExtendedItemProvider executionNeedExtendedItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createExecutionNeedExtendedAdapter() {
-		if (executionNeedExtendedItemProvider == null) {
-			executionNeedExtendedItemProvider = new ExecutionNeedExtendedItemProvider(this);
-		}
-
-		return executionNeedExtendedItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	protected NeedEntryItemProvider needEntryItemProvider;
 
 	/**
@@ -6573,7 +6550,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (modeLabelItemProvider != null) modeLabelItemProvider.dispose();
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (executionNeedItemProvider != null) executionNeedItemProvider.dispose();
-		if (executionNeedExtendedItemProvider != null) executionNeedExtendedItemProvider.dispose();
 		if (needEntryItemProvider != null) needEntryItemProvider.dispose();
 		if (executionTicksItemProvider != null) executionTicksItemProvider.dispose();
 		if (ticksEntryItemProvider != null) ticksEntryItemProvider.dispose();

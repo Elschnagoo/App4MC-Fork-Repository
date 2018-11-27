@@ -532,15 +532,8 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 	
-	def default_Need(ExecutionNeed container, String key, Need need) {
-		container.^default.put(key, need)
-	}
-
-	def extended_Need(ExecutionNeed container, ProcessingUnitDefinition puDef, String key, Need need) {
-		if (container.extended.containsKey(puDef) == false) {
-			container.extended.put(puDef, new BasicEMap<String, Need>());
-		}
-		container.extended.get(puDef).put(key, need)
+	def need(ExecutionNeed container, String key, Need need) {
+		container.needs.put(key, need)
 	}
 
 	// ********** Runnable Items - to be extended **********

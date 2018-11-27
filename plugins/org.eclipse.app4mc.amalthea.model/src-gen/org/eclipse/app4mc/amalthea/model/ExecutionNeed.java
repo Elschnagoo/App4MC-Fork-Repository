@@ -29,47 +29,29 @@ import org.eclipse.emf.common.util.EMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getDefault <em>Default</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getExtended <em>Extended</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ExecutionNeed#getNeeds <em>Needs</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed()
  * @model
  * @generated
  */
-public interface ExecutionNeed extends ComputationItem {
+public interface ExecutionNeed extends RunnableItem {
 	/**
-	 * Returns the value of the '<em><b>Default</b></em>' map.
+	 * Returns the value of the '<em><b>Needs</b></em>' map.
 	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.Need},
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default</em>' map isn't clear,
+	 * If the meaning of the '<em>Needs</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default</em>' map.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Default()
+	 * @return the value of the '<em>Needs</em>' map.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Needs()
 	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.Need&gt;"
 	 * @generated
 	 */
-	EMap<String, Need> getDefault();
-
-	/**
-	 * Returns the value of the '<em><b>Extended</b></em>' map.
-	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
-	 * and the value is of type list of {@link java.util.Map.Entry<java.lang.String, org.eclipse.app4mc.amalthea.model.Need>},
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Extended</em>' map isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extended</em>' map.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Extended()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.ExecutionNeedExtended&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.NeedEntry&gt;"
-	 * @generated
-	 */
-	EMap<ProcessingUnitDefinition, EMap<String, Need>> getExtended();
+	EMap<String, Need> getNeeds();
 
 } // ExecutionNeed

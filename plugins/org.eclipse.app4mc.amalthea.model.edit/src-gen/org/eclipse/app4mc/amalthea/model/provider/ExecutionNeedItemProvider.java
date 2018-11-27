@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionNeedItemProvider extends ComputationItemItemProvider {
+public class ExecutionNeedItemProvider extends RunnableItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,8 +74,7 @@ public class ExecutionNeedItemProvider extends ComputationItemItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionNeed_Default());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionNeed_Extended());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionNeed_Needs());
 		}
 		return childrenFeatures;
 	}
@@ -138,8 +137,7 @@ public class ExecutionNeedItemProvider extends ComputationItemItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ExecutionNeed.class)) {
-			case AmaltheaPackage.EXECUTION_NEED__DEFAULT:
-			case AmaltheaPackage.EXECUTION_NEED__EXTENDED:
+			case AmaltheaPackage.EXECUTION_NEED__NEEDS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -159,13 +157,8 @@ public class ExecutionNeedItemProvider extends ComputationItemItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getExecutionNeed_Default(),
+				(AmaltheaPackage.eINSTANCE.getExecutionNeed_Needs(),
 				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getNeedEntry())));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getExecutionNeed_Extended(),
-				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getExecutionNeedExtended())));
 	}
 
 }

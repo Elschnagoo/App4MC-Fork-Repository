@@ -43,10 +43,7 @@ class CustomPropertyDescriptorService {
 		// empty entry
 		choiceOfValues.add(null)
 
-		// current default
-		choiceOfValues.add(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME)
-
-		// other entries: names of feature categories
+		// entries: names of feature categories
 		choiceOfValues.addAll(
 			EObjectUtil.getAllInstancesOf(object as EObject, typeof(HwFeatureCategory), true)
 			.map[name]

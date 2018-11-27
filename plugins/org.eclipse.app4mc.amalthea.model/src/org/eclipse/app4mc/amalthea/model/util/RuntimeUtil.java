@@ -217,39 +217,40 @@ public class RuntimeUtil {
 			Runnable runnable, TimeType execTimeType, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<ProcessingUnitDefinition, Long> procUnitDefToIcMap = new HashMap<ProcessingUnitDefinition, Long>();
 
-		for (ExecutionNeed executionNeed : SoftwareUtil.getExecutionNeedsList(runnable, modes)) {
-			if (executionNeed.getExtended() != null) {
-				for (ProcessingUnitDefinition procUnitDef : executionNeed.getExtended().keySet()) {
-					Long ic = 0L;
-					if (procUnitDefToIcMap.get(procUnitDef) != null) {
-						ic = procUnitDefToIcMap.get(procUnitDef);
-					}
-					for (Entry<String, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
-							if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey()) &&  procUnitDef.getFeatures().contains(hwFeature)) {
-								ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(),
-										execTimeType);
-							}
-					}
-					if (ic > 0l)
-						procUnitDefToIcMap.put(procUnitDef, ic);
-				}
-			}
-			if (executionNeed.getDefault() != null) {
-				Long ic = 0L;
-				if (procUnitDefToIcMap.get(null) != null) {
-					ic = procUnitDefToIcMap.get(null);
-				}
-				for (Entry<String, Need> needEntry : executionNeed.getDefault()) {
-					// if (hwFeatures.contains(needEntry.getKey())) {
-						if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey())) {
-							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
-						}
-				}
-				if (ic > 0l)
-					procUnitDefToIcMap.put(null, ic);
-				
-			}
-		}
+// TODO: Fix it (use Ticks)
+//		for (ExecutionNeed executionNeed : SoftwareUtil.getExecutionNeedsList(runnable, modes)) {
+//			if (executionNeed.getExtended() != null) {
+//				for (ProcessingUnitDefinition procUnitDef : executionNeed.getExtended().keySet()) {
+//					Long ic = 0L;
+//					if (procUnitDefToIcMap.get(procUnitDef) != null) {
+//						ic = procUnitDefToIcMap.get(procUnitDef);
+//					}
+//					for (Entry<String, Need> needEntry : executionNeed.getExtended().get(procUnitDef)) {
+//							if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey()) &&  procUnitDef.getFeatures().contains(hwFeature)) {
+//								ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(),
+//										execTimeType);
+//							}
+//					}
+//					if (ic > 0l)
+//						procUnitDefToIcMap.put(procUnitDef, ic);
+//				}
+//			}
+//			if (executionNeed.getDefault() != null) {
+//				Long ic = 0L;
+//				if (procUnitDefToIcMap.get(null) != null) {
+//					ic = procUnitDefToIcMap.get(null);
+//				}
+//				for (Entry<String, Need> needEntry : executionNeed.getDefault()) {
+//					// if (hwFeatures.contains(needEntry.getKey())) {
+//						if (hwFeature.getContainingCategory().getName().equals(needEntry.getKey())) {
+//							ic = ic + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+//						}
+//				}
+//				if (ic > 0l)
+//					procUnitDefToIcMap.put(null, ic);
+//				
+//			}
+//		}
 
 		return procUnitDefToIcMap;
 	}
@@ -1105,13 +1106,14 @@ public class RuntimeUtil {
 		List<ProcessingUnitDefinition> procUnitDefs = new ArrayList<ProcessingUnitDefinition>();
 		List<RunnableItem> runnableItems = SoftwareUtil.collectRunnableItems(runnable, modes);
 
-		for (RunnableItem ri : runnableItems) {
-			if (ri instanceof ExecutionNeed) {
-				ExecutionNeed runnableExecutionNeed = (ExecutionNeed) ri;
-
-				procUnitDefs.addAll(runnableExecutionNeed.getExtended().keySet());
-			}
-		}
+// TODO: Fix it (use Ticks)
+//		for (RunnableItem ri : runnableItems) {
+//			if (ri instanceof ExecutionNeed) {
+//				ExecutionNeed runnableExecutionNeed = (ExecutionNeed) ri;
+//
+//				procUnitDefs.addAll(runnableExecutionNeed.getExtended().keySet());
+//			}
+//		}
 
 		return procUnitDefs;
 	}
@@ -1178,9 +1180,10 @@ public class RuntimeUtil {
 				runnable.getRunnableItems().remove(executionNeed);
 			}
 		} else {
-			for (ExecutionNeed executionNeed : executionNeeds) {
-				executionNeed.getExtended().removeKey(procUnitDef);
-			}
+// TODO: Fix it (use Ticks)
+//			for (ExecutionNeed executionNeed : executionNeeds) {
+//				executionNeed.getExtended().removeKey(procUnitDef);
+//			}
 		}
 
 	}

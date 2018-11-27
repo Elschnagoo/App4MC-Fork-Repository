@@ -24,11 +24,8 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
@@ -183,7 +180,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createExecutionNeedDeviation(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
@@ -217,7 +214,7 @@ public class BasicValidationTests {
 
 		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
 		final ExecutionNeed en = (ExecutionNeed) run.getRunnableItems().get(0);
-		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(en);
+		final Deviation<LongObject> dev = InstructionsUtil.getNeedDeviation(en);
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 72000);
@@ -239,7 +236,7 @@ public class BasicValidationTests {
 		final SWModel swModel = factory.createSWModel();
 		final Runnable runnable = factory.createRunnable();
 		final Deviation<LongObject> deviation = factory.createDeviation();
-		final ExecutionNeed execNeed = InstructionsUtil.createDefaultExecutionNeedDeviation(deviation);
+		final ExecutionNeed execNeed = InstructionsUtil.createExecutionNeedDeviation(deviation);
 
 		final LongObject lower = factory.createLongObject();
 		final LongObject upper = factory.createLongObject();
@@ -275,7 +272,7 @@ public class BasicValidationTests {
 		
 		final Runnable run = amalthea.getSwModel().getRunnables().get(0);
 		final ExecutionNeed en = (ExecutionNeed) run.getRunnableItems().get(0);
-		final Deviation<LongObject> dev = InstructionsUtil.getDefaultNeedDeviation(en);
+		final Deviation<LongObject> dev = InstructionsUtil.getNeedDeviation(en);
 		final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
 
 		Assert.assertEquals(dev.getLowerBound().getValue(), 88000);

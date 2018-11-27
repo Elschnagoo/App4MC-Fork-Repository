@@ -174,7 +174,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
-import org.eclipse.app4mc.amalthea.model.impl.ExecutionNeedExtendedImpl
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
 import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
@@ -2688,6 +2687,7 @@ class CustomItemProviderService {
 		}
 		return null
 	}
+
 	/*****************************************************************************
 	 * 						TicksEntryItemProvider
 	 *****************************************************************************/
@@ -2714,31 +2714,6 @@ class CustomItemProviderService {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list
-	}
-
-	/*****************************************************************************
-	 * 						ExecutionNeedExtendedItemProvider
-	 *****************************************************************************/
-	def static String getExecutionNeedExtendedItemProviderText(Object object, String defaultText) {
-		if (object instanceof ExecutionNeedExtendedImpl) {
-			val typeName = object?.getKey()?.name
-
-			val s1 = if(typeName.isNullOrEmpty) "<core type>" else typeName
-			val s2 = "Needs (Map)"
-			return s1 + " -- " + s2;
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getExecutionNeedExtendedItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(Map.Entry)) {
-			case AmaltheaPackage::EXECUTION_NEED_EXTENDED__KEY:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-			case AmaltheaPackage::EXECUTION_NEED_EXTENDED__VALUE:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
-		}
-		return null
 	}
 
 	/*****************************************************************************

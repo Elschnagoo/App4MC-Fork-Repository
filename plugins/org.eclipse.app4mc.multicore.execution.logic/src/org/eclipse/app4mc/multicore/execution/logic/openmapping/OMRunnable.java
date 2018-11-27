@@ -77,7 +77,7 @@ public class OMRunnable {
 
 			if (runnableItem instanceof ExecutionNeed) {
 				final ExecutionNeed execNeed = (ExecutionNeed) runnableItem;
-				final Need abstractNeed = InstructionsUtil.getDefaultNeed(execNeed);
+				final Need abstractNeed = InstructionsUtil.getNeed(execNeed);
 				if (abstractNeed == null) {
 					UniversalHandler.getInstance().log(" Unexpected SWModel.\nexecution need is not set!\nSkipping...",
 							null);

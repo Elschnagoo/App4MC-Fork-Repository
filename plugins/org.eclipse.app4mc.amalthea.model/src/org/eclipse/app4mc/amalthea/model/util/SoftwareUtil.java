@@ -975,31 +975,32 @@ public class SoftwareUtil {
 		if (puDefinition == null || hwFeatures == null ) {
 			return result;
 		}
-		List<RunnableItem> runnableItems = collectRunnableItems(runnable, modes) ;
-		
-		for(RunnableItem ri : runnableItems) {
-			if(ri instanceof ExecutionNeed) {
-				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
-				if(runnableExecutionNeed.getExtended().get(puDefinition) != null) {
-					for (Entry<String, Need> needEntry :runnableExecutionNeed.getExtended().get(puDefinition)) {
-						for (HwFeature feature : hwFeatures) {
-							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && puDefinition.getFeatures().contains(feature)) {
-								result.add(needEntry);
-							}
-						}
-					}
-					 // all should be needed
-				} else if(runnableExecutionNeed.getDefault() != null) {
-					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
-						for (HwFeature feature : hwFeatures) {
-							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && puDefinition.getFeatures().contains(feature)) {
-								result.add(needEntry);
-							}
-						}
-					}
-				}
-			}
-		}
+// TODO: Fix it (use Ticks)
+//		List<RunnableItem> runnableItems = collectRunnableItems(runnable, modes) ;
+//		
+//		for(RunnableItem ri : runnableItems) {
+//			if(ri instanceof ExecutionNeed) {
+//				ExecutionNeed runnableExecutionNeed = (ExecutionNeed)ri;
+//				if(runnableExecutionNeed.getExtended().get(puDefinition) != null) {
+//					for (Entry<String, Need> needEntry :runnableExecutionNeed.getExtended().get(puDefinition)) {
+//						for (HwFeature feature : hwFeatures) {
+//							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && puDefinition.getFeatures().contains(feature)) {
+//								result.add(needEntry);
+//							}
+//						}
+//					}
+//					 // all should be needed
+//				} else if(runnableExecutionNeed.getDefault() != null) {
+//					for (Entry<String, Need> needEntry : runnableExecutionNeed.getDefault()) {
+//						for (HwFeature feature : hwFeatures) {
+//							if (feature.getContainingCategory().getName().equals(needEntry.getKey()) && puDefinition.getFeatures().contains(feature)) {
+//								result.add(needEntry);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 		return result;
 	}
 	

@@ -40,7 +40,6 @@ import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
@@ -57,9 +56,7 @@ import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
-import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
@@ -884,23 +881,8 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public Need default_Need(final ExecutionNeed container, final String key, final Need need) {
-    return container.getDefault().put(key, need);
-  }
-  
-  public Need extended_Need(final ExecutionNeed container, final ProcessingUnitDefinition puDef, final String key, final Need need) {
-    Need _xblockexpression = null;
-    {
-      boolean _containsKey = container.getExtended().containsKey(puDef);
-      boolean _equals = (_containsKey == false);
-      if (_equals) {
-        EMap<ProcessingUnitDefinition, EMap<String, Need>> _extended = container.getExtended();
-        BasicEMap<String, Need> _basicEMap = new BasicEMap<String, Need>();
-        _extended.put(puDef, _basicEMap);
-      }
-      _xblockexpression = container.getExtended().get(puDef).put(key, need);
-    }
-    return _xblockexpression;
+  public Need need(final ExecutionNeed container, final String key, final Need need) {
+    return container.getNeeds().put(key, need);
   }
   
   private <T extends Object> T init(final T obj, final Procedure1<? super T> init) {

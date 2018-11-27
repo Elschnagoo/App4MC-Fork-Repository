@@ -17,17 +17,12 @@
     </tasks>
     <runnables name="r1" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
+        <needs key="Instructions">
           <value xsi:type="am:NeedConstant" value="500"/>
-        </default>
-        <extended key="Pu2_def?type=ProcessingUnitDefinition">
-          <value key="Instructions">
-            <value xsi:type="am:NeedConstant" value="800"/>
-          </value>
-        </extended>
+        </needs>
       </runnableItems>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
+        <needs key="Instructions">
           <value xsi:type="am:NeedDeviation">
             <deviation>
               <lowerBound xsi:type="am:LongObject" value="250"/>
@@ -38,19 +33,19 @@
               </distribution>
             </deviation>
           </value>
-        </default>
+        </needs>
       </runnableItems>
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="MAC_Operations">
+        <needs key="MAC_Operations">
           <value xsi:type="am:NeedConstant" value="2000"/>
-        </default>
+        </needs>
       </runnableItems>
     </runnables>
     <runnables name="r2" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="MAC_Operations">
+        <needs key="MAC_Operations">
           <value xsi:type="am:NeedConstant" value="2000"/>
-        </default>
+        </needs>
       </runnableItems>
     </runnables>
   </swModel>

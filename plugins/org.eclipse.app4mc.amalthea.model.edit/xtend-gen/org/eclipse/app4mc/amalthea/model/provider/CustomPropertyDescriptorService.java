@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -44,7 +43,6 @@ public class CustomPropertyDescriptorService {
   public static Collection<?> getNeedEntryValuesForKey(final Object object) {
     final UniqueEList<Object> choiceOfValues = new UniqueEList<Object>();
     choiceOfValues.add(null);
-    choiceOfValues.add(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME);
     final Function1<HwFeatureCategory, String> _function = (HwFeatureCategory it) -> {
       return it.getName();
     };

@@ -339,8 +339,6 @@ import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -621,7 +619,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.MODE_LABEL: return createModeLabel();
 			case AmaltheaPackage.SECTION: return createSection();
 			case AmaltheaPackage.EXECUTION_NEED: return createExecutionNeed();
-			case AmaltheaPackage.EXECUTION_NEED_EXTENDED: return (EObject)createExecutionNeedExtended();
 			case AmaltheaPackage.NEED_ENTRY: return (EObject)createNeedEntry();
 			case AmaltheaPackage.EXECUTION_TICKS: return createExecutionTicks();
 			case AmaltheaPackage.TICKS_ENTRY: return (EObject)createTicksEntry();
@@ -3197,16 +3194,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ExecutionNeed createExecutionNeed() {
 		ExecutionNeedImpl executionNeed = new ExecutionNeedImpl();
 		return executionNeed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> createExecutionNeedExtended() {
-		ExecutionNeedExtendedImpl executionNeedExtended = new ExecutionNeedExtendedImpl();
-		return executionNeedExtended;
 	}
 
 	/**

@@ -362,8 +362,6 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -1625,10 +1623,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseExecutionNeed(ExecutionNeed object) {
 				return createExecutionNeedAdapter();
-			}
-			@Override
-			public Adapter caseExecutionNeedExtended(Map.Entry<ProcessingUnitDefinition, EMap<String, Need>> object) {
-				return createExecutionNeedExtendedAdapter();
 			}
 			@Override
 			public Adapter caseNeedEntry(Map.Entry<String, Need> object) {
@@ -6053,20 +6047,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExecutionNeedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Need Extended</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createExecutionNeedExtendedAdapter() {
 		return null;
 	}
 

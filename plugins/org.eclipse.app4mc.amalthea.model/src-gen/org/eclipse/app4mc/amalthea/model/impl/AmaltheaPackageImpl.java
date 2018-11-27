@@ -2548,13 +2548,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass executionNeedExtendedEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass needEntryEClass = null;
 
 	/**
@@ -11468,44 +11461,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionNeed_Default() {
+	public EReference getExecutionNeed_Needs() {
 		return (EReference)executionNeedEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExecutionNeed_Extended() {
-		return (EReference)executionNeedEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getExecutionNeedExtended() {
-		return executionNeedExtendedEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExecutionNeedExtended_Key() {
-		return (EReference)executionNeedExtendedEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExecutionNeedExtended_Value() {
-		return (EReference)executionNeedExtendedEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -14472,12 +14429,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		computationItemEClass = createEClass(COMPUTATION_ITEM);
 
 		executionNeedEClass = createEClass(EXECUTION_NEED);
-		createEReference(executionNeedEClass, EXECUTION_NEED__DEFAULT);
-		createEReference(executionNeedEClass, EXECUTION_NEED__EXTENDED);
-
-		executionNeedExtendedEClass = createEClass(EXECUTION_NEED_EXTENDED);
-		createEReference(executionNeedExtendedEClass, EXECUTION_NEED_EXTENDED__KEY);
-		createEReference(executionNeedExtendedEClass, EXECUTION_NEED_EXTENDED__VALUE);
+		createEReference(executionNeedEClass, EXECUTION_NEED__NEEDS);
 
 		needEntryEClass = createEClass(NEED_ENTRY);
 		createEAttribute(needEntryEClass, NEED_ENTRY__KEY);
@@ -15118,7 +15070,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
-		executionNeedEClass.getESuperTypes().add(this.getComputationItem());
+		executionNeedEClass.getESuperTypes().add(this.getRunnableItem());
 		executionTicksEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
@@ -16459,12 +16411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(executionNeedEClass, ExecutionNeed.class, "ExecutionNeed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionNeed_Default(), this.getNeedEntry(), null, "default", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionNeed_Extended(), this.getExecutionNeedExtended(), null, "extended", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(executionNeedExtendedEClass, Map.Entry.class, "ExecutionNeedExtended", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionNeedExtended_Key(), this.getProcessingUnitDefinition(), null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionNeedExtended_Value(), this.getNeedEntry(), null, "value", null, 1, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionNeed_Needs(), this.getNeedEntry(), null, "needs", null, 0, -1, ExecutionNeed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(needEntryEClass, Map.Entry.class, "NeedEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNeedEntry_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

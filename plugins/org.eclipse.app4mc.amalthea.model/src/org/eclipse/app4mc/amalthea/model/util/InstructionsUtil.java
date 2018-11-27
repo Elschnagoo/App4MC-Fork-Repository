@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
@@ -32,8 +33,13 @@ import org.eclipse.app4mc.amalthea.model.NeedConstant;
 import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
-import org.eclipse.emf.common.util.BasicEMap;
 
+/**
+ * Creates Need entries for Instructions 
+ * 
+ * @deprecated (0.9.3) use {@link ExecutionTicks} instead.
+ */
+@Deprecated
 public class InstructionsUtil {
 
 	public static final String INSTRUCTIONS_CATEGORY_NAME = "Instructions";
@@ -53,32 +59,24 @@ public class InstructionsUtil {
 		return newCategory;
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeedConstant(long instructions) {
-		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
+	public static ExecutionNeed createExecutionNeedConstant(long instructions) {
+		return createExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static ExecutionNeed createDefaultExecutionNeedDeviation(Deviation<LongObject> instructions) {
-		return createDefaultExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
+	public static ExecutionNeed createExecutionNeedDeviation(Deviation<LongObject> instructions) {
+		return createExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static Need addExtendedExecutionNeedConstant(ExecutionNeed need, ProcessingUnitDefinition key, long instructions) {
-		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
-	}
-
-	public static Need addExtendedExecutionNeedDeviation(ExecutionNeed need, ProcessingUnitDefinition key, Deviation<LongObject> instructions) {
-		return addExtendedExecutionNeed(need, key, INSTRUCTIONS_CATEGORY_NAME, instructions);
-	}
-
-	public static Need getDefaultNeed(ExecutionNeed execNeed) {
-		return execNeed.getDefault().get(INSTRUCTIONS_CATEGORY_NAME);
+	public static Need getNeed(ExecutionNeed execNeed) {
+		return execNeed.getNeeds().get(INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static long getDefaultNeedConstant(ExecutionNeed execNeed) {
-		return getDefaultNeedConstant(execNeed, INSTRUCTIONS_CATEGORY_NAME);
+	public static long getNeedConstant(ExecutionNeed execNeed) {
+		return getNeedConstant(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed) {
-		return getDefaultNeedDeviation(execNeed, INSTRUCTIONS_CATEGORY_NAME);
+	public static Deviation<LongObject> getNeedDeviation(ExecutionNeed execNeed) {
+		return getNeedDeviation(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 
 
@@ -94,70 +92,45 @@ public class InstructionsUtil {
 	//----------------------- General ----------------------- 
 
 
-	private static ExecutionNeed createDefaultExecutionNeed(String category, long value) {
+	private static ExecutionNeed createExecutionNeed(String category, long value) {
 		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
 		need.setValue(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category, need);
+		execNeed.getNeeds().put(category, need);
 		
 		return execNeed;
 	}
 
-	private static Need addExtendedExecutionNeed(ExecutionNeed execNeed, ProcessingUnitDefinition key,
-			String instructionsCategoryName, long value) {
-		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		need.setValue(value);
-		
-		if (execNeed.getExtended().containsKey(key) == false) {
-			execNeed.getExtended().put(key, new BasicEMap<String, Need>());
-		}
-		
-		return execNeed.getExtended().get(key).put(instructionsCategoryName, need);
-	}
-
-	private static ExecutionNeed createDefaultExecutionNeed(String category, Deviation<LongObject> value) {
+	private static ExecutionNeed createExecutionNeed(String category, Deviation<LongObject> value) {
 		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
 		need.setDeviation(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getDefault().put(category, need);
+		execNeed.getNeeds().put(category, need);
 		
 		return execNeed;
 	}
 
-	private static Need addExtendedExecutionNeed(ExecutionNeed execNeed, ProcessingUnitDefinition key,
-			String instructionsCategoryName, Deviation<LongObject> value) {
-		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
-		need.setDeviation(value);
-		
-		if (execNeed.getExtended().containsKey(key) == false) {
-			execNeed.getExtended().put(key, new BasicEMap<String, Need>());
-		}
-		
-		return execNeed.getExtended().get(key).put(instructionsCategoryName, need);
-	}
-
-	private static long getDefaultNeedConstant(ExecutionNeed execNeed, String category) {
+	private static long getNeedConstant(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return 0;
 		
-		Need need = execNeed.getDefault().get(category);
+		Need need = execNeed.getNeeds().get(category);
 		if (need instanceof NeedConstant) {
 			return ((NeedConstant) need).getValue();
 		}
 		return 0;
 	}
 	
-	private static Deviation<LongObject> getDefaultNeedDeviation(ExecutionNeed execNeed, String category) {
+	private static Deviation<LongObject> getNeedDeviation(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return null;
 		
-		Need need = execNeed.getDefault().get(category);
+		Need need = execNeed.getNeeds().get(category);
 		if (need instanceof NeedDeviation) {
 			return ((NeedDeviation) need).getDeviation();
 		}
 		return null;
 	}
-
 
 	public static List<HwFeature> getFeaturesOfCategory(ProcessingUnitDefinition puDefinition, HwFeatureCategory category) {
 		if (puDefinition == null || category == null) return Collections.<HwFeature>emptyList();
