@@ -177,7 +177,7 @@ public class OSModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOSModel_OsOverheads(),
-				 AmaltheaFactory.eINSTANCE.createOsInstructions()));
+				 AmaltheaFactory.eINSTANCE.createOsOverhead()));
 	}
 
 }

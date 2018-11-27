@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkSize <em>Chunk Size</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkProcessingInstructions <em>Chunk Processing Instructions</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkProcessingTicks <em>Chunk Processing Ticks</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getTransmitRatio <em>Transmit Ratio</em>}</li>
  * </ul>
  *
@@ -66,31 +66,31 @@ public interface TransmissionPolicy extends EObject {
 	void setChunkSize(DataSize value);
 
 	/**
-	 * Returns the value of the '<em><b>Chunk Processing Instructions</b></em>' attribute.
+	 * Returns the value of the '<em><b>Chunk Processing Ticks</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Chunk Processing Instructions</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Chunk Processing Ticks</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Chunk Processing Instructions</em>' attribute.
-	 * @see #setChunkProcessingInstructions(int)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTransmissionPolicy_ChunkProcessingInstructions()
+	 * @return the value of the '<em>Chunk Processing Ticks</em>' attribute.
+	 * @see #setChunkProcessingTicks(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTransmissionPolicy_ChunkProcessingTicks()
 	 * @model default="0" unique="false"
 	 * @generated
 	 */
-	int getChunkProcessingInstructions();
+	int getChunkProcessingTicks();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkProcessingInstructions <em>Chunk Processing Instructions</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TransmissionPolicy#getChunkProcessingTicks <em>Chunk Processing Ticks</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Chunk Processing Instructions</em>' attribute.
-	 * @see #getChunkProcessingInstructions()
+	 * @param value the new value of the '<em>Chunk Processing Ticks</em>' attribute.
+	 * @see #getChunkProcessingTicks()
 	 * @generated
 	 */
-	void setChunkProcessingInstructions(int value);
+	void setChunkProcessingTicks(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Transmit Ratio</b></em>' attribute.

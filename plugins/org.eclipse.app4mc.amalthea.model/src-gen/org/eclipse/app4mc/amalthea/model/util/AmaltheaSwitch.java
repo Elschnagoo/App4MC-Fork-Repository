@@ -168,9 +168,6 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -219,11 +216,11 @@ import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
@@ -555,26 +552,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TicksConstant ticksConstant = (TicksConstant)theEObject;
 				T1 result = caseTicksConstant(ticksConstant);
 				if (result == null) result = caseTicks(ticksConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS: {
-				Instructions instructions = (Instructions)theEObject;
-				T1 result = caseInstructions(instructions);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: {
-				InstructionsDeviation instructionsDeviation = (InstructionsDeviation)theEObject;
-				T1 result = caseInstructionsDeviation(instructionsDeviation);
-				if (result == null) result = caseInstructions(instructionsDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: {
-				InstructionsConstant instructionsConstant = (InstructionsConstant)theEObject;
-				T1 result = caseInstructionsConstant(instructionsConstant);
-				if (result == null) result = caseInstructions(instructionsConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2418,29 +2395,29 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.OS_INSTRUCTIONS: {
-				OsInstructions osInstructions = (OsInstructions)theEObject;
-				T1 result = caseOsInstructions(osInstructions);
-				if (result == null) result = caseReferableBaseObject(osInstructions);
-				if (result == null) result = caseIAnnotatable(osInstructions);
-				if (result == null) result = caseIReferable(osInstructions);
-				if (result == null) result = caseINamed(osInstructions);
+			case AmaltheaPackage.OS_OVERHEAD: {
+				OsOverhead osOverhead = (OsOverhead)theEObject;
+				T1 result = caseOsOverhead(osOverhead);
+				if (result == null) result = caseReferableBaseObject(osOverhead);
+				if (result == null) result = caseIAnnotatable(osOverhead);
+				if (result == null) result = caseIReferable(osOverhead);
+				if (result == null) result = caseINamed(osOverhead);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.OS_API_INSTRUCTIONS: {
-				OsAPIInstructions osAPIInstructions = (OsAPIInstructions)theEObject;
-				T1 result = caseOsAPIInstructions(osAPIInstructions);
-				if (result == null) result = caseBaseObject(osAPIInstructions);
-				if (result == null) result = caseIAnnotatable(osAPIInstructions);
+			case AmaltheaPackage.OS_API_OVERHEAD: {
+				OsAPIOverhead osAPIOverhead = (OsAPIOverhead)theEObject;
+				T1 result = caseOsAPIOverhead(osAPIOverhead);
+				if (result == null) result = caseBaseObject(osAPIOverhead);
+				if (result == null) result = caseIAnnotatable(osAPIOverhead);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.OS_ISR_INSTRUCTIONS: {
-				OsISRInstructions osISRInstructions = (OsISRInstructions)theEObject;
-				T1 result = caseOsISRInstructions(osISRInstructions);
-				if (result == null) result = caseBaseObject(osISRInstructions);
-				if (result == null) result = caseIAnnotatable(osISRInstructions);
+			case AmaltheaPackage.OS_ISR_OVERHEAD: {
+				OsISROverhead osISROverhead = (OsISROverhead)theEObject;
+				T1 result = caseOsISROverhead(osISROverhead);
+				if (result == null) result = caseBaseObject(osISROverhead);
+				if (result == null) result = caseIAnnotatable(osISROverhead);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3941,51 +3918,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTicksConstant(TicksConstant object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructions(Instructions object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructionsDeviation(InstructionsDeviation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instructions Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructionsConstant(InstructionsConstant object) {
 		return null;
 	}
 
@@ -6960,47 +6892,47 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os Instructions</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Os Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os Instructions</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Os Overhead</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsInstructions(OsInstructions object) {
+	public T1 caseOsOverhead(OsOverhead object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os API Instructions</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Os API Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os API Instructions</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Os API Overhead</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsAPIInstructions(OsAPIInstructions object) {
+	public T1 caseOsAPIOverhead(OsAPIOverhead object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Os ISR Instructions</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Os ISR Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Os ISR Instructions</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Os ISR Overhead</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsISRInstructions(OsISRInstructions object) {
+	public T1 caseOsISROverhead(OsISROverhead object) {
 		return null;
 	}
 

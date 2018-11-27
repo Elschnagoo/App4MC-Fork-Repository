@@ -189,9 +189,6 @@ import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -252,12 +249,12 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
@@ -531,12 +528,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTicksDeviation((TicksDeviation)value, diagnostics, context);
 			case AmaltheaPackage.TICKS_CONSTANT:
 				return validateTicksConstant((TicksConstant)value, diagnostics, context);
-			case AmaltheaPackage.INSTRUCTIONS:
-				return validateInstructions((Instructions)value, diagnostics, context);
-			case AmaltheaPackage.INSTRUCTIONS_DEVIATION:
-				return validateInstructionsDeviation((InstructionsDeviation)value, diagnostics, context);
-			case AmaltheaPackage.INSTRUCTIONS_CONSTANT:
-				return validateInstructionsConstant((InstructionsConstant)value, diagnostics, context);
 			case AmaltheaPackage.NEED:
 				return validateNeed((Need)value, diagnostics, context);
 			case AmaltheaPackage.NEED_DEVIATION:
@@ -933,12 +924,12 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateOperatingSystem((OperatingSystem)value, diagnostics, context);
 			case AmaltheaPackage.VENDOR_OPERATING_SYSTEM:
 				return validateVendorOperatingSystem((VendorOperatingSystem)value, diagnostics, context);
-			case AmaltheaPackage.OS_INSTRUCTIONS:
-				return validateOsInstructions((OsInstructions)value, diagnostics, context);
-			case AmaltheaPackage.OS_API_INSTRUCTIONS:
-				return validateOsAPIInstructions((OsAPIInstructions)value, diagnostics, context);
-			case AmaltheaPackage.OS_ISR_INSTRUCTIONS:
-				return validateOsISRInstructions((OsISRInstructions)value, diagnostics, context);
+			case AmaltheaPackage.OS_OVERHEAD:
+				return validateOsOverhead((OsOverhead)value, diagnostics, context);
+			case AmaltheaPackage.OS_API_OVERHEAD:
+				return validateOsAPIOverhead((OsAPIOverhead)value, diagnostics, context);
+			case AmaltheaPackage.OS_ISR_OVERHEAD:
+				return validateOsISROverhead((OsISROverhead)value, diagnostics, context);
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL:
 				return validatePropertyConstraintsModel((PropertyConstraintsModel)value, diagnostics, context);
 			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT:
@@ -1476,33 +1467,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateTicksConstant(TicksConstant ticksConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(ticksConstant, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInstructions(Instructions instructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(instructions, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInstructionsDeviation(InstructionsDeviation instructionsDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(instructionsDeviation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInstructionsConstant(InstructionsConstant instructionsConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(instructionsConstant, diagnostics, context);
 	}
 
 	/**
@@ -3292,8 +3256,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOsInstructions(OsInstructions osInstructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(osInstructions, diagnostics, context);
+	public boolean validateOsOverhead(OsOverhead osOverhead, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(osOverhead, diagnostics, context);
 	}
 
 	/**
@@ -3301,8 +3265,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOsAPIInstructions(OsAPIInstructions osAPIInstructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(osAPIInstructions, diagnostics, context);
+	public boolean validateOsAPIOverhead(OsAPIOverhead osAPIOverhead, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(osAPIOverhead, diagnostics, context);
 	}
 
 	/**
@@ -3310,8 +3274,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOsISRInstructions(OsISRInstructions osISRInstructions, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(osISRInstructions, diagnostics, context);
+	public boolean validateOsISROverhead(OsISROverhead osISROverhead, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(osISROverhead, diagnostics, context);
 	}
 
 	/**

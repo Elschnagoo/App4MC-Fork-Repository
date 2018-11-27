@@ -45,12 +45,12 @@ public interface OperatingSystem extends BaseObject, INamed {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Overhead</em>' reference.
-	 * @see #setOverhead(OsInstructions)
+	 * @see #setOverhead(OsOverhead)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_Overhead()
 	 * @model
 	 * @generated
 	 */
-	OsInstructions getOverhead();
+	OsOverhead getOverhead();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OperatingSystem#getOverhead <em>Overhead</em>}' reference.
@@ -60,7 +60,7 @@ public interface OperatingSystem extends BaseObject, INamed {
 	 * @see #getOverhead()
 	 * @generated
 	 */
-	void setOverhead(OsInstructions value);
+	void setOverhead(OsOverhead value);
 
 	/**
 	 * Returns the value of the '<em><b>Task Schedulers</b></em>' containment reference list.

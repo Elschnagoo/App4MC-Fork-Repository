@@ -168,9 +168,6 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -219,11 +216,11 @@ import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
@@ -491,18 +488,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTicksConstant(TicksConstant object) {
 				return createTicksConstantAdapter();
-			}
-			@Override
-			public Adapter caseInstructions(Instructions object) {
-				return createInstructionsAdapter();
-			}
-			@Override
-			public Adapter caseInstructionsDeviation(InstructionsDeviation object) {
-				return createInstructionsDeviationAdapter();
-			}
-			@Override
-			public Adapter caseInstructionsConstant(InstructionsConstant object) {
-				return createInstructionsConstantAdapter();
 			}
 			@Override
 			public Adapter caseNeed(Need object) {
@@ -1297,16 +1282,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createVendorOperatingSystemAdapter();
 			}
 			@Override
-			public Adapter caseOsInstructions(OsInstructions object) {
-				return createOsInstructionsAdapter();
+			public Adapter caseOsOverhead(OsOverhead object) {
+				return createOsOverheadAdapter();
 			}
 			@Override
-			public Adapter caseOsAPIInstructions(OsAPIInstructions object) {
-				return createOsAPIInstructionsAdapter();
+			public Adapter caseOsAPIOverhead(OsAPIOverhead object) {
+				return createOsAPIOverheadAdapter();
 			}
 			@Override
-			public Adapter caseOsISRInstructions(OsISRInstructions object) {
-				return createOsISRInstructionsAdapter();
+			public Adapter caseOsISROverhead(OsISROverhead object) {
+				return createOsISROverheadAdapter();
 			}
 			@Override
 			public Adapter casePropertyConstraintsModel(PropertyConstraintsModel object) {
@@ -2085,48 +2070,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTicksConstantAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Instructions <em>Instructions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Instructions
-	 * @generated
-	 */
-	public Adapter createInstructionsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation <em>Instructions Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InstructionsDeviation
-	 * @generated
-	 */
-	public Adapter createInstructionsDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionsConstant <em>Instructions Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InstructionsConstant
-	 * @generated
-	 */
-	public Adapter createInstructionsConstantAdapter() {
 		return null;
 	}
 
@@ -4903,44 +4846,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsInstructions <em>Os Instructions</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsOverhead <em>Os Overhead</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsInstructions
+	 * @see org.eclipse.app4mc.amalthea.model.OsOverhead
 	 * @generated
 	 */
-	public Adapter createOsInstructionsAdapter() {
+	public Adapter createOsOverheadAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions <em>Os API Instructions</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead <em>Os API Overhead</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsAPIInstructions
+	 * @see org.eclipse.app4mc.amalthea.model.OsAPIOverhead
 	 * @generated
 	 */
-	public Adapter createOsAPIInstructionsAdapter() {
+	public Adapter createOsAPIOverheadAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions <em>Os ISR Instructions</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.OsISROverhead <em>Os ISR Overhead</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.OsISRInstructions
+	 * @see org.eclipse.app4mc.amalthea.model.OsISROverhead
 	 * @generated
 	 */
-	public Adapter createOsISRInstructionsAdapter() {
+	public Adapter createOsISROverheadAdapter() {
 		return null;
 	}
 

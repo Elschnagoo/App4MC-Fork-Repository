@@ -74,26 +74,26 @@ public class TransmissionPolicyItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addChunkProcessingInstructionsPropertyDescriptor(object);
+			addChunkProcessingTicksPropertyDescriptor(object);
 			addTransmitRatioPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Chunk Processing Instructions feature.
+	 * This adds a property descriptor for the Chunk Processing Ticks feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addChunkProcessingInstructionsPropertyDescriptor(Object object) {
+	protected void addChunkProcessingTicksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TransmissionPolicy_chunkProcessingInstructions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TransmissionPolicy_chunkProcessingInstructions_feature", "_UI_TransmissionPolicy_type"),
-				 AmaltheaPackage.eINSTANCE.getTransmissionPolicy_ChunkProcessingInstructions(),
+				 getString("_UI_TransmissionPolicy_chunkProcessingTicks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TransmissionPolicy_chunkProcessingTicks_feature", "_UI_TransmissionPolicy_type"),
+				 AmaltheaPackage.eINSTANCE.getTransmissionPolicy_ChunkProcessingTicks(),
 				 true,
 				 false,
 				 false,
@@ -183,7 +183,7 @@ public class TransmissionPolicyItemProvider
 	 */
 	public String getTextGen(Object object) {
 		TransmissionPolicy transmissionPolicy = (TransmissionPolicy)object;
-		return getString("_UI_TransmissionPolicy_type") + " " + transmissionPolicy.getChunkProcessingInstructions();
+		return getString("_UI_TransmissionPolicy_type") + " " + transmissionPolicy.getChunkProcessingTicks();
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class TransmissionPolicyItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TransmissionPolicy.class)) {
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS:
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

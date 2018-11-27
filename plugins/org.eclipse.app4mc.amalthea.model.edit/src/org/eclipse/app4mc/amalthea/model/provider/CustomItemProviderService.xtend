@@ -84,9 +84,6 @@ import org.eclipse.app4mc.amalthea.model.HwPort
 import org.eclipse.app4mc.amalthea.model.HwStructure
 import org.eclipse.app4mc.amalthea.model.INamed
 import org.eclipse.app4mc.amalthea.model.ISRAllocation
-import org.eclipse.app4mc.amalthea.model.Instructions
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation
 import org.eclipse.app4mc.amalthea.model.IntegerObject
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.InterfaceKind
@@ -117,11 +114,11 @@ import org.eclipse.app4mc.amalthea.model.NeedDeviation
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency
 import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions
-import org.eclipse.app4mc.amalthea.model.OsInstructions
+import org.eclipse.app4mc.amalthea.model.OsISROverhead
+import org.eclipse.app4mc.amalthea.model.OsOverhead
 import org.eclipse.app4mc.amalthea.model.PercentageMetric
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint
@@ -305,13 +302,6 @@ class CustomItemProviderService {
 		if(name === null) return ""
 
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
-	}
-
-	private def static getInstructionsText(Instructions instr) {
-		switch instr {
-			InstructionsConstant: getInstructionsConstantItemProviderText(instr, null)
-			InstructionsDeviation: getInstructionsDeviationItemProviderText(instr, null)
-		}
 	}
 
 	private def static getTicksText(Ticks ticks) {
@@ -769,54 +759,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						InstructionsConstantItemProvider
-	 *****************************************************************************/
-	def static String getInstructionsConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof InstructionsConstant) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val s2 = Long.toString(object.value)
-			return s1 + "instructions (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getInstructionsConstantItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(InstructionsConstant)) {
-			case AmaltheaPackage::INSTRUCTIONS_CONSTANT__VALUE: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-				addParentLabelNotification(list, notification)
-				}
-		}
-		return list
-	}
-
-	/*****************************************************************************
-	 * 						InstructionsDeviationItemProvider
-	 *****************************************************************************/
-	def static String getInstructionsDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof InstructionsDeviation) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val distName = object?.deviation?.distribution?.eClass?.name
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return s1 + "instructions (deviation): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getInstructionsDeviationItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(InstructionsDeviation)) {
-			case AmaltheaPackage::INSTRUCTIONS_DEVIATION__DEVIATION:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
-		}
-		return null
-	}
-
-	/*****************************************************************************
 	 * 						NeedConstantItemProvider
 	 *****************************************************************************/
 	def static String getNeedConstantItemProviderText(Object object, String defaultText) {
@@ -918,10 +860,10 @@ class CustomItemProviderService {
 	def static String getTransmissionPolicyItemProviderText(Object object, String defaultText) {
 		if (object instanceof TransmissionPolicy) {
 			val size = object.chunkSize
-			val instr = object.chunkProcessingInstructions
+			val ticks = object.chunkProcessingTicks
 			val ratio = object.transmitRatio
 
-			return "transmission (chunk size: " + getDataSizeText(size) + " instructions: " + instr + " ratio: " + ratio + ")";
+			return "transmission (chunk size: " + getDataSizeText(size) + " ticks: " + ticks + " ratio: " + ratio + ")";
 		} else {
 			return defaultText
 		}
@@ -929,7 +871,7 @@ class CustomItemProviderService {
 
 	def static ViewerNotification getTransmissionPolicyItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(TransmissionPolicy)) {
-			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS,
+			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS,
 			case AmaltheaPackage::TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 			case AmaltheaPackage::TRANSMISSION_POLICY__CHUNK_SIZE:
@@ -1933,12 +1875,12 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						OsInstructionsItemProvider
+	 * 						OsOverheadItemProvider
 	 *****************************************************************************/
-	def static String getOsInstructionsItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsInstructions) {
+	def static String getOsOverheadItemProviderText(Object object, String defaultText) {
+		if (object instanceof OsOverhead) {
 			val name = object.name
-			val s1 = if(name.isNullOrEmpty) "OS Instructions" else name
+			val s1 = if(name.isNullOrEmpty) "OS Overhead" else name
 			return s1
 		} else {
 			return defaultText
@@ -1946,24 +1888,22 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						OsAPIInstructionsItemProvider
+	 * 						OsAPIOverheadItemProvider
 	 *****************************************************************************/
-	def static String getOsAPIInstructionsItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsAPIInstructions) {
-			return getContainingFeatureName(object, "API Instructions", "")
+	def static String getOsAPIOverheadItemProviderText(Object object, String defaultText) {
+		if (object instanceof OsAPIOverhead) {
+			return getContainingFeatureName(object, "API Overhead", "")
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						OsISRInstructionsItemProvider
+	 * 						OsISROverheadItemProvider
 	 *****************************************************************************/
-	def static String getOsISRInstructionsItemProviderText(Object object, String defaultText) {
-		if (object instanceof OsISRInstructions) {
-			val feature = object?.eContainingFeature()
-			val s1 = if(feature === null) "" else feature.name
-			return s1
+	def static String getOsISROverheadItemProviderText(Object object, String defaultText) {
+		if (object instanceof OsISROverhead) {
+			return getContainingFeatureName(object, "ISR Overhead", "")
 		} else {
 			return defaultText
 		}
@@ -2686,6 +2626,19 @@ class CustomItemProviderService {
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
 		return null
+	}
+
+	/*****************************************************************************
+	 * 						ExecutionTicksItemProvider
+	 *****************************************************************************/
+	def static String getExecutionTicksItemProviderText(Object object, String defaultText) {
+		if (object instanceof ExecutionTicks) {
+			val feature = getContainingFeatureName(object, "", "")
+			val s1 = if(#["runnableItems", "computationItems"].contains(feature)) "" else feature + " -- "
+			return s1 + defaultText;
+		} else {
+			return defaultText
+		}
 	}
 
 	/*****************************************************************************

@@ -148,8 +148,6 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -204,12 +202,12 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
@@ -400,8 +398,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
 			case AmaltheaPackage.TICKS_DEVIATION: return createTicksDeviation();
 			case AmaltheaPackage.TICKS_CONSTANT: return createTicksConstant();
-			case AmaltheaPackage.INSTRUCTIONS_DEVIATION: return createInstructionsDeviation();
-			case AmaltheaPackage.INSTRUCTIONS_CONSTANT: return createInstructionsConstant();
 			case AmaltheaPackage.NEED_DEVIATION: return createNeedDeviation();
 			case AmaltheaPackage.NEED_CONSTANT: return createNeedConstant();
 			case AmaltheaPackage.TIME: return createTime();
@@ -552,9 +548,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.PRIORITY_BASED: return createPriorityBased();
 			case AmaltheaPackage.OPERATING_SYSTEM: return createOperatingSystem();
 			case AmaltheaPackage.VENDOR_OPERATING_SYSTEM: return createVendorOperatingSystem();
-			case AmaltheaPackage.OS_INSTRUCTIONS: return createOsInstructions();
-			case AmaltheaPackage.OS_API_INSTRUCTIONS: return createOsAPIInstructions();
-			case AmaltheaPackage.OS_ISR_INSTRUCTIONS: return createOsISRInstructions();
+			case AmaltheaPackage.OS_OVERHEAD: return createOsOverhead();
+			case AmaltheaPackage.OS_API_OVERHEAD: return createOsAPIOverhead();
+			case AmaltheaPackage.OS_ISR_OVERHEAD: return createOsISROverhead();
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL: return createPropertyConstraintsModel();
 			case AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT: return createProcessAllocationConstraint();
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: return createProcessPrototypeAllocationConstraint();
@@ -1004,26 +1000,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TicksConstant createTicksConstant() {
 		TicksConstantImpl ticksConstant = new TicksConstantImpl();
 		return ticksConstant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionsDeviation createInstructionsDeviation() {
-		InstructionsDeviationImpl instructionsDeviation = new InstructionsDeviationImpl();
-		return instructionsDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionsConstant createInstructionsConstant() {
-		InstructionsConstantImpl instructionsConstant = new InstructionsConstantImpl();
-		return instructionsConstant;
 	}
 
 	/**
@@ -2531,9 +2507,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsInstructions createOsInstructions() {
-		OsInstructionsImpl osInstructions = new OsInstructionsImpl();
-		return osInstructions;
+	public OsOverhead createOsOverhead() {
+		OsOverheadImpl osOverhead = new OsOverheadImpl();
+		return osOverhead;
 	}
 
 	/**
@@ -2541,9 +2517,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsAPIInstructions createOsAPIInstructions() {
-		OsAPIInstructionsImpl osAPIInstructions = new OsAPIInstructionsImpl();
-		return osAPIInstructions;
+	public OsAPIOverhead createOsAPIOverhead() {
+		OsAPIOverheadImpl osAPIOverhead = new OsAPIOverheadImpl();
+		return osAPIOverhead;
 	}
 
 	/**
@@ -2551,9 +2527,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsISRInstructions createOsISRInstructions() {
-		OsISRInstructionsImpl osISRInstructions = new OsISRInstructionsImpl();
-		return osISRInstructions;
+	public OsISROverhead createOsISROverhead() {
+		OsISROverheadImpl osISROverhead = new OsISROverheadImpl();
+		return osISROverhead;
 	}
 
 	/**

@@ -15,6 +15,7 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import com.google.common.base.Objects;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -97,9 +98,6 @@ import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -135,11 +133,11 @@ import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PercentageMetric;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.PhysicalSectionConstraint;
@@ -437,22 +435,6 @@ public class CustomItemProviderService {
       return "";
     }
     return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "");
-  }
-  
-  private static String getInstructionsText(final Instructions instr) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (instr instanceof InstructionsConstant) {
-      _matched=true;
-      _switchResult = CustomItemProviderService.getInstructionsConstantItemProviderText(instr, null);
-    }
-    if (!_matched) {
-      if (instr instanceof InstructionsDeviation) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getInstructionsDeviationItemProviderText(instr, null);
-      }
-    }
-    return _switchResult;
   }
   
   private static String getTicksText(final Ticks ticks) {
@@ -1216,97 +1198,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * InstructionsConstantItemProvider
-   */
-  public static String getInstructionsConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof InstructionsConstant)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "value");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      final String s2 = Long.toString(((InstructionsConstant)object).getValue());
-      return ((s1 + "instructions (constant): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getInstructionsConstantItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(InstructionsConstant.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_CONSTANT__VALUE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-      CustomItemProviderService.addParentLabelNotification(list, notification);
-    }
-    return list;
-  }
-  
-  /**
-   * InstructionsDeviationItemProvider
-   */
-  public static String getInstructionsDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof InstructionsDeviation)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "value");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      Deviation<LongObject> _deviation = null;
-      if (((InstructionsDeviation)object)!=null) {
-        _deviation=((InstructionsDeviation)object).getDeviation();
-      }
-      Distribution<LongObject> _distribution = null;
-      if (_deviation!=null) {
-        _distribution=_deviation.getDistribution();
-      }
-      EClass _eClass = null;
-      if (_distribution!=null) {
-        _eClass=_distribution.eClass();
-      }
-      String _name = null;
-      if (_eClass!=null) {
-        _name=_eClass.getName();
-      }
-      final String distName = _name;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<distribution>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + "instructions (deviation): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getInstructionsDeviationItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(InstructionsDeviation.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.INSTRUCTIONS_DEVIATION__DEVIATION)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, true, true);
-    }
-    return null;
-  }
-  
-  /**
    * NeedConstantItemProvider
    */
   public static String getNeedConstantItemProviderText(final Object object, final String defaultText) {
@@ -1494,12 +1385,12 @@ public class CustomItemProviderService {
   public static String getTransmissionPolicyItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TransmissionPolicy)) {
       final DataSize size = ((TransmissionPolicy)object).getChunkSize();
-      final int instr = ((TransmissionPolicy)object).getChunkProcessingInstructions();
+      final int ticks = ((TransmissionPolicy)object).getChunkProcessingTicks();
       final double ratio = ((TransmissionPolicy)object).getTransmitRatio();
       String _dataSizeText = CustomItemProviderService.getDataSizeText(size);
       String _plus = ("transmission (chunk size: " + _dataSizeText);
-      String _plus_1 = (_plus + " instructions: ");
-      String _plus_2 = (_plus_1 + Integer.valueOf(instr));
+      String _plus_1 = (_plus + " ticks: ");
+      String _plus_2 = (_plus_1 + Integer.valueOf(ticks));
       String _plus_3 = (_plus_2 + " ratio: ");
       String _plus_4 = (_plus_3 + Double.valueOf(ratio));
       return (_plus_4 + ")");
@@ -1511,7 +1402,7 @@ public class CustomItemProviderService {
   public static ViewerNotification getTransmissionPolicyItemProviderNotification(final Notification notification) {
     int _featureID = notification.getFeatureID(TransmissionPolicy.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS)) {
       _matched=true;
     }
     if (!_matched) {
@@ -3580,15 +3471,15 @@ public class CustomItemProviderService {
   }
   
   /**
-   * OsInstructionsItemProvider
+   * OsOverheadItemProvider
    */
-  public static String getOsInstructionsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsInstructions)) {
-      final String name = ((OsInstructions)object).getName();
+  public static String getOsOverheadItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof OsOverhead)) {
+      final String name = ((OsOverhead)object).getName();
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(name);
       if (_isNullOrEmpty) {
-        _xifexpression = "OS Instructions";
+        _xifexpression = "OS Overhead";
       } else {
         _xifexpression = name;
       }
@@ -3600,34 +3491,22 @@ public class CustomItemProviderService {
   }
   
   /**
-   * OsAPIInstructionsItemProvider
+   * OsAPIOverheadItemProvider
    */
-  public static String getOsAPIInstructionsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsAPIInstructions)) {
-      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "API Instructions", "");
+  public static String getOsAPIOverheadItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof OsAPIOverhead)) {
+      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "API Overhead", "");
     } else {
       return defaultText;
     }
   }
   
   /**
-   * OsISRInstructionsItemProvider
+   * OsISROverheadItemProvider
    */
-  public static String getOsISRInstructionsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof OsISRInstructions)) {
-      EStructuralFeature _eContainingFeature = null;
-      if (((OsISRInstructions)object)!=null) {
-        _eContainingFeature=((OsISRInstructions)object).eContainingFeature();
-      }
-      final EStructuralFeature feature = _eContainingFeature;
-      String _xifexpression = null;
-      if ((feature == null)) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = feature.getName();
-      }
-      final String s1 = _xifexpression;
-      return s1;
+  public static String getOsISROverheadItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof OsISROverhead)) {
+      return CustomItemProviderService.getContainingFeatureName(((EObject)object), "ISR Overhead", "");
     } else {
       return defaultText;
     }
@@ -5093,6 +4972,26 @@ public class CustomItemProviderService {
       return new ViewerNotification(notification, _notifier, false, true);
     }
     return null;
+  }
+  
+  /**
+   * ExecutionTicksItemProvider
+   */
+  public static String getExecutionTicksItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ExecutionTicks)) {
+      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
+      String _xifexpression = null;
+      boolean _contains = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("runnableItems", "computationItems")).contains(feature);
+      if (_contains) {
+        _xifexpression = "";
+      } else {
+        _xifexpression = (feature + " -- ");
+      }
+      final String s1 = _xifexpression;
+      return (s1 + defaultText);
+    } else {
+      return defaultText;
+    }
   }
   
   /**

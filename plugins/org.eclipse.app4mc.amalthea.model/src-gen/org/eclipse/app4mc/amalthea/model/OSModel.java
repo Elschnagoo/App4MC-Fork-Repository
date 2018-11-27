@@ -69,7 +69,7 @@ public interface OSModel extends BaseObject {
 
 	/**
 	 * Returns the value of the '<em><b>Os Overheads</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.OsInstructions}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.OsOverhead}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Os Overheads</em>' containment reference list isn't clear,
@@ -81,6 +81,6 @@ public interface OSModel extends BaseObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<OsInstructions> getOsOverheads();
+	EList<OsOverhead> getOsOverheads();
 
 } // OSModel

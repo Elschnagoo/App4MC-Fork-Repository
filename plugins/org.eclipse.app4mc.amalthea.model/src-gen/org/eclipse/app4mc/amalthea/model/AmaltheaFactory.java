@@ -106,24 +106,6 @@ public interface AmaltheaFactory extends EFactory {
 	TicksConstant createTicksConstant();
 
 	/**
-	 * Returns a new object of class '<em>Instructions Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instructions Deviation</em>'.
-	 * @generated
-	 */
-	InstructionsDeviation createInstructionsDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Instructions Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instructions Constant</em>'.
-	 * @generated
-	 */
-	InstructionsConstant createInstructionsConstant();
-
-	/**
 	 * Returns a new object of class '<em>Need Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1456,31 +1438,31 @@ public interface AmaltheaFactory extends EFactory {
 	VendorOperatingSystem createVendorOperatingSystem();
 
 	/**
-	 * Returns a new object of class '<em>Os Instructions</em>'.
+	 * Returns a new object of class '<em>Os Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os Instructions</em>'.
+	 * @return a new object of class '<em>Os Overhead</em>'.
 	 * @generated
 	 */
-	OsInstructions createOsInstructions();
+	OsOverhead createOsOverhead();
 
 	/**
-	 * Returns a new object of class '<em>Os API Instructions</em>'.
+	 * Returns a new object of class '<em>Os API Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os API Instructions</em>'.
+	 * @return a new object of class '<em>Os API Overhead</em>'.
 	 * @generated
 	 */
-	OsAPIInstructions createOsAPIInstructions();
+	OsAPIOverhead createOsAPIOverhead();
 
 	/**
-	 * Returns a new object of class '<em>Os ISR Instructions</em>'.
+	 * Returns a new object of class '<em>Os ISR Overhead</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os ISR Instructions</em>'.
+	 * @return a new object of class '<em>Os ISR Overhead</em>'.
 	 * @generated
 	 */
-	OsISRInstructions createOsISRInstructions();
+	OsISROverhead createOsISROverhead();
 
 	/**
 	 * Returns a new object of class '<em>Property Constraints Model</em>'.

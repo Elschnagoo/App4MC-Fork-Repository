@@ -268,52 +268,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstructionsDeviationItemProvider instructionsDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInstructionsDeviationAdapter() {
-		if (instructionsDeviationItemProvider == null) {
-			instructionsDeviationItemProvider = new InstructionsDeviationItemProvider(this);
-		}
-
-		return instructionsDeviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstructionsConstantItemProvider instructionsConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionsConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInstructionsConstantAdapter() {
-		if (instructionsConstantItemProvider == null) {
-			instructionsConstantItemProvider = new InstructionsConstantItemProvider(this);
-		}
-
-		return instructionsConstantItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedDeviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3764,72 +3718,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsInstructions} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsOverhead} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OsInstructionsItemProvider osInstructionsItemProvider;
+	protected OsOverheadItemProvider osOverheadItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsInstructions}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsOverhead}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOsInstructionsAdapter() {
-		if (osInstructionsItemProvider == null) {
-			osInstructionsItemProvider = new OsInstructionsItemProvider(this);
+	public Adapter createOsOverheadAdapter() {
+		if (osOverheadItemProvider == null) {
+			osOverheadItemProvider = new OsOverheadItemProvider(this);
 		}
 
-		return osInstructionsItemProvider;
+		return osOverheadItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OsAPIInstructionsItemProvider osAPIInstructionsItemProvider;
+	protected OsAPIOverheadItemProvider osAPIOverheadItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOsAPIInstructionsAdapter() {
-		if (osAPIInstructionsItemProvider == null) {
-			osAPIInstructionsItemProvider = new OsAPIInstructionsItemProvider(this);
+	public Adapter createOsAPIOverheadAdapter() {
+		if (osAPIOverheadItemProvider == null) {
+			osAPIOverheadItemProvider = new OsAPIOverheadItemProvider(this);
 		}
 
-		return osAPIInstructionsItemProvider;
+		return osAPIOverheadItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsISRInstructions} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.OsISROverhead} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OsISRInstructionsItemProvider osISRInstructionsItemProvider;
+	protected OsISROverheadItemProvider osISROverheadItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsISRInstructions}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.OsISROverhead}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOsISRInstructionsAdapter() {
-		if (osISRInstructionsItemProvider == null) {
-			osISRInstructionsItemProvider = new OsISRInstructionsItemProvider(this);
+	public Adapter createOsISROverheadAdapter() {
+		if (osISROverheadItemProvider == null) {
+			osISROverheadItemProvider = new OsISROverheadItemProvider(this);
 		}
 
-		return osISRInstructionsItemProvider;
+		return osISROverheadItemProvider;
 	}
 
 	/**
@@ -6331,8 +6285,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
 		if (ticksDeviationItemProvider != null) ticksDeviationItemProvider.dispose();
 		if (ticksConstantItemProvider != null) ticksConstantItemProvider.dispose();
-		if (instructionsDeviationItemProvider != null) instructionsDeviationItemProvider.dispose();
-		if (instructionsConstantItemProvider != null) instructionsConstantItemProvider.dispose();
 		if (needDeviationItemProvider != null) needDeviationItemProvider.dispose();
 		if (needConstantItemProvider != null) needConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
@@ -6483,9 +6435,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (priorityBasedItemProvider != null) priorityBasedItemProvider.dispose();
 		if (operatingSystemItemProvider != null) operatingSystemItemProvider.dispose();
 		if (vendorOperatingSystemItemProvider != null) vendorOperatingSystemItemProvider.dispose();
-		if (osInstructionsItemProvider != null) osInstructionsItemProvider.dispose();
-		if (osAPIInstructionsItemProvider != null) osAPIInstructionsItemProvider.dispose();
-		if (osISRInstructionsItemProvider != null) osISRInstructionsItemProvider.dispose();
+		if (osOverheadItemProvider != null) osOverheadItemProvider.dispose();
+		if (osAPIOverheadItemProvider != null) osAPIOverheadItemProvider.dispose();
+		if (osISROverheadItemProvider != null) osISROverheadItemProvider.dispose();
 		if (propertyConstraintsModelItemProvider != null) propertyConstraintsModelItemProvider.dispose();
 		if (processAllocationConstraintItemProvider != null) processAllocationConstraintItemProvider.dispose();
 		if (processPrototypeAllocationConstraintItemProvider != null) processPrototypeAllocationConstraintItemProvider.dispose();

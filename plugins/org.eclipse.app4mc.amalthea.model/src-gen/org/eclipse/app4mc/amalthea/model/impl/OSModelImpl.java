@@ -19,7 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.Semaphore;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -76,7 +76,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OsInstructions> osOverheads;
+	protected EList<OsOverhead> osOverheads;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,9 +126,9 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OsInstructions> getOsOverheads() {
+	public EList<OsOverhead> getOsOverheads() {
 		if (osOverheads == null) {
-			osOverheads = new EObjectContainmentEList<OsInstructions>(OsInstructions.class, this, AmaltheaPackage.OS_MODEL__OS_OVERHEADS);
+			osOverheads = new EObjectContainmentEList<OsOverhead>(OsOverhead.class, this, AmaltheaPackage.OS_MODEL__OS_OVERHEADS);
 		}
 		return osOverheads;
 	}
@@ -188,7 +188,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 				return;
 			case AmaltheaPackage.OS_MODEL__OS_OVERHEADS:
 				getOsOverheads().clear();
-				getOsOverheads().addAll((Collection<? extends OsInstructions>)newValue);
+				getOsOverheads().addAll((Collection<? extends OsOverhead>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

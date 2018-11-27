@@ -21,7 +21,7 @@ import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -83,7 +83,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * @generated
 	 * @ordered
 	 */
-	protected OsInstructions overhead;
+	protected OsOverhead overhead;
 
 	/**
 	 * The cached value of the '{@link #getTaskSchedulers() <em>Task Schedulers</em>}' containment reference list.
@@ -160,10 +160,10 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsInstructions getOverhead() {
+	public OsOverhead getOverhead() {
 		if (overhead != null && overhead.eIsProxy()) {
 			InternalEObject oldOverhead = (InternalEObject)overhead;
-			overhead = (OsInstructions)eResolveProxy(oldOverhead);
+			overhead = (OsOverhead)eResolveProxy(oldOverhead);
 			if (overhead != oldOverhead) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.OPERATING_SYSTEM__OVERHEAD, oldOverhead, overhead));
@@ -177,7 +177,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsInstructions basicGetOverhead() {
+	public OsOverhead basicGetOverhead() {
 		return overhead;
 	}
 
@@ -186,8 +186,8 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOverhead(OsInstructions newOverhead) {
-		OsInstructions oldOverhead = overhead;
+	public void setOverhead(OsOverhead newOverhead) {
+		OsOverhead oldOverhead = overhead;
 		overhead = newOverhead;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OPERATING_SYSTEM__OVERHEAD, oldOverhead, overhead));
@@ -314,7 +314,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				setName((String)newValue);
 				return;
 			case AmaltheaPackage.OPERATING_SYSTEM__OVERHEAD:
-				setOverhead((OsInstructions)newValue);
+				setOverhead((OsOverhead)newValue);
 				return;
 			case AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS:
 				getTaskSchedulers().clear();
@@ -343,7 +343,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 				setName(NAME_EDEFAULT);
 				return;
 			case AmaltheaPackage.OPERATING_SYSTEM__OVERHEAD:
-				setOverhead((OsInstructions)null);
+				setOverhead((OsOverhead)null);
 				return;
 			case AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS:
 				getTaskSchedulers().clear();

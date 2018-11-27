@@ -20,10 +20,10 @@ import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAssociation;
 import org.eclipse.app4mc.amalthea.model.SchedulingParameters;
@@ -60,8 +60,8 @@ public class OperatingSystemBuilder {
 		initializer.apply(obj);
 	}
 
-	public void osOverhead(final OSModel container, final Procedure1<OsInstructions> initializer) {
-		final OsInstructions obj = AmaltheaFactory.eINSTANCE.createOsInstructions();
+	public void osOverhead(final OSModel container, final Procedure1<OsOverhead> initializer) {
+		final OsOverhead obj = AmaltheaFactory.eINSTANCE.createOsOverhead();
 		container.getOsOverheads().add(obj);
 		initializer.apply(obj);
 	}
@@ -112,20 +112,20 @@ public class OperatingSystemBuilder {
 
 	// ********** OS instructions (overhead) **********
 
-	public void apiOverhead(final OsInstructions container, final Procedure1<OsAPIInstructions> initializer) {
-		final OsAPIInstructions obj = AmaltheaFactory.eINSTANCE.createOsAPIInstructions();
+	public void apiOverhead(final OsOverhead container, final Procedure1<OsAPIOverhead> initializer) {
+		final OsAPIOverhead obj = AmaltheaFactory.eINSTANCE.createOsAPIOverhead();
 		container.setApiOverhead(obj);
 		initializer.apply(obj);
 	}
 
-	public void isrOverheadCat1(final OsInstructions container, final Procedure1<OsISRInstructions> initializer) {
-		final OsISRInstructions obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions();
+	public void isrOverheadCat1(final OsOverhead container, final Procedure1<OsISROverhead> initializer) {
+		final OsISROverhead obj = AmaltheaFactory.eINSTANCE.createOsISROverhead();
 		container.setIsrCategory1Overhead(obj);
 		initializer.apply(obj);
 	}
 
-	public void isrOverheadCat2(final OsInstructions container, final Procedure1<OsISRInstructions> initializer) {
-		final OsISRInstructions obj = AmaltheaFactory.eINSTANCE.createOsISRInstructions();
+	public void isrOverheadCat2(final OsOverhead container, final Procedure1<OsISROverhead> initializer) {
+		final OsISROverhead obj = AmaltheaFactory.eINSTANCE.createOsISROverhead();
 		container.setIsrCategory2Overhead(obj);
 		initializer.apply(obj);
 	}

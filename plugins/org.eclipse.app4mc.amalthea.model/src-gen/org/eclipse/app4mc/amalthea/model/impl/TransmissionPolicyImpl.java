@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TransmissionPolicyImpl#getChunkSize <em>Chunk Size</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TransmissionPolicyImpl#getChunkProcessingInstructions <em>Chunk Processing Instructions</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TransmissionPolicyImpl#getChunkProcessingTicks <em>Chunk Processing Ticks</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TransmissionPolicyImpl#getTransmitRatio <em>Transmit Ratio</em>}</li>
  * </ul>
  *
@@ -55,24 +55,24 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	protected DataSize chunkSize;
 
 	/**
-	 * The default value of the '{@link #getChunkProcessingInstructions() <em>Chunk Processing Instructions</em>}' attribute.
+	 * The default value of the '{@link #getChunkProcessingTicks() <em>Chunk Processing Ticks</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChunkProcessingInstructions()
+	 * @see #getChunkProcessingTicks()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT = 0;
+	protected static final int CHUNK_PROCESSING_TICKS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getChunkProcessingInstructions() <em>Chunk Processing Instructions</em>}' attribute.
+	 * The cached value of the '{@link #getChunkProcessingTicks() <em>Chunk Processing Ticks</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChunkProcessingInstructions()
+	 * @see #getChunkProcessingTicks()
 	 * @generated
 	 * @ordered
 	 */
-	protected int chunkProcessingInstructions = CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT;
+	protected int chunkProcessingTicks = CHUNK_PROCESSING_TICKS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTransmitRatio() <em>Transmit Ratio</em>}' attribute.
@@ -161,8 +161,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getChunkProcessingInstructions() {
-		return chunkProcessingInstructions;
+	public int getChunkProcessingTicks() {
+		return chunkProcessingTicks;
 	}
 
 	/**
@@ -170,11 +170,11 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setChunkProcessingInstructions(int newChunkProcessingInstructions) {
-		int oldChunkProcessingInstructions = chunkProcessingInstructions;
-		chunkProcessingInstructions = newChunkProcessingInstructions;
+	public void setChunkProcessingTicks(int newChunkProcessingTicks) {
+		int oldChunkProcessingTicks = chunkProcessingTicks;
+		chunkProcessingTicks = newChunkProcessingTicks;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS, oldChunkProcessingInstructions, chunkProcessingInstructions));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS, oldChunkProcessingTicks, chunkProcessingTicks));
 	}
 
 	/**
@@ -222,8 +222,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
 				return getChunkSize();
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
-				return getChunkProcessingInstructions();
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS:
+				return getChunkProcessingTicks();
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				return getTransmitRatio();
 		}
@@ -241,8 +241,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
 				setChunkSize((DataSize)newValue);
 				return;
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
-				setChunkProcessingInstructions((Integer)newValue);
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS:
+				setChunkProcessingTicks((Integer)newValue);
 				return;
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				setTransmitRatio((Double)newValue);
@@ -262,8 +262,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
 				setChunkSize((DataSize)null);
 				return;
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
-				setChunkProcessingInstructions(CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT);
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS:
+				setChunkProcessingTicks(CHUNK_PROCESSING_TICKS_EDEFAULT);
 				return;
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				setTransmitRatio(TRANSMIT_RATIO_EDEFAULT);
@@ -282,8 +282,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 		switch (featureID) {
 			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_SIZE:
 				return chunkSize != null;
-			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS:
-				return chunkProcessingInstructions != CHUNK_PROCESSING_INSTRUCTIONS_EDEFAULT;
+			case AmaltheaPackage.TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS:
+				return chunkProcessingTicks != CHUNK_PROCESSING_TICKS_EDEFAULT;
 			case AmaltheaPackage.TRANSMISSION_POLICY__TRANSMIT_RATIO:
 				return transmitRatio != TRANSMIT_RATIO_EDEFAULT;
 		}
@@ -300,8 +300,8 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (chunkProcessingInstructions: ");
-		result.append(chunkProcessingInstructions);
+		result.append(" (chunkProcessingTicks: ");
+		result.append(chunkProcessingTicks);
 		result.append(", transmitRatio: ");
 		result.append(transmitRatio);
 		result.append(')');

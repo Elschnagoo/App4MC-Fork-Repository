@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -28,18 +28,18 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.OsISRInstructions} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.OsOverhead} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
+public class OsOverheadItemProvider extends ReferableBaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsISRInstructionsItemProvider(AdapterFactory adapterFactory) {
+	public OsOverheadItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -69,8 +69,9 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsOverhead_ApiOverhead());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory1Overhead());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory2Overhead());
 		}
 		return childrenFeatures;
 	}
@@ -88,13 +89,13 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns OsISRInstructions.gif.
+	 * This returns OsOverhead.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OsISRInstructions"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OsOverhead"));
 	}
 
 	/**
@@ -112,7 +113,10 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		return getString("_UI_OsISRInstructions_type");
+		String label = ((OsOverhead)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OsOverhead_type") :
+			getString("_UI_OsOverhead_type") + " " + label;
 	}
 
 	/**
@@ -121,7 +125,7 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getOsISRInstructionsItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getOsOverheadItemProviderText(object, getTextGen(object));
 	}
 
 	/**
@@ -135,9 +139,10 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(OsISRInstructions.class)) {
-			case AmaltheaPackage.OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD:
-			case AmaltheaPackage.OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD:
+		switch (notification.getFeatureID(OsOverhead.class)) {
+			case AmaltheaPackage.OS_OVERHEAD__API_OVERHEAD:
+			case AmaltheaPackage.OS_OVERHEAD__ISR_CATEGORY1_OVERHEAD:
+			case AmaltheaPackage.OS_OVERHEAD__ISR_CATEGORY2_OVERHEAD:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -156,23 +161,18 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
+				(AmaltheaPackage.eINSTANCE.getOsOverhead_ApiOverhead(),
+				 AmaltheaFactory.eINSTANCE.createOsAPIOverhead()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+				(AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory1Overhead(),
+				 AmaltheaFactory.eINSTANCE.createOsISROverhead()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsDeviation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createInstructionsConstant()));
+				(AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory2Overhead(),
+				 AmaltheaFactory.eINSTANCE.createOsISROverhead()));
 	}
 
 	/**
@@ -187,8 +187,8 @@ public class OsISRInstructionsItemProvider extends BaseObjectItemProvider {
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getOsISRInstructions_PreExecutionOverhead() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getOsISRInstructions_PostExecutionOverhead();
+			childFeature == AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory1Overhead() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getOsOverhead_IsrCategory2Overhead();
 
 		if (qualify) {
 			return getString

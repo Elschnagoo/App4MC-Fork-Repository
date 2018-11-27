@@ -189,9 +189,6 @@ import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
 import org.eclipse.app4mc.amalthea.model.InstructionFetch;
-import org.eclipse.app4mc.amalthea.model.Instructions;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -251,12 +248,12 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
-import org.eclipse.app4mc.amalthea.model.OsAPIInstructions;
+import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistency;
 import org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
-import org.eclipse.app4mc.amalthea.model.OsISRInstructions;
-import org.eclipse.app4mc.amalthea.model.OsInstructions;
+import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.OsOverhead;
 import org.eclipse.app4mc.amalthea.model.PairingConstraint;
 import org.eclipse.app4mc.amalthea.model.PartlyEarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.PartlyPFairPD2;
@@ -561,27 +558,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass ticksConstantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass instructionsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass instructionsDeviationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass instructionsConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1974,21 +1950,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass osInstructionsEClass = null;
+	private EClass osOverheadEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass osAPIInstructionsEClass = null;
+	private EClass osAPIOverheadEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass osISRInstructionsEClass = null;
+	private EClass osISROverheadEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3766,7 +3742,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransmissionPolicy_ChunkProcessingInstructions() {
+	public EAttribute getTransmissionPolicy_ChunkProcessingTicks() {
 		return (EAttribute)transmissionPolicyEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -3822,60 +3798,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getTicksConstant_Value() {
 		return (EAttribute)ticksConstantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInstructions() {
-		return instructionsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructions_FetchStatistic() {
-		return (EReference)instructionsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInstructionsDeviation() {
-		return instructionsDeviationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructionsDeviation_Deviation() {
-		return (EReference)instructionsDeviationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInstructionsConstant() {
-		return instructionsConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInstructionsConstant_Value() {
-		return (EAttribute)instructionsConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -8932,8 +8854,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOsInstructions() {
-		return osInstructionsEClass;
+	public EClass getOsOverhead() {
+		return osOverheadEClass;
 	}
 
 	/**
@@ -8941,8 +8863,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsInstructions_ApiOverhead() {
-		return (EReference)osInstructionsEClass.getEStructuralFeatures().get(0);
+	public EReference getOsOverhead_ApiOverhead() {
+		return (EReference)osOverheadEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -8950,8 +8872,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsInstructions_IsrCategory1Overhead() {
-		return (EReference)osInstructionsEClass.getEStructuralFeatures().get(1);
+	public EReference getOsOverhead_IsrCategory1Overhead() {
+		return (EReference)osOverheadEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8959,8 +8881,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsInstructions_IsrCategory2Overhead() {
-		return (EReference)osInstructionsEClass.getEStructuralFeatures().get(2);
+	public EReference getOsOverhead_IsrCategory2Overhead() {
+		return (EReference)osOverheadEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -8968,8 +8890,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOsAPIInstructions() {
-		return osAPIInstructionsEClass;
+	public EClass getOsAPIOverhead() {
+		return osAPIOverheadEClass;
 	}
 
 	/**
@@ -8977,8 +8899,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSendMessage() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(0);
+	public EReference getOsAPIOverhead_ApiSendMessage() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -8986,8 +8908,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiTerminateTask() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(1);
+	public EReference getOsAPIOverhead_ApiTerminateTask() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8995,8 +8917,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSchedule() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(2);
+	public EReference getOsAPIOverhead_ApiSchedule() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -9004,8 +8926,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiRequestResource() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(3);
+	public EReference getOsAPIOverhead_ApiRequestResource() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -9013,8 +8935,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiReleaseResource() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(4);
+	public EReference getOsAPIOverhead_ApiReleaseResource() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -9022,8 +8944,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSetEvent() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(5);
+	public EReference getOsAPIOverhead_ApiSetEvent() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -9031,8 +8953,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiWaitEvent() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(6);
+	public EReference getOsAPIOverhead_ApiWaitEvent() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -9040,8 +8962,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiClearEvent() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(7);
+	public EReference getOsAPIOverhead_ApiClearEvent() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -9049,8 +8971,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiActivateTask() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(8);
+	public EReference getOsAPIOverhead_ApiActivateTask() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -9058,8 +8980,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiEnforcedMigration() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(9);
+	public EReference getOsAPIOverhead_ApiEnforcedMigration() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -9067,8 +8989,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSuspendOsInterrupts() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(10);
+	public EReference getOsAPIOverhead_ApiSuspendOsInterrupts() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -9076,8 +8998,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiResumeOsInterrupts() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(11);
+	public EReference getOsAPIOverhead_ApiResumeOsInterrupts() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -9085,8 +9007,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiRequestSpinlock() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(12);
+	public EReference getOsAPIOverhead_ApiRequestSpinlock() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -9094,8 +9016,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiReleaseSpinlock() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(13);
+	public EReference getOsAPIOverhead_ApiReleaseSpinlock() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -9103,8 +9025,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSenderReceiverRead() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(14);
+	public EReference getOsAPIOverhead_ApiSenderReceiverRead() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -9112,8 +9034,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSenderReceiverWrite() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(15);
+	public EReference getOsAPIOverhead_ApiSenderReceiverWrite() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -9121,8 +9043,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiSynchronousServerCallPoint() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(16);
+	public EReference getOsAPIOverhead_ApiSynchronousServerCallPoint() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -9130,8 +9052,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiIocRead() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(17);
+	public EReference getOsAPIOverhead_ApiIocRead() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -9139,8 +9061,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsAPIInstructions_ApiIocWrite() {
-		return (EReference)osAPIInstructionsEClass.getEStructuralFeatures().get(18);
+	public EReference getOsAPIOverhead_ApiIocWrite() {
+		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -9148,8 +9070,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOsISRInstructions() {
-		return osISRInstructionsEClass;
+	public EClass getOsISROverhead() {
+		return osISROverheadEClass;
 	}
 
 	/**
@@ -9157,8 +9079,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsISRInstructions_PreExecutionOverhead() {
-		return (EReference)osISRInstructionsEClass.getEStructuralFeatures().get(0);
+	public EReference getOsISROverhead_PreExecutionOverhead() {
+		return (EReference)osISROverheadEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -9166,8 +9088,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOsISRInstructions_PostExecutionOverhead() {
-		return (EReference)osISRInstructionsEClass.getEStructuralFeatures().get(1);
+	public EReference getOsISROverhead_PostExecutionOverhead() {
+		return (EReference)osISROverheadEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13288,7 +13210,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		transmissionPolicyEClass = createEClass(TRANSMISSION_POLICY);
 		createEReference(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_SIZE);
-		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_PROCESSING_INSTRUCTIONS);
+		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__TRANSMIT_RATIO);
 
 		ticksEClass = createEClass(TICKS);
@@ -13298,15 +13220,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		ticksConstantEClass = createEClass(TICKS_CONSTANT);
 		createEAttribute(ticksConstantEClass, TICKS_CONSTANT__VALUE);
-
-		instructionsEClass = createEClass(INSTRUCTIONS);
-		createEReference(instructionsEClass, INSTRUCTIONS__FETCH_STATISTIC);
-
-		instructionsDeviationEClass = createEClass(INSTRUCTIONS_DEVIATION);
-		createEReference(instructionsDeviationEClass, INSTRUCTIONS_DEVIATION__DEVIATION);
-
-		instructionsConstantEClass = createEClass(INSTRUCTIONS_CONSTANT);
-		createEAttribute(instructionsConstantEClass, INSTRUCTIONS_CONSTANT__VALUE);
 
 		needEClass = createEClass(NEED);
 
@@ -14067,35 +13980,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__VENDOR);
 		createEAttribute(vendorOperatingSystemEClass, VENDOR_OPERATING_SYSTEM__VERSION);
 
-		osInstructionsEClass = createEClass(OS_INSTRUCTIONS);
-		createEReference(osInstructionsEClass, OS_INSTRUCTIONS__API_OVERHEAD);
-		createEReference(osInstructionsEClass, OS_INSTRUCTIONS__ISR_CATEGORY1_OVERHEAD);
-		createEReference(osInstructionsEClass, OS_INSTRUCTIONS__ISR_CATEGORY2_OVERHEAD);
+		osOverheadEClass = createEClass(OS_OVERHEAD);
+		createEReference(osOverheadEClass, OS_OVERHEAD__API_OVERHEAD);
+		createEReference(osOverheadEClass, OS_OVERHEAD__ISR_CATEGORY1_OVERHEAD);
+		createEReference(osOverheadEClass, OS_OVERHEAD__ISR_CATEGORY2_OVERHEAD);
 
-		osAPIInstructionsEClass = createEClass(OS_API_INSTRUCTIONS);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SEND_MESSAGE);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_TERMINATE_TASK);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SCHEDULE);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_REQUEST_RESOURCE);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_RELEASE_RESOURCE);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SET_EVENT);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_WAIT_EVENT);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_CLEAR_EVENT);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_ACTIVATE_TASK);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_ENFORCED_MIGRATION);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SUSPEND_OS_INTERRUPTS);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_RESUME_OS_INTERRUPTS);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_REQUEST_SPINLOCK);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_RELEASE_SPINLOCK);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_READ);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SENDER_RECEIVER_WRITE);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_SYNCHRONOUS_SERVER_CALL_POINT);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_IOC_READ);
-		createEReference(osAPIInstructionsEClass, OS_API_INSTRUCTIONS__API_IOC_WRITE);
+		osAPIOverheadEClass = createEClass(OS_API_OVERHEAD);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SEND_MESSAGE);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_TERMINATE_TASK);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SCHEDULE);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_REQUEST_RESOURCE);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_RELEASE_RESOURCE);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SET_EVENT);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_WAIT_EVENT);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_CLEAR_EVENT);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_ACTIVATE_TASK);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_ENFORCED_MIGRATION);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SUSPEND_OS_INTERRUPTS);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_RESUME_OS_INTERRUPTS);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_REQUEST_SPINLOCK);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_RELEASE_SPINLOCK);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SENDER_RECEIVER_READ);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SENDER_RECEIVER_WRITE);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_SYNCHRONOUS_SERVER_CALL_POINT);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_IOC_READ);
+		createEReference(osAPIOverheadEClass, OS_API_OVERHEAD__API_IOC_WRITE);
 
-		osISRInstructionsEClass = createEClass(OS_ISR_INSTRUCTIONS);
-		createEReference(osISRInstructionsEClass, OS_ISR_INSTRUCTIONS__PRE_EXECUTION_OVERHEAD);
-		createEReference(osISRInstructionsEClass, OS_ISR_INSTRUCTIONS__POST_EXECUTION_OVERHEAD);
+		osISROverheadEClass = createEClass(OS_ISR_OVERHEAD);
+		createEReference(osISROverheadEClass, OS_ISR_OVERHEAD__PRE_EXECUTION_OVERHEAD);
+		createEReference(osISROverheadEClass, OS_ISR_OVERHEAD__POST_EXECUTION_OVERHEAD);
 
 		propertyConstraintsModelEClass = createEClass(PROPERTY_CONSTRAINTS_MODEL);
 		createEReference(propertyConstraintsModelEClass, PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
@@ -14733,8 +14646,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
 		ticksDeviationEClass.getESuperTypes().add(this.getTicks());
 		ticksConstantEClass.getESuperTypes().add(this.getTicks());
-		instructionsDeviationEClass.getESuperTypes().add(this.getInstructions());
-		instructionsConstantEClass.getESuperTypes().add(this.getInstructions());
 		needDeviationEClass.getESuperTypes().add(this.getNeed());
 		needConstantEClass.getESuperTypes().add(this.getNeed());
 		timeEClass.getESuperTypes().add(this.getQuantity());
@@ -14980,9 +14891,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		operatingSystemEClass.getESuperTypes().add(this.getBaseObject());
 		operatingSystemEClass.getESuperTypes().add(this.getINamed());
 		vendorOperatingSystemEClass.getESuperTypes().add(this.getOperatingSystem());
-		osInstructionsEClass.getESuperTypes().add(this.getReferableBaseObject());
-		osAPIInstructionsEClass.getESuperTypes().add(this.getBaseObject());
-		osISRInstructionsEClass.getESuperTypes().add(this.getBaseObject());
+		osOverheadEClass.getESuperTypes().add(this.getReferableBaseObject());
+		osAPIOverheadEClass.getESuperTypes().add(this.getBaseObject());
+		osISROverheadEClass.getESuperTypes().add(this.getBaseObject());
 		propertyConstraintsModelEClass.getESuperTypes().add(this.getBaseObject());
 		coreAllocationConstraintEClass.getESuperTypes().add(this.getBaseObject());
 		memoryMappingConstraintEClass.getESuperTypes().add(this.getBaseObject());
@@ -15191,7 +15102,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(transmissionPolicyEClass, TransmissionPolicy.class, "TransmissionPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransmissionPolicy_ChunkSize(), this.getDataSize(), null, "chunkSize", null, 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransmissionPolicy_ChunkProcessingInstructions(), theEcorePackage.getEInt(), "chunkProcessingInstructions", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransmissionPolicy_ChunkProcessingTicks(), theEcorePackage.getEInt(), "chunkProcessingTicks", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_TransmitRatio(), theEcorePackage.getEDouble(), "transmitRatio", "1.0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ticksEClass, Ticks.class, "Ticks", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -15204,18 +15115,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(ticksConstantEClass, TicksConstant.class, "TicksConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTicksConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, TicksConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(instructionsEClass, Instructions.class, "Instructions", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInstructions_FetchStatistic(), this.getInstructionFetch(), null, "fetchStatistic", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(instructionsDeviationEClass, InstructionsDeviation.class, "InstructionsDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getInstructionsDeviation_Deviation(), g1, null, "deviation", null, 0, 1, InstructionsDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(instructionsConstantEClass, InstructionsConstant.class, "InstructionsConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInstructionsConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, InstructionsConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(needEClass, Need.class, "Need", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -15886,7 +15785,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(osModelEClass, OSModel.class, "OSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOSModel_Semaphores(), this.getSemaphore(), null, "semaphores", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOSModel_OperatingSystems(), this.getOperatingSystem(), null, "operatingSystems", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOSModel_OsOverheads(), this.getOsInstructions(), null, "osOverheads", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSModel_OsOverheads(), this.getOsOverhead(), null, "osOverheads", null, 0, -1, OSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osDataConsistencyEClass, OsDataConsistency.class, "OsDataConsistency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOsDataConsistency_Mode(), this.getOsDataConsistencyMode(), "mode", null, 0, 1, OsDataConsistency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16004,7 +15903,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(priorityBasedEClass, PriorityBased.class, "PriorityBased", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(operatingSystemEClass, OperatingSystem.class, "OperatingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperatingSystem_Overhead(), this.getOsInstructions(), null, "overhead", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperatingSystem_Overhead(), this.getOsOverhead(), null, "overhead", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_TaskSchedulers(), this.getTaskScheduler(), null, "taskSchedulers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_InterruptControllers(), this.getInterruptController(), null, "interruptControllers", null, 0, -1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperatingSystem_OsDataConsistency(), this.getOsDataConsistency(), null, "osDataConsistency", null, 0, 1, OperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16014,35 +15913,35 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getVendorOperatingSystem_Vendor(), theEcorePackage.getEString(), "vendor", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVendorOperatingSystem_Version(), theEcorePackage.getEString(), "version", null, 0, 1, VendorOperatingSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(osInstructionsEClass, OsInstructions.class, "OsInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsInstructions_ApiOverhead(), this.getOsAPIInstructions(), null, "apiOverhead", null, 0, 1, OsInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsInstructions_IsrCategory1Overhead(), this.getOsISRInstructions(), null, "isrCategory1Overhead", null, 0, 1, OsInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsInstructions_IsrCategory2Overhead(), this.getOsISRInstructions(), null, "isrCategory2Overhead", null, 0, 1, OsInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(osOverheadEClass, OsOverhead.class, "OsOverhead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOsOverhead_ApiOverhead(), this.getOsAPIOverhead(), null, "apiOverhead", null, 0, 1, OsOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsOverhead_IsrCategory1Overhead(), this.getOsISROverhead(), null, "isrCategory1Overhead", null, 0, 1, OsOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsOverhead_IsrCategory2Overhead(), this.getOsISROverhead(), null, "isrCategory2Overhead", null, 0, 1, OsOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(osAPIInstructionsEClass, OsAPIInstructions.class, "OsAPIInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsAPIInstructions_ApiSendMessage(), this.getInstructions(), null, "apiSendMessage", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiTerminateTask(), this.getInstructions(), null, "apiTerminateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSchedule(), this.getInstructions(), null, "apiSchedule", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiRequestResource(), this.getInstructions(), null, "apiRequestResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiReleaseResource(), this.getInstructions(), null, "apiReleaseResource", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSetEvent(), this.getInstructions(), null, "apiSetEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiWaitEvent(), this.getInstructions(), null, "apiWaitEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiClearEvent(), this.getInstructions(), null, "apiClearEvent", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiActivateTask(), this.getInstructions(), null, "apiActivateTask", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiEnforcedMigration(), this.getInstructions(), null, "apiEnforcedMigration", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSuspendOsInterrupts(), this.getInstructions(), null, "apiSuspendOsInterrupts", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiResumeOsInterrupts(), this.getInstructions(), null, "apiResumeOsInterrupts", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiRequestSpinlock(), this.getInstructions(), null, "apiRequestSpinlock", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiReleaseSpinlock(), this.getInstructions(), null, "apiReleaseSpinlock", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSenderReceiverRead(), this.getInstructions(), null, "apiSenderReceiverRead", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSenderReceiverWrite(), this.getInstructions(), null, "apiSenderReceiverWrite", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiSynchronousServerCallPoint(), this.getInstructions(), null, "apiSynchronousServerCallPoint", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiIocRead(), this.getInstructions(), null, "apiIocRead", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIInstructions_ApiIocWrite(), this.getInstructions(), null, "apiIocWrite", null, 0, 1, OsAPIInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(osAPIOverheadEClass, OsAPIOverhead.class, "OsAPIOverhead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOsAPIOverhead_ApiSendMessage(), this.getExecutionTicks(), null, "apiSendMessage", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiTerminateTask(), this.getExecutionTicks(), null, "apiTerminateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSchedule(), this.getExecutionTicks(), null, "apiSchedule", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiRequestResource(), this.getExecutionTicks(), null, "apiRequestResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiReleaseResource(), this.getExecutionTicks(), null, "apiReleaseResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSetEvent(), this.getExecutionTicks(), null, "apiSetEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiWaitEvent(), this.getExecutionTicks(), null, "apiWaitEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiClearEvent(), this.getExecutionTicks(), null, "apiClearEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiActivateTask(), this.getExecutionTicks(), null, "apiActivateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiEnforcedMigration(), this.getExecutionTicks(), null, "apiEnforcedMigration", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSuspendOsInterrupts(), this.getExecutionTicks(), null, "apiSuspendOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiResumeOsInterrupts(), this.getExecutionTicks(), null, "apiResumeOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiRequestSpinlock(), this.getExecutionTicks(), null, "apiRequestSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiReleaseSpinlock(), this.getExecutionTicks(), null, "apiReleaseSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSenderReceiverRead(), this.getExecutionTicks(), null, "apiSenderReceiverRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSenderReceiverWrite(), this.getExecutionTicks(), null, "apiSenderReceiverWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSynchronousServerCallPoint(), this.getExecutionTicks(), null, "apiSynchronousServerCallPoint", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiIocRead(), this.getExecutionTicks(), null, "apiIocRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiIocWrite(), this.getExecutionTicks(), null, "apiIocWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(osISRInstructionsEClass, OsISRInstructions.class, "OsISRInstructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsISRInstructions_PreExecutionOverhead(), this.getInstructions(), null, "preExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsISRInstructions_PostExecutionOverhead(), this.getInstructions(), null, "postExecutionOverhead", null, 0, 1, OsISRInstructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(osISROverheadEClass, OsISROverhead.class, "OsISROverhead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOsISROverhead_PreExecutionOverhead(), this.getExecutionTicks(), null, "preExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsISROverhead_PostExecutionOverhead(), this.getExecutionTicks(), null, "postExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyConstraintsModelEClass, PropertyConstraintsModel.class, "PropertyConstraintsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyConstraintsModel_AllocationConstraints(), this.getCoreAllocationConstraint(), null, "allocationConstraints", null, 0, -1, PropertyConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

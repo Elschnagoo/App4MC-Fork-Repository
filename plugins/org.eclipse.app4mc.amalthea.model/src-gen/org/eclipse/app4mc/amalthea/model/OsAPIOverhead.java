@@ -17,39 +17,39 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Os API Instructions</b></em>'.
+ * A representation of the model object '<em><b>Os API Overhead</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSendMessage <em>Api Send Message</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiTerminateTask <em>Api Terminate Task</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSchedule <em>Api Schedule</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestResource <em>Api Request Resource</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseResource <em>Api Release Resource</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSetEvent <em>Api Set Event</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiWaitEvent <em>Api Wait Event</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiClearEvent <em>Api Clear Event</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiActivateTask <em>Api Activate Task</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiEnforcedMigration <em>Api Enforced Migration</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock <em>Api Request Spinlock</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock <em>Api Release Spinlock</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead <em>Api Ioc Read</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite <em>Api Ioc Write</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSendMessage <em>Api Send Message</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiTerminateTask <em>Api Terminate Task</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSchedule <em>Api Schedule</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiRequestResource <em>Api Request Resource</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiReleaseResource <em>Api Release Resource</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSetEvent <em>Api Set Event</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiWaitEvent <em>Api Wait Event</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiClearEvent <em>Api Clear Event</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiActivateTask <em>Api Activate Task</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiEnforcedMigration <em>Api Enforced Migration</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiRequestSpinlock <em>Api Request Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiReleaseSpinlock <em>Api Release Spinlock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiIocRead <em>Api Ioc Read</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiIocWrite <em>Api Ioc Write</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead()
  * @model
  * @generated
  */
-public interface OsAPIInstructions extends BaseObject {
+public interface OsAPIOverhead extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Api Send Message</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -59,22 +59,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Send Message</em>' containment reference.
-	 * @see #setApiSendMessage(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSendMessage()
+	 * @see #setApiSendMessage(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSendMessage()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSendMessage();
+	ExecutionTicks getApiSendMessage();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSendMessage <em>Api Send Message</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSendMessage <em>Api Send Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Send Message</em>' containment reference.
 	 * @see #getApiSendMessage()
 	 * @generated
 	 */
-	void setApiSendMessage(Instructions value);
+	void setApiSendMessage(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Terminate Task</b></em>' containment reference.
@@ -85,22 +85,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Terminate Task</em>' containment reference.
-	 * @see #setApiTerminateTask(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiTerminateTask()
+	 * @see #setApiTerminateTask(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiTerminateTask()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiTerminateTask();
+	ExecutionTicks getApiTerminateTask();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiTerminateTask <em>Api Terminate Task</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiTerminateTask <em>Api Terminate Task</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Terminate Task</em>' containment reference.
 	 * @see #getApiTerminateTask()
 	 * @generated
 	 */
-	void setApiTerminateTask(Instructions value);
+	void setApiTerminateTask(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Schedule</b></em>' containment reference.
@@ -111,22 +111,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Schedule</em>' containment reference.
-	 * @see #setApiSchedule(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSchedule()
+	 * @see #setApiSchedule(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSchedule()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSchedule();
+	ExecutionTicks getApiSchedule();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSchedule <em>Api Schedule</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSchedule <em>Api Schedule</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Schedule</em>' containment reference.
 	 * @see #getApiSchedule()
 	 * @generated
 	 */
-	void setApiSchedule(Instructions value);
+	void setApiSchedule(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Request Resource</b></em>' containment reference.
@@ -137,22 +137,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Request Resource</em>' containment reference.
-	 * @see #setApiRequestResource(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiRequestResource()
+	 * @see #setApiRequestResource(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiRequestResource()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiRequestResource();
+	ExecutionTicks getApiRequestResource();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestResource <em>Api Request Resource</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiRequestResource <em>Api Request Resource</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Request Resource</em>' containment reference.
 	 * @see #getApiRequestResource()
 	 * @generated
 	 */
-	void setApiRequestResource(Instructions value);
+	void setApiRequestResource(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Release Resource</b></em>' containment reference.
@@ -163,22 +163,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Release Resource</em>' containment reference.
-	 * @see #setApiReleaseResource(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiReleaseResource()
+	 * @see #setApiReleaseResource(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiReleaseResource()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiReleaseResource();
+	ExecutionTicks getApiReleaseResource();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseResource <em>Api Release Resource</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiReleaseResource <em>Api Release Resource</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Release Resource</em>' containment reference.
 	 * @see #getApiReleaseResource()
 	 * @generated
 	 */
-	void setApiReleaseResource(Instructions value);
+	void setApiReleaseResource(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Set Event</b></em>' containment reference.
@@ -189,22 +189,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Set Event</em>' containment reference.
-	 * @see #setApiSetEvent(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSetEvent()
+	 * @see #setApiSetEvent(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSetEvent()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSetEvent();
+	ExecutionTicks getApiSetEvent();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSetEvent <em>Api Set Event</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSetEvent <em>Api Set Event</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Set Event</em>' containment reference.
 	 * @see #getApiSetEvent()
 	 * @generated
 	 */
-	void setApiSetEvent(Instructions value);
+	void setApiSetEvent(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Wait Event</b></em>' containment reference.
@@ -215,22 +215,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Wait Event</em>' containment reference.
-	 * @see #setApiWaitEvent(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiWaitEvent()
+	 * @see #setApiWaitEvent(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiWaitEvent()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiWaitEvent();
+	ExecutionTicks getApiWaitEvent();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiWaitEvent <em>Api Wait Event</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiWaitEvent <em>Api Wait Event</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Wait Event</em>' containment reference.
 	 * @see #getApiWaitEvent()
 	 * @generated
 	 */
-	void setApiWaitEvent(Instructions value);
+	void setApiWaitEvent(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Clear Event</b></em>' containment reference.
@@ -241,22 +241,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Clear Event</em>' containment reference.
-	 * @see #setApiClearEvent(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiClearEvent()
+	 * @see #setApiClearEvent(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiClearEvent()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiClearEvent();
+	ExecutionTicks getApiClearEvent();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiClearEvent <em>Api Clear Event</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiClearEvent <em>Api Clear Event</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Clear Event</em>' containment reference.
 	 * @see #getApiClearEvent()
 	 * @generated
 	 */
-	void setApiClearEvent(Instructions value);
+	void setApiClearEvent(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Activate Task</b></em>' containment reference.
@@ -267,22 +267,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Activate Task</em>' containment reference.
-	 * @see #setApiActivateTask(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiActivateTask()
+	 * @see #setApiActivateTask(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiActivateTask()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiActivateTask();
+	ExecutionTicks getApiActivateTask();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiActivateTask <em>Api Activate Task</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiActivateTask <em>Api Activate Task</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Activate Task</em>' containment reference.
 	 * @see #getApiActivateTask()
 	 * @generated
 	 */
-	void setApiActivateTask(Instructions value);
+	void setApiActivateTask(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Enforced Migration</b></em>' containment reference.
@@ -293,22 +293,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Enforced Migration</em>' containment reference.
-	 * @see #setApiEnforcedMigration(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiEnforcedMigration()
+	 * @see #setApiEnforcedMigration(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiEnforcedMigration()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiEnforcedMigration();
+	ExecutionTicks getApiEnforcedMigration();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiEnforcedMigration <em>Api Enforced Migration</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiEnforcedMigration <em>Api Enforced Migration</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Enforced Migration</em>' containment reference.
 	 * @see #getApiEnforcedMigration()
 	 * @generated
 	 */
-	void setApiEnforcedMigration(Instructions value);
+	void setApiEnforcedMigration(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Suspend Os Interrupts</b></em>' containment reference.
@@ -319,22 +319,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Suspend Os Interrupts</em>' containment reference.
-	 * @see #setApiSuspendOsInterrupts(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSuspendOsInterrupts()
+	 * @see #setApiSuspendOsInterrupts(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSuspendOsInterrupts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSuspendOsInterrupts();
+	ExecutionTicks getApiSuspendOsInterrupts();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSuspendOsInterrupts <em>Api Suspend Os Interrupts</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Suspend Os Interrupts</em>' containment reference.
 	 * @see #getApiSuspendOsInterrupts()
 	 * @generated
 	 */
-	void setApiSuspendOsInterrupts(Instructions value);
+	void setApiSuspendOsInterrupts(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Resume Os Interrupts</b></em>' containment reference.
@@ -345,22 +345,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Resume Os Interrupts</em>' containment reference.
-	 * @see #setApiResumeOsInterrupts(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiResumeOsInterrupts()
+	 * @see #setApiResumeOsInterrupts(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiResumeOsInterrupts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiResumeOsInterrupts();
+	ExecutionTicks getApiResumeOsInterrupts();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiResumeOsInterrupts <em>Api Resume Os Interrupts</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Resume Os Interrupts</em>' containment reference.
 	 * @see #getApiResumeOsInterrupts()
 	 * @generated
 	 */
-	void setApiResumeOsInterrupts(Instructions value);
+	void setApiResumeOsInterrupts(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Request Spinlock</b></em>' containment reference.
@@ -371,22 +371,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Request Spinlock</em>' containment reference.
-	 * @see #setApiRequestSpinlock(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiRequestSpinlock()
+	 * @see #setApiRequestSpinlock(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiRequestSpinlock()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiRequestSpinlock();
+	ExecutionTicks getApiRequestSpinlock();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiRequestSpinlock <em>Api Request Spinlock</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiRequestSpinlock <em>Api Request Spinlock</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Request Spinlock</em>' containment reference.
 	 * @see #getApiRequestSpinlock()
 	 * @generated
 	 */
-	void setApiRequestSpinlock(Instructions value);
+	void setApiRequestSpinlock(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Release Spinlock</b></em>' containment reference.
@@ -397,22 +397,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Release Spinlock</em>' containment reference.
-	 * @see #setApiReleaseSpinlock(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiReleaseSpinlock()
+	 * @see #setApiReleaseSpinlock(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiReleaseSpinlock()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiReleaseSpinlock();
+	ExecutionTicks getApiReleaseSpinlock();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiReleaseSpinlock <em>Api Release Spinlock</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiReleaseSpinlock <em>Api Release Spinlock</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Release Spinlock</em>' containment reference.
 	 * @see #getApiReleaseSpinlock()
 	 * @generated
 	 */
-	void setApiReleaseSpinlock(Instructions value);
+	void setApiReleaseSpinlock(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Sender Receiver Read</b></em>' containment reference.
@@ -423,22 +423,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Sender Receiver Read</em>' containment reference.
-	 * @see #setApiSenderReceiverRead(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSenderReceiverRead()
+	 * @see #setApiSenderReceiverRead(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSenderReceiverRead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSenderReceiverRead();
+	ExecutionTicks getApiSenderReceiverRead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSenderReceiverRead <em>Api Sender Receiver Read</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Sender Receiver Read</em>' containment reference.
 	 * @see #getApiSenderReceiverRead()
 	 * @generated
 	 */
-	void setApiSenderReceiverRead(Instructions value);
+	void setApiSenderReceiverRead(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Sender Receiver Write</b></em>' containment reference.
@@ -449,22 +449,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Sender Receiver Write</em>' containment reference.
-	 * @see #setApiSenderReceiverWrite(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSenderReceiverWrite()
+	 * @see #setApiSenderReceiverWrite(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSenderReceiverWrite()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSenderReceiverWrite();
+	ExecutionTicks getApiSenderReceiverWrite();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSenderReceiverWrite <em>Api Sender Receiver Write</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Sender Receiver Write</em>' containment reference.
 	 * @see #getApiSenderReceiverWrite()
 	 * @generated
 	 */
-	void setApiSenderReceiverWrite(Instructions value);
+	void setApiSenderReceiverWrite(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Synchronous Server Call Point</b></em>' containment reference.
@@ -475,22 +475,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Synchronous Server Call Point</em>' containment reference.
-	 * @see #setApiSynchronousServerCallPoint(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiSynchronousServerCallPoint()
+	 * @see #setApiSynchronousServerCallPoint(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiSynchronousServerCallPoint()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiSynchronousServerCallPoint();
+	ExecutionTicks getApiSynchronousServerCallPoint();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiSynchronousServerCallPoint <em>Api Synchronous Server Call Point</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Synchronous Server Call Point</em>' containment reference.
 	 * @see #getApiSynchronousServerCallPoint()
 	 * @generated
 	 */
-	void setApiSynchronousServerCallPoint(Instructions value);
+	void setApiSynchronousServerCallPoint(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Ioc Read</b></em>' containment reference.
@@ -501,22 +501,22 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Ioc Read</em>' containment reference.
-	 * @see #setApiIocRead(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiIocRead()
+	 * @see #setApiIocRead(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiIocRead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiIocRead();
+	ExecutionTicks getApiIocRead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocRead <em>Api Ioc Read</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiIocRead <em>Api Ioc Read</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Ioc Read</em>' containment reference.
 	 * @see #getApiIocRead()
 	 * @generated
 	 */
-	void setApiIocRead(Instructions value);
+	void setApiIocRead(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Api Ioc Write</b></em>' containment reference.
@@ -527,21 +527,21 @@ public interface OsAPIInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Ioc Write</em>' containment reference.
-	 * @see #setApiIocWrite(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIInstructions_ApiIocWrite()
+	 * @see #setApiIocWrite(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsAPIOverhead_ApiIocWrite()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getApiIocWrite();
+	ExecutionTicks getApiIocWrite();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIInstructions#getApiIocWrite <em>Api Ioc Write</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsAPIOverhead#getApiIocWrite <em>Api Ioc Write</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Ioc Write</em>' containment reference.
 	 * @see #getApiIocWrite()
 	 * @generated
 	 */
-	void setApiIocWrite(Instructions value);
+	void setApiIocWrite(ExecutionTicks value);
 
-} // OsAPIInstructions
+} // OsAPIOverhead

@@ -189,7 +189,7 @@ class MemoryClassifier extends Classifier
 class TransmissionPolicy
 {
 	contains DataSize chunkSize
-	int chunkProcessingInstructions = "0"
+	int chunkProcessingTicks = "0"
 	double transmitRatio = "1.0"
 }
 
@@ -210,33 +210,6 @@ class TicksDeviation extends Ticks
  * Constant set of execution cycles (ticks)
  */
 class TicksConstant extends Ticks
-{
-	long value = "0"
-}
-
-/*
- * Abstract description for a set of execution cycles
- */
-abstract class Instructions
-{
-	/*
-	 * optional parameter for fetch statistic
-	 */
-	contains InstructionFetch fetchStatistic
-}
-
-/*
- * Deviated set of execution cycles
- */
-class InstructionsDeviation extends Instructions
-{
-	contains Deviation<LongObject> deviation
-}
-
-/*
- * Constant set of execution cycles 
- */
-class InstructionsConstant extends Instructions
 {
 	long value = "0"
 }
@@ -2059,7 +2032,7 @@ class OSModel extends BaseObject
 {
 	contains Semaphore[] semaphores
 	contains OperatingSystem[] operatingSystems
-	contains OsInstructions[] osOverheads
+	contains OsOverhead[] osOverheads
 }
 
 class OsDataConsistency extends BaseObject
@@ -2396,7 +2369,7 @@ class PriorityBased extends InterruptSchedulingAlgorithm {}
 
 class OperatingSystem extends BaseObject, INamed
 {
-	refers OsInstructions overhead
+	refers OsOverhead overhead
 	contains TaskScheduler[] taskSchedulers
 	contains InterruptController[] interruptControllers
 	contains OsDataConsistency osDataConsistency
@@ -2409,40 +2382,40 @@ class VendorOperatingSystem extends OperatingSystem
 	String version
 }
 
-class OsInstructions extends ReferableBaseObject
+class OsOverhead extends ReferableBaseObject
 {
-	contains OsAPIInstructions apiOverhead
-	contains OsISRInstructions isrCategory1Overhead
-	contains OsISRInstructions isrCategory2Overhead
+	contains OsAPIOverhead apiOverhead
+	contains OsISROverhead isrCategory1Overhead
+	contains OsISROverhead isrCategory2Overhead
 }
 
-class OsAPIInstructions extends BaseObject
+class OsAPIOverhead extends BaseObject
 {
-	contains Instructions apiSendMessage
-	contains Instructions apiTerminateTask
-	contains Instructions apiSchedule
-	contains Instructions apiRequestResource
-	contains Instructions apiReleaseResource
-	contains Instructions apiSetEvent
-	contains Instructions apiWaitEvent
-	contains Instructions apiClearEvent
-	contains Instructions apiActivateTask
-	contains Instructions apiEnforcedMigration
-	contains Instructions apiSuspendOsInterrupts
-	contains Instructions apiResumeOsInterrupts
-	contains Instructions apiRequestSpinlock
-	contains Instructions apiReleaseSpinlock
-	contains Instructions apiSenderReceiverRead
-	contains Instructions apiSenderReceiverWrite
-	contains Instructions apiSynchronousServerCallPoint
-	contains Instructions apiIocRead
-	contains Instructions apiIocWrite
+	contains ExecutionTicks apiSendMessage
+	contains ExecutionTicks apiTerminateTask
+	contains ExecutionTicks apiSchedule
+	contains ExecutionTicks apiRequestResource
+	contains ExecutionTicks apiReleaseResource
+	contains ExecutionTicks apiSetEvent
+	contains ExecutionTicks apiWaitEvent
+	contains ExecutionTicks apiClearEvent
+	contains ExecutionTicks apiActivateTask
+	contains ExecutionTicks apiEnforcedMigration
+	contains ExecutionTicks apiSuspendOsInterrupts
+	contains ExecutionTicks apiResumeOsInterrupts
+	contains ExecutionTicks apiRequestSpinlock
+	contains ExecutionTicks apiReleaseSpinlock
+	contains ExecutionTicks apiSenderReceiverRead
+	contains ExecutionTicks apiSenderReceiverWrite
+	contains ExecutionTicks apiSynchronousServerCallPoint
+	contains ExecutionTicks apiIocRead
+	contains ExecutionTicks apiIocWrite
 }
 
-class OsISRInstructions extends BaseObject
+class OsISROverhead extends BaseObject
 {
-	contains Instructions preExecutionOverhead
-	contains Instructions postExecutionOverhead
+	contains ExecutionTicks preExecutionOverhead
+	contains ExecutionTicks postExecutionOverhead
 }
 
 

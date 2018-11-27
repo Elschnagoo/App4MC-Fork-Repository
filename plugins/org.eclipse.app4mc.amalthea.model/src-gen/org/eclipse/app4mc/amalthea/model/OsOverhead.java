@@ -17,23 +17,23 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Os Instructions</b></em>'.
+ * A representation of the model object '<em><b>Os Overhead</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getApiOverhead <em>Api Overhead</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getIsrCategory1Overhead <em>Isr Category1 Overhead</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getIsrCategory2Overhead <em>Isr Category2 Overhead</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getApiOverhead <em>Api Overhead</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getIsrCategory1Overhead <em>Isr Category1 Overhead</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getIsrCategory2Overhead <em>Isr Category2 Overhead</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsInstructions()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsOverhead()
  * @model
  * @generated
  */
-public interface OsInstructions extends ReferableBaseObject {
+public interface OsOverhead extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Api Overhead</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,22 +43,22 @@ public interface OsInstructions extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Overhead</em>' containment reference.
-	 * @see #setApiOverhead(OsAPIInstructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsInstructions_ApiOverhead()
+	 * @see #setApiOverhead(OsAPIOverhead)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsOverhead_ApiOverhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	OsAPIInstructions getApiOverhead();
+	OsAPIOverhead getApiOverhead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getApiOverhead <em>Api Overhead</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getApiOverhead <em>Api Overhead</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Api Overhead</em>' containment reference.
 	 * @see #getApiOverhead()
 	 * @generated
 	 */
-	void setApiOverhead(OsAPIInstructions value);
+	void setApiOverhead(OsAPIOverhead value);
 
 	/**
 	 * Returns the value of the '<em><b>Isr Category1 Overhead</b></em>' containment reference.
@@ -69,22 +69,22 @@ public interface OsInstructions extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Category1 Overhead</em>' containment reference.
-	 * @see #setIsrCategory1Overhead(OsISRInstructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsInstructions_IsrCategory1Overhead()
+	 * @see #setIsrCategory1Overhead(OsISROverhead)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsOverhead_IsrCategory1Overhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	OsISRInstructions getIsrCategory1Overhead();
+	OsISROverhead getIsrCategory1Overhead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getIsrCategory1Overhead <em>Isr Category1 Overhead</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getIsrCategory1Overhead <em>Isr Category1 Overhead</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Isr Category1 Overhead</em>' containment reference.
 	 * @see #getIsrCategory1Overhead()
 	 * @generated
 	 */
-	void setIsrCategory1Overhead(OsISRInstructions value);
+	void setIsrCategory1Overhead(OsISROverhead value);
 
 	/**
 	 * Returns the value of the '<em><b>Isr Category2 Overhead</b></em>' containment reference.
@@ -95,21 +95,21 @@ public interface OsInstructions extends ReferableBaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Category2 Overhead</em>' containment reference.
-	 * @see #setIsrCategory2Overhead(OsISRInstructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsInstructions_IsrCategory2Overhead()
+	 * @see #setIsrCategory2Overhead(OsISROverhead)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsOverhead_IsrCategory2Overhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	OsISRInstructions getIsrCategory2Overhead();
+	OsISROverhead getIsrCategory2Overhead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsInstructions#getIsrCategory2Overhead <em>Isr Category2 Overhead</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsOverhead#getIsrCategory2Overhead <em>Isr Category2 Overhead</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Isr Category2 Overhead</em>' containment reference.
 	 * @see #getIsrCategory2Overhead()
 	 * @generated
 	 */
-	void setIsrCategory2Overhead(OsISRInstructions value);
+	void setIsrCategory2Overhead(OsISROverhead value);
 
-} // OsInstructions
+} // OsOverhead

@@ -17,22 +17,22 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Os ISR Instructions</b></em>'.
+ * A representation of the model object '<em><b>Os ISR Overhead</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPreExecutionOverhead <em>Pre Execution Overhead</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPostExecutionOverhead <em>Post Execution Overhead</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPreExecutionOverhead <em>Pre Execution Overhead</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPostExecutionOverhead <em>Post Execution Overhead</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISROverhead()
  * @model
  * @generated
  */
-public interface OsISRInstructions extends BaseObject {
+public interface OsISROverhead extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Pre Execution Overhead</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -42,22 +42,22 @@ public interface OsISRInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pre Execution Overhead</em>' containment reference.
-	 * @see #setPreExecutionOverhead(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PreExecutionOverhead()
+	 * @see #setPreExecutionOverhead(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISROverhead_PreExecutionOverhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getPreExecutionOverhead();
+	ExecutionTicks getPreExecutionOverhead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPreExecutionOverhead <em>Pre Execution Overhead</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPreExecutionOverhead <em>Pre Execution Overhead</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Pre Execution Overhead</em>' containment reference.
 	 * @see #getPreExecutionOverhead()
 	 * @generated
 	 */
-	void setPreExecutionOverhead(Instructions value);
+	void setPreExecutionOverhead(ExecutionTicks value);
 
 	/**
 	 * Returns the value of the '<em><b>Post Execution Overhead</b></em>' containment reference.
@@ -68,21 +68,21 @@ public interface OsISRInstructions extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Post Execution Overhead</em>' containment reference.
-	 * @see #setPostExecutionOverhead(Instructions)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISRInstructions_PostExecutionOverhead()
+	 * @see #setPostExecutionOverhead(ExecutionTicks)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISROverhead_PostExecutionOverhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Instructions getPostExecutionOverhead();
+	ExecutionTicks getPostExecutionOverhead();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISRInstructions#getPostExecutionOverhead <em>Post Execution Overhead</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPostExecutionOverhead <em>Post Execution Overhead</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Post Execution Overhead</em>' containment reference.
 	 * @see #getPostExecutionOverhead()
 	 * @generated
 	 */
-	void setPostExecutionOverhead(Instructions value);
+	void setPostExecutionOverhead(ExecutionTicks value);
 
-} // OsISRInstructions
+} // OsISROverhead

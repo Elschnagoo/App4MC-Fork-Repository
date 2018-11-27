@@ -825,7 +825,7 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="chunkProcessingTicks" type="xsd:int"/>
     <xsd:attribute name="transmitRatio" type="xsd:double"/>
   </xsd:complexType>
   <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
@@ -878,58 +878,6 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:element name="TicksConstant" type="am:TicksConstant">
     <xsd:annotation>
       <xsd:documentation>Constant set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="fetchStatistic" type="am:InstructionFetch">
-        <xsd:annotation>
-          <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Instructions" type="am:Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType abstract="true" name="Need">
@@ -3334,7 +3282,7 @@ to a specific memory.</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
-          <xsd:element name="osOverheads" type="am:OsInstructions"/>
+          <xsd:element name="osOverheads" type="am:OsOverhead"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3853,7 +3801,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="overhead" type="am:OsInstructions"/>
+          <xsd:element name="overhead" type="am:OsOverhead"/>
           <xsd:element name="taskSchedulers" type="am:TaskScheduler"/>
           <xsd:element name="interruptControllers" type="am:InterruptController"/>
           <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
@@ -3874,57 +3822,57 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="VendorOperatingSystem" type="am:VendorOperatingSystem"/>
-  <xsd:complexType name="OsInstructions">
+  <xsd:complexType name="OsOverhead">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiOverhead" type="am:OsAPIInstructions"/>
-          <xsd:element name="isrCategory1Overhead" type="am:OsISRInstructions"/>
-          <xsd:element name="isrCategory2Overhead" type="am:OsISRInstructions"/>
+          <xsd:element name="apiOverhead" type="am:OsAPIOverhead"/>
+          <xsd:element name="isrCategory1Overhead" type="am:OsISROverhead"/>
+          <xsd:element name="isrCategory2Overhead" type="am:OsISROverhead"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsInstructions" type="am:OsInstructions"/>
-  <xsd:complexType name="OsAPIInstructions">
+  <xsd:element name="OsOverhead" type="am:OsOverhead"/>
+  <xsd:complexType name="OsAPIOverhead">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiSendMessage" type="am:Instructions"/>
-          <xsd:element name="apiTerminateTask" type="am:Instructions"/>
-          <xsd:element name="apiSchedule" type="am:Instructions"/>
-          <xsd:element name="apiRequestResource" type="am:Instructions"/>
-          <xsd:element name="apiReleaseResource" type="am:Instructions"/>
-          <xsd:element name="apiSetEvent" type="am:Instructions"/>
-          <xsd:element name="apiWaitEvent" type="am:Instructions"/>
-          <xsd:element name="apiClearEvent" type="am:Instructions"/>
-          <xsd:element name="apiActivateTask" type="am:Instructions"/>
-          <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
-          <xsd:element name="apiSuspendOsInterrupts" type="am:Instructions"/>
-          <xsd:element name="apiResumeOsInterrupts" type="am:Instructions"/>
-          <xsd:element name="apiRequestSpinlock" type="am:Instructions"/>
-          <xsd:element name="apiReleaseSpinlock" type="am:Instructions"/>
-          <xsd:element name="apiSenderReceiverRead" type="am:Instructions"/>
-          <xsd:element name="apiSenderReceiverWrite" type="am:Instructions"/>
-          <xsd:element name="apiSynchronousServerCallPoint" type="am:Instructions"/>
-          <xsd:element name="apiIocRead" type="am:Instructions"/>
-          <xsd:element name="apiIocWrite" type="am:Instructions"/>
+          <xsd:element name="apiSendMessage" type="am:ExecutionTicks"/>
+          <xsd:element name="apiTerminateTask" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSchedule" type="am:ExecutionTicks"/>
+          <xsd:element name="apiRequestResource" type="am:ExecutionTicks"/>
+          <xsd:element name="apiReleaseResource" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSetEvent" type="am:ExecutionTicks"/>
+          <xsd:element name="apiWaitEvent" type="am:ExecutionTicks"/>
+          <xsd:element name="apiClearEvent" type="am:ExecutionTicks"/>
+          <xsd:element name="apiActivateTask" type="am:ExecutionTicks"/>
+          <xsd:element name="apiEnforcedMigration" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSuspendOsInterrupts" type="am:ExecutionTicks"/>
+          <xsd:element name="apiResumeOsInterrupts" type="am:ExecutionTicks"/>
+          <xsd:element name="apiRequestSpinlock" type="am:ExecutionTicks"/>
+          <xsd:element name="apiReleaseSpinlock" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSenderReceiverRead" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSenderReceiverWrite" type="am:ExecutionTicks"/>
+          <xsd:element name="apiSynchronousServerCallPoint" type="am:ExecutionTicks"/>
+          <xsd:element name="apiIocRead" type="am:ExecutionTicks"/>
+          <xsd:element name="apiIocWrite" type="am:ExecutionTicks"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsAPIInstructions" type="am:OsAPIInstructions"/>
-  <xsd:complexType name="OsISRInstructions">
+  <xsd:element name="OsAPIOverhead" type="am:OsAPIOverhead"/>
+  <xsd:complexType name="OsISROverhead">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="preExecutionOverhead" type="am:Instructions"/>
-          <xsd:element name="postExecutionOverhead" type="am:Instructions"/>
+          <xsd:element name="preExecutionOverhead" type="am:ExecutionTicks"/>
+          <xsd:element name="postExecutionOverhead" type="am:ExecutionTicks"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsISRInstructions" type="am:OsISRInstructions"/>
+  <xsd:element name="OsISROverhead" type="am:OsISROverhead"/>
   <xsd:complexType name="PropertyConstraintsModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
