@@ -174,11 +174,20 @@ public class ModelMigrationJob extends Job {
 				// TODO: Implement a generalized logic so as to support future versions
 				boolean updateFileNames = false;
 				if (inputModelVersion.equals("itea.103") || inputModelVersion.equals("itea.110")) {
-					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")
-							|| outputModelVersion.equals("0.7.1") || outputModelVersion.equals("0.7.2")
-							|| outputModelVersion.equals("0.8.0")) {
-						updateFileNames = true;
+					
+					List<String> allVersions = ModelVersions.get();
+					 
+					if(!outputModelVersion.equals("itea.103") && !outputModelVersion.equals("itea.110")) {
+						if(allVersions.contains(outputModelVersion)) {
+							updateFileNames=true;
+						}
 					}
+					
+//					if (outputModelVersion.equals("itea.111") || outputModelVersion.equals("0.7.0")
+//							|| outputModelVersion.equals("0.7.1") || outputModelVersion.equals("0.7.2")
+//							|| outputModelVersion.equals("0.8.0")) {
+//						updateFileNames = true;
+//					}
 				}
 				saveFiles(subMonitor, fileName_documentsMap, updateFileNames);
 			}

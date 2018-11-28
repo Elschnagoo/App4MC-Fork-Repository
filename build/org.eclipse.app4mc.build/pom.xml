@@ -105,7 +105,7 @@
 		<module>../../plugins/org.sqlite.jdbc</module>
 		<!--  <module>../../plugins/org.slf4j.impl.custom</module>-->
 		
-
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.093</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.092</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.091</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.090</module>
@@ -193,6 +193,7 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.090.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.091.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.092.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.093.test</module>		
 		
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
 		<module>../../tests/org.eclipse.app4mc.multicore.openmapping.test</module>
