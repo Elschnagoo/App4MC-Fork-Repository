@@ -24,6 +24,9 @@ As described above, only forward migration is supported by the AMALTHEA model mi
 Model migration utility migrates the specified model sequentially to the next versions (step by step) till expected version is reached.
 
 
+||
+{background:#ddd}. | **%{color:brown}From APP4MC 0.9.3 : migration of Amalthea models belonging to legacy versions ITEA "1.0.3, 1.1.0, 1.1.1" is not supported.%** |
+
 Below figure represents the steps involved in the migration of model from ITEA2 1.0.3 version to APP4MC 0.7.0 version:
 
 !(scale)../pictures/migration_flow.png!

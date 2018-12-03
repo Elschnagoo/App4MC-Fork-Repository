@@ -176,10 +176,56 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 							public void run() {
 
 
-								final List<MigrationInputFile> modelsWithInvalidVersionInfo = getModelsWithInvalidVersionInfo(
+								final List<MigrationInputFile> modelsWithLegacyVersionInfo = getInputModelsOfLegacyVersions(
 										getMigrationSettings());
 
-								if (modelsWithInvalidVersionInfo.size() > 0) {
+								
+								final List<MigrationInputFile> modelsWithInvalidVersionInfo = getModelsWithInvalidVersionInfo(
+										getMigrationSettings());
+								
+								if(modelsWithLegacyVersionInfo.size()>0) {
+									
+									final StringBuffer stringBuffer = new StringBuffer();
+
+									stringBuffer.append( "Can not migrate legacy Amalthea models of versions : itea.103 or itea.110 or itea.111");
+									
+									stringBuffer.append(System.getProperty("line.separator"));
+									stringBuffer.append(System.getProperty("line.separator"));
+
+									stringBuffer.append( "From APP4MC 0.9.3, support for migrating legacy model versions (itea.103, itea.110, itea.111) is removed");
+
+									stringBuffer.append(System.getProperty("line.separator"));
+									stringBuffer.append(System.getProperty("line.separator"));
+
+									stringBuffer.append("** Legacy model versions found for the below files ->");
+
+									stringBuffer.append(System.getProperty("line.separator"));
+									stringBuffer.append(System.getProperty("line.separator"));
+
+									for (final MigrationInputFile migrationFile : modelsWithInvalidVersionInfo) {
+
+										stringBuffer.append(migrationFile.getFile().getAbsolutePath() + " Version: "+migrationFile.getModelVersion());
+
+										stringBuffer.append(System.getProperty("line.separator"));
+										stringBuffer.append( " -------- > Version: "+migrationFile.getModelVersion());
+									}
+									stringBuffer.append(System.getProperty("line.separator"));
+									stringBuffer.append(System.getProperty("line.separator"));
+
+									stringBuffer.append("Use one of the previous version of APP4MC (till 0.9.2) for migrating these legacy Amalthea models to regular versions (0.7.0 and above)");
+
+//									stringBuffer.append(System.getProperty("line.separator"));
+//									stringBuffer.append(System.getProperty("line.separator"));
+
+
+									
+									final Shell shell = new Shell(Display.getDefault());
+
+									MessageDialog.openError(shell, "AMALTHEA Model Migration", stringBuffer.toString());
+
+								
+									
+								}else if (modelsWithInvalidVersionInfo.size() > 0) {
 
 									final StringBuffer stringBuffer = new StringBuffer();
 
@@ -271,6 +317,36 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 							}
 
 							/**
+							 * This method is used to get all the input model files which are belonging to ITEA versions of AMALTHEA (e.g: itea.103, itea.110, itea.111)
+							 *
+							 * @param migrationSettings
+							 * @return
+							 */
+
+							private List<MigrationInputFile> getInputModelsOfLegacyVersions(
+									final MigrationSettings migrationSettings) {
+
+								final List<MigrationInputFile> list = new ArrayList<MigrationInputFile>();
+
+								for (final MigrationInputFile migModelFile : migrationSettings.getMigModelFiles()) {
+
+									final String inputModelVersion = migModelFile.getModelVersion();
+
+									if ( ((inputModelVersion != null) && (inputModelVersion.equals("itea.103")
+											|| inputModelVersion.equals("itea.110")
+											|| inputModelVersion.equals("itea.111")  
+											
+											))) {
+
+										list.add(migModelFile);
+									}
+								}
+
+								return list;
+							}
+							
+							
+							/**
 							 * This method is used to build list of model files for which version is invalid
 							 *
 							 * @param migrationSettings
@@ -286,10 +362,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 									final String inputModelVersion = migModelFile.getModelVersion();
 
-									/*- if version is not among itea.103/itea.110/itea.111/0.7.0/0.7.1/0.7.2*/
-									if (!((inputModelVersion != null) && (inputModelVersion.equals("itea.103")
-											|| inputModelVersion.equals("itea.110")
-											|| inputModelVersion.equals("itea.111") || inputModelVersion.equals("0.7.0")
+									/*- if version is not among  0.7.0/0.7.1/0.7.2*/
+									if (!((inputModelVersion != null) &&  (inputModelVersion.equals("0.7.0")
 											|| inputModelVersion.equals("0.7.1") || inputModelVersion.equals("0.7.2")
 											|| inputModelVersion.equals("0.8.0")
 											|| inputModelVersion.equals("0.8.1")

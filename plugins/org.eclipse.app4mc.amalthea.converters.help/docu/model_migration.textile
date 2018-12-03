@@ -18,7 +18,11 @@ As described above, same scenario is also applicable for AMALTHEA models as they
 
 For each release of AMALTHEA there will be changes in the meta model contents, due to this it is not possible to load models built from previous releases of AMALTHEA into latest tool distribution.
 
-*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous releases (e.g. itea.1.0.3, itea.1.1.0, itea.1.1.1, 0.7.0, 0.7.1, 0.7.2, 0.8.0, 0.8.1, 0.8.2, 0.8.3, 0.9.0, 0.9.1) to the ones which are compatible to the next versions of AMALTHEA meta model.
+*Model Migration functionality* is part of this distribution, using this feature it is possible to convert models from previous APP4MC releases (e.g. 0.7.0, 0.7.1, 0.7.2, 0.8.0 ...) to the ones which are compatible to the next versions of AMALTHEA meta model.
 
 _Only forward migration of models is supported by Model Migration functionality of AMALTHEA_
 
+||
+{background:#ddd}. | **%{color:brown}From APP4MC 0.9.3 : migration of Amalthea models belonging to legacy versions : ITEA "1.0.3, 1.1.0, 1.1.1" is not supported.%** |
+<br></br>||
+{background:#ddd}.|If there are Amalthea models beloning to legacy versions ITEA "1.0.3 or 1.1.0 or 1.1.1", use one of the APP4MC version till 0.9.2 and convert the models into one of the APP4MC model version. <br></br> - These models can be used as input for model migration to next versions of APP4MC Amalthea model |

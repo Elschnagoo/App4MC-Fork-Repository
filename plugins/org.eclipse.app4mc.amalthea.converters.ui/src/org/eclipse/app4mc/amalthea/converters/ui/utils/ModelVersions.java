@@ -25,9 +25,9 @@ public class ModelVersions {
 		
 		List<String> allSupportedVersions=new ArrayList<String>();
 		
-		allSupportedVersions.add("itea.103");
-		allSupportedVersions.add("itea.110");
-		allSupportedVersions.add("itea.111");
+//		allSupportedVersions.add("itea.103");
+//		allSupportedVersions.add("itea.110");
+//		allSupportedVersions.add("itea.111");
 		allSupportedVersions.add("0.7.0");
 		allSupportedVersions.add("0.7.1");
 		allSupportedVersions.add("0.7.2");

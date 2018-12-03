@@ -115,9 +115,14 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.080</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>
+		
+		
+		<!--
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.111</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>
+		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>-->
+		
+		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.common</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.ui</module>
 		<module>../../plugins/org.jdom2</module>
@@ -181,9 +186,10 @@
 
 		<!-- Tests -->
 
-		<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
+		<!--<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
-		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>
+		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>-->
+		
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.080.test</module>
