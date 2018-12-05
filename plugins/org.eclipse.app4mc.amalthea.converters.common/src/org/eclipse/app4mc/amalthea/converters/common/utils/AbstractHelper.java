@@ -1322,4 +1322,25 @@ public abstract class AbstractHelper {
 
 		return reference;
 	}
+	
+	/**
+	 * This method is used to copy an element from the source node to the target node, irrespective of if the element is an attribute or node
+	 * @param sourceElement
+	 * @param targetElement
+	 * @param childNodeOrAttributeName name of the child element. Method should detect if the child with this name exists as a 
+	 */
+	public void copyElement_Attribute_or_Element(Element sourceElement, Element targetElement,
+			String childNodeOrAttributeName) {
+
+		Attribute attribute = sourceElement.getAttribute(childNodeOrAttributeName);
+
+		Element childElement = sourceElement.getChild(childNodeOrAttributeName);
+
+		if(attribute!=null) {
+			targetElement.setAttribute(attribute.clone());
+		}else if(childElement!=null) {
+			targetElement.setContent(childElement.clone());
+		}
+
+	}
 }
