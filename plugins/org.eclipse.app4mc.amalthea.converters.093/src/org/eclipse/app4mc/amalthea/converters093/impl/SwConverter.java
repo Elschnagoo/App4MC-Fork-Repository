@@ -66,7 +66,12 @@ public class SwConverter implements IConverter {
 		 * xpathBuffer.append("|");
 		 */
 
-		xpathBuffer.append("./swModel/runnables/runnableItems[@xsi:type=\"am:ExecutionNeed\"]");
+		xpathBuffer.append("./swModel/runnables//*[@xsi:type=\"am:ExecutionNeed\"]");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:ExecutionNeed\"]");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:ExecutionNeed\"]");
+		 
 
 		final List<Element> executionNeeds = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
 				this.helper.getNS_093("am"),this.helper.getGenericNS("xsi"));
@@ -74,13 +79,32 @@ public class SwConverter implements IConverter {
 		for (final Element executionNeedElement : executionNeeds) {
 			
 			
-			String runnableName=null;
+			String containerElementName=null;
 			
-			Element parentElement = executionNeedElement.getParentElement();
-			if(parentElement.getName().equals("runnables")) {
+			String containerType="";
+			
+			Element parentElement = this.helper.getParentElementOfName(executionNeedElement, "runnables","taskSchedulers","interruptControllers");
+			
+			if(parentElement !=null) {
 				
-				runnableName=parentElement.getAttributeValue("name");
+				containerElementName=parentElement.getAttributeValue("name");
+				
+				if(parentElement.getName().equals("runnables")) {
+					containerType="Runnable";
+				}else if(parentElement.getName().equals("taskSchedulers")) {
+					containerType="TaskScheduler";
+					
+				}else if(parentElement.getName().equals("interruptControllers")) {
+					containerType="InterruptController";
+					
+				}
 			}
+			
+			
+		 
+			String nodeName=executionNeedElement.getName();
+			
+			
 			/*-
 			 *    <default key="Instructions">
           <value xsi:type="am:NeedConstant" value="45"/>
@@ -113,7 +137,7 @@ public class SwConverter implements IConverter {
 			}
 			
 			/*- ------ExecutionTicks element --------------*/
-			Element executionTicksElement=new Element("runnableItems"  );
+			Element executionTicksElement=new Element(nodeName);
 			
 			Attribute typeAttribute=new Attribute("type", "am:ExecutionTicks", this.helper.getGenericNS("xsi"));
 			
@@ -193,18 +217,18 @@ public class SwConverter implements IConverter {
 				
 			}
 			
-			final List<Element> removedValues = this.helper.getXpathResult(executionNeedElement,"./default[not(@key=\"Instructions\")] | ./extended/value[not(@key=\"Instructions\")]", Element.class,
+			final List<Element> skippedValues = this.helper.getXpathResult(executionNeedElement,"./default[not(@key=\"Instructions\")] | ./extended/value[not(@key=\"Instructions\")]", Element.class,
 					this.helper.getNS_093("am"));
 			
 			StringBuffer buffer=new StringBuffer();
-			for (Element elementKey : removedValues) {
+			for (Element elementKey : skippedValues) {
 				String attributeValue = elementKey.getAttributeValue("key");
 				buffer.append(attributeValue);
 				buffer.append(",");
 			}
 			
 			if(buffer.length()>0) {
-				logger.info("In Runnable : \""+runnableName+"\" Entries of ExecutionNeed with following keys can not be migrated (as only supported key is : \"Instructions\"): " + buffer.toString().substring(0, buffer.length()-1));
+				logger.info("In "+containerType+" : \""+containerElementName+"\" Entries of ExecutionNeed with following keys can not be migrated (only supported \"HwFeatureCategory\" as key is : \"Instructions\"): " + buffer.toString().substring(0, buffer.length()-1));
 				
 			}
 			

@@ -25,6 +25,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -1342,5 +1343,44 @@ public abstract class AbstractHelper {
 			targetElement.setContent(childElement.clone());
 		}
 
+	}
+	/**
+	 * This method is used to get the ParentElement of the node, with a specific name.
+	 * 
+	 * Note: This method searches recursively in upward direction till the parent element with the specified name is obtained
+	 * @param currentElement
+	 * @param parentName
+	 * @return
+	 */
+	
+	public Element getParentElementWithName(Element currentElement, String parentName) {
+		
+		Element parentElement = currentElement.getParentElement();
+		
+		if(parentElement!=null) {
+			if(parentElement.getName().equals(parentName)) {
+				return parentElement;
+			}else {
+				return getParentElementWithName(parentElement, parentName);
+			}
+		}
+		return null;
+	}
+	
+	public Element getParentElementOfName(Element currentElement, String... parentNames) {
+		
+		Element parentElement = currentElement.getParentElement();
+		
+		if(parentElement!=null) {
+			
+			boolean contains = Arrays.stream(parentNames).anyMatch(parentElement.getName()::equals);
+			
+			if(contains) {
+				return parentElement;
+			}else {
+				return getParentElementOfName(parentElement, parentNames);
+			}
+		}
+		return null;
 	}
 }
