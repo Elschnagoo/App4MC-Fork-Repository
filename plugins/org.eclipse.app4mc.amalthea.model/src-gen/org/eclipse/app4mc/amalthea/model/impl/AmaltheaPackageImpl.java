@@ -3913,6 +3913,60 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTime__AdjustUnit() {
+		return timeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__Add__Time() {
+		return timeEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__Subtract__Time() {
+		return timeEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__Multiply__long() {
+		return timeEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__Multiply__double() {
+		return timeEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTime__Divide__Time() {
+		return timeEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFrequency() {
 		return frequencyEClass;
 	}
@@ -13238,6 +13292,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(timeEClass, TIME__UNIT);
 		createEOperation(timeEClass, TIME___TO_STRING);
 		createEOperation(timeEClass, TIME___COMPARE_TO__TIME);
+		createEOperation(timeEClass, TIME___ADJUST_UNIT);
+		createEOperation(timeEClass, TIME___ADD__TIME);
+		createEOperation(timeEClass, TIME___SUBTRACT__TIME);
+		createEOperation(timeEClass, TIME___MULTIPLY__LONG);
+		createEOperation(timeEClass, TIME___MULTIPLY__DOUBLE);
+		createEOperation(timeEClass, TIME___DIVIDE__TIME);
 
 		frequencyEClass = createEClass(FREQUENCY);
 		createEAttribute(frequencyEClass, FREQUENCY__VALUE);
@@ -15138,7 +15198,24 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEOperation(getTime__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getTime__CompareTo__Time(), theEcorePackage.getEInt(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTime(), "time", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTime(), "t", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTime__AdjustUnit(), this.getTime(), "adjustUnit", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__Add__Time(), this.getTime(), "add", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTime(), "t", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__Subtract__Time(), this.getTime(), "subtract", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTime(), "t", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__Multiply__long(), this.getTime(), "multiply", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getELong(), "v", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__Multiply__double(), this.getTime(), "multiply", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDouble(), "v", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTime__Divide__Time(), theEcorePackage.getEDouble(), "divide", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTime(), "t", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(frequencyEClass, Frequency.class, "Frequency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrequency_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

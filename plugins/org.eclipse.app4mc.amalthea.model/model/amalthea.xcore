@@ -260,9 +260,15 @@ class Time extends Quantity, Value, TimeComparable
 	op String toString() {
 		return value + " " + if (unit == TimeUnit::_UNDEFINED_) "<unit>" else unit.literal
 	}
-	op int compareTo(Time time) {
-		return AmaltheaServices.compareTimes(this, time)
-	}
+	
+	op int compareTo(Time t) { return AmaltheaServices.compareTimes(this, t) }
+	
+	op Time adjustUnit() { return AmaltheaServices.adjustTimeUnit(this) }
+	op Time add(Time t) { return AmaltheaServices.addTime(this, t) }
+	op Time subtract(Time t) { return AmaltheaServices.subtractTime(this, t) }
+	op Time multiply(long v) { return AmaltheaServices.multiply(this, v) }
+	op Time multiply(double v) { return AmaltheaServices.multiply(this, v) }
+	op double divide(Time t) { return AmaltheaServices.divideTime(this, t) }
 }
 
 

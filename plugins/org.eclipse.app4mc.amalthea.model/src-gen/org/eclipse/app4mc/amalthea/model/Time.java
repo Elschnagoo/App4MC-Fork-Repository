@@ -105,9 +105,57 @@ public interface Time extends Quantity, Value, Comparable<Time> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false" timeUnique="false"
+	 * @model unique="false" tUnique="false"
 	 * @generated
 	 */
-	int compareTo(Time time);
+	int compareTo(Time t);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 * @generated
+	 */
+	Time adjustUnit();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" tUnique="false"
+	 * @generated
+	 */
+	Time add(Time t);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" tUnique="false"
+	 * @generated
+	 */
+	Time subtract(Time t);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" vUnique="false"
+	 * @generated
+	 */
+	Time multiply(long v);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" vUnique="false"
+	 * @generated
+	 */
+	Time multiply(double v);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" tUnique="false"
+	 * @generated
+	 */
+	double divide(Time t);
 
 } // Time

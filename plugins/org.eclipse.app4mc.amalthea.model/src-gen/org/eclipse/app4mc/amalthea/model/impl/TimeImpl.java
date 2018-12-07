@@ -174,8 +174,62 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int compareTo(final Time time) {
-		return AmaltheaServices.compareTimes(this, time);
+	public int compareTo(final Time t) {
+		return AmaltheaServices.compareTimes(this, t);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time adjustUnit() {
+		return AmaltheaServices.adjustTimeUnit(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time add(final Time t) {
+		return AmaltheaServices.addTime(this, t);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time subtract(final Time t) {
+		return AmaltheaServices.subtractTime(this, t);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time multiply(final long v) {
+		return AmaltheaServices.multiply(this, v);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time multiply(final double v) {
+		return AmaltheaServices.multiply(this, v);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double divide(final Time t) {
+		return AmaltheaServices.divideTime(this, t);
 	}
 
 	/**
@@ -258,6 +312,18 @@ public class TimeImpl extends QuantityImpl implements Time {
 				return toString();
 			case AmaltheaPackage.TIME___COMPARE_TO__TIME:
 				return compareTo((Time)arguments.get(0));
+			case AmaltheaPackage.TIME___ADJUST_UNIT:
+				return adjustUnit();
+			case AmaltheaPackage.TIME___ADD__TIME:
+				return add((Time)arguments.get(0));
+			case AmaltheaPackage.TIME___SUBTRACT__TIME:
+				return subtract((Time)arguments.get(0));
+			case AmaltheaPackage.TIME___MULTIPLY__LONG:
+				return multiply((Long)arguments.get(0));
+			case AmaltheaPackage.TIME___MULTIPLY__DOUBLE:
+				return multiply((Double)arguments.get(0));
+			case AmaltheaPackage.TIME___DIVIDE__TIME:
+				return divide((Time)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

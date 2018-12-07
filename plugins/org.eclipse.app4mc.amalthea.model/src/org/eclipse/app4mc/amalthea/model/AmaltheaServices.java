@@ -18,7 +18,9 @@ package org.eclipse.app4mc.amalthea.model;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -29,6 +31,9 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 
 public class AmaltheaServices {
 
+	private static final List<TimeUnit> TIME_UNIT_LIST = Arrays.asList(
+			TimeUnit.PS, TimeUnit.NS, TimeUnit.US, TimeUnit.MS, TimeUnit.S);
+	
 	public static <T extends EObject> T getContainerOfType(EObject object, Class<T> type) {
 		if (type == null || object == null) return null;
 		
@@ -257,6 +262,94 @@ public class AmaltheaServices {
 		assert value2 != null;
 
 		return value1.compareTo(value2);
+	}
+
+	/**
+	 *  This method takes a time (in value and unit) and adjusts the TimeUnit 
+	 *  so that the value is as small as possible, without losing precision
+	 *  e.g. 1000us is converted to 1ms
+	 * @param time
+	 * @return new Time with adjusted value and unit
+	 */
+	public static Time adjustTimeUnit(Time time) {
+		if (time.getValue() == BigInteger.ZERO) return time;
+		if (time.getUnit() == TimeUnit._UNDEFINED_) return time;
+		
+		int index = TIME_UNIT_LIST.indexOf(time.getUnit());
+		int maxIndex = TIME_UNIT_LIST.size() - 1;
+		BigInteger value = time.getValue();
+		BigInteger bigInt1000 = BigInteger.TEN.pow(3);
+		
+		while (value.mod(bigInt1000) == BigInteger.ZERO && index < maxIndex) {
+			value = value.divide(bigInt1000);
+			index++;
+		}
+		
+		return createTime(value, TIME_UNIT_LIST.get(index));
+	}
+
+	public static Time addTime(Time t1, Time t2) {
+		return applyToTimes(BigInteger::add, t1, t2);
+	}
+
+	public static Time subtractTime(Time t1, Time t2) {
+		return applyToTimes(BigInteger::subtract, t1, t2);
+	}
+
+	public static double divideTime(Time t1, Time t2) {
+		if (t1.getUnit() == TimeUnit._UNDEFINED_) return 0;
+		if (t2.getUnit() == TimeUnit._UNDEFINED_) return 0;
+		
+		double v1 = convertToPicoSeconds(t1).doubleValue();
+		double v2 = convertToPicoSeconds(t2).doubleValue();
+		
+		return v1 / v2;
+	}
+
+	public static Time multiply(Time t1, long value) {
+		BigInteger v1 = t1.getValue();
+		BigInteger v2 = BigInteger.valueOf(value);
+		
+		return createTime(v1.multiply(v2) , t1.getUnit());
+	}
+
+	public static Time multiply(Time t1, double value) {
+		if (t1.getUnit() == TimeUnit._UNDEFINED_) {
+			BigInteger newValue = BigDecimal.valueOf(t1.getValue().doubleValue() * value).toBigInteger();
+			return createTime(newValue, TimeUnit._UNDEFINED_);
+		}
+		
+		BigDecimal v1 = BigDecimal.valueOf(convertToPicoSeconds(t1).doubleValue());
+		BigDecimal v2 = BigDecimal.valueOf(value);
+		
+		return createTime(v1.multiply(v2).toBigInteger(), TimeUnit.PS);
+	}
+
+	private static Time applyToTimes(BinaryOperator<BigInteger> func, Time t1, Time t2) {
+		if (t1.getUnit() == TimeUnit._UNDEFINED_) return null;
+		if (t2.getUnit() == TimeUnit._UNDEFINED_) return null;
+
+		BigInteger v1 = t1.getValue();
+		BigInteger v2 = t2.getValue();
+
+		if (t1.getUnit() == t2.getUnit()) {
+			return createTime(func.apply(v1, v2), t1.getUnit());
+		}
+
+		int index1 = TIME_UNIT_LIST.indexOf(t1.getUnit());
+		int index2 = TIME_UNIT_LIST.indexOf(t2.getUnit());
+		int minIndex = Math.min(index1, index2);
+		v1 = (index1 > minIndex) ? v1.multiply(BigInteger.TEN.pow((index1 - minIndex) * 3)) : v1;
+		v2 = (index2 > minIndex) ? v2.multiply(BigInteger.TEN.pow((index2 - minIndex) * 3)) : v2;
+		
+		return createTime(func.apply(v1, v2), TIME_UNIT_LIST.get(minIndex));
+	}
+
+	private static Time createTime(BigInteger value, TimeUnit unit) {
+		Time time = AmaltheaFactory.eINSTANCE.createTime();
+		time.setValue(value);
+		time.setUnit(unit);
+		return time;
 	}
 
 	/**

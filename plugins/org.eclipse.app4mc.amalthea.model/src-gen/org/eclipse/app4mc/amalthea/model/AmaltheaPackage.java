@@ -1522,13 +1522,67 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME___COMPARE_TO__TIME = QUANTITY_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Adjust Unit</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___ADJUST_UNIT = QUANTITY_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___ADD__TIME = QUANTITY_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Subtract</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___SUBTRACT__TIME = QUANTITY_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Multiply</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___MULTIPLY__LONG = QUANTITY_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Multiply</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___MULTIPLY__DOUBLE = QUANTITY_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Divide</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME___DIVIDE__TIME = QUANTITY_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_OPERATION_COUNT = QUANTITY_OPERATION_COUNT + 2;
+	int TIME_OPERATION_COUNT = QUANTITY_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.FrequencyImpl <em>Frequency</em>}' class.
@@ -28691,6 +28745,66 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTime__CompareTo__Time();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#adjustUnit() <em>Adjust Unit</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Adjust Unit</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#adjustUnit()
+	 * @generated
+	 */
+	EOperation getTime__AdjustUnit();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#add(org.eclipse.app4mc.amalthea.model.Time) <em>Add</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#add(org.eclipse.app4mc.amalthea.model.Time)
+	 * @generated
+	 */
+	EOperation getTime__Add__Time();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#subtract(org.eclipse.app4mc.amalthea.model.Time) <em>Subtract</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Subtract</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#subtract(org.eclipse.app4mc.amalthea.model.Time)
+	 * @generated
+	 */
+	EOperation getTime__Subtract__Time();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#multiply(long) <em>Multiply</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Multiply</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#multiply(long)
+	 * @generated
+	 */
+	EOperation getTime__Multiply__long();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#multiply(double) <em>Multiply</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Multiply</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#multiply(double)
+	 * @generated
+	 */
+	EOperation getTime__Multiply__double();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.Time#divide(org.eclipse.app4mc.amalthea.model.Time) <em>Divide</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Divide</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.Time#divide(org.eclipse.app4mc.amalthea.model.Time)
+	 * @generated
+	 */
+	EOperation getTime__Divide__Time();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Frequency <em>Frequency</em>}'.
