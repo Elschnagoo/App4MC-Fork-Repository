@@ -72,6 +72,16 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
+import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
+import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
+import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
+import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
+import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
@@ -103,6 +113,16 @@ import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
+import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
+import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
+import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
@@ -317,9 +337,19 @@ import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.TicksConstant;
 import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeConstant;
+import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeHistogram;
+import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.TimeStatistics;
+import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -415,6 +445,36 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.FLOAT_OBJECT: return createFloatObject();
 			case AmaltheaPackage.DOUBLE_OBJECT: return createDoubleObject();
 			case AmaltheaPackage.BOOLEAN_OBJECT: return createBooleanObject();
+			case AmaltheaPackage.TIME_CONSTANT: return createTimeConstant();
+			case AmaltheaPackage.TIME_HISTOGRAM: return createTimeHistogram();
+			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: return createTimeHistogramEntry();
+			case AmaltheaPackage.TIME_INTERVAL: return createTimeInterval();
+			case AmaltheaPackage.TIME_STATISTICS: return createTimeStatistics();
+			case AmaltheaPackage.TIME_UNIFORM_DISTRIBUTION: return createTimeUniformDistribution();
+			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION: return createTimeGaussDistribution();
+			case AmaltheaPackage.TIME_WEIBULL_PARAMETERS_DISTRIBUTION: return createTimeWeibullParametersDistribution();
+			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION: return createTimeWeibullEstimatorsDistribution();
+			case AmaltheaPackage.TIME_BETA_DISTRIBUTION: return createTimeBetaDistribution();
+			case AmaltheaPackage.DISCRETE_CONSTANT: return createDiscreteConstant();
+			case AmaltheaPackage.DISCRETE_HISTOGRAM: return createDiscreteHistogram();
+			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY: return createDiscreteHistogramEntry();
+			case AmaltheaPackage.DISCRETE_INTERVAL: return createDiscreteInterval();
+			case AmaltheaPackage.DISCRETE_STATISTICS: return createDiscreteStatistics();
+			case AmaltheaPackage.DISCRETE_UNIFORM_DISTRIBUTION: return createDiscreteUniformDistribution();
+			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION: return createDiscreteGaussDistribution();
+			case AmaltheaPackage.DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION: return createDiscreteWeibullParametersDistribution();
+			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createDiscreteWeibullEstimatorsDistribution();
+			case AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION: return createDiscreteBetaDistribution();
+			case AmaltheaPackage.CONTINUOUS_CONSTANT: return createContinuousConstant();
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM: return createContinuousHistogram();
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY: return createContinuousHistogramEntry();
+			case AmaltheaPackage.CONTINUOUS_INTERVAL: return createContinuousInterval();
+			case AmaltheaPackage.CONTINUOUS_STATISTICS: return createContinuousStatistics();
+			case AmaltheaPackage.CONTINUOUS_UNIFORM_DISTRIBUTION: return createContinuousUniformDistribution();
+			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION: return createContinuousGaussDistribution();
+			case AmaltheaPackage.CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION: return createContinuousWeibullParametersDistribution();
+			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousWeibullEstimatorsDistribution();
+			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION: return createContinuousBetaDistribution();
 			case AmaltheaPackage.DEVIATION: return createDeviation();
 			case AmaltheaPackage.WEIBULL_PARAMETERS: return createWeibullParameters();
 			case AmaltheaPackage.WEIBULL_ESTIMATORS: return createWeibullEstimators();
@@ -786,6 +846,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createAddressFromString(eDataType, initialValue);
 			case AmaltheaPackage.POSITIVE_INT:
 				return createPositiveIntFromString(eDataType, initialValue);
+			case AmaltheaPackage.POSITIVE_LONG:
+				return createPositiveLongFromString(eDataType, initialValue);
+			case AmaltheaPackage.POSITIVE_DOUBLE:
+				return createPositiveDoubleFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -917,6 +981,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertAddressToString(eDataType, instanceValue);
 			case AmaltheaPackage.POSITIVE_INT:
 				return convertPositiveIntToString(eDataType, instanceValue);
+			case AmaltheaPackage.POSITIVE_LONG:
+				return convertPositiveLongToString(eDataType, instanceValue);
+			case AmaltheaPackage.POSITIVE_DOUBLE:
+				return convertPositiveDoubleToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -1170,6 +1238,306 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public BooleanObject createBooleanObject() {
 		BooleanObjectImpl booleanObject = new BooleanObjectImpl();
 		return booleanObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeConstant createTimeConstant() {
+		TimeConstantImpl timeConstant = new TimeConstantImpl();
+		return timeConstant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeHistogram createTimeHistogram() {
+		TimeHistogramImpl timeHistogram = new TimeHistogramImpl();
+		return timeHistogram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeHistogramEntry createTimeHistogramEntry() {
+		TimeHistogramEntryImpl timeHistogramEntry = new TimeHistogramEntryImpl();
+		return timeHistogramEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeInterval createTimeInterval() {
+		TimeIntervalImpl timeInterval = new TimeIntervalImpl();
+		return timeInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeStatistics createTimeStatistics() {
+		TimeStatisticsImpl timeStatistics = new TimeStatisticsImpl();
+		return timeStatistics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeUniformDistribution createTimeUniformDistribution() {
+		TimeUniformDistributionImpl timeUniformDistribution = new TimeUniformDistributionImpl();
+		return timeUniformDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeGaussDistribution createTimeGaussDistribution() {
+		TimeGaussDistributionImpl timeGaussDistribution = new TimeGaussDistributionImpl();
+		return timeGaussDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeWeibullParametersDistribution createTimeWeibullParametersDistribution() {
+		TimeWeibullParametersDistributionImpl timeWeibullParametersDistribution = new TimeWeibullParametersDistributionImpl();
+		return timeWeibullParametersDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeWeibullEstimatorsDistribution createTimeWeibullEstimatorsDistribution() {
+		TimeWeibullEstimatorsDistributionImpl timeWeibullEstimatorsDistribution = new TimeWeibullEstimatorsDistributionImpl();
+		return timeWeibullEstimatorsDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeBetaDistribution createTimeBetaDistribution() {
+		TimeBetaDistributionImpl timeBetaDistribution = new TimeBetaDistributionImpl();
+		return timeBetaDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteConstant createDiscreteConstant() {
+		DiscreteConstantImpl discreteConstant = new DiscreteConstantImpl();
+		return discreteConstant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteHistogram createDiscreteHistogram() {
+		DiscreteHistogramImpl discreteHistogram = new DiscreteHistogramImpl();
+		return discreteHistogram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteHistogramEntry createDiscreteHistogramEntry() {
+		DiscreteHistogramEntryImpl discreteHistogramEntry = new DiscreteHistogramEntryImpl();
+		return discreteHistogramEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteInterval createDiscreteInterval() {
+		DiscreteIntervalImpl discreteInterval = new DiscreteIntervalImpl();
+		return discreteInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteStatistics createDiscreteStatistics() {
+		DiscreteStatisticsImpl discreteStatistics = new DiscreteStatisticsImpl();
+		return discreteStatistics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteUniformDistribution createDiscreteUniformDistribution() {
+		DiscreteUniformDistributionImpl discreteUniformDistribution = new DiscreteUniformDistributionImpl();
+		return discreteUniformDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteGaussDistribution createDiscreteGaussDistribution() {
+		DiscreteGaussDistributionImpl discreteGaussDistribution = new DiscreteGaussDistributionImpl();
+		return discreteGaussDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteWeibullParametersDistribution createDiscreteWeibullParametersDistribution() {
+		DiscreteWeibullParametersDistributionImpl discreteWeibullParametersDistribution = new DiscreteWeibullParametersDistributionImpl();
+		return discreteWeibullParametersDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteWeibullEstimatorsDistribution createDiscreteWeibullEstimatorsDistribution() {
+		DiscreteWeibullEstimatorsDistributionImpl discreteWeibullEstimatorsDistribution = new DiscreteWeibullEstimatorsDistributionImpl();
+		return discreteWeibullEstimatorsDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteBetaDistribution createDiscreteBetaDistribution() {
+		DiscreteBetaDistributionImpl discreteBetaDistribution = new DiscreteBetaDistributionImpl();
+		return discreteBetaDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousConstant createContinuousConstant() {
+		ContinuousConstantImpl continuousConstant = new ContinuousConstantImpl();
+		return continuousConstant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousHistogram createContinuousHistogram() {
+		ContinuousHistogramImpl continuousHistogram = new ContinuousHistogramImpl();
+		return continuousHistogram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousHistogramEntry createContinuousHistogramEntry() {
+		ContinuousHistogramEntryImpl continuousHistogramEntry = new ContinuousHistogramEntryImpl();
+		return continuousHistogramEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousInterval createContinuousInterval() {
+		ContinuousIntervalImpl continuousInterval = new ContinuousIntervalImpl();
+		return continuousInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousStatistics createContinuousStatistics() {
+		ContinuousStatisticsImpl continuousStatistics = new ContinuousStatisticsImpl();
+		return continuousStatistics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousUniformDistribution createContinuousUniformDistribution() {
+		ContinuousUniformDistributionImpl continuousUniformDistribution = new ContinuousUniformDistributionImpl();
+		return continuousUniformDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousGaussDistribution createContinuousGaussDistribution() {
+		ContinuousGaussDistributionImpl continuousGaussDistribution = new ContinuousGaussDistributionImpl();
+		return continuousGaussDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousWeibullParametersDistribution createContinuousWeibullParametersDistribution() {
+		ContinuousWeibullParametersDistributionImpl continuousWeibullParametersDistribution = new ContinuousWeibullParametersDistributionImpl();
+		return continuousWeibullParametersDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousWeibullEstimatorsDistribution createContinuousWeibullEstimatorsDistribution() {
+		ContinuousWeibullEstimatorsDistributionImpl continuousWeibullEstimatorsDistribution = new ContinuousWeibullEstimatorsDistributionImpl();
+		return continuousWeibullEstimatorsDistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContinuousBetaDistribution createContinuousBetaDistribution() {
+		ContinuousBetaDistributionImpl continuousBetaDistribution = new ContinuousBetaDistributionImpl();
+		return continuousBetaDistribution;
 	}
 
 	/**
@@ -4775,6 +5143,42 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertPositiveIntToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Long createPositiveLongFromString(EDataType eDataType, String initialValue) {
+		return (Long)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPositiveLongToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double createPositiveDoubleFromString(EDataType eDataType, String initialValue) {
+		return (Double)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPositiveDoubleToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

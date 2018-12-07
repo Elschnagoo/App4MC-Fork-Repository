@@ -41,6 +41,9 @@ import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
 import org.eclipse.app4mc.amalthea.model.Boundaries;
+import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
@@ -85,6 +88,18 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
+import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
+import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
+import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
+import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
+import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -122,6 +137,18 @@ import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
+import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
+import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
+import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -387,12 +414,27 @@ import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.TicksConstant;
 import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeConstant;
+import org.eclipse.app4mc.amalthea.model.TimeDeviation;
+import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeHistogram;
+import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.TimeStatistics;
+import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
+import org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -572,6 +614,90 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateDoubleObject((DoubleObject)value, diagnostics, context);
 			case AmaltheaPackage.BOOLEAN_OBJECT:
 				return validateBooleanObject((BooleanObject)value, diagnostics, context);
+			case AmaltheaPackage.TIME_DEVIATION:
+				return validateTimeDeviation((TimeDeviation)value, diagnostics, context);
+			case AmaltheaPackage.TIME_CONSTANT:
+				return validateTimeConstant((TimeConstant)value, diagnostics, context);
+			case AmaltheaPackage.TIME_HISTOGRAM:
+				return validateTimeHistogram((TimeHistogram)value, diagnostics, context);
+			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY:
+				return validateTimeHistogramEntry((TimeHistogramEntry)value, diagnostics, context);
+			case AmaltheaPackage.BOUNDED_TIME_DISTRIBUTION:
+				return validateBoundedTimeDistribution((BoundedTimeDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TRUNCATED_TIME_DISTRIBUTION:
+				return validateTruncatedTimeDistribution((TruncatedTimeDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_INTERVAL:
+				return validateTimeInterval((TimeInterval)value, diagnostics, context);
+			case AmaltheaPackage.TIME_STATISTICS:
+				return validateTimeStatistics((TimeStatistics)value, diagnostics, context);
+			case AmaltheaPackage.TIME_UNIFORM_DISTRIBUTION:
+				return validateTimeUniformDistribution((TimeUniformDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION:
+				return validateTimeGaussDistribution((TimeGaussDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_WEIBULL_DISTRIBUTION:
+				return validateTimeWeibullDistribution((TimeWeibullDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_WEIBULL_PARAMETERS_DISTRIBUTION:
+				return validateTimeWeibullParametersDistribution((TimeWeibullParametersDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION:
+				return validateTimeWeibullEstimatorsDistribution((TimeWeibullEstimatorsDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TIME_BETA_DISTRIBUTION:
+				return validateTimeBetaDistribution((TimeBetaDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_DEVIATION:
+				return validateDiscreteDeviation((DiscreteDeviation)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_CONSTANT:
+				return validateDiscreteConstant((DiscreteConstant)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_HISTOGRAM:
+				return validateDiscreteHistogram((DiscreteHistogram)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY:
+				return validateDiscreteHistogramEntry((DiscreteHistogramEntry)value, diagnostics, context);
+			case AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION:
+				return validateBoundedDiscreteDistribution((BoundedDiscreteDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TRUNCATED_DISCRETE_DISTRIBUTION:
+				return validateTruncatedDiscreteDistribution((TruncatedDiscreteDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_INTERVAL:
+				return validateDiscreteInterval((DiscreteInterval)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_STATISTICS:
+				return validateDiscreteStatistics((DiscreteStatistics)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_UNIFORM_DISTRIBUTION:
+				return validateDiscreteUniformDistribution((DiscreteUniformDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION:
+				return validateDiscreteGaussDistribution((DiscreteGaussDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_WEIBULL_DISTRIBUTION:
+				return validateDiscreteWeibullDistribution((DiscreteWeibullDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION:
+				return validateDiscreteWeibullParametersDistribution((DiscreteWeibullParametersDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION:
+				return validateDiscreteWeibullEstimatorsDistribution((DiscreteWeibullEstimatorsDistribution)value, diagnostics, context);
+			case AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION:
+				return validateDiscreteBetaDistribution((DiscreteBetaDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_DEVIATION:
+				return validateContinuousDeviation((ContinuousDeviation)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_CONSTANT:
+				return validateContinuousConstant((ContinuousConstant)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM:
+				return validateContinuousHistogram((ContinuousHistogram)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY:
+				return validateContinuousHistogramEntry((ContinuousHistogramEntry)value, diagnostics, context);
+			case AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION:
+				return validateBoundedContinuousDistribution((BoundedContinuousDistribution)value, diagnostics, context);
+			case AmaltheaPackage.TRUNCATED_CONTINUOUS_DISTRIBUTION:
+				return validateTruncatedContinuousDistribution((TruncatedContinuousDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_INTERVAL:
+				return validateContinuousInterval((ContinuousInterval)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_STATISTICS:
+				return validateContinuousStatistics((ContinuousStatistics)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_UNIFORM_DISTRIBUTION:
+				return validateContinuousUniformDistribution((ContinuousUniformDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION:
+				return validateContinuousGaussDistribution((ContinuousGaussDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_WEIBULL_DISTRIBUTION:
+				return validateContinuousWeibullDistribution((ContinuousWeibullDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION:
+				return validateContinuousWeibullParametersDistribution((ContinuousWeibullParametersDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION:
+				return validateContinuousWeibullEstimatorsDistribution((ContinuousWeibullEstimatorsDistribution)value, diagnostics, context);
+			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION:
+				return validateContinuousBetaDistribution((ContinuousBetaDistribution)value, diagnostics, context);
 			case AmaltheaPackage.DEVIATION:
 				return validateDeviation((Deviation<?>)value, diagnostics, context);
 			case AmaltheaPackage.DISTRIBUTION:
@@ -1302,6 +1428,10 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateAddress((Long)value, diagnostics, context);
 			case AmaltheaPackage.POSITIVE_INT:
 				return validatePositiveInt((Integer)value, diagnostics, context);
+			case AmaltheaPackage.POSITIVE_LONG:
+				return validatePositiveLong((Long)value, diagnostics, context);
+			case AmaltheaPackage.POSITIVE_DOUBLE:
+				return validatePositiveDouble((Double)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -1665,6 +1795,384 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateBooleanObject(BooleanObject booleanObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(booleanObject, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeDeviation(TimeDeviation timeDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeDeviation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeConstant(TimeConstant timeConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeConstant, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeHistogram(TimeHistogram timeHistogram, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeHistogram, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeHistogramEntry(TimeHistogramEntry timeHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeHistogramEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBoundedTimeDistribution(BoundedTimeDistribution boundedTimeDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(boundedTimeDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedTimeDistribution(TruncatedTimeDistribution truncatedTimeDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(truncatedTimeDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeInterval(TimeInterval timeInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeInterval, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeStatistics(TimeStatistics timeStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeStatistics, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeUniformDistribution(TimeUniformDistribution timeUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeUniformDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeGaussDistribution(TimeGaussDistribution timeGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeGaussDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeWeibullDistribution(TimeWeibullDistribution timeWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeWeibullDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeWeibullParametersDistribution(TimeWeibullParametersDistribution timeWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeWeibullParametersDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeWeibullEstimatorsDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeBetaDistribution(TimeBetaDistribution timeBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(timeBetaDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteDeviation(DiscreteDeviation discreteDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteDeviation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteConstant(DiscreteConstant discreteConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteConstant, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteHistogram(DiscreteHistogram discreteHistogram, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteHistogram, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteHistogramEntry(DiscreteHistogramEntry discreteHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteHistogramEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBoundedDiscreteDistribution(BoundedDiscreteDistribution boundedDiscreteDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(boundedDiscreteDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedDiscreteDistribution(TruncatedDiscreteDistribution truncatedDiscreteDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(truncatedDiscreteDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteInterval(DiscreteInterval discreteInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteInterval, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteStatistics(DiscreteStatistics discreteStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteStatistics, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteUniformDistribution(DiscreteUniformDistribution discreteUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteUniformDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteGaussDistribution(DiscreteGaussDistribution discreteGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteGaussDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteWeibullDistribution(DiscreteWeibullDistribution discreteWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteWeibullDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteWeibullParametersDistribution(DiscreteWeibullParametersDistribution discreteWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteWeibullParametersDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteWeibullEstimatorsDistribution(DiscreteWeibullEstimatorsDistribution discreteWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteWeibullEstimatorsDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteBetaDistribution(DiscreteBetaDistribution discreteBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(discreteBetaDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousDeviation(ContinuousDeviation continuousDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousDeviation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousConstant(ContinuousConstant continuousConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousConstant, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousHistogram(ContinuousHistogram continuousHistogram, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousHistogram, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousHistogramEntry(ContinuousHistogramEntry continuousHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousHistogramEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBoundedContinuousDistribution(BoundedContinuousDistribution boundedContinuousDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(boundedContinuousDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedContinuousDistribution(TruncatedContinuousDistribution truncatedContinuousDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(truncatedContinuousDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousInterval(ContinuousInterval continuousInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousInterval, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousStatistics(ContinuousStatistics continuousStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousStatistics, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousUniformDistribution(ContinuousUniformDistribution continuousUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousUniformDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousGaussDistribution(ContinuousGaussDistribution continuousGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousGaussDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousWeibullDistribution(ContinuousWeibullDistribution continuousWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousWeibullDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousWeibullParametersDistribution(ContinuousWeibullParametersDistribution continuousWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousWeibullParametersDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousWeibullEstimatorsDistribution(ContinuousWeibullEstimatorsDistribution continuousWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousWeibullEstimatorsDistribution, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousBetaDistribution(ContinuousBetaDistribution continuousBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(continuousBetaDistribution, diagnostics, context);
 	}
 
 	/**
@@ -4993,6 +5501,68 @@ public class AmaltheaValidator extends EObjectValidator {
 		boolean result = positiveInt >= POSITIVE_INT__MIN__VALUE;
 		if (!result && diagnostics != null)
 			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveInt(), positiveInt, POSITIVE_INT__MIN__VALUE, true, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveLong(long positiveLong, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validatePositiveLong_Min(positiveLong, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validatePositiveLong_Min
+	 */
+	public static final long POSITIVE_LONG__MIN__VALUE = 1L;
+
+	/**
+	 * Validates the Min constraint of '<em>Positive Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveLong_Min(long positiveLong, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = positiveLong >= POSITIVE_LONG__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveLong(), positiveLong, POSITIVE_LONG__MIN__VALUE, true, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveDouble(double positiveDouble, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validatePositiveDouble_Min(positiveDouble, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validatePositiveDouble_Min
+	 */
+	public static final double POSITIVE_DOUBLE__MIN__VALUE = 0.0;
+
+	/**
+	 * Validates the Min constraint of '<em>Positive Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePositiveDouble_Min(double positiveDouble, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = positiveDouble > POSITIVE_DOUBLE__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveDouble(), positiveDouble, POSITIVE_DOUBLE__MIN__VALUE, false, diagnostics, context);
 		return result;
 	}
 

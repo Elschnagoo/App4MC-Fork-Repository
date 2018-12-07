@@ -250,6 +250,276 @@ public interface AmaltheaFactory extends EFactory {
 	BooleanObject createBooleanObject();
 
 	/**
+	 * Returns a new object of class '<em>Time Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Constant</em>'.
+	 * @generated
+	 */
+	TimeConstant createTimeConstant();
+
+	/**
+	 * Returns a new object of class '<em>Time Histogram</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Histogram</em>'.
+	 * @generated
+	 */
+	TimeHistogram createTimeHistogram();
+
+	/**
+	 * Returns a new object of class '<em>Time Histogram Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Histogram Entry</em>'.
+	 * @generated
+	 */
+	TimeHistogramEntry createTimeHistogramEntry();
+
+	/**
+	 * Returns a new object of class '<em>Time Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Interval</em>'.
+	 * @generated
+	 */
+	TimeInterval createTimeInterval();
+
+	/**
+	 * Returns a new object of class '<em>Time Statistics</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Statistics</em>'.
+	 * @generated
+	 */
+	TimeStatistics createTimeStatistics();
+
+	/**
+	 * Returns a new object of class '<em>Time Uniform Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Uniform Distribution</em>'.
+	 * @generated
+	 */
+	TimeUniformDistribution createTimeUniformDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Time Gauss Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Gauss Distribution</em>'.
+	 * @generated
+	 */
+	TimeGaussDistribution createTimeGaussDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Time Weibull Parameters Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Weibull Parameters Distribution</em>'.
+	 * @generated
+	 */
+	TimeWeibullParametersDistribution createTimeWeibullParametersDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Time Weibull Estimators Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Weibull Estimators Distribution</em>'.
+	 * @generated
+	 */
+	TimeWeibullEstimatorsDistribution createTimeWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Time Beta Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Beta Distribution</em>'.
+	 * @generated
+	 */
+	TimeBetaDistribution createTimeBetaDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Constant</em>'.
+	 * @generated
+	 */
+	DiscreteConstant createDiscreteConstant();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Histogram</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Histogram</em>'.
+	 * @generated
+	 */
+	DiscreteHistogram createDiscreteHistogram();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Histogram Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Histogram Entry</em>'.
+	 * @generated
+	 */
+	DiscreteHistogramEntry createDiscreteHistogramEntry();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Interval</em>'.
+	 * @generated
+	 */
+	DiscreteInterval createDiscreteInterval();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Statistics</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Statistics</em>'.
+	 * @generated
+	 */
+	DiscreteStatistics createDiscreteStatistics();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Uniform Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Uniform Distribution</em>'.
+	 * @generated
+	 */
+	DiscreteUniformDistribution createDiscreteUniformDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Gauss Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Gauss Distribution</em>'.
+	 * @generated
+	 */
+	DiscreteGaussDistribution createDiscreteGaussDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Weibull Parameters Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Weibull Parameters Distribution</em>'.
+	 * @generated
+	 */
+	DiscreteWeibullParametersDistribution createDiscreteWeibullParametersDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Weibull Estimators Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Weibull Estimators Distribution</em>'.
+	 * @generated
+	 */
+	DiscreteWeibullEstimatorsDistribution createDiscreteWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Discrete Beta Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Beta Distribution</em>'.
+	 * @generated
+	 */
+	DiscreteBetaDistribution createDiscreteBetaDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Constant</em>'.
+	 * @generated
+	 */
+	ContinuousConstant createContinuousConstant();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Histogram</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Histogram</em>'.
+	 * @generated
+	 */
+	ContinuousHistogram createContinuousHistogram();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Histogram Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Histogram Entry</em>'.
+	 * @generated
+	 */
+	ContinuousHistogramEntry createContinuousHistogramEntry();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Interval</em>'.
+	 * @generated
+	 */
+	ContinuousInterval createContinuousInterval();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Statistics</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Statistics</em>'.
+	 * @generated
+	 */
+	ContinuousStatistics createContinuousStatistics();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Uniform Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Uniform Distribution</em>'.
+	 * @generated
+	 */
+	ContinuousUniformDistribution createContinuousUniformDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Gauss Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Gauss Distribution</em>'.
+	 * @generated
+	 */
+	ContinuousGaussDistribution createContinuousGaussDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Weibull Parameters Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Weibull Parameters Distribution</em>'.
+	 * @generated
+	 */
+	ContinuousWeibullParametersDistribution createContinuousWeibullParametersDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Weibull Estimators Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Weibull Estimators Distribution</em>'.
+	 * @generated
+	 */
+	ContinuousWeibullEstimatorsDistribution createContinuousWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns a new object of class '<em>Continuous Beta Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Continuous Beta Distribution</em>'.
+	 * @generated
+	 */
+	ContinuousBetaDistribution createContinuousBetaDistribution();
+
+	/**
 	 * Returns a new object of class '<em>Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

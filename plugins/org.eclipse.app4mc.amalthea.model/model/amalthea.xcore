@@ -34,6 +34,7 @@ package org.eclipse.app4mc.amalthea.model
 
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import org.apache.commons.math3.special.Gamma
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.emf.ecore.util.EcoreEList$UnmodifiableEList
 
@@ -507,6 +508,365 @@ class BooleanObject extends Value
 }
 
 
+
+
+interface TimeDeviation {
+	op Time getLowerBound()
+	op Time getAverage()
+	op Time getUpperBound()
+}
+
+class TimeConstant extends TimeDeviation {
+	contains Time[1] value
+	
+	op Time getLowerBound() { value }
+	op Time getAverage() { value }
+	op Time getUpperBound() { value }
+}
+
+class TimeHistogram extends TimeDeviation {
+	contains TimeHistogramEntry[+] entries
+	
+	op Time getLowerBound() { entries.map[interval.lowerBound].min }
+	op Time getUpperBound() { entries.map[interval.upperBound].max }
+	op Time getAverage() {
+		val sum = entries.map[interval.average.multiply(occurrences)].reduce[p1, p2 | p1.add(p2)]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum.multiply(1.0 / count)
+	}
+}
+
+class TimeHistogramEntry {
+	PositiveLong occurrences = "1"
+	contains TimeInterval[1] interval
+}
+
+abstract class BoundedTimeDistribution extends TimeDeviation {
+	contains Time[1] lowerBound
+	contains Time[1] upperBound
+	
+	op Time getAverage() {
+		lowerBound.add( upperBound.subtract(lowerBound).multiply(0.5) )
+	}
+}
+
+abstract class TruncatedTimeDistribution extends TimeDeviation {
+	contains Time lowerBound
+	contains Time upperBound
+}
+
+/*
+ * Defines the upper and lower bounds of a value interval without defining the distribution
+ */
+class TimeInterval extends BoundedTimeDistribution {
+	SamplingType samplingType
+}
+
+/*
+ * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
+ */
+class TimeStatistics extends BoundedTimeDistribution {
+	contains Time[1] average
+}
+
+/*
+ * Continuous uniform distribution
+ */
+class TimeUniformDistribution extends BoundedTimeDistribution {}
+
+/*
+ * Gauss distribution
+ */
+ class TimeGaussDistribution extends TruncatedTimeDistribution {
+	contains Time[1] mean
+	contains Time[1] sd
+	
+	//TODO getAverage
+}
+
+/*
+ * Abstract Weibull distribution
+ */
+abstract class TimeWeibullDistribution extends BoundedTimeDistribution {}
+
+/*
+ * Weibull Distribution
+ * Starts from zero, upperBound limits maximum value of result
+ */
+class TimeWeibullParametersDistribution extends TimeWeibullDistribution {
+	PositiveDouble kappa = "1.0"
+	PositiveDouble lambda = "1.0"
+	
+	op Time getAverage() { //?????
+		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
+		lowerBound.add( upperBound.subtract(lowerBound).multiply(ratio) )
+	}
+}
+
+/*
+ * Weibull Distribution
+ * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
+ */
+class TimeWeibullEstimatorsDistribution extends TimeWeibullDistribution {
+	contains Time[1] average
+	PositiveDouble pRemainPromille = "1.0"
+}
+
+/*
+ * Beta distribution
+ */
+class TimeBetaDistribution extends BoundedTimeDistribution {
+	PositiveDouble alpha = "1.0"
+	PositiveDouble beta = "1.0"
+	
+	op Time getAverage() {
+		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
+		lowerBound.add( upperBound.subtract(lowerBound).multiply(ratio) )
+	}
+}
+
+
+
+
+
+interface DiscreteDeviation {
+	op Long getLowerBound()
+	op double getAverage()
+	op Long getUpperBound()
+}
+
+class DiscreteConstant extends DiscreteDeviation {
+	Long value = "0"
+	
+	op Long getLowerBound() { value }
+	op double getAverage() { value }
+	op Long getUpperBound() { value }
+}
+
+class DiscreteHistogram extends DiscreteDeviation {
+	contains DiscreteHistogramEntry[+] entries
+	
+	op Long getLowerBound() { entries.map[interval.lowerBound].min }
+	op Long getUpperBound() { entries.map[interval.upperBound].max }
+	op double getAverage() {
+		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum / count
+	}
+}
+
+class DiscreteHistogramEntry {
+	PositiveLong occurrences = "1"
+	contains DiscreteInterval[1] interval
+}
+
+abstract class BoundedDiscreteDistribution extends DiscreteDeviation {
+	Long lowerBound = "0"
+	Long upperBound = "0"
+	
+	op double getAverage() {
+		lowerBound + (upperBound - lowerBound) / 2
+	}
+}
+
+abstract class TruncatedDiscreteDistribution extends DiscreteDeviation {
+	Long lowerBound		// initial value is null
+	Long upperBound		// initial value is null
+}
+
+/*
+ * Defines the upper and lower bounds of a value interval without defining the distribution
+ */
+class DiscreteInterval extends BoundedDiscreteDistribution {
+	SamplingType samplingType
+}
+
+/*
+ * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
+ */
+class DiscreteStatistics extends BoundedDiscreteDistribution {
+	double average = "0.0"
+}
+
+/*
+ * Continuous uniform distribution
+ */
+class DiscreteUniformDistribution extends BoundedDiscreteDistribution {}
+
+/*
+ * Gauss distribution
+ */
+ class DiscreteGaussDistribution extends TruncatedDiscreteDistribution {
+	double mean = "0.0"
+	PositiveDouble sd = "1.0"
+	
+	//TODO getAverage
+}
+
+/*
+ * Abstract Weibull distribution
+ */
+abstract class DiscreteWeibullDistribution extends BoundedDiscreteDistribution {}
+
+/*
+ * Weibull Distribution
+ * Starts from zero, upperBound limits maximum value of result
+ */
+class DiscreteWeibullParametersDistribution extends DiscreteWeibullDistribution {
+	PositiveDouble kappa = "1.0"
+	PositiveDouble lambda = "1.0"
+	
+	op double getAverage() { //???????
+		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
+		lowerBound + (upperBound - lowerBound) * ratio
+	}
+}
+
+/*
+ * Weibull Distribution
+ * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
+ */
+class DiscreteWeibullEstimatorsDistribution extends DiscreteWeibullDistribution {
+	double average = "0.0"
+	PositiveDouble pRemainPromille = "1.0"
+}
+
+/*
+ * Beta distribution
+ */
+class DiscreteBetaDistribution extends BoundedDiscreteDistribution {
+	PositiveDouble alpha = "1.0"
+	PositiveDouble beta = "1.0"
+	
+	op double getAverage() {
+		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
+		lowerBound + (upperBound - lowerBound) * ratio
+	}
+}
+
+
+
+
+
+interface ContinuousDeviation {
+	op Double getLowerBound()
+	op double getAverage()
+	op Double getUpperBound()
+}
+
+class ContinuousConstant extends ContinuousDeviation {
+	Double value = "0.0"
+	
+	op Double getLowerBound() { value }
+	op double getAverage() { value }
+	op Double getUpperBound() { value }
+}
+
+class ContinuousHistogram extends ContinuousDeviation {
+	contains ContinuousHistogramEntry[+] entries
+	
+	op Double getLowerBound() { entries.map[interval.lowerBound].min }
+	op Double getUpperBound() { entries.map[interval.upperBound].max }
+	op double getAverage() {
+		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum / count
+	}
+}
+
+class ContinuousHistogramEntry {
+	PositiveLong occurrences = "1"
+	contains ContinuousInterval[1] interval
+}
+
+abstract class BoundedContinuousDistribution extends ContinuousDeviation {
+	Double lowerBound = "0.0"
+	Double upperBound = "0.0"
+	
+	op double getAverage() {
+		lowerBound + (upperBound - lowerBound) / 2
+	}
+}
+
+abstract class TruncatedContinuousDistribution extends ContinuousDeviation {
+	Double lowerBound		// initial value is null
+	Double upperBound		// initial value is null
+}
+
+/*
+ * Defines the upper and lower bounds of a value interval without defining the distribution
+ */
+class ContinuousInterval extends BoundedContinuousDistribution {
+	SamplingType samplingType
+}
+
+/*
+ * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
+ */
+class ContinuousStatistics extends BoundedContinuousDistribution {
+	double average = "0.0"
+}
+
+/*
+ * Continuous uniform distribution
+ */
+class ContinuousUniformDistribution extends BoundedContinuousDistribution {}
+
+/*
+ * Gauss distribution
+ */
+ class ContinuousGaussDistribution extends TruncatedContinuousDistribution {
+	double mean = "0.0"
+	PositiveDouble sd = "1.0"
+	
+	//TODO getAverage
+}
+
+/*
+ * Abstract Weibull distribution
+ */
+abstract class ContinuousWeibullDistribution extends BoundedContinuousDistribution {}
+
+/*
+ * Weibull Distribution
+ * Starts from zero, upperBound limits maximum value of result
+ */
+class ContinuousWeibullParametersDistribution extends ContinuousWeibullDistribution {
+	PositiveDouble kappa = "1.0"
+	PositiveDouble lambda = "1.0"
+	
+	op double getAverage() { //???????
+		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
+		lowerBound + (upperBound - lowerBound) * ratio
+	}
+}
+
+/*
+ * Weibull Distribution
+ * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
+ */
+class ContinuousWeibullEstimatorsDistribution extends ContinuousWeibullDistribution {
+	double average = "0.0"
+	PositiveDouble pRemainPromille = "1.0"
+}
+
+/*
+ * Beta distribution
+ */
+class ContinuousBetaDistribution extends BoundedContinuousDistribution {
+	PositiveDouble alpha = "1.0"
+	PositiveDouble beta = "1.0"
+	
+	op double getAverage() {
+		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
+		lowerBound + (upperBound - lowerBound) * ratio
+	}
+}
+
+
+
+
+
 class Deviation<T>
 {
 	contains T lowerBound
@@ -629,6 +989,7 @@ class ModeLiteral extends ReferableBaseObject
 	}
 }
 
+
 /*
  * Hardware Address (long; specified as hexadecimal value)
  */
@@ -651,6 +1012,19 @@ convert {
  */
 @ExtendedMetaData(minInclusive="1")
 type PositiveInt wraps int
+
+/*
+ * Positive Long (long)
+ */
+@ExtendedMetaData(minInclusive="1")
+type PositiveLong wraps long
+
+/*
+ * Positive Double (double)
+ */
+@ExtendedMetaData(minExclusive="0")
+type PositiveDouble wraps double
+
 
 // ===============================================================================
 // ===============================================================================

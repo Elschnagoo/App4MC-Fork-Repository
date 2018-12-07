@@ -659,6 +659,696 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeConstant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeConstantItemProvider timeConstantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeConstant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeConstantAdapter() {
+		if (timeConstantItemProvider == null) {
+			timeConstantItemProvider = new TimeConstantItemProvider(this);
+		}
+
+		return timeConstantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeHistogram} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeHistogramItemProvider timeHistogramItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeHistogram}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeHistogramAdapter() {
+		if (timeHistogramItemProvider == null) {
+			timeHistogramItemProvider = new TimeHistogramItemProvider(this);
+		}
+
+		return timeHistogramItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeHistogramEntryItemProvider timeHistogramEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeHistogramEntryAdapter() {
+		if (timeHistogramEntryItemProvider == null) {
+			timeHistogramEntryItemProvider = new TimeHistogramEntryItemProvider(this);
+		}
+
+		return timeHistogramEntryItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeInterval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeIntervalItemProvider timeIntervalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeInterval}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeIntervalAdapter() {
+		if (timeIntervalItemProvider == null) {
+			timeIntervalItemProvider = new TimeIntervalItemProvider(this);
+		}
+
+		return timeIntervalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeStatistics} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeStatisticsItemProvider timeStatisticsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeStatistics}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeStatisticsAdapter() {
+		if (timeStatisticsItemProvider == null) {
+			timeStatisticsItemProvider = new TimeStatisticsItemProvider(this);
+		}
+
+		return timeStatisticsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeUniformDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeUniformDistributionItemProvider timeUniformDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeUniformDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeUniformDistributionAdapter() {
+		if (timeUniformDistributionItemProvider == null) {
+			timeUniformDistributionItemProvider = new TimeUniformDistributionItemProvider(this);
+		}
+
+		return timeUniformDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeGaussDistributionItemProvider timeGaussDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeGaussDistributionAdapter() {
+		if (timeGaussDistributionItemProvider == null) {
+			timeGaussDistributionItemProvider = new TimeGaussDistributionItemProvider(this);
+		}
+
+		return timeGaussDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeWeibullParametersDistributionItemProvider timeWeibullParametersDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeWeibullParametersDistributionAdapter() {
+		if (timeWeibullParametersDistributionItemProvider == null) {
+			timeWeibullParametersDistributionItemProvider = new TimeWeibullParametersDistributionItemProvider(this);
+		}
+
+		return timeWeibullParametersDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeWeibullEstimatorsDistributionItemProvider timeWeibullEstimatorsDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeWeibullEstimatorsDistributionAdapter() {
+		if (timeWeibullEstimatorsDistributionItemProvider == null) {
+			timeWeibullEstimatorsDistributionItemProvider = new TimeWeibullEstimatorsDistributionItemProvider(this);
+		}
+
+		return timeWeibullEstimatorsDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeBetaDistributionItemProvider timeBetaDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeBetaDistributionAdapter() {
+		if (timeBetaDistributionItemProvider == null) {
+			timeBetaDistributionItemProvider = new TimeBetaDistributionItemProvider(this);
+		}
+
+		return timeBetaDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteConstant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteConstantItemProvider discreteConstantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteConstant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteConstantAdapter() {
+		if (discreteConstantItemProvider == null) {
+			discreteConstantItemProvider = new DiscreteConstantItemProvider(this);
+		}
+
+		return discreteConstantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteHistogramItemProvider discreteHistogramItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteHistogramAdapter() {
+		if (discreteHistogramItemProvider == null) {
+			discreteHistogramItemProvider = new DiscreteHistogramItemProvider(this);
+		}
+
+		return discreteHistogramItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteHistogramEntryItemProvider discreteHistogramEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteHistogramEntryAdapter() {
+		if (discreteHistogramEntryItemProvider == null) {
+			discreteHistogramEntryItemProvider = new DiscreteHistogramEntryItemProvider(this);
+		}
+
+		return discreteHistogramEntryItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteInterval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteIntervalItemProvider discreteIntervalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteInterval}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteIntervalAdapter() {
+		if (discreteIntervalItemProvider == null) {
+			discreteIntervalItemProvider = new DiscreteIntervalItemProvider(this);
+		}
+
+		return discreteIntervalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteStatisticsItemProvider discreteStatisticsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteStatisticsAdapter() {
+		if (discreteStatisticsItemProvider == null) {
+			discreteStatisticsItemProvider = new DiscreteStatisticsItemProvider(this);
+		}
+
+		return discreteStatisticsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteUniformDistributionItemProvider discreteUniformDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteUniformDistributionAdapter() {
+		if (discreteUniformDistributionItemProvider == null) {
+			discreteUniformDistributionItemProvider = new DiscreteUniformDistributionItemProvider(this);
+		}
+
+		return discreteUniformDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteGaussDistributionItemProvider discreteGaussDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteGaussDistributionAdapter() {
+		if (discreteGaussDistributionItemProvider == null) {
+			discreteGaussDistributionItemProvider = new DiscreteGaussDistributionItemProvider(this);
+		}
+
+		return discreteGaussDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteWeibullParametersDistributionItemProvider discreteWeibullParametersDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteWeibullParametersDistributionAdapter() {
+		if (discreteWeibullParametersDistributionItemProvider == null) {
+			discreteWeibullParametersDistributionItemProvider = new DiscreteWeibullParametersDistributionItemProvider(this);
+		}
+
+		return discreteWeibullParametersDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteWeibullEstimatorsDistributionItemProvider discreteWeibullEstimatorsDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteWeibullEstimatorsDistributionAdapter() {
+		if (discreteWeibullEstimatorsDistributionItemProvider == null) {
+			discreteWeibullEstimatorsDistributionItemProvider = new DiscreteWeibullEstimatorsDistributionItemProvider(this);
+		}
+
+		return discreteWeibullEstimatorsDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteBetaDistributionItemProvider discreteBetaDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteBetaDistributionAdapter() {
+		if (discreteBetaDistributionItemProvider == null) {
+			discreteBetaDistributionItemProvider = new DiscreteBetaDistributionItemProvider(this);
+		}
+
+		return discreteBetaDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousConstant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousConstantItemProvider continuousConstantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousConstant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousConstantAdapter() {
+		if (continuousConstantItemProvider == null) {
+			continuousConstantItemProvider = new ContinuousConstantItemProvider(this);
+		}
+
+		return continuousConstantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousHistogramItemProvider continuousHistogramItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousHistogramAdapter() {
+		if (continuousHistogramItemProvider == null) {
+			continuousHistogramItemProvider = new ContinuousHistogramItemProvider(this);
+		}
+
+		return continuousHistogramItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousHistogramEntryItemProvider continuousHistogramEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousHistogramEntryAdapter() {
+		if (continuousHistogramEntryItemProvider == null) {
+			continuousHistogramEntryItemProvider = new ContinuousHistogramEntryItemProvider(this);
+		}
+
+		return continuousHistogramEntryItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousInterval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousIntervalItemProvider continuousIntervalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousInterval}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousIntervalAdapter() {
+		if (continuousIntervalItemProvider == null) {
+			continuousIntervalItemProvider = new ContinuousIntervalItemProvider(this);
+		}
+
+		return continuousIntervalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousStatisticsItemProvider continuousStatisticsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousStatisticsAdapter() {
+		if (continuousStatisticsItemProvider == null) {
+			continuousStatisticsItemProvider = new ContinuousStatisticsItemProvider(this);
+		}
+
+		return continuousStatisticsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousUniformDistributionItemProvider continuousUniformDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousUniformDistributionAdapter() {
+		if (continuousUniformDistributionItemProvider == null) {
+			continuousUniformDistributionItemProvider = new ContinuousUniformDistributionItemProvider(this);
+		}
+
+		return continuousUniformDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousGaussDistributionItemProvider continuousGaussDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousGaussDistributionAdapter() {
+		if (continuousGaussDistributionItemProvider == null) {
+			continuousGaussDistributionItemProvider = new ContinuousGaussDistributionItemProvider(this);
+		}
+
+		return continuousGaussDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousWeibullParametersDistributionItemProvider continuousWeibullParametersDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousWeibullParametersDistributionAdapter() {
+		if (continuousWeibullParametersDistributionItemProvider == null) {
+			continuousWeibullParametersDistributionItemProvider = new ContinuousWeibullParametersDistributionItemProvider(this);
+		}
+
+		return continuousWeibullParametersDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousWeibullEstimatorsDistributionItemProvider continuousWeibullEstimatorsDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousWeibullEstimatorsDistributionAdapter() {
+		if (continuousWeibullEstimatorsDistributionItemProvider == null) {
+			continuousWeibullEstimatorsDistributionItemProvider = new ContinuousWeibullEstimatorsDistributionItemProvider(this);
+		}
+
+		return continuousWeibullEstimatorsDistributionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuousBetaDistributionItemProvider continuousBetaDistributionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContinuousBetaDistributionAdapter() {
+		if (continuousBetaDistributionItemProvider == null) {
+			continuousBetaDistributionItemProvider = new ContinuousBetaDistributionItemProvider(this);
+		}
+
+		return continuousBetaDistributionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Deviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6302,6 +6992,36 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (floatObjectItemProvider != null) floatObjectItemProvider.dispose();
 		if (doubleObjectItemProvider != null) doubleObjectItemProvider.dispose();
 		if (booleanObjectItemProvider != null) booleanObjectItemProvider.dispose();
+		if (timeConstantItemProvider != null) timeConstantItemProvider.dispose();
+		if (timeHistogramItemProvider != null) timeHistogramItemProvider.dispose();
+		if (timeHistogramEntryItemProvider != null) timeHistogramEntryItemProvider.dispose();
+		if (timeIntervalItemProvider != null) timeIntervalItemProvider.dispose();
+		if (timeStatisticsItemProvider != null) timeStatisticsItemProvider.dispose();
+		if (timeUniformDistributionItemProvider != null) timeUniformDistributionItemProvider.dispose();
+		if (timeGaussDistributionItemProvider != null) timeGaussDistributionItemProvider.dispose();
+		if (timeWeibullParametersDistributionItemProvider != null) timeWeibullParametersDistributionItemProvider.dispose();
+		if (timeWeibullEstimatorsDistributionItemProvider != null) timeWeibullEstimatorsDistributionItemProvider.dispose();
+		if (timeBetaDistributionItemProvider != null) timeBetaDistributionItemProvider.dispose();
+		if (discreteConstantItemProvider != null) discreteConstantItemProvider.dispose();
+		if (discreteHistogramItemProvider != null) discreteHistogramItemProvider.dispose();
+		if (discreteHistogramEntryItemProvider != null) discreteHistogramEntryItemProvider.dispose();
+		if (discreteIntervalItemProvider != null) discreteIntervalItemProvider.dispose();
+		if (discreteStatisticsItemProvider != null) discreteStatisticsItemProvider.dispose();
+		if (discreteUniformDistributionItemProvider != null) discreteUniformDistributionItemProvider.dispose();
+		if (discreteGaussDistributionItemProvider != null) discreteGaussDistributionItemProvider.dispose();
+		if (discreteWeibullParametersDistributionItemProvider != null) discreteWeibullParametersDistributionItemProvider.dispose();
+		if (discreteWeibullEstimatorsDistributionItemProvider != null) discreteWeibullEstimatorsDistributionItemProvider.dispose();
+		if (discreteBetaDistributionItemProvider != null) discreteBetaDistributionItemProvider.dispose();
+		if (continuousConstantItemProvider != null) continuousConstantItemProvider.dispose();
+		if (continuousHistogramItemProvider != null) continuousHistogramItemProvider.dispose();
+		if (continuousHistogramEntryItemProvider != null) continuousHistogramEntryItemProvider.dispose();
+		if (continuousIntervalItemProvider != null) continuousIntervalItemProvider.dispose();
+		if (continuousStatisticsItemProvider != null) continuousStatisticsItemProvider.dispose();
+		if (continuousUniformDistributionItemProvider != null) continuousUniformDistributionItemProvider.dispose();
+		if (continuousGaussDistributionItemProvider != null) continuousGaussDistributionItemProvider.dispose();
+		if (continuousWeibullParametersDistributionItemProvider != null) continuousWeibullParametersDistributionItemProvider.dispose();
+		if (continuousWeibullEstimatorsDistributionItemProvider != null) continuousWeibullEstimatorsDistributionItemProvider.dispose();
+		if (continuousBetaDistributionItemProvider != null) continuousBetaDistributionItemProvider.dispose();
 		if (deviationItemProvider != null) deviationItemProvider.dispose();
 		if (weibullParametersItemProvider != null) weibullParametersItemProvider.dispose();
 		if (weibullEstimatorsItemProvider != null) weibullEstimatorsItemProvider.dispose();

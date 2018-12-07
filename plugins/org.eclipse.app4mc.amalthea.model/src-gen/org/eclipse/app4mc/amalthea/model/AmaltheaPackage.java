@@ -2267,6 +2267,3153 @@ public interface AmaltheaPackage extends EPackage {
 	int BOOLEAN_OBJECT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation <em>Time Deviation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeDeviation()
+	 * @generated
+	 */
+	int TIME_DEVIATION = 40;
+
+	/**
+	 * The number of structural features of the '<em>Time Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEVIATION_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEVIATION___GET_LOWER_BOUND = 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEVIATION___GET_AVERAGE = 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEVIATION___GET_UPPER_BOUND = 2;
+
+	/**
+	 * The number of operations of the '<em>Time Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEVIATION_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeConstantImpl <em>Time Constant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeConstant()
+	 * @generated
+	 */
+	int TIME_CONSTANT = 41;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT__VALUE = TIME_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Time Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT_FEATURE_COUNT = TIME_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT___GET_LOWER_BOUND = TIME_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT___GET_AVERAGE = TIME_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT___GET_UPPER_BOUND = TIME_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Time Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT_OPERATION_COUNT = TIME_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeHistogramImpl <em>Time Histogram</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeHistogramImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeHistogram()
+	 * @generated
+	 */
+	int TIME_HISTOGRAM = 42;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM__ENTRIES = TIME_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Time Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_FEATURE_COUNT = TIME_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM___GET_LOWER_BOUND = TIME_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM___GET_UPPER_BOUND = TIME_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM___GET_AVERAGE = TIME_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Time Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_OPERATION_COUNT = TIME_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeHistogramEntryImpl <em>Time Histogram Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeHistogramEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeHistogramEntry()
+	 * @generated
+	 */
+	int TIME_HISTOGRAM_ENTRY = 43;
+
+	/**
+	 * The feature id for the '<em><b>Occurrences</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_ENTRY__OCCURRENCES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Interval</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_ENTRY__INTERVAL = 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_ENTRY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Time Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_ENTRY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedTimeDistributionImpl <em>Bounded Time Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedTimeDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedTimeDistribution()
+	 * @generated
+	 */
+	int BOUNDED_TIME_DISTRIBUTION = 44;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND = TIME_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND = TIME_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Bounded Time Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT = TIME_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND = TIME_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND = TIME_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE = TIME_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Bounded Time Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT = TIME_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedTimeDistributionImpl <em>Truncated Time Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedTimeDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedTimeDistribution()
+	 * @generated
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION = 45;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION__LOWER_BOUND = TIME_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION__UPPER_BOUND = TIME_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Truncated Time Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION_FEATURE_COUNT = TIME_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION___GET_LOWER_BOUND = TIME_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE = TIME_DEVIATION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION___GET_UPPER_BOUND = TIME_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Truncated Time Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT = TIME_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeIntervalImpl <em>Time Interval</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeIntervalImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeInterval()
+	 * @generated
+	 */
+	int TIME_INTERVAL = 46;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL__LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL__UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL__SAMPLING_TYPE = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Time Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Time Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeStatisticsImpl <em>Time Statistics</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeStatisticsImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeStatistics()
+	 * @generated
+	 */
+	int TIME_STATISTICS = 47;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS__LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS__UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS__AVERAGE = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Time Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Time Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeUniformDistributionImpl <em>Time Uniform Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeUniformDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeUniformDistribution()
+	 * @generated
+	 */
+	int TIME_UNIFORM_DISTRIBUTION = 48;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Time Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Time Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeGaussDistributionImpl <em>Time Gauss Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeGaussDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeGaussDistribution()
+	 * @generated
+	 */
+	int TIME_GAUSS_DISTRIBUTION = 49;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Mean</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sd</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION__SD = TRUNCATED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_TIME_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Time Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeWeibullDistributionImpl <em>Time Weibull Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeWeibullDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeWeibullDistribution()
+	 * @generated
+	 */
+	int TIME_WEIBULL_DISTRIBUTION = 50;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION__LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION__UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Time Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Time Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_DISTRIBUTION_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeWeibullParametersDistributionImpl <em>Time Weibull Parameters Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeWeibullParametersDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeWeibullParametersDistribution()
+	 * @generated
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION = 51;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION__LOWER_BOUND = TIME_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION__UPPER_BOUND = TIME_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lambda</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION_FEATURE_COUNT = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION___GET_LOWER_BOUND = TIME_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION___GET_UPPER_BOUND = TIME_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE = TIME_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Time Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_PARAMETERS_DISTRIBUTION_OPERATION_COUNT = TIME_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeWeibullEstimatorsDistributionImpl <em>Time Weibull Estimators Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeWeibullEstimatorsDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION = 52;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = TIME_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = TIME_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>PRemain Promille</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = TIME_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = TIME_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = TIME_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = TIME_WEIBULL_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Time Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = TIME_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeBetaDistributionImpl <em>Time Beta Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TimeBetaDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeBetaDistribution()
+	 * @generated
+	 */
+	int TIME_BETA_DISTRIBUTION = 53;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION__ALPHA = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Beta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION__BETA = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Time Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation <em>Discrete Deviation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteDeviation()
+	 * @generated
+	 */
+	int DISCRETE_DEVIATION = 54;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_DEVIATION_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_DEVIATION___GET_LOWER_BOUND = 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_DEVIATION___GET_AVERAGE = 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_DEVIATION___GET_UPPER_BOUND = 2;
+
+	/**
+	 * The number of operations of the '<em>Discrete Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_DEVIATION_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteConstantImpl <em>Discrete Constant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteConstant()
+	 * @generated
+	 */
+	int DISCRETE_CONSTANT = 55;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT__VALUE = DISCRETE_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT_FEATURE_COUNT = DISCRETE_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT___GET_LOWER_BOUND = DISCRETE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT___GET_AVERAGE = DISCRETE_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT___GET_UPPER_BOUND = DISCRETE_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Discrete Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_CONSTANT_OPERATION_COUNT = DISCRETE_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramImpl <em>Discrete Histogram</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteHistogram()
+	 * @generated
+	 */
+	int DISCRETE_HISTOGRAM = 56;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM__ENTRIES = DISCRETE_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_FEATURE_COUNT = DISCRETE_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM___GET_LOWER_BOUND = DISCRETE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM___GET_UPPER_BOUND = DISCRETE_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM___GET_AVERAGE = DISCRETE_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Discrete Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_OPERATION_COUNT = DISCRETE_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl <em>Discrete Histogram Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteHistogramEntry()
+	 * @generated
+	 */
+	int DISCRETE_HISTOGRAM_ENTRY = 57;
+
+	/**
+	 * The feature id for the '<em><b>Occurrences</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Interval</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_ENTRY__INTERVAL = 1;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_ENTRY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Discrete Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_HISTOGRAM_ENTRY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteDistributionImpl <em>Bounded Discrete Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedDiscreteDistribution()
+	 * @generated
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION = 58;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND = DISCRETE_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND = DISCRETE_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Bounded Discrete Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT = DISCRETE_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE = DISCRETE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Bounded Discrete Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT = DISCRETE_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteDistributionImpl <em>Truncated Discrete Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedDiscreteDistribution()
+	 * @generated
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION = 59;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND = DISCRETE_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND = DISCRETE_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Truncated Discrete Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT = DISCRETE_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_AVERAGE = DISCRETE_DEVIATION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Truncated Discrete Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT = DISCRETE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl <em>Discrete Interval</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteInterval()
+	 * @generated
+	 */
+	int DISCRETE_INTERVAL = 60;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL__SAMPLING_TYPE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Discrete Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_INTERVAL_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteStatisticsImpl <em>Discrete Statistics</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteStatisticsImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteStatistics()
+	 * @generated
+	 */
+	int DISCRETE_STATISTICS = 61;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS__AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Discrete Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_STATISTICS_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteUniformDistributionImpl <em>Discrete Uniform Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteUniformDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteUniformDistribution()
+	 * @generated
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION = 62;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Discrete Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteGaussDistributionImpl <em>Discrete Gauss Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteGaussDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteGaussDistribution()
+	 * @generated
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION = 63;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sd</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION__SD = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Discrete Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullDistributionImpl <em>Discrete Weibull Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteWeibullDistribution()
+	 * @generated
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION = 64;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Discrete Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullParametersDistributionImpl <em>Discrete Weibull Parameters Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullParametersDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteWeibullParametersDistribution()
+	 * @generated
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION = 65;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__LOWER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__UPPER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lambda</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION_FEATURE_COUNT = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE = DISCRETE_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Discrete Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION_OPERATION_COUNT = DISCRETE_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullEstimatorsDistributionImpl <em>Discrete Weibull Estimators Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullEstimatorsDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION = 66;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>PRemain Promille</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = DISCRETE_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = DISCRETE_WEIBULL_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Discrete Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = DISCRETE_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteBetaDistributionImpl <em>Discrete Beta Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteBetaDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteBetaDistribution()
+	 * @generated
+	 */
+	int DISCRETE_BETA_DISTRIBUTION = 67;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION__ALPHA = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Beta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION__BETA = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Discrete Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation <em>Continuous Deviation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousDeviation()
+	 * @generated
+	 */
+	int CONTINUOUS_DEVIATION = 68;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_DEVIATION_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_DEVIATION___GET_LOWER_BOUND = 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_DEVIATION___GET_AVERAGE = 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_DEVIATION___GET_UPPER_BOUND = 2;
+
+	/**
+	 * The number of operations of the '<em>Continuous Deviation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_DEVIATION_OPERATION_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousConstantImpl <em>Continuous Constant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousConstant()
+	 * @generated
+	 */
+	int CONTINUOUS_CONSTANT = 69;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT__VALUE = CONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT_FEATURE_COUNT = CONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT___GET_LOWER_BOUND = CONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT___GET_AVERAGE = CONTINUOUS_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT___GET_UPPER_BOUND = CONTINUOUS_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Continuous Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_CONSTANT_OPERATION_COUNT = CONTINUOUS_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramImpl <em>Continuous Histogram</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousHistogram()
+	 * @generated
+	 */
+	int CONTINUOUS_HISTOGRAM = 70;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM__ENTRIES = CONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_FEATURE_COUNT = CONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM___GET_LOWER_BOUND = CONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM___GET_UPPER_BOUND = CONTINUOUS_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM___GET_AVERAGE = CONTINUOUS_DEVIATION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Continuous Histogram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_OPERATION_COUNT = CONTINUOUS_DEVIATION_OPERATION_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl <em>Continuous Histogram Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousHistogramEntry()
+	 * @generated
+	 */
+	int CONTINUOUS_HISTOGRAM_ENTRY = 71;
+
+	/**
+	 * The feature id for the '<em><b>Occurrences</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Interval</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL = 1;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_ENTRY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Continuous Histogram Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_HISTOGRAM_ENTRY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousDistributionImpl <em>Bounded Continuous Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedContinuousDistribution()
+	 * @generated
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION = 72;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Bounded Continuous Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Bounded Continuous Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousDistributionImpl <em>Truncated Continuous Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedContinuousDistribution()
+	 * @generated
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION = 73;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Truncated Continuous Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_DEVIATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_DEVIATION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_DEVIATION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Truncated Continuous Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl <em>Continuous Interval</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousInterval()
+	 * @generated
+	 */
+	int CONTINUOUS_INTERVAL = 74;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL__SAMPLING_TYPE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Continuous Interval</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_INTERVAL_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousStatisticsImpl <em>Continuous Statistics</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousStatisticsImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousStatistics()
+	 * @generated
+	 */
+	int CONTINUOUS_STATISTICS = 75;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS__AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Continuous Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_STATISTICS_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousUniformDistributionImpl <em>Continuous Uniform Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousUniformDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousUniformDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION = 76;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Continuous Uniform Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousGaussDistributionImpl <em>Continuous Gauss Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousGaussDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousGaussDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION = 77;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Mean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sd</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION__SD = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The number of operations of the '<em>Continuous Gauss Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullDistributionImpl <em>Continuous Weibull Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousWeibullDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION = 78;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Continuous Weibull Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullParametersDistributionImpl <em>Continuous Weibull Parameters Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullParametersDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousWeibullParametersDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION = 79;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lambda</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Continuous Weibull Parameters Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullEstimatorsDistributionImpl <em>Continuous Weibull Estimators Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullEstimatorsDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION = 80;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Average</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>PRemain Promille</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_WEIBULL_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_WEIBULL_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_WEIBULL_DISTRIBUTION___GET_AVERAGE;
+
+	/**
+	 * The number of operations of the '<em>Continuous Weibull Estimators Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_WEIBULL_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousBetaDistributionImpl <em>Continuous Beta Distribution</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousBetaDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousBetaDistribution()
+	 * @generated
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION = 81;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION__ALPHA = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Beta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION__BETA = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Continuous Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lower Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Upper Bound</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Continuous Beta Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DeviationImpl <em>Deviation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2274,7 +5421,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeviation()
 	 * @generated
 	 */
-	int DEVIATION = 40;
+	int DEVIATION = 82;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
@@ -2329,7 +5476,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDistribution()
 	 * @generated
 	 */
-	int DISTRIBUTION = 41;
+	int DISTRIBUTION = 83;
 
 	/**
 	 * The number of structural features of the '<em>Distribution</em>' class.
@@ -2357,7 +5504,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullDistribution()
 	 * @generated
 	 */
-	int WEIBULL_DISTRIBUTION = 42;
+	int WEIBULL_DISTRIBUTION = 84;
 
 	/**
 	 * The number of structural features of the '<em>Weibull Distribution</em>' class.
@@ -2385,7 +5532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullParameters()
 	 * @generated
 	 */
-	int WEIBULL_PARAMETERS = 43;
+	int WEIBULL_PARAMETERS = 85;
 
 	/**
 	 * The feature id for the '<em><b>Kappa</b></em>' attribute.
@@ -2431,7 +5578,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWeibullEstimators()
 	 * @generated
 	 */
-	int WEIBULL_ESTIMATORS = 44;
+	int WEIBULL_ESTIMATORS = 86;
 
 	/**
 	 * The feature id for the '<em><b>Mean</b></em>' containment reference.
@@ -2477,7 +5624,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getUniformDistribution()
 	 * @generated
 	 */
-	int UNIFORM_DISTRIBUTION = 45;
+	int UNIFORM_DISTRIBUTION = 87;
 
 	/**
 	 * The number of structural features of the '<em>Uniform Distribution</em>' class.
@@ -2505,7 +5652,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundaries()
 	 * @generated
 	 */
-	int BOUNDARIES = 46;
+	int BOUNDARIES = 88;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
@@ -2542,7 +5689,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGaussDistribution()
 	 * @generated
 	 */
-	int GAUSS_DISTRIBUTION = 47;
+	int GAUSS_DISTRIBUTION = 89;
 
 	/**
 	 * The feature id for the '<em><b>Sd</b></em>' containment reference.
@@ -2588,7 +5735,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBetaDistribution()
 	 * @generated
 	 */
-	int BETA_DISTRIBUTION = 48;
+	int BETA_DISTRIBUTION = 90;
 
 	/**
 	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
@@ -2634,7 +5781,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNumericStatistic()
 	 * @generated
 	 */
-	int NUMERIC_STATISTIC = 49;
+	int NUMERIC_STATISTIC = 91;
 
 	/**
 	 * The number of structural features of the '<em>Numeric Statistic</em>' class.
@@ -2662,7 +5809,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMinAvgMaxStatistic()
 	 * @generated
 	 */
-	int MIN_AVG_MAX_STATISTIC = 50;
+	int MIN_AVG_MAX_STATISTIC = 92;
 
 	/**
 	 * The feature id for the '<em><b>Min</b></em>' attribute.
@@ -2717,7 +5864,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleValueStatistic()
 	 * @generated
 	 */
-	int SINGLE_VALUE_STATISTIC = 51;
+	int SINGLE_VALUE_STATISTIC = 93;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2754,7 +5901,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 52;
+	int MODE = 94;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -2854,7 +6001,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLiteral()
 	 * @generated
 	 */
-	int MODE_LITERAL = 53;
+	int MODE_LITERAL = 95;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -2963,7 +6110,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentsModel()
 	 * @generated
 	 */
-	int COMPONENTS_MODEL = 54;
+	int COMPONENTS_MODEL = 96;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3018,7 +6165,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISystem()
 	 * @generated
 	 */
-	int ISYSTEM = 55;
+	int ISYSTEM = 97;
 
 	/**
 	 * The feature id for the '<em><b>Component Instances</b></em>' containment reference list.
@@ -3082,7 +6229,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 56;
+	int PORT = 98;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3191,7 +6338,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponent()
 	 * @generated
 	 */
-	int COMPONENT = 57;
+	int COMPONENT = 99;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3345,7 +6492,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComposite()
 	 * @generated
 	 */
-	int COMPOSITE = 58;
+	int COMPOSITE = 100;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3535,7 +6682,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 59;
+	int SYSTEM = 101;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3671,7 +6818,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentInstance()
 	 * @generated
 	 */
-	int COMPONENT_INSTANCE = 60;
+	int COMPONENT_INSTANCE = 102;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3780,7 +6927,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnector()
 	 * @generated
 	 */
-	int CONNECTOR = 61;
+	int CONNECTOR = 103;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3853,7 +7000,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getQualifiedPort()
 	 * @generated
 	 */
-	int QUALIFIED_PORT = 62;
+	int QUALIFIED_PORT = 104;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -3908,7 +7055,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfacePort()
 	 * @generated
 	 */
-	int INTERFACE_PORT = 63;
+	int INTERFACE_PORT = 105;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4035,7 +7182,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConfigModel()
 	 * @generated
 	 */
-	int CONFIG_MODEL = 64;
+	int CONFIG_MODEL = 106;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4081,7 +7228,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventConfig()
 	 * @generated
 	 */
-	int EVENT_CONFIG = 65;
+	int EVENT_CONFIG = 107;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4136,7 +7283,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstraintsModel()
 	 * @generated
 	 */
-	int CONSTRAINTS_MODEL = 66;
+	int CONSTRAINTS_MODEL = 108;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4254,7 +7401,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableSequencingConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_SEQUENCING_CONSTRAINT = 67;
+	int RUNNABLE_SEQUENCING_CONSTRAINT = 109;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4372,7 +7519,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAffinityConstraint()
 	 * @generated
 	 */
-	int AFFINITY_CONSTRAINT = 68;
+	int AFFINITY_CONSTRAINT = 110;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4463,7 +7610,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSeparationConstraint()
 	 * @generated
 	 */
-	int SEPARATION_CONSTRAINT = 69;
+	int SEPARATION_CONSTRAINT = 111;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4554,7 +7701,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPairingConstraint()
 	 * @generated
 	 */
-	int PAIRING_CONSTRAINT = 70;
+	int PAIRING_CONSTRAINT = 112;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4645,7 +7792,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessConstraint()
 	 * @generated
 	 */
-	int PROCESS_CONSTRAINT = 71;
+	int PROCESS_CONSTRAINT = 113;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4682,7 +7829,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_CONSTRAINT = 72;
+	int RUNNABLE_CONSTRAINT = 114;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4719,7 +7866,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataConstraint()
 	 * @generated
 	 */
-	int DATA_CONSTRAINT = 73;
+	int DATA_CONSTRAINT = 115;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -4756,7 +7903,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableSeparationConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_SEPARATION_CONSTRAINT = 74;
+	int RUNNABLE_SEPARATION_CONSTRAINT = 116;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4865,7 +8012,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessSeparationConstraint()
 	 * @generated
 	 */
-	int PROCESS_SEPARATION_CONSTRAINT = 75;
+	int PROCESS_SEPARATION_CONSTRAINT = 117;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -4974,7 +8121,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSeparationConstraint()
 	 * @generated
 	 */
-	int DATA_SEPARATION_CONSTRAINT = 76;
+	int DATA_SEPARATION_CONSTRAINT = 118;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5083,7 +8230,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnablePairingConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_PAIRING_CONSTRAINT = 77;
+	int RUNNABLE_PAIRING_CONSTRAINT = 119;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5192,7 +8339,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPairingConstraint()
 	 * @generated
 	 */
-	int PROCESS_PAIRING_CONSTRAINT = 78;
+	int PROCESS_PAIRING_CONSTRAINT = 120;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5301,7 +8448,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataPairingConstraint()
 	 * @generated
 	 */
-	int DATA_PAIRING_CONSTRAINT = 79;
+	int DATA_PAIRING_CONSTRAINT = 121;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5410,7 +8557,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableConstraintTarget()
 	 * @generated
 	 */
-	int RUNNABLE_CONSTRAINT_TARGET = 80;
+	int RUNNABLE_CONSTRAINT_TARGET = 122;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Constraint Target</em>' class.
@@ -5438,7 +8585,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessConstraintTarget()
 	 * @generated
 	 */
-	int PROCESS_CONSTRAINT_TARGET = 81;
+	int PROCESS_CONSTRAINT_TARGET = 123;
 
 	/**
 	 * The number of structural features of the '<em>Process Constraint Target</em>' class.
@@ -5466,7 +8613,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataConstraintTarget()
 	 * @generated
 	 */
-	int DATA_CONSTRAINT_TARGET = 82;
+	int DATA_CONSTRAINT_TARGET = 124;
 
 	/**
 	 * The number of structural features of the '<em>Data Constraint Target</em>' class.
@@ -5494,7 +8641,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetMemory()
 	 * @generated
 	 */
-	int TARGET_MEMORY = 83;
+	int TARGET_MEMORY = 125;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5540,7 +8687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetCore()
 	 * @generated
 	 */
-	int TARGET_CORE = 84;
+	int TARGET_CORE = 126;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5586,7 +8733,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTargetScheduler()
 	 * @generated
 	 */
-	int TARGET_SCHEDULER = 85;
+	int TARGET_SCHEDULER = 127;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5632,7 +8779,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelGroup()
 	 * @generated
 	 */
-	int LABEL_GROUP = 86;
+	int LABEL_GROUP = 128;
 
 	/**
 	 * The number of structural features of the '<em>Label Group</em>' class.
@@ -5660,7 +8807,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableGroup()
 	 * @generated
 	 */
-	int RUNNABLE_GROUP = 87;
+	int RUNNABLE_GROUP = 129;
 
 	/**
 	 * The number of structural features of the '<em>Runnable Group</em>' class.
@@ -5688,7 +8835,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessGroup()
 	 * @generated
 	 */
-	int PROCESS_GROUP = 88;
+	int PROCESS_GROUP = 130;
 
 	/**
 	 * The number of structural features of the '<em>Process Group</em>' class.
@@ -5716,7 +8863,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEntityGroup()
 	 * @generated
 	 */
-	int LABEL_ENTITY_GROUP = 89;
+	int LABEL_ENTITY_GROUP = 131;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5762,7 +8909,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEntityGroup()
 	 * @generated
 	 */
-	int RUNNABLE_ENTITY_GROUP = 90;
+	int RUNNABLE_ENTITY_GROUP = 132;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5808,7 +8955,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEntityGroup()
 	 * @generated
 	 */
-	int PROCESS_ENTITY_GROUP = 91;
+	int PROCESS_ENTITY_GROUP = 133;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5854,7 +9001,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTagGroup()
 	 * @generated
 	 */
-	int TAG_GROUP = 92;
+	int TAG_GROUP = 134;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5900,7 +9047,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractEventChain()
 	 * @generated
 	 */
-	int ABSTRACT_EVENT_CHAIN = 93;
+	int ABSTRACT_EVENT_CHAIN = 135;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -5982,7 +9129,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChain()
 	 * @generated
 	 */
-	int EVENT_CHAIN = 94;
+	int EVENT_CHAIN = 136;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6109,7 +9256,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSubEventChain()
 	 * @generated
 	 */
-	int SUB_EVENT_CHAIN = 95;
+	int SUB_EVENT_CHAIN = 137;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6191,7 +9338,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainItem()
 	 * @generated
 	 */
-	int EVENT_CHAIN_ITEM = 96;
+	int EVENT_CHAIN_ITEM = 138;
 
 	/**
 	 * The number of structural features of the '<em>Event Chain Item</em>' class.
@@ -6228,7 +9375,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainReference()
 	 * @generated
 	 */
-	int EVENT_CHAIN_REFERENCE = 97;
+	int EVENT_CHAIN_REFERENCE = 139;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6283,7 +9430,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainContainer()
 	 * @generated
 	 */
-	int EVENT_CHAIN_CONTAINER = 98;
+	int EVENT_CHAIN_CONTAINER = 140;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6338,7 +9485,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimingConstraint()
 	 * @generated
 	 */
-	int TIMING_CONSTRAINT = 99;
+	int TIMING_CONSTRAINT = 141;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6429,7 +9576,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPhysicalSectionConstraint()
 	 * @generated
 	 */
-	int PHYSICAL_SECTION_CONSTRAINT = 100;
+	int PHYSICAL_SECTION_CONSTRAINT = 142;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6538,7 +9685,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronizationConstraint()
 	 * @generated
 	 */
-	int SYNCHRONIZATION_CONSTRAINT = 101;
+	int SYNCHRONIZATION_CONSTRAINT = 143;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6647,7 +9794,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventSynchronizationConstraint()
 	 * @generated
 	 */
-	int EVENT_SYNCHRONIZATION_CONSTRAINT = 102;
+	int EVENT_SYNCHRONIZATION_CONSTRAINT = 144;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6765,7 +9912,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainSynchronizationConstraint()
 	 * @generated
 	 */
-	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT = 103;
+	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT = 145;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -6892,7 +10039,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDelayConstraint()
 	 * @generated
 	 */
-	int DELAY_CONSTRAINT = 104;
+	int DELAY_CONSTRAINT = 146;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7028,7 +10175,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainLatencyConstraint()
 	 * @generated
 	 */
-	int EVENT_CHAIN_LATENCY_CONSTRAINT = 105;
+	int EVENT_CHAIN_LATENCY_CONSTRAINT = 147;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7155,7 +10302,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRepetitionConstraint()
 	 * @generated
 	 */
-	int REPETITION_CONSTRAINT = 106;
+	int REPETITION_CONSTRAINT = 148;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7300,7 +10447,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeConstraint()
 	 * @generated
 	 */
-	int DATA_AGE_CONSTRAINT = 107;
+	int DATA_AGE_CONSTRAINT = 149;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7418,7 +10565,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAge()
 	 * @generated
 	 */
-	int DATA_AGE = 108;
+	int DATA_AGE = 150;
 
 	/**
 	 * The number of structural features of the '<em>Data Age</em>' class.
@@ -7446,7 +10593,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeCycle()
 	 * @generated
 	 */
-	int DATA_AGE_CYCLE = 109;
+	int DATA_AGE_CYCLE = 151;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Cycle</b></em>' attribute.
@@ -7492,7 +10639,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataAgeTime()
 	 * @generated
 	 */
-	int DATA_AGE_TIME = 110;
+	int DATA_AGE_TIME = 152;
 
 	/**
 	 * The feature id for the '<em><b>Minimum Time</b></em>' containment reference.
@@ -7538,7 +10685,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRequirement()
 	 * @generated
 	 */
-	int REQUIREMENT = 111;
+	int REQUIREMENT = 153;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7602,7 +10749,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessRequirement()
 	 * @generated
 	 */
-	int PROCESS_REQUIREMENT = 112;
+	int PROCESS_REQUIREMENT = 154;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7675,7 +10822,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableRequirement()
 	 * @generated
 	 */
-	int RUNNABLE_REQUIREMENT = 113;
+	int RUNNABLE_REQUIREMENT = 155;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7748,7 +10895,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArchitectureRequirement()
 	 * @generated
 	 */
-	int ARCHITECTURE_REQUIREMENT = 114;
+	int ARCHITECTURE_REQUIREMENT = 156;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7821,7 +10968,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChainRequirement()
 	 * @generated
 	 */
-	int PROCESS_CHAIN_REQUIREMENT = 115;
+	int PROCESS_CHAIN_REQUIREMENT = 157;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -7894,7 +11041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRequirementLimit()
 	 * @generated
 	 */
-	int REQUIREMENT_LIMIT = 116;
+	int REQUIREMENT_LIMIT = 158;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -7931,7 +11078,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCPUPercentageRequirementLimit()
 	 * @generated
 	 */
-	int CPU_PERCENTAGE_REQUIREMENT_LIMIT = 117;
+	int CPU_PERCENTAGE_REQUIREMENT_LIMIT = 159;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -7995,7 +11142,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyRequirementLimit()
 	 * @generated
 	 */
-	int FREQUENCY_REQUIREMENT_LIMIT = 118;
+	int FREQUENCY_REQUIREMENT_LIMIT = 160;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8050,7 +11197,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPercentageRequirementLimit()
 	 * @generated
 	 */
-	int PERCENTAGE_REQUIREMENT_LIMIT = 119;
+	int PERCENTAGE_REQUIREMENT_LIMIT = 161;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8105,7 +11252,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCountRequirementLimit()
 	 * @generated
 	 */
-	int COUNT_REQUIREMENT_LIMIT = 120;
+	int COUNT_REQUIREMENT_LIMIT = 162;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8160,7 +11307,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeRequirementLimit()
 	 * @generated
 	 */
-	int TIME_REQUIREMENT_LIMIT = 121;
+	int TIME_REQUIREMENT_LIMIT = 163;
 
 	/**
 	 * The feature id for the '<em><b>Limit Type</b></em>' attribute.
@@ -8215,7 +11362,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataCoherencyGroup()
 	 * @generated
 	 */
-	int DATA_COHERENCY_GROUP = 122;
+	int DATA_COHERENCY_GROUP = 164;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8333,7 +11480,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStabilityGroup()
 	 * @generated
 	 */
-	int DATA_STABILITY_GROUP = 123;
+	int DATA_STABILITY_GROUP = 165;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8442,7 +11589,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataGroupScope()
 	 * @generated
 	 */
-	int DATA_GROUP_SCOPE = 124;
+	int DATA_GROUP_SCOPE = 166;
 
 	/**
 	 * The number of structural features of the '<em>Data Group Scope</em>' class.
@@ -8470,7 +11617,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessScope()
 	 * @generated
 	 */
-	int PROCESS_SCOPE = 125;
+	int PROCESS_SCOPE = 167;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' reference.
@@ -8507,7 +11654,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableScope()
 	 * @generated
 	 */
-	int RUNNABLE_SCOPE = 126;
+	int RUNNABLE_SCOPE = 168;
 
 	/**
 	 * The feature id for the '<em><b>Runnable</b></em>' reference.
@@ -8544,7 +11691,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentScope()
 	 * @generated
 	 */
-	int COMPONENT_SCOPE = 127;
+	int COMPONENT_SCOPE = 169;
 
 	/**
 	 * The feature id for the '<em><b>Component</b></em>' reference.
@@ -8581,7 +11728,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventModel()
 	 * @generated
 	 */
-	int EVENT_MODEL = 128;
+	int EVENT_MODEL = 170;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8627,7 +11774,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 129;
+	int EVENT = 171;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8736,7 +11883,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventSet()
 	 * @generated
 	 */
-	int EVENT_SET = 130;
+	int EVENT_SET = 172;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8854,7 +12001,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEntityEvent()
 	 * @generated
 	 */
-	int ENTITY_EVENT = 131;
+	int ENTITY_EVENT = 173;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -8963,7 +12110,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTriggerEvent()
 	 * @generated
 	 */
-	int TRIGGER_EVENT = 132;
+	int TRIGGER_EVENT = 174;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9072,7 +12219,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEvent()
 	 * @generated
 	 */
-	int CUSTOM_EVENT = 133;
+	int CUSTOM_EVENT = 175;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9199,7 +12346,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimulusEvent()
 	 * @generated
 	 */
-	int STIMULUS_EVENT = 134;
+	int STIMULUS_EVENT = 176;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9317,7 +12464,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEvent()
 	 * @generated
 	 */
-	int PROCESS_EVENT = 135;
+	int PROCESS_EVENT = 177;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9453,7 +12600,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChainEvent()
 	 * @generated
 	 */
-	int PROCESS_CHAIN_EVENT = 136;
+	int PROCESS_CHAIN_EVENT = 178;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9589,7 +12736,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEvent()
 	 * @generated
 	 */
-	int RUNNABLE_EVENT = 137;
+	int RUNNABLE_EVENT = 179;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9734,7 +12881,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEvent()
 	 * @generated
 	 */
-	int LABEL_EVENT = 138;
+	int LABEL_EVENT = 180;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -9879,7 +13026,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelEvent()
 	 * @generated
 	 */
-	int CHANNEL_EVENT = 139;
+	int CHANNEL_EVENT = 181;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10024,7 +13171,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreEvent()
 	 * @generated
 	 */
-	int SEMAPHORE_EVENT = 140;
+	int SEMAPHORE_EVENT = 182;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10178,7 +13325,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentEvent()
 	 * @generated
 	 */
-	int COMPONENT_EVENT = 141;
+	int COMPONENT_EVENT = 183;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10305,7 +13452,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHWModel()
 	 * @generated
 	 */
-	int HW_MODEL = 142;
+	int HW_MODEL = 184;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10378,7 +13525,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwStructure()
 	 * @generated
 	 */
-	int HW_STRUCTURE = 143;
+	int HW_STRUCTURE = 185;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10532,7 +13679,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwModule()
 	 * @generated
 	 */
-	int HW_MODULE = 144;
+	int HW_MODULE = 186;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10659,7 +13806,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDomain()
 	 * @generated
 	 */
-	int HW_DOMAIN = 145;
+	int HW_DOMAIN = 187;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10759,7 +13906,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyDomain()
 	 * @generated
 	 */
-	int FREQUENCY_DOMAIN = 146;
+	int FREQUENCY_DOMAIN = 188;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10877,7 +14024,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPowerDomain()
 	 * @generated
 	 */
-	int POWER_DOMAIN = 147;
+	int POWER_DOMAIN = 189;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -10995,7 +14142,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessingUnit()
 	 * @generated
 	 */
-	int PROCESSING_UNIT = 148;
+	int PROCESSING_UNIT = 190;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11158,7 +14305,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemory()
 	 * @generated
 	 */
-	int MEMORY = 149;
+	int MEMORY = 191;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11312,7 +14459,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCache()
 	 * @generated
 	 */
-	int CACHE = 150;
+	int CACHE = 192;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11457,7 +14604,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureCategory()
 	 * @generated
 	 */
-	int HW_FEATURE_CATEGORY = 151;
+	int HW_FEATURE_CATEGORY = 193;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11575,7 +14722,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeature()
 	 * @generated
 	 */
-	int HW_FEATURE = 152;
+	int HW_FEATURE = 194;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11693,7 +14840,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPort()
 	 * @generated
 	 */
-	int HW_PORT = 153;
+	int HW_PORT = 195;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -11847,7 +14994,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnectionHandler()
 	 * @generated
 	 */
-	int CONNECTION_HANDLER = 154;
+	int CONNECTION_HANDLER = 196;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12001,7 +15148,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwConnection()
 	 * @generated
 	 */
-	int HW_CONNECTION = 155;
+	int HW_CONNECTION = 197;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12164,7 +15311,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwAccessElement()
 	 * @generated
 	 */
-	int HW_ACCESS_ELEMENT = 156;
+	int HW_ACCESS_ELEMENT = 198;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' reference list.
@@ -12264,7 +15411,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwLatency()
 	 * @generated
 	 */
-	int HW_LATENCY = 157;
+	int HW_LATENCY = 199;
 
 	/**
 	 * The number of structural features of the '<em>Hw Latency</em>' class.
@@ -12292,7 +15439,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyConstant()
 	 * @generated
 	 */
-	int LATENCY_CONSTANT = 158;
+	int LATENCY_CONSTANT = 200;
 
 	/**
 	 * The feature id for the '<em><b>Cycles</b></em>' attribute.
@@ -12329,7 +15476,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyDeviation()
 	 * @generated
 	 */
-	int LATENCY_DEVIATION = 159;
+	int LATENCY_DEVIATION = 201;
 
 	/**
 	 * The feature id for the '<em><b>Cycles</b></em>' containment reference.
@@ -12366,7 +15513,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDefinition()
 	 * @generated
 	 */
-	int HW_DEFINITION = 160;
+	int HW_DEFINITION = 202;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12466,7 +15613,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessingUnitDefinition()
 	 * @generated
 	 */
-	int PROCESSING_UNIT_DEFINITION = 161;
+	int PROCESSING_UNIT_DEFINITION = 203;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12593,7 +15740,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConnectionHandlerDefinition()
 	 * @generated
 	 */
-	int CONNECTION_HANDLER_DEFINITION = 162;
+	int CONNECTION_HANDLER_DEFINITION = 204;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12747,7 +15894,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryDefinition()
 	 * @generated
 	 */
-	int MEMORY_DEFINITION = 163;
+	int MEMORY_DEFINITION = 205;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -12892,7 +16039,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCacheDefinition()
 	 * @generated
 	 */
-	int CACHE_DEFINITION = 164;
+	int CACHE_DEFINITION = 206;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13073,7 +16220,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPath()
 	 * @generated
 	 */
-	int HW_PATH = 165;
+	int HW_PATH = 207;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -13128,7 +16275,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwAccessPath()
 	 * @generated
 	 */
-	int HW_ACCESS_PATH = 166;
+	int HW_ACCESS_PATH = 208;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -13237,7 +16384,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwPathElement()
 	 * @generated
 	 */
-	int HW_PATH_ELEMENT = 167;
+	int HW_PATH_ELEMENT = 209;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -13328,7 +16475,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwDestination()
 	 * @generated
 	 */
-	int HW_DESTINATION = 168;
+	int HW_DESTINATION = 210;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -13419,7 +16566,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMappingModel()
 	 * @generated
 	 */
-	int MAPPING_MODEL = 169;
+	int MAPPING_MODEL = 211;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13519,7 +16666,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulerAllocation()
 	 * @generated
 	 */
-	int SCHEDULER_ALLOCATION = 170;
+	int SCHEDULER_ALLOCATION = 212;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13583,7 +16730,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskAllocation()
 	 * @generated
 	 */
-	int TASK_ALLOCATION = 171;
+	int TASK_ALLOCATION = 213;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13665,7 +16812,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRAllocation()
 	 * @generated
 	 */
-	int ISR_ALLOCATION = 172;
+	int ISR_ALLOCATION = 214;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13729,7 +16876,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableAllocation()
 	 * @generated
 	 */
-	int RUNNABLE_ALLOCATION = 173;
+	int RUNNABLE_ALLOCATION = 215;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13784,7 +16931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryMapping()
 	 * @generated
 	 */
-	int MEMORY_MAPPING = 174;
+	int MEMORY_MAPPING = 216;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13848,7 +16995,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPhysicalSectionMapping()
 	 * @generated
 	 */
-	int PHYSICAL_SECTION_MAPPING = 175;
+	int PHYSICAL_SECTION_MAPPING = 217;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -13993,7 +17140,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOSModel()
 	 * @generated
 	 */
-	int OS_MODEL = 176;
+	int OS_MODEL = 218;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14057,7 +17204,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsDataConsistency()
 	 * @generated
 	 */
-	int OS_DATA_CONSISTENCY = 177;
+	int OS_DATA_CONSISTENCY = 219;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14121,7 +17268,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStability()
 	 * @generated
 	 */
-	int DATA_STABILITY = 178;
+	int DATA_STABILITY = 220;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -14185,7 +17332,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonAtomicDataCoherency()
 	 * @generated
 	 */
-	int NON_ATOMIC_DATA_COHERENCY = 179;
+	int NON_ATOMIC_DATA_COHERENCY = 221;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -14240,7 +17387,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphore()
 	 * @generated
 	 */
-	int SEMAPHORE = 180;
+	int SEMAPHORE = 222;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14385,7 +17532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getScheduler()
 	 * @generated
 	 */
-	int SCHEDULER = 181;
+	int SCHEDULER = 223;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14512,7 +17659,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskScheduler()
 	 * @generated
 	 */
-	int TASK_SCHEDULER = 182;
+	int TASK_SCHEDULER = 224;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14693,7 +17840,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulerAssociation()
 	 * @generated
 	 */
-	int SCHEDULER_ASSOCIATION = 183;
+	int SCHEDULER_ASSOCIATION = 225;
 
 	/**
 	 * The feature id for the '<em><b>Child</b></em>' container reference.
@@ -14757,7 +17904,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterruptController()
 	 * @generated
 	 */
-	int INTERRUPT_CONTROLLER = 184;
+	int INTERRUPT_CONTROLLER = 226;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -14902,7 +18049,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulingParameters()
 	 * @generated
 	 */
-	int SCHEDULING_PARAMETERS = 185;
+	int SCHEDULING_PARAMETERS = 227;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -14966,7 +18113,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getParameterExtension()
 	 * @generated
 	 */
-	int PARAMETER_EXTENSION = 186;
+	int PARAMETER_EXTENSION = 228;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -15012,7 +18159,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAlgorithm()
 	 * @generated
 	 */
-	int ALGORITHM = 187;
+	int ALGORITHM = 229;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15049,7 +18196,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterruptSchedulingAlgorithm()
 	 * @generated
 	 */
-	int INTERRUPT_SCHEDULING_ALGORITHM = 188;
+	int INTERRUPT_SCHEDULING_ALGORITHM = 230;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15086,7 +18233,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskSchedulingAlgorithm()
 	 * @generated
 	 */
-	int TASK_SCHEDULING_ALGORITHM = 189;
+	int TASK_SCHEDULING_ALGORITHM = 231;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15123,7 +18270,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriority()
 	 * @generated
 	 */
-	int FIXED_PRIORITY = 190;
+	int FIXED_PRIORITY = 232;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15160,7 +18307,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriorityPreemptive()
 	 * @generated
 	 */
-	int FIXED_PRIORITY_PREEMPTIVE = 191;
+	int FIXED_PRIORITY_PREEMPTIVE = 233;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15197,7 +18344,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPriorityPreemptiveWithBudgetEnforcement()
 	 * @generated
 	 */
-	int FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT = 192;
+	int FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT = 234;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15234,7 +18381,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOSEK()
 	 * @generated
 	 */
-	int OSEK = 193;
+	int OSEK = 235;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15271,7 +18418,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeadlineMonotonic()
 	 * @generated
 	 */
-	int DEADLINE_MONOTONIC = 194;
+	int DEADLINE_MONOTONIC = 236;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15308,7 +18455,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRateMonotonic()
 	 * @generated
 	 */
-	int RATE_MONOTONIC = 195;
+	int RATE_MONOTONIC = 237;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15345,7 +18492,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPfair()
 	 * @generated
 	 */
-	int PFAIR = 196;
+	int PFAIR = 238;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15391,7 +18538,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPfairPD2()
 	 * @generated
 	 */
-	int PFAIR_PD2 = 197;
+	int PFAIR_PD2 = 239;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15437,7 +18584,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPartlyPFairPD2()
 	 * @generated
 	 */
-	int PARTLY_PFAIR_PD2 = 198;
+	int PARTLY_PFAIR_PD2 = 240;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15483,7 +18630,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEarlyReleaseFairPD2()
 	 * @generated
 	 */
-	int EARLY_RELEASE_FAIR_PD2 = 199;
+	int EARLY_RELEASE_FAIR_PD2 = 241;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15529,7 +18676,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPartlyEarlyReleaseFairPD2()
 	 * @generated
 	 */
-	int PARTLY_EARLY_RELEASE_FAIR_PD2 = 200;
+	int PARTLY_EARLY_RELEASE_FAIR_PD2 = 242;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15575,7 +18722,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDynamicPriority()
 	 * @generated
 	 */
-	int DYNAMIC_PRIORITY = 201;
+	int DYNAMIC_PRIORITY = 243;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15612,7 +18759,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLeastLocalRemainingExecutionTimeFirst()
 	 * @generated
 	 */
-	int LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST = 202;
+	int LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST = 244;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15649,7 +18796,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEarliestDeadlineFirst()
 	 * @generated
 	 */
-	int EARLIEST_DEADLINE_FIRST = 203;
+	int EARLIEST_DEADLINE_FIRST = 245;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15686,7 +18833,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPriorityBasedRoundRobin()
 	 * @generated
 	 */
-	int PRIORITY_BASED_ROUND_ROBIN = 204;
+	int PRIORITY_BASED_ROUND_ROBIN = 246;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15723,7 +18870,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReservationBasedServer()
 	 * @generated
 	 */
-	int RESERVATION_BASED_SERVER = 205;
+	int RESERVATION_BASED_SERVER = 247;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15760,7 +18907,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDeferrableServer()
 	 * @generated
 	 */
-	int DEFERRABLE_SERVER = 206;
+	int DEFERRABLE_SERVER = 248;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15797,7 +18944,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPollingPeriodicServer()
 	 * @generated
 	 */
-	int POLLING_PERIODIC_SERVER = 207;
+	int POLLING_PERIODIC_SERVER = 249;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15834,7 +18981,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSporadicServer()
 	 * @generated
 	 */
-	int SPORADIC_SERVER = 208;
+	int SPORADIC_SERVER = 250;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15871,7 +19018,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstantBandwidthServer()
 	 * @generated
 	 */
-	int CONSTANT_BANDWIDTH_SERVER = 209;
+	int CONSTANT_BANDWIDTH_SERVER = 251;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15908,7 +19055,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConstantBandwidthServerWithCASH()
 	 * @generated
 	 */
-	int CONSTANT_BANDWIDTH_SERVER_WITH_CASH = 210;
+	int CONSTANT_BANDWIDTH_SERVER_WITH_CASH = 252;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15945,7 +19092,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGrouping()
 	 * @generated
 	 */
-	int GROUPING = 211;
+	int GROUPING = 253;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -15982,7 +19129,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getUserSpecificSchedulingAlgorithm()
 	 * @generated
 	 */
-	int USER_SPECIFIC_SCHEDULING_ALGORITHM = 212;
+	int USER_SPECIFIC_SCHEDULING_ALGORITHM = 254;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16028,7 +19175,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPriorityBased()
 	 * @generated
 	 */
-	int PRIORITY_BASED = 213;
+	int PRIORITY_BASED = 255;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16065,7 +19212,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOperatingSystem()
 	 * @generated
 	 */
-	int OPERATING_SYSTEM = 214;
+	int OPERATING_SYSTEM = 256;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16147,7 +19294,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVendorOperatingSystem()
 	 * @generated
 	 */
-	int VENDOR_OPERATING_SYSTEM = 215;
+	int VENDOR_OPERATING_SYSTEM = 257;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16256,7 +19403,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsOverhead()
 	 * @generated
 	 */
-	int OS_OVERHEAD = 216;
+	int OS_OVERHEAD = 258;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16374,7 +19521,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsAPIOverhead()
 	 * @generated
 	 */
-	int OS_API_OVERHEAD = 217;
+	int OS_API_OVERHEAD = 259;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16582,7 +19729,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsISROverhead()
 	 * @generated
 	 */
-	int OS_ISR_OVERHEAD = 218;
+	int OS_ISR_OVERHEAD = 260;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16637,7 +19784,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPropertyConstraintsModel()
 	 * @generated
 	 */
-	int PROPERTY_CONSTRAINTS_MODEL = 219;
+	int PROPERTY_CONSTRAINTS_MODEL = 261;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16692,7 +19839,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreAllocationConstraint()
 	 * @generated
 	 */
-	int CORE_ALLOCATION_CONSTRAINT = 220;
+	int CORE_ALLOCATION_CONSTRAINT = 262;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16738,7 +19885,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryMappingConstraint()
 	 * @generated
 	 */
-	int MEMORY_MAPPING_CONSTRAINT = 221;
+	int MEMORY_MAPPING_CONSTRAINT = 263;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16784,7 +19931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessAllocationConstraint()
 	 * @generated
 	 */
-	int PROCESS_ALLOCATION_CONSTRAINT = 222;
+	int PROCESS_ALLOCATION_CONSTRAINT = 264;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16839,7 +19986,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPrototypeAllocationConstraint()
 	 * @generated
 	 */
-	int PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT = 223;
+	int PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT = 265;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16894,7 +20041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableAllocationConstraint()
 	 * @generated
 	 */
-	int RUNNABLE_ALLOCATION_CONSTRAINT = 224;
+	int RUNNABLE_ALLOCATION_CONSTRAINT = 266;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -16949,7 +20096,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractElementMappingConstraint()
 	 * @generated
 	 */
-	int ABSTRACT_ELEMENT_MAPPING_CONSTRAINT = 225;
+	int ABSTRACT_ELEMENT_MAPPING_CONSTRAINT = 267;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17004,7 +20151,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClassification()
 	 * @generated
 	 */
-	int CLASSIFICATION = 226;
+	int CLASSIFICATION = 268;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17059,7 +20206,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoreClassification()
 	 * @generated
 	 */
-	int CORE_CLASSIFICATION = 227;
+	int CORE_CLASSIFICATION = 269;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17123,7 +20270,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryClassification()
 	 * @generated
 	 */
-	int MEMORY_CLASSIFICATION = 228;
+	int MEMORY_CLASSIFICATION = 270;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17187,7 +20334,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimuliModel()
 	 * @generated
 	 */
-	int STIMULI_MODEL = 229;
+	int STIMULI_MODEL = 271;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17242,7 +20389,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStimulus()
 	 * @generated
 	 */
-	int STIMULUS = 230;
+	int STIMULUS = 272;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17378,7 +20525,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueList()
 	 * @generated
 	 */
-	int MODE_VALUE_LIST = 231;
+	int MODE_VALUE_LIST = 273;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17424,7 +20571,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueMapEntry()
 	 * @generated
 	 */
-	int MODE_VALUE_MAP_ENTRY = 232;
+	int MODE_VALUE_MAP_ENTRY = 274;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -17470,7 +20617,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueDisjunction()
 	 * @generated
 	 */
-	int MODE_VALUE_DISJUNCTION = 233;
+	int MODE_VALUE_DISJUNCTION = 275;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17525,7 +20672,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueDisjunctionEntry()
 	 * @generated
 	 */
-	int MODE_VALUE_DISJUNCTION_ENTRY = 234;
+	int MODE_VALUE_DISJUNCTION_ENTRY = 276;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17571,7 +20718,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValue()
 	 * @generated
 	 */
-	int MODE_VALUE = 235;
+	int MODE_VALUE = 277;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17635,7 +20782,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeValueConjunction()
 	 * @generated
 	 */
-	int MODE_VALUE_CONJUNCTION = 236;
+	int MODE_VALUE_CONJUNCTION = 278;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17690,7 +20837,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFixedPeriodic()
 	 * @generated
 	 */
-	int FIXED_PERIODIC = 237;
+	int FIXED_PERIODIC = 279;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' containment reference.
@@ -17736,7 +20883,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicStimulus()
 	 * @generated
 	 */
-	int PERIODIC_STIMULUS = 238;
+	int PERIODIC_STIMULUS = 280;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -17908,7 +21055,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRelativePeriodicStimulus()
 	 * @generated
 	 */
-	int RELATIVE_PERIODIC_STIMULUS = 239;
+	int RELATIVE_PERIODIC_STIMULUS = 281;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18062,7 +21209,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVariableRateStimulus()
 	 * @generated
 	 */
-	int VARIABLE_RATE_STIMULUS = 240;
+	int VARIABLE_RATE_STIMULUS = 282;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18243,7 +21390,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getScenario()
 	 * @generated
 	 */
-	int SCENARIO = 241;
+	int SCENARIO = 283;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18298,7 +21445,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicSyntheticStimulus()
 	 * @generated
 	 */
-	int PERIODIC_SYNTHETIC_STIMULUS = 242;
+	int PERIODIC_SYNTHETIC_STIMULUS = 284;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18461,7 +21608,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomStimulus()
 	 * @generated
 	 */
-	int CUSTOM_STIMULUS = 243;
+	int CUSTOM_STIMULUS = 285;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18606,7 +21753,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleStimulus()
 	 * @generated
 	 */
-	int SINGLE_STIMULUS = 244;
+	int SINGLE_STIMULUS = 286;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18751,7 +21898,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterProcessStimulus()
 	 * @generated
 	 */
-	int INTER_PROCESS_STIMULUS = 245;
+	int INTER_PROCESS_STIMULUS = 287;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -18905,7 +22052,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicBurstStimulus()
 	 * @generated
 	 */
-	int PERIODIC_BURST_STIMULUS = 246;
+	int PERIODIC_BURST_STIMULUS = 288;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19086,7 +22233,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventStimulus()
 	 * @generated
 	 */
-	int EVENT_STIMULUS = 247;
+	int EVENT_STIMULUS = 289;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19240,7 +22387,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArrivalCurveStimulus()
 	 * @generated
 	 */
-	int ARRIVAL_CURVE_STIMULUS = 248;
+	int ARRIVAL_CURVE_STIMULUS = 290;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19385,7 +22532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArrivalCurveEntry()
 	 * @generated
 	 */
-	int ARRIVAL_CURVE_ENTRY = 249;
+	int ARRIVAL_CURVE_ENTRY = 291;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19449,7 +22596,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClock()
 	 * @generated
 	 */
-	int CLOCK = 250;
+	int CLOCK = 292;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19540,7 +22687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockTriangleFunction()
 	 * @generated
 	 */
-	int CLOCK_TRIANGLE_FUNCTION = 251;
+	int CLOCK_TRIANGLE_FUNCTION = 293;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19667,7 +22814,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockSinusFunction()
 	 * @generated
 	 */
-	int CLOCK_SINUS_FUNCTION = 252;
+	int CLOCK_SINUS_FUNCTION = 294;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19794,7 +22941,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockMultiplierList()
 	 * @generated
 	 */
-	int CLOCK_MULTIPLIER_LIST = 253;
+	int CLOCK_MULTIPLIER_LIST = 295;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19894,7 +23041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClockMultiplierListEntry()
 	 * @generated
 	 */
-	int CLOCK_MULTIPLIER_LIST_ENTRY = 254;
+	int CLOCK_MULTIPLIER_LIST_ENTRY = 296;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -19949,7 +23096,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSWModel()
 	 * @generated
 	 */
-	int SW_MODEL = 255;
+	int SW_MODEL = 297;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20121,7 +23268,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractMemoryElement()
 	 * @generated
 	 */
-	int ABSTRACT_MEMORY_ELEMENT = 256;
+	int ABSTRACT_MEMORY_ELEMENT = 298;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20239,7 +23386,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAbstractProcess()
 	 * @generated
 	 */
-	int ABSTRACT_PROCESS = 257;
+	int ABSTRACT_PROCESS = 299;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20366,7 +23513,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEntity()
 	 * @generated
 	 */
-	int CUSTOM_ENTITY = 258;
+	int CUSTOM_ENTITY = 300;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20493,7 +23640,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessChain()
 	 * @generated
 	 */
-	int PROCESS_CHAIN = 259;
+	int PROCESS_CHAIN = 301;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20593,7 +23740,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcess()
 	 * @generated
 	 */
-	int PROCESS = 260;
+	int PROCESS = 302;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20738,7 +23885,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallGraph()
 	 * @generated
 	 */
-	int CALL_GRAPH = 261;
+	int CALL_GRAPH = 303;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20784,7 +23931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGraphEntryBase()
 	 * @generated
 	 */
-	int GRAPH_ENTRY_BASE = 262;
+	int GRAPH_ENTRY_BASE = 304;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20821,7 +23968,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallSequence()
 	 * @generated
 	 */
-	int CALL_SEQUENCE = 263;
+	int CALL_SEQUENCE = 305;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20876,7 +24023,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitch()
 	 * @generated
 	 */
-	int MODE_SWITCH = 264;
+	int MODE_SWITCH = 306;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20931,7 +24078,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchEntry()
 	 * @generated
 	 */
-	int MODE_SWITCH_ENTRY = 265;
+	int MODE_SWITCH_ENTRY = 307;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -20995,7 +24142,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeSwitchDefault()
 	 * @generated
 	 */
-	int MODE_SWITCH_DEFAULT = 266;
+	int MODE_SWITCH_DEFAULT = 308;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21041,7 +24188,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitch()
 	 * @generated
 	 */
-	int PROBABILITY_SWITCH = 267;
+	int PROBABILITY_SWITCH = 309;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21087,7 +24234,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProbabilitySwitchEntry()
 	 * @generated
 	 */
-	int PROBABILITY_SWITCH_ENTRY = 268;
+	int PROBABILITY_SWITCH_ENTRY = 310;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21142,7 +24289,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCounter()
 	 * @generated
 	 */
-	int COUNTER = 269;
+	int COUNTER = 311;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21197,7 +24344,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallSequenceItem()
 	 * @generated
 	 */
-	int CALL_SEQUENCE_ITEM = 270;
+	int CALL_SEQUENCE_ITEM = 312;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21252,7 +24399,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEvent()
 	 * @generated
 	 */
-	int WAIT_EVENT = 271;
+	int WAIT_EVENT = 313;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21334,7 +24481,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSetEvent()
 	 * @generated
 	 */
-	int SET_EVENT = 272;
+	int SET_EVENT = 314;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21407,7 +24554,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getClearEvent()
 	 * @generated
 	 */
-	int CLEAR_EVENT = 273;
+	int CLEAR_EVENT = 315;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21471,7 +24618,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventMask()
 	 * @generated
 	 */
-	int EVENT_MASK = 274;
+	int EVENT_MASK = 316;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21517,7 +24664,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsEvent()
 	 * @generated
 	 */
-	int OS_EVENT = 275;
+	int OS_EVENT = 317;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21635,7 +24782,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterProcessTrigger()
 	 * @generated
 	 */
-	int INTER_PROCESS_TRIGGER = 276;
+	int INTER_PROCESS_TRIGGER = 318;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21699,7 +24846,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEnforcedMigration()
 	 * @generated
 	 */
-	int ENFORCED_MIGRATION = 277;
+	int ENFORCED_MIGRATION = 319;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21763,7 +24910,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskRunnableCall()
 	 * @generated
 	 */
-	int TASK_RUNNABLE_CALL = 278;
+	int TASK_RUNNABLE_CALL = 320;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21836,7 +24983,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedulePoint()
 	 * @generated
 	 */
-	int SCHEDULE_POINT = 279;
+	int SCHEDULE_POINT = 321;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21891,7 +25038,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTerminateProcess()
 	 * @generated
 	 */
-	int TERMINATE_PROCESS = 280;
+	int TERMINATE_PROCESS = 322;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -21946,7 +25093,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 281;
+	int TASK = 323;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22109,7 +25256,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISR()
 	 * @generated
 	 */
-	int ISR = 282;
+	int ISR = 324;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22263,7 +25410,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessPrototype()
 	 * @generated
 	 */
-	int PROCESS_PROTOTYPE = 283;
+	int PROCESS_PROTOTYPE = 325;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22462,7 +25609,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChainedProcessPrototype()
 	 * @generated
 	 */
-	int CHAINED_PROCESS_PROTOTYPE = 284;
+	int CHAINED_PROCESS_PROTOTYPE = 326;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22526,7 +25673,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGeneralPrecedence()
 	 * @generated
 	 */
-	int GENERAL_PRECEDENCE = 285;
+	int GENERAL_PRECEDENCE = 327;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22581,7 +25728,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceSpec()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_SPEC = 286;
+	int ACCESS_PRECEDENCE_SPEC = 328;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22654,7 +25801,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderPrecedenceSpec()
 	 * @generated
 	 */
-	int ORDER_PRECEDENCE_SPEC = 287;
+	int ORDER_PRECEDENCE_SPEC = 329;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22718,7 +25865,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataDependency()
 	 * @generated
 	 */
-	int DATA_DEPENDENCY = 288;
+	int DATA_DEPENDENCY = 330;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22791,7 +25938,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableParameter()
 	 * @generated
 	 */
-	int RUNNABLE_PARAMETER = 289;
+	int RUNNABLE_PARAMETER = 331;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -22927,7 +26074,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnable()
 	 * @generated
 	 */
-	int RUNNABLE = 290;
+	int RUNNABLE = 332;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23153,7 +26300,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 291;
+	int LABEL = 333;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23352,7 +26499,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 292;
+	int CHANNEL = 334;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23515,7 +26662,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabel()
 	 * @generated
 	 */
-	int MODE_LABEL = 293;
+	int MODE_LABEL = 335;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23660,7 +26807,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSection()
 	 * @generated
 	 */
-	int SECTION = 294;
+	int SECTION = 336;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23778,7 +26925,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableItem()
 	 * @generated
 	 */
-	int RUNNABLE_ITEM = 295;
+	int RUNNABLE_ITEM = 337;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23824,7 +26971,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComputationItem()
 	 * @generated
 	 */
-	int COMPUTATION_ITEM = 296;
+	int COMPUTATION_ITEM = 338;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23870,7 +27017,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionNeed()
 	 * @generated
 	 */
-	int EXECUTION_NEED = 297;
+	int EXECUTION_NEED = 339;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -23925,7 +27072,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNeedEntry()
 	 * @generated
 	 */
-	int NEED_ENTRY = 298;
+	int NEED_ENTRY = 340;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -23971,7 +27118,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionTicks()
 	 * @generated
 	 */
-	int EXECUTION_TICKS = 299;
+	int EXECUTION_TICKS = 341;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24035,7 +27182,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTicksEntry()
 	 * @generated
 	 */
-	int TICKS_ENTRY = 300;
+	int TICKS_ENTRY = 342;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -24081,7 +27228,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getModeLabelAccess()
 	 * @generated
 	 */
-	int MODE_LABEL_ACCESS = 301;
+	int MODE_LABEL_ACCESS = 343;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24154,7 +27301,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableModeSwitch()
 	 * @generated
 	 */
-	int RUNNABLE_MODE_SWITCH = 302;
+	int RUNNABLE_MODE_SWITCH = 344;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24218,7 +27365,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccess()
 	 * @generated
 	 */
-	int LABEL_ACCESS = 303;
+	int LABEL_ACCESS = 345;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24336,7 +27483,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelAccess()
 	 * @generated
 	 */
-	int CHANNEL_ACCESS = 304;
+	int CHANNEL_ACCESS = 346;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24409,7 +27556,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelSend()
 	 * @generated
 	 */
-	int CHANNEL_SEND = 305;
+	int CHANNEL_SEND = 347;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24482,7 +27629,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelReceive()
 	 * @generated
 	 */
-	int CHANNEL_RECEIVE = 306;
+	int CHANNEL_RECEIVE = 348;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24591,7 +27738,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccess()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS = 307;
+	int SEMAPHORE_ACCESS = 349;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24664,7 +27811,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverCommunication()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_COMMUNICATION = 308;
+	int SENDER_RECEIVER_COMMUNICATION = 350;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24737,7 +27884,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverRead()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_READ = 309;
+	int SENDER_RECEIVER_READ = 351;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24810,7 +27957,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSenderReceiverWrite()
 	 * @generated
 	 */
-	int SENDER_RECEIVER_WRITE = 310;
+	int SENDER_RECEIVER_WRITE = 352;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24892,7 +28039,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getServerCall()
 	 * @generated
 	 */
-	int SERVER_CALL = 311;
+	int SERVER_CALL = 353;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -24956,7 +28103,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronousServerCall()
 	 * @generated
 	 */
-	int SYNCHRONOUS_SERVER_CALL = 312;
+	int SYNCHRONOUS_SERVER_CALL = 354;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25029,7 +28176,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAsynchronousServerCall()
 	 * @generated
 	 */
-	int ASYNCHRONOUS_SERVER_CALL = 313;
+	int ASYNCHRONOUS_SERVER_CALL = 355;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25102,7 +28249,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGetResultServerCall()
 	 * @generated
 	 */
-	int GET_RESULT_SERVER_CALL = 314;
+	int GET_RESULT_SERVER_CALL = 356;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25175,7 +28322,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableProbabilitySwitch()
 	 * @generated
 	 */
-	int RUNNABLE_PROBABILITY_SWITCH = 315;
+	int RUNNABLE_PROBABILITY_SWITCH = 357;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25230,7 +28377,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroup()
 	 * @generated
 	 */
-	int GROUP = 316;
+	int GROUP = 358;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25303,7 +28450,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCallArgument()
 	 * @generated
 	 */
-	int CALL_ARGUMENT = 317;
+	int CALL_ARGUMENT = 359;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -25421,7 +28568,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableCall()
 	 * @generated
 	 */
-	int RUNNABLE_CALL = 318;
+	int RUNNABLE_CALL = 360;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25503,7 +28650,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomEventTrigger()
 	 * @generated
 	 */
-	int CUSTOM_EVENT_TRIGGER = 319;
+	int CUSTOM_EVENT_TRIGGER = 361;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25558,7 +28705,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 320;
+	int DATA_TYPE = 362;
 
 	/**
 	 * The number of structural features of the '<em>Data Type</em>' class.
@@ -25586,7 +28733,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCompoundType()
 	 * @generated
 	 */
-	int COMPOUND_TYPE = 321;
+	int COMPOUND_TYPE = 363;
 
 	/**
 	 * The number of structural features of the '<em>Compound Type</em>' class.
@@ -25614,7 +28761,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStruct()
 	 * @generated
 	 */
-	int STRUCT = 322;
+	int STRUCT = 364;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25660,7 +28807,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStructEntry()
 	 * @generated
 	 */
-	int STRUCT_ENTRY = 323;
+	int STRUCT_ENTRY = 365;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25715,7 +28862,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getArray()
 	 * @generated
 	 */
-	int ARRAY = 324;
+	int ARRAY = 366;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25770,7 +28917,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPointer()
 	 * @generated
 	 */
-	int POINTER = 325;
+	int POINTER = 367;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25816,7 +28963,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTypeRef()
 	 * @generated
 	 */
-	int TYPE_REF = 326;
+	int TYPE_REF = 368;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25862,7 +29009,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataPlatformMapping()
 	 * @generated
 	 */
-	int DATA_PLATFORM_MAPPING = 327;
+	int DATA_PLATFORM_MAPPING = 369;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -25917,7 +29064,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTypeDefinition()
 	 * @generated
 	 */
-	int TYPE_DEFINITION = 328;
+	int TYPE_DEFINITION = 370;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26008,7 +29155,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataTypeDefinition()
 	 * @generated
 	 */
-	int DATA_TYPE_DEFINITION = 329;
+	int DATA_TYPE_DEFINITION = 371;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26108,7 +29255,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBaseTypeDefinition()
 	 * @generated
 	 */
-	int BASE_TYPE_DEFINITION = 330;
+	int BASE_TYPE_DEFINITION = 372;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26217,7 +29364,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getActivation()
 	 * @generated
 	 */
-	int ACTIVATION = 331;
+	int ACTIVATION = 373;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26317,7 +29464,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPeriodicActivation()
 	 * @generated
 	 */
-	int PERIODIC_ACTIVATION = 332;
+	int PERIODIC_ACTIVATION = 374;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26453,7 +29600,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVariableRateActivation()
 	 * @generated
 	 */
-	int VARIABLE_RATE_ACTIVATION = 333;
+	int VARIABLE_RATE_ACTIVATION = 375;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26580,7 +29727,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSporadicActivation()
 	 * @generated
 	 */
-	int SPORADIC_ACTIVATION = 334;
+	int SPORADIC_ACTIVATION = 376;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26698,7 +29845,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSingleActivation()
 	 * @generated
 	 */
-	int SINGLE_ACTIVATION = 335;
+	int SINGLE_ACTIVATION = 377;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26816,7 +29963,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventActivation()
 	 * @generated
 	 */
-	int EVENT_ACTIVATION = 336;
+	int EVENT_ACTIVATION = 378;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -26934,7 +30081,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCustomActivation()
 	 * @generated
 	 */
-	int CUSTOM_ACTIVATION = 337;
+	int CUSTOM_ACTIVATION = 379;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27043,7 +30190,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessStatistic()
 	 * @generated
 	 */
-	int LABEL_ACCESS_STATISTIC = 338;
+	int LABEL_ACCESS_STATISTIC = 380;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27098,7 +30245,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInstructionFetch()
 	 * @generated
 	 */
-	int INSTRUCTION_FETCH = 339;
+	int INSTRUCTION_FETCH = 381;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27162,7 +30309,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunEntityCallStatistic()
 	 * @generated
 	 */
-	int RUN_ENTITY_CALL_STATISTIC = 340;
+	int RUN_ENTITY_CALL_STATISTIC = 382;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27208,7 +30355,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMeasurementModel()
 	 * @generated
 	 */
-	int MEASUREMENT_MODEL = 341;
+	int MEASUREMENT_MODEL = 383;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27254,7 +30401,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMeasurement()
 	 * @generated
 	 */
-	int MEASUREMENT = 342;
+	int MEASUREMENT = 384;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27309,7 +30456,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getEventChainMeasurement()
 	 * @generated
 	 */
-	int EVENT_CHAIN_MEASUREMENT = 343;
+	int EVENT_CHAIN_MEASUREMENT = 385;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27373,7 +30520,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTaskMeasurement()
 	 * @generated
 	 */
-	int TASK_MEASUREMENT = 344;
+	int TASK_MEASUREMENT = 386;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27437,7 +30584,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableMeasurement()
 	 * @generated
 	 */
-	int RUNNABLE_MEASUREMENT = 345;
+	int RUNNABLE_MEASUREMENT = 387;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -27501,7 +30648,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeUnit()
 	 * @generated
 	 */
-	int TIME_UNIT = 346;
+	int TIME_UNIT = 388;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyUnit <em>Frequency Unit</em>}' enum.
@@ -27511,7 +30658,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyUnit()
 	 * @generated
 	 */
-	int FREQUENCY_UNIT = 347;
+	int FREQUENCY_UNIT = 389;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.VoltageUnit <em>Voltage Unit</em>}' enum.
@@ -27521,7 +30668,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getVoltageUnit()
 	 * @generated
 	 */
-	int VOLTAGE_UNIT = 348;
+	int VOLTAGE_UNIT = 390;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataSizeUnit <em>Data Size Unit</em>}' enum.
@@ -27531,7 +30678,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataSizeUnit()
 	 * @generated
 	 */
-	int DATA_SIZE_UNIT = 349;
+	int DATA_SIZE_UNIT = 391;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataRateUnit <em>Data Rate Unit</em>}' enum.
@@ -27541,7 +30688,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataRateUnit()
 	 * @generated
 	 */
-	int DATA_RATE_UNIT = 350;
+	int DATA_RATE_UNIT = 392;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SamplingType <em>Sampling Type</em>}' enum.
@@ -27551,7 +30698,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSamplingType()
 	 * @generated
 	 */
-	int SAMPLING_TYPE = 351;
+	int SAMPLING_TYPE = 393;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.InterfaceKind <em>Interface Kind</em>}' enum.
@@ -27561,7 +30708,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getInterfaceKind()
 	 * @generated
 	 */
-	int INTERFACE_KIND = 352;
+	int INTERFACE_KIND = 394;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableOrderType <em>Runnable Order Type</em>}' enum.
@@ -27571,7 +30718,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableOrderType()
 	 * @generated
 	 */
-	int RUNNABLE_ORDER_TYPE = 353;
+	int RUNNABLE_ORDER_TYPE = 395;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SynchronizationType <em>Synchronization Type</em>}' enum.
@@ -27581,7 +30728,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSynchronizationType()
 	 * @generated
 	 */
-	int SYNCHRONIZATION_TYPE = 354;
+	int SYNCHRONIZATION_TYPE = 396;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MappingType <em>Mapping Type</em>}' enum.
@@ -27591,7 +30738,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMappingType()
 	 * @generated
 	 */
-	int MAPPING_TYPE = 355;
+	int MAPPING_TYPE = 397;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LatencyType <em>Latency Type</em>}' enum.
@@ -27601,7 +30748,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLatencyType()
 	 * @generated
 	 */
-	int LATENCY_TYPE = 356;
+	int LATENCY_TYPE = 398;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Severity <em>Severity</em>}' enum.
@@ -27611,7 +30758,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSeverity()
 	 * @generated
 	 */
-	int SEVERITY = 357;
+	int SEVERITY = 399;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LimitType <em>Limit Type</em>}' enum.
@@ -27621,7 +30768,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLimitType()
 	 * @generated
 	 */
-	int LIMIT_TYPE = 358;
+	int LIMIT_TYPE = 400;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.TimeMetric <em>Time Metric</em>}' enum.
@@ -27631,7 +30778,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTimeMetric()
 	 * @generated
 	 */
-	int TIME_METRIC = 359;
+	int TIME_METRIC = 401;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CountMetric <em>Count Metric</em>}' enum.
@@ -27641,7 +30788,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCountMetric()
 	 * @generated
 	 */
-	int COUNT_METRIC = 360;
+	int COUNT_METRIC = 402;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PercentageMetric <em>Percentage Metric</em>}' enum.
@@ -27651,7 +30798,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPercentageMetric()
 	 * @generated
 	 */
-	int PERCENTAGE_METRIC = 361;
+	int PERCENTAGE_METRIC = 403;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CPUPercentageMetric <em>CPU Percentage Metric</em>}' enum.
@@ -27661,7 +30808,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCPUPercentageMetric()
 	 * @generated
 	 */
-	int CPU_PERCENTAGE_METRIC = 362;
+	int CPU_PERCENTAGE_METRIC = 404;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.FrequencyMetric <em>Frequency Metric</em>}' enum.
@@ -27671,7 +30818,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getFrequencyMetric()
 	 * @generated
 	 */
-	int FREQUENCY_METRIC = 363;
+	int FREQUENCY_METRIC = 405;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CoherencyDirection <em>Coherency Direction</em>}' enum.
@@ -27681,7 +30828,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCoherencyDirection()
 	 * @generated
 	 */
-	int COHERENCY_DIRECTION = 364;
+	int COHERENCY_DIRECTION = 406;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ProcessEventType <em>Process Event Type</em>}' enum.
@@ -27691,7 +30838,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getProcessEventType()
 	 * @generated
 	 */
-	int PROCESS_EVENT_TYPE = 365;
+	int PROCESS_EVENT_TYPE = 407;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.RunnableEventType <em>Runnable Event Type</em>}' enum.
@@ -27701,7 +30848,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getRunnableEventType()
 	 * @generated
 	 */
-	int RUNNABLE_EVENT_TYPE = 366;
+	int RUNNABLE_EVENT_TYPE = 408;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelEventType <em>Label Event Type</em>}' enum.
@@ -27711,7 +30858,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelEventType()
 	 * @generated
 	 */
-	int LABEL_EVENT_TYPE = 367;
+	int LABEL_EVENT_TYPE = 409;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ChannelEventType <em>Channel Event Type</em>}' enum.
@@ -27721,7 +30868,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getChannelEventType()
 	 * @generated
 	 */
-	int CHANNEL_EVENT_TYPE = 368;
+	int CHANNEL_EVENT_TYPE = 410;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreEventType <em>Semaphore Event Type</em>}' enum.
@@ -27731,7 +30878,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreEventType()
 	 * @generated
 	 */
-	int SEMAPHORE_EVENT_TYPE = 369;
+	int SEMAPHORE_EVENT_TYPE = 411;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ComponentEventType <em>Component Event Type</em>}' enum.
@@ -27741,7 +30888,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getComponentEventType()
 	 * @generated
 	 */
-	int COMPONENT_EVENT_TYPE = 370;
+	int COMPONENT_EVENT_TYPE = 412;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryType <em>Memory Type</em>}' enum.
@@ -27751,7 +30898,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryType()
 	 * @generated
 	 */
-	int MEMORY_TYPE = 371;
+	int MEMORY_TYPE = 413;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.StructureType <em>Structure Type</em>}' enum.
@@ -27761,7 +30908,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getStructureType()
 	 * @generated
 	 */
-	int STRUCTURE_TYPE = 372;
+	int STRUCTURE_TYPE = 414;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CacheType <em>Cache Type</em>}' enum.
@@ -27771,7 +30918,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCacheType()
 	 * @generated
 	 */
-	int CACHE_TYPE = 373;
+	int CACHE_TYPE = 415;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PortType <em>Port Type</em>}' enum.
@@ -27781,7 +30928,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPortType()
 	 * @generated
 	 */
-	int PORT_TYPE = 374;
+	int PORT_TYPE = 416;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SchedPolicy <em>Sched Policy</em>}' enum.
@@ -27791,7 +30938,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSchedPolicy()
 	 * @generated
 	 */
-	int SCHED_POLICY = 375;
+	int SCHED_POLICY = 417;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WriteStrategy <em>Write Strategy</em>}' enum.
@@ -27801,7 +30948,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWriteStrategy()
 	 * @generated
 	 */
-	int WRITE_STRATEGY = 376;
+	int WRITE_STRATEGY = 418;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PuType <em>Pu Type</em>}' enum.
@@ -27811,7 +30958,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPuType()
 	 * @generated
 	 */
-	int PU_TYPE = 377;
+	int PU_TYPE = 419;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.PortInterface <em>Port Interface</em>}' enum.
@@ -27821,7 +30968,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPortInterface()
 	 * @generated
 	 */
-	int PORT_INTERFACE = 378;
+	int PORT_INTERFACE = 420;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.HwFeatureType <em>Hw Feature Type</em>}' enum.
@@ -27831,7 +30978,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getHwFeatureType()
 	 * @generated
 	 */
-	int HW_FEATURE_TYPE = 379;
+	int HW_FEATURE_TYPE = 421;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType <em>Memory Address Mapping Type</em>}' enum.
@@ -27841,7 +30988,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getMemoryAddressMappingType()
 	 * @generated
 	 */
-	int MEMORY_ADDRESS_MAPPING_TYPE = 380;
+	int MEMORY_ADDRESS_MAPPING_TYPE = 422;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode <em>Os Data Consistency Mode</em>}' enum.
@@ -27851,7 +30998,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOsDataConsistencyMode()
 	 * @generated
 	 */
-	int OS_DATA_CONSISTENCY_MODE = 381;
+	int OS_DATA_CONSISTENCY_MODE = 423;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessMultiplicity <em>Access Multiplicity</em>}' enum.
@@ -27861,7 +31008,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessMultiplicity()
 	 * @generated
 	 */
-	int ACCESS_MULTIPLICITY = 382;
+	int ACCESS_MULTIPLICITY = 424;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DataStabilityLevel <em>Data Stability Level</em>}' enum.
@@ -27871,7 +31018,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataStabilityLevel()
 	 * @generated
 	 */
-	int DATA_STABILITY_LEVEL = 383;
+	int DATA_STABILITY_LEVEL = 425;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreType <em>Semaphore Type</em>}' enum.
@@ -27881,7 +31028,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreType()
 	 * @generated
 	 */
-	int SEMAPHORE_TYPE = 384;
+	int SEMAPHORE_TYPE = 426;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Condition <em>Condition</em>}' enum.
@@ -27891,7 +31038,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 385;
+	int CONDITION = 427;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.GroupingType <em>Grouping Type</em>}' enum.
@@ -27901,7 +31048,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getGroupingType()
 	 * @generated
 	 */
-	int GROUPING_TYPE = 386;
+	int GROUPING_TYPE = 428;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitEventType <em>Wait Event Type</em>}' enum.
@@ -27911,7 +31058,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitEventType()
 	 * @generated
 	 */
-	int WAIT_EVENT_TYPE = 387;
+	int WAIT_EVENT_TYPE = 429;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour <em>Waiting Behaviour</em>}' enum.
@@ -27921,7 +31068,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getWaitingBehaviour()
 	 * @generated
 	 */
-	int WAITING_BEHAVIOUR = 388;
+	int WAITING_BEHAVIOUR = 430;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ISRCategory <em>ISR Category</em>}' enum.
@@ -27931,7 +31078,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getISRCategory()
 	 * @generated
 	 */
-	int ISR_CATEGORY = 389;
+	int ISR_CATEGORY = 431;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.AccessPrecedenceType <em>Access Precedence Type</em>}' enum.
@@ -27941,7 +31088,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAccessPrecedenceType()
 	 * @generated
 	 */
-	int ACCESS_PRECEDENCE_TYPE = 390;
+	int ACCESS_PRECEDENCE_TYPE = 432;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.OrderType <em>Order Type</em>}' enum.
@@ -27951,7 +31098,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getOrderType()
 	 * @generated
 	 */
-	int ORDER_TYPE = 391;
+	int ORDER_TYPE = 433;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.DirectionType <em>Direction Type</em>}' enum.
@@ -27961,7 +31108,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDirectionType()
 	 * @generated
 	 */
-	int DIRECTION_TYPE = 392;
+	int DIRECTION_TYPE = 434;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelDataStability <em>Label Data Stability</em>}' enum.
@@ -27971,7 +31118,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelDataStability()
 	 * @generated
 	 */
-	int LABEL_DATA_STABILITY = 393;
+	int LABEL_DATA_STABILITY = 435;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ReceiveOperation <em>Receive Operation</em>}' enum.
@@ -27981,7 +31128,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getReceiveOperation()
 	 * @generated
 	 */
-	int RECEIVE_OPERATION = 394;
+	int RECEIVE_OPERATION = 436;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessDataStability <em>Label Access Data Stability</em>}' enum.
@@ -27991,7 +31138,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessDataStability()
 	 * @generated
 	 */
-	int LABEL_ACCESS_DATA_STABILITY = 395;
+	int LABEL_ACCESS_DATA_STABILITY = 437;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum <em>Label Access Enum</em>}' enum.
@@ -28001,7 +31148,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessEnum()
 	 * @generated
 	 */
-	int LABEL_ACCESS_ENUM = 396;
+	int LABEL_ACCESS_ENUM = 438;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.LabelAccessImplementation <em>Label Access Implementation</em>}' enum.
@@ -28011,7 +31158,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getLabelAccessImplementation()
 	 * @generated
 	 */
-	int LABEL_ACCESS_IMPLEMENTATION = 397;
+	int LABEL_ACCESS_IMPLEMENTATION = 439;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum <em>Semaphore Access Enum</em>}' enum.
@@ -28021,7 +31168,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getSemaphoreAccessEnum()
 	 * @generated
 	 */
-	int SEMAPHORE_ACCESS_ENUM = 398;
+	int SEMAPHORE_ACCESS_ENUM = 440;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.BlockingType <em>Blocking Type</em>}' enum.
@@ -28031,7 +31178,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBlockingType()
 	 * @generated
 	 */
-	int BLOCKING_TYPE = 399;
+	int BLOCKING_TYPE = 441;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.Preemption <em>Preemption</em>}' enum.
@@ -28041,7 +31188,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPreemption()
 	 * @generated
 	 */
-	int PREEMPTION = 400;
+	int PREEMPTION = 442;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ConcurrencyType <em>Concurrency Type</em>}' enum.
@@ -28051,7 +31198,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getConcurrencyType()
 	 * @generated
 	 */
-	int CONCURRENCY_TYPE = 401;
+	int CONCURRENCY_TYPE = 443;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ASILType <em>ASIL Type</em>}' enum.
@@ -28061,7 +31208,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getASILType()
 	 * @generated
 	 */
-	int ASIL_TYPE = 402;
+	int ASIL_TYPE = 444;
 
 	/**
 	 * The meta object id for the '<em>Address</em>' data type.
@@ -28070,7 +31217,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAddress()
 	 * @generated
 	 */
-	int ADDRESS = 403;
+	int ADDRESS = 445;
 
 	/**
 	 * The meta object id for the '<em>Positive Int</em>' data type.
@@ -28079,7 +31226,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPositiveInt()
 	 * @generated
 	 */
-	int POSITIVE_INT = 404;
+	int POSITIVE_INT = 446;
+
+	/**
+	 * The meta object id for the '<em>Positive Long</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPositiveLong()
+	 * @generated
+	 */
+	int POSITIVE_LONG = 447;
+
+	/**
+	 * The meta object id for the '<em>Positive Double</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getPositiveDouble()
+	 * @generated
+	 */
+	int POSITIVE_DOUBLE = 448;
 
 
 	/**
@@ -29247,6 +32412,1380 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBooleanObject_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation <em>Time Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation
+	 * @generated
+	 */
+	EClass getTimeDeviation();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation#getLowerBound()
+	 * @generated
+	 */
+	EOperation getTimeDeviation__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeDeviation__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation#getUpperBound()
+	 * @generated
+	 */
+	EOperation getTimeDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeConstant <em>Time Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant
+	 * @generated
+	 */
+	EClass getTimeConstant();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getValue()
+	 * @see #getTimeConstant()
+	 * @generated
+	 */
+	EReference getTimeConstant_Value();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getLowerBound()
+	 * @generated
+	 */
+	EOperation getTimeConstant__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeConstant__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getUpperBound()
+	 * @generated
+	 */
+	EOperation getTimeConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram <em>Time Histogram</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Histogram</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogram
+	 * @generated
+	 */
+	EClass getTimeHistogram();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogram#getEntries()
+	 * @see #getTimeHistogram()
+	 * @generated
+	 */
+	EReference getTimeHistogram_Entries();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogram#getLowerBound()
+	 * @generated
+	 */
+	EOperation getTimeHistogram__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogram#getUpperBound()
+	 * @generated
+	 */
+	EOperation getTimeHistogram__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogram#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeHistogram__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry <em>Time Histogram Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Histogram Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogramEntry
+	 * @generated
+	 */
+	EClass getTimeHistogramEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getOccurrences <em>Occurrences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occurrences</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getOccurrences()
+	 * @see #getTimeHistogramEntry()
+	 * @generated
+	 */
+	EAttribute getTimeHistogramEntry_Occurrences();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getInterval <em>Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getInterval()
+	 * @see #getTimeHistogramEntry()
+	 * @generated
+	 */
+	EReference getTimeHistogramEntry_Interval();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution <em>Bounded Time Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Bounded Time Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution
+	 * @generated
+	 */
+	EClass getBoundedTimeDistribution();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getLowerBound()
+	 * @see #getBoundedTimeDistribution()
+	 * @generated
+	 */
+	EReference getBoundedTimeDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getUpperBound()
+	 * @see #getBoundedTimeDistribution()
+	 * @generated
+	 */
+	EReference getBoundedTimeDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getBoundedTimeDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution <em>Truncated Time Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Truncated Time Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution
+	 * @generated
+	 */
+	EClass getTruncatedTimeDistribution();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#getLowerBound()
+	 * @see #getTruncatedTimeDistribution()
+	 * @generated
+	 */
+	EReference getTruncatedTimeDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#getUpperBound()
+	 * @see #getTruncatedTimeDistribution()
+	 * @generated
+	 */
+	EReference getTruncatedTimeDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeInterval <em>Time Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeInterval
+	 * @generated
+	 */
+	EClass getTimeInterval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getSamplingType <em>Sampling Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeInterval#getSamplingType()
+	 * @see #getTimeInterval()
+	 * @generated
+	 */
+	EAttribute getTimeInterval_SamplingType();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeStatistics <em>Time Statistics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Statistics</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeStatistics
+	 * @generated
+	 */
+	EClass getTimeStatistics();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeStatistics#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeStatistics#getAverage()
+	 * @see #getTimeStatistics()
+	 * @generated
+	 */
+	EReference getTimeStatistics_Average();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeUniformDistribution <em>Time Uniform Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Uniform Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeUniformDistribution
+	 * @generated
+	 */
+	EClass getTimeUniformDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution <em>Time Gauss Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Gauss Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeGaussDistribution
+	 * @generated
+	 */
+	EClass getTimeGaussDistribution();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getMean <em>Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Mean</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getMean()
+	 * @see #getTimeGaussDistribution()
+	 * @generated
+	 */
+	EReference getTimeGaussDistribution_Mean();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getSd <em>Sd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Sd</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getSd()
+	 * @see #getTimeGaussDistribution()
+	 * @generated
+	 */
+	EReference getTimeGaussDistribution_Sd();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution <em>Time Weibull Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Weibull Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution
+	 * @generated
+	 */
+	EClass getTimeWeibullDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution <em>Time Weibull Parameters Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Weibull Parameters Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution
+	 * @generated
+	 */
+	EClass getTimeWeibullParametersDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getKappa <em>Kappa</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kappa</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getKappa()
+	 * @see #getTimeWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getTimeWeibullParametersDistribution_Kappa();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getLambda <em>Lambda</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lambda</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getLambda()
+	 * @see #getTimeWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getTimeWeibullParametersDistribution_Lambda();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeWeibullParametersDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution <em>Time Weibull Estimators Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Weibull Estimators Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution
+	 * @generated
+	 */
+	EClass getTimeWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution#getAverage()
+	 * @see #getTimeWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EReference getTimeWeibullEstimatorsDistribution_Average();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>PRemain Promille</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution#getPRemainPromille()
+	 * @see #getTimeWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EAttribute getTimeWeibullEstimatorsDistribution_PRemainPromille();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution <em>Time Beta Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Beta Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeBetaDistribution
+	 * @generated
+	 */
+	EClass getTimeBetaDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getAlpha <em>Alpha</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Alpha</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getAlpha()
+	 * @see #getTimeBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getTimeBetaDistribution_Alpha();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getBeta <em>Beta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Beta</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getBeta()
+	 * @see #getTimeBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getTimeBetaDistribution_Beta();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeBetaDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeBetaDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation <em>Discrete Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation
+	 * @generated
+	 */
+	EClass getDiscreteDeviation();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getLowerBound()
+	 * @generated
+	 */
+	EOperation getDiscreteDeviation__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteDeviation__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation#getUpperBound()
+	 * @generated
+	 */
+	EOperation getDiscreteDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant <em>Discrete Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant
+	 * @generated
+	 */
+	EClass getDiscreteConstant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getValue()
+	 * @see #getDiscreteConstant()
+	 * @generated
+	 */
+	EAttribute getDiscreteConstant_Value();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getLowerBound()
+	 * @generated
+	 */
+	EOperation getDiscreteConstant__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteConstant__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getUpperBound()
+	 * @generated
+	 */
+	EOperation getDiscreteConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram <em>Discrete Histogram</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Histogram</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram
+	 * @generated
+	 */
+	EClass getDiscreteHistogram();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getEntries()
+	 * @see #getDiscreteHistogram()
+	 * @generated
+	 */
+	EReference getDiscreteHistogram_Entries();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getLowerBound()
+	 * @generated
+	 */
+	EOperation getDiscreteHistogram__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getUpperBound()
+	 * @generated
+	 */
+	EOperation getDiscreteHistogram__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteHistogram__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry <em>Discrete Histogram Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Histogram Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
+	 * @generated
+	 */
+	EClass getDiscreteHistogramEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getOccurrences <em>Occurrences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occurrences</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getOccurrences()
+	 * @see #getDiscreteHistogramEntry()
+	 * @generated
+	 */
+	EAttribute getDiscreteHistogramEntry_Occurrences();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getInterval <em>Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getInterval()
+	 * @see #getDiscreteHistogramEntry()
+	 * @generated
+	 */
+	EReference getDiscreteHistogramEntry_Interval();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution <em>Bounded Discrete Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Bounded Discrete Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
+	 * @generated
+	 */
+	EClass getBoundedDiscreteDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getLowerBound()
+	 * @see #getBoundedDiscreteDistribution()
+	 * @generated
+	 */
+	EAttribute getBoundedDiscreteDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getUpperBound()
+	 * @see #getBoundedDiscreteDistribution()
+	 * @generated
+	 */
+	EAttribute getBoundedDiscreteDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getBoundedDiscreteDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution <em>Truncated Discrete Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Truncated Discrete Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution
+	 * @generated
+	 */
+	EClass getTruncatedDiscreteDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getLowerBound()
+	 * @see #getTruncatedDiscreteDistribution()
+	 * @generated
+	 */
+	EAttribute getTruncatedDiscreteDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getUpperBound()
+	 * @see #getTruncatedDiscreteDistribution()
+	 * @generated
+	 */
+	EAttribute getTruncatedDiscreteDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval <em>Discrete Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval
+	 * @generated
+	 */
+	EClass getDiscreteInterval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval#getSamplingType <em>Sampling Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval#getSamplingType()
+	 * @see #getDiscreteInterval()
+	 * @generated
+	 */
+	EAttribute getDiscreteInterval_SamplingType();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics <em>Discrete Statistics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Statistics</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteStatistics
+	 * @generated
+	 */
+	EClass getDiscreteStatistics();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteStatistics#getAverage()
+	 * @see #getDiscreteStatistics()
+	 * @generated
+	 */
+	EAttribute getDiscreteStatistics_Average();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution <em>Discrete Uniform Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Uniform Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
+	 * @generated
+	 */
+	EClass getDiscreteUniformDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution <em>Discrete Gauss Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Gauss Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
+	 * @generated
+	 */
+	EClass getDiscreteGaussDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getMean <em>Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mean</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getMean()
+	 * @see #getDiscreteGaussDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteGaussDistribution_Mean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getSd <em>Sd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sd</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getSd()
+	 * @see #getDiscreteGaussDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteGaussDistribution_Sd();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution <em>Discrete Weibull Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Weibull Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution
+	 * @generated
+	 */
+	EClass getDiscreteWeibullDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution <em>Discrete Weibull Parameters Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Weibull Parameters Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution
+	 * @generated
+	 */
+	EClass getDiscreteWeibullParametersDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getKappa <em>Kappa</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kappa</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getKappa()
+	 * @see #getDiscreteWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteWeibullParametersDistribution_Kappa();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getLambda <em>Lambda</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lambda</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getLambda()
+	 * @see #getDiscreteWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteWeibullParametersDistribution_Lambda();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteWeibullParametersDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution <em>Discrete Weibull Estimators Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Weibull Estimators Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
+	 * @generated
+	 */
+	EClass getDiscreteWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getAverage()
+	 * @see #getDiscreteWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteWeibullEstimatorsDistribution_Average();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>PRemain Promille</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getPRemainPromille()
+	 * @see #getDiscreteWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteWeibullEstimatorsDistribution_PRemainPromille();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution <em>Discrete Beta Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Beta Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
+	 * @generated
+	 */
+	EClass getDiscreteBetaDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAlpha <em>Alpha</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Alpha</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAlpha()
+	 * @see #getDiscreteBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteBetaDistribution_Alpha();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getBeta <em>Beta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Beta</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getBeta()
+	 * @see #getDiscreteBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getDiscreteBetaDistribution_Beta();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteBetaDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation <em>Continuous Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation
+	 * @generated
+	 */
+	EClass getContinuousDeviation();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getLowerBound()
+	 * @generated
+	 */
+	EOperation getContinuousDeviation__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousDeviation__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation#getUpperBound()
+	 * @generated
+	 */
+	EOperation getContinuousDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant <em>Continuous Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant
+	 * @generated
+	 */
+	EClass getContinuousConstant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getValue()
+	 * @see #getContinuousConstant()
+	 * @generated
+	 */
+	EAttribute getContinuousConstant_Value();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getLowerBound()
+	 * @generated
+	 */
+	EOperation getContinuousConstant__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousConstant__GetAverage();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getUpperBound()
+	 * @generated
+	 */
+	EOperation getContinuousConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram <em>Continuous Histogram</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Histogram</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram
+	 * @generated
+	 */
+	EClass getContinuousHistogram();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getEntries()
+	 * @see #getContinuousHistogram()
+	 * @generated
+	 */
+	EReference getContinuousHistogram_Entries();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getLowerBound()
+	 * @generated
+	 */
+	EOperation getContinuousHistogram__GetLowerBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getUpperBound()
+	 * @generated
+	 */
+	EOperation getContinuousHistogram__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousHistogram__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry <em>Continuous Histogram Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Histogram Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry
+	 * @generated
+	 */
+	EClass getContinuousHistogramEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getOccurrences <em>Occurrences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occurrences</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getOccurrences()
+	 * @see #getContinuousHistogramEntry()
+	 * @generated
+	 */
+	EAttribute getContinuousHistogramEntry_Occurrences();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getInterval <em>Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getInterval()
+	 * @see #getContinuousHistogramEntry()
+	 * @generated
+	 */
+	EReference getContinuousHistogramEntry_Interval();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution <em>Bounded Continuous Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Bounded Continuous Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
+	 * @generated
+	 */
+	EClass getBoundedContinuousDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getLowerBound()
+	 * @see #getBoundedContinuousDistribution()
+	 * @generated
+	 */
+	EAttribute getBoundedContinuousDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getUpperBound()
+	 * @see #getBoundedContinuousDistribution()
+	 * @generated
+	 */
+	EAttribute getBoundedContinuousDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getBoundedContinuousDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution <em>Truncated Continuous Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Truncated Continuous Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution
+	 * @generated
+	 */
+	EClass getTruncatedContinuousDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getLowerBound()
+	 * @see #getTruncatedContinuousDistribution()
+	 * @generated
+	 */
+	EAttribute getTruncatedContinuousDistribution_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getUpperBound()
+	 * @see #getTruncatedContinuousDistribution()
+	 * @generated
+	 */
+	EAttribute getTruncatedContinuousDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval <em>Continuous Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval
+	 * @generated
+	 */
+	EClass getContinuousInterval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getSamplingType <em>Sampling Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval#getSamplingType()
+	 * @see #getContinuousInterval()
+	 * @generated
+	 */
+	EAttribute getContinuousInterval_SamplingType();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics <em>Continuous Statistics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Statistics</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousStatistics
+	 * @generated
+	 */
+	EClass getContinuousStatistics();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousStatistics#getAverage()
+	 * @see #getContinuousStatistics()
+	 * @generated
+	 */
+	EAttribute getContinuousStatistics_Average();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution <em>Continuous Uniform Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Uniform Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution
+	 * @generated
+	 */
+	EClass getContinuousUniformDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution <em>Continuous Gauss Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Gauss Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution
+	 * @generated
+	 */
+	EClass getContinuousGaussDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getMean <em>Mean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mean</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getMean()
+	 * @see #getContinuousGaussDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousGaussDistribution_Mean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getSd <em>Sd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sd</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getSd()
+	 * @see #getContinuousGaussDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousGaussDistribution_Sd();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution <em>Continuous Weibull Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Weibull Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution
+	 * @generated
+	 */
+	EClass getContinuousWeibullDistribution();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution <em>Continuous Weibull Parameters Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Weibull Parameters Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution
+	 * @generated
+	 */
+	EClass getContinuousWeibullParametersDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getKappa <em>Kappa</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kappa</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getKappa()
+	 * @see #getContinuousWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousWeibullParametersDistribution_Kappa();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getLambda <em>Lambda</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lambda</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getLambda()
+	 * @see #getContinuousWeibullParametersDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousWeibullParametersDistribution_Lambda();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousWeibullParametersDistribution__GetAverage();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution <em>Continuous Weibull Estimators Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Weibull Estimators Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution
+	 * @generated
+	 */
+	EClass getContinuousWeibullEstimatorsDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Average</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getAverage()
+	 * @see #getContinuousWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousWeibullEstimatorsDistribution_Average();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>PRemain Promille</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getPRemainPromille()
+	 * @see #getContinuousWeibullEstimatorsDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousWeibullEstimatorsDistribution_PRemainPromille();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution <em>Continuous Beta Distribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Continuous Beta Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution
+	 * @generated
+	 */
+	EClass getContinuousBetaDistribution();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAlpha <em>Alpha</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Alpha</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAlpha()
+	 * @see #getContinuousBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousBetaDistribution_Alpha();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getBeta <em>Beta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Beta</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getBeta()
+	 * @see #getContinuousBetaDistribution()
+	 * @generated
+	 */
+	EAttribute getContinuousBetaDistribution_Beta();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousBetaDistribution__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Deviation <em>Deviation</em>}'.
@@ -39678,6 +44217,34 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getPositiveInt();
+
+	/**
+	 * Returns the meta object for data type '<em>Positive Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Positive Long (long)
+     * <!-- end-model-doc -->
+	 * @return the meta object for data type '<em>Positive Long</em>'.
+	 * @model instanceClass="long"
+	 *        extendedMetaData="minInclusive='1'"
+	 * @generated
+	 */
+	EDataType getPositiveLong();
+
+	/**
+	 * Returns the meta object for data type '<em>Positive Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Positive Double (double)
+     * <!-- end-model-doc -->
+	 * @return the meta object for data type '<em>Positive Double</em>'.
+	 * @model instanceClass="double"
+	 *        extendedMetaData="minExclusive='0'"
+	 * @generated
+	 */
+	EDataType getPositiveDouble();
 
 	/**
 	 * Returns the factory that creates the instances of the model.

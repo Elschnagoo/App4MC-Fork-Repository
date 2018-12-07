@@ -1189,6 +1189,552 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Object for using the elementary datatype boolean as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="TimeDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="TimeDeviation" type="am:TimeDeviation"/>
+  <xsd:complexType name="TimeConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="value" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeConstant" type="am:TimeConstant"/>
+  <xsd:complexType name="TimeHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:TimeHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeHistogram" type="am:TimeHistogram"/>
+  <xsd:complexType name="TimeHistogramEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="interval" type="am:TimeInterval"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="occurrences" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="TimeHistogramEntry" type="am:TimeHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedTimeDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="lowerBound" type="am:Time"/>
+          <xsd:element name="upperBound" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedTimeDistribution" type="am:BoundedTimeDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedTimeDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="lowerBound" type="am:Time"/>
+          <xsd:element name="upperBound" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedTimeDistribution" type="am:TruncatedTimeDistribution"/>
+  <xsd:complexType name="TimeInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeInterval" type="am:TimeInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="average" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeStatistics" type="am:TimeStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeUniformDistribution" type="am:TimeUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedTimeDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="mean" type="am:Time"/>
+          <xsd:element name="sd" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeGaussDistribution" type="am:TimeGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="TimeWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeWeibullDistribution" type="am:TimeWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeWeibullDistribution">
+        <xsd:attribute name="kappa" type="xsd:string"/>
+        <xsd:attribute name="lambda" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeWeibullParametersDistribution" type="am:TimeWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeWeibullDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="average" type="am:Time"/>
+        </xsd:choice>
+        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeWeibullEstimatorsDistribution" type="am:TimeWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:attribute name="alpha" type="xsd:string"/>
+        <xsd:attribute name="beta" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeBetaDistribution" type="am:TimeBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="DiscreteDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="DiscreteDeviation" type="am:DiscreteDeviation"/>
+  <xsd:complexType name="DiscreteConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteDeviation">
+        <xsd:attribute name="value" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteConstant" type="am:DiscreteConstant"/>
+  <xsd:complexType name="DiscreteHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:DiscreteHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteHistogram" type="am:DiscreteHistogram"/>
+  <xsd:complexType name="DiscreteHistogramEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="interval" type="am:DiscreteInterval"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="occurrences" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="DiscreteHistogramEntry" type="am:DiscreteHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedDiscreteDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:long"/>
+        <xsd:attribute name="upperBound" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedDiscreteDistribution" type="am:BoundedDiscreteDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedDiscreteDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:long"/>
+        <xsd:attribute name="upperBound" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedDiscreteDistribution" type="am:TruncatedDiscreteDistribution"/>
+  <xsd:complexType name="DiscreteInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteInterval" type="am:DiscreteInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="average" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteStatistics" type="am:DiscreteStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteUniformDistribution" type="am:DiscreteUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedDiscreteDistribution">
+        <xsd:attribute name="mean" type="xsd:double"/>
+        <xsd:attribute name="sd" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteGaussDistribution" type="am:DiscreteGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="DiscreteWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteWeibullDistribution" type="am:DiscreteWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteWeibullDistribution">
+        <xsd:attribute name="kappa" type="xsd:string"/>
+        <xsd:attribute name="lambda" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteWeibullParametersDistribution" type="am:DiscreteWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteWeibullDistribution">
+        <xsd:attribute name="average" type="xsd:double"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteWeibullEstimatorsDistribution" type="am:DiscreteWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="alpha" type="xsd:string"/>
+        <xsd:attribute name="beta" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteBetaDistribution" type="am:DiscreteBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="ContinuousDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="ContinuousDeviation" type="am:ContinuousDeviation"/>
+  <xsd:complexType name="ContinuousConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousDeviation">
+        <xsd:attribute name="value" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousConstant" type="am:ContinuousConstant"/>
+  <xsd:complexType name="ContinuousHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ContinuousHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousHistogram" type="am:ContinuousHistogram"/>
+  <xsd:complexType name="ContinuousHistogramEntry">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="interval" type="am:ContinuousInterval"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="occurrences" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="ContinuousHistogramEntry" type="am:ContinuousHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedContinuousDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:double"/>
+        <xsd:attribute name="upperBound" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedContinuousDistribution" type="am:BoundedContinuousDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedContinuousDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:double"/>
+        <xsd:attribute name="upperBound" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedContinuousDistribution" type="am:TruncatedContinuousDistribution"/>
+  <xsd:complexType name="ContinuousInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousInterval" type="am:ContinuousInterval">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="average" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousStatistics" type="am:ContinuousStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousUniformDistribution" type="am:ContinuousUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedContinuousDistribution">
+        <xsd:attribute name="mean" type="xsd:double"/>
+        <xsd:attribute name="sd" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousGaussDistribution" type="am:ContinuousGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="ContinuousWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousWeibullDistribution" type="am:ContinuousWeibullDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousWeibullDistribution">
+        <xsd:attribute name="kappa" type="xsd:string"/>
+        <xsd:attribute name="lambda" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousWeibullParametersDistribution" type="am:ContinuousWeibullParametersDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+Starts from zero, upperBound limits maximum value of result</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousWeibullDistribution">
+        <xsd:attribute name="average" type="xsd:double"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousWeibullEstimatorsDistribution" type="am:ContinuousWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="alpha" type="xsd:string"/>
+        <xsd:attribute name="beta" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousBetaDistribution" type="am:ContinuousBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:complexType name="Deviation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="lowerBound" type="ecore:EObject"/>
