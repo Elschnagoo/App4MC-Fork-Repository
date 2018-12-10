@@ -49,7 +49,7 @@ public interface ContinuousBetaDistribution extends BoundedContinuousDistributio
 	 * @return the value of the '<em>Alpha</em>' attribute.
 	 * @see #setAlpha(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousBetaDistribution_Alpha()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getAlpha();
@@ -76,7 +76,7 @@ public interface ContinuousBetaDistribution extends BoundedContinuousDistributio
 	 * @return the value of the '<em>Beta</em>' attribute.
 	 * @see #setBeta(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousBetaDistribution_Beta()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getBeta();
@@ -97,6 +97,6 @@ public interface ContinuousBetaDistribution extends BoundedContinuousDistributio
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // ContinuousBetaDistribution

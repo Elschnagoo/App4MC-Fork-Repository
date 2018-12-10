@@ -45,7 +45,7 @@ public interface BoundedDiscreteDistribution extends DiscreteDeviation {
 	 * @return the value of the '<em>Lower Bound</em>' attribute.
 	 * @see #setLowerBound(Long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedDiscreteDistribution_LowerBound()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" required="true"
 	 * @generated
 	 */
 	Long getLowerBound();
@@ -72,7 +72,7 @@ public interface BoundedDiscreteDistribution extends DiscreteDeviation {
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(Long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedDiscreteDistribution_UpperBound()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" required="true"
 	 * @generated
 	 */
 	Long getUpperBound();
@@ -93,6 +93,6 @@ public interface BoundedDiscreteDistribution extends DiscreteDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // BoundedDiscreteDistribution

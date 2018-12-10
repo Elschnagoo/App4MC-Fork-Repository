@@ -152,13 +152,13 @@ public abstract class BoundedContinuousDistributionImpl extends AmaltheaExtended
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
+	public Double getAverage() {
 		Double _lowerBound = this.getLowerBound();
 		Double _upperBound = this.getUpperBound();
 		Double _lowerBound_1 = this.getLowerBound();
 		double _minus = DoubleExtensions.operator_minus(_upperBound, _lowerBound_1);
-		double _divide = (_minus / 2);
-		return ((_lowerBound).doubleValue() + _divide);
+		double _divide = (_minus / 2.0);
+		return Double.valueOf(((_lowerBound).doubleValue() + _divide));
 	}
 
 	/**

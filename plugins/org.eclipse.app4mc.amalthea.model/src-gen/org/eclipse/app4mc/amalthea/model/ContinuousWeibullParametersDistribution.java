@@ -50,7 +50,7 @@ public interface ContinuousWeibullParametersDistribution extends ContinuousWeibu
 	 * @return the value of the '<em>Kappa</em>' attribute.
 	 * @see #setKappa(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousWeibullParametersDistribution_Kappa()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getKappa();
@@ -77,7 +77,7 @@ public interface ContinuousWeibullParametersDistribution extends ContinuousWeibu
 	 * @return the value of the '<em>Lambda</em>' attribute.
 	 * @see #setLambda(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousWeibullParametersDistribution_Lambda()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getLambda();
@@ -98,6 +98,6 @@ public interface ContinuousWeibullParametersDistribution extends ContinuousWeibu
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // ContinuousWeibullParametersDistribution

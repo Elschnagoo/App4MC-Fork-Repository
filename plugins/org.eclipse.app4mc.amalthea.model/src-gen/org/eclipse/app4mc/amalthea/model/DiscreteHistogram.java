@@ -71,6 +71,6 @@ public interface DiscreteHistogram extends DiscreteDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // DiscreteHistogram

@@ -89,4 +89,12 @@ public interface TimeGaussDistribution extends TruncatedTimeDistribution {
 	 */
 	void setSd(Time value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	Time getAverage();
+
 } // TimeGaussDistribution

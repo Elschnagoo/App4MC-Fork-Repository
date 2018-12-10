@@ -150,7 +150,7 @@ public class DiscreteBetaDistributionImpl extends BoundedDiscreteDistributionImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
+	public Double getAverage() {
 		double _xblockexpression = (double) 0;
 		{
 			double _beta = this.getBeta();
@@ -165,7 +165,7 @@ public class DiscreteBetaDistributionImpl extends BoundedDiscreteDistributionImp
 			double _multiply = (_minus * ratio);
 			_xblockexpression = ((_lowerBound).longValue() + _multiply);
 		}
-		return _xblockexpression;
+		return Double.valueOf(_xblockexpression);
 	}
 
 	/**

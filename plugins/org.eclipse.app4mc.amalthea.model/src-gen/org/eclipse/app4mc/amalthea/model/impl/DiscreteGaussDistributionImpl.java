@@ -14,10 +14,14 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -46,7 +50,7 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double MEAN_EDEFAULT = 0.0;
+	protected static final Double MEAN_EDEFAULT = new Double(0.0);
 
 	/**
 	 * The cached value of the '{@link #getMean() <em>Mean</em>}' attribute.
@@ -56,7 +60,7 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 	 * @generated
 	 * @ordered
 	 */
-	protected double mean = MEAN_EDEFAULT;
+	protected Double mean = MEAN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSd() <em>Sd</em>}' attribute.
@@ -102,7 +106,7 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getMean() {
+	public Double getMean() {
 		return mean;
 	}
 
@@ -111,8 +115,8 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMean(double newMean) {
-		double oldMean = mean;
+	public void setMean(Double newMean) {
+		Double oldMean = mean;
 		mean = newMean;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__MEAN, oldMean, mean));
@@ -137,6 +141,18 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 		sd = newSd;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__SD, oldSd, sd));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double getAverage() {
+		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
+			return this.getMean();
+		}
+		return null;
 	}
 
 	/**
@@ -200,11 +216,25 @@ public class DiscreteGaussDistributionImpl extends TruncatedDiscreteDistribution
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__MEAN:
-				return mean != MEAN_EDEFAULT;
+				return MEAN_EDEFAULT == null ? mean != null : !MEAN_EDEFAULT.equals(mean);
 			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__SD:
 				return sd != SD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE:
+				return getAverage();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

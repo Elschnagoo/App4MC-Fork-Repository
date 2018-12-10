@@ -150,13 +150,13 @@ public abstract class BoundedDiscreteDistributionImpl extends AmaltheaExtendedEO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
+	public Double getAverage() {
 		Long _lowerBound = this.getLowerBound();
 		Long _upperBound = this.getUpperBound();
 		Long _lowerBound_1 = this.getLowerBound();
 		long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
-		long _divide = (_minus / 2);
-		return ((_lowerBound).longValue() + _divide);
+		double _divide = (_minus / 2.0);
+		return Double.valueOf(((_lowerBound).longValue() + _divide));
 	}
 
 	/**

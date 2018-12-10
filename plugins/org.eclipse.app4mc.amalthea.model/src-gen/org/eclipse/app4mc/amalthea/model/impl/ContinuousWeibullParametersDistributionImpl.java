@@ -154,7 +154,7 @@ public class ContinuousWeibullParametersDistributionImpl extends ContinuousWeibu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
+	public Double getAverage() {
 		double _xblockexpression = (double) 0;
 		{
 			double _lambda = this.getLambda();
@@ -171,7 +171,7 @@ public class ContinuousWeibullParametersDistributionImpl extends ContinuousWeibu
 			double _multiply = (_minus * ratio);
 			_xblockexpression = ((_lowerBound).doubleValue() + _multiply);
 		}
-		return _xblockexpression;
+		return Double.valueOf(_xblockexpression);
 	}
 
 	/**

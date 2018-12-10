@@ -47,12 +47,12 @@ public interface DiscreteGaussDistribution extends TruncatedDiscreteDistribution
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mean</em>' attribute.
-	 * @see #setMean(double)
+	 * @see #setMean(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteGaussDistribution_Mean()
-	 * @model default="0.0" unique="false"
+	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	double getMean();
+	Double getMean();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getMean <em>Mean</em>}' attribute.
@@ -62,7 +62,7 @@ public interface DiscreteGaussDistribution extends TruncatedDiscreteDistribution
 	 * @see #getMean()
 	 * @generated
 	 */
-	void setMean(double value);
+	void setMean(Double value);
 
 	/**
 	 * Returns the value of the '<em><b>Sd</b></em>' attribute.
@@ -76,7 +76,7 @@ public interface DiscreteGaussDistribution extends TruncatedDiscreteDistribution
 	 * @return the value of the '<em>Sd</em>' attribute.
 	 * @see #setSd(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteGaussDistribution_Sd()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getSd();
@@ -90,5 +90,13 @@ public interface DiscreteGaussDistribution extends TruncatedDiscreteDistribution
 	 * @generated
 	 */
 	void setSd(double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	Double getAverage();
 
 } // DiscreteGaussDistribution

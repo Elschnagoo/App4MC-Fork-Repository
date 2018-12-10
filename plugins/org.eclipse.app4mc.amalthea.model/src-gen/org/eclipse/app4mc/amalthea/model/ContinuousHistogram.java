@@ -71,6 +71,6 @@ public interface ContinuousHistogram extends ContinuousDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // ContinuousHistogram

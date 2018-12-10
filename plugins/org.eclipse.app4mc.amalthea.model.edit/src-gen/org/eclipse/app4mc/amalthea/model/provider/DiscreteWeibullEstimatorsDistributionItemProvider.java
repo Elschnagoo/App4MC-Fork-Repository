@@ -80,7 +80,7 @@ public class DiscreteWeibullEstimatorsDistributionItemProvider extends DiscreteW
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

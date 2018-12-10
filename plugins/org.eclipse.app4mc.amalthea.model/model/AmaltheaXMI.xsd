@@ -1224,7 +1224,7 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="occurrences" type="xsd:string"/>
+    <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="TimeHistogramEntry" type="am:TimeHistogramEntry"/>
   <xsd:complexType abstract="true" name="BoundedTimeDistribution">
@@ -1332,8 +1332,8 @@ Starts from zero, upperBound limits maximum value of result</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TimeWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string"/>
-        <xsd:attribute name="lambda" type="xsd:string"/>
+        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
+        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1353,7 +1353,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="average" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1369,8 +1369,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BoundedTimeDistribution">
-        <xsd:attribute name="alpha" type="xsd:string"/>
-        <xsd:attribute name="beta" type="xsd:string"/>
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1390,7 +1390,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
   <xsd:complexType name="DiscreteConstant">
     <xsd:complexContent>
       <xsd:extension base="am:DiscreteDeviation">
-        <xsd:attribute name="value" type="xsd:long"/>
+        <xsd:attribute name="value" type="xsd:long" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1412,14 +1412,14 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="occurrences" type="xsd:string"/>
+    <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="DiscreteHistogramEntry" type="am:DiscreteHistogramEntry"/>
   <xsd:complexType abstract="true" name="BoundedDiscreteDistribution">
     <xsd:complexContent>
       <xsd:extension base="am:DiscreteDeviation">
-        <xsd:attribute name="lowerBound" type="xsd:long"/>
-        <xsd:attribute name="upperBound" type="xsd:long"/>
+        <xsd:attribute name="lowerBound" type="xsd:long" use="required"/>
+        <xsd:attribute name="upperBound" type="xsd:long" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1454,7 +1454,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BoundedDiscreteDistribution">
-        <xsd:attribute name="average" type="xsd:double"/>
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1482,8 +1482,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TruncatedDiscreteDistribution">
-        <xsd:attribute name="mean" type="xsd:double"/>
-        <xsd:attribute name="sd" type="xsd:string"/>
+        <xsd:attribute name="mean" type="xsd:double" use="required"/>
+        <xsd:attribute name="sd" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1512,8 +1512,8 @@ Starts from zero, upperBound limits maximum value of result</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:DiscreteWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string"/>
-        <xsd:attribute name="lambda" type="xsd:string"/>
+        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
+        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1530,8 +1530,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:DiscreteWeibullDistribution">
-        <xsd:attribute name="average" type="xsd:double"/>
-        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1547,8 +1547,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BoundedDiscreteDistribution">
-        <xsd:attribute name="alpha" type="xsd:string"/>
-        <xsd:attribute name="beta" type="xsd:string"/>
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1568,7 +1568,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
   <xsd:complexType name="ContinuousConstant">
     <xsd:complexContent>
       <xsd:extension base="am:ContinuousDeviation">
-        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="value" type="xsd:double" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1590,14 +1590,14 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="occurrences" type="xsd:string"/>
+    <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="ContinuousHistogramEntry" type="am:ContinuousHistogramEntry"/>
   <xsd:complexType abstract="true" name="BoundedContinuousDistribution">
     <xsd:complexContent>
       <xsd:extension base="am:ContinuousDeviation">
-        <xsd:attribute name="lowerBound" type="xsd:double"/>
-        <xsd:attribute name="upperBound" type="xsd:double"/>
+        <xsd:attribute name="lowerBound" type="xsd:double" use="required"/>
+        <xsd:attribute name="upperBound" type="xsd:double" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1632,7 +1632,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BoundedContinuousDistribution">
-        <xsd:attribute name="average" type="xsd:double"/>
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1660,8 +1660,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:TruncatedContinuousDistribution">
-        <xsd:attribute name="mean" type="xsd:double"/>
-        <xsd:attribute name="sd" type="xsd:string"/>
+        <xsd:attribute name="mean" type="xsd:double" use="required"/>
+        <xsd:attribute name="sd" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1690,8 +1690,8 @@ Starts from zero, upperBound limits maximum value of result</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ContinuousWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string"/>
-        <xsd:attribute name="lambda" type="xsd:string"/>
+        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
+        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1708,8 +1708,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ContinuousWeibullDistribution">
-        <xsd:attribute name="average" type="xsd:double"/>
-        <xsd:attribute name="pRemainPromille" type="xsd:string"/>
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1725,8 +1725,8 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BoundedContinuousDistribution">
-        <xsd:attribute name="alpha" type="xsd:string"/>
-        <xsd:attribute name="beta" type="xsd:string"/>
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -45,7 +45,7 @@ public interface BoundedContinuousDistribution extends ContinuousDeviation {
 	 * @return the value of the '<em>Lower Bound</em>' attribute.
 	 * @see #setLowerBound(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedContinuousDistribution_LowerBound()
-	 * @model default="0.0" unique="false"
+	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
 	Double getLowerBound();
@@ -72,7 +72,7 @@ public interface BoundedContinuousDistribution extends ContinuousDeviation {
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedContinuousDistribution_UpperBound()
-	 * @model default="0.0" unique="false"
+	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
 	Double getUpperBound();
@@ -93,6 +93,6 @@ public interface BoundedContinuousDistribution extends ContinuousDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // BoundedContinuousDistribution

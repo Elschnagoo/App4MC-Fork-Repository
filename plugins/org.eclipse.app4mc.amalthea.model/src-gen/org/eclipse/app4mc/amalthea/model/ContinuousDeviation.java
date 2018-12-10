@@ -41,7 +41,7 @@ public interface ContinuousDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 	/**
 	 * <!-- begin-user-doc -->

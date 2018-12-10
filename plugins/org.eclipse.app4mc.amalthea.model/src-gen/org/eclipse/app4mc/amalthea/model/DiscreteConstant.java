@@ -44,7 +44,7 @@ public interface DiscreteConstant extends DiscreteDeviation {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteConstant_Value()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" required="true"
 	 * @generated
 	 */
 	Long getValue();
@@ -73,7 +73,7 @@ public interface DiscreteConstant extends DiscreteDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -117,8 +117,8 @@ public class DiscreteConstantImpl extends AmaltheaExtendedEObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
-		return (this.getValue()).longValue();
+	public Double getAverage() {
+		return Double.valueOf(this.getValue().doubleValue());
 	}
 
 	/**

@@ -14,12 +14,16 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -171,6 +175,18 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Time getAverage() {
+		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
+			return this.getMean();
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -248,6 +264,20 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 				return sd != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION___GET_AVERAGE:
+				return getAverage();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TimeGaussDistributionImpl

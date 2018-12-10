@@ -76,7 +76,7 @@ public interface TimeWeibullEstimatorsDistribution extends TimeWeibullDistributi
 	 * @return the value of the '<em>PRemain Promille</em>' attribute.
 	 * @see #setPRemainPromille(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeWeibullEstimatorsDistribution_PRemainPromille()
-	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble"
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveDouble" required="true"
 	 * @generated
 	 */
 	double getPRemainPromille();

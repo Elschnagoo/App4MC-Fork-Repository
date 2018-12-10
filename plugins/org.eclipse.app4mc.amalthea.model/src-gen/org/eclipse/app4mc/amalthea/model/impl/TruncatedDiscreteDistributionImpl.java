@@ -150,7 +150,7 @@ public abstract class TruncatedDiscreteDistributionImpl extends AmaltheaExtended
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
+	public Double getAverage() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

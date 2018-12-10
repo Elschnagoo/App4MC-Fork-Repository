@@ -230,6 +230,12 @@ class NeedConstant extends Need
 	long value = "0"
 }
 
+// -------------------------------------------------------------------------------
+//
+// 								Quantities
+//
+// -------------------------------------------------------------------------------
+
 /*
  * Abstract class for Quantities (value + unit)
  */
@@ -424,6 +430,12 @@ class DataRate extends Quantity, DataRateComparable
 	}
 }
 
+// -------------------------------------------------------------------------------
+//
+// 							Custom Properties and Values
+//
+// -------------------------------------------------------------------------------
+
 /*
  * custom property container for map
  */
@@ -507,8 +519,11 @@ class BooleanObject extends Value
 	boolean[1] value = "false"
 }
 
-
-
+// -------------------------------------------------------------------------------
+//
+// 								Deviation of Time
+//
+// -------------------------------------------------------------------------------
 
 interface TimeDeviation {
 	op Time getLowerBound()
@@ -537,7 +552,7 @@ class TimeHistogram extends TimeDeviation {
 }
 
 class TimeHistogramEntry {
-	PositiveLong occurrences = "1"
+	PositiveLong[1] occurrences = "1"
 	contains TimeInterval[1] interval
 }
 
@@ -582,6 +597,10 @@ class TimeUniformDistribution extends BoundedTimeDistribution {}
 	contains Time[1] sd
 	
 	//TODO getAverage
+	op Time getAverage() {
+		if (lowerBound === null && upperBound === null) return mean
+		return null
+	}
 }
 
 /*
@@ -594,8 +613,8 @@ abstract class TimeWeibullDistribution extends BoundedTimeDistribution {}
  * Starts from zero, upperBound limits maximum value of result
  */
 class TimeWeibullParametersDistribution extends TimeWeibullDistribution {
-	PositiveDouble kappa = "1.0"
-	PositiveDouble lambda = "1.0"
+	PositiveDouble[1] kappa = "1.0"
+	PositiveDouble[1] lambda = "1.0"
 	
 	op Time getAverage() { //?????
 		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
@@ -609,15 +628,15 @@ class TimeWeibullParametersDistribution extends TimeWeibullDistribution {
  */
 class TimeWeibullEstimatorsDistribution extends TimeWeibullDistribution {
 	contains Time[1] average
-	PositiveDouble pRemainPromille = "1.0"
+	PositiveDouble[1] pRemainPromille = "1.0"
 }
 
 /*
  * Beta distribution
  */
 class TimeBetaDistribution extends BoundedTimeDistribution {
-	PositiveDouble alpha = "1.0"
-	PositiveDouble beta = "1.0"
+	PositiveDouble[1] alpha = "1.0"
+	PositiveDouble[1] beta = "1.0"
 	
 	op Time getAverage() {
 		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
@@ -625,21 +644,23 @@ class TimeBetaDistribution extends BoundedTimeDistribution {
 	}
 }
 
-
-
-
+// -------------------------------------------------------------------------------
+//
+// 								Deviation of Long
+//
+// -------------------------------------------------------------------------------
 
 interface DiscreteDeviation {
 	op Long getLowerBound()
-	op double getAverage()
+	op Double getAverage()
 	op Long getUpperBound()
 }
 
 class DiscreteConstant extends DiscreteDeviation {
-	Long value = "0"
+	Long[1] value = "0"
 	
 	op Long getLowerBound() { value }
-	op double getAverage() { value }
+	op Double getAverage() { value.doubleValue }
 	op Long getUpperBound() { value }
 }
 
@@ -648,7 +669,7 @@ class DiscreteHistogram extends DiscreteDeviation {
 	
 	op Long getLowerBound() { entries.map[interval.lowerBound].min }
 	op Long getUpperBound() { entries.map[interval.upperBound].max }
-	op double getAverage() {
+	op Double getAverage() {
 		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
 		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
 		sum / count
@@ -656,16 +677,16 @@ class DiscreteHistogram extends DiscreteDeviation {
 }
 
 class DiscreteHistogramEntry {
-	PositiveLong occurrences = "1"
+	PositiveLong[1] occurrences = "1"
 	contains DiscreteInterval[1] interval
 }
 
 abstract class BoundedDiscreteDistribution extends DiscreteDeviation {
-	Long lowerBound = "0"
-	Long upperBound = "0"
+	Long[1] lowerBound = "0"
+	Long[1] upperBound = "0"
 	
-	op double getAverage() {
-		lowerBound + (upperBound - lowerBound) / 2
+	op Double getAverage() {
+		lowerBound + (upperBound - lowerBound) / 2.0
 	}
 }
 
@@ -685,7 +706,7 @@ class DiscreteInterval extends BoundedDiscreteDistribution {
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
 class DiscreteStatistics extends BoundedDiscreteDistribution {
-	double average = "0.0"
+	Double[1] average = "0.0"
 }
 
 /*
@@ -697,10 +718,14 @@ class DiscreteUniformDistribution extends BoundedDiscreteDistribution {}
  * Gauss distribution
  */
  class DiscreteGaussDistribution extends TruncatedDiscreteDistribution {
-	double mean = "0.0"
-	PositiveDouble sd = "1.0"
+	Double[1] mean = "0.0"
+	PositiveDouble[1] sd = "1.0"
 	
 	//TODO getAverage
+	op Double getAverage() {
+		if (lowerBound === null && upperBound === null) return mean
+		return null
+	}
 }
 
 /*
@@ -713,10 +738,10 @@ abstract class DiscreteWeibullDistribution extends BoundedDiscreteDistribution {
  * Starts from zero, upperBound limits maximum value of result
  */
 class DiscreteWeibullParametersDistribution extends DiscreteWeibullDistribution {
-	PositiveDouble kappa = "1.0"
-	PositiveDouble lambda = "1.0"
+	PositiveDouble[1] kappa = "1.0"
+	PositiveDouble[1] lambda = "1.0"
 	
-	op double getAverage() { //???????
+	op Double getAverage() { //???????
 		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
@@ -727,38 +752,40 @@ class DiscreteWeibullParametersDistribution extends DiscreteWeibullDistribution 
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
 class DiscreteWeibullEstimatorsDistribution extends DiscreteWeibullDistribution {
-	double average = "0.0"
-	PositiveDouble pRemainPromille = "1.0"
+	Double[1] average = "0.0"
+	PositiveDouble[1] pRemainPromille = "1.0"
 }
 
 /*
  * Beta distribution
  */
 class DiscreteBetaDistribution extends BoundedDiscreteDistribution {
-	PositiveDouble alpha = "1.0"
-	PositiveDouble beta = "1.0"
+	PositiveDouble[1] alpha = "1.0"
+	PositiveDouble[1] beta = "1.0"
 	
-	op double getAverage() {
+	op Double getAverage() {
 		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
 }
 
-
-
-
+// -------------------------------------------------------------------------------
+//
+// 								Deviation of Double
+//
+// -------------------------------------------------------------------------------
 
 interface ContinuousDeviation {
 	op Double getLowerBound()
-	op double getAverage()
+	op Double getAverage()
 	op Double getUpperBound()
 }
 
 class ContinuousConstant extends ContinuousDeviation {
-	Double value = "0.0"
+	Double[1] value = "0.0"
 	
 	op Double getLowerBound() { value }
-	op double getAverage() { value }
+	op Double getAverage() { value }
 	op Double getUpperBound() { value }
 }
 
@@ -767,7 +794,7 @@ class ContinuousHistogram extends ContinuousDeviation {
 	
 	op Double getLowerBound() { entries.map[interval.lowerBound].min }
 	op Double getUpperBound() { entries.map[interval.upperBound].max }
-	op double getAverage() {
+	op Double getAverage() {
 		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
 		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
 		sum / count
@@ -775,16 +802,16 @@ class ContinuousHistogram extends ContinuousDeviation {
 }
 
 class ContinuousHistogramEntry {
-	PositiveLong occurrences = "1"
+	PositiveLong[1] occurrences = "1"
 	contains ContinuousInterval[1] interval
 }
 
 abstract class BoundedContinuousDistribution extends ContinuousDeviation {
-	Double lowerBound = "0.0"
-	Double upperBound = "0.0"
+	Double[1] lowerBound = "0.0"
+	Double[1] upperBound = "0.0"
 	
-	op double getAverage() {
-		lowerBound + (upperBound - lowerBound) / 2
+	op Double getAverage() {
+		lowerBound + (upperBound - lowerBound) / 2.0
 	}
 }
 
@@ -804,7 +831,7 @@ class ContinuousInterval extends BoundedContinuousDistribution {
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
 class ContinuousStatistics extends BoundedContinuousDistribution {
-	double average = "0.0"
+	Double[1] average = "0.0"
 }
 
 /*
@@ -816,10 +843,14 @@ class ContinuousUniformDistribution extends BoundedContinuousDistribution {}
  * Gauss distribution
  */
  class ContinuousGaussDistribution extends TruncatedContinuousDistribution {
-	double mean = "0.0"
-	PositiveDouble sd = "1.0"
+	Double[1] mean = "0.0"
+	PositiveDouble[1] sd = "1.0"
 	
 	//TODO getAverage
+	op Double getAverage() {
+		if (lowerBound === null && upperBound === null) return mean
+		return null
+	}
 }
 
 /*
@@ -832,10 +863,10 @@ abstract class ContinuousWeibullDistribution extends BoundedContinuousDistributi
  * Starts from zero, upperBound limits maximum value of result
  */
 class ContinuousWeibullParametersDistribution extends ContinuousWeibullDistribution {
-	PositiveDouble kappa = "1.0"
-	PositiveDouble lambda = "1.0"
+	PositiveDouble[1] kappa = "1.0"
+	PositiveDouble[1] lambda = "1.0"
 	
-	op double getAverage() { //???????
+	op Double getAverage() { //???????
 		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
@@ -846,26 +877,26 @@ class ContinuousWeibullParametersDistribution extends ContinuousWeibullDistribut
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
 class ContinuousWeibullEstimatorsDistribution extends ContinuousWeibullDistribution {
-	double average = "0.0"
-	PositiveDouble pRemainPromille = "1.0"
+	Double[1] average = "0.0"
+	PositiveDouble[1] pRemainPromille = "1.0"
 }
 
 /*
  * Beta distribution
  */
 class ContinuousBetaDistribution extends BoundedContinuousDistribution {
-	PositiveDouble alpha = "1.0"
-	PositiveDouble beta = "1.0"
+	PositiveDouble[1] alpha = "1.0"
+	PositiveDouble[1] beta = "1.0"
 	
-	op double getAverage() {
+	op Double getAverage() {
 		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
 }
 
-
-
-
+//
+//	xxxxxxxxxxxxxxxxxxxxx OLD xxxxxxxxxxxxxxxxxxxxx
+//
 
 class Deviation<T>
 {

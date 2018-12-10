@@ -79,7 +79,7 @@ public class DiscreteStatisticsItemProvider extends BoundedDiscreteDistributionI
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

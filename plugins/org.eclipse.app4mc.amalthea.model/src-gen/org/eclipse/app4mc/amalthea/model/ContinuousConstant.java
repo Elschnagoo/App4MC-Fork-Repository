@@ -44,7 +44,7 @@ public interface ContinuousConstant extends ContinuousDeviation {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousConstant_Value()
-	 * @model default="0.0" unique="false"
+	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
 	Double getValue();
@@ -73,7 +73,7 @@ public interface ContinuousConstant extends ContinuousDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 	/**
 	 * <!-- begin-user-doc -->

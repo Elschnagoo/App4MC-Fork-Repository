@@ -46,7 +46,7 @@ public interface DiscreteHistogramEntry extends EObject {
 	 * @return the value of the '<em>Occurrences</em>' attribute.
 	 * @see #setOccurrences(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteHistogramEntry_Occurrences()
-	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveLong"
+	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveLong" required="true"
 	 * @generated
 	 */
 	long getOccurrences();

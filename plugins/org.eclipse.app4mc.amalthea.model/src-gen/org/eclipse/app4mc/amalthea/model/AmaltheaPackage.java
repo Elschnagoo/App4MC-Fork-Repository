@@ -2943,15 +2943,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2961,13 +2952,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Time Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT + 0;
+	int TIME_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeWeibullDistributionImpl <em>Time Weibull Distribution</em>}' class.
@@ -3992,15 +3992,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4010,13 +4001,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Discrete Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullDistributionImpl <em>Discrete Weibull Distribution</em>}' class.
@@ -5041,15 +5041,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5059,13 +5050,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Continuous Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullDistributionImpl <em>Continuous Weibull Distribution</em>}' class.
@@ -32746,6 +32746,16 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTimeGaussDistribution_Sd();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeGaussDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeGaussDistribution__GetAverage();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution <em>Time Weibull Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33204,6 +33214,16 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getDiscreteGaussDistribution_Sd();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteGaussDistribution__GetAverage();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution <em>Discrete Weibull Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33660,6 +33680,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContinuousGaussDistribution_Sd();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousGaussDistribution__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution <em>Continuous Weibull Distribution</em>}'.

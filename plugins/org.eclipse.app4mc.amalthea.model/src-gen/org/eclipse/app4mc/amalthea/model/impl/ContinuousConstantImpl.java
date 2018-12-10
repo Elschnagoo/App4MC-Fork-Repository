@@ -117,8 +117,8 @@ public class ContinuousConstantImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getAverage() {
-		return (this.getValue()).doubleValue();
+	public Double getAverage() {
+		return this.getValue();
 	}
 
 	/**
