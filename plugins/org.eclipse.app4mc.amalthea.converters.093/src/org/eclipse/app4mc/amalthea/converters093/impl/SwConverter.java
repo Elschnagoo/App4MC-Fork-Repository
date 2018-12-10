@@ -21,7 +21,6 @@ public class SwConverter implements IConverter {
 
 	private List<ICache> caches;
 
-
 	private Map<File, Document> fileName_documentsMap;
 
 	private File targetFile;
@@ -99,8 +98,6 @@ public class SwConverter implements IConverter {
 					
 				}
 			}
-			
-			
 		 
 			String nodeName=executionNeedElement.getName();
 			
@@ -154,7 +151,7 @@ public class SwConverter implements IConverter {
 				 */
 				Element valueElement = defaultInstructionsElement.getChild("value");
 	
-				Element default_executionTicksElement= createTicksConstantFromNeedConstant( valueElement,"default");
+				Element default_executionTicksElement= createTicksElementFromNeed( valueElement,"default");
 	
 				if(default_executionTicksElement!=null) {
 					//Adding default ExecutionTicks element
@@ -192,7 +189,7 @@ public class SwConverter implements IConverter {
 					
 					Element valueValueElement=valueElement.getChild("value");
 					
-					Element value_executionTicksElement= createTicksConstantFromNeedConstant( valueValueElement,"value");
+					Element value_executionTicksElement= createTicksElementFromNeed( valueValueElement,"value");
 					
 					if(value_executionTicksElement!=null) {
 						/*- adding value to the Extended ticks element */
@@ -241,7 +238,7 @@ public class SwConverter implements IConverter {
 
 	
 
-	private Element createTicksConstantFromNeedConstant(  Element valueElement, String newElementName) {
+	private Element createTicksElementFromNeed(  Element valueElement, String newElementName) {
 		if(valueElement !=null) {
 			 String valueType = valueElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
 			 /*- it can be either NeedConstant or NeedDeviation */
@@ -262,6 +259,27 @@ public class SwConverter implements IConverter {
 					 tc_executionTicksElement.getAttributes().add(new Attribute("value", valueValue));
 				 }
 				 
+				 return tc_executionTicksElement;
+			 }else  if(valueType !=null && valueType.equals("am:NeedDeviation")) {
+				 
+				 Element tc_executionTicksElement=new Element(newElementName);
+
+				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:TicksDeviation", this.helper.getGenericNS("xsi"));
+					
+				 tc_executionTicksElement.getAttributes().add(default_executionTicksElement_TypeAttribute);
+					
+				 
+					Element deviationElement = valueElement.getChild("deviation");
+
+					if (deviationElement != null) {
+						
+						//TODO: Handle the future changes in Deviation object here
+						Element deviationElement_cloned = deviationElement.clone();
+
+						tc_executionTicksElement.addContent(deviationElement_cloned);
+ 
+					}
+
 				 return tc_executionTicksElement;
 			 }
 		}

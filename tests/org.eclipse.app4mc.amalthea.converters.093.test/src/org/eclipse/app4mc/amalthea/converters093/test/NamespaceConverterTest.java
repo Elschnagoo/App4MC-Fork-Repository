@@ -12,12 +12,12 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.converters092.test;
+package org.eclipse.app4mc.amalthea.converters093.test;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.eclipse.app4mc.amalthea.converters092.impl.NamespaceConverter;
+import org.eclipse.app4mc.amalthea.converters093.impl.NamespaceConverter;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;

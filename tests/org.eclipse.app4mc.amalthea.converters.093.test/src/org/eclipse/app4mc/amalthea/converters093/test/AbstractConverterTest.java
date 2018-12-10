@@ -12,7 +12,7 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.converters092.test;
+package org.eclipse.app4mc.amalthea.converters093.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -41,7 +41,7 @@ import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_081;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_082;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_083;
 import org.eclipse.app4mc.amalthea.converters.common.utils.NameSpace_090;
-import org.eclipse.app4mc.amalthea.converters092.utils.HelperUtils_091_092;
+import org.eclipse.app4mc.amalthea.converters093.utils.HelperUtils_092_093;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -58,7 +58,7 @@ public abstract class AbstractConverterTest {
 
 	protected final Map<File, Document> fileName_documentsMap;
 
-	protected HelperUtils_091_092   helper;
+	protected HelperUtils_092_093    helper;
 
 	protected final boolean canExecuteTestCase;
 
@@ -120,7 +120,7 @@ public abstract class AbstractConverterTest {
 			return;
 		}
 
-		this.helper = HelperUtils_091_092.getInstance();
+		this.helper = HelperUtils_092_093.getInstance();
 
 		try {
 			final Set<String> inputFiles = this.filesMap_input_output.keySet();
@@ -147,7 +147,7 @@ public abstract class AbstractConverterTest {
 			return;
 		}
 
-		this.helper = HelperUtils_091_092.getInstance();
+		this.helper = HelperUtils_092_093.getInstance();
 
 		try {
 
@@ -226,10 +226,10 @@ public abstract class AbstractConverterTest {
 			final boolean isAmaltheaNameSpacePrefix = this.helper.enumTypeContainsIn070(prefix);
 
 			if (isAmaltheaNameSpacePrefix) {
-				final boolean ns_AvailableIn_092 = this.helper.isNS_AvailableIn_092(namespace);
+				final boolean ns_AvailableIn_093 = this.helper.isNS_AvailableIn_093(namespace);
 
-				assertTrue("Expected namespace from AMALTHEA 0.9.2 : " + namespace.getURI() + "  --> "
-						+ document.getBaseURI(), ns_AvailableIn_092);
+				assertTrue("Expected namespace from AMALTHEA 0.9.3 : " + namespace.getURI() + "  --> "
+						+ document.getBaseURI(), ns_AvailableIn_093);
 			}
 			else {
 				assertTrue("Invalid namespace is present in AMALTHEA model file : " + namespace.getURI(), false);

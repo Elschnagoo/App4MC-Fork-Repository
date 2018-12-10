@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <commonElements/>
+  <swModel>
+    <runnables name="r1" callback="false" service="false">
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="FLIP">
+          <value xsi:type="am:NeedConstant" value="45"/>
+        </default>
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="0"/>
+              <upperBound xsi:type="am:LongObject" value="0"/>
+              <distribution xsi:type="am:BetaDistribution" alpha="0.0" beta="0.0"/>
+            </deviation>
+          </value>
+        </default>
+        <extended key="puDef?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <distribution xsi:type="am:WeibullParameters" kappa="20000.0" lambda="0.0"/>
+              </deviation>
+            </value>
+          </value>
+          <value key="FLOP">
+            <value xsi:type="am:NeedConstant" value="20"/>
+          </value>
+          <value key="FLIP">
+            <value xsi:type="am:NeedConstant" value="20"/>
+          </value>
+          <value key="Instructions">
+            <value xsi:type="am:NeedConstant" value="40"/>
+          </value>
+        </extended>
+        <extended key="custpuDef?type=ProcessingUnitDefinition">
+          <value key="FLOP">
+            <value xsi:type="am:NeedConstant" value="50"/>
+          </value>
+          <value key="FLOP">
+            <value xsi:type="am:NeedConstant" value="60"/>
+          </value>
+        </extended>
+      </runnableItems>
+      <runnableItems xsi:type="am:Group" name="" ordered="true">
+        <items xsi:type="am:ExecutionNeed">
+          <default key="Instructions">
+            <value xsi:type="am:NeedConstant" value="20"/>
+          </default>
+        </items>
+        <items xsi:type="am:Group" name="" ordered="true">
+          <items xsi:type="am:ExecutionNeed">
+            <default key="Instructions">
+              <value xsi:type="am:NeedConstant" value="30"/>
+            </default>
+          </items>
+        </items>
+      </runnableItems>
+    </runnables>
+    <runnables name="r2" callback="false" service="false">
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedConstant" value="66"/>
+        </default>
+        <extended>
+          <value key="Instructions">
+            <value xsi:type="am:NeedConstant" value="20"/>
+          </value>
+        </extended>
+      </runnableItems>
+    </runnables>
+    <runnables name="r3" callback="false" service="false">
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="FLOP">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="20"/>
+              <upperBound xsi:type="am:LongObject" value="30"/>
+              <distribution xsi:type="am:Boundaries" samplingType="WorstCase"/>
+            </deviation>
+          </value>
+        </default>
+        <extended key="puDef?type=ProcessingUnitDefinition">
+          <value key="FLOP">
+            <value xsi:type="am:NeedDeviation"/>
+          </value>
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation"/>
+          </value>
+        </extended>
+      </runnableItems>
+    </runnables>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="puDef"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="custpuDef"/>
+    <featureCategories name="FLOP" featureType="performance">
+      <features name="test" value="5.0"/>
+      <features name="" value="0.0"/>
+    </featureCategories>
+    <featureCategories name="FLIP"/>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="">
+      <overhead href="amlt:/#overhead_ext?type=OsInstructions"/>
+    </operatingSystems>
+    <osOverheads name="osoverheads">
+      <apiOverhead>
+        <apiSendMessage xsi:type="am:InstructionsConstant" value="20">
+          <fetchStatistic/>
+        </apiSendMessage>
+      </apiOverhead>
+      <isrCategory1Overhead>
+        <preExecutionOverhead xsi:type="am:InstructionsDeviation">
+          <fetchStatistic>
+            <count xsi:type="am:MinAvgMaxStatistic" min="0" avg="22.0" max="0"/>
+          </fetchStatistic>
+          <deviation>
+            <lowerBound xsi:type="am:LongObject" value="50"/>
+            <upperBound xsi:type="am:LongObject" value="100"/>
+            <distribution xsi:type="am:BetaDistribution" alpha="6.0" beta="66.0"/>
+          </deviation>
+        </preExecutionOverhead>
+        <postExecutionOverhead xsi:type="am:InstructionsConstant" value="30">
+          <fetchStatistic/>
+        </postExecutionOverhead>
+      </isrCategory1Overhead>
+      <isrCategory2Overhead>
+        <preExecutionOverhead xsi:type="am:InstructionsConstant" value="10"/>
+        <postExecutionOverhead xsi:type="am:InstructionsConstant" value="50"/>
+      </isrCategory2Overhead>
+    </osOverheads>
+    <osOverheads name="">
+      <apiOverhead>
+        <apiSendMessage xsi:type="am:InstructionsDeviation">
+          <fetchStatistic/>
+          <deviation/>
+        </apiSendMessage>
+      </apiOverhead>
+    </osOverheads>
+  </osModel>
+</am:Amalthea>
