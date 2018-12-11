@@ -1218,8 +1218,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateNeedEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_TICKS:
 				return validateExecutionTicks((ExecutionTicks)value, diagnostics, context);
-			case AmaltheaPackage.TICKS_ENTRY:
-				return validateTicksEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case AmaltheaPackage.EXECUTION_TICKS_ENTRY:
+				return validateExecutionTicksEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LABEL_ACCESS:
 				return validateModeLabelAccess((ModeLabelAccess)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH:
@@ -4520,8 +4520,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTicksEntry(Map.Entry<?, ?> ticksEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)ticksEntry, diagnostics, context);
+	public boolean validateExecutionTicksEntry(Map.Entry<?, ?> executionTicksEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)executionTicksEntry, diagnostics, context);
 	}
 
 	/**

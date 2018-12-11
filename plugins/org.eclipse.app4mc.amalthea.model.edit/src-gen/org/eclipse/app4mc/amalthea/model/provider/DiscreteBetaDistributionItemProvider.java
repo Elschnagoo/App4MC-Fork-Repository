@@ -134,13 +134,21 @@ public class DiscreteBetaDistributionItemProvider extends BoundedDiscreteDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Long labelValue = ((DiscreteBetaDistribution)object).getLowerBound();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DiscreteBetaDistribution_type") :
 			getString("_UI_DiscreteBetaDistribution_type") + " " + label;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getDiscreteBetaDistributionItemProviderText(object, getTextGen(object));
 	}
 
 
@@ -151,8 +159,7 @@ public class DiscreteBetaDistributionItemProvider extends BoundedDiscreteDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DiscreteBetaDistribution.class)) {
@@ -161,6 +168,26 @@ public class DiscreteBetaDistributionItemProvider extends BoundedDiscreteDistrib
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getDiscreteBetaDistributionItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

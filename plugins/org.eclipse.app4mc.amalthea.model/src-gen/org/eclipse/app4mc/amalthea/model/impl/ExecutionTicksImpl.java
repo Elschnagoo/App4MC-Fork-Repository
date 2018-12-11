@@ -15,9 +15,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
-import org.eclipse.app4mc.amalthea.model.Ticks;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -56,7 +56,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * @generated
 	 * @ordered
 	 */
-	protected Ticks default_;
+	protected DiscreteDeviation default_;
 
 	/**
 	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' map.
@@ -66,7 +66,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<ProcessingUnitDefinition, Ticks> extended;
+	protected EMap<ProcessingUnitDefinition, DiscreteDeviation> extended;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,7 +92,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ticks getDefault() {
+	public DiscreteDeviation getDefault() {
 		return default_;
 	}
 
@@ -101,8 +101,8 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDefault(Ticks newDefault, NotificationChain msgs) {
-		Ticks oldDefault = default_;
+	public NotificationChain basicSetDefault(DiscreteDeviation newDefault, NotificationChain msgs) {
+		DiscreteDeviation oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EXECUTION_TICKS__DEFAULT, oldDefault, newDefault);
@@ -116,7 +116,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDefault(Ticks newDefault) {
+	public void setDefault(DiscreteDeviation newDefault) {
 		if (newDefault != default_) {
 			NotificationChain msgs = null;
 			if (default_ != null)
@@ -135,9 +135,9 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<ProcessingUnitDefinition, Ticks> getExtended() {
+	public EMap<ProcessingUnitDefinition, DiscreteDeviation> getExtended() {
 		if (extended == null) {
-			extended = new EcoreEMap<ProcessingUnitDefinition,Ticks>(AmaltheaPackage.eINSTANCE.getTicksEntry(), TicksEntryImpl.class, this, AmaltheaPackage.EXECUTION_TICKS__EXTENDED);
+			extended = new EcoreEMap<ProcessingUnitDefinition,DiscreteDeviation>(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry(), ExecutionTicksEntryImpl.class, this, AmaltheaPackage.EXECUTION_TICKS__EXTENDED);
 		}
 		return extended;
 	}
@@ -184,7 +184,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.EXECUTION_TICKS__DEFAULT:
-				setDefault((Ticks)newValue);
+				setDefault((DiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.EXECUTION_TICKS__EXTENDED:
 				((EStructuralFeature.Setting)getExtended()).set(newValue);
@@ -202,7 +202,7 @@ public class ExecutionTicksImpl extends ComputationItemImpl implements Execution
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.EXECUTION_TICKS__DEFAULT:
-				setDefault((Ticks)null);
+				setDefault((DiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.EXECUTION_TICKS__EXTENDED:
 				getExtended().clear();

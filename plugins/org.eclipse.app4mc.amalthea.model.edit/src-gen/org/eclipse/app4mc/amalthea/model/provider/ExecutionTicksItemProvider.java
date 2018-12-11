@@ -164,17 +164,52 @@ public class ExecutionTicksItemProvider extends ComputationItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createTicksDeviation()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createTicksConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Default(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getExecutionTicks_Extended(),
-				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getTicksEntry())));
+				 AmaltheaFactory.eINSTANCE.create(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry())));
 	}
 
 }

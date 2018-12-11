@@ -127,8 +127,7 @@ public class DiscreteConstantItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Long labelValue = ((DiscreteConstant)object).getValue();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
@@ -136,6 +135,14 @@ public class DiscreteConstantItemProvider
 			getString("_UI_DiscreteConstant_type") + " " + label;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getDiscreteConstantItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -144,8 +151,7 @@ public class DiscreteConstantItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DiscreteConstant.class)) {
@@ -156,6 +162,26 @@ public class DiscreteConstantItemProvider
 		super.notifyChanged(notification);
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getDiscreteConstantItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
+		super.notifyChanged(notification);
+	}
+	
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.

@@ -60,6 +60,15 @@ import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DirectionType
+import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation
+import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogram
+import org.eclipse.app4mc.amalthea.model.DiscreteInterval
+import org.eclipse.app4mc.amalthea.model.DiscreteStatistics
+import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
@@ -155,7 +164,6 @@ import org.eclipse.app4mc.amalthea.model.TagGroup
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
-import org.eclipse.app4mc.amalthea.model.Ticks
 import org.eclipse.app4mc.amalthea.model.TicksConstant
 import org.eclipse.app4mc.amalthea.model.TicksDeviation
 import org.eclipse.app4mc.amalthea.model.Time
@@ -171,14 +179,20 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
+import org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
-import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
+import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
+import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution
 
 class CustomItemProviderService {
 
@@ -304,12 +318,6 @@ class CustomItemProviderService {
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
 	}
 
-	private def static getTicksText(Ticks ticks) {
-		switch ticks {
-			TicksConstant: getTicksConstantItemProviderText(ticks, null)
-			TicksDeviation: getTicksDeviationItemProviderText(ticks, null)
-		}
-	}
 
 	private def static getNeedText(Need need) {
 		switch need {
@@ -2642,28 +2650,28 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						TicksEntryItemProvider
+	 * 						ExecutionTicksEntryItemProvider
 	 *****************************************************************************/
-	def static String getTicksEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof TicksEntryImpl) {
+	def static String getExecutionTicksEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof ExecutionTicksEntryImpl) {
 			val typeName = object?.getKey()?.name
-			val ticks = object?.getValue()
+			val deviation = object?.getValue()
 
 			val s1 = if(typeName.isNullOrEmpty) "<pu definition>" else "Definition " + typeName
-			val s2 = if(ticks === null) "<ticks>" else getTicksText(ticks)
+			val s2 = if(deviation === null) "<ticks>" else CustomDeviationItemProviderService.getDiscreteDeviationText(deviation)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getTicksEntryItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getExecutionTicksEntryItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 
 		switch notification.getFeatureID(typeof(Map.Entry)) {
-			case AmaltheaPackage::TICKS_ENTRY__KEY:
+			case AmaltheaPackage::EXECUTION_TICKS_ENTRY__KEY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::TICKS_ENTRY__VALUE:
+			case AmaltheaPackage::EXECUTION_TICKS_ENTRY__VALUE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list

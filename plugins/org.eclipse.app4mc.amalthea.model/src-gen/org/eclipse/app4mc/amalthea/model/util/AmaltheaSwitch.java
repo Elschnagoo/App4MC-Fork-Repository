@@ -3568,9 +3568,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.TICKS_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, Ticks> ticksEntry = (Map.Entry<ProcessingUnitDefinition, Ticks>)theEObject;
-				T1 result = caseTicksEntry(ticksEntry);
+			case AmaltheaPackage.EXECUTION_TICKS_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> executionTicksEntry = (Map.Entry<ProcessingUnitDefinition, DiscreteDeviation>)theEObject;
+				T1 result = caseExecutionTicksEntry(executionTicksEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -9142,17 +9142,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ticks Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Ticks Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ticks Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Ticks Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTicksEntry(Map.Entry<ProcessingUnitDefinition, Ticks> object) {
+	public T1 caseExecutionTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
 		return null;
 	}
 

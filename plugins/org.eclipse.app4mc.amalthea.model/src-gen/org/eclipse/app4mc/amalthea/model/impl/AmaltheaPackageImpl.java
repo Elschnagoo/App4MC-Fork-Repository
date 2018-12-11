@@ -2874,7 +2874,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ticksEntryEClass = null;
+	private EClass executionTicksEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -13065,8 +13065,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTicksEntry() {
-		return ticksEntryEClass;
+	public EClass getExecutionTicksEntry() {
+		return executionTicksEntryEClass;
 	}
 
 	/**
@@ -13074,8 +13074,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTicksEntry_Key() {
-		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(0);
+	public EReference getExecutionTicksEntry_Key() {
+		return (EReference)executionTicksEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13083,8 +13083,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTicksEntry_Value() {
-		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getExecutionTicksEntry_Value() {
+		return (EReference)executionTicksEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -16172,9 +16172,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(executionTicksEClass, EXECUTION_TICKS__DEFAULT);
 		createEReference(executionTicksEClass, EXECUTION_TICKS__EXTENDED);
 
-		ticksEntryEClass = createEClass(TICKS_ENTRY);
-		createEReference(ticksEntryEClass, TICKS_ENTRY__KEY);
-		createEReference(ticksEntryEClass, TICKS_ENTRY__VALUE);
+		executionTicksEntryEClass = createEClass(EXECUTION_TICKS_ENTRY);
+		createEReference(executionTicksEntryEClass, EXECUTION_TICKS_ENTRY__KEY);
+		createEReference(executionTicksEntryEClass, EXECUTION_TICKS_ENTRY__VALUE);
 
 		modeLabelAccessEClass = createEClass(MODE_LABEL_ACCESS);
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__DATA);
@@ -18408,12 +18408,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getNeedEntry_Value(), this.getNeed(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executionTicksEClass, ExecutionTicks.class, "ExecutionTicks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionTicks_Default(), this.getTicks(), null, "default", null, 0, 1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionTicks_Extended(), this.getTicksEntry(), null, "extended", null, 0, -1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionTicks_Default(), this.getDiscreteDeviation(), null, "default", null, 0, 1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionTicks_Extended(), this.getExecutionTicksEntry(), null, "extended", null, 0, -1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(ticksEntryEClass, Map.Entry.class, "TicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTicksEntry_Value(), this.getTicks(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(executionTicksEntryEClass, Map.Entry.class, "ExecutionTicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutionTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionTicksEntry_Value(), this.getDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

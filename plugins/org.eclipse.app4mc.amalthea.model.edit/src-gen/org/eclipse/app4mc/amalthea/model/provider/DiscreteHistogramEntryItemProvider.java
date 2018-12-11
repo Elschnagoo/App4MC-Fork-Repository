@@ -160,12 +160,20 @@ public class DiscreteHistogramEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+
+	public String getTextGen(Object object) {
 		DiscreteHistogramEntry discreteHistogramEntry = (DiscreteHistogramEntry)object;
 		return getString("_UI_DiscreteHistogramEntry_type") + " " + discreteHistogramEntry.getOccurrences();
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getDiscreteHistogramEntryItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

@@ -20,10 +20,8 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -134,8 +132,7 @@ public class DiscreteGaussDistributionItemProvider extends TruncatedDiscreteDist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Long labelValue = ((DiscreteGaussDistribution)object).getLowerBound();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
@@ -143,6 +140,14 @@ public class DiscreteGaussDistributionItemProvider extends TruncatedDiscreteDist
 			getString("_UI_DiscreteGaussDistribution_type") + " " + label;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getDiscreteGaussDistributionItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -151,8 +156,7 @@ public class DiscreteGaussDistributionItemProvider extends TruncatedDiscreteDist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DiscreteGaussDistribution.class)) {
@@ -161,6 +165,26 @@ public class DiscreteGaussDistributionItemProvider extends TruncatedDiscreteDist
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getDiscreteGaussDistributionItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

@@ -134,8 +134,7 @@ public class DiscreteWeibullParametersDistributionItemProvider extends DiscreteW
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Long labelValue = ((DiscreteWeibullParametersDistribution)object).getLowerBound();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
@@ -143,6 +142,15 @@ public class DiscreteWeibullParametersDistributionItemProvider extends DiscreteW
 			getString("_UI_DiscreteWeibullParametersDistribution_type") + " " + label;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getDiscreteWeibullParametersDistributionItemProviderText(object,
+				getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -151,8 +159,7 @@ public class DiscreteWeibullParametersDistributionItemProvider extends DiscreteW
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DiscreteWeibullParametersDistribution.class)) {
@@ -161,6 +168,26 @@ public class DiscreteWeibullParametersDistributionItemProvider extends DiscreteW
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getDiscreteWeibullParametersDistributionItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

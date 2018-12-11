@@ -3817,16 +3817,16 @@ class NeedEntry wraps java.util.Map$Entry
 }
 
 /*
- * Representation of the execution ticks of a Runnable (default and core-specific)
+ * Representation of the execution DiscreteDeviation of a Runnable (default and core-specific)
  */
 class ExecutionTicks extends ComputationItem {
-	contains Ticks ^default
-	contains TicksEntry[] extended
+	contains DiscreteDeviation ^default
+	contains ExecutionTicksEntry[] extended
 }
 
-class TicksEntry wraps java.util.Map$Entry {
+class ExecutionTicksEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
-	contains Ticks[1] value
+	contains DiscreteDeviation[1] value
 }
 
 /*

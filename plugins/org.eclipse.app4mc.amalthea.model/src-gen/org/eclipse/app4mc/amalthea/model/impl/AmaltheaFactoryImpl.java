@@ -115,6 +115,7 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
@@ -333,7 +334,6 @@ import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
-import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.TicksConstant;
 import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -677,7 +677,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EXECUTION_NEED: return createExecutionNeed();
 			case AmaltheaPackage.NEED_ENTRY: return (EObject)createNeedEntry();
 			case AmaltheaPackage.EXECUTION_TICKS: return createExecutionTicks();
-			case AmaltheaPackage.TICKS_ENTRY: return (EObject)createTicksEntry();
+			case AmaltheaPackage.EXECUTION_TICKS_ENTRY: return (EObject)createExecutionTicksEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
@@ -3565,9 +3565,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ProcessingUnitDefinition, Ticks> createTicksEntry() {
-		TicksEntryImpl ticksEntry = new TicksEntryImpl();
-		return ticksEntry;
+	public Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> createExecutionTicksEntry() {
+		ExecutionTicksEntryImpl executionTicksEntry = new ExecutionTicksEntryImpl();
+		return executionTicksEntry;
 	}
 
 	/**

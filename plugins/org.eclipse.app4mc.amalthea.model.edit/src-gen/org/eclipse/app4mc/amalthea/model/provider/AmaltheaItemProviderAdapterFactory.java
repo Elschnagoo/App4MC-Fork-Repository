@@ -6000,7 +6000,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TicksEntryItemProvider ticksEntryItemProvider;
+	protected ExecutionTicksEntryItemProvider executionTicksEntryItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
@@ -6009,12 +6009,12 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * @generated
 	 */
 	@Override
-	public Adapter createTicksEntryAdapter() {
-		if (ticksEntryItemProvider == null) {
-			ticksEntryItemProvider = new TicksEntryItemProvider(this);
+	public Adapter createExecutionTicksEntryAdapter() {
+		if (executionTicksEntryItemProvider == null) {
+			executionTicksEntryItemProvider = new ExecutionTicksEntryItemProvider(this);
 		}
 
-		return ticksEntryItemProvider;
+		return executionTicksEntryItemProvider;
 	}
 
 	/**
@@ -7224,7 +7224,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (executionNeedItemProvider != null) executionNeedItemProvider.dispose();
 		if (needEntryItemProvider != null) needEntryItemProvider.dispose();
 		if (executionTicksItemProvider != null) executionTicksItemProvider.dispose();
-		if (ticksEntryItemProvider != null) ticksEntryItemProvider.dispose();
+		if (executionTicksEntryItemProvider != null) executionTicksEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();

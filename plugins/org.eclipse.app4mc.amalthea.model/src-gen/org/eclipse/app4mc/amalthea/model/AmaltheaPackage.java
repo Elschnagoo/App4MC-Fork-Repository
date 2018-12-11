@@ -27175,14 +27175,14 @@ public interface AmaltheaPackage extends EPackage {
 	int EXECUTION_TICKS_OPERATION_COUNT = COMPUTATION_ITEM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl <em>Ticks Entry</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl <em>Execution Ticks Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTicksEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getExecutionTicksEntry()
 	 * @generated
 	 */
-	int TICKS_ENTRY = 342;
+	int EXECUTION_TICKS_ENTRY = 342;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' reference.
@@ -27191,7 +27191,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TICKS_ENTRY__KEY = 0;
+	int EXECUTION_TICKS_ENTRY__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -27200,25 +27200,25 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TICKS_ENTRY__VALUE = 1;
+	int EXECUTION_TICKS_ENTRY__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Ticks Entry</em>' class.
+	 * The number of structural features of the '<em>Execution Ticks Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TICKS_ENTRY_FEATURE_COUNT = 2;
+	int EXECUTION_TICKS_ENTRY_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Ticks Entry</em>' class.
+	 * The number of operations of the '<em>Execution Ticks Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TICKS_ENTRY_OPERATION_COUNT = 0;
+	int EXECUTION_TICKS_ENTRY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ModeLabelAccessImpl <em>Mode Label Access</em>}' class.
@@ -42288,16 +42288,16 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getExecutionTicks_Extended();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Ticks Entry</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Execution Ticks Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ticks Entry</em>'.
+	 * @return the meta object for class '<em>Execution Ticks Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.Ticks" valueContainment="true" valueRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.DiscreteDeviation" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
-	EClass getTicksEntry();
+	EClass getExecutionTicksEntry();
 
 	/**
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
@@ -42305,10 +42305,10 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getTicksEntry()
+	 * @see #getExecutionTicksEntry()
 	 * @generated
 	 */
-	EReference getTicksEntry_Key();
+	EReference getExecutionTicksEntry_Key();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -42316,10 +42316,10 @@ public interface AmaltheaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getTicksEntry()
+	 * @see #getExecutionTicksEntry()
 	 * @generated
 	 */
-	EReference getTicksEntry_Value();
+	EReference getExecutionTicksEntry_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess <em>Mode Label Access</em>}'.

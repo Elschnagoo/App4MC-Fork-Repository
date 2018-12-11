@@ -68,6 +68,7 @@ import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
@@ -186,7 +187,6 @@ import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
-import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.TicksConstant;
 import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -202,9 +202,10 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
+import org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl;
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
-import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl;
+import org.eclipse.app4mc.amalthea.model.provider.CustomDeviationItemProviderService;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -435,22 +436,6 @@ public class CustomItemProviderService {
       return "";
     }
     return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "");
-  }
-  
-  private static String getTicksText(final Ticks ticks) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (ticks instanceof TicksConstant) {
-      _matched=true;
-      _switchResult = CustomItemProviderService.getTicksConstantItemProviderText(ticks, null);
-    }
-    if (!_matched) {
-      if (ticks instanceof TicksDeviation) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getTicksDeviationItemProviderText(ticks, null);
-      }
-    }
-    return _switchResult;
   }
   
   private static String getNeedText(final Need need) {
@@ -4995,24 +4980,24 @@ public class CustomItemProviderService {
   }
   
   /**
-   * TicksEntryItemProvider
+   * ExecutionTicksEntryItemProvider
    */
-  public static String getTicksEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof TicksEntryImpl)) {
+  public static String getExecutionTicksEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ExecutionTicksEntryImpl)) {
       ProcessingUnitDefinition _key = null;
-      if (((TicksEntryImpl)object)!=null) {
-        _key=((TicksEntryImpl)object).getKey();
+      if (((ExecutionTicksEntryImpl)object)!=null) {
+        _key=((ExecutionTicksEntryImpl)object).getKey();
       }
       String _name = null;
       if (_key!=null) {
         _name=_key.getName();
       }
       final String typeName = _name;
-      Ticks _value = null;
-      if (((TicksEntryImpl)object)!=null) {
-        _value=((TicksEntryImpl)object).getValue();
+      DiscreteDeviation _value = null;
+      if (((ExecutionTicksEntryImpl)object)!=null) {
+        _value=((ExecutionTicksEntryImpl)object).getValue();
       }
-      final Ticks ticks = _value;
+      final DiscreteDeviation deviation = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
       if (_isNullOrEmpty) {
@@ -5022,10 +5007,10 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((ticks == null)) {
+      if ((deviation == null)) {
         _xifexpression_1 = "<ticks>";
       } else {
-        _xifexpression_1 = CustomItemProviderService.getTicksText(ticks);
+        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteDeviationText(deviation);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);
@@ -5034,18 +5019,18 @@ public class CustomItemProviderService {
     }
   }
   
-  public static List<ViewerNotification> getTicksEntryItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getExecutionTicksEntryItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
     int _featureID = notification.getFeatureID(Map.Entry.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TICKS_ENTRY__KEY)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TICKS_ENTRY__VALUE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE)) {
         _matched=true;
         Object _notifier_1 = notification.getNotifier();
         ViewerNotification _viewerNotification_1 = new ViewerNotification(notification, _notifier_1, true, true);

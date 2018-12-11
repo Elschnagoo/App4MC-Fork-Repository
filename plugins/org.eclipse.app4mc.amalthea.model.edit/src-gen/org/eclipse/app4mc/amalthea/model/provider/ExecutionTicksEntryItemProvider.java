@@ -42,7 +42,7 @@ import java.util.Map;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
+public class ExecutionTicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
     implements IEditingDomainItemProvider, IStructuredItemContentProvider,
         ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
@@ -51,7 +51,7 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public TicksEntryItemProvider(AdapterFactory adapterFactory) {
+    public ExecutionTicksEntryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -82,9 +82,9 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TicksEntry_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TicksEntry_key_feature", "_UI_TicksEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getTicksEntry_Key(),
+				 getString("_UI_ExecutionTicksEntry_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionTicksEntry_key_feature", "_UI_ExecutionTicksEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Key(),
 				 true,
 				 false,
 				 true,
@@ -106,7 +106,7 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
         Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTicksEntry_Value());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value());
 		}
 		return childrenFeatures;
 	}
@@ -125,14 +125,14 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 	}
 
     /**
-	 * This returns TicksEntry.gif.
+	 * This returns ExecutionTicksEntry.gif.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
     @Override
     public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TicksEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionTicksEntry"));
 	}
 
     /**
@@ -152,8 +152,8 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 	 * @generated
 	 */
     public String getTextGen(Object object) {
-		Map.Entry<?, ?> ticksEntry = (Map.Entry<?, ?>)object;
-		return "" + ticksEntry.getKey() + " -> " + ticksEntry.getValue();
+		Map.Entry<?, ?> executionTicksEntry = (Map.Entry<?, ?>)object;
+		return "" + executionTicksEntry.getKey() + " -> " + executionTicksEntry.getValue();
 	}
 
     /**
@@ -162,7 +162,7 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
     @Override
     public String getText(final Object object) {
         // delegate to custom item provider
-        return CustomItemProviderService.getTicksEntryItemProviderText(object,
+        return CustomItemProviderService.getExecutionTicksEntryItemProviderText(object,
             getTextGen(object));
     }
 
@@ -177,7 +177,7 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Map.Entry.class)) {
-			case AmaltheaPackage.TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -192,7 +192,7 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
         updateChildren(notification);
 
         // delegate to custom item provider and execute locally
-        final List<ViewerNotification> notifications = CustomItemProviderService.getTicksEntryItemProviderNotifications(notification);
+        final List<ViewerNotification> notifications = CustomItemProviderService.getExecutionTicksEntryItemProviderNotifications(notification);
 
         for (final ViewerNotification vn : notifications) {
             fireNotifyChanged(vn);
@@ -215,13 +215,48 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createTicksDeviation()));
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createTicksConstant()));
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getExecutionTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
 	}
 
     /**

@@ -1828,8 +1828,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createExecutionTicksAdapter();
 			}
 			@Override
-			public Adapter caseTicksEntry(Map.Entry<ProcessingUnitDefinition, Ticks> object) {
-				return createTicksEntryAdapter();
+			public Adapter caseExecutionTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
+				return createExecutionTicksEntryAdapter();
 			}
 			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
@@ -6820,7 +6820,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Ticks Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Ticks Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -6829,7 +6829,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createTicksEntryAdapter() {
+	public Adapter createExecutionTicksEntryAdapter() {
 		return null;
 	}
 
