@@ -213,9 +213,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -424,8 +421,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CORE_CLASSIFIER: return createCoreClassifier();
 			case AmaltheaPackage.MEMORY_CLASSIFIER: return createMemoryClassifier();
 			case AmaltheaPackage.TRANSMISSION_POLICY: return createTransmissionPolicy();
-			case AmaltheaPackage.NEED_DEVIATION: return createNeedDeviation();
-			case AmaltheaPackage.NEED_CONSTANT: return createNeedConstant();
 			case AmaltheaPackage.TIME: return createTime();
 			case AmaltheaPackage.FREQUENCY: return createFrequency();
 			case AmaltheaPackage.VOLTAGE: return createVoltage();
@@ -1044,26 +1039,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public TransmissionPolicy createTransmissionPolicy() {
 		TransmissionPolicyImpl transmissionPolicy = new TransmissionPolicyImpl();
 		return transmissionPolicy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NeedDeviation createNeedDeviation() {
-		NeedDeviationImpl needDeviation = new NeedDeviationImpl();
-		return needDeviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NeedConstant createNeedConstant() {
-		NeedConstantImpl needConstant = new NeedConstantImpl();
-		return needConstant;
 	}
 
 	/**
@@ -3521,7 +3496,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, Need> createNeedEntry() {
+	public Map.Entry<String, DiscreteDeviation> createNeedEntry() {
 		NeedEntryImpl needEntry = new NeedEntryImpl();
 		return needEntry;
 	}

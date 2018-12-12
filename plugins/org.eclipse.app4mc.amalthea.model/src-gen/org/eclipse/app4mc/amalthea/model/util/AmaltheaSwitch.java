@@ -233,9 +233,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -571,26 +568,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TRANSMISSION_POLICY: {
 				TransmissionPolicy transmissionPolicy = (TransmissionPolicy)theEObject;
 				T1 result = caseTransmissionPolicy(transmissionPolicy);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.NEED: {
-				Need need = (Need)theEObject;
-				T1 result = caseNeed(need);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.NEED_DEVIATION: {
-				NeedDeviation needDeviation = (NeedDeviation)theEObject;
-				T1 result = caseNeedDeviation(needDeviation);
-				if (result == null) result = caseNeed(needDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.NEED_CONSTANT: {
-				NeedConstant needConstant = (NeedConstant)theEObject;
-				T1 result = caseNeedConstant(needConstant);
-				if (result == null) result = caseNeed(needConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3530,7 +3507,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.NEED_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, Need> needEntry = (Map.Entry<String, Need>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<String, DiscreteDeviation> needEntry = (Map.Entry<String, DiscreteDeviation>)theEObject;
 				T1 result = caseNeedEntry(needEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -4210,51 +4187,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseTransmissionPolicy(TransmissionPolicy object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNeed(Need object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNeedDeviation(NeedDeviation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Need Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Need Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNeedConstant(NeedConstant object) {
 		return null;
 	}
 
@@ -9054,7 +8986,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNeedEntry(Map.Entry<String, Need> object) {
+	public T1 caseNeedEntry(Map.Entry<String, DiscreteDeviation> object) {
 		return null;
 	}
 

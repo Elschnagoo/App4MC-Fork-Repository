@@ -46,9 +46,6 @@ import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Process;
@@ -121,9 +118,12 @@ public class RuntimeUtil {
 			ProcessingUnitDefinition procUnitDef, HwFeature hwFeature, EMap<ModeLabel, ModeLiteral> modes) {
 		List<HwFeature> featureList = new ArrayList<>();
 		featureList.add(hwFeature);
-		List<Entry<String, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef,
-				featureList, modes);
-		return getExecutionNeedValueCountForExecutionNeedList(executionNeedEntries, execTimeType);
+		
+// FIXME
+//		List<Entry<String, Need>> executionNeedEntries = SoftwareUtil.getExecutionNeedEntryList(runnable, procUnitDef,
+//				featureList, modes);
+//		return getExecutionNeedValueCountForExecutionNeedList(executionNeedEntries, execTimeType);
+		return 0L;
 	}
 
 	/**
@@ -134,12 +134,13 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return
 	 */
-	private static Long getExecutionNeedValueCountForExecutionNeedList(List<Entry<String, Need>> executionNeedEntries,
+	private static Long getExecutionNeedValueCountForExecutionNeedList(List<Entry<String, ExecutionNeed>> executionNeedEntries,
 			TimeType execTimeType) {
 		long result = 0L;
-		for (Entry<String, Need> needEntry : executionNeedEntries) {
-			result = result + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
-		}
+// FIXME
+//		for (Entry<String, Need> needEntry : executionNeedEntries) {
+//			result = result + getExecutionNeedValueCountForExecutionNeed(needEntry.getValue(), execTimeType);
+//		}
 		return result;
 	}
 
@@ -150,23 +151,25 @@ public class RuntimeUtil {
 	 * @param execTimeType
 	 * @return long
 	 */
-	private static Long getExecutionNeedValueCountForExecutionNeed(Need needValue, TimeType execTimeType) {
-		if (needValue instanceof NeedDeviation) {
-			NeedDeviation instDeviation = (NeedDeviation) needValue;
-			switch (execTimeType) {
-			case ACET:
-				return getMean(instDeviation.getDeviation().getDistribution(),
-						instDeviation.getDeviation().getLowerBound().getValue(),
-						instDeviation.getDeviation().getUpperBound().getValue());
-			case BCET:
-				return instDeviation.getDeviation().getLowerBound().getValue();
-			case WCET:
-				return instDeviation.getDeviation().getUpperBound().getValue();
-
-			}
-		} else if (needValue instanceof NeedConstant) {
-			return ((NeedConstant) needValue).getValue();
-		}
+	private static Long getExecutionNeedValueCountForExecutionNeed(ExecutionNeed needValue, TimeType execTimeType) {
+		
+// FIXME
+//		if (needValue instanceof NeedDeviation) {
+//			NeedDeviation instDeviation = (NeedDeviation) needValue;
+//			switch (execTimeType) {
+//			case ACET:
+//				return getMean(instDeviation.getDeviation().getDistribution(),
+//						instDeviation.getDeviation().getLowerBound().getValue(),
+//						instDeviation.getDeviation().getUpperBound().getValue());
+//			case BCET:
+//				return instDeviation.getDeviation().getLowerBound().getValue();
+//			case WCET:
+//				return instDeviation.getDeviation().getUpperBound().getValue();
+//
+//			}
+//		} else if (needValue instanceof NeedConstant) {
+//			return ((NeedConstant) needValue).getValue();
+//		}
 		return 0L;
 	}
 

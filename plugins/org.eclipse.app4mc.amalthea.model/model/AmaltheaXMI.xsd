@@ -833,39 +833,6 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="Need">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Need" type="am:Need">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="NeedDeviation">
-    <xsd:complexContent>
-      <xsd:extension base="am:Need">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="NeedDeviation" type="am:NeedDeviation"/>
-  <xsd:complexType name="NeedConstant">
-    <xsd:complexContent>
-      <xsd:extension base="am:Need">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="NeedConstant" type="am:NeedConstant"/>
   <xsd:complexType abstract="true" name="Quantity">
     <xsd:annotation>
       <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
@@ -5739,7 +5706,7 @@ which are belonging together.</xsd:documentation>
   </xsd:element>
   <xsd:complexType name="NeedEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="value" type="am:Need"/>
+      <xsd:element name="value" type="am:DiscreteDeviation"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>

@@ -127,9 +127,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.OrderType;
@@ -434,22 +431,6 @@ public class CustomItemProviderService {
       return "";
     }
     return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "");
-  }
-  
-  private static String getNeedText(final Need need) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (need instanceof NeedConstant) {
-      _matched=true;
-      _switchResult = CustomItemProviderService.getNeedConstantItemProviderText(need, null);
-    }
-    if (!_matched) {
-      if (need instanceof NeedDeviation) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getNeedDeviationItemProviderText(need, null);
-      }
-    }
-    return _switchResult;
   }
   
   private static String getValueText(final Value object) {
@@ -1178,97 +1159,6 @@ public class CustomItemProviderService {
       CustomItemProviderService.addParentLabelNotification(list, notification);
     }
     return list;
-  }
-  
-  /**
-   * NeedConstantItemProvider
-   */
-  public static String getNeedConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof NeedConstant)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "value");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      final String s2 = Long.toString(((NeedConstant)object).getValue());
-      return ((s1 + "need (constant): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static List<ViewerNotification> getNeedConstantItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(NeedConstant.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.NEED_CONSTANT__VALUE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
-      list.add(_viewerNotification);
-      CustomItemProviderService.addParentLabelNotification(list, notification);
-    }
-    return list;
-  }
-  
-  /**
-   * NeedDeviationItemProvider
-   */
-  public static String getNeedDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof NeedDeviation)) {
-      final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(feature, "value");
-      if (_equals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = (feature + " -- ");
-      }
-      final String s1 = _xifexpression;
-      Deviation<LongObject> _deviation = null;
-      if (((NeedDeviation)object)!=null) {
-        _deviation=((NeedDeviation)object).getDeviation();
-      }
-      Distribution<LongObject> _distribution = null;
-      if (_deviation!=null) {
-        _distribution=_deviation.getDistribution();
-      }
-      EClass _eClass = null;
-      if (_distribution!=null) {
-        _eClass=_distribution.eClass();
-      }
-      String _name = null;
-      if (_eClass!=null) {
-        _name=_eClass.getName();
-      }
-      final String distName = _name;
-      String _xifexpression_1 = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
-      if (_isNullOrEmpty) {
-        _xifexpression_1 = "<distribution>";
-      } else {
-        _xifexpression_1 = CustomItemProviderService.trimDistName(distName);
-      }
-      final String s2 = _xifexpression_1;
-      return ((s1 + "need (deviation): ") + s2);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getNeedDeviationItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(NeedDeviation.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.NEED_DEVIATION__DEVIATION)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, true, true);
-    }
-    return null;
   }
   
   /**
@@ -4957,11 +4847,11 @@ public class CustomItemProviderService {
         _key=((NeedEntryImpl)object).getKey();
       }
       final String featureName = _key;
-      Need _value = null;
+      DiscreteDeviation _value = null;
       if (((NeedEntryImpl)object)!=null) {
         _value=((NeedEntryImpl)object).getValue();
       }
-      final Need need = _value;
+      final DiscreteDeviation dev = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(featureName);
       if (_isNullOrEmpty) {
@@ -4971,10 +4861,10 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       String _xifexpression_1 = null;
-      if ((need == null)) {
-        _xifexpression_1 = "<need>";
+      if ((dev == null)) {
+        _xifexpression_1 = "<usages>";
       } else {
-        _xifexpression_1 = CustomItemProviderService.getNeedText(need);
+        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteDeviationText(dev);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);

@@ -107,9 +107,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValue
 import org.eclipse.app4mc.amalthea.model.ModeValueConjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueList
-import org.eclipse.app4mc.amalthea.model.Need
-import org.eclipse.app4mc.amalthea.model.NeedConstant
-import org.eclipse.app4mc.amalthea.model.NeedDeviation
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.OrderType
@@ -299,14 +296,6 @@ class CustomItemProviderService {
 		if(name === null) return ""
 
 		return name.replace("Distribution", "").replace("Estimators", "").replace("Parameters", "")
-	}
-
-
-	private def static getNeedText(Need need) {
-		switch need {
-			NeedConstant: getNeedConstantItemProviderText(need, null)
-			NeedDeviation: getNeedDeviationItemProviderText(need, null)
-		}
 	}
 
 	private def static getValueText(Value object) {
@@ -747,54 +736,6 @@ class CustomItemProviderService {
 				}
 		}
 		return list
-	}
-
-	/*****************************************************************************
-	 * 						NeedConstantItemProvider
-	 *****************************************************************************/
-	def static String getNeedConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof NeedConstant) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val s2 = Long.toString(object.value)
-			return s1 + "need (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getNeedConstantItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(NeedConstant)) {
-			case AmaltheaPackage::NEED_CONSTANT__VALUE: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-				addParentLabelNotification(list, notification)
-				}
-		}
-		return list
-	}
-
-	/*****************************************************************************
-	 * 						NeedDeviationItemProvider
-	 *****************************************************************************/
-	def static String getNeedDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof NeedDeviation) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val distName = object?.deviation?.distribution?.eClass?.name
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return s1 + "need (deviation): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getNeedDeviationItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(NeedDeviation)) {
-			case AmaltheaPackage::NEED_DEVIATION__DEVIATION:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
-		}
-		return null
 	}
 
 	/*****************************************************************************
@@ -2618,10 +2559,10 @@ class CustomItemProviderService {
 	def static String getNeedEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof NeedEntryImpl) {
 			val featureName = object?.getKey()
-			val need = object?.getValue()
+			val dev = object?.getValue()
 
 			val s1 = if(featureName.isNullOrEmpty) "<feature>" else "Feature \"" + featureName + "\""
-			val s2 = if(need === null) "<need>" else getNeedText(need)
+			val s2 = if(dev === null) "<usages>" else CustomDeviationItemProviderService.getDiscreteDeviationText(dev)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText

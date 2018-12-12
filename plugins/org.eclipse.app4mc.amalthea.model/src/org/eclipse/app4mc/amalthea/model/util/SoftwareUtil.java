@@ -20,8 +20,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.function.Function;
 
 import org.eclipse.app4mc.amalthea.model.CallSequence;
@@ -40,7 +40,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.Need;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
@@ -55,6 +54,7 @@ import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
 import org.eclipse.emf.common.util.BasicEList;
@@ -952,9 +952,9 @@ public class SoftwareUtil {
 	 * @param puDefinition - now needed to connect features to procUnits - null returns empty list
 	 * @return List of Entry(String, Need)
 	 */
-	public static List<Entry<String, Need>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition puDefinition, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Entry<String, Ticks>> getExecutionNeedEntryList(Process process, ProcessingUnitDefinition puDefinition, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = getRunnableList(process, modes);
-		List<Entry<String, Need>> result = new ArrayList<>();
+		List<Entry<String, Ticks>> result = new ArrayList<>();
 		
 		for(Runnable runnable : runnables) {
 			result.addAll(getExecutionNeedEntryList(runnable, puDefinition, hwFeatures, modes));
@@ -970,8 +970,8 @@ public class SoftwareUtil {
 	 * @param puDefinition - now needed to connect features to procUnits - null returns empty list
 	 * @return List of Entry(String, Need)
 	 */
-	public static List<Entry<String, Need>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition puDefinition, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
-		List<Entry<String, Need>> result = new ArrayList<>();
+	public static List<Entry<String, Ticks>> getExecutionNeedEntryList(Runnable runnable, ProcessingUnitDefinition puDefinition, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+		List<Entry<String, Ticks>> result = new ArrayList<>();
 		if (puDefinition == null || hwFeatures == null ) {
 			return result;
 		}

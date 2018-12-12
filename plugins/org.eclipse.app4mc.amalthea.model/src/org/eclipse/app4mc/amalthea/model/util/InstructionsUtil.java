@@ -21,15 +21,12 @@ import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
@@ -62,11 +59,7 @@ public class InstructionsUtil {
 		return createExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static ExecutionNeed createExecutionNeedDeviation(Deviation<LongObject> instructions) {
-		return createExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
-	}
-
-	public static Need getNeed(ExecutionNeed execNeed) {
+	public static DiscreteDeviation getNeed(ExecutionNeed execNeed) {
 		return execNeed.getNeeds().get(INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
@@ -74,7 +67,7 @@ public class InstructionsUtil {
 		return getNeedConstant(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static Deviation<LongObject> getNeedDeviation(ExecutionNeed execNeed) {
+	public static DiscreteDeviation getNeedDeviation(ExecutionNeed execNeed) {
 		return getNeedDeviation(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 
@@ -92,21 +85,11 @@ public class InstructionsUtil {
 
 
 	private static ExecutionNeed createExecutionNeed(String category, long value) {
-		NeedConstant need = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		need.setValue(value);
+		DiscreteConstant dev = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+		dev.setValue(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getNeeds().put(category, need);
-		
-		return execNeed;
-	}
-
-	private static ExecutionNeed createExecutionNeed(String category, Deviation<LongObject> value) {
-		NeedDeviation need = AmaltheaFactory.eINSTANCE.createNeedDeviation();
-		need.setDeviation(value);
-		
-		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		execNeed.getNeeds().put(category, need);
+		execNeed.getNeeds().put(category, dev);
 		
 		return execNeed;
 	}
@@ -114,21 +97,17 @@ public class InstructionsUtil {
 	private static long getNeedConstant(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return 0;
 		
-		Need need = execNeed.getNeeds().get(category);
-		if (need instanceof NeedConstant) {
-			return ((NeedConstant) need).getValue();
+		DiscreteDeviation dev = execNeed.getNeeds().get(category);
+		if (dev instanceof DiscreteConstant) {
+			return ((DiscreteConstant) dev).getValue();
 		}
 		return 0;
 	}
 	
-	private static Deviation<LongObject> getNeedDeviation(ExecutionNeed execNeed, String category) {
+	private static DiscreteDeviation getNeedDeviation(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return null;
 		
-		Need need = execNeed.getNeeds().get(category);
-		if (need instanceof NeedDeviation) {
-			return ((NeedDeviation) need).getDeviation();
-		}
-		return null;
+		return execNeed.getNeeds().get(category);
 	}
 
 	public static List<HwFeature> getFeaturesOfCategory(ProcessingUnitDefinition puDefinition, HwFeatureCategory category) {

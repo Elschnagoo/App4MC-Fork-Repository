@@ -26,6 +26,10 @@ import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Frequency;
@@ -35,9 +39,6 @@ import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.LatencyConstant;
 import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
@@ -189,6 +190,29 @@ public class FactoryUtil {
 		return result;
 	}
 
+	public static DiscreteGaussDistribution createDiscreteGaussDistribution(double mean, double sd) {
+		DiscreteGaussDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution();
+		// set parameters
+		result.setMean(mean);
+		result.setSd(sd);
+		return result;
+	}
+
+	public static DiscreteGaussDistribution createDiscreteGaussDistribution(double mean, double sd, Long min, Long max) {
+		DiscreteGaussDistribution result = createDiscreteGaussDistribution(mean, sd);
+		// set parameters
+		result.setLowerBound(min);
+		result.setUpperBound(max);
+		return result;
+	}
+
+	public static DiscreteConstant createDiscreteConstant(long value) {
+		DiscreteConstant result = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+		// set parameters
+		result.setValue(value);;
+		return result;
+	}
+
 	/**
 	 * Creates a time out of a value and a unit given as String (lower case).
 	 * @param value
@@ -272,6 +296,7 @@ public class FactoryUtil {
 	 * @param max
 	 * @param promille
 	 */
+	@Deprecated
 	public static Deviation<LongObject> createWeibullDeviation(long min, long avg, long max, float promille) {
 		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
 		result.setDistribution(createWeibullEstimator(avg, promille));
@@ -284,11 +309,22 @@ public class FactoryUtil {
 		return result;
 	}
 
+	public static DiscreteWeibullEstimatorsDistribution createWeibullDistribution(long min, double avg, long max, double promille) {
+		DiscreteWeibullEstimatorsDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution();
+		result.setLowerBound(min);
+		result.setAverage(avg);
+		result.setUpperBound(max);
+		result.setPRemainPromille(promille);
+		return result;
+	}
+	
+	
 	/**
 	 * Returns a created Weibull Estimator.
 	 * @param avgR
 	 * @param promille
 	 */
+	@Deprecated
 	public static WeibullEstimators<LongObject> createWeibullEstimator(long avgR, float promille) 
 	{
 		WeibullEstimators<LongObject> weibull = AmaltheaFactory.eINSTANCE.createWeibullEstimators();
@@ -299,63 +335,27 @@ public class FactoryUtil {
 			weibull.setPRemainPromille(promille);
 		return weibull;
 	}
-	
-	
-	/**
-	 * Returns a created Weibull NeedDeviation.
-	 * @param min
-	 * @param avg
-	 * @param max
-	 * @param promille
-	 */
-	public static NeedDeviation createNeedWeibullDeviation(long min, long avg, long max, float promille) {
-		NeedDeviation needDev = AmaltheaFactory.eINSTANCE.createNeedDeviation();
-		needDev.setDeviation(createWeibullDeviation(min, avg, max, promille));
-		return needDev;
-	}
-	
-	/**
-	 * Creates NeedConstant element.
-	 * @param value
-	 */
-	public static NeedConstant createNeedConstant(long value) {
-		NeedConstant needConst = AmaltheaFactory.eINSTANCE.createNeedConstant();
-		needConst.setValue(value);
-		return needConst;
-	}
-
-	/**
-	 * Creates NeedDeviation element.
-	 * @param deviation
-	 */
-	public static NeedDeviation createNeedDeviation(Deviation<LongObject> deviation) {
-		NeedDeviation needDeviation = AmaltheaFactory.eINSTANCE.createNeedDeviation();
-		needDeviation.setDeviation(deviation);
-		return needDeviation;
-	}
 
 	/**
 	 * Creates ExecutionNeed for a featureCategoryName, need set.
 	 * @param featureCategory
-	 * @param need
+	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(String featureCategory, Need need) {
+	public static ExecutionNeed createExecutionNeed(String featureCategory, DiscreteDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		exeNeed.getNeeds().put(featureCategory, need);
+		exeNeed.getNeeds().put(featureCategory, usages);
 		return exeNeed;
 	}
 	
 	/**
 	 * Creates ExecutionNeed for a feature, need set.
 	 * @param feature
-	 * @param need
+	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(HwFeature feature, Need need) {
+	public static ExecutionNeed createExecutionNeed(HwFeature feature, DiscreteDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), need);
+		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), usages);
 		return exeNeed;
 	}
-	
-
 	
 }

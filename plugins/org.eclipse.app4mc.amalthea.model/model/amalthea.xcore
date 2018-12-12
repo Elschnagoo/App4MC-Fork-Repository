@@ -194,21 +194,6 @@ class TransmissionPolicy
 	double transmitRatio = "1.0"
 }
 
-/*
- * Abstract description for cost (mostly execution time)
- */
-abstract class Need {}
-
-class NeedDeviation extends Need
-{
-	contains Deviation<LongObject> deviation
-}
-
-class NeedConstant extends Need
-{
-	long value = "0"
-}
-
 // -------------------------------------------------------------------------------
 //
 // 								Quantities
@@ -3790,9 +3775,11 @@ class ExecutionNeed extends RunnableItem
 
 class NeedEntry wraps java.util.Map$Entry
 {
-//	refers HwFeatureCategory[1] key
-	String[1] key
-	contains Need[1] value
+	String[1] key	//	refers to HwFeatureCategory
+	contains DiscreteDeviation[1] value
+
+//	op String getFeature() {typedKey}
+//	op DiscreteDeviation getUsages() {typedValue}
 }
 
 /*

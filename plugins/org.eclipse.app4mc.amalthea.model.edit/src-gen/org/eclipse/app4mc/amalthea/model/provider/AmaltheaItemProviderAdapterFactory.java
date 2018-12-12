@@ -222,52 +222,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NeedDeviationItemProvider needDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NeedDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNeedDeviationAdapter() {
-		if (needDeviationItemProvider == null) {
-			needDeviationItemProvider = new NeedDeviationItemProvider(this);
-		}
-
-		return needDeviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NeedConstantItemProvider needConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NeedConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNeedConstantAdapter() {
-		if (needConstantItemProvider == null) {
-			needConstantItemProvider = new NeedConstantItemProvider(this);
-		}
-
-		return needConstantItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Time} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6927,8 +6881,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (coreClassifierItemProvider != null) coreClassifierItemProvider.dispose();
 		if (memoryClassifierItemProvider != null) memoryClassifierItemProvider.dispose();
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
-		if (needDeviationItemProvider != null) needDeviationItemProvider.dispose();
-		if (needConstantItemProvider != null) needConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
 		if (frequencyItemProvider != null) frequencyItemProvider.dispose();
 		if (voltageItemProvider != null) voltageItemProvider.dispose();

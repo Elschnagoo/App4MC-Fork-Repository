@@ -265,9 +265,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -561,12 +558,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateMemoryClassifier((MemoryClassifier)value, diagnostics, context);
 			case AmaltheaPackage.TRANSMISSION_POLICY:
 				return validateTransmissionPolicy((TransmissionPolicy)value, diagnostics, context);
-			case AmaltheaPackage.NEED:
-				return validateNeed((Need)value, diagnostics, context);
-			case AmaltheaPackage.NEED_DEVIATION:
-				return validateNeedDeviation((NeedDeviation)value, diagnostics, context);
-			case AmaltheaPackage.NEED_CONSTANT:
-				return validateNeedConstant((NeedConstant)value, diagnostics, context);
 			case AmaltheaPackage.QUANTITY:
 				return validateQuantity((Quantity)value, diagnostics, context);
 			case AmaltheaPackage.TIME_COMPARABLE:
@@ -1561,33 +1552,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateTransmissionPolicy(TransmissionPolicy transmissionPolicy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(transmissionPolicy, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNeed(Need need, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(need, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNeedDeviation(NeedDeviation needDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(needDeviation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNeedConstant(NeedConstant needConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(needConstant, diagnostics, context);
 	}
 
 	/**

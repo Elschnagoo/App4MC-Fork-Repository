@@ -15,8 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.Need;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -51,7 +51,7 @@ public class ExecutionNeedImpl extends RunnableItemImpl implements ExecutionNeed
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Need> needs;
+	protected EMap<String, DiscreteDeviation> needs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,9 +77,9 @@ public class ExecutionNeedImpl extends RunnableItemImpl implements ExecutionNeed
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<String, Need> getNeeds() {
+	public EMap<String, DiscreteDeviation> getNeeds() {
 		if (needs == null) {
-			needs = new EcoreEMap<String,Need>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__NEEDS);
+			needs = new EcoreEMap<String,DiscreteDeviation>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__NEEDS);
 		}
 		return needs;
 	}

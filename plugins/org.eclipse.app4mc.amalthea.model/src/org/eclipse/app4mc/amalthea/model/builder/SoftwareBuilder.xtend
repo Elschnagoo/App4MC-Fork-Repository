@@ -20,6 +20,7 @@ import org.eclipse.app4mc.amalthea.model.CallSequence
 import org.eclipse.app4mc.amalthea.model.Channel
 import org.eclipse.app4mc.amalthea.model.ClearEvent
 import org.eclipse.app4mc.amalthea.model.CustomActivation
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration
 import org.eclipse.app4mc.amalthea.model.EventActivation
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed
@@ -35,12 +36,10 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
-import org.eclipse.app4mc.amalthea.model.Need
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype
-import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 import org.eclipse.app4mc.amalthea.model.Runnable
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableItem
@@ -58,7 +57,6 @@ import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.TerminateProcess
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation
 import org.eclipse.app4mc.amalthea.model.WaitEvent
-import org.eclipse.emf.common.util.BasicEMap
 
 class SoftwareBuilder {
 
@@ -532,7 +530,7 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 	
-	def need(ExecutionNeed container, String key, Need need) {
+	def need(ExecutionNeed container, String key, DiscreteDeviation need) {
 		container.needs.put(key, need)
 	}
 

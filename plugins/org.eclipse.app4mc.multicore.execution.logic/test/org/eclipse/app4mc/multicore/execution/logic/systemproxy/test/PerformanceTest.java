@@ -33,7 +33,7 @@ public class PerformanceTest {
 	private static final int RUNS_FOR_AVARAGE = 5;
 
 //	@Test
-//	public void testCooperativeTaskVisualization() throws SimException {
+	public void testCooperativeTaskVisualization() throws SimException {
 //		System.err.println("START testCooperativeTaskVisualization");
 //		ISystemProxy s = SystemProxyFactory.createSystemProxy(1000,SchedulerAlgorithmFactory::createCooperativeEDF);
 //		addCores(s);
@@ -41,24 +41,24 @@ public class PerformanceTest {
 //		long start = System.currentTimeMillis();
 //		s.compute(100*PS_PER_MS);//100 ms 
 //		System.err.println("Time: "+ (System.currentTimeMillis()-start) +" ms");
-//	}
+	}
 	
 //	@Test
-//	public void testPreemptiveTaskVisualizationPS() throws SimException {
-//		System.err.println("START testPreemptiveTaskVisualizationPS");
-//		ISystemProxy s = SystemProxyFactory.createSystemProxy(ISystemProxy.TIME_SCALE_PS,
-//				SchedulerAlgorithmRegister::createPreemptiveEDF);
-//		addCores(s);
-//		addTasks(s);
-//		long start = System.currentTimeMillis();
-//		s.compute(500*PS_PER_MS); //0.5 s 
-//		long duration = System.currentTimeMillis()-start; //(02.12.16: took 100s)
-//		System.err.println("Time: "+ duration +" ms");
-//	}
+	public void testPreemptiveTaskVisualizationPS() throws SimException {
+		System.err.println("START testPreemptiveTaskVisualizationPS");
+		ISystemProxy s = SystemProxyFactory.createSystemProxy(ISystemProxy.TIME_SCALE_PS,
+				SchedulerAlgorithmRegister::createPreemptiveEDF);
+		addCores(s);
+		addTasks(s);
+		long start = System.currentTimeMillis();
+		s.compute(500*PS_PER_MS); //0.5 s 
+		long duration = System.currentTimeMillis()-start; //(02.12.16: took 100s)
+		System.err.println("Time: "+ duration +" ms");
+	}
 	
 	/*1 ms*/
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1ms_ps() throws SimException {
 		System.err.println("Performance-Test: 1ms, scale ps");
 		long duration = simulateAsynch(1*PS_PER_MS,ISystemProxy.TIME_SCALE_PS);
@@ -71,26 +71,26 @@ public class PerformanceTest {
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1ms_ns() throws SimException {
 		System.err.println("Performance-Test: 1ms, scale ns");
 		long duration = simulateAsynch(1*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1ms_ns_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 1ms, scale ns, intetercore");
 		long duration = simulateInterCore(1*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1ms_us() throws SimException {
 		System.err.println("Performance-Test: 1ms, scale us");
 		long duration = simulateAsynch(1*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1ms_us_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 1ms, scale us, intetercore");
 		long duration = simulateInterCore(1*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
@@ -112,26 +112,26 @@ public class PerformanceTest {
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_10ms_ns() throws SimException {
 		System.err.println("Performance-Test: 10ms, scale ns");
 		long duration = simulateAsynch(10*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_10ms_ns_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 10ms, scale ns, intetercore");
 		long duration = simulateInterCore(10*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_10ms_us() throws SimException {
 		System.err.println("Performance-Test: 10ms, scale us");
 		long duration = simulateAsynch(10*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_10ms_us_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 10ms, scale us, intetercore");
 		long duration = simulateInterCore(10*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
@@ -153,20 +153,20 @@ public class PerformanceTest {
 //		System.err.println("Time: "+ duration +" ms");
 //	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_100ms_ns() throws SimException {
 		System.err.println("Performance-Test: 100ms, scale ns");
 		long duration = simulateAsynch(100*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_100ms_ns_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 100ms, scale ns, intetercore");
 		long duration = simulateInterCore(100*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_100ms_us() throws SimException {
 		System.err.println("Performance-Test: 100ms, scale us");
 		long duration = simulateAsynch(100*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
@@ -181,7 +181,7 @@ public class PerformanceTest {
 	
 	/*500 ms*/
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_05s_ns() throws SimException {
 		System.err.println("Performance-Test: 0.5s, scale ns");
 		long duration = simulateAsynch(500*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
@@ -194,13 +194,13 @@ public class PerformanceTest {
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_05s_us() throws SimException {
 		System.err.println("Performance-Test: 0,5s, scale us");
 		long duration = simulateAsynch(500*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_05s_us_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 0,5s, scale us, intetercore");
 		long duration = simulateInterCore(500*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
@@ -222,13 +222,13 @@ public class PerformanceTest {
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1s_us() throws SimException {
 		System.err.println("Performance-Test: 1s, scale us");
 		long duration = simulateAsynch(1000*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_1s_us_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 1s, scale us, intetercore");
 		long duration = simulateInterCore(1000*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
@@ -242,20 +242,20 @@ public class PerformanceTest {
 		long duration = simulateAsynch(2000*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_2s_ns_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 2s, scale ns, intetercore");
 		long duration = simulateInterCore(2000*PS_PER_MS,ISystemProxy.TIME_SCALE_NS);
 		System.err.println("Time: "+ duration +" ms");
 	}
 	
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_2s_us() throws SimException {
 		System.err.println("Performance-Test: 2s, scale us");
 		long duration = simulateAsynch(2000*PS_PER_MS,ISystemProxy.TIME_SCALE_US);
 		System.err.println("Time: "+ duration +" ms");
 	}
-	@Test
+//	@Test
 	public void testPreemptiveTaskVisualization_2s_us_intercore() throws SimException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		System.err.println("Performance-Test: 2s, scale us, intetercore");
 		long duration = simulateInterCore(2000*PS_PER_MS,ISystemProxy.TIME_SCALE_US);

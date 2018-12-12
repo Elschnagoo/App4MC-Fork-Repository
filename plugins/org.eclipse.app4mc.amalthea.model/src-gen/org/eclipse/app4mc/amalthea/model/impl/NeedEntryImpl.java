@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Need;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,Need> {
+public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,DiscreteDeviation> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 * @ordered
 	 */
-	protected Need value;
+	protected DiscreteDeviation value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Need getTypedValue() {
+	public DiscreteDeviation getTypedValue() {
 		return value;
 	}
 
@@ -130,8 +130,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedValue(Need newValue, NotificationChain msgs) {
-		Need oldValue = value;
+	public NotificationChain basicSetTypedValue(DiscreteDeviation newValue, NotificationChain msgs) {
+		DiscreteDeviation oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_ENTRY__VALUE, oldValue, newValue);
@@ -145,7 +145,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(Need newValue) {
+	public void setTypedValue(DiscreteDeviation newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -201,7 +201,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey((String)newValue);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((Need)newValue);
+				setTypedValue((DiscreteDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,7 +219,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey(KEY_EDEFAULT);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((Need)null);
+				setTypedValue((DiscreteDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -309,7 +309,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Need getValue() {
+	public DiscreteDeviation getValue() {
 		return getTypedValue();
 	}
 
@@ -318,8 +318,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Need setValue(Need value) {
-		Need oldValue = getValue();
+	public DiscreteDeviation setValue(DiscreteDeviation value) {
+		DiscreteDeviation oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -330,9 +330,9 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, Need> getEMap() {
+	public EMap<String, DiscreteDeviation> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, Need>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, DiscreteDeviation>)container.eGet(eContainmentFeature());
 	}
 
 } //NeedEntryImpl

@@ -16,14 +16,11 @@
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
-import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -37,16 +34,16 @@ public class InstructionsBuilder {
 
 	// ********** Execution Need (Runnable items) **********
 
-	public NeedConstant instructions(final ExecutionNeed container, final long instructions) {
-		final NeedConstant need = FactoryUtil.createNeedConstant(instructions);
-		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
-		return need;
+	public DiscreteConstant instructions(final ExecutionNeed container, final long instructions) {
+		final DiscreteConstant usages = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+		usages.setValue(instructions);
+		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, usages);
+		return usages;
 	}
 
-	public NeedDeviation instructions(final ExecutionNeed container, final Deviation<LongObject> instructions) {
-		final NeedDeviation need = FactoryUtil.createNeedDeviation(instructions);
-		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, need);
-		return need;
+	public DiscreteDeviation instructions(final ExecutionNeed container, final DiscreteDeviation instructions) {
+		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, instructions);
+		return instructions;
 	}
 
 	// ********** Hardware Feature Category **********

@@ -18,17 +18,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.LongObject;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
-import org.eclipse.app4mc.amalthea.model.util.ModelUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.emf.common.util.EList;
 
@@ -75,22 +66,22 @@ public class OMRunnable {
 		while (itRunnableItems.hasNext()) {
 			final RunnableItem runnableItem = itRunnableItems.next();
 
-			if (runnableItem instanceof ExecutionNeed) {
-				final ExecutionNeed execNeed = (ExecutionNeed) runnableItem;
-				final Need abstractNeed = InstructionsUtil.getNeed(execNeed);
-				if (abstractNeed == null) {
-					UniversalHandler.getInstance().log(" Unexpected SWModel.\nexecution need is not set!\nSkipping...",
-							null);
-					return 0;
-				} else if (abstractNeed instanceof NeedConstant) {
-					return processNeedConstant((NeedConstant) abstractNeed);
-				} else if (abstractNeed instanceof NeedDeviation) {
-					return processNeedDeviation((NeedDeviation) abstractNeed);
-				} else {
-					// Report the others (Debug info), as we do not handle them
-					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
-				}
-			}
+//			if (runnableItem instanceof ExecutionNeed) {
+//				final ExecutionNeed execNeed = (ExecutionNeed) runnableItem;
+//				final Need abstractNeed = InstructionsUtil.getNeed(execNeed);
+//				if (abstractNeed == null) {
+//					UniversalHandler.getInstance().log(" Unexpected SWModel.\nexecution need is not set!\nSkipping...",
+//							null);
+//					return 0;
+//				} else if (abstractNeed instanceof NeedConstant) {
+//					return processNeedConstant((NeedConstant) abstractNeed);
+//				} else if (abstractNeed instanceof NeedDeviation) {
+//					return processNeedDeviation((NeedDeviation) abstractNeed);
+//				} else {
+//					// Report the others (Debug info), as we do not handle them
+//					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
+//				}
+//			}
 		}
 
 		UniversalHandler.getInstance()
@@ -98,36 +89,36 @@ public class OMRunnable {
 		return 0;
 	}
 
-	private long processNeedConstant(final NeedConstant needConstant) {
-		if (needConstant.getValue() <= 0) {
-			UniversalHandler.getInstance()
-					.log("Invalid Software Model, NeedConstant contains an invalid value (<= 0).", null);
-			return 0;
-		}
-
-		return needConstant.getValue();
-	}
-
-	private long processNeedDeviation(final NeedDeviation needDeviation) {
-		final Deviation<LongObject> deviation;
-		if ((deviation = needDeviation.getDeviation()) == null) {
-			UniversalHandler.getInstance().log(
-					"Invalid Software Model, NeedDeviation has an invalid or missing containment to its Deviation.",
-					null);
-			return 0;
-		}
-
-		final Long lowerBound = deviation.getLowerBound().getValue();
-		final Long upperBound = deviation.getUpperBound().getValue();
-
-		// Check if lower and upper bound are set correct
-		// Quick solution, might need to be rewritten in the future
-		if (lowerBound <= 0 || upperBound <= 0) {
-			UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
-			return 0;
-		}
-		return ((lowerBound + upperBound) / 2);
-	}
+//	private long processNeedConstant(final NeedConstant needConstant) {
+//		if (needConstant.getValue() <= 0) {
+//			UniversalHandler.getInstance()
+//					.log("Invalid Software Model, NeedConstant contains an invalid value (<= 0).", null);
+//			return 0;
+//		}
+//
+//		return needConstant.getValue();
+//	}
+//
+//	private long processNeedDeviation(final NeedDeviation needDeviation) {
+//		final Deviation<LongObject> deviation;
+//		if ((deviation = needDeviation.getDeviation()) == null) {
+//			UniversalHandler.getInstance().log(
+//					"Invalid Software Model, NeedDeviation has an invalid or missing containment to its Deviation.",
+//					null);
+//			return 0;
+//		}
+//
+//		final Long lowerBound = deviation.getLowerBound().getValue();
+//		final Long upperBound = deviation.getUpperBound().getValue();
+//
+//		// Check if lower and upper bound are set correct
+//		// Quick solution, might need to be rewritten in the future
+//		if (lowerBound <= 0 || upperBound <= 0) {
+//			UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
+//			return 0;
+//		}
+//		return ((lowerBound + upperBound) / 2);
+//	}
 
 //	public List<OMRunnable> getPre() {
 //		return pre;

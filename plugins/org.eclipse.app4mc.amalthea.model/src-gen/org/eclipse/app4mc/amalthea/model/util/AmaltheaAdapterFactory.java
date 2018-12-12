@@ -233,9 +233,6 @@ import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
-import org.eclipse.app4mc.amalthea.model.Need;
-import org.eclipse.app4mc.amalthea.model.NeedConstant;
-import org.eclipse.app4mc.amalthea.model.NeedDeviation;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
@@ -515,18 +512,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTransmissionPolicy(TransmissionPolicy object) {
 				return createTransmissionPolicyAdapter();
-			}
-			@Override
-			public Adapter caseNeed(Need object) {
-				return createNeedAdapter();
-			}
-			@Override
-			public Adapter caseNeedDeviation(NeedDeviation object) {
-				return createNeedDeviationAdapter();
-			}
-			@Override
-			public Adapter caseNeedConstant(NeedConstant object) {
-				return createNeedConstantAdapter();
 			}
 			@Override
 			public Adapter caseQuantity(Quantity object) {
@@ -1805,7 +1790,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createExecutionNeedAdapter();
 			}
 			@Override
-			public Adapter caseNeedEntry(Map.Entry<String, Need> object) {
+			public Adapter caseNeedEntry(Map.Entry<String, DiscreteDeviation> object) {
 				return createNeedEntryAdapter();
 			}
 			@Override
@@ -2223,48 +2208,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransmissionPolicyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Need <em>Need</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Need
-	 * @generated
-	 */
-	public Adapter createNeedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NeedDeviation <em>Need Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.NeedDeviation
-	 * @generated
-	 */
-	public Adapter createNeedDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NeedConstant <em>Need Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.NeedConstant
-	 * @generated
-	 */
-	public Adapter createNeedConstantAdapter() {
 		return null;
 	}
 

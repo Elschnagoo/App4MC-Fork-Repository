@@ -88,24 +88,6 @@ public interface AmaltheaFactory extends EFactory {
 	TransmissionPolicy createTransmissionPolicy();
 
 	/**
-	 * Returns a new object of class '<em>Need Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Need Deviation</em>'.
-	 * @generated
-	 */
-	NeedDeviation createNeedDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Need Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Need Constant</em>'.
-	 * @generated
-	 */
-	NeedConstant createNeedConstant();
-
-	/**
 	 * Returns a new object of class '<em>Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
