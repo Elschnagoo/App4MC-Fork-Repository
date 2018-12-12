@@ -15,8 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.OsISROverhead;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -49,7 +49,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks preExecutionOverhead;
+	protected Ticks preExecutionOverhead;
 
 	/**
 	 * The cached value of the '{@link #getPostExecutionOverhead() <em>Post Execution Overhead</em>}' containment reference.
@@ -59,7 +59,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks postExecutionOverhead;
+	protected Ticks postExecutionOverhead;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,7 +85,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getPreExecutionOverhead() {
+	public Ticks getPreExecutionOverhead() {
 		return preExecutionOverhead;
 	}
 
@@ -94,8 +94,8 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPreExecutionOverhead(ExecutionTicks newPreExecutionOverhead, NotificationChain msgs) {
-		ExecutionTicks oldPreExecutionOverhead = preExecutionOverhead;
+	public NotificationChain basicSetPreExecutionOverhead(Ticks newPreExecutionOverhead, NotificationChain msgs) {
+		Ticks oldPreExecutionOverhead = preExecutionOverhead;
 		preExecutionOverhead = newPreExecutionOverhead;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_ISR_OVERHEAD__PRE_EXECUTION_OVERHEAD, oldPreExecutionOverhead, newPreExecutionOverhead);
@@ -109,7 +109,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPreExecutionOverhead(ExecutionTicks newPreExecutionOverhead) {
+	public void setPreExecutionOverhead(Ticks newPreExecutionOverhead) {
 		if (newPreExecutionOverhead != preExecutionOverhead) {
 			NotificationChain msgs = null;
 			if (preExecutionOverhead != null)
@@ -128,7 +128,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getPostExecutionOverhead() {
+	public Ticks getPostExecutionOverhead() {
 		return postExecutionOverhead;
 	}
 
@@ -137,8 +137,8 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPostExecutionOverhead(ExecutionTicks newPostExecutionOverhead, NotificationChain msgs) {
-		ExecutionTicks oldPostExecutionOverhead = postExecutionOverhead;
+	public NotificationChain basicSetPostExecutionOverhead(Ticks newPostExecutionOverhead, NotificationChain msgs) {
+		Ticks oldPostExecutionOverhead = postExecutionOverhead;
 		postExecutionOverhead = newPostExecutionOverhead;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_ISR_OVERHEAD__POST_EXECUTION_OVERHEAD, oldPostExecutionOverhead, newPostExecutionOverhead);
@@ -152,7 +152,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPostExecutionOverhead(ExecutionTicks newPostExecutionOverhead) {
+	public void setPostExecutionOverhead(Ticks newPostExecutionOverhead) {
 		if (newPostExecutionOverhead != postExecutionOverhead) {
 			NotificationChain msgs = null;
 			if (postExecutionOverhead != null)
@@ -207,10 +207,10 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_ISR_OVERHEAD__PRE_EXECUTION_OVERHEAD:
-				setPreExecutionOverhead((ExecutionTicks)newValue);
+				setPreExecutionOverhead((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_ISR_OVERHEAD__POST_EXECUTION_OVERHEAD:
-				setPostExecutionOverhead((ExecutionTicks)newValue);
+				setPostExecutionOverhead((Ticks)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,10 +225,10 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_ISR_OVERHEAD__PRE_EXECUTION_OVERHEAD:
-				setPreExecutionOverhead((ExecutionTicks)null);
+				setPreExecutionOverhead((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_ISR_OVERHEAD__POST_EXECUTION_OVERHEAD:
-				setPostExecutionOverhead((ExecutionTicks)null);
+				setPostExecutionOverhead((Ticks)null);
 				return;
 		}
 		super.eUnset(featureID);

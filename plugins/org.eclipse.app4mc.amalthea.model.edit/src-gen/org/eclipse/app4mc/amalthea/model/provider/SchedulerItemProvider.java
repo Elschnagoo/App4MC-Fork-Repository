@@ -200,7 +200,7 @@ public class SchedulerItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getScheduler_ComputationItems(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -15,8 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.OsAPIOverhead;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -66,7 +66,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSendMessage;
+	protected Ticks apiSendMessage;
 
 	/**
 	 * The cached value of the '{@link #getApiTerminateTask() <em>Api Terminate Task</em>}' containment reference.
@@ -76,7 +76,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiTerminateTask;
+	protected Ticks apiTerminateTask;
 
 	/**
 	 * The cached value of the '{@link #getApiSchedule() <em>Api Schedule</em>}' containment reference.
@@ -86,7 +86,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSchedule;
+	protected Ticks apiSchedule;
 
 	/**
 	 * The cached value of the '{@link #getApiRequestResource() <em>Api Request Resource</em>}' containment reference.
@@ -96,7 +96,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiRequestResource;
+	protected Ticks apiRequestResource;
 
 	/**
 	 * The cached value of the '{@link #getApiReleaseResource() <em>Api Release Resource</em>}' containment reference.
@@ -106,7 +106,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiReleaseResource;
+	protected Ticks apiReleaseResource;
 
 	/**
 	 * The cached value of the '{@link #getApiSetEvent() <em>Api Set Event</em>}' containment reference.
@@ -116,7 +116,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSetEvent;
+	protected Ticks apiSetEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiWaitEvent() <em>Api Wait Event</em>}' containment reference.
@@ -126,7 +126,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiWaitEvent;
+	protected Ticks apiWaitEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiClearEvent() <em>Api Clear Event</em>}' containment reference.
@@ -136,7 +136,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiClearEvent;
+	protected Ticks apiClearEvent;
 
 	/**
 	 * The cached value of the '{@link #getApiActivateTask() <em>Api Activate Task</em>}' containment reference.
@@ -146,7 +146,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiActivateTask;
+	protected Ticks apiActivateTask;
 
 	/**
 	 * The cached value of the '{@link #getApiEnforcedMigration() <em>Api Enforced Migration</em>}' containment reference.
@@ -156,7 +156,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiEnforcedMigration;
+	protected Ticks apiEnforcedMigration;
 
 	/**
 	 * The cached value of the '{@link #getApiSuspendOsInterrupts() <em>Api Suspend Os Interrupts</em>}' containment reference.
@@ -166,7 +166,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSuspendOsInterrupts;
+	protected Ticks apiSuspendOsInterrupts;
 
 	/**
 	 * The cached value of the '{@link #getApiResumeOsInterrupts() <em>Api Resume Os Interrupts</em>}' containment reference.
@@ -176,7 +176,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiResumeOsInterrupts;
+	protected Ticks apiResumeOsInterrupts;
 
 	/**
 	 * The cached value of the '{@link #getApiRequestSpinlock() <em>Api Request Spinlock</em>}' containment reference.
@@ -186,7 +186,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiRequestSpinlock;
+	protected Ticks apiRequestSpinlock;
 
 	/**
 	 * The cached value of the '{@link #getApiReleaseSpinlock() <em>Api Release Spinlock</em>}' containment reference.
@@ -196,7 +196,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiReleaseSpinlock;
+	protected Ticks apiReleaseSpinlock;
 
 	/**
 	 * The cached value of the '{@link #getApiSenderReceiverRead() <em>Api Sender Receiver Read</em>}' containment reference.
@@ -206,7 +206,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSenderReceiverRead;
+	protected Ticks apiSenderReceiverRead;
 
 	/**
 	 * The cached value of the '{@link #getApiSenderReceiverWrite() <em>Api Sender Receiver Write</em>}' containment reference.
@@ -216,7 +216,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSenderReceiverWrite;
+	protected Ticks apiSenderReceiverWrite;
 
 	/**
 	 * The cached value of the '{@link #getApiSynchronousServerCallPoint() <em>Api Synchronous Server Call Point</em>}' containment reference.
@@ -226,7 +226,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiSynchronousServerCallPoint;
+	protected Ticks apiSynchronousServerCallPoint;
 
 	/**
 	 * The cached value of the '{@link #getApiIocRead() <em>Api Ioc Read</em>}' containment reference.
@@ -236,7 +236,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiIocRead;
+	protected Ticks apiIocRead;
 
 	/**
 	 * The cached value of the '{@link #getApiIocWrite() <em>Api Ioc Write</em>}' containment reference.
@@ -246,7 +246,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutionTicks apiIocWrite;
+	protected Ticks apiIocWrite;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,7 +272,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSendMessage() {
+	public Ticks getApiSendMessage() {
 		return apiSendMessage;
 	}
 
@@ -281,8 +281,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSendMessage(ExecutionTicks newApiSendMessage, NotificationChain msgs) {
-		ExecutionTicks oldApiSendMessage = apiSendMessage;
+	public NotificationChain basicSetApiSendMessage(Ticks newApiSendMessage, NotificationChain msgs) {
+		Ticks oldApiSendMessage = apiSendMessage;
 		apiSendMessage = newApiSendMessage;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SEND_MESSAGE, oldApiSendMessage, newApiSendMessage);
@@ -296,7 +296,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSendMessage(ExecutionTicks newApiSendMessage) {
+	public void setApiSendMessage(Ticks newApiSendMessage) {
 		if (newApiSendMessage != apiSendMessage) {
 			NotificationChain msgs = null;
 			if (apiSendMessage != null)
@@ -315,7 +315,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiTerminateTask() {
+	public Ticks getApiTerminateTask() {
 		return apiTerminateTask;
 	}
 
@@ -324,8 +324,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiTerminateTask(ExecutionTicks newApiTerminateTask, NotificationChain msgs) {
-		ExecutionTicks oldApiTerminateTask = apiTerminateTask;
+	public NotificationChain basicSetApiTerminateTask(Ticks newApiTerminateTask, NotificationChain msgs) {
+		Ticks oldApiTerminateTask = apiTerminateTask;
 		apiTerminateTask = newApiTerminateTask;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_TERMINATE_TASK, oldApiTerminateTask, newApiTerminateTask);
@@ -339,7 +339,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiTerminateTask(ExecutionTicks newApiTerminateTask) {
+	public void setApiTerminateTask(Ticks newApiTerminateTask) {
 		if (newApiTerminateTask != apiTerminateTask) {
 			NotificationChain msgs = null;
 			if (apiTerminateTask != null)
@@ -358,7 +358,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSchedule() {
+	public Ticks getApiSchedule() {
 		return apiSchedule;
 	}
 
@@ -367,8 +367,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSchedule(ExecutionTicks newApiSchedule, NotificationChain msgs) {
-		ExecutionTicks oldApiSchedule = apiSchedule;
+	public NotificationChain basicSetApiSchedule(Ticks newApiSchedule, NotificationChain msgs) {
+		Ticks oldApiSchedule = apiSchedule;
 		apiSchedule = newApiSchedule;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SCHEDULE, oldApiSchedule, newApiSchedule);
@@ -382,7 +382,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSchedule(ExecutionTicks newApiSchedule) {
+	public void setApiSchedule(Ticks newApiSchedule) {
 		if (newApiSchedule != apiSchedule) {
 			NotificationChain msgs = null;
 			if (apiSchedule != null)
@@ -401,7 +401,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiRequestResource() {
+	public Ticks getApiRequestResource() {
 		return apiRequestResource;
 	}
 
@@ -410,8 +410,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiRequestResource(ExecutionTicks newApiRequestResource, NotificationChain msgs) {
-		ExecutionTicks oldApiRequestResource = apiRequestResource;
+	public NotificationChain basicSetApiRequestResource(Ticks newApiRequestResource, NotificationChain msgs) {
+		Ticks oldApiRequestResource = apiRequestResource;
 		apiRequestResource = newApiRequestResource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_RESOURCE, oldApiRequestResource, newApiRequestResource);
@@ -425,7 +425,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiRequestResource(ExecutionTicks newApiRequestResource) {
+	public void setApiRequestResource(Ticks newApiRequestResource) {
 		if (newApiRequestResource != apiRequestResource) {
 			NotificationChain msgs = null;
 			if (apiRequestResource != null)
@@ -444,7 +444,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiReleaseResource() {
+	public Ticks getApiReleaseResource() {
 		return apiReleaseResource;
 	}
 
@@ -453,8 +453,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiReleaseResource(ExecutionTicks newApiReleaseResource, NotificationChain msgs) {
-		ExecutionTicks oldApiReleaseResource = apiReleaseResource;
+	public NotificationChain basicSetApiReleaseResource(Ticks newApiReleaseResource, NotificationChain msgs) {
+		Ticks oldApiReleaseResource = apiReleaseResource;
 		apiReleaseResource = newApiReleaseResource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_RESOURCE, oldApiReleaseResource, newApiReleaseResource);
@@ -468,7 +468,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiReleaseResource(ExecutionTicks newApiReleaseResource) {
+	public void setApiReleaseResource(Ticks newApiReleaseResource) {
 		if (newApiReleaseResource != apiReleaseResource) {
 			NotificationChain msgs = null;
 			if (apiReleaseResource != null)
@@ -487,7 +487,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSetEvent() {
+	public Ticks getApiSetEvent() {
 		return apiSetEvent;
 	}
 
@@ -496,8 +496,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSetEvent(ExecutionTicks newApiSetEvent, NotificationChain msgs) {
-		ExecutionTicks oldApiSetEvent = apiSetEvent;
+	public NotificationChain basicSetApiSetEvent(Ticks newApiSetEvent, NotificationChain msgs) {
+		Ticks oldApiSetEvent = apiSetEvent;
 		apiSetEvent = newApiSetEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SET_EVENT, oldApiSetEvent, newApiSetEvent);
@@ -511,7 +511,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSetEvent(ExecutionTicks newApiSetEvent) {
+	public void setApiSetEvent(Ticks newApiSetEvent) {
 		if (newApiSetEvent != apiSetEvent) {
 			NotificationChain msgs = null;
 			if (apiSetEvent != null)
@@ -530,7 +530,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiWaitEvent() {
+	public Ticks getApiWaitEvent() {
 		return apiWaitEvent;
 	}
 
@@ -539,8 +539,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiWaitEvent(ExecutionTicks newApiWaitEvent, NotificationChain msgs) {
-		ExecutionTicks oldApiWaitEvent = apiWaitEvent;
+	public NotificationChain basicSetApiWaitEvent(Ticks newApiWaitEvent, NotificationChain msgs) {
+		Ticks oldApiWaitEvent = apiWaitEvent;
 		apiWaitEvent = newApiWaitEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_WAIT_EVENT, oldApiWaitEvent, newApiWaitEvent);
@@ -554,7 +554,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiWaitEvent(ExecutionTicks newApiWaitEvent) {
+	public void setApiWaitEvent(Ticks newApiWaitEvent) {
 		if (newApiWaitEvent != apiWaitEvent) {
 			NotificationChain msgs = null;
 			if (apiWaitEvent != null)
@@ -573,7 +573,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiClearEvent() {
+	public Ticks getApiClearEvent() {
 		return apiClearEvent;
 	}
 
@@ -582,8 +582,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiClearEvent(ExecutionTicks newApiClearEvent, NotificationChain msgs) {
-		ExecutionTicks oldApiClearEvent = apiClearEvent;
+	public NotificationChain basicSetApiClearEvent(Ticks newApiClearEvent, NotificationChain msgs) {
+		Ticks oldApiClearEvent = apiClearEvent;
 		apiClearEvent = newApiClearEvent;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_CLEAR_EVENT, oldApiClearEvent, newApiClearEvent);
@@ -597,7 +597,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiClearEvent(ExecutionTicks newApiClearEvent) {
+	public void setApiClearEvent(Ticks newApiClearEvent) {
 		if (newApiClearEvent != apiClearEvent) {
 			NotificationChain msgs = null;
 			if (apiClearEvent != null)
@@ -616,7 +616,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiActivateTask() {
+	public Ticks getApiActivateTask() {
 		return apiActivateTask;
 	}
 
@@ -625,8 +625,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiActivateTask(ExecutionTicks newApiActivateTask, NotificationChain msgs) {
-		ExecutionTicks oldApiActivateTask = apiActivateTask;
+	public NotificationChain basicSetApiActivateTask(Ticks newApiActivateTask, NotificationChain msgs) {
+		Ticks oldApiActivateTask = apiActivateTask;
 		apiActivateTask = newApiActivateTask;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_ACTIVATE_TASK, oldApiActivateTask, newApiActivateTask);
@@ -640,7 +640,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiActivateTask(ExecutionTicks newApiActivateTask) {
+	public void setApiActivateTask(Ticks newApiActivateTask) {
 		if (newApiActivateTask != apiActivateTask) {
 			NotificationChain msgs = null;
 			if (apiActivateTask != null)
@@ -659,7 +659,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiEnforcedMigration() {
+	public Ticks getApiEnforcedMigration() {
 		return apiEnforcedMigration;
 	}
 
@@ -668,8 +668,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiEnforcedMigration(ExecutionTicks newApiEnforcedMigration, NotificationChain msgs) {
-		ExecutionTicks oldApiEnforcedMigration = apiEnforcedMigration;
+	public NotificationChain basicSetApiEnforcedMigration(Ticks newApiEnforcedMigration, NotificationChain msgs) {
+		Ticks oldApiEnforcedMigration = apiEnforcedMigration;
 		apiEnforcedMigration = newApiEnforcedMigration;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_ENFORCED_MIGRATION, oldApiEnforcedMigration, newApiEnforcedMigration);
@@ -683,7 +683,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiEnforcedMigration(ExecutionTicks newApiEnforcedMigration) {
+	public void setApiEnforcedMigration(Ticks newApiEnforcedMigration) {
 		if (newApiEnforcedMigration != apiEnforcedMigration) {
 			NotificationChain msgs = null;
 			if (apiEnforcedMigration != null)
@@ -702,7 +702,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSuspendOsInterrupts() {
+	public Ticks getApiSuspendOsInterrupts() {
 		return apiSuspendOsInterrupts;
 	}
 
@@ -711,8 +711,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSuspendOsInterrupts(ExecutionTicks newApiSuspendOsInterrupts, NotificationChain msgs) {
-		ExecutionTicks oldApiSuspendOsInterrupts = apiSuspendOsInterrupts;
+	public NotificationChain basicSetApiSuspendOsInterrupts(Ticks newApiSuspendOsInterrupts, NotificationChain msgs) {
+		Ticks oldApiSuspendOsInterrupts = apiSuspendOsInterrupts;
 		apiSuspendOsInterrupts = newApiSuspendOsInterrupts;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SUSPEND_OS_INTERRUPTS, oldApiSuspendOsInterrupts, newApiSuspendOsInterrupts);
@@ -726,7 +726,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSuspendOsInterrupts(ExecutionTicks newApiSuspendOsInterrupts) {
+	public void setApiSuspendOsInterrupts(Ticks newApiSuspendOsInterrupts) {
 		if (newApiSuspendOsInterrupts != apiSuspendOsInterrupts) {
 			NotificationChain msgs = null;
 			if (apiSuspendOsInterrupts != null)
@@ -745,7 +745,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiResumeOsInterrupts() {
+	public Ticks getApiResumeOsInterrupts() {
 		return apiResumeOsInterrupts;
 	}
 
@@ -754,8 +754,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiResumeOsInterrupts(ExecutionTicks newApiResumeOsInterrupts, NotificationChain msgs) {
-		ExecutionTicks oldApiResumeOsInterrupts = apiResumeOsInterrupts;
+	public NotificationChain basicSetApiResumeOsInterrupts(Ticks newApiResumeOsInterrupts, NotificationChain msgs) {
+		Ticks oldApiResumeOsInterrupts = apiResumeOsInterrupts;
 		apiResumeOsInterrupts = newApiResumeOsInterrupts;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_RESUME_OS_INTERRUPTS, oldApiResumeOsInterrupts, newApiResumeOsInterrupts);
@@ -769,7 +769,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiResumeOsInterrupts(ExecutionTicks newApiResumeOsInterrupts) {
+	public void setApiResumeOsInterrupts(Ticks newApiResumeOsInterrupts) {
 		if (newApiResumeOsInterrupts != apiResumeOsInterrupts) {
 			NotificationChain msgs = null;
 			if (apiResumeOsInterrupts != null)
@@ -788,7 +788,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiRequestSpinlock() {
+	public Ticks getApiRequestSpinlock() {
 		return apiRequestSpinlock;
 	}
 
@@ -797,8 +797,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiRequestSpinlock(ExecutionTicks newApiRequestSpinlock, NotificationChain msgs) {
-		ExecutionTicks oldApiRequestSpinlock = apiRequestSpinlock;
+	public NotificationChain basicSetApiRequestSpinlock(Ticks newApiRequestSpinlock, NotificationChain msgs) {
+		Ticks oldApiRequestSpinlock = apiRequestSpinlock;
 		apiRequestSpinlock = newApiRequestSpinlock;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_SPINLOCK, oldApiRequestSpinlock, newApiRequestSpinlock);
@@ -812,7 +812,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiRequestSpinlock(ExecutionTicks newApiRequestSpinlock) {
+	public void setApiRequestSpinlock(Ticks newApiRequestSpinlock) {
 		if (newApiRequestSpinlock != apiRequestSpinlock) {
 			NotificationChain msgs = null;
 			if (apiRequestSpinlock != null)
@@ -831,7 +831,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiReleaseSpinlock() {
+	public Ticks getApiReleaseSpinlock() {
 		return apiReleaseSpinlock;
 	}
 
@@ -840,8 +840,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiReleaseSpinlock(ExecutionTicks newApiReleaseSpinlock, NotificationChain msgs) {
-		ExecutionTicks oldApiReleaseSpinlock = apiReleaseSpinlock;
+	public NotificationChain basicSetApiReleaseSpinlock(Ticks newApiReleaseSpinlock, NotificationChain msgs) {
+		Ticks oldApiReleaseSpinlock = apiReleaseSpinlock;
 		apiReleaseSpinlock = newApiReleaseSpinlock;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_SPINLOCK, oldApiReleaseSpinlock, newApiReleaseSpinlock);
@@ -855,7 +855,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiReleaseSpinlock(ExecutionTicks newApiReleaseSpinlock) {
+	public void setApiReleaseSpinlock(Ticks newApiReleaseSpinlock) {
 		if (newApiReleaseSpinlock != apiReleaseSpinlock) {
 			NotificationChain msgs = null;
 			if (apiReleaseSpinlock != null)
@@ -874,7 +874,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSenderReceiverRead() {
+	public Ticks getApiSenderReceiverRead() {
 		return apiSenderReceiverRead;
 	}
 
@@ -883,8 +883,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSenderReceiverRead(ExecutionTicks newApiSenderReceiverRead, NotificationChain msgs) {
-		ExecutionTicks oldApiSenderReceiverRead = apiSenderReceiverRead;
+	public NotificationChain basicSetApiSenderReceiverRead(Ticks newApiSenderReceiverRead, NotificationChain msgs) {
+		Ticks oldApiSenderReceiverRead = apiSenderReceiverRead;
 		apiSenderReceiverRead = newApiSenderReceiverRead;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_READ, oldApiSenderReceiverRead, newApiSenderReceiverRead);
@@ -898,7 +898,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSenderReceiverRead(ExecutionTicks newApiSenderReceiverRead) {
+	public void setApiSenderReceiverRead(Ticks newApiSenderReceiverRead) {
 		if (newApiSenderReceiverRead != apiSenderReceiverRead) {
 			NotificationChain msgs = null;
 			if (apiSenderReceiverRead != null)
@@ -917,7 +917,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSenderReceiverWrite() {
+	public Ticks getApiSenderReceiverWrite() {
 		return apiSenderReceiverWrite;
 	}
 
@@ -926,8 +926,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSenderReceiverWrite(ExecutionTicks newApiSenderReceiverWrite, NotificationChain msgs) {
-		ExecutionTicks oldApiSenderReceiverWrite = apiSenderReceiverWrite;
+	public NotificationChain basicSetApiSenderReceiverWrite(Ticks newApiSenderReceiverWrite, NotificationChain msgs) {
+		Ticks oldApiSenderReceiverWrite = apiSenderReceiverWrite;
 		apiSenderReceiverWrite = newApiSenderReceiverWrite;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_WRITE, oldApiSenderReceiverWrite, newApiSenderReceiverWrite);
@@ -941,7 +941,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSenderReceiverWrite(ExecutionTicks newApiSenderReceiverWrite) {
+	public void setApiSenderReceiverWrite(Ticks newApiSenderReceiverWrite) {
 		if (newApiSenderReceiverWrite != apiSenderReceiverWrite) {
 			NotificationChain msgs = null;
 			if (apiSenderReceiverWrite != null)
@@ -960,7 +960,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiSynchronousServerCallPoint() {
+	public Ticks getApiSynchronousServerCallPoint() {
 		return apiSynchronousServerCallPoint;
 	}
 
@@ -969,8 +969,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiSynchronousServerCallPoint(ExecutionTicks newApiSynchronousServerCallPoint, NotificationChain msgs) {
-		ExecutionTicks oldApiSynchronousServerCallPoint = apiSynchronousServerCallPoint;
+	public NotificationChain basicSetApiSynchronousServerCallPoint(Ticks newApiSynchronousServerCallPoint, NotificationChain msgs) {
+		Ticks oldApiSynchronousServerCallPoint = apiSynchronousServerCallPoint;
 		apiSynchronousServerCallPoint = newApiSynchronousServerCallPoint;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_SYNCHRONOUS_SERVER_CALL_POINT, oldApiSynchronousServerCallPoint, newApiSynchronousServerCallPoint);
@@ -984,7 +984,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiSynchronousServerCallPoint(ExecutionTicks newApiSynchronousServerCallPoint) {
+	public void setApiSynchronousServerCallPoint(Ticks newApiSynchronousServerCallPoint) {
 		if (newApiSynchronousServerCallPoint != apiSynchronousServerCallPoint) {
 			NotificationChain msgs = null;
 			if (apiSynchronousServerCallPoint != null)
@@ -1003,7 +1003,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiIocRead() {
+	public Ticks getApiIocRead() {
 		return apiIocRead;
 	}
 
@@ -1012,8 +1012,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiIocRead(ExecutionTicks newApiIocRead, NotificationChain msgs) {
-		ExecutionTicks oldApiIocRead = apiIocRead;
+	public NotificationChain basicSetApiIocRead(Ticks newApiIocRead, NotificationChain msgs) {
+		Ticks oldApiIocRead = apiIocRead;
 		apiIocRead = newApiIocRead;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_IOC_READ, oldApiIocRead, newApiIocRead);
@@ -1027,7 +1027,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiIocRead(ExecutionTicks newApiIocRead) {
+	public void setApiIocRead(Ticks newApiIocRead) {
 		if (newApiIocRead != apiIocRead) {
 			NotificationChain msgs = null;
 			if (apiIocRead != null)
@@ -1046,7 +1046,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTicks getApiIocWrite() {
+	public Ticks getApiIocWrite() {
 		return apiIocWrite;
 	}
 
@@ -1055,8 +1055,8 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetApiIocWrite(ExecutionTicks newApiIocWrite, NotificationChain msgs) {
-		ExecutionTicks oldApiIocWrite = apiIocWrite;
+	public NotificationChain basicSetApiIocWrite(Ticks newApiIocWrite, NotificationChain msgs) {
+		Ticks oldApiIocWrite = apiIocWrite;
 		apiIocWrite = newApiIocWrite;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.OS_API_OVERHEAD__API_IOC_WRITE, oldApiIocWrite, newApiIocWrite);
@@ -1070,7 +1070,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setApiIocWrite(ExecutionTicks newApiIocWrite) {
+	public void setApiIocWrite(Ticks newApiIocWrite) {
 		if (newApiIocWrite != apiIocWrite) {
 			NotificationChain msgs = null;
 			if (apiIocWrite != null)
@@ -1193,61 +1193,61 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SEND_MESSAGE:
-				setApiSendMessage((ExecutionTicks)newValue);
+				setApiSendMessage((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_TERMINATE_TASK:
-				setApiTerminateTask((ExecutionTicks)newValue);
+				setApiTerminateTask((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SCHEDULE:
-				setApiSchedule((ExecutionTicks)newValue);
+				setApiSchedule((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_RESOURCE:
-				setApiRequestResource((ExecutionTicks)newValue);
+				setApiRequestResource((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_RESOURCE:
-				setApiReleaseResource((ExecutionTicks)newValue);
+				setApiReleaseResource((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SET_EVENT:
-				setApiSetEvent((ExecutionTicks)newValue);
+				setApiSetEvent((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_WAIT_EVENT:
-				setApiWaitEvent((ExecutionTicks)newValue);
+				setApiWaitEvent((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_CLEAR_EVENT:
-				setApiClearEvent((ExecutionTicks)newValue);
+				setApiClearEvent((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_ACTIVATE_TASK:
-				setApiActivateTask((ExecutionTicks)newValue);
+				setApiActivateTask((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_ENFORCED_MIGRATION:
-				setApiEnforcedMigration((ExecutionTicks)newValue);
+				setApiEnforcedMigration((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SUSPEND_OS_INTERRUPTS:
-				setApiSuspendOsInterrupts((ExecutionTicks)newValue);
+				setApiSuspendOsInterrupts((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RESUME_OS_INTERRUPTS:
-				setApiResumeOsInterrupts((ExecutionTicks)newValue);
+				setApiResumeOsInterrupts((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_SPINLOCK:
-				setApiRequestSpinlock((ExecutionTicks)newValue);
+				setApiRequestSpinlock((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_SPINLOCK:
-				setApiReleaseSpinlock((ExecutionTicks)newValue);
+				setApiReleaseSpinlock((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_READ:
-				setApiSenderReceiverRead((ExecutionTicks)newValue);
+				setApiSenderReceiverRead((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_WRITE:
-				setApiSenderReceiverWrite((ExecutionTicks)newValue);
+				setApiSenderReceiverWrite((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SYNCHRONOUS_SERVER_CALL_POINT:
-				setApiSynchronousServerCallPoint((ExecutionTicks)newValue);
+				setApiSynchronousServerCallPoint((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_IOC_READ:
-				setApiIocRead((ExecutionTicks)newValue);
+				setApiIocRead((Ticks)newValue);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_IOC_WRITE:
-				setApiIocWrite((ExecutionTicks)newValue);
+				setApiIocWrite((Ticks)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1262,61 +1262,61 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SEND_MESSAGE:
-				setApiSendMessage((ExecutionTicks)null);
+				setApiSendMessage((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_TERMINATE_TASK:
-				setApiTerminateTask((ExecutionTicks)null);
+				setApiTerminateTask((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SCHEDULE:
-				setApiSchedule((ExecutionTicks)null);
+				setApiSchedule((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_RESOURCE:
-				setApiRequestResource((ExecutionTicks)null);
+				setApiRequestResource((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_RESOURCE:
-				setApiReleaseResource((ExecutionTicks)null);
+				setApiReleaseResource((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SET_EVENT:
-				setApiSetEvent((ExecutionTicks)null);
+				setApiSetEvent((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_WAIT_EVENT:
-				setApiWaitEvent((ExecutionTicks)null);
+				setApiWaitEvent((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_CLEAR_EVENT:
-				setApiClearEvent((ExecutionTicks)null);
+				setApiClearEvent((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_ACTIVATE_TASK:
-				setApiActivateTask((ExecutionTicks)null);
+				setApiActivateTask((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_ENFORCED_MIGRATION:
-				setApiEnforcedMigration((ExecutionTicks)null);
+				setApiEnforcedMigration((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SUSPEND_OS_INTERRUPTS:
-				setApiSuspendOsInterrupts((ExecutionTicks)null);
+				setApiSuspendOsInterrupts((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RESUME_OS_INTERRUPTS:
-				setApiResumeOsInterrupts((ExecutionTicks)null);
+				setApiResumeOsInterrupts((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_REQUEST_SPINLOCK:
-				setApiRequestSpinlock((ExecutionTicks)null);
+				setApiRequestSpinlock((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_RELEASE_SPINLOCK:
-				setApiReleaseSpinlock((ExecutionTicks)null);
+				setApiReleaseSpinlock((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_READ:
-				setApiSenderReceiverRead((ExecutionTicks)null);
+				setApiSenderReceiverRead((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SENDER_RECEIVER_WRITE:
-				setApiSenderReceiverWrite((ExecutionTicks)null);
+				setApiSenderReceiverWrite((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_SYNCHRONOUS_SERVER_CALL_POINT:
-				setApiSynchronousServerCallPoint((ExecutionTicks)null);
+				setApiSynchronousServerCallPoint((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_IOC_READ:
-				setApiIocRead((ExecutionTicks)null);
+				setApiIocRead((Ticks)null);
 				return;
 			case AmaltheaPackage.OS_API_OVERHEAD__API_IOC_WRITE:
-				setApiIocWrite((ExecutionTicks)null);
+				setApiIocWrite((Ticks)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -60,22 +60,12 @@ import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
 import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DirectionType
-import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogram
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval
-import org.eclipse.app4mc.amalthea.model.DiscreteStatistics
-import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric
@@ -164,8 +154,7 @@ import org.eclipse.app4mc.amalthea.model.TagGroup
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
-import org.eclipse.app4mc.amalthea.model.TicksConstant
-import org.eclipse.app4mc.amalthea.model.TicksDeviation
+import org.eclipse.app4mc.amalthea.model.Ticks
 import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.TimeMetric
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit
@@ -179,20 +168,14 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
-import org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl
 import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
+import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.provider.IItemLabelProvider
 import org.eclipse.emf.edit.provider.ViewerNotification
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
-import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
-import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution
 
 class CustomItemProviderService {
 
@@ -809,54 +792,6 @@ class CustomItemProviderService {
 	def static ViewerNotification getNeedDeviationItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(NeedDeviation)) {
 			case AmaltheaPackage::NEED_DEVIATION__DEVIATION:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
-		}
-		return null
-	}
-
-	/*****************************************************************************
-	 * 						TicksConstantItemProvider
-	 *****************************************************************************/
-	def static String getTicksConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof TicksConstant) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val s2 = Long.toString(object.value)
-			return s1 + "ticks (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static List<ViewerNotification> getTicksConstantItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(TicksConstant)) {
-			case AmaltheaPackage::TICKS_CONSTANT__VALUE: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-				addParentLabelNotification(list, notification)
-				}
-		}
-		return list
-	}
-
-	/*****************************************************************************
-	 * 						TicksDeviationItemProvider
-	 *****************************************************************************/
-	def static String getTicksDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof TicksDeviation) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val distName = object?.deviation?.distribution?.eClass?.name
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return s1 + "ticks (deviation): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getTicksDeviationItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(TicksDeviation)) {
-			case AmaltheaPackage::TICKS_DEVIATION__DEVIATION:
 				return new ViewerNotification(notification, notification.getNotifier(), true, true)
 		}
 		return null
@@ -2168,7 +2103,7 @@ class CustomItemProviderService {
 			LabelAccess: getLabelAccessItemProviderText(item, null)
 			RunnableCall: getRunnableCallItemProviderText(item, null)
 			ExecutionNeed: "Execution Need"
-			ExecutionTicks: "Execution Ticks"
+			Ticks: "Ticks"
 			Group: getGroupItemProviderText(item, null)
 			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
 			RunnableProbabilitySwitch: "Probability Switch"
@@ -2637,10 +2572,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ExecutionTicksItemProvider
+	 * 						TicksItemProvider
 	 *****************************************************************************/
-	def static String getExecutionTicksItemProviderText(Object object, String defaultText) {
-		if (object instanceof ExecutionTicks) {
+	def static String getTicksItemProviderText(Object object, String defaultText) {
+		if (object instanceof Ticks) {
 			val feature = getContainingFeatureName(object, "", "")
 			val s1 = if(#["runnableItems", "computationItems"].contains(feature)) "" else feature + " -- "
 			return s1 + defaultText;
@@ -2650,10 +2585,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ExecutionTicksEntryItemProvider
+	 * 						TicksEntryItemProvider
 	 *****************************************************************************/
-	def static String getExecutionTicksEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof ExecutionTicksEntryImpl) {
+	def static String getTicksEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof TicksEntryImpl) {
 			val typeName = object?.getKey()?.name
 			val deviation = object?.getValue()
 
@@ -2665,13 +2600,13 @@ class CustomItemProviderService {
 		}
 	}
 
-	def static List<ViewerNotification> getExecutionTicksEntryItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getTicksEntryItemProviderNotifications(Notification notification) {
 		val list = newArrayList
 
 		switch notification.getFeatureID(typeof(Map.Entry)) {
-			case AmaltheaPackage::EXECUTION_TICKS_ENTRY__KEY:
+			case AmaltheaPackage::TICKS_ENTRY__KEY:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-			case AmaltheaPackage::EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage::TICKS_ENTRY__VALUE:
 				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 		}
 		return list

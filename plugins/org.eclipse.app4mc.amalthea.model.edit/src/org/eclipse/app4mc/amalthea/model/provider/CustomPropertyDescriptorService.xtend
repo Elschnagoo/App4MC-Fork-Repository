@@ -25,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory
 import org.eclipse.app4mc.amalthea.model.Runnable
 import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableParameter
-import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.UniqueEList

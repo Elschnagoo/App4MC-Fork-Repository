@@ -191,97 +191,97 @@ public class OsAPIOverheadItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSendMessage(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiTerminateTask(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSchedule(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiRequestResource(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiReleaseResource(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSetEvent(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiWaitEvent(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiClearEvent(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiActivateTask(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiEnforcedMigration(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSuspendOsInterrupts(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiResumeOsInterrupts(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiRequestSpinlock(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiReleaseSpinlock(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSenderReceiverRead(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSenderReceiverWrite(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiSynchronousServerCallPoint(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiIocRead(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsAPIOverhead_ApiIocWrite(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 	}
 
 	/**

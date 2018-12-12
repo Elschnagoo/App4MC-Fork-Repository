@@ -16,32 +16,42 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.TicksDeviation;
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.TicksDeviation} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TicksDeviationItemProvider extends TicksItemProvider {
+public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
+    implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+        ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public TicksDeviationItemProvider(AdapterFactory adapterFactory) {
+    public TicksEntryItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,8 +66,31 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addKeyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+    /**
+	 * This adds a property descriptor for the Key feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TicksEntry_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TicksEntry_key_feature", "_UI_TicksEntry_type"),
+				 AmaltheaPackage.eINSTANCE.getTicksEntry_Key(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
     /**
@@ -73,7 +106,7 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
         Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTicksDeviation_Deviation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTicksEntry_Value());
 		}
 		return childrenFeatures;
 	}
@@ -92,14 +125,14 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
 	}
 
     /**
-	 * This returns TicksDeviation.gif.
+	 * This returns TicksEntry.gif.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
     @Override
     public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TicksDeviation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TicksEntry"));
 	}
 
     /**
@@ -119,7 +152,8 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
 	 * @generated
 	 */
     public String getTextGen(Object object) {
-		return getString("_UI_TicksDeviation_type");
+		Map.Entry<?, ?> ticksEntry = (Map.Entry<?, ?>)object;
+		return "" + ticksEntry.getKey() + " -> " + ticksEntry.getValue();
 	}
 
     /**
@@ -128,7 +162,7 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
     @Override
     public String getText(final Object object) {
         // delegate to custom item provider
-        return CustomItemProviderService.getTicksDeviationItemProviderText(object,
+        return CustomItemProviderService.getTicksEntryItemProviderText(object,
             getTextGen(object));
     }
 
@@ -142,8 +176,8 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
     public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TicksDeviation.class)) {
-			case AmaltheaPackage.TICKS_DEVIATION__DEVIATION:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -158,12 +192,10 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
         updateChildren(notification);
 
         // delegate to custom item provider and execute locally
-        final ViewerNotification vn = CustomItemProviderService.getTicksDeviationItemProviderNotification(notification);
+        final List<ViewerNotification> notifications = CustomItemProviderService.getTicksEntryItemProviderNotifications(notification);
 
-        if (vn != null) {
+        for (final ViewerNotification vn : notifications) {
             fireNotifyChanged(vn);
-
-            return;
         }
 
         super.notifyChanged(notification);
@@ -183,7 +215,58 @@ public class TicksDeviationItemProvider extends TicksItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTicksDeviation_Deviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
+	}
+
+    /**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 }

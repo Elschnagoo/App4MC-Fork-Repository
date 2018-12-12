@@ -42,12 +42,12 @@ public interface OsISROverhead extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pre Execution Overhead</em>' containment reference.
-	 * @see #setPreExecutionOverhead(ExecutionTicks)
+	 * @see #setPreExecutionOverhead(Ticks)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISROverhead_PreExecutionOverhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ExecutionTicks getPreExecutionOverhead();
+	Ticks getPreExecutionOverhead();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPreExecutionOverhead <em>Pre Execution Overhead</em>}' containment reference.
@@ -57,7 +57,7 @@ public interface OsISROverhead extends BaseObject {
 	 * @see #getPreExecutionOverhead()
 	 * @generated
 	 */
-	void setPreExecutionOverhead(ExecutionTicks value);
+	void setPreExecutionOverhead(Ticks value);
 
 	/**
 	 * Returns the value of the '<em><b>Post Execution Overhead</b></em>' containment reference.
@@ -68,12 +68,12 @@ public interface OsISROverhead extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Post Execution Overhead</em>' containment reference.
-	 * @see #setPostExecutionOverhead(ExecutionTicks)
+	 * @see #setPostExecutionOverhead(Ticks)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOsISROverhead_PostExecutionOverhead()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ExecutionTicks getPostExecutionOverhead();
+	Ticks getPostExecutionOverhead();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.OsISROverhead#getPostExecutionOverhead <em>Post Execution Overhead</em>}' containment reference.
@@ -83,6 +83,6 @@ public interface OsISROverhead extends BaseObject {
 	 * @see #getPostExecutionOverhead()
 	 * @generated
 	 */
-	void setPostExecutionOverhead(ExecutionTicks value);
+	void setPostExecutionOverhead(Ticks value);
 
 } // OsISROverhead

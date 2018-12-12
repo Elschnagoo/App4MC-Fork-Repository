@@ -156,7 +156,6 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -360,8 +359,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
-import org.eclipse.app4mc.amalthea.model.TicksConstant;
-import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
@@ -518,18 +515,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTransmissionPolicy(TransmissionPolicy object) {
 				return createTransmissionPolicyAdapter();
-			}
-			@Override
-			public Adapter caseTicks(Ticks object) {
-				return createTicksAdapter();
-			}
-			@Override
-			public Adapter caseTicksDeviation(TicksDeviation object) {
-				return createTicksDeviationAdapter();
-			}
-			@Override
-			public Adapter caseTicksConstant(TicksConstant object) {
-				return createTicksConstantAdapter();
 			}
 			@Override
 			public Adapter caseNeed(Need object) {
@@ -1824,12 +1809,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createNeedEntryAdapter();
 			}
 			@Override
-			public Adapter caseExecutionTicks(ExecutionTicks object) {
-				return createExecutionTicksAdapter();
+			public Adapter caseTicks(Ticks object) {
+				return createTicksAdapter();
 			}
 			@Override
-			public Adapter caseExecutionTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
-				return createExecutionTicksEntryAdapter();
+			public Adapter caseTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
+				return createTicksEntryAdapter();
 			}
 			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
@@ -2238,48 +2223,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransmissionPolicyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Ticks <em>Ticks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Ticks
-	 * @generated
-	 */
-	public Adapter createTicksAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TicksDeviation <em>Ticks Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TicksDeviation
-	 * @generated
-	 */
-	public Adapter createTicksDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TicksConstant <em>Ticks Constant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TicksConstant
-	 * @generated
-	 */
-	public Adapter createTicksConstantAdapter() {
 		return null;
 	}
 
@@ -6806,21 +6749,21 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ExecutionTicks <em>Execution Ticks</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Ticks <em>Ticks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ExecutionTicks
+	 * @see org.eclipse.app4mc.amalthea.model.Ticks
 	 * @generated
 	 */
-	public Adapter createExecutionTicksAdapter() {
+	public Adapter createTicksAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Execution Ticks Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Ticks Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -6829,7 +6772,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createExecutionTicksEntryAdapter() {
+	public Adapter createTicksEntryAdapter() {
 		return null;
 	}
 

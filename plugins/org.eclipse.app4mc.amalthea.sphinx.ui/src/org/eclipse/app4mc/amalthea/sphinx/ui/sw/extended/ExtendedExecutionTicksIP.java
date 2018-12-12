@@ -13,11 +13,11 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
 
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.provider.ExecutionTicksItemProvider;
+import org.eclipse.app4mc.amalthea.model.provider.TicksItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-public class ExtendedExecutionTicksIP extends ExecutionTicksItemProvider {
+public class ExtendedExecutionTicksIP extends TicksItemProvider {
 
 	public ExtendedExecutionTicksIP(final AdapterFactory adapterFactory) {
 		super(adapterFactory);

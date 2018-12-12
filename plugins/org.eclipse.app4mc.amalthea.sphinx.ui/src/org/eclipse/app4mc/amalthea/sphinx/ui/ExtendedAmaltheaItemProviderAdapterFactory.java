@@ -186,7 +186,7 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
-	public Adapter createExecutionTicksAdapter() {
+	public Adapter createTicksAdapter() {
 		return new ExtendedExecutionTicksIP(this);
 	}
 	

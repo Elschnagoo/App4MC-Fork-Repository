@@ -157,12 +157,12 @@ public class OsISROverheadItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISROverhead_PreExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getOsISROverhead_PostExecutionOverhead(),
-				 AmaltheaFactory.eINSTANCE.createExecutionTicks()));
+				 AmaltheaFactory.eINSTANCE.createTicks()));
 	}
 
 	/**

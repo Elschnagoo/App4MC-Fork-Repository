@@ -172,7 +172,6 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -411,8 +410,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
-import org.eclipse.app4mc.amalthea.model.TicksConstant;
-import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
@@ -564,12 +561,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateMemoryClassifier((MemoryClassifier)value, diagnostics, context);
 			case AmaltheaPackage.TRANSMISSION_POLICY:
 				return validateTransmissionPolicy((TransmissionPolicy)value, diagnostics, context);
-			case AmaltheaPackage.TICKS:
-				return validateTicks((Ticks)value, diagnostics, context);
-			case AmaltheaPackage.TICKS_DEVIATION:
-				return validateTicksDeviation((TicksDeviation)value, diagnostics, context);
-			case AmaltheaPackage.TICKS_CONSTANT:
-				return validateTicksConstant((TicksConstant)value, diagnostics, context);
 			case AmaltheaPackage.NEED:
 				return validateNeed((Need)value, diagnostics, context);
 			case AmaltheaPackage.NEED_DEVIATION:
@@ -1216,10 +1207,10 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateExecutionNeed((ExecutionNeed)value, diagnostics, context);
 			case AmaltheaPackage.NEED_ENTRY:
 				return validateNeedEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case AmaltheaPackage.EXECUTION_TICKS:
-				return validateExecutionTicks((ExecutionTicks)value, diagnostics, context);
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY:
-				return validateExecutionTicksEntry((Map.Entry<?, ?>)value, diagnostics, context);
+			case AmaltheaPackage.TICKS:
+				return validateTicks((Ticks)value, diagnostics, context);
+			case AmaltheaPackage.TICKS_ENTRY:
+				return validateTicksEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LABEL_ACCESS:
 				return validateModeLabelAccess((ModeLabelAccess)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_MODE_SWITCH:
@@ -1570,33 +1561,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateTransmissionPolicy(TransmissionPolicy transmissionPolicy, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(transmissionPolicy, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTicks(Ticks ticks, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(ticks, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTicksDeviation(TicksDeviation ticksDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(ticksDeviation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTicksConstant(TicksConstant ticksConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(ticksConstant, diagnostics, context);
 	}
 
 	/**
@@ -4511,8 +4475,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateExecutionTicks(ExecutionTicks executionTicks, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(executionTicks, diagnostics, context);
+	public boolean validateTicks(Ticks ticks, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(ticks, diagnostics, context);
 	}
 
 	/**
@@ -4520,8 +4484,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateExecutionTicksEntry(Map.Entry<?, ?> executionTicksEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint((EObject)executionTicksEntry, diagnostics, context);
+	public boolean validateTicksEntry(Map.Entry<?, ?> ticksEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint((EObject)ticksEntry, diagnostics, context);
 	}
 
 	/**

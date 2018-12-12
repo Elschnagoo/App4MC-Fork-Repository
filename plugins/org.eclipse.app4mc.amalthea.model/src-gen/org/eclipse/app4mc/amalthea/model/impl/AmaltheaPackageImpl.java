@@ -173,7 +173,6 @@ import org.eclipse.app4mc.amalthea.model.EventSet;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
 import org.eclipse.app4mc.amalthea.model.FixedPriority;
 import org.eclipse.app4mc.amalthea.model.FixedPriorityPreemptive;
@@ -410,8 +409,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
-import org.eclipse.app4mc.amalthea.model.TicksConstant;
-import org.eclipse.app4mc.amalthea.model.TicksDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
@@ -579,27 +576,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass transmissionPolicyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ticksEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ticksDeviationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ticksConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2867,14 +2843,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass executionTicksEClass = null;
+	private EClass ticksEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass executionTicksEntryEClass = null;
+	private EClass ticksEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4103,51 +4079,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EAttribute getTransmissionPolicy_TransmitRatio() {
 		return (EAttribute)transmissionPolicyEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTicks() {
-		return ticksEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTicksDeviation() {
-		return ticksDeviationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTicksDeviation_Deviation() {
-		return (EReference)ticksDeviationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTicksConstant() {
-		return ticksConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTicksConstant_Value() {
-		return (EAttribute)ticksConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13038,8 +12969,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExecutionTicks() {
-		return executionTicksEClass;
+	public EClass getTicks() {
+		return ticksEClass;
 	}
 
 	/**
@@ -13047,8 +12978,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionTicks_Default() {
-		return (EReference)executionTicksEClass.getEStructuralFeatures().get(0);
+	public EReference getTicks_Default() {
+		return (EReference)ticksEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13056,8 +12987,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionTicks_Extended() {
-		return (EReference)executionTicksEClass.getEStructuralFeatures().get(1);
+	public EReference getTicks_Extended() {
+		return (EReference)ticksEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -13065,8 +12996,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExecutionTicksEntry() {
-		return executionTicksEntryEClass;
+	public EClass getTicksEntry() {
+		return ticksEntryEClass;
 	}
 
 	/**
@@ -13074,8 +13005,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionTicksEntry_Key() {
-		return (EReference)executionTicksEntryEClass.getEStructuralFeatures().get(0);
+	public EReference getTicksEntry_Key() {
+		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13083,8 +13014,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExecutionTicksEntry_Value() {
-		return (EReference)executionTicksEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getTicksEntry_Value() {
+		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -14850,14 +14781,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__CHUNK_PROCESSING_TICKS);
 		createEAttribute(transmissionPolicyEClass, TRANSMISSION_POLICY__TRANSMIT_RATIO);
 
-		ticksEClass = createEClass(TICKS);
-
-		ticksDeviationEClass = createEClass(TICKS_DEVIATION);
-		createEReference(ticksDeviationEClass, TICKS_DEVIATION__DEVIATION);
-
-		ticksConstantEClass = createEClass(TICKS_CONSTANT);
-		createEAttribute(ticksConstantEClass, TICKS_CONSTANT__VALUE);
-
 		needEClass = createEClass(NEED);
 
 		needDeviationEClass = createEClass(NEED_DEVIATION);
@@ -16168,13 +16091,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(needEntryEClass, NEED_ENTRY__KEY);
 		createEReference(needEntryEClass, NEED_ENTRY__VALUE);
 
-		executionTicksEClass = createEClass(EXECUTION_TICKS);
-		createEReference(executionTicksEClass, EXECUTION_TICKS__DEFAULT);
-		createEReference(executionTicksEClass, EXECUTION_TICKS__EXTENDED);
+		ticksEClass = createEClass(TICKS);
+		createEReference(ticksEClass, TICKS__DEFAULT);
+		createEReference(ticksEClass, TICKS__EXTENDED);
 
-		executionTicksEntryEClass = createEClass(EXECUTION_TICKS_ENTRY);
-		createEReference(executionTicksEntryEClass, EXECUTION_TICKS_ENTRY__KEY);
-		createEReference(executionTicksEntryEClass, EXECUTION_TICKS_ENTRY__VALUE);
+		ticksEntryEClass = createEClass(TICKS_ENTRY);
+		createEReference(ticksEntryEClass, TICKS_ENTRY__KEY);
+		createEReference(ticksEntryEClass, TICKS_ENTRY__VALUE);
 
 		modeLabelAccessEClass = createEClass(MODE_LABEL_ACCESS);
 		createEReference(modeLabelAccessEClass, MODE_LABEL_ACCESS__DATA);
@@ -16466,8 +16389,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		classifierEClass.getESuperTypes().add(this.getReferableBaseObject());
 		coreClassifierEClass.getESuperTypes().add(this.getClassifier());
 		memoryClassifierEClass.getESuperTypes().add(this.getClassifier());
-		ticksDeviationEClass.getESuperTypes().add(this.getTicks());
-		ticksConstantEClass.getESuperTypes().add(this.getTicks());
 		needDeviationEClass.getESuperTypes().add(this.getNeed());
 		needConstantEClass.getESuperTypes().add(this.getNeed());
 		timeEClass.getESuperTypes().add(this.getQuantity());
@@ -16840,7 +16761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
 		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
 		executionNeedEClass.getESuperTypes().add(this.getRunnableItem());
-		executionTicksEClass.getESuperTypes().add(this.getComputationItem());
+		ticksEClass.getESuperTypes().add(this.getComputationItem());
 		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
@@ -16962,17 +16883,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getTransmissionPolicy_ChunkSize(), this.getDataSize(), null, "chunkSize", null, 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_ChunkProcessingTicks(), theEcorePackage.getEInt(), "chunkProcessingTicks", "0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransmissionPolicy_TransmitRatio(), theEcorePackage.getEDouble(), "transmitRatio", "1.0", 0, 1, TransmissionPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(ticksEClass, Ticks.class, "Ticks", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(ticksDeviationEClass, TicksDeviation.class, "TicksDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getTicksDeviation_Deviation(), g1, null, "deviation", null, 0, 1, TicksDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(ticksConstantEClass, TicksConstant.class, "TicksConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTicksConstant_Value(), theEcorePackage.getELong(), "value", "0", 0, 1, TicksConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(needEClass, Need.class, "Need", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18010,29 +17920,29 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getOsOverhead_IsrCategory2Overhead(), this.getOsISROverhead(), null, "isrCategory2Overhead", null, 0, 1, OsOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osAPIOverheadEClass, OsAPIOverhead.class, "OsAPIOverhead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsAPIOverhead_ApiSendMessage(), this.getExecutionTicks(), null, "apiSendMessage", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiTerminateTask(), this.getExecutionTicks(), null, "apiTerminateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSchedule(), this.getExecutionTicks(), null, "apiSchedule", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiRequestResource(), this.getExecutionTicks(), null, "apiRequestResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiReleaseResource(), this.getExecutionTicks(), null, "apiReleaseResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSetEvent(), this.getExecutionTicks(), null, "apiSetEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiWaitEvent(), this.getExecutionTicks(), null, "apiWaitEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiClearEvent(), this.getExecutionTicks(), null, "apiClearEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiActivateTask(), this.getExecutionTicks(), null, "apiActivateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiEnforcedMigration(), this.getExecutionTicks(), null, "apiEnforcedMigration", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSuspendOsInterrupts(), this.getExecutionTicks(), null, "apiSuspendOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiResumeOsInterrupts(), this.getExecutionTicks(), null, "apiResumeOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiRequestSpinlock(), this.getExecutionTicks(), null, "apiRequestSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiReleaseSpinlock(), this.getExecutionTicks(), null, "apiReleaseSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSenderReceiverRead(), this.getExecutionTicks(), null, "apiSenderReceiverRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSenderReceiverWrite(), this.getExecutionTicks(), null, "apiSenderReceiverWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiSynchronousServerCallPoint(), this.getExecutionTicks(), null, "apiSynchronousServerCallPoint", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiIocRead(), this.getExecutionTicks(), null, "apiIocRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsAPIOverhead_ApiIocWrite(), this.getExecutionTicks(), null, "apiIocWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSendMessage(), this.getTicks(), null, "apiSendMessage", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiTerminateTask(), this.getTicks(), null, "apiTerminateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSchedule(), this.getTicks(), null, "apiSchedule", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiRequestResource(), this.getTicks(), null, "apiRequestResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiReleaseResource(), this.getTicks(), null, "apiReleaseResource", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSetEvent(), this.getTicks(), null, "apiSetEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiWaitEvent(), this.getTicks(), null, "apiWaitEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiClearEvent(), this.getTicks(), null, "apiClearEvent", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiActivateTask(), this.getTicks(), null, "apiActivateTask", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiEnforcedMigration(), this.getTicks(), null, "apiEnforcedMigration", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSuspendOsInterrupts(), this.getTicks(), null, "apiSuspendOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiResumeOsInterrupts(), this.getTicks(), null, "apiResumeOsInterrupts", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiRequestSpinlock(), this.getTicks(), null, "apiRequestSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiReleaseSpinlock(), this.getTicks(), null, "apiReleaseSpinlock", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSenderReceiverRead(), this.getTicks(), null, "apiSenderReceiverRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSenderReceiverWrite(), this.getTicks(), null, "apiSenderReceiverWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiSynchronousServerCallPoint(), this.getTicks(), null, "apiSynchronousServerCallPoint", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiIocRead(), this.getTicks(), null, "apiIocRead", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsAPIOverhead_ApiIocWrite(), this.getTicks(), null, "apiIocWrite", null, 0, 1, OsAPIOverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osISROverheadEClass, OsISROverhead.class, "OsISROverhead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOsISROverhead_PreExecutionOverhead(), this.getExecutionTicks(), null, "preExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOsISROverhead_PostExecutionOverhead(), this.getExecutionTicks(), null, "postExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsISROverhead_PreExecutionOverhead(), this.getTicks(), null, "preExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOsISROverhead_PostExecutionOverhead(), this.getTicks(), null, "postExecutionOverhead", null, 0, 1, OsISROverhead.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyConstraintsModelEClass, PropertyConstraintsModel.class, "PropertyConstraintsModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyConstraintsModel_AllocationConstraints(), this.getCoreAllocationConstraint(), null, "allocationConstraints", null, 0, -1, PropertyConstraintsModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18407,13 +18317,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getNeedEntry_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNeedEntry_Value(), this.getNeed(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(executionTicksEClass, ExecutionTicks.class, "ExecutionTicks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionTicks_Default(), this.getDiscreteDeviation(), null, "default", null, 0, 1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionTicks_Extended(), this.getExecutionTicksEntry(), null, "extended", null, 0, -1, ExecutionTicks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(ticksEClass, Ticks.class, "Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTicks_Default(), this.getDiscreteDeviation(), null, "default", null, 0, 1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicks_Extended(), this.getTicksEntry(), null, "extended", null, 0, -1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(executionTicksEntryEClass, Map.Entry.class, "ExecutionTicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutionTicksEntry_Value(), this.getDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(ticksEntryEClass, Map.Entry.class, "TicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicksEntry_Value(), this.getDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

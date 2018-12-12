@@ -34,19 +34,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Execution Ticks Entry</b></em>'.
+ * An implementation of the model object '<em><b>Ticks Entry</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl#getTypedKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ExecutionTicksEntryImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,DiscreteDeviation> {
+public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,DiscreteDeviation> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionTicksEntryImpl() {
+	protected TicksEntryImpl() {
 		super();
 	}
 
@@ -83,7 +83,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getExecutionTicksEntry();
+		return AmaltheaPackage.eINSTANCE.getTicksEntry();
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 			key = (ProcessingUnitDefinition)eResolveProxy(oldKey);
 			if (key != oldKey) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY, oldKey, key));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.TICKS_ENTRY__KEY, oldKey, key));
 			}
 		}
 		return key;
@@ -121,7 +121,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 		ProcessingUnitDefinition oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TICKS_ENTRY__KEY, oldKey, key));
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 		DiscreteDeviation oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE, oldValue, newValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TICKS_ENTRY__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -157,14 +157,14 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE, null, msgs);
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TICKS_ENTRY__VALUE, null, msgs);
 			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE, null, msgs);
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TICKS_ENTRY__VALUE, null, msgs);
 			msgs = basicSetTypedValue(newValue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE, newValue, newValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TICKS_ENTRY__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				return basicSetTypedValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -189,10 +189,10 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY:
+			case AmaltheaPackage.TICKS_ENTRY__KEY:
 				if (resolve) return getTypedKey();
 				return basicGetTypedKey();
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -206,10 +206,10 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY:
+			case AmaltheaPackage.TICKS_ENTRY__KEY:
 				setTypedKey((ProcessingUnitDefinition)newValue);
 				return;
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				setTypedValue((DiscreteDeviation)newValue);
 				return;
 		}
@@ -224,10 +224,10 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY:
+			case AmaltheaPackage.TICKS_ENTRY__KEY:
 				setTypedKey((ProcessingUnitDefinition)null);
 				return;
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				setTypedValue((DiscreteDeviation)null);
 				return;
 		}
@@ -242,9 +242,9 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__KEY:
+			case AmaltheaPackage.TICKS_ENTRY__KEY:
 				return key != null;
-			case AmaltheaPackage.EXECUTION_TICKS_ENTRY__VALUE:
+			case AmaltheaPackage.TICKS_ENTRY__VALUE:
 				return value != null;
 		}
 		return super.eIsSet(featureID);
@@ -328,4 +328,4 @@ public class ExecutionTicksEntryImpl extends AmaltheaExtendedEObjectImpl impleme
 		return container == null ? null : (EMap<ProcessingUnitDefinition, DiscreteDeviation>)container.eGet(eContainmentFeature());
 	}
 
-} //ExecutionTicksEntryImpl
+} //TicksEntryImpl

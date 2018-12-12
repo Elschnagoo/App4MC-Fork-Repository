@@ -222,52 +222,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TicksDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TicksDeviationItemProvider ticksDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TicksDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTicksDeviationAdapter() {
-		if (ticksDeviationItemProvider == null) {
-			ticksDeviationItemProvider = new TicksDeviationItemProvider(this);
-		}
-
-		return ticksDeviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TicksConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TicksConstantItemProvider ticksConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TicksConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTicksConstantAdapter() {
-		if (ticksConstantItemProvider == null) {
-			ticksConstantItemProvider = new TicksConstantItemProvider(this);
-		}
-
-		return ticksConstantItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NeedDeviation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5972,26 +5926,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ExecutionTicks} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Ticks} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionTicksItemProvider executionTicksItemProvider;
+	protected TicksItemProvider ticksItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ExecutionTicks}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Ticks}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExecutionTicksAdapter() {
-		if (executionTicksItemProvider == null) {
-			executionTicksItemProvider = new ExecutionTicksItemProvider(this);
+	public Adapter createTicksAdapter() {
+		if (ticksItemProvider == null) {
+			ticksItemProvider = new TicksItemProvider(this);
 		}
 
-		return executionTicksItemProvider;
+		return ticksItemProvider;
 	}
 
 	/**
@@ -6000,7 +5954,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionTicksEntryItemProvider executionTicksEntryItemProvider;
+	protected TicksEntryItemProvider ticksEntryItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
@@ -6009,12 +5963,12 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	 * @generated
 	 */
 	@Override
-	public Adapter createExecutionTicksEntryAdapter() {
-		if (executionTicksEntryItemProvider == null) {
-			executionTicksEntryItemProvider = new ExecutionTicksEntryItemProvider(this);
+	public Adapter createTicksEntryAdapter() {
+		if (ticksEntryItemProvider == null) {
+			ticksEntryItemProvider = new TicksEntryItemProvider(this);
 		}
 
-		return executionTicksEntryItemProvider;
+		return ticksEntryItemProvider;
 	}
 
 	/**
@@ -6973,8 +6927,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (coreClassifierItemProvider != null) coreClassifierItemProvider.dispose();
 		if (memoryClassifierItemProvider != null) memoryClassifierItemProvider.dispose();
 		if (transmissionPolicyItemProvider != null) transmissionPolicyItemProvider.dispose();
-		if (ticksDeviationItemProvider != null) ticksDeviationItemProvider.dispose();
-		if (ticksConstantItemProvider != null) ticksConstantItemProvider.dispose();
 		if (needDeviationItemProvider != null) needDeviationItemProvider.dispose();
 		if (needConstantItemProvider != null) needConstantItemProvider.dispose();
 		if (timeItemProvider != null) timeItemProvider.dispose();
@@ -7223,8 +7175,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (sectionItemProvider != null) sectionItemProvider.dispose();
 		if (executionNeedItemProvider != null) executionNeedItemProvider.dispose();
 		if (needEntryItemProvider != null) needEntryItemProvider.dispose();
-		if (executionTicksItemProvider != null) executionTicksItemProvider.dispose();
-		if (executionTicksEntryItemProvider != null) executionTicksEntryItemProvider.dispose();
+		if (ticksItemProvider != null) ticksItemProvider.dispose();
+		if (ticksEntryItemProvider != null) ticksEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
 		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();

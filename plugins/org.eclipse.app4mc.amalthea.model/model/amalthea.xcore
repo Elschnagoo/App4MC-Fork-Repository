@@ -195,27 +195,6 @@ class TransmissionPolicy
 }
 
 /*
- * Abstract description for a set of execution cycles (ticks)
- */
-abstract class Ticks {}
-
-/*
- * Deviated set of execution cycles (ticks)
- */
-class TicksDeviation extends Ticks
-{
-	contains Deviation<LongObject> deviation
-}
-
-/*
- * Constant set of execution cycles (ticks)
- */
-class TicksConstant extends Ticks
-{
-	long value = "0"
-}
-
-/*
  * Abstract description for cost (mostly execution time)
  */
 abstract class Need {}
@@ -2802,31 +2781,31 @@ class OsOverhead extends ReferableBaseObject
 
 class OsAPIOverhead extends BaseObject
 {
-	contains ExecutionTicks apiSendMessage
-	contains ExecutionTicks apiTerminateTask
-	contains ExecutionTicks apiSchedule
-	contains ExecutionTicks apiRequestResource
-	contains ExecutionTicks apiReleaseResource
-	contains ExecutionTicks apiSetEvent
-	contains ExecutionTicks apiWaitEvent
-	contains ExecutionTicks apiClearEvent
-	contains ExecutionTicks apiActivateTask
-	contains ExecutionTicks apiEnforcedMigration
-	contains ExecutionTicks apiSuspendOsInterrupts
-	contains ExecutionTicks apiResumeOsInterrupts
-	contains ExecutionTicks apiRequestSpinlock
-	contains ExecutionTicks apiReleaseSpinlock
-	contains ExecutionTicks apiSenderReceiverRead
-	contains ExecutionTicks apiSenderReceiverWrite
-	contains ExecutionTicks apiSynchronousServerCallPoint
-	contains ExecutionTicks apiIocRead
-	contains ExecutionTicks apiIocWrite
+	contains Ticks apiSendMessage
+	contains Ticks apiTerminateTask
+	contains Ticks apiSchedule
+	contains Ticks apiRequestResource
+	contains Ticks apiReleaseResource
+	contains Ticks apiSetEvent
+	contains Ticks apiWaitEvent
+	contains Ticks apiClearEvent
+	contains Ticks apiActivateTask
+	contains Ticks apiEnforcedMigration
+	contains Ticks apiSuspendOsInterrupts
+	contains Ticks apiResumeOsInterrupts
+	contains Ticks apiRequestSpinlock
+	contains Ticks apiReleaseSpinlock
+	contains Ticks apiSenderReceiverRead
+	contains Ticks apiSenderReceiverWrite
+	contains Ticks apiSynchronousServerCallPoint
+	contains Ticks apiIocRead
+	contains Ticks apiIocWrite
 }
 
 class OsISROverhead extends BaseObject
 {
-	contains ExecutionTicks preExecutionOverhead
-	contains ExecutionTicks postExecutionOverhead
+	contains Ticks preExecutionOverhead
+	contains Ticks postExecutionOverhead
 }
 
 
@@ -3819,12 +3798,12 @@ class NeedEntry wraps java.util.Map$Entry
 /*
  * Representation of the execution DiscreteDeviation of a Runnable (default and core-specific)
  */
-class ExecutionTicks extends ComputationItem {
+class Ticks extends ComputationItem {
 	contains DiscreteDeviation ^default
-	contains ExecutionTicksEntry[] extended
+	contains TicksEntry[] extended
 }
 
-class ExecutionTicksEntry wraps java.util.Map$Entry {
+class TicksEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
 	contains DiscreteDeviation[1] value
 }

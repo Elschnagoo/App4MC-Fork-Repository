@@ -18,7 +18,6 @@ package org.eclipse.app4mc.amalthea.model.builder;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.ExecutionTicks;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.LongObject;
