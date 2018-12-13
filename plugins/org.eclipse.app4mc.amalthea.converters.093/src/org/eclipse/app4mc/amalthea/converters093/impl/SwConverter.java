@@ -52,8 +52,38 @@ public class SwConverter implements IConverter {
 		
 		update_ExecutionNeed(rootElement);
 
+		update_ChunkProcessingInstructions(rootElement);
+
 	}
 	
+	private void update_ChunkProcessingInstructions(Element rootElement) {
+
+		final StringBuffer xpathBuffer = new StringBuffer();
+
+		/*-
+		 * As per the change in 0.9.3, chunkProcessingInstructions (of 0.9.2) inside TransmissionPolicy class, is changed to chunkProcessingTicks
+		 *
+		 */
+
+		xpathBuffer.append("./swModel/runnables//*[@xsi:type=\"am:LabelAccess\" or @xsi:type=\"am:ChannelSend\" or @xsi:type=\"am:ChannelReceive\"]/transmissionPolicy");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/taskSchedulers/computationItems[@xsi:type=\"am:LabelAccess\"]/transmissionPolicy");
+		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/operatingSystems/interruptControllers/computationItems[@xsi:type=\"am:LabelAccess\"]/transmissionPolicy");
+		 
+		final List<Element> transmissionPolicyElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_093("am"),this.helper.getGenericNS("xsi"));
+		
+		for (Element transmissionPolicyElement : transmissionPolicyElements) {
+			
+			Attribute attribute = transmissionPolicyElement.getAttribute("chunkProcessingInstructions");
+			
+			if(attribute!=null) {
+				attribute.setName("chunkProcessingTicks");
+			}
+		}
+	}
+
 	private void update_ExecutionNeed(final Element rootElement) {
 
 		final StringBuffer xpathBuffer = new StringBuffer();
