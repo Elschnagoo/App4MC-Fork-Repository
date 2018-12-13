@@ -38,7 +38,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimeWeibullEstimatorsDistributionItemProvider extends TimeWeibullDistributionItemProvider {
+public class TimeWeibullEstimatorsDistributionItemProvider extends BoundedTimeDistributionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -144,12 +144,20 @@ public class TimeWeibullEstimatorsDistributionItemProvider extends TimeWeibullDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution = (TimeWeibullEstimatorsDistribution)object;
 		return getString("_UI_TimeWeibullEstimatorsDistribution_type") + " " + timeWeibullEstimatorsDistribution.getPRemainPromille();
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getTimeWeibullEstimatorsDistributionItemProviderText(object,
+				getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -158,8 +166,7 @@ public class TimeWeibullEstimatorsDistributionItemProvider extends TimeWeibullDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TimeWeibullEstimatorsDistribution.class)) {
@@ -170,6 +177,26 @@ public class TimeWeibullEstimatorsDistributionItemProvider extends TimeWeibullDi
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getTimeWeibullEstimatorsDistributionItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

@@ -86,9 +86,7 @@ import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -130,9 +128,7 @@ import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -364,9 +360,7 @@ import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -627,14 +621,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTimeGaussDistributionAdapter();
 			}
 			@Override
-			public Adapter caseTimeWeibullDistribution(TimeWeibullDistribution object) {
-				return createTimeWeibullDistributionAdapter();
-			}
-			@Override
-			public Adapter caseTimeWeibullParametersDistribution(TimeWeibullParametersDistribution object) {
-				return createTimeWeibullParametersDistributionAdapter();
-			}
-			@Override
 			public Adapter caseTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution object) {
 				return createTimeWeibullEstimatorsDistributionAdapter();
 			}
@@ -683,14 +669,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createDiscreteGaussDistributionAdapter();
 			}
 			@Override
-			public Adapter caseDiscreteWeibullDistribution(DiscreteWeibullDistribution object) {
-				return createDiscreteWeibullDistributionAdapter();
-			}
-			@Override
-			public Adapter caseDiscreteWeibullParametersDistribution(DiscreteWeibullParametersDistribution object) {
-				return createDiscreteWeibullParametersDistributionAdapter();
-			}
-			@Override
 			public Adapter caseDiscreteWeibullEstimatorsDistribution(DiscreteWeibullEstimatorsDistribution object) {
 				return createDiscreteWeibullEstimatorsDistributionAdapter();
 			}
@@ -737,14 +715,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseContinuousGaussDistribution(ContinuousGaussDistribution object) {
 				return createContinuousGaussDistributionAdapter();
-			}
-			@Override
-			public Adapter caseContinuousWeibullDistribution(ContinuousWeibullDistribution object) {
-				return createContinuousWeibullDistributionAdapter();
-			}
-			@Override
-			public Adapter caseContinuousWeibullParametersDistribution(ContinuousWeibullParametersDistribution object) {
-				return createContinuousWeibullParametersDistributionAdapter();
 			}
 			@Override
 			public Adapter caseContinuousWeibullEstimatorsDistribution(ContinuousWeibullEstimatorsDistribution object) {
@@ -2603,34 +2573,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution <em>Time Weibull Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution
-	 * @generated
-	 */
-	public Adapter createTimeWeibullDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution <em>Time Weibull Parameters Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution
-	 * @generated
-	 */
-	public Adapter createTimeWeibullParametersDistributionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution <em>Time Weibull Estimators Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2799,34 +2741,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution <em>Discrete Weibull Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution
-	 * @generated
-	 */
-	public Adapter createDiscreteWeibullDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution <em>Discrete Weibull Parameters Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution
-	 * @generated
-	 */
-	public Adapter createDiscreteWeibullParametersDistributionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution <em>Discrete Weibull Estimators Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2991,34 +2905,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContinuousGaussDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution <em>Continuous Weibull Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution
-	 * @generated
-	 */
-	public Adapter createContinuousWeibullDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution <em>Continuous Weibull Parameters Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution
-	 * @generated
-	 */
-	public Adapter createContinuousWeibullParametersDistributionAdapter() {
 		return null;
 	}
 

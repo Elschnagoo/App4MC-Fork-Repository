@@ -1232,44 +1232,13 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Gauss distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="TimeWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BoundedTimeDistribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TimeWeibullDistribution" type="am:TimeWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TimeWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:TimeWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
-        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TimeWeibullParametersDistribution" type="am:TimeWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="TimeWeibullEstimatorsDistribution">
     <xsd:annotation>
       <xsd:documentation>Weibull Distribution
 The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:TimeWeibullDistribution">
+      <xsd:extension base="am:BoundedTimeDistribution">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="average" type="am:Time"/>
         </xsd:choice>
@@ -1412,44 +1381,13 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Gauss distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="DiscreteWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BoundedDiscreteDistribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="DiscreteWeibullDistribution" type="am:DiscreteWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="DiscreteWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:DiscreteWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
-        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="DiscreteWeibullParametersDistribution" type="am:DiscreteWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="DiscreteWeibullEstimatorsDistribution">
     <xsd:annotation>
       <xsd:documentation>Weibull Distribution
 The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:DiscreteWeibullDistribution">
+      <xsd:extension base="am:BoundedDiscreteDistribution">
         <xsd:attribute name="average" type="xsd:double" use="required"/>
         <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
       </xsd:extension>
@@ -1590,44 +1528,13 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Gauss distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="ContinuousWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BoundedContinuousDistribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ContinuousWeibullDistribution" type="am:ContinuousWeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="ContinuousWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:ContinuousWeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:string" use="required"/>
-        <xsd:attribute name="lambda" type="xsd:string" use="required"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ContinuousWeibullParametersDistribution" type="am:ContinuousWeibullParametersDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="ContinuousWeibullEstimatorsDistribution">
     <xsd:annotation>
       <xsd:documentation>Weibull Distribution
 The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:ContinuousWeibullDistribution">
+      <xsd:extension base="am:BoundedContinuousDistribution">
         <xsd:attribute name="average" type="xsd:double" use="required"/>
         <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
       </xsd:extension>

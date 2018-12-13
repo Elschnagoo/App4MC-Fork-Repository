@@ -97,9 +97,7 @@ import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -146,9 +144,7 @@ import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -417,9 +413,7 @@ import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -613,10 +607,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTimeUniformDistribution((TimeUniformDistribution)value, diagnostics, context);
 			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION:
 				return validateTimeGaussDistribution((TimeGaussDistribution)value, diagnostics, context);
-			case AmaltheaPackage.TIME_WEIBULL_DISTRIBUTION:
-				return validateTimeWeibullDistribution((TimeWeibullDistribution)value, diagnostics, context);
-			case AmaltheaPackage.TIME_WEIBULL_PARAMETERS_DISTRIBUTION:
-				return validateTimeWeibullParametersDistribution((TimeWeibullParametersDistribution)value, diagnostics, context);
 			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION:
 				return validateTimeWeibullEstimatorsDistribution((TimeWeibullEstimatorsDistribution)value, diagnostics, context);
 			case AmaltheaPackage.TIME_BETA_DISTRIBUTION:
@@ -641,10 +631,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateDiscreteUniformDistribution((DiscreteUniformDistribution)value, diagnostics, context);
 			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION:
 				return validateDiscreteGaussDistribution((DiscreteGaussDistribution)value, diagnostics, context);
-			case AmaltheaPackage.DISCRETE_WEIBULL_DISTRIBUTION:
-				return validateDiscreteWeibullDistribution((DiscreteWeibullDistribution)value, diagnostics, context);
-			case AmaltheaPackage.DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION:
-				return validateDiscreteWeibullParametersDistribution((DiscreteWeibullParametersDistribution)value, diagnostics, context);
 			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION:
 				return validateDiscreteWeibullEstimatorsDistribution((DiscreteWeibullEstimatorsDistribution)value, diagnostics, context);
 			case AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION:
@@ -669,10 +655,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateContinuousUniformDistribution((ContinuousUniformDistribution)value, diagnostics, context);
 			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION:
 				return validateContinuousGaussDistribution((ContinuousGaussDistribution)value, diagnostics, context);
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_DISTRIBUTION:
-				return validateContinuousWeibullDistribution((ContinuousWeibullDistribution)value, diagnostics, context);
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION:
-				return validateContinuousWeibullParametersDistribution((ContinuousWeibullParametersDistribution)value, diagnostics, context);
 			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION:
 				return validateContinuousWeibullEstimatorsDistribution((ContinuousWeibullEstimatorsDistribution)value, diagnostics, context);
 			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION:
@@ -1811,24 +1793,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTimeWeibullDistribution(TimeWeibullDistribution timeWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeWeibullDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTimeWeibullParametersDistribution(TimeWeibullParametersDistribution timeWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeWeibullParametersDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(timeWeibullEstimatorsDistribution, diagnostics, context);
 	}
@@ -1937,24 +1901,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDiscreteWeibullDistribution(DiscreteWeibullDistribution discreteWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteWeibullDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDiscreteWeibullParametersDistribution(DiscreteWeibullParametersDistribution discreteWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteWeibullParametersDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateDiscreteWeibullEstimatorsDistribution(DiscreteWeibullEstimatorsDistribution discreteWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(discreteWeibullEstimatorsDistribution, diagnostics, context);
 	}
@@ -2056,24 +2002,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateContinuousGaussDistribution(ContinuousGaussDistribution continuousGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(continuousGaussDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateContinuousWeibullDistribution(ContinuousWeibullDistribution continuousWeibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousWeibullDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateContinuousWeibullParametersDistribution(ContinuousWeibullParametersDistribution continuousWeibullParametersDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousWeibullParametersDistribution, diagnostics, context);
 	}
 
 	/**

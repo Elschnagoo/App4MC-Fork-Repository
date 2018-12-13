@@ -279,11 +279,6 @@ public class NeedEntryItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add

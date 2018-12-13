@@ -37,7 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface TimeWeibullEstimatorsDistribution extends TimeWeibullDistribution {
+public interface TimeWeibullEstimatorsDistribution extends BoundedTimeDistribution {
 	/**
 	 * Returns the value of the '<em><b>Average</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

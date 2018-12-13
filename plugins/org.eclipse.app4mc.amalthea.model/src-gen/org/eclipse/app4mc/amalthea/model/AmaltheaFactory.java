@@ -277,15 +277,6 @@ public interface AmaltheaFactory extends EFactory {
 	TimeGaussDistribution createTimeGaussDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Time Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time Weibull Parameters Distribution</em>'.
-	 * @generated
-	 */
-	TimeWeibullParametersDistribution createTimeWeibullParametersDistribution();
-
-	/**
 	 * Returns a new object of class '<em>Time Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -367,15 +358,6 @@ public interface AmaltheaFactory extends EFactory {
 	DiscreteGaussDistribution createDiscreteGaussDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Weibull Parameters Distribution</em>'.
-	 * @generated
-	 */
-	DiscreteWeibullParametersDistribution createDiscreteWeibullParametersDistribution();
-
-	/**
 	 * Returns a new object of class '<em>Discrete Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -455,15 +437,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	ContinuousGaussDistribution createContinuousGaussDistribution();
-
-	/**
-	 * Returns a new object of class '<em>Continuous Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Weibull Parameters Distribution</em>'.
-	 * @generated
-	 */
-	ContinuousWeibullParametersDistribution createContinuousWeibullParametersDistribution();
 
 	/**
 	 * Returns a new object of class '<em>Continuous Weibull Estimators Distribution</em>'.

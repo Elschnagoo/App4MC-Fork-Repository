@@ -246,11 +246,6 @@ public class TicksEntryItemProvider extends AmaltheaExtendedItemProviderAdapter
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTicksEntry_Value(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add

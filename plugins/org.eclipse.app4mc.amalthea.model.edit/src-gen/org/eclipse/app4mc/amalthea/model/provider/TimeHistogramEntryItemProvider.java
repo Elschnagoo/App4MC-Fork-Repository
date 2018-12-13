@@ -160,12 +160,19 @@ public class TimeHistogramEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		TimeHistogramEntry timeHistogramEntry = (TimeHistogramEntry)object;
 		return getString("_UI_TimeHistogramEntry_type") + " " + timeHistogramEntry.getOccurrences();
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getTimeHistogramEntryItemProviderText(object, getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

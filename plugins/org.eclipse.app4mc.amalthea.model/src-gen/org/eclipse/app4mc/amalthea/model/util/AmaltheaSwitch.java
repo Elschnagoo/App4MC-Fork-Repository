@@ -86,9 +86,7 @@ import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -130,9 +128,7 @@ import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -364,9 +360,7 @@ import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -771,27 +765,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.TIME_WEIBULL_DISTRIBUTION: {
-				TimeWeibullDistribution timeWeibullDistribution = (TimeWeibullDistribution)theEObject;
-				T1 result = caseTimeWeibullDistribution(timeWeibullDistribution);
-				if (result == null) result = caseBoundedTimeDistribution(timeWeibullDistribution);
-				if (result == null) result = caseTimeDeviation(timeWeibullDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIME_WEIBULL_PARAMETERS_DISTRIBUTION: {
-				TimeWeibullParametersDistribution timeWeibullParametersDistribution = (TimeWeibullParametersDistribution)theEObject;
-				T1 result = caseTimeWeibullParametersDistribution(timeWeibullParametersDistribution);
-				if (result == null) result = caseTimeWeibullDistribution(timeWeibullParametersDistribution);
-				if (result == null) result = caseBoundedTimeDistribution(timeWeibullParametersDistribution);
-				if (result == null) result = caseTimeDeviation(timeWeibullParametersDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution = (TimeWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseTimeWeibullEstimatorsDistribution(timeWeibullEstimatorsDistribution);
-				if (result == null) result = caseTimeWeibullDistribution(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseTimeDeviation(timeWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -877,27 +853,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DISCRETE_WEIBULL_DISTRIBUTION: {
-				DiscreteWeibullDistribution discreteWeibullDistribution = (DiscreteWeibullDistribution)theEObject;
-				T1 result = caseDiscreteWeibullDistribution(discreteWeibullDistribution);
-				if (result == null) result = caseBoundedDiscreteDistribution(discreteWeibullDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteWeibullDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION: {
-				DiscreteWeibullParametersDistribution discreteWeibullParametersDistribution = (DiscreteWeibullParametersDistribution)theEObject;
-				T1 result = caseDiscreteWeibullParametersDistribution(discreteWeibullParametersDistribution);
-				if (result == null) result = caseDiscreteWeibullDistribution(discreteWeibullParametersDistribution);
-				if (result == null) result = caseBoundedDiscreteDistribution(discreteWeibullParametersDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteWeibullParametersDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				DiscreteWeibullEstimatorsDistribution discreteWeibullEstimatorsDistribution = (DiscreteWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseDiscreteWeibullEstimatorsDistribution(discreteWeibullEstimatorsDistribution);
-				if (result == null) result = caseDiscreteWeibullDistribution(discreteWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedDiscreteDistribution(discreteWeibullEstimatorsDistribution);
 				if (result == null) result = caseDiscreteDeviation(discreteWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -983,27 +941,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_DISTRIBUTION: {
-				ContinuousWeibullDistribution continuousWeibullDistribution = (ContinuousWeibullDistribution)theEObject;
-				T1 result = caseContinuousWeibullDistribution(continuousWeibullDistribution);
-				if (result == null) result = caseBoundedContinuousDistribution(continuousWeibullDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousWeibullDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION: {
-				ContinuousWeibullParametersDistribution continuousWeibullParametersDistribution = (ContinuousWeibullParametersDistribution)theEObject;
-				T1 result = caseContinuousWeibullParametersDistribution(continuousWeibullParametersDistribution);
-				if (result == null) result = caseContinuousWeibullDistribution(continuousWeibullParametersDistribution);
-				if (result == null) result = caseBoundedContinuousDistribution(continuousWeibullParametersDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousWeibullParametersDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				ContinuousWeibullEstimatorsDistribution continuousWeibullEstimatorsDistribution = (ContinuousWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseContinuousWeibullEstimatorsDistribution(continuousWeibullEstimatorsDistribution);
-				if (result == null) result = caseContinuousWeibullDistribution(continuousWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousWeibullEstimatorsDistribution);
 				if (result == null) result = caseContinuousDeviation(continuousWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -4603,36 +4543,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time Weibull Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time Weibull Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTimeWeibullDistribution(TimeWeibullDistribution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time Weibull Parameters Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTimeWeibullParametersDistribution(TimeWeibullParametersDistribution object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Time Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -4813,36 +4723,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Discrete Weibull Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Discrete Weibull Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseDiscreteWeibullDistribution(DiscreteWeibullDistribution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Discrete Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Discrete Weibull Parameters Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseDiscreteWeibullParametersDistribution(DiscreteWeibullParametersDistribution object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Discrete Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -5019,36 +4899,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseContinuousGaussDistribution(ContinuousGaussDistribution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Continuous Weibull Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Continuous Weibull Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseContinuousWeibullDistribution(ContinuousWeibullDistribution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Continuous Weibull Parameters Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Continuous Weibull Parameters Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseContinuousWeibullParametersDistribution(ContinuousWeibullParametersDistribution object) {
 		return null;
 	}
 

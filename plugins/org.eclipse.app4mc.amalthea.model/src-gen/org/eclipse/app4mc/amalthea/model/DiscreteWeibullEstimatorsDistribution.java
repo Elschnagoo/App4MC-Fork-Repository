@@ -37,7 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface DiscreteWeibullEstimatorsDistribution extends DiscreteWeibullDistribution {
+public interface DiscreteWeibullEstimatorsDistribution extends BoundedDiscreteDistribution {
 	/**
 	 * Returns the value of the '<em><b>Average</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.

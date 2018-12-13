@@ -84,8 +84,7 @@ public class ContinuousUniformDistributionItemProvider extends BoundedContinuous
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		Double labelValue = ((ContinuousUniformDistribution)object).getLowerBound();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
@@ -93,6 +92,15 @@ public class ContinuousUniformDistributionItemProvider extends BoundedContinuous
 			getString("_UI_ContinuousUniformDistribution_type") + " " + label;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getContinuousUniformDistributionItemProviderText(object,
+				getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

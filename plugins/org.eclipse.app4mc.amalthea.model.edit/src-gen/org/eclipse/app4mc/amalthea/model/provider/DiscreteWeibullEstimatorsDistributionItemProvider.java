@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DiscreteWeibullEstimatorsDistributionItemProvider extends DiscreteWeibullDistributionItemProvider {
+public class DiscreteWeibullEstimatorsDistributionItemProvider extends BoundedDiscreteDistributionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

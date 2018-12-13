@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ContinuousWeibullEstimatorsDistributionImpl extends ContinuousWeibullDistributionImpl implements ContinuousWeibullEstimatorsDistribution {
+public class ContinuousWeibullEstimatorsDistributionImpl extends BoundedContinuousDistributionImpl implements ContinuousWeibullEstimatorsDistribution {
 	/**
 	 * The default value of the '{@link #getAverage() <em>Average</em>}' attribute.
 	 * <!-- begin-user-doc -->

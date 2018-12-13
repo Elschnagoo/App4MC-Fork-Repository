@@ -160,12 +160,20 @@ public class ContinuousHistogramEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
+	public String getTextGen(Object object) {
 		ContinuousHistogramEntry continuousHistogramEntry = (ContinuousHistogramEntry)object;
 		return getString("_UI_ContinuousHistogramEntry_type") + " " + continuousHistogramEntry.getOccurrences();
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomDeviationItemProviderService.getContinuousHistogramEntryItemProviderText(object,
+				getTextGen(object));
+	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

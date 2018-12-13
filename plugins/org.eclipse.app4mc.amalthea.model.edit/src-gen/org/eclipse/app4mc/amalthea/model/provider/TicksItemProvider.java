@@ -194,11 +194,6 @@ public class TicksItemProvider extends ComputationItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add

@@ -353,11 +353,6 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add

@@ -81,7 +81,6 @@ import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
@@ -123,7 +122,6 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
@@ -342,7 +340,6 @@ import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.UniformDistribution;
@@ -441,7 +438,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TIME_STATISTICS: return createTimeStatistics();
 			case AmaltheaPackage.TIME_UNIFORM_DISTRIBUTION: return createTimeUniformDistribution();
 			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION: return createTimeGaussDistribution();
-			case AmaltheaPackage.TIME_WEIBULL_PARAMETERS_DISTRIBUTION: return createTimeWeibullParametersDistribution();
 			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION: return createTimeWeibullEstimatorsDistribution();
 			case AmaltheaPackage.TIME_BETA_DISTRIBUTION: return createTimeBetaDistribution();
 			case AmaltheaPackage.DISCRETE_CONSTANT: return createDiscreteConstant();
@@ -451,7 +447,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DISCRETE_STATISTICS: return createDiscreteStatistics();
 			case AmaltheaPackage.DISCRETE_UNIFORM_DISTRIBUTION: return createDiscreteUniformDistribution();
 			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION: return createDiscreteGaussDistribution();
-			case AmaltheaPackage.DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION: return createDiscreteWeibullParametersDistribution();
 			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createDiscreteWeibullEstimatorsDistribution();
 			case AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION: return createDiscreteBetaDistribution();
 			case AmaltheaPackage.CONTINUOUS_CONSTANT: return createContinuousConstant();
@@ -461,7 +456,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONTINUOUS_STATISTICS: return createContinuousStatistics();
 			case AmaltheaPackage.CONTINUOUS_UNIFORM_DISTRIBUTION: return createContinuousUniformDistribution();
 			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION: return createContinuousGaussDistribution();
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION: return createContinuousWeibullParametersDistribution();
 			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousWeibullEstimatorsDistribution();
 			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION: return createContinuousBetaDistribution();
 			case AmaltheaPackage.DEVIATION: return createDeviation();
@@ -1262,16 +1256,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeWeibullParametersDistribution createTimeWeibullParametersDistribution() {
-		TimeWeibullParametersDistributionImpl timeWeibullParametersDistribution = new TimeWeibullParametersDistributionImpl();
-		return timeWeibullParametersDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TimeWeibullEstimatorsDistribution createTimeWeibullEstimatorsDistribution() {
 		TimeWeibullEstimatorsDistributionImpl timeWeibullEstimatorsDistribution = new TimeWeibullEstimatorsDistributionImpl();
 		return timeWeibullEstimatorsDistribution;
@@ -1362,16 +1346,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteWeibullParametersDistribution createDiscreteWeibullParametersDistribution() {
-		DiscreteWeibullParametersDistributionImpl discreteWeibullParametersDistribution = new DiscreteWeibullParametersDistributionImpl();
-		return discreteWeibullParametersDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DiscreteWeibullEstimatorsDistribution createDiscreteWeibullEstimatorsDistribution() {
 		DiscreteWeibullEstimatorsDistributionImpl discreteWeibullEstimatorsDistribution = new DiscreteWeibullEstimatorsDistributionImpl();
 		return discreteWeibullEstimatorsDistribution;
@@ -1455,16 +1429,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ContinuousGaussDistribution createContinuousGaussDistribution() {
 		ContinuousGaussDistributionImpl continuousGaussDistribution = new ContinuousGaussDistributionImpl();
 		return continuousGaussDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ContinuousWeibullParametersDistribution createContinuousWeibullParametersDistribution() {
-		ContinuousWeibullParametersDistributionImpl continuousWeibullParametersDistribution = new ContinuousWeibullParametersDistributionImpl();
-		return continuousWeibullParametersDistribution;
 	}
 
 	/**

@@ -271,11 +271,6 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
@@ -312,11 +307,6 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

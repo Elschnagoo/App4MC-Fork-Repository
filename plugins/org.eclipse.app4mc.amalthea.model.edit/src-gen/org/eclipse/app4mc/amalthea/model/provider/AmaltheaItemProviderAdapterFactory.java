@@ -728,29 +728,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TimeWeibullParametersDistributionItemProvider timeWeibullParametersDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTimeWeibullParametersDistributionAdapter() {
-		if (timeWeibullParametersDistributionItemProvider == null) {
-			timeWeibullParametersDistributionItemProvider = new TimeWeibullParametersDistributionItemProvider(this);
-		}
-
-		return timeWeibullParametersDistributionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -958,29 +935,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DiscreteWeibullParametersDistributionItemProvider discreteWeibullParametersDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDiscreteWeibullParametersDistributionAdapter() {
-		if (discreteWeibullParametersDistributionItemProvider == null) {
-			discreteWeibullParametersDistributionItemProvider = new DiscreteWeibullParametersDistributionItemProvider(this);
-		}
-
-		return discreteWeibullParametersDistributionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1185,29 +1139,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return continuousGaussDistributionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ContinuousWeibullParametersDistributionItemProvider continuousWeibullParametersDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createContinuousWeibullParametersDistributionAdapter() {
-		if (continuousWeibullParametersDistributionItemProvider == null) {
-			continuousWeibullParametersDistributionItemProvider = new ContinuousWeibullParametersDistributionItemProvider(this);
-		}
-
-		return continuousWeibullParametersDistributionItemProvider;
 	}
 
 	/**
@@ -6857,7 +6788,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (timeStatisticsItemProvider != null) timeStatisticsItemProvider.dispose();
 		if (timeUniformDistributionItemProvider != null) timeUniformDistributionItemProvider.dispose();
 		if (timeGaussDistributionItemProvider != null) timeGaussDistributionItemProvider.dispose();
-		if (timeWeibullParametersDistributionItemProvider != null) timeWeibullParametersDistributionItemProvider.dispose();
 		if (timeWeibullEstimatorsDistributionItemProvider != null) timeWeibullEstimatorsDistributionItemProvider.dispose();
 		if (timeBetaDistributionItemProvider != null) timeBetaDistributionItemProvider.dispose();
 		if (discreteConstantItemProvider != null) discreteConstantItemProvider.dispose();
@@ -6867,7 +6797,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (discreteStatisticsItemProvider != null) discreteStatisticsItemProvider.dispose();
 		if (discreteUniformDistributionItemProvider != null) discreteUniformDistributionItemProvider.dispose();
 		if (discreteGaussDistributionItemProvider != null) discreteGaussDistributionItemProvider.dispose();
-		if (discreteWeibullParametersDistributionItemProvider != null) discreteWeibullParametersDistributionItemProvider.dispose();
 		if (discreteWeibullEstimatorsDistributionItemProvider != null) discreteWeibullEstimatorsDistributionItemProvider.dispose();
 		if (discreteBetaDistributionItemProvider != null) discreteBetaDistributionItemProvider.dispose();
 		if (continuousConstantItemProvider != null) continuousConstantItemProvider.dispose();
@@ -6877,7 +6806,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (continuousStatisticsItemProvider != null) continuousStatisticsItemProvider.dispose();
 		if (continuousUniformDistributionItemProvider != null) continuousUniformDistributionItemProvider.dispose();
 		if (continuousGaussDistributionItemProvider != null) continuousGaussDistributionItemProvider.dispose();
-		if (continuousWeibullParametersDistributionItemProvider != null) continuousWeibullParametersDistributionItemProvider.dispose();
 		if (continuousWeibullEstimatorsDistributionItemProvider != null) continuousWeibullEstimatorsDistributionItemProvider.dispose();
 		if (continuousBetaDistributionItemProvider != null) continuousBetaDistributionItemProvider.dispose();
 		if (deviationItemProvider != null) deviationItemProvider.dispose();

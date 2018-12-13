@@ -98,9 +98,7 @@ import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -147,9 +145,7 @@ import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
 import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
@@ -416,9 +412,7 @@ import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeWeibullParametersDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
@@ -779,20 +773,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeWeibullDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass timeWeibullParametersDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass timeWeibullEstimatorsDistributionEClass = null;
 
 	/**
@@ -877,20 +857,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteWeibullDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass discreteWeibullParametersDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass discreteWeibullEstimatorsDistributionEClass = null;
 
 	/**
@@ -969,20 +935,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass continuousGaussDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass continuousWeibullDistributionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass continuousWeibullParametersDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4830,51 +4782,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeWeibullDistribution() {
-		return timeWeibullDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTimeWeibullParametersDistribution() {
-		return timeWeibullParametersDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTimeWeibullParametersDistribution_Kappa() {
-		return (EAttribute)timeWeibullParametersDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTimeWeibullParametersDistribution_Lambda() {
-		return (EAttribute)timeWeibullParametersDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTimeWeibullParametersDistribution__GetAverage() {
-		return timeWeibullParametersDistributionEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTimeWeibullEstimatorsDistribution() {
 		return timeWeibullEstimatorsDistributionEClass;
 	}
@@ -5235,51 +5142,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteWeibullDistribution() {
-		return discreteWeibullDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDiscreteWeibullParametersDistribution() {
-		return discreteWeibullParametersDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDiscreteWeibullParametersDistribution_Kappa() {
-		return (EAttribute)discreteWeibullParametersDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDiscreteWeibullParametersDistribution_Lambda() {
-		return (EAttribute)discreteWeibullParametersDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getDiscreteWeibullParametersDistribution__GetAverage() {
-		return discreteWeibullParametersDistributionEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDiscreteWeibullEstimatorsDistribution() {
 		return discreteWeibullEstimatorsDistributionEClass;
 	}
@@ -5633,51 +5495,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	public EOperation getContinuousGaussDistribution__GetAverage() {
 		return continuousGaussDistributionEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getContinuousWeibullDistribution() {
-		return continuousWeibullDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getContinuousWeibullParametersDistribution() {
-		return continuousWeibullParametersDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getContinuousWeibullParametersDistribution_Kappa() {
-		return (EAttribute)continuousWeibullParametersDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getContinuousWeibullParametersDistribution_Lambda() {
-		return (EAttribute)continuousWeibullParametersDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getContinuousWeibullParametersDistribution__GetAverage() {
-		return continuousWeibullParametersDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -14760,13 +14577,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(timeGaussDistributionEClass, TIME_GAUSS_DISTRIBUTION__SD);
 		createEOperation(timeGaussDistributionEClass, TIME_GAUSS_DISTRIBUTION___GET_AVERAGE);
 
-		timeWeibullDistributionEClass = createEClass(TIME_WEIBULL_DISTRIBUTION);
-
-		timeWeibullParametersDistributionEClass = createEClass(TIME_WEIBULL_PARAMETERS_DISTRIBUTION);
-		createEAttribute(timeWeibullParametersDistributionEClass, TIME_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA);
-		createEAttribute(timeWeibullParametersDistributionEClass, TIME_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA);
-		createEOperation(timeWeibullParametersDistributionEClass, TIME_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE);
-
 		timeWeibullEstimatorsDistributionEClass = createEClass(TIME_WEIBULL_ESTIMATORS_DISTRIBUTION);
 		createEReference(timeWeibullEstimatorsDistributionEClass, TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
 		createEAttribute(timeWeibullEstimatorsDistributionEClass, TIME_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
@@ -14819,13 +14629,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(discreteGaussDistributionEClass, DISCRETE_GAUSS_DISTRIBUTION__SD);
 		createEOperation(discreteGaussDistributionEClass, DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE);
 
-		discreteWeibullDistributionEClass = createEClass(DISCRETE_WEIBULL_DISTRIBUTION);
-
-		discreteWeibullParametersDistributionEClass = createEClass(DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION);
-		createEAttribute(discreteWeibullParametersDistributionEClass, DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA);
-		createEAttribute(discreteWeibullParametersDistributionEClass, DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA);
-		createEOperation(discreteWeibullParametersDistributionEClass, DISCRETE_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE);
-
 		discreteWeibullEstimatorsDistributionEClass = createEClass(DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION);
 		createEAttribute(discreteWeibullEstimatorsDistributionEClass, DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
 		createEAttribute(discreteWeibullEstimatorsDistributionEClass, DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
@@ -14877,13 +14680,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION__MEAN);
 		createEAttribute(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION__SD);
 		createEOperation(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE);
-
-		continuousWeibullDistributionEClass = createEClass(CONTINUOUS_WEIBULL_DISTRIBUTION);
-
-		continuousWeibullParametersDistributionEClass = createEClass(CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION);
-		createEAttribute(continuousWeibullParametersDistributionEClass, CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__KAPPA);
-		createEAttribute(continuousWeibullParametersDistributionEClass, CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION__LAMBDA);
-		createEOperation(continuousWeibullParametersDistributionEClass, CONTINUOUS_WEIBULL_PARAMETERS_DISTRIBUTION___GET_AVERAGE);
 
 		continuousWeibullEstimatorsDistributionEClass = createEClass(CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION);
 		createEAttribute(continuousWeibullEstimatorsDistributionEClass, CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
@@ -16260,9 +16056,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		timeStatisticsEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeUniformDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeGaussDistributionEClass.getESuperTypes().add(this.getTruncatedTimeDistribution());
-		timeWeibullDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
-		timeWeibullParametersDistributionEClass.getESuperTypes().add(this.getTimeWeibullDistribution());
-		timeWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getTimeWeibullDistribution());
+		timeWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeBetaDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		discreteConstantEClass.getESuperTypes().add(this.getDiscreteDeviation());
 		discreteHistogramEClass.getESuperTypes().add(this.getDiscreteDeviation());
@@ -16272,9 +16066,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		discreteStatisticsEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteUniformDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteGaussDistributionEClass.getESuperTypes().add(this.getTruncatedDiscreteDistribution());
-		discreteWeibullDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		discreteWeibullParametersDistributionEClass.getESuperTypes().add(this.getDiscreteWeibullDistribution());
-		discreteWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getDiscreteWeibullDistribution());
+		discreteWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteBetaDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		continuousConstantEClass.getESuperTypes().add(this.getContinuousDeviation());
 		continuousHistogramEClass.getESuperTypes().add(this.getContinuousDeviation());
@@ -16284,9 +16076,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		continuousStatisticsEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousUniformDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousGaussDistributionEClass.getESuperTypes().add(this.getTruncatedContinuousDistribution());
-		continuousWeibullDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
-		continuousWeibullParametersDistributionEClass.getESuperTypes().add(this.getContinuousWeibullDistribution());
-		continuousWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getContinuousWeibullDistribution());
+		continuousWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousBetaDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		EGenericType g1 = createEGenericType(this.getDistribution());
 		EGenericType g2 = createEGenericType(weibullDistributionEClass_T);
@@ -16876,14 +16666,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getTimeGaussDistribution__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(timeWeibullDistributionEClass, TimeWeibullDistribution.class, "TimeWeibullDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(timeWeibullParametersDistributionEClass, TimeWeibullParametersDistribution.class, "TimeWeibullParametersDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTimeWeibullParametersDistribution_Kappa(), this.getPositiveDouble(), "kappa", "1.0", 1, 1, TimeWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeWeibullParametersDistribution_Lambda(), this.getPositiveDouble(), "lambda", "1.0", 1, 1, TimeWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getTimeWeibullParametersDistribution__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(timeWeibullEstimatorsDistributionEClass, TimeWeibullEstimatorsDistribution.class, "TimeWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimeWeibullEstimatorsDistribution_Average(), this.getTime(), null, "average", null, 1, 1, TimeWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTimeWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, TimeWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16948,14 +16730,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDiscreteGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteWeibullDistributionEClass, DiscreteWeibullDistribution.class, "DiscreteWeibullDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(discreteWeibullParametersDistributionEClass, DiscreteWeibullParametersDistribution.class, "DiscreteWeibullParametersDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteWeibullParametersDistribution_Kappa(), this.getPositiveDouble(), "kappa", "1.0", 1, 1, DiscreteWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDiscreteWeibullParametersDistribution_Lambda(), this.getPositiveDouble(), "lambda", "1.0", 1, 1, DiscreteWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getDiscreteWeibullParametersDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
 		initEClass(discreteWeibullEstimatorsDistributionEClass, DiscreteWeibullEstimatorsDistribution.class, "DiscreteWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscreteWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, DiscreteWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17019,14 +16793,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getContinuousGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, ContinuousGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContinuousGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(continuousWeibullDistributionEClass, ContinuousWeibullDistribution.class, "ContinuousWeibullDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(continuousWeibullParametersDistributionEClass, ContinuousWeibullParametersDistribution.class, "ContinuousWeibullParametersDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousWeibullParametersDistribution_Kappa(), this.getPositiveDouble(), "kappa", "1.0", 1, 1, ContinuousWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContinuousWeibullParametersDistribution_Lambda(), this.getPositiveDouble(), "lambda", "1.0", 1, 1, ContinuousWeibullParametersDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getContinuousWeibullParametersDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousWeibullEstimatorsDistributionEClass, ContinuousWeibullEstimatorsDistribution.class, "ContinuousWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

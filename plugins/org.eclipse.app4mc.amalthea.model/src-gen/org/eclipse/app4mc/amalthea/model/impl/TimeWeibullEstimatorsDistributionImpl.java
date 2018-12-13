@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TimeWeibullEstimatorsDistributionImpl extends TimeWeibullDistributionImpl implements TimeWeibullEstimatorsDistribution {
+public class TimeWeibullEstimatorsDistributionImpl extends BoundedTimeDistributionImpl implements TimeWeibullEstimatorsDistribution {
 	/**
 	 * The cached value of the '{@link #getAverage() <em>Average</em>}' containment reference.
 	 * <!-- begin-user-doc -->

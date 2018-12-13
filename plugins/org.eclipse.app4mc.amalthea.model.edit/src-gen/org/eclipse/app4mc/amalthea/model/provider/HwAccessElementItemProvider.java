@@ -339,11 +339,6 @@ public class HwAccessElementItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessElement_ReadLatency(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
@@ -380,11 +375,6 @@ public class HwAccessElementItemProvider
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency(),
 				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getHwAccessElement_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

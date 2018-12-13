@@ -568,29 +568,10 @@ class TimeUniformDistribution extends BoundedTimeDistribution {}
 }
 
 /*
- * Abstract Weibull distribution
- */
-abstract class TimeWeibullDistribution extends BoundedTimeDistribution {}
-
-/*
- * Weibull Distribution
- * Starts from zero, upperBound limits maximum value of result
- */
-class TimeWeibullParametersDistribution extends TimeWeibullDistribution {
-	PositiveDouble[1] kappa = "1.0"
-	PositiveDouble[1] lambda = "1.0"
-	
-	op Time getAverage() { //?????
-		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
-		lowerBound.add( upperBound.subtract(lowerBound).multiply(ratio) )
-	}
-}
-
-/*
  * Weibull Distribution
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
-class TimeWeibullEstimatorsDistribution extends TimeWeibullDistribution {
+class TimeWeibullEstimatorsDistribution extends BoundedTimeDistribution {
 	contains Time[1] average
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
@@ -693,29 +674,10 @@ class DiscreteUniformDistribution extends BoundedDiscreteDistribution {}
 }
 
 /*
- * Abstract Weibull distribution
- */
-abstract class DiscreteWeibullDistribution extends BoundedDiscreteDistribution {}
-
-/*
- * Weibull Distribution
- * Starts from zero, upperBound limits maximum value of result
- */
-class DiscreteWeibullParametersDistribution extends DiscreteWeibullDistribution {
-	PositiveDouble[1] kappa = "1.0"
-	PositiveDouble[1] lambda = "1.0"
-	
-	op Double getAverage() { //???????
-		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
-		lowerBound + (upperBound - lowerBound) * ratio
-	}
-}
-
-/*
  * Weibull Distribution
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
-class DiscreteWeibullEstimatorsDistribution extends DiscreteWeibullDistribution {
+class DiscreteWeibullEstimatorsDistribution extends BoundedDiscreteDistribution {
 	Double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
@@ -818,29 +780,10 @@ class ContinuousUniformDistribution extends BoundedContinuousDistribution {}
 }
 
 /*
- * Abstract Weibull distribution
- */
-abstract class ContinuousWeibullDistribution extends BoundedContinuousDistribution {}
-
-/*
- * Weibull Distribution
- * Starts from zero, upperBound limits maximum value of result
- */
-class ContinuousWeibullParametersDistribution extends ContinuousWeibullDistribution {
-	PositiveDouble[1] kappa = "1.0"
-	PositiveDouble[1] lambda = "1.0"
-	
-	op Double getAverage() { //???????
-		val ratio = 1.0 / lambda * Gamma.gamma(1.0 + 1.0 / kappa);
-		lowerBound + (upperBound - lowerBound) * ratio
-	}
-}
-
-/*
  * Weibull Distribution
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
-class ContinuousWeibullEstimatorsDistribution extends ContinuousWeibullDistribution {
+class ContinuousWeibullEstimatorsDistribution extends BoundedContinuousDistribution {
 	Double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
