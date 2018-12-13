@@ -18,7 +18,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.DataSize;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -79,7 +79,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * @generated
 	 * @ordered
 	 */
-	protected HwLatency accessLatency;
+	protected DiscreteDeviation accessLatency;
 
 	/**
 	 * The default value of the '{@link #getCacheType() <em>Cache Type</em>}' attribute.
@@ -311,7 +311,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwLatency getAccessLatency() {
+	public DiscreteDeviation getAccessLatency() {
 		return accessLatency;
 	}
 
@@ -320,8 +320,8 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAccessLatency(HwLatency newAccessLatency, NotificationChain msgs) {
-		HwLatency oldAccessLatency = accessLatency;
+	public NotificationChain basicSetAccessLatency(DiscreteDeviation newAccessLatency, NotificationChain msgs) {
+		DiscreteDeviation oldAccessLatency = accessLatency;
 		accessLatency = newAccessLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY, oldAccessLatency, newAccessLatency);
@@ -335,7 +335,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAccessLatency(HwLatency newAccessLatency) {
+	public void setAccessLatency(DiscreteDeviation newAccessLatency) {
 		if (newAccessLatency != accessLatency) {
 			NotificationChain msgs = null;
 			if (accessLatency != null)
@@ -538,7 +538,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 				setLineSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
-				setAccessLatency((HwLatency)newValue);
+				setAccessLatency((DiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__CACHE_TYPE:
 				setCacheType((CacheType)newValue);
@@ -577,7 +577,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 				setLineSize((DataSize)null);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__ACCESS_LATENCY:
-				setAccessLatency((HwLatency)null);
+				setAccessLatency((DiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.CACHE_DEFINITION__CACHE_TYPE:
 				setCacheType(CACHE_TYPE_EDEFAULT);

@@ -16,13 +16,14 @@
 package org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget;
 
 import java.util.function.BiConsumer;
+
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.ExecutionModel;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.misc.EMTimeType;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMCore;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTask;
+import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTask.DeadlineEntry;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTaskEvent;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTaskHistState;
-import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTask.DeadlineEntry;
 import org.eclipse.app4mc.multicore.execution.ui.widget.tracewidget.TraceWidget;
 
 public class EMTraceWidget extends TraceWidget implements IEMTraceWidget{

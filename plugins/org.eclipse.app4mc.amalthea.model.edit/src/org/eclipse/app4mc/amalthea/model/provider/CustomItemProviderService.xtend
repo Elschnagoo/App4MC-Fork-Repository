@@ -89,8 +89,6 @@ import org.eclipse.app4mc.amalthea.model.InterfaceKind
 import org.eclipse.app4mc.amalthea.model.InterfacePort
 import org.eclipse.app4mc.amalthea.model.LabelAccess
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum
-import org.eclipse.app4mc.amalthea.model.LatencyConstant
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation
 import org.eclipse.app4mc.amalthea.model.LimitType
 import org.eclipse.app4mc.amalthea.model.ListObject
 import org.eclipse.app4mc.amalthea.model.LongObject
@@ -1497,35 +1495,6 @@ class CustomItemProviderService {
 				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
 		return null
-	}
-
-	/*****************************************************************************
-	 * 						LatencyConstantItemProvider
-	 *****************************************************************************/
-	def static String getLatencyConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof LatencyConstant) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val s2 = Long.toString(object.cycles)
-			return s1 + "cycles (constant): " + s2
-		} else {
-			return defaultText
-		}
-	}
-
-	/*****************************************************************************
-	 * 						LatencyDeviationItemProvider
-	 *****************************************************************************/
-	def static String getLatencyDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof LatencyDeviation) {
-			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(feature == "value") "" else feature + " -- "
-			val distName = object.cycles?.distribution?.eClass?.name
-			val s2 = if(distName.isNullOrEmpty) "<distribution>" else trimDistName(distName)
-			return s1 + "cycles (deviation): " + s2
-		} else {
-			return defaultText
-		}
 	}
 
 ///// 

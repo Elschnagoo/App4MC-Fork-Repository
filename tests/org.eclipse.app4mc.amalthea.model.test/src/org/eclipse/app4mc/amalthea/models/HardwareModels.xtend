@@ -113,7 +113,7 @@ class HardwareModels {
 				
 				definition_ConnectionHandler [
 					name="ch_test2_def"
-					readLatency = createLatency(createDeviation(createGaussDistribution(15, 3), 10, 20))
+					readLatency = createDiscreteGaussDistribution(15, 3, 10L, 20L)
 					dataRate = createDataRate(4, DataRateUnit::GI_BPER_SECOND)
 				]
 				
@@ -352,7 +352,7 @@ class HardwareModels {
 		pu221.access [
 			name = "ae2"
 			destination = _ref(Memory, "top1_mem1")
-			readLatency = createLatency(createDeviation(createGaussDistribution(28,2), 24, 32))
+			readLatency = createDiscreteGaussDistribution(28, 2, 24L, 32L)
 			writeLatency = createLatency(8)
 		]
 		pu221.access [

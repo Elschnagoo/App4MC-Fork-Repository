@@ -184,8 +184,6 @@ import org.eclipse.app4mc.amalthea.model.LabelDataStability;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
@@ -553,8 +551,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONNECTION_HANDLER: return createConnectionHandler();
 			case AmaltheaPackage.HW_CONNECTION: return createHwConnection();
 			case AmaltheaPackage.HW_ACCESS_ELEMENT: return createHwAccessElement();
-			case AmaltheaPackage.LATENCY_CONSTANT: return createLatencyConstant();
-			case AmaltheaPackage.LATENCY_DEVIATION: return createLatencyDeviation();
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION: return createProcessingUnitDefinition();
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION: return createConnectionHandlerDefinition();
 			case AmaltheaPackage.MEMORY_DEFINITION: return createMemoryDefinition();
@@ -2359,26 +2355,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public HwAccessElement createHwAccessElement() {
 		HwAccessElementImpl hwAccessElement = new HwAccessElementImpl();
 		return hwAccessElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LatencyConstant createLatencyConstant() {
-		LatencyConstantImpl latencyConstant = new LatencyConstantImpl();
-		return latencyConstant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LatencyDeviation createLatencyDeviation() {
-		LatencyDeviationImpl latencyDeviation = new LatencyDeviationImpl();
-		return latencyDeviation;
 	}
 
 	/**

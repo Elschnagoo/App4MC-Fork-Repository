@@ -2087,8 +2087,11 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 	}
 	
 	// contains HwConverter converter
-	contains HwLatency readLatency
-	contains HwLatency writeLatency
+	
+	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	contains DiscreteDeviation readLatency
+	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 	refers HwPort port1
 	refers HwPort port2
@@ -2116,8 +2119,10 @@ class HwAccessElement extends ITaggable, INamed
 	
 	refers HwDestination[1] destination
 	contains HwAccessPath accessPath opposite containingAccessElement
-	contains HwLatency readLatency
-	contains HwLatency writeLatency
+	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	contains DiscreteDeviation readLatency
+	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 }
 
@@ -2166,18 +2171,6 @@ enum WriteStrategy
 	writethrough
 }
 
-abstract class HwLatency {}
-
-class LatencyConstant extends HwLatency
-{
-	long cycles = "0"
-}
-
-class LatencyDeviation extends HwLatency
-{
-	contains Deviation<LongObject>cycles
-}
-
 abstract class HwDefinition extends ReferableBaseObject, ITaggable {}
 
 class ProcessingUnitDefinition extends HwDefinition
@@ -2190,8 +2183,10 @@ class ProcessingUnitDefinition extends HwDefinition
 class ConnectionHandlerDefinition extends HwDefinition
 {
 	SchedPolicy policy
-	contains HwLatency readLatency
-	contains HwLatency writeLatency
+	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	contains DiscreteDeviation readLatency
+	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 	PositiveInt maxBurstSize = "1"
 	PositiveInt maxConcurrentTransfers = "1"
@@ -2200,7 +2195,8 @@ class ConnectionHandlerDefinition extends HwDefinition
 class MemoryDefinition extends HwDefinition
 {
 	contains DataSize size
-	contains HwLatency accessLatency
+	@GenModel(documentation="<p>Returns the access latency in cycles</p>")
+	contains DiscreteDeviation accessLatency
 	contains DataRate dataRate
 	MemoryType memoryType
 	refers MemoryClassifier[] classifiers // backward compatibility
@@ -2210,7 +2206,8 @@ class CacheDefinition extends HwDefinition
 {
 	contains DataSize size
 	contains DataSize lineSize
-	contains HwLatency accessLatency
+	@GenModel(documentation="<p>Returns the access latency in cycles</p>")
+	contains DiscreteDeviation accessLatency
 	CacheType cacheType
 	WriteStrategy writeStrategy
 	int nWays = "0"

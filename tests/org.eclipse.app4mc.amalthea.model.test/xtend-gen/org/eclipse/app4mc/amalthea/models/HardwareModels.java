@@ -130,7 +130,7 @@ public class HardwareModels {
         this.b2.definition_ConnectionHandler(it_1, _function_9);
         final Procedure1<ConnectionHandlerDefinition> _function_10 = (ConnectionHandlerDefinition it_2) -> {
           it_2.setName("ch_test2_def");
-          it_2.setReadLatency(FactoryUtil.createLatency(FactoryUtil.createDeviation(FactoryUtil.createGaussDistribution(15, 3), 10, 20)));
+          it_2.setReadLatency(FactoryUtil.createDiscreteGaussDistribution(15, 3, Long.valueOf(10L), Long.valueOf(20L)));
           it_2.setDataRate(FactoryUtil.createDataRate(4, DataRateUnit.GI_BPER_SECOND));
         };
         this.b2.definition_ConnectionHandler(it_1, _function_10);
@@ -447,7 +447,7 @@ public class HardwareModels {
     final Procedure1<HwAccessElement> _function_14 = (HwAccessElement it) -> {
       it.setName("ae2");
       it.setDestination(this.b1.<Memory>_ref(Memory.class, "top1_mem1"));
-      it.setReadLatency(FactoryUtil.createLatency(FactoryUtil.createDeviation(FactoryUtil.createGaussDistribution(28, 2), 24, 32)));
+      it.setReadLatency(FactoryUtil.createDiscreteGaussDistribution(28, 2, Long.valueOf(24L), Long.valueOf(32L)));
       it.setWriteLatency(FactoryUtil.createLatency(8));
     };
     this.b2.access(pu221, _function_14);

@@ -200,7 +200,6 @@ import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
@@ -233,8 +232,6 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
@@ -1819,27 +1816,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass hwAccessElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass hwLatencyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyConstantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass latencyDeviationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8778,51 +8754,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHwLatency() {
-		return hwLatencyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatencyConstant() {
-		return latencyConstantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLatencyConstant_Cycles() {
-		return (EAttribute)latencyConstantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLatencyDeviation() {
-		return latencyDeviationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLatencyDeviation_Cycles() {
-		return (EReference)latencyDeviationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getHwDefinition() {
 		return hwDefinitionEClass;
 	}
@@ -15414,14 +15345,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__WRITE_LATENCY);
 		createEReference(hwAccessElementEClass, HW_ACCESS_ELEMENT__DATA_RATE);
 
-		hwLatencyEClass = createEClass(HW_LATENCY);
-
-		latencyConstantEClass = createEClass(LATENCY_CONSTANT);
-		createEAttribute(latencyConstantEClass, LATENCY_CONSTANT__CYCLES);
-
-		latencyDeviationEClass = createEClass(LATENCY_DEVIATION);
-		createEReference(latencyDeviationEClass, LATENCY_DEVIATION__CYCLES);
-
 		hwDefinitionEClass = createEClass(HW_DEFINITION);
 
 		processingUnitDefinitionEClass = createEClass(PROCESSING_UNIT_DEFINITION);
@@ -16535,8 +16458,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		hwConnectionEClass.getESuperTypes().add(this.getITaggable());
 		hwAccessElementEClass.getESuperTypes().add(this.getITaggable());
 		hwAccessElementEClass.getESuperTypes().add(this.getINamed());
-		latencyConstantEClass.getESuperTypes().add(this.getHwLatency());
-		latencyDeviationEClass.getESuperTypes().add(this.getHwLatency());
 		hwDefinitionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		hwDefinitionEClass.getESuperTypes().add(this.getITaggable());
 		processingUnitDefinitionEClass.getESuperTypes().add(this.getHwDefinition());
@@ -17566,8 +17487,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandler_InternalConnections(), this.getHwConnection(), null, "internalConnections", null, 0, -1, ConnectionHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwConnectionEClass, HwConnection.class, "HwConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwConnection_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwConnection_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17581,20 +17502,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_Destination(), this.getHwDestination(), null, "destination", null, 1, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_AccessPath(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPath", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(hwLatencyEClass, HwLatency.class, "HwLatency", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(latencyConstantEClass, LatencyConstant.class, "LatencyConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLatencyConstant_Cycles(), theEcorePackage.getELong(), "cycles", "0", 0, 1, LatencyConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(latencyDeviationEClass, LatencyDeviation.class, "LatencyDeviation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getDeviation());
-		g2 = createEGenericType(this.getLongObject());
-		g1.getETypeArguments().add(g2);
-		initEReference(getLatencyDeviation_Cycles(), g1, null, "cycles", null, 0, 1, LatencyDeviation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -17605,15 +17515,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectionHandlerDefinition_Policy(), this.getSchedPolicy(), "policy", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getHwLatency(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getHwLatency(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxBurstSize(), this.getPositiveInt(), "maxBurstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxConcurrentTransfers(), this.getPositiveInt(), "maxConcurrentTransfers", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_AccessLatency(), this.getDiscreteDeviation(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryDefinition_MemoryType(), this.getMemoryType(), "memoryType", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17621,7 +17531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCacheDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCacheDefinition_LineSize(), this.getDataSize(), null, "lineSize", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCacheDefinition_AccessLatency(), this.getHwLatency(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCacheDefinition_AccessLatency(), this.getDiscreteDeviation(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_CacheType(), this.getCacheType(), "cacheType", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_WriteStrategy(), this.getWriteStrategy(), "writeStrategy", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_NWays(), theEcorePackage.getEInt(), "nWays", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -16,7 +16,6 @@
 package org.eclipse.app4mc.amalthea.model.util;
 
 import java.math.BigInteger;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +28,7 @@ import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
 import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
@@ -36,8 +36,6 @@ import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
@@ -126,31 +124,33 @@ public class FactoryUtil {
 	}
 
 	/**
-	 * Creates a HwLatency with constant cycles
-	 * @param cycles
-	 * @return LatencyConstant
+	 * Creates DiscreteConstant
+	 * @param value
+	 * @return DiscreteConstant
 	 */
-	public static LatencyConstant createLatency(long cycles) {
-		LatencyConstant latency = AmaltheaFactory.eINSTANCE.createLatencyConstant();
-		latency.setCycles(cycles);
-		return latency;
+	public static DiscreteConstant createLatency(long value) {
+		DiscreteConstant constant = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+		constant.setValue(value);;
+		return constant;
 	}
 
 	/**
-	 * Creates a HwLatency with a deviation of cycles
+	 * Creates a DiscreteInterval
 	 * @param cycles
 	 * @return LatencyDeviation
 	 */
-	public static LatencyDeviation createLatency(Deviation<LongObject> cycles) {
-		LatencyDeviation latency = AmaltheaFactory.eINSTANCE.createLatencyDeviation();
-		latency.setCycles(cycles);;
-		return latency;
+	public static DiscreteInterval createDiscreteInterval(long min, long max) {
+		DiscreteInterval interval = AmaltheaFactory.eINSTANCE.createDiscreteInterval();
+		interval.setLowerBound(min);
+		interval.setUpperBound(max);
+		return interval;
 	}
 
 	/**
 	 * Returns a newly created Deviation.
 	 * @param dist
 	 */
+	@Deprecated
 	public static Deviation<LongObject> createDeviation(Distribution<LongObject> dist) {
 		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
 		// set distribution
@@ -164,6 +164,7 @@ public class FactoryUtil {
 	 * @param min
 	 * @param max
 	 */
+	@Deprecated
 	public static Deviation<LongObject> createDeviation(Distribution<LongObject> dist, long min, long max) {
 		Deviation<LongObject> result = AmaltheaFactory.eINSTANCE.createDeviation();
 		// set distribution
@@ -178,6 +179,7 @@ public class FactoryUtil {
 		return result;
 	}
 
+	@Deprecated
 	public static GaussDistribution<LongObject> createGaussDistribution(long mean, long sd) {
 		GaussDistribution<LongObject> result = AmaltheaFactory.eINSTANCE.createGaussDistribution();
 		// set parameters
@@ -265,28 +267,6 @@ public class FactoryUtil {
 		time.setValue(inputTime.getValue());
 		time.setUnit(inputTime.getUnit());
 		return time;
-	}
-
-	/**
-	 * 
-	 * @param executionNeedCount	absolute number of executionNeedCount (simular to instructions)
-	 * @param scaleFactor			simular to ipc	
-	 * @param frequency				frequency in Hertz (=1/s)
-	 * Note: the function will round up the runtime e.g if the (executionNeedCount/ipc) / frequency &lt; 1 =&gt; the runtime is 0
-	 */
-	public static Time createTime(long executionNeedCount, double scaleFactor, long frequency) {
-		double cycles = (((double)executionNeedCount)/scaleFactor);
-		
-		List<TimeUnit> units = TimeUtil.getTimeUnitList();
-		int timeUnitIndex = units.indexOf(TimeUnit.S);
-		
-		while(frequency % 1000 == 0 && (frequency > 0)) {		//as long as frequency is multiple of 1000
-			timeUnitIndex++;
-			frequency = frequency / 1000L;
-		}
-		double runtime = ((double)cycles) / ((double)frequency);
-
-		return TimeUtil.adjustTimeUnit(runtime, units.get(timeUnitIndex));
 	}
 
 	/**

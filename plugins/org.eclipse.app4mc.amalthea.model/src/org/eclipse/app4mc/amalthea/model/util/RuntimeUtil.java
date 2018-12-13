@@ -311,7 +311,7 @@ public class RuntimeUtil {
 				if (hwFeatures.contains(feat)) {
 					scaleFactor = feat.getValue();
 					if (scaleFactor != 0) {
-						Time currentTime = FactoryUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
+						Time currentTime = RuntimeUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
 						executionTime = TimeUtil.addTimes(executionTime, currentTime);
 					}
 				}
@@ -422,7 +422,7 @@ public class RuntimeUtil {
 			if (hwFeature.equals(feat)) {
 				scaleFactor = feat.getValue();
 				if (scaleFactor != 0) {
-					Time currentTime = FactoryUtil.createTime(executionNeedValueCount, scaleFactor, frequency);
+					Time currentTime = RuntimeUtil.createTime(executionNeedValueCount, scaleFactor, frequency);
 					executionTime = TimeUtil.addTimes(executionTime, currentTime);
 				}
 			}
@@ -1268,6 +1268,28 @@ public class RuntimeUtil {
 		// ticks with ipc to instrcutions
 		needs.setValue((long) (ticks * scaleFactor));
 		return needs;
+	}
+
+	/**
+	 * 
+	 * @param executionNeedCount	absolute number of executionNeedCount (simular to instructions)
+	 * @param scaleFactor			simular to ipc	
+	 * @param frequency				frequency in Hertz (=1/s)
+	 * Note: the function will round up the runtime e.g if the (executionNeedCount/ipc) / frequency &lt; 1 =&gt; the runtime is 0
+	 */
+	public static Time createTime(long executionNeedCount, double scaleFactor, long frequency) {
+		double cycles = (((double)executionNeedCount)/scaleFactor);
+		
+		List<TimeUnit> units = TimeUtil.getTimeUnitList();
+		int timeUnitIndex = units.indexOf(TimeUnit.S);
+		
+		while(frequency % 1000 == 0 && (frequency > 0)) {		//as long as frequency is multiple of 1000
+			timeUnitIndex++;
+			frequency = frequency / 1000L;
+		}
+		double runtime = ((double)cycles) / ((double)frequency);
+
+		return TimeUtil.adjustTimeUnit(runtime, units.get(timeUnitIndex));
 	}
 
 }

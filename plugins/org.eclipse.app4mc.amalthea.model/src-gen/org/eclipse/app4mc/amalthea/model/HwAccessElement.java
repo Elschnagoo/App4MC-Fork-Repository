@@ -120,18 +120,17 @@ public interface HwAccessElement extends ITaggable, INamed {
 	/**
 	 * Returns the value of the '<em><b>Read Latency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Read Latency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>Returns the read latency in cycles</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Read Latency</em>' containment reference.
-	 * @see #setReadLatency(HwLatency)
+	 * @see #setReadLatency(DiscreteDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_ReadLatency()
 	 * @model containment="true"
 	 * @generated
 	 */
-	HwLatency getReadLatency();
+	DiscreteDeviation getReadLatency();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getReadLatency <em>Read Latency</em>}' containment reference.
@@ -141,23 +140,22 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * @see #getReadLatency()
 	 * @generated
 	 */
-	void setReadLatency(HwLatency value);
+	void setReadLatency(DiscreteDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Write Latency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Write Latency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>Returns the write latency in cycles</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Write Latency</em>' containment reference.
-	 * @see #setWriteLatency(HwLatency)
+	 * @see #setWriteLatency(DiscreteDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_WriteLatency()
 	 * @model containment="true"
 	 * @generated
 	 */
-	HwLatency getWriteLatency();
+	DiscreteDeviation getWriteLatency();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getWriteLatency <em>Write Latency</em>}' containment reference.
@@ -167,7 +165,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * @see #getWriteLatency()
 	 * @generated
 	 */
-	void setWriteLatency(HwLatency value);
+	void setWriteLatency(DiscreteDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.

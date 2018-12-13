@@ -23,22 +23,20 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.DataRate;
-import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
-import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
@@ -132,7 +130,7 @@ public class HardwareUtil {
 		Map<Memory, Long> memoryMap = getMemoryAccessLatenciesCycles(model, timeType);
 
 		for (Memory key : memoryMap.keySet()) {
-			Time time = FactoryUtil.createTime(	// TODO Has to be updated in runtimeUtils
+			Time time = RuntimeUtil.createTime(	// TODO Has to be updated in runtimeUtils
 					memoryMap.get(key),
 					1.0F,
 					getFrequencyOfModuleInHz(key)
@@ -180,7 +178,7 @@ public class HardwareUtil {
 
 	public static Time calculateLatencyPathTime(HwAccessElement accessElement, TimeType timeType,
 			AccessDirection direction) {
-		HwLatency latency = null;
+		DiscreteDeviation latency = null;
 		switch (direction) {
 		case READ:
 			if (accessElement.getReadLatency() != null) {
@@ -195,7 +193,7 @@ public class HardwareUtil {
 		default:
 			break;
 		}
-		return FactoryUtil.createTime(
+		return RuntimeUtil.createTime(
 				calculateLatency(latency, timeType),
 				1.0F,
 				getFrequencyOfModuleInHz(accessElement.getSource())
@@ -206,7 +204,7 @@ public class HardwareUtil {
 			AccessDirection direction) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		Frequency frequency = null;
-		HwLatency latency = null;
+		DiscreteDeviation latency = null;
 		if (accessElement.getAccessPath() != null) {
 			for (HwPathElement element : accessElement.getAccessPath().getPathElements()) {
 				if (element instanceof ConnectionHandler) {
@@ -243,7 +241,7 @@ public class HardwareUtil {
 				
 				result = TimeUtil.addTimes(
 						result,
-						FactoryUtil.createTime(
+						RuntimeUtil.createTime(
 								calculateLatency(latency, timeType),
 								1.0F,
 								AmaltheaServices.convertToHertz(frequency).longValue()
@@ -254,32 +252,26 @@ public class HardwareUtil {
 		return result;
 	}
 
-	public static Long calculateLatency(HwLatency latency, TimeType timeType) {
+	public static Long calculateLatency(DiscreteDeviation latency, TimeType timeType) {
 		Long result = 0L;
-		if (latency instanceof LatencyConstant) {
-			result = (((LatencyConstant) latency).getCycles());
-		} else if (latency instanceof LatencyDeviation) {
-			Deviation<LongObject> deviation = ((LatencyDeviation) latency).getCycles();// TODO: Discuss get cycles is
-																						// irritating returns deviation
-			if (timeType == null)
-				result = (RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(),
-						deviation.getUpperBound().getValue()));
-			else {
+		if (latency instanceof DiscreteConstant) {
+			result = (((DiscreteConstant) latency).getValue());
+		} else if (latency instanceof BoundedDiscreteDistribution) {//FIXME
+			BoundedDiscreteDistribution deviation = ((BoundedDiscreteDistribution) latency);
+				result = deviation.getAverage().longValue();
 				switch (timeType) {
 				case ACET:
-					result = (RuntimeUtil.getMean(deviation.getDistribution(), deviation.getLowerBound().getValue(),
-							deviation.getUpperBound().getValue()));
+					result = deviation.getAverage().longValue();;
 					break;
 				case BCET:
-					result = (deviation.getLowerBound().getValue());
+					result = (deviation.getLowerBound());
 					break;
 				case WCET:
-					result = (deviation.getUpperBound().getValue());
+					result = (deviation.getUpperBound());
 					break;
 				default:
 					break;
-				}
-			}
+				}			
 		}
 		return result;
 	}

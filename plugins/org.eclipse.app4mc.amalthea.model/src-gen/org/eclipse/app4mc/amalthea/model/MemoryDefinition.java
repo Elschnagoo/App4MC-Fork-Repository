@@ -66,18 +66,17 @@ public interface MemoryDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Access Latency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access Latency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>Returns the access latency in cycles</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Access Latency</em>' containment reference.
-	 * @see #setAccessLatency(HwLatency)
+	 * @see #setAccessLatency(DiscreteDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryDefinition_AccessLatency()
 	 * @model containment="true"
 	 * @generated
 	 */
-	HwLatency getAccessLatency();
+	DiscreteDeviation getAccessLatency();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.MemoryDefinition#getAccessLatency <em>Access Latency</em>}' containment reference.
@@ -87,7 +86,7 @@ public interface MemoryDefinition extends HwDefinition {
 	 * @see #getAccessLatency()
 	 * @generated
 	 */
-	void setAccessLatency(HwLatency value);
+	void setAccessLatency(DiscreteDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.

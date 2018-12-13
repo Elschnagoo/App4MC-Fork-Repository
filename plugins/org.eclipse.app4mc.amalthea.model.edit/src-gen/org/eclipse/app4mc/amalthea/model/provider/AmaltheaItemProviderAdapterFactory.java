@@ -3258,52 +3258,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LatencyConstant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LatencyConstantItemProvider latencyConstantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyConstant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLatencyConstantAdapter() {
-		if (latencyConstantItemProvider == null) {
-			latencyConstantItemProvider = new LatencyConstantItemProvider(this);
-		}
-
-		return latencyConstantItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LatencyDeviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LatencyDeviationItemProvider latencyDeviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.LatencyDeviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLatencyDeviationAdapter() {
-		if (latencyDeviationItemProvider == null) {
-			latencyDeviationItemProvider = new LatencyDeviationItemProvider(this);
-		}
-
-		return latencyDeviationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7013,8 +6967,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (connectionHandlerItemProvider != null) connectionHandlerItemProvider.dispose();
 		if (hwConnectionItemProvider != null) hwConnectionItemProvider.dispose();
 		if (hwAccessElementItemProvider != null) hwAccessElementItemProvider.dispose();
-		if (latencyConstantItemProvider != null) latencyConstantItemProvider.dispose();
-		if (latencyDeviationItemProvider != null) latencyDeviationItemProvider.dispose();
 		if (processingUnitDefinitionItemProvider != null) processingUnitDefinitionItemProvider.dispose();
 		if (connectionHandlerDefinitionItemProvider != null) connectionHandlerDefinitionItemProvider.dispose();
 		if (memoryDefinitionItemProvider != null) memoryDefinitionItemProvider.dispose();

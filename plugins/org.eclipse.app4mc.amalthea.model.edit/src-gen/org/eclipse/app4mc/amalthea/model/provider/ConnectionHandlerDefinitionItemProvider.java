@@ -241,22 +241,92 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

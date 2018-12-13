@@ -199,7 +199,6 @@ import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
@@ -233,8 +232,6 @@ import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelEventType;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LatencyType;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.LimitType;
@@ -914,12 +911,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateHwConnection((HwConnection)value, diagnostics, context);
 			case AmaltheaPackage.HW_ACCESS_ELEMENT:
 				return validateHwAccessElement((HwAccessElement)value, diagnostics, context);
-			case AmaltheaPackage.HW_LATENCY:
-				return validateHwLatency((HwLatency)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY_CONSTANT:
-				return validateLatencyConstant((LatencyConstant)value, diagnostics, context);
-			case AmaltheaPackage.LATENCY_DEVIATION:
-				return validateLatencyDeviation((LatencyDeviation)value, diagnostics, context);
 			case AmaltheaPackage.HW_DEFINITION:
 				return validateHwDefinition((HwDefinition)value, diagnostics, context);
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION:
@@ -3154,33 +3145,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateHwAccessElement(HwAccessElement hwAccessElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(hwAccessElement, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateHwLatency(HwLatency hwLatency, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(hwLatency, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLatencyConstant(LatencyConstant latencyConstant, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(latencyConstant, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLatencyDeviation(LatencyDeviation latencyDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(latencyDeviation, diagnostics, context);
 	}
 
 	/**

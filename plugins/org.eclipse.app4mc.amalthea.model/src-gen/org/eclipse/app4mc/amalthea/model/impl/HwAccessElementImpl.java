@@ -18,10 +18,10 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataRate;
+import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwDestination;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -119,7 +119,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected HwLatency readLatency;
+	protected DiscreteDeviation readLatency;
 
 	/**
 	 * The cached value of the '{@link #getWriteLatency() <em>Write Latency</em>}' containment reference.
@@ -129,7 +129,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected HwLatency writeLatency;
+	protected DiscreteDeviation writeLatency;
 
 	/**
 	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
@@ -299,7 +299,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwLatency getReadLatency() {
+	public DiscreteDeviation getReadLatency() {
 		return readLatency;
 	}
 
@@ -308,8 +308,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetReadLatency(HwLatency newReadLatency, NotificationChain msgs) {
-		HwLatency oldReadLatency = readLatency;
+	public NotificationChain basicSetReadLatency(DiscreteDeviation newReadLatency, NotificationChain msgs) {
+		DiscreteDeviation oldReadLatency = readLatency;
 		readLatency = newReadLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY, oldReadLatency, newReadLatency);
@@ -323,7 +323,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReadLatency(HwLatency newReadLatency) {
+	public void setReadLatency(DiscreteDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
 			if (readLatency != null)
@@ -342,7 +342,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HwLatency getWriteLatency() {
+	public DiscreteDeviation getWriteLatency() {
 		return writeLatency;
 	}
 
@@ -351,8 +351,8 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetWriteLatency(HwLatency newWriteLatency, NotificationChain msgs) {
-		HwLatency oldWriteLatency = writeLatency;
+	public NotificationChain basicSetWriteLatency(DiscreteDeviation newWriteLatency, NotificationChain msgs) {
+		DiscreteDeviation oldWriteLatency = writeLatency;
 		writeLatency = newWriteLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY, oldWriteLatency, newWriteLatency);
@@ -366,7 +366,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWriteLatency(HwLatency newWriteLatency) {
+	public void setWriteLatency(DiscreteDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
 			if (writeLatency != null)
@@ -532,10 +532,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				setAccessPath((HwAccessPath)newValue);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
-				setReadLatency((HwLatency)newValue);
+				setReadLatency((DiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
-				setWriteLatency((HwLatency)newValue);
+				setWriteLatency((DiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
 				setDataRate((DataRate)newValue);
@@ -565,10 +565,10 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 				setAccessPath((HwAccessPath)null);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY:
-				setReadLatency((HwLatency)null);
+				setReadLatency((DiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY:
-				setWriteLatency((HwLatency)null);
+				setWriteLatency((DiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE:
 				setDataRate((DataRate)null);

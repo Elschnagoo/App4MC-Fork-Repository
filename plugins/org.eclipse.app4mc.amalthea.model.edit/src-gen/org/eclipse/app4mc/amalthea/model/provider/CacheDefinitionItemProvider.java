@@ -323,12 +323,47 @@ public class CacheDefinitionItemProvider extends HwDefinitionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createLatencyDeviation()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullParametersDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getCacheDefinition_AccessLatency(),
+				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
 	}
 
 	/**

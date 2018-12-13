@@ -1267,24 +1267,6 @@ public interface AmaltheaFactory extends EFactory {
 	HwAccessElement createHwAccessElement();
 
 	/**
-	 * Returns a new object of class '<em>Latency Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Latency Constant</em>'.
-	 * @generated
-	 */
-	LatencyConstant createLatencyConstant();
-
-	/**
-	 * Returns a new object of class '<em>Latency Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Latency Deviation</em>'.
-	 * @generated
-	 */
-	LatencyDeviation createLatencyDeviation();
-
-	/**
 	 * Returns a new object of class '<em>Processing Unit Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

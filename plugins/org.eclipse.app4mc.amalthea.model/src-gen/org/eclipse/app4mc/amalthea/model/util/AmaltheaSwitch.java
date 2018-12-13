@@ -179,7 +179,6 @@ import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwDomain;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.HwLatency;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPath;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
@@ -206,8 +205,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.LabelEntityGroup;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.LabelGroup;
-import org.eclipse.app4mc.amalthea.model.LatencyConstant;
-import org.eclipse.app4mc.amalthea.model.LatencyDeviation;
 import org.eclipse.app4mc.amalthea.model.LeastLocalRemainingExecutionTimeFirst;
 import org.eclipse.app4mc.amalthea.model.ListObject;
 import org.eclipse.app4mc.amalthea.model.LongObject;
@@ -2148,26 +2145,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseHwAccessElement(hwAccessElement);
 				if (result == null) result = caseITaggable(hwAccessElement);
 				if (result == null) result = caseINamed(hwAccessElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.HW_LATENCY: {
-				HwLatency hwLatency = (HwLatency)theEObject;
-				T1 result = caseHwLatency(hwLatency);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY_CONSTANT: {
-				LatencyConstant latencyConstant = (LatencyConstant)theEObject;
-				T1 result = caseLatencyConstant(latencyConstant);
-				if (result == null) result = caseHwLatency(latencyConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.LATENCY_DEVIATION: {
-				LatencyDeviation latencyDeviation = (LatencyDeviation)theEObject;
-				T1 result = caseLatencyDeviation(latencyDeviation);
-				if (result == null) result = caseHwLatency(latencyDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -6857,51 +6834,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseHwAccessElement(HwAccessElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Hw Latency</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Hw Latency</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseHwLatency(HwLatency object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency Constant</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatencyConstant(LatencyConstant object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Latency Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Latency Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseLatencyDeviation(LatencyDeviation object) {
 		return null;
 	}
 
