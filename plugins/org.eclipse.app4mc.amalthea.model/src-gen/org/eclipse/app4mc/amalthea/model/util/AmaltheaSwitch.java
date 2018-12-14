@@ -33,10 +33,8 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
-import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
@@ -118,7 +116,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
 import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
@@ -129,7 +126,6 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -160,7 +156,6 @@ import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
@@ -369,7 +364,6 @@ import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
-import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
@@ -377,9 +371,6 @@ import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.Voltage;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
-import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
-import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -693,6 +684,26 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.NUMERIC_STATISTIC: {
+				NumericStatistic numericStatistic = (NumericStatistic)theEObject;
+				T1 result = caseNumericStatistic(numericStatistic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: {
+				MinAvgMaxStatistic minAvgMaxStatistic = (MinAvgMaxStatistic)theEObject;
+				T1 result = caseMinAvgMaxStatistic(minAvgMaxStatistic);
+				if (result == null) result = caseNumericStatistic(minAvgMaxStatistic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: {
+				SingleValueStatistic singleValueStatistic = (SingleValueStatistic)theEObject;
+				T1 result = caseSingleValueStatistic(singleValueStatistic);
+				if (result == null) result = caseNumericStatistic(singleValueStatistic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.TIME_DEVIATION: {
 				TimeDeviation timeDeviation = (TimeDeviation)theEObject;
 				T1 result = caseTimeDeviation(timeDeviation);
@@ -954,89 +965,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseContinuousBetaDistribution(continuousBetaDistribution);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousBetaDistribution);
 				if (result == null) result = caseContinuousDeviation(continuousBetaDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DEVIATION: {
-				Deviation<?> deviation = (Deviation<?>)theEObject;
-				T1 result = caseDeviation(deviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DISTRIBUTION: {
-				Distribution<?> distribution = (Distribution<?>)theEObject;
-				T1 result = caseDistribution(distribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.WEIBULL_DISTRIBUTION: {
-				WeibullDistribution<?> weibullDistribution = (WeibullDistribution<?>)theEObject;
-				T1 result = caseWeibullDistribution(weibullDistribution);
-				if (result == null) result = caseDistribution(weibullDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.WEIBULL_PARAMETERS: {
-				WeibullParameters<?> weibullParameters = (WeibullParameters<?>)theEObject;
-				T1 result = caseWeibullParameters(weibullParameters);
-				if (result == null) result = caseWeibullDistribution(weibullParameters);
-				if (result == null) result = caseDistribution(weibullParameters);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.WEIBULL_ESTIMATORS: {
-				WeibullEstimators<?> weibullEstimators = (WeibullEstimators<?>)theEObject;
-				T1 result = caseWeibullEstimators(weibullEstimators);
-				if (result == null) result = caseWeibullDistribution(weibullEstimators);
-				if (result == null) result = caseDistribution(weibullEstimators);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.UNIFORM_DISTRIBUTION: {
-				UniformDistribution<?> uniformDistribution = (UniformDistribution<?>)theEObject;
-				T1 result = caseUniformDistribution(uniformDistribution);
-				if (result == null) result = caseDistribution(uniformDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BOUNDARIES: {
-				Boundaries<?> boundaries = (Boundaries<?>)theEObject;
-				T1 result = caseBoundaries(boundaries);
-				if (result == null) result = caseDistribution(boundaries);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.GAUSS_DISTRIBUTION: {
-				GaussDistribution<?> gaussDistribution = (GaussDistribution<?>)theEObject;
-				T1 result = caseGaussDistribution(gaussDistribution);
-				if (result == null) result = caseDistribution(gaussDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BETA_DISTRIBUTION: {
-				BetaDistribution<?> betaDistribution = (BetaDistribution<?>)theEObject;
-				T1 result = caseBetaDistribution(betaDistribution);
-				if (result == null) result = caseDistribution(betaDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.NUMERIC_STATISTIC: {
-				NumericStatistic numericStatistic = (NumericStatistic)theEObject;
-				T1 result = caseNumericStatistic(numericStatistic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: {
-				MinAvgMaxStatistic minAvgMaxStatistic = (MinAvgMaxStatistic)theEObject;
-				T1 result = caseMinAvgMaxStatistic(minAvgMaxStatistic);
-				if (result == null) result = caseNumericStatistic(minAvgMaxStatistic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: {
-				SingleValueStatistic singleValueStatistic = (SingleValueStatistic)theEObject;
-				T1 result = caseSingleValueStatistic(singleValueStatistic);
-				if (result == null) result = caseNumericStatistic(singleValueStatistic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4393,6 +4321,51 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Numeric Statistic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Numeric Statistic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseNumericStatistic(NumericStatistic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Min Avg Max Statistic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Min Avg Max Statistic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Value Statistic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Value Statistic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseSingleValueStatistic(SingleValueStatistic object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Time Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -4929,186 +4902,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseContinuousBetaDistribution(ContinuousBetaDistribution object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deviation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseDeviation(Deviation<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseDistribution(Distribution<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Weibull Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Weibull Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseWeibullDistribution(WeibullDistribution<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Weibull Parameters</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Weibull Parameters</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseWeibullParameters(WeibullParameters<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Weibull Estimators</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Weibull Estimators</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseWeibullEstimators(WeibullEstimators<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Uniform Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Uniform Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseUniformDistribution(UniformDistribution<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boundaries</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boundaries</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseBoundaries(Boundaries<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Gauss Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Gauss Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseGaussDistribution(GaussDistribution<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Beta Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Beta Distribution</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T> T1 caseBetaDistribution(BetaDistribution<T> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Numeric Statistic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Numeric Statistic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNumericStatistic(NumericStatistic object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Min Avg Max Statistic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Min Avg Max Statistic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Single Value Statistic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Single Value Statistic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSingleValueStatistic(SingleValueStatistic object) {
 		return null;
 	}
 

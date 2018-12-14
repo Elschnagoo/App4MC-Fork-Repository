@@ -173,7 +173,42 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				 AmaltheaFactory.eINSTANCE.createContinuousConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
+				 AmaltheaFactory.eINSTANCE.createContinuousBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

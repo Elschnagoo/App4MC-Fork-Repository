@@ -48,12 +48,12 @@ public interface PeriodicStimulus extends Stimulus, FixedPeriodic {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jitter</em>' containment reference.
-	 * @see #setJitter(Deviation)
+	 * @see #setJitter(TimeDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicStimulus_Jitter()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Deviation<Time> getJitter();
+	TimeDeviation getJitter();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.PeriodicStimulus#getJitter <em>Jitter</em>}' containment reference.
@@ -63,7 +63,7 @@ public interface PeriodicStimulus extends Stimulus, FixedPeriodic {
 	 * @see #getJitter()
 	 * @generated
 	 */
-	void setJitter(Deviation<Time> value);
+	void setJitter(TimeDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Distance</b></em>' containment reference.

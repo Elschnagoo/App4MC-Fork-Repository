@@ -214,6 +214,24 @@ public interface AmaltheaFactory extends EFactory {
 	BooleanObject createBooleanObject();
 
 	/**
+	 * Returns a new object of class '<em>Min Avg Max Statistic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Min Avg Max Statistic</em>'.
+	 * @generated
+	 */
+	MinAvgMaxStatistic createMinAvgMaxStatistic();
+
+	/**
+	 * Returns a new object of class '<em>Single Value Statistic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Value Statistic</em>'.
+	 * @generated
+	 */
+	SingleValueStatistic createSingleValueStatistic();
+
+	/**
 	 * Returns a new object of class '<em>Time Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -455,87 +473,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	ContinuousBetaDistribution createContinuousBetaDistribution();
-
-	/**
-	 * Returns a new object of class '<em>Deviation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Deviation</em>'.
-	 * @generated
-	 */
-	<T> Deviation<T> createDeviation();
-
-	/**
-	 * Returns a new object of class '<em>Weibull Parameters</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Weibull Parameters</em>'.
-	 * @generated
-	 */
-	<T> WeibullParameters<T> createWeibullParameters();
-
-	/**
-	 * Returns a new object of class '<em>Weibull Estimators</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Weibull Estimators</em>'.
-	 * @generated
-	 */
-	<T> WeibullEstimators<T> createWeibullEstimators();
-
-	/**
-	 * Returns a new object of class '<em>Uniform Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Uniform Distribution</em>'.
-	 * @generated
-	 */
-	<T> UniformDistribution<T> createUniformDistribution();
-
-	/**
-	 * Returns a new object of class '<em>Boundaries</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boundaries</em>'.
-	 * @generated
-	 */
-	<T> Boundaries<T> createBoundaries();
-
-	/**
-	 * Returns a new object of class '<em>Gauss Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Gauss Distribution</em>'.
-	 * @generated
-	 */
-	<T> GaussDistribution<T> createGaussDistribution();
-
-	/**
-	 * Returns a new object of class '<em>Beta Distribution</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Beta Distribution</em>'.
-	 * @generated
-	 */
-	<T> BetaDistribution<T> createBetaDistribution();
-
-	/**
-	 * Returns a new object of class '<em>Min Avg Max Statistic</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Min Avg Max Statistic</em>'.
-	 * @generated
-	 */
-	MinAvgMaxStatistic createMinAvgMaxStatistic();
-
-	/**
-	 * Returns a new object of class '<em>Single Value Statistic</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Single Value Statistic</em>'.
-	 * @generated
-	 */
-	SingleValueStatistic createSingleValueStatistic();
 
 	/**
 	 * Returns a new object of class '<em>Mode</em>'.

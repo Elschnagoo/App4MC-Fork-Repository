@@ -66,10 +66,8 @@ import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
-import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventChain;
@@ -1000,95 +998,6 @@ public class CustomItemProviderService {
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
       CustomItemProviderService.addParentLabelNotification(list, notification);
-    }
-    return list;
-  }
-  
-  /**
-   * DeviationItemProvider
-   */
-  public static String getDeviationItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof Deviation<?>)) {
-      Distribution<?> _distribution = null;
-      if (((Deviation<?>)object)!=null) {
-        _distribution=((Deviation<?>)object).getDistribution();
-      }
-      EClass _eClass = null;
-      if (_distribution!=null) {
-        _eClass=_distribution.eClass();
-      }
-      String _name = null;
-      if (_eClass!=null) {
-        _name=_eClass.getName();
-      }
-      final String distName = _name;
-      Object _lowerBound = null;
-      if (((Deviation<?>)object)!=null) {
-        _lowerBound=((Deviation<?>)object).getLowerBound();
-      }
-      final Object lower = _lowerBound;
-      Object _upperBound = null;
-      if (((Deviation<?>)object)!=null) {
-        _upperBound=((Deviation<?>)object).getUpperBound();
-      }
-      final Object upper = _upperBound;
-      String _xifexpression = null;
-      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(distName);
-      if (_isNullOrEmpty) {
-        _xifexpression = "Dist: ???";
-      } else {
-        String _trimDistName = CustomItemProviderService.trimDistName(distName);
-        _xifexpression = ("Dist: " + _trimDistName);
-      }
-      final String s1 = _xifexpression;
-      String _xifexpression_1 = null;
-      if ((lower == null)) {
-        _xifexpression_1 = "";
-      } else {
-        String _deviationBoundText = CustomItemProviderService.getDeviationBoundText(lower);
-        _xifexpression_1 = (" lowerBound: " + _deviationBoundText);
-      }
-      final String s2 = _xifexpression_1;
-      String _xifexpression_2 = null;
-      if ((upper == null)) {
-        _xifexpression_2 = "";
-      } else {
-        String _deviationBoundText_1 = CustomItemProviderService.getDeviationBoundText(upper);
-        _xifexpression_2 = (" upperBound: " + _deviationBoundText_1);
-      }
-      final String s3 = _xifexpression_2;
-      String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
-      String _plus = (_containingFeatureName + "(");
-      String _plus_1 = (_plus + s1);
-      String _plus_2 = (_plus_1 + ")");
-      String _plus_3 = (_plus_2 + s2);
-      return (_plus_3 + s3);
-    }
-    return null;
-  }
-  
-  public static List<ViewerNotification> getDeviationItemProviderNotifications(final Notification notification) {
-    final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(Deviation.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__LOWER_BOUND)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__UPPER_BOUND)) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DEVIATION__DISTRIBUTION)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
-      list.add(_viewerNotification);
-      CustomItemProviderService.addParentLabelNotification(list, notification, 2);
     }
     return list;
   }

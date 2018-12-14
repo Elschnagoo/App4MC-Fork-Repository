@@ -15,10 +15,6 @@
 
 package org.eclipse.app4mc.multicore.openmapping.model;
 
-import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
-import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
@@ -97,34 +93,34 @@ public class OMRunnable {
 		return 0;
 	}
 
-	private long processInstructionsConstant(final InstructionsConstant instructionsConstant) {
-		if (instructionsConstant.getValue() <= 0) {
-			UniversalHandler.getInstance()
-					.log("Invalid Software Model, InstructionsConstant contains an invalid value (<= 0).", null);
-			return 0;
-		}
+//	private long processInstructionsConstant(final InstructionsConstant instructionsConstant) {
+//		if (instructionsConstant.getValue() <= 0) {
+//			UniversalHandler.getInstance()
+//					.log("Invalid Software Model, InstructionsConstant contains an invalid value (<= 0).", null);
+//			return 0;
+//		}
+//
+//		return instructionsConstant.getValue();
+//	}
 
-		return instructionsConstant.getValue();
-	}
-
-	private long processInstructionsDeviation(final InstructionsDeviation instructionsDeviation) {
-		final Deviation<LongObject> deviation;
-		if ((deviation = instructionsDeviation.getDeviation()) == null) {
-			UniversalHandler.getInstance().log(
-					"Invalid Software Model, InstructionsDeviation has an invalid or missing containment to its Deviation.",
-					null);
-			return 0;
-		}
-
-		final Long lowerBound = deviation.getLowerBound().getValue();
-		final Long upperBound = deviation.getUpperBound().getValue();
-
-		// Check if lower and upper bound are set correct
-		// Quick solution, might need to be rewritten in the future
-		if (lowerBound <= 0 || upperBound <= 0) {
-			UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
-			return 0;
-		}
-		return ((lowerBound + upperBound) / 2);
-	}
+//	private long processInstructionsDeviation(final InstructionsDeviation instructionsDeviation) {
+//		final Deviation<LongObject> deviation;
+//		if ((deviation = instructionsDeviation.getDeviation()) == null) {
+//			UniversalHandler.getInstance().log(
+//					"Invalid Software Model, InstructionsDeviation has an invalid or missing containment to its Deviation.",
+//					null);
+//			return 0;
+//		}
+//
+//		final Long lowerBound = deviation.getLowerBound().getValue();
+//		final Long upperBound = deviation.getUpperBound().getValue();
+//
+//		// Check if lower and upper bound are set correct
+//		// Quick solution, might need to be rewritten in the future
+//		if (lowerBound <= 0 || upperBound <= 0) {
+//			UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
+//			return 0;
+//		}
+//		return ((lowerBound + upperBound) / 2);
+//	}
 }

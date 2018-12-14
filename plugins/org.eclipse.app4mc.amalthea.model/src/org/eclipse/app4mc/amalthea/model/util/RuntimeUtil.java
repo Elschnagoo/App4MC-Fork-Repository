@@ -27,19 +27,13 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.apache.commons.math3.special.Gamma;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
-import org.eclipse.app4mc.amalthea.model.BetaDistribution;
-import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
-import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -58,12 +52,9 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
-import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
-import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 import org.eclipse.emf.common.util.EMap;
 
 public class RuntimeUtil {
@@ -727,7 +718,7 @@ public class RuntimeUtil {
 				case ACET:
 					// TODO check changes
 					if (rp.getNextOccurrence() != null) {
-						time = getMean(rp.getNextOccurrence());
+						time = rp.getNextOccurrence().getAverage();
 					}
 					break;
 				case BCET:
@@ -842,10 +833,10 @@ public class RuntimeUtil {
 		return result;
 	}
 
-	private static Time getActivationTimeFromDeviation(Deviation<Time> deviation, TimeType tt) {
+	private static Time getActivationTimeFromDeviation(TimeDeviation deviation, TimeType tt) {
 		switch (tt) {
 		case ACET:
-			return getMean(deviation);
+			return deviation.getAverage();
 		case BCET:
 			return deviation.getUpperBound();
 		case WCET:
@@ -861,7 +852,7 @@ public class RuntimeUtil {
 	 * @return Map of processes with a sporadic activation and the deviation of the
 	 *         activations
 	 */
-	public static Map<Process, List<Deviation<Time>>> getProcessesWithRelativePeriodicStimulus(Amalthea model) {
+	public static Map<Process, List<TimeDeviation>> getProcessesWithRelativePeriodicStimulus(Amalthea model) {
 		List<Process> processes = new ArrayList<>();
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
@@ -869,7 +860,7 @@ public class RuntimeUtil {
 				.collect(Collectors.toList()).size() > 0);
 
 		// TODO check
-		Map<Process, List<Deviation<Time>>> result = processes.stream()
+		Map<Process, List<TimeDeviation>> result = processes.stream()
 				.collect(Collectors.toMap(p -> p,
 						p -> p.getStimuli().stream().filter(s -> (s instanceof RelativePeriodicStimulus))
 								.map(s -> ((RelativePeriodicStimulus) s).getNextOccurrence())
@@ -986,114 +977,6 @@ public class RuntimeUtil {
 			return true;
 		} else {
 			return false;
-		}
-	}
-
-	public static Time getMean(Deviation<? extends Time> deviation) {
-		return getMean(deviation.getDistribution(), deviation.getLowerBound(), deviation.getUpperBound());
-	}
-
-	public static Time getMean(Distribution<? extends Time> distribution2, Time lowerBound, Time upperBound) {
-		Time mean = null;
-		Distribution<? extends Time> distribution = ((Distribution<? extends Time>) distribution2);
-		if (distribution instanceof BetaDistribution) {
-			BetaDistribution<? extends Time> bd = (BetaDistribution<? extends Time>) distribution;
-			// mean = 1 / (1 + (beta/alpha))
-			double m = 1.0 / (1.0 + (bd.getBeta() / bd.getAlpha()));
-			mean = TimeUtil.addTimes(lowerBound,
-					TimeUtil.multiplyTime(TimeUtil.subtractTimes(upperBound, lowerBound), m));
-		} else if (distribution instanceof Boundaries) {
-			// mean = ((Boundaries)distribution).getSamplingType().g
-		} else if (distribution instanceof GaussDistribution) {
-			GaussDistribution<? extends Time> gd = (GaussDistribution<? extends Time>) distribution;
-			// mean = gd.getMean();
-			if (gd.getMean() == null || !(gd.getMean() instanceof Time)) {
-				mean = TimeUtil.multiplyTime(TimeUtil.addTimes(lowerBound, upperBound), 0.5);
-			} else {
-				mean = gd.getMean();
-			}
-		} else if (distribution instanceof UniformDistribution) {
-			// mean = ((UniformDistribution)distribution).
-			// mean = (upperBound+lowerBound)/2;
-			mean = TimeUtil.multiplyTime(TimeUtil.addTimes(lowerBound, upperBound), 0.5);
-		} else if (distribution instanceof WeibullDistribution) {
-			WeibullDistribution<? extends Time> wd = (WeibullDistribution<? extends Time>) distribution;
-			if (wd instanceof WeibullEstimators) {
-				WeibullEstimators<? extends Time> we = (WeibullEstimators<? extends Time>) wd;
-				mean = we.getMean();
-			} else if (wd instanceof WeibullParameters) {
-				WeibullParameters<? extends Time> wp = (WeibullParameters<? extends Time>) wd;
-				double m = 1.0 / wp.getLambda() * Gamma.gamma(1.0 + 1 / wp.getKappa());
-				// mean = lowerBound + (long)((upperBound-lowerBound)*m);
-				mean = TimeUtil.addTimes(lowerBound,
-						TimeUtil.multiplyTime(TimeUtil.subtractTimes(upperBound, lowerBound), m));
-			}
-		}
-		return mean;
-	}
-
-	public static <T> long getMean(Distribution<T> distribution, long lowerBound, long upperBound) {
-		long mean = 0;
-		if (distribution instanceof BetaDistribution) {
-			BetaDistribution<T> bd = (BetaDistribution<T>) distribution;
-			// mean = 1 / (1 + (beta/alpha))
-			double m = 1.0 / (1.0 + (bd.getBeta() / bd.getAlpha()));
-			mean = lowerBound + (long) ((upperBound - lowerBound) * m);
-		} else if (distribution instanceof Boundaries) {
-			// mean = ((Boundaries)distribution).getSamplingType().g
-		} else if (distribution instanceof GaussDistribution) {
-			GaussDistribution<T> gd = (GaussDistribution<T>) distribution;
-			if (gd.getMean() == null || !(gd.getMean() instanceof LongObject)) {
-				mean = (upperBound + lowerBound) / 2;
-			} else {
-				mean = ((LongObject) gd.getMean()).getValue();
-			}
-		} else if (distribution instanceof UniformDistribution) {
-			// mean = ((UniformDistribution)distribution).
-			mean = (upperBound + lowerBound) / 2;
-		} else if (distribution instanceof WeibullDistribution) {
-			WeibullDistribution<T> wd = (WeibullDistribution<T>) distribution;
-			if (wd instanceof WeibullEstimators) {
-				WeibullEstimators<T> we = (WeibullEstimators<T>) wd;
-				// we.getMean() should be a LongObject
-				if (we.getMean() instanceof LongObject)
-					mean = ((LongObject) we.getMean()).getValue();
-				else if (we.getMean() instanceof String)
-					mean = Long.parseLong(we.getMean().toString());
-			} else if (wd instanceof WeibullParameters) {
-				WeibullParameters<T> wp = (WeibullParameters<T>) wd;
-				double m = 1.0 / wp.getLambda() * Gamma.gamma(1.0 + 1 / wp.getKappa());
-				mean = lowerBound + (long) ((upperBound - lowerBound) * m);
-			}
-		}
-		return mean;
-	}
-
-	public static <T> void setMean(Distribution<T> distribution, long l) {
-		if (distribution instanceof GaussDistribution) {
-			GaussDistribution<T> gd = (GaussDistribution<T>) distribution;
-			if (gd.getMean() instanceof LongObject) {
-				((LongObject) gd.getMean()).setValue(l);
-			}
-		} else if (distribution instanceof UniformDistribution) {
-			// mean = ((UniformDistribution)distribution).
-			// mean = (upperBound+lowerBound)/2;
-		} else if (distribution instanceof WeibullDistribution) {
-			WeibullDistribution<T> wd = (WeibullDistribution<T>) distribution;
-			if (wd instanceof WeibullEstimators) {
-				WeibullEstimators<T> we = (WeibullEstimators<T>) wd;
-				if (we.getMean() instanceof LongObject) {
-					((LongObject) we.getMean()).setValue(l);
-				} else if (we.getMean() instanceof String) {
-					// we.setMean(""+l);
-				}
-			} else if (wd instanceof WeibullParameters) {
-				/*
-				 * WeibullParameters<T> wp = (WeibullParameters<T>)wd; double m =
-				 * 1.0/wp.getLambda() * Gamma.gamma(1.0 + 1/wp.getKappa()); mean = lowerBound +
-				 * (long)((upperBound-lowerBound)*m);
-				 */
-			}
 		}
 	}
 

@@ -74,12 +74,12 @@ public interface RelativePeriodicStimulus extends Stimulus {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Next Occurrence</em>' containment reference.
-	 * @see #setNextOccurrence(Deviation)
+	 * @see #setNextOccurrence(TimeDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRelativePeriodicStimulus_NextOccurrence()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Deviation<Time> getNextOccurrence();
+	TimeDeviation getNextOccurrence();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus#getNextOccurrence <em>Next Occurrence</em>}' containment reference.
@@ -89,6 +89,6 @@ public interface RelativePeriodicStimulus extends Stimulus {
 	 * @see #getNextOccurrence()
 	 * @generated
 	 */
-	void setNextOccurrence(Deviation<Time> value);
+	void setNextOccurrence(TimeDeviation value);
 
 } // RelativePeriodicStimulus

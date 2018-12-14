@@ -58,7 +58,6 @@ import org.eclipse.app4mc.amalthea.model.DataSize
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit
 import org.eclipse.app4mc.amalthea.model.DataStability
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition
-import org.eclipse.app4mc.amalthea.model.Deviation
 import org.eclipse.app4mc.amalthea.model.DirectionType
 import org.eclipse.app4mc.amalthea.model.DoubleObject
 import org.eclipse.app4mc.amalthea.model.EventChainContainer
@@ -656,35 +655,6 @@ class CustomItemProviderService {
 			case AmaltheaPackage::DATA_RATE__UNIT: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
-				}
-		}
-		return list
-	}
-
-	/*****************************************************************************
-	 * 						DeviationItemProvider
-	 *****************************************************************************/
-	def static String getDeviationItemProviderText(Object object, String defaultText) {
-		if (object instanceof Deviation<?>) {
-			val distName = object?.distribution?.eClass?.name
-			val lower = object?.lowerBound
-			val upper = object?.upperBound
-			val s1 = if(distName.isNullOrEmpty) "Dist: ???" else "Dist: " + trimDistName(distName)
-			val s2 = if(lower === null) "" else " lowerBound: " + getDeviationBoundText(lower)
-			val s3 = if(upper === null) "" else " upperBound: " + getDeviationBoundText(upper)
-
-			return getContainingFeatureName(object) + "(" + s1 + ")" + s2 + s3
-		}
-	}
-
-	def static List<ViewerNotification> getDeviationItemProviderNotifications(Notification notification) {
-		val list = newArrayList
-		switch notification.getFeatureID(typeof(Deviation)) {
-			case AmaltheaPackage::DEVIATION__LOWER_BOUND,
-			case AmaltheaPackage::DEVIATION__UPPER_BOUND,
-			case AmaltheaPackage::DEVIATION__DISTRIBUTION: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
-				addParentLabelNotification(list, notification, 2)
 				}
 		}
 		return list

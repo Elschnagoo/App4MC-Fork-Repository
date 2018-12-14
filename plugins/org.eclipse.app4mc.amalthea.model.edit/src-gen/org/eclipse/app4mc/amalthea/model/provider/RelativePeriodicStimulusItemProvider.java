@@ -168,7 +168,42 @@ public class RelativePeriodicStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				 AmaltheaFactory.eINSTANCE.createTimeConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
+				 AmaltheaFactory.eINSTANCE.createTimeBetaDistribution()));
 	}
 
 	/**

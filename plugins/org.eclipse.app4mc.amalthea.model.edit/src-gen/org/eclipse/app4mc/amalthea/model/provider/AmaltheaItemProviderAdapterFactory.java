@@ -1188,167 +1188,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Deviation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DeviationItemProvider deviationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Deviation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDeviationAdapter() {
-		if (deviationItemProvider == null) {
-			deviationItemProvider = new DeviationItemProvider(this);
-		}
-
-		return deviationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.WeibullParameters} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WeibullParametersItemProvider weibullParametersItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.WeibullParameters}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWeibullParametersAdapter() {
-		if (weibullParametersItemProvider == null) {
-			weibullParametersItemProvider = new WeibullParametersItemProvider(this);
-		}
-
-		return weibullParametersItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.WeibullEstimators} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WeibullEstimatorsItemProvider weibullEstimatorsItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.WeibullEstimators}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWeibullEstimatorsAdapter() {
-		if (weibullEstimatorsItemProvider == null) {
-			weibullEstimatorsItemProvider = new WeibullEstimatorsItemProvider(this);
-		}
-
-		return weibullEstimatorsItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.UniformDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected UniformDistributionItemProvider uniformDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.UniformDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createUniformDistributionAdapter() {
-		if (uniformDistributionItemProvider == null) {
-			uniformDistributionItemProvider = new UniformDistributionItemProvider(this);
-		}
-
-		return uniformDistributionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Boundaries} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BoundariesItemProvider boundariesItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Boundaries}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBoundariesAdapter() {
-		if (boundariesItemProvider == null) {
-			boundariesItemProvider = new BoundariesItemProvider(this);
-		}
-
-		return boundariesItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.GaussDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected GaussDistributionItemProvider gaussDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.GaussDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createGaussDistributionAdapter() {
-		if (gaussDistributionItemProvider == null) {
-			gaussDistributionItemProvider = new GaussDistributionItemProvider(this);
-		}
-
-		return gaussDistributionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.BetaDistribution} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BetaDistributionItemProvider betaDistributionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.BetaDistribution}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBetaDistributionAdapter() {
-		if (betaDistributionItemProvider == null) {
-			betaDistributionItemProvider = new BetaDistributionItemProvider(this);
-		}
-
-		return betaDistributionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6781,6 +6620,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (floatObjectItemProvider != null) floatObjectItemProvider.dispose();
 		if (doubleObjectItemProvider != null) doubleObjectItemProvider.dispose();
 		if (booleanObjectItemProvider != null) booleanObjectItemProvider.dispose();
+		if (minAvgMaxStatisticItemProvider != null) minAvgMaxStatisticItemProvider.dispose();
+		if (singleValueStatisticItemProvider != null) singleValueStatisticItemProvider.dispose();
 		if (timeConstantItemProvider != null) timeConstantItemProvider.dispose();
 		if (timeHistogramItemProvider != null) timeHistogramItemProvider.dispose();
 		if (timeHistogramEntryItemProvider != null) timeHistogramEntryItemProvider.dispose();
@@ -6808,15 +6649,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (continuousGaussDistributionItemProvider != null) continuousGaussDistributionItemProvider.dispose();
 		if (continuousWeibullEstimatorsDistributionItemProvider != null) continuousWeibullEstimatorsDistributionItemProvider.dispose();
 		if (continuousBetaDistributionItemProvider != null) continuousBetaDistributionItemProvider.dispose();
-		if (deviationItemProvider != null) deviationItemProvider.dispose();
-		if (weibullParametersItemProvider != null) weibullParametersItemProvider.dispose();
-		if (weibullEstimatorsItemProvider != null) weibullEstimatorsItemProvider.dispose();
-		if (uniformDistributionItemProvider != null) uniformDistributionItemProvider.dispose();
-		if (boundariesItemProvider != null) boundariesItemProvider.dispose();
-		if (gaussDistributionItemProvider != null) gaussDistributionItemProvider.dispose();
-		if (betaDistributionItemProvider != null) betaDistributionItemProvider.dispose();
-		if (minAvgMaxStatisticItemProvider != null) minAvgMaxStatisticItemProvider.dispose();
-		if (singleValueStatisticItemProvider != null) singleValueStatisticItemProvider.dispose();
 		if (modeItemProvider != null) modeItemProvider.dispose();
 		if (modeLiteralItemProvider != null) modeLiteralItemProvider.dispose();
 		if (componentsModelItemProvider != null) componentsModelItemProvider.dispose();

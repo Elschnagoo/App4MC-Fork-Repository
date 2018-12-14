@@ -17,9 +17,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.Measurement;
 import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -67,7 +67,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * @generated
 	 * @ordered
 	 */
-	protected Deviation<Time> runtimeDeviation;
+	protected TimeDeviation runtimeDeviation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,7 +105,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deviation<Time> getRuntimeDeviation() {
+	public TimeDeviation getRuntimeDeviation() {
 		return runtimeDeviation;
 	}
 
@@ -114,8 +114,8 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRuntimeDeviation(Deviation<Time> newRuntimeDeviation, NotificationChain msgs) {
-		Deviation<Time> oldRuntimeDeviation = runtimeDeviation;
+	public NotificationChain basicSetRuntimeDeviation(TimeDeviation newRuntimeDeviation, NotificationChain msgs) {
+		TimeDeviation oldRuntimeDeviation = runtimeDeviation;
 		runtimeDeviation = newRuntimeDeviation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEASUREMENT__RUNTIME_DEVIATION, oldRuntimeDeviation, newRuntimeDeviation);
@@ -129,7 +129,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRuntimeDeviation(Deviation<Time> newRuntimeDeviation) {
+	public void setRuntimeDeviation(TimeDeviation newRuntimeDeviation) {
 		if (newRuntimeDeviation != runtimeDeviation) {
 			NotificationChain msgs = null;
 			if (runtimeDeviation != null)
@@ -189,7 +189,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 				getRuntimes().addAll((Collection<? extends Time>)newValue);
 				return;
 			case AmaltheaPackage.MEASUREMENT__RUNTIME_DEVIATION:
-				setRuntimeDeviation((Deviation<Time>)newValue);
+				setRuntimeDeviation((TimeDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -207,7 +207,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 				getRuntimes().clear();
 				return;
 			case AmaltheaPackage.MEASUREMENT__RUNTIME_DEVIATION:
-				setRuntimeDeviation((Deviation<Time>)null);
+				setRuntimeDeviation((TimeDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

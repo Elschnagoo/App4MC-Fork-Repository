@@ -24,7 +24,6 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
@@ -33,7 +32,7 @@ import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractTaskCreationAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.model.OMProcessPrototype;
@@ -134,20 +133,7 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		
 		// Check which timing information is present and try to convert deviations as well
 		if (null != activation.getActivationDeviation()) {
-			final Deviation<Time> stimuliDeviation = getStimuliInstance().createDeviation();
-			
-			if ( null != activation.getActivationDeviation().getLowerBound()) {
-				stimuliDeviation.setLowerBound(EcoreUtil.copy(activation.getActivationDeviation().getLowerBound()));
-			}
-			
-			if ( null != activation.getActivationDeviation().getUpperBound()) {
-				stimuliDeviation.setLowerBound(EcoreUtil.copy(activation.getActivationDeviation().getUpperBound()));
-			}
-			
-			if ( null != activation.getActivationDeviation().getDistribution()) {
-				stimuliDeviation.setDistribution(EcoreUtil.copy(activation.getActivationDeviation().getDistribution()));
-			}
-			
+			final TimeDeviation stimuliDeviation = EcoreUtil.copy(activation.getActivationDeviation());
 			stimuliSporadic.setNextOccurrence(stimuliDeviation);
 		}
 

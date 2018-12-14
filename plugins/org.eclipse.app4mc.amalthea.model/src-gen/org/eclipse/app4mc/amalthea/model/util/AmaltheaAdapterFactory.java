@@ -33,10 +33,8 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
-import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
@@ -118,7 +116,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
 import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
@@ -129,7 +126,6 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -160,7 +156,6 @@ import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
@@ -369,7 +364,6 @@ import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
-import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
@@ -377,9 +371,6 @@ import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.VendorOperatingSystem;
 import org.eclipse.app4mc.amalthea.model.Voltage;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
-import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
-import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -581,6 +572,18 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createBooleanObjectAdapter();
 			}
 			@Override
+			public Adapter caseNumericStatistic(NumericStatistic object) {
+				return createNumericStatisticAdapter();
+			}
+			@Override
+			public Adapter caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
+				return createMinAvgMaxStatisticAdapter();
+			}
+			@Override
+			public Adapter caseSingleValueStatistic(SingleValueStatistic object) {
+				return createSingleValueStatisticAdapter();
+			}
+			@Override
 			public Adapter caseTimeDeviation(TimeDeviation object) {
 				return createTimeDeviationAdapter();
 			}
@@ -723,54 +726,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseContinuousBetaDistribution(ContinuousBetaDistribution object) {
 				return createContinuousBetaDistributionAdapter();
-			}
-			@Override
-			public <T> Adapter caseDeviation(Deviation<T> object) {
-				return createDeviationAdapter();
-			}
-			@Override
-			public <T> Adapter caseDistribution(Distribution<T> object) {
-				return createDistributionAdapter();
-			}
-			@Override
-			public <T> Adapter caseWeibullDistribution(WeibullDistribution<T> object) {
-				return createWeibullDistributionAdapter();
-			}
-			@Override
-			public <T> Adapter caseWeibullParameters(WeibullParameters<T> object) {
-				return createWeibullParametersAdapter();
-			}
-			@Override
-			public <T> Adapter caseWeibullEstimators(WeibullEstimators<T> object) {
-				return createWeibullEstimatorsAdapter();
-			}
-			@Override
-			public <T> Adapter caseUniformDistribution(UniformDistribution<T> object) {
-				return createUniformDistributionAdapter();
-			}
-			@Override
-			public <T> Adapter caseBoundaries(Boundaries<T> object) {
-				return createBoundariesAdapter();
-			}
-			@Override
-			public <T> Adapter caseGaussDistribution(GaussDistribution<T> object) {
-				return createGaussDistributionAdapter();
-			}
-			@Override
-			public <T> Adapter caseBetaDistribution(BetaDistribution<T> object) {
-				return createBetaDistributionAdapter();
-			}
-			@Override
-			public Adapter caseNumericStatistic(NumericStatistic object) {
-				return createNumericStatisticAdapter();
-			}
-			@Override
-			public Adapter caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
-				return createMinAvgMaxStatisticAdapter();
-			}
-			@Override
-			public Adapter caseSingleValueStatistic(SingleValueStatistic object) {
-				return createSingleValueStatisticAdapter();
 			}
 			@Override
 			public Adapter caseMode(Mode object) {
@@ -2433,6 +2388,48 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NumericStatistic <em>Numeric Statistic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.NumericStatistic
+	 * @generated
+	 */
+	public Adapter createNumericStatisticAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic <em>Min Avg Max Statistic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
+	 * @generated
+	 */
+	public Adapter createMinAvgMaxStatisticAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SingleValueStatistic <em>Single Value Statistic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.SingleValueStatistic
+	 * @generated
+	 */
+	public Adapter createSingleValueStatisticAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation <em>Time Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2933,174 +2930,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContinuousBetaDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Deviation <em>Deviation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Deviation
-	 * @generated
-	 */
-	public Adapter createDeviationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Distribution <em>Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Distribution
-	 * @generated
-	 */
-	public Adapter createDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.WeibullDistribution <em>Weibull Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.WeibullDistribution
-	 * @generated
-	 */
-	public Adapter createWeibullDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.WeibullParameters <em>Weibull Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.WeibullParameters
-	 * @generated
-	 */
-	public Adapter createWeibullParametersAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.WeibullEstimators <em>Weibull Estimators</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.WeibullEstimators
-	 * @generated
-	 */
-	public Adapter createWeibullEstimatorsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.UniformDistribution <em>Uniform Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.UniformDistribution
-	 * @generated
-	 */
-	public Adapter createUniformDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Boundaries <em>Boundaries</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.Boundaries
-	 * @generated
-	 */
-	public Adapter createBoundariesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.GaussDistribution <em>Gauss Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.GaussDistribution
-	 * @generated
-	 */
-	public Adapter createGaussDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.BetaDistribution <em>Beta Distribution</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.BetaDistribution
-	 * @generated
-	 */
-	public Adapter createBetaDistributionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NumericStatistic <em>Numeric Statistic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.NumericStatistic
-	 * @generated
-	 */
-	public Adapter createNumericStatisticAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic <em>Min Avg Max Statistic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
-	 * @generated
-	 */
-	public Adapter createMinAvgMaxStatisticAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.SingleValueStatistic <em>Single Value Statistic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.SingleValueStatistic
-	 * @generated
-	 */
-	public Adapter createSingleValueStatisticAdapter() {
 		return null;
 	}
 

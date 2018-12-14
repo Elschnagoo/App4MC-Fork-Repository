@@ -1109,6 +1109,39 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Object for using the elementary datatype boolean as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="NumericStatistic">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="NumericStatistic" type="am:NumericStatistic"/>
+  <xsd:complexType name="MinAvgMaxStatistic">
+    <xsd:annotation>
+      <xsd:documentation>Statistic to provide capabilities for min, max and avg</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:NumericStatistic">
+        <xsd:attribute name="min" type="xsd:int"/>
+        <xsd:attribute name="avg" type="xsd:float"/>
+        <xsd:attribute name="max" type="xsd:int"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="MinAvgMaxStatistic" type="am:MinAvgMaxStatistic">
+    <xsd:annotation>
+      <xsd:documentation>Statistic to provide capabilities for min, max and avg</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SingleValueStatistic">
+    <xsd:complexContent>
+      <xsd:extension base="am:NumericStatistic">
+        <xsd:attribute name="value" type="xsd:float"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SingleValueStatistic" type="am:SingleValueStatistic"/>
   <xsd:complexType abstract="true" name="TimeDeviation">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1562,184 +1595,7 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Beta distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Deviation">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="lowerBound" type="ecore:EObject"/>
-      <xsd:element name="upperBound" type="ecore:EObject"/>
-      <xsd:element name="distribution" type="am:Distribution"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Deviation" type="am:Deviation"/>
-  <xsd:complexType abstract="true" name="Distribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract generic distribution class
-The generic class T defines the data-type of the value-range of the distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Distribution" type="am:Distribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract generic distribution class
-The generic class T defines the data-type of the value-range of the distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="WeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullDistribution" type="am:WeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="WeibullParameters">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:WeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:double"/>
-        <xsd:attribute name="lambda" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullParameters" type="am:WeibullParameters">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="WeibullEstimators">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-The parameter of a weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:WeibullDistribution">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mean" type="ecore:EObject"/>
-        </xsd:choice>
-        <xsd:attribute name="pRemainPromille" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullEstimators" type="am:WeibullEstimators">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-The parameter of a weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="UniformDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="UniformDistribution" type="am:UniformDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="Boundaries">
-    <xsd:annotation>
-      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:attribute name="samplingType" type="am:SamplingType"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Boundaries" type="am:Boundaries">
-    <xsd:annotation>
-      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="GaussDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Gauss distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="sd" type="ecore:EObject"/>
-          <xsd:element name="mean" type="ecore:EObject"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="GaussDistribution" type="am:GaussDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Gauss distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="BetaDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Beta distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:attribute name="alpha" type="xsd:double"/>
-        <xsd:attribute name="beta" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="BetaDistribution" type="am:BetaDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Beta distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="NumericStatistic">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="NumericStatistic" type="am:NumericStatistic"/>
-  <xsd:complexType name="MinAvgMaxStatistic">
-    <xsd:annotation>
-      <xsd:documentation>Statistic to provide capabilities for min, max and avg</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:NumericStatistic">
-        <xsd:attribute name="min" type="xsd:int"/>
-        <xsd:attribute name="avg" type="xsd:float"/>
-        <xsd:attribute name="max" type="xsd:int"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="MinAvgMaxStatistic" type="am:MinAvgMaxStatistic">
-    <xsd:annotation>
-      <xsd:documentation>Statistic to provide capabilities for min, max and avg</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="SingleValueStatistic">
-    <xsd:complexContent>
-      <xsd:extension base="am:NumericStatistic">
-        <xsd:attribute name="value" type="xsd:float"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="SingleValueStatistic" type="am:SingleValueStatistic"/>
   <xsd:complexType name="Mode">
-    <xsd:annotation>
-      <xsd:documentation>Modes</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1748,11 +1604,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Mode" type="am:Mode">
-    <xsd:annotation>
-      <xsd:documentation>Modes</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="Mode" type="am:Mode"/>
   <xsd:complexType name="ModeLiteral">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -4564,7 +4416,7 @@ minDistance: Minimal time between occurrences</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
-          <xsd:element name="jitter" type="am:Deviation"/>
+          <xsd:element name="jitter" type="am:TimeDeviation"/>
           <xsd:element name="minDistance" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
@@ -4587,7 +4439,7 @@ step: Time (Deviation) between successive occurrences</xsd:documentation>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
-          <xsd:element name="nextOccurrence" type="am:Deviation"/>
+          <xsd:element name="nextOccurrence" type="am:TimeDeviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4608,7 +4460,7 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="step" type="am:Time"/>
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="occurrencesPerStep" type="am:ContinuousDeviation"/>
           <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="scenario" type="am:Scenario"/>
@@ -6247,7 +6099,7 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="step" type="am:Time"/>
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="occurrencesPerStep" type="am:ContinuousDeviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
@@ -6262,7 +6114,7 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activationDeviation" type="am:Deviation"/>
+          <xsd:element name="activationDeviation" type="am:TimeDeviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
@@ -6369,7 +6221,7 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runtimes" type="am:Time"/>
-          <xsd:element name="runtimeDeviation" type="am:Deviation"/>
+          <xsd:element name="runtimeDeviation" type="am:TimeDeviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

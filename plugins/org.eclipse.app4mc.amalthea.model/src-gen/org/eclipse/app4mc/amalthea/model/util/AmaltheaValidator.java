@@ -36,11 +36,9 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseObject;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
-import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
@@ -133,7 +131,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
@@ -145,7 +142,6 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.Distribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -178,7 +174,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
@@ -422,7 +417,6 @@ import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
-import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
@@ -433,9 +427,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
-import org.eclipse.app4mc.amalthea.model.WeibullDistribution;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
-import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -587,6 +578,12 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateDoubleObject((DoubleObject)value, diagnostics, context);
 			case AmaltheaPackage.BOOLEAN_OBJECT:
 				return validateBooleanObject((BooleanObject)value, diagnostics, context);
+			case AmaltheaPackage.NUMERIC_STATISTIC:
+				return validateNumericStatistic((NumericStatistic)value, diagnostics, context);
+			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC:
+				return validateMinAvgMaxStatistic((MinAvgMaxStatistic)value, diagnostics, context);
+			case AmaltheaPackage.SINGLE_VALUE_STATISTIC:
+				return validateSingleValueStatistic((SingleValueStatistic)value, diagnostics, context);
 			case AmaltheaPackage.TIME_DEVIATION:
 				return validateTimeDeviation((TimeDeviation)value, diagnostics, context);
 			case AmaltheaPackage.TIME_CONSTANT:
@@ -659,30 +656,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateContinuousWeibullEstimatorsDistribution((ContinuousWeibullEstimatorsDistribution)value, diagnostics, context);
 			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION:
 				return validateContinuousBetaDistribution((ContinuousBetaDistribution)value, diagnostics, context);
-			case AmaltheaPackage.DEVIATION:
-				return validateDeviation((Deviation<?>)value, diagnostics, context);
-			case AmaltheaPackage.DISTRIBUTION:
-				return validateDistribution((Distribution<?>)value, diagnostics, context);
-			case AmaltheaPackage.WEIBULL_DISTRIBUTION:
-				return validateWeibullDistribution((WeibullDistribution<?>)value, diagnostics, context);
-			case AmaltheaPackage.WEIBULL_PARAMETERS:
-				return validateWeibullParameters((WeibullParameters<?>)value, diagnostics, context);
-			case AmaltheaPackage.WEIBULL_ESTIMATORS:
-				return validateWeibullEstimators((WeibullEstimators<?>)value, diagnostics, context);
-			case AmaltheaPackage.UNIFORM_DISTRIBUTION:
-				return validateUniformDistribution((UniformDistribution<?>)value, diagnostics, context);
-			case AmaltheaPackage.BOUNDARIES:
-				return validateBoundaries((Boundaries<?>)value, diagnostics, context);
-			case AmaltheaPackage.GAUSS_DISTRIBUTION:
-				return validateGaussDistribution((GaussDistribution<?>)value, diagnostics, context);
-			case AmaltheaPackage.BETA_DISTRIBUTION:
-				return validateBetaDistribution((BetaDistribution<?>)value, diagnostics, context);
-			case AmaltheaPackage.NUMERIC_STATISTIC:
-				return validateNumericStatistic((NumericStatistic)value, diagnostics, context);
-			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC:
-				return validateMinAvgMaxStatistic((MinAvgMaxStatistic)value, diagnostics, context);
-			case AmaltheaPackage.SINGLE_VALUE_STATISTIC:
-				return validateSingleValueStatistic((SingleValueStatistic)value, diagnostics, context);
 			case AmaltheaPackage.MODE:
 				return validateMode((Mode)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LITERAL:
@@ -1703,6 +1676,33 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNumericStatistic(NumericStatistic numericStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(numericStatistic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMinAvgMaxStatistic(MinAvgMaxStatistic minAvgMaxStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(minAvgMaxStatistic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSingleValueStatistic(SingleValueStatistic singleValueStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(singleValueStatistic, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateTimeDeviation(TimeDeviation timeDeviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(timeDeviation, diagnostics, context);
 	}
@@ -2020,114 +2020,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateContinuousBetaDistribution(ContinuousBetaDistribution continuousBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(continuousBetaDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDeviation(Deviation<?> deviation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(deviation, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDistribution(Distribution<?> distribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(distribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateWeibullDistribution(WeibullDistribution<?> weibullDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(weibullDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateWeibullParameters(WeibullParameters<?> weibullParameters, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(weibullParameters, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateWeibullEstimators(WeibullEstimators<?> weibullEstimators, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(weibullEstimators, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUniformDistribution(UniformDistribution<?> uniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(uniformDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBoundaries(Boundaries<?> boundaries, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(boundaries, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateGaussDistribution(GaussDistribution<?> gaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(gaussDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBetaDistribution(BetaDistribution<?> betaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(betaDistribution, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNumericStatistic(NumericStatistic numericStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(numericStatistic, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMinAvgMaxStatistic(MinAvgMaxStatistic minAvgMaxStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(minAvgMaxStatistic, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateSingleValueStatistic(SingleValueStatistic singleValueStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(singleValueStatistic, diagnostics, context);
 	}
 
 	/**

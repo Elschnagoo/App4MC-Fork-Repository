@@ -176,7 +176,42 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				 AmaltheaFactory.eINSTANCE.createTimeConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
+				 AmaltheaFactory.eINSTANCE.createTimeBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

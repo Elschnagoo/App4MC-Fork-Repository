@@ -27,8 +27,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
-import org.eclipse.app4mc.amalthea.model.InstructionsConstant;
-import org.eclipse.app4mc.amalthea.model.InstructionsDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
@@ -39,6 +37,7 @@ import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
@@ -70,7 +69,7 @@ public class MergeRunnablePairings {
 						// cumulation is added later
 						final EList<RunnableItem> ril = new BasicEList<RunnableItem>();
 						for (final RunnableItem ri : run.getRunnableItems()) {
-							if (!(ri instanceof InstructionsConstant || ri instanceof InstructionsDeviation)) {
+							if (!(ri instanceof Ticks)) {
 								ril.add(ri);
 							}
 						}

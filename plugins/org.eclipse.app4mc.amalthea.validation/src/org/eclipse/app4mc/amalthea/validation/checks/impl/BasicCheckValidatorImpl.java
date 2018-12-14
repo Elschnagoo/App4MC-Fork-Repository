@@ -45,16 +45,14 @@ import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
-import org.eclipse.app4mc.amalthea.model.Deviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IReferable;
-import org.eclipse.app4mc.amalthea.model.LongObject;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.AbstractValidatorImpl;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IEObjectHelper;
 import org.eclipse.app4mc.amalthea.sphinx.validation.api.IssueCreator;
@@ -262,20 +260,17 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
+// TODO check if necessary / correct
+			if (elem.eClass().getInstanceClass()
+					.equals(AmaltheaPackage.eINSTANCE.getDiscreteWeibullEstimatorsDistribution().getInstanceClass())) {
+				final DiscreteWeibullEstimatorsDistribution dev = (DiscreteWeibullEstimatorsDistribution) elem;
+				final long lowerBoundValue = dev.getLowerBound();
+				final long upperBoundValue = dev.getUpperBound();
+				final double meanValue = dev.getAverage();
 
-			if (elem.eClass().getInstanceClass().equals(AmaltheaPackage.eINSTANCE.getDeviation().getInstanceClass())) {
-				final Deviation<LongObject> dev = (Deviation<LongObject>) elem;
-				if (null != dev.getDistribution() && dev.getDistribution().eClass().getInstanceClass()
-						.equals(AmaltheaPackage.eINSTANCE.getWeibullEstimators().getInstanceClass())) {
-					final long lowerBoundValue = dev.getLowerBound().getValue();
-					final long upperBoundValue = dev.getUpperBound().getValue();
-					final long meanValue = ((WeibullEstimators<LongObject>) dev.getDistribution()).getMean().getValue();
-
-					if (lowerBoundValue == upperBoundValue || lowerBoundValue == meanValue
-							|| upperBoundValue == meanValue) {
-						this.issueCreator.issue(dev, AmaltheaPackage.eINSTANCE.getDeviation_Distribution(),
-								lowerBoundValue, upperBoundValue);
-					}
+				if (lowerBoundValue == upperBoundValue || lowerBoundValue >= meanValue
+						|| upperBoundValue <= meanValue) {
+					this.issueCreator.issue(dev, dev.eContainingFeature(), lowerBoundValue, upperBoundValue);
 				}
 			}
 		}

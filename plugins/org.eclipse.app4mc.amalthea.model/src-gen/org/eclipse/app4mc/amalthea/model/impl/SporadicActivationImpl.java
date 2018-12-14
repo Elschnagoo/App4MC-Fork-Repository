@@ -15,9 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
-import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -70,7 +69,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * @generated
 	 * @ordered
 	 */
-	protected Deviation<Time> activationDeviation;
+	protected TimeDeviation activationDeviation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,7 +116,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deviation<Time> getActivationDeviation() {
+	public TimeDeviation getActivationDeviation() {
 		return activationDeviation;
 	}
 
@@ -126,8 +125,8 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActivationDeviation(Deviation<Time> newActivationDeviation, NotificationChain msgs) {
-		Deviation<Time> oldActivationDeviation = activationDeviation;
+	public NotificationChain basicSetActivationDeviation(TimeDeviation newActivationDeviation, NotificationChain msgs) {
+		TimeDeviation oldActivationDeviation = activationDeviation;
 		activationDeviation = newActivationDeviation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION_DEVIATION, oldActivationDeviation, newActivationDeviation);
@@ -141,7 +140,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivationDeviation(Deviation<Time> newActivationDeviation) {
+	public void setActivationDeviation(TimeDeviation newActivationDeviation) {
 		if (newActivationDeviation != activationDeviation) {
 			NotificationChain msgs = null;
 			if (activationDeviation != null)
@@ -190,7 +189,6 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -198,7 +196,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 				setDescription((String)newValue);
 				return;
 			case AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION_DEVIATION:
-				setActivationDeviation((Deviation<Time>)newValue);
+				setActivationDeviation((TimeDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -216,7 +214,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 			case AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION_DEVIATION:
-				setActivationDeviation((Deviation<Time>)null);
+				setActivationDeviation((TimeDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

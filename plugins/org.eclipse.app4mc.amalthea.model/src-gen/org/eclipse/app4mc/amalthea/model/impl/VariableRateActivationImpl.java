@@ -15,8 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Deviation;
-import org.eclipse.app4mc.amalthea.model.DoubleObject;
+import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 
@@ -82,7 +81,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * @generated
 	 * @ordered
 	 */
-	protected Deviation<DoubleObject> occurrencesPerStep;
+	protected ContinuousDeviation occurrencesPerStep;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,7 +171,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deviation<DoubleObject> getOccurrencesPerStep() {
+	public ContinuousDeviation getOccurrencesPerStep() {
 		return occurrencesPerStep;
 	}
 
@@ -181,8 +180,8 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep, NotificationChain msgs) {
-		Deviation<DoubleObject> oldOccurrencesPerStep = occurrencesPerStep;
+	public NotificationChain basicSetOccurrencesPerStep(ContinuousDeviation newOccurrencesPerStep, NotificationChain msgs) {
+		ContinuousDeviation oldOccurrencesPerStep = occurrencesPerStep;
 		occurrencesPerStep = newOccurrencesPerStep;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
@@ -196,7 +195,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOccurrencesPerStep(Deviation<DoubleObject> newOccurrencesPerStep) {
+	public void setOccurrencesPerStep(ContinuousDeviation newOccurrencesPerStep) {
 		if (newOccurrencesPerStep != occurrencesPerStep) {
 			NotificationChain msgs = null;
 			if (occurrencesPerStep != null)
@@ -249,7 +248,6 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -260,7 +258,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 				setStep((Time)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)newValue);
+				setOccurrencesPerStep((ContinuousDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,7 +279,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 				setStep((Time)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((Deviation<DoubleObject>)null);
+				setOccurrencesPerStep((ContinuousDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

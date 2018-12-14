@@ -34,7 +34,6 @@ package org.eclipse.app4mc.amalthea.model
 
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
-import org.apache.commons.math3.special.Gamma
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.emf.ecore.util.EcoreEList$UnmodifiableEList
 
@@ -67,7 +66,6 @@ class Amalthea extends BaseObject
 	contains ConfigModel configModel
 	contains MeasurementModel measurementModel
 }
-
 
 
 // ===============================================================================
@@ -485,6 +483,42 @@ class BooleanObject extends Value
 
 // -------------------------------------------------------------------------------
 //
+// 						Statistics / Deviations (general)
+//
+// -------------------------------------------------------------------------------
+
+interface NumericStatistic {}
+
+/*
+ * Statistic to provide capabilities for min, max and avg
+ */
+class MinAvgMaxStatistic extends NumericStatistic
+{
+	int min = "0"
+	float avg = "0f"
+	int max = "0"
+}
+
+class SingleValueStatistic extends NumericStatistic
+{
+	float value = "0f"
+}
+
+/*
+ * The types of sampling
+ */
+enum SamplingType
+{
+	^default // Display: "<sampling>"
+	BestCase
+	WorstCase
+	AverageCase
+	CornerCase
+	Uniform
+}
+
+// -------------------------------------------------------------------------------
+//
 // 								Deviation of Time
 //
 // -------------------------------------------------------------------------------
@@ -801,112 +835,12 @@ class ContinuousBetaDistribution extends BoundedContinuousDistribution {
 	}
 }
 
+// -------------------------------------------------------------------------------
 //
-//	xxxxxxxxxxxxxxxxxxxxx OLD xxxxxxxxxxxxxxxxxxxxx
+// 										Modes
 //
+// -------------------------------------------------------------------------------
 
-class Deviation<T>
-{
-	contains T lowerBound
-	contains T upperBound
-	contains Distribution<T> distribution
-}
-
-/*
- * Abstract generic distribution class
- * The generic class T defines the data-type of the value-range of the distribution
- */
-abstract class Distribution<T> {}
-
-/*
- * Abstract Weibull distribution
- */
-abstract class WeibullDistribution<T> extends Distribution<T> {}
-
-/*
- * Weibull Distribution
- * Starts from zero, upperBound limits maximum value of result
- */
-class WeibullParameters<T> extends WeibullDistribution<T>
-{
-	double kappa = "0.0"
-	double lambda = "0.0"
-}
-
-/*
- * Weibull Distribution
- * The parameter of a weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
- */
-class WeibullEstimators<T> extends WeibullDistribution<T>
-{
-	contains T mean
-	double pRemainPromille = "0.0"
-}
-
-/*
- * Continuous uniform distribution
- */
-class UniformDistribution<T> extends Distribution<T>
-{
-}
-
-/*
- * The types of sampling
- */
-enum SamplingType
-{
-	^default // Display: "<sampling>"
-	BestCase
-	WorstCase
-	AverageCase
-	CornerCase
-	Uniform
-}
-
-/*
- * Defines the upper and lower bounds of a value interval without defining the distribution
- */
-class Boundaries<T> extends Distribution<T>
-{
-	SamplingType samplingType
-}
-
-/*
- * Gauss distribution
- */
-class GaussDistribution<T> extends Distribution<T>{
-	contains T[1] sd
-	contains T[1] mean
-}
-
-/*
- * Beta distribution
- */
-class BetaDistribution<T> extends Distribution<T>{
-	double alpha = "0.0"
-	double beta = "0.0"
-}
-
-interface NumericStatistic {}
-
-/*
- * Statistic to provide capabilities for min, max and avg
- */
-class MinAvgMaxStatistic extends NumericStatistic
-{
-	int min = "0"
-	float avg = "0f"
-	int max = "0"
-}
-
-class SingleValueStatistic extends NumericStatistic
-{
-	float value = "0f"
-}
-
-/*
- * Modes
- */
 class Mode extends ReferableBaseObject
 {
 	contains ModeLiteral[] literals opposite containingMode
@@ -927,6 +861,11 @@ class ModeLiteral extends ReferableBaseObject
 	}
 }
 
+// -------------------------------------------------------------------------------
+//
+// 										Datatypes
+//
+// -------------------------------------------------------------------------------
 
 /*
  * Hardware Address (long; specified as hexadecimal value)
@@ -2941,7 +2880,7 @@ interface FixedPeriodic
  */
 class PeriodicStimulus extends Stimulus, FixedPeriodic
 {
-	contains Deviation<Time>jitter
+	contains TimeDeviation jitter
 	contains Time minDistance
 }
 
@@ -2953,7 +2892,7 @@ class PeriodicStimulus extends Stimulus, FixedPeriodic
 class RelativePeriodicStimulus extends Stimulus
 {
 	contains Time offset
-	contains Deviation<Time>nextOccurrence
+	contains TimeDeviation nextOccurrence
 }
 
 /*
@@ -2963,7 +2902,7 @@ class RelativePeriodicStimulus extends Stimulus
 class VariableRateStimulus extends Stimulus
 {
 	contains Time[1] step
-	contains Deviation<DoubleObject>occurrencesPerStep
+	contains ContinuousDeviation occurrencesPerStep
 	contains DoubleObject maxIncreasePerStep
 	contains DoubleObject maxDecreasePerStep
 	contains Scenario scenario
@@ -4136,13 +4075,13 @@ class VariableRateActivation extends Activation
 {
 	String description
 	contains Time[1] step
-	contains Deviation<DoubleObject>[1] occurrencesPerStep
+	contains ContinuousDeviation[1] occurrencesPerStep
 }
 
 class SporadicActivation extends Activation
 {
 	String description
-	contains Deviation<Time>[1] activationDeviation
+	contains TimeDeviation[1] activationDeviation
 }
 
 /*
@@ -4220,7 +4159,7 @@ class MeasurementModel extends BaseObject
 abstract class Measurement extends BaseObject
 {
 	contains Time[] runtimes
-	contains Deviation<Time>runtimeDeviation
+	contains TimeDeviation runtimeDeviation
 }
 
 class EventChainMeasurement extends Measurement

@@ -154,7 +154,42 @@ public class MeasurementItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				 AmaltheaFactory.eINSTANCE.createTimeConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeBetaDistribution()));
 	}
 
 }

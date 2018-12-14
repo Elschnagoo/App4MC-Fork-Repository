@@ -69,11 +69,6 @@ public class AmaltheaModelValidator extends AbstractCheckValidator implements Is
 		this.amaltheaModelValidatorImpl.checkGaussDistribution(amalthea);
 	}
 
-	@Check(constraint = "WeibullParametersConstraint", categories = { "TAConstraint" })
-	public void checkWeibullParameters(final Amalthea amalthea) {
-		this.amaltheaModelValidatorImpl.checkWeibullParameters(amalthea);
-	}
-
 	@Check(constraint = "WeibullEstimatorsConstraint", categories = { "TAConstraint" })
 	public void checkWeibullEstimators(final Amalthea amalthea) {
 		this.amaltheaModelValidatorImpl.checkWeibullEstimators(amalthea);

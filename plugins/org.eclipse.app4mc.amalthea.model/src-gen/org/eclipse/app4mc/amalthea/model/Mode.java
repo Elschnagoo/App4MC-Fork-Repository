@@ -21,10 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Mode</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Modes
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>

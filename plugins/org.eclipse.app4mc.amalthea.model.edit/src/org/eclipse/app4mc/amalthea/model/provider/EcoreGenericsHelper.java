@@ -139,9 +139,7 @@ public class EcoreGenericsHelper {
 
 		newChildDescriptors.removeAll(childDescriptorsToRemove);
 	}
-	
-	
-	
+
 	/**
 	 * Collects the superset of child descriptors for the following objects:
 	 * ModeSwitchDefault, ModeSwitchEntry and ProbabilitySwitchEntry.
@@ -156,6 +154,7 @@ public class EcoreGenericsHelper {
 		// see RunnableItemProvider
 		childObjects.add(factory.createGroup());
 		childObjects.add(factory.createExecutionNeed());
+		childObjects.add(factory.createTicks());
 		childObjects.add(factory.createLabelAccess());
 		childObjects.add(factory.createModeLabelAccess());
 		childObjects.add(factory.createRunnableCall());
@@ -180,49 +179,4 @@ public class EcoreGenericsHelper {
 		}
 	}
 
-	/**
-	 * Collects the superset of child descriptors for the following features:
-	 * - Deviation: distribution
-	 * 
-	 * @param feature
-	 * @param newChildDescriptors
-	 */
-	public static void collectNewChildDescriptorsForDeviation(Object feature, Collection<Object> newChildDescriptors) {
-		ArrayList<EObject> childObjects = new ArrayList<EObject>();
-		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
-		
-		childObjects.add(factory.createBoundaries());
-		childObjects.add(factory.createUniformDistribution());
-		childObjects.add(factory.createGaussDistribution());
-		childObjects.add(factory.createWeibullParameters());
-		childObjects.add(factory.createWeibullEstimators());
-		childObjects.add(factory.createBetaDistribution());
-
-		for (EObject child : childObjects) {
-			newChildDescriptors.add(new CommandParameter(null, feature, child));			
-		}
-	}
-	
-	/**
-	 * Collects the superset of child descriptors for the following features:
-	 * - Deviation: upperBound, lowerBound
-	 * - WeibullEstimators: mean
-	 * - GaussDistribution: mean, sd
-	 * 
-	 * @param feature
-	 * @param newChildDescriptors
-	 */
-	public static void collectNewChildDescriptorsForDistribution(Object feature, Collection<Object> newChildDescriptors) {
-		ArrayList<EObject> childObjects = new ArrayList<EObject>();
-		AmaltheaFactory factory = AmaltheaFactory.eINSTANCE;
-		
-		childObjects.add(factory.createDoubleObject());
-		childObjects.add(factory.createLongObject());
-		childObjects.add(factory.createTime());
-		
-		for (EObject child : childObjects) {
-			newChildDescriptors.add(new CommandParameter(null, feature, child));			
-		}
-	}
-	
 }

@@ -188,7 +188,42 @@ public class SporadicActivationItemProvider extends ActivationItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
-				 AmaltheaFactory.eINSTANCE.createDeviation()));
+				 AmaltheaFactory.eINSTANCE.createTimeConstant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeHistogram()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeUniformDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeGaussDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_ActivationDeviation(),
+				 AmaltheaFactory.eINSTANCE.createTimeBetaDistribution()));
 	}
 
 }

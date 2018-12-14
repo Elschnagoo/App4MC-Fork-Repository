@@ -30,11 +30,9 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.BetaDistribution;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
-import org.eclipse.app4mc.amalthea.model.Boundaries;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Cache;
@@ -110,7 +108,6 @@ import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
-import org.eclipse.app4mc.amalthea.model.Deviation;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
@@ -148,7 +145,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
-import org.eclipse.app4mc.amalthea.model.GaussDistribution;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
@@ -342,7 +338,6 @@ import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
-import org.eclipse.app4mc.amalthea.model.UniformDistribution;
 import org.eclipse.app4mc.amalthea.model.UserSpecificSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
@@ -353,8 +348,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitEventType;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
-import org.eclipse.app4mc.amalthea.model.WeibullEstimators;
-import org.eclipse.app4mc.amalthea.model.WeibullParameters;
 import org.eclipse.app4mc.amalthea.model.WriteStrategy;
 
 import org.eclipse.emf.ecore.EClass;
@@ -431,6 +424,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.FLOAT_OBJECT: return createFloatObject();
 			case AmaltheaPackage.DOUBLE_OBJECT: return createDoubleObject();
 			case AmaltheaPackage.BOOLEAN_OBJECT: return createBooleanObject();
+			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: return createMinAvgMaxStatistic();
+			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: return createSingleValueStatistic();
 			case AmaltheaPackage.TIME_CONSTANT: return createTimeConstant();
 			case AmaltheaPackage.TIME_HISTOGRAM: return createTimeHistogram();
 			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: return createTimeHistogramEntry();
@@ -458,15 +453,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION: return createContinuousGaussDistribution();
 			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousWeibullEstimatorsDistribution();
 			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION: return createContinuousBetaDistribution();
-			case AmaltheaPackage.DEVIATION: return createDeviation();
-			case AmaltheaPackage.WEIBULL_PARAMETERS: return createWeibullParameters();
-			case AmaltheaPackage.WEIBULL_ESTIMATORS: return createWeibullEstimators();
-			case AmaltheaPackage.UNIFORM_DISTRIBUTION: return createUniformDistribution();
-			case AmaltheaPackage.BOUNDARIES: return createBoundaries();
-			case AmaltheaPackage.GAUSS_DISTRIBUTION: return createGaussDistribution();
-			case AmaltheaPackage.BETA_DISTRIBUTION: return createBetaDistribution();
-			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: return createMinAvgMaxStatistic();
-			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: return createSingleValueStatistic();
 			case AmaltheaPackage.MODE: return createMode();
 			case AmaltheaPackage.MODE_LITERAL: return createModeLiteral();
 			case AmaltheaPackage.COMPONENTS_MODEL: return createComponentsModel();
@@ -1186,6 +1172,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MinAvgMaxStatistic createMinAvgMaxStatistic() {
+		MinAvgMaxStatisticImpl minAvgMaxStatistic = new MinAvgMaxStatisticImpl();
+		return minAvgMaxStatistic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SingleValueStatistic createSingleValueStatistic() {
+		SingleValueStatisticImpl singleValueStatistic = new SingleValueStatisticImpl();
+		return singleValueStatistic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TimeConstant createTimeConstant() {
 		TimeConstantImpl timeConstant = new TimeConstantImpl();
 		return timeConstant;
@@ -1449,96 +1455,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public ContinuousBetaDistribution createContinuousBetaDistribution() {
 		ContinuousBetaDistributionImpl continuousBetaDistribution = new ContinuousBetaDistributionImpl();
 		return continuousBetaDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> Deviation<T> createDeviation() {
-		DeviationImpl<T> deviation = new DeviationImpl<T>();
-		return deviation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> WeibullParameters<T> createWeibullParameters() {
-		WeibullParametersImpl<T> weibullParameters = new WeibullParametersImpl<T>();
-		return weibullParameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> WeibullEstimators<T> createWeibullEstimators() {
-		WeibullEstimatorsImpl<T> weibullEstimators = new WeibullEstimatorsImpl<T>();
-		return weibullEstimators;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> UniformDistribution<T> createUniformDistribution() {
-		UniformDistributionImpl<T> uniformDistribution = new UniformDistributionImpl<T>();
-		return uniformDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> Boundaries<T> createBoundaries() {
-		BoundariesImpl<T> boundaries = new BoundariesImpl<T>();
-		return boundaries;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> GaussDistribution<T> createGaussDistribution() {
-		GaussDistributionImpl<T> gaussDistribution = new GaussDistributionImpl<T>();
-		return gaussDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T> BetaDistribution<T> createBetaDistribution() {
-		BetaDistributionImpl<T> betaDistribution = new BetaDistributionImpl<T>();
-		return betaDistribution;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MinAvgMaxStatistic createMinAvgMaxStatistic() {
-		MinAvgMaxStatisticImpl minAvgMaxStatistic = new MinAvgMaxStatisticImpl();
-		return minAvgMaxStatistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SingleValueStatistic createSingleValueStatistic() {
-		SingleValueStatisticImpl singleValueStatistic = new SingleValueStatisticImpl();
-		return singleValueStatistic;
 	}
 
 	/**
