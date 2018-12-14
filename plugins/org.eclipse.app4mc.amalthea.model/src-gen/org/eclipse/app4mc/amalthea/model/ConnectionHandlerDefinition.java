@@ -71,7 +71,7 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>Returns the read latency in cycles</p>
+	 * <p><b>Read latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Read Latency</em>' containment reference.
 	 * @see #setReadLatency(DiscreteDeviation)
@@ -96,7 +96,7 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>Returns the write latency in cycles</p>
+	 * <p><b>Write latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Write Latency</em>' containment reference.
 	 * @see #setWriteLatency(DiscreteDeviation)

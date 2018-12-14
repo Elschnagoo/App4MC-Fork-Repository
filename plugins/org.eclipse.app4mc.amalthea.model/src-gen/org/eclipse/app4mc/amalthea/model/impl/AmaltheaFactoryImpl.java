@@ -161,7 +161,6 @@ import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
-import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -676,7 +675,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EVENT_ACTIVATION: return createEventActivation();
 			case AmaltheaPackage.CUSTOM_ACTIVATION: return createCustomActivation();
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC: return createLabelAccessStatistic();
-			case AmaltheaPackage.INSTRUCTION_FETCH: return createInstructionFetch();
 			case AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC: return createRunEntityCallStatistic();
 			case AmaltheaPackage.MEASUREMENT_MODEL: return createMeasurementModel();
 			case AmaltheaPackage.EVENT_CHAIN_MEASUREMENT: return createEventChainMeasurement();
@@ -3685,16 +3683,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public LabelAccessStatistic createLabelAccessStatistic() {
 		LabelAccessStatisticImpl labelAccessStatistic = new LabelAccessStatisticImpl();
 		return labelAccessStatistic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InstructionFetch createInstructionFetch() {
-		InstructionFetchImpl instructionFetch = new InstructionFetchImpl();
-		return instructionFetch;
 	}
 
 	/**

@@ -6363,29 +6363,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.InstructionFetch} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstructionFetchItemProvider instructionFetchItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.InstructionFetch}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInstructionFetchAdapter() {
-		if (instructionFetchItemProvider == null) {
-			instructionFetchItemProvider = new InstructionFetchItemProvider(this);
-		}
-
-		return instructionFetchItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6872,7 +6849,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (eventActivationItemProvider != null) eventActivationItemProvider.dispose();
 		if (customActivationItemProvider != null) customActivationItemProvider.dispose();
 		if (labelAccessStatisticItemProvider != null) labelAccessStatisticItemProvider.dispose();
-		if (instructionFetchItemProvider != null) instructionFetchItemProvider.dispose();
 		if (runEntityCallStatisticItemProvider != null) runEntityCallStatisticItemProvider.dispose();
 		if (measurementModelItemProvider != null) measurementModelItemProvider.dispose();
 		if (eventChainMeasurementItemProvider != null) eventChainMeasurementItemProvider.dispose();

@@ -3194,14 +3194,18 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="readLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the read latency in cycles</p>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
           <xsd:element name="writeLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the write latency in cycles</p>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -3217,13 +3221,6 @@ entity: The component that fires the event (optional)</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="HwConnection" type="am:HwConnection"/>
   <xsd:complexType name="HwAccessElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwConverter extends INamed {
-	contains HwLatency latency
-	refers FrequencyDomain[1] sourceFrequencyDomain
-	refers FrequencyDomain[1] targetFrequencyDomain
- }</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ITaggable">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -3233,14 +3230,18 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="readLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the read latency in cycles</p>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
           <xsd:element name="writeLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the write latency in cycles</p>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -3252,15 +3253,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwAccessElement" type="am:HwAccessElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwConverter extends INamed {
-	contains HwLatency latency
-	refers FrequencyDomain[1] sourceFrequencyDomain
-	refers FrequencyDomain[1] targetFrequencyDomain
- }</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="HwAccessElement" type="am:HwAccessElement"/>
   <xsd:complexType abstract="true" name="HwDefinition">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -3293,14 +3286,18 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="readLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the read latency in cycles</p>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
           <xsd:element name="writeLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the write latency in cycles</p>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -3321,7 +3318,9 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="accessLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the access latency in cycles</p>
+                <p>
+                  <b>Access latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -3343,7 +3342,9 @@ entity: The component that fires the event (optional)</xsd:documentation>
           <xsd:element name="accessLatency" type="am:DiscreteDeviation">
             <xsd:annotation>
               <xsd:documentation>
-                <p>Returns the access latency in cycles</p>
+                <p>
+                  <b>Access latency [cycles]</b>
+                </p>
               </xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -4461,10 +4462,10 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="step" type="am:Time"/>
           <xsd:element name="occurrencesPerStep" type="am:ContinuousDeviation"/>
-          <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
-          <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
           <xsd:element name="scenario" type="am:Scenario"/>
         </xsd:choice>
+        <xsd:attribute name="maxIncreasePerStep" type="xsd:double"/>
+        <xsd:attribute name="maxDecreasePerStep" type="xsd:double"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -6184,18 +6185,6 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:documentation>Contains information about access statistic values</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="InstructionFetch">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="count" type="am:NumericStatistic"/>
-          <xsd:element name="misses" type="am:NumericStatistic"/>
-          <xsd:element name="cyclesPerFetch" type="am:NumericStatistic"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionFetch" type="am:InstructionFetch"/>
   <xsd:complexType name="RunEntityCallStatistic">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">

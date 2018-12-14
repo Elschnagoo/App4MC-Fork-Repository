@@ -204,7 +204,6 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
-import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -1224,8 +1223,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateCustomActivation((CustomActivation)value, diagnostics, context);
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC:
 				return validateLabelAccessStatistic((LabelAccessStatistic)value, diagnostics, context);
-			case AmaltheaPackage.INSTRUCTION_FETCH:
-				return validateInstructionFetch((InstructionFetch)value, diagnostics, context);
 			case AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC:
 				return validateRunEntityCallStatistic((RunEntityCallStatistic)value, diagnostics, context);
 			case AmaltheaPackage.MEASUREMENT_MODEL:
@@ -4576,15 +4573,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateLabelAccessStatistic(LabelAccessStatistic labelAccessStatistic, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(labelAccessStatistic, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInstructionFetch(InstructionFetch instructionFetch, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(instructionFetch, diagnostics, context);
 	}
 
 	/**

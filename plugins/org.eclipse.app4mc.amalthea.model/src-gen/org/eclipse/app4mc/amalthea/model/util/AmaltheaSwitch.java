@@ -183,7 +183,6 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
-import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -3744,14 +3743,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				T1 result = caseLabelAccessStatistic(labelAccessStatistic);
 				if (result == null) result = caseBaseObject(labelAccessStatistic);
 				if (result == null) result = caseIAnnotatable(labelAccessStatistic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.INSTRUCTION_FETCH: {
-				InstructionFetch instructionFetch = (InstructionFetch)theEObject;
-				T1 result = caseInstructionFetch(instructionFetch);
-				if (result == null) result = caseBaseObject(instructionFetch);
-				if (result == null) result = caseIAnnotatable(instructionFetch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -9162,21 +9153,6 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseLabelAccessStatistic(LabelAccessStatistic object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instruction Fetch</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instruction Fetch</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseInstructionFetch(InstructionFetch object) {
 		return null;
 	}
 

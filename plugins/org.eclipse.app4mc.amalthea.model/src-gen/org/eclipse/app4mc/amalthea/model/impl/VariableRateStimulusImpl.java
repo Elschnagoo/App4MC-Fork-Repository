@@ -16,7 +16,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
-import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
@@ -68,24 +67,44 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	protected ContinuousDeviation occurrencesPerStep;
 
 	/**
-	 * The cached value of the '{@link #getMaxIncreasePerStep() <em>Max Increase Per Step</em>}' containment reference.
+	 * The default value of the '{@link #getMaxIncreasePerStep() <em>Max Increase Per Step</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMaxIncreasePerStep()
 	 * @generated
 	 * @ordered
 	 */
-	protected DoubleObject maxIncreasePerStep;
+	protected static final Double MAX_INCREASE_PER_STEP_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMaxDecreasePerStep() <em>Max Decrease Per Step</em>}' containment reference.
+	 * The cached value of the '{@link #getMaxIncreasePerStep() <em>Max Increase Per Step</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxIncreasePerStep()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double maxIncreasePerStep = MAX_INCREASE_PER_STEP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxDecreasePerStep() <em>Max Decrease Per Step</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMaxDecreasePerStep()
 	 * @generated
 	 * @ordered
 	 */
-	protected DoubleObject maxDecreasePerStep;
+	protected static final Double MAX_DECREASE_PER_STEP_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMaxDecreasePerStep() <em>Max Decrease Per Step</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxDecreasePerStep()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double maxDecreasePerStep = MAX_DECREASE_PER_STEP_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getScenario() <em>Scenario</em>}' containment reference.
@@ -207,7 +226,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DoubleObject getMaxIncreasePerStep() {
+	public Double getMaxIncreasePerStep() {
 		return maxIncreasePerStep;
 	}
 
@@ -216,14 +235,11 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMaxIncreasePerStep(DoubleObject newMaxIncreasePerStep, NotificationChain msgs) {
-		DoubleObject oldMaxIncreasePerStep = maxIncreasePerStep;
+	public void setMaxIncreasePerStep(Double newMaxIncreasePerStep) {
+		Double oldMaxIncreasePerStep = maxIncreasePerStep;
 		maxIncreasePerStep = newMaxIncreasePerStep;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP, oldMaxIncreasePerStep, newMaxIncreasePerStep);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP, oldMaxIncreasePerStep, maxIncreasePerStep));
 	}
 
 	/**
@@ -231,26 +247,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxIncreasePerStep(DoubleObject newMaxIncreasePerStep) {
-		if (newMaxIncreasePerStep != maxIncreasePerStep) {
-			NotificationChain msgs = null;
-			if (maxIncreasePerStep != null)
-				msgs = ((InternalEObject)maxIncreasePerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP, null, msgs);
-			if (newMaxIncreasePerStep != null)
-				msgs = ((InternalEObject)newMaxIncreasePerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP, null, msgs);
-			msgs = basicSetMaxIncreasePerStep(newMaxIncreasePerStep, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP, newMaxIncreasePerStep, newMaxIncreasePerStep));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DoubleObject getMaxDecreasePerStep() {
+	public Double getMaxDecreasePerStep() {
 		return maxDecreasePerStep;
 	}
 
@@ -259,33 +256,11 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMaxDecreasePerStep(DoubleObject newMaxDecreasePerStep, NotificationChain msgs) {
-		DoubleObject oldMaxDecreasePerStep = maxDecreasePerStep;
+	public void setMaxDecreasePerStep(Double newMaxDecreasePerStep) {
+		Double oldMaxDecreasePerStep = maxDecreasePerStep;
 		maxDecreasePerStep = newMaxDecreasePerStep;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP, oldMaxDecreasePerStep, newMaxDecreasePerStep);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxDecreasePerStep(DoubleObject newMaxDecreasePerStep) {
-		if (newMaxDecreasePerStep != maxDecreasePerStep) {
-			NotificationChain msgs = null;
-			if (maxDecreasePerStep != null)
-				msgs = ((InternalEObject)maxDecreasePerStep).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP, null, msgs);
-			if (newMaxDecreasePerStep != null)
-				msgs = ((InternalEObject)newMaxDecreasePerStep).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP, null, msgs);
-			msgs = basicSetMaxDecreasePerStep(newMaxDecreasePerStep, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP, newMaxDecreasePerStep, newMaxDecreasePerStep));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP, oldMaxDecreasePerStep, maxDecreasePerStep));
 	}
 
 	/**
@@ -343,10 +318,6 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 				return basicSetStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
 				return basicSetOccurrencesPerStep(null, msgs);
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
-				return basicSetMaxIncreasePerStep(null, msgs);
-			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
-				return basicSetMaxDecreasePerStep(null, msgs);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
 				return basicSetScenario(null, msgs);
 		}
@@ -390,10 +361,10 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 				setOccurrencesPerStep((ContinuousDeviation)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
-				setMaxIncreasePerStep((DoubleObject)newValue);
+				setMaxIncreasePerStep((Double)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
-				setMaxDecreasePerStep((DoubleObject)newValue);
+				setMaxDecreasePerStep((Double)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
 				setScenario((Scenario)newValue);
@@ -417,10 +388,10 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 				setOccurrencesPerStep((ContinuousDeviation)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
-				setMaxIncreasePerStep((DoubleObject)null);
+				setMaxIncreasePerStep(MAX_INCREASE_PER_STEP_EDEFAULT);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
-				setMaxDecreasePerStep((DoubleObject)null);
+				setMaxDecreasePerStep(MAX_DECREASE_PER_STEP_EDEFAULT);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
 				setScenario((Scenario)null);
@@ -442,13 +413,31 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
 				return occurrencesPerStep != null;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
-				return maxIncreasePerStep != null;
+				return MAX_INCREASE_PER_STEP_EDEFAULT == null ? maxIncreasePerStep != null : !MAX_INCREASE_PER_STEP_EDEFAULT.equals(maxIncreasePerStep);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP:
-				return maxDecreasePerStep != null;
+				return MAX_DECREASE_PER_STEP_EDEFAULT == null ? maxDecreasePerStep != null : !MAX_DECREASE_PER_STEP_EDEFAULT.equals(maxDecreasePerStep);
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__SCENARIO:
 				return scenario != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (maxIncreasePerStep: ");
+		result.append(maxIncreasePerStep);
+		result.append(", maxDecreasePerStep: ");
+		result.append(maxDecreasePerStep);
+		result.append(')');
+		return result.toString();
 	}
 
 } //VariableRateStimulusImpl

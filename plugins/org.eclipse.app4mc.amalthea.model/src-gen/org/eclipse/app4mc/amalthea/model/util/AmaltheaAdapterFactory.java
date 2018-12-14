@@ -183,7 +183,6 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
-import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -1862,10 +1861,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLabelAccessStatistic(LabelAccessStatistic object) {
 				return createLabelAccessStatisticAdapter();
-			}
-			@Override
-			public Adapter caseInstructionFetch(InstructionFetch object) {
-				return createInstructionFetchAdapter();
 			}
 			@Override
 			public Adapter caseRunEntityCallStatistic(RunEntityCallStatistic object) {
@@ -6906,20 +6901,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabelAccessStatisticAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.InstructionFetch <em>Instruction Fetch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.InstructionFetch
-	 * @generated
-	 */
-	public Adapter createInstructionFetchAdapter() {
 		return null;
 	}
 

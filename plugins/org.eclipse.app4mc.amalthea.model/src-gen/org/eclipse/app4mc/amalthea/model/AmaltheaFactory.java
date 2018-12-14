@@ -2446,15 +2446,6 @@ public interface AmaltheaFactory extends EFactory {
 	LabelAccessStatistic createLabelAccessStatistic();
 
 	/**
-	 * Returns a new object of class '<em>Instruction Fetch</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instruction Fetch</em>'.
-	 * @generated
-	 */
-	InstructionFetch createInstructionFetch();
-
-	/**
 	 * Returns a new object of class '<em>Run Entity Call Statistic</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

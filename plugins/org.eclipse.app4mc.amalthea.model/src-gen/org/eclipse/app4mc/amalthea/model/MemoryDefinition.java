@@ -68,7 +68,7 @@ public interface MemoryDefinition extends HwDefinition {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>Returns the access latency in cycles</p>
+	 * <p><b>Access latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Access Latency</em>' containment reference.
 	 * @see #setAccessLatency(DiscreteDeviation)

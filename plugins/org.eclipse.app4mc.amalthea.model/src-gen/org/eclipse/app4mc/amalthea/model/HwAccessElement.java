@@ -20,14 +20,6 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Hw Access Element</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * class HwConverter extends INamed {
- * 	contains HwLatency latency
- * 	refers FrequencyDomain[1] sourceFrequencyDomain
- * 	refers FrequencyDomain[1] targetFrequencyDomain
- *  }
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
@@ -122,7 +114,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>Returns the read latency in cycles</p>
+	 * <p><b>Read latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Read Latency</em>' containment reference.
 	 * @see #setReadLatency(DiscreteDeviation)
@@ -147,7 +139,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * <p>Returns the write latency in cycles</p>
+	 * <p><b>Write latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Write Latency</em>' containment reference.
 	 * @see #setWriteLatency(DiscreteDeviation)

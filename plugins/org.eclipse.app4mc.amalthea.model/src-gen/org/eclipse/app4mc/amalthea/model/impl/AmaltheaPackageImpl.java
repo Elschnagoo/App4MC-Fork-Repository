@@ -204,7 +204,6 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
-import org.eclipse.app4mc.amalthea.model.InstructionFetch;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -2949,13 +2948,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass labelAccessStatisticEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass instructionFetchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -10596,8 +10588,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableRateStimulus_MaxIncreasePerStep() {
-		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(2);
+	public EAttribute getVariableRateStimulus_MaxIncreasePerStep() {
+		return (EAttribute)variableRateStimulusEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -10605,8 +10597,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableRateStimulus_MaxDecreasePerStep() {
-		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(3);
+	public EAttribute getVariableRateStimulus_MaxDecreasePerStep() {
+		return (EAttribute)variableRateStimulusEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -13413,42 +13405,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInstructionFetch() {
-		return instructionFetchEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructionFetch_Count() {
-		return (EReference)instructionFetchEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructionFetch_Misses() {
-		return (EReference)instructionFetchEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstructionFetch_CyclesPerFetch() {
-		return (EReference)instructionFetchEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getRunEntityCallStatistic() {
 		return runEntityCallStatisticEClass;
 	}
@@ -15184,8 +15140,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		variableRateStimulusEClass = createEClass(VARIABLE_RATE_STIMULUS);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__STEP);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP);
-		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP);
-		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP);
+		createEAttribute(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP);
+		createEAttribute(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__MAX_DECREASE_PER_STEP);
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__SCENARIO);
 
 		scenarioEClass = createEClass(SCENARIO);
@@ -15595,11 +15551,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		labelAccessStatisticEClass = createEClass(LABEL_ACCESS_STATISTIC);
 		createEReference(labelAccessStatisticEClass, LABEL_ACCESS_STATISTIC__VALUE);
 		createEReference(labelAccessStatisticEClass, LABEL_ACCESS_STATISTIC__CACHE_MISSES);
-
-		instructionFetchEClass = createEClass(INSTRUCTION_FETCH);
-		createEReference(instructionFetchEClass, INSTRUCTION_FETCH__COUNT);
-		createEReference(instructionFetchEClass, INSTRUCTION_FETCH__MISSES);
-		createEReference(instructionFetchEClass, INSTRUCTION_FETCH__CYCLES_PER_FETCH);
 
 		runEntityCallStatisticEClass = createEClass(RUN_ENTITY_CALL_STATISTIC);
 		createEReference(runEntityCallStatisticEClass, RUN_ENTITY_CALL_STATISTIC__STATISTIC);
@@ -16112,7 +16063,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		eventActivationEClass.getESuperTypes().add(this.getActivation());
 		customActivationEClass.getESuperTypes().add(this.getActivation());
 		labelAccessStatisticEClass.getESuperTypes().add(this.getBaseObject());
-		instructionFetchEClass.getESuperTypes().add(this.getBaseObject());
 		runEntityCallStatisticEClass.getESuperTypes().add(this.getBaseObject());
 		measurementModelEClass.getESuperTypes().add(this.getBaseObject());
 		measurementEClass.getESuperTypes().add(this.getBaseObject());
@@ -17252,8 +17202,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(variableRateStimulusEClass, VariableRateStimulus.class, "VariableRateStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableRateStimulus_Step(), this.getTime(), null, "step", null, 1, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_OccurrencesPerStep(), this.getContinuousDeviation(), null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_MaxIncreasePerStep(), this.getDoubleObject(), null, "maxIncreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_MaxDecreasePerStep(), this.getDoubleObject(), null, "maxDecreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableRateStimulus_MaxIncreasePerStep(), theEcorePackage.getEDoubleObject(), "maxIncreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableRateStimulus_MaxDecreasePerStep(), theEcorePackage.getEDoubleObject(), "maxDecreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_Scenario(), this.getScenario(), null, "scenario", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -17692,11 +17642,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(labelAccessStatisticEClass, LabelAccessStatistic.class, "LabelAccessStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLabelAccessStatistic_Value(), this.getNumericStatistic(), null, "value", null, 0, 1, LabelAccessStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabelAccessStatistic_CacheMisses(), this.getNumericStatistic(), null, "cacheMisses", null, 0, 1, LabelAccessStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(instructionFetchEClass, InstructionFetch.class, "InstructionFetch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInstructionFetch_Count(), this.getNumericStatistic(), null, "count", null, 0, 1, InstructionFetch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInstructionFetch_Misses(), this.getNumericStatistic(), null, "misses", null, 0, 1, InstructionFetch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInstructionFetch_CyclesPerFetch(), this.getNumericStatistic(), null, "cyclesPerFetch", null, 0, 1, InstructionFetch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runEntityCallStatisticEClass, RunEntityCallStatistic.class, "RunEntityCallStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunEntityCallStatistic_Statistic(), this.getNumericStatistic(), null, "statistic", null, 0, 1, RunEntityCallStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

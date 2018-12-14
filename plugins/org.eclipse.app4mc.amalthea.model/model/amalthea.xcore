@@ -1926,7 +1926,6 @@ class HwFeature extends ReferableBaseObject
 	}
 	
 	double value = "0.0"
-// contains HwLatency latency
 }
 
 class HwPort extends ReferableBaseObject, ITaggable
@@ -1968,11 +1967,9 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
 	}
 	
-	// contains HwConverter converter
-	
-	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
 	contains DiscreteDeviation readLatency
-	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
 	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 	refers HwPort port1
@@ -1988,11 +1985,6 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 	}
 }
 
-/*class HwConverter extends INamed {
- * 	contains HwLatency latency
- * 	refers FrequencyDomain[1] sourceFrequencyDomain
- * 	refers FrequencyDomain[1] targetFrequencyDomain
- }*/
 class HwAccessElement extends ITaggable, INamed
 {
 	// container (read only)
@@ -2001,9 +1993,9 @@ class HwAccessElement extends ITaggable, INamed
 	
 	refers HwDestination[1] destination
 	contains HwAccessPath accessPath opposite containingAccessElement
-	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
 	contains DiscreteDeviation readLatency
-	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
 	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 }
@@ -2065,9 +2057,9 @@ class ProcessingUnitDefinition extends HwDefinition
 class ConnectionHandlerDefinition extends HwDefinition
 {
 	SchedPolicy policy
-	@GenModel(documentation="<p>Returns the read latency in cycles</p>")
+	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
 	contains DiscreteDeviation readLatency
-	@GenModel(documentation="<p>Returns the write latency in cycles</p>")
+	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
 	contains DiscreteDeviation writeLatency
 	contains DataRate dataRate
 	PositiveInt maxBurstSize = "1"
@@ -2077,7 +2069,7 @@ class ConnectionHandlerDefinition extends HwDefinition
 class MemoryDefinition extends HwDefinition
 {
 	contains DataSize size
-	@GenModel(documentation="<p>Returns the access latency in cycles</p>")
+	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
 	contains DiscreteDeviation accessLatency
 	contains DataRate dataRate
 	MemoryType memoryType
@@ -2088,7 +2080,7 @@ class CacheDefinition extends HwDefinition
 {
 	contains DataSize size
 	contains DataSize lineSize
-	@GenModel(documentation="<p>Returns the access latency in cycles</p>")
+	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
 	contains DiscreteDeviation accessLatency
 	CacheType cacheType
 	WriteStrategy writeStrategy
@@ -2123,14 +2115,6 @@ class HwAccessPath extends HwPath, INamed
 	Address memOffset = "0"
 }
 
-//class HwLogicalPath extends HwPath, INamed {
-//	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-//	container readonly AddressElement containingAddressElement opposite logicalPaths
-//	contains DataRate dataRate
-//	contains HwLatency readLatency
-//	contains HwLatency writeLatency
-// }
- 
 interface HwPathElement extends IReferable
 {
 	op HwPort[] getPorts()
@@ -2903,8 +2887,8 @@ class VariableRateStimulus extends Stimulus
 {
 	contains Time[1] step
 	contains ContinuousDeviation occurrencesPerStep
-	contains DoubleObject maxIncreasePerStep
-	contains DoubleObject maxDecreasePerStep
+	Double maxIncreasePerStep		// initial value is null
+	Double maxDecreasePerStep		// initial value is null
 	contains Scenario scenario
 }
 
@@ -3656,9 +3640,6 @@ class NeedEntry wraps java.util.Map$Entry
 {
 	String[1] key	//	refers to HwFeatureCategory
 	contains DiscreteDeviation[1] value
-
-//	op String getFeature() {typedKey}
-//	op DiscreteDeviation getUsages() {typedValue}
 }
 
 /*
@@ -4114,16 +4095,6 @@ class LabelAccessStatistic extends BaseObject
 {
 	contains NumericStatistic value
 	contains NumericStatistic cacheMisses
-}
-
-/*
- * 
- */
-class InstructionFetch extends BaseObject
-{
-	contains NumericStatistic count
-	contains NumericStatistic misses
-	contains NumericStatistic cyclesPerFetch
 }
 
 class RunEntityCallStatistic extends BaseObject

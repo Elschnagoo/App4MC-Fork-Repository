@@ -94,56 +94,56 @@ public interface VariableRateStimulus extends Stimulus {
 	void setOccurrencesPerStep(ContinuousDeviation value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Increase Per Step</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Max Increase Per Step</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Max Increase Per Step</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Max Increase Per Step</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Max Increase Per Step</em>' containment reference.
-	 * @see #setMaxIncreasePerStep(DoubleObject)
+	 * @return the value of the '<em>Max Increase Per Step</em>' attribute.
+	 * @see #setMaxIncreasePerStep(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_MaxIncreasePerStep()
-	 * @model containment="true"
+	 * @model unique="false"
 	 * @generated
 	 */
-	DoubleObject getMaxIncreasePerStep();
+	Double getMaxIncreasePerStep();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxIncreasePerStep <em>Max Increase Per Step</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxIncreasePerStep <em>Max Increase Per Step</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Increase Per Step</em>' containment reference.
+	 * @param value the new value of the '<em>Max Increase Per Step</em>' attribute.
 	 * @see #getMaxIncreasePerStep()
 	 * @generated
 	 */
-	void setMaxIncreasePerStep(DoubleObject value);
+	void setMaxIncreasePerStep(Double value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Decrease Per Step</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Max Decrease Per Step</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Max Decrease Per Step</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Max Decrease Per Step</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Max Decrease Per Step</em>' containment reference.
-	 * @see #setMaxDecreasePerStep(DoubleObject)
+	 * @return the value of the '<em>Max Decrease Per Step</em>' attribute.
+	 * @see #setMaxDecreasePerStep(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_MaxDecreasePerStep()
-	 * @model containment="true"
+	 * @model unique="false"
 	 * @generated
 	 */
-	DoubleObject getMaxDecreasePerStep();
+	Double getMaxDecreasePerStep();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxDecreasePerStep <em>Max Decrease Per Step</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getMaxDecreasePerStep <em>Max Decrease Per Step</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Decrease Per Step</em>' containment reference.
+	 * @param value the new value of the '<em>Max Decrease Per Step</em>' attribute.
 	 * @see #getMaxDecreasePerStep()
 	 * @generated
 	 */
-	void setMaxDecreasePerStep(DoubleObject value);
+	void setMaxDecreasePerStep(Double value);
 
 	/**
 	 * Returns the value of the '<em><b>Scenario</b></em>' containment reference.
