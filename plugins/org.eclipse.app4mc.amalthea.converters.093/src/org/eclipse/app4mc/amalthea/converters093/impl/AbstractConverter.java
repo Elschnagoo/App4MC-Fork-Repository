@@ -71,7 +71,7 @@ public abstract class AbstractConverter implements IConverter {
 	 * @return
 	 */
 
-	public Element migrateDeviationElement(Element deviationElement, String newElementName) {
+	public Element migrateDeviationElement_Containing_LongValue(Element deviationElement, String newElementName) {
 		
 		 Element tc_executionTicksElement=new Element(newElementName);
 
@@ -81,8 +81,8 @@ public abstract class AbstractConverter implements IConverter {
 		 
 		 String distributionTypeTill092 = null;
 		 
-		 String lowerBoundValue="0.0";
-		 String upperBoundValue="0.0";
+		 String lowerBoundValue="0";
+		 String upperBoundValue="0";
 		 
 		if (deviationElement != null) {
 

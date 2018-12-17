@@ -164,7 +164,7 @@ public class OsConverter extends AbstractConverter {
 
 				if(deviationElement !=null) {
 					
-					Element migratedElement= migrateDeviationElement(deviationElement, "default");
+					Element migratedElement= migrateDeviationElement_Containing_LongValue(deviationElement, "default");
 
 					osInstructionsSubElement.removeContent(deviationElement);
 					

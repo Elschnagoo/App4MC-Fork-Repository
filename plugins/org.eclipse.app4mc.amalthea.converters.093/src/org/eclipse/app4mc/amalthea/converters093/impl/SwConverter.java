@@ -287,7 +287,7 @@ public class SwConverter extends AbstractConverter {
 
 				 Element deviationElement = valueElement.getChild("deviation");
 
-				 return migrateDeviationElement(deviationElement, newElementName);
+				 return migrateDeviationElement_Containing_LongValue(deviationElement, newElementName);
 			 }
 		}
 		return null;
