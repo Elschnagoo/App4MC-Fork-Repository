@@ -5,22 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
-import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters093.utils.HelperUtils_092_093;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-public class OsConverter implements IConverter {
-	private final HelperUtils_092_093  helper;
+public class OsConverter extends AbstractConverter {
 
-	private final Logger logger;
-
-	private List<ICache> caches;
-
-	private Map<File, Document> fileName_documentsMap;
 
 	private File targetFile;
 
@@ -161,34 +153,25 @@ public class OsConverter implements IConverter {
 
 				Element defaultElement = new Element("default");
 
-				defaultElement.setAttribute(new Attribute("type", "am:TicksConstant", helper.getGenericNS("xsi")));
+				defaultElement.setAttribute(new Attribute("type", "am:DiscreteConstant", helper.getGenericNS("xsi")));
 
 				defaultElement.setAttribute("value", value);
 
 				osInstructionsSubElement.addContent(defaultElement);
 
 			} else if (typeAttributeValue.equals("am:InstructionsDeviation")) {
-				Element defaultElement = new Element("default");
-
-				defaultElement
-						.setAttribute(new Attribute("type", "am:TicksDeviation", helper.getGenericNS("xsi")));
-
 				Element deviationElement = osInstructionsSubElement.getChild("deviation");
 
-				if (deviationElement != null) {
+				if(deviationElement !=null) {
 					
-					//TODO: Handle the future changes in Deviation object here
+					Element migratedElement= migrateDeviationElement(deviationElement, "default");
+
+					osInstructionsSubElement.removeContent(deviationElement);
 					
-					Element deviationElement_cloned = deviationElement.clone();
-
-					defaultElement.addContent(deviationElement_cloned);
-
-					/*- removing the deviation element from apiSendMessage element */
-					osInstructionsSubElement.removeChild("deviation");
-
-					osInstructionsSubElement.addContent(defaultElement);
+					if(migratedElement!=null) {
+						osInstructionsSubElement.addContent(migratedElement);
+					}
 				}
-
 
 			}
 

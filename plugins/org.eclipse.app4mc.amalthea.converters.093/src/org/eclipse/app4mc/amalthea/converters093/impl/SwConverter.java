@@ -5,23 +5,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
-import org.eclipse.app4mc.amalthea.converters.common.base.IConverter;
 import org.eclipse.app4mc.amalthea.converters093.utils.HelperUtils_092_093;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Parent;
 
-public class SwConverter implements IConverter {
-	private final HelperUtils_092_093  helper;
+public class SwConverter extends AbstractConverter {
 
-	private final Logger logger;
-
-	private List<ICache> caches;
-
-	private Map<File, Document> fileName_documentsMap;
+	
 
 	private File targetFile;
 
@@ -166,7 +159,7 @@ public class SwConverter implements IConverter {
 			/*- ------ExecutionTicks element --------------*/
 			Element executionTicksElement=new Element(nodeName);
 			
-			Attribute typeAttribute=new Attribute("type", "am:ExecutionTicks", this.helper.getGenericNS("xsi"));
+			Attribute typeAttribute=new Attribute("type", "am:Ticks", this.helper.getGenericNS("xsi"));
 			
 			executionTicksElement.getAttributes().add(typeAttribute);
 			
@@ -277,7 +270,7 @@ public class SwConverter implements IConverter {
 				 
 				 Element tc_executionTicksElement=new Element(newElementName);
 
-				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:TicksConstant", this.helper.getGenericNS("xsi"));
+				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:DiscreteConstant", this.helper.getGenericNS("xsi"));
 					
 				 tc_executionTicksElement.getAttributes().add(default_executionTicksElement_TypeAttribute);
 					
@@ -291,30 +284,16 @@ public class SwConverter implements IConverter {
 				 
 				 return tc_executionTicksElement;
 			 }else  if(valueType !=null && valueType.equals("am:NeedDeviation")) {
-				 
-				 Element tc_executionTicksElement=new Element(newElementName);
 
-				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:TicksDeviation", this.helper.getGenericNS("xsi"));
-					
-				 tc_executionTicksElement.getAttributes().add(default_executionTicksElement_TypeAttribute);
-					
-				 
-					Element deviationElement = valueElement.getChild("deviation");
+				 Element deviationElement = valueElement.getChild("deviation");
 
-					if (deviationElement != null) {
-						
-						//TODO: Handle the future changes in Deviation object here
-						Element deviationElement_cloned = deviationElement.clone();
-
-						tc_executionTicksElement.addContent(deviationElement_cloned);
- 
-					}
-
-				 return tc_executionTicksElement;
+				 return migrateDeviationElement(deviationElement, newElementName);
 			 }
 		}
 		return null;
 	}
 
+	
+	 
 
 }

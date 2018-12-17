@@ -1383,4 +1383,15 @@ public abstract class AbstractHelper {
 		}
 		return null;
 	}
+	
+	public String getValueFromChildElement(Element element, String childElementName, String childElementAttributeName) {
+		
+		Element child = element.getChild(childElementName);
+		
+		if(child !=null) {
+			return child.getAttributeValue(childElementAttributeName);
+		}
+		
+		return null;
+	}
 }

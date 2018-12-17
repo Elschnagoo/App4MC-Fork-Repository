@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="r1" callback="false" service="false">
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedConstant" value="50"/>
+        </default>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:BetaDistribution" alpha="1.0" beta="2.0"/>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:Boundaries" samplingType="BestCase"/>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:GaussDistribution">
+                  <sd xsi:type="am:LongObject" value="1"/>
+                  <mean xsi:type="am:LongObject" value="2"/>
+                </distribution>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:UniformDistribution"/>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:WeibullEstimators" pRemainPromille="12.0">
+                  <mean xsi:type="am:LongObject" value="5"/>
+                </distribution>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+        <extended key="pu_def1?type=ProcessingUnitDefinition">
+          <value key="Instructions">
+            <value xsi:type="am:NeedDeviation">
+              <deviation>
+                <lowerBound xsi:type="am:LongObject" value="10"/>
+                <upperBound xsi:type="am:LongObject" value="20"/>
+                <distribution xsi:type="am:WeibullParameters" kappa="5.0" lambda="6.0"/>
+              </deviation>
+            </value>
+          </value>
+        </extended>
+      </runnableItems>
+      <runnableItems xsi:type="am:ExecutionNeed">
+        <default key="Instructions">
+          <value xsi:type="am:NeedDeviation">
+            <deviation>
+              <lowerBound xsi:type="am:LongObject" value="10"/>
+              <upperBound xsi:type="am:LongObject" value="20"/>
+              <distribution xsi:type="am:Boundaries" samplingType="WorstCase"/>
+            </deviation>
+          </value>
+        </default>
+      </runnableItems>
+    </runnables>
+    <labels name="l1" constant="false" bVolatile="false"/>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="pu_def1"/>
+    <featureCategories name="flip"/>
+    <featureCategories name="flop"/>
+    <featureCategories name="flip-1"/>
+    <featureCategories name="flip-2"/>
+    <featureCategories name="flip-3"/>
+    <featureCategories name="flip-4"/>
+    <featureCategories name="flip-5"/>
+    <featureCategories name="flip-6"/>
+    <structures name="">
+      <modules xsi:type="am:ProcessingUnit" name="pu1"/>
+    </structures>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="">
+      <taskSchedulers name="">
+        <computationItems xsi:type="am:LabelAccess" data="l1?type=Label" access="read">
+          <transmissionPolicy chunkProcessingInstructions="10" transmitRatio="15.0"/>
+        </computationItems>
+      </taskSchedulers>
+    </operatingSystems>
+  </osModel>
+</am:Amalthea>
