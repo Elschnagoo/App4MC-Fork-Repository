@@ -20,9 +20,9 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
+import org.eclipse.app4mc.amalthea.converters093.impl.MeasurementConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.OsConverter;
-import org.eclipse.app4mc.amalthea.converters093.impl.StimulusConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.SwConverter;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -32,23 +32,23 @@ import org.junit.runners.Parameterized;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(Parameterized.class)
-public class StimuliConverterTest extends AbstractConverterTest {
+public class MeasurementConverterTest extends AbstractConverterTest {
 
 
 	@Parameterized.Parameters(name = "{index}: Test file: {0}")
 	public static Collection<Object[]> getTestData() {
 
-		return Arrays.asList(new Object[][] { { "/stimuli/default.amxmi", true } , { "/stimuli/stimulus.amxmi", true } });
+		return Arrays.asList(new Object[][] { { "/measurement/measurement.amxmi", true } });
 	}
 
-	public StimuliConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
+	public MeasurementConverterTest(final String xmlFileRelativeLocation, final boolean canExecuteTestCase) {
 
 		super(xmlFileRelativeLocation, canExecuteTestCase);
 	}
 
 	@Test
 	public void testConversion() {
-		super.testConversion(NamespaceConverter.class, SwConverter.class,OsConverter.class,StimulusConverter.class);
+		super.testConversion(NamespaceConverter.class, SwConverter.class,OsConverter.class,MeasurementConverter.class);
 	}
 
 	@Override

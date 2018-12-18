@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <measurementModel>
+    <measurements xsi:type="am:EventChainMeasurement">
+      <runtimeDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:WeibullParameters" kappa="0.0" lambda="0.0"/>
+      </runtimeDeviation>
+    </measurements>
+    <measurements xsi:type="am:RunnableMeasurement">
+      <runtimeDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:WeibullEstimators" pRemainPromille="0.0"/>
+      </runtimeDeviation>
+    </measurements>
+    <measurements xsi:type="am:TaskMeasurement">
+      <runtimeDeviation>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:GaussDistribution">
+          <sd xsi:type="am:Time" value="0"/>
+          <mean xsi:type="am:Time" value="0"/>
+        </distribution>
+      </runtimeDeviation>
+    </measurements>
+  </measurementModel>
+</am:Amalthea>

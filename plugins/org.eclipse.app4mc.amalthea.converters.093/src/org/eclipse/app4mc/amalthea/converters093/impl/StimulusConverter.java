@@ -68,8 +68,10 @@ public class StimulusConverter extends AbstractConverter {
 						
 						stimuliElement.removeContent(jitter_time_deviationElement);
 						
-						//adding migrated element to the stimuli element
-						stimuliElement.addContent(indexOf, migratedElement);
+						if(migratedElement!=null) {
+							//adding migrated element to the stimuli element
+							stimuliElement.addContent(indexOf, migratedElement);
+						}
 					}
 					
 				}else if(stimuliType.equals("am:RelativePeriodicStimulus")) {
