@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <stimuliModel>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps1">
+      <nextOccurrence>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0" unit="s"/>
+        <distribution xsi:type="am:GaussDistribution">
+          <sd xsi:type="am:Time" value="55" unit="us"/>
+          <mean xsi:type="am:Time" value="0"/>
+        </distribution>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps2">
+      <nextOccurrence>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:Boundaries" samplingType="CornerCase"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps3">
+      <nextOccurrence>
+        <lowerBound xsi:type="am:Time" value="66" unit="us"/>
+        <upperBound xsi:type="am:Time" value="2" unit="ms"/>
+        <distribution xsi:type="am:BetaDistribution" alpha="0.0" beta="0.0"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps4">
+      <nextOccurrence>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:UniformDistribution"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps5">
+      <nextOccurrence>
+        <lowerBound xsi:type="am:Time" value="0"/>
+        <upperBound xsi:type="am:Time" value="0"/>
+        <distribution xsi:type="am:WeibullEstimators" pRemainPromille="10.0">
+          <mean xsi:type="am:Time" value="55" unit="us"/>
+        </distribution>
+      </nextOccurrence>
+    </stimuli>
+  </stimuliModel>
+</am:Amalthea>
