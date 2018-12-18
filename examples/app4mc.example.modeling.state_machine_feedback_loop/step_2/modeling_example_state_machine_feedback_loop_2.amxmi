@@ -243,55 +243,23 @@
       <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_1?type=ModeLiteral" />
     </runnables>
     <runnables name="Runnable_State_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="59" />
-              <upperBound xsi:type="am:LongObject" value="60" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="59" upperBound="60" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="59400" />
-              <upperBound xsi:type="am:LongObject" value="60000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="59400" upperBound="60000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="29700000" />
-              <upperBound xsi:type="am:LongObject" value="30000000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="29700000" upperBound="30000000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="5940000" />
-              <upperBound xsi:type="am:LongObject" value="6000000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_0" callback="false" service="false">
@@ -321,68 +289,28 @@
       <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_1?type=ModeLiteral" />
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="594" />
-              <upperBound xsi:type="am:LongObject" value="600" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="594" upperBound="600" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="29700" />
-              <upperBound xsi:type="am:LongObject" value="30000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="29700" upperBound="30000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_3" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="594000" />
-              <upperBound xsi:type="am:LongObject" value="600000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="594000" upperBound="600000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_4" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="23760000" />
-              <upperBound xsi:type="am:LongObject" value="24000000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="23760000" upperBound="24000000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_x" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="59" />
-              <upperBound xsi:type="am:LongObject" value="60" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="59" upperBound="60" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3_2" callback="false" service="false">
@@ -398,16 +326,8 @@
       <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_0?type=ModeLiteral" />
     </runnables>
     <runnables name="Runnable_3" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <default key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="5940000" />
-              <upperBound xsi:type="am:LongObject" value="6000000" />
-              <distribution xsi:type="am:UniformDistribution" />
-            </deviation>
-          </value>
-        </default>
+      <runnableItems xsi:type="am:Ticks">
+        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteUniformDistribution" />
       </runnableItems>
     </runnables>
     <modes name="Message">
@@ -507,25 +427,23 @@
     </modeLabels>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU"/>
-    <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
-    </definitions>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="Instructions/IPC_1.0?type=HwFeature" puType="CPU" />
+    <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory" />
     <featureCategories name="Instructions" featureType="performance">
       <features name="IPC_1.0" value="1.0" />
     </featureCategories>
     <structures name="System" structureType="System">
       <structures name="Ecu_1" structureType="ECU">
         <structures name="Processor_1" structureType="Microcontroller">
-          <modules xsi:type="am:Memory" name="Memory_1" frequencyDomain="Frequency_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
-          </modules>
+          <modules xsi:type="am:Memory" name="Memory_1" frequencyDomain="Frequency_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition" />
           <modules xsi:type="am:ProcessingUnit" name="Core_1" frequencyDomain="Frequency_1?type=FrequencyDomain" definition="DefaultCore?type=ProcessingUnitDefinition">
-            <ports name="port" bitWidth="32" priority="0" portType="initiator"/>
+            <ports name="port" bitWidth="32" priority="0" portType="initiator" />
           </modules>
         </structures>
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="Frequency_1" clockGating="false">
-      <defaultValue value="600.0" unit="MHz"/>
+      <defaultValue value="600.0" unit="MHz" />
     </domains>
   </hwModel>
   <osModel>

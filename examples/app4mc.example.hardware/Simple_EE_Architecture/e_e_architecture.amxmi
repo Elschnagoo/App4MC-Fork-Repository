@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <hwModel>
     <definitions xsi:type="am:ConnectionHandlerDefinition" name="Interconnect_Def" policy="FCFS">
-      <dataRate value="1" unit="GBPerSecond"/>
+      <dataRate value="1" unit="GBPerSecond" />
     </definitions>
     <definitions xsi:type="am:ConnectionHandlerDefinition" name="CAN_Def">
-      <dataRate value="1" unit="MbitPerSecond"/>
+      <dataRate value="1" unit="MbitPerSecond" />
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="MainMemory_Def">
-      <size value="1" unit="GB"/>
-      <accessLatency xsi:type="am:LatencyConstant" cycles="2"/>
+      <size value="1" unit="GB" />
+      <accessLatency xsi:type="am:DiscreteConstant" value="2" />
     </definitions>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="StandardCore" features="Integer-Instructions/IntOps_2.0?type=HwFeature Float-Instructions/FloatOps_0.5?type=HwFeature Load-Store-Instructions/LoadStoreOps_1.0?type=HwFeature" puType="CPU"/>	
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="StandardCore" features="Integer-Instructions/IntOps_2.0?type=HwFeature Float-Instructions/FloatOps_0.5?type=HwFeature Load-Store-Instructions/LoadStoreOps_1.0?type=HwFeature" puType="CPU" />
     <featureCategories name="Integer-Instructions" featureType="performance">
-      <features name="IntOps_2.0" value="2.0"/>
+      <features name="IntOps_2.0" value="2.0" />
     </featureCategories>
     <featureCategories name="Float-Instructions" featureType="performance">
-      <features name="FloatOps_0.5" value="0.5"/>
+      <features name="FloatOps_0.5" value="0.5" />
     </featureCategories>
     <featureCategories name="Load-Store-Instructions" featureType="performance">
-      <features name="LoadStoreOps_1.0" value="1.0"/>
+      <features name="LoadStoreOps_1.0" value="1.0" />
     </featureCategories>
     <structures name="E/E_System" structureType="System">
       <modules xsi:type="am:ConnectionHandler" name="CAN" frequencyDomain="CAN_Freq_Domain?type=FrequencyDomain" definition="CAN_Def?type=ConnectionHandlerDefinition">
-        <ports name="P1" bitWidth="0" priority="0" portType="responder" portInterface="CAN"/>
-        <ports name="P2" bitWidth="0" priority="0" portType="responder" portInterface="CAN"/>
+        <ports name="P1" bitWidth="0" priority="0" portType="responder" portInterface="CAN" />
+        <ports name="P2" bitWidth="0" priority="0" portType="responder" portInterface="CAN" />
       </modules>
-      <connections name="con1" port1="ECU1/CANPort?type=HwPort" port2="CAN/P1?type=HwPort"/>
-      <connections name="con2" port1="ECU2/CANPort?type=HwPort" port2="CAN/P2?type=HwPort"/>
+      <connections name="con1" port1="ECU1/CANPort?type=HwPort" port2="CAN/P1?type=HwPort" />
+      <connections name="con2" port1="ECU2/CANPort?type=HwPort" port2="CAN/P2?type=HwPort" />
       <structures name="ECU1" structureType="ECU">
-        <ports name="CANPort" bitWidth="0" priority="0" portInterface="CAN"/>
+        <ports name="CANPort" bitWidth="0" priority="0" portInterface="CAN" />
         <modules xsi:type="am:ProcessingUnit" name="Core1EC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC1Access" destination="MainMemEC1?type=Memory">
-            <readLatency xsi:type="am:LatencyConstant" cycles="8"/>
-            <writeLatency xsi:type="am:LatencyConstant" cycles="8"/>
+            <readLatency xsi:type="am:DiscreteConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC2?type=Memory">
-            <accessPath name="extMemAccessPath" pathElements="ECU1/con1?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000"/>
+            <accessPath name="extMemAccessPath" pathElements="ECU1/con1?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
           </accessElements>
         </modules>
         <modules xsi:type="am:ProcessingUnit" name="Core2EC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC1Access" destination="MainMemEC1?type=Memory">
-            <readLatency xsi:type="am:LatencyConstant" cycles="8"/>
-            <writeLatency xsi:type="am:LatencyConstant" cycles="8"/>
+            <readLatency xsi:type="am:DiscreteConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC2?type=Memory">
-            <accessPath name="extMemAccessPath" pathElements="ECU1/con2?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000"/>
+            <accessPath name="extMemAccessPath" pathElements="ECU1/con2?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
           </accessElements>
         </modules>
         <modules xsi:type="am:Memory" name="MainMemEC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain">
-          <ports name="P1" bitWidth="32" priority="0" portType="responder"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="responder" />
         </modules>
         <modules xsi:type="am:ConnectionHandler" name="InterconnectEC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain" definition="Interconnect_Def?type=ConnectionHandlerDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="responder"/>
-          <ports name="P2" bitWidth="32" priority="0" portType="responder"/>
-          <ports name="P3" bitWidth="32" priority="0" portType="initiator"/>
-          <ports name="P4" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="responder" />
+          <ports name="P2" bitWidth="32" priority="0" portType="responder" />
+          <ports name="P3" bitWidth="32" priority="0" portType="initiator" />
+          <ports name="P4" bitWidth="32" priority="0" portType="initiator" />
         </modules>
-        <connections name="con1" port1="Core1EC1/P1?type=HwPort" port2="InterconnectEC1/P1?type=HwPort"/>
-        <connections name="con2" port1="Core2EC1/P1?type=HwPort" port2="InterconnectEC1/P2?type=HwPort"/>
-        <connections name="con3" port1="InterconnectEC1/P3?type=HwPort" port2="MainMemEC1/P1?type=HwPort"/>
-        <connections name="con4" port1="InterconnectEC1/P4?type=HwPort" port2="ECU1/CANPort?type=HwPort"/>
+        <connections name="con1" port1="Core1EC1/P1?type=HwPort" port2="InterconnectEC1/P1?type=HwPort" />
+        <connections name="con2" port1="Core2EC1/P1?type=HwPort" port2="InterconnectEC1/P2?type=HwPort" />
+        <connections name="con3" port1="InterconnectEC1/P3?type=HwPort" port2="MainMemEC1/P1?type=HwPort" />
+        <connections name="con4" port1="InterconnectEC1/P4?type=HwPort" port2="ECU1/CANPort?type=HwPort" />
       </structures>
       <structures name="ECU2" structureType="ECU">
-        <ports name="CANPort" bitWidth="0" priority="0" portInterface="CAN"/>
+        <ports name="CANPort" bitWidth="0" priority="0" portInterface="CAN" />
         <modules xsi:type="am:ProcessingUnit" name="Core1EC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC2Access" destination="MainMemEC2?type=Memory">
-            <readLatency xsi:type="am:LatencyConstant" cycles="8"/>
-            <writeLatency xsi:type="am:LatencyConstant" cycles="8"/>
+            <readLatency xsi:type="am:DiscreteConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC1?type=Memory">
-            <accessPath name="extMemAccessPath" pathElements="ECU2/con1?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000"/>
+            <accessPath name="extMemAccessPath" pathElements="ECU2/con1?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
           </accessElements>
         </modules>
         <modules xsi:type="am:ProcessingUnit" name="Core2EC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC2Access" destination="MainMemEC2?type=Memory">
-            <readLatency xsi:type="am:LatencyConstant" cycles="8"/>
-            <writeLatency xsi:type="am:LatencyConstant" cycles="8"/>
+            <readLatency xsi:type="am:DiscreteConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC1?type=Memory">
-            <accessPath name="extMemAccessPath" pathElements="ECU2/con2?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000"/>
+            <accessPath name="extMemAccessPath" pathElements="ECU2/con2?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
           </accessElements>
         </modules>
         <modules xsi:type="am:Memory" name="MainMemEC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain">
-          <ports name="P1" bitWidth="32" priority="0" portType="responder"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="responder" />
         </modules>
         <modules xsi:type="am:ConnectionHandler" name="InterconnectEC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain" definition="Interconnect_Def?type=ConnectionHandlerDefinition">
-          <ports name="P1" bitWidth="32" priority="0" portType="responder"/>
-          <ports name="P2" bitWidth="32" priority="0" portType="responder"/>
-          <ports name="P3" bitWidth="32" priority="0" portType="initiator"/>
-          <ports name="P4" bitWidth="32" priority="0" portType="initiator"/>
+          <ports name="P1" bitWidth="32" priority="0" portType="responder" />
+          <ports name="P2" bitWidth="32" priority="0" portType="responder" />
+          <ports name="P3" bitWidth="32" priority="0" portType="initiator" />
+          <ports name="P4" bitWidth="32" priority="0" portType="initiator" />
         </modules>
-        <connections name="con1" port1="Core1EC2/P1?type=HwPort" port2="InterconnectEC2/P1?type=HwPort"/>
-        <connections name="con2" port1="Core2EC2/P1?type=HwPort" port2="InterconnectEC2/P2?type=HwPort"/>
-        <connections name="con3" port1="InterconnectEC2/P3?type=HwPort" port2="MainMemEC2/P1?type=HwPort"/>
-        <connections name="con4" port1="InterconnectEC2/P4?type=HwPort" port2="ECU2/CANPort?type=HwPort"/>
+        <connections name="con1" port1="Core1EC2/P1?type=HwPort" port2="InterconnectEC2/P1?type=HwPort" />
+        <connections name="con2" port1="Core2EC2/P1?type=HwPort" port2="InterconnectEC2/P2?type=HwPort" />
+        <connections name="con3" port1="InterconnectEC2/P3?type=HwPort" port2="MainMemEC2/P1?type=HwPort" />
+        <connections name="con4" port1="InterconnectEC2/P4?type=HwPort" port2="ECU2/CANPort?type=HwPort" />
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="ECU1_Freq_Domain" clockGating="false">
-      <defaultValue value="500.0" unit="MHz"/>
+      <defaultValue value="500.0" unit="MHz" />
     </domains>
     <domains xsi:type="am:FrequencyDomain" name="ECU2_Freq_Domain" clockGating="false">
-      <defaultValue value="500.0" unit="MHz"/>
+      <defaultValue value="500.0" unit="MHz" />
     </domains>
     <domains xsi:type="am:FrequencyDomain" name="CAN_Freq_Domain" clockGating="false">
-      <defaultValue value="0.0" unit="kHz"/>
+      <defaultValue value="0.0" unit="kHz" />
     </domains>
   </hwModel>
 </am:Amalthea>
