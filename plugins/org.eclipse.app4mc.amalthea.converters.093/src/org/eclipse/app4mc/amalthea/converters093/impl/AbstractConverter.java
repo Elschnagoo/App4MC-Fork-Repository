@@ -553,7 +553,7 @@ public abstract class AbstractConverter implements IConverter {
 					upperBoundElement.getAttribute("value").setValue(value);
 				}
 				
-				String unitValue = child.getAttributeValue("unit");
+				String unitValue = child2.getAttributeValue("unit");
 
 				if(unitValue!=null) {
 					upperBoundElement.setAttribute("unit", unitValue);
