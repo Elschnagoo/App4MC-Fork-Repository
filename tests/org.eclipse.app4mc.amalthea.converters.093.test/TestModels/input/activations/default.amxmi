@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <activations xsi:type="am:VariableRateActivation" name="vra">
+      <occurrencesPerStep>
+        <distribution xsi:type="am:BetaDistribution" alpha="10.0" beta="20.0"/>
+      </occurrencesPerStep>
+    </activations>
+    <activations xsi:type="am:SporadicActivation" name="">
+      <activationDeviation>
+        <lowerBound xsi:type="am:Time" value="55" unit="ms"/>
+        <upperBound xsi:type="am:Time" value="66" unit="us"/>
+        <distribution xsi:type="am:GaussDistribution">
+          <sd xsi:type="am:Time" value="66" unit="ps"/>
+          <mean xsi:type="am:Time" value="55" unit="ms"/>
+        </distribution>
+      </activationDeviation>
+    </activations>
+  </swModel>
+</am:Amalthea>

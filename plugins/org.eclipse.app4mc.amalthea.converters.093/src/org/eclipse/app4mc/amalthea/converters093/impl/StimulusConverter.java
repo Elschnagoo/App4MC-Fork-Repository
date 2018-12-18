@@ -60,45 +60,60 @@ public class StimulusConverter extends AbstractConverter {
 					
 					Element jitter_time_deviationElement = stimuliElement.getChild("jitter");
 					
-					Element migratedElement=migrateDeviationElement_Containing_TimeValue(jitter_time_deviationElement, "jitter");
-					
-					int indexOf = stimuliElement.indexOf(jitter_time_deviationElement);
-
-					stimuliElement.removeContent(jitter_time_deviationElement);
-					
-					//adding migrated element to the stimuli element
-					stimuliElement.addContent(indexOf, migratedElement);
+					if(jitter_time_deviationElement!=null) {
+						
+						Element migratedElement=migrateDeviationElement_Containing_TimeValue(jitter_time_deviationElement, "jitter");
+						
+						int indexOf = stimuliElement.indexOf(jitter_time_deviationElement);
+						
+						stimuliElement.removeContent(jitter_time_deviationElement);
+						
+						//adding migrated element to the stimuli element
+						stimuliElement.addContent(indexOf, migratedElement);
+					}
 					
 				}else if(stimuliType.equals("am:RelativePeriodicStimulus")) {
 					
 					Element nextOccurrence_time_deviationElement = stimuliElement.getChild("nextOccurrence");
 					
-					Element migratedElement=migrateDeviationElement_Containing_TimeValue(nextOccurrence_time_deviationElement, "nextOccurrence");
+					if(nextOccurrence_time_deviationElement!=null) {
+						
+						Element migratedElement=migrateDeviationElement_Containing_TimeValue(nextOccurrence_time_deviationElement, "nextOccurrence");
+						
+						int indexOf = stimuliElement.indexOf(nextOccurrence_time_deviationElement);
+						
+						stimuliElement.removeContent(nextOccurrence_time_deviationElement);
+						
+						if(migratedElement!=null) {
+							//adding migrated element to the stimuli element
+							stimuliElement.addContent(indexOf, migratedElement);
+							
+						}
+					}
 					
-					int indexOf = stimuliElement.indexOf(nextOccurrence_time_deviationElement);
-
-					stimuliElement.removeContent(nextOccurrence_time_deviationElement);
-					
-					//adding migrated element to the stimuli element
-					stimuliElement.addContent(indexOf, migratedElement);
 
 
 				}else if(stimuliType.equals("am:VariableRateStimulus")) {
 					
 					Element occurrencesPerStep_double_deviationElement = stimuliElement.getChild("occurrencesPerStep");
 					
-					Element migratedElement=migrateDeviationElement_Containing_DoubleValue(occurrencesPerStep_double_deviationElement, "occurrencesPerStep");
+					if(occurrencesPerStep_double_deviationElement!=null) {
+						
+						Element migratedElement=migrateDeviationElement_Containing_DoubleValue(occurrencesPerStep_double_deviationElement, "occurrencesPerStep");
+						
+						int indexOf = stimuliElement.indexOf(occurrencesPerStep_double_deviationElement);
+						
+						stimuliElement.removeContent(occurrencesPerStep_double_deviationElement);
+						
+						if(migratedElement!=null) {
+							//adding migrated element to the stimuli element
+							stimuliElement.addContent(indexOf, migratedElement);
+						}
+						
+					}
 					
-					int indexOf = stimuliElement.indexOf(occurrencesPerStep_double_deviationElement);
-					
-					stimuliElement.removeContent(occurrencesPerStep_double_deviationElement);
-					
-					//adding migrated element to the stimuli element
-					stimuliElement.addContent(indexOf, migratedElement);
-					
-
 					Element maxIncreasePerStepElement = stimuliElement.getChild("maxIncreasePerStep");
-				
+					
 					Element maxDecreasePerStepElement = stimuliElement.getChild("maxDecreasePerStep");
 					
 					//As DoubleObject is changed to Double (wrapper class) in model. Instead of child elements, xmi will have attributes for the below two parameters
@@ -111,6 +126,7 @@ public class StimulusConverter extends AbstractConverter {
 						stimuliElement.setAttribute("maxDecreasePerStep", maxDecreasePerStepElement.getAttributeValue("value"));
 						stimuliElement.removeContent(maxDecreasePerStepElement);
 					}
+					
 					
 					
 				}

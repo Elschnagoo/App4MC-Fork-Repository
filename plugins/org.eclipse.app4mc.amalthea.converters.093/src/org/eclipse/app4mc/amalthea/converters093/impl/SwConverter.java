@@ -46,9 +46,69 @@ public class SwConverter extends AbstractConverter {
 		update_ExecutionNeed(rootElement);
 
 		update_ChunkProcessingInstructions(rootElement);
+		
+		update_activations(rootElement);
 
 	}
 	
+	private void update_activations(Element rootElement) {
+		final StringBuffer xpathBuffer = new StringBuffer();
+		xpathBuffer.append("./swModel/activations");
+		
+		final List<Element> activationElements = this.helper.getXpathResult(rootElement, xpathBuffer.toString(), Element.class,
+				this.helper.getNS_093("am"),this.helper.getGenericNS("xsi"));
+
+		for (Element activationElement : activationElements) { 
+			String activationType=activationElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+			
+			if(activationType!=null) {
+				
+				if(activationType.equals("am:VariableRateActivation")) {
+
+					Element occurrencesPerStep_double_deviationElement = activationElement.getChild("occurrencesPerStep");
+					
+					if(occurrencesPerStep_double_deviationElement!=null) {
+						
+						Element migratedElement=migrateDeviationElement_Containing_DoubleValue(occurrencesPerStep_double_deviationElement, "occurrencesPerStep");
+						
+						int indexOf = activationElement.indexOf(occurrencesPerStep_double_deviationElement);
+						
+						activationElement.removeContent(occurrencesPerStep_double_deviationElement);
+						
+						if(migratedElement!=null) {
+							//adding migrated element to the activation element
+							activationElement.addContent(indexOf, migratedElement);
+							
+						}
+					}
+
+
+				}else if(activationType.equals("am:SporadicActivation")) {
+					
+					Element activationDeviation_Time_deviationElement = activationElement.getChild("activationDeviation");
+
+					if(activationDeviation_Time_deviationElement!=null) {
+						
+						Element migratedElement=migrateDeviationElement_Containing_TimeValue(activationDeviation_Time_deviationElement, "activationDeviation");
+						
+						int indexOf = activationElement.indexOf(activationDeviation_Time_deviationElement);
+						
+						activationElement.removeContent(activationDeviation_Time_deviationElement);
+						
+						if(migratedElement!=null) {
+							//adding migrated element to the activation element
+							activationElement.addContent(indexOf, migratedElement);
+							
+						}
+					}
+
+				
+				}
+			}
+		}
+		
+	}
+
 	private void update_ChunkProcessingInstructions(Element rootElement) {
 
 		final StringBuffer xpathBuffer = new StringBuffer();
