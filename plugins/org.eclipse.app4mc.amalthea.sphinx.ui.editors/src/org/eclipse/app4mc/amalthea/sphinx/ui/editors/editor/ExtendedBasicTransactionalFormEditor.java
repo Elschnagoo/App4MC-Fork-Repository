@@ -21,9 +21,15 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.css.swt.theme.IThemeEngine;
+import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.util.Util;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sphinx.emf.editors.forms.BasicTransactionalFormEditor;
 import org.eclipse.sphinx.emf.metamodel.IMetaModelDescriptor;
@@ -33,11 +39,14 @@ import org.eclipse.sphinx.emf.model.ModelDescriptorRegistry;
 import org.eclipse.sphinx.emf.ui.util.EcoreUIUtil;
 import org.eclipse.sphinx.emf.util.EcorePlatformUtil;
 import org.eclipse.sphinx.platform.util.PlatformLogUtil;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 
 
+@SuppressWarnings("restriction")
 public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalFormEditor implements
 		IResourceChangeListener {
 
@@ -131,6 +140,46 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 		}
 		
 		super.createPages();
+	}
+
+	/*
+	 *  Workaround for empty viewer after click on already selected item
+	 *  
+	 *  On Windows some SWT bug avoids repainting of non selected elements.
+	 *  Since the related SWT issue has been discussed for years and
+	 *  no real fix was found, we try to limit the negative effects.
+	 *  See Bugzilla entries: 491737, 458015, 433858.
+	 *  
+	 *  If (1) OS is Windows and (2) theming is enabled then
+	 *  an additional redraw is called explicitly.
+	 *  Users may notice a minor flickering on selection. However, that is
+	 *  surely preferable to not seeing unselected elements at all.
+	 */
+	@Override
+	public void setSelection(ISelection selection) {
+		super.setSelection(selection);
+				
+		if (Util.isWindows() == false) return; // No Windows OS -> no workaround required
+		
+		MApplication application = PlatformUI.getWorkbench().getService(MApplication.class);
+		if (application == null) return;
+		
+		IEclipseContext context = application.getContext();
+		if (context == null) return;
+		
+		IThemeEngine engine = context.get(IThemeEngine.class);
+		if (engine == null) return; // Theming is not enabled -> no workaround required
+		
+		// System.out.println("Theme is " + engine.getActiveTheme().getLabel());
+		
+		// *** Workaround: additional redraw ***
+		Viewer viewer = getViewer();
+		if (viewer != null) {
+			Control control = viewer.getControl();
+			if (control != null) {
+				control.redraw();
+			}
+		}
 	}
 
 	/**
