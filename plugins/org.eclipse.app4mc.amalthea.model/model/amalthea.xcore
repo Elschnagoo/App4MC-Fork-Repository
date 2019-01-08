@@ -4062,7 +4062,7 @@ class VariableRateActivation extends Activation
 class SporadicActivation extends Activation
 {
 	String description
-	contains TimeDeviation[1] activationDeviation
+	contains TimeDeviation[1] activation
 }
 
 /*

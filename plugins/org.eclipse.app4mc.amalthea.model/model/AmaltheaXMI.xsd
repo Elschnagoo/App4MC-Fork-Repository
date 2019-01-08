@@ -6115,7 +6115,7 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activationDeviation" type="am:TimeDeviation"/>
+          <xsd:element name="activation" type="am:TimeDeviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>

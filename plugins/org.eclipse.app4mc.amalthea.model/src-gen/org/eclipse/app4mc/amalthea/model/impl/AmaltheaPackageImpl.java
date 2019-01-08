@@ -13297,7 +13297,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSporadicActivation_ActivationDeviation() {
+	public EReference getSporadicActivation_Activation() {
 		return (EReference)sporadicActivationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -15535,7 +15535,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		sporadicActivationEClass = createEClass(SPORADIC_ACTIVATION);
 		createEAttribute(sporadicActivationEClass, SPORADIC_ACTIVATION__DESCRIPTION);
-		createEReference(sporadicActivationEClass, SPORADIC_ACTIVATION__ACTIVATION_DEVIATION);
+		createEReference(sporadicActivationEClass, SPORADIC_ACTIVATION__ACTIVATION);
 
 		singleActivationEClass = createEClass(SINGLE_ACTIVATION);
 		createEReference(singleActivationEClass, SINGLE_ACTIVATION__MIN);
@@ -17626,7 +17626,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSporadicActivation_ActivationDeviation(), this.getTimeDeviation(), null, "activationDeviation", null, 1, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSporadicActivation_Activation(), this.getTimeDeviation(), null, "activation", null, 1, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleActivationEClass, SingleActivation.class, "SingleActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleActivation_Min(), this.getTime(), null, "min", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
