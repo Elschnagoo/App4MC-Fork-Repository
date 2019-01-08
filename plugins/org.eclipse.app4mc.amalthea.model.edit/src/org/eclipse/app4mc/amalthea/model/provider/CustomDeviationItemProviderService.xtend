@@ -61,8 +61,15 @@ class CustomDeviationItemProviderService {
 
 	private def static getContainingFeatureName(EObject object, String defaultText, String separator) {
 		val feature = object?.eContainingFeature()
-		val name = if(feature === null) defaultText else feature.name + separator
-		return name
+		var name = if(feature === null) defaultText else feature.name
+		
+		// special cases
+		switch object {
+			DiscreteDeviation:
+				if (name.endsWith("Latency")) name = name + " [cycles]"
+		}
+		
+		return name + separator
 	}
 
 	private def static getContainingFeatureName(EObject object) {

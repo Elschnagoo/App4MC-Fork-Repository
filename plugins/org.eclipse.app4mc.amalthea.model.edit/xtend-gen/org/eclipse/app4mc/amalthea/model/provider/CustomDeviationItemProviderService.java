@@ -71,11 +71,18 @@ public class CustomDeviationItemProviderService {
     if ((feature == null)) {
       _xifexpression = defaultText;
     } else {
-      String _name = feature.getName();
-      _xifexpression = (_name + separator);
+      _xifexpression = feature.getName();
     }
-    final String name = _xifexpression;
-    return name;
+    String name = _xifexpression;
+    boolean _matched = false;
+    if (object instanceof DiscreteDeviation) {
+      _matched=true;
+      boolean _endsWith = name.endsWith("Latency");
+      if (_endsWith) {
+        name = (name + " [cycles]");
+      }
+    }
+    return (name + separator);
   }
   
   private static String getContainingFeatureName(final EObject object) {
