@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface DiscreteConstant extends DiscreteDeviation {
+public interface DiscreteConstant extends IDiscreteDeviation {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.

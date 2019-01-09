@@ -135,8 +135,8 @@ public class TimeUniformDistributionItemProvider extends BoundedTimeDistribution
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getBoundedTimeDistribution_LowerBound() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getBoundedTimeDistribution_UpperBound();
+			childFeature == AmaltheaPackage.eINSTANCE.getTimeInterval_LowerBound() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getTimeInterval_UpperBound();
 
 		if (qualify) {
 			return getString

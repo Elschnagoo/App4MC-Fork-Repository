@@ -178,7 +178,7 @@ public class RelativePeriodicStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRelativePeriodicStimulus_NextOccurrence(),
-				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+				 AmaltheaFactory.eINSTANCE.createTimeBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

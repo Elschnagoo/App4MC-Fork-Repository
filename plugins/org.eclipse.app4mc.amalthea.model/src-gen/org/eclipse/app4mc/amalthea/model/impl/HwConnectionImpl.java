@@ -21,10 +21,10 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.DataRate;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
@@ -86,7 +86,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * @generated
 	 * @ordered
 	 */
-	protected DiscreteDeviation readLatency;
+	protected IDiscreteDeviation readLatency;
 
 	/**
 	 * The cached value of the '{@link #getWriteLatency() <em>Write Latency</em>}' containment reference.
@@ -96,7 +96,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * @generated
 	 * @ordered
 	 */
-	protected DiscreteDeviation writeLatency;
+	protected IDiscreteDeviation writeLatency;
 
 	/**
 	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
@@ -174,7 +174,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteDeviation getReadLatency() {
+	public IDiscreteDeviation getReadLatency() {
 		return readLatency;
 	}
 
@@ -183,8 +183,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetReadLatency(DiscreteDeviation newReadLatency, NotificationChain msgs) {
-		DiscreteDeviation oldReadLatency = readLatency;
+	public NotificationChain basicSetReadLatency(IDiscreteDeviation newReadLatency, NotificationChain msgs) {
+		IDiscreteDeviation oldReadLatency = readLatency;
 		readLatency = newReadLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__READ_LATENCY, oldReadLatency, newReadLatency);
@@ -198,7 +198,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReadLatency(DiscreteDeviation newReadLatency) {
+	public void setReadLatency(IDiscreteDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
 			if (readLatency != null)
@@ -217,7 +217,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteDeviation getWriteLatency() {
+	public IDiscreteDeviation getWriteLatency() {
 		return writeLatency;
 	}
 
@@ -226,8 +226,8 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetWriteLatency(DiscreteDeviation newWriteLatency, NotificationChain msgs) {
-		DiscreteDeviation oldWriteLatency = writeLatency;
+	public NotificationChain basicSetWriteLatency(IDiscreteDeviation newWriteLatency, NotificationChain msgs) {
+		IDiscreteDeviation oldWriteLatency = writeLatency;
 		writeLatency = newWriteLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY, oldWriteLatency, newWriteLatency);
@@ -241,7 +241,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWriteLatency(DiscreteDeviation newWriteLatency) {
+	public void setWriteLatency(IDiscreteDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
 			if (writeLatency != null)
@@ -467,10 +467,10 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
-				setReadLatency((DiscreteDeviation)newValue);
+				setReadLatency((IDiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
-				setWriteLatency((DiscreteDeviation)newValue);
+				setWriteLatency((IDiscreteDeviation)newValue);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
 				setDataRate((DataRate)newValue);
@@ -497,10 +497,10 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 				getTags().clear();
 				return;
 			case AmaltheaPackage.HW_CONNECTION__READ_LATENCY:
-				setReadLatency((DiscreteDeviation)null);
+				setReadLatency((IDiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__WRITE_LATENCY:
-				setWriteLatency((DiscreteDeviation)null);
+				setWriteLatency((IDiscreteDeviation)null);
 				return;
 			case AmaltheaPackage.HW_CONNECTION__DATA_RATE:
 				setDataRate((DataRate)null);

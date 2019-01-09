@@ -16,9 +16,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.FixedPeriodic;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -73,7 +73,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * @generated
 	 * @ordered
 	 */
-	protected TimeDeviation jitter;
+	protected ITimeDeviation jitter;
 
 	/**
 	 * The cached value of the '{@link #getMinDistance() <em>Min Distance</em>}' containment reference.
@@ -195,7 +195,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeDeviation getJitter() {
+	public ITimeDeviation getJitter() {
 		return jitter;
 	}
 
@@ -204,8 +204,8 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetJitter(TimeDeviation newJitter, NotificationChain msgs) {
-		TimeDeviation oldJitter = jitter;
+	public NotificationChain basicSetJitter(ITimeDeviation newJitter, NotificationChain msgs) {
+		ITimeDeviation oldJitter = jitter;
 		jitter = newJitter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.PERIODIC_STIMULUS__JITTER, oldJitter, newJitter);
@@ -219,7 +219,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJitter(TimeDeviation newJitter) {
+	public void setJitter(ITimeDeviation newJitter) {
 		if (newJitter != jitter) {
 			NotificationChain msgs = null;
 			if (jitter != null)
@@ -331,7 +331,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 				setRecurrence((Time)newValue);
 				return;
 			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
-				setJitter((TimeDeviation)newValue);
+				setJitter((ITimeDeviation)newValue);
 				return;
 			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
 				setMinDistance((Time)newValue);
@@ -355,7 +355,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 				setRecurrence((Time)null);
 				return;
 			case AmaltheaPackage.PERIODIC_STIMULUS__JITTER:
-				setJitter((TimeDeviation)null);
+				setJitter((ITimeDeviation)null);
 				return;
 			case AmaltheaPackage.PERIODIC_STIMULUS__MIN_DISTANCE:
 				setMinDistance((Time)null);

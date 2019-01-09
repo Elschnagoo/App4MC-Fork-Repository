@@ -20,12 +20,12 @@ import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -881,7 +881,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public DiscreteDeviation need(final ExecutionNeed container, final String key, final DiscreteDeviation need) {
+  public IDiscreteDeviation need(final ExecutionNeed container, final String key, final IDiscreteDeviation need) {
     return container.getNeeds().put(key, need);
   }
   

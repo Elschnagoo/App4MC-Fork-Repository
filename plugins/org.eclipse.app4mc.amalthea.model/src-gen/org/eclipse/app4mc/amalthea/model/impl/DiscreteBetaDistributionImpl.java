@@ -17,9 +17,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -243,15 +243,15 @@ public class DiscreteBetaDistributionImpl extends BoundedDiscreteDistributionImp
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == DiscreteDeviation.class) {
+		if (baseClass == DiscreteInterval.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.DISCRETE_DEVIATION___GET_AVERAGE: return AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.DISCRETE_INTERVAL___GET_AVERAGE: return AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
-		if (baseClass == BoundedDiscreteDistribution.class) {
+		if (baseClass == IDiscreteDeviation.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE: return AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.IDISCRETE_DEVIATION___GET_AVERAGE: return AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

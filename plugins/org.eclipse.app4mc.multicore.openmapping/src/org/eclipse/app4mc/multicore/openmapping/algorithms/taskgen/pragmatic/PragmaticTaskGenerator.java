@@ -32,7 +32,7 @@ import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractTaskCreationAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.model.OMProcessPrototype;
@@ -132,8 +132,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		stimuliSporadic.setName(name);
 		
 		// Check which timing information is present and try to convert deviations as well
-		if (null != activation.getActivationDeviation()) {
-			final TimeDeviation stimuliDeviation = EcoreUtil.copy(activation.getActivationDeviation());
+		if (null != activation.getActivation()) {
+			final ITimeDeviation stimuliDeviation = EcoreUtil.copy(activation.getActivation());
 			stimuliSporadic.setNextOccurrence(stimuliDeviation);
 		}
 

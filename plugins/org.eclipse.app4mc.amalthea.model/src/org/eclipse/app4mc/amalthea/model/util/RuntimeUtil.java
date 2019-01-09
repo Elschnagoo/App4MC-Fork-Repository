@@ -52,7 +52,7 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
@@ -833,7 +833,7 @@ public class RuntimeUtil {
 		return result;
 	}
 
-	private static Time getActivationTimeFromDeviation(TimeDeviation deviation, TimeType tt) {
+	private static Time getActivationTimeFromDeviation(ITimeDeviation deviation, TimeType tt) {
 		switch (tt) {
 		case ACET:
 			return deviation.getAverage();
@@ -852,7 +852,7 @@ public class RuntimeUtil {
 	 * @return Map of processes with a sporadic activation and the deviation of the
 	 *         activations
 	 */
-	public static Map<Process, List<TimeDeviation>> getProcessesWithRelativePeriodicStimulus(Amalthea model) {
+	public static Map<Process, List<ITimeDeviation>> getProcessesWithRelativePeriodicStimulus(Amalthea model) {
 		List<Process> processes = new ArrayList<>();
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
@@ -860,7 +860,7 @@ public class RuntimeUtil {
 				.collect(Collectors.toList()).size() > 0);
 
 		// TODO check
-		Map<Process, List<TimeDeviation>> result = processes.stream()
+		Map<Process, List<ITimeDeviation>> result = processes.stream()
 				.collect(Collectors.toMap(p -> p,
 						p -> p.getStimuli().stream().filter(s -> (s instanceof RelativePeriodicStimulus))
 								.map(s -> ((RelativePeriodicStimulus) s).getNextOccurrence())

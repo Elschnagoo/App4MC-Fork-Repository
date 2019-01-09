@@ -14,11 +14,16 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
-import org.eclipse.app4mc.amalthea.model.SamplingType;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -32,31 +37,52 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl#getSamplingType <em>Sampling Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implements DiscreteInterval {
+public abstract class DiscreteIntervalImpl extends AmaltheaExtendedEObjectImpl implements DiscreteInterval {
 	/**
-	 * The default value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The default value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SamplingType SAMPLING_TYPE_EDEFAULT = SamplingType.DEFAULT;
+	protected static final Long LOWER_BOUND_EDEFAULT = new Long(0L);
 
 	/**
-	 * The cached value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected SamplingType samplingType = SAMPLING_TYPE_EDEFAULT;
+	protected Long lowerBound = LOWER_BOUND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Long UPPER_BOUND_EDEFAULT = new Long(0L);
+
+	/**
+	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected Long upperBound = UPPER_BOUND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,8 +108,8 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SamplingType getSamplingType() {
-		return samplingType;
+	public Long getLowerBound() {
+		return lowerBound;
 	}
 
 	/**
@@ -91,11 +117,46 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSamplingType(SamplingType newSamplingType) {
-		SamplingType oldSamplingType = samplingType;
-		samplingType = newSamplingType == null ? SAMPLING_TYPE_EDEFAULT : newSamplingType;
+	public void setLowerBound(Long newLowerBound) {
+		Long oldLowerBound = lowerBound;
+		lowerBound = newLowerBound;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE, oldSamplingType, samplingType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_INTERVAL__LOWER_BOUND, oldLowerBound, lowerBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Long getUpperBound() {
+		return upperBound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpperBound(Long newUpperBound) {
+		Long oldUpperBound = upperBound;
+		upperBound = newUpperBound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_INTERVAL__UPPER_BOUND, oldUpperBound, upperBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double getAverage() {
+		Long _lowerBound = this.getLowerBound();
+		Long _upperBound = this.getUpperBound();
+		Long _lowerBound_1 = this.getLowerBound();
+		long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
+		double _divide = (_minus / 2.0);
+		return Double.valueOf(((_lowerBound).longValue() + _divide));
 	}
 
 	/**
@@ -106,8 +167,10 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE:
-				return getSamplingType();
+			case AmaltheaPackage.DISCRETE_INTERVAL__LOWER_BOUND:
+				return getLowerBound();
+			case AmaltheaPackage.DISCRETE_INTERVAL__UPPER_BOUND:
+				return getUpperBound();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +183,11 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE:
-				setSamplingType((SamplingType)newValue);
+			case AmaltheaPackage.DISCRETE_INTERVAL__LOWER_BOUND:
+				setLowerBound((Long)newValue);
+				return;
+			case AmaltheaPackage.DISCRETE_INTERVAL__UPPER_BOUND:
+				setUpperBound((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +201,11 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE:
-				setSamplingType(SAMPLING_TYPE_EDEFAULT);
+			case AmaltheaPackage.DISCRETE_INTERVAL__LOWER_BOUND:
+				setLowerBound(LOWER_BOUND_EDEFAULT);
+				return;
+			case AmaltheaPackage.DISCRETE_INTERVAL__UPPER_BOUND:
+				setUpperBound(UPPER_BOUND_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,10 +219,26 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE:
-				return samplingType != SAMPLING_TYPE_EDEFAULT;
+			case AmaltheaPackage.DISCRETE_INTERVAL__LOWER_BOUND:
+				return LOWER_BOUND_EDEFAULT == null ? lowerBound != null : !LOWER_BOUND_EDEFAULT.equals(lowerBound);
+			case AmaltheaPackage.DISCRETE_INTERVAL__UPPER_BOUND:
+				return UPPER_BOUND_EDEFAULT == null ? upperBound != null : !UPPER_BOUND_EDEFAULT.equals(upperBound);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.DISCRETE_INTERVAL___GET_AVERAGE:
+				return getAverage();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -166,8 +251,10 @@ public class DiscreteIntervalImpl extends BoundedDiscreteDistributionImpl implem
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (samplingType: ");
-		result.append(samplingType);
+		result.append(" (lowerBound: ");
+		result.append(lowerBound);
+		result.append(", upperBound: ");
+		result.append(upperBound);
 		result.append(')');
 		return result.toString();
 	}

@@ -14,55 +14,86 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Continuous Interval</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Defines the upper and lower bounds of a value interval without defining the distribution
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getSamplingType <em>Sampling Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousInterval()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface ContinuousInterval extends BoundedContinuousDistribution {
+public interface ContinuousInterval extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Sampling Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SamplingType}.
+	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sampling Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Lower Bound</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #setSamplingType(SamplingType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousInterval_SamplingType()
-	 * @model unique="false"
+	 * @return the value of the '<em>Lower Bound</em>' attribute.
+	 * @see #setLowerBound(Double)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousInterval_LowerBound()
+	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	SamplingType getSamplingType();
+	Double getLowerBound();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getSamplingType <em>Sampling Type</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getLowerBound <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #getSamplingType()
+	 * @param value the new value of the '<em>Lower Bound</em>' attribute.
+	 * @see #getLowerBound()
 	 * @generated
 	 */
-	void setSamplingType(SamplingType value);
+	void setLowerBound(Double value);
+
+	/**
+	 * Returns the value of the '<em><b>Upper Bound</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Upper Bound</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Upper Bound</em>' attribute.
+	 * @see #setUpperBound(Double)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousInterval_UpperBound()
+	 * @model default="0.0" unique="false" required="true"
+	 * @generated
+	 */
+	Double getUpperBound();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getUpperBound <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Upper Bound</em>' attribute.
+	 * @see #getUpperBound()
+	 * @generated
+	 */
+	void setUpperBound(Double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	Double getAverage();
 
 } // ContinuousInterval

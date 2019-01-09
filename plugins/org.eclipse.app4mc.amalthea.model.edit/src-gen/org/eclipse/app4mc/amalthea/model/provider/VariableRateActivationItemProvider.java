@@ -206,7 +206,7 @@ public class VariableRateActivationItemProvider extends ActivationItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousInterval()));
+				 AmaltheaFactory.eINSTANCE.createContinuousBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

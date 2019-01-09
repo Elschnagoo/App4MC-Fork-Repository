@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,14 +25,13 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getOccurrences <em>Occurrences</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getInterval <em>Interval</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeHistogramEntry()
  * @model
  * @generated
  */
-public interface TimeHistogramEntry extends EObject {
+public interface TimeHistogramEntry extends TimeInterval {
 	/**
 	 * Returns the value of the '<em><b>Occurrences</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
@@ -60,31 +58,5 @@ public interface TimeHistogramEntry extends EObject {
 	 * @generated
 	 */
 	void setOccurrences(long value);
-
-	/**
-	 * Returns the value of the '<em><b>Interval</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Interval</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interval</em>' containment reference.
-	 * @see #setInterval(TimeInterval)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeHistogramEntry_Interval()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	TimeInterval getInterval();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeHistogramEntry#getInterval <em>Interval</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Interval</em>' containment reference.
-	 * @see #getInterval()
-	 * @generated
-	 */
-	void setInterval(TimeInterval value);
 
 } // TimeHistogramEntry

@@ -24,15 +24,15 @@ import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
@@ -124,11 +124,11 @@ public class FactoryUtil {
 		return constant;
 	}
 
-	public static DiscreteInterval createDiscreteInterval(long min, long max) {
-		DiscreteInterval interval = AmaltheaFactory.eINSTANCE.createDiscreteInterval();
-		interval.setLowerBound(min);
-		interval.setUpperBound(max);
-		return interval;
+	public static DiscreteBoundaries createDiscreteBoundaries(long min, long max) {
+		DiscreteBoundaries boundaries = AmaltheaFactory.eINSTANCE.createDiscreteBoundaries();
+		boundaries.setLowerBound(min);
+		boundaries.setUpperBound(max);
+		return boundaries;
 	}
 
 	public static DiscreteGaussDistribution createDiscreteGaussDistribution(double mean, double sd) {
@@ -222,7 +222,7 @@ public class FactoryUtil {
 	 * @param featureCategory
 	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(String featureCategory, DiscreteDeviation usages) {
+	public static ExecutionNeed createExecutionNeed(String featureCategory, IDiscreteDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		exeNeed.getNeeds().put(featureCategory, usages);
 		return exeNeed;
@@ -233,7 +233,7 @@ public class FactoryUtil {
 	 * @param feature
 	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(HwFeature feature, DiscreteDeviation usages) {
+	public static ExecutionNeed createExecutionNeed(HwFeature feature, IDiscreteDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), usages);
 		return exeNeed;

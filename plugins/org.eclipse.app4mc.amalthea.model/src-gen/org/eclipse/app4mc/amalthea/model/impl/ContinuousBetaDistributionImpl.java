@@ -17,9 +17,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -245,15 +245,15 @@ public class ContinuousBetaDistributionImpl extends BoundedContinuousDistributio
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == ContinuousDeviation.class) {
+		if (baseClass == ContinuousInterval.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.CONTINUOUS_DEVIATION___GET_AVERAGE: return AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.CONTINUOUS_INTERVAL___GET_AVERAGE: return AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
-		if (baseClass == BoundedContinuousDistribution.class) {
+		if (baseClass == IContinuousDeviation.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE: return AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.ICONTINUOUS_DEVIATION___GET_AVERAGE: return AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

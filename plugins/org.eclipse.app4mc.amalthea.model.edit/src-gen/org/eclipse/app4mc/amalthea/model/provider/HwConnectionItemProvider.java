@@ -296,7 +296,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwConnection_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -336,7 +336,7 @@ public class HwConnectionItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getHwConnection_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

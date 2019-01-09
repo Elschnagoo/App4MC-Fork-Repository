@@ -59,12 +59,12 @@ public interface Measurement extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runtime Deviation</em>' containment reference.
-	 * @see #setRuntimeDeviation(TimeDeviation)
+	 * @see #setRuntimeDeviation(ITimeDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMeasurement_RuntimeDeviation()
 	 * @model containment="true"
 	 * @generated
 	 */
-	TimeDeviation getRuntimeDeviation();
+	ITimeDeviation getRuntimeDeviation();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Measurement#getRuntimeDeviation <em>Runtime Deviation</em>}' containment reference.
@@ -74,6 +74,6 @@ public interface Measurement extends BaseObject {
 	 * @see #getRuntimeDeviation()
 	 * @generated
 	 */
-	void setRuntimeDeviation(TimeDeviation value);
+	void setRuntimeDeviation(ITimeDeviation value);
 
 } // Measurement

@@ -76,8 +76,8 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
@@ -117,8 +117,8 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
@@ -176,6 +176,8 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -183,6 +185,7 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -345,8 +348,8 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
@@ -703,51 +706,60 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.TIME_DEVIATION: {
-				TimeDeviation timeDeviation = (TimeDeviation)theEObject;
-				T1 result = caseTimeDeviation(timeDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIME_CONSTANT: {
-				TimeConstant timeConstant = (TimeConstant)theEObject;
-				T1 result = caseTimeConstant(timeConstant);
-				if (result == null) result = caseTimeDeviation(timeConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIME_HISTOGRAM: {
-				TimeHistogram timeHistogram = (TimeHistogram)theEObject;
-				T1 result = caseTimeHistogram(timeHistogram);
-				if (result == null) result = caseTimeDeviation(timeHistogram);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: {
-				TimeHistogramEntry timeHistogramEntry = (TimeHistogramEntry)theEObject;
-				T1 result = caseTimeHistogramEntry(timeHistogramEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BOUNDED_TIME_DISTRIBUTION: {
-				BoundedTimeDistribution boundedTimeDistribution = (BoundedTimeDistribution)theEObject;
-				T1 result = caseBoundedTimeDistribution(boundedTimeDistribution);
-				if (result == null) result = caseTimeDeviation(boundedTimeDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TRUNCATED_TIME_DISTRIBUTION: {
-				TruncatedTimeDistribution truncatedTimeDistribution = (TruncatedTimeDistribution)theEObject;
-				T1 result = caseTruncatedTimeDistribution(truncatedTimeDistribution);
-				if (result == null) result = caseTimeDeviation(truncatedTimeDistribution);
+			case AmaltheaPackage.ITIME_DEVIATION: {
+				ITimeDeviation iTimeDeviation = (ITimeDeviation)theEObject;
+				T1 result = caseITimeDeviation(iTimeDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_INTERVAL: {
 				TimeInterval timeInterval = (TimeInterval)theEObject;
 				T1 result = caseTimeInterval(timeInterval);
-				if (result == null) result = caseBoundedTimeDistribution(timeInterval);
-				if (result == null) result = caseTimeDeviation(timeInterval);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TIME_CONSTANT: {
+				TimeConstant timeConstant = (TimeConstant)theEObject;
+				T1 result = caseTimeConstant(timeConstant);
+				if (result == null) result = caseITimeDeviation(timeConstant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TIME_HISTOGRAM: {
+				TimeHistogram timeHistogram = (TimeHistogram)theEObject;
+				T1 result = caseTimeHistogram(timeHistogram);
+				if (result == null) result = caseITimeDeviation(timeHistogram);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: {
+				TimeHistogramEntry timeHistogramEntry = (TimeHistogramEntry)theEObject;
+				T1 result = caseTimeHistogramEntry(timeHistogramEntry);
+				if (result == null) result = caseTimeInterval(timeHistogramEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.BOUNDED_TIME_DISTRIBUTION: {
+				BoundedTimeDistribution boundedTimeDistribution = (BoundedTimeDistribution)theEObject;
+				T1 result = caseBoundedTimeDistribution(boundedTimeDistribution);
+				if (result == null) result = caseTimeInterval(boundedTimeDistribution);
+				if (result == null) result = caseITimeDeviation(boundedTimeDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TRUNCATED_TIME_DISTRIBUTION: {
+				TruncatedTimeDistribution truncatedTimeDistribution = (TruncatedTimeDistribution)theEObject;
+				T1 result = caseTruncatedTimeDistribution(truncatedTimeDistribution);
+				if (result == null) result = caseITimeDeviation(truncatedTimeDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TIME_BOUNDARIES: {
+				TimeBoundaries timeBoundaries = (TimeBoundaries)theEObject;
+				T1 result = caseTimeBoundaries(timeBoundaries);
+				if (result == null) result = caseBoundedTimeDistribution(timeBoundaries);
+				if (result == null) result = caseTimeInterval(timeBoundaries);
+				if (result == null) result = caseITimeDeviation(timeBoundaries);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -755,7 +767,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TimeStatistics timeStatistics = (TimeStatistics)theEObject;
 				T1 result = caseTimeStatistics(timeStatistics);
 				if (result == null) result = caseBoundedTimeDistribution(timeStatistics);
-				if (result == null) result = caseTimeDeviation(timeStatistics);
+				if (result == null) result = caseTimeInterval(timeStatistics);
+				if (result == null) result = caseITimeDeviation(timeStatistics);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -763,7 +776,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TimeUniformDistribution timeUniformDistribution = (TimeUniformDistribution)theEObject;
 				T1 result = caseTimeUniformDistribution(timeUniformDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeUniformDistribution);
-				if (result == null) result = caseTimeDeviation(timeUniformDistribution);
+				if (result == null) result = caseTimeInterval(timeUniformDistribution);
+				if (result == null) result = caseITimeDeviation(timeUniformDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -771,7 +785,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TimeGaussDistribution timeGaussDistribution = (TimeGaussDistribution)theEObject;
 				T1 result = caseTimeGaussDistribution(timeGaussDistribution);
 				if (result == null) result = caseTruncatedTimeDistribution(timeGaussDistribution);
-				if (result == null) result = caseTimeDeviation(timeGaussDistribution);
+				if (result == null) result = caseITimeDeviation(timeGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -779,7 +793,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution = (TimeWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseTimeWeibullEstimatorsDistribution(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeWeibullEstimatorsDistribution);
-				if (result == null) result = caseTimeDeviation(timeWeibullEstimatorsDistribution);
+				if (result == null) result = caseTimeInterval(timeWeibullEstimatorsDistribution);
+				if (result == null) result = caseITimeDeviation(timeWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -787,55 +802,65 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				TimeBetaDistribution timeBetaDistribution = (TimeBetaDistribution)theEObject;
 				T1 result = caseTimeBetaDistribution(timeBetaDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeBetaDistribution);
-				if (result == null) result = caseTimeDeviation(timeBetaDistribution);
+				if (result == null) result = caseTimeInterval(timeBetaDistribution);
+				if (result == null) result = caseITimeDeviation(timeBetaDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DISCRETE_DEVIATION: {
-				DiscreteDeviation discreteDeviation = (DiscreteDeviation)theEObject;
-				T1 result = caseDiscreteDeviation(discreteDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DISCRETE_CONSTANT: {
-				DiscreteConstant discreteConstant = (DiscreteConstant)theEObject;
-				T1 result = caseDiscreteConstant(discreteConstant);
-				if (result == null) result = caseDiscreteDeviation(discreteConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DISCRETE_HISTOGRAM: {
-				DiscreteHistogram discreteHistogram = (DiscreteHistogram)theEObject;
-				T1 result = caseDiscreteHistogram(discreteHistogram);
-				if (result == null) result = caseDiscreteDeviation(discreteHistogram);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY: {
-				DiscreteHistogramEntry discreteHistogramEntry = (DiscreteHistogramEntry)theEObject;
-				T1 result = caseDiscreteHistogramEntry(discreteHistogramEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION: {
-				BoundedDiscreteDistribution boundedDiscreteDistribution = (BoundedDiscreteDistribution)theEObject;
-				T1 result = caseBoundedDiscreteDistribution(boundedDiscreteDistribution);
-				if (result == null) result = caseDiscreteDeviation(boundedDiscreteDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TRUNCATED_DISCRETE_DISTRIBUTION: {
-				TruncatedDiscreteDistribution truncatedDiscreteDistribution = (TruncatedDiscreteDistribution)theEObject;
-				T1 result = caseTruncatedDiscreteDistribution(truncatedDiscreteDistribution);
-				if (result == null) result = caseDiscreteDeviation(truncatedDiscreteDistribution);
+			case AmaltheaPackage.IDISCRETE_DEVIATION: {
+				IDiscreteDeviation iDiscreteDeviation = (IDiscreteDeviation)theEObject;
+				T1 result = caseIDiscreteDeviation(iDiscreteDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_INTERVAL: {
 				DiscreteInterval discreteInterval = (DiscreteInterval)theEObject;
 				T1 result = caseDiscreteInterval(discreteInterval);
-				if (result == null) result = caseBoundedDiscreteDistribution(discreteInterval);
-				if (result == null) result = caseDiscreteDeviation(discreteInterval);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DISCRETE_CONSTANT: {
+				DiscreteConstant discreteConstant = (DiscreteConstant)theEObject;
+				T1 result = caseDiscreteConstant(discreteConstant);
+				if (result == null) result = caseIDiscreteDeviation(discreteConstant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DISCRETE_HISTOGRAM: {
+				DiscreteHistogram discreteHistogram = (DiscreteHistogram)theEObject;
+				T1 result = caseDiscreteHistogram(discreteHistogram);
+				if (result == null) result = caseIDiscreteDeviation(discreteHistogram);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY: {
+				DiscreteHistogramEntry discreteHistogramEntry = (DiscreteHistogramEntry)theEObject;
+				T1 result = caseDiscreteHistogramEntry(discreteHistogramEntry);
+				if (result == null) result = caseDiscreteInterval(discreteHistogramEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION: {
+				BoundedDiscreteDistribution boundedDiscreteDistribution = (BoundedDiscreteDistribution)theEObject;
+				T1 result = caseBoundedDiscreteDistribution(boundedDiscreteDistribution);
+				if (result == null) result = caseDiscreteInterval(boundedDiscreteDistribution);
+				if (result == null) result = caseIDiscreteDeviation(boundedDiscreteDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TRUNCATED_DISCRETE_DISTRIBUTION: {
+				TruncatedDiscreteDistribution truncatedDiscreteDistribution = (TruncatedDiscreteDistribution)theEObject;
+				T1 result = caseTruncatedDiscreteDistribution(truncatedDiscreteDistribution);
+				if (result == null) result = caseIDiscreteDeviation(truncatedDiscreteDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.DISCRETE_BOUNDARIES: {
+				DiscreteBoundaries discreteBoundaries = (DiscreteBoundaries)theEObject;
+				T1 result = caseDiscreteBoundaries(discreteBoundaries);
+				if (result == null) result = caseBoundedDiscreteDistribution(discreteBoundaries);
+				if (result == null) result = caseDiscreteInterval(discreteBoundaries);
+				if (result == null) result = caseIDiscreteDeviation(discreteBoundaries);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -843,7 +868,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DiscreteStatistics discreteStatistics = (DiscreteStatistics)theEObject;
 				T1 result = caseDiscreteStatistics(discreteStatistics);
 				if (result == null) result = caseBoundedDiscreteDistribution(discreteStatistics);
-				if (result == null) result = caseDiscreteDeviation(discreteStatistics);
+				if (result == null) result = caseDiscreteInterval(discreteStatistics);
+				if (result == null) result = caseIDiscreteDeviation(discreteStatistics);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -851,7 +877,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DiscreteUniformDistribution discreteUniformDistribution = (DiscreteUniformDistribution)theEObject;
 				T1 result = caseDiscreteUniformDistribution(discreteUniformDistribution);
 				if (result == null) result = caseBoundedDiscreteDistribution(discreteUniformDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteUniformDistribution);
+				if (result == null) result = caseDiscreteInterval(discreteUniformDistribution);
+				if (result == null) result = caseIDiscreteDeviation(discreteUniformDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -859,7 +886,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DiscreteGaussDistribution discreteGaussDistribution = (DiscreteGaussDistribution)theEObject;
 				T1 result = caseDiscreteGaussDistribution(discreteGaussDistribution);
 				if (result == null) result = caseTruncatedDiscreteDistribution(discreteGaussDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteGaussDistribution);
+				if (result == null) result = caseIDiscreteDeviation(discreteGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -867,7 +894,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DiscreteWeibullEstimatorsDistribution discreteWeibullEstimatorsDistribution = (DiscreteWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseDiscreteWeibullEstimatorsDistribution(discreteWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedDiscreteDistribution(discreteWeibullEstimatorsDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteWeibullEstimatorsDistribution);
+				if (result == null) result = caseDiscreteInterval(discreteWeibullEstimatorsDistribution);
+				if (result == null) result = caseIDiscreteDeviation(discreteWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -875,55 +903,65 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				DiscreteBetaDistribution discreteBetaDistribution = (DiscreteBetaDistribution)theEObject;
 				T1 result = caseDiscreteBetaDistribution(discreteBetaDistribution);
 				if (result == null) result = caseBoundedDiscreteDistribution(discreteBetaDistribution);
-				if (result == null) result = caseDiscreteDeviation(discreteBetaDistribution);
+				if (result == null) result = caseDiscreteInterval(discreteBetaDistribution);
+				if (result == null) result = caseIDiscreteDeviation(discreteBetaDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CONTINUOUS_DEVIATION: {
-				ContinuousDeviation continuousDeviation = (ContinuousDeviation)theEObject;
-				T1 result = caseContinuousDeviation(continuousDeviation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CONTINUOUS_CONSTANT: {
-				ContinuousConstant continuousConstant = (ContinuousConstant)theEObject;
-				T1 result = caseContinuousConstant(continuousConstant);
-				if (result == null) result = caseContinuousDeviation(continuousConstant);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM: {
-				ContinuousHistogram continuousHistogram = (ContinuousHistogram)theEObject;
-				T1 result = caseContinuousHistogram(continuousHistogram);
-				if (result == null) result = caseContinuousDeviation(continuousHistogram);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY: {
-				ContinuousHistogramEntry continuousHistogramEntry = (ContinuousHistogramEntry)theEObject;
-				T1 result = caseContinuousHistogramEntry(continuousHistogramEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION: {
-				BoundedContinuousDistribution boundedContinuousDistribution = (BoundedContinuousDistribution)theEObject;
-				T1 result = caseBoundedContinuousDistribution(boundedContinuousDistribution);
-				if (result == null) result = caseContinuousDeviation(boundedContinuousDistribution);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.TRUNCATED_CONTINUOUS_DISTRIBUTION: {
-				TruncatedContinuousDistribution truncatedContinuousDistribution = (TruncatedContinuousDistribution)theEObject;
-				T1 result = caseTruncatedContinuousDistribution(truncatedContinuousDistribution);
-				if (result == null) result = caseContinuousDeviation(truncatedContinuousDistribution);
+			case AmaltheaPackage.ICONTINUOUS_DEVIATION: {
+				IContinuousDeviation iContinuousDeviation = (IContinuousDeviation)theEObject;
+				T1 result = caseIContinuousDeviation(iContinuousDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_INTERVAL: {
 				ContinuousInterval continuousInterval = (ContinuousInterval)theEObject;
 				T1 result = caseContinuousInterval(continuousInterval);
-				if (result == null) result = caseBoundedContinuousDistribution(continuousInterval);
-				if (result == null) result = caseContinuousDeviation(continuousInterval);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONTINUOUS_CONSTANT: {
+				ContinuousConstant continuousConstant = (ContinuousConstant)theEObject;
+				T1 result = caseContinuousConstant(continuousConstant);
+				if (result == null) result = caseIContinuousDeviation(continuousConstant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM: {
+				ContinuousHistogram continuousHistogram = (ContinuousHistogram)theEObject;
+				T1 result = caseContinuousHistogram(continuousHistogram);
+				if (result == null) result = caseIContinuousDeviation(continuousHistogram);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY: {
+				ContinuousHistogramEntry continuousHistogramEntry = (ContinuousHistogramEntry)theEObject;
+				T1 result = caseContinuousHistogramEntry(continuousHistogramEntry);
+				if (result == null) result = caseContinuousInterval(continuousHistogramEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION: {
+				BoundedContinuousDistribution boundedContinuousDistribution = (BoundedContinuousDistribution)theEObject;
+				T1 result = caseBoundedContinuousDistribution(boundedContinuousDistribution);
+				if (result == null) result = caseContinuousInterval(boundedContinuousDistribution);
+				if (result == null) result = caseIContinuousDeviation(boundedContinuousDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.TRUNCATED_CONTINUOUS_DISTRIBUTION: {
+				TruncatedContinuousDistribution truncatedContinuousDistribution = (TruncatedContinuousDistribution)theEObject;
+				T1 result = caseTruncatedContinuousDistribution(truncatedContinuousDistribution);
+				if (result == null) result = caseIContinuousDeviation(truncatedContinuousDistribution);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.CONTINUOUS_BOUNDARIES: {
+				ContinuousBoundaries continuousBoundaries = (ContinuousBoundaries)theEObject;
+				T1 result = caseContinuousBoundaries(continuousBoundaries);
+				if (result == null) result = caseBoundedContinuousDistribution(continuousBoundaries);
+				if (result == null) result = caseContinuousInterval(continuousBoundaries);
+				if (result == null) result = caseIContinuousDeviation(continuousBoundaries);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -931,7 +969,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ContinuousStatistics continuousStatistics = (ContinuousStatistics)theEObject;
 				T1 result = caseContinuousStatistics(continuousStatistics);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousStatistics);
-				if (result == null) result = caseContinuousDeviation(continuousStatistics);
+				if (result == null) result = caseContinuousInterval(continuousStatistics);
+				if (result == null) result = caseIContinuousDeviation(continuousStatistics);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -939,7 +978,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ContinuousUniformDistribution continuousUniformDistribution = (ContinuousUniformDistribution)theEObject;
 				T1 result = caseContinuousUniformDistribution(continuousUniformDistribution);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousUniformDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousUniformDistribution);
+				if (result == null) result = caseContinuousInterval(continuousUniformDistribution);
+				if (result == null) result = caseIContinuousDeviation(continuousUniformDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -947,7 +987,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ContinuousGaussDistribution continuousGaussDistribution = (ContinuousGaussDistribution)theEObject;
 				T1 result = caseContinuousGaussDistribution(continuousGaussDistribution);
 				if (result == null) result = caseTruncatedContinuousDistribution(continuousGaussDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousGaussDistribution);
+				if (result == null) result = caseIContinuousDeviation(continuousGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -955,7 +995,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ContinuousWeibullEstimatorsDistribution continuousWeibullEstimatorsDistribution = (ContinuousWeibullEstimatorsDistribution)theEObject;
 				T1 result = caseContinuousWeibullEstimatorsDistribution(continuousWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousWeibullEstimatorsDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousWeibullEstimatorsDistribution);
+				if (result == null) result = caseContinuousInterval(continuousWeibullEstimatorsDistribution);
+				if (result == null) result = caseIContinuousDeviation(continuousWeibullEstimatorsDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -963,7 +1004,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				ContinuousBetaDistribution continuousBetaDistribution = (ContinuousBetaDistribution)theEObject;
 				T1 result = caseContinuousBetaDistribution(continuousBetaDistribution);
 				if (result == null) result = caseBoundedContinuousDistribution(continuousBetaDistribution);
-				if (result == null) result = caseContinuousDeviation(continuousBetaDistribution);
+				if (result == null) result = caseContinuousInterval(continuousBetaDistribution);
+				if (result == null) result = caseIContinuousDeviation(continuousBetaDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3351,7 +3393,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.NEED_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<String, DiscreteDeviation> needEntry = (Map.Entry<String, DiscreteDeviation>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<String, IDiscreteDeviation> needEntry = (Map.Entry<String, IDiscreteDeviation>)theEObject;
 				T1 result = caseNeedEntry(needEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -3367,7 +3409,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.TICKS_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> ticksEntry = (Map.Entry<ProcessingUnitDefinition, DiscreteDeviation>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation> ticksEntry = (Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation>)theEObject;
 				T1 result = caseTicksEntry(ticksEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -4357,17 +4399,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time Deviation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ITime Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time Deviation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ITime Deviation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeDeviation(TimeDeviation object) {
+	public T1 caseITimeDeviation(ITimeDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTimeInterval(TimeInterval object) {
 		return null;
 	}
 
@@ -4447,17 +4504,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Time Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Time Boundaries</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeInterval(TimeInterval object) {
+	public T1 caseTimeBoundaries(TimeBoundaries object) {
 		return null;
 	}
 
@@ -4537,17 +4594,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Discrete Deviation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IDiscrete Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Discrete Deviation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IDiscrete Deviation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteDeviation(DiscreteDeviation object) {
+	public T1 caseIDiscreteDeviation(IDiscreteDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Discrete Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Discrete Interval</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDiscreteInterval(DiscreteInterval object) {
 		return null;
 	}
 
@@ -4627,17 +4699,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Discrete Interval</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Discrete Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Discrete Interval</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Discrete Boundaries</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteInterval(DiscreteInterval object) {
+	public T1 caseDiscreteBoundaries(DiscreteBoundaries object) {
 		return null;
 	}
 
@@ -4717,17 +4789,32 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Continuous Deviation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IContinuous Deviation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Continuous Deviation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IContinuous Deviation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousDeviation(ContinuousDeviation object) {
+	public T1 caseIContinuousDeviation(IContinuousDeviation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Continuous Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Continuous Interval</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseContinuousInterval(ContinuousInterval object) {
 		return null;
 	}
 
@@ -4807,17 +4894,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Continuous Interval</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Continuous Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Continuous Interval</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Continuous Boundaries</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousInterval(ContinuousInterval object) {
+	public T1 caseContinuousBoundaries(ContinuousBoundaries object) {
 		return null;
 	}
 
@@ -8552,7 +8639,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNeedEntry(Map.Entry<String, DiscreteDeviation> object) {
+	public T1 caseNeedEntry(Map.Entry<String, IDiscreteDeviation> object) {
 		return null;
 	}
 
@@ -8582,7 +8669,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
+	public T1 caseTicksEntry(Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation> object) {
 		return null;
 	}
 

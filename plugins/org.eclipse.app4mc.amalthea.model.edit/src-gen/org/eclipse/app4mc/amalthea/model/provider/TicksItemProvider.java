@@ -174,7 +174,7 @@ public class TicksItemProvider extends ComputationItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

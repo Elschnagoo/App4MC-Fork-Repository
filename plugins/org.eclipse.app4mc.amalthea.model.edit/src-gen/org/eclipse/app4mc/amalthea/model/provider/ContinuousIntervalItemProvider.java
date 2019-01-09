@@ -21,11 +21,20 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -35,7 +44,14 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ContinuousIntervalItemProvider extends BoundedContinuousDistributionItemProvider {
+public class ContinuousIntervalItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -57,25 +73,26 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSamplingTypePropertyDescriptor(object);
+			addLowerBoundPropertyDescriptor(object);
+			addUpperBoundPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Sampling Type feature.
+	 * This adds a property descriptor for the Lower Bound feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSamplingTypePropertyDescriptor(Object object) {
+	protected void addLowerBoundPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ContinuousInterval_samplingType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ContinuousInterval_samplingType_feature", "_UI_ContinuousInterval_type"),
-				 AmaltheaPackage.eINSTANCE.getContinuousInterval_SamplingType(),
+				 getString("_UI_ContinuousInterval_lowerBound_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContinuousInterval_lowerBound_feature", "_UI_ContinuousInterval_type"),
+				 AmaltheaPackage.eINSTANCE.getContinuousInterval_LowerBound(),
 				 true,
 				 false,
 				 false,
@@ -85,14 +102,25 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 	}
 
 	/**
-	 * This returns ContinuousInterval.gif.
+	 * This adds a property descriptor for the Upper Bound feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ContinuousInterval"));
+	protected void addUpperBoundPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ContinuousInterval_upperBound_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContinuousInterval_upperBound_feature", "_UI_ContinuousInterval_type"),
+				 AmaltheaPackage.eINSTANCE.getContinuousInterval_UpperBound(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -111,7 +139,8 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
+	@Override
+	public String getText(Object object) {
 		Double labelValue = ((ContinuousInterval)object).getLowerBound();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
@@ -119,14 +148,6 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 			getString("_UI_ContinuousInterval_type") + " " + label;
 	}
 
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomDeviationItemProviderService.getContinuousIntervalItemProviderText(object, getTextGen(object));
-	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -135,34 +156,16 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ContinuousInterval.class)) {
-			case AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE:
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND:
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
-				.getContinuousIntervalItemProviderNotifications(notification);
-		if (!notifications.isEmpty()) {
-			for (final ViewerNotification vn : notifications) {
-				fireNotifyChanged(vn);
-			}
-			return;
-		}
-
 		super.notifyChanged(notification);
 	}
 
@@ -176,6 +179,17 @@ public class ContinuousIntervalItemProvider extends BoundedContinuousDistributio
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

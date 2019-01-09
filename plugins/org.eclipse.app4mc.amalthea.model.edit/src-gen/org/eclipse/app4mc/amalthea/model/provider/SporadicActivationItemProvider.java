@@ -198,7 +198,7 @@ public class SporadicActivationItemProvider extends ActivationItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
-				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+				 AmaltheaFactory.eINSTANCE.createTimeBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

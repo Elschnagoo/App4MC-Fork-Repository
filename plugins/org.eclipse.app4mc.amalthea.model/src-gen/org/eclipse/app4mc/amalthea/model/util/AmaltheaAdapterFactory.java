@@ -76,8 +76,8 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
@@ -117,8 +117,8 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
@@ -176,6 +176,8 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -183,6 +185,7 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -345,8 +348,8 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
@@ -583,8 +586,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSingleValueStatisticAdapter();
 			}
 			@Override
-			public Adapter caseTimeDeviation(TimeDeviation object) {
-				return createTimeDeviationAdapter();
+			public Adapter caseITimeDeviation(ITimeDeviation object) {
+				return createITimeDeviationAdapter();
+			}
+			@Override
+			public Adapter caseTimeInterval(TimeInterval object) {
+				return createTimeIntervalAdapter();
 			}
 			@Override
 			public Adapter caseTimeConstant(TimeConstant object) {
@@ -607,8 +614,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTruncatedTimeDistributionAdapter();
 			}
 			@Override
-			public Adapter caseTimeInterval(TimeInterval object) {
-				return createTimeIntervalAdapter();
+			public Adapter caseTimeBoundaries(TimeBoundaries object) {
+				return createTimeBoundariesAdapter();
 			}
 			@Override
 			public Adapter caseTimeStatistics(TimeStatistics object) {
@@ -631,8 +638,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTimeBetaDistributionAdapter();
 			}
 			@Override
-			public Adapter caseDiscreteDeviation(DiscreteDeviation object) {
-				return createDiscreteDeviationAdapter();
+			public Adapter caseIDiscreteDeviation(IDiscreteDeviation object) {
+				return createIDiscreteDeviationAdapter();
+			}
+			@Override
+			public Adapter caseDiscreteInterval(DiscreteInterval object) {
+				return createDiscreteIntervalAdapter();
 			}
 			@Override
 			public Adapter caseDiscreteConstant(DiscreteConstant object) {
@@ -655,8 +666,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTruncatedDiscreteDistributionAdapter();
 			}
 			@Override
-			public Adapter caseDiscreteInterval(DiscreteInterval object) {
-				return createDiscreteIntervalAdapter();
+			public Adapter caseDiscreteBoundaries(DiscreteBoundaries object) {
+				return createDiscreteBoundariesAdapter();
 			}
 			@Override
 			public Adapter caseDiscreteStatistics(DiscreteStatistics object) {
@@ -679,8 +690,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createDiscreteBetaDistributionAdapter();
 			}
 			@Override
-			public Adapter caseContinuousDeviation(ContinuousDeviation object) {
-				return createContinuousDeviationAdapter();
+			public Adapter caseIContinuousDeviation(IContinuousDeviation object) {
+				return createIContinuousDeviationAdapter();
+			}
+			@Override
+			public Adapter caseContinuousInterval(ContinuousInterval object) {
+				return createContinuousIntervalAdapter();
 			}
 			@Override
 			public Adapter caseContinuousConstant(ContinuousConstant object) {
@@ -703,8 +718,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTruncatedContinuousDistributionAdapter();
 			}
 			@Override
-			public Adapter caseContinuousInterval(ContinuousInterval object) {
-				return createContinuousIntervalAdapter();
+			public Adapter caseContinuousBoundaries(ContinuousBoundaries object) {
+				return createContinuousBoundariesAdapter();
 			}
 			@Override
 			public Adapter caseContinuousStatistics(ContinuousStatistics object) {
@@ -1699,7 +1714,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createExecutionNeedAdapter();
 			}
 			@Override
-			public Adapter caseNeedEntry(Map.Entry<String, DiscreteDeviation> object) {
+			public Adapter caseNeedEntry(Map.Entry<String, IDiscreteDeviation> object) {
 				return createNeedEntryAdapter();
 			}
 			@Override
@@ -1707,7 +1722,7 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTicksAdapter();
 			}
 			@Override
-			public Adapter caseTicksEntry(Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> object) {
+			public Adapter caseTicksEntry(Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation> object) {
 				return createTicksEntryAdapter();
 			}
 			@Override
@@ -2425,16 +2440,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeDeviation <em>Time Deviation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ITimeDeviation <em>ITime Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.ITimeDeviation
 	 * @generated
 	 */
-	public Adapter createTimeDeviationAdapter() {
+	public Adapter createITimeDeviationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeInterval <em>Time Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeInterval
+	 * @generated
+	 */
+	public Adapter createTimeIntervalAdapter() {
 		return null;
 	}
 
@@ -2509,16 +2538,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeInterval <em>Time Interval</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TimeBoundaries <em>Time Boundaries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeInterval
+	 * @see org.eclipse.app4mc.amalthea.model.TimeBoundaries
 	 * @generated
 	 */
-	public Adapter createTimeIntervalAdapter() {
+	public Adapter createTimeBoundariesAdapter() {
 		return null;
 	}
 
@@ -2593,16 +2622,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation <em>Discrete Deviation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation <em>IDiscrete Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
 	 * @generated
 	 */
-	public Adapter createDiscreteDeviationAdapter() {
+	public Adapter createIDiscreteDeviationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval <em>Discrete Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval
+	 * @generated
+	 */
+	public Adapter createDiscreteIntervalAdapter() {
 		return null;
 	}
 
@@ -2677,16 +2720,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval <em>Discrete Interval</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DiscreteBoundaries <em>Discrete Boundaries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBoundaries
 	 * @generated
 	 */
-	public Adapter createDiscreteIntervalAdapter() {
+	public Adapter createDiscreteBoundariesAdapter() {
 		return null;
 	}
 
@@ -2761,16 +2804,30 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousDeviation <em>Continuous Deviation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation <em>IContinuous Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation
 	 * @generated
 	 */
-	public Adapter createContinuousDeviationAdapter() {
+	public Adapter createIContinuousDeviationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval <em>Continuous Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval
+	 * @generated
+	 */
+	public Adapter createContinuousIntervalAdapter() {
 		return null;
 	}
 
@@ -2845,16 +2902,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval <em>Continuous Interval</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ContinuousBoundaries <em>Continuous Boundaries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBoundaries
 	 * @generated
 	 */
-	public Adapter createContinuousIntervalAdapter() {
+	public Adapter createContinuousBoundariesAdapter() {
 		return null;
 	}
 

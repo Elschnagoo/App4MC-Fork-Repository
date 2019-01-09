@@ -16,15 +16,10 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -37,12 +32,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl#getOccurrences <em>Occurrences</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl#getInterval <em>Interval</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl implements DiscreteHistogramEntry {
+public class DiscreteHistogramEntryImpl extends DiscreteIntervalImpl implements DiscreteHistogramEntry {
 	/**
 	 * The default value of the '{@link #getOccurrences() <em>Occurrences</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,16 +56,6 @@ public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl impl
 	 * @ordered
 	 */
 	protected long occurrences = OCCURRENCES_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInterval() <em>Interval</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterval()
-	 * @generated
-	 * @ordered
-	 */
-	protected DiscreteInterval interval;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,70 +102,11 @@ public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteInterval getInterval() {
-		return interval;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInterval(DiscreteInterval newInterval, NotificationChain msgs) {
-		DiscreteInterval oldInterval = interval;
-		interval = newInterval;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL, oldInterval, newInterval);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInterval(DiscreteInterval newInterval) {
-		if (newInterval != interval) {
-			NotificationChain msgs = null;
-			if (interval != null)
-				msgs = ((InternalEObject)interval).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL, null, msgs);
-			if (newInterval != null)
-				msgs = ((InternalEObject)newInterval).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL, null, msgs);
-			msgs = basicSetInterval(newInterval, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL, newInterval, newInterval));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL:
-				return basicSetInterval(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES:
 				return getOccurrences();
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL:
-				return getInterval();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,9 +121,6 @@ public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl impl
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES:
 				setOccurrences((Long)newValue);
-				return;
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL:
-				setInterval((DiscreteInterval)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,9 +137,6 @@ public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl impl
 			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES:
 				setOccurrences(OCCURRENCES_EDEFAULT);
 				return;
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL:
-				setInterval((DiscreteInterval)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,8 +151,6 @@ public class DiscreteHistogramEntryImpl extends AmaltheaExtendedEObjectImpl impl
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES:
 				return occurrences != OCCURRENCES_EDEFAULT;
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY__INTERVAL:
-				return interval != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -15,9 +15,9 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -60,7 +60,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * @generated
 	 * @ordered
 	 */
-	protected TimeDeviation nextOccurrence;
+	protected ITimeDeviation nextOccurrence;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeDeviation getNextOccurrence() {
+	public ITimeDeviation getNextOccurrence() {
 		return nextOccurrence;
 	}
 
@@ -138,8 +138,8 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNextOccurrence(TimeDeviation newNextOccurrence, NotificationChain msgs) {
-		TimeDeviation oldNextOccurrence = nextOccurrence;
+	public NotificationChain basicSetNextOccurrence(ITimeDeviation newNextOccurrence, NotificationChain msgs) {
+		ITimeDeviation oldNextOccurrence = nextOccurrence;
 		nextOccurrence = newNextOccurrence;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS__NEXT_OCCURRENCE, oldNextOccurrence, newNextOccurrence);
@@ -153,7 +153,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNextOccurrence(TimeDeviation newNextOccurrence) {
+	public void setNextOccurrence(ITimeDeviation newNextOccurrence) {
 		if (newNextOccurrence != nextOccurrence) {
 			NotificationChain msgs = null;
 			if (nextOccurrence != null)
@@ -211,7 +211,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 				setOffset((Time)newValue);
 				return;
 			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS__NEXT_OCCURRENCE:
-				setNextOccurrence((TimeDeviation)newValue);
+				setNextOccurrence((ITimeDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -229,7 +229,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 				setOffset((Time)null);
 				return;
 			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS__NEXT_OCCURRENCE:
-				setNextOccurrence((TimeDeviation)null);
+				setNextOccurrence((ITimeDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

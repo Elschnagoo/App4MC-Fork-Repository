@@ -32,7 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface TruncatedContinuousDistribution extends ContinuousDeviation {
+public interface TruncatedContinuousDistribution extends IContinuousDeviation {
 	/**
 	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
 	 * <!-- begin-user-doc -->

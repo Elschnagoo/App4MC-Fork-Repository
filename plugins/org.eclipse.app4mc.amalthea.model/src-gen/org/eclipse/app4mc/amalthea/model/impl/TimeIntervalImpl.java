@@ -14,13 +14,21 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SamplingType;
+import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeInterval;
 
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -32,31 +40,32 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TimeIntervalImpl#getSamplingType <em>Sampling Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TimeIntervalImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.TimeIntervalImpl#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements TimeInterval {
+public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl implements TimeInterval {
 	/**
-	 * The default value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SamplingType SAMPLING_TYPE_EDEFAULT = SamplingType.DEFAULT;
+	protected Time lowerBound;
 
 	/**
-	 * The cached value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getUpperBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected SamplingType samplingType = SAMPLING_TYPE_EDEFAULT;
+	protected Time upperBound;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,8 +91,8 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SamplingType getSamplingType() {
-		return samplingType;
+	public Time getLowerBound() {
+		return lowerBound;
 	}
 
 	/**
@@ -91,11 +100,101 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSamplingType(SamplingType newSamplingType) {
-		SamplingType oldSamplingType = samplingType;
-		samplingType = newSamplingType == null ? SAMPLING_TYPE_EDEFAULT : newSamplingType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE, oldSamplingType, samplingType));
+	public NotificationChain basicSetLowerBound(Time newLowerBound, NotificationChain msgs) {
+		Time oldLowerBound = lowerBound;
+		lowerBound = newLowerBound;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND, oldLowerBound, newLowerBound);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLowerBound(Time newLowerBound) {
+		if (newLowerBound != lowerBound) {
+			NotificationChain msgs = null;
+			if (lowerBound != null)
+				msgs = ((InternalEObject)lowerBound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND, null, msgs);
+			if (newLowerBound != null)
+				msgs = ((InternalEObject)newLowerBound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND, null, msgs);
+			msgs = basicSetLowerBound(newLowerBound, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND, newLowerBound, newLowerBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time getUpperBound() {
+		return upperBound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetUpperBound(Time newUpperBound, NotificationChain msgs) {
+		Time oldUpperBound = upperBound;
+		upperBound = newUpperBound;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND, oldUpperBound, newUpperBound);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpperBound(Time newUpperBound) {
+		if (newUpperBound != upperBound) {
+			NotificationChain msgs = null;
+			if (upperBound != null)
+				msgs = ((InternalEObject)upperBound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND, null, msgs);
+			if (newUpperBound != null)
+				msgs = ((InternalEObject)newUpperBound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND, null, msgs);
+			msgs = basicSetUpperBound(newUpperBound, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND, newUpperBound, newUpperBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Time getAverage() {
+		return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+				return basicSetLowerBound(null, msgs);
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				return basicSetUpperBound(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -106,8 +205,10 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE:
-				return getSamplingType();
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+				return getLowerBound();
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				return getUpperBound();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +221,11 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE:
-				setSamplingType((SamplingType)newValue);
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+				setLowerBound((Time)newValue);
+				return;
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				setUpperBound((Time)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +239,11 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE:
-				setSamplingType(SAMPLING_TYPE_EDEFAULT);
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+				setLowerBound((Time)null);
+				return;
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				setUpperBound((Time)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,8 +257,10 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE:
-				return samplingType != SAMPLING_TYPE_EDEFAULT;
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+				return lowerBound != null;
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				return upperBound != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -162,14 +271,12 @@ public class TimeIntervalImpl extends BoundedTimeDistributionImpl implements Tim
 	 * @generated
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (samplingType: ");
-		result.append(samplingType);
-		result.append(')');
-		return result.toString();
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.TIME_INTERVAL___GET_AVERAGE:
+				return getAverage();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TimeIntervalImpl

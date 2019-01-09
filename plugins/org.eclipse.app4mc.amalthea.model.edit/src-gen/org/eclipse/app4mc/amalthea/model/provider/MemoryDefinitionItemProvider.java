@@ -231,7 +231,7 @@ public class MemoryDefinitionItemProvider extends HwDefinitionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

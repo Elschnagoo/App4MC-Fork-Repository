@@ -32,7 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface TruncatedDiscreteDistribution extends DiscreteDeviation {
+public interface TruncatedDiscreteDistribution extends IDiscreteDeviation {
 	/**
 	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -20,8 +20,8 @@ import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
@@ -30,8 +30,8 @@ import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
@@ -39,10 +39,13 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
@@ -75,7 +78,7 @@ public class CustomDeviationItemProviderService {
     }
     String name = _xifexpression;
     boolean _matched = false;
-    if (object instanceof DiscreteDeviation) {
+    if (object instanceof IDiscreteDeviation) {
       _matched=true;
       boolean _endsWith = name.endsWith("Latency");
       if (_endsWith) {
@@ -103,7 +106,7 @@ public class CustomDeviationItemProviderService {
     }
   }
   
-  private static String getIntervalText(final ContinuousDeviation obj) {
+  private static String getIntervalText(final ContinuousInterval obj) {
     if ((obj == null)) {
       return "[]";
     }
@@ -126,7 +129,7 @@ public class CustomDeviationItemProviderService {
     return (((("[" + s1) + ", ") + s2) + "]");
   }
   
-  private static String getIntervalText(final DiscreteDeviation obj) {
+  private static String getIntervalText(final DiscreteInterval obj) {
     if ((obj == null)) {
       return "[]";
     }
@@ -149,7 +152,7 @@ public class CustomDeviationItemProviderService {
     return (((("[" + s1) + ", ") + s2) + "]");
   }
   
-  private static String getIntervalText(final TimeDeviation obj) {
+  private static String getIntervalText(final TimeInterval obj) {
     if ((obj == null)) {
       return "[]";
     }
@@ -172,7 +175,7 @@ public class CustomDeviationItemProviderService {
     return (((("[" + s1) + ", ") + s2) + "]");
   }
   
-  public static String getContinuousDeviationText(final ContinuousDeviation dev) {
+  public static String getContinuousDeviationText(final IContinuousDeviation dev) {
     String _switchResult = null;
     boolean _matched = false;
     if (dev instanceof ContinuousBetaDistribution) {
@@ -202,10 +205,10 @@ public class CustomDeviationItemProviderService {
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousInterval) {
+      if (dev instanceof ContinuousBoundaries) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
-        _switchResult = ("Continuous Interval " + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)dev));
+        _switchResult = ("Continuous Boundaries " + _intervalText);
       }
     }
     if (!_matched) {
@@ -217,7 +220,7 @@ public class CustomDeviationItemProviderService {
     if (!_matched) {
       if (dev instanceof ContinuousUniformDistribution) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)dev));
         _switchResult = ("Continuous Uniform Distribution" + _intervalText);
       }
     }
@@ -233,7 +236,7 @@ public class CustomDeviationItemProviderService {
     return _switchResult;
   }
   
-  public static String getDiscreteDeviationText(final DiscreteDeviation dev) {
+  public static String getDiscreteDeviationText(final IDiscreteDeviation dev) {
     String _switchResult = null;
     boolean _matched = false;
     if (dev instanceof DiscreteBetaDistribution) {
@@ -263,10 +266,10 @@ public class CustomDeviationItemProviderService {
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteInterval) {
+      if (dev instanceof DiscreteBoundaries) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
-        _switchResult = ("Discrete Interval " + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)dev));
+        _switchResult = ("Discrete Boundaries " + _intervalText);
       }
     }
     if (!_matched) {
@@ -278,7 +281,7 @@ public class CustomDeviationItemProviderService {
     if (!_matched) {
       if (dev instanceof DiscreteUniformDistribution) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)dev));
         _switchResult = ("Discrete Uniform Distribution" + _intervalText);
       }
     }
@@ -294,7 +297,7 @@ public class CustomDeviationItemProviderService {
     return _switchResult;
   }
   
-  public static String getTimeDeviationText(final TimeDeviation dev) {
+  public static String getTimeDeviationText(final ITimeDeviation dev) {
     String _switchResult = null;
     boolean _matched = false;
     if (dev instanceof TimeBetaDistribution) {
@@ -324,10 +327,10 @@ public class CustomDeviationItemProviderService {
       }
     }
     if (!_matched) {
-      if (dev instanceof TimeInterval) {
+      if (dev instanceof TimeBoundaries) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
-        _switchResult = ("Time Interval " + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((TimeInterval)dev));
+        _switchResult = ("Time Boundaries " + _intervalText);
       }
     }
     if (!_matched) {
@@ -339,7 +342,7 @@ public class CustomDeviationItemProviderService {
     if (!_matched) {
       if (dev instanceof TimeUniformDistribution) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(dev);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((TimeInterval)dev));
         _switchResult = ("Time Uniform Distribution" + _intervalText);
       }
     }
@@ -409,7 +412,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousBetaDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousBetaDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -443,7 +446,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousConstant)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -470,7 +473,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousGaussDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousGaussDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -504,7 +507,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousHistogramItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousHistogram)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -517,7 +520,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousHistogramEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousHistogramEntry)) {
       final long num = ((ContinuousHistogramEntry)object).getOccurrences();
-      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousHistogramEntry)object).getInterval());
+      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)object));
       return ((("Entry -- " + Long.valueOf(num)) + " x ") + _intervalText);
     } else {
       return defaultText;
@@ -525,23 +528,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousIntervalItemProvider
+   * ContinuousBoundariesItemProvider
    */
-  public static String getContinuousIntervalItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousInterval)) {
+  public static String getContinuousBoundariesItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousBoundaries)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousIntervalItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousBoundariesItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousConstant.class);
+    int _featureID = notification.getFeatureID(ContinuousBoundaries.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_BOUNDARIES__SAMPLING_TYPE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -557,7 +560,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousStatisticsItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousStatistics)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -584,7 +587,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousUniformDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousUniformDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -597,7 +600,7 @@ public class CustomDeviationItemProviderService {
   public static String getContinuousWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ContinuousWeibullEstimatorsDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((ContinuousDeviation)object));
+      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
       return (_containingFeatureName + _continuousDeviationText);
     } else {
       return defaultText;
@@ -679,7 +682,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteBetaDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteBetaDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -713,7 +716,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteConstant)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -740,7 +743,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteGaussDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteGaussDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -774,7 +777,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteHistogramItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteHistogram)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -787,7 +790,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteHistogramEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteHistogramEntry)) {
       final long num = ((DiscreteHistogramEntry)object).getOccurrences();
-      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteHistogramEntry)object).getInterval());
+      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)object));
       return ((("Entry -- " + Long.valueOf(num)) + " x ") + _intervalText);
     } else {
       return defaultText;
@@ -795,23 +798,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteIntervalItemProvider
+   * DiscreteBoundariesItemProvider
    */
-  public static String getDiscreteIntervalItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteInterval)) {
+  public static String getDiscreteBoundariesItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteBoundaries)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteIntervalItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteBoundariesItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteConstant.class);
+    int _featureID = notification.getFeatureID(DiscreteBoundaries.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_INTERVAL__SAMPLING_TYPE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_BOUNDARIES__SAMPLING_TYPE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -827,7 +830,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteStatisticsItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteStatistics)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -854,7 +857,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteUniformDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteUniformDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -867,7 +870,7 @@ public class CustomDeviationItemProviderService {
   public static String getDiscreteWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof DiscreteWeibullEstimatorsDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((DiscreteDeviation)object));
+      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
       return (_containingFeatureName + _discreteDeviationText);
     } else {
       return defaultText;
@@ -949,7 +952,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeBetaDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeBetaDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -983,7 +986,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeConstantItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeConstant)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -1010,7 +1013,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeGaussDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeGaussDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -1044,7 +1047,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeHistogramItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeHistogram)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -1057,7 +1060,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeHistogramEntryItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeHistogramEntry)) {
       final long num = ((TimeHistogramEntry)object).getOccurrences();
-      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((TimeHistogramEntry)object).getInterval());
+      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((TimeInterval)object));
       return ((("Entry -- " + Long.valueOf(num)) + " x ") + _intervalText);
     } else {
       return defaultText;
@@ -1065,23 +1068,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * TimeIntervalItemProvider
+   * TimeBoundariesItemProvider
    */
-  public static String getTimeIntervalItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof TimeInterval)) {
+  public static String getTimeBoundariesItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof TimeBoundaries)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getTimeIntervalItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getTimeBoundariesItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(TimeConstant.class);
+    int _featureID = notification.getFeatureID(TimeBoundaries.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.TIME_BOUNDARIES__SAMPLING_TYPE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -1097,7 +1100,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeStatisticsItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeStatistics)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -1124,7 +1127,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeUniformDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeUniformDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;
@@ -1137,7 +1140,7 @@ public class CustomDeviationItemProviderService {
   public static String getTimeWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof TimeWeibullEstimatorsDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((TimeDeviation)object));
+      String _timeDeviationText = CustomDeviationItemProviderService.getTimeDeviationText(((ITimeDeviation)object));
       return (_containingFeatureName + _timeDeviationText);
     } else {
       return defaultText;

@@ -106,7 +106,7 @@ public class DiscreteHistogramImpl extends AmaltheaExtendedEObjectImpl implement
 	public Long getLowerBound() {
 		final Function1<DiscreteHistogramEntry, Long> _function = new Function1<DiscreteHistogramEntry, Long>() {
 			public Long apply(final DiscreteHistogramEntry it) {
-				return it.getInterval().getLowerBound();
+				return it.getLowerBound();
 			}
 		};
 		return IterableExtensions.<Long>min(XcoreEListExtensions.<DiscreteHistogramEntry, Long>map(this.getEntries(), _function));
@@ -120,7 +120,7 @@ public class DiscreteHistogramImpl extends AmaltheaExtendedEObjectImpl implement
 	public Long getUpperBound() {
 		final Function1<DiscreteHistogramEntry, Long> _function = new Function1<DiscreteHistogramEntry, Long>() {
 			public Long apply(final DiscreteHistogramEntry it) {
-				return it.getInterval().getUpperBound();
+				return it.getUpperBound();
 			}
 		};
 		return IterableExtensions.<Long>max(XcoreEListExtensions.<DiscreteHistogramEntry, Long>map(this.getEntries(), _function));
@@ -136,7 +136,7 @@ public class DiscreteHistogramImpl extends AmaltheaExtendedEObjectImpl implement
 		{
 			final Function1<DiscreteHistogramEntry, Double> _function = new Function1<DiscreteHistogramEntry, Double>() {
 				public Double apply(final DiscreteHistogramEntry it) {
-					Double _average = it.getInterval().getAverage();
+					Double _average = it.getAverage();
 					long _occurrences = it.getOccurrences();
 					return Double.valueOf(((_average).doubleValue() * _occurrences));
 				}

@@ -29,7 +29,7 @@ import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.emf.ecore.EAttribute;
 
@@ -301,7 +301,7 @@ public class OMTask {
 				// Support fot FMTV
 				if(s instanceof RelativePeriodicStimulus) {
 					RelativePeriodicStimulus spst = (RelativePeriodicStimulus) s;
-					TimeDeviation dev = spst.getNextOccurrence();
+					ITimeDeviation dev = spst.getNextOccurrence();
 					Time x = dev.getLowerBound();
 					if (x == null) {
 						period = 0;

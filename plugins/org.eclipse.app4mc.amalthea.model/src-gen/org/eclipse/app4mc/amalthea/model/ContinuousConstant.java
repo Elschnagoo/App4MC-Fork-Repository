@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface ContinuousConstant extends ContinuousDeviation {
+public interface ContinuousConstant extends IContinuousDeviation {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.

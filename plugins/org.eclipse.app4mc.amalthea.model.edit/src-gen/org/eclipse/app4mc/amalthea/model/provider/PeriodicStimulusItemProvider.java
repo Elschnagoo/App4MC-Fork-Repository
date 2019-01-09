@@ -186,7 +186,7 @@ public class PeriodicStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getPeriodicStimulus_Jitter(),
-				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+				 AmaltheaFactory.eINSTANCE.createTimeBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

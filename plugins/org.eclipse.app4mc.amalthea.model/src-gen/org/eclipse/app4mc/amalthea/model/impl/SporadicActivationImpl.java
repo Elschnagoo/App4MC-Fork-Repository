@@ -15,8 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -69,7 +69,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * @generated
 	 * @ordered
 	 */
-	protected TimeDeviation activation;
+	protected ITimeDeviation activation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeDeviation getActivation() {
+	public ITimeDeviation getActivation() {
 		return activation;
 	}
 
@@ -125,8 +125,8 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActivation(TimeDeviation newActivation, NotificationChain msgs) {
-		TimeDeviation oldActivation = activation;
+	public NotificationChain basicSetActivation(ITimeDeviation newActivation, NotificationChain msgs) {
+		ITimeDeviation oldActivation = activation;
 		activation = newActivation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION, oldActivation, newActivation);
@@ -140,7 +140,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivation(TimeDeviation newActivation) {
+	public void setActivation(ITimeDeviation newActivation) {
 		if (newActivation != activation) {
 			NotificationChain msgs = null;
 			if (activation != null)
@@ -196,7 +196,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 				setDescription((String)newValue);
 				return;
 			case AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION:
-				setActivation((TimeDeviation)newValue);
+				setActivation((ITimeDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,7 +214,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 			case AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION:
-				setActivation((TimeDeviation)null);
+				setActivation((ITimeDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

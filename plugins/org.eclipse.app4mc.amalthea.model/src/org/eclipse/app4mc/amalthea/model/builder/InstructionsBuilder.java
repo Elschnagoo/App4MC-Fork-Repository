@@ -17,10 +17,10 @@ package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -41,7 +41,7 @@ public class InstructionsBuilder {
 		return usages;
 	}
 
-	public DiscreteDeviation instructions(final ExecutionNeed container, final DiscreteDeviation instructions) {
+	public IDiscreteDeviation instructions(final ExecutionNeed container, final IDiscreteDeviation instructions) {
 		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, instructions);
 		return instructions;
 	}

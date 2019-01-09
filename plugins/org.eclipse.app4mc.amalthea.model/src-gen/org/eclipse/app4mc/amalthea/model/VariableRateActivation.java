@@ -99,12 +99,12 @@ public interface VariableRateActivation extends Activation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #setOccurrencesPerStep(ContinuousDeviation)
+	 * @see #setOccurrencesPerStep(IContinuousDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateActivation_OccurrencesPerStep()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	ContinuousDeviation getOccurrencesPerStep();
+	IContinuousDeviation getOccurrencesPerStep();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateActivation#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
@@ -114,6 +114,6 @@ public interface VariableRateActivation extends Activation {
 	 * @see #getOccurrencesPerStep()
 	 * @generated
 	 */
-	void setOccurrencesPerStep(ContinuousDeviation value);
+	void setOccurrencesPerStep(IContinuousDeviation value);
 
 } // VariableRateActivation

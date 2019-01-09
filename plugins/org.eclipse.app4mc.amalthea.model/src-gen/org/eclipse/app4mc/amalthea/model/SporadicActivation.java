@@ -68,12 +68,12 @@ public interface SporadicActivation extends Activation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activation</em>' containment reference.
-	 * @see #setActivation(TimeDeviation)
+	 * @see #setActivation(ITimeDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation_Activation()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	TimeDeviation getActivation();
+	ITimeDeviation getActivation();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivation <em>Activation</em>}' containment reference.
@@ -83,6 +83,6 @@ public interface SporadicActivation extends Activation {
 	 * @see #getActivation()
 	 * @generated
 	 */
-	void setActivation(TimeDeviation value);
+	void setActivation(ITimeDeviation value);
 
 } // SporadicActivation

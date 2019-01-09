@@ -105,7 +105,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	public Time getLowerBound() {
 		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
 			public Time apply(final TimeHistogramEntry it) {
-				return it.getInterval().getLowerBound();
+				return it.getLowerBound();
 			}
 		};
 		return IterableExtensions.<Time>min(XcoreEListExtensions.<TimeHistogramEntry, Time>map(this.getEntries(), _function));
@@ -119,7 +119,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	public Time getUpperBound() {
 		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
 			public Time apply(final TimeHistogramEntry it) {
-				return it.getInterval().getUpperBound();
+				return it.getUpperBound();
 			}
 		};
 		return IterableExtensions.<Time>max(XcoreEListExtensions.<TimeHistogramEntry, Time>map(this.getEntries(), _function));
@@ -135,7 +135,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 		{
 			final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
 				public Time apply(final TimeHistogramEntry it) {
-					return it.getInterval().getAverage().multiply(it.getOccurrences());
+					return it.getAverage().multiply(it.getOccurrences());
 				}
 			};
 			final Function2<Time, Time, Time> _function_1 = new Function2<Time, Time, Time>() {

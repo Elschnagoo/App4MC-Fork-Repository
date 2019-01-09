@@ -67,7 +67,6 @@ import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.DataStability;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
 import org.eclipse.app4mc.amalthea.model.EventChain;
@@ -92,6 +91,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
@@ -4634,11 +4634,11 @@ public class CustomItemProviderService {
         _name=_key.getName();
       }
       final String typeName = _name;
-      DiscreteDeviation _value = null;
+      IDiscreteDeviation _value = null;
       if (((TicksEntryImpl)object)!=null) {
         _value=((TicksEntryImpl)object).getValue();
       }
-      final DiscreteDeviation deviation = _value;
+      final IDiscreteDeviation deviation = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
       if (_isNullOrEmpty) {
@@ -4691,11 +4691,11 @@ public class CustomItemProviderService {
         _key=((NeedEntryImpl)object).getKey();
       }
       final String featureName = _key;
-      DiscreteDeviation _value = null;
+      IDiscreteDeviation _value = null;
       if (((NeedEntryImpl)object)!=null) {
         _value=((NeedEntryImpl)object).getValue();
       }
-      final DiscreteDeviation dev = _value;
+      final IDiscreteDeviation dev = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(featureName);
       if (_isNullOrEmpty) {

@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,DiscreteDeviation> {
+public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,IDiscreteDeviation> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 * @ordered
 	 */
-	protected DiscreteDeviation value;
+	protected IDiscreteDeviation value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteDeviation getTypedValue() {
+	public IDiscreteDeviation getTypedValue() {
 		return value;
 	}
 
@@ -130,8 +130,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedValue(DiscreteDeviation newValue, NotificationChain msgs) {
-		DiscreteDeviation oldValue = value;
+	public NotificationChain basicSetTypedValue(IDiscreteDeviation newValue, NotificationChain msgs) {
+		IDiscreteDeviation oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_ENTRY__VALUE, oldValue, newValue);
@@ -145,7 +145,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(DiscreteDeviation newValue) {
+	public void setTypedValue(IDiscreteDeviation newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -201,7 +201,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey((String)newValue);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((DiscreteDeviation)newValue);
+				setTypedValue((IDiscreteDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,7 +219,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey(KEY_EDEFAULT);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((DiscreteDeviation)null);
+				setTypedValue((IDiscreteDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -309,7 +309,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteDeviation getValue() {
+	public IDiscreteDeviation getValue() {
 		return getTypedValue();
 	}
 
@@ -318,8 +318,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteDeviation setValue(DiscreteDeviation value) {
-		DiscreteDeviation oldValue = getValue();
+	public IDiscreteDeviation setValue(IDiscreteDeviation value) {
+		IDiscreteDeviation oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -330,9 +330,9 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, DiscreteDeviation> getEMap() {
+	public EMap<String, IDiscreteDeviation> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, DiscreteDeviation>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, IDiscreteDeviation>)container.eGet(eContainmentFeature());
 	}
 
 } //NeedEntryImpl

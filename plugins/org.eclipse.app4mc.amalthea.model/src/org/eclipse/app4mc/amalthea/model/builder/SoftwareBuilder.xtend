@@ -20,12 +20,12 @@ import org.eclipse.app4mc.amalthea.model.CallSequence
 import org.eclipse.app4mc.amalthea.model.Channel
 import org.eclipse.app4mc.amalthea.model.ClearEvent
 import org.eclipse.app4mc.amalthea.model.CustomActivation
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration
 import org.eclipse.app4mc.amalthea.model.EventActivation
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase
 import org.eclipse.app4mc.amalthea.model.Group
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
 import org.eclipse.app4mc.amalthea.model.ISR
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.Label
@@ -530,7 +530,7 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 	
-	def need(ExecutionNeed container, String key, DiscreteDeviation need) {
+	def need(ExecutionNeed container, String key, IDiscreteDeviation need) {
 		container.needs.put(key, need)
 	}
 

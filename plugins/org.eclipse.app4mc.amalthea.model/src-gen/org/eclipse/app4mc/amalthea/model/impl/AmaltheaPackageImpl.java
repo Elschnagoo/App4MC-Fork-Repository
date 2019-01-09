@@ -88,8 +88,8 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation;
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
@@ -134,8 +134,8 @@ import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
@@ -197,6 +197,8 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -204,6 +206,7 @@ import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
 import org.eclipse.app4mc.amalthea.model.ISystem;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.IntegerObject;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -395,8 +398,8 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
@@ -714,7 +717,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeDeviationEClass = null;
+	private EClass iTimeDeviationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass timeIntervalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -756,7 +766,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeIntervalEClass = null;
+	private EClass timeBoundariesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -798,7 +808,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteDeviationEClass = null;
+	private EClass iDiscreteDeviationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass discreteIntervalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -840,7 +857,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteIntervalEClass = null;
+	private EClass discreteBoundariesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -882,7 +899,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousDeviationEClass = null;
+	private EClass iContinuousDeviationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass continuousIntervalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -924,7 +948,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousIntervalEClass = null;
+	private EClass continuousBoundariesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4468,8 +4492,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeDeviation() {
-		return timeDeviationEClass;
+	public EClass getITimeDeviation() {
+		return iTimeDeviationEClass;
 	}
 
 	/**
@@ -4477,8 +4501,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTimeDeviation__GetLowerBound() {
-		return timeDeviationEClass.getEOperations().get(0);
+	public EOperation getITimeDeviation__GetLowerBound() {
+		return iTimeDeviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4486,8 +4510,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTimeDeviation__GetAverage() {
-		return timeDeviationEClass.getEOperations().get(1);
+	public EOperation getITimeDeviation__GetAverage() {
+		return iTimeDeviationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4495,8 +4519,44 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTimeDeviation__GetUpperBound() {
-		return timeDeviationEClass.getEOperations().get(2);
+	public EOperation getITimeDeviation__GetUpperBound() {
+		return iTimeDeviationEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTimeInterval() {
+		return timeIntervalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTimeInterval_LowerBound() {
+		return (EReference)timeIntervalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTimeInterval_UpperBound() {
+		return (EReference)timeIntervalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTimeInterval__GetAverage() {
+		return timeIntervalEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4612,44 +4672,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeHistogramEntry_Interval() {
-		return (EReference)timeHistogramEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBoundedTimeDistribution() {
 		return boundedTimeDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getBoundedTimeDistribution_LowerBound() {
-		return (EReference)boundedTimeDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getBoundedTimeDistribution_UpperBound() {
-		return (EReference)boundedTimeDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getBoundedTimeDistribution__GetAverage() {
-		return boundedTimeDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4684,8 +4708,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeInterval() {
-		return timeIntervalEClass;
+	public EClass getTimeBoundaries() {
+		return timeBoundariesEClass;
 	}
 
 	/**
@@ -4693,8 +4717,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeInterval_SamplingType() {
-		return (EAttribute)timeIntervalEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTimeBoundaries_SamplingType() {
+		return (EAttribute)timeBoundariesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4828,8 +4852,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteDeviation() {
-		return discreteDeviationEClass;
+	public EClass getIDiscreteDeviation() {
+		return iDiscreteDeviationEClass;
 	}
 
 	/**
@@ -4837,8 +4861,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteDeviation__GetLowerBound() {
-		return discreteDeviationEClass.getEOperations().get(0);
+	public EOperation getIDiscreteDeviation__GetLowerBound() {
+		return iDiscreteDeviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4846,8 +4870,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteDeviation__GetAverage() {
-		return discreteDeviationEClass.getEOperations().get(1);
+	public EOperation getIDiscreteDeviation__GetAverage() {
+		return iDiscreteDeviationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4855,8 +4879,44 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteDeviation__GetUpperBound() {
-		return discreteDeviationEClass.getEOperations().get(2);
+	public EOperation getIDiscreteDeviation__GetUpperBound() {
+		return iDiscreteDeviationEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDiscreteInterval() {
+		return discreteIntervalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDiscreteInterval_LowerBound() {
+		return (EAttribute)discreteIntervalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDiscreteInterval_UpperBound() {
+		return (EAttribute)discreteIntervalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDiscreteInterval__GetAverage() {
+		return discreteIntervalEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4972,44 +5032,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDiscreteHistogramEntry_Interval() {
-		return (EReference)discreteHistogramEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBoundedDiscreteDistribution() {
 		return boundedDiscreteDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBoundedDiscreteDistribution_LowerBound() {
-		return (EAttribute)boundedDiscreteDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBoundedDiscreteDistribution_UpperBound() {
-		return (EAttribute)boundedDiscreteDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getBoundedDiscreteDistribution__GetAverage() {
-		return boundedDiscreteDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5044,8 +5068,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteInterval() {
-		return discreteIntervalEClass;
+	public EClass getDiscreteBoundaries() {
+		return discreteBoundariesEClass;
 	}
 
 	/**
@@ -5053,8 +5077,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteInterval_SamplingType() {
-		return (EAttribute)discreteIntervalEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteBoundaries_SamplingType() {
+		return (EAttribute)discreteBoundariesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5188,8 +5212,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousDeviation() {
-		return continuousDeviationEClass;
+	public EClass getIContinuousDeviation() {
+		return iContinuousDeviationEClass;
 	}
 
 	/**
@@ -5197,8 +5221,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousDeviation__GetLowerBound() {
-		return continuousDeviationEClass.getEOperations().get(0);
+	public EOperation getIContinuousDeviation__GetLowerBound() {
+		return iContinuousDeviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5206,8 +5230,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousDeviation__GetAverage() {
-		return continuousDeviationEClass.getEOperations().get(1);
+	public EOperation getIContinuousDeviation__GetAverage() {
+		return iContinuousDeviationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -5215,8 +5239,44 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousDeviation__GetUpperBound() {
-		return continuousDeviationEClass.getEOperations().get(2);
+	public EOperation getIContinuousDeviation__GetUpperBound() {
+		return iContinuousDeviationEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContinuousInterval() {
+		return continuousIntervalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContinuousInterval_LowerBound() {
+		return (EAttribute)continuousIntervalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContinuousInterval_UpperBound() {
+		return (EAttribute)continuousIntervalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContinuousInterval__GetAverage() {
+		return continuousIntervalEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5332,44 +5392,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContinuousHistogramEntry_Interval() {
-		return (EReference)continuousHistogramEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBoundedContinuousDistribution() {
 		return boundedContinuousDistributionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBoundedContinuousDistribution_LowerBound() {
-		return (EAttribute)boundedContinuousDistributionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBoundedContinuousDistribution_UpperBound() {
-		return (EAttribute)boundedContinuousDistributionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getBoundedContinuousDistribution__GetAverage() {
-		return boundedContinuousDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5404,8 +5428,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousInterval() {
-		return continuousIntervalEClass;
+	public EClass getContinuousBoundaries() {
+		return continuousBoundariesEClass;
 	}
 
 	/**
@@ -5413,8 +5437,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousInterval_SamplingType() {
-		return (EAttribute)continuousIntervalEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousBoundaries_SamplingType() {
+		return (EAttribute)continuousBoundariesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -14239,10 +14263,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		singleValueStatisticEClass = createEClass(SINGLE_VALUE_STATISTIC);
 		createEAttribute(singleValueStatisticEClass, SINGLE_VALUE_STATISTIC__VALUE);
 
-		timeDeviationEClass = createEClass(TIME_DEVIATION);
-		createEOperation(timeDeviationEClass, TIME_DEVIATION___GET_LOWER_BOUND);
-		createEOperation(timeDeviationEClass, TIME_DEVIATION___GET_AVERAGE);
-		createEOperation(timeDeviationEClass, TIME_DEVIATION___GET_UPPER_BOUND);
+		iTimeDeviationEClass = createEClass(ITIME_DEVIATION);
+		createEOperation(iTimeDeviationEClass, ITIME_DEVIATION___GET_LOWER_BOUND);
+		createEOperation(iTimeDeviationEClass, ITIME_DEVIATION___GET_AVERAGE);
+		createEOperation(iTimeDeviationEClass, ITIME_DEVIATION___GET_UPPER_BOUND);
+
+		timeIntervalEClass = createEClass(TIME_INTERVAL);
+		createEReference(timeIntervalEClass, TIME_INTERVAL__LOWER_BOUND);
+		createEReference(timeIntervalEClass, TIME_INTERVAL__UPPER_BOUND);
+		createEOperation(timeIntervalEClass, TIME_INTERVAL___GET_AVERAGE);
 
 		timeConstantEClass = createEClass(TIME_CONSTANT);
 		createEReference(timeConstantEClass, TIME_CONSTANT__VALUE);
@@ -14258,19 +14287,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		timeHistogramEntryEClass = createEClass(TIME_HISTOGRAM_ENTRY);
 		createEAttribute(timeHistogramEntryEClass, TIME_HISTOGRAM_ENTRY__OCCURRENCES);
-		createEReference(timeHistogramEntryEClass, TIME_HISTOGRAM_ENTRY__INTERVAL);
 
 		boundedTimeDistributionEClass = createEClass(BOUNDED_TIME_DISTRIBUTION);
-		createEReference(boundedTimeDistributionEClass, BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND);
-		createEReference(boundedTimeDistributionEClass, BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND);
-		createEOperation(boundedTimeDistributionEClass, BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE);
 
 		truncatedTimeDistributionEClass = createEClass(TRUNCATED_TIME_DISTRIBUTION);
 		createEReference(truncatedTimeDistributionEClass, TRUNCATED_TIME_DISTRIBUTION__LOWER_BOUND);
 		createEReference(truncatedTimeDistributionEClass, TRUNCATED_TIME_DISTRIBUTION__UPPER_BOUND);
 
-		timeIntervalEClass = createEClass(TIME_INTERVAL);
-		createEAttribute(timeIntervalEClass, TIME_INTERVAL__SAMPLING_TYPE);
+		timeBoundariesEClass = createEClass(TIME_BOUNDARIES);
+		createEAttribute(timeBoundariesEClass, TIME_BOUNDARIES__SAMPLING_TYPE);
 
 		timeStatisticsEClass = createEClass(TIME_STATISTICS);
 		createEReference(timeStatisticsEClass, TIME_STATISTICS__AVERAGE);
@@ -14291,10 +14316,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(timeBetaDistributionEClass, TIME_BETA_DISTRIBUTION__BETA);
 		createEOperation(timeBetaDistributionEClass, TIME_BETA_DISTRIBUTION___GET_AVERAGE);
 
-		discreteDeviationEClass = createEClass(DISCRETE_DEVIATION);
-		createEOperation(discreteDeviationEClass, DISCRETE_DEVIATION___GET_LOWER_BOUND);
-		createEOperation(discreteDeviationEClass, DISCRETE_DEVIATION___GET_AVERAGE);
-		createEOperation(discreteDeviationEClass, DISCRETE_DEVIATION___GET_UPPER_BOUND);
+		iDiscreteDeviationEClass = createEClass(IDISCRETE_DEVIATION);
+		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_LOWER_BOUND);
+		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_AVERAGE);
+		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_UPPER_BOUND);
+
+		discreteIntervalEClass = createEClass(DISCRETE_INTERVAL);
+		createEAttribute(discreteIntervalEClass, DISCRETE_INTERVAL__LOWER_BOUND);
+		createEAttribute(discreteIntervalEClass, DISCRETE_INTERVAL__UPPER_BOUND);
+		createEOperation(discreteIntervalEClass, DISCRETE_INTERVAL___GET_AVERAGE);
 
 		discreteConstantEClass = createEClass(DISCRETE_CONSTANT);
 		createEAttribute(discreteConstantEClass, DISCRETE_CONSTANT__VALUE);
@@ -14310,19 +14340,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		discreteHistogramEntryEClass = createEClass(DISCRETE_HISTOGRAM_ENTRY);
 		createEAttribute(discreteHistogramEntryEClass, DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES);
-		createEReference(discreteHistogramEntryEClass, DISCRETE_HISTOGRAM_ENTRY__INTERVAL);
 
 		boundedDiscreteDistributionEClass = createEClass(BOUNDED_DISCRETE_DISTRIBUTION);
-		createEAttribute(boundedDiscreteDistributionEClass, BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND);
-		createEAttribute(boundedDiscreteDistributionEClass, BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND);
-		createEOperation(boundedDiscreteDistributionEClass, BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE);
 
 		truncatedDiscreteDistributionEClass = createEClass(TRUNCATED_DISCRETE_DISTRIBUTION);
 		createEAttribute(truncatedDiscreteDistributionEClass, TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND);
 		createEAttribute(truncatedDiscreteDistributionEClass, TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND);
 
-		discreteIntervalEClass = createEClass(DISCRETE_INTERVAL);
-		createEAttribute(discreteIntervalEClass, DISCRETE_INTERVAL__SAMPLING_TYPE);
+		discreteBoundariesEClass = createEClass(DISCRETE_BOUNDARIES);
+		createEAttribute(discreteBoundariesEClass, DISCRETE_BOUNDARIES__SAMPLING_TYPE);
 
 		discreteStatisticsEClass = createEClass(DISCRETE_STATISTICS);
 		createEAttribute(discreteStatisticsEClass, DISCRETE_STATISTICS__AVERAGE);
@@ -14343,10 +14369,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(discreteBetaDistributionEClass, DISCRETE_BETA_DISTRIBUTION__BETA);
 		createEOperation(discreteBetaDistributionEClass, DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE);
 
-		continuousDeviationEClass = createEClass(CONTINUOUS_DEVIATION);
-		createEOperation(continuousDeviationEClass, CONTINUOUS_DEVIATION___GET_LOWER_BOUND);
-		createEOperation(continuousDeviationEClass, CONTINUOUS_DEVIATION___GET_AVERAGE);
-		createEOperation(continuousDeviationEClass, CONTINUOUS_DEVIATION___GET_UPPER_BOUND);
+		iContinuousDeviationEClass = createEClass(ICONTINUOUS_DEVIATION);
+		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_LOWER_BOUND);
+		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_AVERAGE);
+		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_UPPER_BOUND);
+
+		continuousIntervalEClass = createEClass(CONTINUOUS_INTERVAL);
+		createEAttribute(continuousIntervalEClass, CONTINUOUS_INTERVAL__LOWER_BOUND);
+		createEAttribute(continuousIntervalEClass, CONTINUOUS_INTERVAL__UPPER_BOUND);
+		createEOperation(continuousIntervalEClass, CONTINUOUS_INTERVAL___GET_AVERAGE);
 
 		continuousConstantEClass = createEClass(CONTINUOUS_CONSTANT);
 		createEAttribute(continuousConstantEClass, CONTINUOUS_CONSTANT__VALUE);
@@ -14362,19 +14393,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		continuousHistogramEntryEClass = createEClass(CONTINUOUS_HISTOGRAM_ENTRY);
 		createEAttribute(continuousHistogramEntryEClass, CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES);
-		createEReference(continuousHistogramEntryEClass, CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL);
 
 		boundedContinuousDistributionEClass = createEClass(BOUNDED_CONTINUOUS_DISTRIBUTION);
-		createEAttribute(boundedContinuousDistributionEClass, BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND);
-		createEAttribute(boundedContinuousDistributionEClass, BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND);
-		createEOperation(boundedContinuousDistributionEClass, BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE);
 
 		truncatedContinuousDistributionEClass = createEClass(TRUNCATED_CONTINUOUS_DISTRIBUTION);
 		createEAttribute(truncatedContinuousDistributionEClass, TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND);
 		createEAttribute(truncatedContinuousDistributionEClass, TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND);
 
-		continuousIntervalEClass = createEClass(CONTINUOUS_INTERVAL);
-		createEAttribute(continuousIntervalEClass, CONTINUOUS_INTERVAL__SAMPLING_TYPE);
+		continuousBoundariesEClass = createEClass(CONTINUOUS_BOUNDARIES);
+		createEAttribute(continuousBoundariesEClass, CONTINUOUS_BOUNDARIES__SAMPLING_TYPE);
 
 		continuousStatisticsEClass = createEClass(CONTINUOUS_STATISTICS);
 		createEAttribute(continuousStatisticsEClass, CONTINUOUS_STATISTICS__AVERAGE);
@@ -15701,31 +15728,37 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		booleanObjectEClass.getESuperTypes().add(this.getValue());
 		minAvgMaxStatisticEClass.getESuperTypes().add(this.getNumericStatistic());
 		singleValueStatisticEClass.getESuperTypes().add(this.getNumericStatistic());
-		timeConstantEClass.getESuperTypes().add(this.getTimeDeviation());
-		timeHistogramEClass.getESuperTypes().add(this.getTimeDeviation());
-		boundedTimeDistributionEClass.getESuperTypes().add(this.getTimeDeviation());
-		truncatedTimeDistributionEClass.getESuperTypes().add(this.getTimeDeviation());
-		timeIntervalEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
+		timeConstantEClass.getESuperTypes().add(this.getITimeDeviation());
+		timeHistogramEClass.getESuperTypes().add(this.getITimeDeviation());
+		timeHistogramEntryEClass.getESuperTypes().add(this.getTimeInterval());
+		boundedTimeDistributionEClass.getESuperTypes().add(this.getTimeInterval());
+		boundedTimeDistributionEClass.getESuperTypes().add(this.getITimeDeviation());
+		truncatedTimeDistributionEClass.getESuperTypes().add(this.getITimeDeviation());
+		timeBoundariesEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeStatisticsEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeUniformDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeGaussDistributionEClass.getESuperTypes().add(this.getTruncatedTimeDistribution());
 		timeWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeBetaDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
-		discreteConstantEClass.getESuperTypes().add(this.getDiscreteDeviation());
-		discreteHistogramEClass.getESuperTypes().add(this.getDiscreteDeviation());
-		boundedDiscreteDistributionEClass.getESuperTypes().add(this.getDiscreteDeviation());
-		truncatedDiscreteDistributionEClass.getESuperTypes().add(this.getDiscreteDeviation());
-		discreteIntervalEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
+		discreteConstantEClass.getESuperTypes().add(this.getIDiscreteDeviation());
+		discreteHistogramEClass.getESuperTypes().add(this.getIDiscreteDeviation());
+		discreteHistogramEntryEClass.getESuperTypes().add(this.getDiscreteInterval());
+		boundedDiscreteDistributionEClass.getESuperTypes().add(this.getDiscreteInterval());
+		boundedDiscreteDistributionEClass.getESuperTypes().add(this.getIDiscreteDeviation());
+		truncatedDiscreteDistributionEClass.getESuperTypes().add(this.getIDiscreteDeviation());
+		discreteBoundariesEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteStatisticsEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteUniformDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteGaussDistributionEClass.getESuperTypes().add(this.getTruncatedDiscreteDistribution());
 		discreteWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
 		discreteBetaDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		continuousConstantEClass.getESuperTypes().add(this.getContinuousDeviation());
-		continuousHistogramEClass.getESuperTypes().add(this.getContinuousDeviation());
-		boundedContinuousDistributionEClass.getESuperTypes().add(this.getContinuousDeviation());
-		truncatedContinuousDistributionEClass.getESuperTypes().add(this.getContinuousDeviation());
-		continuousIntervalEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
+		continuousConstantEClass.getESuperTypes().add(this.getIContinuousDeviation());
+		continuousHistogramEClass.getESuperTypes().add(this.getIContinuousDeviation());
+		continuousHistogramEntryEClass.getESuperTypes().add(this.getContinuousInterval());
+		boundedContinuousDistributionEClass.getESuperTypes().add(this.getContinuousInterval());
+		boundedContinuousDistributionEClass.getESuperTypes().add(this.getIContinuousDeviation());
+		truncatedContinuousDistributionEClass.getESuperTypes().add(this.getIContinuousDeviation());
+		continuousBoundariesEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousStatisticsEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousUniformDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
 		continuousGaussDistributionEClass.getESuperTypes().add(this.getTruncatedContinuousDistribution());
@@ -16244,13 +16277,19 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(singleValueStatisticEClass, SingleValueStatistic.class, "SingleValueStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSingleValueStatistic_Value(), theEcorePackage.getEFloat(), "value", "0f", 0, 1, SingleValueStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(timeDeviationEClass, TimeDeviation.class, "TimeDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iTimeDeviationEClass, ITimeDeviation.class, "ITimeDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTimeDeviation__GetLowerBound(), this.getTime(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getITimeDeviation__GetLowerBound(), this.getTime(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getTimeDeviation__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getITimeDeviation__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getTimeDeviation__GetUpperBound(), this.getTime(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getITimeDeviation__GetUpperBound(), this.getTime(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(timeIntervalEClass, TimeInterval.class, "TimeInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTimeInterval_LowerBound(), this.getTime(), null, "lowerBound", null, 1, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeInterval_UpperBound(), this.getTime(), null, "upperBound", null, 1, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTimeInterval__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(timeConstantEClass, TimeConstant.class, "TimeConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimeConstant_Value(), this.getTime(), null, "value", null, 1, 1, TimeConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16272,20 +16311,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(timeHistogramEntryEClass, TimeHistogramEntry.class, "TimeHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTimeHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, TimeHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeHistogramEntry_Interval(), this.getTimeInterval(), null, "interval", null, 1, 1, TimeHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boundedTimeDistributionEClass, BoundedTimeDistribution.class, "BoundedTimeDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBoundedTimeDistribution_LowerBound(), this.getTime(), null, "lowerBound", null, 1, 1, BoundedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoundedTimeDistribution_UpperBound(), this.getTime(), null, "upperBound", null, 1, 1, BoundedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getBoundedTimeDistribution__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(truncatedTimeDistributionEClass, TruncatedTimeDistribution.class, "TruncatedTimeDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTruncatedTimeDistribution_LowerBound(), this.getTime(), null, "lowerBound", null, 0, 1, TruncatedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTruncatedTimeDistribution_UpperBound(), this.getTime(), null, "upperBound", null, 0, 1, TruncatedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(timeIntervalEClass, TimeInterval.class, "TimeInterval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTimeInterval_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(timeBoundariesEClass, TimeBoundaries.class, "TimeBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTimeBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, TimeBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeStatisticsEClass, TimeStatistics.class, "TimeStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimeStatistics_Average(), this.getTime(), null, "average", null, 1, 1, TimeStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16308,13 +16342,19 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getTimeBetaDistribution__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteDeviationEClass, DiscreteDeviation.class, "DiscreteDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iDiscreteDeviationEClass, IDiscreteDeviation.class, "IDiscreteDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getDiscreteDeviation__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteDeviation__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteDeviation__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteDeviation__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(discreteIntervalEClass, DiscreteInterval.class, "DiscreteInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteInterval_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", "0", 1, 1, DiscreteInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteInterval_UpperBound(), theEcorePackage.getELongObject(), "upperBound", "0", 1, 1, DiscreteInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getDiscreteInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteConstantEClass, DiscreteConstant.class, "DiscreteConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteConstant_Value(), theEcorePackage.getELongObject(), "value", "0", 1, 1, DiscreteConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16336,20 +16376,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(discreteHistogramEntryEClass, DiscreteHistogramEntry.class, "DiscreteHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, DiscreteHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDiscreteHistogramEntry_Interval(), this.getDiscreteInterval(), null, "interval", null, 1, 1, DiscreteHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boundedDiscreteDistributionEClass, BoundedDiscreteDistribution.class, "BoundedDiscreteDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoundedDiscreteDistribution_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", "0", 1, 1, BoundedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBoundedDiscreteDistribution_UpperBound(), theEcorePackage.getELongObject(), "upperBound", "0", 1, 1, BoundedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getBoundedDiscreteDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(truncatedDiscreteDistributionEClass, TruncatedDiscreteDistribution.class, "TruncatedDiscreteDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTruncatedDiscreteDistribution_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", null, 0, 1, TruncatedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTruncatedDiscreteDistribution_UpperBound(), theEcorePackage.getELongObject(), "upperBound", null, 0, 1, TruncatedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discreteIntervalEClass, DiscreteInterval.class, "DiscreteInterval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteInterval_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteBoundariesEClass, DiscreteBoundaries.class, "DiscreteBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteStatisticsEClass, DiscreteStatistics.class, "DiscreteStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16372,13 +16407,19 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDiscreteBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousDeviationEClass, ContinuousDeviation.class, "ContinuousDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iContinuousDeviationEClass, IContinuousDeviation.class, "IContinuousDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getContinuousDeviation__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousDeviation__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousDeviation__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousDeviation__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(continuousIntervalEClass, ContinuousInterval.class, "ContinuousInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousInterval_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", "0.0", 1, 1, ContinuousInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousInterval_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", "0.0", 1, 1, ContinuousInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getContinuousInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousConstantEClass, ContinuousConstant.class, "ContinuousConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousConstant_Value(), theEcorePackage.getEDoubleObject(), "value", "0.0", 1, 1, ContinuousConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16400,20 +16441,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(continuousHistogramEntryEClass, ContinuousHistogramEntry.class, "ContinuousHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, ContinuousHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContinuousHistogramEntry_Interval(), this.getContinuousInterval(), null, "interval", null, 1, 1, ContinuousHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boundedContinuousDistributionEClass, BoundedContinuousDistribution.class, "BoundedContinuousDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoundedContinuousDistribution_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", "0.0", 1, 1, BoundedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBoundedContinuousDistribution_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", "0.0", 1, 1, BoundedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getBoundedContinuousDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(truncatedContinuousDistributionEClass, TruncatedContinuousDistribution.class, "TruncatedContinuousDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTruncatedContinuousDistribution_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", null, 0, 1, TruncatedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTruncatedContinuousDistribution_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", null, 0, 1, TruncatedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(continuousIntervalEClass, ContinuousInterval.class, "ContinuousInterval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousInterval_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousBoundariesEClass, ContinuousBoundaries.class, "ContinuousBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(continuousStatisticsEClass, ContinuousStatistics.class, "ContinuousStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16837,8 +16873,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandler_InternalConnections(), this.getHwConnection(), null, "internalConnections", null, 0, -1, ConnectionHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwConnectionEClass, HwConnection.class, "HwConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwConnection_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwConnection_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16852,8 +16888,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_Destination(), this.getHwDestination(), null, "destination", null, 1, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_AccessPath(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPath", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16865,15 +16901,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectionHandlerDefinition_Policy(), this.getSchedPolicy(), "policy", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getDiscreteDeviation(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getDiscreteDeviation(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxBurstSize(), this.getPositiveInt(), "maxBurstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxConcurrentTransfers(), this.getPositiveInt(), "maxConcurrentTransfers", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryDefinition_AccessLatency(), this.getDiscreteDeviation(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_AccessLatency(), this.getIDiscreteDeviation(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryDefinition_MemoryType(), this.getMemoryType(), "memoryType", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16881,7 +16917,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCacheDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCacheDefinition_LineSize(), this.getDataSize(), null, "lineSize", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCacheDefinition_AccessLatency(), this.getDiscreteDeviation(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCacheDefinition_AccessLatency(), this.getIDiscreteDeviation(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_CacheType(), this.getCacheType(), "cacheType", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_WriteStrategy(), this.getWriteStrategy(), "writeStrategy", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_NWays(), theEcorePackage.getEInt(), "nWays", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17192,16 +17228,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getFixedPeriodic_Recurrence(), this.getTime(), null, "recurrence", null, 0, 1, FixedPeriodic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicStimulusEClass, PeriodicStimulus.class, "PeriodicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPeriodicStimulus_Jitter(), this.getTimeDeviation(), null, "jitter", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPeriodicStimulus_Jitter(), this.getITimeDeviation(), null, "jitter", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPeriodicStimulus_MinDistance(), this.getTime(), null, "minDistance", null, 0, 1, PeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relativePeriodicStimulusEClass, RelativePeriodicStimulus.class, "RelativePeriodicStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRelativePeriodicStimulus_Offset(), this.getTime(), null, "offset", null, 0, 1, RelativePeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelativePeriodicStimulus_NextOccurrence(), this.getTimeDeviation(), null, "nextOccurrence", null, 0, 1, RelativePeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelativePeriodicStimulus_NextOccurrence(), this.getITimeDeviation(), null, "nextOccurrence", null, 0, 1, RelativePeriodicStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableRateStimulusEClass, VariableRateStimulus.class, "VariableRateStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableRateStimulus_Step(), this.getTime(), null, "step", null, 1, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_OccurrencesPerStep(), this.getContinuousDeviation(), null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableRateStimulus_OccurrencesPerStep(), this.getIContinuousDeviation(), null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableRateStimulus_MaxIncreasePerStep(), theEcorePackage.getEDoubleObject(), "maxIncreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableRateStimulus_MaxDecreasePerStep(), theEcorePackage.getEDoubleObject(), "maxDecreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_Scenario(), this.getScenario(), null, "scenario", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17476,15 +17512,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(needEntryEClass, Map.Entry.class, "NeedEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNeedEntry_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNeedEntry_Value(), this.getDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeedEntry_Value(), this.getIDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ticksEClass, Ticks.class, "Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTicks_Default(), this.getDiscreteDeviation(), null, "default", null, 0, 1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicks_Default(), this.getIDiscreteDeviation(), null, "default", null, 0, 1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTicks_Extended(), this.getTicksEntry(), null, "extended", null, 0, -1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ticksEntryEClass, Map.Entry.class, "TicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTicksEntry_Value(), this.getDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicksEntry_Value(), this.getIDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17622,11 +17658,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(variableRateActivationEClass, VariableRateActivation.class, "VariableRateActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableRateActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateActivation_Step(), this.getTime(), null, "step", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateActivation_OccurrencesPerStep(), this.getContinuousDeviation(), null, "occurrencesPerStep", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableRateActivation_OccurrencesPerStep(), this.getIContinuousDeviation(), null, "occurrencesPerStep", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSporadicActivation_Activation(), this.getTimeDeviation(), null, "activation", null, 1, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSporadicActivation_Activation(), this.getITimeDeviation(), null, "activation", null, 1, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleActivationEClass, SingleActivation.class, "SingleActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleActivation_Min(), this.getTime(), null, "min", null, 0, 1, SingleActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17651,7 +17687,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(measurementEClass, Measurement.class, "Measurement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMeasurement_Runtimes(), this.getTime(), null, "runtimes", null, 0, -1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMeasurement_RuntimeDeviation(), this.getTimeDeviation(), null, "runtimeDeviation", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMeasurement_RuntimeDeviation(), this.getITimeDeviation(), null, "runtimeDeviation", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventChainMeasurementEClass, EventChainMeasurement.class, "EventChainMeasurement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventChainMeasurement_EventChain(), this.getEventChain(), null, "eventChain", null, 1, 1, EventChainMeasurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -259,7 +259,7 @@ public class NeedEntryItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

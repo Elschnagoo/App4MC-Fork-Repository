@@ -523,38 +523,13 @@ enum SamplingType
 //
 // -------------------------------------------------------------------------------
 
-interface TimeDeviation {
+interface ITimeDeviation {
 	op Time getLowerBound()
 	op Time getAverage()
 	op Time getUpperBound()
 }
 
-class TimeConstant extends TimeDeviation {
-	contains Time[1] value
-	
-	op Time getLowerBound() { value }
-	op Time getAverage() { value }
-	op Time getUpperBound() { value }
-}
-
-class TimeHistogram extends TimeDeviation {
-	contains TimeHistogramEntry[+] entries
-	
-	op Time getLowerBound() { entries.map[interval.lowerBound].min }
-	op Time getUpperBound() { entries.map[interval.upperBound].max }
-	op Time getAverage() {
-		val sum = entries.map[interval.average.multiply(occurrences)].reduce[p1, p2 | p1.add(p2)]
-		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
-		sum.multiply(1.0 / count)
-	}
-}
-
-class TimeHistogramEntry {
-	PositiveLong[1] occurrences = "1"
-	contains TimeInterval[1] interval
-}
-
-abstract class BoundedTimeDistribution extends TimeDeviation {
+abstract class TimeInterval {
 	contains Time[1] lowerBound
 	contains Time[1] upperBound
 	
@@ -563,7 +538,33 @@ abstract class BoundedTimeDistribution extends TimeDeviation {
 	}
 }
 
-abstract class TruncatedTimeDistribution extends TimeDeviation {
+class TimeConstant extends ITimeDeviation {
+	contains Time[1] value
+	
+	op Time getLowerBound() { value }
+	op Time getAverage() { value }
+	op Time getUpperBound() { value }
+}
+
+class TimeHistogram extends ITimeDeviation {
+	contains TimeHistogramEntry[+] entries
+	
+	op Time getLowerBound() { entries.map[lowerBound].min }
+	op Time getUpperBound() { entries.map[upperBound].max }
+	op Time getAverage() {
+		val sum = entries.map[average.multiply(occurrences)].reduce[p1, p2 | p1.add(p2)]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum.multiply(1.0 / count)
+	}
+}
+
+class TimeHistogramEntry extends TimeInterval {
+	PositiveLong[1] occurrences = "1"
+}
+
+abstract class BoundedTimeDistribution extends TimeInterval, ITimeDeviation {}
+
+abstract class TruncatedTimeDistribution extends ITimeDeviation {
 	contains Time lowerBound
 	contains Time upperBound
 }
@@ -571,7 +572,7 @@ abstract class TruncatedTimeDistribution extends TimeDeviation {
 /*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
-class TimeInterval extends BoundedTimeDistribution {
+class TimeBoundaries extends BoundedTimeDistribution {
 	SamplingType samplingType
 }
 
@@ -629,38 +630,13 @@ class TimeBetaDistribution extends BoundedTimeDistribution {
 //
 // -------------------------------------------------------------------------------
 
-interface DiscreteDeviation {
+interface IDiscreteDeviation {
 	op Long getLowerBound()
 	op Double getAverage()
 	op Long getUpperBound()
 }
 
-class DiscreteConstant extends DiscreteDeviation {
-	Long[1] value = "0"
-	
-	op Long getLowerBound() { value }
-	op Double getAverage() { value.doubleValue }
-	op Long getUpperBound() { value }
-}
-
-class DiscreteHistogram extends DiscreteDeviation {
-	contains DiscreteHistogramEntry[+] entries
-	
-	op Long getLowerBound() { entries.map[interval.lowerBound].min }
-	op Long getUpperBound() { entries.map[interval.upperBound].max }
-	op Double getAverage() {
-		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
-		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
-		sum / count
-	}
-}
-
-class DiscreteHistogramEntry {
-	PositiveLong[1] occurrences = "1"
-	contains DiscreteInterval[1] interval
-}
-
-abstract class BoundedDiscreteDistribution extends DiscreteDeviation {
+abstract class DiscreteInterval {
 	Long[1] lowerBound = "0"
 	Long[1] upperBound = "0"
 	
@@ -669,7 +645,33 @@ abstract class BoundedDiscreteDistribution extends DiscreteDeviation {
 	}
 }
 
-abstract class TruncatedDiscreteDistribution extends DiscreteDeviation {
+class DiscreteConstant extends IDiscreteDeviation {
+	Long[1] value = "0"
+	
+	op Long getLowerBound() { value }
+	op Double getAverage() { value.doubleValue }
+	op Long getUpperBound() { value }
+}
+
+class DiscreteHistogram extends IDiscreteDeviation {
+	contains DiscreteHistogramEntry[+] entries
+	
+	op Long getLowerBound() { entries.map[lowerBound].min }
+	op Long getUpperBound() { entries.map[upperBound].max }
+	op Double getAverage() {
+		val sum = entries.map[average * occurrences].reduce[p1, p2 | p1 + p2]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum / count
+	}
+}
+
+class DiscreteHistogramEntry extends DiscreteInterval {
+	PositiveLong[1] occurrences = "1"
+}
+
+abstract class BoundedDiscreteDistribution extends DiscreteInterval, IDiscreteDeviation {}
+
+abstract class TruncatedDiscreteDistribution extends IDiscreteDeviation {
 	Long lowerBound		// initial value is null
 	Long upperBound		// initial value is null
 }
@@ -677,7 +679,7 @@ abstract class TruncatedDiscreteDistribution extends DiscreteDeviation {
 /*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
-class DiscreteInterval extends BoundedDiscreteDistribution {
+class DiscreteBoundaries extends BoundedDiscreteDistribution {
 	SamplingType samplingType
 }
 
@@ -735,38 +737,13 @@ class DiscreteBetaDistribution extends BoundedDiscreteDistribution {
 //
 // -------------------------------------------------------------------------------
 
-interface ContinuousDeviation {
+interface IContinuousDeviation {
 	op Double getLowerBound()
 	op Double getAverage()
 	op Double getUpperBound()
 }
 
-class ContinuousConstant extends ContinuousDeviation {
-	Double[1] value = "0.0"
-	
-	op Double getLowerBound() { value }
-	op Double getAverage() { value }
-	op Double getUpperBound() { value }
-}
-
-class ContinuousHistogram extends ContinuousDeviation {
-	contains ContinuousHistogramEntry[+] entries
-	
-	op Double getLowerBound() { entries.map[interval.lowerBound].min }
-	op Double getUpperBound() { entries.map[interval.upperBound].max }
-	op Double getAverage() {
-		val sum = entries.map[interval.average * occurrences].reduce[p1, p2 | p1 + p2]
-		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
-		sum / count
-	}
-}
-
-class ContinuousHistogramEntry {
-	PositiveLong[1] occurrences = "1"
-	contains ContinuousInterval[1] interval
-}
-
-abstract class BoundedContinuousDistribution extends ContinuousDeviation {
+abstract class ContinuousInterval {
 	Double[1] lowerBound = "0.0"
 	Double[1] upperBound = "0.0"
 	
@@ -775,7 +752,33 @@ abstract class BoundedContinuousDistribution extends ContinuousDeviation {
 	}
 }
 
-abstract class TruncatedContinuousDistribution extends ContinuousDeviation {
+class ContinuousConstant extends IContinuousDeviation {
+	Double[1] value = "0.0"
+	
+	op Double getLowerBound() { value }
+	op Double getAverage() { value }
+	op Double getUpperBound() { value }
+}
+
+class ContinuousHistogram extends IContinuousDeviation {
+	contains ContinuousHistogramEntry[+] entries
+	
+	op Double getLowerBound() { entries.map[lowerBound].min }
+	op Double getUpperBound() { entries.map[upperBound].max }
+	op Double getAverage() {
+		val sum = entries.map[average * occurrences].reduce[p1, p2 | p1 + p2]
+		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
+		sum / count
+	}
+}
+
+class ContinuousHistogramEntry extends ContinuousInterval {
+	PositiveLong[1] occurrences = "1"
+}
+
+abstract class BoundedContinuousDistribution extends ContinuousInterval, IContinuousDeviation {}
+
+abstract class TruncatedContinuousDistribution extends IContinuousDeviation {
 	Double lowerBound		// initial value is null
 	Double upperBound		// initial value is null
 }
@@ -783,7 +786,7 @@ abstract class TruncatedContinuousDistribution extends ContinuousDeviation {
 /*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
-class ContinuousInterval extends BoundedContinuousDistribution {
+class ContinuousBoundaries extends BoundedContinuousDistribution {
 	SamplingType samplingType
 }
 
@@ -1968,9 +1971,9 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 	}
 	
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains DiscreteDeviation readLatency
+	contains IDiscreteDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains DiscreteDeviation writeLatency
+	contains IDiscreteDeviation writeLatency
 	contains DataRate dataRate
 	refers HwPort port1
 	refers HwPort port2
@@ -1994,9 +1997,9 @@ class HwAccessElement extends ITaggable, INamed
 	refers HwDestination[1] destination
 	contains HwAccessPath accessPath opposite containingAccessElement
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains DiscreteDeviation readLatency
+	contains IDiscreteDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains DiscreteDeviation writeLatency
+	contains IDiscreteDeviation writeLatency
 	contains DataRate dataRate
 }
 
@@ -2058,9 +2061,9 @@ class ConnectionHandlerDefinition extends HwDefinition
 {
 	SchedPolicy policy
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains DiscreteDeviation readLatency
+	contains IDiscreteDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains DiscreteDeviation writeLatency
+	contains IDiscreteDeviation writeLatency
 	contains DataRate dataRate
 	PositiveInt maxBurstSize = "1"
 	PositiveInt maxConcurrentTransfers = "1"
@@ -2070,7 +2073,7 @@ class MemoryDefinition extends HwDefinition
 {
 	contains DataSize size
 	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
-	contains DiscreteDeviation accessLatency
+	contains IDiscreteDeviation accessLatency
 	contains DataRate dataRate
 	MemoryType memoryType
 	refers MemoryClassifier[] classifiers // backward compatibility
@@ -2081,7 +2084,7 @@ class CacheDefinition extends HwDefinition
 	contains DataSize size
 	contains DataSize lineSize
 	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
-	contains DiscreteDeviation accessLatency
+	contains IDiscreteDeviation accessLatency
 	CacheType cacheType
 	WriteStrategy writeStrategy
 	int nWays = "0"
@@ -2864,7 +2867,7 @@ interface FixedPeriodic
  */
 class PeriodicStimulus extends Stimulus, FixedPeriodic
 {
-	contains TimeDeviation jitter
+	contains ITimeDeviation jitter
 	contains Time minDistance
 }
 
@@ -2876,7 +2879,7 @@ class PeriodicStimulus extends Stimulus, FixedPeriodic
 class RelativePeriodicStimulus extends Stimulus
 {
 	contains Time offset
-	contains TimeDeviation nextOccurrence
+	contains ITimeDeviation nextOccurrence
 }
 
 /*
@@ -2886,7 +2889,7 @@ class RelativePeriodicStimulus extends Stimulus
 class VariableRateStimulus extends Stimulus
 {
 	contains Time[1] step
-	contains ContinuousDeviation occurrencesPerStep
+	contains IContinuousDeviation occurrencesPerStep
 	Double maxIncreasePerStep		// initial value is null
 	Double maxDecreasePerStep		// initial value is null
 	contains Scenario scenario
@@ -3639,20 +3642,20 @@ class ExecutionNeed extends RunnableItem
 class NeedEntry wraps java.util.Map$Entry
 {
 	String[1] key	//	refers to HwFeatureCategory
-	contains DiscreteDeviation[1] value
+	contains IDiscreteDeviation[1] value
 }
 
 /*
- * Representation of the execution DiscreteDeviation of a Runnable (default and core-specific)
+ * Representation of the execution IDiscreteDeviation of a Runnable (default and core-specific)
  */
 class Ticks extends ComputationItem {
-	contains DiscreteDeviation ^default
+	contains IDiscreteDeviation ^default
 	contains TicksEntry[] extended
 }
 
 class TicksEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
-	contains DiscreteDeviation[1] value
+	contains IDiscreteDeviation[1] value
 }
 
 /*
@@ -4056,13 +4059,13 @@ class VariableRateActivation extends Activation
 {
 	String description
 	contains Time[1] step
-	contains ContinuousDeviation[1] occurrencesPerStep
+	contains IContinuousDeviation[1] occurrencesPerStep
 }
 
 class SporadicActivation extends Activation
 {
 	String description
-	contains TimeDeviation[1] activation
+	contains ITimeDeviation[1] activation
 }
 
 /*
@@ -4130,7 +4133,7 @@ class MeasurementModel extends BaseObject
 abstract class Measurement extends BaseObject
 {
 	contains Time[] runtimes
-	contains TimeDeviation runtimeDeviation
+	contains ITimeDeviation runtimeDeviation
 }
 
 class EventChainMeasurement extends Measurement

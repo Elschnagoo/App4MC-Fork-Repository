@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface TimeConstant extends TimeDeviation {
+public interface TimeConstant extends ITimeDeviation {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

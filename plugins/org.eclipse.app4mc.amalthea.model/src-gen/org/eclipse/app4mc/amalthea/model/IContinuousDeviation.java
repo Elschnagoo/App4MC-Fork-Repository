@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Continuous Deviation</b></em>'.
+ * A representation of the model object '<em><b>IContinuous Deviation</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousDeviation()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getIContinuousDeviation()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface ContinuousDeviation extends EObject {
+public interface IContinuousDeviation extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,4 +51,4 @@ public interface ContinuousDeviation extends EObject {
 	 */
 	Double getUpperBound();
 
-} // ContinuousDeviation
+} // IContinuousDeviation

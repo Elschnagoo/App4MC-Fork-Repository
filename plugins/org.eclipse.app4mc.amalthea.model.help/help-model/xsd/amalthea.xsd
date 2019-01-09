@@ -825,7 +825,7 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="chunkProcessingInstructions" type="xsd:int"/>
+    <xsd:attribute name="chunkProcessingTicks" type="xsd:int"/>
     <xsd:attribute name="transmitRatio" type="xsd:double"/>
   </xsd:complexType>
   <xsd:element name="TransmissionPolicy" type="am:TransmissionPolicy">
@@ -833,138 +833,6 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Data transmission details for communication (e.g. LabelAccesses)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="Ticks">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Ticks" type="am:Ticks">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TicksDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Ticks">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TicksDeviation" type="am:TicksDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="TicksConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Ticks">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TicksConstant" type="am:TicksConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles (ticks)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="fetchStatistic" type="am:InstructionFetch">
-        <xsd:annotation>
-          <xsd:documentation>optional parameter for fetch statistic</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Instructions" type="am:Instructions">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for a set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsDeviation" type="am:InstructionsDeviation">
-    <xsd:annotation>
-      <xsd:documentation>Deviated set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Instructions">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionsConstant" type="am:InstructionsConstant">
-    <xsd:annotation>
-      <xsd:documentation>Constant set of execution cycles</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="Need">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Need" type="am:Need">
-    <xsd:annotation>
-      <xsd:documentation>Abstract description for cost (mostly execution time)</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="NeedDeviation">
-    <xsd:complexContent>
-      <xsd:extension base="am:Need">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="deviation" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="NeedDeviation" type="am:NeedDeviation"/>
-  <xsd:complexType name="NeedConstant">
-    <xsd:complexContent>
-      <xsd:extension base="am:Need">
-        <xsd:attribute name="value" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="NeedConstant" type="am:NeedConstant"/>
   <xsd:complexType abstract="true" name="Quantity">
     <xsd:annotation>
       <xsd:documentation>Abstract class for Quantities (value + unit)</xsd:documentation>
@@ -1241,147 +1109,6 @@ Needs to be extended by other classes.</xsd:documentation>
       <xsd:documentation>Object for using the elementary datatype boolean as generic parameter</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Deviation">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="lowerBound" type="ecore:EObject"/>
-      <xsd:element name="upperBound" type="ecore:EObject"/>
-      <xsd:element name="distribution" type="am:Distribution"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Deviation" type="am:Deviation"/>
-  <xsd:complexType abstract="true" name="Distribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract generic distribution class
-The generic class T defines the data-type of the value-range of the distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="Distribution" type="am:Distribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract generic distribution class
-The generic class T defines the data-type of the value-range of the distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="WeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullDistribution" type="am:WeibullDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Abstract Weibull distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="WeibullParameters">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:WeibullDistribution">
-        <xsd:attribute name="kappa" type="xsd:double"/>
-        <xsd:attribute name="lambda" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullParameters" type="am:WeibullParameters">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-Starts from zero, upperBound limits maximum value of result</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="WeibullEstimators">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-The parameter of a weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:WeibullDistribution">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="mean" type="ecore:EObject"/>
-        </xsd:choice>
-        <xsd:attribute name="pRemainPromille" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="WeibullEstimators" type="am:WeibullEstimators">
-    <xsd:annotation>
-      <xsd:documentation>Weibull Distribution
-The parameter of a weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="UniformDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="UniformDistribution" type="am:UniformDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="Boundaries">
-    <xsd:annotation>
-      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:attribute name="samplingType" type="am:SamplingType"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="Boundaries" type="am:Boundaries">
-    <xsd:annotation>
-      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="GaussDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Gauss distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="sd" type="ecore:EObject"/>
-          <xsd:element name="mean" type="ecore:EObject"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="GaussDistribution" type="am:GaussDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Gauss distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="BetaDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Beta distribution</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Distribution">
-        <xsd:attribute name="alpha" type="xsd:double"/>
-        <xsd:attribute name="beta" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="BetaDistribution" type="am:BetaDistribution">
-    <xsd:annotation>
-      <xsd:documentation>Beta distribution</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType abstract="true" name="NumericStatistic">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>
@@ -1415,10 +1142,473 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SingleValueStatistic" type="am:SingleValueStatistic"/>
-  <xsd:complexType name="Mode">
+  <xsd:complexType abstract="true" name="ITimeDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="ITimeDeviation" type="am:ITimeDeviation"/>
+  <xsd:complexType abstract="true" name="TimeInterval">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="lowerBound" type="am:Time"/>
+      <xsd:element name="upperBound" type="am:Time"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="TimeInterval" type="am:TimeInterval"/>
+  <xsd:complexType name="TimeConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:ITimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="value" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeConstant" type="am:TimeConstant"/>
+  <xsd:complexType name="TimeHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:ITimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:TimeHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeHistogram" type="am:TimeHistogram"/>
+  <xsd:complexType name="TimeHistogramEntry">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeInterval">
+        <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeHistogramEntry" type="am:TimeHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedTimeDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:TimeInterval"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedTimeDistribution" type="am:BoundedTimeDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedTimeDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:ITimeDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="lowerBound" type="am:Time"/>
+          <xsd:element name="upperBound" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedTimeDistribution" type="am:TruncatedTimeDistribution"/>
+  <xsd:complexType name="TimeBoundaries">
     <xsd:annotation>
-      <xsd:documentation>Modes</xsd:documentation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
     </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeBoundaries" type="am:TimeBoundaries">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="average" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeStatistics" type="am:TimeStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeUniformDistribution" type="am:TimeUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedTimeDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="mean" type="am:Time"/>
+          <xsd:element name="sd" type="am:Time"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeGaussDistribution" type="am:TimeGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="average" type="am:Time"/>
+        </xsd:choice>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeWeibullEstimatorsDistribution" type="am:TimeWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="TimeBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedTimeDistribution">
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TimeBetaDistribution" type="am:TimeBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="IDiscreteDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="IDiscreteDeviation" type="am:IDiscreteDeviation"/>
+  <xsd:complexType abstract="true" name="DiscreteInterval">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="lowerBound" type="xsd:long" use="required"/>
+    <xsd:attribute name="upperBound" type="xsd:long" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="DiscreteInterval" type="am:DiscreteInterval"/>
+  <xsd:complexType name="DiscreteConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:IDiscreteDeviation">
+        <xsd:attribute name="value" type="xsd:long" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteConstant" type="am:DiscreteConstant"/>
+  <xsd:complexType name="DiscreteHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:IDiscreteDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:DiscreteHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteHistogram" type="am:DiscreteHistogram"/>
+  <xsd:complexType name="DiscreteHistogramEntry">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteInterval">
+        <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteHistogramEntry" type="am:DiscreteHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedDiscreteDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:DiscreteInterval"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedDiscreteDistribution" type="am:BoundedDiscreteDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedDiscreteDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:IDiscreteDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:long"/>
+        <xsd:attribute name="upperBound" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedDiscreteDistribution" type="am:TruncatedDiscreteDistribution"/>
+  <xsd:complexType name="DiscreteBoundaries">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteBoundaries" type="am:DiscreteBoundaries">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteStatistics" type="am:DiscreteStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteUniformDistribution" type="am:DiscreteUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedDiscreteDistribution">
+        <xsd:attribute name="mean" type="xsd:double" use="required"/>
+        <xsd:attribute name="sd" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteGaussDistribution" type="am:DiscreteGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteWeibullEstimatorsDistribution" type="am:DiscreteWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DiscreteBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedDiscreteDistribution">
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="DiscreteBetaDistribution" type="am:DiscreteBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType abstract="true" name="IContinuousDeviation">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="IContinuousDeviation" type="am:IContinuousDeviation"/>
+  <xsd:complexType abstract="true" name="ContinuousInterval">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="lowerBound" type="xsd:double" use="required"/>
+    <xsd:attribute name="upperBound" type="xsd:double" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="ContinuousInterval" type="am:ContinuousInterval"/>
+  <xsd:complexType name="ContinuousConstant">
+    <xsd:complexContent>
+      <xsd:extension base="am:IContinuousDeviation">
+        <xsd:attribute name="value" type="xsd:double" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousConstant" type="am:ContinuousConstant"/>
+  <xsd:complexType name="ContinuousHistogram">
+    <xsd:complexContent>
+      <xsd:extension base="am:IContinuousDeviation">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ContinuousHistogramEntry"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousHistogram" type="am:ContinuousHistogram"/>
+  <xsd:complexType name="ContinuousHistogramEntry">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousInterval">
+        <xsd:attribute name="occurrences" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousHistogramEntry" type="am:ContinuousHistogramEntry"/>
+  <xsd:complexType abstract="true" name="BoundedContinuousDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:ContinuousInterval"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="BoundedContinuousDistribution" type="am:BoundedContinuousDistribution"/>
+  <xsd:complexType abstract="true" name="TruncatedContinuousDistribution">
+    <xsd:complexContent>
+      <xsd:extension base="am:IContinuousDeviation">
+        <xsd:attribute name="lowerBound" type="xsd:double"/>
+        <xsd:attribute name="upperBound" type="xsd:double"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="TruncatedContinuousDistribution" type="am:TruncatedContinuousDistribution"/>
+  <xsd:complexType name="ContinuousBoundaries">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="samplingType" type="am:SamplingType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousBoundaries" type="am:ContinuousBoundaries">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper and lower bounds of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousStatistics" type="am:ContinuousStatistics">
+    <xsd:annotation>
+      <xsd:documentation>Defines the upper bound, lower bound and mean of a value interval without defining the distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousUniformDistribution" type="am:ContinuousUniformDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Continuous uniform distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:TruncatedContinuousDistribution">
+        <xsd:attribute name="mean" type="xsd:double" use="required"/>
+        <xsd:attribute name="sd" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousGaussDistribution" type="am:ContinuousGaussDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Gauss distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="average" type="xsd:double" use="required"/>
+        <xsd:attribute name="pRemainPromille" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousWeibullEstimatorsDistribution" type="am:ContinuousWeibullEstimatorsDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Weibull Distribution
+The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContinuousBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="am:BoundedContinuousDistribution">
+        <xsd:attribute name="alpha" type="xsd:string" use="required"/>
+        <xsd:attribute name="beta" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ContinuousBetaDistribution" type="am:ContinuousBetaDistribution">
+    <xsd:annotation>
+      <xsd:documentation>Beta distribution</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Mode">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -1427,11 +1617,7 @@ The parameter of a weibull distribution (kappa, lambda...) are calculated from t
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Mode" type="am:Mode">
-    <xsd:annotation>
-      <xsd:documentation>Modes</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="Mode" type="am:Mode"/>
   <xsd:complexType name="ModeLiteral">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -3018,8 +3204,24 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
-          <xsd:element name="readLatency" type="am:HwLatency"/>
-          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="readLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="writeLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element name="dataRate" type="am:DataRate"/>
           <xsd:element name="port1" type="am:HwPort"/>
           <xsd:element name="port2" type="am:HwPort"/>
@@ -3032,21 +3234,30 @@ entity: The component that fires the event (optional)</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="HwConnection" type="am:HwConnection"/>
   <xsd:complexType name="HwAccessElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwConverter extends INamed {
-	contains HwLatency latency
-	refers FrequencyDomain[1] sourceFrequencyDomain
-	refers FrequencyDomain[1] targetFrequencyDomain
- }</xsd:documentation>
-    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ITaggable">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="source" type="am:ProcessingUnit"/>
           <xsd:element name="destination" type="am:HwDestination"/>
           <xsd:element name="accessPath" type="am:HwAccessPath"/>
-          <xsd:element name="readLatency" type="am:HwLatency"/>
-          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="readLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="writeLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
@@ -3055,41 +3266,7 @@ entity: The component that fires the event (optional)</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="HwAccessElement" type="am:HwAccessElement">
-    <xsd:annotation>
-      <xsd:documentation>class HwConverter extends INamed {
-	contains HwLatency latency
-	refers FrequencyDomain[1] sourceFrequencyDomain
-	refers FrequencyDomain[1] targetFrequencyDomain
- }</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType abstract="true" name="HwLatency">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-  </xsd:complexType>
-  <xsd:element name="HwLatency" type="am:HwLatency"/>
-  <xsd:complexType name="LatencyConstant">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwLatency">
-        <xsd:attribute name="cycles" type="xsd:long"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="LatencyConstant" type="am:LatencyConstant"/>
-  <xsd:complexType name="LatencyDeviation">
-    <xsd:complexContent>
-      <xsd:extension base="am:HwLatency">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="cycles" type="am:Deviation"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="LatencyDeviation" type="am:LatencyDeviation"/>
+  <xsd:element name="HwAccessElement" type="am:HwAccessElement"/>
   <xsd:complexType abstract="true" name="HwDefinition">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -3119,8 +3296,24 @@ entity: The component that fires the event (optional)</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="readLatency" type="am:HwLatency"/>
-          <xsd:element name="writeLatency" type="am:HwLatency"/>
+          <xsd:element name="readLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Read latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="writeLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Write latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element name="dataRate" type="am:DataRate"/>
         </xsd:choice>
         <xsd:attribute name="policy" type="am:SchedPolicy"/>
@@ -3135,7 +3328,15 @@ entity: The component that fires the event (optional)</xsd:documentation>
       <xsd:extension base="am:HwDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="size" type="am:DataSize"/>
-          <xsd:element name="accessLatency" type="am:HwLatency"/>
+          <xsd:element name="accessLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Access latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
           <xsd:element name="dataRate" type="am:DataRate"/>
           <xsd:element name="classifiers" type="am:MemoryClassifier"/>
         </xsd:choice>
@@ -3151,7 +3352,15 @@ entity: The component that fires the event (optional)</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="size" type="am:DataSize"/>
           <xsd:element name="lineSize" type="am:DataSize"/>
-          <xsd:element name="accessLatency" type="am:HwLatency"/>
+          <xsd:element name="accessLatency" type="am:IDiscreteDeviation">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  <b>Access latency [cycles]</b>
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:choice>
         <xsd:attribute name="cacheType" type="am:CacheType"/>
         <xsd:attribute name="writeStrategy" type="am:WriteStrategy"/>
@@ -3334,7 +3543,7 @@ to a specific memory.</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="semaphores" type="am:Semaphore"/>
           <xsd:element name="operatingSystems" type="am:OperatingSystem"/>
-          <xsd:element name="osOverheads" type="am:OsInstructions"/>
+          <xsd:element name="osOverheads" type="am:OsOverhead"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -3853,7 +4062,7 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="overhead" type="am:OsInstructions"/>
+          <xsd:element name="overhead" type="am:OsOverhead"/>
           <xsd:element name="taskSchedulers" type="am:TaskScheduler"/>
           <xsd:element name="interruptControllers" type="am:InterruptController"/>
           <xsd:element name="osDataConsistency" type="am:OsDataConsistency"/>
@@ -3874,57 +4083,57 @@ computation items: steps to perform the scheduling algorithm</xsd:documentation>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="VendorOperatingSystem" type="am:VendorOperatingSystem"/>
-  <xsd:complexType name="OsInstructions">
+  <xsd:complexType name="OsOverhead">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiOverhead" type="am:OsAPIInstructions"/>
-          <xsd:element name="isrCategory1Overhead" type="am:OsISRInstructions"/>
-          <xsd:element name="isrCategory2Overhead" type="am:OsISRInstructions"/>
+          <xsd:element name="apiOverhead" type="am:OsAPIOverhead"/>
+          <xsd:element name="isrCategory1Overhead" type="am:OsISROverhead"/>
+          <xsd:element name="isrCategory2Overhead" type="am:OsISROverhead"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsInstructions" type="am:OsInstructions"/>
-  <xsd:complexType name="OsAPIInstructions">
+  <xsd:element name="OsOverhead" type="am:OsOverhead"/>
+  <xsd:complexType name="OsAPIOverhead">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="apiSendMessage" type="am:Instructions"/>
-          <xsd:element name="apiTerminateTask" type="am:Instructions"/>
-          <xsd:element name="apiSchedule" type="am:Instructions"/>
-          <xsd:element name="apiRequestResource" type="am:Instructions"/>
-          <xsd:element name="apiReleaseResource" type="am:Instructions"/>
-          <xsd:element name="apiSetEvent" type="am:Instructions"/>
-          <xsd:element name="apiWaitEvent" type="am:Instructions"/>
-          <xsd:element name="apiClearEvent" type="am:Instructions"/>
-          <xsd:element name="apiActivateTask" type="am:Instructions"/>
-          <xsd:element name="apiEnforcedMigration" type="am:Instructions"/>
-          <xsd:element name="apiSuspendOsInterrupts" type="am:Instructions"/>
-          <xsd:element name="apiResumeOsInterrupts" type="am:Instructions"/>
-          <xsd:element name="apiRequestSpinlock" type="am:Instructions"/>
-          <xsd:element name="apiReleaseSpinlock" type="am:Instructions"/>
-          <xsd:element name="apiSenderReceiverRead" type="am:Instructions"/>
-          <xsd:element name="apiSenderReceiverWrite" type="am:Instructions"/>
-          <xsd:element name="apiSynchronousServerCallPoint" type="am:Instructions"/>
-          <xsd:element name="apiIocRead" type="am:Instructions"/>
-          <xsd:element name="apiIocWrite" type="am:Instructions"/>
+          <xsd:element name="apiSendMessage" type="am:Ticks"/>
+          <xsd:element name="apiTerminateTask" type="am:Ticks"/>
+          <xsd:element name="apiSchedule" type="am:Ticks"/>
+          <xsd:element name="apiRequestResource" type="am:Ticks"/>
+          <xsd:element name="apiReleaseResource" type="am:Ticks"/>
+          <xsd:element name="apiSetEvent" type="am:Ticks"/>
+          <xsd:element name="apiWaitEvent" type="am:Ticks"/>
+          <xsd:element name="apiClearEvent" type="am:Ticks"/>
+          <xsd:element name="apiActivateTask" type="am:Ticks"/>
+          <xsd:element name="apiEnforcedMigration" type="am:Ticks"/>
+          <xsd:element name="apiSuspendOsInterrupts" type="am:Ticks"/>
+          <xsd:element name="apiResumeOsInterrupts" type="am:Ticks"/>
+          <xsd:element name="apiRequestSpinlock" type="am:Ticks"/>
+          <xsd:element name="apiReleaseSpinlock" type="am:Ticks"/>
+          <xsd:element name="apiSenderReceiverRead" type="am:Ticks"/>
+          <xsd:element name="apiSenderReceiverWrite" type="am:Ticks"/>
+          <xsd:element name="apiSynchronousServerCallPoint" type="am:Ticks"/>
+          <xsd:element name="apiIocRead" type="am:Ticks"/>
+          <xsd:element name="apiIocWrite" type="am:Ticks"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsAPIInstructions" type="am:OsAPIInstructions"/>
-  <xsd:complexType name="OsISRInstructions">
+  <xsd:element name="OsAPIOverhead" type="am:OsAPIOverhead"/>
+  <xsd:complexType name="OsISROverhead">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="preExecutionOverhead" type="am:Instructions"/>
-          <xsd:element name="postExecutionOverhead" type="am:Instructions"/>
+          <xsd:element name="preExecutionOverhead" type="am:Ticks"/>
+          <xsd:element name="postExecutionOverhead" type="am:Ticks"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="OsISRInstructions" type="am:OsISRInstructions"/>
+  <xsd:element name="OsISROverhead" type="am:OsISROverhead"/>
   <xsd:complexType name="PropertyConstraintsModel">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -4221,7 +4430,7 @@ minDistance: Minimal time between occurrences</xsd:documentation>
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
           <xsd:element name="recurrence" type="am:Time"/>
-          <xsd:element name="jitter" type="am:Deviation"/>
+          <xsd:element name="jitter" type="am:ITimeDeviation"/>
           <xsd:element name="minDistance" type="am:Time"/>
         </xsd:choice>
       </xsd:extension>
@@ -4244,7 +4453,7 @@ step: Time (Deviation) between successive occurrences</xsd:documentation>
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="offset" type="am:Time"/>
-          <xsd:element name="nextOccurrence" type="am:Deviation"/>
+          <xsd:element name="nextOccurrence" type="am:ITimeDeviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4265,11 +4474,11 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
       <xsd:extension base="am:Stimulus">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="step" type="am:Time"/>
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
-          <xsd:element name="maxIncreasePerStep" type="am:DoubleObject"/>
-          <xsd:element name="maxDecreasePerStep" type="am:DoubleObject"/>
+          <xsd:element name="occurrencesPerStep" type="am:IContinuousDeviation"/>
           <xsd:element name="scenario" type="am:Scenario"/>
         </xsd:choice>
+        <xsd:attribute name="maxIncreasePerStep" type="xsd:double"/>
+        <xsd:attribute name="maxDecreasePerStep" type="xsd:double"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5278,10 +5487,9 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:ComputationItem">
+      <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="default" type="am:NeedEntry"/>
-          <xsd:element name="extended" type="am:ExecutionNeedExtended"/>
+          <xsd:element name="needs" type="am:NeedEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -5291,20 +5499,9 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ExecutionNeedExtended">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
-      <xsd:element name="value" type="am:NeedEntry"/>
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="key" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:element name="ExecutionNeedExtended" type="am:ExecutionNeedExtended"/>
   <xsd:complexType name="NeedEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="value" type="am:Need"/>
+      <xsd:element name="value" type="am:IDiscreteDeviation"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
@@ -5312,28 +5509,28 @@ which are belonging together.</xsd:documentation>
     <xsd:attribute name="key" type="xsd:string" use="required"/>
   </xsd:complexType>
   <xsd:element name="NeedEntry" type="am:NeedEntry"/>
-  <xsd:complexType name="ExecutionTicks">
+  <xsd:complexType name="Ticks">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution ticks of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution IDiscreteDeviation of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ComputationItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="default" type="am:Ticks"/>
+          <xsd:element name="default" type="am:IDiscreteDeviation"/>
           <xsd:element name="extended" type="am:TicksEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ExecutionTicks" type="am:ExecutionTicks">
+  <xsd:element name="Ticks" type="am:Ticks">
     <xsd:annotation>
-      <xsd:documentation>Representation of the execution ticks of a Runnable (default and core-specific)</xsd:documentation>
+      <xsd:documentation>Representation of the execution IDiscreteDeviation of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="TicksEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="key" type="am:ProcessingUnitDefinition"/>
-      <xsd:element name="value" type="am:Ticks"/>
+      <xsd:element name="value" type="am:IDiscreteDeviation"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
@@ -5916,7 +6113,7 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="step" type="am:Time"/>
-          <xsd:element name="occurrencesPerStep" type="am:Deviation"/>
+          <xsd:element name="occurrencesPerStep" type="am:IContinuousDeviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
@@ -5931,7 +6128,7 @@ Used for first definition of an activation rate, which is later refined by stimu
     <xsd:complexContent>
       <xsd:extension base="am:Activation">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="activationDeviation" type="am:Deviation"/>
+          <xsd:element name="activation" type="am:ITimeDeviation"/>
         </xsd:choice>
         <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
@@ -6001,18 +6198,6 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:documentation>Contains information about access statistic values</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="InstructionFetch">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="count" type="am:NumericStatistic"/>
-          <xsd:element name="misses" type="am:NumericStatistic"/>
-          <xsd:element name="cyclesPerFetch" type="am:NumericStatistic"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="InstructionFetch" type="am:InstructionFetch"/>
   <xsd:complexType name="RunEntityCallStatistic">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
@@ -6038,7 +6223,7 @@ Used for first definition of an activation rate, which is later refined by stimu
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="runtimes" type="am:Time"/>
-          <xsd:element name="runtimeDeviation" type="am:Deviation"/>
+          <xsd:element name="runtimeDeviation" type="am:ITimeDeviation"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>

@@ -20,79 +20,10 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Bounded Continuous Distribution</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getLowerBound <em>Lower Bound</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getUpperBound <em>Upper Bound</em>}</li>
- * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedContinuousDistribution()
  * @model abstract="true"
  * @generated
  */
-public interface BoundedContinuousDistribution extends ContinuousDeviation {
-	/**
-	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lower Bound</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lower Bound</em>' attribute.
-	 * @see #setLowerBound(Double)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedContinuousDistribution_LowerBound()
-	 * @model default="0.0" unique="false" required="true"
-	 * @generated
-	 */
-	Double getLowerBound();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getLowerBound <em>Lower Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lower Bound</em>' attribute.
-	 * @see #getLowerBound()
-	 * @generated
-	 */
-	void setLowerBound(Double value);
-
-	/**
-	 * Returns the value of the '<em><b>Upper Bound</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Upper Bound</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Upper Bound</em>' attribute.
-	 * @see #setUpperBound(Double)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedContinuousDistribution_UpperBound()
-	 * @model default="0.0" unique="false" required="true"
-	 * @generated
-	 */
-	Double getUpperBound();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution#getUpperBound <em>Upper Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Upper Bound</em>' attribute.
-	 * @see #getUpperBound()
-	 * @generated
-	 */
-	void setUpperBound(Double value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 * @generated
-	 */
-	Double getAverage();
-
+public interface BoundedContinuousDistribution extends ContinuousInterval, IContinuousDeviation {
 } // BoundedContinuousDistribution

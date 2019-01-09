@@ -16,15 +16,10 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
-
-import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -37,12 +32,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl#getOccurrences <em>Occurrences</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl#getInterval <em>Interval</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl implements ContinuousHistogramEntry {
+public class ContinuousHistogramEntryImpl extends ContinuousIntervalImpl implements ContinuousHistogramEntry {
 	/**
 	 * The default value of the '{@link #getOccurrences() <em>Occurrences</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,16 +56,6 @@ public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl im
 	 * @ordered
 	 */
 	protected long occurrences = OCCURRENCES_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInterval() <em>Interval</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterval()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContinuousInterval interval;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,70 +102,11 @@ public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousInterval getInterval() {
-		return interval;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInterval(ContinuousInterval newInterval, NotificationChain msgs) {
-		ContinuousInterval oldInterval = interval;
-		interval = newInterval;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL, oldInterval, newInterval);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInterval(ContinuousInterval newInterval) {
-		if (newInterval != interval) {
-			NotificationChain msgs = null;
-			if (interval != null)
-				msgs = ((InternalEObject)interval).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL, null, msgs);
-			if (newInterval != null)
-				msgs = ((InternalEObject)newInterval).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL, null, msgs);
-			msgs = basicSetInterval(newInterval, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL, newInterval, newInterval));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL:
-				return basicSetInterval(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES:
 				return getOccurrences();
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL:
-				return getInterval();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,9 +121,6 @@ public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl im
 		switch (featureID) {
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES:
 				setOccurrences((Long)newValue);
-				return;
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL:
-				setInterval((ContinuousInterval)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,9 +137,6 @@ public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl im
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES:
 				setOccurrences(OCCURRENCES_EDEFAULT);
 				return;
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL:
-				setInterval((ContinuousInterval)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,8 +151,6 @@ public class ContinuousHistogramEntryImpl extends AmaltheaExtendedEObjectImpl im
 		switch (featureID) {
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES:
 				return occurrences != OCCURRENCES_EDEFAULT;
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY__INTERVAL:
-				return interval != null;
 		}
 		return super.eIsSet(featureID);
 	}

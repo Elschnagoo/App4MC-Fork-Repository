@@ -164,7 +164,7 @@ public class MeasurementItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMeasurement_RuntimeDeviation(),
-				 AmaltheaFactory.eINSTANCE.createTimeInterval()));
+				 AmaltheaFactory.eINSTANCE.createTimeBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

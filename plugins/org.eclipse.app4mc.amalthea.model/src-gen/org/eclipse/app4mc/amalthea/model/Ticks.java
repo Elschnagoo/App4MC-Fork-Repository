@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EMap;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Representation of the execution DiscreteDeviation of a Runnable (default and core-specific)
+ * Representation of the execution IDiscreteDeviation of a Runnable (default and core-specific)
  * <!-- end-model-doc -->
  *
  * <p>
@@ -47,12 +47,12 @@ public interface Ticks extends ComputationItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' containment reference.
-	 * @see #setDefault(DiscreteDeviation)
+	 * @see #setDefault(IDiscreteDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTicks_Default()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DiscreteDeviation getDefault();
+	IDiscreteDeviation getDefault();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Ticks#getDefault <em>Default</em>}' containment reference.
@@ -62,12 +62,12 @@ public interface Ticks extends ComputationItem {
 	 * @see #getDefault()
 	 * @generated
 	 */
-	void setDefault(DiscreteDeviation value);
+	void setDefault(IDiscreteDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' map.
 	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
-	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.DiscreteDeviation},
+	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation},
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' map isn't clear,
@@ -76,9 +76,9 @@ public interface Ticks extends ComputationItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTicks_Extended()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.TicksEntry&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.DiscreteDeviation&gt;"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.TicksEntry&lt;org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition, org.eclipse.app4mc.amalthea.model.IDiscreteDeviation&gt;"
 	 * @generated
 	 */
-	EMap<ProcessingUnitDefinition, DiscreteDeviation> getExtended();
+	EMap<ProcessingUnitDefinition, IDiscreteDeviation> getExtended();
 
 } // Ticks

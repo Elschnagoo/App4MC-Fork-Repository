@@ -32,7 +32,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface TruncatedTimeDistribution extends TimeDeviation {
+public interface TruncatedTimeDistribution extends ITimeDeviation {
 	/**
 	 * Returns the value of the '<em><b>Lower Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

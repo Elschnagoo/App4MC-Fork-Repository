@@ -18,22 +18,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Time Deviation</b></em>'.
+ * A representation of the model object '<em><b>IDiscrete Deviation</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeDeviation()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getIDiscreteDeviation()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface TimeDeviation extends EObject {
+public interface IDiscreteDeviation extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getLowerBound();
+	Long getLowerBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public interface TimeDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getAverage();
+	Double getAverage();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,6 +49,6 @@ public interface TimeDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getUpperBound();
+	Long getUpperBound();
 
-} // TimeDeviation
+} // IDiscreteDeviation

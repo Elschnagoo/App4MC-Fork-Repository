@@ -18,16 +18,25 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.SamplingType;
 import org.eclipse.app4mc.amalthea.model.TimeInterval;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -36,7 +45,14 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvider {
+public class TimeIntervalItemProvider 
+	extends AmaltheaExtendedItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -58,42 +74,39 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSamplingTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Sampling Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSamplingTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TimeInterval_samplingType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TimeInterval_samplingType_feature", "_UI_TimeInterval_type"),
-				 AmaltheaPackage.eINSTANCE.getTimeInterval_SamplingType(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns TimeInterval.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TimeInterval"));
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTimeInterval_LowerBound());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getTimeInterval_UpperBound());
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -112,22 +125,11 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
-		SamplingType labelValue = ((TimeInterval)object).getSamplingType();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TimeInterval_type") :
-			getString("_UI_TimeInterval_type") + " " + label;
+	@Override
+	public String getText(Object object) {
+		return getString("_UI_TimeInterval_type");
 	}
 
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomDeviationItemProviderService.getTimeIntervalItemProviderText(object, getTextGen(object));
-	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -136,34 +138,16 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TimeInterval.class)) {
-			case AmaltheaPackage.TIME_INTERVAL__SAMPLING_TYPE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			case AmaltheaPackage.TIME_INTERVAL__LOWER_BOUND:
+			case AmaltheaPackage.TIME_INTERVAL__UPPER_BOUND:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
-				.getTimeIntervalItemProviderNotifications(notification);
-		if (!notifications.isEmpty()) {
-			for (final ViewerNotification vn : notifications) {
-				fireNotifyChanged(vn);
-			}
-			return;
-		}
-
 		super.notifyChanged(notification);
 	}
 
@@ -177,6 +161,16 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTimeInterval_LowerBound(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getTimeInterval_UpperBound(),
+				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 	/**
@@ -191,8 +185,8 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getBoundedTimeDistribution_LowerBound() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getBoundedTimeDistribution_UpperBound();
+			childFeature == AmaltheaPackage.eINSTANCE.getTimeInterval_LowerBound() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getTimeInterval_UpperBound();
 
 		if (qualify) {
 			return getString
@@ -200,6 +194,17 @@ public class TimeIntervalItemProvider extends BoundedTimeDistributionItemProvide
 				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return AmaltheaEditPlugin.INSTANCE;
 	}
 
 }

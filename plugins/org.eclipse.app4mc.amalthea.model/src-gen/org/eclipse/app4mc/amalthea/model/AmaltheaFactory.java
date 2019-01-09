@@ -259,13 +259,13 @@ public interface AmaltheaFactory extends EFactory {
 	TimeHistogramEntry createTimeHistogramEntry();
 
 	/**
-	 * Returns a new object of class '<em>Time Interval</em>'.
+	 * Returns a new object of class '<em>Time Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time Interval</em>'.
+	 * @return a new object of class '<em>Time Boundaries</em>'.
 	 * @generated
 	 */
-	TimeInterval createTimeInterval();
+	TimeBoundaries createTimeBoundaries();
 
 	/**
 	 * Returns a new object of class '<em>Time Statistics</em>'.
@@ -340,13 +340,13 @@ public interface AmaltheaFactory extends EFactory {
 	DiscreteHistogramEntry createDiscreteHistogramEntry();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Interval</em>'.
+	 * Returns a new object of class '<em>Discrete Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Interval</em>'.
+	 * @return a new object of class '<em>Discrete Boundaries</em>'.
 	 * @generated
 	 */
-	DiscreteInterval createDiscreteInterval();
+	DiscreteBoundaries createDiscreteBoundaries();
 
 	/**
 	 * Returns a new object of class '<em>Discrete Statistics</em>'.
@@ -421,13 +421,13 @@ public interface AmaltheaFactory extends EFactory {
 	ContinuousHistogramEntry createContinuousHistogramEntry();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Interval</em>'.
+	 * Returns a new object of class '<em>Continuous Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Interval</em>'.
+	 * @return a new object of class '<em>Continuous Boundaries</em>'.
 	 * @generated
 	 */
-	ContinuousInterval createContinuousInterval();
+	ContinuousBoundaries createContinuousBoundaries();
 
 	/**
 	 * Returns a new object of class '<em>Continuous Statistics</em>'.

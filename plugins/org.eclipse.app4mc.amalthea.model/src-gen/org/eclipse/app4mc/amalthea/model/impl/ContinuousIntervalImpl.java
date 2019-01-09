@@ -14,15 +14,22 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
-import org.eclipse.app4mc.amalthea.model.SamplingType;
+
+import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.xbase.lib.DoubleExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,31 +39,52 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl#getSamplingType <em>Sampling Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl implements ContinuousInterval {
+public abstract class ContinuousIntervalImpl extends AmaltheaExtendedEObjectImpl implements ContinuousInterval {
 	/**
-	 * The default value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The default value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SamplingType SAMPLING_TYPE_EDEFAULT = SamplingType.DEFAULT;
+	protected static final Double LOWER_BOUND_EDEFAULT = new Double(0.0);
 
 	/**
-	 * The cached value of the '{@link #getSamplingType() <em>Sampling Type</em>}' attribute.
+	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSamplingType()
+	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
 	 */
-	protected SamplingType samplingType = SAMPLING_TYPE_EDEFAULT;
+	protected Double lowerBound = LOWER_BOUND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Double UPPER_BOUND_EDEFAULT = new Double(0.0);
+
+	/**
+	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double upperBound = UPPER_BOUND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,8 +110,8 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SamplingType getSamplingType() {
-		return samplingType;
+	public Double getLowerBound() {
+		return lowerBound;
 	}
 
 	/**
@@ -91,11 +119,46 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSamplingType(SamplingType newSamplingType) {
-		SamplingType oldSamplingType = samplingType;
-		samplingType = newSamplingType == null ? SAMPLING_TYPE_EDEFAULT : newSamplingType;
+	public void setLowerBound(Double newLowerBound) {
+		Double oldLowerBound = lowerBound;
+		lowerBound = newLowerBound;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE, oldSamplingType, samplingType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND, oldLowerBound, lowerBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double getUpperBound() {
+		return upperBound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpperBound(Double newUpperBound) {
+		Double oldUpperBound = upperBound;
+		upperBound = newUpperBound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND, oldUpperBound, upperBound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double getAverage() {
+		Double _lowerBound = this.getLowerBound();
+		Double _upperBound = this.getUpperBound();
+		Double _lowerBound_1 = this.getLowerBound();
+		double _minus = DoubleExtensions.operator_minus(_upperBound, _lowerBound_1);
+		double _divide = (_minus / 2.0);
+		return Double.valueOf(((_lowerBound).doubleValue() + _divide));
 	}
 
 	/**
@@ -106,8 +169,10 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE:
-				return getSamplingType();
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND:
+				return getLowerBound();
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND:
+				return getUpperBound();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +185,11 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE:
-				setSamplingType((SamplingType)newValue);
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND:
+				setLowerBound((Double)newValue);
+				return;
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND:
+				setUpperBound((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +203,11 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE:
-				setSamplingType(SAMPLING_TYPE_EDEFAULT);
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND:
+				setLowerBound(LOWER_BOUND_EDEFAULT);
+				return;
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND:
+				setUpperBound(UPPER_BOUND_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,10 +221,26 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CONTINUOUS_INTERVAL__SAMPLING_TYPE:
-				return samplingType != SAMPLING_TYPE_EDEFAULT;
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__LOWER_BOUND:
+				return LOWER_BOUND_EDEFAULT == null ? lowerBound != null : !LOWER_BOUND_EDEFAULT.equals(lowerBound);
+			case AmaltheaPackage.CONTINUOUS_INTERVAL__UPPER_BOUND:
+				return UPPER_BOUND_EDEFAULT == null ? upperBound != null : !UPPER_BOUND_EDEFAULT.equals(upperBound);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.CONTINUOUS_INTERVAL___GET_AVERAGE:
+				return getAverage();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -166,8 +253,10 @@ public class ContinuousIntervalImpl extends BoundedContinuousDistributionImpl im
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (samplingType: ");
-		result.append(samplingType);
+		result.append(" (lowerBound: ");
+		result.append(lowerBound);
+		result.append(", upperBound: ");
+		result.append(upperBound);
 		result.append(')');
 		return result.toString();
 	}

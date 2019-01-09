@@ -636,26 +636,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeInterval} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TimeBoundaries} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimeIntervalItemProvider timeIntervalItemProvider;
+	protected TimeBoundariesItemProvider timeBoundariesItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeInterval}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TimeBoundaries}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTimeIntervalAdapter() {
-		if (timeIntervalItemProvider == null) {
-			timeIntervalItemProvider = new TimeIntervalItemProvider(this);
+	public Adapter createTimeBoundariesAdapter() {
+		if (timeBoundariesItemProvider == null) {
+			timeBoundariesItemProvider = new TimeBoundariesItemProvider(this);
 		}
 
-		return timeIntervalItemProvider;
+		return timeBoundariesItemProvider;
 	}
 
 	/**
@@ -843,26 +843,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteInterval} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DiscreteBoundaries} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DiscreteIntervalItemProvider discreteIntervalItemProvider;
+	protected DiscreteBoundariesItemProvider discreteBoundariesItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteInterval}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DiscreteBoundaries}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDiscreteIntervalAdapter() {
-		if (discreteIntervalItemProvider == null) {
-			discreteIntervalItemProvider = new DiscreteIntervalItemProvider(this);
+	public Adapter createDiscreteBoundariesAdapter() {
+		if (discreteBoundariesItemProvider == null) {
+			discreteBoundariesItemProvider = new DiscreteBoundariesItemProvider(this);
 		}
 
-		return discreteIntervalItemProvider;
+		return discreteBoundariesItemProvider;
 	}
 
 	/**
@@ -1050,26 +1050,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousInterval} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ContinuousBoundaries} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ContinuousIntervalItemProvider continuousIntervalItemProvider;
+	protected ContinuousBoundariesItemProvider continuousBoundariesItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousInterval}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ContinuousBoundaries}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createContinuousIntervalAdapter() {
-		if (continuousIntervalItemProvider == null) {
-			continuousIntervalItemProvider = new ContinuousIntervalItemProvider(this);
+	public Adapter createContinuousBoundariesAdapter() {
+		if (continuousBoundariesItemProvider == null) {
+			continuousBoundariesItemProvider = new ContinuousBoundariesItemProvider(this);
 		}
 
-		return continuousIntervalItemProvider;
+		return continuousBoundariesItemProvider;
 	}
 
 	/**
@@ -6602,7 +6602,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (timeConstantItemProvider != null) timeConstantItemProvider.dispose();
 		if (timeHistogramItemProvider != null) timeHistogramItemProvider.dispose();
 		if (timeHistogramEntryItemProvider != null) timeHistogramEntryItemProvider.dispose();
-		if (timeIntervalItemProvider != null) timeIntervalItemProvider.dispose();
+		if (timeBoundariesItemProvider != null) timeBoundariesItemProvider.dispose();
 		if (timeStatisticsItemProvider != null) timeStatisticsItemProvider.dispose();
 		if (timeUniformDistributionItemProvider != null) timeUniformDistributionItemProvider.dispose();
 		if (timeGaussDistributionItemProvider != null) timeGaussDistributionItemProvider.dispose();
@@ -6611,7 +6611,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (discreteConstantItemProvider != null) discreteConstantItemProvider.dispose();
 		if (discreteHistogramItemProvider != null) discreteHistogramItemProvider.dispose();
 		if (discreteHistogramEntryItemProvider != null) discreteHistogramEntryItemProvider.dispose();
-		if (discreteIntervalItemProvider != null) discreteIntervalItemProvider.dispose();
+		if (discreteBoundariesItemProvider != null) discreteBoundariesItemProvider.dispose();
 		if (discreteStatisticsItemProvider != null) discreteStatisticsItemProvider.dispose();
 		if (discreteUniformDistributionItemProvider != null) discreteUniformDistributionItemProvider.dispose();
 		if (discreteGaussDistributionItemProvider != null) discreteGaussDistributionItemProvider.dispose();
@@ -6620,7 +6620,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (continuousConstantItemProvider != null) continuousConstantItemProvider.dispose();
 		if (continuousHistogramItemProvider != null) continuousHistogramItemProvider.dispose();
 		if (continuousHistogramEntryItemProvider != null) continuousHistogramEntryItemProvider.dispose();
-		if (continuousIntervalItemProvider != null) continuousIntervalItemProvider.dispose();
+		if (continuousBoundariesItemProvider != null) continuousBoundariesItemProvider.dispose();
 		if (continuousStatisticsItemProvider != null) continuousStatisticsItemProvider.dispose();
 		if (continuousUniformDistributionItemProvider != null) continuousUniformDistributionItemProvider.dispose();
 		if (continuousGaussDistributionItemProvider != null) continuousGaussDistributionItemProvider.dispose();

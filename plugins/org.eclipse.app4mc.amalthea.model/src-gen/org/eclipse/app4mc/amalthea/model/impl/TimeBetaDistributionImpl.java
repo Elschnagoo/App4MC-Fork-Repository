@@ -17,10 +17,10 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.TimeDeviation;
+import org.eclipse.app4mc.amalthea.model.TimeInterval;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -239,15 +239,15 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == TimeDeviation.class) {
+		if (baseClass == TimeInterval.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.TIME_DEVIATION___GET_AVERAGE: return AmaltheaPackage.TIME_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.TIME_INTERVAL___GET_AVERAGE: return AmaltheaPackage.TIME_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
-		if (baseClass == BoundedTimeDistribution.class) {
+		if (baseClass == ITimeDeviation.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE: return AmaltheaPackage.TIME_BETA_DISTRIBUTION___GET_AVERAGE;
+				case AmaltheaPackage.ITIME_DEVIATION___GET_AVERAGE: return AmaltheaPackage.TIME_BETA_DISTRIBUTION___GET_AVERAGE;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

@@ -251,7 +251,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_ReadLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -291,7 +291,7 @@ public class ConnectionHandlerDefinitionItemProvider extends HwDefinitionItemPro
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getConnectionHandlerDefinition_WriteLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteInterval()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

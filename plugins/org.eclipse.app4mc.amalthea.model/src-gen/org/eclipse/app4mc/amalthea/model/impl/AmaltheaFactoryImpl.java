@@ -71,11 +71,11 @@ import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
 import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
@@ -110,12 +110,11 @@ import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
@@ -158,6 +157,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
@@ -324,11 +324,11 @@ import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
 import org.eclipse.app4mc.amalthea.model.TimeConstant;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
@@ -428,7 +428,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TIME_CONSTANT: return createTimeConstant();
 			case AmaltheaPackage.TIME_HISTOGRAM: return createTimeHistogram();
 			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: return createTimeHistogramEntry();
-			case AmaltheaPackage.TIME_INTERVAL: return createTimeInterval();
+			case AmaltheaPackage.TIME_BOUNDARIES: return createTimeBoundaries();
 			case AmaltheaPackage.TIME_STATISTICS: return createTimeStatistics();
 			case AmaltheaPackage.TIME_UNIFORM_DISTRIBUTION: return createTimeUniformDistribution();
 			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION: return createTimeGaussDistribution();
@@ -437,7 +437,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.DISCRETE_CONSTANT: return createDiscreteConstant();
 			case AmaltheaPackage.DISCRETE_HISTOGRAM: return createDiscreteHistogram();
 			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY: return createDiscreteHistogramEntry();
-			case AmaltheaPackage.DISCRETE_INTERVAL: return createDiscreteInterval();
+			case AmaltheaPackage.DISCRETE_BOUNDARIES: return createDiscreteBoundaries();
 			case AmaltheaPackage.DISCRETE_STATISTICS: return createDiscreteStatistics();
 			case AmaltheaPackage.DISCRETE_UNIFORM_DISTRIBUTION: return createDiscreteUniformDistribution();
 			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION: return createDiscreteGaussDistribution();
@@ -446,7 +446,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONTINUOUS_CONSTANT: return createContinuousConstant();
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM: return createContinuousHistogram();
 			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY: return createContinuousHistogramEntry();
-			case AmaltheaPackage.CONTINUOUS_INTERVAL: return createContinuousInterval();
+			case AmaltheaPackage.CONTINUOUS_BOUNDARIES: return createContinuousBoundaries();
 			case AmaltheaPackage.CONTINUOUS_STATISTICS: return createContinuousStatistics();
 			case AmaltheaPackage.CONTINUOUS_UNIFORM_DISTRIBUTION: return createContinuousUniformDistribution();
 			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION: return createContinuousGaussDistribution();
@@ -1220,9 +1220,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeInterval createTimeInterval() {
-		TimeIntervalImpl timeInterval = new TimeIntervalImpl();
-		return timeInterval;
+	public TimeBoundaries createTimeBoundaries() {
+		TimeBoundariesImpl timeBoundaries = new TimeBoundariesImpl();
+		return timeBoundaries;
 	}
 
 	/**
@@ -1310,9 +1310,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteInterval createDiscreteInterval() {
-		DiscreteIntervalImpl discreteInterval = new DiscreteIntervalImpl();
-		return discreteInterval;
+	public DiscreteBoundaries createDiscreteBoundaries() {
+		DiscreteBoundariesImpl discreteBoundaries = new DiscreteBoundariesImpl();
+		return discreteBoundaries;
 	}
 
 	/**
@@ -1400,9 +1400,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousInterval createContinuousInterval() {
-		ContinuousIntervalImpl continuousInterval = new ContinuousIntervalImpl();
-		return continuousInterval;
+	public ContinuousBoundaries createContinuousBoundaries() {
+		ContinuousBoundariesImpl continuousBoundaries = new ContinuousBoundariesImpl();
+		return continuousBoundaries;
 	}
 
 	/**
@@ -3350,7 +3350,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, DiscreteDeviation> createNeedEntry() {
+	public Map.Entry<String, IDiscreteDeviation> createNeedEntry() {
 		NeedEntryImpl needEntry = new NeedEntryImpl();
 		return needEntry;
 	}
@@ -3370,7 +3370,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ProcessingUnitDefinition, DiscreteDeviation> createTicksEntry() {
+	public Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation> createTicksEntry() {
 		TicksEntryImpl ticksEntry = new TicksEntryImpl();
 		return ticksEntry;
 	}

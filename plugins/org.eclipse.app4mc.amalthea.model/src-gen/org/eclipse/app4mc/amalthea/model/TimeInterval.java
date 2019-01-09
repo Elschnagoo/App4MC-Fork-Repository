@@ -14,55 +14,84 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Time Interval</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Defines the upper and lower bounds of a value interval without defining the distribution
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getSamplingType <em>Sampling Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeInterval()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface TimeInterval extends BoundedTimeDistribution {
+public interface TimeInterval extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Sampling Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SamplingType}.
+	 * Returns the value of the '<em><b>Lower Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sampling Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Lower Bound</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #setSamplingType(SamplingType)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeInterval_SamplingType()
-	 * @model unique="false"
+	 * @return the value of the '<em>Lower Bound</em>' containment reference.
+	 * @see #setLowerBound(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeInterval_LowerBound()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	SamplingType getSamplingType();
+	Time getLowerBound();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getSamplingType <em>Sampling Type</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getLowerBound <em>Lower Bound</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sampling Type</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.SamplingType
-	 * @see #getSamplingType()
+	 * @param value the new value of the '<em>Lower Bound</em>' containment reference.
+	 * @see #getLowerBound()
 	 * @generated
 	 */
-	void setSamplingType(SamplingType value);
+	void setLowerBound(Time value);
+
+	/**
+	 * Returns the value of the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Upper Bound</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Upper Bound</em>' containment reference.
+	 * @see #setUpperBound(Time)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTimeInterval_UpperBound()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Time getUpperBound();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.TimeInterval#getUpperBound <em>Upper Bound</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Upper Bound</em>' containment reference.
+	 * @see #getUpperBound()
+	 * @generated
+	 */
+	void setUpperBound(Time value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	Time getAverage();
 
 } // TimeInterval

@@ -106,7 +106,7 @@ public class ContinuousHistogramImpl extends AmaltheaExtendedEObjectImpl impleme
 	public Double getLowerBound() {
 		final Function1<ContinuousHistogramEntry, Double> _function = new Function1<ContinuousHistogramEntry, Double>() {
 			public Double apply(final ContinuousHistogramEntry it) {
-				return it.getInterval().getLowerBound();
+				return it.getLowerBound();
 			}
 		};
 		return IterableExtensions.<Double>min(XcoreEListExtensions.<ContinuousHistogramEntry, Double>map(this.getEntries(), _function));
@@ -120,7 +120,7 @@ public class ContinuousHistogramImpl extends AmaltheaExtendedEObjectImpl impleme
 	public Double getUpperBound() {
 		final Function1<ContinuousHistogramEntry, Double> _function = new Function1<ContinuousHistogramEntry, Double>() {
 			public Double apply(final ContinuousHistogramEntry it) {
-				return it.getInterval().getUpperBound();
+				return it.getUpperBound();
 			}
 		};
 		return IterableExtensions.<Double>max(XcoreEListExtensions.<ContinuousHistogramEntry, Double>map(this.getEntries(), _function));
@@ -136,7 +136,7 @@ public class ContinuousHistogramImpl extends AmaltheaExtendedEObjectImpl impleme
 		{
 			final Function1<ContinuousHistogramEntry, Double> _function = new Function1<ContinuousHistogramEntry, Double>() {
 				public Double apply(final ContinuousHistogramEntry it) {
-					Double _average = it.getInterval().getAverage();
+					Double _average = it.getAverage();
 					long _occurrences = it.getOccurrences();
 					return Double.valueOf(((_average).doubleValue() * _occurrences));
 				}

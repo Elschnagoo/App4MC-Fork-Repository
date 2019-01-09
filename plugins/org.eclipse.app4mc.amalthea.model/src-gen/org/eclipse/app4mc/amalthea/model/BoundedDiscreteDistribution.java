@@ -20,79 +20,10 @@ package org.eclipse.app4mc.amalthea.model;
  * A representation of the model object '<em><b>Bounded Discrete Distribution</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getLowerBound <em>Lower Bound</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getUpperBound <em>Upper Bound</em>}</li>
- * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedDiscreteDistribution()
  * @model abstract="true"
  * @generated
  */
-public interface BoundedDiscreteDistribution extends DiscreteDeviation {
-	/**
-	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lower Bound</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lower Bound</em>' attribute.
-	 * @see #setLowerBound(Long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedDiscreteDistribution_LowerBound()
-	 * @model default="0" unique="false" required="true"
-	 * @generated
-	 */
-	Long getLowerBound();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getLowerBound <em>Lower Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lower Bound</em>' attribute.
-	 * @see #getLowerBound()
-	 * @generated
-	 */
-	void setLowerBound(Long value);
-
-	/**
-	 * Returns the value of the '<em><b>Upper Bound</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Upper Bound</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Upper Bound</em>' attribute.
-	 * @see #setUpperBound(Long)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBoundedDiscreteDistribution_UpperBound()
-	 * @model default="0" unique="false" required="true"
-	 * @generated
-	 */
-	Long getUpperBound();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution#getUpperBound <em>Upper Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Upper Bound</em>' attribute.
-	 * @see #getUpperBound()
-	 * @generated
-	 */
-	void setUpperBound(Long value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 * @generated
-	 */
-	Double getAverage();
-
+public interface BoundedDiscreteDistribution extends DiscreteInterval, IDiscreteDeviation {
 } // BoundedDiscreteDistribution

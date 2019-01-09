@@ -231,7 +231,7 @@ public class VariableRateStimulusItemProvider extends StimulusItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateStimulus_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousInterval()));
+				 AmaltheaFactory.eINSTANCE.createContinuousBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ContinuousHistogram extends ContinuousDeviation {
+public interface ContinuousHistogram extends IContinuousDeviation {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry}.

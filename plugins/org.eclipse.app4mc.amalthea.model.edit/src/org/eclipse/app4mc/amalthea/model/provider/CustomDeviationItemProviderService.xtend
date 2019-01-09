@@ -21,8 +21,8 @@ import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
 import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution
 import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries
 import org.eclipse.app4mc.amalthea.model.ContinuousConstant
-import org.eclipse.app4mc.amalthea.model.ContinuousDeviation
 import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogram
 import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry
@@ -31,8 +31,8 @@ import org.eclipse.app4mc.amalthea.model.ContinuousStatistics
 import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution
 import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution
 import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries
 import org.eclipse.app4mc.amalthea.model.DiscreteConstant
-import org.eclipse.app4mc.amalthea.model.DiscreteDeviation
 import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogram
 import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
@@ -40,9 +40,12 @@ import org.eclipse.app4mc.amalthea.model.DiscreteInterval
 import org.eclipse.app4mc.amalthea.model.DiscreteStatistics
 import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
 import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.IContinuousDeviation
+import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries
 import org.eclipse.app4mc.amalthea.model.TimeConstant
-import org.eclipse.app4mc.amalthea.model.TimeDeviation
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution
 import org.eclipse.app4mc.amalthea.model.TimeHistogram
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry
@@ -65,7 +68,7 @@ class CustomDeviationItemProviderService {
 		
 		// special cases
 		switch object {
-			DiscreteDeviation:
+			IDiscreteDeviation:
 				if (name.endsWith("Latency")) name = name + " [cycles]"
 		}
 		
@@ -92,7 +95,7 @@ class CustomDeviationItemProviderService {
 ///// _________________________ Deviations _________________________
 ///// 
 
-	private def static String getIntervalText(ContinuousDeviation obj) {
+	private def static String getIntervalText(ContinuousInterval obj) {
 		if (obj === null) return "[]"
 		
 		val min = obj.lowerBound
@@ -102,7 +105,7 @@ class CustomDeviationItemProviderService {
 		return "[" + s1 +", " + s2 + "]"
 	}
 
-	private def static String getIntervalText(DiscreteDeviation obj) {
+	private def static String getIntervalText(DiscreteInterval obj) {
 		if (obj === null) return "[]"
 		
 		val min = obj.lowerBound
@@ -112,7 +115,7 @@ class CustomDeviationItemProviderService {
 		return "[" + s1 +", " + s2 + "]"
 	}
 
-	private def static String getIntervalText(TimeDeviation obj) {
+	private def static String getIntervalText(TimeInterval obj) {
 		if (obj === null) return "[]"
 		
 		val min = obj.lowerBound
@@ -122,13 +125,13 @@ class CustomDeviationItemProviderService {
 		return "[" + s1 +", " + s2 + "]"
 	}
 
-	def static getContinuousDeviationText(ContinuousDeviation dev) {
+	def static getContinuousDeviationText(IContinuousDeviation dev) {
 		switch dev {
 			ContinuousBetaDistribution: "Continuous Beta Distribution"
 			ContinuousConstant: "Continuous Constant (value: " + dev.value + ")"
 			ContinuousGaussDistribution: "Continuous Gauss Distribution (mean: " + dev.mean + ")"
 			ContinuousHistogram : "Continuous Histogram"
-			ContinuousInterval : "Continuous Interval " + getIntervalText(dev)
+			ContinuousBoundaries : "Continuous Boundaries " + getIntervalText(dev)
 			ContinuousStatistics : "Continuous Statistics"
 			ContinuousUniformDistribution : "Continuous Uniform Distribution" + getIntervalText(dev)
 			ContinuousWeibullEstimatorsDistribution : "Continuous Weibull Distribution"
@@ -136,13 +139,13 @@ class CustomDeviationItemProviderService {
 		}
 	}
 
-	def static getDiscreteDeviationText(DiscreteDeviation dev) {
+	def static getDiscreteDeviationText(IDiscreteDeviation dev) {
 		switch dev {
 			DiscreteBetaDistribution: "Discrete Beta Distribution"
 			DiscreteConstant: "Discrete Constant (value: " + dev.value + ")"
 			DiscreteGaussDistribution: "Discrete Gauss Distribution (mean: " + dev.mean + ")"
 			DiscreteHistogram : "Discrete Histogram"
-			DiscreteInterval : "Discrete Interval " + getIntervalText(dev)
+			DiscreteBoundaries : "Discrete Boundaries " + getIntervalText(dev)
 			DiscreteStatistics : "Discrete Statistics"
 			DiscreteUniformDistribution : "Discrete Uniform Distribution" + getIntervalText(dev)
 			DiscreteWeibullEstimatorsDistribution : "Discrete Weibull Distribution"
@@ -150,13 +153,13 @@ class CustomDeviationItemProviderService {
 		}
 	}
 
-	def static getTimeDeviationText(TimeDeviation dev) {
+	def static getTimeDeviationText(ITimeDeviation dev) {
 		switch dev {
 			TimeBetaDistribution: "Time Beta Distribution"
 			TimeConstant: "Time Constant (value: " + dev.value + ")"
 			TimeGaussDistribution: "Time Gauss Distribution (mean: " + dev.mean + ")"
 			TimeHistogram : "Time Histogram"
-			TimeInterval : "Time Interval " + getIntervalText(dev)
+			TimeBoundaries : "Time Boundaries " + getIntervalText(dev)
 			TimeStatistics : "Time Statistics"
 			TimeUniformDistribution : "Time Uniform Distribution" + getIntervalText(dev)
 			TimeWeibullEstimatorsDistribution : "Time Weibull Distribution"
@@ -283,27 +286,27 @@ class CustomDeviationItemProviderService {
 	def static String getContinuousHistogramEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof ContinuousHistogramEntry) {
 			val num = object.occurrences
-			return "Entry -- " + num + " x " + getIntervalText(object.interval)
+			return "Entry -- " + num + " x " + getIntervalText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousIntervalItemProvider
+	 * 						ContinuousBoundariesItemProvider
 	 *****************************************************************************/
-	def static String getContinuousIntervalItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousInterval) {
+	def static String getContinuousBoundariesItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousBoundaries) {
 			return getContainingFeatureName(object) + getContinuousDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousIntervalItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousBoundariesItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousConstant)) {
-			case AmaltheaPackage::CONTINUOUS_INTERVAL__SAMPLING_TYPE: {
+		switch notification.getFeatureID(typeof(ContinuousBoundaries)) {
+			case AmaltheaPackage::CONTINUOUS_BOUNDARIES__SAMPLING_TYPE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification, 2)
 				}
@@ -486,27 +489,27 @@ class CustomDeviationItemProviderService {
 	def static String getDiscreteHistogramEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof DiscreteHistogramEntry) {
 			val num = object.occurrences
-			return "Entry -- " + num + " x " + getIntervalText(object.interval)
+			return "Entry -- " + num + " x " + getIntervalText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteIntervalItemProvider
+	 * 						DiscreteBoundariesItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteIntervalItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteInterval) {
+	def static String getDiscreteBoundariesItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteBoundaries) {
 			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteIntervalItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteBoundariesItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteConstant)) {
-			case AmaltheaPackage::DISCRETE_INTERVAL__SAMPLING_TYPE: {
+		switch notification.getFeatureID(typeof(DiscreteBoundaries)) {
+			case AmaltheaPackage::DISCRETE_BOUNDARIES__SAMPLING_TYPE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification, 2)
 				}
@@ -689,27 +692,27 @@ class CustomDeviationItemProviderService {
 	def static String getTimeHistogramEntryItemProviderText(Object object, String defaultText) {
 		if (object instanceof TimeHistogramEntry) {
 			val num = object.occurrences
-			return "Entry -- " + num + " x " + getIntervalText(object.interval)
+			return "Entry -- " + num + " x " + getIntervalText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						TimeIntervalItemProvider
+	 * 						TimeBoundariesItemProvider
 	 *****************************************************************************/
-	def static String getTimeIntervalItemProviderText(Object object, String defaultText) {
-		if (object instanceof TimeInterval) {
+	def static String getTimeBoundariesItemProviderText(Object object, String defaultText) {
+		if (object instanceof TimeBoundaries) {
 			return getContainingFeatureName(object) + getTimeDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getTimeIntervalItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getTimeBoundariesItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(TimeConstant)) {
-			case AmaltheaPackage::TIME_INTERVAL__SAMPLING_TYPE: {
+		switch notification.getFeatureID(typeof(TimeBoundaries)) {
+			case AmaltheaPackage::TIME_BOUNDARIES__SAMPLING_TYPE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification, 2)
 				}
