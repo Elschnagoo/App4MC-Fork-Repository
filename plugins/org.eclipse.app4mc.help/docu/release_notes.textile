@@ -1,6 +1,20 @@
 h1. Release Notes
 
 
+h2. Eclipse APP4MC 0.9.3 (Jan 2019)
+
+Model handling
+* Model migration support (0.9.2 -> 0.9.3)
+* Optimized model search
+
+Model changes
+* Introduced "Ticks" as base concept for required computation effort
+* Simplified "Execution Needs" (no specific entries for different processing units)
+* Reworked distributions (discrete, continuous, time) without generics
+
+_For details see "Release 0.9.3 issues":https://projects.eclipse.org/projects/technology.app4mc/releases/0.9.3/bugs_
+
+
 h2. Eclipse APP4MC 0.9.2 (Oct 2018)
 
 Model handling
@@ -12,6 +26,7 @@ Model changes
 * Small extensions in the hardware model
 
 _For details see "Release 0.9.2 issues":https://projects.eclipse.org/projects/technology.app4mc/releases/0.9.2/bugs_
+
 
 h2. Eclipse APP4MC 0.9.1 (Jul 2018)
 

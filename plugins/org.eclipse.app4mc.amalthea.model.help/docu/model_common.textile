@@ -99,9 +99,14 @@ h3. Data Rate (and Data Rate Unit)
 
 h3. Deviation
 
-The __Deviation__ class is used to model statistical distributions within AMALTHEA. There is a wide variety of possible use cases, where such a distribution is needed. With such a deviation for example, the variation in run times of functions or respectively their instructions can be imitated. Therefore, AMALTHEA currently supports the following three statistical distributions:
+Deviations used to model constant values, histograms and statistical distributions within AMALTHEA. There is a wide variety of possible use cases, where such a distribution is needed. For example, the variation in runtime of functions can be imitated. Therefore, AMALTHEA currently supports the following statistical distributions:
 
 !(scale)../pictures/model_common_deviation.png!
+
+The earlier implementation used Generics to support the different use cases. To simplify the usage (via Java API and in the editor) the new implementation provides three different top level interfaces for TimeDeviation, DiscreteDeviation (integer values) and ContinuousDeviation (float values). They provide specialized methods to handle their values and a common interface to access minimum, maximum and average.
+The following image shows the detailed hierarchy of discrete deviations, the other implementations are built accordingly.
+
+!(scale)../pictures/model_common_deviations_discrete.png!
 
 h4. Boundaries
 
@@ -116,7 +121,6 @@ With the __Boundaries__ class it is possible to define the deviation of instruct
 !../pictures/model_common_deviation_boundaries_1.png!
 
 !../pictures/model_common_deviation_boundaries_2.png!
-
 
 h4. Uniform Distribution
 
@@ -142,6 +146,7 @@ The Weibull distribution is a statistical distribution whose shape is defined by
 
 !../pictures/model_common_deviation_weibull.png!
 
+
 h3. Statistic Elements
 
 The contained elements are representing statistical values.
@@ -152,23 +157,18 @@ The minimum and maximum values are set as a normal __int__ value,  the average t
 !../pictures/model_common_statistic.png!
 
 
+h3. Ticks
 
-h3. Instructions
+Ticks are used to express execution times in a basic way. The number of ticks characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. The corresponding execution time can be easily calculated if the frequency of the executing __ProcessingUnit__ (PU) is known. Depending on the capabilities of a PU the time to execute such an element will differ. If necessary the fundamentally different numbers for specific types of PUs can be stored as extended values in a map.
 
-Instructions are used to express execution times in a more abstract way. The number of instructions characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. Depending on the capabilities of a __Core__ (the frequency and the instructions per cycle) the time to execute such an element will differ.
+In the next picture __Ticks__ are shown in more detail.
 
-In the next picture a more detailed overview is given about the __Instructions__.
-
-!../pictures/model_common_instructions.png!
+!../pictures/model_common_ticks.png!
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
-| __Instructions__| As a runnable contains several instructions to perform, this is represented using different algorithms or a constant value to consume the same amount of time/ticks per cycle.|
-
-
-h3. Needs
-
-__Needs__ are used to express execution needs in the most abstract way. The number characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. In future releases __Needs__ will replace __Instructions__ because they can also represent instructions but are more flexible.
+| __default__| The default number of ticks. This value is used if (1) the executing PU is unknown or (2) no extended entry is available for the PU. |
+| __extended__| Possibility to store a PU-specific number of ticks. |
 
 
 h3. Counters

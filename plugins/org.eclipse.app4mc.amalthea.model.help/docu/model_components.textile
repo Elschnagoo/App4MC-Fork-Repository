@@ -5,8 +5,8 @@ The AMALTHEA component model is central accessible through the __ComponentsModel
 
 It holds the following types:
 
-* *Component* / *Composite* ('components' containment reference)
-* *System* ('systems' containment reference)
+* *Component* / *Composite*
+* *System*
 
 !(scale)../pictures/model_components.png!
 
