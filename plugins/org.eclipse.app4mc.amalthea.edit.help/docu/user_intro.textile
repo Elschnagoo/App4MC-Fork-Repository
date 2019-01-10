@@ -59,7 +59,7 @@ The Show types of elements button triggers the editor to show the direct type of
 
 h4. Search for model elements
 
-The editor provides the possibility to filter model elements by using the available name attribute. This can be used for example to filter all elements in the model which has abs in their name. The search and result view is using the Eclipse search as result view.
+The editor provides the possibility to filter model elements by using the available name attribute. For example this can be used to find all elements in the model with "ABS" at the beginning of their name. The search and result view is using the Eclipse search as result view.
 
 !(gray)../pictures/user_guide_editor_search_input.png!
 
@@ -67,7 +67,7 @@ The search result is using the Eclipse Search View.
 
 !(gray)../pictures/user_guide_editor_search_result1.png!
 
-An additional option is to toggle the search results to group them by type as shown in the next screenshot.
+An additional option is to toggle the search results to show them as a plain list instead of a tree grouped by type.
 
 !(gray)../pictures/user_guide_editor_search_result2.png!
 
