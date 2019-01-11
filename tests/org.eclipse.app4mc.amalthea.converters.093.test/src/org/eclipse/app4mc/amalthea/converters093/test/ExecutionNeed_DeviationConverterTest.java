@@ -14,8 +14,6 @@
 
 package org.eclipse.app4mc.amalthea.converters093.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,8 +23,8 @@ import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters093.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.OsConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.SwConverter;
+import org.eclipse.app4mc.amalthea.converters093.utils.HWCacheBuilder;
 import org.jdom2.Document;
-import org.jdom2.Element;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,6 +56,12 @@ public class ExecutionNeed_DeviationConverterTest extends AbstractConverterTest 
 	protected List<ICache> buildCaches() {
 
 		final List<ICache> caches = new ArrayList<ICache>();
+		HWCacheBuilder cacheBuilder=new HWCacheBuilder();
+		caches.add(cacheBuilder);
+
+		for (final ICache iCache : caches) {
+			iCache.buildCache(this.fileName_documentsMap);
+		}
 		
 	 
 		

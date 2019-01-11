@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.converters093.impl.NamespaceConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.OsConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.StimulusConverter;
 import org.eclipse.app4mc.amalthea.converters093.impl.SwConverter;
+import org.eclipse.app4mc.amalthea.converters093.utils.HWCacheBuilder;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,8 +56,12 @@ public class StimuliConverterTest extends AbstractConverterTest {
 	protected List<ICache> buildCaches() {
 
 		final List<ICache> caches = new ArrayList<ICache>();
-		
-	 
+		HWCacheBuilder cacheBuilder=new HWCacheBuilder();
+		caches.add(cacheBuilder);
+
+		for (final ICache iCache : caches) {
+			iCache.buildCache(this.fileName_documentsMap);
+		}
 		
 		return caches;
 	}
