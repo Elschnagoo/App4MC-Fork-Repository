@@ -91,62 +91,62 @@
     </tasks>
     <runnables name="Runnable_State_0" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594" upperBound="606" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="594" upperBound="606" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700" upperBound="30300" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="29700" upperBound="30300" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_3" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594000" upperBound="606000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="594000" upperBound="606000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_4" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="23760000" upperBound="24240000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="23760000" upperBound="24240000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_x" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_5_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="35640000" upperBound="36360000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="35640000" upperBound="36360000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_5_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="11880000" upperBound="12120000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="11880000" upperBound="12120000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
   </swModel>

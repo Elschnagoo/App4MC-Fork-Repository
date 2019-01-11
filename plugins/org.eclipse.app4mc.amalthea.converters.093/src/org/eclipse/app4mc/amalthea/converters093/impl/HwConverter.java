@@ -75,7 +75,7 @@ public class HwConverter extends AbstractConverter {
 				
 				if(type.equals("am:LatencyConstant")) {
 					
-					type="am:DiscreteConstant";
+					type="am:DiscreteValueConstant";
 					//setting the updated type value
 					typeAttribute.setValue(type);
 					

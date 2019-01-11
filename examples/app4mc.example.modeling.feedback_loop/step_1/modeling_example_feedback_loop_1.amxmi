@@ -266,17 +266,17 @@
     </runnables>
     <runnables name="R_3_0" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594000" upperBound="600000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="594000" upperBound="600000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="R_3_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="59400000" upperBound="60000000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="59400000" upperBound="60000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="R_3_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Set_w_0" callback="false" service="false">
@@ -296,17 +296,17 @@
     </runnables>
     <runnables name="R1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="R2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594000" upperBound="600000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="594000" upperBound="600000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="R_4" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <modes name="E">

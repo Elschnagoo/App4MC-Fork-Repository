@@ -4,7 +4,7 @@
     <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" features="Instructions/IPC_1?type=HwFeature" puType="CPU" />
     <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
       <size value="4" unit="MB" />
-      <accessLatency xsi:type="am:DiscreteConstant" value="2" />
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="2" />
     </definitions>
     <featureCategories name="Instructions" featureType="performance">
       <features name="IPC_1" value="1" />

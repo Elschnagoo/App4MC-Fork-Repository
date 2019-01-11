@@ -60,44 +60,44 @@
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteConstant" value="1000000" />
+        <default xsi:type="am:DiscreteValueConstant" value="1000000" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteConstant" value="2000000" />
+        <default xsi:type="am:DiscreteValueConstant" value="2000000" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_3_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="0" upperBound="5000000" mean="1000000" sd="50000" xsi:type="am:DiscreteGaussDistribution" />
+        <default lowerBound="0" upperBound="5000000" mean="1000000" sd="50000" xsi:type="am:DiscreteValueGaussDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteConstant" value="1000000" />
+        <default xsi:type="am:DiscreteValueConstant" value="1000000" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_3" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteConstant" value="3000000" />
+        <default xsi:type="am:DiscreteValueConstant" value="3000000" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_2_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="1000000" upperBound="5000000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="1000000" upperBound="5000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_4" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteConstant" value="4000000" />
+        <default xsi:type="am:DiscreteValueConstant" value="4000000" />
       </runnableItems>
     </runnables>
   </swModel>
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" features="Instructions/IPC_1?type=HwFeature" puType="CPU" />
     <definitions xsi:type="am:MemoryDefinition" name="Memory_Def">
-      <accessLatency xsi:type="am:DiscreteConstant" value="12" />
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="12" />
     </definitions>
     <featureCategories name="Instructions" featureType="performance">
       <features name="IPC_1" value="1.0" />

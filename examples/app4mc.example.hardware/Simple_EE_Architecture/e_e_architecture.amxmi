@@ -9,7 +9,7 @@
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="MainMemory_Def">
       <size value="1" unit="GB" />
-      <accessLatency xsi:type="am:DiscreteConstant" value="2" />
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="2" />
     </definitions>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="StandardCore" features="Integer-Instructions/IntOps_2.0?type=HwFeature Float-Instructions/FloatOps_0.5?type=HwFeature Load-Store-Instructions/LoadStoreOps_1.0?type=HwFeature" puType="CPU" />
     <featureCategories name="Integer-Instructions" featureType="performance">
@@ -33,8 +33,8 @@
         <modules xsi:type="am:ProcessingUnit" name="Core1EC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
           <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC1Access" destination="MainMemEC1?type=Memory">
-            <readLatency xsi:type="am:DiscreteConstant" value="8" />
-            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
+            <readLatency xsi:type="am:DiscreteValueConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteValueConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC2?type=Memory">
             <accessPath name="extMemAccessPath" pathElements="ECU1/con1?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
@@ -43,8 +43,8 @@
         <modules xsi:type="am:ProcessingUnit" name="Core2EC1" frequencyDomain="ECU1_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
           <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC1Access" destination="MainMemEC1?type=Memory">
-            <readLatency xsi:type="am:DiscreteConstant" value="8" />
-            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
+            <readLatency xsi:type="am:DiscreteValueConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteValueConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC2?type=Memory">
             <accessPath name="extMemAccessPath" pathElements="ECU1/con2?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con4?type=HwConnection E%2FE_System/con1?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con2?type=HwConnection ECU2/con4?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
@@ -69,8 +69,8 @@
         <modules xsi:type="am:ProcessingUnit" name="Core1EC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
           <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC2Access" destination="MainMemEC2?type=Memory">
-            <readLatency xsi:type="am:DiscreteConstant" value="8" />
-            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
+            <readLatency xsi:type="am:DiscreteValueConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteValueConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC1?type=Memory">
             <accessPath name="extMemAccessPath" pathElements="ECU2/con1?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />
@@ -79,8 +79,8 @@
         <modules xsi:type="am:ProcessingUnit" name="Core2EC2" frequencyDomain="ECU2_Freq_Domain?type=FrequencyDomain" definition="StandardCore?type=ProcessingUnitDefinition">
           <ports name="P1" bitWidth="32" priority="0" portType="initiator" />
           <accessElements name="MainMemC2Access" destination="MainMemEC2?type=Memory">
-            <readLatency xsi:type="am:DiscreteConstant" value="8" />
-            <writeLatency xsi:type="am:DiscreteConstant" value="8" />
+            <readLatency xsi:type="am:DiscreteValueConstant" value="8" />
+            <writeLatency xsi:type="am:DiscreteValueConstant" value="8" />
           </accessElements>
           <accessElements name="ExternalMemoryAccess" destination="MainMemEC1?type=Memory">
             <accessPath name="extMemAccessPath" pathElements="ECU2/con2?type=HwConnection InterconnectEC2?type=ConnectionHandler ECU2/con4?type=HwConnection E%2FE_System/con2?type=HwConnection CAN?type=ConnectionHandler E%2FE_System/con1?type=HwConnection ECU1/con4?type=HwConnection InterconnectEC1?type=ConnectionHandler ECU1/con3?type=HwConnection" startAddress="0x5000" endAddress="0x8000" memOffset="0x200000" />

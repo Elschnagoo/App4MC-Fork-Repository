@@ -71,22 +71,22 @@
     </runnables>
     <runnables name="Runnable_State_0" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteUniformDistribution" />
+        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_0" callback="false" service="false">
