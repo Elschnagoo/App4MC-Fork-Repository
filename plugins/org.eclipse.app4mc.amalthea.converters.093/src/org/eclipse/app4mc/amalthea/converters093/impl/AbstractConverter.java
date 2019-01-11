@@ -45,7 +45,7 @@ public abstract class AbstractConverter implements IConverter {
 	 * 
 	 *  <table><th>0.9.2</th><th>0.9.3</th>
 	 *  <tr>
-	 *  <td>Boundaries</td><td>DiscreteInterval</td>
+	 *  <td>Boundaries</td><td>DiscreteBoundaries</td>
 	 *  </tr>
 	 *  
 	 *  <tr>
@@ -154,7 +154,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:DiscreteInterval";
+			distributionTypeFrom093 = "am:DiscreteBoundaries";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -266,7 +266,7 @@ public abstract class AbstractConverter implements IConverter {
 	 * 
 	 *  <table><th>0.9.2</th><th>0.9.3</th>
 	 *  <tr>
-	 *  <td>Boundaries</td><td>ContinuousInterval</td>
+	 *  <td>Boundaries</td><td>ContinuousBoundaries</td>
 	 *  </tr>
 	 *  
 	 *  <tr>
@@ -374,7 +374,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:ContinuousInterval";
+			distributionTypeFrom093 = "am:ContinuousBoundaries";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -486,7 +486,7 @@ public abstract class AbstractConverter implements IConverter {
 	 * 
 	 *  <table><th>0.9.2</th><th>0.9.3</th>
 	 *  <tr>
-	 *  <td>Boundaries</td><td>TimeInterval</td>
+	 *  <td>Boundaries</td><td>TimeBoundaries</td>
 	 *  </tr>
 	 *  
 	 *  <tr>
@@ -608,7 +608,7 @@ public abstract class AbstractConverter implements IConverter {
 			      </nextOccurrence>
 			*/
 			
-			distributionTypeFrom093 = "am:TimeInterval";
+			distributionTypeFrom093 = "am:TimeBoundaries";
 			
 			tc_executionTicksElement.addContent(lowerBoundElement);
 			tc_executionTicksElement.addContent(upperBoundElement);
