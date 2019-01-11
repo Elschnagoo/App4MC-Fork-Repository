@@ -266,22 +266,22 @@ public abstract class AbstractConverter implements IConverter {
 	 * 
 	 *  <table><th>0.9.2</th><th>0.9.3</th>
 	 *  <tr>
-	 *  <td>Boundaries</td><td>ContinuousBoundaries</td>
+	 *  <td>Boundaries</td><td>ContinuousValueBoundaries</td>
 	 *  </tr>
 	 *  
 	 *  <tr>
-	 *  <td>UniformDistribution</td><td>ContinuousUniformDistribution</td>
+	 *  <td>UniformDistribution</td><td>ContinuousValueUniformDistribution</td>
 	 *  </tr>
 	 *  
 	 	 *  <tr>
-	 *  <td>BetaDistribution</td><td>ContinuousBetaDistribution</td>
+	 *  <td>BetaDistribution</td><td>ContinuousValueBetaDistribution</td>
 	 *  </tr> 
 	 *  
 		 *  <tr>
-	 *  <td>WeibullEstimators</td><td>ContinuousWeibullEstimatorsDistribution</td>
+	 *  <td>WeibullEstimators</td><td>ContinuousValueWeibullEstimatorsDistribution</td>
 	 *  </tr>
 		 *  <tr>
-	 *  <td>GaussDistribution</td><td>ContinuousGaussDistribution</td>
+	 *  <td>GaussDistribution</td><td>ContinuousValueGaussDistribution</td>
 	 *  </tr>
 	 *  
 	  
@@ -350,7 +350,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:ContinuousBetaDistribution";
+			distributionTypeFrom093 = "am:ContinuousValueBetaDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -374,7 +374,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:ContinuousBoundaries";
+			distributionTypeFrom093 = "am:ContinuousValueBoundaries";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -398,7 +398,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:ContinuousGaussDistribution";
+			distributionTypeFrom093 = "am:ContinuousValueGaussDistribution";
 			
 
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
@@ -426,7 +426,7 @@ public abstract class AbstractConverter implements IConverter {
 	              </deviation>
 			 */
 			
-			distributionTypeFrom093 = "am:ContinuousUniformDistribution";
+			distributionTypeFrom093 = "am:ContinuousValueUniformDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -444,7 +444,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 
-			distributionTypeFrom093 = "am:ContinuousWeibullEstimatorsDistribution";
+			distributionTypeFrom093 = "am:ContinuousValueWeibullEstimatorsDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -464,7 +464,7 @@ public abstract class AbstractConverter implements IConverter {
 
 		} else if (distributionTypeTill092.equals("am:WeibullParameters")) {
 			
-			distributionTypeFrom093 = "am:ContinuousWeibullParametersDistribution";
+			distributionTypeFrom093 = "am:ContinuousValueWeibullParametersDistribution";
 
 			logger.error("Deviation with \"WeibullParameters\" as distribution can not be migrated as the semantics of \"WeibullParameters\" were not clearly described");
 			
