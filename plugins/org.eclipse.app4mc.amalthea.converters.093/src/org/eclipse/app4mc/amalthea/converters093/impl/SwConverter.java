@@ -108,9 +108,10 @@ public class SwConverter extends AbstractConverter {
 							activationElement.addContent(indexOf, migratedElement);
 							
 						}
+						migratedElement.setName("activation");
 					}
-
 				
+					
 				}
 			}
 		}
