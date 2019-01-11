@@ -101,12 +101,12 @@ h3. Deviation
 
 Deviations used to model constant values, histograms and statistical distributions within AMALTHEA. There is a wide variety of possible use cases, where such a distribution is needed. For example, the variation in runtime of functions can be imitated. Therefore, AMALTHEA currently supports the following statistical distributions:
 
-!(scale)../pictures/model_common_deviation.png!
+!(scale)../pictures/model_common_deviations_abstract.png!
 
-The earlier implementation used Generics to support the different use cases. To simplify the usage (via Java API and in the editor) the new implementation provides three different top level interfaces for TimeDeviation, DiscreteDeviation (integer values) and ContinuousDeviation (float values). They provide specialized methods to handle their values and a common interface to access minimum, maximum and average.
-The following image shows the detailed hierarchy of discrete deviations, the other implementations are built accordingly.
+The earlier implementation used Generics to support the different use cases. To simplify the usage (via Java API and in the editor) the new implementation provides three different top level interfaces for *Time Deviation*, *Discrete Value Deviation* (integer values) and *Continuous Value Deviation* (float values). They provide specialized methods to handle their values and a common interface to access minimum, maximum and average.
+The following image shows the detailed hierarchy of time deviations, the other implementations are built accordingly.
 
-!(scale)../pictures/model_common_deviations_discrete.png!
+!(scale)../pictures/model_common_deviations_time.png!
 
 h4. Boundaries
 
