@@ -93,7 +93,7 @@ public class HwConverter extends AbstractConverter {
 					
 					int indexOf = parentElement.indexOf(latencyElement);
 					
-					Element migratedElement = migrateDeviationElement_Containing_LongValue(latencyElement.getChild("cycles"), elementName);
+					Element migratedElement = migrateDeviationElement_Containing_LongValue(latencyElement.getChild("cycles"), elementName,1.0);
 					
 					parentElement.removeContent(latencyElement);
 					

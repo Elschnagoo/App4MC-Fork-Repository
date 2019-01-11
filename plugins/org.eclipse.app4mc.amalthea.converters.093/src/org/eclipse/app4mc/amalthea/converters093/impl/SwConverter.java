@@ -7,11 +7,14 @@ import java.util.Map;
 
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
+import org.eclipse.app4mc.amalthea.converters093.utils.HWCacheBuilder.PUDefinition_IPCData;
 import org.eclipse.app4mc.amalthea.converters093.utils.HelperUtils_092_093;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Parent;
+
+import com.google.common.collect.Iterables;
 
 public class SwConverter extends AbstractConverter {
 
@@ -19,6 +22,10 @@ public class SwConverter extends AbstractConverter {
 
 	private File targetFile;
 
+	private List<ICache> caches;
+	
+	private PUDefinition_IPCData hwCache;
+	
 	public SwConverter() {
 		this.helper = HelperUtils_092_093.getInstance();
 		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
@@ -237,7 +244,7 @@ public class SwConverter extends AbstractConverter {
 					 */
 					Element valueElement = defaultInstructionsElement.getChild("value");
 
-					Element default_executionTicksElement = createTicksElementFromNeed(valueElement, "default");
+					Element default_executionTicksElement = createTicksElementFromNeed(valueElement, "default", 1.0);
 
 					if (default_executionTicksElement != null) {
 						// Adding default ExecutionTicks element
@@ -270,12 +277,12 @@ public class SwConverter extends AbstractConverter {
 					Element valueElement = defaultExecutionNeedElement.getChild("value");
 
 					if (valueElement != null) {
-						Element newNeedElementValue = createTicksElementFromNeed(valueElement, "value");
+						Element newNeedElementValue = createTicksElementFromNeed(valueElement, "value",1.0);
 
 						if (newNeedElementValue != null) {
 							Element needsElement = new Element("needs");
 
-							needsElement.setAttribute(new Attribute("key", "Instructions"));
+							needsElement.setAttribute(new Attribute("key", key));
 
 							needsElement.addContent(newNeedElementValue);
 
@@ -293,6 +300,8 @@ public class SwConverter extends AbstractConverter {
 
 			for (Element extendedElement : extendedElements) {
 
+				Double ipcValue=getIPCValue(extendedElement);
+				
 				final List<Element> valueElements = this.helper.getXpathResult(extendedElement,
 						"./value[@key=\"Instructions\"]", Element.class, this.helper.getNS_093("am"));
 
@@ -314,7 +323,7 @@ public class SwConverter extends AbstractConverter {
 
 					Element valueValueElement = valueElement.getChild("value");
 
-					Element value_executionTicksElement = createTicksElementFromNeed(valueValueElement, "value");
+					Element value_executionTicksElement = createTicksElementFromNeed(valueValueElement, "value",ipcValue);
 
 					if (value_executionTicksElement != null) {
 						/*- adding value to the Extended ticks element */
@@ -387,9 +396,28 @@ public class SwConverter extends AbstractConverter {
 		}
 	}
 
+	private Double getIPCValue(Element extendedElement) {
+		
+		String puDefinition = helper.getSingleElementNameFromAttributeOrChildeElement("key", extendedElement);
+		
+		if(puDefinition !=null) {
+			
+			String ipcFeatureElement = getHWCache().puDefinition_IPCFeatureMap.get(puDefinition);
+			
+			if(ipcFeatureElement!=null) {
+				Double ipcValue = getHWCache().ipcFeature_valueMap.get(ipcFeatureElement);
+				if(ipcValue!=null) {
+					return ipcValue;
+				}
+			}
+			
+		}
+		return 1d;
+	}
+
 	
 
-	private Element createTicksElementFromNeed(  Element valueElement, String newElementName) {
+	private Element createTicksElementFromNeed(  Element valueElement, String newElementName, double ipcValue) {
 		if(valueElement !=null) {
 			 String valueType = valueElement.getAttributeValue("type", this.helper.getGenericNS("xsi"));
 			 /*- it can be either NeedConstant or NeedDeviation */
@@ -406,8 +434,8 @@ public class SwConverter extends AbstractConverter {
 				 String valueValue = valueElement.getAttributeValue("value");
 				 
 				 if(valueValue!=null) {
-					 //TODO: multiply with value of Instructions
-					 tc_executionTicksElement.getAttributes().add(new Attribute("value", valueValue));
+					 //TODO: divide with value of Instructions
+					 tc_executionTicksElement.getAttributes().add(new Attribute("value", getValueAfterApplyingIPC(valueValue, ipcValue)));
 				 }
 				 
 				 return tc_executionTicksElement;
@@ -415,13 +443,46 @@ public class SwConverter extends AbstractConverter {
 
 				 Element deviationElement = valueElement.getChild("deviation");
 
-				 return migrateDeviationElement_Containing_LongValue(deviationElement, newElementName);
+				 return migrateDeviationElement_Containing_LongValue(deviationElement, newElementName,ipcValue);
 			 }
 		}
 		return null;
 	}
 
+
 	
+	/**
+	 * This method is used to get the HW model cache data
+	 *
+	 * @return PUDefinition_IPCData
+	 */
+	private PUDefinition_IPCData getHWCache() {
+
+		if (this.hwCache == null) {
+
+			for (final ICache cache : this.caches) {
+
+				if (cache instanceof org.eclipse.app4mc.amalthea.converters093.utils.HWCacheBuilder) {
+					Map<File, Map<String, Object>> cacheMap = cache.getCacheMap();
+
+					if(cacheMap!=null && cacheMap.size()>0) {
+						Map<String, Object> map = Iterables.get(cacheMap.values(), 0);
+
+						if(map!=null) {
+							Object object = map.get("globalCache");
+
+							return (PUDefinition_IPCData) object;
+						}
+
+					}
+				}
+			}
+
+		 
+		}
+		return hwCache;
+
+	}
 	 
 
 }

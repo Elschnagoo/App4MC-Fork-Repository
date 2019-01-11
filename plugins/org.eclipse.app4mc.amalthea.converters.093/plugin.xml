@@ -84,5 +84,15 @@
       </converter>
       
    </extension>
+   <extension
+         point="org.eclipse.app4mc.amalthea.model.converters.cachebuilders">
+      <CacheBuilder
+            ID="org.eclipse.app4mc.amalthea.converters.093.HWCacheBuilder"
+            class="org.eclipse.app4mc.amalthea.converters093.utils.HWCacheBuilder"
+            enabled="true"
+            input-model-version="0.9.2"
+            name="HWCacheBuilder">
+      </CacheBuilder>
+   </extension>
 
 </plugin>

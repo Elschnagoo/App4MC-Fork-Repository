@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="pudef2">
+      <features href="amlt:/#Instructions/ipc_2?type=HwFeature"/>
+    </definitions>
+    <featureCategories name="Ins">
+      <features name="IPC_3.0" value="3.0"/>
+    </featureCategories>
+  </hwModel>
+</am:Amalthea>

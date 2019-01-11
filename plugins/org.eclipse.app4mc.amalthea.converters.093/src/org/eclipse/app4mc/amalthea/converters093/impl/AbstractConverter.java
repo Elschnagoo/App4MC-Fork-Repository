@@ -68,10 +68,11 @@ public abstract class AbstractConverter implements IConverter {
 	 *  </table>
 	 * @param deviationElement
 	 * @param newElementName
+	 * @param ipcValue 
 	 * @return
 	 */
 
-	public Element migrateDeviationElement_Containing_LongValue(Element deviationElement, String newElementName) {
+	public Element migrateDeviationElement_Containing_LongValue(Element deviationElement, String newElementName, double ipcValue) {
 		
 		 Element tc_executionTicksElement=new Element(newElementName);
 
@@ -92,7 +93,7 @@ public abstract class AbstractConverter implements IConverter {
 				String value = child.getAttributeValue("value");
 				
 				if(value!=null) {
-					lowerBoundValue=value;
+					lowerBoundValue=getValueAfterApplyingIPC(value, ipcValue) ;
 				}
 			}
 
@@ -102,7 +103,7 @@ public abstract class AbstractConverter implements IConverter {
 				String value = child2.getAttributeValue("value");
 				
 				if(value !=null) {
-					upperBoundValue=value;
+					upperBoundValue=getValueAfterApplyingIPC(value, ipcValue) ;
 				}
 			}
 
@@ -189,7 +190,7 @@ public abstract class AbstractConverter implements IConverter {
 			String sd=helper.getValueFromChildElement(distributionElement, "sd", "value");;
 			
 			if(mean!=null) {
-				tc_executionTicksElement.setAttribute(new Attribute("mean", mean));
+				tc_executionTicksElement.setAttribute(new Attribute("mean", getValueAfterApplyingIPC(mean, ipcValue)));
 			}
 			if(sd!=null) {
 				tc_executionTicksElement.setAttribute(new Attribute("sd", sd));
@@ -237,7 +238,7 @@ public abstract class AbstractConverter implements IConverter {
 			String mean=helper.getValueFromChildElement(distributionElement, "mean", "value");
 			
 			if(mean!=null) {
-				tc_executionTicksElement.setAttribute(new Attribute("average", mean));
+				tc_executionTicksElement.setAttribute(new Attribute("average", getValueAfterApplyingIPC(mean, ipcValue)));
 			}
 			
 
@@ -741,4 +742,19 @@ public abstract class AbstractConverter implements IConverter {
 
 		 return tc_executionTicksElement;
 	 }
+	
+	protected String getValueAfterApplyingIPC(String value, double ipcValue) {
+
+		if(ipcValue!=0) {
+			try {
+				Double result=Double.parseDouble(value)/ipcValue;
+				
+				return result.longValue()+"";
+				
+			} catch (Exception e) {
+			}
+		}
+		return value;
+		
+	}
 }
