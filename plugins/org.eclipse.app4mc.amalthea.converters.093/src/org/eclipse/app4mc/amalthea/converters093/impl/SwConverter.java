@@ -427,7 +427,7 @@ public class SwConverter extends AbstractConverter {
 				 
 				 Element tc_executionTicksElement=new Element(newElementName);
 
-				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:DiscreteConstant", this.helper.getGenericNS("xsi"));
+				 Attribute default_executionTicksElement_TypeAttribute=new Attribute("type", "am:DiscreteValueConstant", this.helper.getGenericNS("xsi"));
 					
 				 tc_executionTicksElement.getAttributes().add(default_executionTicksElement_TypeAttribute);
 					

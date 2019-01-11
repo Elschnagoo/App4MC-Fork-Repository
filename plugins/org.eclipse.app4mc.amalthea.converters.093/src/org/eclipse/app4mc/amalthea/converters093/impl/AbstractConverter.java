@@ -45,22 +45,22 @@ public abstract class AbstractConverter implements IConverter {
 	 * 
 	 *  <table><th>0.9.2</th><th>0.9.3</th>
 	 *  <tr>
-	 *  <td>Boundaries</td><td>DiscreteBoundaries</td>
+	 *  <td>Boundaries</td><td>DiscreteValueValueBoundaries</td>
 	 *  </tr>
 	 *  
 	 *  <tr>
-	 *  <td>UniformDistribution</td><td>DiscreteUniformDistribution</td>
+	 *  <td>UniformDistribution</td><td>DiscreteValueValueUniformDistribution</td>
 	 *  </tr>
 	 *  
 	 	 *  <tr>
-	 *  <td>BetaDistribution</td><td>DiscreteBetaDistribution</td>
+	 *  <td>BetaDistribution</td><td>DiscreteValueValueBetaDistribution</td>
 	 *  </tr> 
 	 *  
 		 *  <tr>
-	 *  <td>WeibullEstimators</td><td>DiscreteWeibullEstimatorsDistribution</td>
+	 *  <td>WeibullEstimators</td><td>DiscreteValueWeibullEstimatorsDistribution</td>
 	 *  </tr>
 		 *  <tr>
-	 *  <td>GaussDistribution</td><td>DiscreteGaussDistribution</td>
+	 *  <td>GaussDistribution</td><td>DiscreteValueGaussDistribution</td>
 	 *  </tr>
 	 *  
 	  
@@ -130,7 +130,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:DiscreteBetaDistribution";
+			distributionTypeFrom093 = "am:DiscreteValueBetaDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -154,7 +154,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:DiscreteBoundaries";
+			distributionTypeFrom093 = "am:DiscreteValueBoundaries";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -178,7 +178,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 			
-			distributionTypeFrom093 = "am:DiscreteGaussDistribution";
+			distributionTypeFrom093 = "am:DiscreteValueGaussDistribution";
 			
 
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
@@ -206,7 +206,7 @@ public abstract class AbstractConverter implements IConverter {
 	              </deviation>
 			 */
 			
-			distributionTypeFrom093 = "am:DiscreteUniformDistribution";
+			distributionTypeFrom093 = "am:DiscreteValueUniformDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -224,7 +224,7 @@ public abstract class AbstractConverter implements IConverter {
 			</deviation>
 			*/
 
-			distributionTypeFrom093 = "am:DiscreteWeibullEstimatorsDistribution";
+			distributionTypeFrom093 = "am:DiscreteValueWeibullEstimatorsDistribution";
 			
 			tc_executionTicksElement.setAttribute(new Attribute("lowerBound", lowerBoundValue));
 			tc_executionTicksElement.setAttribute(new Attribute("upperBound", upperBoundValue));
@@ -244,7 +244,7 @@ public abstract class AbstractConverter implements IConverter {
 
 		} else if (distributionTypeTill092.equals("am:WeibullParameters")) {
 			
-			distributionTypeFrom093 = "am:DiscreteWeibullParametersDistribution";
+			distributionTypeFrom093 = "am:DiscreteValueWeibullParametersDistribution";
 
 			logger.error("Deviation with \"WeibullParameters\" as distribution can not be migrated as the semantics of \"WeibullParameters\" were not clearly described");
 			
