@@ -17,7 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandlerDefinition;
 import org.eclipse.app4mc.amalthea.model.DataRate;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.SchedPolicy;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -75,7 +75,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected IDiscreteDeviation readLatency;
+	protected IDiscreteValueDeviation readLatency;
 
 	/**
 	 * The cached value of the '{@link #getWriteLatency() <em>Write Latency</em>}' containment reference.
@@ -85,7 +85,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected IDiscreteDeviation writeLatency;
+	protected IDiscreteValueDeviation writeLatency;
 
 	/**
 	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
@@ -182,7 +182,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getReadLatency() {
+	public IDiscreteValueDeviation getReadLatency() {
 		return readLatency;
 	}
 
@@ -191,8 +191,8 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetReadLatency(IDiscreteDeviation newReadLatency, NotificationChain msgs) {
-		IDiscreteDeviation oldReadLatency = readLatency;
+	public NotificationChain basicSetReadLatency(IDiscreteValueDeviation newReadLatency, NotificationChain msgs) {
+		IDiscreteValueDeviation oldReadLatency = readLatency;
 		readLatency = newReadLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY, oldReadLatency, newReadLatency);
@@ -206,7 +206,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReadLatency(IDiscreteDeviation newReadLatency) {
+	public void setReadLatency(IDiscreteValueDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
 			if (readLatency != null)
@@ -225,7 +225,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getWriteLatency() {
+	public IDiscreteValueDeviation getWriteLatency() {
 		return writeLatency;
 	}
 
@@ -234,8 +234,8 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetWriteLatency(IDiscreteDeviation newWriteLatency, NotificationChain msgs) {
-		IDiscreteDeviation oldWriteLatency = writeLatency;
+	public NotificationChain basicSetWriteLatency(IDiscreteValueDeviation newWriteLatency, NotificationChain msgs) {
+		IDiscreteValueDeviation oldWriteLatency = writeLatency;
 		writeLatency = newWriteLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY, oldWriteLatency, newWriteLatency);
@@ -249,7 +249,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWriteLatency(IDiscreteDeviation newWriteLatency) {
+	public void setWriteLatency(IDiscreteValueDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
 			if (writeLatency != null)
@@ -402,10 +402,10 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 				setPolicy((SchedPolicy)newValue);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY:
-				setReadLatency((IDiscreteDeviation)newValue);
+				setReadLatency((IDiscreteValueDeviation)newValue);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY:
-				setWriteLatency((IDiscreteDeviation)newValue);
+				setWriteLatency((IDiscreteValueDeviation)newValue);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)newValue);
@@ -432,10 +432,10 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 				setPolicy(POLICY_EDEFAULT);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__READ_LATENCY:
-				setReadLatency((IDiscreteDeviation)null);
+				setReadLatency((IDiscreteValueDeviation)null);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__WRITE_LATENCY:
-				setWriteLatency((IDiscreteDeviation)null);
+				setWriteLatency((IDiscreteValueDeviation)null);
 				return;
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)null);

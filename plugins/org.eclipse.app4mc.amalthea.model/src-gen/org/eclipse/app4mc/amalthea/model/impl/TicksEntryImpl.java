@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,IDiscreteDeviation> {
+public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ProcessingUnitDefinition,IDiscreteValueDeviation> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * @generated
 	 * @ordered
 	 */
-	protected IDiscreteDeviation value;
+	protected IDiscreteValueDeviation value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getTypedValue() {
+	public IDiscreteValueDeviation getTypedValue() {
 		return value;
 	}
 
@@ -138,8 +138,8 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedValue(IDiscreteDeviation newValue, NotificationChain msgs) {
-		IDiscreteDeviation oldValue = value;
+	public NotificationChain basicSetTypedValue(IDiscreteValueDeviation newValue, NotificationChain msgs) {
+		IDiscreteValueDeviation oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.TICKS_ENTRY__VALUE, oldValue, newValue);
@@ -153,7 +153,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(IDiscreteDeviation newValue) {
+	public void setTypedValue(IDiscreteValueDeviation newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -210,7 +210,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 				setTypedKey((ProcessingUnitDefinition)newValue);
 				return;
 			case AmaltheaPackage.TICKS_ENTRY__VALUE:
-				setTypedValue((IDiscreteDeviation)newValue);
+				setTypedValue((IDiscreteValueDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,7 +228,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 				setTypedKey((ProcessingUnitDefinition)null);
 				return;
 			case AmaltheaPackage.TICKS_ENTRY__VALUE:
-				setTypedValue((IDiscreteDeviation)null);
+				setTypedValue((IDiscreteValueDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -302,7 +302,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getValue() {
+	public IDiscreteValueDeviation getValue() {
 		return getTypedValue();
 	}
 
@@ -311,8 +311,8 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation setValue(IDiscreteDeviation value) {
-		IDiscreteDeviation oldValue = getValue();
+	public IDiscreteValueDeviation setValue(IDiscreteValueDeviation value) {
+		IDiscreteValueDeviation oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -323,9 +323,9 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<ProcessingUnitDefinition, IDiscreteDeviation> getEMap() {
+	public EMap<ProcessingUnitDefinition, IDiscreteValueDeviation> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<ProcessingUnitDefinition, IDiscreteDeviation>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<ProcessingUnitDefinition, IDiscreteValueDeviation>)container.eGet(eContainmentFeature());
 	}
 
 } //TicksEntryImpl

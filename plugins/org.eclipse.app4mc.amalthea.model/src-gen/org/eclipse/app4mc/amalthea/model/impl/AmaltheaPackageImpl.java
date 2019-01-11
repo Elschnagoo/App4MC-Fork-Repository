@@ -40,8 +40,8 @@ import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.BigIntegerObject;
 import org.eclipse.app4mc.amalthea.model.BlockingType;
 import org.eclipse.app4mc.amalthea.model.BooleanObject;
-import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageMetric;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
@@ -87,16 +87,16 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
-import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
-import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
-import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueConstant;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueInterval;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -133,16 +133,16 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
-import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
-import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
-import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueInterval;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.DynamicPriority;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
@@ -197,8 +197,8 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
-import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -413,8 +413,8 @@ import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.TransmissionPolicy;
 import org.eclipse.app4mc.amalthea.model.TriggerEvent;
-import org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution;
-import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
@@ -808,182 +808,182 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iDiscreteDeviationEClass = null;
+	private EClass iDiscreteValueDeviationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteIntervalEClass = null;
+	private EClass discreteValueIntervalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteConstantEClass = null;
+	private EClass discreteValueConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteHistogramEClass = null;
+	private EClass discreteValueHistogramEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteHistogramEntryEClass = null;
+	private EClass discreteValueHistogramEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass boundedDiscreteDistributionEClass = null;
+	private EClass boundedDiscreteValueDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass truncatedDiscreteDistributionEClass = null;
+	private EClass truncatedDiscreteValueDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteBoundariesEClass = null;
+	private EClass discreteValueBoundariesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteStatisticsEClass = null;
+	private EClass discreteValueStatisticsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteUniformDistributionEClass = null;
+	private EClass discreteValueUniformDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteGaussDistributionEClass = null;
+	private EClass discreteValueGaussDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteWeibullEstimatorsDistributionEClass = null;
+	private EClass discreteValueWeibullEstimatorsDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass discreteBetaDistributionEClass = null;
+	private EClass discreteValueBetaDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iContinuousDeviationEClass = null;
+	private EClass iContinuousValueDeviationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousIntervalEClass = null;
+	private EClass continuousValueIntervalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousConstantEClass = null;
+	private EClass continuousValueConstantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousHistogramEClass = null;
+	private EClass continuousValueHistogramEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousHistogramEntryEClass = null;
+	private EClass continuousValueHistogramEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass boundedContinuousDistributionEClass = null;
+	private EClass boundedContinuousValueDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass truncatedContinuousDistributionEClass = null;
+	private EClass truncatedContinuousValueDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousBoundariesEClass = null;
+	private EClass continuousValueBoundariesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousStatisticsEClass = null;
+	private EClass continuousValueStatisticsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousUniformDistributionEClass = null;
+	private EClass continuousValueUniformDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousGaussDistributionEClass = null;
+	private EClass continuousValueGaussDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousWeibullEstimatorsDistributionEClass = null;
+	private EClass continuousValueWeibullEstimatorsDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass continuousBetaDistributionEClass = null;
+	private EClass continuousValueBetaDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4852,8 +4852,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIDiscreteDeviation() {
-		return iDiscreteDeviationEClass;
+	public EClass getIDiscreteValueDeviation() {
+		return iDiscreteValueDeviationEClass;
 	}
 
 	/**
@@ -4861,8 +4861,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIDiscreteDeviation__GetLowerBound() {
-		return iDiscreteDeviationEClass.getEOperations().get(0);
+	public EOperation getIDiscreteValueDeviation__GetLowerBound() {
+		return iDiscreteValueDeviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4870,8 +4870,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIDiscreteDeviation__GetAverage() {
-		return iDiscreteDeviationEClass.getEOperations().get(1);
+	public EOperation getIDiscreteValueDeviation__GetAverage() {
+		return iDiscreteValueDeviationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4879,8 +4879,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIDiscreteDeviation__GetUpperBound() {
-		return iDiscreteDeviationEClass.getEOperations().get(2);
+	public EOperation getIDiscreteValueDeviation__GetUpperBound() {
+		return iDiscreteValueDeviationEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -4888,8 +4888,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteInterval() {
-		return discreteIntervalEClass;
+	public EClass getDiscreteValueInterval() {
+		return discreteValueIntervalEClass;
 	}
 
 	/**
@@ -4897,8 +4897,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteInterval_LowerBound() {
-		return (EAttribute)discreteIntervalEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueInterval_LowerBound() {
+		return (EAttribute)discreteValueIntervalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4906,8 +4906,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteInterval_UpperBound() {
-		return (EAttribute)discreteIntervalEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDiscreteValueInterval_UpperBound() {
+		return (EAttribute)discreteValueIntervalEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4915,8 +4915,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteInterval__GetAverage() {
-		return discreteIntervalEClass.getEOperations().get(0);
+	public EOperation getDiscreteValueInterval__GetAverage() {
+		return discreteValueIntervalEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4924,8 +4924,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteConstant() {
-		return discreteConstantEClass;
+	public EClass getDiscreteValueConstant() {
+		return discreteValueConstantEClass;
 	}
 
 	/**
@@ -4933,8 +4933,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteConstant_Value() {
-		return (EAttribute)discreteConstantEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueConstant_Value() {
+		return (EAttribute)discreteValueConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4942,8 +4942,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteConstant__GetLowerBound() {
-		return discreteConstantEClass.getEOperations().get(0);
+	public EOperation getDiscreteValueConstant__GetLowerBound() {
+		return discreteValueConstantEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4951,8 +4951,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteConstant__GetAverage() {
-		return discreteConstantEClass.getEOperations().get(1);
+	public EOperation getDiscreteValueConstant__GetAverage() {
+		return discreteValueConstantEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -4960,8 +4960,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteConstant__GetUpperBound() {
-		return discreteConstantEClass.getEOperations().get(2);
+	public EOperation getDiscreteValueConstant__GetUpperBound() {
+		return discreteValueConstantEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -4969,8 +4969,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteHistogram() {
-		return discreteHistogramEClass;
+	public EClass getDiscreteValueHistogram() {
+		return discreteValueHistogramEClass;
 	}
 
 	/**
@@ -4978,8 +4978,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDiscreteHistogram_Entries() {
-		return (EReference)discreteHistogramEClass.getEStructuralFeatures().get(0);
+	public EReference getDiscreteValueHistogram_Entries() {
+		return (EReference)discreteValueHistogramEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4987,8 +4987,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteHistogram__GetLowerBound() {
-		return discreteHistogramEClass.getEOperations().get(0);
+	public EOperation getDiscreteValueHistogram__GetLowerBound() {
+		return discreteValueHistogramEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4996,8 +4996,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteHistogram__GetUpperBound() {
-		return discreteHistogramEClass.getEOperations().get(1);
+	public EOperation getDiscreteValueHistogram__GetUpperBound() {
+		return discreteValueHistogramEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -5005,8 +5005,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteHistogram__GetAverage() {
-		return discreteHistogramEClass.getEOperations().get(2);
+	public EOperation getDiscreteValueHistogram__GetAverage() {
+		return discreteValueHistogramEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -5014,8 +5014,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteHistogramEntry() {
-		return discreteHistogramEntryEClass;
+	public EClass getDiscreteValueHistogramEntry() {
+		return discreteValueHistogramEntryEClass;
 	}
 
 	/**
@@ -5023,8 +5023,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteHistogramEntry_Occurrences() {
-		return (EAttribute)discreteHistogramEntryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueHistogramEntry_Occurrences() {
+		return (EAttribute)discreteValueHistogramEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5032,8 +5032,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBoundedDiscreteDistribution() {
-		return boundedDiscreteDistributionEClass;
+	public EClass getBoundedDiscreteValueDistribution() {
+		return boundedDiscreteValueDistributionEClass;
 	}
 
 	/**
@@ -5041,8 +5041,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTruncatedDiscreteDistribution() {
-		return truncatedDiscreteDistributionEClass;
+	public EClass getTruncatedDiscreteValueDistribution() {
+		return truncatedDiscreteValueDistributionEClass;
 	}
 
 	/**
@@ -5050,8 +5050,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTruncatedDiscreteDistribution_LowerBound() {
-		return (EAttribute)truncatedDiscreteDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTruncatedDiscreteValueDistribution_LowerBound() {
+		return (EAttribute)truncatedDiscreteValueDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5059,8 +5059,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTruncatedDiscreteDistribution_UpperBound() {
-		return (EAttribute)truncatedDiscreteDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getTruncatedDiscreteValueDistribution_UpperBound() {
+		return (EAttribute)truncatedDiscreteValueDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5068,8 +5068,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteBoundaries() {
-		return discreteBoundariesEClass;
+	public EClass getDiscreteValueBoundaries() {
+		return discreteValueBoundariesEClass;
 	}
 
 	/**
@@ -5077,8 +5077,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteBoundaries_SamplingType() {
-		return (EAttribute)discreteBoundariesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueBoundaries_SamplingType() {
+		return (EAttribute)discreteValueBoundariesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5086,8 +5086,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteStatistics() {
-		return discreteStatisticsEClass;
+	public EClass getDiscreteValueStatistics() {
+		return discreteValueStatisticsEClass;
 	}
 
 	/**
@@ -5095,8 +5095,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteStatistics_Average() {
-		return (EAttribute)discreteStatisticsEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueStatistics_Average() {
+		return (EAttribute)discreteValueStatisticsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5104,8 +5104,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteUniformDistribution() {
-		return discreteUniformDistributionEClass;
+	public EClass getDiscreteValueUniformDistribution() {
+		return discreteValueUniformDistributionEClass;
 	}
 
 	/**
@@ -5113,8 +5113,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteGaussDistribution() {
-		return discreteGaussDistributionEClass;
+	public EClass getDiscreteValueGaussDistribution() {
+		return discreteValueGaussDistributionEClass;
 	}
 
 	/**
@@ -5122,8 +5122,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteGaussDistribution_Mean() {
-		return (EAttribute)discreteGaussDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueGaussDistribution_Mean() {
+		return (EAttribute)discreteValueGaussDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5131,8 +5131,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteGaussDistribution_Sd() {
-		return (EAttribute)discreteGaussDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDiscreteValueGaussDistribution_Sd() {
+		return (EAttribute)discreteValueGaussDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5140,8 +5140,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteGaussDistribution__GetAverage() {
-		return discreteGaussDistributionEClass.getEOperations().get(0);
+	public EOperation getDiscreteValueGaussDistribution__GetAverage() {
+		return discreteValueGaussDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5149,8 +5149,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteWeibullEstimatorsDistribution() {
-		return discreteWeibullEstimatorsDistributionEClass;
+	public EClass getDiscreteValueWeibullEstimatorsDistribution() {
+		return discreteValueWeibullEstimatorsDistributionEClass;
 	}
 
 	/**
@@ -5158,8 +5158,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteWeibullEstimatorsDistribution_Average() {
-		return (EAttribute)discreteWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueWeibullEstimatorsDistribution_Average() {
+		return (EAttribute)discreteValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5167,8 +5167,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteWeibullEstimatorsDistribution_PRemainPromille() {
-		return (EAttribute)discreteWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDiscreteValueWeibullEstimatorsDistribution_PRemainPromille() {
+		return (EAttribute)discreteValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5176,8 +5176,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteBetaDistribution() {
-		return discreteBetaDistributionEClass;
+	public EClass getDiscreteValueBetaDistribution() {
+		return discreteValueBetaDistributionEClass;
 	}
 
 	/**
@@ -5185,8 +5185,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteBetaDistribution_Alpha() {
-		return (EAttribute)discreteBetaDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDiscreteValueBetaDistribution_Alpha() {
+		return (EAttribute)discreteValueBetaDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5194,8 +5194,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDiscreteBetaDistribution_Beta() {
-		return (EAttribute)discreteBetaDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDiscreteValueBetaDistribution_Beta() {
+		return (EAttribute)discreteValueBetaDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5203,8 +5203,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDiscreteBetaDistribution__GetAverage() {
-		return discreteBetaDistributionEClass.getEOperations().get(0);
+	public EOperation getDiscreteValueBetaDistribution__GetAverage() {
+		return discreteValueBetaDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5212,8 +5212,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIContinuousDeviation() {
-		return iContinuousDeviationEClass;
+	public EClass getIContinuousValueDeviation() {
+		return iContinuousValueDeviationEClass;
 	}
 
 	/**
@@ -5221,8 +5221,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIContinuousDeviation__GetLowerBound() {
-		return iContinuousDeviationEClass.getEOperations().get(0);
+	public EOperation getIContinuousValueDeviation__GetLowerBound() {
+		return iContinuousValueDeviationEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5230,8 +5230,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIContinuousDeviation__GetAverage() {
-		return iContinuousDeviationEClass.getEOperations().get(1);
+	public EOperation getIContinuousValueDeviation__GetAverage() {
+		return iContinuousValueDeviationEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -5239,8 +5239,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getIContinuousDeviation__GetUpperBound() {
-		return iContinuousDeviationEClass.getEOperations().get(2);
+	public EOperation getIContinuousValueDeviation__GetUpperBound() {
+		return iContinuousValueDeviationEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -5248,8 +5248,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousInterval() {
-		return continuousIntervalEClass;
+	public EClass getContinuousValueInterval() {
+		return continuousValueIntervalEClass;
 	}
 
 	/**
@@ -5257,8 +5257,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousInterval_LowerBound() {
-		return (EAttribute)continuousIntervalEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueInterval_LowerBound() {
+		return (EAttribute)continuousValueIntervalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5266,8 +5266,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousInterval_UpperBound() {
-		return (EAttribute)continuousIntervalEClass.getEStructuralFeatures().get(1);
+	public EAttribute getContinuousValueInterval_UpperBound() {
+		return (EAttribute)continuousValueIntervalEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5275,8 +5275,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousInterval__GetAverage() {
-		return continuousIntervalEClass.getEOperations().get(0);
+	public EOperation getContinuousValueInterval__GetAverage() {
+		return continuousValueIntervalEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5284,8 +5284,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousConstant() {
-		return continuousConstantEClass;
+	public EClass getContinuousValueConstant() {
+		return continuousValueConstantEClass;
 	}
 
 	/**
@@ -5293,8 +5293,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousConstant_Value() {
-		return (EAttribute)continuousConstantEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueConstant_Value() {
+		return (EAttribute)continuousValueConstantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5302,8 +5302,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousConstant__GetLowerBound() {
-		return continuousConstantEClass.getEOperations().get(0);
+	public EOperation getContinuousValueConstant__GetLowerBound() {
+		return continuousValueConstantEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5311,8 +5311,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousConstant__GetAverage() {
-		return continuousConstantEClass.getEOperations().get(1);
+	public EOperation getContinuousValueConstant__GetAverage() {
+		return continuousValueConstantEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -5320,8 +5320,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousConstant__GetUpperBound() {
-		return continuousConstantEClass.getEOperations().get(2);
+	public EOperation getContinuousValueConstant__GetUpperBound() {
+		return continuousValueConstantEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -5329,8 +5329,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousHistogram() {
-		return continuousHistogramEClass;
+	public EClass getContinuousValueHistogram() {
+		return continuousValueHistogramEClass;
 	}
 
 	/**
@@ -5338,8 +5338,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContinuousHistogram_Entries() {
-		return (EReference)continuousHistogramEClass.getEStructuralFeatures().get(0);
+	public EReference getContinuousValueHistogram_Entries() {
+		return (EReference)continuousValueHistogramEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5347,8 +5347,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousHistogram__GetLowerBound() {
-		return continuousHistogramEClass.getEOperations().get(0);
+	public EOperation getContinuousValueHistogram__GetLowerBound() {
+		return continuousValueHistogramEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5356,8 +5356,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousHistogram__GetUpperBound() {
-		return continuousHistogramEClass.getEOperations().get(1);
+	public EOperation getContinuousValueHistogram__GetUpperBound() {
+		return continuousValueHistogramEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -5365,8 +5365,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousHistogram__GetAverage() {
-		return continuousHistogramEClass.getEOperations().get(2);
+	public EOperation getContinuousValueHistogram__GetAverage() {
+		return continuousValueHistogramEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -5374,8 +5374,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousHistogramEntry() {
-		return continuousHistogramEntryEClass;
+	public EClass getContinuousValueHistogramEntry() {
+		return continuousValueHistogramEntryEClass;
 	}
 
 	/**
@@ -5383,8 +5383,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousHistogramEntry_Occurrences() {
-		return (EAttribute)continuousHistogramEntryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueHistogramEntry_Occurrences() {
+		return (EAttribute)continuousValueHistogramEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5392,8 +5392,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBoundedContinuousDistribution() {
-		return boundedContinuousDistributionEClass;
+	public EClass getBoundedContinuousValueDistribution() {
+		return boundedContinuousValueDistributionEClass;
 	}
 
 	/**
@@ -5401,8 +5401,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTruncatedContinuousDistribution() {
-		return truncatedContinuousDistributionEClass;
+	public EClass getTruncatedContinuousValueDistribution() {
+		return truncatedContinuousValueDistributionEClass;
 	}
 
 	/**
@@ -5410,8 +5410,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTruncatedContinuousDistribution_LowerBound() {
-		return (EAttribute)truncatedContinuousDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTruncatedContinuousValueDistribution_LowerBound() {
+		return (EAttribute)truncatedContinuousValueDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5419,8 +5419,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTruncatedContinuousDistribution_UpperBound() {
-		return (EAttribute)truncatedContinuousDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getTruncatedContinuousValueDistribution_UpperBound() {
+		return (EAttribute)truncatedContinuousValueDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5428,8 +5428,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousBoundaries() {
-		return continuousBoundariesEClass;
+	public EClass getContinuousValueBoundaries() {
+		return continuousValueBoundariesEClass;
 	}
 
 	/**
@@ -5437,8 +5437,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousBoundaries_SamplingType() {
-		return (EAttribute)continuousBoundariesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueBoundaries_SamplingType() {
+		return (EAttribute)continuousValueBoundariesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5446,8 +5446,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousStatistics() {
-		return continuousStatisticsEClass;
+	public EClass getContinuousValueStatistics() {
+		return continuousValueStatisticsEClass;
 	}
 
 	/**
@@ -5455,8 +5455,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousStatistics_Average() {
-		return (EAttribute)continuousStatisticsEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueStatistics_Average() {
+		return (EAttribute)continuousValueStatisticsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5464,8 +5464,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousUniformDistribution() {
-		return continuousUniformDistributionEClass;
+	public EClass getContinuousValueUniformDistribution() {
+		return continuousValueUniformDistributionEClass;
 	}
 
 	/**
@@ -5473,8 +5473,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousGaussDistribution() {
-		return continuousGaussDistributionEClass;
+	public EClass getContinuousValueGaussDistribution() {
+		return continuousValueGaussDistributionEClass;
 	}
 
 	/**
@@ -5482,8 +5482,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousGaussDistribution_Mean() {
-		return (EAttribute)continuousGaussDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueGaussDistribution_Mean() {
+		return (EAttribute)continuousValueGaussDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5491,8 +5491,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousGaussDistribution_Sd() {
-		return (EAttribute)continuousGaussDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getContinuousValueGaussDistribution_Sd() {
+		return (EAttribute)continuousValueGaussDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5500,8 +5500,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousGaussDistribution__GetAverage() {
-		return continuousGaussDistributionEClass.getEOperations().get(0);
+	public EOperation getContinuousValueGaussDistribution__GetAverage() {
+		return continuousValueGaussDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5509,8 +5509,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousWeibullEstimatorsDistribution() {
-		return continuousWeibullEstimatorsDistributionEClass;
+	public EClass getContinuousValueWeibullEstimatorsDistribution() {
+		return continuousValueWeibullEstimatorsDistributionEClass;
 	}
 
 	/**
@@ -5518,8 +5518,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousWeibullEstimatorsDistribution_Average() {
-		return (EAttribute)continuousWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueWeibullEstimatorsDistribution_Average() {
+		return (EAttribute)continuousValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5527,8 +5527,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousWeibullEstimatorsDistribution_PRemainPromille() {
-		return (EAttribute)continuousWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getContinuousValueWeibullEstimatorsDistribution_PRemainPromille() {
+		return (EAttribute)continuousValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5536,8 +5536,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContinuousBetaDistribution() {
-		return continuousBetaDistributionEClass;
+	public EClass getContinuousValueBetaDistribution() {
+		return continuousValueBetaDistributionEClass;
 	}
 
 	/**
@@ -5545,8 +5545,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousBetaDistribution_Alpha() {
-		return (EAttribute)continuousBetaDistributionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getContinuousValueBetaDistribution_Alpha() {
+		return (EAttribute)continuousValueBetaDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -5554,8 +5554,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContinuousBetaDistribution_Beta() {
-		return (EAttribute)continuousBetaDistributionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getContinuousValueBetaDistribution_Beta() {
+		return (EAttribute)continuousValueBetaDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -5563,8 +5563,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getContinuousBetaDistribution__GetAverage() {
-		return continuousBetaDistributionEClass.getEOperations().get(0);
+	public EOperation getContinuousValueBetaDistribution__GetAverage() {
+		return continuousValueBetaDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -14316,111 +14316,111 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(timeBetaDistributionEClass, TIME_BETA_DISTRIBUTION__BETA);
 		createEOperation(timeBetaDistributionEClass, TIME_BETA_DISTRIBUTION___GET_AVERAGE);
 
-		iDiscreteDeviationEClass = createEClass(IDISCRETE_DEVIATION);
-		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_LOWER_BOUND);
-		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_AVERAGE);
-		createEOperation(iDiscreteDeviationEClass, IDISCRETE_DEVIATION___GET_UPPER_BOUND);
+		iDiscreteValueDeviationEClass = createEClass(IDISCRETE_VALUE_DEVIATION);
+		createEOperation(iDiscreteValueDeviationEClass, IDISCRETE_VALUE_DEVIATION___GET_LOWER_BOUND);
+		createEOperation(iDiscreteValueDeviationEClass, IDISCRETE_VALUE_DEVIATION___GET_AVERAGE);
+		createEOperation(iDiscreteValueDeviationEClass, IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND);
 
-		discreteIntervalEClass = createEClass(DISCRETE_INTERVAL);
-		createEAttribute(discreteIntervalEClass, DISCRETE_INTERVAL__LOWER_BOUND);
-		createEAttribute(discreteIntervalEClass, DISCRETE_INTERVAL__UPPER_BOUND);
-		createEOperation(discreteIntervalEClass, DISCRETE_INTERVAL___GET_AVERAGE);
+		discreteValueIntervalEClass = createEClass(DISCRETE_VALUE_INTERVAL);
+		createEAttribute(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL__LOWER_BOUND);
+		createEAttribute(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL__UPPER_BOUND);
+		createEOperation(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL___GET_AVERAGE);
 
-		discreteConstantEClass = createEClass(DISCRETE_CONSTANT);
-		createEAttribute(discreteConstantEClass, DISCRETE_CONSTANT__VALUE);
-		createEOperation(discreteConstantEClass, DISCRETE_CONSTANT___GET_LOWER_BOUND);
-		createEOperation(discreteConstantEClass, DISCRETE_CONSTANT___GET_AVERAGE);
-		createEOperation(discreteConstantEClass, DISCRETE_CONSTANT___GET_UPPER_BOUND);
+		discreteValueConstantEClass = createEClass(DISCRETE_VALUE_CONSTANT);
+		createEAttribute(discreteValueConstantEClass, DISCRETE_VALUE_CONSTANT__VALUE);
+		createEOperation(discreteValueConstantEClass, DISCRETE_VALUE_CONSTANT___GET_LOWER_BOUND);
+		createEOperation(discreteValueConstantEClass, DISCRETE_VALUE_CONSTANT___GET_AVERAGE);
+		createEOperation(discreteValueConstantEClass, DISCRETE_VALUE_CONSTANT___GET_UPPER_BOUND);
 
-		discreteHistogramEClass = createEClass(DISCRETE_HISTOGRAM);
-		createEReference(discreteHistogramEClass, DISCRETE_HISTOGRAM__ENTRIES);
-		createEOperation(discreteHistogramEClass, DISCRETE_HISTOGRAM___GET_LOWER_BOUND);
-		createEOperation(discreteHistogramEClass, DISCRETE_HISTOGRAM___GET_UPPER_BOUND);
-		createEOperation(discreteHistogramEClass, DISCRETE_HISTOGRAM___GET_AVERAGE);
+		discreteValueHistogramEClass = createEClass(DISCRETE_VALUE_HISTOGRAM);
+		createEReference(discreteValueHistogramEClass, DISCRETE_VALUE_HISTOGRAM__ENTRIES);
+		createEOperation(discreteValueHistogramEClass, DISCRETE_VALUE_HISTOGRAM___GET_LOWER_BOUND);
+		createEOperation(discreteValueHistogramEClass, DISCRETE_VALUE_HISTOGRAM___GET_UPPER_BOUND);
+		createEOperation(discreteValueHistogramEClass, DISCRETE_VALUE_HISTOGRAM___GET_AVERAGE);
 
-		discreteHistogramEntryEClass = createEClass(DISCRETE_HISTOGRAM_ENTRY);
-		createEAttribute(discreteHistogramEntryEClass, DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES);
+		discreteValueHistogramEntryEClass = createEClass(DISCRETE_VALUE_HISTOGRAM_ENTRY);
+		createEAttribute(discreteValueHistogramEntryEClass, DISCRETE_VALUE_HISTOGRAM_ENTRY__OCCURRENCES);
 
-		boundedDiscreteDistributionEClass = createEClass(BOUNDED_DISCRETE_DISTRIBUTION);
+		boundedDiscreteValueDistributionEClass = createEClass(BOUNDED_DISCRETE_VALUE_DISTRIBUTION);
 
-		truncatedDiscreteDistributionEClass = createEClass(TRUNCATED_DISCRETE_DISTRIBUTION);
-		createEAttribute(truncatedDiscreteDistributionEClass, TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND);
-		createEAttribute(truncatedDiscreteDistributionEClass, TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND);
+		truncatedDiscreteValueDistributionEClass = createEClass(TRUNCATED_DISCRETE_VALUE_DISTRIBUTION);
+		createEAttribute(truncatedDiscreteValueDistributionEClass, TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND);
+		createEAttribute(truncatedDiscreteValueDistributionEClass, TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND);
 
-		discreteBoundariesEClass = createEClass(DISCRETE_BOUNDARIES);
-		createEAttribute(discreteBoundariesEClass, DISCRETE_BOUNDARIES__SAMPLING_TYPE);
+		discreteValueBoundariesEClass = createEClass(DISCRETE_VALUE_BOUNDARIES);
+		createEAttribute(discreteValueBoundariesEClass, DISCRETE_VALUE_BOUNDARIES__SAMPLING_TYPE);
 
-		discreteStatisticsEClass = createEClass(DISCRETE_STATISTICS);
-		createEAttribute(discreteStatisticsEClass, DISCRETE_STATISTICS__AVERAGE);
+		discreteValueStatisticsEClass = createEClass(DISCRETE_VALUE_STATISTICS);
+		createEAttribute(discreteValueStatisticsEClass, DISCRETE_VALUE_STATISTICS__AVERAGE);
 
-		discreteUniformDistributionEClass = createEClass(DISCRETE_UNIFORM_DISTRIBUTION);
+		discreteValueUniformDistributionEClass = createEClass(DISCRETE_VALUE_UNIFORM_DISTRIBUTION);
 
-		discreteGaussDistributionEClass = createEClass(DISCRETE_GAUSS_DISTRIBUTION);
-		createEAttribute(discreteGaussDistributionEClass, DISCRETE_GAUSS_DISTRIBUTION__MEAN);
-		createEAttribute(discreteGaussDistributionEClass, DISCRETE_GAUSS_DISTRIBUTION__SD);
-		createEOperation(discreteGaussDistributionEClass, DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE);
+		discreteValueGaussDistributionEClass = createEClass(DISCRETE_VALUE_GAUSS_DISTRIBUTION);
+		createEAttribute(discreteValueGaussDistributionEClass, DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN);
+		createEAttribute(discreteValueGaussDistributionEClass, DISCRETE_VALUE_GAUSS_DISTRIBUTION__SD);
+		createEOperation(discreteValueGaussDistributionEClass, DISCRETE_VALUE_GAUSS_DISTRIBUTION___GET_AVERAGE);
 
-		discreteWeibullEstimatorsDistributionEClass = createEClass(DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION);
-		createEAttribute(discreteWeibullEstimatorsDistributionEClass, DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
-		createEAttribute(discreteWeibullEstimatorsDistributionEClass, DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
+		discreteValueWeibullEstimatorsDistributionEClass = createEClass(DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION);
+		createEAttribute(discreteValueWeibullEstimatorsDistributionEClass, DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
+		createEAttribute(discreteValueWeibullEstimatorsDistributionEClass, DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
 
-		discreteBetaDistributionEClass = createEClass(DISCRETE_BETA_DISTRIBUTION);
-		createEAttribute(discreteBetaDistributionEClass, DISCRETE_BETA_DISTRIBUTION__ALPHA);
-		createEAttribute(discreteBetaDistributionEClass, DISCRETE_BETA_DISTRIBUTION__BETA);
-		createEOperation(discreteBetaDistributionEClass, DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE);
+		discreteValueBetaDistributionEClass = createEClass(DISCRETE_VALUE_BETA_DISTRIBUTION);
+		createEAttribute(discreteValueBetaDistributionEClass, DISCRETE_VALUE_BETA_DISTRIBUTION__ALPHA);
+		createEAttribute(discreteValueBetaDistributionEClass, DISCRETE_VALUE_BETA_DISTRIBUTION__BETA);
+		createEOperation(discreteValueBetaDistributionEClass, DISCRETE_VALUE_BETA_DISTRIBUTION___GET_AVERAGE);
 
-		iContinuousDeviationEClass = createEClass(ICONTINUOUS_DEVIATION);
-		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_LOWER_BOUND);
-		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_AVERAGE);
-		createEOperation(iContinuousDeviationEClass, ICONTINUOUS_DEVIATION___GET_UPPER_BOUND);
+		iContinuousValueDeviationEClass = createEClass(ICONTINUOUS_VALUE_DEVIATION);
+		createEOperation(iContinuousValueDeviationEClass, ICONTINUOUS_VALUE_DEVIATION___GET_LOWER_BOUND);
+		createEOperation(iContinuousValueDeviationEClass, ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE);
+		createEOperation(iContinuousValueDeviationEClass, ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND);
 
-		continuousIntervalEClass = createEClass(CONTINUOUS_INTERVAL);
-		createEAttribute(continuousIntervalEClass, CONTINUOUS_INTERVAL__LOWER_BOUND);
-		createEAttribute(continuousIntervalEClass, CONTINUOUS_INTERVAL__UPPER_BOUND);
-		createEOperation(continuousIntervalEClass, CONTINUOUS_INTERVAL___GET_AVERAGE);
+		continuousValueIntervalEClass = createEClass(CONTINUOUS_VALUE_INTERVAL);
+		createEAttribute(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL__LOWER_BOUND);
+		createEAttribute(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL__UPPER_BOUND);
+		createEOperation(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE);
 
-		continuousConstantEClass = createEClass(CONTINUOUS_CONSTANT);
-		createEAttribute(continuousConstantEClass, CONTINUOUS_CONSTANT__VALUE);
-		createEOperation(continuousConstantEClass, CONTINUOUS_CONSTANT___GET_LOWER_BOUND);
-		createEOperation(continuousConstantEClass, CONTINUOUS_CONSTANT___GET_AVERAGE);
-		createEOperation(continuousConstantEClass, CONTINUOUS_CONSTANT___GET_UPPER_BOUND);
+		continuousValueConstantEClass = createEClass(CONTINUOUS_VALUE_CONSTANT);
+		createEAttribute(continuousValueConstantEClass, CONTINUOUS_VALUE_CONSTANT__VALUE);
+		createEOperation(continuousValueConstantEClass, CONTINUOUS_VALUE_CONSTANT___GET_LOWER_BOUND);
+		createEOperation(continuousValueConstantEClass, CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE);
+		createEOperation(continuousValueConstantEClass, CONTINUOUS_VALUE_CONSTANT___GET_UPPER_BOUND);
 
-		continuousHistogramEClass = createEClass(CONTINUOUS_HISTOGRAM);
-		createEReference(continuousHistogramEClass, CONTINUOUS_HISTOGRAM__ENTRIES);
-		createEOperation(continuousHistogramEClass, CONTINUOUS_HISTOGRAM___GET_LOWER_BOUND);
-		createEOperation(continuousHistogramEClass, CONTINUOUS_HISTOGRAM___GET_UPPER_BOUND);
-		createEOperation(continuousHistogramEClass, CONTINUOUS_HISTOGRAM___GET_AVERAGE);
+		continuousValueHistogramEClass = createEClass(CONTINUOUS_VALUE_HISTOGRAM);
+		createEReference(continuousValueHistogramEClass, CONTINUOUS_VALUE_HISTOGRAM__ENTRIES);
+		createEOperation(continuousValueHistogramEClass, CONTINUOUS_VALUE_HISTOGRAM___GET_LOWER_BOUND);
+		createEOperation(continuousValueHistogramEClass, CONTINUOUS_VALUE_HISTOGRAM___GET_UPPER_BOUND);
+		createEOperation(continuousValueHistogramEClass, CONTINUOUS_VALUE_HISTOGRAM___GET_AVERAGE);
 
-		continuousHistogramEntryEClass = createEClass(CONTINUOUS_HISTOGRAM_ENTRY);
-		createEAttribute(continuousHistogramEntryEClass, CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES);
+		continuousValueHistogramEntryEClass = createEClass(CONTINUOUS_VALUE_HISTOGRAM_ENTRY);
+		createEAttribute(continuousValueHistogramEntryEClass, CONTINUOUS_VALUE_HISTOGRAM_ENTRY__OCCURRENCES);
 
-		boundedContinuousDistributionEClass = createEClass(BOUNDED_CONTINUOUS_DISTRIBUTION);
+		boundedContinuousValueDistributionEClass = createEClass(BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION);
 
-		truncatedContinuousDistributionEClass = createEClass(TRUNCATED_CONTINUOUS_DISTRIBUTION);
-		createEAttribute(truncatedContinuousDistributionEClass, TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND);
-		createEAttribute(truncatedContinuousDistributionEClass, TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND);
+		truncatedContinuousValueDistributionEClass = createEClass(TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION);
+		createEAttribute(truncatedContinuousValueDistributionEClass, TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND);
+		createEAttribute(truncatedContinuousValueDistributionEClass, TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND);
 
-		continuousBoundariesEClass = createEClass(CONTINUOUS_BOUNDARIES);
-		createEAttribute(continuousBoundariesEClass, CONTINUOUS_BOUNDARIES__SAMPLING_TYPE);
+		continuousValueBoundariesEClass = createEClass(CONTINUOUS_VALUE_BOUNDARIES);
+		createEAttribute(continuousValueBoundariesEClass, CONTINUOUS_VALUE_BOUNDARIES__SAMPLING_TYPE);
 
-		continuousStatisticsEClass = createEClass(CONTINUOUS_STATISTICS);
-		createEAttribute(continuousStatisticsEClass, CONTINUOUS_STATISTICS__AVERAGE);
+		continuousValueStatisticsEClass = createEClass(CONTINUOUS_VALUE_STATISTICS);
+		createEAttribute(continuousValueStatisticsEClass, CONTINUOUS_VALUE_STATISTICS__AVERAGE);
 
-		continuousUniformDistributionEClass = createEClass(CONTINUOUS_UNIFORM_DISTRIBUTION);
+		continuousValueUniformDistributionEClass = createEClass(CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION);
 
-		continuousGaussDistributionEClass = createEClass(CONTINUOUS_GAUSS_DISTRIBUTION);
-		createEAttribute(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION__MEAN);
-		createEAttribute(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION__SD);
-		createEOperation(continuousGaussDistributionEClass, CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE);
+		continuousValueGaussDistributionEClass = createEClass(CONTINUOUS_VALUE_GAUSS_DISTRIBUTION);
+		createEAttribute(continuousValueGaussDistributionEClass, CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__MEAN);
+		createEAttribute(continuousValueGaussDistributionEClass, CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__SD);
+		createEOperation(continuousValueGaussDistributionEClass, CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___GET_AVERAGE);
 
-		continuousWeibullEstimatorsDistributionEClass = createEClass(CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION);
-		createEAttribute(continuousWeibullEstimatorsDistributionEClass, CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
-		createEAttribute(continuousWeibullEstimatorsDistributionEClass, CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
+		continuousValueWeibullEstimatorsDistributionEClass = createEClass(CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION);
+		createEAttribute(continuousValueWeibullEstimatorsDistributionEClass, CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE);
+		createEAttribute(continuousValueWeibullEstimatorsDistributionEClass, CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE);
 
-		continuousBetaDistributionEClass = createEClass(CONTINUOUS_BETA_DISTRIBUTION);
-		createEAttribute(continuousBetaDistributionEClass, CONTINUOUS_BETA_DISTRIBUTION__ALPHA);
-		createEAttribute(continuousBetaDistributionEClass, CONTINUOUS_BETA_DISTRIBUTION__BETA);
-		createEOperation(continuousBetaDistributionEClass, CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE);
+		continuousValueBetaDistributionEClass = createEClass(CONTINUOUS_VALUE_BETA_DISTRIBUTION);
+		createEAttribute(continuousValueBetaDistributionEClass, CONTINUOUS_VALUE_BETA_DISTRIBUTION__ALPHA);
+		createEAttribute(continuousValueBetaDistributionEClass, CONTINUOUS_VALUE_BETA_DISTRIBUTION__BETA);
+		createEOperation(continuousValueBetaDistributionEClass, CONTINUOUS_VALUE_BETA_DISTRIBUTION___GET_AVERAGE);
 
 		modeEClass = createEClass(MODE);
 		createEReference(modeEClass, MODE__LITERALS);
@@ -15740,30 +15740,30 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		timeGaussDistributionEClass.getESuperTypes().add(this.getTruncatedTimeDistribution());
 		timeWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
 		timeBetaDistributionEClass.getESuperTypes().add(this.getBoundedTimeDistribution());
-		discreteConstantEClass.getESuperTypes().add(this.getIDiscreteDeviation());
-		discreteHistogramEClass.getESuperTypes().add(this.getIDiscreteDeviation());
-		discreteHistogramEntryEClass.getESuperTypes().add(this.getDiscreteInterval());
-		boundedDiscreteDistributionEClass.getESuperTypes().add(this.getDiscreteInterval());
-		boundedDiscreteDistributionEClass.getESuperTypes().add(this.getIDiscreteDeviation());
-		truncatedDiscreteDistributionEClass.getESuperTypes().add(this.getIDiscreteDeviation());
-		discreteBoundariesEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		discreteStatisticsEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		discreteUniformDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		discreteGaussDistributionEClass.getESuperTypes().add(this.getTruncatedDiscreteDistribution());
-		discreteWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		discreteBetaDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteDistribution());
-		continuousConstantEClass.getESuperTypes().add(this.getIContinuousDeviation());
-		continuousHistogramEClass.getESuperTypes().add(this.getIContinuousDeviation());
-		continuousHistogramEntryEClass.getESuperTypes().add(this.getContinuousInterval());
-		boundedContinuousDistributionEClass.getESuperTypes().add(this.getContinuousInterval());
-		boundedContinuousDistributionEClass.getESuperTypes().add(this.getIContinuousDeviation());
-		truncatedContinuousDistributionEClass.getESuperTypes().add(this.getIContinuousDeviation());
-		continuousBoundariesEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
-		continuousStatisticsEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
-		continuousUniformDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
-		continuousGaussDistributionEClass.getESuperTypes().add(this.getTruncatedContinuousDistribution());
-		continuousWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
-		continuousBetaDistributionEClass.getESuperTypes().add(this.getBoundedContinuousDistribution());
+		discreteValueConstantEClass.getESuperTypes().add(this.getIDiscreteValueDeviation());
+		discreteValueHistogramEClass.getESuperTypes().add(this.getIDiscreteValueDeviation());
+		discreteValueHistogramEntryEClass.getESuperTypes().add(this.getDiscreteValueInterval());
+		boundedDiscreteValueDistributionEClass.getESuperTypes().add(this.getDiscreteValueInterval());
+		boundedDiscreteValueDistributionEClass.getESuperTypes().add(this.getIDiscreteValueDeviation());
+		truncatedDiscreteValueDistributionEClass.getESuperTypes().add(this.getIDiscreteValueDeviation());
+		discreteValueBoundariesEClass.getESuperTypes().add(this.getBoundedDiscreteValueDistribution());
+		discreteValueStatisticsEClass.getESuperTypes().add(this.getBoundedDiscreteValueDistribution());
+		discreteValueUniformDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteValueDistribution());
+		discreteValueGaussDistributionEClass.getESuperTypes().add(this.getTruncatedDiscreteValueDistribution());
+		discreteValueWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteValueDistribution());
+		discreteValueBetaDistributionEClass.getESuperTypes().add(this.getBoundedDiscreteValueDistribution());
+		continuousValueConstantEClass.getESuperTypes().add(this.getIContinuousValueDeviation());
+		continuousValueHistogramEClass.getESuperTypes().add(this.getIContinuousValueDeviation());
+		continuousValueHistogramEntryEClass.getESuperTypes().add(this.getContinuousValueInterval());
+		boundedContinuousValueDistributionEClass.getESuperTypes().add(this.getContinuousValueInterval());
+		boundedContinuousValueDistributionEClass.getESuperTypes().add(this.getIContinuousValueDeviation());
+		truncatedContinuousValueDistributionEClass.getESuperTypes().add(this.getIContinuousValueDeviation());
+		continuousValueBoundariesEClass.getESuperTypes().add(this.getBoundedContinuousValueDistribution());
+		continuousValueStatisticsEClass.getESuperTypes().add(this.getBoundedContinuousValueDistribution());
+		continuousValueUniformDistributionEClass.getESuperTypes().add(this.getBoundedContinuousValueDistribution());
+		continuousValueGaussDistributionEClass.getESuperTypes().add(this.getTruncatedContinuousValueDistribution());
+		continuousValueWeibullEstimatorsDistributionEClass.getESuperTypes().add(this.getBoundedContinuousValueDistribution());
+		continuousValueBetaDistributionEClass.getESuperTypes().add(this.getBoundedContinuousValueDistribution());
 		modeEClass.getESuperTypes().add(this.getReferableBaseObject());
 		modeLiteralEClass.getESuperTypes().add(this.getReferableBaseObject());
 		componentsModelEClass.getESuperTypes().add(this.getBaseObject());
@@ -16259,7 +16259,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getLongObject_Value(), theEcorePackage.getELong(), "value", "0", 1, 1, LongObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(floatObjectEClass, FloatObject.class, "FloatObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFloatObject_Value(), theEcorePackage.getEFloat(), "value", "0f", 1, 1, FloatObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFloatObject_Value(), theEcorePackage.getEFloat(), "value", "0.0", 1, 1, FloatObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(doubleObjectEClass, DoubleObject.class, "DoubleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDoubleObject_Value(), theEcorePackage.getEDouble(), "value", "0.0", 1, 1, DoubleObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16342,135 +16342,135 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getTimeBetaDistribution__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(iDiscreteDeviationEClass, IDiscreteDeviation.class, "IDiscreteDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iDiscreteValueDeviationEClass, IDiscreteValueDeviation.class, "IDiscreteValueDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getIDiscreteDeviation__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteValueDeviation__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIDiscreteDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteValueDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIDiscreteDeviation__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteValueDeviation__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteIntervalEClass, DiscreteInterval.class, "DiscreteInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteInterval_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", "0", 1, 1, DiscreteInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDiscreteInterval_UpperBound(), theEcorePackage.getELongObject(), "upperBound", "0", 1, 1, DiscreteInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueIntervalEClass, DiscreteValueInterval.class, "DiscreteValueInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueInterval_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", "0", 1, 1, DiscreteValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueInterval_UpperBound(), theEcorePackage.getELongObject(), "upperBound", "0", 1, 1, DiscreteValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteConstantEClass, DiscreteConstant.class, "DiscreteConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteConstant_Value(), theEcorePackage.getELongObject(), "value", "0", 1, 1, DiscreteConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueConstantEClass, DiscreteValueConstant.class, "DiscreteValueConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueConstant_Value(), theEcorePackage.getELongObject(), "value", "0", 1, 1, DiscreteValueConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteConstant__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueConstant__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteConstant__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueConstant__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteHistogramEClass, DiscreteHistogram.class, "DiscreteHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDiscreteHistogram_Entries(), this.getDiscreteHistogramEntry(), null, "entries", null, 1, -1, DiscreteHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueHistogramEClass, DiscreteValueHistogram.class, "DiscreteValueHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDiscreteValueHistogram_Entries(), this.getDiscreteValueHistogramEntry(), null, "entries", null, 1, -1, DiscreteValueHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteHistogram__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueHistogram__GetLowerBound(), theEcorePackage.getELongObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteHistogram__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueHistogram__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteHistogramEntryEClass, DiscreteHistogramEntry.class, "DiscreteHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, DiscreteHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueHistogramEntryEClass, DiscreteValueHistogramEntry.class, "DiscreteValueHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, DiscreteValueHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(boundedDiscreteDistributionEClass, BoundedDiscreteDistribution.class, "BoundedDiscreteDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(boundedDiscreteValueDistributionEClass, BoundedDiscreteValueDistribution.class, "BoundedDiscreteValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(truncatedDiscreteDistributionEClass, TruncatedDiscreteDistribution.class, "TruncatedDiscreteDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTruncatedDiscreteDistribution_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", null, 0, 1, TruncatedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTruncatedDiscreteDistribution_UpperBound(), theEcorePackage.getELongObject(), "upperBound", null, 0, 1, TruncatedDiscreteDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(truncatedDiscreteValueDistributionEClass, TruncatedDiscreteValueDistribution.class, "TruncatedDiscreteValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTruncatedDiscreteValueDistribution_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", null, 0, 1, TruncatedDiscreteValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTruncatedDiscreteValueDistribution_UpperBound(), theEcorePackage.getELongObject(), "upperBound", null, 0, 1, TruncatedDiscreteValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discreteBoundariesEClass, DiscreteBoundaries.class, "DiscreteBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueBoundariesEClass, DiscreteValueBoundaries.class, "DiscreteValueBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discreteStatisticsEClass, DiscreteStatistics.class, "DiscreteStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueStatisticsEClass, DiscreteValueStatistics.class, "DiscreteValueStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discreteUniformDistributionEClass, DiscreteUniformDistribution.class, "DiscreteUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(discreteValueUniformDistributionEClass, DiscreteValueUniformDistribution.class, "DiscreteValueUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(discreteGaussDistributionEClass, DiscreteGaussDistribution.class, "DiscreteGaussDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteGaussDistribution_Mean(), theEcorePackage.getEDoubleObject(), "mean", "0.0", 1, 1, DiscreteGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDiscreteGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, DiscreteGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueGaussDistributionEClass, DiscreteValueGaussDistribution.class, "DiscreteValueGaussDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueGaussDistribution_Mean(), theEcorePackage.getEDoubleObject(), "mean", "0.0", 1, 1, DiscreteValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, DiscreteValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(discreteWeibullEstimatorsDistributionEClass, DiscreteWeibullEstimatorsDistribution.class, "DiscreteWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDiscreteWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, DiscreteWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueWeibullEstimatorsDistributionEClass, DiscreteValueWeibullEstimatorsDistribution.class, "DiscreteValueWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, DiscreteValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(discreteBetaDistributionEClass, DiscreteBetaDistribution.class, "DiscreteBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, DiscreteBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDiscreteBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, DiscreteBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(discreteValueBetaDistributionEClass, DiscreteValueBetaDistribution.class, "DiscreteValueBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscreteValueBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, DiscreteValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, DiscreteValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(iContinuousDeviationEClass, IContinuousDeviation.class, "IContinuousDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iContinuousValueDeviationEClass, IContinuousValueDeviation.class, "IContinuousValueDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getIContinuousDeviation__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousValueDeviation__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIContinuousDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousValueDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIContinuousDeviation__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousValueDeviation__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousIntervalEClass, ContinuousInterval.class, "ContinuousInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousInterval_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", "0.0", 1, 1, ContinuousInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContinuousInterval_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", "0.0", 1, 1, ContinuousInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueIntervalEClass, ContinuousValueInterval.class, "ContinuousValueInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueInterval_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", "0.0", 1, 1, ContinuousValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueInterval_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", "0.0", 1, 1, ContinuousValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousConstantEClass, ContinuousConstant.class, "ContinuousConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousConstant_Value(), theEcorePackage.getEDoubleObject(), "value", "0.0", 1, 1, ContinuousConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueConstantEClass, ContinuousValueConstant.class, "ContinuousValueConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueConstant_Value(), theEcorePackage.getEDoubleObject(), "value", "0.0", 1, 1, ContinuousValueConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousConstant__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueConstant__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousConstant__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueConstant__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousHistogramEClass, ContinuousHistogram.class, "ContinuousHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContinuousHistogram_Entries(), this.getContinuousHistogramEntry(), null, "entries", null, 1, -1, ContinuousHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueHistogramEClass, ContinuousValueHistogram.class, "ContinuousValueHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContinuousValueHistogram_Entries(), this.getContinuousValueHistogramEntry(), null, "entries", null, 1, -1, ContinuousValueHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousHistogram__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueHistogram__GetLowerBound(), theEcorePackage.getEDoubleObject(), "getLowerBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousHistogram__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueHistogram__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousHistogramEntryEClass, ContinuousHistogramEntry.class, "ContinuousHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, ContinuousHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueHistogramEntryEClass, ContinuousValueHistogramEntry.class, "ContinuousValueHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, ContinuousValueHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(boundedContinuousDistributionEClass, BoundedContinuousDistribution.class, "BoundedContinuousDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(boundedContinuousValueDistributionEClass, BoundedContinuousValueDistribution.class, "BoundedContinuousValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(truncatedContinuousDistributionEClass, TruncatedContinuousDistribution.class, "TruncatedContinuousDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTruncatedContinuousDistribution_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", null, 0, 1, TruncatedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTruncatedContinuousDistribution_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", null, 0, 1, TruncatedContinuousDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(truncatedContinuousValueDistributionEClass, TruncatedContinuousValueDistribution.class, "TruncatedContinuousValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTruncatedContinuousValueDistribution_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", null, 0, 1, TruncatedContinuousValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTruncatedContinuousValueDistribution_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", null, 0, 1, TruncatedContinuousValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(continuousBoundariesEClass, ContinuousBoundaries.class, "ContinuousBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueBoundariesEClass, ContinuousValueBoundaries.class, "ContinuousValueBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(continuousStatisticsEClass, ContinuousStatistics.class, "ContinuousStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueStatisticsEClass, ContinuousValueStatistics.class, "ContinuousValueStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(continuousUniformDistributionEClass, ContinuousUniformDistribution.class, "ContinuousUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(continuousValueUniformDistributionEClass, ContinuousValueUniformDistribution.class, "ContinuousValueUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(continuousGaussDistributionEClass, ContinuousGaussDistribution.class, "ContinuousGaussDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousGaussDistribution_Mean(), theEcorePackage.getEDoubleObject(), "mean", "0.0", 1, 1, ContinuousGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContinuousGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, ContinuousGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueGaussDistributionEClass, ContinuousValueGaussDistribution.class, "ContinuousValueGaussDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueGaussDistribution_Mean(), theEcorePackage.getEDoubleObject(), "mean", "0.0", 1, 1, ContinuousValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, ContinuousValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(continuousWeibullEstimatorsDistributionEClass, ContinuousWeibullEstimatorsDistribution.class, "ContinuousWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContinuousWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, ContinuousWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueWeibullEstimatorsDistributionEClass, ContinuousValueWeibullEstimatorsDistribution.class, "ContinuousValueWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, ContinuousValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(continuousBetaDistributionEClass, ContinuousBetaDistribution.class, "ContinuousBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, ContinuousBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContinuousBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, ContinuousBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(continuousValueBetaDistributionEClass, ContinuousValueBetaDistribution.class, "ContinuousValueBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContinuousValueBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, ContinuousValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, ContinuousValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(modeEClass, Mode.class, "Mode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMode_Literals(), this.getModeLiteral(), this.getModeLiteral_ContainingMode(), "literals", null, 0, -1, Mode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16873,8 +16873,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getConnectionHandler_InternalConnections(), this.getHwConnection(), null, "internalConnections", null, 0, -1, ConnectionHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwConnectionEClass, HwConnection.class, "HwConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHwConnection_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwConnection_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_ReadLatency(), this.getIDiscreteValueDeviation(), null, "readLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwConnection_WriteLatency(), this.getIDiscreteValueDeviation(), null, "writeLatency", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port1(), this.getHwPort(), null, "port1", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwConnection_Port2(), this.getHwPort(), null, "port2", null, 0, 1, HwConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16888,8 +16888,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getHwAccessElement_Source(), this.getProcessingUnit(), this.getProcessingUnit_AccessElements(), "source", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_Destination(), this.getHwDestination(), null, "destination", null, 1, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_AccessPath(), this.getHwAccessPath(), this.getHwAccessPath_ContainingAccessElement(), "accessPath", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHwAccessElement_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_ReadLatency(), this.getIDiscreteValueDeviation(), null, "readLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHwAccessElement_WriteLatency(), this.getIDiscreteValueDeviation(), null, "writeLatency", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHwAccessElement_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, HwAccessElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwDefinitionEClass, HwDefinition.class, "HwDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -16901,15 +16901,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(connectionHandlerDefinitionEClass, ConnectionHandlerDefinition.class, "ConnectionHandlerDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectionHandlerDefinition_Policy(), this.getSchedPolicy(), "policy", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getIDiscreteDeviation(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getIDiscreteDeviation(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_ReadLatency(), this.getIDiscreteValueDeviation(), null, "readLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionHandlerDefinition_WriteLatency(), this.getIDiscreteValueDeviation(), null, "writeLatency", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionHandlerDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxBurstSize(), this.getPositiveInt(), "maxBurstSize", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionHandlerDefinition_MaxConcurrentTransfers(), this.getPositiveInt(), "maxConcurrentTransfers", "1", 0, 1, ConnectionHandlerDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memoryDefinitionEClass, MemoryDefinition.class, "MemoryDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMemoryDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMemoryDefinition_AccessLatency(), this.getIDiscreteDeviation(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMemoryDefinition_AccessLatency(), this.getIDiscreteValueDeviation(), null, "accessLatency", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_DataRate(), this.getDataRate(), null, "dataRate", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMemoryDefinition_MemoryType(), this.getMemoryType(), "memoryType", null, 0, 1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMemoryDefinition_Classifiers(), this.getMemoryClassifier(), null, "classifiers", null, 0, -1, MemoryDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -16917,7 +16917,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(cacheDefinitionEClass, CacheDefinition.class, "CacheDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCacheDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCacheDefinition_LineSize(), this.getDataSize(), null, "lineSize", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCacheDefinition_AccessLatency(), this.getIDiscreteDeviation(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCacheDefinition_AccessLatency(), this.getIDiscreteValueDeviation(), null, "accessLatency", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_CacheType(), this.getCacheType(), "cacheType", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_WriteStrategy(), this.getWriteStrategy(), "writeStrategy", null, 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheDefinition_NWays(), theEcorePackage.getEInt(), "nWays", "0", 0, 1, CacheDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17237,7 +17237,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(variableRateStimulusEClass, VariableRateStimulus.class, "VariableRateStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableRateStimulus_Step(), this.getTime(), null, "step", null, 1, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateStimulus_OccurrencesPerStep(), this.getIContinuousDeviation(), null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableRateStimulus_OccurrencesPerStep(), this.getIContinuousValueDeviation(), null, "occurrencesPerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableRateStimulus_MaxIncreasePerStep(), theEcorePackage.getEDoubleObject(), "maxIncreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableRateStimulus_MaxDecreasePerStep(), theEcorePackage.getEDoubleObject(), "maxDecreasePerStep", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateStimulus_Scenario(), this.getScenario(), null, "scenario", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17512,15 +17512,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(needEntryEClass, Map.Entry.class, "NeedEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNeedEntry_Key(), theEcorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNeedEntry_Value(), this.getIDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeedEntry_Value(), this.getIDiscreteValueDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ticksEClass, Ticks.class, "Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTicks_Default(), this.getIDiscreteDeviation(), null, "default", null, 0, 1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicks_Default(), this.getIDiscreteValueDeviation(), null, "default", null, 0, 1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTicks_Extended(), this.getTicksEntry(), null, "extended", null, 0, -1, Ticks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ticksEntryEClass, Map.Entry.class, "TicksEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTicksEntry_Key(), this.getProcessingUnitDefinition(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTicksEntry_Value(), this.getIDiscreteDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTicksEntry_Value(), this.getIDiscreteValueDeviation(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeLabelAccessEClass, ModeLabelAccess.class, "ModeLabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeLabelAccess_Data(), this.getModeLabel(), null, "data", null, 1, 1, ModeLabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17658,7 +17658,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(variableRateActivationEClass, VariableRateActivation.class, "VariableRateActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableRateActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableRateActivation_Step(), this.getTime(), null, "step", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableRateActivation_OccurrencesPerStep(), this.getIContinuousDeviation(), null, "occurrencesPerStep", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableRateActivation_OccurrencesPerStep(), this.getIContinuousValueDeviation(), null, "occurrencesPerStep", null, 1, 1, VariableRateActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sporadicActivationEClass, SporadicActivation.class, "SporadicActivation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSporadicActivation_Description(), theEcorePackage.getEString(), "description", null, 0, 1, SporadicActivation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

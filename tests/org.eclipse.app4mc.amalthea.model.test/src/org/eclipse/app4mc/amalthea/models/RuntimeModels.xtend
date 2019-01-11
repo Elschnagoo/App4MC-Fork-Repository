@@ -111,12 +111,12 @@ class RuntimeModels {
 					execNeed [
 						instructions(500)
 					]
-					execNeed [instructions(createDiscreteGaussDistribution(500, 2, 250L, 750L))]
-					execNeed [need("MAC_Operations", createDiscreteConstant(2000))]
+					execNeed [instructions(createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]
+					execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
 				]
 				runnable [
 					name = "r2"
-					execNeed [need("MAC_Operations", createDiscreteConstant(2000))]
+					execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
 				]
 				task [
 					name = "t1"

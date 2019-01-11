@@ -70,15 +70,15 @@ import org.eclipse.app4mc.amalthea.model.Connector;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServer;
 import org.eclipse.app4mc.amalthea.model.ConstantBandwidthServerWithCASH;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
-import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
-import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueConstant;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.CoreClassification;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
@@ -109,15 +109,15 @@ import org.eclipse.app4mc.amalthea.model.DeadlineMonotonic;
 import org.eclipse.app4mc.amalthea.model.DeferrableServer;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
-import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
-import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
@@ -157,7 +157,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.ISRAllocation;
 import org.eclipse.app4mc.amalthea.model.ISRCategory;
@@ -434,24 +434,24 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION: return createTimeGaussDistribution();
 			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION: return createTimeWeibullEstimatorsDistribution();
 			case AmaltheaPackage.TIME_BETA_DISTRIBUTION: return createTimeBetaDistribution();
-			case AmaltheaPackage.DISCRETE_CONSTANT: return createDiscreteConstant();
-			case AmaltheaPackage.DISCRETE_HISTOGRAM: return createDiscreteHistogram();
-			case AmaltheaPackage.DISCRETE_HISTOGRAM_ENTRY: return createDiscreteHistogramEntry();
-			case AmaltheaPackage.DISCRETE_BOUNDARIES: return createDiscreteBoundaries();
-			case AmaltheaPackage.DISCRETE_STATISTICS: return createDiscreteStatistics();
-			case AmaltheaPackage.DISCRETE_UNIFORM_DISTRIBUTION: return createDiscreteUniformDistribution();
-			case AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION: return createDiscreteGaussDistribution();
-			case AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createDiscreteWeibullEstimatorsDistribution();
-			case AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION: return createDiscreteBetaDistribution();
-			case AmaltheaPackage.CONTINUOUS_CONSTANT: return createContinuousConstant();
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM: return createContinuousHistogram();
-			case AmaltheaPackage.CONTINUOUS_HISTOGRAM_ENTRY: return createContinuousHistogramEntry();
-			case AmaltheaPackage.CONTINUOUS_BOUNDARIES: return createContinuousBoundaries();
-			case AmaltheaPackage.CONTINUOUS_STATISTICS: return createContinuousStatistics();
-			case AmaltheaPackage.CONTINUOUS_UNIFORM_DISTRIBUTION: return createContinuousUniformDistribution();
-			case AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION: return createContinuousGaussDistribution();
-			case AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousWeibullEstimatorsDistribution();
-			case AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION: return createContinuousBetaDistribution();
+			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT: return createDiscreteValueConstant();
+			case AmaltheaPackage.DISCRETE_VALUE_HISTOGRAM: return createDiscreteValueHistogram();
+			case AmaltheaPackage.DISCRETE_VALUE_HISTOGRAM_ENTRY: return createDiscreteValueHistogramEntry();
+			case AmaltheaPackage.DISCRETE_VALUE_BOUNDARIES: return createDiscreteValueBoundaries();
+			case AmaltheaPackage.DISCRETE_VALUE_STATISTICS: return createDiscreteValueStatistics();
+			case AmaltheaPackage.DISCRETE_VALUE_UNIFORM_DISTRIBUTION: return createDiscreteValueUniformDistribution();
+			case AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION: return createDiscreteValueGaussDistribution();
+			case AmaltheaPackage.DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createDiscreteValueWeibullEstimatorsDistribution();
+			case AmaltheaPackage.DISCRETE_VALUE_BETA_DISTRIBUTION: return createDiscreteValueBetaDistribution();
+			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT: return createContinuousValueConstant();
+			case AmaltheaPackage.CONTINUOUS_VALUE_HISTOGRAM: return createContinuousValueHistogram();
+			case AmaltheaPackage.CONTINUOUS_VALUE_HISTOGRAM_ENTRY: return createContinuousValueHistogramEntry();
+			case AmaltheaPackage.CONTINUOUS_VALUE_BOUNDARIES: return createContinuousValueBoundaries();
+			case AmaltheaPackage.CONTINUOUS_VALUE_STATISTICS: return createContinuousValueStatistics();
+			case AmaltheaPackage.CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION: return createContinuousValueUniformDistribution();
+			case AmaltheaPackage.CONTINUOUS_VALUE_GAUSS_DISTRIBUTION: return createContinuousValueGaussDistribution();
+			case AmaltheaPackage.CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousValueWeibullEstimatorsDistribution();
+			case AmaltheaPackage.CONTINUOUS_VALUE_BETA_DISTRIBUTION: return createContinuousValueBetaDistribution();
 			case AmaltheaPackage.MODE: return createMode();
 			case AmaltheaPackage.MODE_LITERAL: return createModeLiteral();
 			case AmaltheaPackage.COMPONENTS_MODEL: return createComponentsModel();
@@ -1280,9 +1280,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteConstant createDiscreteConstant() {
-		DiscreteConstantImpl discreteConstant = new DiscreteConstantImpl();
-		return discreteConstant;
+	public DiscreteValueConstant createDiscreteValueConstant() {
+		DiscreteValueConstantImpl discreteValueConstant = new DiscreteValueConstantImpl();
+		return discreteValueConstant;
 	}
 
 	/**
@@ -1290,9 +1290,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteHistogram createDiscreteHistogram() {
-		DiscreteHistogramImpl discreteHistogram = new DiscreteHistogramImpl();
-		return discreteHistogram;
+	public DiscreteValueHistogram createDiscreteValueHistogram() {
+		DiscreteValueHistogramImpl discreteValueHistogram = new DiscreteValueHistogramImpl();
+		return discreteValueHistogram;
 	}
 
 	/**
@@ -1300,9 +1300,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteHistogramEntry createDiscreteHistogramEntry() {
-		DiscreteHistogramEntryImpl discreteHistogramEntry = new DiscreteHistogramEntryImpl();
-		return discreteHistogramEntry;
+	public DiscreteValueHistogramEntry createDiscreteValueHistogramEntry() {
+		DiscreteValueHistogramEntryImpl discreteValueHistogramEntry = new DiscreteValueHistogramEntryImpl();
+		return discreteValueHistogramEntry;
 	}
 
 	/**
@@ -1310,9 +1310,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteBoundaries createDiscreteBoundaries() {
-		DiscreteBoundariesImpl discreteBoundaries = new DiscreteBoundariesImpl();
-		return discreteBoundaries;
+	public DiscreteValueBoundaries createDiscreteValueBoundaries() {
+		DiscreteValueBoundariesImpl discreteValueBoundaries = new DiscreteValueBoundariesImpl();
+		return discreteValueBoundaries;
 	}
 
 	/**
@@ -1320,9 +1320,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteStatistics createDiscreteStatistics() {
-		DiscreteStatisticsImpl discreteStatistics = new DiscreteStatisticsImpl();
-		return discreteStatistics;
+	public DiscreteValueStatistics createDiscreteValueStatistics() {
+		DiscreteValueStatisticsImpl discreteValueStatistics = new DiscreteValueStatisticsImpl();
+		return discreteValueStatistics;
 	}
 
 	/**
@@ -1330,9 +1330,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteUniformDistribution createDiscreteUniformDistribution() {
-		DiscreteUniformDistributionImpl discreteUniformDistribution = new DiscreteUniformDistributionImpl();
-		return discreteUniformDistribution;
+	public DiscreteValueUniformDistribution createDiscreteValueUniformDistribution() {
+		DiscreteValueUniformDistributionImpl discreteValueUniformDistribution = new DiscreteValueUniformDistributionImpl();
+		return discreteValueUniformDistribution;
 	}
 
 	/**
@@ -1340,9 +1340,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteGaussDistribution createDiscreteGaussDistribution() {
-		DiscreteGaussDistributionImpl discreteGaussDistribution = new DiscreteGaussDistributionImpl();
-		return discreteGaussDistribution;
+	public DiscreteValueGaussDistribution createDiscreteValueGaussDistribution() {
+		DiscreteValueGaussDistributionImpl discreteValueGaussDistribution = new DiscreteValueGaussDistributionImpl();
+		return discreteValueGaussDistribution;
 	}
 
 	/**
@@ -1350,9 +1350,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteWeibullEstimatorsDistribution createDiscreteWeibullEstimatorsDistribution() {
-		DiscreteWeibullEstimatorsDistributionImpl discreteWeibullEstimatorsDistribution = new DiscreteWeibullEstimatorsDistributionImpl();
-		return discreteWeibullEstimatorsDistribution;
+	public DiscreteValueWeibullEstimatorsDistribution createDiscreteValueWeibullEstimatorsDistribution() {
+		DiscreteValueWeibullEstimatorsDistributionImpl discreteValueWeibullEstimatorsDistribution = new DiscreteValueWeibullEstimatorsDistributionImpl();
+		return discreteValueWeibullEstimatorsDistribution;
 	}
 
 	/**
@@ -1360,9 +1360,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiscreteBetaDistribution createDiscreteBetaDistribution() {
-		DiscreteBetaDistributionImpl discreteBetaDistribution = new DiscreteBetaDistributionImpl();
-		return discreteBetaDistribution;
+	public DiscreteValueBetaDistribution createDiscreteValueBetaDistribution() {
+		DiscreteValueBetaDistributionImpl discreteValueBetaDistribution = new DiscreteValueBetaDistributionImpl();
+		return discreteValueBetaDistribution;
 	}
 
 	/**
@@ -1370,9 +1370,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousConstant createContinuousConstant() {
-		ContinuousConstantImpl continuousConstant = new ContinuousConstantImpl();
-		return continuousConstant;
+	public ContinuousValueConstant createContinuousValueConstant() {
+		ContinuousValueConstantImpl continuousValueConstant = new ContinuousValueConstantImpl();
+		return continuousValueConstant;
 	}
 
 	/**
@@ -1380,9 +1380,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousHistogram createContinuousHistogram() {
-		ContinuousHistogramImpl continuousHistogram = new ContinuousHistogramImpl();
-		return continuousHistogram;
+	public ContinuousValueHistogram createContinuousValueHistogram() {
+		ContinuousValueHistogramImpl continuousValueHistogram = new ContinuousValueHistogramImpl();
+		return continuousValueHistogram;
 	}
 
 	/**
@@ -1390,9 +1390,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousHistogramEntry createContinuousHistogramEntry() {
-		ContinuousHistogramEntryImpl continuousHistogramEntry = new ContinuousHistogramEntryImpl();
-		return continuousHistogramEntry;
+	public ContinuousValueHistogramEntry createContinuousValueHistogramEntry() {
+		ContinuousValueHistogramEntryImpl continuousValueHistogramEntry = new ContinuousValueHistogramEntryImpl();
+		return continuousValueHistogramEntry;
 	}
 
 	/**
@@ -1400,9 +1400,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousBoundaries createContinuousBoundaries() {
-		ContinuousBoundariesImpl continuousBoundaries = new ContinuousBoundariesImpl();
-		return continuousBoundaries;
+	public ContinuousValueBoundaries createContinuousValueBoundaries() {
+		ContinuousValueBoundariesImpl continuousValueBoundaries = new ContinuousValueBoundariesImpl();
+		return continuousValueBoundaries;
 	}
 
 	/**
@@ -1410,9 +1410,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousStatistics createContinuousStatistics() {
-		ContinuousStatisticsImpl continuousStatistics = new ContinuousStatisticsImpl();
-		return continuousStatistics;
+	public ContinuousValueStatistics createContinuousValueStatistics() {
+		ContinuousValueStatisticsImpl continuousValueStatistics = new ContinuousValueStatisticsImpl();
+		return continuousValueStatistics;
 	}
 
 	/**
@@ -1420,9 +1420,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousUniformDistribution createContinuousUniformDistribution() {
-		ContinuousUniformDistributionImpl continuousUniformDistribution = new ContinuousUniformDistributionImpl();
-		return continuousUniformDistribution;
+	public ContinuousValueUniformDistribution createContinuousValueUniformDistribution() {
+		ContinuousValueUniformDistributionImpl continuousValueUniformDistribution = new ContinuousValueUniformDistributionImpl();
+		return continuousValueUniformDistribution;
 	}
 
 	/**
@@ -1430,9 +1430,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousGaussDistribution createContinuousGaussDistribution() {
-		ContinuousGaussDistributionImpl continuousGaussDistribution = new ContinuousGaussDistributionImpl();
-		return continuousGaussDistribution;
+	public ContinuousValueGaussDistribution createContinuousValueGaussDistribution() {
+		ContinuousValueGaussDistributionImpl continuousValueGaussDistribution = new ContinuousValueGaussDistributionImpl();
+		return continuousValueGaussDistribution;
 	}
 
 	/**
@@ -1440,9 +1440,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousWeibullEstimatorsDistribution createContinuousWeibullEstimatorsDistribution() {
-		ContinuousWeibullEstimatorsDistributionImpl continuousWeibullEstimatorsDistribution = new ContinuousWeibullEstimatorsDistributionImpl();
-		return continuousWeibullEstimatorsDistribution;
+	public ContinuousValueWeibullEstimatorsDistribution createContinuousValueWeibullEstimatorsDistribution() {
+		ContinuousValueWeibullEstimatorsDistributionImpl continuousValueWeibullEstimatorsDistribution = new ContinuousValueWeibullEstimatorsDistributionImpl();
+		return continuousValueWeibullEstimatorsDistribution;
 	}
 
 	/**
@@ -1450,9 +1450,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContinuousBetaDistribution createContinuousBetaDistribution() {
-		ContinuousBetaDistributionImpl continuousBetaDistribution = new ContinuousBetaDistributionImpl();
-		return continuousBetaDistribution;
+	public ContinuousValueBetaDistribution createContinuousValueBetaDistribution() {
+		ContinuousValueBetaDistributionImpl continuousValueBetaDistribution = new ContinuousValueBetaDistributionImpl();
+		return continuousValueBetaDistribution;
 	}
 
 	/**
@@ -3350,7 +3350,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, IDiscreteDeviation> createNeedEntry() {
+	public Map.Entry<String, IDiscreteValueDeviation> createNeedEntry() {
 		NeedEntryImpl needEntry = new NeedEntryImpl();
 		return needEntry;
 	}
@@ -3370,7 +3370,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ProcessingUnitDefinition, IDiscreteDeviation> createTicksEntry() {
+	public Map.Entry<ProcessingUnitDefinition, IDiscreteValueDeviation> createTicksEntry() {
 		TicksEntryImpl ticksEntry = new TicksEntryImpl();
 		return ticksEntry;
 	}

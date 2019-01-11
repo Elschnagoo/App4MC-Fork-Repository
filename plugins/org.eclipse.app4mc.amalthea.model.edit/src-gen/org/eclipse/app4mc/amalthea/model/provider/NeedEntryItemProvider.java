@@ -249,42 +249,42 @@ public class NeedEntryItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueHistogram()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueStatistics()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueUniformDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueGaussDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getNeedEntry_Value(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBetaDistribution()));
 	}
 
 	/**

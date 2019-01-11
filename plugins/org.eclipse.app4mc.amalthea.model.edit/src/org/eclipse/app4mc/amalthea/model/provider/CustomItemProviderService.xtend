@@ -2473,7 +2473,7 @@ class CustomItemProviderService {
 			val deviation = object?.getValue()
 
 			val s1 = if(typeName.isNullOrEmpty) "<pu definition>" else "Definition " + typeName
-			val s2 = if(deviation === null) "<ticks>" else CustomDeviationItemProviderService.getDiscreteDeviationText(deviation)
+			val s2 = if(deviation === null) "<ticks>" else CustomDeviationItemProviderService.getDiscreteValueDeviationText(deviation)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText
@@ -2501,7 +2501,7 @@ class CustomItemProviderService {
 			val dev = object?.getValue()
 
 			val s1 = if(featureName.isNullOrEmpty) "<feature>" else "Feature \"" + featureName + "\""
-			val s2 = if(dev === null) "<usages>" else CustomDeviationItemProviderService.getDiscreteDeviationText(dev)
+			val s2 = if(dev === null) "<usages>" else CustomDeviationItemProviderService.getDiscreteValueDeviationText(dev)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText

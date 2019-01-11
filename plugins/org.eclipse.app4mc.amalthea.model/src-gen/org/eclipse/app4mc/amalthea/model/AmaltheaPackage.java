@@ -3141,23 +3141,23 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_TIME_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation <em>IDiscrete Deviation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation <em>IDiscrete Value Deviation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIDiscreteDeviation()
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIDiscreteValueDeviation()
 	 * @generated
 	 */
-	int IDISCRETE_DEVIATION = 50;
+	int IDISCRETE_VALUE_DEVIATION = 50;
 
 	/**
-	 * The number of structural features of the '<em>IDiscrete Deviation</em>' class.
+	 * The number of structural features of the '<em>IDiscrete Value Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_DEVIATION_FEATURE_COUNT = 0;
+	int IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3166,7 +3166,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_DEVIATION___GET_LOWER_BOUND = 0;
+	int IDISCRETE_VALUE_DEVIATION___GET_LOWER_BOUND = 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3175,7 +3175,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_DEVIATION___GET_AVERAGE = 1;
+	int IDISCRETE_VALUE_DEVIATION___GET_AVERAGE = 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3184,26 +3184,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_DEVIATION___GET_UPPER_BOUND = 2;
+	int IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND = 2;
 
 	/**
-	 * The number of operations of the '<em>IDiscrete Deviation</em>' class.
+	 * The number of operations of the '<em>IDiscrete Value Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_DEVIATION_OPERATION_COUNT = 3;
+	int IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl <em>Discrete Interval</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueIntervalImpl <em>Discrete Value Interval</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteIntervalImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueIntervalImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueInterval()
 	 * @generated
 	 */
-	int DISCRETE_INTERVAL = 51;
+	int DISCRETE_VALUE_INTERVAL = 51;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3212,7 +3212,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_INTERVAL__LOWER_BOUND = 0;
+	int DISCRETE_VALUE_INTERVAL__LOWER_BOUND = 0;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3221,16 +3221,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_INTERVAL__UPPER_BOUND = 1;
+	int DISCRETE_VALUE_INTERVAL__UPPER_BOUND = 1;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Interval</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_INTERVAL_FEATURE_COUNT = 2;
+	int DISCRETE_VALUE_INTERVAL_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3239,26 +3239,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_INTERVAL___GET_AVERAGE = 0;
+	int DISCRETE_VALUE_INTERVAL___GET_AVERAGE = 0;
 
 	/**
-	 * The number of operations of the '<em>Discrete Interval</em>' class.
+	 * The number of operations of the '<em>Discrete Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_INTERVAL_OPERATION_COUNT = 1;
+	int DISCRETE_VALUE_INTERVAL_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteConstantImpl <em>Discrete Constant</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueConstantImpl <em>Discrete Value Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteConstantImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueConstant()
 	 * @generated
 	 */
-	int DISCRETE_CONSTANT = 52;
+	int DISCRETE_VALUE_CONSTANT = 52;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3267,16 +3267,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT__VALUE = IDISCRETE_DEVIATION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_CONSTANT__VALUE = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Constant</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT_FEATURE_COUNT = IDISCRETE_DEVIATION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_CONSTANT_FEATURE_COUNT = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3285,7 +3285,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT___GET_LOWER_BOUND = IDISCRETE_DEVIATION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_CONSTANT___GET_LOWER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3294,7 +3294,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT___GET_AVERAGE = IDISCRETE_DEVIATION_OPERATION_COUNT + 1;
+	int DISCRETE_VALUE_CONSTANT___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3303,26 +3303,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT___GET_UPPER_BOUND = IDISCRETE_DEVIATION_OPERATION_COUNT + 2;
+	int DISCRETE_VALUE_CONSTANT___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Discrete Constant</em>' class.
+	 * The number of operations of the '<em>Discrete Value Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_CONSTANT_OPERATION_COUNT = IDISCRETE_DEVIATION_OPERATION_COUNT + 3;
+	int DISCRETE_VALUE_CONSTANT_OPERATION_COUNT = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramImpl <em>Discrete Histogram</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueHistogramImpl <em>Discrete Value Histogram</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteHistogram()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueHistogramImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueHistogram()
 	 * @generated
 	 */
-	int DISCRETE_HISTOGRAM = 53;
+	int DISCRETE_VALUE_HISTOGRAM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -3331,16 +3331,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM__ENTRIES = IDISCRETE_DEVIATION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_HISTOGRAM__ENTRIES = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Histogram</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Histogram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_FEATURE_COUNT = IDISCRETE_DEVIATION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_HISTOGRAM_FEATURE_COUNT = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3349,7 +3349,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM___GET_LOWER_BOUND = IDISCRETE_DEVIATION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_HISTOGRAM___GET_LOWER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3358,7 +3358,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM___GET_UPPER_BOUND = IDISCRETE_DEVIATION_OPERATION_COUNT + 1;
+	int DISCRETE_VALUE_HISTOGRAM___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3367,26 +3367,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM___GET_AVERAGE = IDISCRETE_DEVIATION_OPERATION_COUNT + 2;
+	int DISCRETE_VALUE_HISTOGRAM___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Discrete Histogram</em>' class.
+	 * The number of operations of the '<em>Discrete Value Histogram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_OPERATION_COUNT = IDISCRETE_DEVIATION_OPERATION_COUNT + 3;
+	int DISCRETE_VALUE_HISTOGRAM_OPERATION_COUNT = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl <em>Discrete Histogram Entry</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueHistogramEntryImpl <em>Discrete Value Histogram Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteHistogramEntryImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteHistogramEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueHistogramEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueHistogramEntry()
 	 * @generated
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY = 54;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY = 54;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3395,7 +3395,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY__LOWER_BOUND = DISCRETE_INTERVAL__LOWER_BOUND;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY__LOWER_BOUND = DISCRETE_VALUE_INTERVAL__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3404,7 +3404,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY__UPPER_BOUND = DISCRETE_INTERVAL__UPPER_BOUND;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY__UPPER_BOUND = DISCRETE_VALUE_INTERVAL__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Occurrences</b></em>' attribute.
@@ -3413,16 +3413,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY__OCCURRENCES = DISCRETE_INTERVAL_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY__OCCURRENCES = DISCRETE_VALUE_INTERVAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Histogram Entry</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY_FEATURE_COUNT = DISCRETE_INTERVAL_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY_FEATURE_COUNT = DISCRETE_VALUE_INTERVAL_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3431,26 +3431,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY___GET_AVERAGE = DISCRETE_INTERVAL___GET_AVERAGE;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY___GET_AVERAGE = DISCRETE_VALUE_INTERVAL___GET_AVERAGE;
 
 	/**
-	 * The number of operations of the '<em>Discrete Histogram Entry</em>' class.
+	 * The number of operations of the '<em>Discrete Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_HISTOGRAM_ENTRY_OPERATION_COUNT = DISCRETE_INTERVAL_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY_OPERATION_COUNT = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteDistributionImpl <em>Bounded Discrete Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteValueDistributionImpl <em>Bounded Discrete Value Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedDiscreteDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedDiscreteValueDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedDiscreteValueDistribution()
 	 * @generated
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION = 55;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION = 55;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3459,7 +3459,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND = DISCRETE_INTERVAL__LOWER_BOUND;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND = DISCRETE_VALUE_INTERVAL__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3468,16 +3468,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND = DISCRETE_INTERVAL__UPPER_BOUND;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND = DISCRETE_VALUE_INTERVAL__UPPER_BOUND;
 
 	/**
-	 * The number of structural features of the '<em>Bounded Discrete Distribution</em>' class.
+	 * The number of structural features of the '<em>Bounded Discrete Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT = DISCRETE_INTERVAL_FEATURE_COUNT + 0;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT = DISCRETE_VALUE_INTERVAL_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3486,7 +3486,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_INTERVAL_OPERATION_COUNT + 0;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3495,7 +3495,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE = DISCRETE_INTERVAL_OPERATION_COUNT + 1;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3504,26 +3504,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_INTERVAL_OPERATION_COUNT + 2;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Bounded Discrete Distribution</em>' class.
+	 * The number of operations of the '<em>Bounded Discrete Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT = DISCRETE_INTERVAL_OPERATION_COUNT + 3;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteDistributionImpl <em>Truncated Discrete Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteValueDistributionImpl <em>Truncated Discrete Value Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedDiscreteDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedDiscreteValueDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedDiscreteValueDistribution()
 	 * @generated
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION = 56;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION = 56;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3532,7 +3532,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND = IDISCRETE_DEVIATION_FEATURE_COUNT + 0;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3541,16 +3541,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND = IDISCRETE_DEVIATION_FEATURE_COUNT + 1;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Truncated Discrete Distribution</em>' class.
+	 * The number of structural features of the '<em>Truncated Discrete Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT = IDISCRETE_DEVIATION_FEATURE_COUNT + 2;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT = IDISCRETE_VALUE_DEVIATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3559,7 +3559,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND = IDISCRETE_DEVIATION___GET_LOWER_BOUND;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND = IDISCRETE_VALUE_DEVIATION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3568,7 +3568,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_AVERAGE = IDISCRETE_DEVIATION___GET_AVERAGE;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3577,26 +3577,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND = IDISCRETE_DEVIATION___GET_UPPER_BOUND;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Truncated Discrete Distribution</em>' class.
+	 * The number of operations of the '<em>Truncated Discrete Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT = IDISCRETE_DEVIATION_OPERATION_COUNT + 0;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteBoundariesImpl <em>Discrete Boundaries</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueBoundariesImpl <em>Discrete Value Boundaries</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteBoundariesImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteBoundaries()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueBoundariesImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueBoundaries()
 	 * @generated
 	 */
-	int DISCRETE_BOUNDARIES = 57;
+	int DISCRETE_VALUE_BOUNDARIES = 57;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3605,7 +3605,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_BOUNDARIES__LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3614,7 +3614,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_BOUNDARIES__UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
@@ -3623,16 +3623,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES__SAMPLING_TYPE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_BOUNDARIES__SAMPLING_TYPE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Boundaries</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Boundaries</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_BOUNDARIES_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3641,7 +3641,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3650,7 +3650,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+	int DISCRETE_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3659,26 +3659,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Discrete Boundaries</em>' class.
+	 * The number of operations of the '<em>Discrete Value Boundaries</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BOUNDARIES_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_BOUNDARIES_OPERATION_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteStatisticsImpl <em>Discrete Statistics</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueStatisticsImpl <em>Discrete Value Statistics</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteStatisticsImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteStatistics()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueStatisticsImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueStatistics()
 	 * @generated
 	 */
-	int DISCRETE_STATISTICS = 58;
+	int DISCRETE_VALUE_STATISTICS = 58;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3687,7 +3687,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_STATISTICS__LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3696,7 +3696,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_STATISTICS__UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Average</b></em>' attribute.
@@ -3705,16 +3705,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS__AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_STATISTICS__AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Statistics</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_STATISTICS_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3723,7 +3723,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_STATISTICS___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3732,7 +3732,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+	int DISCRETE_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3741,26 +3741,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_STATISTICS___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Discrete Statistics</em>' class.
+	 * The number of operations of the '<em>Discrete Value Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_STATISTICS_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_STATISTICS_OPERATION_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteUniformDistributionImpl <em>Discrete Uniform Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueUniformDistributionImpl <em>Discrete Value Uniform Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteUniformDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteUniformDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueUniformDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueUniformDistribution()
 	 * @generated
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION = 59;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION = 59;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3769,7 +3769,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3778,16 +3778,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Uniform Distribution</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Uniform Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3796,7 +3796,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3805,7 +3805,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3814,26 +3814,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Discrete Uniform Distribution</em>' class.
+	 * The number of operations of the '<em>Discrete Value Uniform Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteGaussDistributionImpl <em>Discrete Gauss Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueGaussDistributionImpl <em>Discrete Value Gauss Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteGaussDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueGaussDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueGaussDistribution()
 	 * @generated
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION = 60;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION = 60;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3842,7 +3842,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3851,7 +3851,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Mean</b></em>' attribute.
@@ -3860,7 +3860,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sd</b></em>' attribute.
@@ -3869,16 +3869,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION__SD = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION__SD = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Gauss Distribution</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 2;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3887,7 +3887,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3896,7 +3896,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3905,26 +3905,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Discrete Gauss Distribution</em>' class.
+	 * The number of operations of the '<em>Discrete Value Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 1;
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullEstimatorsDistributionImpl <em>Discrete Weibull Estimators Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueWeibullEstimatorsDistributionImpl <em>Discrete Value Weibull Estimators Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteWeibullEstimatorsDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueWeibullEstimatorsDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION = 61;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION = 61;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -3933,7 +3933,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -3942,7 +3942,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Average</b></em>' attribute.
@@ -3951,7 +3951,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>PRemain Promille</b></em>' attribute.
@@ -3960,16 +3960,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Weibull Estimators Distribution</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Weibull Estimators Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 2;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3978,7 +3978,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -3987,7 +3987,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION___GET_AVERAGE;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -3996,26 +3996,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Discrete Weibull Estimators Distribution</em>' class.
+	 * The number of operations of the '<em>Discrete Value Weibull Estimators Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteBetaDistributionImpl <em>Discrete Beta Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueBetaDistributionImpl <em>Discrete Value Beta Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteBetaDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.DiscreteValueBetaDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDiscreteValueBetaDistribution()
 	 * @generated
 	 */
-	int DISCRETE_BETA_DISTRIBUTION = 62;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION = 62;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4024,7 +4024,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4033,7 +4033,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
@@ -4042,7 +4042,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION__ALPHA = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 0;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION__ALPHA = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Beta</b></em>' attribute.
@@ -4051,16 +4051,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION__BETA = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 1;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION__BETA = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Discrete Beta Distribution</em>' class.
+	 * The number of structural features of the '<em>Discrete Value Beta Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_FEATURE_COUNT + 2;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4069,7 +4069,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_LOWER_BOUND;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4078,7 +4078,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_DISTRIBUTION___GET_UPPER_BOUND;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4087,35 +4087,35 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 0;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Discrete Beta Distribution</em>' class.
+	 * The number of operations of the '<em>Discrete Value Beta Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_DISTRIBUTION_OPERATION_COUNT + 1;
+	int DISCRETE_VALUE_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation <em>IContinuous Deviation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation <em>IContinuous Value Deviation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIContinuousDeviation()
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getIContinuousValueDeviation()
 	 * @generated
 	 */
-	int ICONTINUOUS_DEVIATION = 63;
+	int ICONTINUOUS_VALUE_DEVIATION = 63;
 
 	/**
-	 * The number of structural features of the '<em>IContinuous Deviation</em>' class.
+	 * The number of structural features of the '<em>IContinuous Value Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_DEVIATION_FEATURE_COUNT = 0;
+	int ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4124,7 +4124,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_DEVIATION___GET_LOWER_BOUND = 0;
+	int ICONTINUOUS_VALUE_DEVIATION___GET_LOWER_BOUND = 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4133,7 +4133,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_DEVIATION___GET_AVERAGE = 1;
+	int ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE = 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4142,26 +4142,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_DEVIATION___GET_UPPER_BOUND = 2;
+	int ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND = 2;
 
 	/**
-	 * The number of operations of the '<em>IContinuous Deviation</em>' class.
+	 * The number of operations of the '<em>IContinuous Value Deviation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_DEVIATION_OPERATION_COUNT = 3;
+	int ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl <em>Continuous Interval</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueIntervalImpl <em>Continuous Value Interval</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousIntervalImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueIntervalImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueInterval()
 	 * @generated
 	 */
-	int CONTINUOUS_INTERVAL = 64;
+	int CONTINUOUS_VALUE_INTERVAL = 64;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4170,7 +4170,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_INTERVAL__LOWER_BOUND = 0;
+	int CONTINUOUS_VALUE_INTERVAL__LOWER_BOUND = 0;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4179,16 +4179,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_INTERVAL__UPPER_BOUND = 1;
+	int CONTINUOUS_VALUE_INTERVAL__UPPER_BOUND = 1;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Interval</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_INTERVAL_FEATURE_COUNT = 2;
+	int CONTINUOUS_VALUE_INTERVAL_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4197,26 +4197,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_INTERVAL___GET_AVERAGE = 0;
+	int CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE = 0;
 
 	/**
-	 * The number of operations of the '<em>Continuous Interval</em>' class.
+	 * The number of operations of the '<em>Continuous Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_INTERVAL_OPERATION_COUNT = 1;
+	int CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousConstantImpl <em>Continuous Constant</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueConstantImpl <em>Continuous Value Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousConstantImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueConstantImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueConstant()
 	 * @generated
 	 */
-	int CONTINUOUS_CONSTANT = 65;
+	int CONTINUOUS_VALUE_CONSTANT = 65;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -4225,16 +4225,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT__VALUE = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_CONSTANT__VALUE = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Constant</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT_FEATURE_COUNT = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_CONSTANT_FEATURE_COUNT = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4243,7 +4243,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT___GET_LOWER_BOUND = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_CONSTANT___GET_LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4252,7 +4252,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT___GET_AVERAGE = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 1;
+	int CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4261,26 +4261,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT___GET_UPPER_BOUND = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 2;
+	int CONTINUOUS_VALUE_CONSTANT___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Continuous Constant</em>' class.
+	 * The number of operations of the '<em>Continuous Value Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_CONSTANT_OPERATION_COUNT = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 3;
+	int CONTINUOUS_VALUE_CONSTANT_OPERATION_COUNT = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramImpl <em>Continuous Histogram</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueHistogramImpl <em>Continuous Value Histogram</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousHistogram()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueHistogramImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueHistogram()
 	 * @generated
 	 */
-	int CONTINUOUS_HISTOGRAM = 66;
+	int CONTINUOUS_VALUE_HISTOGRAM = 66;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -4289,16 +4289,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM__ENTRIES = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_HISTOGRAM__ENTRIES = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Histogram</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Histogram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_FEATURE_COUNT = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_HISTOGRAM_FEATURE_COUNT = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4307,7 +4307,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM___GET_LOWER_BOUND = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_HISTOGRAM___GET_LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4316,7 +4316,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM___GET_UPPER_BOUND = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 1;
+	int CONTINUOUS_VALUE_HISTOGRAM___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4325,26 +4325,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM___GET_AVERAGE = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 2;
+	int CONTINUOUS_VALUE_HISTOGRAM___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Continuous Histogram</em>' class.
+	 * The number of operations of the '<em>Continuous Value Histogram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_OPERATION_COUNT = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 3;
+	int CONTINUOUS_VALUE_HISTOGRAM_OPERATION_COUNT = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl <em>Continuous Histogram Entry</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueHistogramEntryImpl <em>Continuous Value Histogram Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousHistogramEntryImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousHistogramEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueHistogramEntryImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueHistogramEntry()
 	 * @generated
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY = 67;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY = 67;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4353,7 +4353,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY__LOWER_BOUND = CONTINUOUS_INTERVAL__LOWER_BOUND;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY__LOWER_BOUND = CONTINUOUS_VALUE_INTERVAL__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4362,7 +4362,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY__UPPER_BOUND = CONTINUOUS_INTERVAL__UPPER_BOUND;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY__UPPER_BOUND = CONTINUOUS_VALUE_INTERVAL__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Occurrences</b></em>' attribute.
@@ -4371,16 +4371,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY__OCCURRENCES = CONTINUOUS_INTERVAL_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY__OCCURRENCES = CONTINUOUS_VALUE_INTERVAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Histogram Entry</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY_FEATURE_COUNT = CONTINUOUS_INTERVAL_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY_FEATURE_COUNT = CONTINUOUS_VALUE_INTERVAL_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4389,26 +4389,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY___GET_AVERAGE = CONTINUOUS_INTERVAL___GET_AVERAGE;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY___GET_AVERAGE = CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE;
 
 	/**
-	 * The number of operations of the '<em>Continuous Histogram Entry</em>' class.
+	 * The number of operations of the '<em>Continuous Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_HISTOGRAM_ENTRY_OPERATION_COUNT = CONTINUOUS_INTERVAL_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY_OPERATION_COUNT = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousDistributionImpl <em>Bounded Continuous Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousValueDistributionImpl <em>Bounded Continuous Value Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedContinuousDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.BoundedContinuousValueDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getBoundedContinuousValueDistribution()
 	 * @generated
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION = 68;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION = 68;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4417,7 +4417,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_INTERVAL__LOWER_BOUND;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND = CONTINUOUS_VALUE_INTERVAL__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4426,16 +4426,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_INTERVAL__UPPER_BOUND;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND = CONTINUOUS_VALUE_INTERVAL__UPPER_BOUND;
 
 	/**
-	 * The number of structural features of the '<em>Bounded Continuous Distribution</em>' class.
+	 * The number of structural features of the '<em>Bounded Continuous Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_INTERVAL_FEATURE_COUNT + 0;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_VALUE_INTERVAL_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4444,7 +4444,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_INTERVAL_OPERATION_COUNT + 0;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4453,7 +4453,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_INTERVAL_OPERATION_COUNT + 1;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4462,26 +4462,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_INTERVAL_OPERATION_COUNT + 2;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Bounded Continuous Distribution</em>' class.
+	 * The number of operations of the '<em>Bounded Continuous Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_INTERVAL_OPERATION_COUNT + 3;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousDistributionImpl <em>Truncated Continuous Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousValueDistributionImpl <em>Truncated Continuous Value Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedContinuousDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.TruncatedContinuousValueDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getTruncatedContinuousValueDistribution()
 	 * @generated
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION = 69;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION = 69;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4490,7 +4490,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 0;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4499,16 +4499,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 1;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Truncated Continuous Distribution</em>' class.
+	 * The number of structural features of the '<em>Truncated Continuous Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT = ICONTINUOUS_DEVIATION_FEATURE_COUNT + 2;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT = ICONTINUOUS_VALUE_DEVIATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4517,7 +4517,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND = ICONTINUOUS_DEVIATION___GET_LOWER_BOUND;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4526,7 +4526,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE = ICONTINUOUS_DEVIATION___GET_AVERAGE;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4535,26 +4535,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND = ICONTINUOUS_DEVIATION___GET_UPPER_BOUND;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Truncated Continuous Distribution</em>' class.
+	 * The number of operations of the '<em>Truncated Continuous Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT = ICONTINUOUS_DEVIATION_OPERATION_COUNT + 0;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousBoundariesImpl <em>Continuous Boundaries</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueBoundariesImpl <em>Continuous Value Boundaries</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousBoundariesImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousBoundaries()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueBoundariesImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueBoundaries()
 	 * @generated
 	 */
-	int CONTINUOUS_BOUNDARIES = 70;
+	int CONTINUOUS_VALUE_BOUNDARIES = 70;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4563,7 +4563,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_BOUNDARIES__LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4572,7 +4572,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_BOUNDARIES__UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Type</b></em>' attribute.
@@ -4581,16 +4581,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES__SAMPLING_TYPE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_BOUNDARIES__SAMPLING_TYPE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Boundaries</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Boundaries</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_BOUNDARIES_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4599,7 +4599,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4608,7 +4608,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+	int CONTINUOUS_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4617,26 +4617,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Continuous Boundaries</em>' class.
+	 * The number of operations of the '<em>Continuous Value Boundaries</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BOUNDARIES_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_BOUNDARIES_OPERATION_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousStatisticsImpl <em>Continuous Statistics</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueStatisticsImpl <em>Continuous Value Statistics</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousStatisticsImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousStatistics()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueStatisticsImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueStatistics()
 	 * @generated
 	 */
-	int CONTINUOUS_STATISTICS = 71;
+	int CONTINUOUS_VALUE_STATISTICS = 71;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4645,7 +4645,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_STATISTICS__LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4654,7 +4654,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_STATISTICS__UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Average</b></em>' attribute.
@@ -4663,16 +4663,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS__AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_STATISTICS__AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Statistics</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_STATISTICS_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4681,7 +4681,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_STATISTICS___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4690,7 +4690,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+	int CONTINUOUS_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4699,26 +4699,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_STATISTICS___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Continuous Statistics</em>' class.
+	 * The number of operations of the '<em>Continuous Value Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_STATISTICS_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_STATISTICS_OPERATION_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousUniformDistributionImpl <em>Continuous Uniform Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueUniformDistributionImpl <em>Continuous Value Uniform Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousUniformDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousUniformDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueUniformDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueUniformDistribution()
 	 * @generated
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION = 72;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION = 72;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4727,7 +4727,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4736,16 +4736,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Uniform Distribution</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Uniform Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4754,7 +4754,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4763,7 +4763,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4772,26 +4772,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Continuous Uniform Distribution</em>' class.
+	 * The number of operations of the '<em>Continuous Value Uniform Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousGaussDistributionImpl <em>Continuous Gauss Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueGaussDistributionImpl <em>Continuous Value Gauss Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousGaussDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueGaussDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueGaussDistribution()
 	 * @generated
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION = 73;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION = 73;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4800,7 +4800,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__LOWER_BOUND = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4809,7 +4809,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__UPPER_BOUND = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Mean</b></em>' attribute.
@@ -4818,7 +4818,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__MEAN = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sd</b></em>' attribute.
@@ -4827,16 +4827,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION__SD = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__SD = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Gauss Distribution</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 2;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION_FEATURE_COUNT = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4845,7 +4845,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___GET_LOWER_BOUND = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4854,7 +4854,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4863,26 +4863,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___GET_AVERAGE = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Continuous Gauss Distribution</em>' class.
+	 * The number of operations of the '<em>Continuous Value Gauss Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 1;
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION_OPERATION_COUNT = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullEstimatorsDistributionImpl <em>Continuous Weibull Estimators Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueWeibullEstimatorsDistributionImpl <em>Continuous Value Weibull Estimators Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousWeibullEstimatorsDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueWeibullEstimatorsDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION = 74;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION = 74;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4891,7 +4891,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4900,7 +4900,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Average</b></em>' attribute.
@@ -4909,7 +4909,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>PRemain Promille</b></em>' attribute.
@@ -4918,16 +4918,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Weibull Estimators Distribution</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Weibull Estimators Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 2;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4936,7 +4936,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -4945,7 +4945,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_AVERAGE;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -4954,26 +4954,26 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
-	 * The number of operations of the '<em>Continuous Weibull Estimators Distribution</em>' class.
+	 * The number of operations of the '<em>Continuous Value Weibull Estimators Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousBetaDistributionImpl <em>Continuous Beta Distribution</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueBetaDistributionImpl <em>Continuous Value Beta Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousBetaDistributionImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.ContinuousValueBetaDistributionImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getContinuousValueBetaDistribution()
 	 * @generated
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION = 75;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION = 75;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -4982,7 +4982,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION__LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
@@ -4991,7 +4991,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION__UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Alpha</b></em>' attribute.
@@ -5000,7 +5000,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION__ALPHA = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 0;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION__ALPHA = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Beta</b></em>' attribute.
@@ -5009,16 +5009,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION__BETA = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 1;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION__BETA = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Continuous Beta Distribution</em>' class.
+	 * The number of structural features of the '<em>Continuous Value Beta Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_FEATURE_COUNT + 2;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -5027,7 +5027,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_LOWER_BOUND;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
@@ -5036,7 +5036,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_DISTRIBUTION___GET_UPPER_BOUND;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
@@ -5045,16 +5045,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 0;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Continuous Beta Distribution</em>' class.
+	 * The number of operations of the '<em>Continuous Value Beta Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_DISTRIBUTION_OPERATION_COUNT + 1;
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION_OPERATION_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ModeImpl <em>Mode</em>}' class.
@@ -31796,834 +31796,834 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getTimeBetaDistribution__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation <em>IDiscrete Deviation</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation <em>IDiscrete Value Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IDiscrete Deviation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
+	 * @return the meta object for class '<em>IDiscrete Value Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation
 	 * @generated
 	 */
-	EClass getIDiscreteDeviation();
+	EClass getIDiscreteValueDeviation();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getLowerBound()
 	 * @generated
 	 */
-	EOperation getIDiscreteDeviation__GetLowerBound();
+	EOperation getIDiscreteValueDeviation__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage()
 	 * @generated
 	 */
-	EOperation getIDiscreteDeviation__GetAverage();
+	EOperation getIDiscreteValueDeviation__GetAverage();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteDeviation#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getUpperBound()
 	 * @generated
 	 */
-	EOperation getIDiscreteDeviation__GetUpperBound();
+	EOperation getIDiscreteValueDeviation__GetUpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval <em>Discrete Interval</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval <em>Discrete Value Interval</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Interval</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval
+	 * @return the meta object for class '<em>Discrete Value Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueInterval
 	 * @generated
 	 */
-	EClass getDiscreteInterval();
+	EClass getDiscreteValueInterval();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval#getLowerBound <em>Lower Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getLowerBound <em>Lower Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval#getLowerBound()
-	 * @see #getDiscreteInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getLowerBound()
+	 * @see #getDiscreteValueInterval()
 	 * @generated
 	 */
-	EAttribute getDiscreteInterval_LowerBound();
+	EAttribute getDiscreteValueInterval_LowerBound();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval#getUpperBound <em>Upper Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getUpperBound <em>Upper Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval#getUpperBound()
-	 * @see #getDiscreteInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getUpperBound()
+	 * @see #getDiscreteValueInterval()
 	 * @generated
 	 */
-	EAttribute getDiscreteInterval_UpperBound();
+	EAttribute getDiscreteValueInterval_UpperBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteInterval#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteInterval#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#getAverage()
 	 * @generated
 	 */
-	EOperation getDiscreteInterval__GetAverage();
+	EOperation getDiscreteValueInterval__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant <em>Discrete Constant</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant <em>Discrete Value Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Constant</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant
+	 * @return the meta object for class '<em>Discrete Value Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant
 	 * @generated
 	 */
-	EClass getDiscreteConstant();
+	EClass getDiscreteValueConstant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getValue()
-	 * @see #getDiscreteConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getValue()
+	 * @see #getDiscreteValueConstant()
 	 * @generated
 	 */
-	EAttribute getDiscreteConstant_Value();
+	EAttribute getDiscreteValueConstant_Value();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getLowerBound()
 	 * @generated
 	 */
-	EOperation getDiscreteConstant__GetLowerBound();
+	EOperation getDiscreteValueConstant__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage()
 	 * @generated
 	 */
-	EOperation getDiscreteConstant__GetAverage();
+	EOperation getDiscreteValueConstant__GetAverage();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteConstant#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getUpperBound()
 	 * @generated
 	 */
-	EOperation getDiscreteConstant__GetUpperBound();
+	EOperation getDiscreteValueConstant__GetUpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram <em>Discrete Histogram</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram <em>Discrete Value Histogram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Histogram</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram
+	 * @return the meta object for class '<em>Discrete Value Histogram</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram
 	 * @generated
 	 */
-	EClass getDiscreteHistogram();
+	EClass getDiscreteValueHistogram();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getEntries <em>Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getEntries()
-	 * @see #getDiscreteHistogram()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getEntries()
+	 * @see #getDiscreteValueHistogram()
 	 * @generated
 	 */
-	EReference getDiscreteHistogram_Entries();
+	EReference getDiscreteValueHistogram_Entries();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getLowerBound()
 	 * @generated
 	 */
-	EOperation getDiscreteHistogram__GetLowerBound();
+	EOperation getDiscreteValueHistogram__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getUpperBound()
 	 * @generated
 	 */
-	EOperation getDiscreteHistogram__GetUpperBound();
+	EOperation getDiscreteValueHistogram__GetUpperBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogram#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram#getAverage()
 	 * @generated
 	 */
-	EOperation getDiscreteHistogram__GetAverage();
+	EOperation getDiscreteValueHistogram__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry <em>Discrete Histogram Entry</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry <em>Discrete Value Histogram Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Histogram Entry</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
+	 * @return the meta object for class '<em>Discrete Value Histogram Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry
 	 * @generated
 	 */
-	EClass getDiscreteHistogramEntry();
+	EClass getDiscreteValueHistogramEntry();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getOccurrences <em>Occurrences</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry#getOccurrences <em>Occurrences</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Occurrences</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry#getOccurrences()
-	 * @see #getDiscreteHistogramEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry#getOccurrences()
+	 * @see #getDiscreteValueHistogramEntry()
 	 * @generated
 	 */
-	EAttribute getDiscreteHistogramEntry_Occurrences();
+	EAttribute getDiscreteValueHistogramEntry_Occurrences();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution <em>Bounded Discrete Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution <em>Bounded Discrete Value Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Bounded Discrete Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
+	 * @return the meta object for class '<em>Bounded Discrete Value Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution
 	 * @generated
 	 */
-	EClass getBoundedDiscreteDistribution();
+	EClass getBoundedDiscreteValueDistribution();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution <em>Truncated Discrete Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution <em>Truncated Discrete Value Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Truncated Discrete Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution
+	 * @return the meta object for class '<em>Truncated Discrete Value Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution
 	 * @generated
 	 */
-	EClass getTruncatedDiscreteDistribution();
+	EClass getTruncatedDiscreteValueDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#getLowerBound <em>Lower Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getLowerBound()
-	 * @see #getTruncatedDiscreteDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#getLowerBound()
+	 * @see #getTruncatedDiscreteValueDistribution()
 	 * @generated
 	 */
-	EAttribute getTruncatedDiscreteDistribution_LowerBound();
+	EAttribute getTruncatedDiscreteValueDistribution_LowerBound();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#getUpperBound <em>Upper Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution#getUpperBound()
-	 * @see #getTruncatedDiscreteDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#getUpperBound()
+	 * @see #getTruncatedDiscreteValueDistribution()
 	 * @generated
 	 */
-	EAttribute getTruncatedDiscreteDistribution_UpperBound();
+	EAttribute getTruncatedDiscreteValueDistribution_UpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteBoundaries <em>Discrete Boundaries</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries <em>Discrete Value Boundaries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Boundaries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBoundaries
+	 * @return the meta object for class '<em>Discrete Value Boundaries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries
 	 * @generated
 	 */
-	EClass getDiscreteBoundaries();
+	EClass getDiscreteValueBoundaries();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteBoundaries#getSamplingType <em>Sampling Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries#getSamplingType <em>Sampling Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBoundaries#getSamplingType()
-	 * @see #getDiscreteBoundaries()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries#getSamplingType()
+	 * @see #getDiscreteValueBoundaries()
 	 * @generated
 	 */
-	EAttribute getDiscreteBoundaries_SamplingType();
+	EAttribute getDiscreteValueBoundaries_SamplingType();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics <em>Discrete Statistics</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics <em>Discrete Value Statistics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Statistics</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteStatistics
+	 * @return the meta object for class '<em>Discrete Value Statistics</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics
 	 * @generated
 	 */
-	EClass getDiscreteStatistics();
+	EClass getDiscreteValueStatistics();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteStatistics#getAverage <em>Average</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics#getAverage <em>Average</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Average</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteStatistics#getAverage()
-	 * @see #getDiscreteStatistics()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics#getAverage()
+	 * @see #getDiscreteValueStatistics()
 	 * @generated
 	 */
-	EAttribute getDiscreteStatistics_Average();
+	EAttribute getDiscreteValueStatistics_Average();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution <em>Discrete Uniform Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution <em>Discrete Value Uniform Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Uniform Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
+	 * @return the meta object for class '<em>Discrete Value Uniform Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution
 	 * @generated
 	 */
-	EClass getDiscreteUniformDistribution();
+	EClass getDiscreteValueUniformDistribution();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution <em>Discrete Gauss Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution <em>Discrete Value Gauss Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Gauss Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
+	 * @return the meta object for class '<em>Discrete Value Gauss Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution
 	 * @generated
 	 */
-	EClass getDiscreteGaussDistribution();
+	EClass getDiscreteValueGaussDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getMean <em>Mean</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getMean <em>Mean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Mean</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getMean()
-	 * @see #getDiscreteGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getMean()
+	 * @see #getDiscreteValueGaussDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteGaussDistribution_Mean();
+	EAttribute getDiscreteValueGaussDistribution_Mean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getSd <em>Sd</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getSd <em>Sd</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Sd</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getSd()
-	 * @see #getDiscreteGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getSd()
+	 * @see #getDiscreteValueGaussDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteGaussDistribution_Sd();
+	EAttribute getDiscreteValueGaussDistribution_Sd();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getAverage()
 	 * @generated
 	 */
-	EOperation getDiscreteGaussDistribution__GetAverage();
+	EOperation getDiscreteValueGaussDistribution__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution <em>Discrete Weibull Estimators Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution <em>Discrete Value Weibull Estimators Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Weibull Estimators Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
+	 * @return the meta object for class '<em>Discrete Value Weibull Estimators Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution
 	 * @generated
 	 */
-	EClass getDiscreteWeibullEstimatorsDistribution();
+	EClass getDiscreteValueWeibullEstimatorsDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Average</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getAverage()
-	 * @see #getDiscreteWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution#getAverage()
+	 * @see #getDiscreteValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteWeibullEstimatorsDistribution_Average();
+	EAttribute getDiscreteValueWeibullEstimatorsDistribution_Average();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>PRemain Promille</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution#getPRemainPromille()
-	 * @see #getDiscreteWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution#getPRemainPromille()
+	 * @see #getDiscreteValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteWeibullEstimatorsDistribution_PRemainPromille();
+	EAttribute getDiscreteValueWeibullEstimatorsDistribution_PRemainPromille();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution <em>Discrete Beta Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution <em>Discrete Value Beta Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Discrete Beta Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
+	 * @return the meta object for class '<em>Discrete Value Beta Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution
 	 * @generated
 	 */
-	EClass getDiscreteBetaDistribution();
+	EClass getDiscreteValueBetaDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAlpha <em>Alpha</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getAlpha <em>Alpha</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Alpha</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAlpha()
-	 * @see #getDiscreteBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getAlpha()
+	 * @see #getDiscreteValueBetaDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteBetaDistribution_Alpha();
+	EAttribute getDiscreteValueBetaDistribution_Alpha();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getBeta <em>Beta</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getBeta <em>Beta</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Beta</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getBeta()
-	 * @see #getDiscreteBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getBeta()
+	 * @see #getDiscreteValueBetaDistribution()
 	 * @generated
 	 */
-	EAttribute getDiscreteBetaDistribution_Beta();
+	EAttribute getDiscreteValueBetaDistribution_Beta();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution#getAverage()
 	 * @generated
 	 */
-	EOperation getDiscreteBetaDistribution__GetAverage();
+	EOperation getDiscreteValueBetaDistribution__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation <em>IContinuous Deviation</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation <em>IContinuous Value Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IContinuous Deviation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation
+	 * @return the meta object for class '<em>IContinuous Value Deviation</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation
 	 * @generated
 	 */
-	EClass getIContinuousDeviation();
+	EClass getIContinuousValueDeviation();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getLowerBound()
 	 * @generated
 	 */
-	EOperation getIContinuousDeviation__GetLowerBound();
+	EOperation getIContinuousValueDeviation__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage()
 	 * @generated
 	 */
-	EOperation getIContinuousDeviation__GetAverage();
+	EOperation getIContinuousValueDeviation__GetAverage();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousDeviation#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getUpperBound()
 	 * @generated
 	 */
-	EOperation getIContinuousDeviation__GetUpperBound();
+	EOperation getIContinuousValueDeviation__GetUpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval <em>Continuous Interval</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval <em>Continuous Value Interval</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Interval</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval
+	 * @return the meta object for class '<em>Continuous Value Interval</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueInterval
 	 * @generated
 	 */
-	EClass getContinuousInterval();
+	EClass getContinuousValueInterval();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getLowerBound <em>Lower Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getLowerBound <em>Lower Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval#getLowerBound()
-	 * @see #getContinuousInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getLowerBound()
+	 * @see #getContinuousValueInterval()
 	 * @generated
 	 */
-	EAttribute getContinuousInterval_LowerBound();
+	EAttribute getContinuousValueInterval_LowerBound();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getUpperBound <em>Upper Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getUpperBound <em>Upper Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval#getUpperBound()
-	 * @see #getContinuousInterval()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getUpperBound()
+	 * @see #getContinuousValueInterval()
 	 * @generated
 	 */
-	EAttribute getContinuousInterval_UpperBound();
+	EAttribute getContinuousValueInterval_UpperBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousInterval#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousInterval#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#getAverage()
 	 * @generated
 	 */
-	EOperation getContinuousInterval__GetAverage();
+	EOperation getContinuousValueInterval__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant <em>Continuous Constant</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant <em>Continuous Value Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Constant</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant
+	 * @return the meta object for class '<em>Continuous Value Constant</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant
 	 * @generated
 	 */
-	EClass getContinuousConstant();
+	EClass getContinuousValueConstant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getValue()
-	 * @see #getContinuousConstant()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getValue()
+	 * @see #getContinuousValueConstant()
 	 * @generated
 	 */
-	EAttribute getContinuousConstant_Value();
+	EAttribute getContinuousValueConstant_Value();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getLowerBound()
 	 * @generated
 	 */
-	EOperation getContinuousConstant__GetLowerBound();
+	EOperation getContinuousValueConstant__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage()
 	 * @generated
 	 */
-	EOperation getContinuousConstant__GetAverage();
+	EOperation getContinuousValueConstant__GetAverage();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousConstant#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getUpperBound()
 	 * @generated
 	 */
-	EOperation getContinuousConstant__GetUpperBound();
+	EOperation getContinuousValueConstant__GetUpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram <em>Continuous Histogram</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram <em>Continuous Value Histogram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Histogram</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram
+	 * @return the meta object for class '<em>Continuous Value Histogram</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram
 	 * @generated
 	 */
-	EClass getContinuousHistogram();
+	EClass getContinuousValueHistogram();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getEntries <em>Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Entries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getEntries()
-	 * @see #getContinuousHistogram()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getEntries()
+	 * @see #getContinuousValueHistogram()
 	 * @generated
 	 */
-	EReference getContinuousHistogram_Entries();
+	EReference getContinuousValueHistogram_Entries();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getLowerBound() <em>Get Lower Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Lower Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getLowerBound()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getLowerBound()
 	 * @generated
 	 */
-	EOperation getContinuousHistogram__GetLowerBound();
+	EOperation getContinuousValueHistogram__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Upper Bound</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getUpperBound()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getUpperBound()
 	 * @generated
 	 */
-	EOperation getContinuousHistogram__GetUpperBound();
+	EOperation getContinuousValueHistogram__GetUpperBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogram#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram#getAverage()
 	 * @generated
 	 */
-	EOperation getContinuousHistogram__GetAverage();
+	EOperation getContinuousValueHistogram__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry <em>Continuous Histogram Entry</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry <em>Continuous Value Histogram Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Histogram Entry</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry
+	 * @return the meta object for class '<em>Continuous Value Histogram Entry</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry
 	 * @generated
 	 */
-	EClass getContinuousHistogramEntry();
+	EClass getContinuousValueHistogramEntry();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getOccurrences <em>Occurrences</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry#getOccurrences <em>Occurrences</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Occurrences</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry#getOccurrences()
-	 * @see #getContinuousHistogramEntry()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry#getOccurrences()
+	 * @see #getContinuousValueHistogramEntry()
 	 * @generated
 	 */
-	EAttribute getContinuousHistogramEntry_Occurrences();
+	EAttribute getContinuousValueHistogramEntry_Occurrences();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution <em>Bounded Continuous Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution <em>Bounded Continuous Value Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Bounded Continuous Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
+	 * @return the meta object for class '<em>Bounded Continuous Value Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution
 	 * @generated
 	 */
-	EClass getBoundedContinuousDistribution();
+	EClass getBoundedContinuousValueDistribution();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution <em>Truncated Continuous Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution <em>Truncated Continuous Value Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Truncated Continuous Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution
+	 * @return the meta object for class '<em>Truncated Continuous Value Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution
 	 * @generated
 	 */
-	EClass getTruncatedContinuousDistribution();
+	EClass getTruncatedContinuousValueDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getLowerBound <em>Lower Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#getLowerBound <em>Lower Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getLowerBound()
-	 * @see #getTruncatedContinuousDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#getLowerBound()
+	 * @see #getTruncatedContinuousValueDistribution()
 	 * @generated
 	 */
-	EAttribute getTruncatedContinuousDistribution_LowerBound();
+	EAttribute getTruncatedContinuousValueDistribution_LowerBound();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getUpperBound <em>Upper Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#getUpperBound <em>Upper Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution#getUpperBound()
-	 * @see #getTruncatedContinuousDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#getUpperBound()
+	 * @see #getTruncatedContinuousValueDistribution()
 	 * @generated
 	 */
-	EAttribute getTruncatedContinuousDistribution_UpperBound();
+	EAttribute getTruncatedContinuousValueDistribution_UpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousBoundaries <em>Continuous Boundaries</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries <em>Continuous Value Boundaries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Boundaries</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBoundaries
+	 * @return the meta object for class '<em>Continuous Value Boundaries</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries
 	 * @generated
 	 */
-	EClass getContinuousBoundaries();
+	EClass getContinuousValueBoundaries();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousBoundaries#getSamplingType <em>Sampling Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries#getSamplingType <em>Sampling Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Sampling Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBoundaries#getSamplingType()
-	 * @see #getContinuousBoundaries()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries#getSamplingType()
+	 * @see #getContinuousValueBoundaries()
 	 * @generated
 	 */
-	EAttribute getContinuousBoundaries_SamplingType();
+	EAttribute getContinuousValueBoundaries_SamplingType();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics <em>Continuous Statistics</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics <em>Continuous Value Statistics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Statistics</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousStatistics
+	 * @return the meta object for class '<em>Continuous Value Statistics</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics
 	 * @generated
 	 */
-	EClass getContinuousStatistics();
+	EClass getContinuousValueStatistics();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousStatistics#getAverage <em>Average</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics#getAverage <em>Average</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Average</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousStatistics#getAverage()
-	 * @see #getContinuousStatistics()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics#getAverage()
+	 * @see #getContinuousValueStatistics()
 	 * @generated
 	 */
-	EAttribute getContinuousStatistics_Average();
+	EAttribute getContinuousValueStatistics_Average();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution <em>Continuous Uniform Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution <em>Continuous Value Uniform Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Uniform Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution
+	 * @return the meta object for class '<em>Continuous Value Uniform Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution
 	 * @generated
 	 */
-	EClass getContinuousUniformDistribution();
+	EClass getContinuousValueUniformDistribution();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution <em>Continuous Gauss Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution <em>Continuous Value Gauss Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Gauss Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution
+	 * @return the meta object for class '<em>Continuous Value Gauss Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution
 	 * @generated
 	 */
-	EClass getContinuousGaussDistribution();
+	EClass getContinuousValueGaussDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getMean <em>Mean</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getMean <em>Mean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Mean</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getMean()
-	 * @see #getContinuousGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getMean()
+	 * @see #getContinuousValueGaussDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousGaussDistribution_Mean();
+	EAttribute getContinuousValueGaussDistribution_Mean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getSd <em>Sd</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getSd <em>Sd</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Sd</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getSd()
-	 * @see #getContinuousGaussDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getSd()
+	 * @see #getContinuousValueGaussDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousGaussDistribution_Sd();
+	EAttribute getContinuousValueGaussDistribution_Sd();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution#getAverage()
 	 * @generated
 	 */
-	EOperation getContinuousGaussDistribution__GetAverage();
+	EOperation getContinuousValueGaussDistribution__GetAverage();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution <em>Continuous Weibull Estimators Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution <em>Continuous Value Weibull Estimators Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Weibull Estimators Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution
+	 * @return the meta object for class '<em>Continuous Value Weibull Estimators Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution
 	 * @generated
 	 */
-	EClass getContinuousWeibullEstimatorsDistribution();
+	EClass getContinuousValueWeibullEstimatorsDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution#getAverage <em>Average</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Average</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getAverage()
-	 * @see #getContinuousWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution#getAverage()
+	 * @see #getContinuousValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousWeibullEstimatorsDistribution_Average();
+	EAttribute getContinuousValueWeibullEstimatorsDistribution_Average();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution#getPRemainPromille <em>PRemain Promille</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>PRemain Promille</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution#getPRemainPromille()
-	 * @see #getContinuousWeibullEstimatorsDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution#getPRemainPromille()
+	 * @see #getContinuousValueWeibullEstimatorsDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousWeibullEstimatorsDistribution_PRemainPromille();
+	EAttribute getContinuousValueWeibullEstimatorsDistribution_PRemainPromille();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution <em>Continuous Beta Distribution</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution <em>Continuous Value Beta Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Continuous Beta Distribution</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution
+	 * @return the meta object for class '<em>Continuous Value Beta Distribution</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution
 	 * @generated
 	 */
-	EClass getContinuousBetaDistribution();
+	EClass getContinuousValueBetaDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAlpha <em>Alpha</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getAlpha <em>Alpha</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Alpha</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAlpha()
-	 * @see #getContinuousBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getAlpha()
+	 * @see #getContinuousValueBetaDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousBetaDistribution_Alpha();
+	EAttribute getContinuousValueBetaDistribution_Alpha();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getBeta <em>Beta</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getBeta <em>Beta</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Beta</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getBeta()
-	 * @see #getContinuousBetaDistribution()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getBeta()
+	 * @see #getContinuousValueBetaDistribution()
 	 * @generated
 	 */
-	EAttribute getContinuousBetaDistribution_Beta();
+	EAttribute getContinuousValueBetaDistribution_Beta();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAverage() <em>Get Average</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getAverage() <em>Get Average</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution#getAverage()
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution#getAverage()
 	 * @generated
 	 */
-	EOperation getContinuousBetaDistribution__GetAverage();
+	EOperation getContinuousValueBetaDistribution__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Mode <em>Mode</em>}'.
@@ -40688,7 +40688,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @return the meta object for class '<em>Need Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyUnique="false" keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.IDiscreteDeviation" valueContainment="true" valueRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
 	EClass getNeedEntry();
@@ -40754,7 +40754,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @return the meta object for class '<em>Ticks Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition" keyRequired="true"
-	 *        valueType="org.eclipse.app4mc.amalthea.model.IDiscreteDeviation" valueContainment="true" valueRequired="true"
+	 *        valueType="org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
 	EClass getTicksEntry();

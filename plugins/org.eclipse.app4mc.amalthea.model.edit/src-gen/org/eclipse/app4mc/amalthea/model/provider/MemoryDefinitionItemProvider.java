@@ -221,42 +221,42 @@ public class MemoryDefinitionItemProvider extends HwDefinitionItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueHistogram()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueStatistics()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueUniformDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueGaussDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getMemoryDefinition_AccessLatency(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

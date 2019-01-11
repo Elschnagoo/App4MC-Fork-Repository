@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -25,7 +25,7 @@ import org.eclipse.app4mc.amalthea.model.EventActivation
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase
 import org.eclipse.app4mc.amalthea.model.Group
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation
 import org.eclipse.app4mc.amalthea.model.ISR
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger
 import org.eclipse.app4mc.amalthea.model.Label
@@ -530,7 +530,7 @@ class SoftwareBuilder {
 		obj.init(initializer)
 	}
 	
-	def need(ExecutionNeed container, String key, IDiscreteDeviation need) {
+	def need(ExecutionNeed container, String key, IDiscreteValueDeviation need) {
 		container.needs.put(key, need)
 	}
 

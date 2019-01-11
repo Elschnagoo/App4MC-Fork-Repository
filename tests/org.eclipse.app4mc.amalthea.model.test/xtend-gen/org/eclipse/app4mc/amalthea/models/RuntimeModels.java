@@ -152,11 +152,11 @@ public class RuntimeModels {
           };
           this.b3.execNeed(it_2, _function_4);
           final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b4.instructions(it_3, FactoryUtil.createDiscreteGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
+            this.b4.instructions(it_3, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
           };
           this.b3.execNeed(it_2, _function_5);
           final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_3) -> {
-            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteConstant(2000));
+            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
           };
           this.b3.execNeed(it_2, _function_6);
         };
@@ -164,7 +164,7 @@ public class RuntimeModels {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r2");
           final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteConstant(2000));
+            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
           };
           this.b3.execNeed(it_2, _function_5);
         };

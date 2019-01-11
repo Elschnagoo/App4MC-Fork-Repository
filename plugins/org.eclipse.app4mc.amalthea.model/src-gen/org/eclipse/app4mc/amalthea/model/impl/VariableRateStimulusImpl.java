@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
@@ -64,7 +64,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * @generated
 	 * @ordered
 	 */
-	protected IContinuousDeviation occurrencesPerStep;
+	protected IContinuousValueDeviation occurrencesPerStep;
 
 	/**
 	 * The default value of the '{@link #getMaxIncreasePerStep() <em>Max Increase Per Step</em>}' attribute.
@@ -183,7 +183,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IContinuousDeviation getOccurrencesPerStep() {
+	public IContinuousValueDeviation getOccurrencesPerStep() {
 		return occurrencesPerStep;
 	}
 
@@ -192,8 +192,8 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOccurrencesPerStep(IContinuousDeviation newOccurrencesPerStep, NotificationChain msgs) {
-		IContinuousDeviation oldOccurrencesPerStep = occurrencesPerStep;
+	public NotificationChain basicSetOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep, NotificationChain msgs) {
+		IContinuousValueDeviation oldOccurrencesPerStep = occurrencesPerStep;
 		occurrencesPerStep = newOccurrencesPerStep;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
@@ -207,7 +207,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOccurrencesPerStep(IContinuousDeviation newOccurrencesPerStep) {
+	public void setOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep) {
 		if (newOccurrencesPerStep != occurrencesPerStep) {
 			NotificationChain msgs = null;
 			if (occurrencesPerStep != null)
@@ -358,7 +358,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 				setStep((Time)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((IContinuousDeviation)newValue);
+				setOccurrencesPerStep((IContinuousValueDeviation)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				setMaxIncreasePerStep((Double)newValue);
@@ -385,7 +385,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 				setStep((Time)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((IContinuousDeviation)null);
+				setOccurrencesPerStep((IContinuousValueDeviation)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS__MAX_INCREASE_PER_STEP:
 				setMaxIncreasePerStep(MAX_INCREASE_PER_STEP_EDEFAULT);

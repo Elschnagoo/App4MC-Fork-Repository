@@ -462,7 +462,7 @@ class LongObject extends Value
  */
 class FloatObject extends Value
 {
-	float[1] value = "0f"
+	float[1] value = "0.0"
 }
 
 /*
@@ -584,7 +584,7 @@ class TimeStatistics extends BoundedTimeDistribution {
 }
 
 /*
- * Continuous uniform distribution
+ * Uniform distribution
  */
 class TimeUniformDistribution extends BoundedTimeDistribution {}
 
@@ -630,13 +630,13 @@ class TimeBetaDistribution extends BoundedTimeDistribution {
 //
 // -------------------------------------------------------------------------------
 
-interface IDiscreteDeviation {
+interface IDiscreteValueDeviation {
 	op Long getLowerBound()
 	op Double getAverage()
 	op Long getUpperBound()
 }
 
-abstract class DiscreteInterval {
+abstract class DiscreteValueInterval {
 	Long[1] lowerBound = "0"
 	Long[1] upperBound = "0"
 	
@@ -645,7 +645,7 @@ abstract class DiscreteInterval {
 	}
 }
 
-class DiscreteConstant extends IDiscreteDeviation {
+class DiscreteValueConstant extends IDiscreteValueDeviation {
 	Long[1] value = "0"
 	
 	op Long getLowerBound() { value }
@@ -653,8 +653,8 @@ class DiscreteConstant extends IDiscreteDeviation {
 	op Long getUpperBound() { value }
 }
 
-class DiscreteHistogram extends IDiscreteDeviation {
-	contains DiscreteHistogramEntry[+] entries
+class DiscreteValueHistogram extends IDiscreteValueDeviation {
+	contains DiscreteValueHistogramEntry[+] entries
 	
 	op Long getLowerBound() { entries.map[lowerBound].min }
 	op Long getUpperBound() { entries.map[upperBound].max }
@@ -665,13 +665,13 @@ class DiscreteHistogram extends IDiscreteDeviation {
 	}
 }
 
-class DiscreteHistogramEntry extends DiscreteInterval {
+class DiscreteValueHistogramEntry extends DiscreteValueInterval {
 	PositiveLong[1] occurrences = "1"
 }
 
-abstract class BoundedDiscreteDistribution extends DiscreteInterval, IDiscreteDeviation {}
+abstract class BoundedDiscreteValueDistribution extends DiscreteValueInterval, IDiscreteValueDeviation {}
 
-abstract class TruncatedDiscreteDistribution extends IDiscreteDeviation {
+abstract class TruncatedDiscreteValueDistribution extends IDiscreteValueDeviation {
 	Long lowerBound		// initial value is null
 	Long upperBound		// initial value is null
 }
@@ -679,26 +679,26 @@ abstract class TruncatedDiscreteDistribution extends IDiscreteDeviation {
 /*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
-class DiscreteBoundaries extends BoundedDiscreteDistribution {
+class DiscreteValueBoundaries extends BoundedDiscreteValueDistribution {
 	SamplingType samplingType
 }
 
 /*
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
-class DiscreteStatistics extends BoundedDiscreteDistribution {
+class DiscreteValueStatistics extends BoundedDiscreteValueDistribution {
 	Double[1] average = "0.0"
 }
 
 /*
- * Continuous uniform distribution
+ * Uniform distribution
  */
-class DiscreteUniformDistribution extends BoundedDiscreteDistribution {}
+class DiscreteValueUniformDistribution extends BoundedDiscreteValueDistribution {}
 
 /*
  * Gauss distribution
  */
- class DiscreteGaussDistribution extends TruncatedDiscreteDistribution {
+ class DiscreteValueGaussDistribution extends TruncatedDiscreteValueDistribution {
 	Double[1] mean = "0.0"
 	PositiveDouble[1] sd = "1.0"
 	
@@ -713,7 +713,7 @@ class DiscreteUniformDistribution extends BoundedDiscreteDistribution {}
  * Weibull Distribution
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
-class DiscreteWeibullEstimatorsDistribution extends BoundedDiscreteDistribution {
+class DiscreteValueWeibullEstimatorsDistribution extends BoundedDiscreteValueDistribution {
 	Double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
@@ -721,7 +721,7 @@ class DiscreteWeibullEstimatorsDistribution extends BoundedDiscreteDistribution 
 /*
  * Beta distribution
  */
-class DiscreteBetaDistribution extends BoundedDiscreteDistribution {
+class DiscreteValueBetaDistribution extends BoundedDiscreteValueDistribution {
 	PositiveDouble[1] alpha = "1.0"
 	PositiveDouble[1] beta = "1.0"
 	
@@ -737,13 +737,13 @@ class DiscreteBetaDistribution extends BoundedDiscreteDistribution {
 //
 // -------------------------------------------------------------------------------
 
-interface IContinuousDeviation {
+interface IContinuousValueDeviation {
 	op Double getLowerBound()
 	op Double getAverage()
 	op Double getUpperBound()
 }
 
-abstract class ContinuousInterval {
+abstract class ContinuousValueInterval {
 	Double[1] lowerBound = "0.0"
 	Double[1] upperBound = "0.0"
 	
@@ -752,7 +752,7 @@ abstract class ContinuousInterval {
 	}
 }
 
-class ContinuousConstant extends IContinuousDeviation {
+class ContinuousValueConstant extends IContinuousValueDeviation {
 	Double[1] value = "0.0"
 	
 	op Double getLowerBound() { value }
@@ -760,8 +760,8 @@ class ContinuousConstant extends IContinuousDeviation {
 	op Double getUpperBound() { value }
 }
 
-class ContinuousHistogram extends IContinuousDeviation {
-	contains ContinuousHistogramEntry[+] entries
+class ContinuousValueHistogram extends IContinuousValueDeviation {
+	contains ContinuousValueHistogramEntry[+] entries
 	
 	op Double getLowerBound() { entries.map[lowerBound].min }
 	op Double getUpperBound() { entries.map[upperBound].max }
@@ -772,13 +772,13 @@ class ContinuousHistogram extends IContinuousDeviation {
 	}
 }
 
-class ContinuousHistogramEntry extends ContinuousInterval {
+class ContinuousValueHistogramEntry extends ContinuousValueInterval {
 	PositiveLong[1] occurrences = "1"
 }
 
-abstract class BoundedContinuousDistribution extends ContinuousInterval, IContinuousDeviation {}
+abstract class BoundedContinuousValueDistribution extends ContinuousValueInterval, IContinuousValueDeviation {}
 
-abstract class TruncatedContinuousDistribution extends IContinuousDeviation {
+abstract class TruncatedContinuousValueDistribution extends IContinuousValueDeviation {
 	Double lowerBound		// initial value is null
 	Double upperBound		// initial value is null
 }
@@ -786,26 +786,26 @@ abstract class TruncatedContinuousDistribution extends IContinuousDeviation {
 /*
  * Defines the upper and lower bounds of a value interval without defining the distribution
  */
-class ContinuousBoundaries extends BoundedContinuousDistribution {
+class ContinuousValueBoundaries extends BoundedContinuousValueDistribution {
 	SamplingType samplingType
 }
 
 /*
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
-class ContinuousStatistics extends BoundedContinuousDistribution {
+class ContinuousValueStatistics extends BoundedContinuousValueDistribution {
 	Double[1] average = "0.0"
 }
 
 /*
- * Continuous uniform distribution
+ * Uniform distribution
  */
-class ContinuousUniformDistribution extends BoundedContinuousDistribution {}
+class ContinuousValueUniformDistribution extends BoundedContinuousValueDistribution {}
 
 /*
  * Gauss distribution
  */
- class ContinuousGaussDistribution extends TruncatedContinuousDistribution {
+ class ContinuousValueGaussDistribution extends TruncatedContinuousValueDistribution {
 	Double[1] mean = "0.0"
 	PositiveDouble[1] sd = "1.0"
 	
@@ -820,7 +820,7 @@ class ContinuousUniformDistribution extends BoundedContinuousDistribution {}
  * Weibull Distribution
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
-class ContinuousWeibullEstimatorsDistribution extends BoundedContinuousDistribution {
+class ContinuousValueWeibullEstimatorsDistribution extends BoundedContinuousValueDistribution {
 	Double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
@@ -828,7 +828,7 @@ class ContinuousWeibullEstimatorsDistribution extends BoundedContinuousDistribut
 /*
  * Beta distribution
  */
-class ContinuousBetaDistribution extends BoundedContinuousDistribution {
+class ContinuousValueBetaDistribution extends BoundedContinuousValueDistribution {
 	PositiveDouble[1] alpha = "1.0"
 	PositiveDouble[1] beta = "1.0"
 	
@@ -1971,9 +1971,9 @@ class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 	}
 	
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains IDiscreteDeviation readLatency
+	contains IDiscreteValueDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains IDiscreteDeviation writeLatency
+	contains IDiscreteValueDeviation writeLatency
 	contains DataRate dataRate
 	refers HwPort port1
 	refers HwPort port2
@@ -1997,9 +1997,9 @@ class HwAccessElement extends ITaggable, INamed
 	refers HwDestination[1] destination
 	contains HwAccessPath accessPath opposite containingAccessElement
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains IDiscreteDeviation readLatency
+	contains IDiscreteValueDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains IDiscreteDeviation writeLatency
+	contains IDiscreteValueDeviation writeLatency
 	contains DataRate dataRate
 }
 
@@ -2061,9 +2061,9 @@ class ConnectionHandlerDefinition extends HwDefinition
 {
 	SchedPolicy policy
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
-	contains IDiscreteDeviation readLatency
+	contains IDiscreteValueDeviation readLatency
 	@GenModel(documentation="<p><b>Write latency [cycles]</b></p>")
-	contains IDiscreteDeviation writeLatency
+	contains IDiscreteValueDeviation writeLatency
 	contains DataRate dataRate
 	PositiveInt maxBurstSize = "1"
 	PositiveInt maxConcurrentTransfers = "1"
@@ -2073,7 +2073,7 @@ class MemoryDefinition extends HwDefinition
 {
 	contains DataSize size
 	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
-	contains IDiscreteDeviation accessLatency
+	contains IDiscreteValueDeviation accessLatency
 	contains DataRate dataRate
 	MemoryType memoryType
 	refers MemoryClassifier[] classifiers // backward compatibility
@@ -2084,7 +2084,7 @@ class CacheDefinition extends HwDefinition
 	contains DataSize size
 	contains DataSize lineSize
 	@GenModel(documentation="<p><b>Access latency [cycles]</b></p>")
-	contains IDiscreteDeviation accessLatency
+	contains IDiscreteValueDeviation accessLatency
 	CacheType cacheType
 	WriteStrategy writeStrategy
 	int nWays = "0"
@@ -2889,7 +2889,7 @@ class RelativePeriodicStimulus extends Stimulus
 class VariableRateStimulus extends Stimulus
 {
 	contains Time[1] step
-	contains IContinuousDeviation occurrencesPerStep
+	contains IContinuousValueDeviation occurrencesPerStep
 	Double maxIncreasePerStep		// initial value is null
 	Double maxDecreasePerStep		// initial value is null
 	contains Scenario scenario
@@ -3642,20 +3642,20 @@ class ExecutionNeed extends RunnableItem
 class NeedEntry wraps java.util.Map$Entry
 {
 	String[1] key	//	refers to HwFeatureCategory
-	contains IDiscreteDeviation[1] value
+	contains IDiscreteValueDeviation[1] value
 }
 
 /*
- * Representation of the execution IDiscreteDeviation of a Runnable (default and core-specific)
+ * Representation of the execution IDiscreteValueDeviation of a Runnable (default and core-specific)
  */
 class Ticks extends ComputationItem {
-	contains IDiscreteDeviation ^default
+	contains IDiscreteValueDeviation ^default
 	contains TicksEntry[] extended
 }
 
 class TicksEntry wraps java.util.Map$Entry {
 	refers ProcessingUnitDefinition[1] key
-	contains IDiscreteDeviation[1] value
+	contains IDiscreteValueDeviation[1] value
 }
 
 /*
@@ -4059,7 +4059,7 @@ class VariableRateActivation extends Activation
 {
 	String description
 	contains Time[1] step
-	contains IContinuousDeviation[1] occurrencesPerStep
+	contains IContinuousValueDeviation[1] occurrencesPerStep
 }
 
 class SporadicActivation extends Activation

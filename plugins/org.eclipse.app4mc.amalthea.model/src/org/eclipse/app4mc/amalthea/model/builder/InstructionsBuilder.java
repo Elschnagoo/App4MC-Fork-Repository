@@ -16,11 +16,11 @@
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -34,14 +34,14 @@ public class InstructionsBuilder {
 
 	// ********** Execution Need (Runnable items) **********
 
-	public DiscreteConstant instructions(final ExecutionNeed container, final long instructions) {
-		final DiscreteConstant usages = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+	public DiscreteValueConstant instructions(final ExecutionNeed container, final long instructions) {
+		final DiscreteValueConstant usages = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
 		usages.setValue(instructions);
 		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, usages);
 		return usages;
 	}
 
-	public IDiscreteDeviation instructions(final ExecutionNeed container, final IDiscreteDeviation instructions) {
+	public IDiscreteValueDeviation instructions(final ExecutionNeed container, final IDiscreteValueDeviation instructions) {
 		container.getNeeds().put(InstructionsUtil.INSTRUCTIONS_CATEGORY_NAME, instructions);
 		return instructions;
 	}

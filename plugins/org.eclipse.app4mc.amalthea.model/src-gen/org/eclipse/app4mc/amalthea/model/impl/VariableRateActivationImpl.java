@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
+import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
 
@@ -81,7 +81,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * @generated
 	 * @ordered
 	 */
-	protected IContinuousDeviation occurrencesPerStep;
+	protected IContinuousValueDeviation occurrencesPerStep;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,7 +171,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IContinuousDeviation getOccurrencesPerStep() {
+	public IContinuousValueDeviation getOccurrencesPerStep() {
 		return occurrencesPerStep;
 	}
 
@@ -180,8 +180,8 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOccurrencesPerStep(IContinuousDeviation newOccurrencesPerStep, NotificationChain msgs) {
-		IContinuousDeviation oldOccurrencesPerStep = occurrencesPerStep;
+	public NotificationChain basicSetOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep, NotificationChain msgs) {
+		IContinuousValueDeviation oldOccurrencesPerStep = occurrencesPerStep;
 		occurrencesPerStep = newOccurrencesPerStep;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP, oldOccurrencesPerStep, newOccurrencesPerStep);
@@ -195,7 +195,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOccurrencesPerStep(IContinuousDeviation newOccurrencesPerStep) {
+	public void setOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep) {
 		if (newOccurrencesPerStep != occurrencesPerStep) {
 			NotificationChain msgs = null;
 			if (occurrencesPerStep != null)
@@ -258,7 +258,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 				setStep((Time)newValue);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((IContinuousDeviation)newValue);
+				setOccurrencesPerStep((IContinuousValueDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -279,7 +279,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 				setStep((Time)null);
 				return;
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION__OCCURRENCES_PER_STEP:
-				setOccurrencesPerStep((IContinuousDeviation)null);
+				setOccurrencesPerStep((IContinuousValueDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);

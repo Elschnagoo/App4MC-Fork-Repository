@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -25,7 +25,7 @@ import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
@@ -881,7 +881,7 @@ public class SoftwareBuilder {
     return _xblockexpression;
   }
   
-  public IDiscreteDeviation need(final ExecutionNeed container, final String key, final IDiscreteDeviation need) {
+  public IDiscreteValueDeviation need(final ExecutionNeed container, final String key, final IDiscreteValueDeviation need) {
     return container.getNeeds().put(key, need);
   }
   

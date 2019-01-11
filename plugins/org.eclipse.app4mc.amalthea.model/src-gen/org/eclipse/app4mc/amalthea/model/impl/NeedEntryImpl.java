@@ -15,7 +15,7 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,IDiscreteDeviation> {
+public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<String,IDiscreteValueDeviation> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 * @ordered
 	 */
-	protected IDiscreteDeviation value;
+	protected IDiscreteValueDeviation value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getTypedValue() {
+	public IDiscreteValueDeviation getTypedValue() {
 		return value;
 	}
 
@@ -130,8 +130,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedValue(IDiscreteDeviation newValue, NotificationChain msgs) {
-		IDiscreteDeviation oldValue = value;
+	public NotificationChain basicSetTypedValue(IDiscreteValueDeviation newValue, NotificationChain msgs) {
+		IDiscreteValueDeviation oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.NEED_ENTRY__VALUE, oldValue, newValue);
@@ -145,7 +145,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(IDiscreteDeviation newValue) {
+	public void setTypedValue(IDiscreteValueDeviation newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -201,7 +201,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey((String)newValue);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((IDiscreteDeviation)newValue);
+				setTypedValue((IDiscreteValueDeviation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,7 +219,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 				setTypedKey(KEY_EDEFAULT);
 				return;
 			case AmaltheaPackage.NEED_ENTRY__VALUE:
-				setTypedValue((IDiscreteDeviation)null);
+				setTypedValue((IDiscreteValueDeviation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -309,7 +309,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getValue() {
+	public IDiscreteValueDeviation getValue() {
 		return getTypedValue();
 	}
 
@@ -318,8 +318,8 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation setValue(IDiscreteDeviation value) {
-		IDiscreteDeviation oldValue = getValue();
+	public IDiscreteValueDeviation setValue(IDiscreteValueDeviation value) {
+		IDiscreteValueDeviation oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -330,9 +330,9 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, IDiscreteDeviation> getEMap() {
+	public EMap<String, IDiscreteValueDeviation> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, IDiscreteDeviation>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, IDiscreteValueDeviation>)container.eGet(eContainmentFeature());
 	}
 
 } //NeedEntryImpl

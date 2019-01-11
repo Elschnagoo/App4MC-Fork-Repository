@@ -40,7 +40,7 @@ public interface ExecutionNeed extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Needs</b></em>' map.
 	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.IDiscreteDeviation},
+	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation},
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Needs</em>' map isn't clear,
@@ -49,9 +49,9 @@ public interface ExecutionNeed extends RunnableItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Needs</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Needs()
-	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.IDiscreteDeviation&gt;"
+	 * @model mapType="org.eclipse.app4mc.amalthea.model.NeedEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation&gt;"
 	 * @generated
 	 */
-	EMap<String, IDiscreteDeviation> getNeeds();
+	EMap<String, IDiscreteValueDeviation> getNeeds();
 
 } // ExecutionNeed

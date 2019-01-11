@@ -17,31 +17,31 @@ package org.eclipse.app4mc.amalthea.model.provider
 
 import java.util.List
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage
-import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution
+import org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries
-import org.eclipse.app4mc.amalthea.model.ContinuousConstant
-import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogram
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry
-import org.eclipse.app4mc.amalthea.model.ContinuousInterval
-import org.eclipse.app4mc.amalthea.model.ContinuousStatistics
-import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogram
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval
-import org.eclipse.app4mc.amalthea.model.DiscreteStatistics
-import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.IContinuousDeviation
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries
+import org.eclipse.app4mc.amalthea.model.ContinuousValueConstant
+import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry
+import org.eclipse.app4mc.amalthea.model.ContinuousValueInterval
+import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics
+import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry
+import org.eclipse.app4mc.amalthea.model.DiscreteValueInterval
+import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics
+import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation
 import org.eclipse.app4mc.amalthea.model.ITimeDeviation
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution
 import org.eclipse.app4mc.amalthea.model.TimeBoundaries
@@ -53,8 +53,8 @@ import org.eclipse.app4mc.amalthea.model.TimeInterval
 import org.eclipse.app4mc.amalthea.model.TimeStatistics
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution
-import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution
+import org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution
+import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution
 import org.eclipse.emf.common.notify.Notification
 import org.eclipse.emf.ecore.EObject
@@ -68,7 +68,7 @@ class CustomDeviationItemProviderService {
 		
 		// special cases
 		switch object {
-			IDiscreteDeviation:
+			IDiscreteValueDeviation:
 				if (name.endsWith("Latency")) name = name + " [cycles]"
 		}
 		
@@ -95,7 +95,7 @@ class CustomDeviationItemProviderService {
 ///// _________________________ Deviations _________________________
 ///// 
 
-	private def static String getIntervalText(ContinuousInterval obj) {
+	private def static String getIntervalText(ContinuousValueInterval obj) {
 		if (obj === null) return "[]"
 		
 		val min = obj.lowerBound
@@ -105,7 +105,7 @@ class CustomDeviationItemProviderService {
 		return "[" + s1 +", " + s2 + "]"
 	}
 
-	private def static String getIntervalText(DiscreteInterval obj) {
+	private def static String getIntervalText(DiscreteValueInterval obj) {
 		if (obj === null) return "[]"
 		
 		val min = obj.lowerBound
@@ -125,30 +125,30 @@ class CustomDeviationItemProviderService {
 		return "[" + s1 +", " + s2 + "]"
 	}
 
-	def static getContinuousDeviationText(IContinuousDeviation dev) {
+	def static getContinuousValueDeviationText(IContinuousValueDeviation dev) {
 		switch dev {
-			ContinuousBetaDistribution: "Continuous Beta Distribution"
-			ContinuousConstant: "Continuous Constant (value: " + dev.value + ")"
-			ContinuousGaussDistribution: "Continuous Gauss Distribution (mean: " + dev.mean + ")"
-			ContinuousHistogram : "Continuous Histogram"
-			ContinuousBoundaries : "Continuous Boundaries " + getIntervalText(dev)
-			ContinuousStatistics : "Continuous Statistics"
-			ContinuousUniformDistribution : "Continuous Uniform Distribution" + getIntervalText(dev)
-			ContinuousWeibullEstimatorsDistribution : "Continuous Weibull Distribution"
+			ContinuousValueBetaDistribution: "ContinuousValue Beta Distribution"
+			ContinuousValueConstant: "ContinuousValue Constant (value: " + dev.value + ")"
+			ContinuousValueGaussDistribution: "ContinuousValue Gauss Distribution (mean: " + dev.mean + ")"
+			ContinuousValueHistogram : "ContinuousValue Histogram"
+			ContinuousValueBoundaries : "ContinuousValue Boundaries " + getIntervalText(dev)
+			ContinuousValueStatistics : "ContinuousValue Statistics"
+			ContinuousValueUniformDistribution : "ContinuousValue Uniform Distribution" + getIntervalText(dev)
+			ContinuousValueWeibullEstimatorsDistribution : "ContinuousValue Weibull Distribution"
 			default : "<undefined deviation>"
 		}
 	}
 
-	def static getDiscreteDeviationText(IDiscreteDeviation dev) {
+	def static getDiscreteValueDeviationText(IDiscreteValueDeviation dev) {
 		switch dev {
-			DiscreteBetaDistribution: "Discrete Beta Distribution"
-			DiscreteConstant: "Discrete Constant (value: " + dev.value + ")"
-			DiscreteGaussDistribution: "Discrete Gauss Distribution (mean: " + dev.mean + ")"
-			DiscreteHistogram : "Discrete Histogram"
-			DiscreteBoundaries : "Discrete Boundaries " + getIntervalText(dev)
-			DiscreteStatistics : "Discrete Statistics"
-			DiscreteUniformDistribution : "Discrete Uniform Distribution" + getIntervalText(dev)
-			DiscreteWeibullEstimatorsDistribution : "Discrete Weibull Distribution"
+			DiscreteValueBetaDistribution: "DiscreteValue Beta Distribution"
+			DiscreteValueConstant: "DiscreteValue Constant (value: " + dev.value + ")"
+			DiscreteValueGaussDistribution: "DiscreteValue Gauss Distribution (mean: " + dev.mean + ")"
+			DiscreteValueHistogram : "DiscreteValue Histogram"
+			DiscreteValueBoundaries : "DiscreteValue Boundaries " + getIntervalText(dev)
+			DiscreteValueStatistics : "DiscreteValue Statistics"
+			DiscreteValueUniformDistribution : "DiscreteValue Uniform Distribution" + getIntervalText(dev)
+			DiscreteValueWeibullEstimatorsDistribution : "DiscreteValue Weibull Distribution"
 			default : "<undefined deviation>"
 		}
 	}
@@ -168,17 +168,17 @@ class CustomDeviationItemProviderService {
 	}
 
 ///// 
-///// _________________________ Continuous Deviations _________________________
+///// _________________________ ContinuousValue Deviations _________________________
 ///// 
 
 	/*****************************************************************************
-	 * 						BoundedContinuousDistributionItemProvider
+	 * 						BoundedContinuousValueDistributionItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getBoundedContinuousDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getBoundedContinuousValueDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(BoundedContinuousDistribution)) {
-			case AmaltheaPackage::BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND,
-			case AmaltheaPackage::BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND: {
+		switch notification.getFeatureID(typeof(BoundedContinuousValueDistribution)) {
+			case AmaltheaPackage::BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND,
+			case AmaltheaPackage::BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -187,13 +187,13 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						TruncatedContinuousDistributionItemProvider
+	 * 						TruncatedContinuousValueDistributionItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getTruncatedContinuousDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getTruncatedContinuousValueDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(TruncatedContinuousDistribution)) {
-			case AmaltheaPackage::TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND,
-			case AmaltheaPackage::TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND: {
+		switch notification.getFeatureID(typeof(TruncatedContinuousValueDistribution)) {
+			case AmaltheaPackage::TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND,
+			case AmaltheaPackage::TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -202,21 +202,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousBetaDistributionItemProvider
+	 * 						ContinuousValueBetaDistributionItemProvider
 	 *****************************************************************************/
-	def static String getContinuousBetaDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousBetaDistribution) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueBetaDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueBetaDistribution) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousBetaDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueBetaDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousBetaDistribution)) {
-			case AmaltheaPackage::CONTINUOUS_BETA_DISTRIBUTION__ALPHA,
-			case AmaltheaPackage::CONTINUOUS_BETA_DISTRIBUTION__BETA: {
+		switch notification.getFeatureID(typeof(ContinuousValueBetaDistribution)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_BETA_DISTRIBUTION__ALPHA,
+			case AmaltheaPackage::CONTINUOUS_VALUE_BETA_DISTRIBUTION__BETA: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -225,20 +225,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousConstantItemProvider
+	 * 						ContinuousValueConstantItemProvider
 	 *****************************************************************************/
-	def static String getContinuousConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousConstant) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueConstantItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueConstant) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousConstantItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueConstantItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousConstant)) {
-			case AmaltheaPackage::CONTINUOUS_CONSTANT__VALUE: {
+		switch notification.getFeatureID(typeof(ContinuousValueConstant)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_CONSTANT__VALUE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -247,21 +247,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousGaussDistributionItemProvider
+	 * 						ContinuousValueGaussDistributionItemProvider
 	 *****************************************************************************/
-	def static String getContinuousGaussDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousGaussDistribution) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueGaussDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueGaussDistribution) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousGaussDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueGaussDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousGaussDistribution)) {
-			case AmaltheaPackage::CONTINUOUS_GAUSS_DISTRIBUTION__MEAN,
-			case AmaltheaPackage::CONTINUOUS_GAUSS_DISTRIBUTION__SD: {
+		switch notification.getFeatureID(typeof(ContinuousValueGaussDistribution)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__MEAN,
+			case AmaltheaPackage::CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__SD: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -270,21 +270,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousHistogramItemProvider
+	 * 						ContinuousValueHistogramItemProvider
 	 *****************************************************************************/
-	def static String getContinuousHistogramItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousHistogram) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueHistogramItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueHistogram) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousHistogramEntryItemProvider
+	 * 						ContinuousValueHistogramEntryItemProvider
 	 *****************************************************************************/
-	def static String getContinuousHistogramEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousHistogramEntry) {
+	def static String getContinuousValueHistogramEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueHistogramEntry) {
 			val num = object.occurrences
 			return "Entry -- " + num + " x " + getIntervalText(object)
 		} else {
@@ -293,20 +293,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousBoundariesItemProvider
+	 * 						ContinuousValueBoundariesItemProvider
 	 *****************************************************************************/
-	def static String getContinuousBoundariesItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousBoundaries) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueBoundariesItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueBoundaries) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousBoundariesItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueBoundariesItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousBoundaries)) {
-			case AmaltheaPackage::CONTINUOUS_BOUNDARIES__SAMPLING_TYPE: {
+		switch notification.getFeatureID(typeof(ContinuousValueBoundaries)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_BOUNDARIES__SAMPLING_TYPE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification, 2)
 				}
@@ -315,20 +315,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousStatisticsItemProvider
+	 * 						ContinuousValueStatisticsItemProvider
 	 *****************************************************************************/
-	def static String getContinuousStatisticsItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousStatistics) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueStatisticsItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueStatistics) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousStatisticsItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueStatisticsItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousStatistics)) {
-			case AmaltheaPackage::CONTINUOUS_STATISTICS__AVERAGE: {
+		switch notification.getFeatureID(typeof(ContinuousValueStatistics)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_STATISTICS__AVERAGE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -337,32 +337,32 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousUniformDistributionItemProvider
+	 * 						ContinuousValueUniformDistributionItemProvider
 	 *****************************************************************************/
-	def static String getContinuousUniformDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousUniformDistribution) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueUniformDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueUniformDistribution) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						ContinuousWeibullEstimatorsDistributionItemProvider
+	 * 						ContinuousValueWeibullEstimatorsDistributionItemProvider
 	 *****************************************************************************/
-	def static String getContinuousWeibullEstimatorsDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ContinuousWeibullEstimatorsDistribution) {
-			return getContainingFeatureName(object) + getContinuousDeviationText(object)
+	def static String getContinuousValueWeibullEstimatorsDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ContinuousValueWeibullEstimatorsDistribution) {
+			return getContainingFeatureName(object) + getContinuousValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getContinuousWeibullEstimatorsDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getContinuousValueWeibullEstimatorsDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(ContinuousWeibullEstimatorsDistribution)) {
-			case AmaltheaPackage::CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE,
-			case AmaltheaPackage::CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE: {
+		switch notification.getFeatureID(typeof(ContinuousValueWeibullEstimatorsDistribution)) {
+			case AmaltheaPackage::CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE,
+			case AmaltheaPackage::CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -371,17 +371,17 @@ class CustomDeviationItemProviderService {
 	}
 
 ///// 
-///// _________________________ Discrete Deviations _________________________
+///// _________________________ DiscreteValue Deviations _________________________
 ///// 
 
 	/*****************************************************************************
-	 * 						BoundedDiscreteDistributionItemProvider
+	 * 						BoundedDiscreteValueDistributionItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getBoundedDiscreteDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getBoundedDiscreteValueDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(BoundedDiscreteDistribution)) {
-			case AmaltheaPackage::BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND,
-			case AmaltheaPackage::BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND: {
+		switch notification.getFeatureID(typeof(BoundedDiscreteValueDistribution)) {
+			case AmaltheaPackage::BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND,
+			case AmaltheaPackage::BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -390,13 +390,13 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						TruncatedDiscreteDistributionItemProvider
+	 * 						TruncatedDiscreteValueDistributionItemProvider
 	 *****************************************************************************/
-	def static List<ViewerNotification> getTruncatedDiscreteDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getTruncatedDiscreteValueDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(TruncatedDiscreteDistribution)) {
-			case AmaltheaPackage::TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND,
-			case AmaltheaPackage::TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND: {
+		switch notification.getFeatureID(typeof(TruncatedDiscreteValueDistribution)) {
+			case AmaltheaPackage::TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND,
+			case AmaltheaPackage::TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -405,21 +405,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteBetaDistributionItemProvider
+	 * 						DiscreteValueBetaDistributionItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteBetaDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteBetaDistribution) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueBetaDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueBetaDistribution) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteBetaDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueBetaDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteBetaDistribution)) {
-			case AmaltheaPackage::DISCRETE_BETA_DISTRIBUTION__ALPHA,
-			case AmaltheaPackage::DISCRETE_BETA_DISTRIBUTION__BETA: {
+		switch notification.getFeatureID(typeof(DiscreteValueBetaDistribution)) {
+			case AmaltheaPackage::DISCRETE_VALUE_BETA_DISTRIBUTION__ALPHA,
+			case AmaltheaPackage::DISCRETE_VALUE_BETA_DISTRIBUTION__BETA: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -428,20 +428,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteConstantItemProvider
+	 * 						DiscreteValueConstantItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteConstantItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteConstant) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueConstantItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueConstant) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteConstantItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueConstantItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteConstant)) {
-			case AmaltheaPackage::DISCRETE_CONSTANT__VALUE: {
+		switch notification.getFeatureID(typeof(DiscreteValueConstant)) {
+			case AmaltheaPackage::DISCRETE_VALUE_CONSTANT__VALUE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -450,21 +450,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteGaussDistributionItemProvider
+	 * 						DiscreteValueGaussDistributionItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteGaussDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteGaussDistribution) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueGaussDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueGaussDistribution) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteGaussDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueGaussDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteGaussDistribution)) {
-			case AmaltheaPackage::DISCRETE_GAUSS_DISTRIBUTION__MEAN,
-			case AmaltheaPackage::DISCRETE_GAUSS_DISTRIBUTION__SD: {
+		switch notification.getFeatureID(typeof(DiscreteValueGaussDistribution)) {
+			case AmaltheaPackage::DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN,
+			case AmaltheaPackage::DISCRETE_VALUE_GAUSS_DISTRIBUTION__SD: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -473,21 +473,21 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteHistogramItemProvider
+	 * 						DiscreteValueHistogramItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteHistogramItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteHistogram) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueHistogramItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueHistogram) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteHistogramEntryItemProvider
+	 * 						DiscreteValueHistogramEntryItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteHistogramEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteHistogramEntry) {
+	def static String getDiscreteValueHistogramEntryItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueHistogramEntry) {
 			val num = object.occurrences
 			return "Entry -- " + num + " x " + getIntervalText(object)
 		} else {
@@ -496,20 +496,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteBoundariesItemProvider
+	 * 						DiscreteValueBoundariesItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteBoundariesItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteBoundaries) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueBoundariesItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueBoundaries) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteBoundariesItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueBoundariesItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteBoundaries)) {
-			case AmaltheaPackage::DISCRETE_BOUNDARIES__SAMPLING_TYPE: {
+		switch notification.getFeatureID(typeof(DiscreteValueBoundaries)) {
+			case AmaltheaPackage::DISCRETE_VALUE_BOUNDARIES__SAMPLING_TYPE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification, 2)
 				}
@@ -518,20 +518,20 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteStatisticsItemProvider
+	 * 						DiscreteValueStatisticsItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteStatisticsItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteStatistics) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueStatisticsItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueStatistics) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteStatisticsItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueStatisticsItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteStatistics)) {
-			case AmaltheaPackage::DISCRETE_STATISTICS__AVERAGE: {
+		switch notification.getFeatureID(typeof(DiscreteValueStatistics)) {
+			case AmaltheaPackage::DISCRETE_VALUE_STATISTICS__AVERAGE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}
@@ -540,32 +540,32 @@ class CustomDeviationItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteUniformDistributionItemProvider
+	 * 						DiscreteValueUniformDistributionItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteUniformDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteUniformDistribution) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueUniformDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueUniformDistribution) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
 	/*****************************************************************************
-	 * 						DiscreteWeibullEstimatorsDistributionItemProvider
+	 * 						DiscreteValueWeibullEstimatorsDistributionItemProvider
 	 *****************************************************************************/
-	def static String getDiscreteWeibullEstimatorsDistributionItemProviderText(Object object, String defaultText) {
-		if (object instanceof DiscreteWeibullEstimatorsDistribution) {
-			return getContainingFeatureName(object) + getDiscreteDeviationText(object)
+	def static String getDiscreteValueWeibullEstimatorsDistributionItemProviderText(Object object, String defaultText) {
+		if (object instanceof DiscreteValueWeibullEstimatorsDistribution) {
+			return getContainingFeatureName(object) + getDiscreteValueDeviationText(object)
 		} else {
 			return defaultText
 		}
 	}
 
-	def static List<ViewerNotification> getDiscreteWeibullEstimatorsDistributionItemProviderNotifications(Notification notification) {
+	def static List<ViewerNotification> getDiscreteValueWeibullEstimatorsDistributionItemProviderNotifications(Notification notification) {
 		val list = newArrayList
-		switch notification.getFeatureID(typeof(DiscreteWeibullEstimatorsDistribution)) {
-			case AmaltheaPackage::DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE,
-			case AmaltheaPackage::DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE: {
+		switch notification.getFeatureID(typeof(DiscreteValueWeibullEstimatorsDistribution)) {
+			case AmaltheaPackage::DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE,
+			case AmaltheaPackage::DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
 				addParentLabelNotification(list, notification)
 				}

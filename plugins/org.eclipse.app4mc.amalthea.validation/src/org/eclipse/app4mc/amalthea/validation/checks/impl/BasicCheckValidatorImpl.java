@@ -45,7 +45,7 @@ import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
@@ -262,8 +262,8 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 			final EObject elem = amaIter.next();
 // TODO check if necessary / correct
 			if (elem.eClass().getInstanceClass()
-					.equals(AmaltheaPackage.eINSTANCE.getDiscreteWeibullEstimatorsDistribution().getInstanceClass())) {
-				final DiscreteWeibullEstimatorsDistribution dev = (DiscreteWeibullEstimatorsDistribution) elem;
+					.equals(AmaltheaPackage.eINSTANCE.getDiscreteValueWeibullEstimatorsDistribution().getInstanceClass())) {
+				final DiscreteValueWeibullEstimatorsDistribution dev = (DiscreteValueWeibullEstimatorsDistribution) elem;
 				final long lowerBoundValue = dev.getLowerBound();
 				final long upperBoundValue = dev.getUpperBound();
 				final double meanValue = dev.getAverage();

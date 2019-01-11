@@ -313,166 +313,166 @@ public interface AmaltheaFactory extends EFactory {
 	TimeBetaDistribution createTimeBetaDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Constant</em>'.
+	 * Returns a new object of class '<em>Discrete Value Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Constant</em>'.
+	 * @return a new object of class '<em>Discrete Value Constant</em>'.
 	 * @generated
 	 */
-	DiscreteConstant createDiscreteConstant();
+	DiscreteValueConstant createDiscreteValueConstant();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Histogram</em>'.
+	 * Returns a new object of class '<em>Discrete Value Histogram</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Histogram</em>'.
+	 * @return a new object of class '<em>Discrete Value Histogram</em>'.
 	 * @generated
 	 */
-	DiscreteHistogram createDiscreteHistogram();
+	DiscreteValueHistogram createDiscreteValueHistogram();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Histogram Entry</em>'.
+	 * Returns a new object of class '<em>Discrete Value Histogram Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Histogram Entry</em>'.
+	 * @return a new object of class '<em>Discrete Value Histogram Entry</em>'.
 	 * @generated
 	 */
-	DiscreteHistogramEntry createDiscreteHistogramEntry();
+	DiscreteValueHistogramEntry createDiscreteValueHistogramEntry();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Boundaries</em>'.
+	 * Returns a new object of class '<em>Discrete Value Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Boundaries</em>'.
+	 * @return a new object of class '<em>Discrete Value Boundaries</em>'.
 	 * @generated
 	 */
-	DiscreteBoundaries createDiscreteBoundaries();
+	DiscreteValueBoundaries createDiscreteValueBoundaries();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Statistics</em>'.
+	 * Returns a new object of class '<em>Discrete Value Statistics</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Statistics</em>'.
+	 * @return a new object of class '<em>Discrete Value Statistics</em>'.
 	 * @generated
 	 */
-	DiscreteStatistics createDiscreteStatistics();
+	DiscreteValueStatistics createDiscreteValueStatistics();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Uniform Distribution</em>'.
+	 * Returns a new object of class '<em>Discrete Value Uniform Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Uniform Distribution</em>'.
+	 * @return a new object of class '<em>Discrete Value Uniform Distribution</em>'.
 	 * @generated
 	 */
-	DiscreteUniformDistribution createDiscreteUniformDistribution();
+	DiscreteValueUniformDistribution createDiscreteValueUniformDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Gauss Distribution</em>'.
+	 * Returns a new object of class '<em>Discrete Value Gauss Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Gauss Distribution</em>'.
+	 * @return a new object of class '<em>Discrete Value Gauss Distribution</em>'.
 	 * @generated
 	 */
-	DiscreteGaussDistribution createDiscreteGaussDistribution();
+	DiscreteValueGaussDistribution createDiscreteValueGaussDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Weibull Estimators Distribution</em>'.
+	 * Returns a new object of class '<em>Discrete Value Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Weibull Estimators Distribution</em>'.
+	 * @return a new object of class '<em>Discrete Value Weibull Estimators Distribution</em>'.
 	 * @generated
 	 */
-	DiscreteWeibullEstimatorsDistribution createDiscreteWeibullEstimatorsDistribution();
+	DiscreteValueWeibullEstimatorsDistribution createDiscreteValueWeibullEstimatorsDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Discrete Beta Distribution</em>'.
+	 * Returns a new object of class '<em>Discrete Value Beta Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Discrete Beta Distribution</em>'.
+	 * @return a new object of class '<em>Discrete Value Beta Distribution</em>'.
 	 * @generated
 	 */
-	DiscreteBetaDistribution createDiscreteBetaDistribution();
+	DiscreteValueBetaDistribution createDiscreteValueBetaDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Constant</em>'.
+	 * Returns a new object of class '<em>Continuous Value Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Constant</em>'.
+	 * @return a new object of class '<em>Continuous Value Constant</em>'.
 	 * @generated
 	 */
-	ContinuousConstant createContinuousConstant();
+	ContinuousValueConstant createContinuousValueConstant();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Histogram</em>'.
+	 * Returns a new object of class '<em>Continuous Value Histogram</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Histogram</em>'.
+	 * @return a new object of class '<em>Continuous Value Histogram</em>'.
 	 * @generated
 	 */
-	ContinuousHistogram createContinuousHistogram();
+	ContinuousValueHistogram createContinuousValueHistogram();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Histogram Entry</em>'.
+	 * Returns a new object of class '<em>Continuous Value Histogram Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Histogram Entry</em>'.
+	 * @return a new object of class '<em>Continuous Value Histogram Entry</em>'.
 	 * @generated
 	 */
-	ContinuousHistogramEntry createContinuousHistogramEntry();
+	ContinuousValueHistogramEntry createContinuousValueHistogramEntry();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Boundaries</em>'.
+	 * Returns a new object of class '<em>Continuous Value Boundaries</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Boundaries</em>'.
+	 * @return a new object of class '<em>Continuous Value Boundaries</em>'.
 	 * @generated
 	 */
-	ContinuousBoundaries createContinuousBoundaries();
+	ContinuousValueBoundaries createContinuousValueBoundaries();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Statistics</em>'.
+	 * Returns a new object of class '<em>Continuous Value Statistics</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Statistics</em>'.
+	 * @return a new object of class '<em>Continuous Value Statistics</em>'.
 	 * @generated
 	 */
-	ContinuousStatistics createContinuousStatistics();
+	ContinuousValueStatistics createContinuousValueStatistics();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Uniform Distribution</em>'.
+	 * Returns a new object of class '<em>Continuous Value Uniform Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Uniform Distribution</em>'.
+	 * @return a new object of class '<em>Continuous Value Uniform Distribution</em>'.
 	 * @generated
 	 */
-	ContinuousUniformDistribution createContinuousUniformDistribution();
+	ContinuousValueUniformDistribution createContinuousValueUniformDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Gauss Distribution</em>'.
+	 * Returns a new object of class '<em>Continuous Value Gauss Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Gauss Distribution</em>'.
+	 * @return a new object of class '<em>Continuous Value Gauss Distribution</em>'.
 	 * @generated
 	 */
-	ContinuousGaussDistribution createContinuousGaussDistribution();
+	ContinuousValueGaussDistribution createContinuousValueGaussDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Weibull Estimators Distribution</em>'.
+	 * Returns a new object of class '<em>Continuous Value Weibull Estimators Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Weibull Estimators Distribution</em>'.
+	 * @return a new object of class '<em>Continuous Value Weibull Estimators Distribution</em>'.
 	 * @generated
 	 */
-	ContinuousWeibullEstimatorsDistribution createContinuousWeibullEstimatorsDistribution();
+	ContinuousValueWeibullEstimatorsDistribution createContinuousValueWeibullEstimatorsDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Continuous Beta Distribution</em>'.
+	 * Returns a new object of class '<em>Continuous Value Beta Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Continuous Beta Distribution</em>'.
+	 * @return a new object of class '<em>Continuous Value Beta Distribution</em>'.
 	 * @generated
 	 */
-	ContinuousBetaDistribution createContinuousBetaDistribution();
+	ContinuousValueBetaDistribution createContinuousValueBetaDistribution();
 
 	/**
 	 * Returns a new object of class '<em>Mode</em>'.

@@ -23,11 +23,11 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.DataRate;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -36,7 +36,7 @@ import org.eclipse.app4mc.amalthea.model.HwDestination;
 import org.eclipse.app4mc.amalthea.model.HwModule;
 import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
@@ -178,7 +178,7 @@ public class HardwareUtil {
 
 	public static Time calculateLatencyPathTime(HwAccessElement accessElement, TimeType timeType,
 			AccessDirection direction) {
-		IDiscreteDeviation latency = null;
+		IDiscreteValueDeviation latency = null;
 		switch (direction) {
 		case READ:
 			if (accessElement.getReadLatency() != null) {
@@ -204,7 +204,7 @@ public class HardwareUtil {
 			AccessDirection direction) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		Frequency frequency = null;
-		IDiscreteDeviation latency = null;
+		IDiscreteValueDeviation latency = null;
 		if (accessElement.getAccessPath() != null) {
 			for (HwPathElement element : accessElement.getAccessPath().getPathElements()) {
 				if (element instanceof ConnectionHandler) {
@@ -252,12 +252,12 @@ public class HardwareUtil {
 		return result;
 	}
 
-	public static Long calculateLatency(IDiscreteDeviation latency, TimeType timeType) {
+	public static Long calculateLatency(IDiscreteValueDeviation latency, TimeType timeType) {
 		Long result = 0L;
-		if (latency instanceof DiscreteConstant) {
-			result = (((DiscreteConstant) latency).getValue());
-		} else if (latency instanceof BoundedDiscreteDistribution) {//FIXME
-			BoundedDiscreteDistribution deviation = ((BoundedDiscreteDistribution) latency);
+		if (latency instanceof DiscreteValueConstant) {
+			result = (((DiscreteValueConstant) latency).getValue());
+		} else if (latency instanceof BoundedDiscreteValueDistribution) {//FIXME
+			BoundedDiscreteValueDistribution deviation = ((BoundedDiscreteValueDistribution) latency);
 				result = deviation.getAverage().longValue();
 				switch (timeType) {
 				case ACET:

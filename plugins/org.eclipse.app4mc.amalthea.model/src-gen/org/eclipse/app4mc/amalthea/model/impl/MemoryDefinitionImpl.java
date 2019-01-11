@@ -19,7 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSize;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
@@ -72,7 +72,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * @generated
 	 * @ordered
 	 */
-	protected IDiscreteDeviation accessLatency;
+	protected IDiscreteValueDeviation accessLatency;
 
 	/**
 	 * The cached value of the '{@link #getDataRate() <em>Data Rate</em>}' containment reference.
@@ -181,7 +181,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IDiscreteDeviation getAccessLatency() {
+	public IDiscreteValueDeviation getAccessLatency() {
 		return accessLatency;
 	}
 
@@ -190,8 +190,8 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAccessLatency(IDiscreteDeviation newAccessLatency, NotificationChain msgs) {
-		IDiscreteDeviation oldAccessLatency = accessLatency;
+	public NotificationChain basicSetAccessLatency(IDiscreteValueDeviation newAccessLatency, NotificationChain msgs) {
+		IDiscreteValueDeviation oldAccessLatency = accessLatency;
 		accessLatency = newAccessLatency;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY, oldAccessLatency, newAccessLatency);
@@ -205,7 +205,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAccessLatency(IDiscreteDeviation newAccessLatency) {
+	public void setAccessLatency(IDiscreteValueDeviation newAccessLatency) {
 		if (newAccessLatency != accessLatency) {
 			NotificationChain msgs = null;
 			if (accessLatency != null)
@@ -348,7 +348,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				setSize((DataSize)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
-				setAccessLatency((IDiscreteDeviation)newValue);
+				setAccessLatency((IDiscreteValueDeviation)newValue);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)newValue);
@@ -376,7 +376,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 				setSize((DataSize)null);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__ACCESS_LATENCY:
-				setAccessLatency((IDiscreteDeviation)null);
+				setAccessLatency((IDiscreteValueDeviation)null);
 				return;
 			case AmaltheaPackage.MEMORY_DEFINITION__DATA_RATE:
 				setDataRate((DataRate)null);

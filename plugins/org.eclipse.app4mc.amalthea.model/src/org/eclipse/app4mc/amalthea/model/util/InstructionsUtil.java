@@ -21,12 +21,12 @@ import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 
@@ -59,7 +59,7 @@ public class InstructionsUtil {
 		return createExecutionNeed(INSTRUCTIONS_CATEGORY_NAME, instructions);
 	}
 
-	public static IDiscreteDeviation getNeed(ExecutionNeed execNeed) {
+	public static IDiscreteValueDeviation getNeed(ExecutionNeed execNeed) {
 		return execNeed.getNeeds().get(INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
@@ -67,7 +67,7 @@ public class InstructionsUtil {
 		return getNeedConstant(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 	
-	public static IDiscreteDeviation getNeedDeviation(ExecutionNeed execNeed) {
+	public static IDiscreteValueDeviation getNeedDeviation(ExecutionNeed execNeed) {
 		return getNeedDeviation(execNeed, INSTRUCTIONS_CATEGORY_NAME);
 	}
 
@@ -85,7 +85,7 @@ public class InstructionsUtil {
 
 
 	private static ExecutionNeed createExecutionNeed(String category, long value) {
-		DiscreteConstant dev = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+		DiscreteValueConstant dev = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
 		dev.setValue(value);
 		
 		ExecutionNeed execNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
@@ -97,14 +97,14 @@ public class InstructionsUtil {
 	private static long getNeedConstant(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return 0;
 		
-		IDiscreteDeviation dev = execNeed.getNeeds().get(category);
-		if (dev instanceof DiscreteConstant) {
-			return ((DiscreteConstant) dev).getValue();
+		IDiscreteValueDeviation dev = execNeed.getNeeds().get(category);
+		if (dev instanceof DiscreteValueConstant) {
+			return ((DiscreteValueConstant) dev).getValue();
 		}
 		return 0;
 	}
 	
-	private static IDiscreteDeviation getNeedDeviation(ExecutionNeed execNeed, String category) {
+	private static IDiscreteValueDeviation getNeedDeviation(ExecutionNeed execNeed, String category) {
 		if (execNeed == null || category == null) return null;
 		
 		return execNeed.getNeeds().get(category);

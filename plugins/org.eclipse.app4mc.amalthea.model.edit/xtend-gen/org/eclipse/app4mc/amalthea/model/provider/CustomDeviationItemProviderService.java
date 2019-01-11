@@ -16,31 +16,31 @@ import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.BoundedContinuousDistribution;
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution;
+import org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.BoundedTimeDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousBoundaries;
-import org.eclipse.app4mc.amalthea.model.ContinuousConstant;
-import org.eclipse.app4mc.amalthea.model.ContinuousGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogram;
-import org.eclipse.app4mc.amalthea.model.ContinuousHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.ContinuousInterval;
-import org.eclipse.app4mc.amalthea.model.ContinuousStatistics;
-import org.eclipse.app4mc.amalthea.model.ContinuousUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.ContinuousWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteBetaDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogram;
-import org.eclipse.app4mc.amalthea.model.DiscreteHistogramEntry;
-import org.eclipse.app4mc.amalthea.model.DiscreteInterval;
-import org.eclipse.app4mc.amalthea.model.DiscreteStatistics;
-import org.eclipse.app4mc.amalthea.model.DiscreteUniformDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.IContinuousDeviation;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueConstant;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueInterval;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueInterval;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
@@ -53,8 +53,8 @@ import org.eclipse.app4mc.amalthea.model.TimeInterval;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
-import org.eclipse.app4mc.amalthea.model.TruncatedContinuousDistribution;
-import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution;
+import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -78,7 +78,7 @@ public class CustomDeviationItemProviderService {
     }
     String name = _xifexpression;
     boolean _matched = false;
-    if (object instanceof IDiscreteDeviation) {
+    if (object instanceof IDiscreteValueDeviation) {
       _matched=true;
       boolean _endsWith = name.endsWith("Latency");
       if (_endsWith) {
@@ -106,7 +106,7 @@ public class CustomDeviationItemProviderService {
     }
   }
   
-  private static String getIntervalText(final ContinuousInterval obj) {
+  private static String getIntervalText(final ContinuousValueInterval obj) {
     if ((obj == null)) {
       return "[]";
     }
@@ -129,7 +129,7 @@ public class CustomDeviationItemProviderService {
     return (((("[" + s1) + ", ") + s2) + "]");
   }
   
-  private static String getIntervalText(final DiscreteInterval obj) {
+  private static String getIntervalText(final DiscreteValueInterval obj) {
     if ((obj == null)) {
       return "[]";
     }
@@ -175,59 +175,59 @@ public class CustomDeviationItemProviderService {
     return (((("[" + s1) + ", ") + s2) + "]");
   }
   
-  public static String getContinuousDeviationText(final IContinuousDeviation dev) {
+  public static String getContinuousValueDeviationText(final IContinuousValueDeviation dev) {
     String _switchResult = null;
     boolean _matched = false;
-    if (dev instanceof ContinuousBetaDistribution) {
+    if (dev instanceof ContinuousValueBetaDistribution) {
       _matched=true;
-      _switchResult = "Continuous Beta Distribution";
+      _switchResult = "ContinuousValue Beta Distribution";
     }
     if (!_matched) {
-      if (dev instanceof ContinuousConstant) {
+      if (dev instanceof ContinuousValueConstant) {
         _matched=true;
-        Double _value = ((ContinuousConstant)dev).getValue();
-        String _plus = ("Continuous Constant (value: " + _value);
+        Double _value = ((ContinuousValueConstant)dev).getValue();
+        String _plus = ("ContinuousValue Constant (value: " + _value);
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousGaussDistribution) {
+      if (dev instanceof ContinuousValueGaussDistribution) {
         _matched=true;
-        Double _mean = ((ContinuousGaussDistribution)dev).getMean();
-        String _plus = ("Continuous Gauss Distribution (mean: " + _mean);
+        Double _mean = ((ContinuousValueGaussDistribution)dev).getMean();
+        String _plus = ("ContinuousValue Gauss Distribution (mean: " + _mean);
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousHistogram) {
+      if (dev instanceof ContinuousValueHistogram) {
         _matched=true;
-        _switchResult = "Continuous Histogram";
+        _switchResult = "ContinuousValue Histogram";
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousBoundaries) {
+      if (dev instanceof ContinuousValueBoundaries) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)dev));
-        _switchResult = ("Continuous Boundaries " + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousValueInterval)dev));
+        _switchResult = ("ContinuousValue Boundaries " + _intervalText);
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousStatistics) {
+      if (dev instanceof ContinuousValueStatistics) {
         _matched=true;
-        _switchResult = "Continuous Statistics";
+        _switchResult = "ContinuousValue Statistics";
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousUniformDistribution) {
+      if (dev instanceof ContinuousValueUniformDistribution) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)dev));
-        _switchResult = ("Continuous Uniform Distribution" + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousValueInterval)dev));
+        _switchResult = ("ContinuousValue Uniform Distribution" + _intervalText);
       }
     }
     if (!_matched) {
-      if (dev instanceof ContinuousWeibullEstimatorsDistribution) {
+      if (dev instanceof ContinuousValueWeibullEstimatorsDistribution) {
         _matched=true;
-        _switchResult = "Continuous Weibull Distribution";
+        _switchResult = "ContinuousValue Weibull Distribution";
       }
     }
     if (!_matched) {
@@ -236,59 +236,59 @@ public class CustomDeviationItemProviderService {
     return _switchResult;
   }
   
-  public static String getDiscreteDeviationText(final IDiscreteDeviation dev) {
+  public static String getDiscreteValueDeviationText(final IDiscreteValueDeviation dev) {
     String _switchResult = null;
     boolean _matched = false;
-    if (dev instanceof DiscreteBetaDistribution) {
+    if (dev instanceof DiscreteValueBetaDistribution) {
       _matched=true;
-      _switchResult = "Discrete Beta Distribution";
+      _switchResult = "DiscreteValue Beta Distribution";
     }
     if (!_matched) {
-      if (dev instanceof DiscreteConstant) {
+      if (dev instanceof DiscreteValueConstant) {
         _matched=true;
-        Long _value = ((DiscreteConstant)dev).getValue();
-        String _plus = ("Discrete Constant (value: " + _value);
+        Long _value = ((DiscreteValueConstant)dev).getValue();
+        String _plus = ("DiscreteValue Constant (value: " + _value);
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteGaussDistribution) {
+      if (dev instanceof DiscreteValueGaussDistribution) {
         _matched=true;
-        Double _mean = ((DiscreteGaussDistribution)dev).getMean();
-        String _plus = ("Discrete Gauss Distribution (mean: " + _mean);
+        Double _mean = ((DiscreteValueGaussDistribution)dev).getMean();
+        String _plus = ("DiscreteValue Gauss Distribution (mean: " + _mean);
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteHistogram) {
+      if (dev instanceof DiscreteValueHistogram) {
         _matched=true;
-        _switchResult = "Discrete Histogram";
+        _switchResult = "DiscreteValue Histogram";
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteBoundaries) {
+      if (dev instanceof DiscreteValueBoundaries) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)dev));
-        _switchResult = ("Discrete Boundaries " + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteValueInterval)dev));
+        _switchResult = ("DiscreteValue Boundaries " + _intervalText);
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteStatistics) {
+      if (dev instanceof DiscreteValueStatistics) {
         _matched=true;
-        _switchResult = "Discrete Statistics";
+        _switchResult = "DiscreteValue Statistics";
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteUniformDistribution) {
+      if (dev instanceof DiscreteValueUniformDistribution) {
         _matched=true;
-        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)dev));
-        _switchResult = ("Discrete Uniform Distribution" + _intervalText);
+        String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteValueInterval)dev));
+        _switchResult = ("DiscreteValue Uniform Distribution" + _intervalText);
       }
     }
     if (!_matched) {
-      if (dev instanceof DiscreteWeibullEstimatorsDistribution) {
+      if (dev instanceof DiscreteValueWeibullEstimatorsDistribution) {
         _matched=true;
-        _switchResult = "Discrete Weibull Distribution";
+        _switchResult = "DiscreteValue Weibull Distribution";
       }
     }
     if (!_matched) {
@@ -359,17 +359,17 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * BoundedContinuousDistributionItemProvider
+   * BoundedContinuousValueDistributionItemProvider
    */
-  public static List<ViewerNotification> getBoundedContinuousDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getBoundedContinuousValueDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(BoundedContinuousDistribution.class);
+    int _featureID = notification.getFeatureID(BoundedContinuousValueDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND)) {
         _matched=true;
       }
     }
@@ -383,17 +383,17 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * TruncatedContinuousDistributionItemProvider
+   * TruncatedContinuousValueDistributionItemProvider
    */
-  public static List<ViewerNotification> getTruncatedContinuousDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getTruncatedContinuousValueDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(TruncatedContinuousDistribution.class);
+    int _featureID = notification.getFeatureID(TruncatedContinuousValueDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_CONTINUOUS_DISTRIBUTION__LOWER_BOUND)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_CONTINUOUS_DISTRIBUTION__UPPER_BOUND)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND)) {
         _matched=true;
       }
     }
@@ -407,27 +407,27 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousBetaDistributionItemProvider
+   * ContinuousValueBetaDistributionItemProvider
    */
-  public static String getContinuousBetaDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousBetaDistribution)) {
+  public static String getContinuousValueBetaDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueBetaDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousBetaDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueBetaDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousBetaDistribution.class);
+    int _featureID = notification.getFeatureID(ContinuousValueBetaDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION__ALPHA)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_BETA_DISTRIBUTION__ALPHA)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_BETA_DISTRIBUTION__BETA)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_BETA_DISTRIBUTION__BETA)) {
         _matched=true;
       }
     }
@@ -441,23 +441,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousConstantItemProvider
+   * ContinuousValueConstantItemProvider
    */
-  public static String getContinuousConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousConstant)) {
+  public static String getContinuousValueConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueConstant)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousConstantItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueConstantItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousConstant.class);
+    int _featureID = notification.getFeatureID(ContinuousValueConstant.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_CONSTANT__VALUE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT__VALUE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -468,27 +468,27 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousGaussDistributionItemProvider
+   * ContinuousValueGaussDistributionItemProvider
    */
-  public static String getContinuousGaussDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousGaussDistribution)) {
+  public static String getContinuousValueGaussDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueGaussDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousGaussDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueGaussDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousGaussDistribution.class);
+    int _featureID = notification.getFeatureID(ContinuousValueGaussDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION__MEAN)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__MEAN)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_GAUSS_DISTRIBUTION__SD)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_GAUSS_DISTRIBUTION__SD)) {
         _matched=true;
       }
     }
@@ -502,25 +502,25 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousHistogramItemProvider
+   * ContinuousValueHistogramItemProvider
    */
-  public static String getContinuousHistogramItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousHistogram)) {
+  public static String getContinuousValueHistogramItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueHistogram)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
   /**
-   * ContinuousHistogramEntryItemProvider
+   * ContinuousValueHistogramEntryItemProvider
    */
-  public static String getContinuousHistogramEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousHistogramEntry)) {
-      final long num = ((ContinuousHistogramEntry)object).getOccurrences();
-      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousInterval)object));
+  public static String getContinuousValueHistogramEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueHistogramEntry)) {
+      final long num = ((ContinuousValueHistogramEntry)object).getOccurrences();
+      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousValueInterval)object));
       return ((("Entry -- " + Long.valueOf(num)) + " x ") + _intervalText);
     } else {
       return defaultText;
@@ -528,23 +528,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousBoundariesItemProvider
+   * ContinuousValueBoundariesItemProvider
    */
-  public static String getContinuousBoundariesItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousBoundaries)) {
+  public static String getContinuousValueBoundariesItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueBoundaries)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousBoundariesItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueBoundariesItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousBoundaries.class);
+    int _featureID = notification.getFeatureID(ContinuousValueBoundaries.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_BOUNDARIES__SAMPLING_TYPE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_BOUNDARIES__SAMPLING_TYPE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -555,23 +555,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousStatisticsItemProvider
+   * ContinuousValueStatisticsItemProvider
    */
-  public static String getContinuousStatisticsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousStatistics)) {
+  public static String getContinuousValueStatisticsItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueStatistics)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousStatisticsItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueStatisticsItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousStatistics.class);
+    int _featureID = notification.getFeatureID(ContinuousValueStatistics.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_STATISTICS__AVERAGE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_STATISTICS__AVERAGE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -582,40 +582,40 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * ContinuousUniformDistributionItemProvider
+   * ContinuousValueUniformDistributionItemProvider
    */
-  public static String getContinuousUniformDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousUniformDistribution)) {
+  public static String getContinuousValueUniformDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueUniformDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
   /**
-   * ContinuousWeibullEstimatorsDistributionItemProvider
+   * ContinuousValueWeibullEstimatorsDistributionItemProvider
    */
-  public static String getContinuousWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ContinuousWeibullEstimatorsDistribution)) {
+  public static String getContinuousValueWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ContinuousValueWeibullEstimatorsDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _continuousDeviationText = CustomDeviationItemProviderService.getContinuousDeviationText(((IContinuousDeviation)object));
-      return (_containingFeatureName + _continuousDeviationText);
+      String _continuousValueDeviationText = CustomDeviationItemProviderService.getContinuousValueDeviationText(((IContinuousValueDeviation)object));
+      return (_containingFeatureName + _continuousValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getContinuousWeibullEstimatorsDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getContinuousValueWeibullEstimatorsDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(ContinuousWeibullEstimatorsDistribution.class);
+    int _featureID = notification.getFeatureID(ContinuousValueWeibullEstimatorsDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE)) {
         _matched=true;
       }
     }
@@ -629,17 +629,17 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * BoundedDiscreteDistributionItemProvider
+   * BoundedDiscreteValueDistributionItemProvider
    */
-  public static List<ViewerNotification> getBoundedDiscreteDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getBoundedDiscreteValueDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(BoundedDiscreteDistribution.class);
+    int _featureID = notification.getFeatureID(BoundedDiscreteValueDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION__LOWER_BOUND)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_DISCRETE_DISTRIBUTION__UPPER_BOUND)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.BOUNDED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND)) {
         _matched=true;
       }
     }
@@ -653,17 +653,17 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * TruncatedDiscreteDistributionItemProvider
+   * TruncatedDiscreteValueDistributionItemProvider
    */
-  public static List<ViewerNotification> getTruncatedDiscreteDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getTruncatedDiscreteValueDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(TruncatedDiscreteDistribution.class);
+    int _featureID = notification.getFeatureID(TruncatedDiscreteValueDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_DISCRETE_DISTRIBUTION__LOWER_BOUND)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_DISCRETE_DISTRIBUTION__UPPER_BOUND)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND)) {
         _matched=true;
       }
     }
@@ -677,27 +677,27 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteBetaDistributionItemProvider
+   * DiscreteValueBetaDistributionItemProvider
    */
-  public static String getDiscreteBetaDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteBetaDistribution)) {
+  public static String getDiscreteValueBetaDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueBetaDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteBetaDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueBetaDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteBetaDistribution.class);
+    int _featureID = notification.getFeatureID(DiscreteValueBetaDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION__ALPHA)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_BETA_DISTRIBUTION__ALPHA)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_BETA_DISTRIBUTION__BETA)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_BETA_DISTRIBUTION__BETA)) {
         _matched=true;
       }
     }
@@ -711,23 +711,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteConstantItemProvider
+   * DiscreteValueConstantItemProvider
    */
-  public static String getDiscreteConstantItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteConstant)) {
+  public static String getDiscreteValueConstantItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueConstant)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteConstantItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueConstantItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteConstant.class);
+    int _featureID = notification.getFeatureID(DiscreteValueConstant.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_CONSTANT__VALUE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_CONSTANT__VALUE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -738,27 +738,27 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteGaussDistributionItemProvider
+   * DiscreteValueGaussDistributionItemProvider
    */
-  public static String getDiscreteGaussDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteGaussDistribution)) {
+  public static String getDiscreteValueGaussDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueGaussDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteGaussDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueGaussDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteGaussDistribution.class);
+    int _featureID = notification.getFeatureID(DiscreteValueGaussDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__MEAN)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_GAUSS_DISTRIBUTION__SD)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION__SD)) {
         _matched=true;
       }
     }
@@ -772,25 +772,25 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteHistogramItemProvider
+   * DiscreteValueHistogramItemProvider
    */
-  public static String getDiscreteHistogramItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteHistogram)) {
+  public static String getDiscreteValueHistogramItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueHistogram)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
   /**
-   * DiscreteHistogramEntryItemProvider
+   * DiscreteValueHistogramEntryItemProvider
    */
-  public static String getDiscreteHistogramEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteHistogramEntry)) {
-      final long num = ((DiscreteHistogramEntry)object).getOccurrences();
-      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteInterval)object));
+  public static String getDiscreteValueHistogramEntryItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueHistogramEntry)) {
+      final long num = ((DiscreteValueHistogramEntry)object).getOccurrences();
+      String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteValueInterval)object));
       return ((("Entry -- " + Long.valueOf(num)) + " x ") + _intervalText);
     } else {
       return defaultText;
@@ -798,23 +798,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteBoundariesItemProvider
+   * DiscreteValueBoundariesItemProvider
    */
-  public static String getDiscreteBoundariesItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteBoundaries)) {
+  public static String getDiscreteValueBoundariesItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueBoundaries)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteBoundariesItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueBoundariesItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteBoundaries.class);
+    int _featureID = notification.getFeatureID(DiscreteValueBoundaries.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_BOUNDARIES__SAMPLING_TYPE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_BOUNDARIES__SAMPLING_TYPE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -825,23 +825,23 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteStatisticsItemProvider
+   * DiscreteValueStatisticsItemProvider
    */
-  public static String getDiscreteStatisticsItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteStatistics)) {
+  public static String getDiscreteValueStatisticsItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueStatistics)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteStatisticsItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueStatisticsItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteStatistics.class);
+    int _featureID = notification.getFeatureID(DiscreteValueStatistics.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_STATISTICS__AVERAGE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_STATISTICS__AVERAGE)) {
       _matched=true;
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
@@ -852,40 +852,40 @@ public class CustomDeviationItemProviderService {
   }
   
   /**
-   * DiscreteUniformDistributionItemProvider
+   * DiscreteValueUniformDistributionItemProvider
    */
-  public static String getDiscreteUniformDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteUniformDistribution)) {
+  public static String getDiscreteValueUniformDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueUniformDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
   /**
-   * DiscreteWeibullEstimatorsDistributionItemProvider
+   * DiscreteValueWeibullEstimatorsDistributionItemProvider
    */
-  public static String getDiscreteWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DiscreteWeibullEstimatorsDistribution)) {
+  public static String getDiscreteValueWeibullEstimatorsDistributionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof DiscreteValueWeibullEstimatorsDistribution)) {
       String _containingFeatureName = CustomDeviationItemProviderService.getContainingFeatureName(((EObject)object));
-      String _discreteDeviationText = CustomDeviationItemProviderService.getDiscreteDeviationText(((IDiscreteDeviation)object));
-      return (_containingFeatureName + _discreteDeviationText);
+      String _discreteValueDeviationText = CustomDeviationItemProviderService.getDiscreteValueDeviationText(((IDiscreteValueDeviation)object));
+      return (_containingFeatureName + _discreteValueDeviationText);
     } else {
       return defaultText;
     }
   }
   
-  public static List<ViewerNotification> getDiscreteWeibullEstimatorsDistributionItemProviderNotifications(final Notification notification) {
+  public static List<ViewerNotification> getDiscreteValueWeibullEstimatorsDistributionItemProviderNotifications(final Notification notification) {
     final ArrayList<ViewerNotification> list = CollectionLiterals.<ViewerNotification>newArrayList();
-    int _featureID = notification.getFeatureID(DiscreteWeibullEstimatorsDistribution.class);
+    int _featureID = notification.getFeatureID(DiscreteValueWeibullEstimatorsDistribution.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__AVERAGE)) {
       _matched=true;
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION__PREMAIN_PROMILLE)) {
         _matched=true;
       }
     }

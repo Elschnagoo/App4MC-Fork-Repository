@@ -24,15 +24,15 @@ import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
-import org.eclipse.app4mc.amalthea.model.DiscreteBoundaries;
-import org.eclipse.app4mc.amalthea.model.DiscreteConstant;
-import org.eclipse.app4mc.amalthea.model.DiscreteGaussDistribution;
-import org.eclipse.app4mc.amalthea.model.DiscreteWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
@@ -118,37 +118,37 @@ public class FactoryUtil {
 		return refObj;
 	}
 
-	public static DiscreteConstant createLatency(long value) {
-		DiscreteConstant constant = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+	public static DiscreteValueConstant createLatency(long value) {
+		DiscreteValueConstant constant = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
 		constant.setValue(value);;
 		return constant;
 	}
 
-	public static DiscreteBoundaries createDiscreteBoundaries(long min, long max) {
-		DiscreteBoundaries boundaries = AmaltheaFactory.eINSTANCE.createDiscreteBoundaries();
+	public static DiscreteValueBoundaries createDiscreteValueBoundaries(long min, long max) {
+		DiscreteValueBoundaries boundaries = AmaltheaFactory.eINSTANCE.createDiscreteValueBoundaries();
 		boundaries.setLowerBound(min);
 		boundaries.setUpperBound(max);
 		return boundaries;
 	}
 
-	public static DiscreteGaussDistribution createDiscreteGaussDistribution(double mean, double sd) {
-		DiscreteGaussDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution();
+	public static DiscreteValueGaussDistribution createDiscreteValueGaussDistribution(double mean, double sd) {
+		DiscreteValueGaussDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteValueGaussDistribution();
 		// set parameters
 		result.setMean(mean);
 		result.setSd(sd);
 		return result;
 	}
 
-	public static DiscreteGaussDistribution createDiscreteGaussDistribution(double mean, double sd, Long min, Long max) {
-		DiscreteGaussDistribution result = createDiscreteGaussDistribution(mean, sd);
+	public static DiscreteValueGaussDistribution createDiscreteValueGaussDistribution(double mean, double sd, Long min, Long max) {
+		DiscreteValueGaussDistribution result = createDiscreteValueGaussDistribution(mean, sd);
 		// set parameters
 		result.setLowerBound(min);
 		result.setUpperBound(max);
 		return result;
 	}
 
-	public static DiscreteConstant createDiscreteConstant(long value) {
-		DiscreteConstant result = AmaltheaFactory.eINSTANCE.createDiscreteConstant();
+	public static DiscreteValueConstant createDiscreteValueConstant(long value) {
+		DiscreteValueConstant result = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
 		// set parameters
 		result.setValue(value);;
 		return result;
@@ -208,8 +208,8 @@ public class FactoryUtil {
 		return time;
 	}
 
-	public static DiscreteWeibullEstimatorsDistribution createWeibullDistribution(long min, double avg, long max, double promille) {
-		DiscreteWeibullEstimatorsDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution();
+	public static DiscreteValueWeibullEstimatorsDistribution createWeibullDistribution(long min, double avg, long max, double promille) {
+		DiscreteValueWeibullEstimatorsDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution();
 		result.setLowerBound(min);
 		result.setAverage(avg);
 		result.setUpperBound(max);
@@ -222,7 +222,7 @@ public class FactoryUtil {
 	 * @param featureCategory
 	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(String featureCategory, IDiscreteDeviation usages) {
+	public static ExecutionNeed createExecutionNeed(String featureCategory, IDiscreteValueDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		exeNeed.getNeeds().put(featureCategory, usages);
 		return exeNeed;
@@ -233,7 +233,7 @@ public class FactoryUtil {
 	 * @param feature
 	 * @param usages
 	 */
-	public static ExecutionNeed createExecutionNeed(HwFeature feature, IDiscreteDeviation usages) {
+	public static ExecutionNeed createExecutionNeed(HwFeature feature, IDiscreteValueDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), usages);
 		return exeNeed;

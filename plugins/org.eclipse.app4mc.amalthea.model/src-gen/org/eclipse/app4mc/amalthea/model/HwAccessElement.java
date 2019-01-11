@@ -117,12 +117,12 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * <p><b>Read latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Read Latency</em>' containment reference.
-	 * @see #setReadLatency(IDiscreteDeviation)
+	 * @see #setReadLatency(IDiscreteValueDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_ReadLatency()
 	 * @model containment="true"
 	 * @generated
 	 */
-	IDiscreteDeviation getReadLatency();
+	IDiscreteValueDeviation getReadLatency();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getReadLatency <em>Read Latency</em>}' containment reference.
@@ -132,7 +132,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * @see #getReadLatency()
 	 * @generated
 	 */
-	void setReadLatency(IDiscreteDeviation value);
+	void setReadLatency(IDiscreteValueDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Write Latency</b></em>' containment reference.
@@ -142,12 +142,12 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * <p><b>Write latency [cycles]</b></p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Write Latency</em>' containment reference.
-	 * @see #setWriteLatency(IDiscreteDeviation)
+	 * @see #setWriteLatency(IDiscreteValueDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_WriteLatency()
 	 * @model containment="true"
 	 * @generated
 	 */
-	IDiscreteDeviation getWriteLatency();
+	IDiscreteValueDeviation getWriteLatency();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getWriteLatency <em>Write Latency</em>}' containment reference.
@@ -157,7 +157,7 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * @see #getWriteLatency()
 	 * @generated
 	 */
-	void setWriteLatency(IDiscreteDeviation value);
+	void setWriteLatency(IDiscreteValueDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.

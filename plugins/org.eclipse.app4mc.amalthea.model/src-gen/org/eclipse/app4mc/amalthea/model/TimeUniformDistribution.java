@@ -21,7 +21,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Continuous uniform distribution
+ * Uniform distribution
  * <!-- end-model-doc -->
  *
  *

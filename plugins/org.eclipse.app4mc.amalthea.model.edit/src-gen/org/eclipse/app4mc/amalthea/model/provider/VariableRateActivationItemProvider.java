@@ -196,42 +196,42 @@ public class VariableRateActivationItemProvider extends ActivationItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousConstant()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousHistogram()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueHistogram()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousBoundaries()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousStatistics()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueStatistics()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousUniformDistribution()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueUniformDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousGaussDistribution()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueGaussDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousWeibullEstimatorsDistribution()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getVariableRateActivation_OccurrencesPerStep(),
-				 AmaltheaFactory.eINSTANCE.createContinuousBetaDistribution()));
+				 AmaltheaFactory.eINSTANCE.createContinuousValueBetaDistribution()));
 	}
 
 }

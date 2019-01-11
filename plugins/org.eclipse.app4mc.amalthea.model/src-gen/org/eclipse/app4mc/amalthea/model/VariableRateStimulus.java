@@ -76,12 +76,12 @@ public interface VariableRateStimulus extends Stimulus {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
-	 * @see #setOccurrencesPerStep(IContinuousDeviation)
+	 * @see #setOccurrencesPerStep(IContinuousValueDeviation)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getVariableRateStimulus_OccurrencesPerStep()
 	 * @model containment="true"
 	 * @generated
 	 */
-	IContinuousDeviation getOccurrencesPerStep();
+	IContinuousValueDeviation getOccurrencesPerStep();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.VariableRateStimulus#getOccurrencesPerStep <em>Occurrences Per Step</em>}' containment reference.
@@ -91,7 +91,7 @@ public interface VariableRateStimulus extends Stimulus {
 	 * @see #getOccurrencesPerStep()
 	 * @generated
 	 */
-	void setOccurrencesPerStep(IContinuousDeviation value);
+	void setOccurrencesPerStep(IContinuousValueDeviation value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Increase Per Step</b></em>' attribute.

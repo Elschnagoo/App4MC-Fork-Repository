@@ -164,42 +164,42 @@ public class TicksItemProvider extends ComputationItemItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteConstant()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteHistogram()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueHistogram()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBoundaries()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteStatistics()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueStatistics()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteUniformDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueUniformDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteGaussDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueGaussDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteWeibullEstimatorsDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getTicks_Default(),
-				 AmaltheaFactory.eINSTANCE.createDiscreteBetaDistribution()));
+				 AmaltheaFactory.eINSTANCE.createDiscreteValueBetaDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -91,7 +91,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
-import org.eclipse.app4mc.amalthea.model.IDiscreteDeviation;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ISR;
@@ -4634,11 +4634,11 @@ public class CustomItemProviderService {
         _name=_key.getName();
       }
       final String typeName = _name;
-      IDiscreteDeviation _value = null;
+      IDiscreteValueDeviation _value = null;
       if (((TicksEntryImpl)object)!=null) {
         _value=((TicksEntryImpl)object).getValue();
       }
-      final IDiscreteDeviation deviation = _value;
+      final IDiscreteValueDeviation deviation = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(typeName);
       if (_isNullOrEmpty) {
@@ -4651,7 +4651,7 @@ public class CustomItemProviderService {
       if ((deviation == null)) {
         _xifexpression_1 = "<ticks>";
       } else {
-        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteDeviationText(deviation);
+        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteValueDeviationText(deviation);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);
@@ -4691,11 +4691,11 @@ public class CustomItemProviderService {
         _key=((NeedEntryImpl)object).getKey();
       }
       final String featureName = _key;
-      IDiscreteDeviation _value = null;
+      IDiscreteValueDeviation _value = null;
       if (((NeedEntryImpl)object)!=null) {
         _value=((NeedEntryImpl)object).getValue();
       }
-      final IDiscreteDeviation dev = _value;
+      final IDiscreteValueDeviation dev = _value;
       String _xifexpression = null;
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(featureName);
       if (_isNullOrEmpty) {
@@ -4708,7 +4708,7 @@ public class CustomItemProviderService {
       if ((dev == null)) {
         _xifexpression_1 = "<usages>";
       } else {
-        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteDeviationText(dev);
+        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteValueDeviationText(dev);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);
