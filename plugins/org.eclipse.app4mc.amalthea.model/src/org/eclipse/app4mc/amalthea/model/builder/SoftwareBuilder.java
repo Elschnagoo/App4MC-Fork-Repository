@@ -10,6 +10,7 @@
  * Contributors:
  *     Robert Bosch GmbH - initial API and implementation
  */
+
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
