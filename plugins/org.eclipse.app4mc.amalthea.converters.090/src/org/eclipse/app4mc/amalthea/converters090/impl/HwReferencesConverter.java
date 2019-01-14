@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters090.utils.HWCacheBuilder;
 import org.eclipse.app4mc.amalthea.converters090.utils.HWTransformationCache;
 import org.eclipse.app4mc.amalthea.converters090.utils.HelperUtils_083_090;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -206,11 +207,12 @@ public class HwReferencesConverter extends AbstractConverter {
 						if(valueTagName.equals("default")) {
 							newDefaultSubElement.setAttribute("key", "Instructions");
 						}else {
-						Element newKeyElement=new Element("key");
+							newDefaultSubElement.setAttribute("key", "Instructions");
+							/*Element newKeyElement=new Element("key");
 
 						newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
 							
-						newDefaultSubElement.addContent(newKeyElement);
+						newDefaultSubElement.addContent(newKeyElement);*/
 						}
 						
 
@@ -236,11 +238,15 @@ public class HwReferencesConverter extends AbstractConverter {
 					if(valueTagName.equals("default")) {
 						newDefaultSubElement.setAttribute("key", "Instructions");
 					}else {
-						Element newKeyElement=new Element("key");
+						
+						/*Element newKeyElement=new Element("key");
 
 						newKeyElement.setAttribute("href", "amlt:/#Instructions?type=HwFeatureCategory");
 						
-						newDefaultSubElement.addContent(newKeyElement);
+						newDefaultSubElement.addContent(newKeyElement);*/
+						
+						
+						newDefaultSubElement.setAttribute(new Attribute("key", "Instructions"));
 
 					}
 
