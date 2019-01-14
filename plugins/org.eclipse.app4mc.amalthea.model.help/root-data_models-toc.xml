@@ -4,6 +4,7 @@
 <toc label="Data Models Root" link_to="../org.eclipse.app4mc.help/mainToc.xml#app4mc.docu.models">
    <topic label="Data Models">
       <link toc="toc/model_introduction-toc.xml"/>
+      <link toc="toc/model_basics-toc.xml"/>
       <link toc="toc/model_common-toc.xml"/>
       <link toc="toc/model_components-toc.xml"/>
       <link toc="toc/model_config-toc.xml"/>

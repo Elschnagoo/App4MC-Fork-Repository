@@ -9,6 +9,7 @@
       </toc>
          
       <toc	file="toc/model_introduction-toc.xml"			primary="false"> </toc>
+      <toc	file="toc/model_basics-toc.xml"					primary="false"> </toc>
       <toc	file="toc/model_common-toc.xml"					primary="false"> </toc>
       <toc	file="toc/model_components-toc.xml"				primary="false"> </toc>
       <toc	file="toc/model_config-toc.xml"					primary="false"> </toc>

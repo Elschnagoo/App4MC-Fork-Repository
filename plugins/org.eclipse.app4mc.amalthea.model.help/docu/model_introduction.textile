@@ -1,5 +1,5 @@
 
-h2. Data Model Overview
+h2. Model Overview
 
 
 The AMALTHEA data models are related to the activities in a typical design flow. The focus is on design, implementation and optimization of software for multicore systems. The data exchange between the activities is supported by the two main models of AMALTHEA, the System-Model and the Trace-Model.
@@ -32,7 +32,6 @@ A simplified picture shows the main purpose of the models.
 !{width: 500px}../pictures/amalthea_models.png!
 
 The open AMALTHEA models allow custom tooling, interoperability of tools and the combination of different simulation or execution environments.
-
 
 
 h3. AMALTHEA System Model
