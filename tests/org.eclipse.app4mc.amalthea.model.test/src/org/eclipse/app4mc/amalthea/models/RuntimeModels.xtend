@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -108,6 +108,7 @@ class RuntimeModels {
 			softwareModel [
 				runnable [
 					name = "r1"
+					ticks [defaultConstant(200)]
 					execNeed [
 						instructions(500)
 					]

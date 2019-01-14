@@ -16,35 +16,29 @@
       </callGraph>
     </tasks>
     <runnables name="r1" callback="false" service="false">
+      <runnableItems xsi:type="am:Ticks">
+        <default xsi:type="am:DiscreteValueConstant" value="200"/>
+      </runnableItems>
       <runnableItems xsi:type="am:ExecutionNeed">
         <needs key="Instructions">
-          <value xsi:type="am:NeedConstant" value="500"/>
+          <value xsi:type="am:DiscreteValueConstant" value="500"/>
         </needs>
       </runnableItems>
       <runnableItems xsi:type="am:ExecutionNeed">
         <needs key="Instructions">
-          <value xsi:type="am:NeedDeviation">
-            <deviation>
-              <lowerBound xsi:type="am:LongObject" value="250"/>
-              <upperBound xsi:type="am:LongObject" value="750"/>
-              <distribution xsi:type="am:GaussDistribution">
-                <sd xsi:type="am:LongObject" value="2"/>
-                <mean xsi:type="am:LongObject" value="500"/>
-              </distribution>
-            </deviation>
-          </value>
+          <value xsi:type="am:DiscreteValueGaussDistribution" lowerBound="250" upperBound="750" mean="500.0" sd="2.0"/>
         </needs>
       </runnableItems>
       <runnableItems xsi:type="am:ExecutionNeed">
         <needs key="MAC_Operations">
-          <value xsi:type="am:NeedConstant" value="2000"/>
+          <value xsi:type="am:DiscreteValueConstant" value="2000"/>
         </needs>
       </runnableItems>
     </runnables>
     <runnables name="r2" callback="false" service="false">
       <runnableItems xsi:type="am:ExecutionNeed">
         <needs key="MAC_Operations">
-          <value xsi:type="am:NeedConstant" value="2000"/>
+          <value xsi:type="am:DiscreteValueConstant" value="2000"/>
         </needs>
       </runnableItems>
     </runnables>

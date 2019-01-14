@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -35,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.InstructionsBuilder;
@@ -147,18 +148,22 @@ public class RuntimeModels {
       final Procedure1<SWModel> _function_2 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r1");
-          final Procedure1<ExecutionNeed> _function_4 = (ExecutionNeed it_3) -> {
-            this.b4.instructions(it_3, 500);
+          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
+            this.b3.defaultConstant(it_3, 200);
           };
-          this.b3.execNeed(it_2, _function_4);
+          this.b3.ticks(it_2, _function_4);
           final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b4.instructions(it_3, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
+            this.b4.instructions(it_3, 500);
           };
           this.b3.execNeed(it_2, _function_5);
           final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_3) -> {
-            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
+            this.b4.instructions(it_3, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
           };
           this.b3.execNeed(it_2, _function_6);
+          final Procedure1<ExecutionNeed> _function_7 = (ExecutionNeed it_3) -> {
+            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
+          };
+          this.b3.execNeed(it_2, _function_7);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
