@@ -129,14 +129,15 @@ public class HardwareUtil {
 		HashMap<Memory, Time> result = new HashMap<Memory, Time>();
 		Map<Memory, Long> memoryMap = getMemoryAccessLatenciesCycles(model, timeType);
 
-		for (Memory key : memoryMap.keySet()) {
-			Time time = RuntimeUtil.createTime(	// TODO Has to be updated in runtimeUtils
-					memoryMap.get(key),
-					1.0F,
-					getFrequencyOfModuleInHz(key)
-					);
-			result.put(key, time);
-		}
+// FIXME
+//		for (Memory key : memoryMap.keySet()) {
+//			Time time = RuntimeUtil.createTime(	// TODO Has to be updated in runtimeUtils
+//					memoryMap.get(key),
+//					1.0F,
+//					getFrequencyOfModuleInHz(key)
+//					);
+//			result.put(key, time);
+//		}
 		return result;
 	}
 
@@ -193,11 +194,14 @@ public class HardwareUtil {
 		default:
 			break;
 		}
-		return RuntimeUtil.createTime(
-				calculateLatency(latency, timeType),
-				1.0F,
-				getFrequencyOfModuleInHz(accessElement.getSource())
-				);
+// FIXME
+//		return RuntimeUtil.createTime(
+//				calculateLatency(latency, timeType),
+//				1.0F,
+//				getFrequencyOfModuleInHz(accessElement.getSource())
+//				);
+		// dummy
+		return FactoryUtil.createTime("0ms");
 	}
 
 	public static Time calculateHwAccessPathTime(HwAccessElement accessElement, TimeType timeType,
@@ -238,15 +242,16 @@ public class HardwareUtil {
 				else if (element instanceof ProcessingUnit) {
 					frequency = getFrequencyOfModule((ProcessingUnit) element);
 				}
-				
-				result = AmaltheaServices.addTime(
-						result,
-						RuntimeUtil.createTime(
-								calculateLatency(latency, timeType),
-								1.0F,
-								AmaltheaServices.convertToHertz(frequency).longValue()
-								)
-						);
+
+// FIXME
+//				result = AmaltheaServices.addTime(
+//						result,
+//						RuntimeUtil.createTime(
+//								calculateLatency(latency, timeType),
+//								1.0F,
+//								AmaltheaServices.convertToHertz(frequency).longValue()
+//								)
+//						);
 			}
 		}
 		return result;

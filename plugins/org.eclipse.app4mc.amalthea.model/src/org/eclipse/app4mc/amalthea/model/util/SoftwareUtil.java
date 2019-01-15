@@ -150,7 +150,7 @@ public class SoftwareUtil {
 	 * @return list of RunnableItems
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable) {
-		return collectRunnableItems(runnable, null, null);
+		return collectRunnableItems(runnable, null, RunnableItem.class, null);
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class SoftwareUtil {
 	 * @return list of RunnableItems
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes) {
-		return collectRunnableItems(runnable, modes, null);
+		return collectRunnableItems(runnable, modes, RunnableItem.class, null);
 	}
 
 	/**
@@ -181,42 +181,82 @@ public class SoftwareUtil {
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
 			final Function<RunnableItem, Boolean> filter) {
-		EList<RunnableItem> itemList = new BasicEList<RunnableItem>();
-		collectRunnableItems(runnable.getRunnableItems(), modes, filter, itemList);
+		return collectRunnableItems(runnable, modes, RunnableItem.class, filter);
+	}
+	
+	/**
+	 * Traverse the runnable items graph of a runnable and collect all items.
+	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * 
+	 * @param runnable
+	 * 		- Runnable
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param targetClass
+	 * 		- subclass of RunnableItem that restricts the result
+	 * @return list of T extends RunnableItems
+	 */
+	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass) {
+		return collectRunnableItems(runnable, modes, targetClass, null);
+	}
+	
+	/**
+	 * Traverse the runnable items graph of a runnable and collect all items.
+	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * 
+	 * @param runnable
+	 * 		- Runnable
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param targetClass
+	 * 		- subclass of RunnableItem that restricts the result
+	 * @param filter
+	 * 		- lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
+	 * @return list of T extends RunnableItems
+	 */
+	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass, final Function<T, Boolean> filter) {
+		EList<T> itemList = new BasicEList<T>();
+		collectRunnableItems(runnable.getRunnableItems(), modes, targetClass, filter, itemList);
 		return itemList;
 	}
 
-	private static void collectRunnableItems(final EList<RunnableItem> input, final EMap<ModeLabel, ModeLiteral> modes,
-			final Function<RunnableItem, Boolean> filter, final List<RunnableItem> itemList) {
+
+	private static <T extends RunnableItem> void collectRunnableItems(final EList<RunnableItem> input, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
 		for (RunnableItem item : input) {
 			if (item instanceof Group) {
-				collectRunnableItems(((Group) item).getItems(), modes, filter, itemList);
+				collectRunnableItems(((Group) item).getItems(), modes, targetClass, filter, itemList);
 			} else if (item instanceof RunnableProbabilitySwitch) {
 				RunnableProbabilitySwitch propSwitch = (RunnableProbabilitySwitch) item;
 				for (ProbabilitySwitchEntry<RunnableItem> pse : propSwitch.getEntries()) {
-					collectRunnableItems(pse.getItems(), modes, filter, itemList);
+					collectRunnableItems(pse.getItems(), modes, targetClass, filter, itemList);
 				}
 			} else if (item instanceof RunnableModeSwitch) {
 				RunnableModeSwitch modeSwitch = (RunnableModeSwitch) item;
 				boolean includeDefault = true;
 				for (ModeSwitchEntry<RunnableItem> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
-						collectRunnableItems(mse.getItems(), modes, filter, itemList);
+						collectRunnableItems(mse.getItems(), modes, targetClass, filter, itemList);
 					} else if (mse.getCondition().isSatisfiedBy(modes)) {
-						collectRunnableItems(mse.getItems(), modes, filter, itemList);
+						collectRunnableItems(mse.getItems(), modes, targetClass, filter, itemList);
 						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectRunnableItems(modeSwitch.getDefaultEntry().getItems(), modes, filter, itemList);
+					collectRunnableItems(modeSwitch.getDefaultEntry().getItems(), modes, targetClass, filter, itemList);
 				}
-			} else {
-				if (filter == null || filter.apply(item))
-					itemList.add(item);
+			} else if (targetClass.isInstance(item)) {
+				T castedItem = targetClass.cast(item);
+				if (filter == null || filter.apply(castedItem)) {
+					itemList.add(castedItem);
+				}
 			}
 		}
 	}
-	
+
+
 	/**
 	 *  Set of Labels accessed from a Runnable
 	 * @param runnable
@@ -915,29 +955,21 @@ public class SoftwareUtil {
 	 * @param modes (optional) - null works
 	 * @return List of ExecutionNeeds
 	 */
-	public static List<ExecutionNeed> getExecutionNeedsList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
-		List<ExecutionNeed> result = new ArrayList<>();
-		List<RunnableItem> runnableItems = collectRunnableItems(runnable, modes) ;
-		
-		for(RunnableItem ri : runnableItems) {
-			if(ri instanceof ExecutionNeed) {
-				result.add((ExecutionNeed)ri);
-			}
-		}
-		return result; 
+	public static List<ExecutionNeed> getExecutionNeeds(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+		return collectRunnableItems(runnable, modes, ExecutionNeed.class);
 	}
 	
 	/**
-	 * Returns a list of all RunnableExecutionNeeds for a given process
+	 * Returns a list of all ExecutionNeeds for a given process
 	 * @param process
 	 * @param modes (optional) - null works
-	 * @return List of RunnableExecutionNeeds
+	 * @return List of ExecutionNeeds
 	 */
-	public static List<ExecutionNeed> getExecutionNeedsList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<ExecutionNeed> getExecutionNeeds(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> result = new ArrayList<>();
-		List<Runnable> runnableSet = getRunnableList(process, modes);
-		for (Runnable run : runnableSet) {
-			result.addAll(getExecutionNeedsList(run, modes)) ;
+		List<Runnable> runnableList = getRunnableList(process, modes);
+		for (Runnable run : runnableList) {
+			result.addAll(getExecutionNeeds(run, modes)) ;
 		}
 		return result; 
 	}
