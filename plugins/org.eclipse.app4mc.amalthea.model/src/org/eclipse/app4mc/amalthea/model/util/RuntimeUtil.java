@@ -29,12 +29,14 @@ import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.LongObject;
@@ -52,7 +54,6 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
@@ -268,7 +269,7 @@ public class RuntimeUtil {
 
 		for (Runnable runnable : runnables) {
 			if (runnable != null) {
-				executionTime = TimeUtil.addTimes(executionTime,
+				executionTime = AmaltheaServices.addTime(executionTime,
 						getExecutionTimeForRunnable(runnable, execTimeType, procUnit, hwFeatures, modes));
 			}
 		}
@@ -303,7 +304,7 @@ public class RuntimeUtil {
 					scaleFactor = feat.getValue();
 					if (scaleFactor != 0) {
 						Time currentTime = RuntimeUtil.createTime(ExecutionNeedValueCount, scaleFactor, frequency);
-						executionTime = TimeUtil.addTimes(executionTime, currentTime);
+						executionTime = AmaltheaServices.addTime(executionTime, currentTime);
 					}
 				}
 		}
@@ -338,7 +339,7 @@ public class RuntimeUtil {
 					if (executionTime == null) {
 						executionTime = FactoryUtil.createTime("0ms");
 					}
-					executionTime = TimeUtil.addTimes(executionTime, map.get(c));
+					executionTime = AmaltheaServices.addTime(executionTime, map.get(c));
 					executionTimes.put(c, executionTime);
 				}
 
@@ -379,7 +380,7 @@ public class RuntimeUtil {
 					else {
 						Time time = null;
 						time = executionTimes.get(procUnit);
-						time = TimeUtil.addTimes(time, 
+						time = AmaltheaServices.addTime(time, 
 								getExecutionTimeForExecutionNeedValueCount(procUnitDefToExecutionNeedValueCountMap.get(ct), procUnit, hwFeature, null));
 						executionTimes.put(procUnit, time);
 						
@@ -414,7 +415,7 @@ public class RuntimeUtil {
 				scaleFactor = feat.getValue();
 				if (scaleFactor != 0) {
 					Time currentTime = RuntimeUtil.createTime(executionNeedValueCount, scaleFactor, frequency);
-					executionTime = TimeUtil.addTimes(executionTime, currentTime);
+					executionTime = AmaltheaServices.addTime(executionTime, currentTime);
 				}
 			}
 		}
@@ -488,13 +489,13 @@ public class RuntimeUtil {
 		List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
 		Time time = getExecutionTimeForProcess(process, tt, procUnit, hwFeatures, modes);
 		if (time.getValue().compareTo(new BigInteger("0")) < 0) {
-			System.err.println("execTime " + TimeUtil.timeToString(time));
+			System.err.println("execTime " + time);
 		}
 		for (Time period : periods) {
 			// System.out.println(process.getName() + " Period:
 			// "+TimeUtil.timeToString(period) + " ET: "+TimeUtil.timeToString(time));
 			if (period != null && period.getValue().intValue() != 0) {
-				utilization += (TimeUtil.divideTimes(time, period));
+				utilization += (time.divide(period));
 			}
 		}
 
@@ -515,7 +516,7 @@ public class RuntimeUtil {
 	public static double getProcessUtilization(Process process, Time period, ProcessingUnit procUnit, Amalthea model,
 			TimeType tt, List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		Time time = getExecutionTimeForProcess(process, tt, procUnit, hwFeatures, modes);
-		double utilization = (TimeUtil.divideTimes(time, period));
+		double utilization = (time.divide(period));
 		return utilization;
 	}
 
@@ -658,7 +659,7 @@ public class RuntimeUtil {
 						// if(ipa.getCounter() != null) {
 						// ipaPrescaler = ipa.getCounter().getPrescaler();
 						// }
-						result.add(TimeUtil.multiplyTime(t, ipaPrescaler * ipPrescaler));
+						result.add(t.multiply(ipaPrescaler * ipPrescaler));
 					}
 				}
 
@@ -775,7 +776,7 @@ public class RuntimeUtil {
 		Map<Process, Long> result = new HashMap<>();
 
 		for (InterProcessTrigger interProcessTrigger : ip.getExplicitTriggers()) {
-			Process parentProcess = ModelUtil.getParentContainer(interProcessTrigger, Process.class);
+			Process parentProcess = AmaltheaServices.getContainerOfType(interProcessTrigger, Process.class);
 			if (interProcessTrigger.getCounter() != null) {
 				result.put(parentProcess, interProcessTrigger.getCounter().getPrescaler());
 			} else {
@@ -1172,7 +1173,7 @@ public class RuntimeUtil {
 		}
 		double runtime = ((double)cycles) / ((double)frequency);
 
-		return TimeUtil.adjustTimeUnit(runtime, units.get(timeUnitIndex));
+		return null; //TimeUtil.adjustTimeUnit(runtime, units.get(timeUnitIndex));
 	}
 
 }

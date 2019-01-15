@@ -29,11 +29,12 @@ import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
+import org.eclipse.app4mc.amalthea.model.Ticks;
 
 /**
  * Creates Need entries for Instructions 
  * 
- * @deprecated (0.9.3) use {@link ExecutionTicks} instead.
+ * @deprecated (0.9.3) use {@link Ticks} instead.
  */
 @Deprecated
 public class InstructionsUtil {

@@ -29,25 +29,8 @@ import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
-import org.eclipse.emf.ecore.EObject;
 
 public class ModelUtil {
-
-	@SuppressWarnings("unchecked")
-	public static <T> T getParentContainer(EObject eObject, Class<T> cl) {
-		EObject result = null;
-		if (eObject != null) {
-			for (EObject parent = eObject.eContainer(); parent != null; parent = parent.eContainer()) {
-
-				if (cl.isAssignableFrom(parent.getClass())) {
-					return (T) parent;
-				}
-
-			}
-		}
-		return (T) result;
-	}
-
 
 	public static CommonElements getOrCreateCommonElements(Amalthea model) {
 		if (model.getCommonElements() == null) {

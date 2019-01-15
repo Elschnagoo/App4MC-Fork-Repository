@@ -24,6 +24,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Function;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
@@ -713,9 +714,9 @@ public class SoftwareUtil {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.READ)) {
-				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
+				Runnable run = AmaltheaServices.getContainerOfType(la, Runnable.class);
 				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
-					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
+					result.add((Runnable) AmaltheaServices.getContainerOfType(la, Runnable.class));
 				}
 			}
 		}
@@ -806,9 +807,9 @@ public class SoftwareUtil {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.WRITE)) {
-				Runnable run = ModelUtil.getParentContainer(la, Runnable.class);
+				Runnable run = AmaltheaServices.getContainerOfType(la, Runnable.class);
 				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
-					result.add((Runnable) ModelUtil.getParentContainer(la, Runnable.class));
+					result.add((Runnable) AmaltheaServices.getContainerOfType(la, Runnable.class));
 				}
 			}
 		}

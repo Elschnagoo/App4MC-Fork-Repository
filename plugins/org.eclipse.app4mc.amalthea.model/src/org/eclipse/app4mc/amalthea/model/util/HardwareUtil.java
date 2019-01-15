@@ -167,7 +167,7 @@ public class HardwareUtil {
 					latency = calculateLatencyPathTime(accessElement, timeType, direction);
 				}
 				if (!(MemAccessTime.containsKey(accessElement.getDestination())
-						&& (TimeUtil.compareTime(MemAccessTime.get(accessElement.getDestination()), latency) >= 0))) {
+						&& (AmaltheaServices.compareTimes(MemAccessTime.get(accessElement.getDestination()), latency) >= 0))) {
 					MemAccessTime.put(accessElement.getDestination(), latency);
 				}
 			}
@@ -239,7 +239,7 @@ public class HardwareUtil {
 					frequency = getFrequencyOfModule((ProcessingUnit) element);
 				}
 				
-				result = TimeUtil.addTimes(
+				result = AmaltheaServices.addTime(
 						result,
 						RuntimeUtil.createTime(
 								calculateLatency(latency, timeType),

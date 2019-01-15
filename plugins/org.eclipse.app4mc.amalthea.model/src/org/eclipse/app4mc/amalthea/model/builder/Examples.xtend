@@ -52,7 +52,7 @@ class Examples {
 	def model1() {
 		val model = amalthea [
 
-			commonElements[
+			commonElements [
 				tag [ name = "Optional" _reg("tag1")]
 				tag [ name = "Standard" _reg("tag2")]
 				
