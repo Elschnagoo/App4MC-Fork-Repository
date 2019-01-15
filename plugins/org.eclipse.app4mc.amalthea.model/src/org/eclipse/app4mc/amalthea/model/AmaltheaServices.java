@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.BinaryOperator;
 
@@ -31,8 +32,8 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 
 public class AmaltheaServices {
 
-	private static final List<TimeUnit> TIME_UNIT_LIST = Arrays.asList(
-			TimeUnit.PS, TimeUnit.NS, TimeUnit.US, TimeUnit.MS, TimeUnit.S);
+	public static final List<TimeUnit> TIME_UNIT_LIST = Collections.unmodifiableList(Arrays.asList(
+			TimeUnit.PS, TimeUnit.NS, TimeUnit.US, TimeUnit.MS, TimeUnit.S));
 	
 	public static <T extends EObject> T getContainerOfType(EObject object, Class<T> type) {
 		if (type == null || object == null) return null;
