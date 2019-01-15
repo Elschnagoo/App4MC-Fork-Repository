@@ -28836,13 +28836,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SPORADIC_ACTIVATION__DESCRIPTION = ACTIVATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Activation</b></em>' containment reference.
+	 * The feature id for the '<em><b>Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPORADIC_ACTIVATION__ACTIVATION = ACTIVATION_FEATURE_COUNT + 1;
+	int SPORADIC_ACTIVATION__OCCURRENCE = ACTIVATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Sporadic Activation</em>' class.
@@ -41802,15 +41802,15 @@ public interface AmaltheaPackage extends EPackage {
 	EAttribute getSporadicActivation_Description();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivation <em>Activation</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getOccurrence <em>Occurrence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Activation</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivation()
+	 * @return the meta object for the containment reference '<em>Occurrence</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.SporadicActivation#getOccurrence()
 	 * @see #getSporadicActivation()
 	 * @generated
 	 */
-	EReference getSporadicActivation_Activation();
+	EReference getSporadicActivation_Occurrence();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SingleActivation <em>Single Activation</em>}'.

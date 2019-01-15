@@ -98,7 +98,7 @@ public class SporadicActivationItemProvider extends ActivationItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence());
 		}
 		return childrenFeatures;
 	}
@@ -167,7 +167,7 @@ public class SporadicActivationItemProvider extends ActivationItemProvider {
 			case AmaltheaPackage.SPORADIC_ACTIVATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.SPORADIC_ACTIVATION__ACTIVATION:
+			case AmaltheaPackage.SPORADIC_ACTIVATION__OCCURRENCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -187,42 +187,42 @@ public class SporadicActivationItemProvider extends ActivationItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeConstant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeHistogram()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeBoundaries()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeStatistics()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeUniformDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeGaussDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Activation(),
+				(AmaltheaPackage.eINSTANCE.getSporadicActivation_Occurrence(),
 				 AmaltheaFactory.eINSTANCE.createTimeBetaDistribution()));
 	}
 

@@ -25,7 +25,7 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getDescription <em>Description</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivation <em>Activation</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getOccurrence <em>Occurrence</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation()
@@ -60,29 +60,29 @@ public interface SporadicActivation extends Activation {
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Activation</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Activation</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Occurrence</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activation</em>' containment reference.
-	 * @see #setActivation(ITimeDeviation)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation_Activation()
+	 * @return the value of the '<em>Occurrence</em>' containment reference.
+	 * @see #setOccurrence(ITimeDeviation)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSporadicActivation_Occurrence()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	ITimeDeviation getActivation();
+	ITimeDeviation getOccurrence();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getActivation <em>Activation</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SporadicActivation#getOccurrence <em>Occurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activation</em>' containment reference.
-	 * @see #getActivation()
+	 * @param value the new value of the '<em>Occurrence</em>' containment reference.
+	 * @see #getOccurrence()
 	 * @generated
 	 */
-	void setActivation(ITimeDeviation value);
+	void setOccurrence(ITimeDeviation value);
 
 } // SporadicActivation

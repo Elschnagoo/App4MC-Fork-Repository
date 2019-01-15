@@ -24,6 +24,7 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
@@ -32,7 +33,6 @@ import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractTaskCreationAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.model.OMProcessPrototype;
@@ -132,8 +132,8 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 		stimuliSporadic.setName(name);
 		
 		// Check which timing information is present and try to convert deviations as well
-		if (null != activation.getActivation()) {
-			final ITimeDeviation stimuliDeviation = EcoreUtil.copy(activation.getActivation());
+		if (null != activation.getOccurrence()) {
+			final ITimeDeviation stimuliDeviation = EcoreUtil.copy(activation.getOccurrence());
 			stimuliSporadic.setNextOccurrence(stimuliDeviation);
 		}
 

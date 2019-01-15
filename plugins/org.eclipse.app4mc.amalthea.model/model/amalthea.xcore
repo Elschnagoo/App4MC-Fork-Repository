@@ -2317,9 +2317,9 @@ enum AccessMultiplicity
 enum DataStabilityLevel
 {
 	_undefined_ // Display: "<data stability level>"
-	period // between consecutive activations
+	period // between consecutive occurrences
 	process // within a Task or ISR
-	scheduleSection // between Schedule points (explizit schedule points, begin and end of process)
+	scheduleSection // between Schedule points (explicit schedule points, begin and end of process)
 	runnable // within a Runnable
 }
 
@@ -4065,7 +4065,7 @@ class VariableRateActivation extends Activation
 class SporadicActivation extends Activation
 {
 	String description
-	contains ITimeDeviation[1] activation
+	contains ITimeDeviation[1] occurrence
 }
 
 /*
