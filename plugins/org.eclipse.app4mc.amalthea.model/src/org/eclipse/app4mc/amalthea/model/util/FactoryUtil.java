@@ -95,6 +95,18 @@ public class FactoryUtil {
 	}
 
 	/**
+	 * Creates a new time based on a time
+	 * @param Time
+	 * @return Time
+	 */
+	public static Time createTime(Time inputTime) {
+		Time time = AmaltheaFactory.eINSTANCE.createTime();
+		time.setValue(inputTime.getValue());
+		time.setUnit(inputTime.getUnit());
+		return time;
+	}
+
+	/**
 	 * Creates a time out of a value and a unit
 	 * @param value
 	 * @param unit
@@ -108,6 +120,69 @@ public class FactoryUtil {
 	}
 
 	/**
+	 * Creates a time out of a value and a unit
+	 * @param value
+	 * @param unit
+	 * @return Time
+	 */
+	public static Time createTime(BigInteger value, TimeUnit unit) {
+		Time time = AmaltheaFactory.eINSTANCE.createTime();
+		time.setValue(value);
+		time.setUnit(unit);
+		return time;
+	}
+
+	private static TimeUnit parseTimeUnit(String input) {
+		if (input == null) return TimeUnit.MS;	//default millisecond
+		
+		String unit = input.trim().toLowerCase();
+		if(unit.equals("ps")) return TimeUnit.PS;
+		if(unit.equals("ns")) return TimeUnit.NS;
+		if(unit.equals("us")) return TimeUnit.US;
+		if(unit.equals("ms")) return TimeUnit.MS;
+		if(unit.equals("s")) return TimeUnit.S;
+
+		return null;
+	}
+	
+	/**
+	 * Creates a time out of a value and a unit given as String.
+	 * @param value
+	 * @param unit
+	 * @return Time
+	 */
+	public static Time createTime(long value, String unit) {
+		return createTime(value, parseTimeUnit(unit));
+	}
+
+	/**
+	 * Creates a time out of a value and a unit given as String.
+	 * @param value
+	 * @param unit
+	 * @return Time
+	 */
+	public static Time createTime(BigInteger value, String unit) {
+		return createTime(value, parseTimeUnit(unit));
+	}
+
+	/**
+	 * Creates a Time object parsed from a text representation. 
+	 * @param timeString string representation of a time (number followed by time unit s, ms, us, ns or ps)  
+	 * @return returns the respective Time object
+	 * 
+	 */
+	public static Time createTime(String timeString) {
+		Pattern p = Pattern.compile("(\\d+)\\s?(s|ms|us|ns|ps)");
+		Matcher m = p.matcher(timeString);
+		if(m.matches()) {
+			String value = m.group(1);
+			String unit = m.group(2);
+			return createTime(Long.parseLong(value), parseTimeUnit(unit));
+		}
+		return null;
+	}
+
+	/**
 	 * Creates a TypeRef object that refers to a type definition
 	 * @param typeDefinition
 	 * @return TypeRef
@@ -118,10 +193,10 @@ public class FactoryUtil {
 		return refObj;
 	}
 
-	public static DiscreteValueConstant createLatency(long value) {
-		DiscreteValueConstant constant = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
-		constant.setValue(value);;
-		return constant;
+	public static DiscreteValueConstant createDiscreteValueConstant(long value) {
+		DiscreteValueConstant result = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
+		result.setValue(value);;
+		return result;
 	}
 
 	public static DiscreteValueBoundaries createDiscreteValueBoundaries(long min, long max) {
@@ -133,7 +208,6 @@ public class FactoryUtil {
 
 	public static DiscreteValueGaussDistribution createDiscreteValueGaussDistribution(double mean, double sd) {
 		DiscreteValueGaussDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteValueGaussDistribution();
-		// set parameters
 		result.setMean(mean);
 		result.setSd(sd);
 		return result;
@@ -141,71 +215,9 @@ public class FactoryUtil {
 
 	public static DiscreteValueGaussDistribution createDiscreteValueGaussDistribution(double mean, double sd, Long min, Long max) {
 		DiscreteValueGaussDistribution result = createDiscreteValueGaussDistribution(mean, sd);
-		// set parameters
 		result.setLowerBound(min);
 		result.setUpperBound(max);
 		return result;
-	}
-
-	public static DiscreteValueConstant createDiscreteValueConstant(long value) {
-		DiscreteValueConstant result = AmaltheaFactory.eINSTANCE.createDiscreteValueConstant();
-		// set parameters
-		result.setValue(value);;
-		return result;
-	}
-
-	/**
-	 * Creates a time out of a value and a unit given as String (lower case).
-	 * @param value
-	 * @param unit
-	 * @return Time
-	 */
-	public static Time createTime(int value, String unit) {
-		TimeUnit tu = null;
-		if(unit.toLowerCase().equals("ps")) tu = TimeUnit.PS;
-		if(unit.toLowerCase().equals("ns")) tu = TimeUnit.NS;
-		if(unit.toLowerCase().equals("us")) tu = TimeUnit.US;
-		if(unit.toLowerCase().equals("ms")) tu = TimeUnit.MS;
-		if(unit.toLowerCase().equals("s")) tu = TimeUnit.S;
-		if(tu == null) tu = TimeUnit.MS;	//default millisecond
-		
-		return TimeUtil.adjustTimeUnit(BigInteger.valueOf(value), tu);
-	}
-
-	public static Time createTime(BigInteger value, String unit) {
-		TimeUnit tu = null;
-		if(unit.toLowerCase().equals("ps")) tu = TimeUnit.PS;
-		if(unit.toLowerCase().equals("ns")) tu = TimeUnit.NS;
-		if(unit.toLowerCase().equals("us")) tu = TimeUnit.US;
-		if(unit.toLowerCase().equals("ms")) tu = TimeUnit.MS;
-		if(unit.toLowerCase().equals("s")) tu = TimeUnit.S;
-		if(tu == null) tu = TimeUnit.MS;	//default millisecond
-		
-		return TimeUtil.adjustTimeUnit(new BigInteger(value.toByteArray()), tu);
-	}
-
-	/**
-	 * Creates a Time object parsed from a text representation. 
-	 * @param timeString string representation of a time (number follwed by time unit s, ms, us, ns or ps)  
-	 * @return returns the respective Time object
-	 * 
-	 */
-	public static Time createTime(String timeString) {
-		Pattern p = Pattern.compile("(\\d+)\\s?(s|ms|us|ns|ps)");
-		Matcher m = p.matcher(timeString);
-		if(m.matches()) {
-			String value = m.group(1);
-			String unit = m.group(2);
-			return createTime(Integer.parseInt(value), unit);
-		}
-		return null;
-	}
-	
-	public static Time createTime(Time inputTime) {
-		Time time = AmaltheaFactory.eINSTANCE.createTime();
-		time.setValue(inputTime.getValue());
-		time.setUnit(inputTime.getUnit());
-		return time;
 	}
 
 	public static DiscreteValueWeibullEstimatorsDistribution createWeibullDistribution(long min, double avg, long max, double promille) {
@@ -237,6 +249,10 @@ public class FactoryUtil {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		exeNeed.getNeeds().put(feature.getContainingCategory().getName(), usages);
 		return exeNeed;
+	}
+
+	public static DiscreteValueConstant createLatency(long value) {
+		return createDiscreteValueConstant(value);
 	}
 	
 }
