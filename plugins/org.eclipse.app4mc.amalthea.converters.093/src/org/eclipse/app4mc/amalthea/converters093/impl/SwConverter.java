@@ -1,9 +1,13 @@
 package org.eclipse.app4mc.amalthea.converters093.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
@@ -108,7 +112,7 @@ public class SwConverter extends AbstractConverter {
 							activationElement.addContent(indexOf, migratedElement);
 							
 						}
-						migratedElement.setName("activation");
+						migratedElement.setName("occurrence");
 					}
 				
 					
@@ -224,8 +228,18 @@ public class SwConverter extends AbstractConverter {
 			Element newExecutionTicksElement = null;
 
 			Element newExecutionNeedsElement = null;
-
-			for (String key : defaultElementsMap.keySet()) {
+			
+			
+			
+			Set<Entry<String, Element>> entrySet = defaultElementsMap.entrySet();
+			
+			Iterator<Entry<String, Element>> iterator = entrySet.iterator();
+			
+			while(iterator.hasNext()) {
+				
+				Entry<String, Element> next = iterator.next();
+				
+				String key = next.getKey();
 
 				if (key.equals("Instructions")) {
 
@@ -237,6 +251,7 @@ public class SwConverter extends AbstractConverter {
 					Attribute typeAttribute = new Attribute("type", "am:Ticks", this.helper.getGenericNS("xsi"));
 
 					newExecutionTicksElement.getAttributes().add(typeAttribute);
+					
 
 					/*-
 					 *    <default key="Instructions">
@@ -254,7 +269,7 @@ public class SwConverter extends AbstractConverter {
 				} else {
 
 					if (containerType.equals("TaskScheduler") || containerType.equals("InterruptController")) {
-						// TODO: log this information
+						logger.warn("In "+containerType+" : "+ containerElementName+ ", ExecutionNeed element's NeedEntry (having HwFeatureCategory :  "+key +")-> can not be migrated. As this is not supported in 0.9.3. \nIn "+containerType+" element only NeedEntry elements having HwFeatureCategory Instructions are migrated to Ticks");
 						continue;
 					}
 					Element defaultExecutionNeedElement = defaultElementsMap.get(key);
@@ -293,7 +308,11 @@ public class SwConverter extends AbstractConverter {
 						}
 					}
 				}
+			
 			}
+			
+			
+//			for (String key : defaultElementsMap.keySet()) {}
 
 			/*------------------------------ Handling ExtendedElements ---------------------------*/
 
@@ -347,14 +366,22 @@ public class SwConverter extends AbstractConverter {
 
 			}
 
-			Parent parent = executionNeedElement.getParent();
-
-			if (newExecutionNeedsElement != null) {
-				parent.addContent(newExecutionNeedsElement);
-			} 
+			List<Element> newRunnableItemElementsList=new ArrayList<>();
+			
 			if (newExecutionTicksElement != null) {
 
-				parent.addContent(newExecutionTicksElement);
+				newRunnableItemElementsList.add(newExecutionTicksElement);
+			}
+			if (newExecutionNeedsElement != null) {
+				newRunnableItemElementsList.add(newExecutionNeedsElement);
+			} 
+			
+			Parent parent = executionNeedElement.getParent();
+			
+			int indexOf = parent.indexOf(executionNeedElement);
+			
+			if(newRunnableItemElementsList.size()>0) {
+				parent.addContent(indexOf, newRunnableItemElementsList);
 			}
 
 			final List<Element> skippedValuesExtended = this.helper.getXpathResult(executionNeedElement,
