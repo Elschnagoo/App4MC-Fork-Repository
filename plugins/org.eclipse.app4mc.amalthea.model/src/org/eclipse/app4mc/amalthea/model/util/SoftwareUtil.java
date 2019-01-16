@@ -72,7 +72,7 @@ public class SoftwareUtil {
 	 * @return list of CallSequenceItems
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process) {
-		return collectCalls(process, null, null);
+		return collectCalls(process, null, CallSequenceItem.class, null);
 	}
 
 	/**
@@ -86,10 +86,9 @@ public class SoftwareUtil {
 	 * @return list of CallSequenceItems
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes) {
-		return collectCalls(process, modes, null);
+		return collectCalls(process, modes, CallSequenceItem.class, null);
 	}
 
-	
 	/**
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * Collection can be restricted to specific modes and filtered by a lambda expression.
@@ -104,39 +103,80 @@ public class SoftwareUtil {
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
 			final Function<CallSequenceItem, Boolean> filter) {
-		EList<CallSequenceItem> itemList = new BasicEList<CallSequenceItem>();
+		return collectCalls(process, modes, CallSequenceItem.class, filter);
+	}
+
+	/**
+	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Collection can be restricted to specific modes and filtered by class.
+	 * 
+	 * @param process
+	 * 		- Process (Task or ISR)
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param targetClass
+	 * 		- subclass of CallSequenceItem that restricts the result
+	 * @return list of T extends CallSequenceItems
+	 */
+	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass) {
+		return collectCalls(process, modes, targetClass, null);
+	}
+
+	/**
+	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
+	 * 
+	 * @param process
+	 * 		- Process (Task or ISR)
+	 * @param modes
+	 * 		- list of mode literals that should be considered
+	 * @param targetClass
+	 * 		- subclass of CallSequenceItem that restricts the result
+	 * @param filter
+	 * 		- lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
+	 * @return list of T extends CallSequenceItems
+	 */
+	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass, final Function<T, Boolean> filter) {
+		EList<T> itemList = new BasicEList<T>();
 		if (process.getCallGraph() != null) {
-			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, filter, itemList);
+			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, targetClass, filter, itemList);
 		}
 		return itemList;
 	}
 
-	private static void collectCallSequenceItems(final EList<GraphEntryBase> input, final EMap<ModeLabel, ModeLiteral> modes,
-			final Function<CallSequenceItem, Boolean> filter, final List<CallSequenceItem> itemList) {
+
+	private static <T extends CallSequenceItem> void collectCallSequenceItems(final EList<GraphEntryBase> input, final EMap<ModeLabel, ModeLiteral> modes,
+			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
 		for (GraphEntryBase entry : input) {
 			if (entry instanceof ProbabilitySwitch) {
 				ProbabilitySwitch propSwitch = (ProbabilitySwitch) entry;
 				for (ProbabilitySwitchEntry<GraphEntryBase> pse : propSwitch.getEntries()) {
-					collectCallSequenceItems(pse.getItems(), modes, filter, itemList);
+					collectCallSequenceItems(pse.getItems(), modes, targetClass, filter, itemList);
 				}
 			} else if (entry instanceof ModeSwitch) {
 				ModeSwitch modeSwitch = (ModeSwitch) entry;
 				boolean includeDefault = true;
 				for (ModeSwitchEntry<GraphEntryBase> mse : modeSwitch.getEntries()) {
 					if (modes == null) {
-						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
+						collectCallSequenceItems(mse.getItems(), modes, targetClass, filter, itemList);
 					} else if (mse.getCondition().isSatisfiedBy(modes)) {
-						collectCallSequenceItems(mse.getItems(), modes, filter, itemList);
+						collectCallSequenceItems(mse.getItems(), modes, targetClass, filter, itemList);
 						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectCallSequenceItems(modeSwitch.getDefaultEntry().getItems(), modes, filter, itemList);
+					collectCallSequenceItems(modeSwitch.getDefaultEntry().getItems(), modes, targetClass, filter, itemList);
 				}
 			} else if (entry instanceof CallSequence) {
 				for (CallSequenceItem item : ((CallSequence) entry).getCalls()) {
-					if (filter == null || filter.apply(item))
-						itemList.add(item);
+					if (targetClass.isInstance(item)) {
+						T castedItem = targetClass.cast(item);
+						if (filter == null || filter.apply(castedItem)) {
+							itemList.add(castedItem);
+						}
+					}
 				}
 			}
 		}
@@ -186,7 +226,7 @@ public class SoftwareUtil {
 	
 	/**
 	 * Traverse the runnable items graph of a runnable and collect all items.
-	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * Collection can be restricted to specific modes and filtered by class.
 	 * 
 	 * @param runnable
 	 * 		- Runnable
@@ -203,7 +243,7 @@ public class SoftwareUtil {
 	
 	/**
 	 * Traverse the runnable items graph of a runnable and collect all items.
-	 * Collection can be restricted to specific modes and filtered by a lambda expression.
+	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
 	 * 
 	 * @param runnable
 	 * 		- Runnable
