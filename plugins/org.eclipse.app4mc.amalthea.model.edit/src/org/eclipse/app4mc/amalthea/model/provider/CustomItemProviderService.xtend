@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -1487,7 +1487,7 @@ class CustomItemProviderService {
 			val cores = object?.responsibility
 			val s1 = if(schedName.isNullOrEmpty) "<scheduler>" else "Scheduler " + schedName
 			val s2 = cores.map[e|ppName(e?.name)].join(", ")
-			return "Allocation: " + s1 + " -- Cores ( " + s2 + " )";
+			return "Allocation: " + s1 + " -- Processing Units ( " + s2 + " )";
 		} else {
 			return defaultText
 		}

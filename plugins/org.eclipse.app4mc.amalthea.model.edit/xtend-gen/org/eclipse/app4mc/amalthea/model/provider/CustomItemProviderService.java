@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -2648,7 +2648,7 @@ public class CustomItemProviderService {
         return CustomItemProviderService.ppName(_name_1);
       };
       final String s2 = IterableExtensions.join(ListExtensions.<ProcessingUnit, String>map(cores, _function), ", ");
-      return (((("Allocation: " + s1) + " -- Cores ( ") + s2) + " )");
+      return (((("Allocation: " + s1) + " -- Processing Units ( ") + s2) + " )");
     } else {
       return defaultText;
     }
