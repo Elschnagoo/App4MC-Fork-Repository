@@ -1,6 +1,7 @@
 package org.eclipse.app4mc.amalthea.models;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
@@ -34,6 +35,10 @@ public class SoftwareModels {
   
   public static Amalthea getModel1() {
     return new SoftwareModels().model1();
+  }
+  
+  public static Amalthea getModel2() {
+    return new SoftwareModels().model2();
   }
   
   public Amalthea model1() {
@@ -165,6 +170,101 @@ public class SoftwareModels {
           this.b2.ticks(it_2, _function_13);
         };
         this.b2.runnable(it_1, _function_12);
+      };
+      this.b1.softwareModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    return model;
+  }
+  
+  public Amalthea model2() {
+    final AmaltheaFactory fac = AmaltheaFactory.eINSTANCE;
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
+        final Procedure1<Label> _function_2 = (Label it_2) -> {
+          it_2.setName("Lab1");
+        };
+        this.b2.label(it_1, _function_2);
+        final Procedure1<Label> _function_3 = (Label it_2) -> {
+          it_2.setName("Lab2");
+        };
+        this.b2.label(it_1, _function_3);
+        final Procedure1<Label> _function_4 = (Label it_2) -> {
+          it_2.setName("Lab3");
+        };
+        this.b2.label(it_1, _function_4);
+        final Procedure1<Label> _function_5 = (Label it_2) -> {
+          it_2.setName("Lab4");
+        };
+        this.b2.label(it_1, _function_5);
+        final Procedure1<Label> _function_6 = (Label it_2) -> {
+          it_2.setName("Lab5");
+        };
+        this.b2.label(it_1, _function_6);
+        final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_7 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
+          it_2.setName("Run1");
+          final Procedure1<Ticks> _function_8 = (Ticks it_3) -> {
+            this.b2.defaultConstant(it_3, 200);
+          };
+          this.b2.ticks(it_2, _function_8);
+          final Procedure1<LabelAccess> _function_9 = (LabelAccess it_3) -> {
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_9);
+          final Procedure1<LabelAccess> _function_10 = (LabelAccess it_3) -> {
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab1"));
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_10);
+          final Procedure1<LabelAccess> _function_11 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.READ);
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_11);
+          final Procedure1<LabelAccess> _function_12 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.READ);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab1"));
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_12);
+          final Procedure1<LabelAccess> _function_13 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.READ);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab2"));
+          };
+          this.b2.labelAccess(it_2, _function_13);
+          final Procedure1<LabelAccess> _function_14 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.READ);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab3"));
+          };
+          this.b2.labelAccess(it_2, _function_14);
+          final Procedure1<LabelAccess> _function_15 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.READ);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab4"));
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_15);
+          final Procedure1<Ticks> _function_16 = (Ticks it_3) -> {
+            this.b2.defaultConstant(it_3, 333);
+          };
+          this.b2.ticks(it_2, _function_16);
+          final Procedure1<LabelAccess> _function_17 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.WRITE);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab3"));
+          };
+          this.b2.labelAccess(it_2, _function_17);
+          final Procedure1<LabelAccess> _function_18 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.WRITE);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab4"));
+          };
+          this.b2.labelAccess(it_2, _function_18);
+          final Procedure1<LabelAccess> _function_19 = (LabelAccess it_3) -> {
+            it_3.setAccess(LabelAccessEnum.WRITE);
+            it_3.setData(this.b1.<Label>_find(it_3, Label.class, "Lab5"));
+            it_3.setStatistic(fac.createLabelAccessStatistic());
+          };
+          this.b2.labelAccess(it_2, _function_19);
+        };
+        this.b2.runnable(it_1, _function_7);
       };
       this.b1.softwareModel(it, _function_1);
     };

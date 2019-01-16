@@ -1,3 +1,18 @@
+/**
+ ********************************************************************************
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Robert Bosch GmbH - initial API and implementation
+ ********************************************************************************
+ */
+
 package org.eclipse.app4mc.amalthea.model.util;
 
 import java.math.BigInteger;
@@ -26,6 +41,7 @@ import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
@@ -41,7 +57,6 @@ import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
@@ -59,8 +74,7 @@ public class RuntimeUtil {
 	public static enum AccessDirection {
 		READ, WRITE
 	}
-	
-	
+
 	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		result.setUnit(TimeUnit.MS);
@@ -78,7 +92,7 @@ public class RuntimeUtil {
 		}
 		return result;
 	}
-	
+
 	public Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		result.setUnit(TimeUnit.MS);
@@ -89,18 +103,15 @@ public class RuntimeUtil {
 		}
 		return result;
 	}
-	
+
 	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 
-// FIXME
-//		List<Ticks> tickList = SoftwareUtil.getTicks(runnable, modes);
-//		if (!tickList.isEmpty()) {												//Simon 11.01.2019:	I think, this check is unnecessary. if the list is empty, the for loop won't be used
-//			for (Ticks tick : tickList) {
-//				result.add(getExecutionTimeForTicks(tick, processingUnit, executionCase));
-//			}
-//		}
-
+		List<Ticks> tickList = SoftwareUtil.getTicks(runnable, modes);
+		for (Ticks tick : tickList) {
+			result.add(getExecutionTimeForTicks(tick, processingUnit, executionCase));
+		}
+		
 		List<ExecutionNeed> executionNeedList = SoftwareUtil.getExecutionNeeds(runnable, modes);		
 		if (!executionNeedList.isEmpty()) {
 			for (ExecutionNeed executionNeeds : executionNeedList) {
@@ -109,21 +120,34 @@ public class RuntimeUtil {
 		}
 		return result;			
 	}
-	
-	
+
 	//Simon 11.01.2019: Idea/Discussion: Why ist TimeType needed here? If an extended tick is given, probably also a ITimeDeviation shall be returned? (I guess, this heavily depends on the use case) --> Second step would now then be ITimeDeviation + TimeType -> Time
 	public static Time getExecutionTimeForTicks(Ticks tick, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		if (tick.getExtended().get(processingUnit.getDefinition()) != null) {
-			IDiscreteValueDeviation IDiscreteValueDeviation = tick.getExtended().get(processingUnit.getDefinition());
-			result = getExecutionTimeForTickDiscreteDistribution(IDiscreteValueDeviation, processingUnit, executionCase);
+			IDiscreteValueDeviation deviation = tick.getExtended().get(processingUnit.getDefinition());
+			result = getExecutionTimeForTicksDeviation(deviation, processingUnit, executionCase);
 		}
 		else {
-			result = getExecutionTimeForTickDiscreteDistribution(tick.getDefault(), processingUnit, executionCase);
+			result = getExecutionTimeForTicksDeviation(tick.getDefault(), processingUnit, executionCase);
 		}
 		return result;
 	}
-	
+
+	public static Time getExecutionTimeForTicksDeviation(IDiscreteValueDeviation deviation, ProcessingUnit processingUnit, TimeType executionCase) {
+		double ticks = 0d;
+		switch (executionCase) {
+		case  BCET:
+			ticks = deviation.getLowerBound().doubleValue();
+		case  ACET:
+			ticks = deviation.getAverage();
+		case  WCET:
+			ticks = deviation.getUpperBound().doubleValue();
+		}
+		Time result = getExecutionTimeForCycles(ticks, processingUnit.getFrequencyDomain().getDefaultValue());
+		return result;
+	}
+
 	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed executionNeeds, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		HWModel hwModel = (HWModel) processingUnit.getDefinition().eContainer();
@@ -139,16 +163,16 @@ public class RuntimeUtil {
 		}
 		return result;
 	}
-	
-	public static Time getExecutionTimeForExecutionNeedEntry(IDiscreteValueDeviation IDiscreteValueDeviation, HwFeatureCategory hwFeatureCategory, ProcessingUnit processingUnit, TimeType executionCase) {
+
+	public static Time getExecutionTimeForExecutionNeedEntry(IDiscreteValueDeviation deviation, HwFeatureCategory hwFeatureCategory, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
 		switch (executionCase) {
 		case  BCET:
-			ticks = IDiscreteValueDeviation.getLowerBound().doubleValue();
+			ticks = deviation.getLowerBound().doubleValue();
 		case  ACET:
-			ticks = IDiscreteValueDeviation.getAverage();
+			ticks = deviation.getAverage();
 		case  WCET:
-			ticks = IDiscreteValueDeviation.getUpperBound().doubleValue();
+			ticks = deviation.getUpperBound().doubleValue();
 		}
 		double scaleFactor = 0;
 		for (HwFeature feature : processingUnit.getDefinition().getFeatures()) {
@@ -161,21 +185,6 @@ public class RuntimeUtil {
 		return result;
 	}
 	
-	public static Time getExecutionTimeForTickDiscreteDistribution(IDiscreteValueDeviation IDiscreteValueDeviation, ProcessingUnit processingUnit, TimeType executionCase) {
-		double ticks = 0d;
-		switch (executionCase) {
-		case  BCET:
-			ticks = IDiscreteValueDeviation.getLowerBound().doubleValue();
-		case  ACET:
-			ticks = IDiscreteValueDeviation.getAverage();
-		case  WCET:
-			ticks = IDiscreteValueDeviation.getUpperBound().doubleValue();
-		}
-		Time result = getExecutionTimeForCycles(ticks, processingUnit.getFrequencyDomain().getDefaultValue());
-		return result;
-	}
-	
-	
 	public static Time getExecutionTimeForCycles (Double ticks, Frequency puFrequency) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		Long frequencyValue = AmaltheaServices.convertToHertz(puFrequency).longValue();
@@ -184,7 +193,16 @@ public class RuntimeUtil {
 			timeUnitIndex++;
 			frequencyValue = frequencyValue / 1000L;
 		}
-		double runtime = ((double)ticks) / ((double)frequencyValue);
+		
+		// FIXME Check this !!
+		Double ticksValue = ticks;
+		while (timeUnitIndex < 4) {
+			timeUnitIndex++;
+			ticksValue = ticksValue * 1000;
+		}
+		
+		double runtime = ticksValue / (double)frequencyValue;
+		
 		result.setValue(BigInteger.valueOf(Math.round(runtime)));
 		switch (timeUnitIndex) {
 			case 0:
@@ -281,27 +299,15 @@ public class RuntimeUtil {
 	 * Clears all runtime information
 	 * 
 	 * @param runnable
-	 *            if procUnitDef == null, delete all ExecutionNeed from that
-	 *            runnable that has default ExecutionNeed, if procUnitDef != null,
-	 *            delete only the extended ExecutionNeed
 	 */
 	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(runnable, modes);
-		executionNeeds.remove(null);
-		for (ExecutionNeed executionNeed : executionNeeds) {
-			runnable.getRunnableItems().remove(executionNeed);
-		}
-// FIXME		
-//		List<Ticks> ticks = SoftwareUtil.getTicks(runnable, modes);
-//		ticks.remove(null);
-//		
-//		for (Ticks tick : ticks) {
-//			runnable.getRunnableItems().remove(tick);
-//		}
-
+		AmaltheaIndex.deleteAll(executionNeeds);
+	
+		List<Ticks> ticks = SoftwareUtil.getTicks(runnable, modes);
+		AmaltheaIndex.deleteAll(ticks);
 	}
-	
-	
+
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
@@ -310,7 +316,6 @@ public class RuntimeUtil {
 	 * @param executionNeeds
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed executionNeeds, String runnableName, PositionType positon) {
-
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
 		run.setName(runnableName);
 		run.getRunnableItems().add(executionNeeds);
@@ -325,15 +330,12 @@ public class RuntimeUtil {
 		if (positon.equals(PositionType.FIRST)) {
 			process.getCallGraph().getGraphEntries().add(0, cs);
 		} else {
-			// process.getCallGraph().getGraphEntries().add(process.getCallGraph().getGraphEntries().size()
-			// -1 , cs);
 			process.getCallGraph().getGraphEntries().add(cs);
 		}
 
 		return run;
 	}		
-	
-	
+
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
@@ -342,7 +344,6 @@ public class RuntimeUtil {
 	 * @param executionNeeds
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, Ticks ticks, String runnableName, PositionType positon) {
-
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
 		run.setName(runnableName);
 		run.getRunnableItems().add(ticks);
@@ -379,7 +380,7 @@ public class RuntimeUtil {
 	 *            (optional) - null works
 	 * @return utilization of that procUnit
 	 */
-	public static double getprocUnitUtilization(ProcessingUnit procUnit, Amalthea model, TimeType tt,		//Simon 11.01.2019: getProcUnitUtilization (capital "P")
+	public static double getProcUnitUtilization(ProcessingUnit procUnit, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 
@@ -537,29 +538,16 @@ public class RuntimeUtil {
 				result.add(p.getRecurrence());
 				} else if (stimulus instanceof ArrivalCurveStimulus) {			//Simon 11.01.2019: TODO
 					switch (tt) {
-				case ACET:
-					break;
-				case BCET:
-					break;
-				case WCET:
-					break;
-				default:
-					break;
-				}
-			} else if (stimulus instanceof CustomStimulus) {					//Simon 11.01.2019: remove the comment! This was a test for het systems with synchronous server calls
-				// check if task is serverTask of async/sync-ServerCalls
-				/*
-				 * for(Runnable runnable : getRunnableListOfProcess(process, modes)) {
-				 * for(Runnable caller : model.getSwModel().getRunnables()) { Set<ServerCall>
-				 * serverCallsOfRunnable = getServerCallsOfRunnable(caller, modes);
-				 * for(ServerCall sc : serverCallsOfRunnable) { if(sc.getServerRunnable() !=
-				 * null && sc.getServerRunnable().equals(runnable)) { //we have found a
-				 * serverCall from "caller" to "runnable" -> add Periods of Processes of Caller
-				 * to list List<Process> processesOfRunnable = getProcessesOfRunnable(caller,
-				 * modes); for(Process callerProcess : processesOfRunnable) {
-				 * result.addAll(getPeriods(model, callerProcess, tt, modes)); } } } } }
-				 */
-
+					case ACET:
+						break;
+					case BCET:
+						break;
+					case WCET:
+						break;
+					default:
+						break;
+					}
+			} else if (stimulus instanceof CustomStimulus) {
 				switch (tt) {
 				case ACET:
 					break;
@@ -903,27 +891,15 @@ public class RuntimeUtil {
 	}
 
 	public static boolean periodicStimulusFilter(Stimulus stimulus) {
-		if (stimulus instanceof PeriodicStimulus) {
-			return true;
-		} else {
-			return false;
-		}
+		return (stimulus instanceof PeriodicStimulus);
 	}
 
 	public static boolean sporadicStimulusFilter(Stimulus stimulus) {
-		if (stimulus instanceof RelativePeriodicStimulus) {
-			return true;
-		} else {
-			return false;
-		}
+		return (stimulus instanceof RelativePeriodicStimulus);
 	}
 
 	public static boolean customStimulusFilter(Stimulus stimulus) {
-		if (stimulus instanceof CustomStimulus) {
-			return true;
-		} else {
-			return false;
-		}
+		return (stimulus instanceof CustomStimulus);
 	}
 
 }

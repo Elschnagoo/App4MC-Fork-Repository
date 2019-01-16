@@ -57,4 +57,26 @@ class SoftwareUtilsTest {
 		assertEquals(
 			"collectRunnableItems: 1 item expected", 1, list4.size);
 	}
+	
+	@Test
+	def void testLabelAccessMethods() {
+		val model = SoftwareModels.getModel2()
+		val run1 = AmaltheaIndex.getElements(model, "Run1", Runnable).head
+		
+		val set1 = SoftwareUtil.getAccessedLabelSet(run1, null)
+		val set2 = SoftwareUtil.getReadLabelSet(run1, null)
+		val set3 = SoftwareUtil.getWriteLabelSet(run1, null)
+		
+		val list1 = SoftwareUtil.getLabelAccessList(run1, null)
+		val list2 = SoftwareUtil.getReadLabelAccessList(run1, null)
+		val list3 = SoftwareUtil.getWriteLabelAccessList(run1, null)
+		
+		val map = SoftwareUtil.getLabelToLabelAccessMap(run1, null)
+		
+		val map1 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null)
+
+		
+		println("done.")
+	}
+	
 }

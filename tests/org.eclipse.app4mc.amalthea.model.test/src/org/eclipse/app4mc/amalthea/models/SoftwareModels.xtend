@@ -8,6 +8,7 @@ import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter
 
 import static org.eclipse.app4mc.amalthea.model.LabelAccessEnum.*
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
 
 class SoftwareModels {
 
@@ -21,6 +22,10 @@ class SoftwareModels {
 
 	def static getModel1() {
 		return (new SoftwareModels).model1()
+	}
+
+	def static getModel2() {
+		return (new SoftwareModels).model2()
 	}
 
 	def model1() {
@@ -68,7 +73,40 @@ class SoftwareModels {
 					]
 				]
 			]
+		return model
+	}
+	
+	
+	def model2() {
+		val fac = AmaltheaFactory.eINSTANCE
+		val model = 
+			amalthea [
+				softwareModel [
+					label [name = "Lab1"]
+					label [name = "Lab2"]
+					label [name = "Lab3"]
+					label [name = "Lab4"]
+					label [name = "Lab5"]
 
+					runnable [ name = "Run1"
+						ticks [ defaultConstant(200) ]
+						// incomplete label accesses
+						labelAccess [ statistic = fac.createLabelAccessStatistic ]
+						labelAccess [ data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
+						labelAccess [ access = READ statistic = fac.createLabelAccessStatistic]
+						
+						// valid label accesses
+						labelAccess [ access = READ; data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
+						labelAccess [ access = READ; data = _find(Label, "Lab2") ]
+						labelAccess [ access = READ; data = _find(Label, "Lab3") ]
+						labelAccess [ access = READ; data = _find(Label, "Lab4") statistic = fac.createLabelAccessStatistic]
+						ticks [ defaultConstant(333) ]
+						labelAccess [ access = WRITE; data = _find(Label, "Lab3") ]
+						labelAccess [ access = WRITE; data = _find(Label, "Lab4") ]
+						labelAccess [ access = WRITE; data = _find(Label, "Lab5") statistic = fac.createLabelAccessStatistic]
+					]
+				]
+			]
 		return model
 	}
 }

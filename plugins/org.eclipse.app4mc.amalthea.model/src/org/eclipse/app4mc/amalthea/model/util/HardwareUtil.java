@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -46,79 +46,62 @@ import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
 
 public class HardwareUtil {
 
-	public static <T extends HwModule> List<T> getModulesFromHWStructure(Class<T> targetClass, HwStructure structure) {
-		ArrayList<HwModule> results = new ArrayList<>();
-		// Cache
-		if (targetClass.equals(Cache.class)) {
-			for (HwModule module : structure.getModules()) {
-
-				if (module instanceof Cache) {
-					results.add(module);
-				} else if (module instanceof ProcessingUnit) {
-					for (Cache containedCache : ((ProcessingUnit) module).getCaches()) {
-						results.add(containedCache);
-					}
-				}
-
-			}
-		}
-		// ProcessingUnit, Memory and Connection Handler
-		else {
-			for (HwModule module : structure.getModules()) {
-				// ProcessingUnit
-				if (targetClass.equals(ProcessingUnit.class)) {
-					if (module instanceof ProcessingUnit) {
-						results.add(module);
-					}
-				}
-				// Memory
-				else if (targetClass.equals(Memory.class)) {
-					if (module instanceof Memory) {
-						results.add(module);
-					}
-				}
-				// ConnectionHandlerDefiniton
-				else {
-					if (module instanceof ConnectionHandler) {
-						results.add(module);
-					}
-				}
-			}
-		}
-		for (HwStructure hwStruct : structure.getStructures()) {
-			results.addAll(getModulesFromHWStructure(targetClass, hwStruct));
-		}
-		return (List<T>) results;
-	}
-
-	public static <T extends HwModule> List<T> getModulesFromHWModel(Class<T> targetClass, Amalthea model) {
-		List<HwModule> modules = new ArrayList<HwModule>();
+	public static <T extends HwModule> List<T> getModulesFromHwModel(Class<T> targetClass, Amalthea model) {
+		List<T> results = new ArrayList<T>();
 		for (HwStructure structure : model.getHwModel().getStructures()) {
-			modules.addAll(getModulesFromHWStructure(targetClass, structure));
+			collectModulesFromHWStructure(structure, targetClass, results);
 		}
-		return (List<T>) modules;
+		return results;
 	}
 
-	public static List<ProcessingUnit> getAllProcessingUnitsForProcessingUnitDefinition(Amalthea model,
-			ProcessingUnitDefinition puDef) {
-		List<ProcessingUnit> pusWithGivenPUDefinition = new ArrayList<ProcessingUnit>();
-		List<ProcessingUnit> pusInModel = getModulesFromHWModel(ProcessingUnit.class, model);
+	public static <T extends HwModule> List<T> getModulesFromHWStructure(Class<T> targetClass, HwStructure structure) {
+		List<T> results = new ArrayList<T>();
+		collectModulesFromHWStructure(structure, targetClass, results);
+		
+		return results;
+	}
+	
+	private static <T extends HwModule> void collectModulesFromHWStructure(HwStructure structure, Class<T> targetClass, List<T> results) {
+		// check all modules
+		for (HwModule module : structure.getModules()) {
+			if (targetClass.isInstance(module)) {
+				results.add(targetClass.cast(module));
+			}
+			
+			// special handling of processing unit caches
+			if (targetClass.isAssignableFrom(Cache.class) && module instanceof ProcessingUnit) {
+				for (Cache containedCache : ((ProcessingUnit) module).getCaches()) {
+					if (targetClass.isInstance(containedCache)) {
+						results.add(targetClass.cast(containedCache));
+					}
+				}
+			}
+		}
+		
+		// call method recursive to also get modules of included structures
+		for (HwStructure hwStruct : structure.getStructures()) {
+			collectModulesFromHWStructure(hwStruct, targetClass, results);
+		}
+	}
+
+	public static List<ProcessingUnit> getAllProcessingUnitsForProcessingUnitDefinition(Amalthea model, ProcessingUnitDefinition puDef) {
 		if (puDef == null) { // null is the key for default values!
 			return new ArrayList<ProcessingUnit>();
 		}
-
-		for (ProcessingUnit pu : pusInModel) {
+		
+		List<ProcessingUnit> result = new ArrayList<ProcessingUnit>();
+		for (ProcessingUnit pu : getModulesFromHwModel(ProcessingUnit.class, model)) {
 			if (puDef.equals(pu.getDefinition())) {
-				pusWithGivenPUDefinition.add(pu);
+				result.add(pu);
 			}
 		}
 
-		return pusWithGivenPUDefinition;
+		return result;
 	}
 
 	public static Map<Memory, Long> getMemoryAccessLatenciesCycles(Amalthea model, TimeType timeType) {
 		HashMap<Memory, Long> result = new HashMap<Memory, Long>();
-		List<Memory> mems = getModulesFromHWModel(Memory.class, model);
+		List<Memory> mems = getModulesFromHwModel(Memory.class, model);
 		for (Memory mem : mems) {
 			result.put(mem, calculateLatency(mem.getDefinition().getAccessLatency(), timeType));
 		}
@@ -129,21 +112,17 @@ public class HardwareUtil {
 		HashMap<Memory, Time> result = new HashMap<Memory, Time>();
 		Map<Memory, Long> memoryMap = getMemoryAccessLatenciesCycles(model, timeType);
 
-// FIXME
-//		for (Memory key : memoryMap.keySet()) {
-//			Time time = RuntimeUtil.createTime(	// TODO Has to be updated in runtimeUtils
-//					memoryMap.get(key),
-//					1.0F,
-//					getFrequencyOfModuleInHz(key)
-//					);
-//			result.put(key, time);
-//		}
+		for (Memory key : memoryMap.keySet()) {
+			Time time = RuntimeUtil.getExecutionTimeForCycles((double)(memoryMap.get(key)), key.getFrequencyDomain().getDefaultValue());
+			result.put(key, time);
+		}
+		
 		return result;
 	}
 
 	public static List<HwAccessElement> getAccessElementsToDestination(HwDestination dest, Amalthea model) {
 		List<HwAccessElement> result = new ArrayList<HwAccessElement>();
-		List<ProcessingUnit> pus = getModulesFromHWModel(ProcessingUnit.class, model);
+		List<ProcessingUnit> pus = getModulesFromHwModel(ProcessingUnit.class, model);
 		for (ProcessingUnit pu : pus) {
 			for (HwAccessElement element : pu.getAccessElements()) {
 				if (element.getDestination().equals(dest)) {
@@ -157,7 +136,7 @@ public class HardwareUtil {
 	public static Map<ProcessingUnit, HashMap<HwDestination, Time>> getAccessTimes(Amalthea model, TimeType timeType,
 			AccessDirection direction) {
 		Map<ProcessingUnit, HashMap<HwDestination, Time>> coreMemoryLatency = new HashMap<ProcessingUnit, HashMap<HwDestination, Time>>();
-		List<ProcessingUnit> pus = getModulesFromHWModel(ProcessingUnit.class, model);
+		List<ProcessingUnit> pus = getModulesFromHwModel(ProcessingUnit.class, model);
 		for (ProcessingUnit pu : pus) {
 			HashMap<HwDestination, Time> MemAccessTime = new HashMap<HwDestination, Time>();
 			for (HwAccessElement accessElement : pu.getAccessElements()) {
@@ -194,19 +173,14 @@ public class HardwareUtil {
 		default:
 			break;
 		}
-// FIXME
-//		return RuntimeUtil.createTime(
-//				calculateLatency(latency, timeType),
-//				1.0F,
-//				getFrequencyOfModuleInHz(accessElement.getSource())
-//				);
-		// dummy
-		return FactoryUtil.createTime("0ms");
+		
+		return RuntimeUtil.getExecutionTimeForCycles((double)calculateLatency(latency, timeType), 
+				accessElement.getSource().getFrequencyDomain().getDefaultValue());
 	}
 
 	public static Time calculateHwAccessPathTime(HwAccessElement accessElement, TimeType timeType,
 			AccessDirection direction) {
-		Time result = AmaltheaFactory.eINSTANCE.createTime();
+		Time result = FactoryUtil.createTime("0 ns");
 		Frequency frequency = null;
 		IDiscreteValueDeviation latency = null;
 		if (accessElement.getAccessPath() != null) {
@@ -243,18 +217,12 @@ public class HardwareUtil {
 					frequency = getFrequencyOfModule((ProcessingUnit) element);
 				}
 
-// FIXME
-//				result = AmaltheaServices.addTime(
-//						result,
-//						RuntimeUtil.createTime(
-//								calculateLatency(latency, timeType),
-//								1.0F,
-//								AmaltheaServices.convertToHertz(frequency).longValue()
-//								)
-//						);
+				Long tmpLatency = calculateLatency(latency, timeType);
+				Time executionTimeForCycles = RuntimeUtil.getExecutionTimeForCycles((double)tmpLatency, frequency);
+				result = result.add(executionTimeForCycles);
 			}
 		}
-		return result;
+		return result.adjustUnit();
 	}
 
 	public static Long calculateLatency(IDiscreteValueDeviation latency, TimeType timeType) {
@@ -317,7 +285,7 @@ public class HardwareUtil {
 	public static Frequency getFrequencyOfModule(HwModule module) {
 		return module.getFrequencyDomain().getDefaultValue();
 	}
-	
+
 	/**
 	 * Returns the frequency of a specific module in Hertz
 	 * 

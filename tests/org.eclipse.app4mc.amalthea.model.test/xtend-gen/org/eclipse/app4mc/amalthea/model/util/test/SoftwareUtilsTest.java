@@ -9,16 +9,22 @@
  */
 package org.eclipse.app4mc.amalthea.model.util.test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
+import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.models.SoftwareModels;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.Assert;
 import org.junit.Before;
@@ -63,5 +69,20 @@ public class SoftwareUtilsTest {
     final EList<RunnableItem> list4 = SoftwareUtil.collectRunnableItems(this.run4);
     Assert.assertEquals(
       "collectRunnableItems: 1 item expected", 1, list4.size());
+  }
+  
+  @Test
+  public void testLabelAccessMethods() {
+    final Amalthea model = SoftwareModels.getModel2();
+    final org.eclipse.app4mc.amalthea.model.Runnable run1 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
+    final Set<Label> set1 = SoftwareUtil.getAccessedLabelSet(run1, null);
+    final Set<Label> set2 = SoftwareUtil.getReadLabelSet(run1, null);
+    final Set<Label> set3 = SoftwareUtil.getWriteLabelSet(run1, null);
+    final List<LabelAccess> list1 = SoftwareUtil.getLabelAccessList(run1, null);
+    final List<LabelAccess> list2 = SoftwareUtil.getReadLabelAccessList(run1, null);
+    final List<LabelAccess> list3 = SoftwareUtil.getWriteLabelAccessList(run1, null);
+    final Map<Label, List<LabelAccess>> map = SoftwareUtil.getLabelToLabelAccessMap(run1, null);
+    final Map<Label, List<LabelAccessStatistic>> map1 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null);
+    InputOutput.<String>println("done.");
   }
 }
