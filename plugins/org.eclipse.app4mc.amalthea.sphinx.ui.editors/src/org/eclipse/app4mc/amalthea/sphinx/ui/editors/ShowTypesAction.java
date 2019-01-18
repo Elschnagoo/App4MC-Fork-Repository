@@ -31,10 +31,15 @@ public class ShowTypesAction extends Action {
 		super(Messages.ShowTypesAction_title, AS_CHECK_BOX);
 		this.editor = editor;
 		this.viewer = viewer;
-		setChecked(editor.isShowTypesOfElements());
+		setChecked(true);
+		if(this.editor!=null) {
+			this.editor.setShowTypesOfElements(isChecked());
+		}
+//		setChecked(editor.isShowTypesOfElements());
 		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(SphinxSupportPlugin.getPluginId(),
 				"/icons/full/obj16/showtypes.png")); //$NON-NLS-1$
 		setToolTipText(Messages.ShowTypesAction_tooltip);
+		
 	}
 
 	/**
