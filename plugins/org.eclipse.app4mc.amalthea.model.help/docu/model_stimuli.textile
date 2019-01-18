@@ -65,9 +65,9 @@ The picture below shows the table as arrival curve graph. The red line is the up
 !{width:600px}../pictures/model_stimuli_arrival_curve_5.png!
 
 
-h4. FixedPeriodic
+h4. Common properties of fixed periodic stimuli
 
-In general all period based Stimuli specify periodic activations based on an offset and a recurrence. The first activation occurs after the time units specified by _offset_, and then every following activation occurs after the time units specified by _recurrence_. This means, in general, an activation of instance i is triggered at time t = _offset_ + i * _recurrence_.
+The abstract class _FixedPeriodic_ defines the common attributes of _Periodic_, _PeriodicSynthetic_ and _PeriodicBurst_. In general all period based Stimuli specify periodic occurrences based on an offset and a recurrence. The first occurrence happens after the time units specified by _offset_, and then every following occurrence happens after the time units specified by _recurrence_. This means, in general, an occurrence of instance i is happening at time t = _offset_ + i * _recurrence_.
 
 The following figure shows a _Periodic_ Stimulus example with only a fix offset and recurrence time. 
 

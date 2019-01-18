@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://app4mc.eclipse.org/amalthea/0.9.3" nsPrefix="am">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="documentation" value="*&#xA;*******************************************************************************&#xA;Copyright (c) 2015-2018 Robert Bosch GmbH and others.&#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;*******************************************************************************"/>
+    <details key="documentation" value="*&#xA;*******************************************************************************&#xA;Copyright (c) 2015-2019 Robert Bosch GmbH and others.&#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;*******************************************************************************"/>
     <details key="modelName" value="Amalthea"/>
     <details key="prefix" value="Amalthea"/>
     <details key="editDirectory" value="/org.eclipse.app4mc.amalthea.model.edit/src-gen"/>
@@ -13,7 +13,7 @@
     <details key="creationSubmenus" value="true"/>
     <details key="generateSchema" value="true"/>
     <details key="loadInitialization" value="false"/>
-    <details key="copyrightText" value="*******************************************************************************&#xD;&#xA; Copyright (c) 2015-2018 Robert Bosch GmbH and others.&#xD;&#xA;&#xD;&#xA; This program and the accompanying materials are made&#xD;&#xA; available under the terms of the Eclipse Public License 2.0&#xD;&#xA; which is available at https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA;&#xD;&#xA; SPDX-License-Identifier: EPL-2.0&#xD;&#xA;&#xD;&#xA;    Generated using Eclipse EMF&#xD;&#xA;&#xD;&#xA;*******************************************************************************"/>
+    <details key="copyrightText" value="*******************************************************************************&#xD;&#xA; Copyright (c) 2015-2019 Robert Bosch GmbH and others.&#xD;&#xA;&#xD;&#xA; This program and the accompanying materials are made&#xD;&#xA; available under the terms of the Eclipse Public License 2.0&#xD;&#xA; which is available at https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA;&#xD;&#xA; SPDX-License-Identifier: EPL-2.0&#xD;&#xA;&#xD;&#xA;    Generated using Eclipse EMF&#xD;&#xA;&#xD;&#xA;*******************************************************************************"/>
     <details key="basePackage" value="org.eclipse.app4mc.amalthea"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Amalthea" eSuperTypes="#//BaseObject">
@@ -3984,7 +3984,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SporadicActivation" eSuperTypes="#//Activation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activation" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="occurrence" lowerBound="1"
         eType="#//ITimeDeviation" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleActivation" eSuperTypes="#//Activation">
