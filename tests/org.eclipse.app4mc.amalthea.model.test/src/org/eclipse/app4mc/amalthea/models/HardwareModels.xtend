@@ -48,7 +48,7 @@ class HardwareModels {
 		AmaltheaWriter.writeToFileNamed(model1, "test-data/HwUtilTestModel-gen.amxmi")
 	}
 		
-	def static hwModel1() {
+	def static createModel1() {
 		(new HardwareModels).model1()
 	}
 		

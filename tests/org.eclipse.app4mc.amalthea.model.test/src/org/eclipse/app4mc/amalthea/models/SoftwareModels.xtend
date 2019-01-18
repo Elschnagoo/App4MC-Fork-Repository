@@ -16,15 +16,15 @@ class SoftwareModels {
 	extension SoftwareBuilder b2 = new SoftwareBuilder
 
 	def static void main(String[] args) {
-		val model1 = getModel1()
+		val model1 = org.eclipse.app4mc.amalthea.models.SoftwareModels.createModel1()
 		AmaltheaWriter.writeToFileNamed(model1, "test-data/SoftwareUtilTestModel-gen.amxmi")
 	}
 
-	def static getModel1() {
+	def static createModel1() {
 		return (new SoftwareModels).model1()
 	}
 
-	def static getModel2() {
+	def static createModel2() {
 		return (new SoftwareModels).model2()
 	}
 

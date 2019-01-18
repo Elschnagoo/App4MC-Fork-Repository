@@ -44,7 +44,7 @@ public class SoftwareUtilsTest {
   
   @Before
   public void initalizeModel() {
-    this.model = SoftwareModels.getModel1();
+    this.model = SoftwareModels.createModel1();
     this.run1 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
     this.run2 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run2", org.eclipse.app4mc.amalthea.model.Runnable.class));
     this.run3 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run3", org.eclipse.app4mc.amalthea.model.Runnable.class));
@@ -73,7 +73,7 @@ public class SoftwareUtilsTest {
   
   @Test
   public void testLabelAccessMethods() {
-    final Amalthea model = SoftwareModels.getModel2();
+    final Amalthea model = SoftwareModels.createModel2();
     final org.eclipse.app4mc.amalthea.model.Runnable run1 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
     final Set<Label> set1 = SoftwareUtil.getAccessedLabelSet(run1, null);
     final Set<Label> set2 = SoftwareUtil.getReadLabelSet(run1, null);

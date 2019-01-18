@@ -73,7 +73,7 @@ public class RuntimeModels {
     AmaltheaWriter.writeToFileNamed(model1, "test-data/RuntimeUtilTestModel-gen.amxmi");
   }
   
-  public static Amalthea runtimeModel1() {
+  public static Amalthea createModel1() {
     return new RuntimeModels().model1();
   }
   

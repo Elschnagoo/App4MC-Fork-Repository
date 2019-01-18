@@ -32,7 +32,7 @@ class SoftwareUtilsTest {
 
 	@Before
 	def void initalizeModel() {
-		model = SoftwareModels.getModel1()
+		model = SoftwareModels.createModel1()
 		run1 = AmaltheaIndex.getElements(model, "Run1", Runnable).head
 		run2 = AmaltheaIndex.getElements(model, "Run2", Runnable).head
 		run3 = AmaltheaIndex.getElements(model, "Run3", Runnable).head
@@ -60,7 +60,7 @@ class SoftwareUtilsTest {
 	
 	@Test
 	def void testLabelAccessMethods() {
-		val model = SoftwareModels.getModel2()
+		val model = SoftwareModels.createModel2()
 		val run1 = AmaltheaIndex.getElements(model, "Run1", Runnable).head
 		
 		val set1 = SoftwareUtil.getAccessedLabelSet(run1, null)

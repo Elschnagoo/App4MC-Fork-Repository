@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.Task;
+import org.eclipse.app4mc.amalthea.models.RuntimeModels;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,10 +54,8 @@ public class RuntimeUtilsTest {
 	
 	@Before
 	public void initalizeModel() {
-		//amaltheaModel = AmaltheaLoader.loadFromFileNamed("test-data/RuntimeUtilTestModel.amxmi");
+		amaltheaModel = RuntimeModels.createModel1();
 		
-//		amaltheaModel = RuntimeModels.runtimeModel1();
-//		
 //		executionNeedsR1 = new ArrayList<ExecutionNeed>();
 //		executionNeedsR2 = new ArrayList<ExecutionNeed>();
 //		

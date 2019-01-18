@@ -152,7 +152,7 @@ public class RuntimeUtil {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		HWModel hwModel = (HWModel) processingUnit.getDefinition().eContainer();
 		for (Entry<String, IDiscreteValueDeviation> need : executionNeeds.getNeeds()) {
-			Set<HwFeatureCategory> hwFeatureCategory = (Set<HwFeatureCategory>) AmaltheaIndex.getElements(hwModel, need.getKey(), HwFeatureCategory.class);
+			Set<? extends HwFeatureCategory> hwFeatureCategory = AmaltheaIndex.getElements(hwModel, need.getKey(), HwFeatureCategory.class);
 			if (hwFeatureCategory.size() == 1) {
 				result = getExecutionTimeForExecutionNeedEntry(need.getValue(), hwFeatureCategory.iterator().next(), processingUnit, executionCase);
 			}
@@ -184,42 +184,17 @@ public class RuntimeUtil {
 		Time result = getExecutionTimeForCycles(ticks, processingUnit.getFrequencyDomain().getDefaultValue());
 		return result;
 	}
-	
-	public static Time getExecutionTimeForCycles (Double ticks, Frequency puFrequency) {
-		Time result = AmaltheaFactory.eINSTANCE.createTime();
-		Long frequencyValue = AmaltheaServices.convertToHertz(puFrequency).longValue();
-		int timeUnitIndex = 0;
-		while(frequencyValue % 1000 == 0 && (frequencyValue > 0)) {		//as long as frequency is multiple of 1000
-			timeUnitIndex++;
-			frequencyValue = frequencyValue / 1000L;
-		}
-		
-		// FIXME Check this !!
-		Double ticksValue = ticks;
-		while (timeUnitIndex < 4) {
-			timeUnitIndex++;
-			ticksValue = ticksValue * 1000;
-		}
-		
-		double runtime = ticksValue / (double)frequencyValue;
-		
-		result.setValue(BigInteger.valueOf(Math.round(runtime)));
-		switch (timeUnitIndex) {
-			case 0:
-				result.setUnit(TimeUnit.S);
-			case 1:
-				result.setUnit(TimeUnit.MS);
-			case 2:
-				result.setUnit(TimeUnit.US);
-			case 3:
-				result.setUnit(TimeUnit.NS);
-			case 4:
-				result.setUnit(TimeUnit.PS);
-		}
-		result = AmaltheaServices.adjustTimeUnit(result);
-		return result;
+
+	public static Time getExecutionTimeForCycles (double ticks, Frequency puFrequency) {
+		double cyclesPerSecond = AmaltheaServices.convertToHertz(puFrequency).doubleValue();
+		double factor = 1.0d / cyclesPerSecond;
+		Time oneSecond = FactoryUtil.createTime(1, TimeUnit.S);
+		Time t1  = oneSecond.multiply(ticks);
+		Time result = t1.multiply(factor);
+		return result.adjustUnit();
 	}
-	
+
+
 	//TODO: Time to ticks?
 	
 	

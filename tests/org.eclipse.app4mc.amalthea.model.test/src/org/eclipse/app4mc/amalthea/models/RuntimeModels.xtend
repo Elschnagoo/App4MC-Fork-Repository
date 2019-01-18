@@ -49,7 +49,7 @@ class RuntimeModels {
 		AmaltheaWriter.writeToFileNamed(model1, "test-data/RuntimeUtilTestModel-gen.amxmi")
 	}
 
-	def static runtimeModel1() {
+	def static createModel1() {
 		(new RuntimeModels).model1()
 	}
 

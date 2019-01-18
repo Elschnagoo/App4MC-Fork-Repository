@@ -29,15 +29,15 @@ public class SoftwareModels {
   private SoftwareBuilder b2 = new SoftwareBuilder();
   
   public static void main(final String[] args) {
-    final Amalthea model1 = SoftwareModels.getModel1();
+    final Amalthea model1 = SoftwareModels.createModel1();
     AmaltheaWriter.writeToFileNamed(model1, "test-data/SoftwareUtilTestModel-gen.amxmi");
   }
   
-  public static Amalthea getModel1() {
+  public static Amalthea createModel1() {
     return new SoftwareModels().model1();
   }
   
-  public static Amalthea getModel2() {
+  public static Amalthea createModel2() {
     return new SoftwareModels().model2();
   }
   

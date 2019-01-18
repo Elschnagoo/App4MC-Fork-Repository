@@ -57,7 +57,7 @@ public class HardwareModels {
     AmaltheaWriter.writeToFileNamed(model1, "test-data/HwUtilTestModel-gen.amxmi");
   }
   
-  public static Amalthea hwModel1() {
+  public static Amalthea createModel1() {
     return new HardwareModels().model1();
   }
   
