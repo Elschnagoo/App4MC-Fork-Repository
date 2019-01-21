@@ -23,10 +23,10 @@ h5. Runnables
 Runnables are basic software units. In general it can be said that a Runnable is comparable to a function. It runs within the context of a process and is described by a sequence of instructions. Those instructions can again represent different actions that define the dynamic behavior of the software. Following, such possible actions are listed:
 * Semaphore Access: request/release of a semaphore
 * Label Access: reading/writing a data signal
-* Instructions: number of unspecified instructions to be executed
+* Ticks: number of ticks (cycles) to be executed
 * ...
 
-!../pictures/user_sw_new_runnable_iItem.png!
+!../pictures/user_sw_new_runnable_item.png!
 
 In the following sections elements, that can be of concern within a runnable, are described in more detail.
 

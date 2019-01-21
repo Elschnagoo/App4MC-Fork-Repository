@@ -3,26 +3,7 @@ h3. General Concepts
 
 h4. Grouping of elements (Tags, Tag groups)
 
-It is possible to use "Tags":./model_common.html#common-tags for grouping elements of the model. Currently the following AMALTHEA objects are supporting Tags:
-
-* abstract class AbstractMemoryElement
-* abstract class Activation
-* class OsEvent
-
-* abstract class Event
-
-* abstract class Stimulus
-
-* abstract class HardwareTypeDescription
-* abstract class ComplexNode
-* class Quartz
-
-* class System
-* class Component
-* class ComponentInstance
-* class Connector
-* abstract class Port
-
+It is possible to use "Tags":./model_common.html#common-tags for grouping elements of the model.
 
 
 h4. Custom Properties
