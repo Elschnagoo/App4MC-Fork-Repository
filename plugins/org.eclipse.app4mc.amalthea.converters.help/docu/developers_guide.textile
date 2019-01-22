@@ -33,7 +33,8 @@ Converter can be registered by adding extension definition for : @org.eclipse.ap
 * Name : Name of the component
 * Input model version : AMALTHEA model version in which the input model content is present.  
 * Output model version : AMALTHEA model version to which the input model content should be converted to.
-bq. All AMALTHEA/AMALTHEA4public ITEA releases are specified with prefix *itea* (e.g. itea.103, itea.110, itea.111) and APP4MC releases are specified with their version number (e.g. 0.7.0, 0.7.1)
+
+bq. First version of APP4MC was 0.7.0
 
 bq. From version 0.9.3 of APP4MC, there will not be any support for migration of AMALTHEA models based on ITEA releases (itea.103, itea.110, itea.111)
 
@@ -50,8 +51,8 @@ Converter dependencies can be specified at the extension level in the following 
 !(gray_scale)../pictures/dev_guide/converters_dependencies_details.png!
 
 
-*Cache Builders:* This component is responsible for building the required cache, by querying the input models or storing the necessary information - &gt; before executing the Converters for specific migration step (_e.g. itea.103 to itea.110_)
-Scope of each Cache Builder component is only during a step of model migration (_e.g. itea.103 to itea.110_)
+*Cache Builders:* This component is responsible for building the required cache, by querying the input models or storing the necessary information - &gt; before executing the Converters for specific migration step (_e.g. 0.9.0 to 0.9.1_)
+Scope of each Cache Builder component is only during a step of model migration (_e.g. 0.9.0 to 0.9.1_)
 
 Cache Builder can be registered by adding extension definition for : @org.eclipse.app4mc.amalthea.model.converters.cachebuilders@ and defining the following  parameters :
 
@@ -77,7 +78,7 @@ bq. Each Pre processor component is tightly coupled to the specified AMALTHEA mo
 
 !(gray_scale)../pictures/dev_guide/pre_processor.png! 
 
-*Post Processor:* This component is responsible for adding/modifying specific information after invocation of Cache Builders/Converters components for a specific migration step (_e.g. itea.103 to itea.110_)
+*Post Processor:* This component is responsible for adding/modifying specific information after invocation of Cache Builders/Converters components for a specific migration step (_e.g. 0.9.0 to 0.9.1_)
 
 bq. This component is tightly coupled to input and output version of the AMALTHEA model files which are selected (explicitly/implicitly) for model migration. Each Pre-Processor component is executed after the migration step if the below criteria is full filled:
 
@@ -92,17 +93,16 @@ Post Processor component can be registered by adding extension definition for : 
 
 _Example how Post-Processor's are invoked:_
 
- If Post-Processor is defined with input-model-versions : itea.103, itea.110 and output version 0.7.0.
+ If Post-Processor is defined with input-model-versions :0.9.0, 0.9.1 and output version 0.9.2.
  
- In case if the migration is invoked from itea.103 to 0.7.0 for the specified AMALTHEA models.
+ In case if the migration is invoked from 0.9.0 to 0.9.2 for the specified AMALTHEA models.
  
  Following migration steps are to be performed internally:
  
-* itea.103 to itea.110
-* itea.110 to itea.111
-* itea.110 to 0.7.0 (APP4MC)
+* 0.9.0 to 0.9.1
+* 0.9.1 to 0.9.2
 
-bq. In this case post-processor is invoked after migration step itea.110 to itea.111. 
+bq. In this case post-processor is invoked after migration step 0.9.1 to 0.9.2 
 
 Flexibility of post-processors is, they are defined in a generalized way to specify in the direction which they should be invoked as a part of model migration.
 

@@ -3,5 +3,4 @@ h3. Additional details
 For details regarding the below topics, refer to the corresponding links:
 
 # "How model elements are migrated across various versions ?":./meta_model_changes.html#meta-model-changes
-# "How to update models to contain UUID ?":./prerequisites_for_model_migration.html#migration-uuid
 # "How to update max heap memory used by the application ?":./prerequisites_for_model_migration.html#migration-vm-args

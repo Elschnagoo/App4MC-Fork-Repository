@@ -7,12 +7,6 @@ _Only forward migration is supported_
 
 **AMALTHEA meta model versions information**
 
-Below were the releases of AMALTHEA meta model during its phase of being as a ITEA2 funded project ( For details refer : "www.amalthea-project.org":http://www.amalthea-project.org/index.php/roadmap )
-
-* 1.0.3
-* 1.1.0
-* 1.1.1
-
 From below version, AMALTHEA meta model is a part of the official  project Eclipse APP4MC ( See: "www.eclipse.org/app4mc":https://www.eclipse.org/app4mc/ )
 
 * 0.7.0
@@ -27,7 +21,7 @@ Model migration utility migrates the specified model sequentially to the next ve
 ||
 {background:#ddd}. | **%{color:brown}From APP4MC 0.9.3 : migration of Amalthea models belonging to legacy versions ITEA "1.0.3, 1.1.0, 1.1.1" is not supported.%** |
 
-Below figure represents the steps involved in the migration of model from ITEA2 1.0.3 version to APP4MC 0.7.0 version:
+Below figure represents the steps involved in the migration of model from 0.7.0 version to APP4MC 0.8.1 version:
 
 !(scale)../pictures/migration_flow.png!
 

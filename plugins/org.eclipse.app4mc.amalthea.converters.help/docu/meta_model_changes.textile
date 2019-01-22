@@ -583,4 +583,57 @@ h3. Version APP4MC 0.9.1 to APP4MC 0.9.2
 table(classic){margin-left:40px}. 
 | *_AMALTHEA Namespace (version App4MC 0.9.1)_* | *_AMALTHEA Namespace  (version App4MC 0.9.2)_* |
 |http://app4mc.eclipse.org/amalthea/0.9.1|http://app4mc.eclipse.org/amalthea/0.9.2 |
- 
+
+
+h3. Version APP4MC 0.9.2 to APP4MC 0.9.3
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.9.2)_* | *_AMALTHEA Namespace  (version App4MC 0.9.3)_* |
+|http://app4mc.eclipse.org/amalthea/0.9.2|http://app4mc.eclipse.org/amalthea/0.9.3 |
+
+*Below Classes are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Class Name (version APP4MC 0.9.2)_* | *_Model Migration behavior_* |
+|Deviation|Depending on the type of generic used for Deviation element, contents are migrated as IContinuousValueDeviation or IDiscreteValueDeviation or ITimeDeviation  |
+
+*Following Class names are changed:*
+
+table(classic){margin-left:40px}. 
+|*Class name in 0.9.2*|*Changed Class name in 0.9.3*|*Amalthea sub-model*|
+|OsInstructions|OsOverhead|os|
+|OsAPIInstructions|OsAPIOverhead|os|
+|OsISRInstructions|OsISROverhead|os|
+|LatencyConstant|DiscreteValueConstant|hw|
+|LatencyDeivation|DiscreteValueBetaDistribution DiscreteValueBoundaries DiscreteValueGaussDistribution DiscreteValueStatistics DiscreteValueUniformDistribution DiscreteValueWeibullEstimatorsDistribution |os|
+
+*Following Classes behavior is changed:*
+
+table(classic){margin-left:40px}. 
+|*Class name*|*Amalthea sub-model*|*Changed behavior in 0.9.3*|
+|ExecutionNeed|sw|Till 0.9.2 ExecutionNeed element was used to specify the runtime information and also additional behaviour e.g: Performance etc., <br></br>Based on the latest change in 0.9.3, runtime information should be represented with Ticks element and additional information w.r.t. Performance etc., can be represented using ExecutionNeed element |
+
+*Below references are changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name(version APP4MC 0.9.2)_* | *_Variable Name(version APP4MC 0.9.3)_* | *_Variable Type (in 0.9.2)_* | *_Variable Type (in 0.9.3)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|occurencesPerStep|occurencesPerStep|Deviation&lt;DoubleObject&gt;|IContinuousValueDeviation|VariableRateActivation|sw|As there is a change in the Type of this reference from Deviation&lt;DoubleObject&gt; to IContinousValueDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type: BoundedContinuousValueDistribution  ContinuousValueBetaDistribution ContinuousValueBoundaries ContinuousValueConstant ContinuousValueGaussDistribution ContinuousValueHistogram ContinuousValueStatistics ContinuousValueUniformDistribution ContinuousValueWeibullEstimatorsDistribution TruncatedContinuousValueDistribution|
+|activationDeviation|activation|Deviation&lt;Time&gt;|ITimeDeviation|SporadicActivation|sw|As there is a change in the Type of this reference from Deviation&lt;Time&gt; to ITimeDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type : TimeBetaDistribution TimeBoundaries TimeConstant TimeGaussDistribution TimeHistogram TimeStatistics TimeUniformDistribution TimeWeibullEstimatorsDistribution|
+|chunkProcessingInstructions|chunkProcessingTicks|EInt|EInt|ChannelReceive ChannelSend LabelAccess|sw|reference name changed from chunkProcessingInstructions to chunkProcessingTicks|
+|computationItems|computationItems|ExecutionNeed|Ticks|TaskScheduler InterruptController|os|ExecutionNeed elements with HwFeatureCategory Instructions, are converted as Ticks with default or extended (based on the way ExecutionNeed was defined earlier)|
+|items|items|ExecutionNeed|ExecutionNeed|Group|sw|ExecutionNeed elements with HwFeatureCategory Instructions are converted as Ticks. If HwFeatureCategory is other than Instructions, then content of the specific entry is retained as ExecutionNeed <br></br>(In 0.9.3 ExecutionNeed does not support Extended entries )|
+|runnableitems|runnableitems|ExecutionNeed|ExecutionNeed|Runnable|sw|ExecutionNeed elements with HwFeatureCategory Instructions are converted as Ticks. If HwFeatureCategory is other than Instructions, then content of the specific entry is retained as ExecutionNeed <br></br>(In 0.9.3 ExecutionNeed does not support Extended entries )|
+|jitter|jitter|Deviation&lt;Time&gt;|ITimeDeviation|PeriodicStimulus|stimuli|As there is a change in the Type of this reference from Deviation&lt;Time&gt; to ITimeDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type : TimeBetaDistribution TimeBoundaries TimeConstant TimeGaussDistribution TimeHistogram TimeStatistics TimeUniformDistribution TimeWeibullEstimatorsDistribution|
+|nextOccurrence|nextOccurrence|Deviation&lt;Time&gt;|ITimeDeviation|RelativePeriodicStimulus|stimuli|As there is a change in the Type of this reference from Deviation&lt;Time&gt; to ITimeDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type : TimeBetaDistribution TimeBoundaries TimeConstant TimeGaussDistribution TimeHistogram TimeStatistics TimeUniformDistribution TimeWeibullEstimatorsDistribution|
+|occurencesPerStep|occurencesPerStep|Deviation&lt;DoubleObject&gt;|IContinuousValueDeviation|VariableRateStimulus|stimuli|As there is a change in the Type of this reference from Deviation&lt;DoubleObject&gt; to IContinousValueDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type: BoundedContinuousValueDistribution  ContinuousValueBetaDistribution ContinuousValueBoundaries ContinuousValueConstant ContinuousValueGaussDistribution ContinuousValueHistogram ContinuousValueStatistics ContinuousValueUniformDistribution ContinuousValueWeibullEstimatorsDistribution TruncatedContinuousValueDistribution|
+|maxIncreasePerStep|maxIncreasePerStep|DoubleObject|Double|VariableRateStimulus|stimuli|Double value is migrated as a attribute|
+|maxDecreasePerStep|maxDecreasePerStep|DoubleObject|Double|VariableRateStimulus|stimuli|Double value is migrated as a attribute|
+|osOverheads|osOverheads|OsInstructions|OsOverhead|OSModel|os|References are updated accordingly|
+|apiSendMessage apiTerminateTask apiSchedule apiRequestResource apiReleaseResource apiSetEvent apiWaitEvent apiClearEvent apiActivateTask apiEnforcedMigration apiSuspendOsInterrupts apiResumeOsInterrupts apiRequestSpinlock apiReleaseSpinlock apiSenderReceiverRead apiSenderReceiverWrite apiSynchronousServerCallPoint apiIocRead apiIocWrite |apiSendMessage apiTerminateTask apiSchedule apiRequestResource apiReleaseResource apiSetEvent apiWaitEvent apiClearEvent apiActivateTask apiEnforcedMigration apiSuspendOsInterrupts apiResumeOsInterrupts apiRequestSpinlock apiReleaseSpinlock apiSenderReceiverRead apiSenderReceiverWrite apiSynchronousServerCallPoint apiIocRead apiIocWrite|Instructions|Ticks|OsAPIInstructions|os|Instructions elements are converted to Ticks. <br></br>InstructionsConstant is converted to DiscreteValueConstant. <br></br>InstructionsDeviation is converted to one of the following type _(based on conversion criteria)_: <br></br> DiscreteValueBetaDistribution DiscreteValueBoundaries DiscreteValueGaussDistribution DiscreteValueStatistics DiscreteValueUniformDistribution DiscreteValueWeibullEstimatorsDistribution |
+|preExecutionOverhead postExecutionOverhead| preExecutionOverhead postExecutionOverhead|Instructions|Ticks|OsISRInstructions|os|Instructions elements are converted to Ticks. <br></br>InstructionsConstant is converted to DiscreteValueConstant. <br></br>InstructionsDeviation is converted to one of the following type _(based on conversion criteria)_: <br></br> DiscreteValueBetaDistribution DiscreteValueBoundaries DiscreteValueGaussDistribution DiscreteValueStatistics DiscreteValueUniformDistribution DiscreteValueWeibullEstimatorsDistribution |
+|runtimeDeviation|runtimeDeviation|Deviation&lt;Time&gt;|ITimeDeviation|Measurement|MeasurementModel|As there is a change in the Type of this reference from Deviation&lt;Time&gt; to ITimeDeviation. Content is migrated to the new elements.<br></br> Following elemenets are supported as Type : TimeBetaDistribution TimeBoundaries TimeConstant TimeGaussDistribution TimeHistogram TimeStatistics TimeUniformDistribution TimeWeibullEstimatorsDistribution|
+|cycles|value|Long|Long|LatencyConstant|hw|LatencyConstant is changed to DiscreteValueConstant, reference name changed from cycles to value|
+|cycles|value|Deviation|Deviation&lt;DoubleObject&gt;|LatencyDeviation|hw|LatencyDeviation is changed to DiscreteValueBetaDistribution DiscreteValueBoundaries DiscreteValueGaussDistribution DiscreteValueStatistics DiscreteValueUniformDistribution DiscreteValueWeibullEstimatorsDistribution. In 0.9.3, intermediate cycles element is removed. Content of it is merged as a part of the Distribution |
+
