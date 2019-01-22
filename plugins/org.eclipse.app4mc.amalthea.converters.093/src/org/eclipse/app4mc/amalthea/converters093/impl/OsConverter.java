@@ -153,7 +153,7 @@ public class OsConverter extends AbstractConverter {
 
 				Element defaultElement = new Element("default");
 
-				defaultElement.setAttribute(new Attribute("type", "am:DiscreteConstant", helper.getGenericNS("xsi")));
+				defaultElement.setAttribute(new Attribute("type", "am:DiscreteValueConstant", helper.getGenericNS("xsi")));
 
 				defaultElement.setAttribute("value", value);
 
