@@ -121,7 +121,7 @@ public class AmaltheaBuilder {
 	// ********** Cross reference finder (via name based index search) **********
 
 	public <T extends INamed> T _find(final EObject context, final Class<T> cl, final String name) {
-		final Set<? extends T> resultSet = AmaltheaIndex.<T>getElements(context, name, cl);
+		final Set<? extends T> resultSet = AmaltheaIndex.getElements(context, name, cl);
 		Iterator<? extends T> iterator = resultSet.iterator();
 		if (iterator.hasNext()) {
 			return iterator.next();

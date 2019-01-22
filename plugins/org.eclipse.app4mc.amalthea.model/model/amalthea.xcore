@@ -598,7 +598,9 @@ class TimeUniformDistribution extends BoundedTimeDistribution {}
 	//TODO getAverage
 	op Time getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		return null
+		
+		// dummy
+		return mean
 	}
 }
 
@@ -705,7 +707,9 @@ class DiscreteValueUniformDistribution extends BoundedDiscreteValueDistribution 
 	//TODO getAverage
 	op Double getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		return null
+		
+		// dummy
+		return mean
 	}
 }
 
@@ -812,7 +816,9 @@ class ContinuousValueUniformDistribution extends BoundedContinuousValueDistribut
 	//TODO getAverage
 	op Double getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		return null
+		
+		// dummy
+		return mean
 	}
 }
 

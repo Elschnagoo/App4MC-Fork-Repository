@@ -27,7 +27,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 /**
  * Creates Need entries for Instructions 
  * 
- * @deprecated (0.9.3) use {@link ExecutionTicks} instead.
+ * @deprecated (0.9.3) use {@link org.eclipse.app4mc.amalthea.model.Ticks} instead.
  */
 @Deprecated
 public class InstructionsBuilder {

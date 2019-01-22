@@ -152,7 +152,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
 			return this.getMean();
 		}
-		return null;
+		return this.getMean();
 	}
 
 	/**

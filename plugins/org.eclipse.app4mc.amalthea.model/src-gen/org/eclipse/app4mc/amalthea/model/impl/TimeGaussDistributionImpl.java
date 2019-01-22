@@ -179,7 +179,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
 			return this.getMean();
 		}
-		return null;
+		return this.getMean();
 	}
 
 	/**

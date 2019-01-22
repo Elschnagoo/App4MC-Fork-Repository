@@ -96,8 +96,8 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a new time based on a time
-	 * @param Time
-	 * @return Time
+	 * @param inputTime
+	 * @return new time object
 	 */
 	public static Time createTime(Time inputTime) {
 		Time time = AmaltheaFactory.eINSTANCE.createTime();

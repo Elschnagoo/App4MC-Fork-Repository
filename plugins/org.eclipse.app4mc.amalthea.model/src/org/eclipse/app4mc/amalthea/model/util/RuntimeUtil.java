@@ -75,6 +75,12 @@ public class RuntimeUtil {
 		READ, WRITE
 	}
 
+	/**
+	 * @param process
+	 * @param modes
+	 * @param executionCase
+	 * @return
+	 */
 	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		result.setUnit(TimeUnit.MS);
@@ -88,11 +94,18 @@ public class RuntimeUtil {
 			}
 		}
 		else {
-			System.out.println("Mapping unclear. Process mapped to "+processingUnits.size()+" Cores - Use PU specific method");
+			System.out.println("Mapping unclear. Process mapped to " + processingUnits.size() + " Cores - Use PU specific method");
 		}
 		return result;
 	}
 
+	/**
+	 * @param process
+	 * @param processingUnit
+	 * @param modes
+	 * @param executionCase
+	 * @return
+	 */
 	public Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		result.setUnit(TimeUnit.MS);
@@ -104,6 +117,13 @@ public class RuntimeUtil {
 		return result;
 	}
 
+	/**
+	 * @param runnable
+	 * @param processingUnit
+	 * @param modes
+	 * @param executionCase
+	 * @return
+	 */
 	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 
@@ -121,19 +141,36 @@ public class RuntimeUtil {
 		return result;			
 	}
 
-	//Simon 11.01.2019: Idea/Discussion: Why ist TimeType needed here? If an extended tick is given, probably also a ITimeDeviation shall be returned? (I guess, this heavily depends on the use case) --> Second step would now then be ITimeDeviation + TimeType -> Time
-	public static Time getExecutionTimeForTicks(Ticks tick, ProcessingUnit processingUnit, TimeType executionCase) {
+	// Simon 11.01.2019:
+	// Idea/Discussion: Why is TimeType needed here?
+	// If an extended tick is given, probably also a ITimeDeviation shall be returned?
+	// (I guess, this heavily depends on the use case)
+	// --> Second step would now then be ITimeDeviation + TimeType -> Time
+	//
+	/**
+	 * @param ticks
+	 * @param processingUnit
+	 * @param executionCase
+	 * @return
+	 */
+	public static Time getExecutionTimeForTicks(Ticks ticks, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
-		if (tick.getExtended().get(processingUnit.getDefinition()) != null) {
-			IDiscreteValueDeviation deviation = tick.getExtended().get(processingUnit.getDefinition());
+		if (ticks.getExtended().get(processingUnit.getDefinition()) != null) {
+			IDiscreteValueDeviation deviation = ticks.getExtended().get(processingUnit.getDefinition());
 			result = getExecutionTimeForTicksDeviation(deviation, processingUnit, executionCase);
 		}
 		else {
-			result = getExecutionTimeForTicksDeviation(tick.getDefault(), processingUnit, executionCase);
+			result = getExecutionTimeForTicksDeviation(ticks.getDefault(), processingUnit, executionCase);
 		}
 		return result;
 	}
 
+	/**
+	 * @param deviation
+	 * @param processingUnit
+	 * @param executionCase
+	 * @return
+	 */
 	public static Time getExecutionTimeForTicksDeviation(IDiscreteValueDeviation deviation, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
 		switch (executionCase) {
@@ -148,6 +185,12 @@ public class RuntimeUtil {
 		return result;
 	}
 
+	/**
+	 * @param executionNeeds
+	 * @param processingUnit
+	 * @param executionCase
+	 * @return
+	 */
 	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed executionNeeds, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		HWModel hwModel = (HWModel) processingUnit.getDefinition().eContainer();
@@ -164,6 +207,13 @@ public class RuntimeUtil {
 		return result;
 	}
 
+	/**
+	 * @param deviation
+	 * @param hwFeatureCategory
+	 * @param processingUnit
+	 * @param executionCase
+	 * @return
+	 */
 	public static Time getExecutionTimeForExecutionNeedEntry(IDiscreteValueDeviation deviation, HwFeatureCategory hwFeatureCategory, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
 		switch (executionCase) {
@@ -185,6 +235,11 @@ public class RuntimeUtil {
 		return result;
 	}
 
+	/**
+	 * @param ticks
+	 * @param puFrequency
+	 * @return
+	 */
 	public static Time getExecutionTimeForCycles (double ticks, Frequency puFrequency) {
 		double cyclesPerSecond = AmaltheaServices.convertToHertz(puFrequency).doubleValue();
 		double factor = 1.0d / cyclesPerSecond;
@@ -202,18 +257,19 @@ public class RuntimeUtil {
 	 * set the runtime of the given runnable to the given runnable ExecutionNeed
 	 * 
 	 * @param runnable
-	 * @param ExecutionNeeds
+	 * @param need
 	 */
-	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed ExecutionNeeds, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed need, EMap<ModeLabel, ModeLiteral> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
-		addRuntimeToRunnable(runnable, ExecutionNeeds);
+		addRuntimeToRunnable(runnable, need);
 	}
 	
 	/**
-	 * set the runtime of the given runnable to the given runnable ExecutionNeed
+	 * Sets the runtime of the given runnable to the given runnable ExecutionNeed
 	 * 
 	 * @param runnable
-	 * @param ExecutionNeeds
+	 * @param ticks
+	 * @param modes
 	 */
 	public static void setRuntimeOfRunnable(Runnable runnable, Ticks ticks, EMap<ModeLabel, ModeLiteral> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
@@ -226,13 +282,17 @@ public class RuntimeUtil {
 	 * without consideration of modes //TODO: Mode-based API
 	 * 
 	 * @param runnable
-	 * @param executionNeeds
+	 * @param need
 	 */
-	public static void addRuntimeToRunnable(Runnable runnable, ExecutionNeed executionNeeds) {
-		runnable.getRunnableItems().add(executionNeeds);
+	public static void addRuntimeToRunnable(Runnable runnable, ExecutionNeed need) {
+		runnable.getRunnableItems().add(need);
 	}
 	
 	
+	/**
+	 * @param runnable
+	 * @param ticks
+	 */
 	public static void addRuntimeToRunnable(Runnable runnable, Ticks ticks) {
 		runnable.getRunnableItems().add(ticks);
 	}
@@ -244,6 +304,7 @@ public class RuntimeUtil {
 	 * for the given procUnitDef is removed
 	 * 
 	 * @param model
+	 * @param modes
 	 */
 	public static void clearRuntimeOfModel(Amalthea model, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Process> processes = new ArrayList<Process>();
@@ -262,6 +323,7 @@ public class RuntimeUtil {
 	 * for the given procUnitDef is removed
 	 * 
 	 * @param process
+	 * @param modes
 	 */
 	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -274,6 +336,7 @@ public class RuntimeUtil {
 	 * Clears all runtime information
 	 * 
 	 * @param runnable
+	 * @param modes
 	 */
 	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(runnable, modes);
@@ -288,12 +351,15 @@ public class RuntimeUtil {
 	 * beginning / end of the given process
 	 * 
 	 * @param process
-	 * @param executionNeeds
+	 * @param need
+	 * @param runnableName
+	 * @param positon
+	 * @return
 	 */
-	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed executionNeeds, String runnableName, PositionType positon) {
+	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed need, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
 		run.setName(runnableName);
-		run.getRunnableItems().add(executionNeeds);
+		run.getRunnableItems().add(need);
 
 		TaskRunnableCall tCall = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
 		tCall.setRunnable(run);
@@ -316,7 +382,10 @@ public class RuntimeUtil {
 	 * beginning / end of the given process
 	 * 
 	 * @param process
-	 * @param executionNeeds
+	 * @param ticks
+	 * @param runnableName
+	 * @param positon
+	 * @return
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, Ticks ticks, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
@@ -351,6 +420,7 @@ public class RuntimeUtil {
 	 * @param procUnit
 	 * @param model
 	 * @param tt
+	 * @param hwFeatures
 	 * @param modes
 	 *            (optional) - null works
 	 * @return utilization of that procUnit
@@ -430,8 +500,6 @@ public class RuntimeUtil {
 	 * 
 	 * @param process
 	 * @param period
-	 * @param procUnit
-	 * @param model
 	 * @param tt
 	 * @param modes
 	 * @return utilization
@@ -472,7 +540,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * gets all Period ranges from the model
+	 * Gets all Period ranges from the model
 	 * 
 	 * @param model
 	 * @param tt
@@ -863,18 +931,6 @@ public class RuntimeUtil {
 			}
 		}
 		return map;
-	}
-
-	public static boolean periodicStimulusFilter(Stimulus stimulus) {
-		return (stimulus instanceof PeriodicStimulus);
-	}
-
-	public static boolean sporadicStimulusFilter(Stimulus stimulus) {
-		return (stimulus instanceof RelativePeriodicStimulus);
-	}
-
-	public static boolean customStimulusFilter(Stimulus stimulus) {
-		return (stimulus instanceof CustomStimulus);
 	}
 
 }
