@@ -120,9 +120,15 @@ The Beta distribution is a statistical distribution whose shape is defined by al
 
 h4. Weibull Distribution
 
-The Weibull distribution is a statistical distribution whose shape is defined by kappa > 0 and the scale of the distribution by lambda > 0. That way, the Weibull distribution can also be used to model other distributions like for example the exponential or normal distribution. Since the curves can approach zero or infinity on either side, an additional upper and lower bound can be added to constraint the values. Alternatively, the Weibull distribution can also be parameterized using the mean value and a parameter that constraints the distribution regarding the per mill of remaining values.
+The Weibull distribution is a statistical distribution whose shape is mathematically defined by kappa > 0 and the scale of the distribution by lambda > 0. In the model, it is parameterized using the mean value, the lower and upper bound, and the probability that a real-valued random variable of that distribution will not take a value less than or equal to a specific value. To calculate the scale and shape parameter for the Weibull distribution from the model parameters, the equation of the mean (see "Weibull distribution - Wikipedia":https://en.wikipedia.org/wiki/Weibull_distribution) is solved for the scale parameter, first. Then, the resulting equation for lambda is plugged into the equation of the cumulative distribution function (CDF) for the Weibull distribution. Finally, the lower and upper bound allow to shift this function and the remaining unknown shape parameter in the equation is numerically approximated until the value of the parameter that constraints the distribution regarding the per mill of remaining values is reached.
 
 !../pictures/model_common_deviation_weibull.png!
+
+h4. Time Histogram
+
+A time histogram allows for a deviation directly extracted from a trace. It represents a discrete distribution containing a limited number of entries (e.g. extracted from a trace). Each entry thereby is a __TimeInterval__ with the extra attribute __occurrences__ which holds the number instances whose time is within the interval. The intervals do not have to cover a continuous range nor do they need to have the same interval size. Time histograms are useful if there is a limited number of possibilities of valuations, which covers most practical systems. See the following figure for an example of two runnables having a time histogram deviation of their execution times.
+
+!../pictures/model_common_deviation_time_histogram.png!
 
 
 h3. Statistic Elements
