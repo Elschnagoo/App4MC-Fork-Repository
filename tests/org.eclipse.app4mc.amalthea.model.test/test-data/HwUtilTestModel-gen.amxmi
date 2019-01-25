@@ -18,7 +18,7 @@
       <accessLatency xsi:type="am:DiscreteValueConstant" value="2"/>
     </definitions>
     <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test1_def" maxBurstSize="1" maxConcurrentTransfers="1">
-      <readLatency xsi:type="am:DiscreteValueConstant" value="5"/>
+      <readLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="2" upperBound="8" mean="5.0" sd="3.0"/>
       <dataRate value="800" unit="MiBPerSecond"/>
     </definitions>
     <definitions xsi:type="am:ConnectionHandlerDefinition" name="ch_test2_def" maxBurstSize="1" maxConcurrentTransfers="1">

@@ -195,16 +195,16 @@ public class HardwareUtilsTest {
 				TimeType.WCET, AccessDirection.WRITE);
 		assertEquals("Write latency WCET for PU_1_Lev2_2 equals 16", 16, latencyWriteWCET.getValue().intValue());
 		assertEquals("time unit is", "ns", latencyWriteWCET.getUnit().toString());
-// FIXME
+
 		Time latencyReadACET = HardwareUtil.calculateLatencyPathTime(processingUnits.get(3).getAccessElements().get(1), TimeType.ACET, AccessDirection.READ);
-//		assertEquals("Read latency ACET for PU_1_Lev2_2 equals 56",56,latencyReadACET.getValue().intValue());
-//		assertEquals("time unit is", "ns",latencyReadACET.getUnit().toString());
+		assertEquals("Read latency ACET for PU_1_Lev2_2 equals 56",56,latencyReadACET.getValue().intValue());
+		assertEquals("time unit is", "ns",latencyReadACET.getUnit().toString());
 		Time latencyReadBCET = HardwareUtil.calculateLatencyPathTime(processingUnits.get(3).getAccessElements().get(1), TimeType.BCET, AccessDirection.READ);
-//		assertEquals("Read latency BCET for PU_1_Lev2_2 equals 48",48,latencyReadBCET.getValue().intValue());
-//		assertEquals("time unit is", "ns",latencyReadBCET.getUnit().toString());
+		assertEquals("Read latency BCET for PU_1_Lev2_2 equals 48",48,latencyReadBCET.getValue().intValue());
+		assertEquals("time unit is", "ns",latencyReadBCET.getUnit().toString());
 		Time latencyReadWCET = HardwareUtil.calculateLatencyPathTime(processingUnits.get(3).getAccessElements().get(1), TimeType.WCET, AccessDirection.READ);
-//		assertEquals("Read latency WCET for PU_1_Lev2_2 equals 64",64,latencyReadWCET.getValue().intValue());
-//		assertEquals("time unit is", "ns",latencyReadWCET.getUnit().toString());
+		assertEquals("Read latency WCET for PU_1_Lev2_2 equals 64",64,latencyReadWCET.getValue().intValue());
+		assertEquals("time unit is", "ns",latencyReadWCET.getUnit().toString());
 	}
 
 	@Test
@@ -283,8 +283,8 @@ public class HardwareUtilsTest {
 		assertEquals("Time to memory destination Mem1_lev3 is 40 ns", 40, readLatencyMapACET.get(processingUnits.get(3))
 				.get(processingUnits.get(3).getAccessElements().get(0).getDestination()).getValue().intValue());
 		// Pu1_Lev2_2 -->Mem1_top1 (Distribution)
-// FIXME
-//		assertEquals("Time to memory destination Mem1_top1 is 56 ns ",56, readLatencyMapACET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
+
+		assertEquals("Time to memory destination Mem1_top1 is 56 ns ",56, readLatencyMapACET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
 		// Pu1_Lev2_2 -->Mem1_top2
 		assertEquals("Time to memory destination Mem1_top2 is 12 ns", 12, readLatencyMapACET.get(processingUnits.get(3))
 				.get(processingUnits.get(3).getAccessElements().get(2).getDestination()).getValue().intValue());
@@ -349,20 +349,20 @@ public class HardwareUtilsTest {
 		Map<ProcessingUnit, HashMap<HwDestination, Time>> readLatencyMapBCET = HardwareUtil
 				.getAccessTimes(amaltheaModel, TimeType.BCET, AccessDirection.READ);
 		// Pu1_Lev2_2 -->Mem1_top1 (Distribution)
-// FIXME
-//		assertEquals("Time to memory destination Mem1_top1 is 48 ns ",48, readLatencyMapBCET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
+
+		assertEquals("Time to memory destination Mem1_top1 is 48 ns ",48, readLatencyMapBCET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
 		// test -->Mem1_top2 (Distribution)
-// FIXME
-//		assertEquals("Time to memory destination Mem1_top2 is 60 ns ",60, readLatencyMapBCET.get(processingUnits.get(4)).get(processingUnits.get(4).getAccessElements().get(0).getDestination()).getValue().intValue());
+
+		assertEquals("Time to memory destination Mem1_top2 is 60 ns ",60, readLatencyMapBCET.get(processingUnits.get(4)).get(processingUnits.get(4).getAccessElements().get(0).getDestination()).getValue().intValue());
 
 		Map<ProcessingUnit, HashMap<HwDestination, Time>> readLatencyMapWCET = HardwareUtil
 				.getAccessTimes(amaltheaModel, TimeType.WCET, AccessDirection.READ);
 		// Pu1_Lev2_2 -->Mem1_top1 (Distribution)
-// FIXME
-//		assertEquals("Time to memory destination Mem1_top1 is 64 ns ",64, readLatencyMapWCET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
+
+		assertEquals("Time to memory destination Mem1_top1 is 64 ns ",64, readLatencyMapWCET.get(processingUnits.get(3)).get(processingUnits.get(3).getAccessElements().get(1).getDestination()).getValue().intValue());
 		// test -->Mem1_top2 (Distribution)
-// FIXME
-//		assertEquals("Time to memory destination Mem1_top2 is 140 ns ",140, readLatencyMapWCET.get(processingUnits.get(4)).get(processingUnits.get(4).getAccessElements().get(0).getDestination()).getValue().intValue());
+
+		assertEquals("Time to memory destination Mem1_top2 is 140 ns ",140, readLatencyMapWCET.get(processingUnits.get(4)).get(processingUnits.get(4).getAccessElements().get(0).getDestination()).getValue().intValue());
 
 	}
 

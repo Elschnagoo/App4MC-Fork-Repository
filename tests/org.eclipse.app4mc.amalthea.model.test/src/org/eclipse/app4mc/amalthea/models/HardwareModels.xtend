@@ -107,7 +107,7 @@ class HardwareModels {
 				
 				definition_ConnectionHandler [
 					name = "ch_test1_def"
-					readLatency = createLatency(5)
+					readLatency = createDiscreteValueGaussDistribution(5, 3, 2L, 8L)
 					dataRate = createDataRate(800, DataRateUnit::MI_BPER_SECOND)
 				]
 				

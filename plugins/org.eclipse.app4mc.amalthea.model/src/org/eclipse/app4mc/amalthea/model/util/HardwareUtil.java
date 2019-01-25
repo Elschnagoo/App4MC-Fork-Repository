@@ -22,11 +22,9 @@ import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.BoundedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.ConnectionHandler;
 import org.eclipse.app4mc.amalthea.model.DataRate;
-import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.HwAccessElement;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
@@ -226,22 +224,19 @@ public class HardwareUtil {
 
 	public static Long calculateLatency(IDiscreteValueDeviation latency, TimeType timeType) {
 		Long result = 0L;
-		if (latency instanceof DiscreteValueConstant) {
-			result = (((DiscreteValueConstant) latency).getValue());
-		} else if (latency instanceof BoundedDiscreteValueDistribution) {//FIXME
-			BoundedDiscreteValueDistribution deviation = ((BoundedDiscreteValueDistribution) latency);
-				result = deviation.getAverage().longValue();
+		if(latency != null) {
 				switch (timeType) {
 				case ACET:
-					result = deviation.getAverage().longValue();;
+					result = latency.getAverage().longValue();        
 					break;
 				case BCET:
-					result = (deviation.getLowerBound());
+					result = latency.getLowerBound();
 					break;
 				case WCET:
-					result = (deviation.getUpperBound());
+					result = latency.getUpperBound();
 					break;
 				default:
+					result = latency.getAverage().longValue();
 					break;
 				}			
 		}

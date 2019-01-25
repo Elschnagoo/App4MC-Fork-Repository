@@ -124,7 +124,7 @@ public class HardwareModels {
         this.b2.definition_Cache(it_1, _function_8);
         final Procedure1<ConnectionHandlerDefinition> _function_9 = (ConnectionHandlerDefinition it_2) -> {
           it_2.setName("ch_test1_def");
-          it_2.setReadLatency(FactoryUtil.createLatency(5));
+          it_2.setReadLatency(FactoryUtil.createDiscreteValueGaussDistribution(5, 3, Long.valueOf(2L), Long.valueOf(8L)));
           it_2.setDataRate(FactoryUtil.createDataRate(800, DataRateUnit.MI_BPER_SECOND));
         };
         this.b2.definition_ConnectionHandler(it_1, _function_9);
