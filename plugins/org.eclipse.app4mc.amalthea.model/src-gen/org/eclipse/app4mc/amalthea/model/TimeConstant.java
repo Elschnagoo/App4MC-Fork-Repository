@@ -72,7 +72,7 @@ public interface TimeConstant extends ITimeDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getAverage();
+	Time getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,6 +80,6 @@ public interface TimeConstant extends ITimeDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getUpperBound();
+	Time getAverage();
 
 } // TimeConstant

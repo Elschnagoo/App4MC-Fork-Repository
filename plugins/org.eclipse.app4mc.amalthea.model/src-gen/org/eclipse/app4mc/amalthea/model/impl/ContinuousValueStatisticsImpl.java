@@ -45,7 +45,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double AVERAGE_EDEFAULT = new Double(0.0);
+	protected static final double AVERAGE_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getAverage() <em>Average</em>}' attribute.
@@ -55,7 +55,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * @generated
 	 * @ordered
 	 */
-	protected Double average = AVERAGE_EDEFAULT;
+	protected double average = AVERAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		return average;
 	}
 
@@ -90,8 +90,8 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAverage(Double newAverage) {
-		Double oldAverage = average;
+	public void setAverage(double newAverage) {
+		double oldAverage = average;
 		average = newAverage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_VALUE_STATISTICS__AVERAGE, oldAverage, average));
@@ -150,7 +150,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.CONTINUOUS_VALUE_STATISTICS__AVERAGE:
-				return AVERAGE_EDEFAULT == null ? average != null : !AVERAGE_EDEFAULT.equals(average);
+				return average != AVERAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

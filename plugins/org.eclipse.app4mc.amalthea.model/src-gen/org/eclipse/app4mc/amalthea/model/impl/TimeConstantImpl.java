@@ -132,7 +132,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Time getAverage() {
+	public Time getUpperBound() {
 		return this.getValue();
 	}
 
@@ -141,7 +141,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Time getUpperBound() {
+	public Time getAverage() {
 		return this.getValue();
 	}
 
@@ -227,10 +227,10 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 		switch (operationID) {
 			case AmaltheaPackage.TIME_CONSTANT___GET_LOWER_BOUND:
 				return getLowerBound();
-			case AmaltheaPackage.TIME_CONSTANT___GET_AVERAGE:
-				return getAverage();
 			case AmaltheaPackage.TIME_CONSTANT___GET_UPPER_BOUND:
 				return getUpperBound();
+			case AmaltheaPackage.TIME_CONSTANT___GET_AVERAGE:
+				return getAverage();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

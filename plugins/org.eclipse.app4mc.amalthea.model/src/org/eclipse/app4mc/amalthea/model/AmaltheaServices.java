@@ -23,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BinaryOperator;
 
+import org.apache.commons.math3.distribution.NormalDistribution;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -351,6 +352,82 @@ public class AmaltheaServices {
 		time.setValue(value);
 		time.setUnit(unit);
 		return time;
+	}
+
+	/**
+	 * Computes the average (mean) of the truncated normal distribution
+	 * 
+	 * <p>See {@link https://en.wikipedia.org/wiki/Truncated_normal_distribution}</p>
+	 * 
+	 * @param a - lower bound (null = not truncated from below)
+	 * @param b - upper bound (null = not truncated from above)
+	 * @param mean - mean or expectation of the (unlimited) distribution
+	 * @param sd - standard deviation
+	 * @return average of the truncated distribution
+	 */
+	public static Time getAverageOfTruncatedNormalDistribution(Time a, Time b, Time mean, Time sd) {
+		if (mean == null || sd == null) return null;
+		
+		Double alpha = null;
+		Double beta = null;
+		if (a != null) { // truncated from below
+			alpha = a.subtract(mean).divide(sd);
+		}
+		if (b != null) { // truncated from above
+			beta = b.subtract(mean).divide(sd);
+		}
+	
+		double factor = computeTruncatedNormalDistFactor(alpha, beta);
+		
+		return mean.add(sd.multiply(factor));
+	}
+	
+	/**
+	 * Computes the average (mean) of the truncated normal distribution
+	 * 
+	 * <p>See {@link https://en.wikipedia.org/wiki/Truncated_normal_distribution}</p>
+	 * 
+	 * @param a - lower bound (null = not truncated from below)
+	 * @param b - upper bound (null = not truncated from above)
+	 * @param mean - mean or expectation of the (unlimited) distribution
+	 * @param sd - standard deviation
+	 * @return average of the truncated distribution
+	 */
+	public static double getAverageOfTruncatedNormalDistribution(Number a, Number b, double mean, double sd) {
+		Double alpha = null;
+		Double beta = null;
+		if (a != null) { // truncated from below
+			alpha = (a.doubleValue() - mean) / sd;
+		}
+		if (b != null) { // truncated from above
+			beta = (b.doubleValue() - mean) / sd;
+		}
+		
+		double factor = computeTruncatedNormalDistFactor(alpha, beta);
+		
+		return mean + factor * sd;
+	}
+	
+	private static double computeTruncatedNormalDistFactor(Double alpha, Double beta) {
+		// Standard normal distribution (mean = 0, sd = 1)
+		NormalDistribution normDist = new NormalDistribution(null, 0, 1);
+
+		// values are initialized for a range from negative infinity to infinity (no truncation)
+		double pdf_alpha = 0.0;
+		double cdf_alpha = 0.0;
+		double pdf_beta = 0.0;
+		double cdf_beta = 1.0;
+		
+		if (alpha != null) { // truncated from below
+			pdf_alpha = normDist.density(alpha);
+			cdf_alpha = normDist.cumulativeProbability(alpha);			
+		}
+		if (beta != null) { // truncated from above
+			pdf_beta = normDist.density(beta);
+			cdf_beta = normDist.cumulativeProbability(beta);
+		}
+		
+		return (pdf_alpha - pdf_beta) / (cdf_beta - cdf_alpha);
 	}
 
 	/**

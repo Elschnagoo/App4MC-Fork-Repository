@@ -42,12 +42,12 @@ public interface ContinuousValueConstant extends IContinuousValueDeviation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(Double)
+	 * @see #setValue(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousValueConstant_Value()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	Double getValue();
+	double getValue();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getValue <em>Value</em>}' attribute.
@@ -57,7 +57,7 @@ public interface ContinuousValueConstant extends IContinuousValueDeviation {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(Double value);
+	void setValue(double value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public interface ContinuousValueConstant extends IContinuousValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	Double getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,6 +81,6 @@ public interface ContinuousValueConstant extends IContinuousValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getUpperBound();
+	double getAverage();
 
 } // ContinuousValueConstant

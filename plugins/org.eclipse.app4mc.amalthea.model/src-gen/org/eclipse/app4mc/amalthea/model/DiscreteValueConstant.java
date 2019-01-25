@@ -42,12 +42,12 @@ public interface DiscreteValueConstant extends IDiscreteValueDeviation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(Long)
+	 * @see #setValue(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteValueConstant_Value()
 	 * @model default="0" unique="false" required="true"
 	 * @generated
 	 */
-	Long getValue();
+	long getValue();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getValue <em>Value</em>}' attribute.
@@ -57,7 +57,7 @@ public interface DiscreteValueConstant extends IDiscreteValueDeviation {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(Long value);
+	void setValue(long value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public interface DiscreteValueConstant extends IDiscreteValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	Long getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,6 +81,6 @@ public interface DiscreteValueConstant extends IDiscreteValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Long getUpperBound();
+	double getAverage();
 
 } // DiscreteValueConstant

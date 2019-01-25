@@ -223,24 +223,18 @@ public class HardwareUtil {
 	}
 
 	public static Long calculateLatency(IDiscreteValueDeviation latency, TimeType timeType) {
-		Long result = 0L;
-		if(latency != null) {
-				switch (timeType) {
-				case ACET:
-					result = latency.getAverage().longValue();        
-					break;
-				case BCET:
-					result = latency.getLowerBound();
-					break;
-				case WCET:
-					result = latency.getUpperBound();
-					break;
-				default:
-					result = latency.getAverage().longValue();
-					break;
-				}			
+		if (latency == null) return 0L;
+
+		switch (timeType) {
+		case BCET:
+			return latency.getLowerBound();
+		case ACET:
+			return (long) latency.getAverage();
+		case WCET:
+			return latency.getUpperBound();
 		}
-		return result;
+		
+		return (long) latency.getAverage();
 	}
 
 	/**

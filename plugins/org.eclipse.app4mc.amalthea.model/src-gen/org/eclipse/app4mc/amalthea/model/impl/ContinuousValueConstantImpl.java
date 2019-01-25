@@ -51,7 +51,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double VALUE_EDEFAULT = new Double(0.0);
+	protected static final double VALUE_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -61,7 +61,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * @generated
 	 * @ordered
 	 */
-	protected Double value = VALUE_EDEFAULT;
+	protected double value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,7 +87,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getValue() {
+	public double getValue() {
 		return value;
 	}
 
@@ -96,8 +96,8 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(Double newValue) {
-		Double oldValue = value;
+	public void setValue(double newValue) {
+		double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT__VALUE, oldValue, value));
@@ -109,16 +109,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * @generated
 	 */
 	public Double getLowerBound() {
-		return this.getValue();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Double getAverage() {
-		return this.getValue();
+		return Double.valueOf(this.getValue());
 	}
 
 	/**
@@ -127,6 +118,15 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * @generated
 	 */
 	public Double getUpperBound() {
+		return Double.valueOf(this.getValue());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getAverage() {
 		return this.getValue();
 	}
 
@@ -183,7 +183,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -198,10 +198,10 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 		switch (operationID) {
 			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT___GET_LOWER_BOUND:
 				return getLowerBound();
-			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE:
-				return getAverage();
 			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT___GET_UPPER_BOUND:
 				return getUpperBound();
+			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE:
+				return getAverage();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

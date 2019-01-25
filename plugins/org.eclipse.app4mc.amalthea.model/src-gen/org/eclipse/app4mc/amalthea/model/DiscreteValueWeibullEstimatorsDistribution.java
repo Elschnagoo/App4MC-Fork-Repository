@@ -48,12 +48,12 @@ public interface DiscreteValueWeibullEstimatorsDistribution extends BoundedDiscr
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' attribute.
-	 * @see #setAverage(Double)
+	 * @see #setAverage(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteValueWeibullEstimatorsDistribution_Average()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution#getAverage <em>Average</em>}' attribute.
@@ -63,7 +63,7 @@ public interface DiscreteValueWeibullEstimatorsDistribution extends BoundedDiscr
 	 * @see #getAverage()
 	 * @generated
 	 */
-	void setAverage(Double value);
+	void setAverage(double value);
 
 	/**
 	 * Returns the value of the '<em><b>PRemain Promille</b></em>' attribute.

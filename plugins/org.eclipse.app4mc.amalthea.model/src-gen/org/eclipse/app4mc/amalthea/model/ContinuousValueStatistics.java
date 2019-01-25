@@ -46,12 +46,12 @@ public interface ContinuousValueStatistics extends BoundedContinuousValueDistrib
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' attribute.
-	 * @see #setAverage(Double)
+	 * @see #setAverage(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousValueStatistics_Average()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics#getAverage <em>Average</em>}' attribute.
@@ -61,6 +61,6 @@ public interface ContinuousValueStatistics extends BoundedContinuousValueDistrib
 	 * @see #getAverage()
 	 * @generated
 	 */
-	void setAverage(Double value);
+	void setAverage(double value);
 
 } // ContinuousValueStatistics

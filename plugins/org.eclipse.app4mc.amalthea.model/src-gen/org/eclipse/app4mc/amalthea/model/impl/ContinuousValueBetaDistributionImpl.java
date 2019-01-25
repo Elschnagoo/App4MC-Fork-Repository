@@ -152,7 +152,7 @@ public class ContinuousValueBetaDistributionImpl extends BoundedContinuousValueD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		double _xblockexpression = (double) 0;
 		{
 			double _beta = this.getBeta();
@@ -167,7 +167,7 @@ public class ContinuousValueBetaDistributionImpl extends BoundedContinuousValueD
 			double _multiply = (_minus * ratio);
 			_xblockexpression = ((_lowerBound).doubleValue() + _multiply);
 		}
-		return Double.valueOf(_xblockexpression);
+		return _xblockexpression;
 	}
 
 	/**

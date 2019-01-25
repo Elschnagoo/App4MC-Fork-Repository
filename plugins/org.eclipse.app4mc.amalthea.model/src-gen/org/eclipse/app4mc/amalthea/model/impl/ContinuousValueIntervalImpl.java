@@ -152,13 +152,13 @@ public abstract class ContinuousValueIntervalImpl extends AmaltheaExtendedEObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		Double _lowerBound = this.getLowerBound();
 		Double _upperBound = this.getUpperBound();
 		Double _lowerBound_1 = this.getLowerBound();
 		double _minus = DoubleExtensions.operator_minus(_upperBound, _lowerBound_1);
 		double _divide = (_minus / 2.0);
-		return Double.valueOf(((_lowerBound).doubleValue() + _divide));
+		return ((_lowerBound).doubleValue() + _divide);
 	}
 
 	/**

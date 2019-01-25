@@ -5225,7 +5225,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 * @see #validatePositiveInt_Min
 	 */
-	public static final int POSITIVE_INT__MIN__VALUE = 1;
+	public static final int POSITIVE_INT__MIN__VALUE = 0;
 
 	/**
 	 * Validates the Min constraint of '<em>Positive Int</em>'.
@@ -5234,9 +5234,9 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePositiveInt_Min(int positiveInt, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = positiveInt >= POSITIVE_INT__MIN__VALUE;
+		boolean result = positiveInt > POSITIVE_INT__MIN__VALUE;
 		if (!result && diagnostics != null)
-			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveInt(), positiveInt, POSITIVE_INT__MIN__VALUE, true, diagnostics, context);
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveInt(), positiveInt, POSITIVE_INT__MIN__VALUE, false, diagnostics, context);
 		return result;
 	}
 
@@ -5256,7 +5256,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 * @see #validatePositiveLong_Min
 	 */
-	public static final long POSITIVE_LONG__MIN__VALUE = 1L;
+	public static final long POSITIVE_LONG__MIN__VALUE = 0L;
 
 	/**
 	 * Validates the Min constraint of '<em>Positive Long</em>'.
@@ -5265,9 +5265,9 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePositiveLong_Min(long positiveLong, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = positiveLong >= POSITIVE_LONG__MIN__VALUE;
+		boolean result = positiveLong > POSITIVE_LONG__MIN__VALUE;
 		if (!result && diagnostics != null)
-			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveLong(), positiveLong, POSITIVE_LONG__MIN__VALUE, true, diagnostics, context);
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveLong(), positiveLong, POSITIVE_LONG__MIN__VALUE, false, diagnostics, context);
 		return result;
 	}
 

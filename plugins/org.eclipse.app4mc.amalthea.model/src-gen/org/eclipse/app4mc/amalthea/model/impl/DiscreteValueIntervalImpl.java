@@ -150,13 +150,13 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		Long _lowerBound = this.getLowerBound();
 		Long _upperBound = this.getUpperBound();
 		Long _lowerBound_1 = this.getLowerBound();
 		long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
 		double _divide = (_minus / 2.0);
-		return Double.valueOf(((_lowerBound).longValue() + _divide));
+		return ((_lowerBound).longValue() + _divide);
 	}
 
 	/**

@@ -41,7 +41,7 @@ public interface IContinuousValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	Double getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,6 +49,6 @@ public interface IContinuousValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getUpperBound();
+	double getAverage();
 
 } // IContinuousValueDeviation

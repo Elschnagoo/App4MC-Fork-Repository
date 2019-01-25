@@ -46,12 +46,12 @@ public interface DiscreteValueStatistics extends BoundedDiscreteValueDistributio
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' attribute.
-	 * @see #setAverage(Double)
+	 * @see #setAverage(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteValueStatistics_Average()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics#getAverage <em>Average</em>}' attribute.
@@ -61,6 +61,6 @@ public interface DiscreteValueStatistics extends BoundedDiscreteValueDistributio
 	 * @see #getAverage()
 	 * @generated
 	 */
-	void setAverage(Double value);
+	void setAverage(double value);
 
 } // DiscreteValueStatistics

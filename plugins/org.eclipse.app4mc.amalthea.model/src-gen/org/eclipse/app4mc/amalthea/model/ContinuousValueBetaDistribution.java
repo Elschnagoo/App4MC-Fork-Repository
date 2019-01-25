@@ -97,6 +97,6 @@ public interface ContinuousValueBetaDistribution extends BoundedContinuousValueD
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 } // ContinuousValueBetaDistribution

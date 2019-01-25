@@ -41,7 +41,7 @@ public interface IDiscreteValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	Long getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,6 +49,6 @@ public interface IDiscreteValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Long getUpperBound();
+	double getAverage();
 
 } // IDiscreteValueDeviation

@@ -131,14 +131,14 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		double _xblockexpression = (double) 0;
 		{
 			final Function1<DiscreteValueHistogramEntry, Double> _function = new Function1<DiscreteValueHistogramEntry, Double>() {
 				public Double apply(final DiscreteValueHistogramEntry it) {
-					Double _average = it.getAverage();
+					double _average = it.getAverage();
 					long _occurrences = it.getOccurrences();
-					return Double.valueOf(((_average).doubleValue() * _occurrences));
+					return Double.valueOf((_average * _occurrences));
 				}
 			};
 			final Function2<Double, Double, Double> _function_1 = new Function2<Double, Double, Double>() {
@@ -160,7 +160,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 			final Long count = IterableExtensions.<Long>reduce(XcoreEListExtensions.<DiscreteValueHistogramEntry, Long>map(this.getEntries(), _function_2), _function_3);
 			_xblockexpression = DoubleExtensions.operator_divide(sum, count);
 		}
-		return Double.valueOf(_xblockexpression);
+		return _xblockexpression;
 	}
 
 	/**

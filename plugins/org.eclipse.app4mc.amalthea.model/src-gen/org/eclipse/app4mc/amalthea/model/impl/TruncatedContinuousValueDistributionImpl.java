@@ -150,7 +150,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

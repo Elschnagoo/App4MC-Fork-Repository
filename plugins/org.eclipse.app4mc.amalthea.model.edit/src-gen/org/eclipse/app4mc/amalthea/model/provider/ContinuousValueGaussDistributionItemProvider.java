@@ -80,7 +80,7 @@ public class ContinuousValueGaussDistributionItemProvider extends TruncatedConti
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}

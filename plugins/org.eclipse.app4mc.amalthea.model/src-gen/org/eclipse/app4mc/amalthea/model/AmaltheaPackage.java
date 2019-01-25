@@ -2211,22 +2211,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ITIME_DEVIATION___GET_LOWER_BOUND = 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ITIME_DEVIATION___GET_AVERAGE = 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITIME_DEVIATION___GET_UPPER_BOUND = 2;
+	int ITIME_DEVIATION___GET_UPPER_BOUND = 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITIME_DEVIATION___GET_AVERAGE = 2;
 
 	/**
 	 * The number of operations of the '<em>ITime Deviation</em>' class.
@@ -2330,22 +2330,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_CONSTANT___GET_LOWER_BOUND = ITIME_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_CONSTANT___GET_AVERAGE = ITIME_DEVIATION_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_CONSTANT___GET_UPPER_BOUND = ITIME_DEVIATION_OPERATION_COUNT + 2;
+	int TIME_CONSTANT___GET_UPPER_BOUND = ITIME_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONSTANT___GET_AVERAGE = ITIME_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Time Constant</em>' class.
@@ -2531,22 +2531,22 @@ public interface AmaltheaPackage extends EPackage {
 	int BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND = TIME_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE = TIME_INTERVAL_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND = TIME_INTERVAL_OPERATION_COUNT + 2;
+	int BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND = TIME_INTERVAL_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE = TIME_INTERVAL_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Bounded Time Distribution</em>' class.
@@ -2604,15 +2604,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_TIME_DISTRIBUTION___GET_LOWER_BOUND = ITIME_DEVIATION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE = ITIME_DEVIATION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2620,6 +2611,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRUNCATED_TIME_DISTRIBUTION___GET_UPPER_BOUND = ITIME_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE = ITIME_DEVIATION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Truncated Time Distribution</em>' class.
@@ -2686,15 +2686,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_BOUNDARIES___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2702,6 +2693,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BOUNDARIES___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Time Boundaries</em>' class.
@@ -2768,15 +2768,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_STATISTICS___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_STATISTICS___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2784,6 +2775,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_STATISTICS___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Time Statistics</em>' class.
@@ -2841,15 +2841,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2857,6 +2848,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Time Uniform Distribution</em>' class.
@@ -3023,15 +3023,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3039,6 +3030,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_TIME_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Time Weibull Estimators Distribution</em>' class.
@@ -3169,22 +3169,22 @@ public interface AmaltheaPackage extends EPackage {
 	int IDISCRETE_VALUE_DEVIATION___GET_LOWER_BOUND = 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDISCRETE_VALUE_DEVIATION___GET_AVERAGE = 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND = 2;
+	int IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND = 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDISCRETE_VALUE_DEVIATION___GET_AVERAGE = 2;
 
 	/**
 	 * The number of operations of the '<em>IDiscrete Value Deviation</em>' class.
@@ -3288,22 +3288,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_CONSTANT___GET_LOWER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_VALUE_CONSTANT___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_VALUE_CONSTANT___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 2;
+	int DISCRETE_VALUE_CONSTANT___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_CONSTANT___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Discrete Value Constant</em>' class.
@@ -3489,22 +3489,22 @@ public interface AmaltheaPackage extends EPackage {
 	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 2;
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = DISCRETE_VALUE_INTERVAL_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Bounded Discrete Value Distribution</em>' class.
@@ -3562,15 +3562,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND = IDISCRETE_VALUE_DEVIATION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3578,6 +3569,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND = IDISCRETE_VALUE_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Truncated Discrete Value Distribution</em>' class.
@@ -3644,15 +3644,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3660,6 +3651,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Discrete Value Boundaries</em>' class.
@@ -3726,15 +3726,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_STATISTICS___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3742,6 +3733,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_STATISTICS___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Discrete Value Statistics</em>' class.
@@ -3799,15 +3799,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3815,6 +3806,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Discrete Value Uniform Distribution</em>' class.
@@ -3981,15 +3981,6 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3997,6 +3988,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Discrete Value Weibull Estimators Distribution</em>' class.
@@ -4127,22 +4127,22 @@ public interface AmaltheaPackage extends EPackage {
 	int ICONTINUOUS_VALUE_DEVIATION___GET_LOWER_BOUND = 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE = 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND = 2;
+	int ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND = 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE = 2;
 
 	/**
 	 * The number of operations of the '<em>IContinuous Value Deviation</em>' class.
@@ -4246,22 +4246,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_CONSTANT___GET_LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_VALUE_CONSTANT___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 2;
+	int CONTINUOUS_VALUE_CONSTANT___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_CONSTANT___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Continuous Value Constant</em>' class.
@@ -4447,22 +4447,22 @@ public interface AmaltheaPackage extends EPackage {
 	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 1;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 2;
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Bounded Continuous Value Distribution</em>' class.
@@ -4520,15 +4520,6 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND = ICONTINUOUS_VALUE_DEVIATION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4536,6 +4527,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND = ICONTINUOUS_VALUE_DEVIATION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Truncated Continuous Value Distribution</em>' class.
@@ -4602,15 +4602,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_BOUNDARIES___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4618,6 +4609,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_BOUNDARIES___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_BOUNDARIES___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Continuous Value Boundaries</em>' class.
@@ -4684,15 +4684,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_STATISTICS___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4700,6 +4691,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_STATISTICS___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_STATISTICS___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Continuous Value Statistics</em>' class.
@@ -4757,15 +4757,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4773,6 +4764,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Continuous Value Uniform Distribution</em>' class.
@@ -4939,15 +4939,6 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_LOWER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_LOWER_BOUND;
 
 	/**
-	 * The operation id for the '<em>Get Average</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
-
-	/**
 	 * The operation id for the '<em>Get Upper Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4955,6 +4946,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_UPPER_BOUND = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
+
+	/**
+	 * The operation id for the '<em>Get Average</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___GET_AVERAGE = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE;
 
 	/**
 	 * The number of operations of the '<em>Continuous Value Weibull Estimators Distribution</em>' class.
@@ -31401,16 +31401,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getITimeDeviation__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ITimeDeviation#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ITimeDeviation#getAverage()
-	 * @generated
-	 */
-	EOperation getITimeDeviation__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ITimeDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31419,6 +31409,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getITimeDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ITimeDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ITimeDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getITimeDeviation__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeInterval <em>Time Interval</em>}'.
@@ -31494,16 +31494,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getTimeConstant__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage()
-	 * @generated
-	 */
-	EOperation getTimeConstant__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31512,6 +31502,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTimeConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getTimeConstant__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeHistogram <em>Time Histogram</em>}'.
@@ -31816,16 +31816,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getIDiscreteValueDeviation__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage()
-	 * @generated
-	 */
-	EOperation getIDiscreteValueDeviation__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31834,6 +31824,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getIDiscreteValueDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getIDiscreteValueDeviation__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval <em>Discrete Value Interval</em>}'.
@@ -31909,16 +31909,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getDiscreteValueConstant__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage()
-	 * @generated
-	 */
-	EOperation getDiscreteValueConstant__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31927,6 +31917,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getDiscreteValueConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getDiscreteValueConstant__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram <em>Discrete Value Histogram</em>}'.
@@ -32231,16 +32231,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getIContinuousValueDeviation__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage()
-	 * @generated
-	 */
-	EOperation getIContinuousValueDeviation__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32249,6 +32239,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getIContinuousValueDeviation__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation#getAverage()
+	 * @generated
+	 */
+	EOperation getIContinuousValueDeviation__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval <em>Continuous Value Interval</em>}'.
@@ -32324,16 +32324,6 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getContinuousValueConstant__GetLowerBound();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage() <em>Get Average</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Average</em>' operation.
-	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage()
-	 * @generated
-	 */
-	EOperation getContinuousValueConstant__GetAverage();
-
-	/**
 	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getUpperBound() <em>Get Upper Bound</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32342,6 +32332,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getContinuousValueConstant__GetUpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage() <em>Get Average</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Average</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueConstant#getAverage()
+	 * @generated
+	 */
+	EOperation getContinuousValueConstant__GetAverage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram <em>Continuous Value Histogram</em>}'.
@@ -42660,7 +42660,7 @@ public interface AmaltheaPackage extends EPackage {
      * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Positive Int</em>'.
 	 * @model instanceClass="int"
-	 *        extendedMetaData="minInclusive='1'"
+	 *        extendedMetaData="minExclusive='0'"
 	 * @generated
 	 */
 	EDataType getPositiveInt();
@@ -42674,7 +42674,7 @@ public interface AmaltheaPackage extends EPackage {
      * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Positive Long</em>'.
 	 * @model instanceClass="long"
-	 *        extendedMetaData="minInclusive='1'"
+	 *        extendedMetaData="minExclusive='0'"
 	 * @generated
 	 */
 	EDataType getPositiveLong();

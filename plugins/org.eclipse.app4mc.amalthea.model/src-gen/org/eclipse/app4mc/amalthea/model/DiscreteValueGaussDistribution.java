@@ -47,12 +47,12 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mean</em>' attribute.
-	 * @see #setMean(Double)
+	 * @see #setMean(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDiscreteValueGaussDistribution_Mean()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	Double getMean();
+	double getMean();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution#getMean <em>Mean</em>}' attribute.
@@ -62,7 +62,7 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * @see #getMean()
 	 * @generated
 	 */
-	void setMean(Double value);
+	void setMean(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Sd</b></em>' attribute.
@@ -97,6 +97,6 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 } // DiscreteValueGaussDistribution

@@ -525,8 +525,8 @@ enum SamplingType
 
 interface ITimeDeviation {
 	op Time getLowerBound()
-	op Time getAverage()
 	op Time getUpperBound()
+	op Time getAverage()
 }
 
 abstract class TimeInterval {
@@ -542,8 +542,8 @@ class TimeConstant extends ITimeDeviation {
 	contains Time[1] value
 	
 	op Time getLowerBound() { value }
-	op Time getAverage() { value }
 	op Time getUpperBound() { value }
+	op Time getAverage() { value }
 }
 
 class TimeHistogram extends ITimeDeviation {
@@ -595,12 +595,9 @@ class TimeUniformDistribution extends BoundedTimeDistribution {}
 	contains Time[1] mean
 	contains Time[1] sd
 	
-	//TODO getAverage
 	op Time getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		
-		// dummy
-		return mean
+		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(lowerBound, upperBound, mean, sd)
 	}
 }
 
@@ -634,25 +631,25 @@ class TimeBetaDistribution extends BoundedTimeDistribution {
 
 interface IDiscreteValueDeviation {
 	op Long getLowerBound()
-	op Double getAverage()
 	op Long getUpperBound()
+	op double getAverage()
 }
 
 abstract class DiscreteValueInterval {
 	Long[1] lowerBound = "0"
 	Long[1] upperBound = "0"
 	
-	op Double getAverage() {
+	op double getAverage() {
 		lowerBound + (upperBound - lowerBound) / 2.0
 	}
 }
 
 class DiscreteValueConstant extends IDiscreteValueDeviation {
-	Long[1] value = "0"
+	long[1] value = "0"
 	
 	op Long getLowerBound() { value }
-	op Double getAverage() { value.doubleValue }
 	op Long getUpperBound() { value }
+	op double getAverage() { value.doubleValue }
 }
 
 class DiscreteValueHistogram extends IDiscreteValueDeviation {
@@ -660,7 +657,7 @@ class DiscreteValueHistogram extends IDiscreteValueDeviation {
 	
 	op Long getLowerBound() { entries.map[lowerBound].min }
 	op Long getUpperBound() { entries.map[upperBound].max }
-	op Double getAverage() {
+	op double getAverage() {
 		val sum = entries.map[average * occurrences].reduce[p1, p2 | p1 + p2]
 		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
 		sum / count
@@ -689,7 +686,7 @@ class DiscreteValueBoundaries extends BoundedDiscreteValueDistribution {
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
 class DiscreteValueStatistics extends BoundedDiscreteValueDistribution {
-	Double[1] average = "0.0"
+	double[1] average = "0.0"
 }
 
 /*
@@ -701,15 +698,12 @@ class DiscreteValueUniformDistribution extends BoundedDiscreteValueDistribution 
  * Gauss distribution
  */
  class DiscreteValueGaussDistribution extends TruncatedDiscreteValueDistribution {
-	Double[1] mean = "0.0"
+	double[1] mean = "0.0"
 	PositiveDouble[1] sd = "1.0"
 	
-	//TODO getAverage
-	op Double getAverage() {
+	op double getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		
-		// dummy
-		return mean
+		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(lowerBound, upperBound, mean, sd)
 	}
 }
 
@@ -718,7 +712,7 @@ class DiscreteValueUniformDistribution extends BoundedDiscreteValueDistribution 
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
 class DiscreteValueWeibullEstimatorsDistribution extends BoundedDiscreteValueDistribution {
-	Double[1] average = "0.0"
+	double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
 
@@ -729,7 +723,7 @@ class DiscreteValueBetaDistribution extends BoundedDiscreteValueDistribution {
 	PositiveDouble[1] alpha = "1.0"
 	PositiveDouble[1] beta = "1.0"
 	
-	op Double getAverage() {
+	op double getAverage() {
 		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
@@ -743,25 +737,25 @@ class DiscreteValueBetaDistribution extends BoundedDiscreteValueDistribution {
 
 interface IContinuousValueDeviation {
 	op Double getLowerBound()
-	op Double getAverage()
 	op Double getUpperBound()
+	op double getAverage()
 }
 
 abstract class ContinuousValueInterval {
 	Double[1] lowerBound = "0.0"
 	Double[1] upperBound = "0.0"
 	
-	op Double getAverage() {
+	op double getAverage() {
 		lowerBound + (upperBound - lowerBound) / 2.0
 	}
 }
 
 class ContinuousValueConstant extends IContinuousValueDeviation {
-	Double[1] value = "0.0"
+	double[1] value = "0.0"
 	
 	op Double getLowerBound() { value }
-	op Double getAverage() { value }
 	op Double getUpperBound() { value }
+	op double getAverage() { value }
 }
 
 class ContinuousValueHistogram extends IContinuousValueDeviation {
@@ -769,7 +763,7 @@ class ContinuousValueHistogram extends IContinuousValueDeviation {
 	
 	op Double getLowerBound() { entries.map[lowerBound].min }
 	op Double getUpperBound() { entries.map[upperBound].max }
-	op Double getAverage() {
+	op double getAverage() {
 		val sum = entries.map[average * occurrences].reduce[p1, p2 | p1 + p2]
 		val count = entries.map[occurrences].reduce[p1, p2 | p1 + p2]
 		sum / count
@@ -798,7 +792,7 @@ class ContinuousValueBoundaries extends BoundedContinuousValueDistribution {
  * Defines the upper bound, lower bound and mean of a value interval without defining the distribution
  */
 class ContinuousValueStatistics extends BoundedContinuousValueDistribution {
-	Double[1] average = "0.0"
+	double[1] average = "0.0"
 }
 
 /*
@@ -810,15 +804,12 @@ class ContinuousValueUniformDistribution extends BoundedContinuousValueDistribut
  * Gauss distribution
  */
  class ContinuousValueGaussDistribution extends TruncatedContinuousValueDistribution {
-	Double[1] mean = "0.0"
+	double[1] mean = "0.0"
 	PositiveDouble[1] sd = "1.0"
 	
-	//TODO getAverage
-	op Double getAverage() {
+	op double getAverage() {
 		if (lowerBound === null && upperBound === null) return mean
-		
-		// dummy
-		return mean
+		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(lowerBound, upperBound, mean, sd)
 	}
 }
 
@@ -827,7 +818,7 @@ class ContinuousValueUniformDistribution extends BoundedContinuousValueDistribut
  * The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average. 
  */
 class ContinuousValueWeibullEstimatorsDistribution extends BoundedContinuousValueDistribution {
-	Double[1] average = "0.0"
+	double[1] average = "0.0"
 	PositiveDouble[1] pRemainPromille = "1.0"
 }
 
@@ -838,7 +829,7 @@ class ContinuousValueBetaDistribution extends BoundedContinuousValueDistribution
 	PositiveDouble[1] alpha = "1.0"
 	PositiveDouble[1] beta = "1.0"
 	
-	op Double getAverage() {
+	op double getAverage() {
 		val ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
 		lowerBound + (upperBound - lowerBound) * ratio
 	}
@@ -896,13 +887,13 @@ convert {
 /*
  * Positive Integer (int)
  */
-@ExtendedMetaData(minInclusive="1")
+@ExtendedMetaData(minExclusive="0")
 type PositiveInt wraps int
 
 /*
  * Positive Long (long)
  */
-@ExtendedMetaData(minInclusive="1")
+@ExtendedMetaData(minExclusive="0")
 type PositiveLong wraps long
 
 /*

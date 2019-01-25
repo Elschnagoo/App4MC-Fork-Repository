@@ -97,6 +97,6 @@ public interface DiscreteValueBetaDistribution extends BoundedDiscreteValueDistr
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 } // DiscreteValueBetaDistribution

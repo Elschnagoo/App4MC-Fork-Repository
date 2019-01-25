@@ -185,16 +185,16 @@ public class CustomDeviationItemProviderService {
     if (!_matched) {
       if (dev instanceof ContinuousValueConstant) {
         _matched=true;
-        Double _value = ((ContinuousValueConstant)dev).getValue();
-        String _plus = ("ContinuousValue Constant (value: " + _value);
+        double _value = ((ContinuousValueConstant)dev).getValue();
+        String _plus = ("ContinuousValue Constant (value: " + Double.valueOf(_value));
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
       if (dev instanceof ContinuousValueGaussDistribution) {
         _matched=true;
-        Double _mean = ((ContinuousValueGaussDistribution)dev).getMean();
-        String _plus = ("ContinuousValue Gauss Distribution (mean: " + _mean);
+        double _mean = ((ContinuousValueGaussDistribution)dev).getMean();
+        String _plus = ("ContinuousValue Gauss Distribution (mean: " + Double.valueOf(_mean));
         _switchResult = (_plus + ")");
       }
     }
@@ -246,16 +246,16 @@ public class CustomDeviationItemProviderService {
     if (!_matched) {
       if (dev instanceof DiscreteValueConstant) {
         _matched=true;
-        Long _value = ((DiscreteValueConstant)dev).getValue();
-        String _plus = ("DiscreteValue Constant (value: " + _value);
+        long _value = ((DiscreteValueConstant)dev).getValue();
+        String _plus = ("DiscreteValue Constant (value: " + Long.valueOf(_value));
         _switchResult = (_plus + ")");
       }
     }
     if (!_matched) {
       if (dev instanceof DiscreteValueGaussDistribution) {
         _matched=true;
-        Double _mean = ((DiscreteValueGaussDistribution)dev).getMean();
-        String _plus = ("DiscreteValue Gauss Distribution (mean: " + _mean);
+        double _mean = ((DiscreteValueGaussDistribution)dev).getMean();
+        String _plus = ("DiscreteValue Gauss Distribution (mean: " + Double.valueOf(_mean));
         _switchResult = (_plus + ")");
       }
     }

@@ -41,7 +41,7 @@ public interface ITimeDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getAverage();
+	Time getUpperBound();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,6 +49,6 @@ public interface ITimeDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Time getUpperBound();
+	Time getAverage();
 
 } // ITimeDeviation

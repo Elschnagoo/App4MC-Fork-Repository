@@ -94,6 +94,6 @@ public interface DiscreteValueInterval extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	Double getAverage();
+	double getAverage();
 
 } // DiscreteValueInterval

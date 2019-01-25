@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -50,7 +51,7 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double MEAN_EDEFAULT = new Double(0.0);
+	protected static final double MEAN_EDEFAULT = 0.0;
 
 	/**
 	 * The cached value of the '{@link #getMean() <em>Mean</em>}' attribute.
@@ -60,7 +61,7 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	 * @generated
 	 * @ordered
 	 */
-	protected Double mean = MEAN_EDEFAULT;
+	protected double mean = MEAN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSd() <em>Sd</em>}' attribute.
@@ -106,7 +107,7 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getMean() {
+	public double getMean() {
 		return mean;
 	}
 
@@ -115,8 +116,8 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMean(Double newMean) {
-		Double oldMean = mean;
+	public void setMean(double newMean) {
+		double oldMean = mean;
 		mean = newMean;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN, oldMean, mean));
@@ -148,11 +149,11 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Double getAverage() {
+	public double getAverage() {
 		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
 			return this.getMean();
 		}
-		return this.getMean();
+		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());
 	}
 
 	/**
@@ -216,7 +217,7 @@ public class DiscreteValueGaussDistributionImpl extends TruncatedDiscreteValueDi
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION__MEAN:
-				return MEAN_EDEFAULT == null ? mean != null : !MEAN_EDEFAULT.equals(mean);
+				return mean != MEAN_EDEFAULT;
 			case AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION__SD:
 				return sd != SD_EDEFAULT;
 		}

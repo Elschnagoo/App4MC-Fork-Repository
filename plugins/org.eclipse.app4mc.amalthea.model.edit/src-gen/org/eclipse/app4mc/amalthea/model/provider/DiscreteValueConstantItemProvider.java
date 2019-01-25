@@ -95,7 +95,7 @@ public class DiscreteValueConstantItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -128,11 +128,8 @@ public class DiscreteValueConstantItemProvider
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		Long labelValue = ((DiscreteValueConstant)object).getValue();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_DiscreteValueConstant_type") :
-			getString("_UI_DiscreteValueConstant_type") + " " + label;
+		DiscreteValueConstant discreteValueConstant = (DiscreteValueConstant)object;
+		return getString("_UI_DiscreteValueConstant_type") + " " + discreteValueConstant.getValue();
 	}
 
 	/**

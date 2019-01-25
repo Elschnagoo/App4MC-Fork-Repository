@@ -95,7 +95,7 @@ public class ContinuousValueConstantItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -128,11 +128,8 @@ public class ContinuousValueConstantItemProvider
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		Double labelValue = ((ContinuousValueConstant)object).getValue();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ContinuousValueConstant_type") :
-			getString("_UI_ContinuousValueConstant_type") + " " + label;
+		ContinuousValueConstant continuousValueConstant = (ContinuousValueConstant)object;
+		return getString("_UI_ContinuousValueConstant_type") + " " + continuousValueConstant.getValue();
 	}
 
 	/**

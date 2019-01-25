@@ -51,7 +51,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Long VALUE_EDEFAULT = new Long(0L);
+	protected static final long VALUE_EDEFAULT = 0L;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -61,7 +61,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected Long value = VALUE_EDEFAULT;
+	protected long value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,7 +87,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Long getValue() {
+	public long getValue() {
 		return value;
 	}
 
@@ -96,8 +96,8 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(Long newValue) {
-		Long oldValue = value;
+	public void setValue(long newValue) {
+		long oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DISCRETE_VALUE_CONSTANT__VALUE, oldValue, value));
@@ -109,16 +109,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	public Long getLowerBound() {
-		return this.getValue();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Double getAverage() {
-		return Double.valueOf(this.getValue().doubleValue());
+		return Long.valueOf(this.getValue());
 	}
 
 	/**
@@ -127,7 +118,16 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	public Long getUpperBound() {
-		return this.getValue();
+		return Long.valueOf(this.getValue());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getAverage() {
+		return Long.valueOf(this.getValue()).doubleValue();
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -198,10 +198,10 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 		switch (operationID) {
 			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT___GET_LOWER_BOUND:
 				return getLowerBound();
-			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT___GET_AVERAGE:
-				return getAverage();
 			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT___GET_UPPER_BOUND:
 				return getUpperBound();
+			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT___GET_AVERAGE:
+				return getAverage();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
