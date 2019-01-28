@@ -1,8 +1,0 @@
-
-h3. General Helper Classes
-
-**Classes**
-
-* "AmaltheaIndex":../help-javadoc/AmaltheaIndex.html
-** contains methods to search AMALTHEA model elements based on name (_also regex supported_) and type.
-** contains methods to perform deletion of AMALTHEA model elements. These methods is performance efficient while deleting huge number of objects.

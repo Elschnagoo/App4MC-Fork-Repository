@@ -1,7 +1,0 @@
-
-h3. Hardware Utilities
-
-**Classes**
-
-* "HardwareUtil":../help-javadoc/HardwareUtil.html
-

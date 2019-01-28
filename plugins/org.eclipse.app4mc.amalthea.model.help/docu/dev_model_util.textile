@@ -1,15 +1,29 @@
 
-h3. Overview
+h3. Model Utilities
 
 The model utilities provide implementations for typical usage scenarios:
 
-- *General Helper Classes* := Support for search and delete
-- *Common Utilities* := Support for creation of elements and handling of custom properties
-- *Software Utilities* := Call graph traversal, accesses, calls
-- *Runtime Utilities* := Runtime, utilization, instructions
-- *Deployment Utilities* := Mapping of tasks to cores and data to memory
-- *Hardware Utilities* := Access paths and latencies
+- *"General Helper Classes":../help-javadoc/model/package-summary.html* := Support for search and delete
 
+- *"Builder Classes":../help-javadoc/model/builder/package-summary.html* := Support for Groovy-like builders (Xtend2)
+
+- *"I/O Classes":../help-javadoc/model/io/package-summary.html* := Support for loading and storing of models
+
+- *"Utilities":../help-javadoc/model/util/package-summary.html* := Model utilities
+
+__Common__
+
+* "ModelUtil":../help-javadoc/model/util/ModelUtil.html
+* "FactoryUtil":../help-javadoc/model/util/FactoryUtil.html
+* "CustomPropertyUtil":../help-javadoc/model/util/CustomPropertyUtil.html
+* "TimeUtil":../help-javadoc/model/util/TimeUtil.html
+
+__Specific__
+
+* "Software Utilities":../help-javadoc/model/util/SoftwareUtil.html  -  Call graph traversal, accesses, calls
+* "Runtime Utilities":../help-javadoc/model/util/RuntimeUtil.html  -  Runtime, utilization, ticks
+* "Deployment Utilities":../help-javadoc/model/util/DeploymentUtil.html  -  Mapping of tasks to cores and data to memory
+* "Hardware Utilities":../help-javadoc/model/util/HardwareUtil.html  -  Access paths and latencies
 
 
 **__Scope__**
