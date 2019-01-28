@@ -238,11 +238,7 @@ public class HardwareUtil {
 	}
 
 	/**
-	 * Get the minimum data rate of an access path
-	 * 
-	 * @param path
-	 *            to analyze
-	 * @return the minimum data rate of a path element
+	 * Computes the minimum data rate of an access path
 	 */
 	public static DataRate getMinDataRateOfHwAccessPath(HwAccessPath path) {
 		DataRate minimum = null;
@@ -266,9 +262,6 @@ public class HardwareUtil {
 
 	/**
 	 * Returns the frequency of a specific module
-	 * 
-	 * @param module
-	 * @return Frequency
 	 */
 	public static Frequency getFrequencyOfModule(HwModule module) {
 		return module.getFrequencyDomain().getDefaultValue();
@@ -276,9 +269,6 @@ public class HardwareUtil {
 
 	/**
 	 * Returns the frequency of a specific module in Hertz
-	 * 
-	 * @param module
-	 * @return long
 	 */
 	public static long getFrequencyOfModuleInHz(HwModule module) {
 		return AmaltheaServices.convertToHertz(getFrequencyOfModule(module)).longValue() ;

@@ -76,10 +76,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param process
-	 * @param modes
-	 * @param executionCase
-	 * @return
+	 * Computes the execution time of a Process (Task or ISR)
 	 */
 	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -100,11 +97,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param process
-	 * @param processingUnit
-	 * @param modes
-	 * @param executionCase
-	 * @return
+	 * Computes the execution time of a Process (Task or ISR)
 	 */
 	public Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -112,17 +105,13 @@ public class RuntimeUtil {
 		result.setValue(BigInteger.ZERO);
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for (Runnable runnable : runnables ) {
-			result.add(getExecutionTimeForRunnable(runnable,processingUnit, modes, executionCase));
+			result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
 		}
 		return result;
 	}
 
 	/**
-	 * @param runnable
-	 * @param processingUnit
-	 * @param modes
-	 * @param executionCase
-	 * @return
+	 * Computes the execution time of a Process (Task or ISR)
 	 */
 	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -148,10 +137,7 @@ public class RuntimeUtil {
 	// --> Second step would now then be ITimeDeviation + TimeType -> Time
 	//
 	/**
-	 * @param ticks
-	 * @param processingUnit
-	 * @param executionCase
-	 * @return
+	 * Computes time for ticks on a given processing unit
 	 */
 	public static Time getExecutionTimeForTicks(Ticks ticks, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -166,10 +152,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param deviation
-	 * @param processingUnit
-	 * @param executionCase
-	 * @return
+	 * Computes time for ticks on a given processing unit
 	 */
 	public static Time getExecutionTimeForTicksDeviation(IDiscreteValueDeviation deviation, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
@@ -186,10 +169,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param executionNeeds
-	 * @param processingUnit
-	 * @param executionCase
-	 * @return
+	 * Computes time for execution needs on a given processing unit
 	 */
 	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed executionNeeds, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -208,11 +188,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param deviation
-	 * @param hwFeatureCategory
-	 * @param processingUnit
-	 * @param executionCase
-	 * @return
+	 * Computes time for specific execution need entry on a given processing unit
 	 */
 	public static Time getExecutionTimeForExecutionNeedEntry(IDiscreteValueDeviation deviation, HwFeatureCategory hwFeatureCategory, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
@@ -236,9 +212,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * @param ticks
-	 * @param puFrequency
-	 * @return
+	 * Computes time for a number of ticks with a given frequency
 	 */
 	public static Time getExecutionTimeForCycles (double ticks, Frequency puFrequency) {
 		double cyclesPerSecond = AmaltheaServices.convertToHertz(puFrequency).doubleValue();
@@ -254,10 +228,7 @@ public class RuntimeUtil {
 	
 	
 	/**
-	 * set the runtime of the given runnable to the given runnable ExecutionNeed
-	 * 
-	 * @param runnable
-	 * @param need
+	 * Sets the runtime of the given runnable to the given ExecutionNeed
 	 */
 	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed need, EMap<ModeLabel, ModeLiteral> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
@@ -265,11 +236,7 @@ public class RuntimeUtil {
 	}
 	
 	/**
-	 * Sets the runtime of the given runnable to the given runnable ExecutionNeed
-	 * 
-	 * @param runnable
-	 * @param ticks
-	 * @param modes
+	 * Sets the runtime of the given runnable to the given Ticks
 	 */
 	public static void setRuntimeOfRunnable(Runnable runnable, Ticks ticks, EMap<ModeLabel, ModeLiteral> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
@@ -279,20 +246,19 @@ public class RuntimeUtil {
 	
 	/**
 	 * Adds Runtime (given as ExecutionNeed) to an existing Runnable currently
-	 * without consideration of modes //TODO: Mode-based API
-	 * 
-	 * @param runnable
-	 * @param need
+	 * without consideration of modes
 	 */
+	//TODO: Mode-based API
 	public static void addRuntimeToRunnable(Runnable runnable, ExecutionNeed need) {
 		runnable.getRunnableItems().add(need);
 	}
 	
 	
 	/**
-	 * @param runnable
-	 * @param ticks
+	 * Adds Runtime (given as Ticks) to an existing Runnable currently
+	 * without consideration of modes
 	 */
+	//TODO: Mode-based API
 	public static void addRuntimeToRunnable(Runnable runnable, Ticks ticks) {
 		runnable.getRunnableItems().add(ticks);
 	}
@@ -302,9 +268,6 @@ public class RuntimeUtil {
 	 * Removes all runtimes of the whole model If the procUnitDef is null, the
 	 * complete ExecutionNeed is deleted if it is not null, then only the runtime
 	 * for the given procUnitDef is removed
-	 * 
-	 * @param model
-	 * @param modes
 	 */
 	public static void clearRuntimeOfModel(Amalthea model, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Process> processes = new ArrayList<Process>();
@@ -321,9 +284,6 @@ public class RuntimeUtil {
 	 * Removes all runtimes set in the given process If the procUnitDef is null, the
 	 * complete ExecutionNeed is deleted if it is not null, then only the runtime
 	 * for the given procUnitDef is removed
-	 * 
-	 * @param process
-	 * @param modes
 	 */
 	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -334,9 +294,6 @@ public class RuntimeUtil {
 	
 	/**
 	 * Clears all runtime information
-	 * 
-	 * @param runnable
-	 * @param modes
 	 */
 	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(runnable, modes);
@@ -349,12 +306,6 @@ public class RuntimeUtil {
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
-	 * 
-	 * @param process
-	 * @param need
-	 * @param runnableName
-	 * @param positon
-	 * @return
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed need, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
@@ -380,12 +331,6 @@ public class RuntimeUtil {
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
-	 * 
-	 * @param process
-	 * @param ticks
-	 * @param runnableName
-	 * @param positon
-	 * @return
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, Ticks ticks, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
@@ -416,14 +361,6 @@ public class RuntimeUtil {
 	
 	/**
 	 * Calculates the utilization for a given procUnit
-	 * 
-	 * @param procUnit
-	 * @param model
-	 * @param tt
-	 * @param hwFeatures
-	 * @param modes
-	 *            (optional) - null works
-	 * @return utilization of that procUnit
 	 */
 	public static double getProcUnitUtilization(ProcessingUnit procUnit, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -439,13 +376,7 @@ public class RuntimeUtil {
 	/**
 	 * Calculates the utilization for a given process
 	 * 
-	 * @param process
-	 * @param model
-	 * @param tt
-	 * @param hwFeatures
-	 * @param modes
-	 *            (optional) - null works
-	 * @return map procUnit -&gt; utilization
+	 * @return Map: procUnit -&gt; utilization
 	 */
 	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -462,17 +393,10 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Calculates the utilization for a given process on a given procUnit Assumption
-	 * (wrong): All triggers activate the process on all procUnits together! (at the
-	 * same time)
+	 * Calculates the utilization for a given process on a given procUnit
+	 * <p>
+	 * Assumption (wrong): All triggers activate the process on all procUnits together! (at the same time)
 	 * 
-	 * @param process
-	 * @param procUnit
-	 * @param model
-	 * @param tt
-	 * @param hwFeatures
-	 * @param modes
-	 *            (optional) - if none apply, null should be given
 	 * @return utilization
 	 */
 	public static double getProcessUtilization(Process process, ProcessingUnit procUnit, Amalthea model, TimeType tt,
@@ -497,12 +421,6 @@ public class RuntimeUtil {
 
 	/**
 	 * Calculates the process utilization
-	 * 
-	 * @param process
-	 * @param period
-	 * @param tt
-	 * @param modes
-	 * @return utilization
 	 */
 	public static double getProcessUtilization(Process process, Time period, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
 		Time time = getExecutionTimeForProcess(process, modes, tt);
@@ -510,14 +428,9 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Returns the cumulative process utilization, i.e. runtime on every procUnit summed
-	 * up
+	 * Returns the cumulative process utilization, i.e. runtime on every procUnit summed up
 	 * 
-	 * @param model
-	 * @param tt
-	 * @param hwFeatures
-	 * @param modes
-	 * @return map process -&gt; sum of utilization on all procUnits
+	 * @return Map: process -&gt; sum of utilization on all procUnits
 	 */
 	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt,
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
@@ -541,10 +454,6 @@ public class RuntimeUtil {
 
 	/**
 	 * Gets all Period ranges from the model
-	 * 
-	 * @param model
-	 * @param tt
-	 * @param modes
 	 */
 	public static Map<Process, List<Time>> getPeriodsOfAllProcesses(Amalthea model, TimeType tt,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -564,11 +473,6 @@ public class RuntimeUtil {
 
 	/**
 	 * Returns a list of all triggering periods. Sorted by shortest period first!
-	 * 
-	 * @param model
-	 * @param process
-	 * @param tt
-	 * @param modes
 	 */
 	public static List<Time> getPeriodsOfProcess(Amalthea model, Process process, TimeType tt,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -742,10 +646,7 @@ public class RuntimeUtil {
 	/**
 	 * Returns all Processes that trigger the given InterProcessStimulus
 	 * 
-	 * @param model
-	 * @param ip
-	 * @param modes
-	 * @return map process -&gt; prescaler value
+	 * @return Map: process -&gt; prescaler value
 	 */
 	public static Map<Process, Long> getTriggeringProcesses(Amalthea model, InterProcessStimulus ip,
 			EMap<ModeLabel, ModeLiteral> modes) {
@@ -764,11 +665,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Returns a map of all stimuli, triggered by this process, associated with its
-	 * prescaler.
-	 * 
-	 * @param process
-	 * @param modes
+	 * Returns a map of all stimuli, triggered by this process, associated with its prescaler.
 	 */
 	public static HashMap<Stimulus, Long> getTriggeredStimuli(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Stimulus, Long> stimuliMap = new HashMap<Stimulus, Long>();
@@ -791,8 +688,6 @@ public class RuntimeUtil {
 	/**
 	 * Returns a Map of all sporadically triggered processes with their prescaler
 	 * 
-	 * @param model
-	 * @param tt
 	 * @return Map of processes with a sporadic activation and depending on tt the
 	 *         time between activations
 	 */
@@ -825,7 +720,6 @@ public class RuntimeUtil {
 	/**
 	 * Returns a Map of all sporadically triggered processes with their prescaler
 	 * 
-	 * @param model
 	 * @return Map of processes with a sporadic activation and the deviation of the
 	 *         activations
 	 */
@@ -849,9 +743,6 @@ public class RuntimeUtil {
 	/**
 	 * Returns a map from process to all stimuli (matching filter) that
 	 * lead to that process with the correct prescaler
-	 * 
-	 * @param model
-	 * @param filter
 	 */
 	public static <T> Map<Process, Map<Stimulus, Long>> getPlainTriggersForModel(Amalthea model,
 			Function<Stimulus, Boolean> filter) {
@@ -871,10 +762,6 @@ public class RuntimeUtil {
 
 	/**
 	 * Returns all stimuli (matching filter) that trigger the given process
-	 * 
-	 * @param model
-	 * @param process
-	 * @param depthCounter
 	 */
 	public static <T> Map<Stimulus, Long> getPlainTriggerForProcess(Amalthea model, Process process, long depthCounter,
 			Function<Stimulus, Boolean> filter) {

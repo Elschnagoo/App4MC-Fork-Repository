@@ -25,6 +25,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 
 // TODO add reporting, e.g. list skipped elements
 
+/**
+ * This class provides static methods to extend a model with major elements of a second model.
+ */
 public class AmaltheaMerger {
 
 	/**
@@ -32,8 +35,8 @@ public class AmaltheaMerger {
 	 * Only major elements of the model (with their containments) are added.
 	 * In case of name conflicts the affected elements will be omitted.
 	 * 
-	 * @param mainModel
-	 * @param inputs
+	 * @param mainModel		model that is extended
+	 * @param inputs		list of models that contain the additional elements
 	 */
 	public static void addElements(Amalthea mainModel, Collection<Amalthea> inputs) {
 		if (mainModel == null) return;

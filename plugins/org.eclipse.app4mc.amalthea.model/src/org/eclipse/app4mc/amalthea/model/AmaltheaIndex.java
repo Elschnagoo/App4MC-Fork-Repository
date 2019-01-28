@@ -45,14 +45,27 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * An {@link AmaltheaCrossReferenceAdapter} is created and attached to the root context of the model.
  * The adapter maintains an index that allows fast access to inverse references and an index based on object name.
  * <p>
+ * The method {@link AmaltheaIndex#getInverseReferences getInverseReferences} is called from several
+ * generated model objects to compute inverse transient references based on the incoming references.
  */
-
 public final class AmaltheaIndex {
 
 	// Suppress default constructor
 	private AmaltheaIndex() {
 	}
 
+	/**
+	 * Computes a list of objects that refer to an EObject via dedicated references.
+	 * <p>
+	 * This method is called from several generated model objects to compute
+	 * an inverse transient reference based on the incoming references.
+	 * 
+	 * @param eObject				object that implements a derived transient opposite reference
+	 * @param resultEReference		opposite reference definition (resulting objects are computed)
+	 * @param targetEReferences		list of incoming references
+	 * @return
+	 * 		EcoreEList.UnmodifiableEList &lt;T&gt;
+	 */
 	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
 			final Set<EReference> targetEReferences) {
 

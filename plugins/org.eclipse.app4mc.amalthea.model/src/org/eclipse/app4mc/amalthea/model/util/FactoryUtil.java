@@ -44,9 +44,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a data size out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return DataSize
 	 */
 	public static DataSize createDataSize(long value, DataSizeUnit unit) {
 		DataSize size = AmaltheaFactory.eINSTANCE.createDataSize();
@@ -57,9 +54,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a data rate out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return DataRate
 	 */
 	public static DataRate createDataRate(long value, DataRateUnit unit) {
 		DataRate rate = AmaltheaFactory.eINSTANCE.createDataRate();
@@ -70,9 +64,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a frequency out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return Frequency
 	 */
 	public static Frequency createFrequency(double value, FrequencyUnit unit) {
 		Frequency frequency = AmaltheaFactory.eINSTANCE.createFrequency();
@@ -83,9 +74,6 @@ public class FactoryUtil {
 	
 	/**
 	 * Creates a voltage out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return Voltage
 	 */
 	public static Voltage createVoltage(double value, VoltageUnit unit) {
 		Voltage voltage = AmaltheaFactory.eINSTANCE.createVoltage();
@@ -97,7 +85,7 @@ public class FactoryUtil {
 	/**
 	 * Creates a new time based on a time
 	 * @param inputTime
-	 * @return new time object
+	 * @return New time object
 	 */
 	public static Time createTime(Time inputTime) {
 		Time time = AmaltheaFactory.eINSTANCE.createTime();
@@ -108,9 +96,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a time out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return Time
 	 */
 	public static Time createTime(long value, TimeUnit unit) {
 		Time time = AmaltheaFactory.eINSTANCE.createTime();
@@ -121,9 +106,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a time out of a value and a unit
-	 * @param value
-	 * @param unit
-	 * @return Time
 	 */
 	public static Time createTime(BigInteger value, TimeUnit unit) {
 		Time time = AmaltheaFactory.eINSTANCE.createTime();
@@ -147,9 +129,6 @@ public class FactoryUtil {
 	
 	/**
 	 * Creates a time out of a value and a unit given as String.
-	 * @param value
-	 * @param unit
-	 * @return Time
 	 */
 	public static Time createTime(long value, String unit) {
 		return createTime(value, parseTimeUnit(unit));
@@ -157,9 +136,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a time out of a value and a unit given as String.
-	 * @param value
-	 * @param unit
-	 * @return Time
 	 */
 	public static Time createTime(BigInteger value, String unit) {
 		return createTime(value, parseTimeUnit(unit));
@@ -167,8 +143,8 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a Time object parsed from a text representation. 
-	 * @param timeString string representation of a time (number followed by time unit s, ms, us, ns or ps)  
-	 * @return returns the respective Time object
+	 * @param timeString	string representation of a time (number followed by time unit s, ms, us, ns or ps)  
+	 * @return The new Time object
 	 * 
 	 */
 	public static Time createTime(String timeString) {
@@ -184,8 +160,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates a TypeRef object that refers to a type definition
-	 * @param typeDefinition
-	 * @return TypeRef
 	 */
 	public static TypeRef createTypeRef(TypeDefinition typeDefinition) {
 		TypeRef refObj = AmaltheaFactory.eINSTANCE.createTypeRef();
@@ -231,8 +205,6 @@ public class FactoryUtil {
 
 	/**
 	 * Creates ExecutionNeed for a featureCategoryName, need set.
-	 * @param featureCategory
-	 * @param usages
 	 */
 	public static ExecutionNeed createExecutionNeed(String featureCategory, IDiscreteValueDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();
@@ -242,8 +214,6 @@ public class FactoryUtil {
 	
 	/**
 	 * Creates ExecutionNeed for a feature, need set.
-	 * @param feature
-	 * @param usages
 	 */
 	public static ExecutionNeed createExecutionNeed(HwFeature feature, IDiscreteValueDeviation usages) {
 		ExecutionNeed exeNeed = AmaltheaFactory.eINSTANCE.createExecutionNeed();

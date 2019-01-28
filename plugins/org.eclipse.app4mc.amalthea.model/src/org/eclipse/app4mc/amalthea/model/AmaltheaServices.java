@@ -31,6 +31,11 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 
+/**
+ * This class provides static methods that implement operations of the Amalthea EMF model.
+ * <p>
+ * The methods are called from several generated model objects.
+ */
 public class AmaltheaServices {
 
 	public static final List<TimeUnit> TIME_UNIT_LIST = Collections.unmodifiableList(Arrays.asList(
@@ -357,13 +362,15 @@ public class AmaltheaServices {
 	/**
 	 * Computes the average (mean) of the truncated normal distribution
 	 * 
-	 * <p>See {@link https://en.wikipedia.org/wiki/Truncated_normal_distribution}</p>
+	 * <p>See <a
+	 * 		href="https://en.wikipedia.org/wiki/Truncated_normal_distribution"
+	 *		target="_top">Truncated normal distribution (Wikipedia)</a></p>
 	 * 
-	 * @param a - lower bound (null = not truncated from below)
-	 * @param b - upper bound (null = not truncated from above)
-	 * @param mean - mean or expectation of the (unlimited) distribution
-	 * @param sd - standard deviation
-	 * @return average of the truncated distribution
+	 * @param a		lower bound (null = not truncated from below)
+	 * @param b		upper bound (null = not truncated from above)
+	 * @param mean	mean or expectation of the (unlimited) distribution
+	 * @param sd	standard deviation
+	 * @return		Average of the truncated distribution
 	 */
 	public static Time getAverageOfTruncatedNormalDistribution(Time a, Time b, Time mean, Time sd) {
 		if (mean == null || sd == null) return null;
@@ -385,13 +392,15 @@ public class AmaltheaServices {
 	/**
 	 * Computes the average (mean) of the truncated normal distribution
 	 * 
-	 * <p>See {@link https://en.wikipedia.org/wiki/Truncated_normal_distribution}</p>
+	 * <p>See <a
+	 * 		href="https://en.wikipedia.org/wiki/Truncated_normal_distribution"
+	 *		target="_top">Truncated normal distribution (Wikipedia)</a></p>
 	 * 
-	 * @param a - lower bound (null = not truncated from below)
-	 * @param b - upper bound (null = not truncated from above)
-	 * @param mean - mean or expectation of the (unlimited) distribution
-	 * @param sd - standard deviation
-	 * @return average of the truncated distribution
+	 * @param a		lower bound (null = not truncated from below)
+	 * @param b		upper bound (null = not truncated from above)
+	 * @param mean	mean or expectation of the (unlimited) distribution
+	 * @param sd	standard deviation
+	 * @return		Average of the truncated distribution
 	 */
 	public static double getAverageOfTruncatedNormalDistribution(Number a, Number b, double mean, double sd) {
 		Double alpha = null;

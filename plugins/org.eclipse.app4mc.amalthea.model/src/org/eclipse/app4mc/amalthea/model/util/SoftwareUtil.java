@@ -69,9 +69,9 @@ public class SoftwareUtil {
 	/**
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * 
-	 * @param process
-	 * 		- Process (Task or ISR)
-	 * @return list of CallSequenceItems
+	 * @param process	process (Task or ISR)
+	 * @return
+	 * 		List of CallSequenceItems
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process) {
 		return collectCalls(process, null, CallSequenceItem.class, null);
@@ -81,11 +81,10 @@ public class SoftwareUtil {
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * Collection can be restricted to specific modes.
 	 * 
-	 * @param process
-	 * 		- Process (Task or ISR)
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @return list of CallSequenceItems
+	 * @param process	process (Task or ISR)
+	 * @param modes		list of mode literals that should be considered
+	 * @return
+	 * 		List of CallSequenceItems
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes) {
 		return collectCalls(process, modes, CallSequenceItem.class, null);
@@ -95,13 +94,11 @@ public class SoftwareUtil {
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * Collection can be restricted to specific modes and filtered by a lambda expression.
 	 * 
-	 * @param process
-	 * 		- Process (Task or ISR)
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param filter
-	 * 		- lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
-	 * @return list of CallSequenceItems
+	 * @param process	process (Task or ISR)
+	 * @param modes		list of mode literals that should be considered
+	 * @param filter	lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
+	 * @return
+	 * 		List of CallSequenceItems
 	 */
 	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
 			final Function<CallSequenceItem, Boolean> filter) {
@@ -112,13 +109,11 @@ public class SoftwareUtil {
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * Collection can be restricted to specific modes and filtered by class.
 	 * 
-	 * @param process
-	 * 		- Process (Task or ISR)
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param targetClass
-	 * 		- subclass of CallSequenceItem that restricts the result
-	 * @return list of T extends CallSequenceItems
+	 * @param process		Process (Task or ISR)
+	 * @param modes			list of mode literals that should be considered
+	 * @param targetClass	subclass of CallSequenceItem that restricts the result
+	 * @return
+	 * 		List of T extends CallSequenceItems
 	 */
 	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
 			final Class<T> targetClass) {
@@ -129,15 +124,12 @@ public class SoftwareUtil {
 	 * Traverse the call graph of a process and collect all items of the call sequences.
 	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
 	 * 
-	 * @param process
-	 * 		- Process (Task or ISR)
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param targetClass
-	 * 		- subclass of CallSequenceItem that restricts the result
-	 * @param filter
-	 * 		- lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
-	 * @return list of T extends CallSequenceItems
+	 * @param process		process (Task or ISR)
+	 * @param modes			list of mode literals that should be considered
+	 * @param targetClass	subclass of CallSequenceItem that restricts the result
+	 * @param filter		lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
+	 * @return
+	 * 		List of T extends CallSequenceItems
 	 */
 	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter) {
@@ -187,9 +179,9 @@ public class SoftwareUtil {
 	/**
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * 
-	 * @param runnable
-	 * 		- Runnable
-	 * @return list of RunnableItems
+	 * @param runnable	runnable
+	 * @return
+	 * 		List of RunnableItems
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable) {
 		return collectRunnableItems(runnable, null, RunnableItem.class, null);
@@ -199,11 +191,10 @@ public class SoftwareUtil {
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes.
 	 * 
-	 * @param runnable
-	 * 		- Runnable
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @return list of RunnableItems
+	 * @param runnable	runnable
+	 * @param modes		list of mode literals that should be considered
+	 * @return
+	 * 		List of RunnableItems
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, RunnableItem.class, null);
@@ -213,13 +204,11 @@ public class SoftwareUtil {
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes and filtered by a lambda expression.
 	 * 
-	 * @param runnable
-	 * 		- Runnable
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param filter
-	 * 		- lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
-	 * @return list of RunnableItems
+	 * @param runnable	runnable
+	 * @param modes		list of mode literals that should be considered
+	 * @param filter	lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
+	 * @return
+	 * 		List of RunnableItems
 	 */
 	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
 			final Function<RunnableItem, Boolean> filter) {
@@ -230,13 +219,11 @@ public class SoftwareUtil {
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes and filtered by class.
 	 * 
-	 * @param runnable
-	 * 		- Runnable
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param targetClass
-	 * 		- subclass of RunnableItem that restricts the result
-	 * @return list of T extends RunnableItems
+	 * @param runnable		runnable
+	 * @param modes			list of mode literals that should be considered
+	 * @param targetClass	subclass of RunnableItem that restricts the result
+	 * @return
+	 * 		List of T extends RunnableItems
 	 */
 	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
 			final Class<T> targetClass) {
@@ -247,15 +234,12 @@ public class SoftwareUtil {
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
 	 * 
-	 * @param runnable
-	 * 		- Runnable
-	 * @param modes
-	 * 		- list of mode literals that should be considered
-	 * @param targetClass
-	 * 		- subclass of RunnableItem that restricts the result
-	 * @param filter
-	 * 		- lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
-	 * @return list of T extends RunnableItems
+	 * @param runnable		runnable
+	 * @param modes			list of mode literals that should be considered
+	 * @param targetClass	subclass of RunnableItem that restricts the result
+	 * @param filter		lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
+	 * @return
+	 * 		List of T extends RunnableItems
 	 */
 	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter) {
@@ -301,9 +285,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of labels accessed from the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param runnable runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getAccessedLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class)
@@ -312,9 +297,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of labels read by the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getReadLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ))
@@ -323,9 +309,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of labels written by the runnable
-	 * @param runnable 
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getWriteLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE))
@@ -334,9 +321,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of all label accesses of the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of LabelAccesses
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class);	
@@ -344,9 +332,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of read label accesses of the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return  List of LabelAccesses
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getReadLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ));	
@@ -354,9 +343,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of write label accesses of the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return  List of LabelAccesses
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getWriteLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE));	
@@ -364,9 +354,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels accessed from runnable -&gt; the corresponding label accesses
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccesses
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccesses
 	 */
 	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getData() != null))
@@ -375,9 +366,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels accessed by the runnable -&gt; the corresponding LabelAccessStatistics
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistics
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return Map:
+	 * 		Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
@@ -389,9 +381,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels read by the runnable -&gt; the corresponding LabelAccessStatistics
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistics
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
@@ -403,9 +396,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels written by the runnable -&gt; the corresponding LabelAccessStatistics
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistics
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
@@ -417,9 +411,10 @@ public class SoftwareUtil {
 	
 	/**
 	 * Returns a set of labels accessed by the process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getAccessedLabelSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashSet<Label> result = new HashSet<>();
@@ -430,9 +425,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of labels read by the process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getReadLabelSet(Process  process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashSet<Label> result = new HashSet<>(); 
@@ -443,9 +439,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of labels written by the process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Label> getWriteLabelSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashSet<Label> result = new HashSet<>(); 
@@ -456,9 +453,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of all label accesses of the process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of LabelAccesses
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getLabelAccessList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<LabelAccess> result = new ArrayList<>(); 
@@ -469,9 +467,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: accessed labels of the process -&gt; the corresponding label accesses
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccess
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccess
 	 */
 	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Label, List<LabelAccess>> result = new HashMap<>();
@@ -489,9 +488,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels accessed by the process -&gt; the corresponding label access statistics
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistic
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
@@ -509,9 +509,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels read the process -&gt; the corresponding label access statistics
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistic
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
@@ -529,9 +530,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a map: labels written by the process -&gt; the corresponding label access statistics
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Map: Label -&gt; List of LabelAccessStatistic
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
@@ -549,12 +551,7 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns the reads from a process to a certain label. Evaluates the LabelAccessStatistic. 
-	 * Definition of TimeType is possible. Null value returns the average case
-	 * @param label
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @param timeType
-	 * @return float
+	 * Definition of TimeType is possible. Null value returns the average case.
 	 */
 	public static float getLabelReadCount(Label label, Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType timeType) {
 		float reads = 0f;
@@ -590,12 +587,7 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns the writes from a process to a certain label. Evaluates the LabelAccessStatistic. 
-	 * Definition of TimeType is possible. Null value returns the average case
-	 * @param label
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @param timeType
-	 * @return float
+	 * Definition of TimeType is possible. Null value returns the average case.
 	 */
 	public static float getLabelWriteCount(Label label, Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType timeType) {
 		float writes = 0f;
@@ -629,9 +621,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of runnables called by the process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of Runnables
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Runnables
 	 */
 	public static List<Runnable> getRunnableList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return SoftwareUtil.collectCalls(process, modes, TaskRunnableCall.class)
@@ -640,9 +633,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of runnables called by the process - no duplicates 
-	 * @param process
-	 * @param modes (optional) - null works 
-	 * @return Set of runnables called by the process
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works 
+	 * @return
+	 * 		Set of runnables called by the process
 	 */
 	public static Set<Runnable> getRunnableSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return new HashSet<>(getRunnableList(process, modes));
@@ -651,9 +645,6 @@ public class SoftwareUtil {
 	/**
 	 * Returns the number of label accesses from a statistic.
 	 * The accType defines if the minimum, maximum or average accesses are returned.
-	 * @param labelAcc
-	 * @param accType
-	 * @return  The number of accesses from a statistic
 	 */
 	public static float getLabelAccessCountFromStatistics(LabelAccess labelAcc, TimeType accType) {
 		float accesses = 1;
@@ -681,9 +672,10 @@ public class SoftwareUtil {
 
 	/** 
 	 * Returns a list of runnables reading the label
-	 * @param label
-	 * @param modes (optional) - null works
-	 * @return List of Runnables 
+	 * @param label		label
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Runnables 
 	 */
 	public static List<Runnable> getReaderListOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
@@ -700,9 +692,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of runnables reading the label
-	 * @param label
-	 * @param modes (optional) - null works
-	 * @return Set of Labels
+	 * @param label		label
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Labels
 	 */
 	public static Set<Runnable> getReadersSetOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
 		return new HashSet<>(getReaderListOfLabel(label, modes));
@@ -710,9 +703,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of runnables writing the label
-	 * @param label
-	 * @param modes (optional) - null works
-	 * @return List of Runnables
+	 * @param label		label
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Runnables
 	 */
 	public static List<Runnable> getWriterListOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
@@ -729,9 +723,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of runnables writing the label
-	 * @param label
-	 * @param modes (optional) - null works
-	 * @return Set of Runnables 
+	 * @param label		label
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of Runnables 
 	 */
 	public static Set<Runnable> getWriterSetOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
 		return new HashSet<>(getWriterListOfLabel(label, modes));
@@ -739,8 +734,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Collects a list of set events calls for a process
-	 * @param process
-	 * @param modes (optional) - null works
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of SetEvents
 	 */
 	public static List<SetEvent> collectSetEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return SoftwareUtil.collectCalls(process, modes, SetEvent.class);
@@ -748,9 +745,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Collects a list of clear event calls for a process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of ClearEvents
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of ClearEvents
 	 */
 	public static List<ClearEvent> collectClearEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return SoftwareUtil.collectCalls(process, modes, ClearEvent.class);
@@ -758,9 +756,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Collects a list of wait event calls for a process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of WaitEvents
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of WaitEvents
 	 */
 	public static List<WaitEvent> collectWaitEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return SoftwareUtil.collectCalls(process, modes, WaitEvent.class);
@@ -768,9 +767,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Collects a list of event calls (clear, set or wait) of a process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of CallSequenceItems
+	 * @param process	process (Task or ISR)
+	 * @param modes 	(optional) - null works
+	 * @return
+	 * 		List of CallSequenceItems
 	 */
 	public static List<CallSequenceItem> collectEventsOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		return SoftwareUtil.collectCalls(process, modes,
@@ -779,10 +779,11 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of all exchanged labels that are written by the sender process and read by the receiver process
-	 * @param sender
-	 * @param receiver
-	 * @param modes (optional) - null works
-	 * @return List of Labels
+	 * @param sender	process (Task or ISR)
+	 * @param receiver	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Labels
 	 */
 	 public static List<Label> getInterTaskCommunication(Process sender, Process receiver, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Label> result = new ArrayList<Label>();
@@ -793,9 +794,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of processes calling the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of Processes
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Processes
 	 */
 	public static List<Process> getProcesses(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Process> result = new ArrayList<>();
@@ -816,9 +818,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of runnables directly calling the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of Runnables
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Runnables
 	 */
 	public static List<Runnable> getRunnableCallParents(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
@@ -846,9 +849,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of runnables directly called by the runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of Runnables
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Runnables
 	 */
 	public static List<Runnable> getCalledRunnables(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, RunnableCall.class)
@@ -857,9 +861,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of all execution needs for a given runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of ExecutionNeeds
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of ExecutionNeeds
 	 */
 	public static List<ExecutionNeed> getExecutionNeeds(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, ExecutionNeed.class);
@@ -867,9 +872,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a list of all execution needs for a given process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of ExecutionNeeds
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of ExecutionNeeds
 	 */
 	public static List<ExecutionNeed> getExecutionNeeds(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> result = new ArrayList<>();
@@ -882,9 +888,10 @@ public class SoftwareUtil {
 
 	/** 
 	 * Returns a list of all ticks for a given runnable 
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return List of Ticks
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Ticks
 	 */
 	public static List<Ticks> getTicks(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, Ticks.class);
@@ -892,9 +899,10 @@ public class SoftwareUtil {
 
 	/** 
 	 * Returns a list of all ticks for a given process 
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return List of Ticks
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		List of Ticks
 	 */
 	public static List<Ticks> getTicks(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Ticks> result = new ArrayList<>();
@@ -906,9 +914,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of server calls for a runnable
-	 * @param runnable
-	 * @param modes (optional) - null works
-	 * @return Set of ServerCall
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of ServerCall
 	 */
 	public static Set<ServerCall> getServerCallSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		return collectRunnableItems(runnable, modes, ServerCall.class).stream().collect(Collectors.toSet());
@@ -916,9 +925,10 @@ public class SoftwareUtil {
 
 	/**
 	 * Returns a set of server calls for a process
-	 * @param process
-	 * @param modes (optional) - null works
-	 * @return Set of ServerCall
+	 * @param process	process (Task or ISR)
+	 * @param modes		(optional) - null works
+	 * @return
+	 * 		Set of ServerCall
 	 */
 	public static Set<ServerCall> getServerCallSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		HashSet<ServerCall> result = new HashSet<>(); 

@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,7 +33,6 @@ import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
-import org.eclipse.app4mc.amalthea.model.Scheduler;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
@@ -54,8 +53,6 @@ public class DeploymentUtil {
 	 * responsibilities are set empty core affinities are ignored otherwise the
 	 * intersection of core affinity and scheduler responsibility is returned
 	 * 
-	 * @param core
-	 * @param model
 	 * @return Set of tasks
 	 */
 	public static Set<Task> getTasksMappedToCore(ProcessingUnit core, Amalthea model) { /// called it mapping
@@ -93,8 +90,6 @@ public class DeploymentUtil {
 	/**
 	 * Returns a set of all ISR mapped to that core
 	 * 
-	 * @param core
-	 * @param model
 	 * @return Set of interrupt service routines (ISR)
 	 */
 	public static Set<ISR> getISRsMappedToCore(ProcessingUnit core, Amalthea model) {
@@ -124,8 +119,6 @@ public class DeploymentUtil {
 	/**
 	 * Returns a list of all allocations of a task
 	 * 
-	 * @param task
-	 * @param model
 	 * @return List of task allocations
 	 */
 	public static List<TaskAllocation> getTaskAllocations(Task task, Amalthea model) {
@@ -139,10 +132,7 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * Returns boolean if at least a label mapping exists
-	 * 
-	 * @param label
-	 * @return boolean
+	 * Returns true if at least a label mapping exists
 	 */
 	public static boolean isMapped(Label label) {
 		return !getLabelMapping(label).isEmpty();
@@ -151,7 +141,6 @@ public class DeploymentUtil {
 	/**
 	 * Set of memories the label is mapped to (should be only one!)
 	 * 
-	 * @param label
 	 * @return Set of Memories
 	 */
 	public static Set<Memory> getLabelMapping(Label label) {
@@ -165,8 +154,6 @@ public class DeploymentUtil {
 	/**
 	 * Returns a created LabelMapping element which was already added to the model
 	 * 
-	 * @param label
-	 * @param mem
 	 * @return MemoryMapping
 	 */
 	public static MemoryMapping setLabelMapping(Label label, Memory mem, Amalthea model) {
@@ -181,42 +168,12 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * @deprecated (0.9.1) use {@link Scheduler#getSchedulerAllocations()} instead.
-	 */
-	@Deprecated
-	public static SchedulerAllocation getSchedulerAllocations(Scheduler scheduler, MappingModel mappingModel) {
-		for (SchedulerAllocation sa : mappingModel.getSchedulerAllocation()) {
-			if (sa.getScheduler().equals(scheduler)) {
-				return sa;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Returns a set of all task allocations of a specific scheduler
-	 * 
-	 * @deprecated (0.9.1) use {@link TaskScheduler#getTaskAllocations()} instead.
-	 */
-	@Deprecated
-	public static Set<TaskAllocation> getTaskAllocationsForScheduler(TaskScheduler taskScheduler,
-			MappingModel mappingmodel) {
-		HashSet<TaskAllocation> taskAllocations = new HashSet<>();
-		for (TaskAllocation taRun : mappingmodel.getTaskAllocation()) {
-			if (taRun.getScheduler() != null && taRun.getScheduler().equals(taskScheduler)) {
-				taskAllocations.add(taRun);
-			}
-		}
-		return taskAllocations;
-	}
-
-	/**
 	 * Returns the cores the process is assigned to. Empty core affinities are
 	 * ignored, otherwise the intersection of core affinity and scheduler
 	 * responsibility is returned.
 	 * 
 	 * @param process Task or ISR
-	 * @param model The containing model
+	 * @param model the containing model
 	 * @return Set of cores
 	 */
 	public static Set<ProcessingUnit> getAssignedCoreForProcess(Process process, Amalthea model) {
@@ -266,8 +223,7 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * @param procUnitDef Definition of a processing unit
-	 * @return List of feature categories
+	 * @param procUnitDef	 processing unit definition
 	 */
 	public List<HwFeatureCategory> getFeatureCategories(ProcessingUnitDefinition procUnitDef) {
 		List<HwFeatureCategory> result = new ArrayList<>();
@@ -280,9 +236,8 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * @param hwFeatureCat
-	 * @param procUnitDefinitons
-	 * @return
+	 * @param hwFeatureCat			selection criteria
+	 * @param procUnitDefinitons	list of potential definitions
 	 */
 	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwCategories(HwFeatureCategory hwFeatureCat,
 			List<ProcessingUnitDefinition> procUnitDefinitons) {
@@ -297,9 +252,8 @@ public class DeploymentUtil {
 	}
 
 	/**
-	 * @param feature
-	 * @param procUnitDefinitons
-	 * @return
+	 * @param feature				selection criteria
+	 * @param procUnitDefinitons	list of potential definitions
 	 */
 	public List<ProcessingUnitDefinition> getProcessingUnitDefinitionsForHwFeature(HwFeature feature,
 			List<ProcessingUnitDefinition> procUnitDefinitons) {

@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -40,8 +40,9 @@ public class AmaltheaLoader {
 	 * <li>relative to project folder (example: "input/model.amxmi")</li>
 	 * </ul>
 	 * 
-	 * @param pathname
-	 * @return AMALTHEA model - null if load failed
+	 * @param pathname	String
+	 * @return
+	 * 		AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromFileNamed(String pathname) {
 		if (pathname != null) {
@@ -54,8 +55,9 @@ public class AmaltheaLoader {
 	/**
 	 * Static method to load an AMALTHEA model from a file.
 	 * 
-	 * @param file
-	 * @return AMALTHEA model - null if load failed
+	 * @param file	standard Java file
+	 * @return
+	 * 		AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromFile(File file) {
 		if (file != null) {
@@ -68,8 +70,9 @@ public class AmaltheaLoader {
 	/**
 	 * Static method to load an AMALTHEA model from a file URI.
 	 * 
-	 * @param uri
-	 * @return AMALTHEA model - null if load failed
+	 * @param uri	org.eclipse.emf.common.util.URI
+	 * @return
+	 * 		AMALTHEA model - null if load failed
 	 */
 	public static Amalthea loadFromURI(URI uri) {
 		if (uri != null) {

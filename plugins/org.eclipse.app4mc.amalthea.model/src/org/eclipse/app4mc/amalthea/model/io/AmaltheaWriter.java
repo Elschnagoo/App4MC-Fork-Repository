@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,9 +39,10 @@ public class AmaltheaWriter {
 	 * <li>relative to project folder (example: "output/model_new.amxmi")</li>
 	 * </ul>
 	 * 
-	 * @param model
-	 * @param pathname
-	 * @return boolean - true if file is written successfully
+	 * @param model		source model
+	 * @param pathname	String
+	 * @return
+	 * 		boolean - true if file is written successfully
 	 */
 	public static boolean writeToFileNamed(Amalthea model, String pathname) {
 		if(model!=null && pathname!=null) {
@@ -54,9 +55,10 @@ public class AmaltheaWriter {
 	/**
 	 * Static method to save an AMALTHEA model to a file.
 	 * 
-	 * @param model
-	 * @param file
-	 * @return boolean - true if file is written successfully
+	 * @param model		source model
+	 * @param file		standard Java file
+	 * @return
+	 * 		boolean - true if file is written successfully
 	 */
 	public static boolean writeToFile(Amalthea model, File file) {
 		if(model!=null && file!=null) {
@@ -69,9 +71,10 @@ public class AmaltheaWriter {
 	/**
 	 * Static method to save an AMALTHEA model to a file URI.
 	 * 
-	 * @param model
-	 * @param uri
-	 * @return boolean - true if file is written successfully
+	 * @param model		source model
+	 * @param uri		org.eclipse.emf.common.util.URI
+	 * @return
+	 * 		boolean - true if file is written successfully
 	 */
 	public static boolean writeToURI(Amalthea model, URI uri) {
 		if(model !=null && uri!=null) {
