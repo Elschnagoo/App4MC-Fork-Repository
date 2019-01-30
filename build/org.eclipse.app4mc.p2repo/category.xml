@@ -12,12 +12,6 @@
    <feature url="features/org.eclipse.app4mc.amalthea.editors.sdk_0.9.3.qualifier.jar" id="org.eclipse.app4mc.amalthea.editors.sdk" version="0.9.3.qualifier">
       <category name="org.eclipse.app4mc.amalthea.editors"/>
    </feature>
-   <feature url="features/org.eclipse.app4mc.multicore_0.9.3.qualifier.jar" id="org.eclipse.app4mc.multicore" version="0.9.3.qualifier">
-      <category name="org.eclipse.app4mc.multicore"/>
-   </feature>
-   <feature url="features/org.eclipse.app4mc.multicore.sdk_0.9.3.qualifier.jar" id="org.eclipse.app4mc.multicore.sdk" version="0.9.3.qualifier">
-      <category name="org.eclipse.app4mc.multicore"/>
-   </feature>
    <feature url="features/org.eclipse.app4mc.amalthea.export_0.9.3.qualifier.jar" id="org.eclipse.app4mc.amalthea.export" version="0.9.3.qualifier">
       <category name="org.eclipse.app4mc.amalthea.export"/>
    </feature>
@@ -93,22 +87,17 @@
    <category-def name="org.eclipse.app4mc.amalthea.workflow" label="APP4MC Workflow"/>
    <category-def name="org.eclipse.app4mc.amalthea.import" label="APP4MC Import"/>
    <category-def name="org.eclipse.app4mc.amalthea.export" label="APP4MC Export"/>
-   <category-def name="org.eclipse.app4mc.multicore" label="APP4MC Multicore Support"/>
    <category-def name="org.eclipse.app4mc.tracing" label="APP4MC Tracing"/>
    <category-def name="org.eclipse.app4mc.validation" label="APP4MC Validation"/>
    <category-def name="org.eclipse.app4mc.examples" label="APP4MC Examples"/>
-   
-   
    <repository-reference location="http://download.eclipse.org/eclipse/updates/4.7" enabled="true" />
-<repository-reference location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository" enabled="true" />
-<repository-reference location="http://download.eclipse.org/webtools/downloads/drops/R3.9.5/R-3.9.5-20180409100740/repository" enabled="true" />
-<repository-reference location="http://download.eclipse.org/releases/oxygen/201706021000" enabled="true" />
-<repository-reference location="http://download.eclipse.org/ease/update/release" enabled="true" />
-<repository-reference location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.3" enabled="true" />
-<repository-reference location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0" enabled="true" />
-<repository-reference location="http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen" enabled="true" />
-<repository-reference location="http://download.eclipse.org/releases/oxygen" enabled="true" />
-<repository-reference location="http://download.eclipse.org/cbi/updates/license" enabled="true" />
-
-
+   <repository-reference location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/webtools/downloads/drops/R3.9.5/R-3.9.5-20180409100740/repository" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/releases/oxygen/201706021000" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/ease/update/release" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.3" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/releases/oxygen" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/cbi/updates/license" enabled="true" />
 </site>
