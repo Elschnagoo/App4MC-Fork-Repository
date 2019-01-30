@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="Oxygen-Platform" sequenceNumber="1533045681">
+  <locations>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.sun.xml.bind" version="2.2.0.v201505121915"/>
+      <unit id="java_cup.runtime" version="0.10.0.v201005080400"/>
+      <unit id="javax.activation" version="1.1.0.v201211130549"/>
+      <unit id="javax.annotation" version="1.2.0.v201602091430"/>
+      <unit id="javax.el" version="2.2.0.v201303151357"/>
+      <unit id="javax.servlet" version="3.1.0.v201410161800"/>
+      <unit id="javax.ws.rs" version="2.0.1.v201504171603"/>
+      <unit id="javax.xml" version="1.3.4.v201005080400"/>
+      <unit id="javax.xml.bind" version="2.2.0.v201105210648"/>
+      <unit id="javax.xml.stream" version="1.0.1.v201004272200"/>
+      <unit id="org.antlr.runtime" version="4.5.1.v20160210-1233"/>
+      <unit id="org.apache.batik.css" version="1.8.0.v20170214-1941"/>
+      <unit id="org.apache.batik.util" version="1.8.0.v20170214-1941"/>
+      <unit id="org.apache.batik.util.gui" version="1.8.0.v20170214-1941"/>
+      <unit id="org.apache.bcel" version="5.2.0.v201005080400"/>
+      <unit id="org.apache.commons.codec" version="1.9.0.v20170208-1614"/>
+      <unit id="org.apache.commons.io" version="2.2.0.v201405211200"/>
+      <unit id="org.apache.commons.lang" version="2.6.0.v201404270220"/>
+      <unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+      <unit id="org.apache.commons.math" version="2.1.0.v201105210652"/>
+      <unit id="org.apache.commons.math3" version="3.5.0.v20160301-1110"/>
+      <unit id="org.apache.httpcomponents.httpclient" version="4.5.2.v20170210-0925"/>
+      <unit id="org.apache.httpcomponents.httpcore" version="4.4.6.v20170210-0925"/>
+      <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+      <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
+      <unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
+      <unit id="org.apache.xml.resolver" version="1.2.0.v201005080400"/>
+      <unit id="org.apache.xml.serializer" version="2.7.1.v201005080400"/>
+      <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
+      <unit id="org.swtchart" version="0.10.0.v201605200358"/>
+      <unit id="org.jdom" version="1.1.1.v201101151400"/>
+      <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
+      <unit id="org.slf4j.log4j.source" version="1.7.2.v20130115-1340"/>
+      <unit id="com.google.inject" version="3.0.0.v201605172100"/>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository/"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.wst.jsdt.chromium.debug.feature.feature.group" version="0.6.0.v201705091354"/>
+      <unit id="org.eclipse.wst.jsdt.feature.feature.group" version="2.1.1.v201804042202"/>
+      <unit id="org.eclipse.jst.server_ui.feature.feature.group" version="3.4.300.v201709251835"/>
+      <unit id="org.eclipse.jst.server_core.feature.feature.group" version="3.4.300.v201606081655"/>
+      <unit id="org.eclipse.jst.server_adapters.feature.feature.group" version="3.2.400.v201711301708"/>
+      <unit id="org.eclipse.jst.server_adapters.ext.feature.feature.group" version="3.3.602.v201804032031"/>
+      <unit id="org.eclipse.jst.common.fproj.enablement.jdt.feature.group" version="3.10.0.v201803211504"/>
+      <unit id="org.eclipse.wst.server_ui.feature.feature.group" version="3.3.700.v201711152154"/>
+      <unit id="org.eclipse.wst.server_core.feature.feature.group" version="3.3.700.v201705172051"/>
+      <unit id="org.eclipse.wst.server_adapters.feature.feature.group" version="3.2.601.v201711302104"/>
+      <unit id="org.eclipse.wst.common_ui.feature.feature.group" version="3.9.1.v201803221834"/>
+      <unit id="org.eclipse.wst.common_core.feature.feature.group" version="3.9.1.v201803221834"/>
+      <unit id="org.eclipse.wst.common.fproj.feature.group" version="3.7.1.v201707201954"/>
+      <repository location="http://download.eclipse.org/webtools/downloads/drops/R3.9.5/R-3.9.5-20180409100740/repository"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.wst.jsdt.nashorn.extension" version="1.0.0.v201605131737"/>
+      <repository location="http://download.eclipse.org/releases/oxygen/201706021000"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.ease.feature.feature.group" version="0.6.0.I201802271533"/>
+      <unit id="org.eclipse.ease.lang.javascript.feature.feature.group" version="0.6.0.I201802201511"/>
+      <unit id="org.eclipse.ease.lang.jvm.feature.feature.group" version="0.6.0.I201711281359"/>
+      <unit id="org.eclipse.ease.modules.feature.feature.group" version="0.6.0.I201802191612"/>
+      <unit id="org.eclipse.ease.ui.feature.feature.group" version="0.6.0.I201804241621"/>
+      <repository location="http://download.eclipse.org/ease/update/release"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.3.3.201805161152"/>
+      <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.3.3.201805161152"/>
+      <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="3.3.3.201805161152"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="3.3.3.201805161152"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="3.3.3.201805161152"/>
+      <unit id="org.eclipse.emf.compare.source.feature.group" version="3.3.3.201805161152"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.3"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtend.sdk.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.docs.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.examples.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.redist.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.runtime.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.ui.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.xbase.feature.group" version="2.13.0.v20171020-0920"/>
+      <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="2.13.0.v20171020-0700"/>
+      <unit id="org.eclipse.xtext.xtext.ui.feature.group" version="2.13.0.v20171020-0920"/>
+      <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.aql.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.interpreter.feature.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.properties.feature.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.samples.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.specifier.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.specifier.properties.feature.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.acceleo.query.feature.group" version="6.0.1.201705121344"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="5.0.0.201706130938"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="5.0.0.201706130938"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/5.0.0/oxygen"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.eef.sdk.feature.feature.group" version="2.0.1.201801311257"/>
+      <unit id="org.eclipse.emf.eef.sdk-feature.feature.group" version="1.5.1.201601141612"/>
+      <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="2.0.1.201801311257"/>
+      <unit id="org.eclipse.emf.eef.edt-feature.feature.group" version="1.5.1.201601141612"/>
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
+      <unit id="org.eclipse.emf.eef.extended-feature.feature.group" version="1.5.1.201601141612"/>
+      <unit id="org.eclipse.fx.ide.basic.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.converter.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.css.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.fxgraph.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.fxml.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.gmod.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.l10n.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.ldef.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.pde.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.ide.rrobot.feature.feature.group" version="3.0.0.201705220750"/>
+      <unit id="org.eclipse.fx.runtime.min.feature.feature.group" version="3.0.0.201705220748"/>
+      <unit id="com.google.protobuf" version="2.4.0.v201105131100"/>
+      <unit id="org.slf4j.api" version="1.7.2.v20121108-1250"/>
+      <unit id="org.slf4j.impl.log4j12" version="1.7.2.v20131105-2200"/>
+      <unit id="org.slf4j.jcl" version="1.7.2.v20130115-1340"/>
+      <unit id="org.eclipse.egit.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.egit.mylyn.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.egit.source.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.http.apache.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.lfs.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.pgm.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.pgm.source.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.jgit.source.feature.group" version="4.9.2.201712150930-r"/>
+      <unit id="org.eclipse.xpand.sdk.feature.group" version="2.2.0.v201605260315"/>
+      <unit id="org.eclipse.sphinx.sdk.feature.group" version="0.11.0.201706140911"/>
+      <unit id="org.eclipse.emf.validation.doc.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.validation.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.validation.ocl.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.validation.ocl.source.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.validation.source.feature.group" version="1.11.0.201706061352"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.13.0.v20170609-0928"/>
+      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.11.0.201706061339"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="3.7.2.201708211328"/>
+      <unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.5.0.v20170613-0242"/>
+      <unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.21.201705291011"/>
+      <unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.9.1.201705291011"/>
+      <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.9.1.201705291011"/>
+      <unit id="org.eclipse.emf.parsley.sdk.feature.group" version="1.2.3.v20180220-1246"/>
+      <unit id="org.eclipse.cdt.remote.core" version="1.0.1.201802261533"/>
+      <unit id="org.eclipse.cdt.sdk.feature.group" version="9.4.3.201802261533"/>
+      <unit id="org.eclipse.ecf.core.feature.feature.group" version="1.4.0.v20170516-2248"/>
+      <unit id="org.eclipse.ecf.filetransfer.feature.feature.group" version="3.13.8.v20170715-2257"/>
+      <unit id="org.eclipse.ecf.discovery.feature.feature.group" version="1.0.0.v20170110-1317"/>
+      <unit id="org.eclipse.ecf.remoteservice.sdk.feature.feature.group" version="3.13.8.v20170816-0246"/>
+      <unit id="org.eclipse.ecf.filetransfer.httpclient4.feature.feature.group" version="3.13.8.v20170715-2257"/>
+      <unit id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+      <unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+      <unit id="org.eclipse.ecf.filetransfer.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
+      <unit id="org.eclipse.fx.code.editor.configuration" version="3.0.0.201705220600"/>
+      <unit id="org.eclipse.graphiti.sdk.feature.feature.group" version="0.14.0.201705161212"/>
+      <unit id="org.eclipse.graphiti.export.feature.feature.group" version="0.14.0.201705161212"/>
+      <unit id="org.eclipse.ocl.all.sdk.feature.group" version="5.3.0.v20170607-1133"/>
+      <unit id="org.eclipse.remote.feature.group" version="3.0.0.201803060126"/>
+      <unit id="org.eclipse.uml2.sdk.feature.group" version="5.3.0.v20170605-1616"/>
+      <unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.9.2.v201803221834"/>
+      <unit id="org.eclipse.xsd.sdk.feature.group" version="2.13.0.v20170609-0928"/>
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.11.0.201706061437"/>
+      <unit id="org.eclipse.gmf.runtime.notation.feature.group" version="1.11.0.201706061354"/>
+      <unit id="org.eclipse.gmf.feature.group" version="1.11.0.201706061437"/>
+      <unit id="org.eclipse.gef.dot.sdk.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.common.sdk.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.graph.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.fx.doc.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.geometry.doc.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.fx.feature.group" version="5.0.1.201711130301"/>
+      <unit id="org.eclipse.gef.geometry.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.geometry.convert.fx.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.layout.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.mvc.fx.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.graph.doc.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.gef.layout.doc.feature.group" version="5.0.0.201711130301"/>
+      <unit id="org.eclipse.draw2d.feature.group" version="3.10.100.201606061308"/>
+      <unit id="org.eclipse.gef.feature.group" version="3.11.0.201606061308"/>
+      <unit id="org.eclipse.gef.mvc.doc.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.mvc.fx.ui.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.zest.sdk.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.zest.fx.ui.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.fx.jface.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.gef.fx.swt.feature.group" version="5.0.2.201711130301"/>
+      <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.1.1.v20170906-1259"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.13.4.v20180322-2228"/>
+      <unit id="org.eclipse.equinox.server.jetty.feature.group" version="1.4.4.v20180322-2228"/>
+      <unit id="org.eclipse.jdt.feature.group" version="3.13.4.v20180330-0919"/>
+      <unit id="org.eclipse.pde.feature.group" version="3.13.4.v20180330-0640"/>
+      <unit id="org.eclipse.platform.ide" version="4.7.3.M20180330-0640"/>
+      <unit id="org.eclipse.platform.sdk" version="4.7.3.M20180330-0640"/>
+      <repository location="http://download.eclipse.org/releases/oxygen"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.license.feature.group" version="2.0.1.v20180423-1114"/>
+      <repository location="http://download.eclipse.org/cbi/updates/license/"/>
+    </location>
+  </locations>
+</target>
