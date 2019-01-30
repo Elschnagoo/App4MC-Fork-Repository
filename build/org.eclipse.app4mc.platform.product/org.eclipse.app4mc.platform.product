@@ -491,8 +491,6 @@ version(s), and exceptions or additional permissions here}.&quot;
       <feature id="org.eclipse.app4mc.amalthea.workflow.scripting.sdk"/>
       <feature id="org.eclipse.app4mc.amalthea.converters"/>
       <feature id="org.eclipse.app4mc.amalthea.converters.sdk"/>
-      <feature id="org.eclipse.app4mc.multicore"/>
-      <feature id="org.eclipse.app4mc.multicore.sdk"/>
       <feature id="org.eclipse.app4mc.validation"/>
       <feature id="org.eclipse.app4mc.validation.sdk"/>
       <feature id="org.eclipse.app4mc.tracing"/>
