@@ -83,6 +83,7 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.mwe2</module>
 		<module>../../plugins/org.eclipse.app4mc.atdb.metrics</module>
+		<!--
 		<module>../../plugins/org.eclipse.app4mc.multicore.sharelibs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.dialogs</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.openmapping</module>
@@ -93,6 +94,7 @@
 		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceeditor</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.traceview</module>
 		<module>../../plugins/org.eclipse.app4mc.multicore.execution.ui.widget</module>
+		-->
 		<module>../../plugins/org.eclipse.app4mc.platform.ide</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter</module>
 		<module>../../plugins/org.eclipse.app4mc.tracing.converter.atdb</module>
@@ -103,7 +105,7 @@
 		<module>../../plugins/org.ojalgo</module>
 		<module>../../plugins/com.mxgraph</module>
 		<module>../../plugins/org.sqlite.jdbc</module>
-		<!--  <module>../../plugins/org.slf4j.impl.custom</module>-->
+		<!-- <module>../../plugins/org.slf4j.impl.custom</module> -->
 		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.093</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.092</module>
@@ -116,23 +118,16 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.072</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.071</module>
 		
-		
-		<!--
-		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.070</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.111</module>
-		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.110</module>-->
-		
-		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.common</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.ui</module>
 		<module>../../plugins/org.jdom2</module>
 		<module>../../plugins/org.jaxen</module>
-
+		
 		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.sirius.design</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.visualization.hw</module>
 		<module>../../plugins/net.sourceforge.plantuml</module>
-				
+		
 		<module>../../plugins/org.eclipse.app4mc.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.converters.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.help</module>
@@ -140,7 +135,7 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.editors.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.import.help</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.help</module>
-		<module>../../plugins/org.eclipse.app4mc.multicore.help</module>
+		<!-- <module>../../plugins/org.eclipse.app4mc.multicore.help</module> -->
 		<module>../../plugins/org.eclipse.app4mc.validation.help</module>
 
 		<!-- Features -->
@@ -167,8 +162,10 @@
 		<module>../../features/org.eclipse.app4mc.docu.sdk</module>
 		<module>../../features/org.eclipse.app4mc.examples</module>
 		<module>../../features/org.eclipse.app4mc.examples.sdk</module>
+		<!--
 		<module>../../features/org.eclipse.app4mc.multicore</module>
 		<module>../../features/org.eclipse.app4mc.multicore.sdk</module>
+		-->
 		<module>../../features/org.eclipse.app4mc.platform</module>
 		<module>../../features/org.eclipse.app4mc.platform.3rdparty</module>
 		<module>../../features/org.eclipse.app4mc.platform.sdk</module>
@@ -185,10 +182,6 @@
 		<module>../org.eclipse.app4mc.target</module>
 
 		<!-- Tests -->
-
-		<!--<module>../../tests/org.eclipse.app4mc.amalthea.converters.110.test</module>
-		<module>../../tests/org.eclipse.app4mc.amalthea.converters.111.test</module>
-		<module>../../tests/org.eclipse.app4mc.amalthea.converters.070.test</module>-->
 		
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.071.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.072.test</module>
@@ -201,12 +194,13 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.092.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.093.test</module>		
 		
+		<module>../../tests/org.eclipse.app4mc.amalthea.model.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
-		<module>../../tests/org.eclipse.app4mc.multicore.openmapping.test</module>
-		<module>../../tests/org.eclipse.app4mc.multicore.sharelibs.test</module>
 		<module>../../tests/org.eclipse.app4mc.amalthea.editors.sirius.design.test</module>
 		<!--  <module>../../tests/org.eclipse.app4mc.rcptt</module> -->
-		<module>../../tests/org.eclipse.app4mc.amalthea.model.test</module>
+		
+		<!-- <module>../../tests/org.eclipse.app4mc.multicore.openmapping.test</module> -->
+		<!-- <module>../../tests/org.eclipse.app4mc.multicore.sharelibs.test</module> -->
 	</modules>
 
 	
