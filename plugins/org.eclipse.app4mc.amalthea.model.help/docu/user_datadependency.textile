@@ -4,7 +4,7 @@ h3. Data Dependencies
 
 h4. Overview
 
-With version 0.9.1 it is possible to specify potential data dependencies for written data. More specifically, it is now possible to annotate at write accesses what other data potentially have influenced the written data. A typical "influence" would be usage of data for computing a written value. As such data often comes from parameters when calling a runnable, it is now also possible to specify runnable parameters in Amalthea and their potential influence on written data.
+It is possible to specify potential data dependencies for written data. More specifically, it is now possible to annotate at write accesses what other data potentially have influenced the written data. A typical "influence" would be usage of data for computing a written value. As such data often comes from parameters when calling a runnable, it is now also possible to specify runnable parameters in Amalthea and their potential influence on written data.
 
 Semantics of the new attributes in Amalthea is described in detail below. In general, these data dependency extensions are considered as a way to explicitly model details that help for visualization or expert reviews. For use cases such as timing simulation the data dependency extensions are of no importance and should be ignored. 
 
