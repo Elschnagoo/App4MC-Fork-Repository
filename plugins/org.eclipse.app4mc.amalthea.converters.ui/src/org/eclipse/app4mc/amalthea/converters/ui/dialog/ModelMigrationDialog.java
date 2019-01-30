@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -49,6 +49,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
@@ -528,26 +529,28 @@ public class ModelMigrationDialog extends Dialog {
 		final DataBindingContext bindingContext = new DataBindingContext();
 		//
 		final IWidgetValueProperty text = WidgetProperties.text(SWT.Modify);
-		final IObservableValue observeTextTxtInputModelVersionObserveWidget = text.observe(this.txtInputModelVersion);
-		final IObservableValue inputModelVersionMigDataModelObserveValue = PojoProperties.value("inputModelVersion")
-				.observe(getMigrationSettings());
+		final ISWTObservableValue observeTextTxtInputModelVersionObserveWidget = text.observe(this.txtInputModelVersion);
+		final ISWTObservableValue observeTextTxtOutputDirectoryObserveWidget = WidgetProperties.text(SWT.Modify).observe(this.txtOutputDirectory);
+		final ISWTObservableValue observeSelectionMig_model_version_comboObserveWidget = WidgetProperties.selection().observe(this.mig_model_version_combo);
+		//
+		@SuppressWarnings("unchecked")
+		final IObservableValue<?> inputModelVersionMigDataModelObserveValue = 
+				PojoProperties.value("inputModelVersion").observe(getMigrationSettings());
 		bindingContext.bindValue(observeTextTxtInputModelVersionObserveWidget,
 				inputModelVersionMigDataModelObserveValue, null, null);
 		//
-		final IObservableValue observeTextTxtOutputDirectoryObserveWidget = WidgetProperties.text(SWT.Modify)
-				.observe(this.txtOutputDirectory);
-		final IObservableValue outputDirectoryLocationMigDataModelObserveValue = PojoProperties
-				.value("outputDirectoryLocation").observe(getMigrationSettings());
+		@SuppressWarnings("unchecked")
+		final IObservableValue<?> outputDirectoryLocationMigDataModelObserveValue = 
+				PojoProperties.value("outputDirectoryLocation").observe(getMigrationSettings());
 		bindingContext.bindValue(observeTextTxtOutputDirectoryObserveWidget,
 				outputDirectoryLocationMigDataModelObserveValue, null, null);
 		//
-		final IObservableValue observeSelectionMig_model_version_comboObserveWidget = WidgetProperties.selection()
-				.observe(this.mig_model_version_combo);
-		final IObservableValue migrationModelVersionMigrationSettingsObserveValue = PojoProperties
-				.value("migrationModelVersion").observe(this.migrationSettings);
+		@SuppressWarnings("unchecked")
+		final IObservableValue<?> migrationModelVersionMigrationSettingsObserveValue = 
+				PojoProperties.value("migrationModelVersion").observe(this.migrationSettings);
 		bindingContext.bindValue(observeSelectionMig_model_version_comboObserveWidget,
 				migrationModelVersionMigrationSettingsObserveValue, null, null);
-		//
+		
 		return bindingContext;
 	}
 

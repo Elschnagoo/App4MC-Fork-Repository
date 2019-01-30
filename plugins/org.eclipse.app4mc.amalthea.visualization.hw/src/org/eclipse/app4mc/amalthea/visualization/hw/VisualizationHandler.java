@@ -107,7 +107,7 @@ public class VisualizationHandler extends AbstractHandler {
 								try {
 									OutputStream diagramFile = new FileOutputStream(absPath + "/" + diagramFileName);
 									SourceStringReader reader = new SourceStringReader(umlOutput.toString());
-									reader.generateImage(diagramFile, new FileFormatOption(FileFormat.SVG));
+									reader.outputImage(diagramFile, new FileFormatOption(FileFormat.SVG));
 									diagramFile.close();
 	
 									folder.refreshLocal(1, new NullProgressMonitor());
