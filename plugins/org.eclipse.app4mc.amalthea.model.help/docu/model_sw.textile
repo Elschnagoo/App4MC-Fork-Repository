@@ -235,6 +235,11 @@ Each entry (path) of a __Runnable Probability Switch__ has a probability-value. 
 !../pictures/model_sw_runnableprobabilityswitch.png!
 
 
+h4. Ticks
+
+__Ticks__ allow to specify the required execution "time" in a basic way. They are the equivalent of cycles in the hardware domain and the execution time can easily be calculated if the frequency of the executing __ProcessingUnit__ (PU) is known.
+Detailed definition: see <notextile><a href="./model_basics.html#basics-ticks">Ticks</a></notextile>
+
 h4. Execution Need
 
 __ExecutionNeed__ allows to specify the required execution "time" in a more abstract way. Multiple __NeedEntries__ can be used to specify execution characteristics. There is a map of default entries and (optional) maps of entries for specific hardware types (e.g. FPGA). These extended entries are also implemented as a map with a processing unit definition as the key.

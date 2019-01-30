@@ -3,7 +3,7 @@ h2. Model Basics
 
 The following classes are used all over the Amalthea model to define specific attributes of the model classes.
 
-h3(#common-custom-props). Custom Properties
+h3(#basics-custom-props). Custom Properties
 
 The __CustomProperty__ element is used to define own properties that are not (yet) available in AMALTHEA. If there is the need to extend an element or to store tool information related to processing steps, __CustomProperties__ can be used to store this type of information. It also provides the possibility to work with prototypical approaches that later (if established and more stable) can be integrated in the standard model.
 
@@ -141,9 +141,9 @@ The minimum and maximum values are set as a normal __int__ value,  the average t
 !../pictures/model_common_statistic.png!
 
 
-h3. Ticks
+h3(#basics-ticks). Ticks
 
-Ticks are used to express execution times in a basic way. The number of ticks characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. The corresponding execution time can be easily calculated if the frequency of the executing __ProcessingUnit__ (PU) is known. Depending on the capabilities of a PU the time to execute such an element will differ. If necessary the fundamentally different numbers for specific types of PUs can be stored as extended values in a map.
+Ticks are used to express execution times in a basic way. The number of ticks characterizes the amount of computation that is necessary to execute e.g. a __Runnable__. The corresponding execution time can be easily calculated if the frequency of the executing __ProcessingUnit__ (PU) is known.The corresponding execution time can be easily calculated if the frequency of the executing __ProcessingUnit__ (PU) is knownexecution time can be easily calculated if the frequency of the executing __ProcessingUnit__ (PU) is known. Depending on the capabilities of a PU the time to execute such an element will differ. If necessary the fundamentally different numbers for specific types of PUs can be stored as extended values in a map.
 
 In the next picture __Ticks__ are shown in more detail.
 

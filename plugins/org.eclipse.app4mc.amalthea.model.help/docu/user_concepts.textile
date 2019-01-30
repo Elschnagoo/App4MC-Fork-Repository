@@ -8,7 +8,7 @@ It is possible to use "Tags":./model_common.html#common-tags for grouping elemen
 
 h4. Custom Properties
 
-The AMALTHEA model provides "Custom Properties":./model_common.html#common-custom-props to enhance the model in a generic way. These can be used for different kind of purpose:
+The AMALTHEA model provides "Custom Properties":./model_basics.html#basics-custom-props to enhance the model in a generic way. These can be used for different kind of purpose:
 
 * Store attributes, which are relevant for your model, but not yet available at the elements
 * Processing information of algorithms can be stored in that way, e.g. to mark an element as already processed
