@@ -64,19 +64,37 @@ class SoftwareUtilsTest {
 		val run1 = AmaltheaIndex.getElements(model, "Run1", Runnable).head
 		
 		val set1 = SoftwareUtil.getAccessedLabelSet(run1, null)
+		assertEquals(
+			"getAccessedLabelSet: 5 items (label accesses) expected", 5, set1.size);
+		
 		val set2 = SoftwareUtil.getReadLabelSet(run1, null)
+		assertEquals(
+			"getReadLabelSet: 4 items (label accesses) expected", 4, set2.size);
+
 		val set3 = SoftwareUtil.getWriteLabelSet(run1, null)
+		assertEquals(
+			"getWriteLabelSet: 3 items (label accesses) expected", 3, set3.size);
 		
 		val list1 = SoftwareUtil.getLabelAccessList(run1, null)
-		val list2 = SoftwareUtil.getReadLabelAccessList(run1, null)
-		val list3 = SoftwareUtil.getWriteLabelAccessList(run1, null)
-		
-		val map = SoftwareUtil.getLabelToLabelAccessMap(run1, null)
-		
-		val map1 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null)
+		assertEquals(
+			"getLabelAccessList: 10 items (label accesses) expected", 10, list1.size);
 
+		val list2 = SoftwareUtil.getReadLabelAccessList(run1, null)
+		assertEquals(
+			"getReadLabelAccessList: 5 items (label accesses) expected", 5, list2.size);
+
+		val list3 = SoftwareUtil.getWriteLabelAccessList(run1, null)
+		assertEquals(
+			"getWriteLabelAccessList: 3 items (label accesses) expected", 3, list3.size);
 		
-		println("done.")
+		val map1 = SoftwareUtil.getLabelToLabelAccessMap(run1, null)
+		assertEquals(
+			"getAccessedLabelSet: 5 items (label -> label accesses) expected", 5, map1.size);
+		
+		val map2 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null)
+		assertEquals(
+			"getAccessedLabelSet: 3 items (label -> access statistics) expected", 3, map2.size);
+
 	}
 	
 }

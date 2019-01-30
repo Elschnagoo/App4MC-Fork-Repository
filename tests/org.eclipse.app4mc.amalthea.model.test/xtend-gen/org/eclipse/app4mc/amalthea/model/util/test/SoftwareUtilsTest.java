@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.models.SoftwareModels;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.Assert;
 import org.junit.Before;
@@ -76,13 +75,28 @@ public class SoftwareUtilsTest {
     final Amalthea model = SoftwareModels.createModel2();
     final org.eclipse.app4mc.amalthea.model.Runnable run1 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
     final Set<Label> set1 = SoftwareUtil.getAccessedLabelSet(run1, null);
+    Assert.assertEquals(
+      "getAccessedLabelSet: 5 items (label accesses) expected", 5, set1.size());
     final Set<Label> set2 = SoftwareUtil.getReadLabelSet(run1, null);
+    Assert.assertEquals(
+      "getReadLabelSet: 4 items (label accesses) expected", 4, set2.size());
     final Set<Label> set3 = SoftwareUtil.getWriteLabelSet(run1, null);
+    Assert.assertEquals(
+      "getWriteLabelSet: 3 items (label accesses) expected", 3, set3.size());
     final List<LabelAccess> list1 = SoftwareUtil.getLabelAccessList(run1, null);
+    Assert.assertEquals(
+      "getLabelAccessList: 10 items (label accesses) expected", 10, list1.size());
     final List<LabelAccess> list2 = SoftwareUtil.getReadLabelAccessList(run1, null);
+    Assert.assertEquals(
+      "getReadLabelAccessList: 5 items (label accesses) expected", 5, list2.size());
     final List<LabelAccess> list3 = SoftwareUtil.getWriteLabelAccessList(run1, null);
-    final Map<Label, List<LabelAccess>> map = SoftwareUtil.getLabelToLabelAccessMap(run1, null);
-    final Map<Label, List<LabelAccessStatistic>> map1 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null);
-    InputOutput.<String>println("done.");
+    Assert.assertEquals(
+      "getWriteLabelAccessList: 3 items (label accesses) expected", 3, list3.size());
+    final Map<Label, List<LabelAccess>> map1 = SoftwareUtil.getLabelToLabelAccessMap(run1, null);
+    Assert.assertEquals(
+      "getAccessedLabelSet: 5 items (label -> label accesses) expected", 5, map1.size());
+    final Map<Label, List<LabelAccessStatistic>> map2 = SoftwareUtil.getLabelAccessStatisticsMap(run1, null);
+    Assert.assertEquals(
+      "getAccessedLabelSet: 3 items (label -> access statistics) expected", 3, map2.size());
   }
 }
