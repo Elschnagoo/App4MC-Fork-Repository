@@ -52,6 +52,7 @@ import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
@@ -60,6 +61,7 @@ import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EObject;
 
 public class RuntimeUtil {
 	
@@ -76,7 +78,12 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Computes the execution time of a Process (Task or ISR)
+	 * Computes the execution time of a Process (Task or ISR) - unique mapping is required
+	 * 
+	 * @param process		task or isr
+	 * @param modes			(optional) - null works
+	 * @param executionCase	BCET, ACET, WCET
+	 * @return execution time
 	 */
 	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -97,9 +104,15 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Computes the execution time of a Process (Task or ISR)
+	 * Computes the execution time of a Process (Task or ISR) on a given processing unit
+	 * 
+	 * @param process			task or isr
+	 * @param processingUnit	executing processing unit
+	 * @param modes				(optional) - null works
+	 * @param executionCase		BCET, ACET, WCET
+	 * @return execution time
 	 */
-	public Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
+	public static Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		result.setUnit(TimeUnit.MS);
 		result.setValue(BigInteger.ZERO);
@@ -111,7 +124,13 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Computes the execution time of a Process (Task or ISR)
+	 * Computes the execution time of a Runnable on a given processing unit
+	 * 
+	 * @param runnable			runnable
+	 * @param processingUnit	executing processing unit
+	 * @param modes				(optional) - null works
+	 * @param executionCase		BCET, ACET, WCET
+	 * @return execution time
 	 */
 	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
@@ -123,8 +142,8 @@ public class RuntimeUtil {
 		
 		List<ExecutionNeed> executionNeedList = SoftwareUtil.getExecutionNeeds(runnable, modes);		
 		if (!executionNeedList.isEmpty()) {
-			for (ExecutionNeed executionNeeds : executionNeedList) {
-				result.add(getExecutionTimeForExecutionNeeds(executionNeeds, processingUnit, executionCase));
+			for (ExecutionNeed need : executionNeedList) {
+				result.add(getExecutionTimeForExecutionNeeds(need, processingUnit, executionCase));
 			}
 		}
 		return result;			
@@ -153,6 +172,11 @@ public class RuntimeUtil {
 
 	/**
 	 * Computes time for ticks on a given processing unit
+	 * 
+	 * @param deviation			ticks deviation
+	 * @param processingUnit	executing processing unit
+	 * @param executionCase		BCET, ACET, WCET
+	 * @return execution time
 	 */
 	public static Time getExecutionTimeForTicksDeviation(IDiscreteValueDeviation deviation, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
@@ -170,18 +194,23 @@ public class RuntimeUtil {
 
 	/**
 	 * Computes time for execution needs on a given processing unit
+	 * 
+	 * @param need				execution need
+	 * @param processingUnit	executing processing unit
+	 * @param executionCase		BCET, ACET, WCET
+	 * @return execution time
 	 */
-	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed executionNeeds, ProcessingUnit processingUnit, TimeType executionCase) {
+	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed need, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
 		HWModel hwModel = (HWModel) processingUnit.getDefinition().eContainer();
-		for (Entry<String, IDiscreteValueDeviation> need : executionNeeds.getNeeds()) {
-			Set<? extends HwFeatureCategory> hwFeatureCategory = AmaltheaIndex.getElements(hwModel, need.getKey(), HwFeatureCategory.class);
+		for (Entry<String, IDiscreteValueDeviation> needEntry : need.getNeeds()) {
+			Set<? extends HwFeatureCategory> hwFeatureCategory = AmaltheaIndex.getElements(hwModel, needEntry.getKey(), HwFeatureCategory.class);
 			if (hwFeatureCategory.size() == 1) {
-				result = getExecutionTimeForExecutionNeedEntry(need.getValue(), hwFeatureCategory.iterator().next(), processingUnit, executionCase);
+				result = getExecutionTimeForExecutionNeedEntry(needEntry.getValue(), hwFeatureCategory.iterator().next(), processingUnit, executionCase);
 			}
 			else {
 				//should not happen since name is unique identifier
-				System.out.println("Mutliple Categories with the same name: "+need.getKey());
+				System.out.println("Mutliple Categories with the same name: "+needEntry.getKey());
 			}
 		}
 		return result;
@@ -189,6 +218,12 @@ public class RuntimeUtil {
 
 	/**
 	 * Computes time for specific execution need entry on a given processing unit
+	 * 
+	 * @param deviation			needs deviation
+	 * @param hwFeatureCategory	corresponding feature category
+	 * @param processingUnit	executing processing unit
+	 * @param executionCase		BCET, ACET, WCET
+	 * @return execution time
 	 */
 	public static Time getExecutionTimeForExecutionNeedEntry(IDiscreteValueDeviation deviation, HwFeatureCategory hwFeatureCategory, ProcessingUnit processingUnit, TimeType executionCase) {
 		double ticks = 0d;
@@ -213,9 +248,13 @@ public class RuntimeUtil {
 
 	/**
 	 * Computes time for a number of ticks with a given frequency
+	 * 
+	 * @param ticks			ticks / cycles
+	 * @param frequency		frequency (of an executing processing unit)
+	 * @return execution time
 	 */
-	public static Time getExecutionTimeForCycles (double ticks, Frequency puFrequency) {
-		double cyclesPerSecond = AmaltheaServices.convertToHertz(puFrequency).doubleValue();
+	public static Time getExecutionTimeForCycles (double ticks, Frequency frequency) {
+		double cyclesPerSecond = AmaltheaServices.convertToHertz(frequency).doubleValue();
 		double factor = 1.0d / cyclesPerSecond;
 		Time oneSecond = FactoryUtil.createTime(1, TimeUnit.S);
 		Time t1  = oneSecond.multiply(ticks);
@@ -265,9 +304,10 @@ public class RuntimeUtil {
 	
 	
 	/**
-	 * Removes all runtimes of the whole model If the procUnitDef is null, the
-	 * complete ExecutionNeed is deleted if it is not null, then only the runtime
-	 * for the given procUnitDef is removed
+	 * Clears all runtime information (execution needs and ticks)
+	 * 
+	 * @param model		Amalthea model
+	 * @param modes		(optional) - null works
 	 */
 	public static void clearRuntimeOfModel(Amalthea model, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Process> processes = new ArrayList<Process>();
@@ -281,9 +321,10 @@ public class RuntimeUtil {
 	
 	
 	/**
-	 * Removes all runtimes set in the given process If the procUnitDef is null, the
-	 * complete ExecutionNeed is deleted if it is not null, then only the runtime
-	 * for the given procUnitDef is removed
+	 * Clears all runtime information (execution needs and ticks)
+	 * 
+	 * @param process	task or isr
+	 * @param modes		(optional) - null works
 	 */
 	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -293,7 +334,10 @@ public class RuntimeUtil {
 	}
 	
 	/**
-	 * Clears all runtime information
+	 * Clears all runtime information (execution needs and ticks)
+	 * 
+	 * @param runnable	runnable
+	 * @param modes		(optional) - null works
 	 */
 	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
 		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(runnable, modes);
@@ -306,6 +350,12 @@ public class RuntimeUtil {
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
+	 * 
+	 * @param process		containing process (task or isr)
+	 * @param need			execution need
+	 * @param runnableName	name of new runnable
+	 * @param positon		FIRST, LAST
+	 * @return the new runnable
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, ExecutionNeed need, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
@@ -331,6 +381,13 @@ public class RuntimeUtil {
 	/**
 	 * Creates a new Runnable with the given runtime and create a CallSequence at
 	 * beginning / end of the given process
+	 */
+	/**
+	 * @param process		containing process (task or isr)
+	 * @param ticks			ticks
+	 * @param runnableName	name of new runnable
+	 * @param positon		FIRST, LAST
+	 * @return the new runnable
 	 */
 	public static Runnable addRuntimeToProcessAsNewRunnable(Process process, Ticks ticks, String runnableName, PositionType positon) {
 		Runnable run = AmaltheaFactory.eINSTANCE.createRunnable();
@@ -403,7 +460,7 @@ public class RuntimeUtil {
 			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
 		double utilization = 0.0;
 
-		List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
+		List<Time> periods = getPeriodsOfProcess(process, tt, modes);
 		Time time = getExecutionTimeForProcess(process, modes, tt);
 		if (time.getValue().compareTo(new BigInteger("0")) < 0) {
 			System.err.println("execTime " + time);
@@ -464,7 +521,7 @@ public class RuntimeUtil {
 		processes.addAll(model.getSwModel().getIsrs());
 
 		for (Process process : processes) {
-			List<Time> periods = getPeriodsOfProcess(model, process, tt, modes);
+			List<Time> periods = getPeriodsOfProcess(process, tt, modes);
 			result.put(process, periods);
 		}
 
@@ -474,8 +531,7 @@ public class RuntimeUtil {
 	/**
 	 * Returns a list of all triggering periods. Sorted by shortest period first!
 	 */
-	public static List<Time> getPeriodsOfProcess(Amalthea model, Process process, TimeType tt,
-			EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Time> getPeriodsOfProcess(Process process, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
 		List<Time> result = new ArrayList<Time>();
 		// System.out.println(process.getName());
 		for (Stimulus stimulus : process.getStimuli()) {
@@ -523,7 +579,7 @@ public class RuntimeUtil {
 					ipPrescaler = ip.getCounter().getPrescaler();
 				}
 				// System.out.println(" IP found");
-				Map<Process, Long> triggeringProcesses = getTriggeringProcesses(model, ip, modes);
+				Map<Process, Long> triggeringProcesses = getTriggeringProcesses(ip, modes);
 				if (triggeringProcesses.containsKey(process)) {
 					// TODO decided what to do with self triggering processes
 					triggeringProcesses.remove(process);
@@ -533,7 +589,7 @@ public class RuntimeUtil {
 					// System.out.println(" --triggered by "+triggeringProcess.getName());
 					// InterProcessActivation ipa = getIpaForStimulus(stimulus, triggeringProcess,
 					// modes);
-					List<Time> periods = getPeriodsOfProcess(model, triggeringProcess, tt, modes);
+					List<Time> periods = getPeriodsOfProcess(triggeringProcess, tt, modes);
 					for (Time t : periods) {
 						long ipaPrescaler = triggeringProcesses.get(triggeringProcess);
 						// if(ipa.getCounter() != null) {
@@ -648,8 +704,7 @@ public class RuntimeUtil {
 	 * 
 	 * @return Map: process -&gt; prescaler value
 	 */
-	public static Map<Process, Long> getTriggeringProcesses(Amalthea model, InterProcessStimulus ip,
-			EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Process, Long> getTriggeringProcesses(InterProcessStimulus ip, EMap<ModeLabel, ModeLiteral> modes) {
 		Map<Process, Long> result = new HashMap<>();
 
 		for (InterProcessTrigger interProcessTrigger : ip.getExplicitTriggers()) {
@@ -748,11 +803,12 @@ public class RuntimeUtil {
 			Function<Stimulus, Boolean> filter) {
 		HashMap<Process, Map<Stimulus, Long>> map = new HashMap<>();
 		List<Process> processes = new ArrayList<>();
-		processes.addAll(model.getSwModel().getTasks());
-		processes.addAll(model.getSwModel().getIsrs());
+		SWModel swModel = ModelUtil.getOrCreateSwModel(model);
+		processes.addAll(swModel.getTasks());
+		processes.addAll(swModel.getIsrs());
 
 		for (Process p : processes) {
-			Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(model, p, 1, filter);
+			Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(p, 1, filter);
 			if (plainTriggerForProcess != null && !plainTriggerForProcess.isEmpty()) {
 				map.put(p, plainTriggerForProcess);
 			}
@@ -763,8 +819,7 @@ public class RuntimeUtil {
 	/**
 	 * Returns all stimuli (matching filter) that trigger the given process
 	 */
-	public static <T> Map<Stimulus, Long> getPlainTriggerForProcess(Amalthea model, Process process, long depthCounter,
-			Function<Stimulus, Boolean> filter) {
+	public static <T> Map<Stimulus, Long> getPlainTriggerForProcess(Process process, long depthCounter, Function<Stimulus, Boolean> filter) {
 		HashMap<Stimulus, Long> map = new HashMap<>();
 
 		for (Stimulus stimulus : process.getStimuli()) {
@@ -789,14 +844,14 @@ public class RuntimeUtil {
 					if (ip.getCounter() != null) {
 						ipPrescaler = ip.getCounter().getPrescaler();
 					}
-					Map<Process, Long> triggeringProcesses = getTriggeringProcesses(model, ip, null);
+					Map<Process, Long> triggeringProcesses = getTriggeringProcesses(ip, null);
 					for (Process triggeringProcess : triggeringProcesses.keySet()) {
 						if (triggeringProcess.equals(process)) {
 							continue; // don't follow loops
 						}
 						long ipaPrescaler = triggeringProcesses.get(triggeringProcess);
-						Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(model, triggeringProcess,
-								depthCounter * ipaPrescaler * ipPrescaler, filter);
+						Map<Stimulus, Long> plainTriggerForProcess = getPlainTriggerForProcess(triggeringProcess, depthCounter * ipaPrescaler * ipPrescaler,
+								filter);
 						map.putAll(plainTriggerForProcess);
 					}
 
@@ -820,6 +875,12 @@ public class RuntimeUtil {
 		return map;
 	}
 
+	// idea:
+	// remove the (additional) Amalthea parameter in the method signatures
+	// and use the following method if necessary
+	private static Amalthea getRoot(EObject obj) {
+		return AmaltheaServices.getContainerOfType(obj, Amalthea.class);
+	}
 }
 	
 	
