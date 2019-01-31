@@ -28,6 +28,7 @@
             primary="false">
       </toc>
 
+      <toc	file="toc/user_timing-toc.xml"						primary="false"> </toc>
       <toc	file="toc/user_hw-toc.xml"						primary="false"> </toc>
       <toc	file="toc/user_sw_develop-toc.xml"				primary="false"> </toc>
       <toc	file="toc/user_sw_runtime-toc.xml"				primary="false"> </toc>

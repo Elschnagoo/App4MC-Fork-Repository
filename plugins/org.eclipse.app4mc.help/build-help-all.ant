@@ -19,7 +19,7 @@
 		<ant dir="../org.eclipse.app4mc.help/" antfile="build.xml" />
     	
 		<ant dir="../org.eclipse.app4mc.amalthea.model.help/" antfile="build-help.ant" />
-		<ant dir="../org.eclipse.app4mc.amalthea.model.help/" antfile="collectModelXSDFiles.ant" />
+		<ant dir="../org.eclipse.app4mc.amalthea.model.help/" antfile="collectModelDefinitionFiles.ant" />
     	
 		<ant dir="../org.eclipse.app4mc.amalthea.edit.help/" antfile="build-help.ant" />
 		<ant dir="../org.eclipse.app4mc.amalthea.editors.help/" antfile="build-help.ant" />

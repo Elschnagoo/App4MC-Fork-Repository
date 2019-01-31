@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 <project default="default">
 	<property name="model.dir" location="help-model" />
+	<property name="ecore.dir" value="${model.dir}/ecore" />
+	<property name="ecore.archive" value="${model.dir}/ecore-definitions.zip" />
 	<property name="xsd.dir" value="${model.dir}/xsd" />
 	<property name="xsd.archive" value="${model.dir}/xml-schema-definitions.zip" />
 
 	<target name="default">
 		<antcall target="deleteModelDir" />
 		<antcall target="createModelDir" />
+		<antcall target="copyModelEcore" />
 		<antcall target="copyModelXsd" />
 		<antcall target="zip" />
 	</target>
@@ -20,6 +23,13 @@
 		<mkdir dir="${xsd.dir}"/>
 	</target>
 	
+	<target name="copyModelEcore">
+		<!-- Copy the ecore files -->
+		<copy todir="${ecore.dir}" flatten="true">
+			<fileset dir = "../../" includes="plugins/org.eclipse.app4mc.amalthea.model/model-gen/*"/>
+		</copy>
+	</target>
+	
 	<target name="copyModelXsd">
 		<!--Step 1:  Copy the xsd files -->
 		<copy todir="${xsd.dir}" flatten="true">
@@ -28,7 +38,7 @@
 		
 		<!--Step 2:  Rename the files
 		This renames the files to lower-case and removes the "XMI" from the name.
-		The "XMI.xsd" is not renamed becasue of the regex in b). 
+		The "XMI.xsd" is not renamed because of the regex in b). 
 		-->
 		<move todir="${xsd.dir}">
 			<fileset dir="${xsd.dir}"/>
@@ -42,10 +52,10 @@
 				<regexpmapper from="^(.+)xmi\.xsd$" to="\1.xsd"/>
 			</chainedmapper>
 		</move>
-		
 	</target>
 	
 	<target name="zip">
+		<zip destfile="${ecore.archive}" basedir="${ecore.dir}"/>
 		<zip destfile="${xsd.archive}" basedir="${xsd.dir}"/>
 	</target>
 </project>
