@@ -15,7 +15,7 @@ For developers that are not using Java or Eclipse, the specification is also pro
 The AMALTHEA model references an external model definitions:
 - The Ecore model (http://www.eclipse.org/emf/2002/Ecore)
 
-The XSD file for the Ecore model can be found on the "Eclipse EMF download page":http://www.eclipse.org/modeling/emf/downloads/ 
+The XSD file for the Ecore model can be found on the "Eclipse EMF download page":https://download.eclipse.org/modeling/emf/emf/builds/index.html 
 Download the __Models__ package from __Latest Releases__. The download contains a folder "org.eclipse.emf.ecore_*". This folder contains the XSD schema for Ecore.
 
 ---

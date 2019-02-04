@@ -172,7 +172,7 @@ h4. HwFeature
 
 A _HwFeature_ is an abstract element to represent any kind of special functionality of a _ProcessingUnitDefinition_. _HwFeatures_ could be reused several times by different definitions and organized within _HwFeatureCategories_. Currently this _HwFeatureCategories_ are directly referenced out of the Software Model in future the cost function (_Recipes_) of an algorithm will be placed in an additional intermediate layer. More information can be found in the User Guide --> Concepts --> Hardware.
 
-<em>NOTE: The _Recipes_ and the _HwFeatures_ concept is still work in progress. Changes to the _HwFeatures_ are probable.</em>
+_NOTE: The concepts "Recipe" and "Hardware Features" are work in progress. Changes to the already implemented HwFeatures are probable._
 
 !(scale)../pictures/hardware/hw_feature_example.png!
 
