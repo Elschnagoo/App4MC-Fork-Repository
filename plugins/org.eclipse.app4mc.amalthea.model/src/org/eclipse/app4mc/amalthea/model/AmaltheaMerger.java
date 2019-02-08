@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,6 +15,8 @@
 
 package org.eclipse.app4mc.amalthea.model;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -22,6 +24,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
+import org.eclipse.jdt.annotation.NonNull;
 
 // TODO add reporting, e.g. list skipped elements
 
@@ -38,9 +41,11 @@ public class AmaltheaMerger {
 	 * @param mainModel		model that is extended
 	 * @param inputs		list of models that contain the additional elements
 	 */
-	public static void addElements(Amalthea mainModel, Collection<Amalthea> inputs) {
-		if (mainModel == null) return;
-		if (inputs == null || inputs.size() == 0) return;
+	public static void addElements(final @NonNull Amalthea mainModel, final @NonNull Collection<Amalthea> inputs) {
+		checkArgument(mainModel != null, "Model argument is null, expected: Amalthea");
+		checkArgument(inputs != null, "Collection argument is null, expected: Collection<Amalthea>");
+		
+		if (inputs.size() == 0) return;	// done
 		
 		final Copier copier = new Copier(true, true);
 		
@@ -244,18 +249,25 @@ public class AmaltheaMerger {
 	}
 
 	
-	private static <T extends BaseObject> void addAll(EList<T> main, EList<T> input) {
+	private static <T extends BaseObject> void addAll(final EList<T> main, final EList<T> input) {
+		if (main == null || input == null) return;
+		
 		main.addAll(input);
 	}
 
-	private static <T extends IReferable> void addIfAbsent(EList<T> main, EList<T> input) {
+	private static <T extends IReferable> void addIfAbsent(final EList<T> main, final EList<T> input) {
+		if (main == null || input == null) return;
+
 		final HashSet<String> uniqueNames = new HashSet<String>();
 		for (T object : main) {
-			uniqueNames.add(object.getUniqueName());
+			if (object != null)
+				uniqueNames.add(object.getUniqueName());
 		}
 		
 		final Collection<T> objectsToMove = new ArrayList<T>();
 		for (T object : input) {
+			if (object == null) continue;
+			
 			if (uniqueNames.contains(object.getUniqueName())) {
 				// skip entry
 			} else {
@@ -268,7 +280,7 @@ public class AmaltheaMerger {
 		main.addAll(objectsToMove);
 	}
 
-	private static void addPropertiesIfAbsent(IAnnotatable main, final IAnnotatable input) {
+	private static void addPropertiesIfAbsent(final IAnnotatable main, final IAnnotatable input) {
 		if (main == null || input == null) return;
 		
 		for (Entry<String, Value> property : input.getCustomProperties()) {

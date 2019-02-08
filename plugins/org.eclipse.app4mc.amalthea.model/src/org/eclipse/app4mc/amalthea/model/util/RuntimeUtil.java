@@ -62,6 +62,7 @@ import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 
 public class RuntimeUtil {
 	
@@ -253,7 +254,7 @@ public class RuntimeUtil {
 	 * @param frequency		frequency (of an executing processing unit)
 	 * @return execution time
 	 */
-	public static Time getExecutionTimeForCycles (double ticks, Frequency frequency) {
+	public static Time getExecutionTimeForCycles(double ticks, Frequency frequency) {
 		double cyclesPerSecond = AmaltheaServices.convertToHertz(frequency).doubleValue();
 		double factor = 1.0d / cyclesPerSecond;
 		Time oneSecond = FactoryUtil.createTime(1, TimeUnit.S);
@@ -878,7 +879,7 @@ public class RuntimeUtil {
 	// idea:
 	// remove the (additional) Amalthea parameter in the method signatures
 	// and use the following method if necessary
-	private static Amalthea getRoot(EObject obj) {
+	private static Amalthea getRoot(final @NonNull EObject obj) {
 		return AmaltheaServices.getContainerOfType(obj, Amalthea.class);
 	}
 }

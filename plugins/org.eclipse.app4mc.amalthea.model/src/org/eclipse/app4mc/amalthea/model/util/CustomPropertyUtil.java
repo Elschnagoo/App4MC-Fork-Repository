@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,6 +15,9 @@
 
 package org.eclipse.app4mc.amalthea.model.util;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -23,10 +26,18 @@ import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.StringObject;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.jdt.annotation.NonNull;
+
 
 public final class CustomPropertyUtil {
+	
+	private static final String ARG1_MESSAGE = "First argument is null, expected instance of IAnnotatable";
+	private static final String ARG2_MESSAGE = "Key is null or empty, expected non empty String";
 
-	public static Value customPut(IAnnotatable object, String key, int num) {
+	public static Value customPut(@NonNull IAnnotatable object, @NonNull String key, int num) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+		
 		IntegerObject valueObject;
 		valueObject = AmaltheaFactory.eINSTANCE.createIntegerObject();
 		valueObject.setValue(num);
@@ -35,7 +46,10 @@ public final class CustomPropertyUtil {
 		return oldValue;
 	}
 
-	public static Value customPut(IAnnotatable object, String key, String str) {
+	public static Value customPut(@NonNull IAnnotatable object, @NonNull String key, String str) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		StringObject valueObject;
 		valueObject = AmaltheaFactory.eINSTANCE.createStringObject();
 		valueObject.setValue(str);
@@ -44,7 +58,10 @@ public final class CustomPropertyUtil {
 		return oldValue;
 	}
 
-	public static Value customPut(IAnnotatable object, String key, Time time) {
+	public static Value customPut(@NonNull IAnnotatable object, @NonNull String key, Time time) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		Time valueObject;
 		valueObject = AmaltheaFactory.eINSTANCE.createTime();
 		valueObject.setValue(time.getValue());
@@ -54,7 +71,10 @@ public final class CustomPropertyUtil {
 		return oldValue;
 	}
 
-	public static Value customPut(IAnnotatable object, String key, IReferable reference) {
+	public static Value customPut(@NonNull IAnnotatable object, @NonNull String key, IReferable reference) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		ReferenceObject valueObject;
 		valueObject = AmaltheaFactory.eINSTANCE.createReferenceObject();
 		valueObject.setValue(reference);
@@ -63,7 +83,10 @@ public final class CustomPropertyUtil {
 		return oldValue;
 	}
 
-	public static Integer customGetInteger(IAnnotatable object, String key) {
+	public static Integer customGetInteger(@NonNull IAnnotatable object, @NonNull String key) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		Value valueObject = object.getCustomProperties().get(key);
 		if (valueObject instanceof IntegerObject) {
 			return ((IntegerObject) valueObject).getValue();
@@ -72,7 +95,10 @@ public final class CustomPropertyUtil {
 		}
 	}
 
-	public static String customGetString(IAnnotatable object, String key) {
+	public static String customGetString(@NonNull IAnnotatable object, @NonNull String key) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		Value valueObject = object.getCustomProperties().get(key);
 		if (valueObject instanceof StringObject) {
 			return ((StringObject) valueObject).getValue();
@@ -81,7 +107,10 @@ public final class CustomPropertyUtil {
 		}
 	}
 
-	public static Time customGetTime(IAnnotatable object, String key) {
+	public static Time customGetTime(@NonNull IAnnotatable object, @NonNull String key) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		Value valueObject = object.getCustomProperties().get(key);
 		if (valueObject instanceof Time) {
 			Time time = (Time) valueObject;
@@ -94,7 +123,10 @@ public final class CustomPropertyUtil {
 		}
 	}
 
-	public static IReferable customGetReference(IAnnotatable object, String key) {
+	public static IReferable customGetReference(@NonNull IAnnotatable object, @NonNull String key) {
+		checkArgument(object != null, ARG1_MESSAGE);
+		checkArgument(! isNullOrEmpty(key), ARG2_MESSAGE);
+
 		Value valueObject = object.getCustomProperties().get(key);
 		if (valueObject instanceof ReferenceObject) {
 			return ((ReferenceObject) valueObject).getValue();

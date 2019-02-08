@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,11 +15,13 @@
 
 package org.eclipse.app4mc.amalthea.model;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -38,6 +40,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * This class provides static methods for efficient model navigation, search and delete.
@@ -50,6 +53,15 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public final class AmaltheaIndex {
 
+	private static final String ARG_OBJECT_MESSAGE = "Object argument is null, expected: EObject";
+	private static final String ARG_COLLECTION_MESSAGE = "Collection argument is null,  expected: Collection<? extends EObject>";
+	private static final String ARG_NOTIFIER_MESSAGE = "Context argument is null, expected: Notifier";
+	private static final String ARG_NAME_MESSAGE = "Name argument is null, expected: String";
+	private static final String ARG_PATTERN_MESSAGE = "Pattern argument is null, expected: Pattern";
+	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<T extends INamed>";
+	private static final String ARG_RESULT_REFERENCE_MESSAGE = "Result reference argument is null, expected: EReference";
+	private static final String ARG_TARGET_REFERENCES_MESSAGE = "Target references argument is null, expected: Set<EReference>";
+	
 	// Suppress default constructor
 	private AmaltheaIndex() {
 	}
@@ -66,9 +78,12 @@ public final class AmaltheaIndex {
 	 * @return
 	 * 		EcoreEList.UnmodifiableEList &lt;T&gt;
 	 */
-	public static <T> EList<T> getInverseReferences(final EObject eObject, final EReference resultEReference,
-			final Set<EReference> targetEReferences) {
-
+	public static <T> EList<T> getInverseReferences(final @NonNull EObject eObject, final @NonNull EReference resultEReference,
+			final @NonNull Set<@NonNull EReference> targetEReferences) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		checkArgument(resultEReference != null, ARG_RESULT_REFERENCE_MESSAGE);
+		checkArgument(targetEReferences != null, ARG_TARGET_REFERENCES_MESSAGE);
+		
 		final AmaltheaCrossReferenceAdapter amaltheaAdapter = getOrCreateAmaltheaAdapter(eObject);
 
 		// Get references from adapter
@@ -100,8 +115,12 @@ public final class AmaltheaIndex {
 	 * 
 	 * @param eObject object to delete
 	 */
-	public static void delete(final EObject eObject) {
-		deleteAll(Arrays.asList(eObject), true);
+	public static void delete(final @NonNull EObject eObject) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		
+		ArrayList<EObject> list = new ArrayList<EObject>();
+		list.add(eObject);
+		deleteAll(list, true);
 	}
 
 
@@ -114,7 +133,9 @@ public final class AmaltheaIndex {
 	 * 
 	 * @param eObjects objects to delete
 	 */
-	public static void deleteAll(final Collection<? extends EObject> eObjects) {
+	public static void deleteAll(final @NonNull Collection<? extends EObject> eObjects) {
+		checkArgument(eObjects != null, ARG_COLLECTION_MESSAGE);
+		
 		deleteAll(eObjects, true);
 	}
 
@@ -130,12 +151,17 @@ public final class AmaltheaIndex {
 	 * @param eObjects objects to delete
 	 * @param recursive true: contained children should also be deleted
 	 */
-	public static void deleteAll(final Collection<? extends EObject> eObjects, boolean recursive) {
+	public static void deleteAll(final @NonNull Collection<? extends EObject> eObjects, boolean recursive) {
+		checkArgument(eObjects != null, ARG_COLLECTION_MESSAGE);
 		
-		// find the common context
+		@SuppressWarnings("null")
+		Set<@NonNull ? extends EObject> objectsToDelete = eObjects.stream()
+				.filter(Objects::nonNull).collect(Collectors.toSet());
+		
+		// extended argument check: ensure a common context
 		
 		Notifier target = null;
-		for (final EObject eObject : eObjects) {
+		for (final EObject eObject : objectsToDelete) {
 			final Notifier context = getRootContext(eObject);
 			if (target == null) {
 				target = context;
@@ -151,7 +177,7 @@ public final class AmaltheaIndex {
 		Set<EObject> eAllObjects = new HashSet<EObject>();
 		if (recursive) {
 			// add contained objects
-			for (EObject eObject : eObjects) {
+			for (EObject eObject : objectsToDelete) {
 				for (TreeIterator<EObject> j = eObject.eAllContents(); j.hasNext();) {
 					InternalEObject childEObject = (InternalEObject) j.next();
 					eAllObjects.add(childEObject);
@@ -159,7 +185,7 @@ public final class AmaltheaIndex {
 			}
 		}
 		// add original objects
-		eAllObjects.addAll(eObjects);
+		eAllObjects.addAll(objectsToDelete);
 		
 		// delete the objects
 		
@@ -185,12 +211,16 @@ public final class AmaltheaIndex {
 	 * @param context EObject, Resource or ResourceSet
 	 * @param name String
 	 * @param targetClass for example: <code>Label.class</code>
-	 * @return Set of named objects (IName)
+	 * @return Set of named objects (INamed)
 	 */
-	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final String name,
-			final Class<T> targetClass) {
+	public static <T extends INamed> Set<? extends T> getElements(final @NonNull Notifier context, final @NonNull String name,
+			final @NonNull Class<T> targetClass) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
 		Notifier rootContext = getRootContext(context);
-		Set<? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(name, targetClass);
+		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(name, targetClass);
 		
 		Resource resource = getResource(context);
 		if (rootContext instanceof ResourceSet && resource != null) {
@@ -213,10 +243,14 @@ public final class AmaltheaIndex {
 	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of named objects (IName)
 	 */
-	public static <T extends INamed> Set<? extends T> getElements(final Notifier context, final Pattern namePattern,
-			final Class<T> targetClass) {
+	public static <T extends INamed> Set<? extends T> getElements(final @NonNull Notifier context, final @NonNull Pattern namePattern,
+			final @NonNull Class<T> targetClass) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
 		Notifier rootContext = getRootContext(context);
-		Set<? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(namePattern, targetClass);
+		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(namePattern, targetClass);
 		
 		Resource resource = getResource(context);
 		if (rootContext instanceof ResourceSet && resource != null) {
@@ -231,12 +265,12 @@ public final class AmaltheaIndex {
 	}
 
 
-	private static AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final EObject eObject) {
+	private static @NonNull AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final @NonNull EObject eObject) {
 		final Notifier target = getRootContext(eObject);
 		return getOrCreateAmaltheaAdapter(target);
 	}
 
-	private static synchronized AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final Notifier target) {
+	private static synchronized @NonNull AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final @NonNull Notifier target) {
 		// Try to get Amalthea adapter
 		final EList<Adapter> adapters = target.eAdapters();
 		for (final Adapter adapter : adapters) {
@@ -254,7 +288,7 @@ public final class AmaltheaIndex {
 	/**
 	 * Gets the root context of an EObject
 	 */
-	private static Notifier getRootContext(final EObject eObject) {
+	private static @NonNull Notifier getRootContext(final @NonNull EObject eObject) {
 		final EObject rootContainer = EcoreUtil.getRootContainer(eObject);
 		final Resource resource = rootContainer.eResource();
 		if (resource != null) {
@@ -267,9 +301,7 @@ public final class AmaltheaIndex {
 	/**
 	 * Gets the root context of a Resource
 	 */
-	private static Notifier getRootContext(final Resource resource) {
-		if (resource == null) return null;
-		
+	private static @NonNull Notifier getRootContext(final @NonNull Resource resource) {
 		final ResourceSet resourceSet = resource.getResourceSet();
 		if (resourceSet != null) {
 			return resourceSet;
@@ -281,7 +313,7 @@ public final class AmaltheaIndex {
 	/**
 	 * Gets the root context of a Notifier (EObject, Resource or Resource Set)
 	 */
-	private static Notifier getRootContext(final Notifier notifier) {
+	private static @NonNull Notifier getRootContext(final @NonNull Notifier notifier) {
 		if (notifier instanceof EObject) {
 			return getRootContext((EObject) notifier);
 		}

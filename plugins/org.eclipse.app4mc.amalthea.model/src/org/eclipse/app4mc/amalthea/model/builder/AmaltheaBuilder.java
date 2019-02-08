@@ -15,6 +15,8 @@
 
 package org.eclipse.app4mc.amalthea.model.builder;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -34,9 +36,15 @@ import org.eclipse.app4mc.amalthea.model.PropertyConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 public class AmaltheaBuilder {
+	private static final String ARG_OBJECT_MESSAGE = "Object argument is null, expected: EObject";
+	private static final String ARG_NOTIFIER_MESSAGE = "Context argument is null, expected: Notifier";
+	private static final String ARG_NAME_MESSAGE = "Name argument is null, expected: String";
+	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<%s>";
+
 	private final HashMap<String, EObject> objectRegistry = new HashMap<String, EObject>();
 
 	public Amalthea amalthea(final Procedure1<Amalthea> initializer) {
@@ -109,25 +117,35 @@ public class AmaltheaBuilder {
 
 	// ********** Cross reference registry **********
 
-	public <T extends EObject> void _reg(final T obj, final String name) {
-		this.objectRegistry.put(name, obj);
+	public <T extends EObject> void _reg(final @NonNull T object, final @NonNull String name) {
+		checkArgument(object != null, ARG_OBJECT_MESSAGE);
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+		
+		this.objectRegistry.put(name, object);
 	}
 
-	public <T extends EObject> T _ref(final Class<T> cl, final String name) {
+	public <T extends EObject> T _ref(final @NonNull Class<T> cl, final @NonNull String name) {
+		checkArgument(cl != null, ARG_CLASS_MESSAGE, "T extends EObject");
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+
 		final EObject obj = this.objectRegistry.get(name);
 		return cl.cast(obj);
 	}
 
 	// ********** Cross reference finder (via name based index search) **********
 
-	public <T extends INamed> T _find(final EObject context, final Class<T> cl, final String name) {
+	public <T extends INamed> T _find(final @NonNull EObject context, final @NonNull Class<T> cl, final @NonNull String name) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+		checkArgument(cl != null, ARG_CLASS_MESSAGE, "T extends INamed");
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+		
 		final Set<? extends T> resultSet = AmaltheaIndex.getElements(context, name, cl);
 		Iterator<? extends T> iterator = resultSet.iterator();
 		if (iterator.hasNext()) {
 			return iterator.next();
 		}
 		
-		return null;
+		return cl.cast(null);
 	}
 
 }

@@ -93,7 +93,7 @@ public class TimeComparisonTest {
 			e = e1;
 		}
 
-		Assert.isTrue(e.getMessage().contains("Undefined time unit"),
+		Assert.isTrue(e.getMessage().contains("Invalid Time object"),
 				"Failed to compare Time with undefined unit -> Exception is not thrown..");
 	}
 
@@ -124,11 +124,11 @@ public class TimeComparisonTest {
 
 		try {
 			AmaltheaServices.compareTimes(t1, t2);
-		} catch (NullPointerException e1) {
+		} catch (IllegalArgumentException e1) {
 			isExceptionThrown = true;
 		}
 
-		Assert.isTrue(isExceptionThrown, "Failed to compare null and Time object - > NullPointerException is not thrown..");
+		Assert.isTrue(isExceptionThrown, "Failed to compare null and Time object - > IllegalArgumentException is not thrown..");
 	}
 
 

@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,6 +15,8 @@
 
 package org.eclipse.app4mc.amalthea.model;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,12 +29,26 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.jdt.annotation.NonNull;
 
 public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
+	private static final String ARG_NAME_MESSAGE = "Name argument is null, expected: String";
+	private static final String ARG_PATTERN_MESSAGE = "Pattern argument is null, expected: Pattern";
+	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<T extends INamed>";
 
 	private final Map<String, Set<INamed>> nameIndex = new HashMap<>();
 
-	public <T extends INamed> Set<? extends T> getElements(final String name, final Class<T> targetClass) {
+	public @NonNull Set<@NonNull ? extends INamed> getElements(final @NonNull String name) {
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+		
+		return getElements(name, INamed.class);
+	}
+
+	@SuppressWarnings("null")
+	public <T extends INamed> @NonNull Set<@NonNull ? extends T> getElements(final @NonNull String name, final @NonNull Class<T> targetClass) {
+		checkArgument(name != null, ARG_NAME_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
 		final Set<T> result = new HashSet<>();
 		final Set<INamed> values = this.nameIndex.get(name);
 		if (values != null) {
@@ -45,7 +61,17 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		return result;
 	}
 
-	public <T extends INamed> Set<? extends T> getElements(final Pattern namePattern, final Class<T> targetClass) {
+	public @NonNull Set<@NonNull ? extends INamed> getElements(final @NonNull Pattern namePattern) {
+		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
+		
+		return getElements(namePattern, INamed.class);
+	}
+
+	@SuppressWarnings("null")
+	public <T extends INamed> @NonNull Set<@NonNull ? extends T> getElements(final @NonNull Pattern namePattern, final @NonNull Class<T> targetClass) {
+		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
 		final Set<T> result = new HashSet<>();
 		for (final Map.Entry<String, Set<INamed>> entry : this.nameIndex.entrySet()) {
 			if (namePattern.matcher(entry.getKey()).matches()) {

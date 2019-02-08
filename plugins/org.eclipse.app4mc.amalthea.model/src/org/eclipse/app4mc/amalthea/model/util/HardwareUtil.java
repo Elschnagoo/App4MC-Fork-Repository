@@ -133,22 +133,24 @@ public class HardwareUtil {
 	public static Map<ProcessingUnit, HashMap<HwDestination, Time>> getAccessTimes(Amalthea model, TimeType timeType,
 			AccessDirection direction) {
 		Map<ProcessingUnit, HashMap<HwDestination, Time>> coreMemoryLatency = new HashMap<ProcessingUnit, HashMap<HwDestination, Time>>();
-		List<ProcessingUnit> pus = getModulesFromHwModel(ProcessingUnit.class, model);
-		for (ProcessingUnit pu : pus) {
-			HashMap<HwDestination, Time> MemAccessTime = new HashMap<HwDestination, Time>();
+		List<ProcessingUnit> puList = getModulesFromHwModel(ProcessingUnit.class, model);
+		for (ProcessingUnit pu : puList) {
+			HashMap<HwDestination, Time> memoryAccessMap = new HashMap<HwDestination, Time>();
 			for (HwAccessElement accessElement : pu.getAccessElements()) {
+				HwDestination destination = accessElement.getDestination();
 				Time latency = null;
 				if (accessElement.getAccessPath() != null) {
 					latency = calculateHwAccessPathTime(accessElement, timeType, direction);
 				} else {
 					latency = calculateLatencyPathTime(accessElement, timeType, direction);
 				}
-				if (!(MemAccessTime.containsKey(accessElement.getDestination())
-						&& (AmaltheaServices.compareTimes(MemAccessTime.get(accessElement.getDestination()), latency) >= 0))) {
-					MemAccessTime.put(accessElement.getDestination(), latency);
+				
+				Time previousLatency = memoryAccessMap.get(destination);
+				if (previousLatency == null || (latency != null && AmaltheaServices.compareTimes(previousLatency, latency) < 0)) {
+					memoryAccessMap.put(destination, latency);
 				}
 			}
-			coreMemoryLatency.put(pu, MemAccessTime);
+			coreMemoryLatency.put(pu, memoryAccessMap);
 		}
 		return coreMemoryLatency;
 	}
