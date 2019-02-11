@@ -21,7 +21,6 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -53,7 +52,7 @@ public class SearchDialog extends TitleAreaDialog {
 	 */
 	public SearchDialog(Shell parentShell, SearchDialogSettings set) {
 		super(parentShell);
-		setShellStyle(SWT.DIALOG_TRIM);
+		setShellStyle(SWT.DIALOG_TRIM | SWT.RESIZE);
 		setHelpAvailable(false);
 		
 		if (set != null)
@@ -198,14 +197,6 @@ public class SearchDialog extends TitleAreaDialog {
 		
 		Button searchButton = getButton(IDialogConstants.OK_ID);
 		searchButton.setText("Search");
-	}
-
-	/**
-	 * Return the initial size of the dialog.
-	 */
-	@Override
-	protected Point getInitialSize() {
-		return new Point(440, 340);
 	}
 
 }

@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.ModelHitCollector;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.search.ui.NewSearchUI;
@@ -52,11 +53,19 @@ public class SearchAction extends Action {
 	public void run() {
 		final IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		final SearchDialogSettings settings = new SearchDialogSettings();
+		
+		// retrieve stored settings
+		final IDialogSettings store = SphinxSupportPlugin.getDefault().getDialogSettings();
+		settings.loadFrom(store);
+		
 		final SearchDialog gui = new SearchDialog(window.getShell(), settings);
 		gui.create();
 		if (gui.open() == Window.OK) {
 			final Pattern searchPattern = settings.computeSearchPattern();
 			if (searchPattern != null) {
+				// store settings
+				settings.saveTo(store);
+				
 				// getting current open model
 				final Object input = this.editor.getEditorInputObject();
 				if (input != null) {
