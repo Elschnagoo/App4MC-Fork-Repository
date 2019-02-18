@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="Cortex-A9" puType="CPU" features="Instructions/IPC_1?type=HwFeature">
       <customProperties key="EnEf-Volt_High">
