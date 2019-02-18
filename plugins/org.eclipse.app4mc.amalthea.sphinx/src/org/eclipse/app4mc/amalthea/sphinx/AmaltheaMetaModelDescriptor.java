@@ -25,7 +25,7 @@ public class AmaltheaMetaModelDescriptor extends AbstractMetaModelDescriptor {
 
 	private static final String NAME = "AMALTHEA Model";//$NON-NLS-1$
 
-	private static final String BASE_NAMESPACE = "http://app4mc.eclipse.org/amalthea/0.9.3";
+	private static final String BASE_NAMESPACE = "http://app4mc.eclipse.org/amalthea/0.9.4";
 
 	// Old definition with subpackages -> no longer required
 	// private static final String POSTFIX_PATTERN =
