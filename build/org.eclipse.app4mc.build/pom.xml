@@ -6,7 +6,7 @@
 
 	<groupId>org.eclipse.app4mc.build</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.9.3-SNAPSHOT</version>
+	<version>0.9.4-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -360,7 +360,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.9.3-SNAPSHOT</version>
+							<version>0.9.4-SNAPSHOT</version>
 							<classifier>./OXYGEN/_gen/_oxygen_platform_others_latest</classifier>
 						</artifact>
 					</target>
@@ -641,7 +641,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.9.3-SNAPSHOT</version>
+							<version>0.9.4-SNAPSHOT</version>
 							<classifier>./OXYGEN/_gen/_oxygen_platform_others_latest</classifier>
 						</artifact>
 					</target>
@@ -931,7 +931,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.9.3-SNAPSHOT</version>
+							<version>0.9.4-SNAPSHOT</version>
 							<classifier>dev</classifier>
 						</artifact>
 					</target>
@@ -1252,7 +1252,7 @@
 						<artifact>
 							<groupId>org.eclipse.app4mc.build</groupId>
 							<artifactId>org.eclipse.app4mc.target</artifactId>
-							<version>0.9.3-SNAPSHOT</version>
+							<version>0.9.4-SNAPSHOT</version>
 							<classifier>dev</classifier>
 						</artifact>
 					</target>

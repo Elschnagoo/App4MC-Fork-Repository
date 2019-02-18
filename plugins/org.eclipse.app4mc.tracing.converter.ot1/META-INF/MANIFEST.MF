@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Trace Converter - OT1
 Bundle-SymbolicName: org.eclipse.app4mc.tracing.converter.ot1;singleton:=true
-Bundle-Version: 0.9.3.qualifier
+Bundle-Version: 0.9.4.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: Eclipse APP4MC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
