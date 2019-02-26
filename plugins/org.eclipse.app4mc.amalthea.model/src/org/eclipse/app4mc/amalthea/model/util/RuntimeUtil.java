@@ -135,16 +135,18 @@ public class RuntimeUtil {
 	 */
 	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
+		result.setUnit(TimeUnit.PS);
+		result.setValue(BigInteger.ZERO);
 
 		List<Ticks> tickList = SoftwareUtil.getTicks(runnable, modes);
 		for (Ticks tick : tickList) {
-			result.add(getExecutionTimeForTicks(tick, processingUnit, executionCase));
+			result = result.add(getExecutionTimeForTicks(tick, processingUnit, executionCase));
 		}
 		
 		List<ExecutionNeed> executionNeedList = SoftwareUtil.getExecutionNeeds(runnable, modes);		
 		if (!executionNeedList.isEmpty()) {
 			for (ExecutionNeed need : executionNeedList) {
-				result.add(getExecutionTimeForExecutionNeeds(need, processingUnit, executionCase));
+				result = result.add(getExecutionTimeForExecutionNeeds(need, processingUnit, executionCase));
 			}
 		}
 		return result;			
