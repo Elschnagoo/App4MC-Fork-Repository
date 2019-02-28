@@ -119,7 +119,7 @@ public class RuntimeUtil {
 		result.setValue(BigInteger.ZERO);
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for (Runnable runnable : runnables ) {
-			result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
+			result = result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
 		}
 		return result;
 	}
