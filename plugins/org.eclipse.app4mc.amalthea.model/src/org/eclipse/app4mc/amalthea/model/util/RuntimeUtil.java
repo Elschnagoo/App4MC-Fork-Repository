@@ -88,7 +88,7 @@ public class RuntimeUtil {
 	 */
 	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
-		result.setUnit(TimeUnit.MS);
+		result.setUnit(TimeUnit.PS);
 		result.setValue(BigInteger.ZERO);
 		Set<ProcessingUnit> processingUnits = DeploymentUtil.getAssignedCoreForProcess(process, (Amalthea) process.eContainer().eContainer());
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -101,7 +101,7 @@ public class RuntimeUtil {
 		else {
 			System.out.println("Mapping unclear. Process mapped to " + processingUnits.size() + " Cores - Use PU specific method");
 		}
-		return result;
+		return result.adjustUnit();
 	}
 
 	/**
@@ -115,13 +115,13 @@ public class RuntimeUtil {
 	 */
 	public static Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
-		result.setUnit(TimeUnit.MS);
+		result.setUnit(TimeUnit.PS);
 		result.setValue(BigInteger.ZERO);
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for (Runnable runnable : runnables ) {
 			result = result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
 		}
-		return result;
+		return result.adjustUnit();
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class RuntimeUtil {
 				result = result.add(getExecutionTimeForExecutionNeeds(need, processingUnit, executionCase));
 			}
 		}
-		return result;			
+		return result.adjustUnit();			
 	}
 
 	// Simon 11.01.2019:
@@ -163,6 +163,8 @@ public class RuntimeUtil {
 	 */
 	public static Time getExecutionTimeForTicks(Ticks ticks, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
+		result.setUnit(TimeUnit.PS);
+		result.setValue(BigInteger.ZERO);
 		if (ticks.getExtended().get(processingUnit.getDefinition()) != null) {
 			IDiscreteValueDeviation deviation = ticks.getExtended().get(processingUnit.getDefinition());
 			result = getExecutionTimeForTicksDeviation(deviation, processingUnit, executionCase);
@@ -170,7 +172,7 @@ public class RuntimeUtil {
 		else {
 			result = getExecutionTimeForTicksDeviation(ticks.getDefault(), processingUnit, executionCase);
 		}
-		return result;
+		return result.adjustUnit();
 	}
 
 	/**
@@ -205,6 +207,8 @@ public class RuntimeUtil {
 	 */
 	public static Time getExecutionTimeForExecutionNeeds(ExecutionNeed need, ProcessingUnit processingUnit, TimeType executionCase) {
 		Time result = AmaltheaFactory.eINSTANCE.createTime();
+		result.setUnit(TimeUnit.PS);
+		result.setValue(BigInteger.ZERO);
 		HWModel hwModel = (HWModel) processingUnit.getDefinition().eContainer();
 		for (Entry<String, IDiscreteValueDeviation> needEntry : need.getNeeds()) {
 			Set<? extends HwFeatureCategory> hwFeatureCategory = AmaltheaIndex.getElements(hwModel, needEntry.getKey(), HwFeatureCategory.class);
@@ -216,7 +220,7 @@ public class RuntimeUtil {
 				System.out.println("Mutliple Categories with the same name: "+needEntry.getKey());
 			}
 		}
-		return result;
+		return result.adjustUnit();
 	}
 
 	/**
