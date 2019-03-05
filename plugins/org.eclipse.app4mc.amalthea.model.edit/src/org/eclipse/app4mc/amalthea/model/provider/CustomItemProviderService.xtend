@@ -1419,9 +1419,10 @@ class CustomItemProviderService {
 			case AmaltheaPackage::HW_ACCESS_ELEMENT__SOURCE,
 			case AmaltheaPackage::HW_ACCESS_ELEMENT__DESTINATION:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+			case AmaltheaPackage::HW_ACCESS_ELEMENT__ACCESS_PATH,
 			case AmaltheaPackage::HW_ACCESS_ELEMENT__READ_LATENCY,
 			case AmaltheaPackage::HW_ACCESS_ELEMENT__WRITE_LATENCY,
-			case AmaltheaPackage::HW_ACCESS_ELEMENT__ACCESS_PATH:
+			case AmaltheaPackage::HW_ACCESS_ELEMENT__DATA_RATE:
 				return new ViewerNotification(notification, notification.getNotifier(), true, false)
 		}
 		return null

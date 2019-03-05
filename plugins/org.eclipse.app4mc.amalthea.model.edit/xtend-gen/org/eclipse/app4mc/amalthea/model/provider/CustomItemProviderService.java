@@ -2488,8 +2488,13 @@ public class CustomItemProviderService {
       return new ViewerNotification(notification, _notifier, false, true);
     }
     if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY)) {
+      if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH)) {
         _matched=true;
+      }
+      if (!_matched) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__READ_LATENCY)) {
+          _matched=true;
+        }
       }
       if (!_matched) {
         if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__WRITE_LATENCY)) {
@@ -2497,7 +2502,7 @@ public class CustomItemProviderService {
         }
       }
       if (!_matched) {
-        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__ACCESS_PATH)) {
+        if (Objects.equal(_featureID, AmaltheaPackage.HW_ACCESS_ELEMENT__DATA_RATE)) {
           _matched=true;
         }
       }
