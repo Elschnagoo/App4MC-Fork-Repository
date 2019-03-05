@@ -43,6 +43,16 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 public class FactoryUtil {
 
 	/**
+	 * Creates a data size (initialized with zero value and base unit)
+	 */
+	public static DataSize createDataSize() {
+		DataSize size = AmaltheaFactory.eINSTANCE.createDataSize();
+		size.setValue(BigInteger.ZERO);
+		size.setUnit(DataSizeUnit.BIT);
+		return size;
+	}
+
+	/**
 	 * Creates a data size out of a value and a unit
 	 */
 	public static DataSize createDataSize(long value, DataSizeUnit unit) {
@@ -50,6 +60,16 @@ public class FactoryUtil {
 		size.setValue(BigInteger.valueOf(value));
 		size.setUnit(unit);
 		return size;
+	}
+
+	/**
+	 * Creates a data rate (initialized with zero value and base unit)
+	 */
+	public static DataRate createDataRate() {
+		DataRate rate = AmaltheaFactory.eINSTANCE.createDataRate();
+		rate.setValue(BigInteger.ZERO);
+		rate.setUnit(DataRateUnit.BIT_PER_SECOND);
+		return rate;
 	}
 
 	/**
@@ -63,6 +83,15 @@ public class FactoryUtil {
 	}
 
 	/**
+	 * Creates a frequency (initialized with zero value and base unit)
+	 */
+	public static Frequency createFrequency() {
+		Frequency frequency = AmaltheaFactory.eINSTANCE.createFrequency();
+		frequency.setUnit(FrequencyUnit.HZ);
+		return frequency;
+	}
+
+	/**
 	 * Creates a frequency out of a value and a unit
 	 */
 	public static Frequency createFrequency(double value, FrequencyUnit unit) {
@@ -71,7 +100,16 @@ public class FactoryUtil {
 		frequency.setUnit(unit);
 		return frequency;
 	}
-	
+
+	/**
+	 * Creates a voltage (initialized with zero value and base unit)
+	 */
+	public static Voltage createVoltage() {
+		Voltage voltage = AmaltheaFactory.eINSTANCE.createVoltage();
+		voltage.setUnit(VoltageUnit.UV);
+		return voltage;
+	}
+
 	/**
 	 * Creates a voltage out of a value and a unit
 	 */
@@ -80,6 +118,16 @@ public class FactoryUtil {
 		voltage.setValue(value);
 		voltage.setUnit(unit);
 		return voltage;
+	}
+
+	/**
+	 * Creates a time (initialized with zero value and base unit)
+	 */
+	public static Time createTime() {
+		Time time = AmaltheaFactory.eINSTANCE.createTime();
+		time.setValue(BigInteger.ZERO);
+		time.setUnit(TimeUnit.PS);
+		return time;
 	}
 
 	/**

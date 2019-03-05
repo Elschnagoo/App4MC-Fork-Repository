@@ -179,7 +179,7 @@ public class HardwareUtil {
 
 	public static Time calculateHwAccessPathTime(HwAccessElement accessElement, TimeType timeType,
 			AccessDirection direction) {
-		Time result = FactoryUtil.createTime("0 ns");
+		Time result = FactoryUtil.createTime();
 		Frequency frequency = null;
 		IDiscreteValueDeviation latency = null;
 		if (accessElement.getAccessPath() != null) {
