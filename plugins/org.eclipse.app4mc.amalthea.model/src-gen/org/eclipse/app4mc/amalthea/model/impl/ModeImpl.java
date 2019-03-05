@@ -78,6 +78,7 @@ public class ModeImpl extends ReferableBaseObjectImpl implements Mode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeLiteral> getLiterals() {
 		if (literals == null) {
 			literals = new EObjectContainmentWithInverseEList<ModeLiteral>(ModeLiteral.class, this, AmaltheaPackage.MODE__LITERALS, AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE);

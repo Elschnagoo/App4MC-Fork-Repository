@@ -87,6 +87,7 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTagType() {
 		return tagType;
 	}
@@ -96,6 +97,7 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTagType(String newTagType) {
 		String oldTagType = tagType;
 		tagType = newTagType;
@@ -108,6 +110,7 @@ public class TagImpl extends ReferableBaseObjectImpl implements Tag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ITaggable> getTaggedObjects() {
 		EReference _iTaggable_Tags = AmaltheaPackage.eINSTANCE.getITaggable_Tags();
 		return AmaltheaIndex.<ITaggable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTag_TaggedObjects(), 

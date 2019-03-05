@@ -118,6 +118,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.RUNNABLE_CALL__TAGS);
@@ -130,6 +131,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getRunnable() {
 		if (runnable != null && runnable.eIsProxy()) {
 			InternalEObject oldRunnable = (InternalEObject)runnable;
@@ -156,6 +158,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldRunnable = runnable;
 		runnable = newRunnable;
@@ -168,6 +171,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CallArgument> getArguments() {
 		if (arguments == null) {
 			arguments = new EObjectContainmentWithInverseEList<CallArgument>(CallArgument.class, this, AmaltheaPackage.RUNNABLE_CALL__ARGUMENTS, AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL);
@@ -180,6 +184,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunEntityCallStatistic getStatistic() {
 		return statistic;
 	}
@@ -204,6 +209,7 @@ public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatistic(RunEntityCallStatistic newStatistic) {
 		if (newStatistic != statistic) {
 			NotificationChain msgs = null;

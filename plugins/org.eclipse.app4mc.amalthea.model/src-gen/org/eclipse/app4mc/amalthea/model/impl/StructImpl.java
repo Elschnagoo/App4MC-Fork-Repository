@@ -97,6 +97,7 @@ public class StructImpl extends AmaltheaExtendedEObjectImpl implements Struct {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.STRUCT__CUSTOM_PROPERTIES);
@@ -109,6 +110,7 @@ public class StructImpl extends AmaltheaExtendedEObjectImpl implements Struct {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<StructEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<StructEntry>(StructEntry.class, this, AmaltheaPackage.STRUCT__ENTRIES);

@@ -84,6 +84,7 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getServerRunnable() {
 		if (serverRunnable != null && serverRunnable.eIsProxy()) {
 			InternalEObject oldServerRunnable = (InternalEObject)serverRunnable;
@@ -110,6 +111,7 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setServerRunnable(org.eclipse.app4mc.amalthea.model.Runnable newServerRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldServerRunnable = serverRunnable;
 		serverRunnable = newServerRunnable;
@@ -122,6 +124,7 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port getPort() {
 		if (port != null && port.eIsProxy()) {
 			InternalEObject oldPort = (InternalEObject)port;
@@ -148,6 +151,7 @@ public abstract class ServerCallImpl extends RunnableItemImpl implements ServerC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPort(Port newPort) {
 		Port oldPort = port;
 		port = newPort;

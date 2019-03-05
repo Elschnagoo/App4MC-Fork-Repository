@@ -960,6 +960,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Amalthea createAmalthea() {
 		AmaltheaImpl amalthea = new AmaltheaImpl();
 		return amalthea;
@@ -970,6 +971,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CommonElements createCommonElements() {
 		CommonElementsImpl commonElements = new CommonElementsImpl();
 		return commonElements;
@@ -980,6 +982,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Tag createTag() {
 		TagImpl tag = new TagImpl();
 		return tag;
@@ -990,6 +993,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CoreClassifier createCoreClassifier() {
 		CoreClassifierImpl coreClassifier = new CoreClassifierImpl();
 		return coreClassifier;
@@ -1000,6 +1004,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryClassifier createMemoryClassifier() {
 		MemoryClassifierImpl memoryClassifier = new MemoryClassifierImpl();
 		return memoryClassifier;
@@ -1010,6 +1015,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TransmissionPolicy createTransmissionPolicy() {
 		TransmissionPolicyImpl transmissionPolicy = new TransmissionPolicyImpl();
 		return transmissionPolicy;
@@ -1020,6 +1026,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time createTime() {
 		TimeImpl time = new TimeImpl();
 		return time;
@@ -1030,6 +1037,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Frequency createFrequency() {
 		FrequencyImpl frequency = new FrequencyImpl();
 		return frequency;
@@ -1040,6 +1048,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Voltage createVoltage() {
 		VoltageImpl voltage = new VoltageImpl();
 		return voltage;
@@ -1050,6 +1059,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize createDataSize() {
 		DataSizeImpl dataSize = new DataSizeImpl();
 		return dataSize;
@@ -1060,6 +1070,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataRate createDataRate() {
 		DataRateImpl dataRate = new DataRateImpl();
 		return dataRate;
@@ -1080,6 +1091,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ListObject createListObject() {
 		ListObjectImpl listObject = new ListObjectImpl();
 		return listObject;
@@ -1090,6 +1102,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringObject createStringObject() {
 		StringObjectImpl stringObject = new StringObjectImpl();
 		return stringObject;
@@ -1100,6 +1113,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigIntegerObject createBigIntegerObject() {
 		BigIntegerObjectImpl bigIntegerObject = new BigIntegerObjectImpl();
 		return bigIntegerObject;
@@ -1110,6 +1124,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ReferenceObject createReferenceObject() {
 		ReferenceObjectImpl referenceObject = new ReferenceObjectImpl();
 		return referenceObject;
@@ -1120,6 +1135,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerObject createIntegerObject() {
 		IntegerObjectImpl integerObject = new IntegerObjectImpl();
 		return integerObject;
@@ -1130,6 +1146,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LongObject createLongObject() {
 		LongObjectImpl longObject = new LongObjectImpl();
 		return longObject;
@@ -1140,6 +1157,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FloatObject createFloatObject() {
 		FloatObjectImpl floatObject = new FloatObjectImpl();
 		return floatObject;
@@ -1150,6 +1168,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DoubleObject createDoubleObject() {
 		DoubleObjectImpl doubleObject = new DoubleObjectImpl();
 		return doubleObject;
@@ -1160,6 +1179,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanObject createBooleanObject() {
 		BooleanObjectImpl booleanObject = new BooleanObjectImpl();
 		return booleanObject;
@@ -1170,6 +1190,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MinAvgMaxStatistic createMinAvgMaxStatistic() {
 		MinAvgMaxStatisticImpl minAvgMaxStatistic = new MinAvgMaxStatisticImpl();
 		return minAvgMaxStatistic;
@@ -1180,6 +1201,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SingleValueStatistic createSingleValueStatistic() {
 		SingleValueStatisticImpl singleValueStatistic = new SingleValueStatisticImpl();
 		return singleValueStatistic;
@@ -1190,6 +1212,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeConstant createTimeConstant() {
 		TimeConstantImpl timeConstant = new TimeConstantImpl();
 		return timeConstant;
@@ -1200,6 +1223,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeHistogram createTimeHistogram() {
 		TimeHistogramImpl timeHistogram = new TimeHistogramImpl();
 		return timeHistogram;
@@ -1210,6 +1234,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeHistogramEntry createTimeHistogramEntry() {
 		TimeHistogramEntryImpl timeHistogramEntry = new TimeHistogramEntryImpl();
 		return timeHistogramEntry;
@@ -1220,6 +1245,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeBoundaries createTimeBoundaries() {
 		TimeBoundariesImpl timeBoundaries = new TimeBoundariesImpl();
 		return timeBoundaries;
@@ -1230,6 +1256,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeStatistics createTimeStatistics() {
 		TimeStatisticsImpl timeStatistics = new TimeStatisticsImpl();
 		return timeStatistics;
@@ -1240,6 +1267,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeUniformDistribution createTimeUniformDistribution() {
 		TimeUniformDistributionImpl timeUniformDistribution = new TimeUniformDistributionImpl();
 		return timeUniformDistribution;
@@ -1250,6 +1278,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeGaussDistribution createTimeGaussDistribution() {
 		TimeGaussDistributionImpl timeGaussDistribution = new TimeGaussDistributionImpl();
 		return timeGaussDistribution;
@@ -1260,6 +1289,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeWeibullEstimatorsDistribution createTimeWeibullEstimatorsDistribution() {
 		TimeWeibullEstimatorsDistributionImpl timeWeibullEstimatorsDistribution = new TimeWeibullEstimatorsDistributionImpl();
 		return timeWeibullEstimatorsDistribution;
@@ -1270,6 +1300,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeBetaDistribution createTimeBetaDistribution() {
 		TimeBetaDistributionImpl timeBetaDistribution = new TimeBetaDistributionImpl();
 		return timeBetaDistribution;
@@ -1280,6 +1311,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueConstant createDiscreteValueConstant() {
 		DiscreteValueConstantImpl discreteValueConstant = new DiscreteValueConstantImpl();
 		return discreteValueConstant;
@@ -1290,6 +1322,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueHistogram createDiscreteValueHistogram() {
 		DiscreteValueHistogramImpl discreteValueHistogram = new DiscreteValueHistogramImpl();
 		return discreteValueHistogram;
@@ -1300,6 +1333,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueHistogramEntry createDiscreteValueHistogramEntry() {
 		DiscreteValueHistogramEntryImpl discreteValueHistogramEntry = new DiscreteValueHistogramEntryImpl();
 		return discreteValueHistogramEntry;
@@ -1310,6 +1344,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueBoundaries createDiscreteValueBoundaries() {
 		DiscreteValueBoundariesImpl discreteValueBoundaries = new DiscreteValueBoundariesImpl();
 		return discreteValueBoundaries;
@@ -1320,6 +1355,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueStatistics createDiscreteValueStatistics() {
 		DiscreteValueStatisticsImpl discreteValueStatistics = new DiscreteValueStatisticsImpl();
 		return discreteValueStatistics;
@@ -1330,6 +1366,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueUniformDistribution createDiscreteValueUniformDistribution() {
 		DiscreteValueUniformDistributionImpl discreteValueUniformDistribution = new DiscreteValueUniformDistributionImpl();
 		return discreteValueUniformDistribution;
@@ -1340,6 +1377,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueGaussDistribution createDiscreteValueGaussDistribution() {
 		DiscreteValueGaussDistributionImpl discreteValueGaussDistribution = new DiscreteValueGaussDistributionImpl();
 		return discreteValueGaussDistribution;
@@ -1350,6 +1388,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueWeibullEstimatorsDistribution createDiscreteValueWeibullEstimatorsDistribution() {
 		DiscreteValueWeibullEstimatorsDistributionImpl discreteValueWeibullEstimatorsDistribution = new DiscreteValueWeibullEstimatorsDistributionImpl();
 		return discreteValueWeibullEstimatorsDistribution;
@@ -1360,6 +1399,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DiscreteValueBetaDistribution createDiscreteValueBetaDistribution() {
 		DiscreteValueBetaDistributionImpl discreteValueBetaDistribution = new DiscreteValueBetaDistributionImpl();
 		return discreteValueBetaDistribution;
@@ -1370,6 +1410,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueConstant createContinuousValueConstant() {
 		ContinuousValueConstantImpl continuousValueConstant = new ContinuousValueConstantImpl();
 		return continuousValueConstant;
@@ -1380,6 +1421,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueHistogram createContinuousValueHistogram() {
 		ContinuousValueHistogramImpl continuousValueHistogram = new ContinuousValueHistogramImpl();
 		return continuousValueHistogram;
@@ -1390,6 +1432,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueHistogramEntry createContinuousValueHistogramEntry() {
 		ContinuousValueHistogramEntryImpl continuousValueHistogramEntry = new ContinuousValueHistogramEntryImpl();
 		return continuousValueHistogramEntry;
@@ -1400,6 +1443,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueBoundaries createContinuousValueBoundaries() {
 		ContinuousValueBoundariesImpl continuousValueBoundaries = new ContinuousValueBoundariesImpl();
 		return continuousValueBoundaries;
@@ -1410,6 +1454,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueStatistics createContinuousValueStatistics() {
 		ContinuousValueStatisticsImpl continuousValueStatistics = new ContinuousValueStatisticsImpl();
 		return continuousValueStatistics;
@@ -1420,6 +1465,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueUniformDistribution createContinuousValueUniformDistribution() {
 		ContinuousValueUniformDistributionImpl continuousValueUniformDistribution = new ContinuousValueUniformDistributionImpl();
 		return continuousValueUniformDistribution;
@@ -1430,6 +1476,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueGaussDistribution createContinuousValueGaussDistribution() {
 		ContinuousValueGaussDistributionImpl continuousValueGaussDistribution = new ContinuousValueGaussDistributionImpl();
 		return continuousValueGaussDistribution;
@@ -1440,6 +1487,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueWeibullEstimatorsDistribution createContinuousValueWeibullEstimatorsDistribution() {
 		ContinuousValueWeibullEstimatorsDistributionImpl continuousValueWeibullEstimatorsDistribution = new ContinuousValueWeibullEstimatorsDistributionImpl();
 		return continuousValueWeibullEstimatorsDistribution;
@@ -1450,6 +1498,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContinuousValueBetaDistribution createContinuousValueBetaDistribution() {
 		ContinuousValueBetaDistributionImpl continuousValueBetaDistribution = new ContinuousValueBetaDistributionImpl();
 		return continuousValueBetaDistribution;
@@ -1460,6 +1509,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode createMode() {
 		ModeImpl mode = new ModeImpl();
 		return mode;
@@ -1470,6 +1520,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral createModeLiteral() {
 		ModeLiteralImpl modeLiteral = new ModeLiteralImpl();
 		return modeLiteral;
@@ -1480,6 +1531,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentsModel createComponentsModel() {
 		ComponentsModelImpl componentsModel = new ComponentsModelImpl();
 		return componentsModel;
@@ -1490,6 +1542,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Component createComponent() {
 		ComponentImpl component = new ComponentImpl();
 		return component;
@@ -1500,6 +1553,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Composite createComposite() {
 		CompositeImpl composite = new CompositeImpl();
 		return composite;
@@ -1510,6 +1564,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.System createSystem() {
 		SystemImpl system = new SystemImpl();
 		return system;
@@ -1520,6 +1575,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentInstance createComponentInstance() {
 		ComponentInstanceImpl componentInstance = new ComponentInstanceImpl();
 		return componentInstance;
@@ -1530,6 +1586,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Connector createConnector() {
 		ConnectorImpl connector = new ConnectorImpl();
 		return connector;
@@ -1540,6 +1597,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QualifiedPort createQualifiedPort() {
 		QualifiedPortImpl qualifiedPort = new QualifiedPortImpl();
 		return qualifiedPort;
@@ -1550,6 +1608,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterfacePort createInterfacePort() {
 		InterfacePortImpl interfacePort = new InterfacePortImpl();
 		return interfacePort;
@@ -1560,6 +1619,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConfigModel createConfigModel() {
 		ConfigModelImpl configModel = new ConfigModelImpl();
 		return configModel;
@@ -1570,6 +1630,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventConfig createEventConfig() {
 		EventConfigImpl eventConfig = new EventConfigImpl();
 		return eventConfig;
@@ -1580,6 +1641,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConstraintsModel createConstraintsModel() {
 		ConstraintsModelImpl constraintsModel = new ConstraintsModelImpl();
 		return constraintsModel;
@@ -1590,6 +1652,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableSequencingConstraint createRunnableSequencingConstraint() {
 		RunnableSequencingConstraintImpl runnableSequencingConstraint = new RunnableSequencingConstraintImpl();
 		return runnableSequencingConstraint;
@@ -1600,6 +1663,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableSeparationConstraint createRunnableSeparationConstraint() {
 		RunnableSeparationConstraintImpl runnableSeparationConstraint = new RunnableSeparationConstraintImpl();
 		return runnableSeparationConstraint;
@@ -1610,6 +1674,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessSeparationConstraint createProcessSeparationConstraint() {
 		ProcessSeparationConstraintImpl processSeparationConstraint = new ProcessSeparationConstraintImpl();
 		return processSeparationConstraint;
@@ -1620,6 +1685,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSeparationConstraint createDataSeparationConstraint() {
 		DataSeparationConstraintImpl dataSeparationConstraint = new DataSeparationConstraintImpl();
 		return dataSeparationConstraint;
@@ -1630,6 +1696,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnablePairingConstraint createRunnablePairingConstraint() {
 		RunnablePairingConstraintImpl runnablePairingConstraint = new RunnablePairingConstraintImpl();
 		return runnablePairingConstraint;
@@ -1640,6 +1707,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPairingConstraint createProcessPairingConstraint() {
 		ProcessPairingConstraintImpl processPairingConstraint = new ProcessPairingConstraintImpl();
 		return processPairingConstraint;
@@ -1650,6 +1718,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPairingConstraint createDataPairingConstraint() {
 		DataPairingConstraintImpl dataPairingConstraint = new DataPairingConstraintImpl();
 		return dataPairingConstraint;
@@ -1660,6 +1729,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetMemory createTargetMemory() {
 		TargetMemoryImpl targetMemory = new TargetMemoryImpl();
 		return targetMemory;
@@ -1670,6 +1740,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetCore createTargetCore() {
 		TargetCoreImpl targetCore = new TargetCoreImpl();
 		return targetCore;
@@ -1680,6 +1751,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetScheduler createTargetScheduler() {
 		TargetSchedulerImpl targetScheduler = new TargetSchedulerImpl();
 		return targetScheduler;
@@ -1690,6 +1762,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelEntityGroup createLabelEntityGroup() {
 		LabelEntityGroupImpl labelEntityGroup = new LabelEntityGroupImpl();
 		return labelEntityGroup;
@@ -1700,6 +1773,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableEntityGroup createRunnableEntityGroup() {
 		RunnableEntityGroupImpl runnableEntityGroup = new RunnableEntityGroupImpl();
 		return runnableEntityGroup;
@@ -1710,6 +1784,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessEntityGroup createProcessEntityGroup() {
 		ProcessEntityGroupImpl processEntityGroup = new ProcessEntityGroupImpl();
 		return processEntityGroup;
@@ -1720,6 +1795,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TagGroup createTagGroup() {
 		TagGroupImpl tagGroup = new TagGroupImpl();
 		return tagGroup;
@@ -1730,6 +1806,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChain createEventChain() {
 		EventChainImpl eventChain = new EventChainImpl();
 		return eventChain;
@@ -1740,6 +1817,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubEventChain createSubEventChain() {
 		SubEventChainImpl subEventChain = new SubEventChainImpl();
 		return subEventChain;
@@ -1750,6 +1828,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChainReference createEventChainReference() {
 		EventChainReferenceImpl eventChainReference = new EventChainReferenceImpl();
 		return eventChainReference;
@@ -1760,6 +1839,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChainContainer createEventChainContainer() {
 		EventChainContainerImpl eventChainContainer = new EventChainContainerImpl();
 		return eventChainContainer;
@@ -1770,6 +1850,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalSectionConstraint createPhysicalSectionConstraint() {
 		PhysicalSectionConstraintImpl physicalSectionConstraint = new PhysicalSectionConstraintImpl();
 		return physicalSectionConstraint;
@@ -1780,6 +1861,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventSynchronizationConstraint createEventSynchronizationConstraint() {
 		EventSynchronizationConstraintImpl eventSynchronizationConstraint = new EventSynchronizationConstraintImpl();
 		return eventSynchronizationConstraint;
@@ -1790,6 +1872,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChainSynchronizationConstraint createEventChainSynchronizationConstraint() {
 		EventChainSynchronizationConstraintImpl eventChainSynchronizationConstraint = new EventChainSynchronizationConstraintImpl();
 		return eventChainSynchronizationConstraint;
@@ -1800,6 +1883,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DelayConstraint createDelayConstraint() {
 		DelayConstraintImpl delayConstraint = new DelayConstraintImpl();
 		return delayConstraint;
@@ -1810,6 +1894,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChainLatencyConstraint createEventChainLatencyConstraint() {
 		EventChainLatencyConstraintImpl eventChainLatencyConstraint = new EventChainLatencyConstraintImpl();
 		return eventChainLatencyConstraint;
@@ -1820,6 +1905,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RepetitionConstraint createRepetitionConstraint() {
 		RepetitionConstraintImpl repetitionConstraint = new RepetitionConstraintImpl();
 		return repetitionConstraint;
@@ -1830,6 +1916,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAgeConstraint createDataAgeConstraint() {
 		DataAgeConstraintImpl dataAgeConstraint = new DataAgeConstraintImpl();
 		return dataAgeConstraint;
@@ -1840,6 +1927,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAgeCycle createDataAgeCycle() {
 		DataAgeCycleImpl dataAgeCycle = new DataAgeCycleImpl();
 		return dataAgeCycle;
@@ -1850,6 +1938,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAgeTime createDataAgeTime() {
 		DataAgeTimeImpl dataAgeTime = new DataAgeTimeImpl();
 		return dataAgeTime;
@@ -1860,6 +1949,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessRequirement createProcessRequirement() {
 		ProcessRequirementImpl processRequirement = new ProcessRequirementImpl();
 		return processRequirement;
@@ -1870,6 +1960,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableRequirement createRunnableRequirement() {
 		RunnableRequirementImpl runnableRequirement = new RunnableRequirementImpl();
 		return runnableRequirement;
@@ -1880,6 +1971,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArchitectureRequirement createArchitectureRequirement() {
 		ArchitectureRequirementImpl architectureRequirement = new ArchitectureRequirementImpl();
 		return architectureRequirement;
@@ -1890,6 +1982,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessChainRequirement createProcessChainRequirement() {
 		ProcessChainRequirementImpl processChainRequirement = new ProcessChainRequirementImpl();
 		return processChainRequirement;
@@ -1900,6 +1993,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CPUPercentageRequirementLimit createCPUPercentageRequirementLimit() {
 		CPUPercentageRequirementLimitImpl cpuPercentageRequirementLimit = new CPUPercentageRequirementLimitImpl();
 		return cpuPercentageRequirementLimit;
@@ -1910,6 +2004,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FrequencyRequirementLimit createFrequencyRequirementLimit() {
 		FrequencyRequirementLimitImpl frequencyRequirementLimit = new FrequencyRequirementLimitImpl();
 		return frequencyRequirementLimit;
@@ -1920,6 +2015,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PercentageRequirementLimit createPercentageRequirementLimit() {
 		PercentageRequirementLimitImpl percentageRequirementLimit = new PercentageRequirementLimitImpl();
 		return percentageRequirementLimit;
@@ -1930,6 +2026,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CountRequirementLimit createCountRequirementLimit() {
 		CountRequirementLimitImpl countRequirementLimit = new CountRequirementLimitImpl();
 		return countRequirementLimit;
@@ -1940,6 +2037,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeRequirementLimit createTimeRequirementLimit() {
 		TimeRequirementLimitImpl timeRequirementLimit = new TimeRequirementLimitImpl();
 		return timeRequirementLimit;
@@ -1950,6 +2048,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataCoherencyGroup createDataCoherencyGroup() {
 		DataCoherencyGroupImpl dataCoherencyGroup = new DataCoherencyGroupImpl();
 		return dataCoherencyGroup;
@@ -1960,6 +2059,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataStabilityGroup createDataStabilityGroup() {
 		DataStabilityGroupImpl dataStabilityGroup = new DataStabilityGroupImpl();
 		return dataStabilityGroup;
@@ -1970,6 +2070,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessScope createProcessScope() {
 		ProcessScopeImpl processScope = new ProcessScopeImpl();
 		return processScope;
@@ -1980,6 +2081,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableScope createRunnableScope() {
 		RunnableScopeImpl runnableScope = new RunnableScopeImpl();
 		return runnableScope;
@@ -1990,6 +2092,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentScope createComponentScope() {
 		ComponentScopeImpl componentScope = new ComponentScopeImpl();
 		return componentScope;
@@ -2000,6 +2103,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventModel createEventModel() {
 		EventModelImpl eventModel = new EventModelImpl();
 		return eventModel;
@@ -2010,6 +2114,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventSet createEventSet() {
 		EventSetImpl eventSet = new EventSetImpl();
 		return eventSet;
@@ -2020,6 +2125,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomEvent createCustomEvent() {
 		CustomEventImpl customEvent = new CustomEventImpl();
 		return customEvent;
@@ -2030,6 +2136,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StimulusEvent createStimulusEvent() {
 		StimulusEventImpl stimulusEvent = new StimulusEventImpl();
 		return stimulusEvent;
@@ -2040,6 +2147,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessEvent createProcessEvent() {
 		ProcessEventImpl processEvent = new ProcessEventImpl();
 		return processEvent;
@@ -2050,6 +2158,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessChainEvent createProcessChainEvent() {
 		ProcessChainEventImpl processChainEvent = new ProcessChainEventImpl();
 		return processChainEvent;
@@ -2060,6 +2169,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableEvent createRunnableEvent() {
 		RunnableEventImpl runnableEvent = new RunnableEventImpl();
 		return runnableEvent;
@@ -2070,6 +2180,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelEvent createLabelEvent() {
 		LabelEventImpl labelEvent = new LabelEventImpl();
 		return labelEvent;
@@ -2080,6 +2191,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChannelEvent createChannelEvent() {
 		ChannelEventImpl channelEvent = new ChannelEventImpl();
 		return channelEvent;
@@ -2090,6 +2202,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SemaphoreEvent createSemaphoreEvent() {
 		SemaphoreEventImpl semaphoreEvent = new SemaphoreEventImpl();
 		return semaphoreEvent;
@@ -2100,6 +2213,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentEvent createComponentEvent() {
 		ComponentEventImpl componentEvent = new ComponentEventImpl();
 		return componentEvent;
@@ -2110,6 +2224,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HWModel createHWModel() {
 		HWModelImpl hwModel = new HWModelImpl();
 		return hwModel;
@@ -2120,6 +2235,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwStructure createHwStructure() {
 		HwStructureImpl hwStructure = new HwStructureImpl();
 		return hwStructure;
@@ -2130,6 +2246,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FrequencyDomain createFrequencyDomain() {
 		FrequencyDomainImpl frequencyDomain = new FrequencyDomainImpl();
 		return frequencyDomain;
@@ -2140,6 +2257,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PowerDomain createPowerDomain() {
 		PowerDomainImpl powerDomain = new PowerDomainImpl();
 		return powerDomain;
@@ -2150,6 +2268,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit createProcessingUnit() {
 		ProcessingUnitImpl processingUnit = new ProcessingUnitImpl();
 		return processingUnit;
@@ -2160,6 +2279,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Memory createMemory() {
 		MemoryImpl memory = new MemoryImpl();
 		return memory;
@@ -2170,6 +2290,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Cache createCache() {
 		CacheImpl cache = new CacheImpl();
 		return cache;
@@ -2180,6 +2301,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwFeatureCategory createHwFeatureCategory() {
 		HwFeatureCategoryImpl hwFeatureCategory = new HwFeatureCategoryImpl();
 		return hwFeatureCategory;
@@ -2190,6 +2312,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwFeature createHwFeature() {
 		HwFeatureImpl hwFeature = new HwFeatureImpl();
 		return hwFeature;
@@ -2200,6 +2323,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwPort createHwPort() {
 		HwPortImpl hwPort = new HwPortImpl();
 		return hwPort;
@@ -2210,6 +2334,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConnectionHandler createConnectionHandler() {
 		ConnectionHandlerImpl connectionHandler = new ConnectionHandlerImpl();
 		return connectionHandler;
@@ -2220,6 +2345,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwConnection createHwConnection() {
 		HwConnectionImpl hwConnection = new HwConnectionImpl();
 		return hwConnection;
@@ -2230,6 +2356,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwAccessElement createHwAccessElement() {
 		HwAccessElementImpl hwAccessElement = new HwAccessElementImpl();
 		return hwAccessElement;
@@ -2240,6 +2367,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnitDefinition createProcessingUnitDefinition() {
 		ProcessingUnitDefinitionImpl processingUnitDefinition = new ProcessingUnitDefinitionImpl();
 		return processingUnitDefinition;
@@ -2250,6 +2378,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConnectionHandlerDefinition createConnectionHandlerDefinition() {
 		ConnectionHandlerDefinitionImpl connectionHandlerDefinition = new ConnectionHandlerDefinitionImpl();
 		return connectionHandlerDefinition;
@@ -2260,6 +2389,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryDefinition createMemoryDefinition() {
 		MemoryDefinitionImpl memoryDefinition = new MemoryDefinitionImpl();
 		return memoryDefinition;
@@ -2270,6 +2400,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CacheDefinition createCacheDefinition() {
 		CacheDefinitionImpl cacheDefinition = new CacheDefinitionImpl();
 		return cacheDefinition;
@@ -2280,6 +2411,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwAccessPath createHwAccessPath() {
 		HwAccessPathImpl hwAccessPath = new HwAccessPathImpl();
 		return hwAccessPath;
@@ -2290,6 +2422,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MappingModel createMappingModel() {
 		MappingModelImpl mappingModel = new MappingModelImpl();
 		return mappingModel;
@@ -2300,6 +2433,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulerAllocation createSchedulerAllocation() {
 		SchedulerAllocationImpl schedulerAllocation = new SchedulerAllocationImpl();
 		return schedulerAllocation;
@@ -2310,6 +2444,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskAllocation createTaskAllocation() {
 		TaskAllocationImpl taskAllocation = new TaskAllocationImpl();
 		return taskAllocation;
@@ -2320,6 +2455,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISRAllocation createISRAllocation() {
 		ISRAllocationImpl isrAllocation = new ISRAllocationImpl();
 		return isrAllocation;
@@ -2330,6 +2466,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableAllocation createRunnableAllocation() {
 		RunnableAllocationImpl runnableAllocation = new RunnableAllocationImpl();
 		return runnableAllocation;
@@ -2340,6 +2477,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryMapping createMemoryMapping() {
 		MemoryMappingImpl memoryMapping = new MemoryMappingImpl();
 		return memoryMapping;
@@ -2350,6 +2488,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PhysicalSectionMapping createPhysicalSectionMapping() {
 		PhysicalSectionMappingImpl physicalSectionMapping = new PhysicalSectionMappingImpl();
 		return physicalSectionMapping;
@@ -2360,6 +2499,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OSModel createOSModel() {
 		OSModelImpl osModel = new OSModelImpl();
 		return osModel;
@@ -2370,6 +2510,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsDataConsistency createOsDataConsistency() {
 		OsDataConsistencyImpl osDataConsistency = new OsDataConsistencyImpl();
 		return osDataConsistency;
@@ -2380,6 +2521,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataStability createDataStability() {
 		DataStabilityImpl dataStability = new DataStabilityImpl();
 		return dataStability;
@@ -2390,6 +2532,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NonAtomicDataCoherency createNonAtomicDataCoherency() {
 		NonAtomicDataCoherencyImpl nonAtomicDataCoherency = new NonAtomicDataCoherencyImpl();
 		return nonAtomicDataCoherency;
@@ -2400,6 +2543,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Semaphore createSemaphore() {
 		SemaphoreImpl semaphore = new SemaphoreImpl();
 		return semaphore;
@@ -2410,6 +2554,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskScheduler createTaskScheduler() {
 		TaskSchedulerImpl taskScheduler = new TaskSchedulerImpl();
 		return taskScheduler;
@@ -2420,6 +2565,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulerAssociation createSchedulerAssociation() {
 		SchedulerAssociationImpl schedulerAssociation = new SchedulerAssociationImpl();
 		return schedulerAssociation;
@@ -2430,6 +2576,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterruptController createInterruptController() {
 		InterruptControllerImpl interruptController = new InterruptControllerImpl();
 		return interruptController;
@@ -2440,6 +2587,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulingParameters createSchedulingParameters() {
 		SchedulingParametersImpl schedulingParameters = new SchedulingParametersImpl();
 		return schedulingParameters;
@@ -2460,6 +2608,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FixedPriorityPreemptive createFixedPriorityPreemptive() {
 		FixedPriorityPreemptiveImpl fixedPriorityPreemptive = new FixedPriorityPreemptiveImpl();
 		return fixedPriorityPreemptive;
@@ -2470,6 +2619,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FixedPriorityPreemptiveWithBudgetEnforcement createFixedPriorityPreemptiveWithBudgetEnforcement() {
 		FixedPriorityPreemptiveWithBudgetEnforcementImpl fixedPriorityPreemptiveWithBudgetEnforcement = new FixedPriorityPreemptiveWithBudgetEnforcementImpl();
 		return fixedPriorityPreemptiveWithBudgetEnforcement;
@@ -2480,6 +2630,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OSEK createOSEK() {
 		OSEKImpl osek = new OSEKImpl();
 		return osek;
@@ -2490,6 +2641,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeadlineMonotonic createDeadlineMonotonic() {
 		DeadlineMonotonicImpl deadlineMonotonic = new DeadlineMonotonicImpl();
 		return deadlineMonotonic;
@@ -2500,6 +2652,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RateMonotonic createRateMonotonic() {
 		RateMonotonicImpl rateMonotonic = new RateMonotonicImpl();
 		return rateMonotonic;
@@ -2510,6 +2663,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PfairPD2 createPfairPD2() {
 		PfairPD2Impl pfairPD2 = new PfairPD2Impl();
 		return pfairPD2;
@@ -2520,6 +2674,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PartlyPFairPD2 createPartlyPFairPD2() {
 		PartlyPFairPD2Impl partlyPFairPD2 = new PartlyPFairPD2Impl();
 		return partlyPFairPD2;
@@ -2530,6 +2685,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EarlyReleaseFairPD2 createEarlyReleaseFairPD2() {
 		EarlyReleaseFairPD2Impl earlyReleaseFairPD2 = new EarlyReleaseFairPD2Impl();
 		return earlyReleaseFairPD2;
@@ -2540,6 +2696,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PartlyEarlyReleaseFairPD2 createPartlyEarlyReleaseFairPD2() {
 		PartlyEarlyReleaseFairPD2Impl partlyEarlyReleaseFairPD2 = new PartlyEarlyReleaseFairPD2Impl();
 		return partlyEarlyReleaseFairPD2;
@@ -2550,6 +2707,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LeastLocalRemainingExecutionTimeFirst createLeastLocalRemainingExecutionTimeFirst() {
 		LeastLocalRemainingExecutionTimeFirstImpl leastLocalRemainingExecutionTimeFirst = new LeastLocalRemainingExecutionTimeFirstImpl();
 		return leastLocalRemainingExecutionTimeFirst;
@@ -2560,6 +2718,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EarliestDeadlineFirst createEarliestDeadlineFirst() {
 		EarliestDeadlineFirstImpl earliestDeadlineFirst = new EarliestDeadlineFirstImpl();
 		return earliestDeadlineFirst;
@@ -2570,6 +2729,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PriorityBasedRoundRobin createPriorityBasedRoundRobin() {
 		PriorityBasedRoundRobinImpl priorityBasedRoundRobin = new PriorityBasedRoundRobinImpl();
 		return priorityBasedRoundRobin;
@@ -2580,6 +2740,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeferrableServer createDeferrableServer() {
 		DeferrableServerImpl deferrableServer = new DeferrableServerImpl();
 		return deferrableServer;
@@ -2590,6 +2751,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PollingPeriodicServer createPollingPeriodicServer() {
 		PollingPeriodicServerImpl pollingPeriodicServer = new PollingPeriodicServerImpl();
 		return pollingPeriodicServer;
@@ -2600,6 +2762,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SporadicServer createSporadicServer() {
 		SporadicServerImpl sporadicServer = new SporadicServerImpl();
 		return sporadicServer;
@@ -2610,6 +2773,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConstantBandwidthServer createConstantBandwidthServer() {
 		ConstantBandwidthServerImpl constantBandwidthServer = new ConstantBandwidthServerImpl();
 		return constantBandwidthServer;
@@ -2620,6 +2784,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConstantBandwidthServerWithCASH createConstantBandwidthServerWithCASH() {
 		ConstantBandwidthServerWithCASHImpl constantBandwidthServerWithCASH = new ConstantBandwidthServerWithCASHImpl();
 		return constantBandwidthServerWithCASH;
@@ -2630,6 +2795,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Grouping createGrouping() {
 		GroupingImpl grouping = new GroupingImpl();
 		return grouping;
@@ -2640,6 +2806,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UserSpecificSchedulingAlgorithm createUserSpecificSchedulingAlgorithm() {
 		UserSpecificSchedulingAlgorithmImpl userSpecificSchedulingAlgorithm = new UserSpecificSchedulingAlgorithmImpl();
 		return userSpecificSchedulingAlgorithm;
@@ -2650,6 +2817,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PriorityBased createPriorityBased() {
 		PriorityBasedImpl priorityBased = new PriorityBasedImpl();
 		return priorityBased;
@@ -2660,6 +2828,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OperatingSystem createOperatingSystem() {
 		OperatingSystemImpl operatingSystem = new OperatingSystemImpl();
 		return operatingSystem;
@@ -2670,6 +2839,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VendorOperatingSystem createVendorOperatingSystem() {
 		VendorOperatingSystemImpl vendorOperatingSystem = new VendorOperatingSystemImpl();
 		return vendorOperatingSystem;
@@ -2680,6 +2850,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsOverhead createOsOverhead() {
 		OsOverheadImpl osOverhead = new OsOverheadImpl();
 		return osOverhead;
@@ -2690,6 +2861,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsAPIOverhead createOsAPIOverhead() {
 		OsAPIOverheadImpl osAPIOverhead = new OsAPIOverheadImpl();
 		return osAPIOverhead;
@@ -2700,6 +2872,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsISROverhead createOsISROverhead() {
 		OsISROverheadImpl osISROverhead = new OsISROverheadImpl();
 		return osISROverhead;
@@ -2710,6 +2883,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyConstraintsModel createPropertyConstraintsModel() {
 		PropertyConstraintsModelImpl propertyConstraintsModel = new PropertyConstraintsModelImpl();
 		return propertyConstraintsModel;
@@ -2720,6 +2894,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessAllocationConstraint createProcessAllocationConstraint() {
 		ProcessAllocationConstraintImpl processAllocationConstraint = new ProcessAllocationConstraintImpl();
 		return processAllocationConstraint;
@@ -2730,6 +2905,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPrototypeAllocationConstraint createProcessPrototypeAllocationConstraint() {
 		ProcessPrototypeAllocationConstraintImpl processPrototypeAllocationConstraint = new ProcessPrototypeAllocationConstraintImpl();
 		return processPrototypeAllocationConstraint;
@@ -2740,6 +2916,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableAllocationConstraint createRunnableAllocationConstraint() {
 		RunnableAllocationConstraintImpl runnableAllocationConstraint = new RunnableAllocationConstraintImpl();
 		return runnableAllocationConstraint;
@@ -2750,6 +2927,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractElementMappingConstraint createAbstractElementMappingConstraint() {
 		AbstractElementMappingConstraintImpl abstractElementMappingConstraint = new AbstractElementMappingConstraintImpl();
 		return abstractElementMappingConstraint;
@@ -2760,6 +2938,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CoreClassification createCoreClassification() {
 		CoreClassificationImpl coreClassification = new CoreClassificationImpl();
 		return coreClassification;
@@ -2770,6 +2949,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryClassification createMemoryClassification() {
 		MemoryClassificationImpl memoryClassification = new MemoryClassificationImpl();
 		return memoryClassification;
@@ -2780,6 +2960,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StimuliModel createStimuliModel() {
 		StimuliModelImpl stimuliModel = new StimuliModelImpl();
 		return stimuliModel;
@@ -2790,6 +2971,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueList createModeValueList() {
 		ModeValueListImpl modeValueList = new ModeValueListImpl();
 		return modeValueList;
@@ -2810,6 +2992,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueDisjunction createModeValueDisjunction() {
 		ModeValueDisjunctionImpl modeValueDisjunction = new ModeValueDisjunctionImpl();
 		return modeValueDisjunction;
@@ -2820,6 +3003,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValue createModeValue() {
 		ModeValueImpl modeValue = new ModeValueImpl();
 		return modeValue;
@@ -2830,6 +3014,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueConjunction createModeValueConjunction() {
 		ModeValueConjunctionImpl modeValueConjunction = new ModeValueConjunctionImpl();
 		return modeValueConjunction;
@@ -2840,6 +3025,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PeriodicStimulus createPeriodicStimulus() {
 		PeriodicStimulusImpl periodicStimulus = new PeriodicStimulusImpl();
 		return periodicStimulus;
@@ -2850,6 +3036,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RelativePeriodicStimulus createRelativePeriodicStimulus() {
 		RelativePeriodicStimulusImpl relativePeriodicStimulus = new RelativePeriodicStimulusImpl();
 		return relativePeriodicStimulus;
@@ -2860,6 +3047,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariableRateStimulus createVariableRateStimulus() {
 		VariableRateStimulusImpl variableRateStimulus = new VariableRateStimulusImpl();
 		return variableRateStimulus;
@@ -2870,6 +3058,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scenario createScenario() {
 		ScenarioImpl scenario = new ScenarioImpl();
 		return scenario;
@@ -2880,6 +3069,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PeriodicSyntheticStimulus createPeriodicSyntheticStimulus() {
 		PeriodicSyntheticStimulusImpl periodicSyntheticStimulus = new PeriodicSyntheticStimulusImpl();
 		return periodicSyntheticStimulus;
@@ -2890,6 +3080,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomStimulus createCustomStimulus() {
 		CustomStimulusImpl customStimulus = new CustomStimulusImpl();
 		return customStimulus;
@@ -2900,6 +3091,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SingleStimulus createSingleStimulus() {
 		SingleStimulusImpl singleStimulus = new SingleStimulusImpl();
 		return singleStimulus;
@@ -2910,6 +3102,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterProcessStimulus createInterProcessStimulus() {
 		InterProcessStimulusImpl interProcessStimulus = new InterProcessStimulusImpl();
 		return interProcessStimulus;
@@ -2920,6 +3113,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PeriodicBurstStimulus createPeriodicBurstStimulus() {
 		PeriodicBurstStimulusImpl periodicBurstStimulus = new PeriodicBurstStimulusImpl();
 		return periodicBurstStimulus;
@@ -2930,6 +3124,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventStimulus createEventStimulus() {
 		EventStimulusImpl eventStimulus = new EventStimulusImpl();
 		return eventStimulus;
@@ -2940,6 +3135,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrivalCurveStimulus createArrivalCurveStimulus() {
 		ArrivalCurveStimulusImpl arrivalCurveStimulus = new ArrivalCurveStimulusImpl();
 		return arrivalCurveStimulus;
@@ -2950,6 +3146,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrivalCurveEntry createArrivalCurveEntry() {
 		ArrivalCurveEntryImpl arrivalCurveEntry = new ArrivalCurveEntryImpl();
 		return arrivalCurveEntry;
@@ -2960,6 +3157,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClockTriangleFunction createClockTriangleFunction() {
 		ClockTriangleFunctionImpl clockTriangleFunction = new ClockTriangleFunctionImpl();
 		return clockTriangleFunction;
@@ -2970,6 +3168,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClockSinusFunction createClockSinusFunction() {
 		ClockSinusFunctionImpl clockSinusFunction = new ClockSinusFunctionImpl();
 		return clockSinusFunction;
@@ -2980,6 +3179,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClockMultiplierList createClockMultiplierList() {
 		ClockMultiplierListImpl clockMultiplierList = new ClockMultiplierListImpl();
 		return clockMultiplierList;
@@ -2990,6 +3190,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClockMultiplierListEntry createClockMultiplierListEntry() {
 		ClockMultiplierListEntryImpl clockMultiplierListEntry = new ClockMultiplierListEntryImpl();
 		return clockMultiplierListEntry;
@@ -3000,6 +3201,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SWModel createSWModel() {
 		SWModelImpl swModel = new SWModelImpl();
 		return swModel;
@@ -3010,6 +3212,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomEntity createCustomEntity() {
 		CustomEntityImpl customEntity = new CustomEntityImpl();
 		return customEntity;
@@ -3020,6 +3223,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessChain createProcessChain() {
 		ProcessChainImpl processChain = new ProcessChainImpl();
 		return processChain;
@@ -3030,6 +3234,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CallGraph createCallGraph() {
 		CallGraphImpl callGraph = new CallGraphImpl();
 		return callGraph;
@@ -3040,6 +3245,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CallSequence createCallSequence() {
 		CallSequenceImpl callSequence = new CallSequenceImpl();
 		return callSequence;
@@ -3050,6 +3256,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeSwitch createModeSwitch() {
 		ModeSwitchImpl modeSwitch = new ModeSwitchImpl();
 		return modeSwitch;
@@ -3060,6 +3267,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public <T> ModeSwitchEntry<T> createModeSwitchEntry() {
 		ModeSwitchEntryImpl<T> modeSwitchEntry = new ModeSwitchEntryImpl<T>();
 		return modeSwitchEntry;
@@ -3070,6 +3278,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public <T> ModeSwitchDefault<T> createModeSwitchDefault() {
 		ModeSwitchDefaultImpl<T> modeSwitchDefault = new ModeSwitchDefaultImpl<T>();
 		return modeSwitchDefault;
@@ -3080,6 +3289,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProbabilitySwitch createProbabilitySwitch() {
 		ProbabilitySwitchImpl probabilitySwitch = new ProbabilitySwitchImpl();
 		return probabilitySwitch;
@@ -3090,6 +3300,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public <T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry() {
 		ProbabilitySwitchEntryImpl<T> probabilitySwitchEntry = new ProbabilitySwitchEntryImpl<T>();
 		return probabilitySwitchEntry;
@@ -3100,6 +3311,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Counter createCounter() {
 		CounterImpl counter = new CounterImpl();
 		return counter;
@@ -3110,6 +3322,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WaitEvent createWaitEvent() {
 		WaitEventImpl waitEvent = new WaitEventImpl();
 		return waitEvent;
@@ -3120,6 +3333,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SetEvent createSetEvent() {
 		SetEventImpl setEvent = new SetEventImpl();
 		return setEvent;
@@ -3130,6 +3344,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClearEvent createClearEvent() {
 		ClearEventImpl clearEvent = new ClearEventImpl();
 		return clearEvent;
@@ -3140,6 +3355,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventMask createEventMask() {
 		EventMaskImpl eventMask = new EventMaskImpl();
 		return eventMask;
@@ -3150,6 +3366,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsEvent createOsEvent() {
 		OsEventImpl osEvent = new OsEventImpl();
 		return osEvent;
@@ -3160,6 +3377,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterProcessTrigger createInterProcessTrigger() {
 		InterProcessTriggerImpl interProcessTrigger = new InterProcessTriggerImpl();
 		return interProcessTrigger;
@@ -3170,6 +3388,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnforcedMigration createEnforcedMigration() {
 		EnforcedMigrationImpl enforcedMigration = new EnforcedMigrationImpl();
 		return enforcedMigration;
@@ -3180,6 +3399,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskRunnableCall createTaskRunnableCall() {
 		TaskRunnableCallImpl taskRunnableCall = new TaskRunnableCallImpl();
 		return taskRunnableCall;
@@ -3190,6 +3410,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulePoint createSchedulePoint() {
 		SchedulePointImpl schedulePoint = new SchedulePointImpl();
 		return schedulePoint;
@@ -3200,6 +3421,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TerminateProcess createTerminateProcess() {
 		TerminateProcessImpl terminateProcess = new TerminateProcessImpl();
 		return terminateProcess;
@@ -3210,6 +3432,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Task createTask() {
 		TaskImpl task = new TaskImpl();
 		return task;
@@ -3220,6 +3443,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISR createISR() {
 		ISRImpl isr = new ISRImpl();
 		return isr;
@@ -3230,6 +3454,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPrototype createProcessPrototype() {
 		ProcessPrototypeImpl processPrototype = new ProcessPrototypeImpl();
 		return processPrototype;
@@ -3240,6 +3465,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChainedProcessPrototype createChainedProcessPrototype() {
 		ChainedProcessPrototypeImpl chainedProcessPrototype = new ChainedProcessPrototypeImpl();
 		return chainedProcessPrototype;
@@ -3250,6 +3476,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessPrecedenceSpec createAccessPrecedenceSpec() {
 		AccessPrecedenceSpecImpl accessPrecedenceSpec = new AccessPrecedenceSpecImpl();
 		return accessPrecedenceSpec;
@@ -3260,6 +3487,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OrderPrecedenceSpec createOrderPrecedenceSpec() {
 		OrderPrecedenceSpecImpl orderPrecedenceSpec = new OrderPrecedenceSpecImpl();
 		return orderPrecedenceSpec;
@@ -3270,6 +3498,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataDependency createDataDependency() {
 		DataDependencyImpl dataDependency = new DataDependencyImpl();
 		return dataDependency;
@@ -3280,6 +3509,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableParameter createRunnableParameter() {
 		RunnableParameterImpl runnableParameter = new RunnableParameterImpl();
 		return runnableParameter;
@@ -3290,6 +3520,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable createRunnable() {
 		RunnableImpl runnable = new RunnableImpl();
 		return runnable;
@@ -3300,6 +3531,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label createLabel() {
 		LabelImpl label = new LabelImpl();
 		return label;
@@ -3310,6 +3542,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Channel createChannel() {
 		ChannelImpl channel = new ChannelImpl();
 		return channel;
@@ -3320,6 +3553,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLabel createModeLabel() {
 		ModeLabelImpl modeLabel = new ModeLabelImpl();
 		return modeLabel;
@@ -3330,6 +3564,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Section createSection() {
 		SectionImpl section = new SectionImpl();
 		return section;
@@ -3340,6 +3575,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExecutionNeed createExecutionNeed() {
 		ExecutionNeedImpl executionNeed = new ExecutionNeedImpl();
 		return executionNeed;
@@ -3360,6 +3596,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks createTicks() {
 		TicksImpl ticks = new TicksImpl();
 		return ticks;
@@ -3380,6 +3617,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLabelAccess createModeLabelAccess() {
 		ModeLabelAccessImpl modeLabelAccess = new ModeLabelAccessImpl();
 		return modeLabelAccess;
@@ -3390,6 +3628,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableModeSwitch createRunnableModeSwitch() {
 		RunnableModeSwitchImpl runnableModeSwitch = new RunnableModeSwitchImpl();
 		return runnableModeSwitch;
@@ -3400,6 +3639,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccess createLabelAccess() {
 		LabelAccessImpl labelAccess = new LabelAccessImpl();
 		return labelAccess;
@@ -3410,6 +3650,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChannelSend createChannelSend() {
 		ChannelSendImpl channelSend = new ChannelSendImpl();
 		return channelSend;
@@ -3420,6 +3661,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChannelReceive createChannelReceive() {
 		ChannelReceiveImpl channelReceive = new ChannelReceiveImpl();
 		return channelReceive;
@@ -3430,6 +3672,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SemaphoreAccess createSemaphoreAccess() {
 		SemaphoreAccessImpl semaphoreAccess = new SemaphoreAccessImpl();
 		return semaphoreAccess;
@@ -3440,6 +3683,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SenderReceiverRead createSenderReceiverRead() {
 		SenderReceiverReadImpl senderReceiverRead = new SenderReceiverReadImpl();
 		return senderReceiverRead;
@@ -3450,6 +3694,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SenderReceiverWrite createSenderReceiverWrite() {
 		SenderReceiverWriteImpl senderReceiverWrite = new SenderReceiverWriteImpl();
 		return senderReceiverWrite;
@@ -3460,6 +3705,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SynchronousServerCall createSynchronousServerCall() {
 		SynchronousServerCallImpl synchronousServerCall = new SynchronousServerCallImpl();
 		return synchronousServerCall;
@@ -3470,6 +3716,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AsynchronousServerCall createAsynchronousServerCall() {
 		AsynchronousServerCallImpl asynchronousServerCall = new AsynchronousServerCallImpl();
 		return asynchronousServerCall;
@@ -3480,6 +3727,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GetResultServerCall createGetResultServerCall() {
 		GetResultServerCallImpl getResultServerCall = new GetResultServerCallImpl();
 		return getResultServerCall;
@@ -3490,6 +3738,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableProbabilitySwitch createRunnableProbabilitySwitch() {
 		RunnableProbabilitySwitchImpl runnableProbabilitySwitch = new RunnableProbabilitySwitchImpl();
 		return runnableProbabilitySwitch;
@@ -3500,6 +3749,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Group createGroup() {
 		GroupImpl group = new GroupImpl();
 		return group;
@@ -3510,6 +3760,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CallArgument createCallArgument() {
 		CallArgumentImpl callArgument = new CallArgumentImpl();
 		return callArgument;
@@ -3520,6 +3771,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableCall createRunnableCall() {
 		RunnableCallImpl runnableCall = new RunnableCallImpl();
 		return runnableCall;
@@ -3530,6 +3782,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomEventTrigger createCustomEventTrigger() {
 		CustomEventTriggerImpl customEventTrigger = new CustomEventTriggerImpl();
 		return customEventTrigger;
@@ -3540,6 +3793,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Struct createStruct() {
 		StructImpl struct = new StructImpl();
 		return struct;
@@ -3550,6 +3804,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StructEntry createStructEntry() {
 		StructEntryImpl structEntry = new StructEntryImpl();
 		return structEntry;
@@ -3560,6 +3815,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Array createArray() {
 		ArrayImpl array = new ArrayImpl();
 		return array;
@@ -3570,6 +3826,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Pointer createPointer() {
 		PointerImpl pointer = new PointerImpl();
 		return pointer;
@@ -3580,6 +3837,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeRef createTypeRef() {
 		TypeRefImpl typeRef = new TypeRefImpl();
 		return typeRef;
@@ -3590,6 +3848,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPlatformMapping createDataPlatformMapping() {
 		DataPlatformMappingImpl dataPlatformMapping = new DataPlatformMappingImpl();
 		return dataPlatformMapping;
@@ -3600,6 +3859,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataTypeDefinition createDataTypeDefinition() {
 		DataTypeDefinitionImpl dataTypeDefinition = new DataTypeDefinitionImpl();
 		return dataTypeDefinition;
@@ -3610,6 +3870,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BaseTypeDefinition createBaseTypeDefinition() {
 		BaseTypeDefinitionImpl baseTypeDefinition = new BaseTypeDefinitionImpl();
 		return baseTypeDefinition;
@@ -3620,6 +3881,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PeriodicActivation createPeriodicActivation() {
 		PeriodicActivationImpl periodicActivation = new PeriodicActivationImpl();
 		return periodicActivation;
@@ -3630,6 +3892,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariableRateActivation createVariableRateActivation() {
 		VariableRateActivationImpl variableRateActivation = new VariableRateActivationImpl();
 		return variableRateActivation;
@@ -3640,6 +3903,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SporadicActivation createSporadicActivation() {
 		SporadicActivationImpl sporadicActivation = new SporadicActivationImpl();
 		return sporadicActivation;
@@ -3650,6 +3914,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SingleActivation createSingleActivation() {
 		SingleActivationImpl singleActivation = new SingleActivationImpl();
 		return singleActivation;
@@ -3660,6 +3925,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventActivation createEventActivation() {
 		EventActivationImpl eventActivation = new EventActivationImpl();
 		return eventActivation;
@@ -3670,6 +3936,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomActivation createCustomActivation() {
 		CustomActivationImpl customActivation = new CustomActivationImpl();
 		return customActivation;
@@ -3680,6 +3947,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessStatistic createLabelAccessStatistic() {
 		LabelAccessStatisticImpl labelAccessStatistic = new LabelAccessStatisticImpl();
 		return labelAccessStatistic;
@@ -3690,6 +3958,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunEntityCallStatistic createRunEntityCallStatistic() {
 		RunEntityCallStatisticImpl runEntityCallStatistic = new RunEntityCallStatisticImpl();
 		return runEntityCallStatistic;
@@ -3700,6 +3969,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MeasurementModel createMeasurementModel() {
 		MeasurementModelImpl measurementModel = new MeasurementModelImpl();
 		return measurementModel;
@@ -3710,6 +3980,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChainMeasurement createEventChainMeasurement() {
 		EventChainMeasurementImpl eventChainMeasurement = new EventChainMeasurementImpl();
 		return eventChainMeasurement;
@@ -3720,6 +3991,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskMeasurement createTaskMeasurement() {
 		TaskMeasurementImpl taskMeasurement = new TaskMeasurementImpl();
 		return taskMeasurement;
@@ -3730,6 +4002,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableMeasurement createRunnableMeasurement() {
 		RunnableMeasurementImpl runnableMeasurement = new RunnableMeasurementImpl();
 		return runnableMeasurement;
@@ -4982,6 +5255,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AmaltheaPackage getAmaltheaPackage() {
 		return (AmaltheaPackage)getEPackage();
 	}

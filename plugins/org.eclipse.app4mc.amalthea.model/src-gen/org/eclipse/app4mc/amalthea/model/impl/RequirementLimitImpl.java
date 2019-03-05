@@ -84,6 +84,7 @@ public abstract class RequirementLimitImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LimitType getLimitType() {
 		return limitType;
 	}
@@ -93,6 +94,7 @@ public abstract class RequirementLimitImpl extends AmaltheaExtendedEObjectImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitType(LimitType newLimitType) {
 		LimitType oldLimitType = limitType;
 		limitType = newLimitType == null ? LIMIT_TYPE_EDEFAULT : newLimitType;

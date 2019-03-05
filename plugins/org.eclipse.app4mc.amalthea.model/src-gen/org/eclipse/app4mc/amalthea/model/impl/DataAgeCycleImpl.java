@@ -102,6 +102,7 @@ public class DataAgeCycleImpl extends DataAgeImpl implements DataAgeCycle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMinimumCycle() {
 		return minimumCycle;
 	}
@@ -111,6 +112,7 @@ public class DataAgeCycleImpl extends DataAgeImpl implements DataAgeCycle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinimumCycle(int newMinimumCycle) {
 		int oldMinimumCycle = minimumCycle;
 		minimumCycle = newMinimumCycle;
@@ -123,6 +125,7 @@ public class DataAgeCycleImpl extends DataAgeImpl implements DataAgeCycle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaximumCycle() {
 		return maximumCycle;
 	}
@@ -132,6 +135,7 @@ public class DataAgeCycleImpl extends DataAgeImpl implements DataAgeCycle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaximumCycle(int newMaximumCycle) {
 		int oldMaximumCycle = maximumCycle;
 		maximumCycle = newMaximumCycle;

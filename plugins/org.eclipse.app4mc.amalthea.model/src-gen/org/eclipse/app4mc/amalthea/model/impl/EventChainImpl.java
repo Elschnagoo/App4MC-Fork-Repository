@@ -78,6 +78,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUniqueName() {
 		return this.computeUniqueName();
 	}
@@ -87,6 +88,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		return this.basicComputeUniqueName();
 	}
@@ -96,6 +98,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String basicComputeUniqueName() {
 		String _encode = this.encode(this.getName());
 		String _plus = (_encode + "?type=");
@@ -108,6 +111,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String basicComputeUniqueNameWithPrefix(final String prefix) {
 		String _encode = this.encode(prefix);
 		String _plus = (_encode + "/");
@@ -120,6 +124,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String encode(final String str) {
 		try {
 			String _xifexpression = null;

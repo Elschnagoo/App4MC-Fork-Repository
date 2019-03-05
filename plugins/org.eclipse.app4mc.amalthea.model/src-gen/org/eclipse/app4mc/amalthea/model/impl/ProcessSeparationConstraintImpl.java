@@ -95,6 +95,7 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessConstraintTarget getTarget() {
 		return target;
 	}
@@ -119,6 +120,7 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(ProcessConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class ProcessSeparationConstraintImpl extends SeparationConstraintImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessGroup> getGroups() {
 		if (groups == null) {
 			groups = new EObjectContainmentEList<ProcessGroup>(ProcessGroup.class, this, AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT__GROUPS);

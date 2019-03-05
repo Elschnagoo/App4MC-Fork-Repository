@@ -88,6 +88,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataConstraintTarget getTarget() {
 		return target;
 	}
@@ -112,6 +113,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(DataConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -131,6 +133,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelGroup getGroup() {
 		return group;
 	}
@@ -155,6 +158,7 @@ public class DataPairingConstraintImpl extends PairingConstraintImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGroup(LabelGroup newGroup) {
 		if (newGroup != group) {
 			NotificationChain msgs = null;

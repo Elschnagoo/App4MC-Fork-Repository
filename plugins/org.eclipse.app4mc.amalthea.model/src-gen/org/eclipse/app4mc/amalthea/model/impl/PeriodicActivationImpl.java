@@ -107,6 +107,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMin() {
 		return min;
 	}
@@ -131,6 +132,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(Time newMin) {
 		if (newMin != min) {
 			NotificationChain msgs = null;
@@ -150,6 +152,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMax() {
 		return max;
 	}
@@ -174,6 +177,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(Time newMax) {
 		if (newMax != max) {
 			NotificationChain msgs = null;
@@ -193,6 +197,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getRecurrence() {
 		return recurrence;
 	}
@@ -217,6 +222,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRecurrence(Time newRecurrence) {
 		if (newRecurrence != recurrence) {
 			NotificationChain msgs = null;
@@ -236,6 +242,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOffset() {
 		return offset;
 	}
@@ -260,6 +267,7 @@ public class PeriodicActivationImpl extends ActivationImpl implements PeriodicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(Time newOffset) {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;

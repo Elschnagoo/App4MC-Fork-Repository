@@ -95,6 +95,7 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isMultipleOccurrencesAllowed() {
 		return multipleOccurrencesAllowed;
 	}
@@ -104,6 +105,7 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMultipleOccurrencesAllowed(boolean newMultipleOccurrencesAllowed) {
 		boolean oldMultipleOccurrencesAllowed = multipleOccurrencesAllowed;
 		multipleOccurrencesAllowed = newMultipleOccurrencesAllowed;
@@ -116,6 +118,7 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getTolerance() {
 		return tolerance;
 	}
@@ -140,6 +143,7 @@ public abstract class SynchronizationConstraintImpl extends TimingConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTolerance(Time newTolerance) {
 		if (newTolerance != tolerance) {
 			NotificationChain msgs = null;

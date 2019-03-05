@@ -95,6 +95,7 @@ public class DataSeparationConstraintImpl extends SeparationConstraintImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataConstraintTarget getTarget() {
 		return target;
 	}
@@ -119,6 +120,7 @@ public class DataSeparationConstraintImpl extends SeparationConstraintImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(DataConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class DataSeparationConstraintImpl extends SeparationConstraintImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<LabelEntityGroup> getGroups() {
 		if (groups == null) {
 			groups = new EObjectContainmentEList<LabelEntityGroup>(LabelEntityGroup.class, this, AmaltheaPackage.DATA_SEPARATION_CONSTRAINT__GROUPS);

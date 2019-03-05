@@ -119,6 +119,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_MODULE__TAGS);
@@ -131,6 +132,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwPort> getPorts() {
 		if (ports == null) {
 			ports = new EObjectContainmentEList<HwPort>(HwPort.class, this, AmaltheaPackage.HW_MODULE__PORTS);
@@ -143,6 +145,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PowerDomain getPowerDomain() {
 		if (powerDomain != null && powerDomain.eIsProxy()) {
 			InternalEObject oldPowerDomain = (InternalEObject)powerDomain;
@@ -169,6 +172,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPowerDomain(PowerDomain newPowerDomain) {
 		PowerDomain oldPowerDomain = powerDomain;
 		powerDomain = newPowerDomain;
@@ -181,6 +185,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FrequencyDomain getFrequencyDomain() {
 		if (frequencyDomain != null && frequencyDomain.eIsProxy()) {
 			InternalEObject oldFrequencyDomain = (InternalEObject)frequencyDomain;
@@ -207,6 +212,7 @@ public abstract class HwModuleImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFrequencyDomain(FrequencyDomain newFrequencyDomain) {
 		FrequencyDomain oldFrequencyDomain = frequencyDomain;
 		frequencyDomain = newFrequencyDomain;

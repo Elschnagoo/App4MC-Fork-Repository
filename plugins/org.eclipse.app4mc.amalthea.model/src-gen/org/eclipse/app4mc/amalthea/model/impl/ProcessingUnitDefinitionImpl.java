@@ -112,6 +112,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PuType getPuType() {
 		return puType;
 	}
@@ -121,6 +122,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPuType(PuType newPuType) {
 		PuType oldPuType = puType;
 		puType = newPuType == null ? PU_TYPE_EDEFAULT : newPuType;
@@ -133,6 +135,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwFeature> getFeatures() {
 		if (features == null) {
 			features = new EObjectResolvingEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__FEATURES);
@@ -145,6 +148,7 @@ public class ProcessingUnitDefinitionImpl extends HwDefinitionImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CoreClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.PROCESSING_UNIT_DEFINITION__CLASSIFIERS);

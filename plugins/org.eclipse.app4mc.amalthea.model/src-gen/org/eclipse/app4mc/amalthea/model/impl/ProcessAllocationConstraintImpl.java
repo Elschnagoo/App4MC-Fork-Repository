@@ -72,6 +72,7 @@ public class ProcessAllocationConstraintImpl extends CoreAllocationConstraintImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getProcess() {
 		if (process != null && process.eIsProxy()) {
 			InternalEObject oldProcess = (InternalEObject)process;
@@ -98,6 +99,7 @@ public class ProcessAllocationConstraintImpl extends CoreAllocationConstraintImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcess(org.eclipse.app4mc.amalthea.model.Process newProcess) {
 		org.eclipse.app4mc.amalthea.model.Process oldProcess = process;
 		process = newProcess;

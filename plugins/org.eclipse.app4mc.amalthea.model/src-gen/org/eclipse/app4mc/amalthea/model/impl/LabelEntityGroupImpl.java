@@ -95,6 +95,7 @@ public class LabelEntityGroupImpl extends LabelGroupImpl implements LabelEntityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.LABEL_ENTITY_GROUP__CUSTOM_PROPERTIES);
@@ -107,6 +108,7 @@ public class LabelEntityGroupImpl extends LabelGroupImpl implements LabelEntityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.LABEL_ENTITY_GROUP__LABELS);

@@ -91,6 +91,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DiscreteValueHistogramEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<DiscreteValueHistogramEntry>(DiscreteValueHistogramEntry.class, this, AmaltheaPackage.DISCRETE_VALUE_HISTOGRAM__ENTRIES);
@@ -103,6 +104,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getLowerBound() {
 		final Function1<DiscreteValueHistogramEntry, Long> _function = new Function1<DiscreteValueHistogramEntry, Long>() {
 			public Long apply(final DiscreteValueHistogramEntry it) {
@@ -117,6 +119,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getUpperBound() {
 		final Function1<DiscreteValueHistogramEntry, Long> _function = new Function1<DiscreteValueHistogramEntry, Long>() {
 			public Long apply(final DiscreteValueHistogramEntry it) {
@@ -131,6 +134,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		double _xblockexpression = (double) 0;
 		{

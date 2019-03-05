@@ -167,6 +167,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -176,6 +177,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -188,6 +190,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwAccessElement getContainingAccessElement() {
 		if (eContainerFeatureID() != AmaltheaPackage.HW_ACCESS_PATH__CONTAINING_ACCESS_ELEMENT) return null;
 		return (HwAccessElement)eContainer();
@@ -208,6 +211,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwPathElement> getPathElements() {
 		if (pathElements == null) {
 			pathElements = new EObjectResolvingEList<HwPathElement>(HwPathElement.class, this, AmaltheaPackage.HW_ACCESS_PATH__PATH_ELEMENTS);
@@ -220,6 +224,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getStartAddress() {
 		return startAddress;
 	}
@@ -229,6 +234,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStartAddress(long newStartAddress) {
 		long oldStartAddress = startAddress;
 		startAddress = newStartAddress;
@@ -241,6 +247,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getEndAddress() {
 		return endAddress;
 	}
@@ -250,6 +257,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEndAddress(long newEndAddress) {
 		long oldEndAddress = endAddress;
 		endAddress = newEndAddress;
@@ -262,6 +270,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getMemOffset() {
 		return memOffset;
 	}
@@ -271,6 +280,7 @@ public class HwAccessPathImpl extends HwPathImpl implements HwAccessPath {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemOffset(long newMemOffset) {
 		long oldMemOffset = memOffset;
 		memOffset = newMemOffset;

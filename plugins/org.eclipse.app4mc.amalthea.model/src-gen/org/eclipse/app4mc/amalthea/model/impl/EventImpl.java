@@ -100,6 +100,7 @@ public abstract class EventImpl extends ReferableBaseObjectImpl implements Event
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.EVENT__TAGS);
@@ -112,6 +113,7 @@ public abstract class EventImpl extends ReferableBaseObjectImpl implements Event
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -121,6 +123,7 @@ public abstract class EventImpl extends ReferableBaseObjectImpl implements Event
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;

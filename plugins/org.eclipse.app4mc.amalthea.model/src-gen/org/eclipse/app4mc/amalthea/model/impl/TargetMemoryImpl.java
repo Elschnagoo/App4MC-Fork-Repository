@@ -95,6 +95,7 @@ public class TargetMemoryImpl extends DataConstraintTargetImpl implements Target
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.TARGET_MEMORY__CUSTOM_PROPERTIES);
@@ -107,6 +108,7 @@ public class TargetMemoryImpl extends DataConstraintTargetImpl implements Target
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Memory> getMemories() {
 		if (memories == null) {
 			memories = new EObjectResolvingEList<Memory>(Memory.class, this, AmaltheaPackage.TARGET_MEMORY__MEMORIES);

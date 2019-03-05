@@ -95,6 +95,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -104,6 +105,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -116,6 +118,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ITimeDeviation getOccurrence() {
 		return occurrence;
 	}
@@ -140,6 +143,7 @@ public class SporadicActivationImpl extends ActivationImpl implements SporadicAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrence(ITimeDeviation newOccurrence) {
 		if (newOccurrence != occurrence) {
 			NotificationChain msgs = null;

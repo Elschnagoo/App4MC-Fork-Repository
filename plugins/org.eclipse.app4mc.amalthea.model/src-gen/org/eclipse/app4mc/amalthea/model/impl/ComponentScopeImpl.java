@@ -73,6 +73,7 @@ public class ComponentScopeImpl extends DataGroupScopeImpl implements ComponentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Component getComponent() {
 		if (component != null && component.eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
@@ -99,6 +100,7 @@ public class ComponentScopeImpl extends DataGroupScopeImpl implements ComponentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComponent(Component newComponent) {
 		Component oldComponent = component;
 		component = newComponent;

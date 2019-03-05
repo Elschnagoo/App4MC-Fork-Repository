@@ -84,6 +84,7 @@ public class RunnableAllocationImpl extends BaseObjectImpl implements RunnableAl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scheduler getScheduler() {
 		if (scheduler != null && scheduler.eIsProxy()) {
 			InternalEObject oldScheduler = (InternalEObject)scheduler;
@@ -110,6 +111,7 @@ public class RunnableAllocationImpl extends BaseObjectImpl implements RunnableAl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScheduler(Scheduler newScheduler) {
 		Scheduler oldScheduler = scheduler;
 		scheduler = newScheduler;
@@ -122,6 +124,7 @@ public class RunnableAllocationImpl extends BaseObjectImpl implements RunnableAl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -148,6 +151,7 @@ public class RunnableAllocationImpl extends BaseObjectImpl implements RunnableAl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(org.eclipse.app4mc.amalthea.model.Runnable newEntity) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldEntity = entity;
 		entity = newEntity;

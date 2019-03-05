@@ -93,6 +93,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Time> getRuntimes() {
 		if (runtimes == null) {
 			runtimes = new EObjectContainmentEList<Time>(Time.class, this, AmaltheaPackage.MEASUREMENT__RUNTIMES);
@@ -105,6 +106,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ITimeDeviation getRuntimeDeviation() {
 		return runtimeDeviation;
 	}
@@ -129,6 +131,7 @@ public abstract class MeasurementImpl extends BaseObjectImpl implements Measurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRuntimeDeviation(ITimeDeviation newRuntimeDeviation) {
 		if (newRuntimeDeviation != runtimeDeviation) {
 			NotificationChain msgs = null;

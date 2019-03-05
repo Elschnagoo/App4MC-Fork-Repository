@@ -165,6 +165,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_ACCESS_ELEMENT__TAGS);
@@ -177,6 +178,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -186,6 +188,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -198,6 +201,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getSource() {
 		if (eContainerFeatureID() != AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE) return null;
 		return (ProcessingUnit)eContainer();
@@ -218,6 +222,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwDestination getDestination() {
 		if (destination != null && destination.eIsProxy()) {
 			InternalEObject oldDestination = (InternalEObject)destination;
@@ -244,6 +249,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDestination(HwDestination newDestination) {
 		HwDestination oldDestination = destination;
 		destination = newDestination;
@@ -256,6 +262,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwAccessPath getAccessPath() {
 		return accessPath;
 	}
@@ -280,6 +287,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessPath(HwAccessPath newAccessPath) {
 		if (newAccessPath != accessPath) {
 			NotificationChain msgs = null;
@@ -299,6 +307,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getReadLatency() {
 		return readLatency;
 	}
@@ -323,6 +332,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReadLatency(IDiscreteValueDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
@@ -342,6 +352,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getWriteLatency() {
 		return writeLatency;
 	}
@@ -366,6 +377,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWriteLatency(IDiscreteValueDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
@@ -385,6 +397,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataRate getDataRate() {
 		return dataRate;
 	}
@@ -409,6 +422,7 @@ public class HwAccessElementImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataRate(DataRate newDataRate) {
 		if (newDataRate != dataRate) {
 			NotificationChain msgs = null;

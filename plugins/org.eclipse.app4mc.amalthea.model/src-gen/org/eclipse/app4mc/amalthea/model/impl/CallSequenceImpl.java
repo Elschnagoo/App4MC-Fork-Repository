@@ -103,6 +103,7 @@ public class CallSequenceImpl extends GraphEntryBaseImpl implements CallSequence
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -112,6 +113,7 @@ public class CallSequenceImpl extends GraphEntryBaseImpl implements CallSequence
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -124,6 +126,7 @@ public class CallSequenceImpl extends GraphEntryBaseImpl implements CallSequence
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CallSequenceItem> getCalls() {
 		if (calls == null) {
 			calls = new EObjectContainmentEList<CallSequenceItem>(CallSequenceItem.class, this, AmaltheaPackage.CALL_SEQUENCE__CALLS);

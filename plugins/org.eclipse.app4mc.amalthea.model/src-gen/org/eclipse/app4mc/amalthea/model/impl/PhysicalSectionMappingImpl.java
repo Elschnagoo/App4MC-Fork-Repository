@@ -156,6 +156,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Section> getOrigin() {
 		if (origin == null) {
 			origin = new EObjectResolvingEList<Section>(Section.class, this, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__ORIGIN);
@@ -168,6 +169,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Memory getMemory() {
 		if (memory != null && memory.eIsProxy()) {
 			InternalEObject oldMemory = (InternalEObject)memory;
@@ -194,6 +196,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemory(Memory newMemory) {
 		Memory oldMemory = memory;
 		memory = newMemory;
@@ -206,6 +209,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getStartAddress() {
 		return startAddress;
 	}
@@ -215,6 +219,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStartAddress(long newStartAddress) {
 		long oldStartAddress = startAddress;
 		startAddress = newStartAddress;
@@ -227,6 +232,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getEndAddress() {
 		return endAddress;
 	}
@@ -236,6 +242,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEndAddress(long newEndAddress) {
 		long oldEndAddress = endAddress;
 		endAddress = newEndAddress;
@@ -248,6 +255,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__LABELS);
@@ -260,6 +268,7 @@ public class PhysicalSectionMappingImpl extends ReferableBaseObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunEntities() {
 		if (runEntities == null) {
 			runEntities = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.PHYSICAL_SECTION_MAPPING__RUN_ENTITIES);

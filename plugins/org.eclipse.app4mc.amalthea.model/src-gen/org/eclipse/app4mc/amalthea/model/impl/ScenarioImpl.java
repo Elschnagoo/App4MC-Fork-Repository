@@ -86,6 +86,7 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getRecurrence() {
 		return recurrence;
 	}
@@ -110,6 +111,7 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRecurrence(Time newRecurrence) {
 		if (newRecurrence != recurrence) {
 			NotificationChain msgs = null;
@@ -129,6 +131,7 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Clock getClock() {
 		if (clock != null && clock.eIsProxy()) {
 			InternalEObject oldClock = (InternalEObject)clock;
@@ -155,6 +158,7 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClock(Clock newClock) {
 		Clock oldClock = clock;
 		clock = newClock;

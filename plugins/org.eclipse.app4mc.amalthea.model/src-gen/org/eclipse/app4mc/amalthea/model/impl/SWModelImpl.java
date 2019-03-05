@@ -243,6 +243,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ISR> getIsrs() {
 		if (isrs == null) {
 			isrs = new EObjectContainmentEList<ISR>(ISR.class, this, AmaltheaPackage.SW_MODEL__ISRS);
@@ -255,6 +256,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Task> getTasks() {
 		if (tasks == null) {
 			tasks = new EObjectContainmentEList<Task>(Task.class, this, AmaltheaPackage.SW_MODEL__TASKS);
@@ -267,6 +269,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
 		if (runnables == null) {
 			runnables = new EObjectContainmentEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.SW_MODEL__RUNNABLES);
@@ -279,6 +282,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectContainmentEList<Label>(Label.class, this, AmaltheaPackage.SW_MODEL__LABELS);
@@ -291,6 +295,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Channel> getChannels() {
 		if (channels == null) {
 			channels = new EObjectContainmentEList<Channel>(Channel.class, this, AmaltheaPackage.SW_MODEL__CHANNELS);
@@ -303,6 +308,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessPrototype> getProcessPrototypes() {
 		if (processPrototypes == null) {
 			processPrototypes = new EObjectContainmentEList<ProcessPrototype>(ProcessPrototype.class, this, AmaltheaPackage.SW_MODEL__PROCESS_PROTOTYPES);
@@ -315,6 +321,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Section> getSections() {
 		if (sections == null) {
 			sections = new EObjectContainmentEList<Section>(Section.class, this, AmaltheaPackage.SW_MODEL__SECTIONS);
@@ -327,6 +334,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Activation> getActivations() {
 		if (activations == null) {
 			activations = new EObjectContainmentEList<Activation>(Activation.class, this, AmaltheaPackage.SW_MODEL__ACTIVATIONS);
@@ -339,6 +347,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OsEvent> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList<OsEvent>(OsEvent.class, this, AmaltheaPackage.SW_MODEL__EVENTS);
@@ -351,6 +360,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TypeDefinition> getTypeDefinitions() {
 		if (typeDefinitions == null) {
 			typeDefinitions = new EObjectContainmentEList<TypeDefinition>(TypeDefinition.class, this, AmaltheaPackage.SW_MODEL__TYPE_DEFINITIONS);
@@ -363,6 +373,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CustomEntity> getCustomEntities() {
 		if (customEntities == null) {
 			customEntities = new EObjectContainmentEList<CustomEntity>(CustomEntity.class, this, AmaltheaPackage.SW_MODEL__CUSTOM_ENTITIES);
@@ -375,6 +386,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessChain> getProcessChains() {
 		if (processChains == null) {
 			processChains = new EObjectContainmentEList<ProcessChain>(ProcessChain.class, this, AmaltheaPackage.SW_MODEL__PROCESS_CHAINS);
@@ -387,6 +399,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Mode> getModes() {
 		if (modes == null) {
 			modes = new EObjectContainmentEList<Mode>(Mode.class, this, AmaltheaPackage.SW_MODEL__MODES);
@@ -399,6 +412,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeLabel> getModeLabels() {
 		if (modeLabels == null) {
 			modeLabels = new EObjectContainmentEList<ModeLabel>(ModeLabel.class, this, AmaltheaPackage.SW_MODEL__MODE_LABELS);
@@ -411,6 +425,7 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral modeLiteral(final String mode, final String literal) {
 		if ((StringExtensions.isNullOrEmpty(mode) || StringExtensions.isNullOrEmpty(literal))) {
 			return null;

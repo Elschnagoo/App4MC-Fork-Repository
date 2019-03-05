@@ -94,6 +94,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeSwitchEntry<RunnableItem>> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ModeSwitchEntry<RunnableItem>>(ModeSwitchEntry.class, this, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES);
@@ -106,6 +107,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeSwitchDefault<RunnableItem> getDefaultEntry() {
 		return defaultEntry;
 	}
@@ -130,6 +132,7 @@ public class RunnableModeSwitchImpl extends RunnableItemImpl implements Runnable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultEntry(ModeSwitchDefault<RunnableItem> newDefaultEntry) {
 		if (newDefaultEntry != defaultEntry) {
 			NotificationChain msgs = null;

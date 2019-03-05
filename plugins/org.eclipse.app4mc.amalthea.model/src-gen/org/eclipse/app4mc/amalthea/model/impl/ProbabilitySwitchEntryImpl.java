@@ -102,6 +102,7 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getProbability() {
 		return probability;
 	}
@@ -111,6 +112,7 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProbability(double newProbability) {
 		double oldProbability = probability;
 		probability = newProbability;
@@ -123,6 +125,7 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<T> getItems() {
 		if (items == null) {
 			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);

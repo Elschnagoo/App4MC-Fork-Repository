@@ -97,6 +97,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsAPIOverhead getApiOverhead() {
 		return apiOverhead;
 	}
@@ -121,6 +122,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiOverhead(OsAPIOverhead newApiOverhead) {
 		if (newApiOverhead != apiOverhead) {
 			NotificationChain msgs = null;
@@ -140,6 +142,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsISROverhead getIsrCategory1Overhead() {
 		return isrCategory1Overhead;
 	}
@@ -164,6 +167,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIsrCategory1Overhead(OsISROverhead newIsrCategory1Overhead) {
 		if (newIsrCategory1Overhead != isrCategory1Overhead) {
 			NotificationChain msgs = null;
@@ -183,6 +187,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsISROverhead getIsrCategory2Overhead() {
 		return isrCategory2Overhead;
 	}
@@ -207,6 +212,7 @@ public class OsOverheadImpl extends ReferableBaseObjectImpl implements OsOverhea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIsrCategory2Overhead(OsISROverhead newIsrCategory2Overhead) {
 		if (newIsrCategory2Overhead != isrCategory2Overhead) {
 			NotificationChain msgs = null;

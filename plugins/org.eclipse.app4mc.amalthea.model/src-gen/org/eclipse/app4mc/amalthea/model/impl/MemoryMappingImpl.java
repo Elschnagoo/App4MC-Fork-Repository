@@ -106,6 +106,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractMemoryElement getAbstractElement() {
 		if (abstractElement != null && abstractElement.eIsProxy()) {
 			InternalEObject oldAbstractElement = (InternalEObject)abstractElement;
@@ -132,6 +133,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAbstractElement(AbstractMemoryElement newAbstractElement) {
 		AbstractMemoryElement oldAbstractElement = abstractElement;
 		abstractElement = newAbstractElement;
@@ -144,6 +146,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Memory getMemory() {
 		if (memory != null && memory.eIsProxy()) {
 			InternalEObject oldMemory = (InternalEObject)memory;
@@ -170,6 +173,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemory(Memory newMemory) {
 		Memory oldMemory = memory;
 		memory = newMemory;
@@ -182,6 +186,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getMemoryPositionAddress() {
 		return memoryPositionAddress;
 	}
@@ -191,6 +196,7 @@ public class MemoryMappingImpl extends BaseObjectImpl implements MemoryMapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryPositionAddress(long newMemoryPositionAddress) {
 		long oldMemoryPositionAddress = memoryPositionAddress;
 		memoryPositionAddress = newMemoryPositionAddress;

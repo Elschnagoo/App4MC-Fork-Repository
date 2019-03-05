@@ -129,6 +129,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SemaphoreEventType getEventType() {
 		return eventType;
 	}
@@ -138,6 +139,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(SemaphoreEventType newEventType) {
 		SemaphoreEventType oldEventType = eventType;
 		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
@@ -150,6 +152,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Semaphore getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -176,6 +179,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(Semaphore newEntity) {
 		Semaphore oldEntity = entity;
 		entity = newEntity;
@@ -188,6 +192,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getRunnable() {
 		if (runnable != null && runnable.eIsProxy()) {
 			InternalEObject oldRunnable = (InternalEObject)runnable;
@@ -214,6 +219,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldRunnable = runnable;
 		runnable = newRunnable;
@@ -226,6 +232,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getProcess() {
 		if (process != null && process.eIsProxy()) {
 			InternalEObject oldProcess = (InternalEObject)process;
@@ -252,6 +259,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcess(org.eclipse.app4mc.amalthea.model.Process newProcess) {
 		org.eclipse.app4mc.amalthea.model.Process oldProcess = process;
 		process = newProcess;
@@ -264,6 +272,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getProcessingUnit() {
 		if (processingUnit != null && processingUnit.eIsProxy()) {
 			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
@@ -290,6 +299,7 @@ public class SemaphoreEventImpl extends EntityEventImpl implements SemaphoreEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
 		ProcessingUnit oldProcessingUnit = processingUnit;
 		processingUnit = newProcessingUnit;

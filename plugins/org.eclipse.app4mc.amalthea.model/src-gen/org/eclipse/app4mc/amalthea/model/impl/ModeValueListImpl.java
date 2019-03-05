@@ -78,6 +78,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeValue> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);

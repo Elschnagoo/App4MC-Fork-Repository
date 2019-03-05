@@ -118,6 +118,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventMask getEventMask() {
 		return eventMask;
 	}
@@ -142,6 +143,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventMask(EventMask newEventMask) {
 		if (newEventMask != eventMask) {
 			NotificationChain msgs = null;
@@ -161,6 +163,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WaitEventType getMaskType() {
 		return maskType;
 	}
@@ -170,6 +173,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaskType(WaitEventType newMaskType) {
 		WaitEventType oldMaskType = maskType;
 		maskType = newMaskType == null ? MASK_TYPE_EDEFAULT : newMaskType;
@@ -182,6 +186,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WaitingBehaviour getWaitingBehaviour() {
 		return waitingBehaviour;
 	}
@@ -191,6 +196,7 @@ public class WaitEventImpl extends CallSequenceItemImpl implements WaitEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWaitingBehaviour(WaitingBehaviour newWaitingBehaviour) {
 		WaitingBehaviour oldWaitingBehaviour = waitingBehaviour;
 		waitingBehaviour = newWaitingBehaviour == null ? WAITING_BEHAVIOUR_EDEFAULT : newWaitingBehaviour;

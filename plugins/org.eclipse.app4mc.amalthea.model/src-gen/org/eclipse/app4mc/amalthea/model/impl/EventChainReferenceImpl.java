@@ -73,6 +73,7 @@ public class EventChainReferenceImpl extends BaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChain getEventChain() {
 		if (eventChain != null && eventChain.eIsProxy()) {
 			InternalEObject oldEventChain = (InternalEObject)eventChain;
@@ -99,6 +100,7 @@ public class EventChainReferenceImpl extends BaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventChain(EventChain newEventChain) {
 		EventChain oldEventChain = eventChain;
 		eventChain = newEventChain;

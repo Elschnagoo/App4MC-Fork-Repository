@@ -77,6 +77,7 @@ public class ExecutionNeedImpl extends RunnableItemImpl implements ExecutionNeed
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, IDiscreteValueDeviation> getNeeds() {
 		if (needs == null) {
 			needs = new EcoreEMap<String,IDiscreteValueDeviation>(AmaltheaPackage.eINSTANCE.getNeedEntry(), NeedEntryImpl.class, this, AmaltheaPackage.EXECUTION_NEED__NEEDS);

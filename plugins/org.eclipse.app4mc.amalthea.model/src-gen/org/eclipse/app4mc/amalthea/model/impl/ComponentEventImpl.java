@@ -95,6 +95,7 @@ public class ComponentEventImpl extends EntityEventImpl implements ComponentEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentEventType getEventType() {
 		return eventType;
 	}
@@ -104,6 +105,7 @@ public class ComponentEventImpl extends EntityEventImpl implements ComponentEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(ComponentEventType newEventType) {
 		ComponentEventType oldEventType = eventType;
 		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
@@ -116,6 +118,7 @@ public class ComponentEventImpl extends EntityEventImpl implements ComponentEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Component getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -142,6 +145,7 @@ public class ComponentEventImpl extends EntityEventImpl implements ComponentEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(Component newEntity) {
 		Component oldEntity = entity;
 		entity = newEntity;

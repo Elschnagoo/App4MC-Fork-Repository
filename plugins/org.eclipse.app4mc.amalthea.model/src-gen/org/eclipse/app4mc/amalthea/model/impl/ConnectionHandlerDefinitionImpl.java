@@ -161,6 +161,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedPolicy getPolicy() {
 		return policy;
 	}
@@ -170,6 +171,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPolicy(SchedPolicy newPolicy) {
 		SchedPolicy oldPolicy = policy;
 		policy = newPolicy == null ? POLICY_EDEFAULT : newPolicy;
@@ -182,6 +184,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getReadLatency() {
 		return readLatency;
 	}
@@ -206,6 +209,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReadLatency(IDiscreteValueDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
@@ -225,6 +229,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getWriteLatency() {
 		return writeLatency;
 	}
@@ -249,6 +254,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWriteLatency(IDiscreteValueDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
@@ -268,6 +274,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataRate getDataRate() {
 		return dataRate;
 	}
@@ -292,6 +299,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataRate(DataRate newDataRate) {
 		if (newDataRate != dataRate) {
 			NotificationChain msgs = null;
@@ -311,6 +319,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxBurstSize() {
 		return maxBurstSize;
 	}
@@ -320,6 +329,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxBurstSize(int newMaxBurstSize) {
 		int oldMaxBurstSize = maxBurstSize;
 		maxBurstSize = newMaxBurstSize;
@@ -332,6 +342,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxConcurrentTransfers() {
 		return maxConcurrentTransfers;
 	}
@@ -341,6 +352,7 @@ public class ConnectionHandlerDefinitionImpl extends HwDefinitionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxConcurrentTransfers(int newMaxConcurrentTransfers) {
 		int oldMaxConcurrentTransfers = maxConcurrentTransfers;
 		maxConcurrentTransfers = newMaxConcurrentTransfers;

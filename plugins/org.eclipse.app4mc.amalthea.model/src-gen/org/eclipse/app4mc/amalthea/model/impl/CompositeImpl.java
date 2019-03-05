@@ -105,6 +105,7 @@ public class CompositeImpl extends ComponentImpl implements Composite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ComponentInstance> getComponentInstances() {
 		if (componentInstances == null) {
 			componentInstances = new EObjectContainmentEList<ComponentInstance>(ComponentInstance.class, this, AmaltheaPackage.COMPOSITE__COMPONENT_INSTANCES);
@@ -117,6 +118,7 @@ public class CompositeImpl extends ComponentImpl implements Composite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Connector> getConnectors() {
 		if (connectors == null) {
 			connectors = new EObjectContainmentEList<Connector>(Connector.class, this, AmaltheaPackage.COMPOSITE__CONNECTORS);
@@ -129,6 +131,7 @@ public class CompositeImpl extends ComponentImpl implements Composite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<QualifiedPort> getGroundedPorts() {
 		if (groundedPorts == null) {
 			groundedPorts = new EObjectContainmentEList<QualifiedPort>(QualifiedPort.class, this, AmaltheaPackage.COMPOSITE__GROUNDED_PORTS);
@@ -141,6 +144,7 @@ public class CompositeImpl extends ComponentImpl implements Composite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<QualifiedPort> getInnerPorts() {
 		return AmaltheaServices.getInnerPorts(this);
 	}

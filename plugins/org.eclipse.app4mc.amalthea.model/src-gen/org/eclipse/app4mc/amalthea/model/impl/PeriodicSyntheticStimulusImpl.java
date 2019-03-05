@@ -104,6 +104,7 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOffset() {
 		return offset;
 	}
@@ -128,6 +129,7 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(Time newOffset) {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;
@@ -147,6 +149,7 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getRecurrence() {
 		return recurrence;
 	}
@@ -171,6 +174,7 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRecurrence(Time newRecurrence) {
 		if (newRecurrence != recurrence) {
 			NotificationChain msgs = null;
@@ -190,6 +194,7 @@ public class PeriodicSyntheticStimulusImpl extends StimulusImpl implements Perio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Time> getOccurrenceTimes() {
 		if (occurrenceTimes == null) {
 			occurrenceTimes = new EObjectContainmentEList<Time>(Time.class, this, AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES);

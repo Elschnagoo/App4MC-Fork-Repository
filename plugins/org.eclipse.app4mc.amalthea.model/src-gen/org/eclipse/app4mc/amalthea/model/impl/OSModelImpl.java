@@ -102,6 +102,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Semaphore> getSemaphores() {
 		if (semaphores == null) {
 			semaphores = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, AmaltheaPackage.OS_MODEL__SEMAPHORES);
@@ -114,6 +115,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OperatingSystem> getOperatingSystems() {
 		if (operatingSystems == null) {
 			operatingSystems = new EObjectContainmentEList<OperatingSystem>(OperatingSystem.class, this, AmaltheaPackage.OS_MODEL__OPERATING_SYSTEMS);
@@ -126,6 +128,7 @@ public class OSModelImpl extends BaseObjectImpl implements OSModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OsOverhead> getOsOverheads() {
 		if (osOverheads == null) {
 			osOverheads = new EObjectContainmentEList<OsOverhead>(OsOverhead.class, this, AmaltheaPackage.OS_MODEL__OS_OVERHEADS);

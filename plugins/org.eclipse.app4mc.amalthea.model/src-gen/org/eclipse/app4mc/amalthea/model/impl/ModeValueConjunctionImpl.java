@@ -84,6 +84,7 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeValue> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES);
@@ -96,6 +97,7 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
 		EList<ModeValue> _entries = this.getEntries();
 		for (final ModeValue entry : _entries) {

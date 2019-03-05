@@ -109,6 +109,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAlpha() {
 		return alpha;
 	}
@@ -118,6 +119,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAlpha(double newAlpha) {
 		double oldAlpha = alpha;
 		alpha = newAlpha;
@@ -130,6 +132,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getBeta() {
 		return beta;
 	}
@@ -139,6 +142,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBeta(double newBeta) {
 		double oldBeta = beta;
 		beta = newBeta;
@@ -151,6 +155,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		Time _xblockexpression = null;
 		{

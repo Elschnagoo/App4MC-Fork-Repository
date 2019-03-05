@@ -126,6 +126,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -135,6 +136,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -147,6 +149,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.CONNECTOR__TAGS);
@@ -159,6 +162,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QualifiedPort getSourcePort() {
 		return sourcePort;
 	}
@@ -183,6 +187,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSourcePort(QualifiedPort newSourcePort) {
 		if (newSourcePort != sourcePort) {
 			NotificationChain msgs = null;
@@ -202,6 +207,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QualifiedPort getTargetPort() {
 		return targetPort;
 	}
@@ -226,6 +232,7 @@ public class ConnectorImpl extends BaseObjectImpl implements Connector {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetPort(QualifiedPort newTargetPort) {
 		if (newTargetPort != targetPort) {
 			NotificationChain msgs = null;

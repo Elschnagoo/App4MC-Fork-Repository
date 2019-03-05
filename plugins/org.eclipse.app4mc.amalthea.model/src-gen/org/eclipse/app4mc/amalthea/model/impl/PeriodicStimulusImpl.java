@@ -109,6 +109,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOffset() {
 		return offset;
 	}
@@ -133,6 +134,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(Time newOffset) {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;
@@ -152,6 +154,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getRecurrence() {
 		return recurrence;
 	}
@@ -176,6 +179,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRecurrence(Time newRecurrence) {
 		if (newRecurrence != recurrence) {
 			NotificationChain msgs = null;
@@ -195,6 +199,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ITimeDeviation getJitter() {
 		return jitter;
 	}
@@ -219,6 +224,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJitter(ITimeDeviation newJitter) {
 		if (newJitter != jitter) {
 			NotificationChain msgs = null;
@@ -238,6 +244,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMinDistance() {
 		return minDistance;
 	}
@@ -262,6 +269,7 @@ public class PeriodicStimulusImpl extends StimulusImpl implements PeriodicStimul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinDistance(Time newMinDistance) {
 		if (newMinDistance != minDistance) {
 			NotificationChain msgs = null;

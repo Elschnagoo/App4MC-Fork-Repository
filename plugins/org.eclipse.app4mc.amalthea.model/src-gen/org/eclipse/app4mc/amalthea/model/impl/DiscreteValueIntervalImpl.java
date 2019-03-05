@@ -108,6 +108,7 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getLowerBound() {
 		return lowerBound;
 	}
@@ -117,6 +118,7 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLowerBound(Long newLowerBound) {
 		Long oldLowerBound = lowerBound;
 		lowerBound = newLowerBound;
@@ -129,6 +131,7 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getUpperBound() {
 		return upperBound;
 	}
@@ -138,6 +141,7 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpperBound(Long newUpperBound) {
 		Long oldUpperBound = upperBound;
 		upperBound = newUpperBound;
@@ -150,6 +154,7 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		Long _lowerBound = this.getLowerBound();
 		Long _upperBound = this.getUpperBound();

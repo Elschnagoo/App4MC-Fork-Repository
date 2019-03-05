@@ -272,6 +272,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSendMessage() {
 		return apiSendMessage;
 	}
@@ -296,6 +297,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSendMessage(Ticks newApiSendMessage) {
 		if (newApiSendMessage != apiSendMessage) {
 			NotificationChain msgs = null;
@@ -315,6 +317,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiTerminateTask() {
 		return apiTerminateTask;
 	}
@@ -339,6 +342,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiTerminateTask(Ticks newApiTerminateTask) {
 		if (newApiTerminateTask != apiTerminateTask) {
 			NotificationChain msgs = null;
@@ -358,6 +362,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSchedule() {
 		return apiSchedule;
 	}
@@ -382,6 +387,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSchedule(Ticks newApiSchedule) {
 		if (newApiSchedule != apiSchedule) {
 			NotificationChain msgs = null;
@@ -401,6 +407,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiRequestResource() {
 		return apiRequestResource;
 	}
@@ -425,6 +432,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiRequestResource(Ticks newApiRequestResource) {
 		if (newApiRequestResource != apiRequestResource) {
 			NotificationChain msgs = null;
@@ -444,6 +452,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiReleaseResource() {
 		return apiReleaseResource;
 	}
@@ -468,6 +477,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiReleaseResource(Ticks newApiReleaseResource) {
 		if (newApiReleaseResource != apiReleaseResource) {
 			NotificationChain msgs = null;
@@ -487,6 +497,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSetEvent() {
 		return apiSetEvent;
 	}
@@ -511,6 +522,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSetEvent(Ticks newApiSetEvent) {
 		if (newApiSetEvent != apiSetEvent) {
 			NotificationChain msgs = null;
@@ -530,6 +542,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiWaitEvent() {
 		return apiWaitEvent;
 	}
@@ -554,6 +567,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiWaitEvent(Ticks newApiWaitEvent) {
 		if (newApiWaitEvent != apiWaitEvent) {
 			NotificationChain msgs = null;
@@ -573,6 +587,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiClearEvent() {
 		return apiClearEvent;
 	}
@@ -597,6 +612,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiClearEvent(Ticks newApiClearEvent) {
 		if (newApiClearEvent != apiClearEvent) {
 			NotificationChain msgs = null;
@@ -616,6 +632,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiActivateTask() {
 		return apiActivateTask;
 	}
@@ -640,6 +657,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiActivateTask(Ticks newApiActivateTask) {
 		if (newApiActivateTask != apiActivateTask) {
 			NotificationChain msgs = null;
@@ -659,6 +677,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiEnforcedMigration() {
 		return apiEnforcedMigration;
 	}
@@ -683,6 +702,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiEnforcedMigration(Ticks newApiEnforcedMigration) {
 		if (newApiEnforcedMigration != apiEnforcedMigration) {
 			NotificationChain msgs = null;
@@ -702,6 +722,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSuspendOsInterrupts() {
 		return apiSuspendOsInterrupts;
 	}
@@ -726,6 +747,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSuspendOsInterrupts(Ticks newApiSuspendOsInterrupts) {
 		if (newApiSuspendOsInterrupts != apiSuspendOsInterrupts) {
 			NotificationChain msgs = null;
@@ -745,6 +767,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiResumeOsInterrupts() {
 		return apiResumeOsInterrupts;
 	}
@@ -769,6 +792,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiResumeOsInterrupts(Ticks newApiResumeOsInterrupts) {
 		if (newApiResumeOsInterrupts != apiResumeOsInterrupts) {
 			NotificationChain msgs = null;
@@ -788,6 +812,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiRequestSpinlock() {
 		return apiRequestSpinlock;
 	}
@@ -812,6 +837,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiRequestSpinlock(Ticks newApiRequestSpinlock) {
 		if (newApiRequestSpinlock != apiRequestSpinlock) {
 			NotificationChain msgs = null;
@@ -831,6 +857,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiReleaseSpinlock() {
 		return apiReleaseSpinlock;
 	}
@@ -855,6 +882,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiReleaseSpinlock(Ticks newApiReleaseSpinlock) {
 		if (newApiReleaseSpinlock != apiReleaseSpinlock) {
 			NotificationChain msgs = null;
@@ -874,6 +902,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSenderReceiverRead() {
 		return apiSenderReceiverRead;
 	}
@@ -898,6 +927,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSenderReceiverRead(Ticks newApiSenderReceiverRead) {
 		if (newApiSenderReceiverRead != apiSenderReceiverRead) {
 			NotificationChain msgs = null;
@@ -917,6 +947,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSenderReceiverWrite() {
 		return apiSenderReceiverWrite;
 	}
@@ -941,6 +972,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSenderReceiverWrite(Ticks newApiSenderReceiverWrite) {
 		if (newApiSenderReceiverWrite != apiSenderReceiverWrite) {
 			NotificationChain msgs = null;
@@ -960,6 +992,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiSynchronousServerCallPoint() {
 		return apiSynchronousServerCallPoint;
 	}
@@ -984,6 +1017,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSynchronousServerCallPoint(Ticks newApiSynchronousServerCallPoint) {
 		if (newApiSynchronousServerCallPoint != apiSynchronousServerCallPoint) {
 			NotificationChain msgs = null;
@@ -1003,6 +1037,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiIocRead() {
 		return apiIocRead;
 	}
@@ -1027,6 +1062,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiIocRead(Ticks newApiIocRead) {
 		if (newApiIocRead != apiIocRead) {
 			NotificationChain msgs = null;
@@ -1046,6 +1082,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getApiIocWrite() {
 		return apiIocWrite;
 	}
@@ -1070,6 +1107,7 @@ public class OsAPIOverheadImpl extends BaseObjectImpl implements OsAPIOverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiIocWrite(Ticks newApiIocWrite) {
 		if (newApiIocWrite != apiIocWrite) {
 			NotificationChain msgs = null;

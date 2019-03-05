@@ -116,6 +116,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CPUPercentageMetric getMetric() {
 		return metric;
 	}
@@ -125,6 +126,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMetric(CPUPercentageMetric newMetric) {
 		CPUPercentageMetric oldMetric = metric;
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
@@ -137,6 +139,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getLimitValue() {
 		return limitValue;
 	}
@@ -146,6 +149,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitValue(double newLimitValue) {
 		double oldLimitValue = limitValue;
 		limitValue = newLimitValue;
@@ -158,6 +162,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getHardwareContext() {
 		if (hardwareContext != null && hardwareContext.eIsProxy()) {
 			InternalEObject oldHardwareContext = (InternalEObject)hardwareContext;
@@ -184,6 +189,7 @@ public class CPUPercentageRequirementLimitImpl extends RequirementLimitImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHardwareContext(ProcessingUnit newHardwareContext) {
 		ProcessingUnit oldHardwareContext = hardwareContext;
 		hardwareContext = newHardwareContext;

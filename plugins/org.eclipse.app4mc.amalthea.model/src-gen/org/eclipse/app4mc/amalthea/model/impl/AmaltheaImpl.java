@@ -217,6 +217,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return "0.9.4";
 	}
@@ -226,6 +227,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CommonElements getCommonElements() {
 		return commonElements;
 	}
@@ -250,6 +252,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCommonElements(CommonElements newCommonElements) {
 		if (newCommonElements != commonElements) {
 			NotificationChain msgs = null;
@@ -269,6 +272,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SWModel getSwModel() {
 		return swModel;
 	}
@@ -293,6 +297,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwModel(SWModel newSwModel) {
 		if (newSwModel != swModel) {
 			NotificationChain msgs = null;
@@ -312,6 +317,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HWModel getHwModel() {
 		return hwModel;
 	}
@@ -336,6 +342,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHwModel(HWModel newHwModel) {
 		if (newHwModel != hwModel) {
 			NotificationChain msgs = null;
@@ -355,6 +362,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OSModel getOsModel() {
 		return osModel;
 	}
@@ -379,6 +387,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOsModel(OSModel newOsModel) {
 		if (newOsModel != osModel) {
 			NotificationChain msgs = null;
@@ -398,6 +407,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StimuliModel getStimuliModel() {
 		return stimuliModel;
 	}
@@ -422,6 +432,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStimuliModel(StimuliModel newStimuliModel) {
 		if (newStimuliModel != stimuliModel) {
 			NotificationChain msgs = null;
@@ -441,6 +452,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventModel getEventModel() {
 		return eventModel;
 	}
@@ -465,6 +477,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventModel(EventModel newEventModel) {
 		if (newEventModel != eventModel) {
 			NotificationChain msgs = null;
@@ -484,6 +497,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConstraintsModel getConstraintsModel() {
 		return constraintsModel;
 	}
@@ -508,6 +522,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setConstraintsModel(ConstraintsModel newConstraintsModel) {
 		if (newConstraintsModel != constraintsModel) {
 			NotificationChain msgs = null;
@@ -527,6 +542,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyConstraintsModel getPropertyConstraintsModel() {
 		return propertyConstraintsModel;
 	}
@@ -551,6 +567,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPropertyConstraintsModel(PropertyConstraintsModel newPropertyConstraintsModel) {
 		if (newPropertyConstraintsModel != propertyConstraintsModel) {
 			NotificationChain msgs = null;
@@ -570,6 +587,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MappingModel getMappingModel() {
 		return mappingModel;
 	}
@@ -594,6 +612,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMappingModel(MappingModel newMappingModel) {
 		if (newMappingModel != mappingModel) {
 			NotificationChain msgs = null;
@@ -613,6 +632,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentsModel getComponentsModel() {
 		return componentsModel;
 	}
@@ -637,6 +657,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComponentsModel(ComponentsModel newComponentsModel) {
 		if (newComponentsModel != componentsModel) {
 			NotificationChain msgs = null;
@@ -656,6 +677,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConfigModel getConfigModel() {
 		return configModel;
 	}
@@ -680,6 +702,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setConfigModel(ConfigModel newConfigModel) {
 		if (newConfigModel != configModel) {
 			NotificationChain msgs = null;
@@ -699,6 +722,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MeasurementModel getMeasurementModel() {
 		return measurementModel;
 	}
@@ -723,6 +747,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMeasurementModel(MeasurementModel newMeasurementModel) {
 		if (newMeasurementModel != measurementModel) {
 			NotificationChain msgs = null;

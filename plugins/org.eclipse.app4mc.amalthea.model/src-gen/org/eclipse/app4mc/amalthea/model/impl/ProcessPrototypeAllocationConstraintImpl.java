@@ -73,6 +73,7 @@ public class ProcessPrototypeAllocationConstraintImpl extends CoreAllocationCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPrototype getProcessPrototype() {
 		if (processPrototype != null && processPrototype.eIsProxy()) {
 			InternalEObject oldProcessPrototype = (InternalEObject)processPrototype;
@@ -99,6 +100,7 @@ public class ProcessPrototypeAllocationConstraintImpl extends CoreAllocationCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcessPrototype(ProcessPrototype newProcessPrototype) {
 		ProcessPrototype oldProcessPrototype = processPrototype;
 		processPrototype = newProcessPrototype;

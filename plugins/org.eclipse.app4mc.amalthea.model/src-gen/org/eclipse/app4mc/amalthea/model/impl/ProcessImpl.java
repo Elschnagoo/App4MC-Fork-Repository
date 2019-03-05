@@ -91,6 +91,7 @@ public abstract class ProcessImpl extends AbstractProcessImpl implements org.ecl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CallGraph getCallGraph() {
 		return callGraph;
 	}
@@ -115,6 +116,7 @@ public abstract class ProcessImpl extends AbstractProcessImpl implements org.ecl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCallGraph(CallGraph newCallGraph) {
 		if (newCallGraph != callGraph) {
 			NotificationChain msgs = null;
@@ -134,6 +136,7 @@ public abstract class ProcessImpl extends AbstractProcessImpl implements org.ecl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Stimulus> getStimuli() {
 		if (stimuli == null) {
 			stimuli = new EObjectResolvingEList<Stimulus>(Stimulus.class, this, AmaltheaPackage.PROCESS__STIMULI);

@@ -97,6 +97,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getRunnable() {
 		if (runnable != null && runnable.eIsProxy()) {
 			InternalEObject oldRunnable = (InternalEObject)runnable;
@@ -123,6 +124,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldRunnable = runnable;
 		runnable = newRunnable;
@@ -135,6 +137,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label getLabel() {
 		if (label != null && label.eIsProxy()) {
 			InternalEObject oldLabel = (InternalEObject)label;
@@ -161,6 +164,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(Label newLabel) {
 		Label oldLabel = label;
 		label = newLabel;
@@ -173,6 +177,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAge getDataAge() {
 		return dataAge;
 	}
@@ -197,6 +202,7 @@ public class DataAgeConstraintImpl extends ReferableBaseObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataAge(DataAge newDataAge) {
 		if (newDataAge != dataAge) {
 			NotificationChain msgs = null;

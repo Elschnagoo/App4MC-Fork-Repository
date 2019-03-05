@@ -79,6 +79,7 @@ public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements Probabi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES);

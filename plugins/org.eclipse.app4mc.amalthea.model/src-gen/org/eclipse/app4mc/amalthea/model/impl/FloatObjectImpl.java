@@ -81,6 +81,7 @@ public class FloatObjectImpl extends ValueImpl implements FloatObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getValue() {
 		return value;
 	}
@@ -90,6 +91,7 @@ public class FloatObjectImpl extends ValueImpl implements FloatObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(float newValue) {
 		float oldValue = value;
 		value = newValue;

@@ -58,6 +58,7 @@ public abstract class ModeValueDisjunctionEntryImpl extends BaseObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
 		return false;
 	}

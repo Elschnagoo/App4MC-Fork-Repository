@@ -96,6 +96,7 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.TARGET_CORE__CUSTOM_PROPERTIES);
@@ -108,6 +109,7 @@ public class TargetCoreImpl extends RunnableConstraintTargetImpl implements Targ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessingUnit> getCores() {
 		if (cores == null) {
 			cores = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TARGET_CORE__CORES);

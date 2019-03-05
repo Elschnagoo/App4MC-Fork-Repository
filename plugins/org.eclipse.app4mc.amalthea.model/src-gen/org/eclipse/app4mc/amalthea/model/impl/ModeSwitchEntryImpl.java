@@ -115,6 +115,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -124,6 +125,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -136,6 +138,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueDisjunction getCondition() {
 		return condition;
 	}
@@ -160,6 +163,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCondition(ModeValueDisjunction newCondition) {
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
@@ -179,6 +183,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<T> getItems() {
 		if (items == null) {
 			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);

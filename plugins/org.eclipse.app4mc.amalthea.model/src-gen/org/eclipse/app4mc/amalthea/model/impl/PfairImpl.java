@@ -81,6 +81,7 @@ public abstract class PfairImpl extends TaskSchedulingAlgorithmImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getQuantSizeNs() {
 		return quantSizeNs;
 	}
@@ -90,6 +91,7 @@ public abstract class PfairImpl extends TaskSchedulingAlgorithmImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantSizeNs(int newQuantSizeNs) {
 		int oldQuantSizeNs = quantSizeNs;
 		quantSizeNs = newQuantSizeNs;

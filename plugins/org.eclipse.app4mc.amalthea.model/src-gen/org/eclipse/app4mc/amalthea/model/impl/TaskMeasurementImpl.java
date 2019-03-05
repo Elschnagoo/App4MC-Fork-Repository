@@ -73,6 +73,7 @@ public class TaskMeasurementImpl extends MeasurementImpl implements TaskMeasurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Task getTask() {
 		if (task != null && task.eIsProxy()) {
 			InternalEObject oldTask = (InternalEObject)task;
@@ -99,6 +100,7 @@ public class TaskMeasurementImpl extends MeasurementImpl implements TaskMeasurem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTask(Task newTask) {
 		Task oldTask = task;
 		task = newTask;

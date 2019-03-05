@@ -87,6 +87,7 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEventType() {
 		return eventType;
 	}
@@ -96,6 +97,7 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(String newEventType) {
 		String oldEventType = eventType;
 		eventType = newEventType;
@@ -108,6 +110,7 @@ public class CustomEventImpl extends TriggerEventImpl implements CustomEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CustomEventTrigger> getExplicitTriggers() {
 		EReference _customEventTrigger_Event = AmaltheaPackage.eINSTANCE.getCustomEventTrigger_Event();
 		return AmaltheaIndex.<CustomEventTrigger>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getCustomEvent_ExplicitTriggers(), 

@@ -82,6 +82,7 @@ public class SynchronousServerCallImpl extends ServerCallImpl implements Synchro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WaitingBehaviour getWaitingBehaviour() {
 		return waitingBehaviour;
 	}
@@ -91,6 +92,7 @@ public class SynchronousServerCallImpl extends ServerCallImpl implements Synchro
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWaitingBehaviour(WaitingBehaviour newWaitingBehaviour) {
 		WaitingBehaviour oldWaitingBehaviour = waitingBehaviour;
 		waitingBehaviour = newWaitingBehaviour == null ? WAITING_BEHAVIOUR_EDEFAULT : newWaitingBehaviour;

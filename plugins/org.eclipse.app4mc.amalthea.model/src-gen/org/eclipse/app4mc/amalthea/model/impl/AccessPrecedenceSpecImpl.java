@@ -95,6 +95,7 @@ public class AccessPrecedenceSpecImpl extends GeneralPrecedenceImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label getLabel() {
 		if (label != null && label.eIsProxy()) {
 			InternalEObject oldLabel = (InternalEObject)label;
@@ -121,6 +122,7 @@ public class AccessPrecedenceSpecImpl extends GeneralPrecedenceImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(Label newLabel) {
 		Label oldLabel = label;
 		label = newLabel;
@@ -133,6 +135,7 @@ public class AccessPrecedenceSpecImpl extends GeneralPrecedenceImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessPrecedenceType getOrderType() {
 		return orderType;
 	}
@@ -142,6 +145,7 @@ public class AccessPrecedenceSpecImpl extends GeneralPrecedenceImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrderType(AccessPrecedenceType newOrderType) {
 		AccessPrecedenceType oldOrderType = orderType;
 		orderType = newOrderType == null ? ORDER_TYPE_EDEFAULT : newOrderType;

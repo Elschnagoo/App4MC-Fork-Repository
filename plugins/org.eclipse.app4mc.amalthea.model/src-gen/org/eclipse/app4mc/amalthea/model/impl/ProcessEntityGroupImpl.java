@@ -94,6 +94,7 @@ public class ProcessEntityGroupImpl extends ProcessGroupImpl implements ProcessE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.PROCESS_ENTITY_GROUP__CUSTOM_PROPERTIES);
@@ -106,6 +107,7 @@ public class ProcessEntityGroupImpl extends ProcessGroupImpl implements ProcessE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Process> getProcesses() {
 		if (processes == null) {
 			processes = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Process>(org.eclipse.app4mc.amalthea.model.Process.class, this, AmaltheaPackage.PROCESS_ENTITY_GROUP__PROCESSES);

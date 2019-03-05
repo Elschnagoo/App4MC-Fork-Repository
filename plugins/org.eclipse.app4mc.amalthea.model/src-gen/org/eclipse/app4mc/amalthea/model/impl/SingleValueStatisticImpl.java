@@ -83,6 +83,7 @@ public class SingleValueStatisticImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getValue() {
 		return value;
 	}
@@ -92,6 +93,7 @@ public class SingleValueStatisticImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(float newValue) {
 		float oldValue = value;
 		value = newValue;

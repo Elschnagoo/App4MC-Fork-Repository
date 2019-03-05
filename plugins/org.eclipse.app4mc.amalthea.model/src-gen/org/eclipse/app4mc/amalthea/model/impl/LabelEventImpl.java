@@ -117,6 +117,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelEventType getEventType() {
 		return eventType;
 	}
@@ -126,6 +127,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(LabelEventType newEventType) {
 		LabelEventType oldEventType = eventType;
 		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
@@ -138,6 +140,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -164,6 +167,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(Label newEntity) {
 		Label oldEntity = entity;
 		entity = newEntity;
@@ -176,6 +180,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getRunnable() {
 		if (runnable != null && runnable.eIsProxy()) {
 			InternalEObject oldRunnable = (InternalEObject)runnable;
@@ -202,6 +207,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldRunnable = runnable;
 		runnable = newRunnable;
@@ -214,6 +220,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getProcess() {
 		if (process != null && process.eIsProxy()) {
 			InternalEObject oldProcess = (InternalEObject)process;
@@ -240,6 +247,7 @@ public class LabelEventImpl extends TriggerEventImpl implements LabelEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcess(org.eclipse.app4mc.amalthea.model.Process newProcess) {
 		org.eclipse.app4mc.amalthea.model.Process oldProcess = process;
 		process = newProcess;

@@ -74,6 +74,7 @@ public class CoreClassificationImpl extends ClassificationImpl implements CoreCl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CoreClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.CORE_CLASSIFICATION__CLASSIFIERS);

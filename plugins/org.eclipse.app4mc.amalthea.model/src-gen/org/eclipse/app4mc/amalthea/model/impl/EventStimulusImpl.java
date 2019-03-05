@@ -92,6 +92,7 @@ public class EventStimulusImpl extends StimulusImpl implements EventStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TriggerEvent> getTriggeringEvents() {
 		if (triggeringEvents == null) {
 			triggeringEvents = new EObjectResolvingEList<TriggerEvent>(TriggerEvent.class, this, AmaltheaPackage.EVENT_STIMULUS__TRIGGERING_EVENTS);
@@ -104,6 +105,7 @@ public class EventStimulusImpl extends StimulusImpl implements EventStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Counter getCounter() {
 		return counter;
 	}
@@ -128,6 +130,7 @@ public class EventStimulusImpl extends StimulusImpl implements EventStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCounter(Counter newCounter) {
 		if (newCounter != counter) {
 			NotificationChain msgs = null;

@@ -74,6 +74,7 @@ public class EventMaskImpl extends BaseObjectImpl implements EventMask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OsEvent> getEvents() {
 		if (events == null) {
 			events = new EObjectResolvingEList<OsEvent>(OsEvent.class, this, AmaltheaPackage.EVENT_MASK__EVENTS);

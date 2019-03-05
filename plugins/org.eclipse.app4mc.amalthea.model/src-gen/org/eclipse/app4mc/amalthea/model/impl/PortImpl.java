@@ -84,6 +84,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.PORT__TAGS);
@@ -96,6 +97,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Component getContainingComponent() {
 		if (eContainerFeatureID() != AmaltheaPackage.PORT__CONTAINING_COMPONENT) return null;
 		return (Component)eContainer();
@@ -116,6 +118,7 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		Component _containingComponent = this.getContainingComponent();
 		String _name = null;

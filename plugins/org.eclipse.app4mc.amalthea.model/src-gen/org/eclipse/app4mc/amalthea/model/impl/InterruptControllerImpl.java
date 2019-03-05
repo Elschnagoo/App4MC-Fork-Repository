@@ -80,6 +80,7 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterruptSchedulingAlgorithm getSchedulingAlgorithm() {
 		return schedulingAlgorithm;
 	}
@@ -104,6 +105,7 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSchedulingAlgorithm(InterruptSchedulingAlgorithm newSchedulingAlgorithm) {
 		if (newSchedulingAlgorithm != schedulingAlgorithm) {
 			NotificationChain msgs = null;
@@ -123,6 +125,7 @@ public class InterruptControllerImpl extends SchedulerImpl implements InterruptC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ISRAllocation> getIsrAllocations() {
 		EReference _iSRAllocation_Controller = AmaltheaPackage.eINSTANCE.getISRAllocation_Controller();
 		return AmaltheaIndex.<ISRAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getInterruptController_IsrAllocations(), 

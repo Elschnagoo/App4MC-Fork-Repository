@@ -269,6 +269,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getHash() {
 		if (hash == -1) {
 			Object theKey = getKey();
@@ -282,6 +283,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHash(int hash) {
 		this.hash = hash;
 	}
@@ -291,6 +293,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getKey() {
 		return getTypedKey();
 	}
@@ -300,6 +303,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKey(String key) {
 		setTypedKey(key);
 	}
@@ -309,6 +313,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getValue() {
 		return getTypedValue();
 	}
@@ -318,6 +323,7 @@ public class NeedEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation setValue(IDiscreteValueDeviation value) {
 		IDiscreteValueDeviation oldValue = getValue();
 		setTypedValue(value);

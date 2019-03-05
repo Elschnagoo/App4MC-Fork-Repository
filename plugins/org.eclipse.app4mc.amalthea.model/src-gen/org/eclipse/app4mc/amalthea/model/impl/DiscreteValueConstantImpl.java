@@ -87,6 +87,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getValue() {
 		return value;
 	}
@@ -96,6 +97,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(long newValue) {
 		long oldValue = value;
 		value = newValue;
@@ -108,6 +110,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getLowerBound() {
 		return Long.valueOf(this.getValue());
 	}
@@ -117,6 +120,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Long getUpperBound() {
 		return Long.valueOf(this.getValue());
 	}
@@ -126,6 +130,7 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		return Long.valueOf(this.getValue()).doubleValue();
 	}

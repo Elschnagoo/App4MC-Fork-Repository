@@ -87,6 +87,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ComputationItem> getComputationItems() {
 		if (computationItems == null) {
 			computationItems = new EObjectContainmentEList<ComputationItem>(ComputationItem.class, this, AmaltheaPackage.SCHEDULER__COMPUTATION_ITEMS);
@@ -99,6 +100,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SchedulerAllocation> getSchedulerAllocations() {
 		EReference _schedulerAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getSchedulerAllocation_Scheduler();
 		return AmaltheaIndex.<SchedulerAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getScheduler_SchedulerAllocations(), 
@@ -110,6 +112,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableAllocation> getRunnableAllocations() {
 		EReference _runnableAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getRunnableAllocation_Scheduler();
 		return AmaltheaIndex.<RunnableAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getScheduler_RunnableAllocations(), 
@@ -121,6 +124,7 @@ public abstract class SchedulerImpl extends ReferableBaseObjectImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Algorithm getSchedulingAlgorithm() {
 		return null;
 	}

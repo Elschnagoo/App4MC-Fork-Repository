@@ -100,6 +100,7 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.DATA_DEPENDENCY__LABELS);
@@ -112,6 +113,7 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableParameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectResolvingEList<RunnableParameter>(RunnableParameter.class, this, AmaltheaPackage.DATA_DEPENDENCY__PARAMETERS);
@@ -124,6 +126,7 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CallArgument> getCallArguments() {
 		if (callArguments == null) {
 			callArguments = new EObjectResolvingEList<CallArgument>(CallArgument.class, this, AmaltheaPackage.DATA_DEPENDENCY__CALL_ARGUMENTS);
@@ -136,6 +139,7 @@ public class DataDependencyImpl extends BaseObjectImpl implements DataDependency
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable() {
 		return AmaltheaServices.<org.eclipse.app4mc.amalthea.model.Runnable>getContainerOfType(this, org.eclipse.app4mc.amalthea.model.Runnable.class);
 	}

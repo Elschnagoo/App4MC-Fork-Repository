@@ -81,6 +81,7 @@ public abstract class ClassifierImpl extends ReferableBaseObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -90,6 +91,7 @@ public abstract class ClassifierImpl extends ReferableBaseObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;

@@ -75,6 +75,7 @@ public abstract class ActivationImpl extends ReferableBaseObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.ACTIVATION__TAGS);

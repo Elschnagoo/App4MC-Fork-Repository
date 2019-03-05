@@ -96,6 +96,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableCall getContainingCall() {
 		if (eContainerFeatureID() != AmaltheaPackage.CALL_ARGUMENT__CONTAINING_CALL) return null;
 		return (RunnableCall)eContainer();
@@ -116,6 +117,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableParameter getParameter() {
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject)parameter;
@@ -142,6 +144,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParameter(RunnableParameter newParameter) {
 		RunnableParameter oldParameter = parameter;
 		parameter = newParameter;
@@ -154,6 +157,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataDependency getDependsOn() {
 		return dependsOn;
 	}
@@ -178,6 +182,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDependsOn(DataDependency newDependsOn) {
 		if (newDependsOn != dependsOn) {
 			NotificationChain msgs = null;
@@ -197,6 +202,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		String _xifexpression = null;
 		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(super.getName());
@@ -214,6 +220,7 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		RunnableCall _containingCall = this.getContainingCall();
 		org.eclipse.app4mc.amalthea.model.Runnable _containingRunnable = null;

@@ -145,6 +145,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ReceiveOperation getReceiveOperation() {
 		return receiveOperation;
 	}
@@ -154,6 +155,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReceiveOperation(ReceiveOperation newReceiveOperation) {
 		ReceiveOperation oldReceiveOperation = receiveOperation;
 		receiveOperation = newReceiveOperation == null ? RECEIVE_OPERATION_EDEFAULT : newReceiveOperation;
@@ -166,6 +168,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDataMustBeNew() {
 		return dataMustBeNew;
 	}
@@ -175,6 +178,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataMustBeNew(boolean newDataMustBeNew) {
 		boolean oldDataMustBeNew = dataMustBeNew;
 		dataMustBeNew = newDataMustBeNew;
@@ -187,6 +191,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getElementIndex() {
 		return elementIndex;
 	}
@@ -196,6 +201,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setElementIndex(int newElementIndex) {
 		int oldElementIndex = elementIndex;
 		elementIndex = newElementIndex;
@@ -208,6 +214,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getLowerBound() {
 		return lowerBound;
 	}
@@ -217,6 +224,7 @@ public class ChannelReceiveImpl extends ChannelAccessImpl implements ChannelRece
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLowerBound(int newLowerBound) {
 		int oldLowerBound = lowerBound;
 		lowerBound = newLowerBound;

@@ -74,6 +74,7 @@ public abstract class CoreAllocationConstraintImpl extends BaseObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CoreClassification getCoreClassification() {
 		return coreClassification;
 	}
@@ -98,6 +99,7 @@ public abstract class CoreAllocationConstraintImpl extends BaseObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCoreClassification(CoreClassification newCoreClassification) {
 		if (newCoreClassification != coreClassification) {
 			NotificationChain msgs = null;

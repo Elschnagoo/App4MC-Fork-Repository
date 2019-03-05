@@ -95,6 +95,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMultiplier() {
 		return multiplier;
 	}
@@ -104,6 +105,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMultiplier(double newMultiplier) {
 		double oldMultiplier = multiplier;
 		multiplier = newMultiplier;
@@ -116,6 +118,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getTime() {
 		return time;
 	}
@@ -140,6 +143,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTime(Time newTime) {
 		if (newTime != time) {
 			NotificationChain msgs = null;

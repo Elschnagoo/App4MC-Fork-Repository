@@ -96,6 +96,7 @@ public class PointerImpl extends AmaltheaExtendedEObjectImpl implements Pointer 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.POINTER__CUSTOM_PROPERTIES);
@@ -108,6 +109,7 @@ public class PointerImpl extends AmaltheaExtendedEObjectImpl implements Pointer 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
@@ -132,6 +134,7 @@ public class PointerImpl extends AmaltheaExtendedEObjectImpl implements Pointer 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(DataType newDataType) {
 		if (newDataType != dataType) {
 			NotificationChain msgs = null;

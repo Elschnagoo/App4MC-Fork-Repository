@@ -129,6 +129,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOffset() {
 		return offset;
 	}
@@ -153,6 +154,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(Time newOffset) {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;
@@ -172,6 +174,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getRecurrence() {
 		return recurrence;
 	}
@@ -196,6 +199,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRecurrence(Time newRecurrence) {
 		if (newRecurrence != recurrence) {
 			NotificationChain msgs = null;
@@ -215,6 +219,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getBurstLength() {
 		return burstLength;
 	}
@@ -239,6 +244,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBurstLength(Time newBurstLength) {
 		if (newBurstLength != burstLength) {
 			NotificationChain msgs = null;
@@ -258,6 +264,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOccurrenceMinDistance() {
 		return occurrenceMinDistance;
 	}
@@ -282,6 +289,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrenceMinDistance(Time newOccurrenceMinDistance) {
 		if (newOccurrenceMinDistance != occurrenceMinDistance) {
 			NotificationChain msgs = null;
@@ -301,6 +309,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getOccurrenceCount() {
 		return occurrenceCount;
 	}
@@ -310,6 +319,7 @@ public class PeriodicBurstStimulusImpl extends StimulusImpl implements PeriodicB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrenceCount(int newOccurrenceCount) {
 		int oldOccurrenceCount = occurrenceCount;
 		occurrenceCount = newOccurrenceCount;

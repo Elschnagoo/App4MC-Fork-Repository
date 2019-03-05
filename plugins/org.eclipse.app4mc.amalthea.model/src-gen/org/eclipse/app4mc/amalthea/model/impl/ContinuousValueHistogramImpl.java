@@ -91,6 +91,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ContinuousValueHistogramEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ContinuousValueHistogramEntry>(ContinuousValueHistogramEntry.class, this, AmaltheaPackage.CONTINUOUS_VALUE_HISTOGRAM__ENTRIES);
@@ -103,6 +104,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getLowerBound() {
 		final Function1<ContinuousValueHistogramEntry, Double> _function = new Function1<ContinuousValueHistogramEntry, Double>() {
 			public Double apply(final ContinuousValueHistogramEntry it) {
@@ -117,6 +119,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getUpperBound() {
 		final Function1<ContinuousValueHistogramEntry, Double> _function = new Function1<ContinuousValueHistogramEntry, Double>() {
 			public Double apply(final ContinuousValueHistogramEntry it) {
@@ -131,6 +134,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		double _xblockexpression = (double) 0;
 		{

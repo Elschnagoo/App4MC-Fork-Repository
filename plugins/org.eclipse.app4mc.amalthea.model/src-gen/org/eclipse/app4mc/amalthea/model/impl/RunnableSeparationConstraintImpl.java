@@ -95,6 +95,7 @@ public class RunnableSeparationConstraintImpl extends SeparationConstraintImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableConstraintTarget getTarget() {
 		return target;
 	}
@@ -119,6 +120,7 @@ public class RunnableSeparationConstraintImpl extends SeparationConstraintImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(RunnableConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class RunnableSeparationConstraintImpl extends SeparationConstraintImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableGroup> getGroups() {
 		if (groups == null) {
 			groups = new EObjectContainmentEList<RunnableGroup>(RunnableGroup.class, this, AmaltheaPackage.RUNNABLE_SEPARATION_CONSTRAINT__GROUPS);

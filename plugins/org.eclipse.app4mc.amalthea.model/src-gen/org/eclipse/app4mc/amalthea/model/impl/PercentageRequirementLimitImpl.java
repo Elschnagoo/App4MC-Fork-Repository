@@ -103,6 +103,7 @@ public class PercentageRequirementLimitImpl extends RequirementLimitImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PercentageMetric getMetric() {
 		return metric;
 	}
@@ -112,6 +113,7 @@ public class PercentageRequirementLimitImpl extends RequirementLimitImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMetric(PercentageMetric newMetric) {
 		PercentageMetric oldMetric = metric;
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
@@ -124,6 +126,7 @@ public class PercentageRequirementLimitImpl extends RequirementLimitImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getLimitValue() {
 		return limitValue;
 	}
@@ -133,6 +136,7 @@ public class PercentageRequirementLimitImpl extends RequirementLimitImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitValue(double newLimitValue) {
 		double oldLimitValue = limitValue;
 		limitValue = newLimitValue;

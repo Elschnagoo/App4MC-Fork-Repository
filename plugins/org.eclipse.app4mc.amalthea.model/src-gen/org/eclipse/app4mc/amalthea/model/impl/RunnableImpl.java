@@ -206,6 +206,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableParameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentWithInverseEList<RunnableParameter>(RunnableParameter.class, this, AmaltheaPackage.RUNNABLE__PARAMETERS, AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE);
@@ -218,6 +219,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableItem> getRunnableItems() {
 		if (runnableItems == null) {
 			runnableItems = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS);
@@ -230,6 +232,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Activation> getActivations() {
 		if (activations == null) {
 			activations = new EObjectResolvingEList<Activation>(Activation.class, this, AmaltheaPackage.RUNNABLE__ACTIVATIONS);
@@ -242,6 +245,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getDeadline() {
 		return deadline;
 	}
@@ -266,6 +270,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDeadline(Time newDeadline) {
 		if (newDeadline != deadline) {
 			NotificationChain msgs = null;
@@ -285,6 +290,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCallback() {
 		return callback;
 	}
@@ -294,6 +300,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCallback(boolean newCallback) {
 		boolean oldCallback = callback;
 		callback = newCallback;
@@ -306,6 +313,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isService() {
 		return service;
 	}
@@ -315,6 +323,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setService(boolean newService) {
 		boolean oldService = service;
 		service = newService;
@@ -327,6 +336,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ASILType getAsilLevel() {
 		return asilLevel;
 	}
@@ -336,6 +346,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAsilLevel(ASILType newAsilLevel) {
 		ASILType oldAsilLevel = asilLevel;
 		asilLevel = newAsilLevel == null ? ASIL_LEVEL_EDEFAULT : newAsilLevel;
@@ -348,6 +359,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Section getSection() {
 		if (section != null && section.eIsProxy()) {
 			InternalEObject oldSection = (InternalEObject)section;
@@ -374,6 +386,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSection(Section newSection) {
 		Section oldSection = section;
 		section = newSection;
@@ -386,6 +399,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableCall> getRunnableCalls() {
 		EReference _runnableCall_Runnable = AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable();
 		return AmaltheaIndex.<RunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_RunnableCalls(), 
@@ -397,6 +411,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskRunnableCall> getTaskRunnableCalls() {
 		EReference _taskRunnableCall_Runnable = AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable();
 		return AmaltheaIndex.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), 
@@ -408,6 +423,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getReferringComponents() {
 		EReference _component_Runnables = AmaltheaPackage.eINSTANCE.getComponent_Runnables();
 		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), 
@@ -419,6 +435,7 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activation getFirstActivation() {
 		return IterableExtensions.<Activation>head(this.getActivations());
 	}

@@ -117,6 +117,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.ARRAY__CUSTOM_PROPERTIES);
@@ -129,6 +130,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getNumberElements() {
 		return numberElements;
 	}
@@ -138,6 +140,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNumberElements(int newNumberElements) {
 		int oldNumberElements = numberElements;
 		numberElements = newNumberElements;
@@ -150,6 +153,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
@@ -174,6 +178,7 @@ public class ArrayImpl extends AmaltheaExtendedEObjectImpl implements Array {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(DataType newDataType) {
 		if (newDataType != dataType) {
 			NotificationChain msgs = null;

@@ -92,6 +92,7 @@ public class DataStabilityGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.DATA_STABILITY_GROUP__LABELS);
@@ -104,6 +105,7 @@ public class DataStabilityGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataGroupScope getScope() {
 		return scope;
 	}
@@ -128,6 +130,7 @@ public class DataStabilityGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScope(DataGroupScope newScope) {
 		if (newScope != scope) {
 			NotificationChain msgs = null;

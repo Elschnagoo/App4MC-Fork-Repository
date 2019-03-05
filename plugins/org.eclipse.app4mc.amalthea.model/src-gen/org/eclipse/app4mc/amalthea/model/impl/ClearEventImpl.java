@@ -74,6 +74,7 @@ public class ClearEventImpl extends CallSequenceItemImpl implements ClearEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventMask getEventMask() {
 		return eventMask;
 	}
@@ -98,6 +99,7 @@ public class ClearEventImpl extends CallSequenceItemImpl implements ClearEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventMask(EventMask newEventMask) {
 		if (newEventMask != eventMask) {
 			NotificationChain msgs = null;

@@ -95,6 +95,7 @@ public class TimeWeibullEstimatorsDistributionImpl extends BoundedTimeDistributi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		return average;
 	}
@@ -119,6 +120,7 @@ public class TimeWeibullEstimatorsDistributionImpl extends BoundedTimeDistributi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAverage(Time newAverage) {
 		if (newAverage != average) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class TimeWeibullEstimatorsDistributionImpl extends BoundedTimeDistributi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getPRemainPromille() {
 		return pRemainPromille;
 	}
@@ -147,6 +150,7 @@ public class TimeWeibullEstimatorsDistributionImpl extends BoundedTimeDistributi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPRemainPromille(double newPRemainPromille) {
 		double oldPRemainPromille = pRemainPromille;
 		pRemainPromille = newPRemainPromille;

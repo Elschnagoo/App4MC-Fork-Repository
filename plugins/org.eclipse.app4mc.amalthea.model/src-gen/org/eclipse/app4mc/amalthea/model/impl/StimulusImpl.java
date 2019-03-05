@@ -119,6 +119,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.STIMULUS__TAGS);
@@ -131,6 +132,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueList getSetModeValueList() {
 		return setModeValueList;
 	}
@@ -155,6 +157,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSetModeValueList(ModeValueList newSetModeValueList) {
 		if (newSetModeValueList != setModeValueList) {
 			NotificationChain msgs = null;
@@ -174,6 +177,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueDisjunction getEnablingModeValueList() {
 		return enablingModeValueList;
 	}
@@ -198,6 +202,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnablingModeValueList(ModeValueDisjunction newEnablingModeValueList) {
 		if (newEnablingModeValueList != enablingModeValueList) {
 			NotificationChain msgs = null;
@@ -217,6 +222,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeValueDisjunction getDisablingModeValueList() {
 		return disablingModeValueList;
 	}
@@ -241,6 +247,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDisablingModeValueList(ModeValueDisjunction newDisablingModeValueList) {
 		if (newDisablingModeValueList != disablingModeValueList) {
 			NotificationChain msgs = null;
@@ -260,6 +267,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Process> getAffectedProcesses() {
 		EReference _process_Stimuli = AmaltheaPackage.eINSTANCE.getProcess_Stimuli();
 		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Process>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getStimulus_AffectedProcesses(), 

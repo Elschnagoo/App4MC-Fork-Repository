@@ -76,6 +76,7 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getContainingProcess() {
 		return AmaltheaServices.<org.eclipse.app4mc.amalthea.model.Process>getContainerOfType(this, org.eclipse.app4mc.amalthea.model.Process.class);
 	}
@@ -85,6 +86,7 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Counter getCounter() {
 		return counter;
 	}
@@ -109,6 +111,7 @@ public abstract class CallSequenceItemImpl extends BaseObjectImpl implements Cal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCounter(Counter newCounter) {
 		if (newCounter != counter) {
 			NotificationChain msgs = null;

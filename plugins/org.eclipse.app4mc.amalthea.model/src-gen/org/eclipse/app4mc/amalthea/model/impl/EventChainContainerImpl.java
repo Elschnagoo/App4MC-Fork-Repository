@@ -74,6 +74,7 @@ public class EventChainContainerImpl extends BaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubEventChain getEventChain() {
 		return eventChain;
 	}
@@ -98,6 +99,7 @@ public class EventChainContainerImpl extends BaseObjectImpl implements EventChai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventChain(SubEventChain newEventChain) {
 		if (newEventChain != eventChain) {
 			NotificationChain msgs = null;

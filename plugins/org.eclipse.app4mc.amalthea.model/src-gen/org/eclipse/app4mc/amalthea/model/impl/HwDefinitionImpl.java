@@ -75,6 +75,7 @@ public abstract class HwDefinitionImpl extends ReferableBaseObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_DEFINITION__TAGS);

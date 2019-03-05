@@ -93,6 +93,7 @@ public class ConnectionHandlerImpl extends HwModuleImpl implements ConnectionHan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConnectionHandlerDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -119,6 +120,7 @@ public class ConnectionHandlerImpl extends HwModuleImpl implements ConnectionHan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(ConnectionHandlerDefinition newDefinition) {
 		ConnectionHandlerDefinition oldDefinition = definition;
 		definition = newDefinition;
@@ -131,6 +133,7 @@ public class ConnectionHandlerImpl extends HwModuleImpl implements ConnectionHan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwConnection> getInternalConnections() {
 		if (internalConnections == null) {
 			internalConnections = new EObjectContainmentEList<HwConnection>(HwConnection.class, this, AmaltheaPackage.CONNECTION_HANDLER__INTERNAL_CONNECTIONS);

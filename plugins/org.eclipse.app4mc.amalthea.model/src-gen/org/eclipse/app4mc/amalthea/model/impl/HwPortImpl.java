@@ -187,6 +187,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_PORT__TAGS);
@@ -199,6 +200,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getBitWidth() {
 		return bitWidth;
 	}
@@ -208,6 +210,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBitWidth(int newBitWidth) {
 		int oldBitWidth = bitWidth;
 		bitWidth = newBitWidth;
@@ -220,6 +223,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getPriority() {
 		return priority;
 	}
@@ -229,6 +233,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPriority(int newPriority) {
 		int oldPriority = priority;
 		priority = newPriority;
@@ -241,6 +246,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortType getPortType() {
 		return portType;
 	}
@@ -250,6 +256,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPortType(PortType newPortType) {
 		PortType oldPortType = portType;
 		portType = newPortType == null ? PORT_TYPE_EDEFAULT : newPortType;
@@ -262,6 +269,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortInterface getPortInterface() {
 		return portInterface;
 	}
@@ -271,6 +279,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPortInterface(PortInterface newPortInterface) {
 		PortInterface oldPortInterface = portInterface;
 		portInterface = newPortInterface == null ? PORT_INTERFACE_EDEFAULT : newPortInterface;
@@ -283,6 +292,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDelegated() {
 		EObject _eContainer = this.eContainer();
 		return (_eContainer instanceof HwStructure);
@@ -293,6 +303,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwConnection> getConnections() {
 		EReference _hwConnection_Port1 = AmaltheaPackage.eINSTANCE.getHwConnection_Port1();
 		EReference _hwConnection_Port2 = AmaltheaPackage.eINSTANCE.getHwConnection_Port2();
@@ -305,6 +316,7 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		EObject _eContainer = this.eContainer();
 		String _name = null;

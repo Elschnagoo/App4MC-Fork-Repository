@@ -73,6 +73,7 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterProcessStimulus getStimulus() {
 		if (stimulus != null && stimulus.eIsProxy()) {
 			InternalEObject oldStimulus = (InternalEObject)stimulus;
@@ -99,6 +100,7 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStimulus(InterProcessStimulus newStimulus) {
 		InterProcessStimulus oldStimulus = stimulus;
 		stimulus = newStimulus;

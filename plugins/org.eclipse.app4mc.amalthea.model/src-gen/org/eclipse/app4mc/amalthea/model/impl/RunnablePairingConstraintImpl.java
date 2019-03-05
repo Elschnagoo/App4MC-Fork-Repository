@@ -88,6 +88,7 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableConstraintTarget getTarget() {
 		return target;
 	}
@@ -112,6 +113,7 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(RunnableConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -131,6 +133,7 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableGroup getGroup() {
 		return group;
 	}
@@ -155,6 +158,7 @@ public class RunnablePairingConstraintImpl extends PairingConstraintImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGroup(RunnableGroup newGroup) {
 		if (newGroup != group) {
 			NotificationChain msgs = null;

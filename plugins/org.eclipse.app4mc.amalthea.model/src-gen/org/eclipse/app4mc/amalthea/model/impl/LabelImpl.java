@@ -202,6 +202,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDisplayName() {
 		return displayName;
 	}
@@ -211,6 +212,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDisplayName(String newDisplayName) {
 		String oldDisplayName = displayName;
 		displayName = newDisplayName;
@@ -223,6 +225,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
@@ -247,6 +250,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(DataType newDataType) {
 		if (newDataType != dataType) {
 			NotificationChain msgs = null;
@@ -266,6 +270,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConstant() {
 		return constant;
 	}
@@ -275,6 +280,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setConstant(boolean newConstant) {
 		boolean oldConstant = constant;
 		constant = newConstant;
@@ -287,6 +293,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isBVolatile() {
 		return bVolatile;
 	}
@@ -296,6 +303,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBVolatile(boolean newBVolatile) {
 		boolean oldBVolatile = bVolatile;
 		bVolatile = newBVolatile;
@@ -308,6 +316,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelDataStability getDataStability() {
 		return dataStability;
 	}
@@ -317,6 +326,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataStability(LabelDataStability newDataStability) {
 		LabelDataStability oldDataStability = dataStability;
 		dataStability = newDataStability == null ? DATA_STABILITY_EDEFAULT : newDataStability;
@@ -329,6 +339,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataStabilityLevel getStabilityLevel() {
 		return stabilityLevel;
 	}
@@ -338,6 +349,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStabilityLevel(DataStabilityLevel newStabilityLevel) {
 		DataStabilityLevel oldStabilityLevel = stabilityLevel;
 		stabilityLevel = newStabilityLevel == null ? STABILITY_LEVEL_EDEFAULT : newStabilityLevel;
@@ -350,6 +362,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Section getSection() {
 		if (section != null && section.eIsProxy()) {
 			InternalEObject oldSection = (InternalEObject)section;
@@ -376,6 +389,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSection(Section newSection) {
 		Section oldSection = section;
 		section = newSection;
@@ -388,6 +402,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<LabelAccess> getLabelAccesses() {
 		EReference _labelAccess_Data = AmaltheaPackage.eINSTANCE.getLabelAccess_Data();
 		return AmaltheaIndex.<LabelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_LabelAccesses(), 
@@ -399,6 +414,7 @@ public class LabelImpl extends AbstractMemoryElementImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getReferringComponents() {
 		EReference _component_Labels = AmaltheaPackage.eINSTANCE.getComponent_Labels();
 		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getLabel_ReferringComponents(), 

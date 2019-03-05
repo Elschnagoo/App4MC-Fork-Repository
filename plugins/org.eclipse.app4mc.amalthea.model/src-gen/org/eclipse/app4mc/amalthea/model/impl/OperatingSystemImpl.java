@@ -139,6 +139,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -148,6 +149,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -160,6 +162,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsOverhead getOverhead() {
 		if (overhead != null && overhead.eIsProxy()) {
 			InternalEObject oldOverhead = (InternalEObject)overhead;
@@ -186,6 +189,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOverhead(OsOverhead newOverhead) {
 		OsOverhead oldOverhead = overhead;
 		overhead = newOverhead;
@@ -198,6 +202,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskScheduler> getTaskSchedulers() {
 		if (taskSchedulers == null) {
 			taskSchedulers = new EObjectContainmentEList<TaskScheduler>(TaskScheduler.class, this, AmaltheaPackage.OPERATING_SYSTEM__TASK_SCHEDULERS);
@@ -210,6 +215,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<InterruptController> getInterruptControllers() {
 		if (interruptControllers == null) {
 			interruptControllers = new EObjectContainmentEList<InterruptController>(InterruptController.class, this, AmaltheaPackage.OPERATING_SYSTEM__INTERRUPT_CONTROLLERS);
@@ -222,6 +228,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsDataConsistency getOsDataConsistency() {
 		return osDataConsistency;
 	}
@@ -246,6 +253,7 @@ public class OperatingSystemImpl extends BaseObjectImpl implements OperatingSyst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOsDataConsistency(OsDataConsistency newOsDataConsistency) {
 		if (newOsDataConsistency != osDataConsistency) {
 			NotificationChain msgs = null;

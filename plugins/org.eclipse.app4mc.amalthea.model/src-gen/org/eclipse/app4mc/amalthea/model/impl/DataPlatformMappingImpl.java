@@ -102,6 +102,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPlatformName() {
 		return platformName;
 	}
@@ -111,6 +112,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPlatformName(String newPlatformName) {
 		String oldPlatformName = platformName;
 		platformName = newPlatformName;
@@ -123,6 +125,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPlatformType() {
 		return platformType;
 	}
@@ -132,6 +135,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPlatformType(String newPlatformType) {
 		String oldPlatformType = platformType;
 		platformType = newPlatformType;

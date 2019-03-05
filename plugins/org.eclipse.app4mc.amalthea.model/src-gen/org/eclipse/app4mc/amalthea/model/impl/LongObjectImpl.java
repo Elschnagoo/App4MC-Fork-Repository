@@ -81,6 +81,7 @@ public class LongObjectImpl extends ValueImpl implements LongObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getValue() {
 		return value;
 	}
@@ -90,6 +91,7 @@ public class LongObjectImpl extends ValueImpl implements LongObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(long newValue) {
 		long oldValue = value;
 		value = newValue;

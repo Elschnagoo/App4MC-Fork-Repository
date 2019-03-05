@@ -154,6 +154,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_STRUCTURE__TAGS);
@@ -166,6 +167,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StructureType getStructureType() {
 		return structureType;
 	}
@@ -175,6 +177,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStructureType(StructureType newStructureType) {
 		StructureType oldStructureType = structureType;
 		structureType = newStructureType == null ? STRUCTURE_TYPE_EDEFAULT : newStructureType;
@@ -187,6 +190,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwPort> getPorts() {
 		if (ports == null) {
 			ports = new EObjectContainmentEList<HwPort>(HwPort.class, this, AmaltheaPackage.HW_STRUCTURE__PORTS);
@@ -199,6 +203,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwStructure> getStructures() {
 		if (structures == null) {
 			structures = new EObjectContainmentEList<HwStructure>(HwStructure.class, this, AmaltheaPackage.HW_STRUCTURE__STRUCTURES);
@@ -211,6 +216,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwModule> getModules() {
 		if (modules == null) {
 			modules = new EObjectContainmentEList<HwModule>(HwModule.class, this, AmaltheaPackage.HW_STRUCTURE__MODULES);
@@ -223,6 +229,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwConnection> getConnections() {
 		if (connections == null) {
 			connections = new EObjectContainmentEList<HwConnection>(HwConnection.class, this, AmaltheaPackage.HW_STRUCTURE__CONNECTIONS);
@@ -235,6 +242,7 @@ public class HwStructureImpl extends ReferableBaseObjectImpl implements HwStruct
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwPort> getInnerPorts() {
 		return AmaltheaServices.getInnerPorts(this);
 	}

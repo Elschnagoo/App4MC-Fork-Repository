@@ -95,6 +95,7 @@ public class TagGroupImpl extends RunnableGroupImpl implements TagGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.TAG_GROUP__CUSTOM_PROPERTIES);
@@ -107,6 +108,7 @@ public class TagGroupImpl extends RunnableGroupImpl implements TagGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Tag getTag() {
 		if (tag != null && tag.eIsProxy()) {
 			InternalEObject oldTag = (InternalEObject)tag;
@@ -133,6 +135,7 @@ public class TagGroupImpl extends RunnableGroupImpl implements TagGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTag(Tag newTag) {
 		Tag oldTag = tag;
 		tag = newTag;

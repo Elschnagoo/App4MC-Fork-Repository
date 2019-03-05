@@ -95,6 +95,7 @@ public class PowerDomainImpl extends HwDomainImpl implements PowerDomain {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Voltage getDefaultValue() {
 		return defaultValue;
 	}
@@ -119,6 +120,7 @@ public class PowerDomainImpl extends HwDomainImpl implements PowerDomain {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultValue(Voltage newDefaultValue) {
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class PowerDomainImpl extends HwDomainImpl implements PowerDomain {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isPowerGating() {
 		return powerGating;
 	}
@@ -147,6 +150,7 @@ public class PowerDomainImpl extends HwDomainImpl implements PowerDomain {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPowerGating(boolean newPowerGating) {
 		boolean oldPowerGating = powerGating;
 		powerGating = newPowerGating;

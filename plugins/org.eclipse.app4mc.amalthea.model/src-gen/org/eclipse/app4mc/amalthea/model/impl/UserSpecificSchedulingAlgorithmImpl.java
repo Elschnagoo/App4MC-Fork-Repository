@@ -76,6 +76,7 @@ public class UserSpecificSchedulingAlgorithmImpl extends TaskSchedulingAlgorithm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, String> getParameterExtensions() {
 		if (parameterExtensions == null) {
 			parameterExtensions = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getParameterExtension(), ParameterExtensionImpl.class, this, AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM__PARAMETER_EXTENSIONS);

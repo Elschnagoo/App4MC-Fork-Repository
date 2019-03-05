@@ -163,6 +163,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SchedulerAllocation> getSchedulerAllocation() {
 		if (schedulerAllocation == null) {
 			schedulerAllocation = new EObjectContainmentEList<SchedulerAllocation>(SchedulerAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__SCHEDULER_ALLOCATION);
@@ -175,6 +176,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableAllocation> getRunnableAllocation() {
 		if (runnableAllocation == null) {
 			runnableAllocation = new EObjectContainmentEList<RunnableAllocation>(RunnableAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__RUNNABLE_ALLOCATION);
@@ -187,6 +189,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskAllocation> getTaskAllocation() {
 		if (taskAllocation == null) {
 			taskAllocation = new EObjectContainmentEList<TaskAllocation>(TaskAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__TASK_ALLOCATION);
@@ -199,6 +202,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ISRAllocation> getIsrAllocation() {
 		if (isrAllocation == null) {
 			isrAllocation = new EObjectContainmentEList<ISRAllocation>(ISRAllocation.class, this, AmaltheaPackage.MAPPING_MODEL__ISR_ALLOCATION);
@@ -211,6 +215,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryMapping> getMemoryMapping() {
 		if (memoryMapping == null) {
 			memoryMapping = new EObjectContainmentEList<MemoryMapping>(MemoryMapping.class, this, AmaltheaPackage.MAPPING_MODEL__MEMORY_MAPPING);
@@ -223,6 +228,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PhysicalSectionMapping> getPhysicalSectionMapping() {
 		if (physicalSectionMapping == null) {
 			physicalSectionMapping = new EObjectContainmentEList<PhysicalSectionMapping>(PhysicalSectionMapping.class, this, AmaltheaPackage.MAPPING_MODEL__PHYSICAL_SECTION_MAPPING);
@@ -235,6 +241,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryAddressMappingType getAddressMappingType() {
 		return addressMappingType;
 	}
@@ -244,6 +251,7 @@ public class MappingModelImpl extends BaseObjectImpl implements MappingModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAddressMappingType(MemoryAddressMappingType newAddressMappingType) {
 		MemoryAddressMappingType oldAddressMappingType = addressMappingType;
 		addressMappingType = newAddressMappingType == null ? ADDRESS_MAPPING_TYPE_EDEFAULT : newAddressMappingType;

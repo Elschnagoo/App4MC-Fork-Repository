@@ -96,6 +96,7 @@ public class TargetSchedulerImpl extends RunnableConstraintTargetImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.TARGET_SCHEDULER__CUSTOM_PROPERTIES);
@@ -108,6 +109,7 @@ public class TargetSchedulerImpl extends RunnableConstraintTargetImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Scheduler> getSchedulers() {
 		if (schedulers == null) {
 			schedulers = new EObjectResolvingEList<Scheduler>(Scheduler.class, this, AmaltheaPackage.TARGET_SCHEDULER__SCHEDULERS);

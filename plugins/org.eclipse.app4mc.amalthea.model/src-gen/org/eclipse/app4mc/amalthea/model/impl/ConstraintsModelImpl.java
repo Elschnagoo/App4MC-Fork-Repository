@@ -174,6 +174,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventChain> getEventChains() {
 		if (eventChains == null) {
 			eventChains = new EObjectContainmentEList<EventChain>(EventChain.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__EVENT_CHAINS);
@@ -186,6 +187,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TimingConstraint> getTimingConstraints() {
 		if (timingConstraints == null) {
 			timingConstraints = new EObjectContainmentEList<TimingConstraint>(TimingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__TIMING_CONSTRAINTS);
@@ -198,6 +200,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AffinityConstraint> getAffinityConstraints() {
 		if (affinityConstraints == null) {
 			affinityConstraints = new EObjectContainmentEList<AffinityConstraint>(AffinityConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__AFFINITY_CONSTRAINTS);
@@ -210,6 +213,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableSequencingConstraint> getRunnableSequencingConstraints() {
 		if (runnableSequencingConstraints == null) {
 			runnableSequencingConstraints = new EObjectContainmentEList<RunnableSequencingConstraint>(RunnableSequencingConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__RUNNABLE_SEQUENCING_CONSTRAINTS);
@@ -222,6 +226,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataAgeConstraint> getDataAgeConstraints() {
 		if (dataAgeConstraints == null) {
 			dataAgeConstraints = new EObjectContainmentEList<DataAgeConstraint>(DataAgeConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_AGE_CONSTRAINTS);
@@ -234,6 +239,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Requirement> getRequirements() {
 		if (requirements == null) {
 			requirements = new EObjectContainmentEList<Requirement>(Requirement.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__REQUIREMENTS);
@@ -246,6 +252,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataCoherencyGroup> getDataCoherencyGroups() {
 		if (dataCoherencyGroups == null) {
 			dataCoherencyGroups = new EObjectContainmentEList<DataCoherencyGroup>(DataCoherencyGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_COHERENCY_GROUPS);
@@ -258,6 +265,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataStabilityGroup> getDataStabilityGroups() {
 		if (dataStabilityGroups == null) {
 			dataStabilityGroups = new EObjectContainmentEList<DataStabilityGroup>(DataStabilityGroup.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__DATA_STABILITY_GROUPS);
@@ -270,6 +278,7 @@ public class ConstraintsModelImpl extends BaseObjectImpl implements ConstraintsM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PhysicalSectionConstraint> getPhysicalSectionConstraints() {
 		if (physicalSectionConstraints == null) {
 			physicalSectionConstraints = new EObjectContainmentEList<PhysicalSectionConstraint>(PhysicalSectionConstraint.class, this, AmaltheaPackage.CONSTRAINTS_MODEL__PHYSICAL_SECTION_CONSTRAINTS);

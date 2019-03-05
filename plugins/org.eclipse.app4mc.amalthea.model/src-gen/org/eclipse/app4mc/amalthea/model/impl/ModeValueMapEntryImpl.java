@@ -243,6 +243,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getHash() {
 		if (hash == -1) {
 			Object theKey = getKey();
@@ -256,6 +257,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHash(int hash) {
 		this.hash = hash;
 	}
@@ -265,6 +267,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLabel getKey() {
 		return getTypedKey();
 	}
@@ -274,6 +277,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKey(ModeLabel key) {
 		setTypedKey(key);
 	}
@@ -283,6 +287,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral getValue() {
 		return getTypedValue();
 	}
@@ -292,6 +297,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral setValue(ModeLiteral value) {
 		ModeLiteral oldValue = getValue();
 		setTypedValue(value);

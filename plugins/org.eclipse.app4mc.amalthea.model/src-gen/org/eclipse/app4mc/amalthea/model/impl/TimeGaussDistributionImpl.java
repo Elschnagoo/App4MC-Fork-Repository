@@ -90,6 +90,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMean() {
 		return mean;
 	}
@@ -114,6 +115,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMean(Time newMean) {
 		if (newMean != mean) {
 			NotificationChain msgs = null;
@@ -133,6 +135,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getSd() {
 		return sd;
 	}
@@ -157,6 +160,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSd(Time newSd) {
 		if (newSd != sd) {
 			NotificationChain msgs = null;
@@ -176,6 +180,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
 			return this.getMean();

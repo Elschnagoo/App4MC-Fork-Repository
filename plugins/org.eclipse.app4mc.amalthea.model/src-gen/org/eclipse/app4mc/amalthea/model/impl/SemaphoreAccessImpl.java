@@ -117,6 +117,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Semaphore getSemaphore() {
 		if (semaphore != null && semaphore.eIsProxy()) {
 			InternalEObject oldSemaphore = (InternalEObject)semaphore;
@@ -143,6 +144,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSemaphore(Semaphore newSemaphore) {
 		Semaphore oldSemaphore = semaphore;
 		semaphore = newSemaphore;
@@ -155,6 +157,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SemaphoreAccessEnum getAccess() {
 		return access;
 	}
@@ -164,6 +167,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccess(SemaphoreAccessEnum newAccess) {
 		SemaphoreAccessEnum oldAccess = access;
 		access = newAccess == null ? ACCESS_EDEFAULT : newAccess;
@@ -176,6 +180,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WaitingBehaviour getWaitingBehaviour() {
 		return waitingBehaviour;
 	}
@@ -185,6 +190,7 @@ public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWaitingBehaviour(WaitingBehaviour newWaitingBehaviour) {
 		WaitingBehaviour oldWaitingBehaviour = waitingBehaviour;
 		waitingBehaviour = newWaitingBehaviour == null ? WAITING_BEHAVIOUR_EDEFAULT : newWaitingBehaviour;

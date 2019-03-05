@@ -119,6 +119,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventChain getScope() {
 		if (scope != null && scope.eIsProxy()) {
 			InternalEObject oldScope = (InternalEObject)scope;
@@ -145,6 +146,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScope(EventChain newScope) {
 		EventChain oldScope = scope;
 		scope = newScope;
@@ -157,6 +159,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LatencyType getType() {
 		return type;
 	}
@@ -166,6 +169,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(LatencyType newType) {
 		LatencyType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
@@ -178,6 +182,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMinimum() {
 		return minimum;
 	}
@@ -202,6 +207,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinimum(Time newMinimum) {
 		if (newMinimum != minimum) {
 			NotificationChain msgs = null;
@@ -221,6 +227,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMaximum() {
 		return maximum;
 	}
@@ -245,6 +252,7 @@ public class EventChainLatencyConstraintImpl extends TimingConstraintImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaximum(Time newMaximum) {
 		if (newMaximum != maximum) {
 			NotificationChain msgs = null;

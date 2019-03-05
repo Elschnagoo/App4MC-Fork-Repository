@@ -106,6 +106,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isBuffered() {
 		return buffered;
 	}
@@ -115,6 +116,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBuffered(boolean newBuffered) {
 		boolean oldBuffered = buffered;
 		buffered = newBuffered;
@@ -127,6 +129,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label getLabel() {
 		if (label != null && label.eIsProxy()) {
 			InternalEObject oldLabel = (InternalEObject)label;
@@ -153,6 +156,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabel(Label newLabel) {
 		Label oldLabel = label;
 		label = newLabel;
@@ -165,6 +169,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port getPort() {
 		if (port != null && port.eIsProxy()) {
 			InternalEObject oldPort = (InternalEObject)port;
@@ -191,6 +196,7 @@ public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPort(Port newPort) {
 		Port oldPort = port;
 		port = newPort;

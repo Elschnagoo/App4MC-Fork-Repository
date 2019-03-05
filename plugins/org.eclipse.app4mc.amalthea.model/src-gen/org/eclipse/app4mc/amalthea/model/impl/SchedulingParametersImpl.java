@@ -119,6 +119,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getPriority() {
 		return priority;
 	}
@@ -128,6 +129,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPriority(Integer newPriority) {
 		Integer oldPriority = priority;
 		priority = newPriority;
@@ -140,6 +142,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMinBudget() {
 		return minBudget;
 	}
@@ -164,6 +167,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinBudget(Time newMinBudget) {
 		if (newMinBudget != minBudget) {
 			NotificationChain msgs = null;
@@ -183,6 +187,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMaxBudget() {
 		return maxBudget;
 	}
@@ -207,6 +212,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxBudget(Time newMaxBudget) {
 		if (newMaxBudget != maxBudget) {
 			NotificationChain msgs = null;
@@ -226,6 +232,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getReplenishment() {
 		return replenishment;
 	}
@@ -250,6 +257,7 @@ public class SchedulingParametersImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReplenishment(Time newReplenishment) {
 		if (newReplenishment != replenishment) {
 			NotificationChain msgs = null;

@@ -73,6 +73,7 @@ public class SenderReceiverWriteImpl extends SenderReceiverCommunicationImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getNotifiedRunnables() {
 		if (notifiedRunnables == null) {
 			notifiedRunnables = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.SENDER_RECEIVER_WRITE__NOTIFIED_RUNNABLES);

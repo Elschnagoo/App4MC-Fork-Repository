@@ -68,6 +68,7 @@ public abstract class HwPathImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getSource() {
 		ProcessingUnit source = basicGetSource();
 		return source != null && source.eIsProxy() ? (ProcessingUnit)eResolveProxy((InternalEObject)source) : source;
@@ -87,6 +88,7 @@ public abstract class HwPathImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwDestination getDestination() {
 		HwDestination destination = basicGetDestination();
 		return destination != null && destination.eIsProxy() ? (HwDestination)eResolveProxy((InternalEObject)destination) : destination;
@@ -106,6 +108,7 @@ public abstract class HwPathImpl extends AmaltheaExtendedEObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwAccessElement getContainingAccessElement() {
 		return null;
 	}

@@ -117,6 +117,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableEventType getEventType() {
 		return eventType;
 	}
@@ -126,6 +127,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(RunnableEventType newEventType) {
 		RunnableEventType oldEventType = eventType;
 		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
@@ -138,6 +140,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -164,6 +167,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(org.eclipse.app4mc.amalthea.model.Runnable newEntity) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldEntity = entity;
 		entity = newEntity;
@@ -176,6 +180,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getProcess() {
 		if (process != null && process.eIsProxy()) {
 			InternalEObject oldProcess = (InternalEObject)process;
@@ -202,6 +207,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcess(org.eclipse.app4mc.amalthea.model.Process newProcess) {
 		org.eclipse.app4mc.amalthea.model.Process oldProcess = process;
 		process = newProcess;
@@ -214,6 +220,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getProcessingUnit() {
 		if (processingUnit != null && processingUnit.eIsProxy()) {
 			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
@@ -240,6 +247,7 @@ public class RunnableEventImpl extends TriggerEventImpl implements RunnableEvent
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
 		ProcessingUnit oldProcessingUnit = processingUnit;
 		processingUnit = newProcessingUnit;

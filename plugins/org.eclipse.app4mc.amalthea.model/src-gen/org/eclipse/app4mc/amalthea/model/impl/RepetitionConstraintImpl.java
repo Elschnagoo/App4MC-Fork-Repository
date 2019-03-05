@@ -140,6 +140,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EntityEvent getEvent() {
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject)event;
@@ -166,6 +167,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEvent(EntityEvent newEvent) {
 		EntityEvent oldEvent = event;
 		event = newEvent;
@@ -178,6 +180,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getSpan() {
 		return span;
 	}
@@ -187,6 +190,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpan(int newSpan) {
 		int oldSpan = span;
 		span = newSpan;
@@ -199,6 +203,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLower() {
 		return lower;
 	}
@@ -223,6 +228,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLower(Time newLower) {
 		if (newLower != lower) {
 			NotificationChain msgs = null;
@@ -242,6 +248,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpper() {
 		return upper;
 	}
@@ -266,6 +273,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpper(Time newUpper) {
 		if (newUpper != upper) {
 			NotificationChain msgs = null;
@@ -285,6 +293,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getJitter() {
 		return jitter;
 	}
@@ -309,6 +318,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setJitter(Time newJitter) {
 		if (newJitter != jitter) {
 			NotificationChain msgs = null;
@@ -328,6 +338,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getPeriod() {
 		return period;
 	}
@@ -352,6 +363,7 @@ public class RepetitionConstraintImpl extends TimingConstraintImpl implements Re
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPeriod(Time newPeriod) {
 		if (newPeriod != period) {
 			NotificationChain msgs = null;

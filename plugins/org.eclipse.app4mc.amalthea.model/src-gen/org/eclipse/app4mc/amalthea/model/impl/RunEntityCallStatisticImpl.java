@@ -74,6 +74,7 @@ public class RunEntityCallStatisticImpl extends BaseObjectImpl implements RunEnt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NumericStatistic getStatistic() {
 		return statistic;
 	}
@@ -98,6 +99,7 @@ public class RunEntityCallStatisticImpl extends BaseObjectImpl implements RunEnt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatistic(NumericStatistic newStatistic) {
 		if (newStatistic != statistic) {
 			NotificationChain msgs = null;

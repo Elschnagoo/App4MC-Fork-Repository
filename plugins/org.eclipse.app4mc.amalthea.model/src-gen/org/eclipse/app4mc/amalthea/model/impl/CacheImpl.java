@@ -73,6 +73,7 @@ public class CacheImpl extends HwModuleImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CacheDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -99,6 +100,7 @@ public class CacheImpl extends HwModuleImpl implements Cache {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(CacheDefinition newDefinition) {
 		CacheDefinition oldDefinition = definition;
 		definition = newDefinition;

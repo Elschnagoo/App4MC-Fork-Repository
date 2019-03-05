@@ -118,6 +118,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -127,6 +128,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -139,6 +141,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Severity getSeverity() {
 		return severity;
 	}
@@ -148,6 +151,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSeverity(Severity newSeverity) {
 		Severity oldSeverity = severity;
 		severity = newSeverity == null ? SEVERITY_EDEFAULT : newSeverity;
@@ -160,6 +164,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RequirementLimit getLimit() {
 		return limit;
 	}
@@ -184,6 +189,7 @@ public abstract class RequirementImpl extends BaseObjectImpl implements Requirem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimit(RequirementLimit newLimit) {
 		if (newLimit != limit) {
 			NotificationChain msgs = null;

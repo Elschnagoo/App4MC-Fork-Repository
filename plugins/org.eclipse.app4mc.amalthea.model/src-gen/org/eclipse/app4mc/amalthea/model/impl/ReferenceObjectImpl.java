@@ -73,6 +73,7 @@ public class ReferenceObjectImpl extends ValueImpl implements ReferenceObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IReferable getValue() {
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject)value;
@@ -99,6 +100,7 @@ public class ReferenceObjectImpl extends ValueImpl implements ReferenceObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(IReferable newValue) {
 		IReferable oldValue = value;
 		value = newValue;

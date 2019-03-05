@@ -126,6 +126,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -135,6 +136,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnabled(boolean newEnabled) {
 		boolean oldEnabled = enabled;
 		enabled = newEnabled;
@@ -147,6 +149,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAlgorithm() {
 		return algorithm;
 	}
@@ -156,6 +159,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAlgorithm(String newAlgorithm) {
 		String oldAlgorithm = algorithm;
 		algorithm = newAlgorithm;
@@ -168,6 +172,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessMultiplicity getAccessMultiplicity() {
 		return accessMultiplicity;
 	}
@@ -177,6 +182,7 @@ public class NonAtomicDataCoherencyImpl extends AmaltheaExtendedEObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessMultiplicity(AccessMultiplicity newAccessMultiplicity) {
 		AccessMultiplicity oldAccessMultiplicity = accessMultiplicity;
 		accessMultiplicity = newAccessMultiplicity == null ? ACCESS_MULTIPLICITY_EDEFAULT : newAccessMultiplicity;

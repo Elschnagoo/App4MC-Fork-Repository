@@ -138,6 +138,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getSize() {
 		return size;
 	}
@@ -162,6 +163,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
@@ -181,6 +183,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getAccessLatency() {
 		return accessLatency;
 	}
@@ -205,6 +208,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessLatency(IDiscreteValueDeviation newAccessLatency) {
 		if (newAccessLatency != accessLatency) {
 			NotificationChain msgs = null;
@@ -224,6 +228,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataRate getDataRate() {
 		return dataRate;
 	}
@@ -248,6 +253,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataRate(DataRate newDataRate) {
 		if (newDataRate != dataRate) {
 			NotificationChain msgs = null;
@@ -267,6 +273,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryType getMemoryType() {
 		return memoryType;
 	}
@@ -276,6 +283,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryType(MemoryType newMemoryType) {
 		MemoryType oldMemoryType = memoryType;
 		memoryType = newMemoryType == null ? MEMORY_TYPE_EDEFAULT : newMemoryType;
@@ -288,6 +296,7 @@ public class MemoryDefinitionImpl extends HwDefinitionImpl implements MemoryDefi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.MEMORY_DEFINITION__CLASSIFIERS);

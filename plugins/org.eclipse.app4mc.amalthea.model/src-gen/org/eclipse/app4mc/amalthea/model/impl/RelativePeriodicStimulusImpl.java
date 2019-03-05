@@ -86,6 +86,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOffset() {
 		return offset;
 	}
@@ -110,6 +111,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(Time newOffset) {
 		if (newOffset != offset) {
 			NotificationChain msgs = null;
@@ -129,6 +131,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ITimeDeviation getNextOccurrence() {
 		return nextOccurrence;
 	}
@@ -153,6 +156,7 @@ public class RelativePeriodicStimulusImpl extends StimulusImpl implements Relati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNextOccurrence(ITimeDeviation newNextOccurrence) {
 		if (newNextOccurrence != nextOccurrence) {
 			NotificationChain msgs = null;

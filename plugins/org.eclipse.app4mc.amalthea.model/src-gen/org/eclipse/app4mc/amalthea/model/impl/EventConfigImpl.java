@@ -95,6 +95,7 @@ public class EventConfigImpl extends BaseObjectImpl implements EventConfig {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -104,6 +105,7 @@ public class EventConfigImpl extends BaseObjectImpl implements EventConfig {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -116,6 +118,7 @@ public class EventConfigImpl extends BaseObjectImpl implements EventConfig {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EntityEvent getEvent() {
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject)event;
@@ -142,6 +145,7 @@ public class EventConfigImpl extends BaseObjectImpl implements EventConfig {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEvent(EntityEvent newEvent) {
 		EntityEvent oldEvent = event;
 		event = newEvent;

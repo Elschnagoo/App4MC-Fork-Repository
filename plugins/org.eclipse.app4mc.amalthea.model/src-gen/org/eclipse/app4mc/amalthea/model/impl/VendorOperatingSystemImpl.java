@@ -123,6 +123,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOsName() {
 		return osName;
 	}
@@ -132,6 +133,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOsName(String newOsName) {
 		String oldOsName = osName;
 		osName = newOsName;
@@ -144,6 +146,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVendor() {
 		return vendor;
 	}
@@ -153,6 +156,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVendor(String newVendor) {
 		String oldVendor = vendor;
 		vendor = newVendor;
@@ -165,6 +169,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -174,6 +179,7 @@ public class VendorOperatingSystemImpl extends OperatingSystemImpl implements Ve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;

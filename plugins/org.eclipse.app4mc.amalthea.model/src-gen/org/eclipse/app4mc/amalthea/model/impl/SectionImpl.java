@@ -89,6 +89,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ASILType getAsilLevel() {
 		return asilLevel;
 	}
@@ -98,6 +99,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAsilLevel(ASILType newAsilLevel) {
 		ASILType oldAsilLevel = asilLevel;
 		asilLevel = newAsilLevel == null ? ASIL_LEVEL_EDEFAULT : newAsilLevel;
@@ -110,6 +112,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		EReference _label_Section = AmaltheaPackage.eINSTANCE.getLabel_Section();
 		return AmaltheaIndex.<Label>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSection_Labels(), 
@@ -121,6 +124,7 @@ public class SectionImpl extends ReferableBaseObjectImpl implements Section {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
 		EReference _runnable_Section = AmaltheaPackage.eINSTANCE.getRunnable_Section();
 		return AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSection_Runnables(), 

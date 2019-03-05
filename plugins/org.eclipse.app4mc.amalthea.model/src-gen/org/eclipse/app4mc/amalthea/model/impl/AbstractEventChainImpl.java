@@ -137,6 +137,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -146,6 +147,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -158,6 +160,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Event getStimulus() {
 		if (stimulus != null && stimulus.eIsProxy()) {
 			InternalEObject oldStimulus = (InternalEObject)stimulus;
@@ -184,6 +187,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStimulus(Event newStimulus) {
 		Event oldStimulus = stimulus;
 		stimulus = newStimulus;
@@ -196,6 +200,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Event getResponse() {
 		if (response != null && response.eIsProxy()) {
 			InternalEObject oldResponse = (InternalEObject)response;
@@ -222,6 +227,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResponse(Event newResponse) {
 		Event oldResponse = response;
 		response = newResponse;
@@ -234,6 +240,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventChainItem> getSegments() {
 		if (segments == null) {
 			segments = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.ABSTRACT_EVENT_CHAIN__SEGMENTS);
@@ -246,6 +253,7 @@ public abstract class AbstractEventChainImpl extends BaseObjectImpl implements A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventChainItem> getStrands() {
 		if (strands == null) {
 			strands = new EObjectContainmentEList<EventChainItem>(EventChainItem.class, this, AmaltheaPackage.ABSTRACT_EVENT_CHAIN__STRANDS);

@@ -106,6 +106,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessEventType getEventType() {
 		return eventType;
 	}
@@ -115,6 +116,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEventType(ProcessEventType newEventType) {
 		ProcessEventType oldEventType = eventType;
 		eventType = newEventType == null ? EVENT_TYPE_EDEFAULT : newEventType;
@@ -127,6 +129,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Process getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -153,6 +156,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(org.eclipse.app4mc.amalthea.model.Process newEntity) {
 		org.eclipse.app4mc.amalthea.model.Process oldEntity = entity;
 		entity = newEntity;
@@ -165,6 +169,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getProcessingUnit() {
 		if (processingUnit != null && processingUnit.eIsProxy()) {
 			InternalEObject oldProcessingUnit = (InternalEObject)processingUnit;
@@ -191,6 +196,7 @@ public class ProcessEventImpl extends EntityEventImpl implements ProcessEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcessingUnit(ProcessingUnit newProcessingUnit) {
 		ProcessingUnit oldProcessingUnit = processingUnit;
 		processingUnit = newProcessingUnit;

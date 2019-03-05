@@ -78,6 +78,7 @@ public class EventModelImpl extends BaseObjectImpl implements EventModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Event> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList<Event>(Event.class, this, AmaltheaPackage.EVENT_MODEL__EVENTS);

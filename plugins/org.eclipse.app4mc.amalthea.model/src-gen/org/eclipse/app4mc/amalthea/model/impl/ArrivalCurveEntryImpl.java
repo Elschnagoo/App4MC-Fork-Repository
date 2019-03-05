@@ -106,6 +106,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getNumberOfOccurrences() {
 		return numberOfOccurrences;
 	}
@@ -115,6 +116,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNumberOfOccurrences(int newNumberOfOccurrences) {
 		int oldNumberOfOccurrences = numberOfOccurrences;
 		numberOfOccurrences = newNumberOfOccurrences;
@@ -127,6 +129,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLowerTimeBorder() {
 		return lowerTimeBorder;
 	}
@@ -151,6 +154,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLowerTimeBorder(Time newLowerTimeBorder) {
 		if (newLowerTimeBorder != lowerTimeBorder) {
 			NotificationChain msgs = null;
@@ -170,6 +174,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpperTimeBorder() {
 		return upperTimeBorder;
 	}
@@ -194,6 +199,7 @@ public class ArrivalCurveEntryImpl extends BaseObjectImpl implements ArrivalCurv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpperTimeBorder(Time newUpperTimeBorder) {
 		if (newUpperTimeBorder != upperTimeBorder) {
 			NotificationChain msgs = null;

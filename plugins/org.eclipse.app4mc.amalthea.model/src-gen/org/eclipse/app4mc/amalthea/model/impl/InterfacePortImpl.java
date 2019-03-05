@@ -103,6 +103,7 @@ public class InterfacePortImpl extends PortImpl implements InterfacePort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInterfaceName() {
 		return interfaceName;
 	}
@@ -112,6 +113,7 @@ public class InterfacePortImpl extends PortImpl implements InterfacePort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInterfaceName(String newInterfaceName) {
 		String oldInterfaceName = interfaceName;
 		interfaceName = newInterfaceName;
@@ -124,6 +126,7 @@ public class InterfacePortImpl extends PortImpl implements InterfacePort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterfaceKind getKind() {
 		return kind;
 	}
@@ -133,6 +136,7 @@ public class InterfacePortImpl extends PortImpl implements InterfacePort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKind(InterfaceKind newKind) {
 		InterfaceKind oldKind = kind;
 		kind = newKind == null ? KIND_EDEFAULT : newKind;

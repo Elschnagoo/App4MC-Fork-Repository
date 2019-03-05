@@ -74,6 +74,7 @@ public abstract class MemoryMappingConstraintImpl extends BaseObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryClassification getMemoryClassification() {
 		return memoryClassification;
 	}
@@ -98,6 +99,7 @@ public abstract class MemoryMappingConstraintImpl extends BaseObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryClassification(MemoryClassification newMemoryClassification) {
 		if (newMemoryClassification != memoryClassification) {
 			NotificationChain msgs = null;

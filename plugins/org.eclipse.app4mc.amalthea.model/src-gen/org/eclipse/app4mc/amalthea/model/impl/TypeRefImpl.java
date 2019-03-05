@@ -96,6 +96,7 @@ public class TypeRefImpl extends AmaltheaExtendedEObjectImpl implements TypeRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.TYPE_REF__CUSTOM_PROPERTIES);
@@ -108,6 +109,7 @@ public class TypeRefImpl extends AmaltheaExtendedEObjectImpl implements TypeRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeDefinition getTypeDef() {
 		if (typeDef != null && typeDef.eIsProxy()) {
 			InternalEObject oldTypeDef = (InternalEObject)typeDef;
@@ -134,6 +136,7 @@ public class TypeRefImpl extends AmaltheaExtendedEObjectImpl implements TypeRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTypeDef(TypeDefinition newTypeDef) {
 		TypeDefinition oldTypeDef = typeDef;
 		typeDef = newTypeDef;

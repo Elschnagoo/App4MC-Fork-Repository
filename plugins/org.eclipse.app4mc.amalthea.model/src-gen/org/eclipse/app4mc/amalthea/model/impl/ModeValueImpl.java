@@ -91,6 +91,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLabel getValueProvider() {
 		if (valueProvider != null && valueProvider.eIsProxy()) {
 			InternalEObject oldValueProvider = (InternalEObject)valueProvider;
@@ -117,6 +118,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValueProvider(ModeLabel newValueProvider) {
 		ModeLabel oldValueProvider = valueProvider;
 		valueProvider = newValueProvider;
@@ -129,6 +131,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral getValue() {
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject)value;
@@ -155,6 +158,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(ModeLiteral newValue) {
 		ModeLiteral oldValue = value;
 		value = newValue;
@@ -167,6 +171,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
 		ModeLiteral _get = null;
 		if (assignment!=null) {

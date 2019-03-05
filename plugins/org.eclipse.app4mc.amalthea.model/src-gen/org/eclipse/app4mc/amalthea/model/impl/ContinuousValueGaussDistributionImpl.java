@@ -107,6 +107,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMean() {
 		return mean;
 	}
@@ -116,6 +117,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMean(double newMean) {
 		double oldMean = mean;
 		mean = newMean;
@@ -128,6 +130,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getSd() {
 		return sd;
 	}
@@ -137,6 +140,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSd(double newSd) {
 		double oldSd = sd;
 		sd = newSd;
@@ -149,6 +153,7 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
 			return this.getMean();

@@ -85,6 +85,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getPreExecutionOverhead() {
 		return preExecutionOverhead;
 	}
@@ -109,6 +110,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPreExecutionOverhead(Ticks newPreExecutionOverhead) {
 		if (newPreExecutionOverhead != preExecutionOverhead) {
 			NotificationChain msgs = null;
@@ -128,6 +130,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ticks getPostExecutionOverhead() {
 		return postExecutionOverhead;
 	}
@@ -152,6 +155,7 @@ public class OsISROverheadImpl extends BaseObjectImpl implements OsISROverhead {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPostExecutionOverhead(Ticks newPostExecutionOverhead) {
 		if (newPostExecutionOverhead != postExecutionOverhead) {
 			NotificationChain msgs = null;

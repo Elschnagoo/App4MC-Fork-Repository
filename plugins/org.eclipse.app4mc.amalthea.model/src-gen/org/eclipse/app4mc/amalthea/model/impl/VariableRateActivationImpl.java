@@ -107,6 +107,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -116,6 +117,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -128,6 +130,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getStep() {
 		return step;
 	}
@@ -152,6 +155,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStep(Time newStep) {
 		if (newStep != step) {
 			NotificationChain msgs = null;
@@ -171,6 +175,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IContinuousValueDeviation getOccurrencesPerStep() {
 		return occurrencesPerStep;
 	}
@@ -195,6 +200,7 @@ public class VariableRateActivationImpl extends ActivationImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep) {
 		if (newOccurrencesPerStep != occurrencesPerStep) {
 			NotificationChain msgs = null;

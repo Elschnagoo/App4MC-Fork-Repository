@@ -80,6 +80,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getValue() {
 		return value;
 	}
@@ -104,6 +105,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(Time newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
@@ -123,6 +125,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLowerBound() {
 		return this.getValue();
 	}
@@ -132,6 +135,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpperBound() {
 		return this.getValue();
 	}
@@ -141,6 +145,7 @@ public class TimeConstantImpl extends AmaltheaExtendedEObjectImpl implements Tim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		return this.getValue();
 	}

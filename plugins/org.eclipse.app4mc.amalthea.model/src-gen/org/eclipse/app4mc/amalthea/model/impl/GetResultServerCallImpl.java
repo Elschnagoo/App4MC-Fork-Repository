@@ -82,6 +82,7 @@ public class GetResultServerCallImpl extends ServerCallImpl implements GetResult
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BlockingType getBlockingType() {
 		return blockingType;
 	}
@@ -91,6 +92,7 @@ public class GetResultServerCallImpl extends ServerCallImpl implements GetResult
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBlockingType(BlockingType newBlockingType) {
 		BlockingType oldBlockingType = blockingType;
 		blockingType = newBlockingType == null ? BLOCKING_TYPE_EDEFAULT : newBlockingType;

@@ -102,6 +102,7 @@ public class ContinuousValueWeibullEstimatorsDistributionImpl extends BoundedCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		return average;
 	}
@@ -111,6 +112,7 @@ public class ContinuousValueWeibullEstimatorsDistributionImpl extends BoundedCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAverage(double newAverage) {
 		double oldAverage = average;
 		average = newAverage;
@@ -123,6 +125,7 @@ public class ContinuousValueWeibullEstimatorsDistributionImpl extends BoundedCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getPRemainPromille() {
 		return pRemainPromille;
 	}
@@ -132,6 +135,7 @@ public class ContinuousValueWeibullEstimatorsDistributionImpl extends BoundedCon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPRemainPromille(double newPRemainPromille) {
 		double oldPRemainPromille = pRemainPromille;
 		pRemainPromille = newPRemainPromille;

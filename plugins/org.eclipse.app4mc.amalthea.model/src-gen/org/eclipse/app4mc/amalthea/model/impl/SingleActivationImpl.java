@@ -85,6 +85,7 @@ public class SingleActivationImpl extends ActivationImpl implements SingleActiva
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMin() {
 		return min;
 	}
@@ -109,6 +110,7 @@ public class SingleActivationImpl extends ActivationImpl implements SingleActiva
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(Time newMin) {
 		if (newMin != min) {
 			NotificationChain msgs = null;
@@ -128,6 +130,7 @@ public class SingleActivationImpl extends ActivationImpl implements SingleActiva
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMax() {
 		return max;
 	}
@@ -152,6 +155,7 @@ public class SingleActivationImpl extends ActivationImpl implements SingleActiva
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(Time newMax) {
 		if (newMax != max) {
 			NotificationChain msgs = null;

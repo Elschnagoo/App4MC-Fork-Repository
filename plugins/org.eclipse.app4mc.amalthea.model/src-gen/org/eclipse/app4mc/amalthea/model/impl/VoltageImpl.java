@@ -109,6 +109,7 @@ public class VoltageImpl extends QuantityImpl implements Voltage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getValue() {
 		return value;
 	}
@@ -118,6 +119,7 @@ public class VoltageImpl extends QuantityImpl implements Voltage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(double newValue) {
 		double oldValue = value;
 		value = newValue;
@@ -130,6 +132,7 @@ public class VoltageImpl extends QuantityImpl implements Voltage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VoltageUnit getUnit() {
 		return unit;
 	}
@@ -139,6 +142,7 @@ public class VoltageImpl extends QuantityImpl implements Voltage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnit(VoltageUnit newUnit) {
 		VoltageUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
@@ -151,6 +155,7 @@ public class VoltageImpl extends QuantityImpl implements Voltage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		double _value = this.getValue();
 		String _plus = (Double.valueOf(_value) + " ");

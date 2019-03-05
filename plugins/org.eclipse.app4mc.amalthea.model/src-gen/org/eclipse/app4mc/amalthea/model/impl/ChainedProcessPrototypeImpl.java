@@ -115,6 +115,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPrototype getPrototype() {
 		if (prototype != null && prototype.eIsProxy()) {
 			InternalEObject oldPrototype = (InternalEObject)prototype;
@@ -141,6 +142,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrototype(ProcessPrototype newPrototype) {
 		ProcessPrototype oldPrototype = prototype;
 		prototype = newPrototype;
@@ -153,6 +155,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getApply() {
 		return apply;
 	}
@@ -162,6 +165,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApply(int newApply) {
 		int oldApply = apply;
 		apply = newApply;
@@ -174,6 +178,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getOffset() {
 		return offset;
 	}
@@ -183,6 +188,7 @@ public class ChainedProcessPrototypeImpl extends BaseObjectImpl implements Chain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(int newOffset) {
 		int oldOffset = offset;
 		offset = newOffset;

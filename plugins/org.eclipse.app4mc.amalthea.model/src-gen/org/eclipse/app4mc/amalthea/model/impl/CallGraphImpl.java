@@ -78,6 +78,7 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<GraphEntryBase> getGraphEntries() {
 		if (graphEntries == null) {
 			graphEntries = new EObjectContainmentEList<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES);

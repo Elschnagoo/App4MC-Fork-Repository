@@ -73,6 +73,7 @@ public class ProcessRequirementImpl extends RequirementImpl implements ProcessRe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractProcess getProcess() {
 		if (process != null && process.eIsProxy()) {
 			InternalEObject oldProcess = (InternalEObject)process;
@@ -99,6 +100,7 @@ public class ProcessRequirementImpl extends RequirementImpl implements ProcessRe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcess(AbstractProcess newProcess) {
 		AbstractProcess oldProcess = process;
 		process = newProcess;

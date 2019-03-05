@@ -85,6 +85,7 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMinimumTime() {
 		return minimumTime;
 	}
@@ -109,6 +110,7 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinimumTime(Time newMinimumTime) {
 		if (newMinimumTime != minimumTime) {
 			NotificationChain msgs = null;
@@ -128,6 +130,7 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getMaximumTime() {
 		return maximumTime;
 	}
@@ -152,6 +155,7 @@ public class DataAgeTimeImpl extends DataAgeImpl implements DataAgeTime {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaximumTime(Time newMaximumTime) {
 		if (newMaximumTime != maximumTime) {
 			NotificationChain msgs = null;

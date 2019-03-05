@@ -74,6 +74,7 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getOccurrence() {
 		return occurrence;
 	}
@@ -98,6 +99,7 @@ public class SingleStimulusImpl extends StimulusImpl implements SingleStimulus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrence(Time newOccurrence) {
 		if (newOccurrence != occurrence) {
 			NotificationChain msgs = null;

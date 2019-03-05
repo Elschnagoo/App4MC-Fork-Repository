@@ -76,6 +76,7 @@ public abstract class RunnableConstraintImpl extends AmaltheaExtendedEObjectImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableConstraintTarget getTarget() {
 		return target;
 	}
@@ -100,6 +101,7 @@ public abstract class RunnableConstraintImpl extends AmaltheaExtendedEObjectImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(RunnableConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;

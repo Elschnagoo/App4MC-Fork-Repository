@@ -107,6 +107,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLabel getData() {
 		if (data != null && data.eIsProxy()) {
 			InternalEObject oldData = (InternalEObject)data;
@@ -133,6 +134,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setData(ModeLabel newData) {
 		ModeLabel oldData = data;
 		data = newData;
@@ -145,6 +147,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessEnum getAccess() {
 		return access;
 	}
@@ -154,6 +157,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccess(LabelAccessEnum newAccess) {
 		LabelAccessEnum oldAccess = access;
 		access = newAccess == null ? ACCESS_EDEFAULT : newAccess;
@@ -166,6 +170,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral getModeValue() {
 		if (modeValue != null && modeValue.eIsProxy()) {
 			InternalEObject oldModeValue = (InternalEObject)modeValue;
@@ -192,6 +197,7 @@ public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModeValue(ModeLiteral newModeValue) {
 		ModeLiteral oldModeValue = modeValue;
 		modeValue = newModeValue;

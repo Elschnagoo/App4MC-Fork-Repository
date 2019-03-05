@@ -151,6 +151,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.COMPONENT__TAGS);
@@ -163,6 +164,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Port> getPorts() {
 		if (ports == null) {
 			ports = new EObjectContainmentWithInverseEList<Port>(Port.class, this, AmaltheaPackage.COMPONENT__PORTS, AmaltheaPackage.PORT__CONTAINING_COMPONENT);
@@ -175,6 +177,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractProcess> getTasks() {
 		if (tasks == null) {
 			tasks = new EObjectResolvingEList<AbstractProcess>(AbstractProcess.class, this, AmaltheaPackage.COMPONENT__TASKS);
@@ -187,6 +190,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
 		if (runnables == null) {
 			runnables = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.COMPONENT__RUNNABLES);
@@ -199,6 +203,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.COMPONENT__LABELS);
@@ -211,6 +216,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Semaphore> getSemaphores() {
 		if (semaphores == null) {
 			semaphores = new EObjectResolvingEList<Semaphore>(Semaphore.class, this, AmaltheaPackage.COMPONENT__SEMAPHORES);
@@ -223,6 +229,7 @@ public class ComponentImpl extends ReferableBaseObjectImpl implements Component 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OsEvent> getOsEvents() {
 		if (osEvents == null) {
 			osEvents = new EObjectResolvingEList<OsEvent>(OsEvent.class, this, AmaltheaPackage.COMPONENT__OS_EVENTS);

@@ -78,6 +78,7 @@ public class ClockMultiplierListImpl extends ClockImpl implements ClockMultiplie
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ClockMultiplierListEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ClockMultiplierListEntry>(ClockMultiplierListEntry.class, this, AmaltheaPackage.CLOCK_MULTIPLIER_LIST__ENTRIES);

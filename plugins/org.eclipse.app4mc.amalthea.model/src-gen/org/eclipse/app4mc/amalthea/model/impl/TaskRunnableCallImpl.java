@@ -85,6 +85,7 @@ public class TaskRunnableCallImpl extends CallSequenceItemImpl implements TaskRu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getRunnable() {
 		if (runnable != null && runnable.eIsProxy()) {
 			InternalEObject oldRunnable = (InternalEObject)runnable;
@@ -111,6 +112,7 @@ public class TaskRunnableCallImpl extends CallSequenceItemImpl implements TaskRu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRunnable(org.eclipse.app4mc.amalthea.model.Runnable newRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldRunnable = runnable;
 		runnable = newRunnable;
@@ -123,6 +125,7 @@ public class TaskRunnableCallImpl extends CallSequenceItemImpl implements TaskRu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunEntityCallStatistic getStatistic() {
 		return statistic;
 	}
@@ -147,6 +150,7 @@ public class TaskRunnableCallImpl extends CallSequenceItemImpl implements TaskRu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatistic(RunEntityCallStatistic newStatistic) {
 		if (newStatistic != statistic) {
 			NotificationChain msgs = null;

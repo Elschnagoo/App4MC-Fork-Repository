@@ -102,6 +102,7 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scheduler getScheduler() {
 		if (scheduler != null && scheduler.eIsProxy()) {
 			InternalEObject oldScheduler = (InternalEObject)scheduler;
@@ -128,6 +129,7 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScheduler(Scheduler newScheduler) {
 		Scheduler oldScheduler = scheduler;
 		scheduler = newScheduler;
@@ -140,6 +142,7 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessingUnit> getResponsibility() {
 		if (responsibility == null) {
 			responsibility = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.SCHEDULER_ALLOCATION__RESPONSIBILITY);
@@ -152,6 +155,7 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnit getExecutingPU() {
 		if (executingPU != null && executingPU.eIsProxy()) {
 			InternalEObject oldExecutingPU = (InternalEObject)executingPU;
@@ -178,6 +182,7 @@ public class SchedulerAllocationImpl extends BaseObjectImpl implements Scheduler
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExecutingPU(ProcessingUnit newExecutingPU) {
 		ProcessingUnit oldExecutingPU = executingPU;
 		executingPU = newExecutingPU;

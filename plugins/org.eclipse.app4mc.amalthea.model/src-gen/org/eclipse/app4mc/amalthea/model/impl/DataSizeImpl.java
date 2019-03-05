@@ -112,6 +112,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getValue() {
 		return value;
 	}
@@ -121,6 +122,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(BigInteger newValue) {
 		BigInteger oldValue = value;
 		value = newValue;
@@ -133,6 +135,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSizeUnit getUnit() {
 		return unit;
 	}
@@ -142,6 +145,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnit(DataSizeUnit newUnit) {
 		DataSizeUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
@@ -154,6 +158,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		BigInteger _value = this.getValue();
 		String _plus = (_value + " ");
@@ -174,6 +179,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getNumberBits() {
 		long _xblockexpression = (long) 0;
 		{
@@ -195,6 +201,7 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getNumberBytes() {
 		long _xblockexpression = (long) 0;
 		{

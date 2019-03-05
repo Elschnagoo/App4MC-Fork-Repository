@@ -127,6 +127,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getShift() {
 		return shift;
 	}
@@ -151,6 +152,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setShift(Time newShift) {
 		if (newShift != shift) {
 			NotificationChain msgs = null;
@@ -170,6 +172,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getPeriod() {
 		return period;
 	}
@@ -194,6 +197,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPeriod(Time newPeriod) {
 		if (newPeriod != period) {
 			NotificationChain msgs = null;
@@ -213,6 +217,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMax() {
 		return max;
 	}
@@ -222,6 +227,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(double newMax) {
 		double oldMax = max;
 		max = newMax;
@@ -234,6 +240,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getMin() {
 		return min;
 	}
@@ -243,6 +250,7 @@ public class ClockTriangleFunctionImpl extends ClockImpl implements ClockTriangl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(double newMin) {
 		double oldMin = min;
 		min = newMin;

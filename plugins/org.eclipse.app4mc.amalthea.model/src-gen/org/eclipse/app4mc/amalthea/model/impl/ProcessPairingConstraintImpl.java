@@ -88,6 +88,7 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessConstraintTarget getTarget() {
 		return target;
 	}
@@ -112,6 +113,7 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(ProcessConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -131,6 +133,7 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessGroup getGroup() {
 		return group;
 	}
@@ -155,6 +158,7 @@ public class ProcessPairingConstraintImpl extends PairingConstraintImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGroup(ProcessGroup newGroup) {
 		if (newGroup != group) {
 			NotificationChain msgs = null;

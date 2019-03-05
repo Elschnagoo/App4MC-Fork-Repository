@@ -225,6 +225,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getSize() {
 		return size;
 	}
@@ -249,6 +250,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
@@ -268,6 +270,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getLineSize() {
 		return lineSize;
 	}
@@ -292,6 +295,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLineSize(DataSize newLineSize) {
 		if (newLineSize != lineSize) {
 			NotificationChain msgs = null;
@@ -311,6 +315,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getAccessLatency() {
 		return accessLatency;
 	}
@@ -335,6 +340,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessLatency(IDiscreteValueDeviation newAccessLatency) {
 		if (newAccessLatency != accessLatency) {
 			NotificationChain msgs = null;
@@ -354,6 +360,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CacheType getCacheType() {
 		return cacheType;
 	}
@@ -363,6 +370,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCacheType(CacheType newCacheType) {
 		CacheType oldCacheType = cacheType;
 		cacheType = newCacheType == null ? CACHE_TYPE_EDEFAULT : newCacheType;
@@ -375,6 +383,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WriteStrategy getWriteStrategy() {
 		return writeStrategy;
 	}
@@ -384,6 +393,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWriteStrategy(WriteStrategy newWriteStrategy) {
 		WriteStrategy oldWriteStrategy = writeStrategy;
 		writeStrategy = newWriteStrategy == null ? WRITE_STRATEGY_EDEFAULT : newWriteStrategy;
@@ -396,6 +406,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getNWays() {
 		return nWays;
 	}
@@ -405,6 +416,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNWays(int newNWays) {
 		int oldNWays = nWays;
 		nWays = newNWays;
@@ -417,6 +429,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isCoherency() {
 		return coherency;
 	}
@@ -426,6 +439,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCoherency(boolean newCoherency) {
 		boolean oldCoherency = coherency;
 		coherency = newCoherency;
@@ -438,6 +452,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isExclusive() {
 		return exclusive;
 	}
@@ -447,6 +462,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExclusive(boolean newExclusive) {
 		boolean oldExclusive = exclusive;
 		exclusive = newExclusive;
@@ -459,6 +475,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getHitRate() {
 		return hitRate;
 	}
@@ -468,6 +485,7 @@ public class CacheDefinitionImpl extends HwDefinitionImpl implements CacheDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHitRate(double newHitRate) {
 		double oldHitRate = hitRate;
 		hitRate = newHitRate;

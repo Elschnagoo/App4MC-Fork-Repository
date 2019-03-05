@@ -108,6 +108,7 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAlpha() {
 		return alpha;
 	}
@@ -117,6 +118,7 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAlpha(double newAlpha) {
 		double oldAlpha = alpha;
 		alpha = newAlpha;
@@ -129,6 +131,7 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getBeta() {
 		return beta;
 	}
@@ -138,6 +141,7 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBeta(double newBeta) {
 		double oldBeta = beta;
 		beta = newBeta;
@@ -150,6 +154,7 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		double _xblockexpression = (double) 0;
 		{

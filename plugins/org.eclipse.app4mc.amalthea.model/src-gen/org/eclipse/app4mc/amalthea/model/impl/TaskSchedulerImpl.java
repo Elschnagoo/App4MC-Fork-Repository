@@ -103,6 +103,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskSchedulingAlgorithm getSchedulingAlgorithm() {
 		return schedulingAlgorithm;
 	}
@@ -127,6 +128,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSchedulingAlgorithm(TaskSchedulingAlgorithm newSchedulingAlgorithm) {
 		if (newSchedulingAlgorithm != schedulingAlgorithm) {
 			NotificationChain msgs = null;
@@ -146,6 +148,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulerAssociation getParentAssociation() {
 		return parentAssociation;
 	}
@@ -170,6 +173,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAssociation(SchedulerAssociation newParentAssociation) {
 		if (newParentAssociation != parentAssociation) {
 			NotificationChain msgs = null;
@@ -189,6 +193,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SchedulerAssociation> getChildAssociations() {
 		EReference _schedulerAssociation_Parent = AmaltheaPackage.eINSTANCE.getSchedulerAssociation_Parent();
 		return AmaltheaIndex.<SchedulerAssociation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskScheduler_ChildAssociations(), 
@@ -200,6 +205,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskAllocation> getTaskAllocations() {
 		EReference _taskAllocation_Scheduler = AmaltheaPackage.eINSTANCE.getTaskAllocation_Scheduler();
 		return AmaltheaIndex.<TaskAllocation>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getTaskScheduler_TaskAllocations(), 
@@ -211,6 +217,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskScheduler getParentScheduler() {
 		TaskScheduler parentScheduler = basicGetParentScheduler();
 		return parentScheduler != null && parentScheduler.eIsProxy() ? (TaskScheduler)eResolveProxy((InternalEObject)parentScheduler) : parentScheduler;
@@ -235,6 +242,7 @@ public class TaskSchedulerImpl extends SchedulerImpl implements TaskScheduler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskScheduler> getChildSchedulers() {
 		final Function1<SchedulerAssociation, TaskScheduler> _function = new Function1<SchedulerAssociation, TaskScheduler>() {
 			public TaskScheduler apply(final SchedulerAssociation it) {

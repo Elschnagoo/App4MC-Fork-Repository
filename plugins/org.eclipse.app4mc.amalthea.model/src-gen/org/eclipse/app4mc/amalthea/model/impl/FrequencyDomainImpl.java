@@ -95,6 +95,7 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Frequency getDefaultValue() {
 		return defaultValue;
 	}
@@ -119,6 +120,7 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultValue(Frequency newDefaultValue) {
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
@@ -138,6 +140,7 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isClockGating() {
 		return clockGating;
 	}
@@ -147,6 +150,7 @@ public class FrequencyDomainImpl extends HwDomainImpl implements FrequencyDomain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClockGating(boolean newClockGating) {
 		boolean oldClockGating = clockGating;
 		clockGating = newClockGating;

@@ -73,6 +73,7 @@ public class StimulusEventImpl extends EntityEventImpl implements StimulusEvent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Stimulus getEntity() {
 		if (entity != null && entity.eIsProxy()) {
 			InternalEObject oldEntity = (InternalEObject)entity;
@@ -99,6 +100,7 @@ public class StimulusEventImpl extends EntityEventImpl implements StimulusEvent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntity(Stimulus newEntity) {
 		Stimulus oldEntity = entity;
 		entity = newEntity;

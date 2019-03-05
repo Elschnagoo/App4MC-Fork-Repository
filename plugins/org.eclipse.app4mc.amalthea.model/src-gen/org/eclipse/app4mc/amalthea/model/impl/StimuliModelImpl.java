@@ -90,6 +90,7 @@ public class StimuliModelImpl extends BaseObjectImpl implements StimuliModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Stimulus> getStimuli() {
 		if (stimuli == null) {
 			stimuli = new EObjectContainmentEList<Stimulus>(Stimulus.class, this, AmaltheaPackage.STIMULI_MODEL__STIMULI);
@@ -102,6 +103,7 @@ public class StimuliModelImpl extends BaseObjectImpl implements StimuliModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Clock> getClocks() {
 		if (clocks == null) {
 			clocks = new EObjectContainmentEList<Clock>(Clock.class, this, AmaltheaPackage.STIMULI_MODEL__CLOCKS);

@@ -73,6 +73,7 @@ public class AbstractElementMappingConstraintImpl extends MemoryMappingConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractMemoryElement getAbstractElement() {
 		if (abstractElement != null && abstractElement.eIsProxy()) {
 			InternalEObject oldAbstractElement = (InternalEObject)abstractElement;
@@ -99,6 +100,7 @@ public class AbstractElementMappingConstraintImpl extends MemoryMappingConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAbstractElement(AbstractMemoryElement newAbstractElement) {
 		AbstractMemoryElement oldAbstractElement = abstractElement;
 		abstractElement = newAbstractElement;

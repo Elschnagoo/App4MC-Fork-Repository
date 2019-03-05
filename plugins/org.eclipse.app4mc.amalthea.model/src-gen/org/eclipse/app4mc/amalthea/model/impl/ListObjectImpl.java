@@ -78,6 +78,7 @@ public class ListObjectImpl extends ValueImpl implements ListObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Value> getValues() {
 		if (values == null) {
 			values = new EObjectContainmentEList<Value>(Value.class, this, AmaltheaPackage.LIST_OBJECT__VALUES);

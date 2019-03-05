@@ -124,6 +124,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -133,6 +134,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -145,6 +147,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isOrdered() {
 		return ordered;
 	}
@@ -154,6 +157,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrdered(boolean newOrdered) {
 		boolean oldOrdered = ordered;
 		ordered = newOrdered;
@@ -166,6 +170,7 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableItem> getItems() {
 		if (items == null) {
 			items = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);

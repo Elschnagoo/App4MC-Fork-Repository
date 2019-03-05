@@ -92,6 +92,7 @@ public class ComponentInstanceImpl extends ReferableBaseObjectImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.COMPONENT_INSTANCE__TAGS);
@@ -104,6 +105,7 @@ public class ComponentInstanceImpl extends ReferableBaseObjectImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Component getType() {
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
@@ -130,6 +132,7 @@ public class ComponentInstanceImpl extends ReferableBaseObjectImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(Component newType) {
 		Component oldType = type;
 		type = newType;

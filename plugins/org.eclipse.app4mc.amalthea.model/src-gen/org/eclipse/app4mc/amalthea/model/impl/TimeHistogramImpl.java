@@ -90,6 +90,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TimeHistogramEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<TimeHistogramEntry>(TimeHistogramEntry.class, this, AmaltheaPackage.TIME_HISTOGRAM__ENTRIES);
@@ -102,6 +103,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLowerBound() {
 		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
 			public Time apply(final TimeHistogramEntry it) {
@@ -116,6 +118,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpperBound() {
 		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
 			public Time apply(final TimeHistogramEntry it) {
@@ -130,6 +133,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		Time _xblockexpression = null;
 		{

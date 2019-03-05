@@ -124,6 +124,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwFeatureType getFeatureType() {
 		return featureType;
 	}
@@ -133,6 +134,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFeatureType(HwFeatureType newFeatureType) {
 		HwFeatureType oldFeatureType = featureType;
 		featureType = newFeatureType == null ? FEATURE_TYPE_EDEFAULT : newFeatureType;
@@ -145,6 +147,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -154,6 +157,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -166,6 +170,7 @@ public class HwFeatureCategoryImpl extends ReferableBaseObjectImpl implements Hw
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwFeature> getFeatures() {
 		if (features == null) {
 			features = new EObjectContainmentWithInverseEList<HwFeature>(HwFeature.class, this, AmaltheaPackage.HW_FEATURE_CATEGORY__FEATURES, AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY);

@@ -79,6 +79,7 @@ public abstract class BaseObjectImpl extends AmaltheaExtendedEObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.BASE_OBJECT__CUSTOM_PROPERTIES);

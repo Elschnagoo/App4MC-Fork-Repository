@@ -81,6 +81,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		return average;
 	}
@@ -90,6 +91,7 @@ public class ContinuousValueStatisticsImpl extends BoundedContinuousValueDistrib
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAverage(double newAverage) {
 		double oldAverage = average;
 		average = newAverage;

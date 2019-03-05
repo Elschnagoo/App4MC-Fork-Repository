@@ -108,6 +108,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getLowerBound() {
 		return lowerBound;
 	}
@@ -117,6 +118,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLowerBound(Double newLowerBound) {
 		Double oldLowerBound = lowerBound;
 		lowerBound = newLowerBound;
@@ -129,6 +131,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getUpperBound() {
 		return upperBound;
 	}
@@ -138,6 +141,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpperBound(Double newUpperBound) {
 		Double oldUpperBound = upperBound;
 		upperBound = newUpperBound;
@@ -150,6 +154,7 @@ public abstract class TruncatedContinuousValueDistributionImpl extends AmaltheaE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

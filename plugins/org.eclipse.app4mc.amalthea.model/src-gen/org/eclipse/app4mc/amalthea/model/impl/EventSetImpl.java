@@ -74,6 +74,7 @@ public class EventSetImpl extends EventImpl implements EventSet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EntityEvent> getEvents() {
 		if (events == null) {
 			events = new EObjectResolvingEList<EntityEvent>(EntityEvent.class, this, AmaltheaPackage.EVENT_SET__EVENTS);

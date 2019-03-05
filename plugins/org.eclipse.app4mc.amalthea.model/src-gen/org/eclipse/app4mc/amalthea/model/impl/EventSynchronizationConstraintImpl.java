@@ -74,6 +74,7 @@ public class EventSynchronizationConstraintImpl extends SynchronizationConstrain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EntityEvent> getEvents() {
 		if (events == null) {
 			events = new EObjectResolvingEList<EntityEvent>(EntityEvent.class, this, AmaltheaPackage.EVENT_SYNCHRONIZATION_CONSTRAINT__EVENTS);

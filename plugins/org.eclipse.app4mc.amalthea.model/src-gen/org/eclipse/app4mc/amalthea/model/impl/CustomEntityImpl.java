@@ -81,6 +81,7 @@ public class CustomEntityImpl extends AbstractMemoryElementImpl implements Custo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTypeName() {
 		return typeName;
 	}
@@ -90,6 +91,7 @@ public class CustomEntityImpl extends AbstractMemoryElementImpl implements Custo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTypeName(String newTypeName) {
 		String oldTypeName = typeName;
 		typeName = newTypeName;

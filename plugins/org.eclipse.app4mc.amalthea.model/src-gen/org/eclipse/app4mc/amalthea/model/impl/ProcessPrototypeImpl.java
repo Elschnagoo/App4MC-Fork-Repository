@@ -173,6 +173,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Preemption getPreemption() {
 		return preemption;
 	}
@@ -182,6 +183,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPreemption(Preemption newPreemption) {
 		Preemption oldPreemption = preemption;
 		preemption = newPreemption == null ? PREEMPTION_EDEFAULT : newPreemption;
@@ -194,6 +196,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getFirstRunnable() {
 		if (firstRunnable != null && firstRunnable.eIsProxy()) {
 			InternalEObject oldFirstRunnable = (InternalEObject)firstRunnable;
@@ -220,6 +223,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFirstRunnable(org.eclipse.app4mc.amalthea.model.Runnable newFirstRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldFirstRunnable = firstRunnable;
 		firstRunnable = newFirstRunnable;
@@ -232,6 +236,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getLastRunnable() {
 		if (lastRunnable != null && lastRunnable.eIsProxy()) {
 			InternalEObject oldLastRunnable = (InternalEObject)lastRunnable;
@@ -258,6 +263,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLastRunnable(org.eclipse.app4mc.amalthea.model.Runnable newLastRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldLastRunnable = lastRunnable;
 		lastRunnable = newLastRunnable;
@@ -270,6 +276,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AccessPrecedenceSpec> getAccessPrecedenceSpec() {
 		if (accessPrecedenceSpec == null) {
 			accessPrecedenceSpec = new EObjectContainmentEList<AccessPrecedenceSpec>(AccessPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ACCESS_PRECEDENCE_SPEC);
@@ -282,6 +289,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<OrderPrecedenceSpec> getOrderPrecedenceSpec() {
 		if (orderPrecedenceSpec == null) {
 			orderPrecedenceSpec = new EObjectContainmentEList<OrderPrecedenceSpec>(OrderPrecedenceSpec.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__ORDER_PRECEDENCE_SPEC);
@@ -294,6 +302,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ChainedProcessPrototype> getChainedPrototypes() {
 		if (chainedPrototypes == null) {
 			chainedPrototypes = new EObjectContainmentEList<ChainedProcessPrototype>(ChainedProcessPrototype.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__CHAINED_PROTOTYPES);
@@ -306,6 +315,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activation getActivation() {
 		if (activation != null && activation.eIsProxy()) {
 			InternalEObject oldActivation = (InternalEObject)activation;
@@ -332,6 +342,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActivation(Activation newActivation) {
 		Activation oldActivation = activation;
 		activation = newActivation;
@@ -344,6 +355,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TaskRunnableCall> getRunnableCalls() {
 		if (runnableCalls == null) {
 			runnableCalls = new EObjectContainmentEList<TaskRunnableCall>(TaskRunnableCall.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS);

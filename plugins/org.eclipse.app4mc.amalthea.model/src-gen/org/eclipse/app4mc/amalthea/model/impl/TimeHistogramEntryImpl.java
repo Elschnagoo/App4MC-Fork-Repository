@@ -81,6 +81,7 @@ public class TimeHistogramEntryImpl extends TimeIntervalImpl implements TimeHist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getOccurrences() {
 		return occurrences;
 	}
@@ -90,6 +91,7 @@ public class TimeHistogramEntryImpl extends TimeIntervalImpl implements TimeHist
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrences(long newOccurrences) {
 		long oldOccurrences = occurrences;
 		occurrences = newOccurrences;

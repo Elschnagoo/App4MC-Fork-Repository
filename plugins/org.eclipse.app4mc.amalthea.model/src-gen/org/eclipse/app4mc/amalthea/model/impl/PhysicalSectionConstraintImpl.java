@@ -91,6 +91,7 @@ public class PhysicalSectionConstraintImpl extends ReferableBaseObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Section getSection() {
 		if (section != null && section.eIsProxy()) {
 			InternalEObject oldSection = (InternalEObject)section;
@@ -117,6 +118,7 @@ public class PhysicalSectionConstraintImpl extends ReferableBaseObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSection(Section newSection) {
 		Section oldSection = section;
 		section = newSection;
@@ -129,6 +131,7 @@ public class PhysicalSectionConstraintImpl extends ReferableBaseObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Memory> getMemories() {
 		if (memories == null) {
 			memories = new EObjectResolvingEList<Memory>(Memory.class, this, AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT__MEMORIES);

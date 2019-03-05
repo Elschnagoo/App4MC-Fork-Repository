@@ -94,6 +94,7 @@ public class RunnableEntityGroupImpl extends RunnableGroupImpl implements Runnab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.RUNNABLE_ENTITY_GROUP__CUSTOM_PROPERTIES);
@@ -106,6 +107,7 @@ public class RunnableEntityGroupImpl extends RunnableGroupImpl implements Runnab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Runnable> getRunnables() {
 		if (runnables == null) {
 			runnables = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Runnable>(org.eclipse.app4mc.amalthea.model.Runnable.class, this, AmaltheaPackage.RUNNABLE_ENTITY_GROUP__RUNNABLES);

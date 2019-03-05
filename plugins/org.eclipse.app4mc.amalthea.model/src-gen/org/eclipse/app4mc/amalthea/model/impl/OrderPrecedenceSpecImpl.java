@@ -82,6 +82,7 @@ public class OrderPrecedenceSpecImpl extends GeneralPrecedenceImpl implements Or
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OrderType getOrderType() {
 		return orderType;
 	}
@@ -91,6 +92,7 @@ public class OrderPrecedenceSpecImpl extends GeneralPrecedenceImpl implements Or
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrderType(OrderType newOrderType) {
 		OrderType oldOrderType = orderType;
 		orderType = newOrderType == null ? ORDER_TYPE_EDEFAULT : newOrderType;

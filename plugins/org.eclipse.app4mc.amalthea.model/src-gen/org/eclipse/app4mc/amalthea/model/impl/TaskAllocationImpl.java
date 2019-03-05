@@ -131,6 +131,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Task getTask() {
 		if (task != null && task.eIsProxy()) {
 			InternalEObject oldTask = (InternalEObject)task;
@@ -157,6 +158,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTask(Task newTask) {
 		Task oldTask = task;
 		task = newTask;
@@ -169,6 +171,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskScheduler getScheduler() {
 		if (scheduler != null && scheduler.eIsProxy()) {
 			InternalEObject oldScheduler = (InternalEObject)scheduler;
@@ -195,6 +198,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScheduler(TaskScheduler newScheduler) {
 		TaskScheduler oldScheduler = scheduler;
 		scheduler = newScheduler;
@@ -207,6 +211,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProcessingUnit> getAffinity() {
 		if (affinity == null) {
 			affinity = new EObjectResolvingEList<ProcessingUnit>(ProcessingUnit.class, this, AmaltheaPackage.TASK_ALLOCATION__AFFINITY);
@@ -219,6 +224,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulingParameters getSchedulingParameters() {
 		return schedulingParameters;
 	}
@@ -243,6 +249,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSchedulingParameters(SchedulingParameters newSchedulingParameters) {
 		if (newSchedulingParameters != schedulingParameters) {
 			NotificationChain msgs = null;
@@ -262,6 +269,7 @@ public class TaskAllocationImpl extends BaseObjectImpl implements TaskAllocation
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, String> getParameterExtensions() {
 		if (parameterExtensions == null) {
 			parameterExtensions = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getParameterExtension(), ParameterExtensionImpl.class, this, AmaltheaPackage.TASK_ALLOCATION__PARAMETER_EXTENSIONS);

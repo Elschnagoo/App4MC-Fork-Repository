@@ -80,6 +80,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Counter getCounter() {
 		return counter;
 	}
@@ -104,6 +105,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCounter(Counter newCounter) {
 		if (newCounter != counter) {
 			NotificationChain msgs = null;
@@ -123,6 +125,7 @@ public class InterProcessStimulusImpl extends StimulusImpl implements InterProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<InterProcessTrigger> getExplicitTriggers() {
 		EReference _interProcessTrigger_Stimulus = AmaltheaPackage.eINSTANCE.getInterProcessTrigger_Stimulus();
 		return AmaltheaIndex.<InterProcessTrigger>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getInterProcessStimulus_ExplicitTriggers(), 

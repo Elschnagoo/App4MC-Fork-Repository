@@ -96,6 +96,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeMetric getMetric() {
 		return metric;
 	}
@@ -105,6 +106,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMetric(TimeMetric newMetric) {
 		TimeMetric oldMetric = metric;
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
@@ -117,6 +119,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLimitValue() {
 		return limitValue;
 	}
@@ -141,6 +144,7 @@ public class TimeRequirementLimitImpl extends RequirementLimitImpl implements Ti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitValue(Time newLimitValue) {
 		if (newLimitValue != limitValue) {
 			NotificationChain msgs = null;

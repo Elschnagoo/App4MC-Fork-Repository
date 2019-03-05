@@ -74,6 +74,7 @@ public class MemoryClassificationImpl extends ClassificationImpl implements Memo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryClassifier> getClassifiers() {
 		if (classifiers == null) {
 			classifiers = new EObjectResolvingEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.MEMORY_CLASSIFICATION__CLASSIFIERS);

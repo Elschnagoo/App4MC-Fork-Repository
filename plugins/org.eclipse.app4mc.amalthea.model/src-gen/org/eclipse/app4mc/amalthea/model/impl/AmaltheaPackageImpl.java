@@ -3502,6 +3502,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		EValidator.Registry.INSTANCE.put
 			(theAmaltheaPackage,
 			 new EValidator.Descriptor() {
+				 @Override
 				 public EValidator getEValidator() {
 					 return AmaltheaValidator.INSTANCE;
 				 }
@@ -3520,6 +3521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAmalthea() {
 		return amaltheaEClass;
 	}
@@ -3529,6 +3531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAmalthea_Version() {
 		return (EAttribute)amaltheaEClass.getEStructuralFeatures().get(0);
 	}
@@ -3538,6 +3541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_CommonElements() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(1);
 	}
@@ -3547,6 +3551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_SwModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(2);
 	}
@@ -3556,6 +3561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_HwModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(3);
 	}
@@ -3565,6 +3571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_OsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(4);
 	}
@@ -3574,6 +3581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_StimuliModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(5);
 	}
@@ -3583,6 +3591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_EventModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(6);
 	}
@@ -3592,6 +3601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_ConstraintsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(7);
 	}
@@ -3601,6 +3611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_PropertyConstraintsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(8);
 	}
@@ -3610,6 +3621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_MappingModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(9);
 	}
@@ -3619,6 +3631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_ComponentsModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(10);
 	}
@@ -3628,6 +3641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_ConfigModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(11);
 	}
@@ -3637,6 +3651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAmalthea_MeasurementModel() {
 		return (EReference)amaltheaEClass.getEStructuralFeatures().get(12);
 	}
@@ -3646,6 +3661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCommonElements() {
 		return commonElementsEClass;
 	}
@@ -3655,6 +3671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommonElements_Tags() {
 		return (EReference)commonElementsEClass.getEStructuralFeatures().get(0);
 	}
@@ -3664,6 +3681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommonElements_CoreClassifiers() {
 		return (EReference)commonElementsEClass.getEStructuralFeatures().get(1);
 	}
@@ -3673,6 +3691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCommonElements_MemoryClassifiers() {
 		return (EReference)commonElementsEClass.getEStructuralFeatures().get(2);
 	}
@@ -3682,6 +3701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBaseObject() {
 		return baseObjectEClass;
 	}
@@ -3691,6 +3711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReferableObject() {
 		return referableObjectEClass;
 	}
@@ -3700,6 +3721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReferableBaseObject() {
 		return referableBaseObjectEClass;
 	}
@@ -3709,6 +3731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIAnnotatable() {
 		return iAnnotatableEClass;
 	}
@@ -3718,6 +3741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIAnnotatable_CustomProperties() {
 		return (EReference)iAnnotatableEClass.getEStructuralFeatures().get(0);
 	}
@@ -3727,6 +3751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getITaggable() {
 		return iTaggableEClass;
 	}
@@ -3736,6 +3761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getITaggable_Tags() {
 		return (EReference)iTaggableEClass.getEStructuralFeatures().get(0);
 	}
@@ -3745,6 +3771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getINamed() {
 		return iNamedEClass;
 	}
@@ -3754,6 +3781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getINamed_Name() {
 		return (EAttribute)iNamedEClass.getEStructuralFeatures().get(0);
 	}
@@ -3763,6 +3791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIReferable() {
 		return iReferableEClass;
 	}
@@ -3772,6 +3801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIReferable_UniqueName() {
 		return (EAttribute)iReferableEClass.getEStructuralFeatures().get(0);
 	}
@@ -3781,6 +3811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIReferable__ComputeUniqueName() {
 		return iReferableEClass.getEOperations().get(0);
 	}
@@ -3790,6 +3821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIReferable__BasicComputeUniqueName() {
 		return iReferableEClass.getEOperations().get(1);
 	}
@@ -3799,6 +3831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIReferable__BasicComputeUniqueNameWithPrefix__String() {
 		return iReferableEClass.getEOperations().get(2);
 	}
@@ -3808,6 +3841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIReferable__Encode__String() {
 		return iReferableEClass.getEOperations().get(3);
 	}
@@ -3817,6 +3851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIDisplayName() {
 		return iDisplayNameEClass;
 	}
@@ -3826,6 +3861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIDisplayName_DisplayName() {
 		return (EAttribute)iDisplayNameEClass.getEStructuralFeatures().get(0);
 	}
@@ -3835,6 +3871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTag() {
 		return tagEClass;
 	}
@@ -3844,6 +3881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTag_TagType() {
 		return (EAttribute)tagEClass.getEStructuralFeatures().get(0);
 	}
@@ -3853,6 +3891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTag_TaggedObjects() {
 		return (EReference)tagEClass.getEStructuralFeatures().get(1);
 	}
@@ -3862,6 +3901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClassifier() {
 		return classifierEClass;
 	}
@@ -3871,6 +3911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClassifier_Description() {
 		return (EAttribute)classifierEClass.getEStructuralFeatures().get(0);
 	}
@@ -3880,6 +3921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCoreClassifier() {
 		return coreClassifierEClass;
 	}
@@ -3889,6 +3931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemoryClassifier() {
 		return memoryClassifierEClass;
 	}
@@ -3898,6 +3941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTransmissionPolicy() {
 		return transmissionPolicyEClass;
 	}
@@ -3907,6 +3951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTransmissionPolicy_ChunkSize() {
 		return (EReference)transmissionPolicyEClass.getEStructuralFeatures().get(0);
 	}
@@ -3916,6 +3961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTransmissionPolicy_ChunkProcessingTicks() {
 		return (EAttribute)transmissionPolicyEClass.getEStructuralFeatures().get(1);
 	}
@@ -3925,6 +3971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTransmissionPolicy_TransmitRatio() {
 		return (EAttribute)transmissionPolicyEClass.getEStructuralFeatures().get(2);
 	}
@@ -3934,6 +3981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getQuantity() {
 		return quantityEClass;
 	}
@@ -3943,6 +3991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeComparable() {
 		return timeComparableEClass;
 	}
@@ -3952,6 +4001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTime() {
 		return timeEClass;
 	}
@@ -3961,6 +4011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTime_Value() {
 		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
 	}
@@ -3970,6 +4021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTime_Unit() {
 		return (EAttribute)timeEClass.getEStructuralFeatures().get(1);
 	}
@@ -3979,6 +4031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__ToString() {
 		return timeEClass.getEOperations().get(0);
 	}
@@ -3988,6 +4041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__CompareTo__Time() {
 		return timeEClass.getEOperations().get(1);
 	}
@@ -3997,6 +4051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__AdjustUnit() {
 		return timeEClass.getEOperations().get(2);
 	}
@@ -4006,6 +4061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__Add__Time() {
 		return timeEClass.getEOperations().get(3);
 	}
@@ -4015,6 +4071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__Subtract__Time() {
 		return timeEClass.getEOperations().get(4);
 	}
@@ -4024,6 +4081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__Multiply__long() {
 		return timeEClass.getEOperations().get(5);
 	}
@@ -4033,6 +4091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__Multiply__double() {
 		return timeEClass.getEOperations().get(6);
 	}
@@ -4042,6 +4101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTime__Divide__Time() {
 		return timeEClass.getEOperations().get(7);
 	}
@@ -4051,6 +4111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFrequency() {
 		return frequencyEClass;
 	}
@@ -4060,6 +4121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFrequency_Value() {
 		return (EAttribute)frequencyEClass.getEStructuralFeatures().get(0);
 	}
@@ -4069,6 +4131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFrequency_Unit() {
 		return (EAttribute)frequencyEClass.getEStructuralFeatures().get(1);
 	}
@@ -4078,6 +4141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getFrequency__ToString() {
 		return frequencyEClass.getEOperations().get(0);
 	}
@@ -4087,6 +4151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVoltage() {
 		return voltageEClass;
 	}
@@ -4096,6 +4161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVoltage_Value() {
 		return (EAttribute)voltageEClass.getEStructuralFeatures().get(0);
 	}
@@ -4105,6 +4171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVoltage_Unit() {
 		return (EAttribute)voltageEClass.getEStructuralFeatures().get(1);
 	}
@@ -4114,6 +4181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getVoltage__ToString() {
 		return voltageEClass.getEOperations().get(0);
 	}
@@ -4123,6 +4191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataSize() {
 		return dataSizeEClass;
 	}
@@ -4132,6 +4201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataSize_Value() {
 		return (EAttribute)dataSizeEClass.getEStructuralFeatures().get(0);
 	}
@@ -4141,6 +4211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataSize_Unit() {
 		return (EAttribute)dataSizeEClass.getEStructuralFeatures().get(1);
 	}
@@ -4150,6 +4221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDataSize__ToString() {
 		return dataSizeEClass.getEOperations().get(0);
 	}
@@ -4159,6 +4231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDataSize__GetNumberBits() {
 		return dataSizeEClass.getEOperations().get(1);
 	}
@@ -4168,6 +4241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDataSize__GetNumberBytes() {
 		return dataSizeEClass.getEOperations().get(2);
 	}
@@ -4177,6 +4251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataRateComparable() {
 		return dataRateComparableEClass;
 	}
@@ -4186,6 +4261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataRate() {
 		return dataRateEClass;
 	}
@@ -4195,6 +4271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataRate_Value() {
 		return (EAttribute)dataRateEClass.getEStructuralFeatures().get(0);
 	}
@@ -4204,6 +4281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataRate_Unit() {
 		return (EAttribute)dataRateEClass.getEStructuralFeatures().get(1);
 	}
@@ -4213,6 +4291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDataRate__ToString() {
 		return dataRateEClass.getEOperations().get(0);
 	}
@@ -4222,6 +4301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDataRate__CompareTo__DataRate() {
 		return dataRateEClass.getEOperations().get(1);
 	}
@@ -4231,6 +4311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomProperty() {
 		return customPropertyEClass;
 	}
@@ -4240,6 +4321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCustomProperty_Key() {
 		return (EAttribute)customPropertyEClass.getEStructuralFeatures().get(0);
 	}
@@ -4249,6 +4331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCustomProperty_Value() {
 		return (EReference)customPropertyEClass.getEStructuralFeatures().get(1);
 	}
@@ -4258,6 +4341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getValue() {
 		return valueEClass;
 	}
@@ -4267,6 +4351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getListObject() {
 		return listObjectEClass;
 	}
@@ -4276,6 +4361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getListObject_Values() {
 		return (EReference)listObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4285,6 +4371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStringObject() {
 		return stringObjectEClass;
 	}
@@ -4294,6 +4381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getStringObject_Value() {
 		return (EAttribute)stringObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4303,6 +4391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBigIntegerObject() {
 		return bigIntegerObjectEClass;
 	}
@@ -4312,6 +4401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBigIntegerObject_Value() {
 		return (EAttribute)bigIntegerObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4321,6 +4411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReferenceObject() {
 		return referenceObjectEClass;
 	}
@@ -4330,6 +4421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReferenceObject_Value() {
 		return (EReference)referenceObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4339,6 +4431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIntegerObject() {
 		return integerObjectEClass;
 	}
@@ -4348,6 +4441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIntegerObject_Value() {
 		return (EAttribute)integerObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4357,6 +4451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLongObject() {
 		return longObjectEClass;
 	}
@@ -4366,6 +4461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLongObject_Value() {
 		return (EAttribute)longObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4375,6 +4471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFloatObject() {
 		return floatObjectEClass;
 	}
@@ -4384,6 +4481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFloatObject_Value() {
 		return (EAttribute)floatObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4393,6 +4491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDoubleObject() {
 		return doubleObjectEClass;
 	}
@@ -4402,6 +4501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDoubleObject_Value() {
 		return (EAttribute)doubleObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4411,6 +4511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanObject() {
 		return booleanObjectEClass;
 	}
@@ -4420,6 +4521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBooleanObject_Value() {
 		return (EAttribute)booleanObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -4429,6 +4531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNumericStatistic() {
 		return numericStatisticEClass;
 	}
@@ -4438,6 +4541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMinAvgMaxStatistic() {
 		return minAvgMaxStatisticEClass;
 	}
@@ -4447,6 +4551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMinAvgMaxStatistic_Min() {
 		return (EAttribute)minAvgMaxStatisticEClass.getEStructuralFeatures().get(0);
 	}
@@ -4456,6 +4561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMinAvgMaxStatistic_Avg() {
 		return (EAttribute)minAvgMaxStatisticEClass.getEStructuralFeatures().get(1);
 	}
@@ -4465,6 +4571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMinAvgMaxStatistic_Max() {
 		return (EAttribute)minAvgMaxStatisticEClass.getEStructuralFeatures().get(2);
 	}
@@ -4474,6 +4581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSingleValueStatistic() {
 		return singleValueStatisticEClass;
 	}
@@ -4483,6 +4591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSingleValueStatistic_Value() {
 		return (EAttribute)singleValueStatisticEClass.getEStructuralFeatures().get(0);
 	}
@@ -4492,6 +4601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getITimeDeviation() {
 		return iTimeDeviationEClass;
 	}
@@ -4501,6 +4611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getITimeDeviation__GetLowerBound() {
 		return iTimeDeviationEClass.getEOperations().get(0);
 	}
@@ -4510,6 +4621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getITimeDeviation__GetUpperBound() {
 		return iTimeDeviationEClass.getEOperations().get(1);
 	}
@@ -4519,6 +4631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getITimeDeviation__GetAverage() {
 		return iTimeDeviationEClass.getEOperations().get(2);
 	}
@@ -4528,6 +4641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeInterval() {
 		return timeIntervalEClass;
 	}
@@ -4537,6 +4651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeInterval_LowerBound() {
 		return (EReference)timeIntervalEClass.getEStructuralFeatures().get(0);
 	}
@@ -4546,6 +4661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeInterval_UpperBound() {
 		return (EReference)timeIntervalEClass.getEStructuralFeatures().get(1);
 	}
@@ -4555,6 +4671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeInterval__GetAverage() {
 		return timeIntervalEClass.getEOperations().get(0);
 	}
@@ -4564,6 +4681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeConstant() {
 		return timeConstantEClass;
 	}
@@ -4573,6 +4691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeConstant_Value() {
 		return (EReference)timeConstantEClass.getEStructuralFeatures().get(0);
 	}
@@ -4582,6 +4701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeConstant__GetLowerBound() {
 		return timeConstantEClass.getEOperations().get(0);
 	}
@@ -4591,6 +4711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeConstant__GetUpperBound() {
 		return timeConstantEClass.getEOperations().get(1);
 	}
@@ -4600,6 +4721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeConstant__GetAverage() {
 		return timeConstantEClass.getEOperations().get(2);
 	}
@@ -4609,6 +4731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeHistogram() {
 		return timeHistogramEClass;
 	}
@@ -4618,6 +4741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeHistogram_Entries() {
 		return (EReference)timeHistogramEClass.getEStructuralFeatures().get(0);
 	}
@@ -4627,6 +4751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeHistogram__GetLowerBound() {
 		return timeHistogramEClass.getEOperations().get(0);
 	}
@@ -4636,6 +4761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeHistogram__GetUpperBound() {
 		return timeHistogramEClass.getEOperations().get(1);
 	}
@@ -4645,6 +4771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeHistogram__GetAverage() {
 		return timeHistogramEClass.getEOperations().get(2);
 	}
@@ -4654,6 +4781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeHistogramEntry() {
 		return timeHistogramEntryEClass;
 	}
@@ -4663,6 +4791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeHistogramEntry_Occurrences() {
 		return (EAttribute)timeHistogramEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -4672,6 +4801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBoundedTimeDistribution() {
 		return boundedTimeDistributionEClass;
 	}
@@ -4681,6 +4811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTruncatedTimeDistribution() {
 		return truncatedTimeDistributionEClass;
 	}
@@ -4690,6 +4821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTruncatedTimeDistribution_LowerBound() {
 		return (EReference)truncatedTimeDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -4699,6 +4831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTruncatedTimeDistribution_UpperBound() {
 		return (EReference)truncatedTimeDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -4708,6 +4841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeBoundaries() {
 		return timeBoundariesEClass;
 	}
@@ -4717,6 +4851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeBoundaries_SamplingType() {
 		return (EAttribute)timeBoundariesEClass.getEStructuralFeatures().get(0);
 	}
@@ -4726,6 +4861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeStatistics() {
 		return timeStatisticsEClass;
 	}
@@ -4735,6 +4871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeStatistics_Average() {
 		return (EReference)timeStatisticsEClass.getEStructuralFeatures().get(0);
 	}
@@ -4744,6 +4881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeUniformDistribution() {
 		return timeUniformDistributionEClass;
 	}
@@ -4753,6 +4891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeGaussDistribution() {
 		return timeGaussDistributionEClass;
 	}
@@ -4762,6 +4901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeGaussDistribution_Mean() {
 		return (EReference)timeGaussDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -4771,6 +4911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeGaussDistribution_Sd() {
 		return (EReference)timeGaussDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -4780,6 +4921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeGaussDistribution__GetAverage() {
 		return timeGaussDistributionEClass.getEOperations().get(0);
 	}
@@ -4789,6 +4931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeWeibullEstimatorsDistribution() {
 		return timeWeibullEstimatorsDistributionEClass;
 	}
@@ -4798,6 +4941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeWeibullEstimatorsDistribution_Average() {
 		return (EReference)timeWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -4807,6 +4951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeWeibullEstimatorsDistribution_PRemainPromille() {
 		return (EAttribute)timeWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -4816,6 +4961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeBetaDistribution() {
 		return timeBetaDistributionEClass;
 	}
@@ -4825,6 +4971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeBetaDistribution_Alpha() {
 		return (EAttribute)timeBetaDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -4834,6 +4981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeBetaDistribution_Beta() {
 		return (EAttribute)timeBetaDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -4843,6 +4991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTimeBetaDistribution__GetAverage() {
 		return timeBetaDistributionEClass.getEOperations().get(0);
 	}
@@ -4852,6 +5001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIDiscreteValueDeviation() {
 		return iDiscreteValueDeviationEClass;
 	}
@@ -4861,6 +5011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIDiscreteValueDeviation__GetLowerBound() {
 		return iDiscreteValueDeviationEClass.getEOperations().get(0);
 	}
@@ -4870,6 +5021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIDiscreteValueDeviation__GetUpperBound() {
 		return iDiscreteValueDeviationEClass.getEOperations().get(1);
 	}
@@ -4879,6 +5031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIDiscreteValueDeviation__GetAverage() {
 		return iDiscreteValueDeviationEClass.getEOperations().get(2);
 	}
@@ -4888,6 +5041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueInterval() {
 		return discreteValueIntervalEClass;
 	}
@@ -4897,6 +5051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueInterval_LowerBound() {
 		return (EAttribute)discreteValueIntervalEClass.getEStructuralFeatures().get(0);
 	}
@@ -4906,6 +5061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueInterval_UpperBound() {
 		return (EAttribute)discreteValueIntervalEClass.getEStructuralFeatures().get(1);
 	}
@@ -4915,6 +5071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueInterval__GetAverage() {
 		return discreteValueIntervalEClass.getEOperations().get(0);
 	}
@@ -4924,6 +5081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueConstant() {
 		return discreteValueConstantEClass;
 	}
@@ -4933,6 +5091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueConstant_Value() {
 		return (EAttribute)discreteValueConstantEClass.getEStructuralFeatures().get(0);
 	}
@@ -4942,6 +5101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueConstant__GetLowerBound() {
 		return discreteValueConstantEClass.getEOperations().get(0);
 	}
@@ -4951,6 +5111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueConstant__GetUpperBound() {
 		return discreteValueConstantEClass.getEOperations().get(1);
 	}
@@ -4960,6 +5121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueConstant__GetAverage() {
 		return discreteValueConstantEClass.getEOperations().get(2);
 	}
@@ -4969,6 +5131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueHistogram() {
 		return discreteValueHistogramEClass;
 	}
@@ -4978,6 +5141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDiscreteValueHistogram_Entries() {
 		return (EReference)discreteValueHistogramEClass.getEStructuralFeatures().get(0);
 	}
@@ -4987,6 +5151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueHistogram__GetLowerBound() {
 		return discreteValueHistogramEClass.getEOperations().get(0);
 	}
@@ -4996,6 +5161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueHistogram__GetUpperBound() {
 		return discreteValueHistogramEClass.getEOperations().get(1);
 	}
@@ -5005,6 +5171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueHistogram__GetAverage() {
 		return discreteValueHistogramEClass.getEOperations().get(2);
 	}
@@ -5014,6 +5181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueHistogramEntry() {
 		return discreteValueHistogramEntryEClass;
 	}
@@ -5023,6 +5191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueHistogramEntry_Occurrences() {
 		return (EAttribute)discreteValueHistogramEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -5032,6 +5201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBoundedDiscreteValueDistribution() {
 		return boundedDiscreteValueDistributionEClass;
 	}
@@ -5041,6 +5211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTruncatedDiscreteValueDistribution() {
 		return truncatedDiscreteValueDistributionEClass;
 	}
@@ -5050,6 +5221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTruncatedDiscreteValueDistribution_LowerBound() {
 		return (EAttribute)truncatedDiscreteValueDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5059,6 +5231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTruncatedDiscreteValueDistribution_UpperBound() {
 		return (EAttribute)truncatedDiscreteValueDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5068,6 +5241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueBoundaries() {
 		return discreteValueBoundariesEClass;
 	}
@@ -5077,6 +5251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueBoundaries_SamplingType() {
 		return (EAttribute)discreteValueBoundariesEClass.getEStructuralFeatures().get(0);
 	}
@@ -5086,6 +5261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueStatistics() {
 		return discreteValueStatisticsEClass;
 	}
@@ -5095,6 +5271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueStatistics_Average() {
 		return (EAttribute)discreteValueStatisticsEClass.getEStructuralFeatures().get(0);
 	}
@@ -5104,6 +5281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueUniformDistribution() {
 		return discreteValueUniformDistributionEClass;
 	}
@@ -5113,6 +5291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueGaussDistribution() {
 		return discreteValueGaussDistributionEClass;
 	}
@@ -5122,6 +5301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueGaussDistribution_Mean() {
 		return (EAttribute)discreteValueGaussDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5131,6 +5311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueGaussDistribution_Sd() {
 		return (EAttribute)discreteValueGaussDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5140,6 +5321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueGaussDistribution__GetAverage() {
 		return discreteValueGaussDistributionEClass.getEOperations().get(0);
 	}
@@ -5149,6 +5331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueWeibullEstimatorsDistribution() {
 		return discreteValueWeibullEstimatorsDistributionEClass;
 	}
@@ -5158,6 +5341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueWeibullEstimatorsDistribution_Average() {
 		return (EAttribute)discreteValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5167,6 +5351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueWeibullEstimatorsDistribution_PRemainPromille() {
 		return (EAttribute)discreteValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5176,6 +5361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDiscreteValueBetaDistribution() {
 		return discreteValueBetaDistributionEClass;
 	}
@@ -5185,6 +5371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueBetaDistribution_Alpha() {
 		return (EAttribute)discreteValueBetaDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5194,6 +5381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDiscreteValueBetaDistribution_Beta() {
 		return (EAttribute)discreteValueBetaDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5203,6 +5391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getDiscreteValueBetaDistribution__GetAverage() {
 		return discreteValueBetaDistributionEClass.getEOperations().get(0);
 	}
@@ -5212,6 +5401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIContinuousValueDeviation() {
 		return iContinuousValueDeviationEClass;
 	}
@@ -5221,6 +5411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIContinuousValueDeviation__GetLowerBound() {
 		return iContinuousValueDeviationEClass.getEOperations().get(0);
 	}
@@ -5230,6 +5421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIContinuousValueDeviation__GetUpperBound() {
 		return iContinuousValueDeviationEClass.getEOperations().get(1);
 	}
@@ -5239,6 +5431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIContinuousValueDeviation__GetAverage() {
 		return iContinuousValueDeviationEClass.getEOperations().get(2);
 	}
@@ -5248,6 +5441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueInterval() {
 		return continuousValueIntervalEClass;
 	}
@@ -5257,6 +5451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueInterval_LowerBound() {
 		return (EAttribute)continuousValueIntervalEClass.getEStructuralFeatures().get(0);
 	}
@@ -5266,6 +5461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueInterval_UpperBound() {
 		return (EAttribute)continuousValueIntervalEClass.getEStructuralFeatures().get(1);
 	}
@@ -5275,6 +5471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueInterval__GetAverage() {
 		return continuousValueIntervalEClass.getEOperations().get(0);
 	}
@@ -5284,6 +5481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueConstant() {
 		return continuousValueConstantEClass;
 	}
@@ -5293,6 +5491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueConstant_Value() {
 		return (EAttribute)continuousValueConstantEClass.getEStructuralFeatures().get(0);
 	}
@@ -5302,6 +5501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueConstant__GetLowerBound() {
 		return continuousValueConstantEClass.getEOperations().get(0);
 	}
@@ -5311,6 +5511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueConstant__GetUpperBound() {
 		return continuousValueConstantEClass.getEOperations().get(1);
 	}
@@ -5320,6 +5521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueConstant__GetAverage() {
 		return continuousValueConstantEClass.getEOperations().get(2);
 	}
@@ -5329,6 +5531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueHistogram() {
 		return continuousValueHistogramEClass;
 	}
@@ -5338,6 +5541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getContinuousValueHistogram_Entries() {
 		return (EReference)continuousValueHistogramEClass.getEStructuralFeatures().get(0);
 	}
@@ -5347,6 +5551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueHistogram__GetLowerBound() {
 		return continuousValueHistogramEClass.getEOperations().get(0);
 	}
@@ -5356,6 +5561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueHistogram__GetUpperBound() {
 		return continuousValueHistogramEClass.getEOperations().get(1);
 	}
@@ -5365,6 +5571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueHistogram__GetAverage() {
 		return continuousValueHistogramEClass.getEOperations().get(2);
 	}
@@ -5374,6 +5581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueHistogramEntry() {
 		return continuousValueHistogramEntryEClass;
 	}
@@ -5383,6 +5591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueHistogramEntry_Occurrences() {
 		return (EAttribute)continuousValueHistogramEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -5392,6 +5601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBoundedContinuousValueDistribution() {
 		return boundedContinuousValueDistributionEClass;
 	}
@@ -5401,6 +5611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTruncatedContinuousValueDistribution() {
 		return truncatedContinuousValueDistributionEClass;
 	}
@@ -5410,6 +5621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTruncatedContinuousValueDistribution_LowerBound() {
 		return (EAttribute)truncatedContinuousValueDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5419,6 +5631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTruncatedContinuousValueDistribution_UpperBound() {
 		return (EAttribute)truncatedContinuousValueDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5428,6 +5641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueBoundaries() {
 		return continuousValueBoundariesEClass;
 	}
@@ -5437,6 +5651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueBoundaries_SamplingType() {
 		return (EAttribute)continuousValueBoundariesEClass.getEStructuralFeatures().get(0);
 	}
@@ -5446,6 +5661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueStatistics() {
 		return continuousValueStatisticsEClass;
 	}
@@ -5455,6 +5671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueStatistics_Average() {
 		return (EAttribute)continuousValueStatisticsEClass.getEStructuralFeatures().get(0);
 	}
@@ -5464,6 +5681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueUniformDistribution() {
 		return continuousValueUniformDistributionEClass;
 	}
@@ -5473,6 +5691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueGaussDistribution() {
 		return continuousValueGaussDistributionEClass;
 	}
@@ -5482,6 +5701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueGaussDistribution_Mean() {
 		return (EAttribute)continuousValueGaussDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5491,6 +5711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueGaussDistribution_Sd() {
 		return (EAttribute)continuousValueGaussDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5500,6 +5721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueGaussDistribution__GetAverage() {
 		return continuousValueGaussDistributionEClass.getEOperations().get(0);
 	}
@@ -5509,6 +5731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueWeibullEstimatorsDistribution() {
 		return continuousValueWeibullEstimatorsDistributionEClass;
 	}
@@ -5518,6 +5741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueWeibullEstimatorsDistribution_Average() {
 		return (EAttribute)continuousValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5527,6 +5751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueWeibullEstimatorsDistribution_PRemainPromille() {
 		return (EAttribute)continuousValueWeibullEstimatorsDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5536,6 +5761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getContinuousValueBetaDistribution() {
 		return continuousValueBetaDistributionEClass;
 	}
@@ -5545,6 +5771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueBetaDistribution_Alpha() {
 		return (EAttribute)continuousValueBetaDistributionEClass.getEStructuralFeatures().get(0);
 	}
@@ -5554,6 +5781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getContinuousValueBetaDistribution_Beta() {
 		return (EAttribute)continuousValueBetaDistributionEClass.getEStructuralFeatures().get(1);
 	}
@@ -5563,6 +5791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getContinuousValueBetaDistribution__GetAverage() {
 		return continuousValueBetaDistributionEClass.getEOperations().get(0);
 	}
@@ -5572,6 +5801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMode() {
 		return modeEClass;
 	}
@@ -5581,6 +5811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMode_Literals() {
 		return (EReference)modeEClass.getEStructuralFeatures().get(0);
 	}
@@ -5590,6 +5821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeLiteral() {
 		return modeLiteralEClass;
 	}
@@ -5599,6 +5831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeLiteral_ContainingMode() {
 		return (EReference)modeLiteralEClass.getEStructuralFeatures().get(0);
 	}
@@ -5608,6 +5841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeLiteral__ComputeUniqueName() {
 		return modeLiteralEClass.getEOperations().get(0);
 	}
@@ -5617,6 +5851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeLiteral__ToString() {
 		return modeLiteralEClass.getEOperations().get(1);
 	}
@@ -5626,6 +5861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComponentsModel() {
 		return componentsModelEClass;
 	}
@@ -5635,6 +5871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponentsModel_Components() {
 		return (EReference)componentsModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -5644,6 +5881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponentsModel_Systems() {
 		return (EReference)componentsModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -5653,6 +5891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getISystem() {
 		return iSystemEClass;
 	}
@@ -5662,6 +5901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISystem_ComponentInstances() {
 		return (EReference)iSystemEClass.getEStructuralFeatures().get(0);
 	}
@@ -5671,6 +5911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISystem_Connectors() {
 		return (EReference)iSystemEClass.getEStructuralFeatures().get(1);
 	}
@@ -5680,6 +5921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISystem_GroundedPorts() {
 		return (EReference)iSystemEClass.getEStructuralFeatures().get(2);
 	}
@@ -5689,6 +5931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISystem_InnerPorts() {
 		return (EReference)iSystemEClass.getEStructuralFeatures().get(3);
 	}
@@ -5698,6 +5941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -5707,6 +5951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPort_ContainingComponent() {
 		return (EReference)portEClass.getEStructuralFeatures().get(0);
 	}
@@ -5716,6 +5961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getPort__ComputeUniqueName() {
 		return portEClass.getEOperations().get(0);
 	}
@@ -5725,6 +5971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComponent() {
 		return componentEClass;
 	}
@@ -5734,6 +5981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_Ports() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(0);
 	}
@@ -5743,6 +5991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_Tasks() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(1);
 	}
@@ -5752,6 +6001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_Runnables() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(2);
 	}
@@ -5761,6 +6011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_Labels() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(3);
 	}
@@ -5770,6 +6021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_Semaphores() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(4);
 	}
@@ -5779,6 +6031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponent_OsEvents() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(5);
 	}
@@ -5788,6 +6041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComposite() {
 		return compositeEClass;
 	}
@@ -5797,6 +6051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSystem() {
 		return systemEClass;
 	}
@@ -5806,6 +6061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComponentInstance() {
 		return componentInstanceEClass;
 	}
@@ -5815,6 +6071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponentInstance_Type() {
 		return (EReference)componentInstanceEClass.getEStructuralFeatures().get(0);
 	}
@@ -5824,6 +6081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConnector() {
 		return connectorEClass;
 	}
@@ -5833,6 +6091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnector_SourcePort() {
 		return (EReference)connectorEClass.getEStructuralFeatures().get(0);
 	}
@@ -5842,6 +6101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnector_TargetPort() {
 		return (EReference)connectorEClass.getEStructuralFeatures().get(1);
 	}
@@ -5851,6 +6111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getQualifiedPort() {
 		return qualifiedPortEClass;
 	}
@@ -5860,6 +6121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getQualifiedPort_Instance() {
 		return (EReference)qualifiedPortEClass.getEStructuralFeatures().get(0);
 	}
@@ -5869,6 +6131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getQualifiedPort_Port() {
 		return (EReference)qualifiedPortEClass.getEStructuralFeatures().get(1);
 	}
@@ -5878,6 +6141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInterfacePort() {
 		return interfacePortEClass;
 	}
@@ -5887,6 +6151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInterfacePort_InterfaceName() {
 		return (EAttribute)interfacePortEClass.getEStructuralFeatures().get(0);
 	}
@@ -5896,6 +6161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInterfacePort_Kind() {
 		return (EAttribute)interfacePortEClass.getEStructuralFeatures().get(1);
 	}
@@ -5905,6 +6171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConfigModel() {
 		return configModelEClass;
 	}
@@ -5914,6 +6181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConfigModel_EventsToTrace() {
 		return (EReference)configModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -5923,6 +6191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventConfig() {
 		return eventConfigEClass;
 	}
@@ -5932,6 +6201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventConfig_Event() {
 		return (EReference)eventConfigEClass.getEStructuralFeatures().get(0);
 	}
@@ -5941,6 +6211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstraintsModel() {
 		return constraintsModelEClass;
 	}
@@ -5950,6 +6221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_EventChains() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -5959,6 +6231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_TimingConstraints() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -5968,6 +6241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_AffinityConstraints() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -5977,6 +6251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_RunnableSequencingConstraints() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(3);
 	}
@@ -5986,6 +6261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_DataAgeConstraints() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(4);
 	}
@@ -5995,6 +6271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_Requirements() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(5);
 	}
@@ -6004,6 +6281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_DataCoherencyGroups() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(6);
 	}
@@ -6013,6 +6291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_DataStabilityGroups() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(7);
 	}
@@ -6022,6 +6301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstraintsModel_PhysicalSectionConstraints() {
 		return (EReference)constraintsModelEClass.getEStructuralFeatures().get(8);
 	}
@@ -6031,6 +6311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableSequencingConstraint() {
 		return runnableSequencingConstraintEClass;
 	}
@@ -6040,6 +6321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnableSequencingConstraint_OrderType() {
 		return (EAttribute)runnableSequencingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6049,6 +6331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableSequencingConstraint_RunnableGroups() {
 		return (EReference)runnableSequencingConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6058,6 +6341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableSequencingConstraint_ProcessScope() {
 		return (EReference)runnableSequencingConstraintEClass.getEStructuralFeatures().get(2);
 	}
@@ -6067,6 +6351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAffinityConstraint() {
 		return affinityConstraintEClass;
 	}
@@ -6076,6 +6361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSeparationConstraint() {
 		return separationConstraintEClass;
 	}
@@ -6085,6 +6371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPairingConstraint() {
 		return pairingConstraintEClass;
 	}
@@ -6094,6 +6381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessConstraint() {
 		return processConstraintEClass;
 	}
@@ -6103,6 +6391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessConstraint_Target() {
 		return (EReference)processConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6112,6 +6401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableConstraint() {
 		return runnableConstraintEClass;
 	}
@@ -6121,6 +6411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableConstraint_Target() {
 		return (EReference)runnableConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6130,6 +6421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataConstraint() {
 		return dataConstraintEClass;
 	}
@@ -6139,6 +6431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataConstraint_Target() {
 		return (EReference)dataConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6148,6 +6441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableSeparationConstraint() {
 		return runnableSeparationConstraintEClass;
 	}
@@ -6157,6 +6451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableSeparationConstraint_Groups() {
 		return (EReference)runnableSeparationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6166,6 +6461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessSeparationConstraint() {
 		return processSeparationConstraintEClass;
 	}
@@ -6175,6 +6471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessSeparationConstraint_Groups() {
 		return (EReference)processSeparationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6184,6 +6481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataSeparationConstraint() {
 		return dataSeparationConstraintEClass;
 	}
@@ -6193,6 +6491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataSeparationConstraint_Groups() {
 		return (EReference)dataSeparationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6202,6 +6501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnablePairingConstraint() {
 		return runnablePairingConstraintEClass;
 	}
@@ -6211,6 +6511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnablePairingConstraint_Group() {
 		return (EReference)runnablePairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6220,6 +6521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessPairingConstraint() {
 		return processPairingConstraintEClass;
 	}
@@ -6229,6 +6531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPairingConstraint_Group() {
 		return (EReference)processPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6238,6 +6541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataPairingConstraint() {
 		return dataPairingConstraintEClass;
 	}
@@ -6247,6 +6551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataPairingConstraint_Group() {
 		return (EReference)dataPairingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6256,6 +6561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableConstraintTarget() {
 		return runnableConstraintTargetEClass;
 	}
@@ -6265,6 +6571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessConstraintTarget() {
 		return processConstraintTargetEClass;
 	}
@@ -6274,6 +6581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataConstraintTarget() {
 		return dataConstraintTargetEClass;
 	}
@@ -6283,6 +6591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTargetMemory() {
 		return targetMemoryEClass;
 	}
@@ -6292,6 +6601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetMemory_Memories() {
 		return (EReference)targetMemoryEClass.getEStructuralFeatures().get(0);
 	}
@@ -6301,6 +6611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTargetCore() {
 		return targetCoreEClass;
 	}
@@ -6310,6 +6621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetCore_Cores() {
 		return (EReference)targetCoreEClass.getEStructuralFeatures().get(0);
 	}
@@ -6319,6 +6631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTargetScheduler() {
 		return targetSchedulerEClass;
 	}
@@ -6328,6 +6641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetScheduler_Schedulers() {
 		return (EReference)targetSchedulerEClass.getEStructuralFeatures().get(0);
 	}
@@ -6337,6 +6651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabelGroup() {
 		return labelGroupEClass;
 	}
@@ -6346,6 +6661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableGroup() {
 		return runnableGroupEClass;
 	}
@@ -6355,6 +6671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessGroup() {
 		return processGroupEClass;
 	}
@@ -6364,6 +6681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabelEntityGroup() {
 		return labelEntityGroupEClass;
 	}
@@ -6373,6 +6691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelEntityGroup_Labels() {
 		return (EReference)labelEntityGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -6382,6 +6701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableEntityGroup() {
 		return runnableEntityGroupEClass;
 	}
@@ -6391,6 +6711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableEntityGroup_Runnables() {
 		return (EReference)runnableEntityGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -6400,6 +6721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessEntityGroup() {
 		return processEntityGroupEClass;
 	}
@@ -6409,6 +6731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessEntityGroup_Processes() {
 		return (EReference)processEntityGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -6418,6 +6741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTagGroup() {
 		return tagGroupEClass;
 	}
@@ -6427,6 +6751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTagGroup_Tag() {
 		return (EReference)tagGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -6436,6 +6761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractEventChain() {
 		return abstractEventChainEClass;
 	}
@@ -6445,6 +6771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractEventChain_Stimulus() {
 		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(0);
 	}
@@ -6454,6 +6781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractEventChain_Response() {
 		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(1);
 	}
@@ -6463,6 +6791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractEventChain_Segments() {
 		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(2);
 	}
@@ -6472,6 +6801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractEventChain_Strands() {
 		return (EReference)abstractEventChainEClass.getEStructuralFeatures().get(3);
 	}
@@ -6481,6 +6811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChain() {
 		return eventChainEClass;
 	}
@@ -6490,6 +6821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSubEventChain() {
 		return subEventChainEClass;
 	}
@@ -6499,6 +6831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainItem() {
 		return eventChainItemEClass;
 	}
@@ -6508,6 +6841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getEventChainItem__GetEventChain() {
 		return eventChainItemEClass.getEOperations().get(0);
 	}
@@ -6517,6 +6851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainReference() {
 		return eventChainReferenceEClass;
 	}
@@ -6526,6 +6861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainReference_EventChain() {
 		return (EReference)eventChainReferenceEClass.getEStructuralFeatures().get(0);
 	}
@@ -6535,6 +6871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainContainer() {
 		return eventChainContainerEClass;
 	}
@@ -6544,6 +6881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainContainer_EventChain() {
 		return (EReference)eventChainContainerEClass.getEStructuralFeatures().get(0);
 	}
@@ -6553,6 +6891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimingConstraint() {
 		return timingConstraintEClass;
 	}
@@ -6562,6 +6901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPhysicalSectionConstraint() {
 		return physicalSectionConstraintEClass;
 	}
@@ -6571,6 +6911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionConstraint_Section() {
 		return (EReference)physicalSectionConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6580,6 +6921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionConstraint_Memories() {
 		return (EReference)physicalSectionConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6589,6 +6931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSynchronizationConstraint() {
 		return synchronizationConstraintEClass;
 	}
@@ -6598,6 +6941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSynchronizationConstraint_MultipleOccurrencesAllowed() {
 		return (EAttribute)synchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6607,6 +6951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSynchronizationConstraint_Tolerance() {
 		return (EReference)synchronizationConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6616,6 +6961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventSynchronizationConstraint() {
 		return eventSynchronizationConstraintEClass;
 	}
@@ -6625,6 +6971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventSynchronizationConstraint_Events() {
 		return (EReference)eventSynchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6634,6 +6981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainSynchronizationConstraint() {
 		return eventChainSynchronizationConstraintEClass;
 	}
@@ -6643,6 +6991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainSynchronizationConstraint_Scope() {
 		return (EReference)eventChainSynchronizationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6652,6 +7001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventChainSynchronizationConstraint_Type() {
 		return (EAttribute)eventChainSynchronizationConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6661,6 +7011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDelayConstraint() {
 		return delayConstraintEClass;
 	}
@@ -6670,6 +7021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDelayConstraint_MappingType() {
 		return (EAttribute)delayConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6679,6 +7031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDelayConstraint_Source() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6688,6 +7041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDelayConstraint_Target() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(2);
 	}
@@ -6697,6 +7051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDelayConstraint_Upper() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(3);
 	}
@@ -6706,6 +7061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDelayConstraint_Lower() {
 		return (EReference)delayConstraintEClass.getEStructuralFeatures().get(4);
 	}
@@ -6715,6 +7071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainLatencyConstraint() {
 		return eventChainLatencyConstraintEClass;
 	}
@@ -6724,6 +7081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainLatencyConstraint_Scope() {
 		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6733,6 +7091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventChainLatencyConstraint_Type() {
 		return (EAttribute)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6742,6 +7101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainLatencyConstraint_Minimum() {
 		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(2);
 	}
@@ -6751,6 +7111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainLatencyConstraint_Maximum() {
 		return (EReference)eventChainLatencyConstraintEClass.getEStructuralFeatures().get(3);
 	}
@@ -6760,6 +7121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRepetitionConstraint() {
 		return repetitionConstraintEClass;
 	}
@@ -6769,6 +7131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRepetitionConstraint_Event() {
 		return (EReference)repetitionConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6778,6 +7141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRepetitionConstraint_Span() {
 		return (EAttribute)repetitionConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6787,6 +7151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRepetitionConstraint_Lower() {
 		return (EReference)repetitionConstraintEClass.getEStructuralFeatures().get(2);
 	}
@@ -6796,6 +7161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRepetitionConstraint_Upper() {
 		return (EReference)repetitionConstraintEClass.getEStructuralFeatures().get(3);
 	}
@@ -6805,6 +7171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRepetitionConstraint_Jitter() {
 		return (EReference)repetitionConstraintEClass.getEStructuralFeatures().get(4);
 	}
@@ -6814,6 +7181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRepetitionConstraint_Period() {
 		return (EReference)repetitionConstraintEClass.getEStructuralFeatures().get(5);
 	}
@@ -6823,6 +7191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataAgeConstraint() {
 		return dataAgeConstraintEClass;
 	}
@@ -6832,6 +7201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataAgeConstraint_Runnable() {
 		return (EReference)dataAgeConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -6841,6 +7211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataAgeConstraint_Label() {
 		return (EReference)dataAgeConstraintEClass.getEStructuralFeatures().get(1);
 	}
@@ -6850,6 +7221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataAgeConstraint_DataAge() {
 		return (EReference)dataAgeConstraintEClass.getEStructuralFeatures().get(2);
 	}
@@ -6859,6 +7231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataAge() {
 		return dataAgeEClass;
 	}
@@ -6868,6 +7241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataAgeCycle() {
 		return dataAgeCycleEClass;
 	}
@@ -6877,6 +7251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataAgeCycle_MinimumCycle() {
 		return (EAttribute)dataAgeCycleEClass.getEStructuralFeatures().get(0);
 	}
@@ -6886,6 +7261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataAgeCycle_MaximumCycle() {
 		return (EAttribute)dataAgeCycleEClass.getEStructuralFeatures().get(1);
 	}
@@ -6895,6 +7271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataAgeTime() {
 		return dataAgeTimeEClass;
 	}
@@ -6904,6 +7281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataAgeTime_MinimumTime() {
 		return (EReference)dataAgeTimeEClass.getEStructuralFeatures().get(0);
 	}
@@ -6913,6 +7291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataAgeTime_MaximumTime() {
 		return (EReference)dataAgeTimeEClass.getEStructuralFeatures().get(1);
 	}
@@ -6922,6 +7301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequirement() {
 		return requirementEClass;
 	}
@@ -6931,6 +7311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirement_Severity() {
 		return (EAttribute)requirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -6940,6 +7321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRequirement_Limit() {
 		return (EReference)requirementEClass.getEStructuralFeatures().get(1);
 	}
@@ -6949,6 +7331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessRequirement() {
 		return processRequirementEClass;
 	}
@@ -6958,6 +7341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessRequirement_Process() {
 		return (EReference)processRequirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -6967,6 +7351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableRequirement() {
 		return runnableRequirementEClass;
 	}
@@ -6976,6 +7361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableRequirement_Runnable() {
 		return (EReference)runnableRequirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -6985,6 +7371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getArchitectureRequirement() {
 		return architectureRequirementEClass;
 	}
@@ -6994,6 +7381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArchitectureRequirement_Component() {
 		return (EReference)architectureRequirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -7003,6 +7391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessChainRequirement() {
 		return processChainRequirementEClass;
 	}
@@ -7012,6 +7401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessChainRequirement_ProcessChain() {
 		return (EReference)processChainRequirementEClass.getEStructuralFeatures().get(0);
 	}
@@ -7021,6 +7411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRequirementLimit() {
 		return requirementLimitEClass;
 	}
@@ -7030,6 +7421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRequirementLimit_LimitType() {
 		return (EAttribute)requirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7039,6 +7431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCPUPercentageRequirementLimit() {
 		return cpuPercentageRequirementLimitEClass;
 	}
@@ -7048,6 +7441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCPUPercentageRequirementLimit_Metric() {
 		return (EAttribute)cpuPercentageRequirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7057,6 +7451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCPUPercentageRequirementLimit_LimitValue() {
 		return (EAttribute)cpuPercentageRequirementLimitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7066,6 +7461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCPUPercentageRequirementLimit_HardwareContext() {
 		return (EReference)cpuPercentageRequirementLimitEClass.getEStructuralFeatures().get(2);
 	}
@@ -7075,6 +7471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFrequencyRequirementLimit() {
 		return frequencyRequirementLimitEClass;
 	}
@@ -7084,6 +7481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFrequencyRequirementLimit_Metric() {
 		return (EAttribute)frequencyRequirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7093,6 +7491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFrequencyRequirementLimit_LimitValue() {
 		return (EReference)frequencyRequirementLimitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7102,6 +7501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPercentageRequirementLimit() {
 		return percentageRequirementLimitEClass;
 	}
@@ -7111,6 +7511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPercentageRequirementLimit_Metric() {
 		return (EAttribute)percentageRequirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7120,6 +7521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPercentageRequirementLimit_LimitValue() {
 		return (EAttribute)percentageRequirementLimitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7129,6 +7531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCountRequirementLimit() {
 		return countRequirementLimitEClass;
 	}
@@ -7138,6 +7541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCountRequirementLimit_Metric() {
 		return (EAttribute)countRequirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7147,6 +7551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCountRequirementLimit_LimitValue() {
 		return (EAttribute)countRequirementLimitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7156,6 +7561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTimeRequirementLimit() {
 		return timeRequirementLimitEClass;
 	}
@@ -7165,6 +7571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTimeRequirementLimit_Metric() {
 		return (EAttribute)timeRequirementLimitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7174,6 +7581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTimeRequirementLimit_LimitValue() {
 		return (EReference)timeRequirementLimitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7183,6 +7591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataCoherencyGroup() {
 		return dataCoherencyGroupEClass;
 	}
@@ -7192,6 +7601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataCoherencyGroup_Labels() {
 		return (EReference)dataCoherencyGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -7201,6 +7611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataCoherencyGroup_Scope() {
 		return (EReference)dataCoherencyGroupEClass.getEStructuralFeatures().get(1);
 	}
@@ -7210,6 +7621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataCoherencyGroup_Direction() {
 		return (EAttribute)dataCoherencyGroupEClass.getEStructuralFeatures().get(2);
 	}
@@ -7219,6 +7631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataStabilityGroup() {
 		return dataStabilityGroupEClass;
 	}
@@ -7228,6 +7641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataStabilityGroup_Labels() {
 		return (EReference)dataStabilityGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -7237,6 +7651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataStabilityGroup_Scope() {
 		return (EReference)dataStabilityGroupEClass.getEStructuralFeatures().get(1);
 	}
@@ -7246,6 +7661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataGroupScope() {
 		return dataGroupScopeEClass;
 	}
@@ -7255,6 +7671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessScope() {
 		return processScopeEClass;
 	}
@@ -7264,6 +7681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessScope_Process() {
 		return (EReference)processScopeEClass.getEStructuralFeatures().get(0);
 	}
@@ -7273,6 +7691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableScope() {
 		return runnableScopeEClass;
 	}
@@ -7282,6 +7701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableScope_Runnable() {
 		return (EReference)runnableScopeEClass.getEStructuralFeatures().get(0);
 	}
@@ -7291,6 +7711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComponentScope() {
 		return componentScopeEClass;
 	}
@@ -7300,6 +7721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponentScope_Component() {
 		return (EReference)componentScopeEClass.getEStructuralFeatures().get(0);
 	}
@@ -7309,6 +7731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventModel() {
 		return eventModelEClass;
 	}
@@ -7318,6 +7741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventModel_Events() {
 		return (EReference)eventModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -7327,6 +7751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEvent() {
 		return eventEClass;
 	}
@@ -7336,6 +7761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEvent_Description() {
 		return (EAttribute)eventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7345,6 +7771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventSet() {
 		return eventSetEClass;
 	}
@@ -7354,6 +7781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventSet_Events() {
 		return (EReference)eventSetEClass.getEStructuralFeatures().get(0);
 	}
@@ -7363,6 +7791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEntityEvent() {
 		return entityEventEClass;
 	}
@@ -7372,6 +7801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTriggerEvent() {
 		return triggerEventEClass;
 	}
@@ -7381,6 +7811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomEvent() {
 		return customEventEClass;
 	}
@@ -7390,6 +7821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCustomEvent_EventType() {
 		return (EAttribute)customEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7399,6 +7831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCustomEvent_ExplicitTriggers() {
 		return (EReference)customEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7408,6 +7841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStimulusEvent() {
 		return stimulusEventEClass;
 	}
@@ -7417,6 +7851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimulusEvent_Entity() {
 		return (EReference)stimulusEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7426,6 +7861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessEvent() {
 		return processEventEClass;
 	}
@@ -7435,6 +7871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProcessEvent_EventType() {
 		return (EAttribute)processEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7444,6 +7881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessEvent_Entity() {
 		return (EReference)processEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7453,6 +7891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessEvent_ProcessingUnit() {
 		return (EReference)processEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7462,6 +7901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessChainEvent() {
 		return processChainEventEClass;
 	}
@@ -7471,6 +7911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProcessChainEvent_EventType() {
 		return (EAttribute)processChainEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7480,6 +7921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessChainEvent_Entity() {
 		return (EReference)processChainEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7489,6 +7931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessChainEvent_ProcessingUnit() {
 		return (EReference)processChainEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7498,6 +7941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableEvent() {
 		return runnableEventEClass;
 	}
@@ -7507,6 +7951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnableEvent_EventType() {
 		return (EAttribute)runnableEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7516,6 +7961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableEvent_Entity() {
 		return (EReference)runnableEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7525,6 +7971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableEvent_Process() {
 		return (EReference)runnableEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7534,6 +7981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableEvent_ProcessingUnit() {
 		return (EReference)runnableEventEClass.getEStructuralFeatures().get(3);
 	}
@@ -7543,6 +7991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabelEvent() {
 		return labelEventEClass;
 	}
@@ -7552,6 +8001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabelEvent_EventType() {
 		return (EAttribute)labelEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7561,6 +8011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelEvent_Entity() {
 		return (EReference)labelEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7570,6 +8021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelEvent_Runnable() {
 		return (EReference)labelEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7579,6 +8031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelEvent_Process() {
 		return (EReference)labelEventEClass.getEStructuralFeatures().get(3);
 	}
@@ -7588,6 +8041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChannelEvent() {
 		return channelEventEClass;
 	}
@@ -7597,6 +8051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelEvent_EventType() {
 		return (EAttribute)channelEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7606,6 +8061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannelEvent_Entity() {
 		return (EReference)channelEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7615,6 +8071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannelEvent_Runnable() {
 		return (EReference)channelEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7624,6 +8081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannelEvent_Process() {
 		return (EReference)channelEventEClass.getEStructuralFeatures().get(3);
 	}
@@ -7633,6 +8091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSemaphoreEvent() {
 		return semaphoreEventEClass;
 	}
@@ -7642,6 +8101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphoreEvent_EventType() {
 		return (EAttribute)semaphoreEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7651,6 +8111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphoreEvent_Entity() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7660,6 +8121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphoreEvent_Runnable() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -7669,6 +8131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphoreEvent_Process() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(3);
 	}
@@ -7678,6 +8141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphoreEvent_ProcessingUnit() {
 		return (EReference)semaphoreEventEClass.getEStructuralFeatures().get(4);
 	}
@@ -7687,6 +8151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComponentEvent() {
 		return componentEventEClass;
 	}
@@ -7696,6 +8161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getComponentEvent_EventType() {
 		return (EAttribute)componentEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -7705,6 +8171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getComponentEvent_Entity() {
 		return (EReference)componentEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -7714,6 +8181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHWModel() {
 		return hwModelEClass;
 	}
@@ -7723,6 +8191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHWModel_Definitions() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -7732,6 +8201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHWModel_FeatureCategories() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -7741,6 +8211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHWModel_Structures() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -7750,6 +8221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHWModel_Domains() {
 		return (EReference)hwModelEClass.getEStructuralFeatures().get(3);
 	}
@@ -7759,6 +8231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwStructure() {
 		return hwStructureEClass;
 	}
@@ -7768,6 +8241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwStructure_StructureType() {
 		return (EAttribute)hwStructureEClass.getEStructuralFeatures().get(0);
 	}
@@ -7777,6 +8251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwStructure_Ports() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(1);
 	}
@@ -7786,6 +8261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwStructure_Structures() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(2);
 	}
@@ -7795,6 +8271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwStructure_Modules() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(3);
 	}
@@ -7804,6 +8281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwStructure_Connections() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(4);
 	}
@@ -7813,6 +8291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwStructure_InnerPorts() {
 		return (EReference)hwStructureEClass.getEStructuralFeatures().get(5);
 	}
@@ -7822,6 +8301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwModule() {
 		return hwModuleEClass;
 	}
@@ -7831,6 +8311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwModule_Ports() {
 		return (EReference)hwModuleEClass.getEStructuralFeatures().get(0);
 	}
@@ -7840,6 +8321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwModule_PowerDomain() {
 		return (EReference)hwModuleEClass.getEStructuralFeatures().get(1);
 	}
@@ -7849,6 +8331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwModule_FrequencyDomain() {
 		return (EReference)hwModuleEClass.getEStructuralFeatures().get(2);
 	}
@@ -7858,6 +8341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwDomain() {
 		return hwDomainEClass;
 	}
@@ -7867,6 +8351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFrequencyDomain() {
 		return frequencyDomainEClass;
 	}
@@ -7876,6 +8361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFrequencyDomain_DefaultValue() {
 		return (EReference)frequencyDomainEClass.getEStructuralFeatures().get(0);
 	}
@@ -7885,6 +8371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFrequencyDomain_ClockGating() {
 		return (EAttribute)frequencyDomainEClass.getEStructuralFeatures().get(1);
 	}
@@ -7894,6 +8381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPowerDomain() {
 		return powerDomainEClass;
 	}
@@ -7903,6 +8391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPowerDomain_DefaultValue() {
 		return (EReference)powerDomainEClass.getEStructuralFeatures().get(0);
 	}
@@ -7912,6 +8401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPowerDomain_PowerGating() {
 		return (EAttribute)powerDomainEClass.getEStructuralFeatures().get(1);
 	}
@@ -7921,6 +8411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessingUnit() {
 		return processingUnitEClass;
 	}
@@ -7930,6 +8421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessingUnit_Definition() {
 		return (EReference)processingUnitEClass.getEStructuralFeatures().get(0);
 	}
@@ -7939,6 +8431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessingUnit_AccessElements() {
 		return (EReference)processingUnitEClass.getEStructuralFeatures().get(1);
 	}
@@ -7948,6 +8441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessingUnit_Caches() {
 		return (EReference)processingUnitEClass.getEStructuralFeatures().get(2);
 	}
@@ -7957,6 +8451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemory() {
 		return memoryEClass;
 	}
@@ -7966,6 +8461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemory_Definition() {
 		return (EReference)memoryEClass.getEStructuralFeatures().get(0);
 	}
@@ -7975,6 +8471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemory_Mappings() {
 		return (EReference)memoryEClass.getEStructuralFeatures().get(1);
 	}
@@ -7984,6 +8481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCache() {
 		return cacheEClass;
 	}
@@ -7993,6 +8491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCache_Definition() {
 		return (EReference)cacheEClass.getEStructuralFeatures().get(0);
 	}
@@ -8002,6 +8501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwFeatureCategory() {
 		return hwFeatureCategoryEClass;
 	}
@@ -8011,6 +8511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwFeatureCategory_FeatureType() {
 		return (EAttribute)hwFeatureCategoryEClass.getEStructuralFeatures().get(0);
 	}
@@ -8020,6 +8521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwFeatureCategory_Description() {
 		return (EAttribute)hwFeatureCategoryEClass.getEStructuralFeatures().get(1);
 	}
@@ -8029,6 +8531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwFeatureCategory_Features() {
 		return (EReference)hwFeatureCategoryEClass.getEStructuralFeatures().get(2);
 	}
@@ -8038,6 +8541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwFeature() {
 		return hwFeatureEClass;
 	}
@@ -8047,6 +8551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwFeature_ContainingCategory() {
 		return (EReference)hwFeatureEClass.getEStructuralFeatures().get(0);
 	}
@@ -8056,6 +8561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwFeature_Value() {
 		return (EAttribute)hwFeatureEClass.getEStructuralFeatures().get(1);
 	}
@@ -8065,6 +8571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwFeature__ComputeUniqueName() {
 		return hwFeatureEClass.getEOperations().get(0);
 	}
@@ -8074,6 +8581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwFeature__ToString() {
 		return hwFeatureEClass.getEOperations().get(1);
 	}
@@ -8083,6 +8591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwPort() {
 		return hwPortEClass;
 	}
@@ -8092,6 +8601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwPort_BitWidth() {
 		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(0);
 	}
@@ -8101,6 +8611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwPort_Priority() {
 		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(1);
 	}
@@ -8110,6 +8621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwPort_PortType() {
 		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(2);
 	}
@@ -8119,6 +8631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwPort_PortInterface() {
 		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(3);
 	}
@@ -8128,6 +8641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwPort_Delegated() {
 		return (EAttribute)hwPortEClass.getEStructuralFeatures().get(4);
 	}
@@ -8137,6 +8651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwPort_Connections() {
 		return (EReference)hwPortEClass.getEStructuralFeatures().get(5);
 	}
@@ -8146,6 +8661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwPort__ComputeUniqueName() {
 		return hwPortEClass.getEOperations().get(0);
 	}
@@ -8155,6 +8671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConnectionHandler() {
 		return connectionHandlerEClass;
 	}
@@ -8164,6 +8681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnectionHandler_Definition() {
 		return (EReference)connectionHandlerEClass.getEStructuralFeatures().get(0);
 	}
@@ -8173,6 +8691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnectionHandler_InternalConnections() {
 		return (EReference)connectionHandlerEClass.getEStructuralFeatures().get(1);
 	}
@@ -8182,6 +8701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwConnection() {
 		return hwConnectionEClass;
 	}
@@ -8191,6 +8711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwConnection_ReadLatency() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(0);
 	}
@@ -8200,6 +8721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwConnection_WriteLatency() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(1);
 	}
@@ -8209,6 +8731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwConnection_DataRate() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(2);
 	}
@@ -8218,6 +8741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwConnection_Port1() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(3);
 	}
@@ -8227,6 +8751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwConnection_Port2() {
 		return (EReference)hwConnectionEClass.getEStructuralFeatures().get(4);
 	}
@@ -8236,6 +8761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwConnection_Internal() {
 		return (EAttribute)hwConnectionEClass.getEStructuralFeatures().get(5);
 	}
@@ -8245,6 +8771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwConnection__ComputeUniqueName() {
 		return hwConnectionEClass.getEOperations().get(0);
 	}
@@ -8254,6 +8781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwConnection__GetPorts() {
 		return hwConnectionEClass.getEOperations().get(1);
 	}
@@ -8263,6 +8791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwAccessElement() {
 		return hwAccessElementEClass;
 	}
@@ -8272,6 +8801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_Source() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -8281,6 +8811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_Destination() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -8290,6 +8821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_AccessPath() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(2);
 	}
@@ -8299,6 +8831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_ReadLatency() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(3);
 	}
@@ -8308,6 +8841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_WriteLatency() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(4);
 	}
@@ -8317,6 +8851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessElement_DataRate() {
 		return (EReference)hwAccessElementEClass.getEStructuralFeatures().get(5);
 	}
@@ -8326,6 +8861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwDefinition() {
 		return hwDefinitionEClass;
 	}
@@ -8335,6 +8871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessingUnitDefinition() {
 		return processingUnitDefinitionEClass;
 	}
@@ -8344,6 +8881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProcessingUnitDefinition_PuType() {
 		return (EAttribute)processingUnitDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -8353,6 +8891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessingUnitDefinition_Features() {
 		return (EReference)processingUnitDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -8362,6 +8901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessingUnitDefinition_Classifiers() {
 		return (EReference)processingUnitDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -8371,6 +8911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConnectionHandlerDefinition() {
 		return connectionHandlerDefinitionEClass;
 	}
@@ -8380,6 +8921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getConnectionHandlerDefinition_Policy() {
 		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -8389,6 +8931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnectionHandlerDefinition_ReadLatency() {
 		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -8398,6 +8941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnectionHandlerDefinition_WriteLatency() {
 		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -8407,6 +8951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConnectionHandlerDefinition_DataRate() {
 		return (EReference)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(3);
 	}
@@ -8416,6 +8961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getConnectionHandlerDefinition_MaxBurstSize() {
 		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(4);
 	}
@@ -8425,6 +8971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getConnectionHandlerDefinition_MaxConcurrentTransfers() {
 		return (EAttribute)connectionHandlerDefinitionEClass.getEStructuralFeatures().get(5);
 	}
@@ -8434,6 +8981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemoryDefinition() {
 		return memoryDefinitionEClass;
 	}
@@ -8443,6 +8991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryDefinition_Size() {
 		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -8452,6 +9001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryDefinition_AccessLatency() {
 		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -8461,6 +9011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryDefinition_DataRate() {
 		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -8470,6 +9021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMemoryDefinition_MemoryType() {
 		return (EAttribute)memoryDefinitionEClass.getEStructuralFeatures().get(3);
 	}
@@ -8479,6 +9031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryDefinition_Classifiers() {
 		return (EReference)memoryDefinitionEClass.getEStructuralFeatures().get(4);
 	}
@@ -8488,6 +9041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCacheDefinition() {
 		return cacheDefinitionEClass;
 	}
@@ -8497,6 +9051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCacheDefinition_Size() {
 		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -8506,6 +9061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCacheDefinition_LineSize() {
 		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -8515,6 +9071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCacheDefinition_AccessLatency() {
 		return (EReference)cacheDefinitionEClass.getEStructuralFeatures().get(2);
 	}
@@ -8524,6 +9081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_CacheType() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(3);
 	}
@@ -8533,6 +9091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_WriteStrategy() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(4);
 	}
@@ -8542,6 +9101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_NWays() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(5);
 	}
@@ -8551,6 +9111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_Coherency() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(6);
 	}
@@ -8560,6 +9121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_Exclusive() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(7);
 	}
@@ -8569,6 +9131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCacheDefinition_HitRate() {
 		return (EAttribute)cacheDefinitionEClass.getEStructuralFeatures().get(8);
 	}
@@ -8578,6 +9141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwPath() {
 		return hwPathEClass;
 	}
@@ -8587,6 +9151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwPath_Source() {
 		return (EReference)hwPathEClass.getEStructuralFeatures().get(0);
 	}
@@ -8596,6 +9161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwPath_Destination() {
 		return (EReference)hwPathEClass.getEStructuralFeatures().get(1);
 	}
@@ -8605,6 +9171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwPath__GetContainingAccessElement() {
 		return hwPathEClass.getEOperations().get(0);
 	}
@@ -8614,6 +9181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwAccessPath() {
 		return hwAccessPathEClass;
 	}
@@ -8623,6 +9191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessPath_ContainingAccessElement() {
 		return (EReference)hwAccessPathEClass.getEStructuralFeatures().get(0);
 	}
@@ -8632,6 +9201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getHwAccessPath_PathElements() {
 		return (EReference)hwAccessPathEClass.getEStructuralFeatures().get(1);
 	}
@@ -8641,6 +9211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwAccessPath_StartAddress() {
 		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(2);
 	}
@@ -8650,6 +9221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwAccessPath_EndAddress() {
 		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(3);
 	}
@@ -8659,6 +9231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getHwAccessPath_MemOffset() {
 		return (EAttribute)hwAccessPathEClass.getEStructuralFeatures().get(4);
 	}
@@ -8668,6 +9241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwPathElement() {
 		return hwPathElementEClass;
 	}
@@ -8677,6 +9251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwPathElement__GetPorts() {
 		return hwPathElementEClass.getEOperations().get(0);
 	}
@@ -8686,6 +9261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHwDestination() {
 		return hwDestinationEClass;
 	}
@@ -8695,6 +9271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getHwDestination__GetPorts() {
 		return hwDestinationEClass.getEOperations().get(0);
 	}
@@ -8704,6 +9281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMappingModel() {
 		return mappingModelEClass;
 	}
@@ -8713,6 +9291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_SchedulerAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -8722,6 +9301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_RunnableAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -8731,6 +9311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_TaskAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -8740,6 +9321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_IsrAllocation() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(3);
 	}
@@ -8749,6 +9331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_MemoryMapping() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(4);
 	}
@@ -8758,6 +9341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMappingModel_PhysicalSectionMapping() {
 		return (EReference)mappingModelEClass.getEStructuralFeatures().get(5);
 	}
@@ -8767,6 +9351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMappingModel_AddressMappingType() {
 		return (EAttribute)mappingModelEClass.getEStructuralFeatures().get(6);
 	}
@@ -8776,6 +9361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSchedulerAllocation() {
 		return schedulerAllocationEClass;
 	}
@@ -8785,6 +9371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAllocation_Scheduler() {
 		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(0);
 	}
@@ -8794,6 +9381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAllocation_Responsibility() {
 		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(1);
 	}
@@ -8803,6 +9391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAllocation_ExecutingPU() {
 		return (EReference)schedulerAllocationEClass.getEStructuralFeatures().get(2);
 	}
@@ -8812,6 +9401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTaskAllocation() {
 		return taskAllocationEClass;
 	}
@@ -8821,6 +9411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskAllocation_Task() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(0);
 	}
@@ -8830,6 +9421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskAllocation_Scheduler() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(1);
 	}
@@ -8839,6 +9431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskAllocation_Affinity() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(2);
 	}
@@ -8848,6 +9441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskAllocation_SchedulingParameters() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(3);
 	}
@@ -8857,6 +9451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskAllocation_ParameterExtensions() {
 		return (EReference)taskAllocationEClass.getEStructuralFeatures().get(4);
 	}
@@ -8866,6 +9461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getISRAllocation() {
 		return isrAllocationEClass;
 	}
@@ -8875,6 +9471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISRAllocation_Isr() {
 		return (EReference)isrAllocationEClass.getEStructuralFeatures().get(0);
 	}
@@ -8884,6 +9481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getISRAllocation_Controller() {
 		return (EReference)isrAllocationEClass.getEStructuralFeatures().get(1);
 	}
@@ -8893,6 +9491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISRAllocation_Priority() {
 		return (EAttribute)isrAllocationEClass.getEStructuralFeatures().get(2);
 	}
@@ -8902,6 +9501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableAllocation() {
 		return runnableAllocationEClass;
 	}
@@ -8911,6 +9511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableAllocation_Scheduler() {
 		return (EReference)runnableAllocationEClass.getEStructuralFeatures().get(0);
 	}
@@ -8920,6 +9521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableAllocation_Entity() {
 		return (EReference)runnableAllocationEClass.getEStructuralFeatures().get(1);
 	}
@@ -8929,6 +9531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemoryMapping() {
 		return memoryMappingEClass;
 	}
@@ -8938,6 +9541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryMapping_AbstractElement() {
 		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(0);
 	}
@@ -8947,6 +9551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryMapping_Memory() {
 		return (EReference)memoryMappingEClass.getEStructuralFeatures().get(1);
 	}
@@ -8956,6 +9561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMemoryMapping_MemoryPositionAddress() {
 		return (EAttribute)memoryMappingEClass.getEStructuralFeatures().get(2);
 	}
@@ -8965,6 +9571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPhysicalSectionMapping() {
 		return physicalSectionMappingEClass;
 	}
@@ -8974,6 +9581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionMapping_Origin() {
 		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(0);
 	}
@@ -8983,6 +9591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionMapping_Memory() {
 		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(1);
 	}
@@ -8992,6 +9601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPhysicalSectionMapping_StartAddress() {
 		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(2);
 	}
@@ -9001,6 +9611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPhysicalSectionMapping_EndAddress() {
 		return (EAttribute)physicalSectionMappingEClass.getEStructuralFeatures().get(3);
 	}
@@ -9010,6 +9621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionMapping_Labels() {
 		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(4);
 	}
@@ -9019,6 +9631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPhysicalSectionMapping_RunEntities() {
 		return (EReference)physicalSectionMappingEClass.getEStructuralFeatures().get(5);
 	}
@@ -9028,6 +9641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOSModel() {
 		return osModelEClass;
 	}
@@ -9037,6 +9651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOSModel_Semaphores() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -9046,6 +9661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOSModel_OperatingSystems() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -9055,6 +9671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOSModel_OsOverheads() {
 		return (EReference)osModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -9064,6 +9681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOsDataConsistency() {
 		return osDataConsistencyEClass;
 	}
@@ -9073,6 +9691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOsDataConsistency_Mode() {
 		return (EAttribute)osDataConsistencyEClass.getEStructuralFeatures().get(0);
 	}
@@ -9082,6 +9701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsDataConsistency_DataStability() {
 		return (EReference)osDataConsistencyEClass.getEStructuralFeatures().get(1);
 	}
@@ -9091,6 +9711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsDataConsistency_NonAtomicDataCoherency() {
 		return (EReference)osDataConsistencyEClass.getEStructuralFeatures().get(2);
 	}
@@ -9100,6 +9721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataStability() {
 		return dataStabilityEClass;
 	}
@@ -9109,6 +9731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataStability_Enabled() {
 		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -9118,6 +9741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataStability_Algorithm() {
 		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(1);
 	}
@@ -9127,6 +9751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataStability_AccessMultiplicity() {
 		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(2);
 	}
@@ -9136,6 +9761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataStability_Level() {
 		return (EAttribute)dataStabilityEClass.getEStructuralFeatures().get(3);
 	}
@@ -9145,6 +9771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNonAtomicDataCoherency() {
 		return nonAtomicDataCoherencyEClass;
 	}
@@ -9154,6 +9781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNonAtomicDataCoherency_Enabled() {
 		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(0);
 	}
@@ -9163,6 +9791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNonAtomicDataCoherency_Algorithm() {
 		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(1);
 	}
@@ -9172,6 +9801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNonAtomicDataCoherency_AccessMultiplicity() {
 		return (EAttribute)nonAtomicDataCoherencyEClass.getEStructuralFeatures().get(2);
 	}
@@ -9181,6 +9811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSemaphore() {
 		return semaphoreEClass;
 	}
@@ -9190,6 +9821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphore_SemaphoreType() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(0);
 	}
@@ -9199,6 +9831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphore_InitialValue() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(1);
 	}
@@ -9208,6 +9841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphore_MaxValue() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(2);
 	}
@@ -9217,6 +9851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphore_PriorityCeilingProtocol() {
 		return (EAttribute)semaphoreEClass.getEStructuralFeatures().get(3);
 	}
@@ -9226,6 +9861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphore_SemaphoreAccesses() {
 		return (EReference)semaphoreEClass.getEStructuralFeatures().get(4);
 	}
@@ -9235,6 +9871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphore_ReferringComponents() {
 		return (EReference)semaphoreEClass.getEStructuralFeatures().get(5);
 	}
@@ -9244,6 +9881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getScheduler() {
 		return schedulerEClass;
 	}
@@ -9253,6 +9891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScheduler_ComputationItems() {
 		return (EReference)schedulerEClass.getEStructuralFeatures().get(0);
 	}
@@ -9262,6 +9901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScheduler_SchedulerAllocations() {
 		return (EReference)schedulerEClass.getEStructuralFeatures().get(1);
 	}
@@ -9271,6 +9911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScheduler_RunnableAllocations() {
 		return (EReference)schedulerEClass.getEStructuralFeatures().get(2);
 	}
@@ -9280,6 +9921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getScheduler__GetSchedulingAlgorithm() {
 		return schedulerEClass.getEOperations().get(0);
 	}
@@ -9289,6 +9931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTaskScheduler() {
 		return taskSchedulerEClass;
 	}
@@ -9298,6 +9941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_SchedulingAlgorithm() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(0);
 	}
@@ -9307,6 +9951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_ParentAssociation() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(1);
 	}
@@ -9316,6 +9961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_ChildAssociations() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(2);
 	}
@@ -9325,6 +9971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_TaskAllocations() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(3);
 	}
@@ -9334,6 +9981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_ParentScheduler() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(4);
 	}
@@ -9343,6 +9991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskScheduler_ChildSchedulers() {
 		return (EReference)taskSchedulerEClass.getEStructuralFeatures().get(5);
 	}
@@ -9352,6 +10001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSchedulerAssociation() {
 		return schedulerAssociationEClass;
 	}
@@ -9361,6 +10011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAssociation_Child() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(0);
 	}
@@ -9370,6 +10021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAssociation_Parent() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(1);
 	}
@@ -9379,6 +10031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAssociation_SchedulingParameters() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(2);
 	}
@@ -9388,6 +10041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulerAssociation_ParameterExtensions() {
 		return (EReference)schedulerAssociationEClass.getEStructuralFeatures().get(3);
 	}
@@ -9397,6 +10051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInterruptController() {
 		return interruptControllerEClass;
 	}
@@ -9406,6 +10061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInterruptController_SchedulingAlgorithm() {
 		return (EReference)interruptControllerEClass.getEStructuralFeatures().get(0);
 	}
@@ -9415,6 +10071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInterruptController_IsrAllocations() {
 		return (EReference)interruptControllerEClass.getEStructuralFeatures().get(1);
 	}
@@ -9424,6 +10081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSchedulingParameters() {
 		return schedulingParametersEClass;
 	}
@@ -9433,6 +10091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSchedulingParameters_Priority() {
 		return (EAttribute)schedulingParametersEClass.getEStructuralFeatures().get(0);
 	}
@@ -9442,6 +10101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulingParameters_MinBudget() {
 		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(1);
 	}
@@ -9451,6 +10111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulingParameters_MaxBudget() {
 		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(2);
 	}
@@ -9460,6 +10121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSchedulingParameters_Replenishment() {
 		return (EReference)schedulingParametersEClass.getEStructuralFeatures().get(3);
 	}
@@ -9469,6 +10131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getParameterExtension() {
 		return parameterExtensionEClass;
 	}
@@ -9478,6 +10141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getParameterExtension_Key() {
 		return (EAttribute)parameterExtensionEClass.getEStructuralFeatures().get(0);
 	}
@@ -9487,6 +10151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getParameterExtension_Value() {
 		return (EAttribute)parameterExtensionEClass.getEStructuralFeatures().get(1);
 	}
@@ -9496,6 +10161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAlgorithm() {
 		return algorithmEClass;
 	}
@@ -9505,6 +10171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInterruptSchedulingAlgorithm() {
 		return interruptSchedulingAlgorithmEClass;
 	}
@@ -9514,6 +10181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTaskSchedulingAlgorithm() {
 		return taskSchedulingAlgorithmEClass;
 	}
@@ -9523,6 +10191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFixedPriority() {
 		return fixedPriorityEClass;
 	}
@@ -9532,6 +10201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFixedPriorityPreemptive() {
 		return fixedPriorityPreemptiveEClass;
 	}
@@ -9541,6 +10211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFixedPriorityPreemptiveWithBudgetEnforcement() {
 		return fixedPriorityPreemptiveWithBudgetEnforcementEClass;
 	}
@@ -9550,6 +10221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOSEK() {
 		return osekEClass;
 	}
@@ -9559,6 +10231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDeadlineMonotonic() {
 		return deadlineMonotonicEClass;
 	}
@@ -9568,6 +10241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRateMonotonic() {
 		return rateMonotonicEClass;
 	}
@@ -9577,6 +10251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPfair() {
 		return pfairEClass;
 	}
@@ -9586,6 +10261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPfair_QuantSizeNs() {
 		return (EAttribute)pfairEClass.getEStructuralFeatures().get(0);
 	}
@@ -9595,6 +10271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPfairPD2() {
 		return pfairPD2EClass;
 	}
@@ -9604,6 +10281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPartlyPFairPD2() {
 		return partlyPFairPD2EClass;
 	}
@@ -9613,6 +10291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEarlyReleaseFairPD2() {
 		return earlyReleaseFairPD2EClass;
 	}
@@ -9622,6 +10301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPartlyEarlyReleaseFairPD2() {
 		return partlyEarlyReleaseFairPD2EClass;
 	}
@@ -9631,6 +10311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDynamicPriority() {
 		return dynamicPriorityEClass;
 	}
@@ -9640,6 +10321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLeastLocalRemainingExecutionTimeFirst() {
 		return leastLocalRemainingExecutionTimeFirstEClass;
 	}
@@ -9649,6 +10331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEarliestDeadlineFirst() {
 		return earliestDeadlineFirstEClass;
 	}
@@ -9658,6 +10341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPriorityBasedRoundRobin() {
 		return priorityBasedRoundRobinEClass;
 	}
@@ -9667,6 +10351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReservationBasedServer() {
 		return reservationBasedServerEClass;
 	}
@@ -9676,6 +10361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDeferrableServer() {
 		return deferrableServerEClass;
 	}
@@ -9685,6 +10371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPollingPeriodicServer() {
 		return pollingPeriodicServerEClass;
 	}
@@ -9694,6 +10381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSporadicServer() {
 		return sporadicServerEClass;
 	}
@@ -9703,6 +10391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstantBandwidthServer() {
 		return constantBandwidthServerEClass;
 	}
@@ -9712,6 +10401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstantBandwidthServerWithCASH() {
 		return constantBandwidthServerWithCASHEClass;
 	}
@@ -9721,6 +10411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGrouping() {
 		return groupingEClass;
 	}
@@ -9730,6 +10421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getUserSpecificSchedulingAlgorithm() {
 		return userSpecificSchedulingAlgorithmEClass;
 	}
@@ -9739,6 +10431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUserSpecificSchedulingAlgorithm_ParameterExtensions() {
 		return (EReference)userSpecificSchedulingAlgorithmEClass.getEStructuralFeatures().get(0);
 	}
@@ -9748,6 +10441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPriorityBased() {
 		return priorityBasedEClass;
 	}
@@ -9757,6 +10451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOperatingSystem() {
 		return operatingSystemEClass;
 	}
@@ -9766,6 +10461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOperatingSystem_Overhead() {
 		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(0);
 	}
@@ -9775,6 +10471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOperatingSystem_TaskSchedulers() {
 		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(1);
 	}
@@ -9784,6 +10481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOperatingSystem_InterruptControllers() {
 		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(2);
 	}
@@ -9793,6 +10491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOperatingSystem_OsDataConsistency() {
 		return (EReference)operatingSystemEClass.getEStructuralFeatures().get(3);
 	}
@@ -9802,6 +10501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVendorOperatingSystem() {
 		return vendorOperatingSystemEClass;
 	}
@@ -9811,6 +10511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVendorOperatingSystem_OsName() {
 		return (EAttribute)vendorOperatingSystemEClass.getEStructuralFeatures().get(0);
 	}
@@ -9820,6 +10521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVendorOperatingSystem_Vendor() {
 		return (EAttribute)vendorOperatingSystemEClass.getEStructuralFeatures().get(1);
 	}
@@ -9829,6 +10531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVendorOperatingSystem_Version() {
 		return (EAttribute)vendorOperatingSystemEClass.getEStructuralFeatures().get(2);
 	}
@@ -9838,6 +10541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOsOverhead() {
 		return osOverheadEClass;
 	}
@@ -9847,6 +10551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsOverhead_ApiOverhead() {
 		return (EReference)osOverheadEClass.getEStructuralFeatures().get(0);
 	}
@@ -9856,6 +10561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsOverhead_IsrCategory1Overhead() {
 		return (EReference)osOverheadEClass.getEStructuralFeatures().get(1);
 	}
@@ -9865,6 +10571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsOverhead_IsrCategory2Overhead() {
 		return (EReference)osOverheadEClass.getEStructuralFeatures().get(2);
 	}
@@ -9874,6 +10581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOsAPIOverhead() {
 		return osAPIOverheadEClass;
 	}
@@ -9883,6 +10591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSendMessage() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(0);
 	}
@@ -9892,6 +10601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiTerminateTask() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(1);
 	}
@@ -9901,6 +10611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSchedule() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(2);
 	}
@@ -9910,6 +10621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiRequestResource() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(3);
 	}
@@ -9919,6 +10631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiReleaseResource() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(4);
 	}
@@ -9928,6 +10641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSetEvent() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(5);
 	}
@@ -9937,6 +10651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiWaitEvent() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(6);
 	}
@@ -9946,6 +10661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiClearEvent() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(7);
 	}
@@ -9955,6 +10671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiActivateTask() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(8);
 	}
@@ -9964,6 +10681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiEnforcedMigration() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(9);
 	}
@@ -9973,6 +10691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSuspendOsInterrupts() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(10);
 	}
@@ -9982,6 +10701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiResumeOsInterrupts() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(11);
 	}
@@ -9991,6 +10711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiRequestSpinlock() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(12);
 	}
@@ -10000,6 +10721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiReleaseSpinlock() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(13);
 	}
@@ -10009,6 +10731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSenderReceiverRead() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(14);
 	}
@@ -10018,6 +10741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSenderReceiverWrite() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(15);
 	}
@@ -10027,6 +10751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiSynchronousServerCallPoint() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(16);
 	}
@@ -10036,6 +10761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiIocRead() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(17);
 	}
@@ -10045,6 +10771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsAPIOverhead_ApiIocWrite() {
 		return (EReference)osAPIOverheadEClass.getEStructuralFeatures().get(18);
 	}
@@ -10054,6 +10781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOsISROverhead() {
 		return osISROverheadEClass;
 	}
@@ -10063,6 +10791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsISROverhead_PreExecutionOverhead() {
 		return (EReference)osISROverheadEClass.getEStructuralFeatures().get(0);
 	}
@@ -10072,6 +10801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsISROverhead_PostExecutionOverhead() {
 		return (EReference)osISROverheadEClass.getEStructuralFeatures().get(1);
 	}
@@ -10081,6 +10811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPropertyConstraintsModel() {
 		return propertyConstraintsModelEClass;
 	}
@@ -10090,6 +10821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPropertyConstraintsModel_AllocationConstraints() {
 		return (EReference)propertyConstraintsModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -10099,6 +10831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPropertyConstraintsModel_MappingConstraints() {
 		return (EReference)propertyConstraintsModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -10108,6 +10841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCoreAllocationConstraint() {
 		return coreAllocationConstraintEClass;
 	}
@@ -10117,6 +10851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCoreAllocationConstraint_CoreClassification() {
 		return (EReference)coreAllocationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10126,6 +10861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemoryMappingConstraint() {
 		return memoryMappingConstraintEClass;
 	}
@@ -10135,6 +10871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryMappingConstraint_MemoryClassification() {
 		return (EReference)memoryMappingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10144,6 +10881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessAllocationConstraint() {
 		return processAllocationConstraintEClass;
 	}
@@ -10153,6 +10891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessAllocationConstraint_Process() {
 		return (EReference)processAllocationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10162,6 +10901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessPrototypeAllocationConstraint() {
 		return processPrototypeAllocationConstraintEClass;
 	}
@@ -10171,6 +10911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototypeAllocationConstraint_ProcessPrototype() {
 		return (EReference)processPrototypeAllocationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10180,6 +10921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableAllocationConstraint() {
 		return runnableAllocationConstraintEClass;
 	}
@@ -10189,6 +10931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableAllocationConstraint_Runnable() {
 		return (EReference)runnableAllocationConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10198,6 +10941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractElementMappingConstraint() {
 		return abstractElementMappingConstraintEClass;
 	}
@@ -10207,6 +10951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractElementMappingConstraint_AbstractElement() {
 		return (EReference)abstractElementMappingConstraintEClass.getEStructuralFeatures().get(0);
 	}
@@ -10216,6 +10961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClassification() {
 		return classificationEClass;
 	}
@@ -10225,6 +10971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClassification_Condition() {
 		return (EAttribute)classificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -10234,6 +10981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClassification_Grouping() {
 		return (EAttribute)classificationEClass.getEStructuralFeatures().get(1);
 	}
@@ -10243,6 +10991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCoreClassification() {
 		return coreClassificationEClass;
 	}
@@ -10252,6 +11001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCoreClassification_Classifiers() {
 		return (EReference)coreClassificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -10261,6 +11011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMemoryClassification() {
 		return memoryClassificationEClass;
 	}
@@ -10270,6 +11021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMemoryClassification_Classifiers() {
 		return (EReference)memoryClassificationEClass.getEStructuralFeatures().get(0);
 	}
@@ -10279,6 +11031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStimuliModel() {
 		return stimuliModelEClass;
 	}
@@ -10288,6 +11041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimuliModel_Stimuli() {
 		return (EReference)stimuliModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -10297,6 +11051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimuliModel_Clocks() {
 		return (EReference)stimuliModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -10306,6 +11061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStimulus() {
 		return stimulusEClass;
 	}
@@ -10315,6 +11071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimulus_SetModeValueList() {
 		return (EReference)stimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10324,6 +11081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimulus_EnablingModeValueList() {
 		return (EReference)stimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10333,6 +11091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimulus_DisablingModeValueList() {
 		return (EReference)stimulusEClass.getEStructuralFeatures().get(2);
 	}
@@ -10342,6 +11101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStimulus_AffectedProcesses() {
 		return (EReference)stimulusEClass.getEStructuralFeatures().get(3);
 	}
@@ -10351,6 +11111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValueList() {
 		return modeValueListEClass;
 	}
@@ -10360,6 +11121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValueList_Entries() {
 		return (EReference)modeValueListEClass.getEStructuralFeatures().get(0);
 	}
@@ -10369,6 +11131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValueMapEntry() {
 		return modeValueMapEntryEClass;
 	}
@@ -10378,6 +11141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValueMapEntry_Key() {
 		return (EReference)modeValueMapEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -10387,6 +11151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValueMapEntry_Value() {
 		return (EReference)modeValueMapEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -10396,6 +11161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValueDisjunction() {
 		return modeValueDisjunctionEClass;
 	}
@@ -10405,6 +11171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValueDisjunction_Entries() {
 		return (EReference)modeValueDisjunctionEClass.getEStructuralFeatures().get(0);
 	}
@@ -10414,6 +11181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeValueDisjunction__IsSatisfiedBy__EMap() {
 		return modeValueDisjunctionEClass.getEOperations().get(0);
 	}
@@ -10423,6 +11191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValueDisjunctionEntry() {
 		return modeValueDisjunctionEntryEClass;
 	}
@@ -10432,6 +11201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeValueDisjunctionEntry__IsSatisfiedBy__EMap() {
 		return modeValueDisjunctionEntryEClass.getEOperations().get(0);
 	}
@@ -10441,6 +11211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValue() {
 		return modeValueEClass;
 	}
@@ -10450,6 +11221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValue_ValueProvider() {
 		return (EReference)modeValueEClass.getEStructuralFeatures().get(0);
 	}
@@ -10459,6 +11231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValue_Value() {
 		return (EReference)modeValueEClass.getEStructuralFeatures().get(1);
 	}
@@ -10468,6 +11241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeValue__IsSatisfiedBy__EMap() {
 		return modeValueEClass.getEOperations().get(0);
 	}
@@ -10477,6 +11251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeValueConjunction() {
 		return modeValueConjunctionEClass;
 	}
@@ -10486,6 +11261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeValueConjunction_Entries() {
 		return (EReference)modeValueConjunctionEClass.getEStructuralFeatures().get(0);
 	}
@@ -10495,6 +11271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getModeValueConjunction__IsSatisfiedBy__EMap() {
 		return modeValueConjunctionEClass.getEOperations().get(0);
 	}
@@ -10504,6 +11281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFixedPeriodic() {
 		return fixedPeriodicEClass;
 	}
@@ -10513,6 +11291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFixedPeriodic_Offset() {
 		return (EReference)fixedPeriodicEClass.getEStructuralFeatures().get(0);
 	}
@@ -10522,6 +11301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFixedPeriodic_Recurrence() {
 		return (EReference)fixedPeriodicEClass.getEStructuralFeatures().get(1);
 	}
@@ -10531,6 +11311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPeriodicStimulus() {
 		return periodicStimulusEClass;
 	}
@@ -10540,6 +11321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicStimulus_Jitter() {
 		return (EReference)periodicStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10549,6 +11331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicStimulus_MinDistance() {
 		return (EReference)periodicStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10558,6 +11341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRelativePeriodicStimulus() {
 		return relativePeriodicStimulusEClass;
 	}
@@ -10567,6 +11351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRelativePeriodicStimulus_Offset() {
 		return (EReference)relativePeriodicStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10576,6 +11361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRelativePeriodicStimulus_NextOccurrence() {
 		return (EReference)relativePeriodicStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10585,6 +11371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVariableRateStimulus() {
 		return variableRateStimulusEClass;
 	}
@@ -10594,6 +11381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableRateStimulus_Step() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10603,6 +11391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableRateStimulus_OccurrencesPerStep() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10612,6 +11401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVariableRateStimulus_MaxIncreasePerStep() {
 		return (EAttribute)variableRateStimulusEClass.getEStructuralFeatures().get(2);
 	}
@@ -10621,6 +11411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVariableRateStimulus_MaxDecreasePerStep() {
 		return (EAttribute)variableRateStimulusEClass.getEStructuralFeatures().get(3);
 	}
@@ -10630,6 +11421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableRateStimulus_Scenario() {
 		return (EReference)variableRateStimulusEClass.getEStructuralFeatures().get(4);
 	}
@@ -10639,6 +11431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getScenario() {
 		return scenarioEClass;
 	}
@@ -10648,6 +11441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScenario_Recurrence() {
 		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
 	}
@@ -10657,6 +11451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScenario_Clock() {
 		return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
 	}
@@ -10666,6 +11461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPeriodicSyntheticStimulus() {
 		return periodicSyntheticStimulusEClass;
 	}
@@ -10675,6 +11471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicSyntheticStimulus_OccurrenceTimes() {
 		return (EReference)periodicSyntheticStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10684,6 +11481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomStimulus() {
 		return customStimulusEClass;
 	}
@@ -10693,6 +11491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCustomStimulus_Description() {
 		return (EAttribute)customStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10702,6 +11501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSingleStimulus() {
 		return singleStimulusEClass;
 	}
@@ -10711,6 +11511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSingleStimulus_Occurrence() {
 		return (EReference)singleStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10720,6 +11521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInterProcessStimulus() {
 		return interProcessStimulusEClass;
 	}
@@ -10729,6 +11531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInterProcessStimulus_Counter() {
 		return (EReference)interProcessStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10738,6 +11541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInterProcessStimulus_ExplicitTriggers() {
 		return (EReference)interProcessStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10747,6 +11551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPeriodicBurstStimulus() {
 		return periodicBurstStimulusEClass;
 	}
@@ -10756,6 +11561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicBurstStimulus_BurstLength() {
 		return (EReference)periodicBurstStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10765,6 +11571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicBurstStimulus_OccurrenceMinDistance() {
 		return (EReference)periodicBurstStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10774,6 +11581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPeriodicBurstStimulus_OccurrenceCount() {
 		return (EAttribute)periodicBurstStimulusEClass.getEStructuralFeatures().get(2);
 	}
@@ -10783,6 +11591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventStimulus() {
 		return eventStimulusEClass;
 	}
@@ -10792,6 +11601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventStimulus_TriggeringEvents() {
 		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10801,6 +11611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventStimulus_Counter() {
 		return (EReference)eventStimulusEClass.getEStructuralFeatures().get(1);
 	}
@@ -10810,6 +11621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getArrivalCurveStimulus() {
 		return arrivalCurveStimulusEClass;
 	}
@@ -10819,6 +11631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArrivalCurveStimulus_Entries() {
 		return (EReference)arrivalCurveStimulusEClass.getEStructuralFeatures().get(0);
 	}
@@ -10828,6 +11641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getArrivalCurveEntry() {
 		return arrivalCurveEntryEClass;
 	}
@@ -10837,6 +11651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getArrivalCurveEntry_NumberOfOccurrences() {
 		return (EAttribute)arrivalCurveEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -10846,6 +11661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArrivalCurveEntry_LowerTimeBorder() {
 		return (EReference)arrivalCurveEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -10855,6 +11671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArrivalCurveEntry_UpperTimeBorder() {
 		return (EReference)arrivalCurveEntryEClass.getEStructuralFeatures().get(2);
 	}
@@ -10864,6 +11681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClock() {
 		return clockEClass;
 	}
@@ -10873,6 +11691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClockTriangleFunction() {
 		return clockTriangleFunctionEClass;
 	}
@@ -10882,6 +11701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockTriangleFunction_Shift() {
 		return (EReference)clockTriangleFunctionEClass.getEStructuralFeatures().get(0);
 	}
@@ -10891,6 +11711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockTriangleFunction_Period() {
 		return (EReference)clockTriangleFunctionEClass.getEStructuralFeatures().get(1);
 	}
@@ -10900,6 +11721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClockTriangleFunction_Max() {
 		return (EAttribute)clockTriangleFunctionEClass.getEStructuralFeatures().get(2);
 	}
@@ -10909,6 +11731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClockTriangleFunction_Min() {
 		return (EAttribute)clockTriangleFunctionEClass.getEStructuralFeatures().get(3);
 	}
@@ -10918,6 +11741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClockSinusFunction() {
 		return clockSinusFunctionEClass;
 	}
@@ -10927,6 +11751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockSinusFunction_Shift() {
 		return (EReference)clockSinusFunctionEClass.getEStructuralFeatures().get(0);
 	}
@@ -10936,6 +11761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockSinusFunction_Period() {
 		return (EReference)clockSinusFunctionEClass.getEStructuralFeatures().get(1);
 	}
@@ -10945,6 +11771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClockSinusFunction_Amplitude() {
 		return (EAttribute)clockSinusFunctionEClass.getEStructuralFeatures().get(2);
 	}
@@ -10954,6 +11781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClockSinusFunction_YOffset() {
 		return (EAttribute)clockSinusFunctionEClass.getEStructuralFeatures().get(3);
 	}
@@ -10963,6 +11791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClockMultiplierList() {
 		return clockMultiplierListEClass;
 	}
@@ -10972,6 +11801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockMultiplierList_Entries() {
 		return (EReference)clockMultiplierListEClass.getEStructuralFeatures().get(0);
 	}
@@ -10981,6 +11811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClockMultiplierListEntry() {
 		return clockMultiplierListEntryEClass;
 	}
@@ -10990,6 +11821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClockMultiplierListEntry_Multiplier() {
 		return (EAttribute)clockMultiplierListEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -10999,6 +11831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClockMultiplierListEntry_Time() {
 		return (EReference)clockMultiplierListEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -11008,6 +11841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSWModel() {
 		return swModelEClass;
 	}
@@ -11017,6 +11851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Isrs() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -11026,6 +11861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Tasks() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -11035,6 +11871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Runnables() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -11044,6 +11881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Labels() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(3);
 	}
@@ -11053,6 +11891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Channels() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(4);
 	}
@@ -11062,6 +11901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_ProcessPrototypes() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(5);
 	}
@@ -11071,6 +11911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Sections() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(6);
 	}
@@ -11080,6 +11921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Activations() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(7);
 	}
@@ -11089,6 +11931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Events() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(8);
 	}
@@ -11098,6 +11941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_TypeDefinitions() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(9);
 	}
@@ -11107,6 +11951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_CustomEntities() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(10);
 	}
@@ -11116,6 +11961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_ProcessChains() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(11);
 	}
@@ -11125,6 +11971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_Modes() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(12);
 	}
@@ -11134,6 +11981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSWModel_ModeLabels() {
 		return (EReference)swModelEClass.getEStructuralFeatures().get(13);
 	}
@@ -11143,6 +11991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getSWModel__ModeLiteral__String_String() {
 		return swModelEClass.getEOperations().get(0);
 	}
@@ -11152,6 +12001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractMemoryElement() {
 		return abstractMemoryElementEClass;
 	}
@@ -11161,6 +12011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractMemoryElement_Size() {
 		return (EReference)abstractMemoryElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -11170,6 +12021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractMemoryElement_Mappings() {
 		return (EReference)abstractMemoryElementEClass.getEStructuralFeatures().get(1);
 	}
@@ -11179,6 +12031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractProcess() {
 		return abstractProcessEClass;
 	}
@@ -11188,6 +12041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractProcess_ReferringComponents() {
 		return (EReference)abstractProcessEClass.getEStructuralFeatures().get(0);
 	}
@@ -11197,6 +12051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomEntity() {
 		return customEntityEClass;
 	}
@@ -11206,6 +12061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCustomEntity_TypeName() {
 		return (EAttribute)customEntityEClass.getEStructuralFeatures().get(0);
 	}
@@ -11215,6 +12071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessChain() {
 		return processChainEClass;
 	}
@@ -11224,6 +12081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessChain_Processes() {
 		return (EReference)processChainEClass.getEStructuralFeatures().get(0);
 	}
@@ -11233,6 +12091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcess() {
 		return processEClass;
 	}
@@ -11242,6 +12101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcess_CallGraph() {
 		return (EReference)processEClass.getEStructuralFeatures().get(0);
 	}
@@ -11251,6 +12111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcess_Stimuli() {
 		return (EReference)processEClass.getEStructuralFeatures().get(1);
 	}
@@ -11260,6 +12121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCallGraph() {
 		return callGraphEClass;
 	}
@@ -11269,6 +12131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallGraph_GraphEntries() {
 		return (EReference)callGraphEClass.getEStructuralFeatures().get(0);
 	}
@@ -11278,6 +12141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGraphEntryBase() {
 		return graphEntryBaseEClass;
 	}
@@ -11287,6 +12151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCallSequence() {
 		return callSequenceEClass;
 	}
@@ -11296,6 +12161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallSequence_Calls() {
 		return (EReference)callSequenceEClass.getEStructuralFeatures().get(0);
 	}
@@ -11305,6 +12171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeSwitch() {
 		return modeSwitchEClass;
 	}
@@ -11314,6 +12181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeSwitch_Entries() {
 		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(0);
 	}
@@ -11323,6 +12191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeSwitch_DefaultEntry() {
 		return (EReference)modeSwitchEClass.getEStructuralFeatures().get(1);
 	}
@@ -11332,6 +12201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeSwitchEntry() {
 		return modeSwitchEntryEClass;
 	}
@@ -11341,6 +12211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeSwitchEntry_Condition() {
 		return (EReference)modeSwitchEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -11350,6 +12221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeSwitchEntry_Items() {
 		return (EReference)modeSwitchEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -11359,6 +12231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeSwitchDefault() {
 		return modeSwitchDefaultEClass;
 	}
@@ -11368,6 +12241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeSwitchDefault_Items() {
 		return (EReference)modeSwitchDefaultEClass.getEStructuralFeatures().get(0);
 	}
@@ -11377,6 +12251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProbabilitySwitch() {
 		return probabilitySwitchEClass;
 	}
@@ -11386,6 +12261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProbabilitySwitch_Entries() {
 		return (EReference)probabilitySwitchEClass.getEStructuralFeatures().get(0);
 	}
@@ -11395,6 +12271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProbabilitySwitchEntry() {
 		return probabilitySwitchEntryEClass;
 	}
@@ -11404,6 +12281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProbabilitySwitchEntry_Probability() {
 		return (EAttribute)probabilitySwitchEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -11413,6 +12291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProbabilitySwitchEntry_Items() {
 		return (EReference)probabilitySwitchEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -11422,6 +12301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCounter() {
 		return counterEClass;
 	}
@@ -11431,6 +12311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCounter_Prescaler() {
 		return (EAttribute)counterEClass.getEStructuralFeatures().get(0);
 	}
@@ -11440,6 +12321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCounter_Offset() {
 		return (EAttribute)counterEClass.getEStructuralFeatures().get(1);
 	}
@@ -11449,6 +12331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCallSequenceItem() {
 		return callSequenceItemEClass;
 	}
@@ -11458,6 +12341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallSequenceItem_ContainingProcess() {
 		return (EReference)callSequenceItemEClass.getEStructuralFeatures().get(0);
 	}
@@ -11467,6 +12351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallSequenceItem_Counter() {
 		return (EReference)callSequenceItemEClass.getEStructuralFeatures().get(1);
 	}
@@ -11476,6 +12361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getWaitEvent() {
 		return waitEventEClass;
 	}
@@ -11485,6 +12371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getWaitEvent_EventMask() {
 		return (EReference)waitEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -11494,6 +12381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getWaitEvent_MaskType() {
 		return (EAttribute)waitEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -11503,6 +12391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getWaitEvent_WaitingBehaviour() {
 		return (EAttribute)waitEventEClass.getEStructuralFeatures().get(2);
 	}
@@ -11512,6 +12401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSetEvent() {
 		return setEventEClass;
 	}
@@ -11521,6 +12411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSetEvent_EventMask() {
 		return (EReference)setEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -11530,6 +12421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSetEvent_Process() {
 		return (EReference)setEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -11539,6 +12431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getClearEvent() {
 		return clearEventEClass;
 	}
@@ -11548,6 +12441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getClearEvent_EventMask() {
 		return (EReference)clearEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -11557,6 +12451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventMask() {
 		return eventMaskEClass;
 	}
@@ -11566,6 +12461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventMask_Events() {
 		return (EReference)eventMaskEClass.getEStructuralFeatures().get(0);
 	}
@@ -11575,6 +12471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOsEvent() {
 		return osEventEClass;
 	}
@@ -11584,6 +12481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOsEvent_CommunicationOverheadInBit() {
 		return (EAttribute)osEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -11593,6 +12491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getOsEvent_ReferringComponents() {
 		return (EReference)osEventEClass.getEStructuralFeatures().get(1);
 	}
@@ -11602,6 +12501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInterProcessTrigger() {
 		return interProcessTriggerEClass;
 	}
@@ -11611,6 +12511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInterProcessTrigger_Stimulus() {
 		return (EReference)interProcessTriggerEClass.getEStructuralFeatures().get(0);
 	}
@@ -11620,6 +12521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEnforcedMigration() {
 		return enforcedMigrationEClass;
 	}
@@ -11629,6 +12531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEnforcedMigration_ResourceOwner() {
 		return (EReference)enforcedMigrationEClass.getEStructuralFeatures().get(0);
 	}
@@ -11638,6 +12541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTaskRunnableCall() {
 		return taskRunnableCallEClass;
 	}
@@ -11647,6 +12551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskRunnableCall_Runnable() {
 		return (EReference)taskRunnableCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -11656,6 +12561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskRunnableCall_Statistic() {
 		return (EReference)taskRunnableCallEClass.getEStructuralFeatures().get(1);
 	}
@@ -11665,6 +12571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSchedulePoint() {
 		return schedulePointEClass;
 	}
@@ -11674,6 +12581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTerminateProcess() {
 		return terminateProcessEClass;
 	}
@@ -11683,6 +12591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTask() {
 		return taskEClass;
 	}
@@ -11692,6 +12601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTask_Preemption() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
@@ -11701,6 +12611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTask_MultipleTaskActivationLimit() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
 	}
@@ -11710,6 +12621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getISR() {
 		return isrEClass;
 	}
@@ -11719,6 +12631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISR_Category() {
 		return (EAttribute)isrEClass.getEStructuralFeatures().get(0);
 	}
@@ -11728,6 +12641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProcessPrototype() {
 		return processPrototypeEClass;
 	}
@@ -11737,6 +12651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProcessPrototype_Preemption() {
 		return (EAttribute)processPrototypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -11746,6 +12661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_FirstRunnable() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -11755,6 +12671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_LastRunnable() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -11764,6 +12681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_AccessPrecedenceSpec() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(3);
 	}
@@ -11773,6 +12691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_OrderPrecedenceSpec() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(4);
 	}
@@ -11782,6 +12701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_ChainedPrototypes() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(5);
 	}
@@ -11791,6 +12711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_Activation() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(6);
 	}
@@ -11800,6 +12721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProcessPrototype_RunnableCalls() {
 		return (EReference)processPrototypeEClass.getEStructuralFeatures().get(7);
 	}
@@ -11809,6 +12731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChainedProcessPrototype() {
 		return chainedProcessPrototypeEClass;
 	}
@@ -11818,6 +12741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChainedProcessPrototype_Prototype() {
 		return (EReference)chainedProcessPrototypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -11827,6 +12751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChainedProcessPrototype_Apply() {
 		return (EAttribute)chainedProcessPrototypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -11836,6 +12761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChainedProcessPrototype_Offset() {
 		return (EAttribute)chainedProcessPrototypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -11845,6 +12771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGeneralPrecedence() {
 		return generalPrecedenceEClass;
 	}
@@ -11854,6 +12781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralPrecedence_Origin() {
 		return (EReference)generalPrecedenceEClass.getEStructuralFeatures().get(0);
 	}
@@ -11863,6 +12791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGeneralPrecedence_Target() {
 		return (EReference)generalPrecedenceEClass.getEStructuralFeatures().get(1);
 	}
@@ -11872,6 +12801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAccessPrecedenceSpec() {
 		return accessPrecedenceSpecEClass;
 	}
@@ -11881,6 +12811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAccessPrecedenceSpec_Label() {
 		return (EReference)accessPrecedenceSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -11890,6 +12821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAccessPrecedenceSpec_OrderType() {
 		return (EAttribute)accessPrecedenceSpecEClass.getEStructuralFeatures().get(1);
 	}
@@ -11899,6 +12831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOrderPrecedenceSpec() {
 		return orderPrecedenceSpecEClass;
 	}
@@ -11908,6 +12841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOrderPrecedenceSpec_OrderType() {
 		return (EAttribute)orderPrecedenceSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -11917,6 +12851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataDependency() {
 		return dataDependencyEClass;
 	}
@@ -11926,6 +12861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataDependency_Labels() {
 		return (EReference)dataDependencyEClass.getEStructuralFeatures().get(0);
 	}
@@ -11935,6 +12871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataDependency_Parameters() {
 		return (EReference)dataDependencyEClass.getEStructuralFeatures().get(1);
 	}
@@ -11944,6 +12881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataDependency_CallArguments() {
 		return (EReference)dataDependencyEClass.getEStructuralFeatures().get(2);
 	}
@@ -11953,6 +12891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataDependency_ContainingRunnable() {
 		return (EReference)dataDependencyEClass.getEStructuralFeatures().get(3);
 	}
@@ -11962,6 +12901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableParameter() {
 		return runnableParameterEClass;
 	}
@@ -11971,6 +12911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableParameter_ContainingRunnable() {
 		return (EReference)runnableParameterEClass.getEStructuralFeatures().get(0);
 	}
@@ -11980,6 +12921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnableParameter_Direction() {
 		return (EAttribute)runnableParameterEClass.getEStructuralFeatures().get(1);
 	}
@@ -11989,6 +12931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableParameter_DataType() {
 		return (EReference)runnableParameterEClass.getEStructuralFeatures().get(2);
 	}
@@ -11998,6 +12941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableParameter_DependsOn() {
 		return (EReference)runnableParameterEClass.getEStructuralFeatures().get(3);
 	}
@@ -12007,6 +12951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getRunnableParameter__ComputeUniqueName() {
 		return runnableParameterEClass.getEOperations().get(0);
 	}
@@ -12016,6 +12961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getRunnableParameter__ToString() {
 		return runnableParameterEClass.getEOperations().get(1);
 	}
@@ -12025,6 +12971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnable() {
 		return runnableEClass;
 	}
@@ -12034,6 +12981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_Parameters() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(0);
 	}
@@ -12043,6 +12991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_RunnableItems() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(1);
 	}
@@ -12052,6 +13001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_Activations() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(2);
 	}
@@ -12061,6 +13011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_Deadline() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(3);
 	}
@@ -12070,6 +13021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnable_Callback() {
 		return (EAttribute)runnableEClass.getEStructuralFeatures().get(4);
 	}
@@ -12079,6 +13031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnable_Service() {
 		return (EAttribute)runnableEClass.getEStructuralFeatures().get(5);
 	}
@@ -12088,6 +13041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRunnable_AsilLevel() {
 		return (EAttribute)runnableEClass.getEStructuralFeatures().get(6);
 	}
@@ -12097,6 +13051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_Section() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(7);
 	}
@@ -12106,6 +13061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_RunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(8);
 	}
@@ -12115,6 +13071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_TaskRunnableCalls() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
 	}
@@ -12124,6 +13081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnable_ReferringComponents() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(10);
 	}
@@ -12133,6 +13091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getRunnable__GetFirstActivation() {
 		return runnableEClass.getEOperations().get(0);
 	}
@@ -12142,6 +13101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabel() {
 		return labelEClass;
 	}
@@ -12151,6 +13111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabel_DataType() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(0);
 	}
@@ -12160,6 +13121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabel_Constant() {
 		return (EAttribute)labelEClass.getEStructuralFeatures().get(1);
 	}
@@ -12169,6 +13131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabel_BVolatile() {
 		return (EAttribute)labelEClass.getEStructuralFeatures().get(2);
 	}
@@ -12178,6 +13141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabel_DataStability() {
 		return (EAttribute)labelEClass.getEStructuralFeatures().get(3);
 	}
@@ -12187,6 +13151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabel_StabilityLevel() {
 		return (EAttribute)labelEClass.getEStructuralFeatures().get(4);
 	}
@@ -12196,6 +13161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabel_Section() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(5);
 	}
@@ -12205,6 +13171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabel_LabelAccesses() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(6);
 	}
@@ -12214,6 +13181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabel_ReferringComponents() {
 		return (EReference)labelEClass.getEStructuralFeatures().get(7);
 	}
@@ -12223,6 +13191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChannel() {
 		return channelEClass;
 	}
@@ -12232,6 +13201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannel_ElementType() {
 		return (EReference)channelEClass.getEStructuralFeatures().get(0);
 	}
@@ -12241,6 +13211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannel_DefaultElements() {
 		return (EAttribute)channelEClass.getEStructuralFeatures().get(1);
 	}
@@ -12250,6 +13221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannel_MaxElements() {
 		return (EAttribute)channelEClass.getEStructuralFeatures().get(2);
 	}
@@ -12259,6 +13231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannel_ChannelAccesses() {
 		return (EReference)channelEClass.getEStructuralFeatures().get(3);
 	}
@@ -12268,6 +13241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeLabel() {
 		return modeLabelEClass;
 	}
@@ -12277,6 +13251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeLabel_Mode() {
 		return (EReference)modeLabelEClass.getEStructuralFeatures().get(0);
 	}
@@ -12286,6 +13261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeLabel_InitialValue() {
 		return (EReference)modeLabelEClass.getEStructuralFeatures().get(1);
 	}
@@ -12295,6 +13271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSection() {
 		return sectionEClass;
 	}
@@ -12304,6 +13281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSection_AsilLevel() {
 		return (EAttribute)sectionEClass.getEStructuralFeatures().get(0);
 	}
@@ -12313,6 +13291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSection_Labels() {
 		return (EReference)sectionEClass.getEStructuralFeatures().get(1);
 	}
@@ -12322,6 +13301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSection_Runnables() {
 		return (EReference)sectionEClass.getEStructuralFeatures().get(2);
 	}
@@ -12331,6 +13311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableItem() {
 		return runnableItemEClass;
 	}
@@ -12340,6 +13321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableItem_ContainingRunnable() {
 		return (EReference)runnableItemEClass.getEStructuralFeatures().get(0);
 	}
@@ -12349,6 +13331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getComputationItem() {
 		return computationItemEClass;
 	}
@@ -12358,6 +13341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getExecutionNeed() {
 		return executionNeedEClass;
 	}
@@ -12367,6 +13351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getExecutionNeed_Needs() {
 		return (EReference)executionNeedEClass.getEStructuralFeatures().get(0);
 	}
@@ -12376,6 +13361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNeedEntry() {
 		return needEntryEClass;
 	}
@@ -12385,6 +13371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNeedEntry_Key() {
 		return (EAttribute)needEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -12394,6 +13381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNeedEntry_Value() {
 		return (EReference)needEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -12403,6 +13391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTicks() {
 		return ticksEClass;
 	}
@@ -12412,6 +13401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTicks_Default() {
 		return (EReference)ticksEClass.getEStructuralFeatures().get(0);
 	}
@@ -12421,6 +13411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTicks_Extended() {
 		return (EReference)ticksEClass.getEStructuralFeatures().get(1);
 	}
@@ -12430,6 +13421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTicksEntry() {
 		return ticksEntryEClass;
 	}
@@ -12439,6 +13431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTicksEntry_Key() {
 		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -12448,6 +13441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTicksEntry_Value() {
 		return (EReference)ticksEntryEClass.getEStructuralFeatures().get(1);
 	}
@@ -12457,6 +13451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModeLabelAccess() {
 		return modeLabelAccessEClass;
 	}
@@ -12466,6 +13461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeLabelAccess_Data() {
 		return (EReference)modeLabelAccessEClass.getEStructuralFeatures().get(0);
 	}
@@ -12475,6 +13471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModeLabelAccess_Access() {
 		return (EAttribute)modeLabelAccessEClass.getEStructuralFeatures().get(1);
 	}
@@ -12484,6 +13481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModeLabelAccess_ModeValue() {
 		return (EReference)modeLabelAccessEClass.getEStructuralFeatures().get(2);
 	}
@@ -12493,6 +13491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableModeSwitch() {
 		return runnableModeSwitchEClass;
 	}
@@ -12502,6 +13501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableModeSwitch_Entries() {
 		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(0);
 	}
@@ -12511,6 +13511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableModeSwitch_DefaultEntry() {
 		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(1);
 	}
@@ -12520,6 +13521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabelAccess() {
 		return labelAccessEClass;
 	}
@@ -12529,6 +13531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccess_Data() {
 		return (EReference)labelAccessEClass.getEStructuralFeatures().get(0);
 	}
@@ -12538,6 +13541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabelAccess_Access() {
 		return (EAttribute)labelAccessEClass.getEStructuralFeatures().get(1);
 	}
@@ -12547,6 +13551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccess_Statistic() {
 		return (EReference)labelAccessEClass.getEStructuralFeatures().get(2);
 	}
@@ -12556,6 +13561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccess_TransmissionPolicy() {
 		return (EReference)labelAccessEClass.getEStructuralFeatures().get(3);
 	}
@@ -12565,6 +13571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabelAccess_DataStability() {
 		return (EAttribute)labelAccessEClass.getEStructuralFeatures().get(4);
 	}
@@ -12574,6 +13581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLabelAccess_Implementation() {
 		return (EAttribute)labelAccessEClass.getEStructuralFeatures().get(5);
 	}
@@ -12583,6 +13591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccess_DependsOn() {
 		return (EReference)labelAccessEClass.getEStructuralFeatures().get(6);
 	}
@@ -12592,6 +13601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChannelAccess() {
 		return channelAccessEClass;
 	}
@@ -12601,6 +13611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannelAccess_Data() {
 		return (EReference)channelAccessEClass.getEStructuralFeatures().get(0);
 	}
@@ -12610,6 +13621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelAccess_Elements() {
 		return (EAttribute)channelAccessEClass.getEStructuralFeatures().get(1);
 	}
@@ -12619,6 +13631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChannelAccess_TransmissionPolicy() {
 		return (EReference)channelAccessEClass.getEStructuralFeatures().get(2);
 	}
@@ -12628,6 +13641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChannelSend() {
 		return channelSendEClass;
 	}
@@ -12637,6 +13651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChannelReceive() {
 		return channelReceiveEClass;
 	}
@@ -12646,6 +13661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelReceive_ReceiveOperation() {
 		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(0);
 	}
@@ -12655,6 +13671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelReceive_DataMustBeNew() {
 		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(1);
 	}
@@ -12664,6 +13681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelReceive_ElementIndex() {
 		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(2);
 	}
@@ -12673,6 +13691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getChannelReceive_LowerBound() {
 		return (EAttribute)channelReceiveEClass.getEStructuralFeatures().get(3);
 	}
@@ -12682,6 +13701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSemaphoreAccess() {
 		return semaphoreAccessEClass;
 	}
@@ -12691,6 +13711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSemaphoreAccess_Semaphore() {
 		return (EReference)semaphoreAccessEClass.getEStructuralFeatures().get(0);
 	}
@@ -12700,6 +13721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphoreAccess_Access() {
 		return (EAttribute)semaphoreAccessEClass.getEStructuralFeatures().get(1);
 	}
@@ -12709,6 +13731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSemaphoreAccess_WaitingBehaviour() {
 		return (EAttribute)semaphoreAccessEClass.getEStructuralFeatures().get(2);
 	}
@@ -12718,6 +13741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSenderReceiverCommunication() {
 		return senderReceiverCommunicationEClass;
 	}
@@ -12727,6 +13751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSenderReceiverCommunication_Buffered() {
 		return (EAttribute)senderReceiverCommunicationEClass.getEStructuralFeatures().get(0);
 	}
@@ -12736,6 +13761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSenderReceiverCommunication_Label() {
 		return (EReference)senderReceiverCommunicationEClass.getEStructuralFeatures().get(1);
 	}
@@ -12745,6 +13771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSenderReceiverCommunication_Port() {
 		return (EReference)senderReceiverCommunicationEClass.getEStructuralFeatures().get(2);
 	}
@@ -12754,6 +13781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSenderReceiverRead() {
 		return senderReceiverReadEClass;
 	}
@@ -12763,6 +13791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSenderReceiverWrite() {
 		return senderReceiverWriteEClass;
 	}
@@ -12772,6 +13801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSenderReceiverWrite_NotifiedRunnables() {
 		return (EReference)senderReceiverWriteEClass.getEStructuralFeatures().get(0);
 	}
@@ -12781,6 +13811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getServerCall() {
 		return serverCallEClass;
 	}
@@ -12790,6 +13821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServerCall_ServerRunnable() {
 		return (EReference)serverCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -12799,6 +13831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServerCall_Port() {
 		return (EReference)serverCallEClass.getEStructuralFeatures().get(1);
 	}
@@ -12808,6 +13841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSynchronousServerCall() {
 		return synchronousServerCallEClass;
 	}
@@ -12817,6 +13851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSynchronousServerCall_WaitingBehaviour() {
 		return (EAttribute)synchronousServerCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -12826,6 +13861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAsynchronousServerCall() {
 		return asynchronousServerCallEClass;
 	}
@@ -12835,6 +13871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAsynchronousServerCall_ResultRunnable() {
 		return (EReference)asynchronousServerCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -12844,6 +13881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGetResultServerCall() {
 		return getResultServerCallEClass;
 	}
@@ -12853,6 +13891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGetResultServerCall_BlockingType() {
 		return (EAttribute)getResultServerCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -12862,6 +13901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableProbabilitySwitch() {
 		return runnableProbabilitySwitchEClass;
 	}
@@ -12871,6 +13911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableProbabilitySwitch_Entries() {
 		return (EReference)runnableProbabilitySwitchEClass.getEStructuralFeatures().get(0);
 	}
@@ -12880,6 +13921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGroup() {
 		return groupEClass;
 	}
@@ -12889,6 +13931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getGroup_Ordered() {
 		return (EAttribute)groupEClass.getEStructuralFeatures().get(0);
 	}
@@ -12898,6 +13941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getGroup_Items() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(1);
 	}
@@ -12907,6 +13951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCallArgument() {
 		return callArgumentEClass;
 	}
@@ -12916,6 +13961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallArgument_ContainingCall() {
 		return (EReference)callArgumentEClass.getEStructuralFeatures().get(0);
 	}
@@ -12925,6 +13971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallArgument_Parameter() {
 		return (EReference)callArgumentEClass.getEStructuralFeatures().get(1);
 	}
@@ -12934,6 +13981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCallArgument_DependsOn() {
 		return (EReference)callArgumentEClass.getEStructuralFeatures().get(2);
 	}
@@ -12943,6 +13991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getCallArgument__GetName() {
 		return callArgumentEClass.getEOperations().get(0);
 	}
@@ -12952,6 +14001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getCallArgument__ComputeUniqueName() {
 		return callArgumentEClass.getEOperations().get(1);
 	}
@@ -12961,6 +14011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableCall() {
 		return runnableCallEClass;
 	}
@@ -12970,6 +14021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableCall_Runnable() {
 		return (EReference)runnableCallEClass.getEStructuralFeatures().get(0);
 	}
@@ -12979,6 +14031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableCall_Arguments() {
 		return (EReference)runnableCallEClass.getEStructuralFeatures().get(1);
 	}
@@ -12988,6 +14041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableCall_Statistic() {
 		return (EReference)runnableCallEClass.getEStructuralFeatures().get(2);
 	}
@@ -12997,6 +14051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomEventTrigger() {
 		return customEventTriggerEClass;
 	}
@@ -13006,6 +14061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCustomEventTrigger_Event() {
 		return (EReference)customEventTriggerEClass.getEStructuralFeatures().get(0);
 	}
@@ -13015,6 +14071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataType() {
 		return dataTypeEClass;
 	}
@@ -13024,6 +14081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCompoundType() {
 		return compoundTypeEClass;
 	}
@@ -13033,6 +14091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStruct() {
 		return structEClass;
 	}
@@ -13042,6 +14101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStruct_Entries() {
 		return (EReference)structEClass.getEStructuralFeatures().get(0);
 	}
@@ -13051,6 +14111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStructEntry() {
 		return structEntryEClass;
 	}
@@ -13060,6 +14121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getStructEntry_DataType() {
 		return (EReference)structEntryEClass.getEStructuralFeatures().get(0);
 	}
@@ -13069,6 +14131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getArray() {
 		return arrayEClass;
 	}
@@ -13078,6 +14141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getArray_NumberElements() {
 		return (EAttribute)arrayEClass.getEStructuralFeatures().get(0);
 	}
@@ -13087,6 +14151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArray_DataType() {
 		return (EReference)arrayEClass.getEStructuralFeatures().get(1);
 	}
@@ -13096,6 +14161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPointer() {
 		return pointerEClass;
 	}
@@ -13105,6 +14171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPointer_DataType() {
 		return (EReference)pointerEClass.getEStructuralFeatures().get(0);
 	}
@@ -13114,6 +14181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTypeRef() {
 		return typeRefEClass;
 	}
@@ -13123,6 +14191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTypeRef_TypeDef() {
 		return (EReference)typeRefEClass.getEStructuralFeatures().get(0);
 	}
@@ -13132,6 +14201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataPlatformMapping() {
 		return dataPlatformMappingEClass;
 	}
@@ -13141,6 +14211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataPlatformMapping_PlatformName() {
 		return (EAttribute)dataPlatformMappingEClass.getEStructuralFeatures().get(0);
 	}
@@ -13150,6 +14221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDataPlatformMapping_PlatformType() {
 		return (EAttribute)dataPlatformMappingEClass.getEStructuralFeatures().get(1);
 	}
@@ -13159,6 +14231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTypeDefinition() {
 		return typeDefinitionEClass;
 	}
@@ -13168,6 +14241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDataTypeDefinition() {
 		return dataTypeDefinitionEClass;
 	}
@@ -13177,6 +14251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDataTypeDefinition_DataType() {
 		return (EReference)dataTypeDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -13186,6 +14261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBaseTypeDefinition() {
 		return baseTypeDefinitionEClass;
 	}
@@ -13195,6 +14271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBaseTypeDefinition_Size() {
 		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(0);
 	}
@@ -13204,6 +14281,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBaseTypeDefinition_DataMapping() {
 		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(1);
 	}
@@ -13213,6 +14291,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getActivation() {
 		return activationEClass;
 	}
@@ -13222,6 +14301,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPeriodicActivation() {
 		return periodicActivationEClass;
 	}
@@ -13231,6 +14311,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicActivation_Min() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13240,6 +14321,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicActivation_Max() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(1);
 	}
@@ -13249,6 +14331,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicActivation_Recurrence() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(2);
 	}
@@ -13258,6 +14341,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPeriodicActivation_Offset() {
 		return (EReference)periodicActivationEClass.getEStructuralFeatures().get(3);
 	}
@@ -13267,6 +14351,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVariableRateActivation() {
 		return variableRateActivationEClass;
 	}
@@ -13276,6 +14361,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVariableRateActivation_Description() {
 		return (EAttribute)variableRateActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13285,6 +14371,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableRateActivation_Step() {
 		return (EReference)variableRateActivationEClass.getEStructuralFeatures().get(1);
 	}
@@ -13294,6 +14381,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableRateActivation_OccurrencesPerStep() {
 		return (EReference)variableRateActivationEClass.getEStructuralFeatures().get(2);
 	}
@@ -13303,6 +14391,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSporadicActivation() {
 		return sporadicActivationEClass;
 	}
@@ -13312,6 +14401,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSporadicActivation_Description() {
 		return (EAttribute)sporadicActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13321,6 +14411,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSporadicActivation_Occurrence() {
 		return (EReference)sporadicActivationEClass.getEStructuralFeatures().get(1);
 	}
@@ -13330,6 +14421,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSingleActivation() {
 		return singleActivationEClass;
 	}
@@ -13339,6 +14431,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSingleActivation_Min() {
 		return (EReference)singleActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13348,6 +14441,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSingleActivation_Max() {
 		return (EReference)singleActivationEClass.getEStructuralFeatures().get(1);
 	}
@@ -13357,6 +14451,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventActivation() {
 		return eventActivationEClass;
 	}
@@ -13366,6 +14461,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventActivation_TriggeringEvents() {
 		return (EReference)eventActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13375,6 +14471,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventActivation_Counter() {
 		return (EReference)eventActivationEClass.getEStructuralFeatures().get(1);
 	}
@@ -13384,6 +14481,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCustomActivation() {
 		return customActivationEClass;
 	}
@@ -13393,6 +14491,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCustomActivation_Description() {
 		return (EAttribute)customActivationEClass.getEStructuralFeatures().get(0);
 	}
@@ -13402,6 +14501,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabelAccessStatistic() {
 		return labelAccessStatisticEClass;
 	}
@@ -13411,6 +14511,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccessStatistic_Value() {
 		return (EReference)labelAccessStatisticEClass.getEStructuralFeatures().get(0);
 	}
@@ -13420,6 +14521,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLabelAccessStatistic_CacheMisses() {
 		return (EReference)labelAccessStatisticEClass.getEStructuralFeatures().get(1);
 	}
@@ -13429,6 +14531,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunEntityCallStatistic() {
 		return runEntityCallStatisticEClass;
 	}
@@ -13438,6 +14541,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunEntityCallStatistic_Statistic() {
 		return (EReference)runEntityCallStatisticEClass.getEStructuralFeatures().get(0);
 	}
@@ -13447,6 +14551,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMeasurementModel() {
 		return measurementModelEClass;
 	}
@@ -13456,6 +14561,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMeasurementModel_Measurements() {
 		return (EReference)measurementModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -13465,6 +14571,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMeasurement() {
 		return measurementEClass;
 	}
@@ -13474,6 +14581,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMeasurement_Runtimes() {
 		return (EReference)measurementEClass.getEStructuralFeatures().get(0);
 	}
@@ -13483,6 +14591,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMeasurement_RuntimeDeviation() {
 		return (EReference)measurementEClass.getEStructuralFeatures().get(1);
 	}
@@ -13492,6 +14601,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventChainMeasurement() {
 		return eventChainMeasurementEClass;
 	}
@@ -13501,6 +14611,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventChainMeasurement_EventChain() {
 		return (EReference)eventChainMeasurementEClass.getEStructuralFeatures().get(0);
 	}
@@ -13510,6 +14621,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTaskMeasurement() {
 		return taskMeasurementEClass;
 	}
@@ -13519,6 +14631,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTaskMeasurement_Task() {
 		return (EReference)taskMeasurementEClass.getEStructuralFeatures().get(0);
 	}
@@ -13528,6 +14641,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRunnableMeasurement() {
 		return runnableMeasurementEClass;
 	}
@@ -13537,6 +14651,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRunnableMeasurement_Runnable() {
 		return (EReference)runnableMeasurementEClass.getEStructuralFeatures().get(0);
 	}
@@ -13546,6 +14661,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getTimeUnit() {
 		return timeUnitEEnum;
 	}
@@ -13555,6 +14671,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getFrequencyUnit() {
 		return frequencyUnitEEnum;
 	}
@@ -13564,6 +14681,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getVoltageUnit() {
 		return voltageUnitEEnum;
 	}
@@ -13573,6 +14691,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getDataSizeUnit() {
 		return dataSizeUnitEEnum;
 	}
@@ -13582,6 +14701,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getDataRateUnit() {
 		return dataRateUnitEEnum;
 	}
@@ -13591,6 +14711,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSamplingType() {
 		return samplingTypeEEnum;
 	}
@@ -13600,6 +14721,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getInterfaceKind() {
 		return interfaceKindEEnum;
 	}
@@ -13609,6 +14731,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getRunnableOrderType() {
 		return runnableOrderTypeEEnum;
 	}
@@ -13618,6 +14741,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSynchronizationType() {
 		return synchronizationTypeEEnum;
 	}
@@ -13627,6 +14751,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getMappingType() {
 		return mappingTypeEEnum;
 	}
@@ -13636,6 +14761,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLatencyType() {
 		return latencyTypeEEnum;
 	}
@@ -13645,6 +14771,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSeverity() {
 		return severityEEnum;
 	}
@@ -13654,6 +14781,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLimitType() {
 		return limitTypeEEnum;
 	}
@@ -13663,6 +14791,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getTimeMetric() {
 		return timeMetricEEnum;
 	}
@@ -13672,6 +14801,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getCountMetric() {
 		return countMetricEEnum;
 	}
@@ -13681,6 +14811,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPercentageMetric() {
 		return percentageMetricEEnum;
 	}
@@ -13690,6 +14821,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getCPUPercentageMetric() {
 		return cpuPercentageMetricEEnum;
 	}
@@ -13699,6 +14831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getFrequencyMetric() {
 		return frequencyMetricEEnum;
 	}
@@ -13708,6 +14841,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getCoherencyDirection() {
 		return coherencyDirectionEEnum;
 	}
@@ -13717,6 +14851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getProcessEventType() {
 		return processEventTypeEEnum;
 	}
@@ -13726,6 +14861,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getRunnableEventType() {
 		return runnableEventTypeEEnum;
 	}
@@ -13735,6 +14871,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLabelEventType() {
 		return labelEventTypeEEnum;
 	}
@@ -13744,6 +14881,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getChannelEventType() {
 		return channelEventTypeEEnum;
 	}
@@ -13753,6 +14891,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSemaphoreEventType() {
 		return semaphoreEventTypeEEnum;
 	}
@@ -13762,6 +14901,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getComponentEventType() {
 		return componentEventTypeEEnum;
 	}
@@ -13771,6 +14911,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getMemoryType() {
 		return memoryTypeEEnum;
 	}
@@ -13780,6 +14921,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getStructureType() {
 		return structureTypeEEnum;
 	}
@@ -13789,6 +14931,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getCacheType() {
 		return cacheTypeEEnum;
 	}
@@ -13798,6 +14941,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPortType() {
 		return portTypeEEnum;
 	}
@@ -13807,6 +14951,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSchedPolicy() {
 		return schedPolicyEEnum;
 	}
@@ -13816,6 +14961,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getWriteStrategy() {
 		return writeStrategyEEnum;
 	}
@@ -13825,6 +14971,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPuType() {
 		return puTypeEEnum;
 	}
@@ -13834,6 +14981,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPortInterface() {
 		return portInterfaceEEnum;
 	}
@@ -13843,6 +14991,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getHwFeatureType() {
 		return hwFeatureTypeEEnum;
 	}
@@ -13852,6 +15001,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getMemoryAddressMappingType() {
 		return memoryAddressMappingTypeEEnum;
 	}
@@ -13861,6 +15011,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getOsDataConsistencyMode() {
 		return osDataConsistencyModeEEnum;
 	}
@@ -13870,6 +15021,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getAccessMultiplicity() {
 		return accessMultiplicityEEnum;
 	}
@@ -13879,6 +15031,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getDataStabilityLevel() {
 		return dataStabilityLevelEEnum;
 	}
@@ -13888,6 +15041,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSemaphoreType() {
 		return semaphoreTypeEEnum;
 	}
@@ -13897,6 +15051,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getCondition() {
 		return conditionEEnum;
 	}
@@ -13906,6 +15061,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getGroupingType() {
 		return groupingTypeEEnum;
 	}
@@ -13915,6 +15071,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getWaitEventType() {
 		return waitEventTypeEEnum;
 	}
@@ -13924,6 +15081,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getWaitingBehaviour() {
 		return waitingBehaviourEEnum;
 	}
@@ -13933,6 +15091,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getISRCategory() {
 		return isrCategoryEEnum;
 	}
@@ -13942,6 +15101,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getAccessPrecedenceType() {
 		return accessPrecedenceTypeEEnum;
 	}
@@ -13951,6 +15111,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getOrderType() {
 		return orderTypeEEnum;
 	}
@@ -13960,6 +15121,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getDirectionType() {
 		return directionTypeEEnum;
 	}
@@ -13969,6 +15131,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLabelDataStability() {
 		return labelDataStabilityEEnum;
 	}
@@ -13978,6 +15141,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getReceiveOperation() {
 		return receiveOperationEEnum;
 	}
@@ -13987,6 +15151,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLabelAccessDataStability() {
 		return labelAccessDataStabilityEEnum;
 	}
@@ -13996,6 +15161,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLabelAccessEnum() {
 		return labelAccessEnumEEnum;
 	}
@@ -14005,6 +15171,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLabelAccessImplementation() {
 		return labelAccessImplementationEEnum;
 	}
@@ -14014,6 +15181,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSemaphoreAccessEnum() {
 		return semaphoreAccessEnumEEnum;
 	}
@@ -14023,6 +15191,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getBlockingType() {
 		return blockingTypeEEnum;
 	}
@@ -14032,6 +15201,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPreemption() {
 		return preemptionEEnum;
 	}
@@ -14041,6 +15211,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getConcurrencyType() {
 		return concurrencyTypeEEnum;
 	}
@@ -14050,6 +15221,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getASILType() {
 		return asilTypeEEnum;
 	}
@@ -14059,6 +15231,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getAddress() {
 		return addressEDataType;
 	}
@@ -14068,6 +15241,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getPositiveInt() {
 		return positiveIntEDataType;
 	}
@@ -14077,6 +15251,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getPositiveLong() {
 		return positiveLongEDataType;
 	}
@@ -14086,6 +15261,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getPositiveDouble() {
 		return positiveDoubleEDataType;
 	}
@@ -14095,6 +15271,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AmaltheaFactory getAmaltheaFactory() {
 		return (AmaltheaFactory)getEFactoryInstance();
 	}

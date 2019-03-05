@@ -103,6 +103,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Preemption getPreemption() {
 		return preemption;
 	}
@@ -112,6 +113,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPreemption(Preemption newPreemption) {
 		Preemption oldPreemption = preemption;
 		preemption = newPreemption == null ? PREEMPTION_EDEFAULT : newPreemption;
@@ -124,6 +126,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMultipleTaskActivationLimit() {
 		return multipleTaskActivationLimit;
 	}
@@ -133,6 +136,7 @@ public class TaskImpl extends ProcessImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMultipleTaskActivationLimit(int newMultipleTaskActivationLimit) {
 		int oldMultipleTaskActivationLimit = multipleTaskActivationLimit;
 		multipleTaskActivationLimit = newMultipleTaskActivationLimit;

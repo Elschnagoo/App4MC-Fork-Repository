@@ -116,6 +116,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RunnableOrderType getOrderType() {
 		return orderType;
 	}
@@ -125,6 +126,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrderType(RunnableOrderType newOrderType) {
 		RunnableOrderType oldOrderType = orderType;
 		orderType = newOrderType == null ? ORDER_TYPE_EDEFAULT : newOrderType;
@@ -137,6 +139,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RunnableEntityGroup> getRunnableGroups() {
 		if (runnableGroups == null) {
 			runnableGroups = new EObjectContainmentEList<RunnableEntityGroup>(RunnableEntityGroup.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__RUNNABLE_GROUPS);
@@ -149,6 +152,7 @@ public class RunnableSequencingConstraintImpl extends ReferableBaseObjectImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractProcess> getProcessScope() {
 		if (processScope == null) {
 			processScope = new EObjectResolvingEList<AbstractProcess>(AbstractProcess.class, this, AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT__PROCESS_SCOPE);

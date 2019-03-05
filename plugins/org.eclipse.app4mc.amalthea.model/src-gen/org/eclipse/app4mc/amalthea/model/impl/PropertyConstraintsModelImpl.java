@@ -90,6 +90,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CoreAllocationConstraint> getAllocationConstraints() {
 		if (allocationConstraints == null) {
 			allocationConstraints = new EObjectContainmentEList<CoreAllocationConstraint>(CoreAllocationConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__ALLOCATION_CONSTRAINTS);
@@ -102,6 +103,7 @@ public class PropertyConstraintsModelImpl extends BaseObjectImpl implements Prop
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryMappingConstraint> getMappingConstraints() {
 		if (mappingConstraints == null) {
 			mappingConstraints = new EObjectContainmentEList<MemoryMappingConstraint>(MemoryMappingConstraint.class, this, AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL__MAPPING_CONSTRAINTS);

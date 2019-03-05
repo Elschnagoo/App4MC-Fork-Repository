@@ -76,6 +76,7 @@ public abstract class ProcessConstraintImpl extends AmaltheaExtendedEObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessConstraintTarget getTarget() {
 		return target;
 	}
@@ -100,6 +101,7 @@ public abstract class ProcessConstraintImpl extends AmaltheaExtendedEObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(ProcessConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;

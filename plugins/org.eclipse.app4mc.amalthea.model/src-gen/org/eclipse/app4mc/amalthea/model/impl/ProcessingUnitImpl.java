@@ -106,6 +106,7 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnitDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -132,6 +133,7 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(ProcessingUnitDefinition newDefinition) {
 		ProcessingUnitDefinition oldDefinition = definition;
 		definition = newDefinition;
@@ -144,6 +146,7 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwAccessElement> getAccessElements() {
 		if (accessElements == null) {
 			accessElements = new EObjectContainmentWithInverseEList<HwAccessElement>(HwAccessElement.class, this, AmaltheaPackage.PROCESSING_UNIT__ACCESS_ELEMENTS, AmaltheaPackage.HW_ACCESS_ELEMENT__SOURCE);
@@ -156,6 +159,7 @@ public class ProcessingUnitImpl extends HwModuleImpl implements ProcessingUnit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Cache> getCaches() {
 		if (caches == null) {
 			caches = new EObjectContainmentEList<Cache>(Cache.class, this, AmaltheaPackage.PROCESSING_UNIT__CACHES);

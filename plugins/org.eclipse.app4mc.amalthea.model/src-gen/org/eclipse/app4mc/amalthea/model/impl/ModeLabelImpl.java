@@ -97,6 +97,7 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDisplayName() {
 		return displayName;
 	}
@@ -106,6 +107,7 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDisplayName(String newDisplayName) {
 		String oldDisplayName = displayName;
 		displayName = newDisplayName;
@@ -118,6 +120,7 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode getMode() {
 		Mode mode = basicGetMode();
 		return mode != null && mode.eIsProxy() ? (Mode)eResolveProxy((InternalEObject)mode) : mode;
@@ -142,6 +145,7 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeLiteral getInitialValue() {
 		if (initialValue != null && initialValue.eIsProxy()) {
 			InternalEObject oldInitialValue = (InternalEObject)initialValue;
@@ -168,6 +172,7 @@ public class ModeLabelImpl extends AbstractMemoryElementImpl implements ModeLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInitialValue(ModeLiteral newInitialValue) {
 		ModeLiteral oldInitialValue = initialValue;
 		initialValue = newInitialValue;

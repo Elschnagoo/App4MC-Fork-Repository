@@ -79,6 +79,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryDefinition getDefinition() {
 		if (definition != null && definition.eIsProxy()) {
 			InternalEObject oldDefinition = (InternalEObject)definition;
@@ -105,6 +106,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(MemoryDefinition newDefinition) {
 		MemoryDefinition oldDefinition = definition;
 		definition = newDefinition;
@@ -117,6 +119,7 @@ public class MemoryImpl extends HwModuleImpl implements Memory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryMapping> getMappings() {
 		EReference _memoryMapping_Memory = AmaltheaPackage.eINSTANCE.getMemoryMapping_Memory();
 		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getMemory_Mappings(), 

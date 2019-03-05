@@ -76,6 +76,7 @@ public abstract class DataConstraintImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataConstraintTarget getTarget() {
 		return target;
 	}
@@ -100,6 +101,7 @@ public abstract class DataConstraintImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(DataConstraintTarget newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;

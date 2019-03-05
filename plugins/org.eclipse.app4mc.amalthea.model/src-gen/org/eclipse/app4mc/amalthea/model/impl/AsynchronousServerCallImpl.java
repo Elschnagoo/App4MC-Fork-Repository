@@ -72,6 +72,7 @@ public class AsynchronousServerCallImpl extends ServerCallImpl implements Asynch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getResultRunnable() {
 		if (resultRunnable != null && resultRunnable.eIsProxy()) {
 			InternalEObject oldResultRunnable = (InternalEObject)resultRunnable;
@@ -98,6 +99,7 @@ public class AsynchronousServerCallImpl extends ServerCallImpl implements Asynch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResultRunnable(org.eclipse.app4mc.amalthea.model.Runnable newResultRunnable) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldResultRunnable = resultRunnable;
 		resultRunnable = newResultRunnable;

@@ -118,6 +118,7 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.SYSTEM__TAGS);
@@ -130,6 +131,7 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ComponentInstance> getComponentInstances() {
 		if (componentInstances == null) {
 			componentInstances = new EObjectContainmentEList<ComponentInstance>(ComponentInstance.class, this, AmaltheaPackage.SYSTEM__COMPONENT_INSTANCES);
@@ -142,6 +144,7 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Connector> getConnectors() {
 		if (connectors == null) {
 			connectors = new EObjectContainmentEList<Connector>(Connector.class, this, AmaltheaPackage.SYSTEM__CONNECTORS);
@@ -154,6 +157,7 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<QualifiedPort> getGroundedPorts() {
 		if (groundedPorts == null) {
 			groundedPorts = new EObjectContainmentEList<QualifiedPort>(QualifiedPort.class, this, AmaltheaPackage.SYSTEM__GROUNDED_PORTS);
@@ -166,6 +170,7 @@ public class SystemImpl extends ReferableBaseObjectImpl implements org.eclipse.a
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<QualifiedPort> getInnerPorts() {
 		return AmaltheaServices.getInnerPorts(this);
 	}

@@ -153,6 +153,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SemaphoreType getSemaphoreType() {
 		return semaphoreType;
 	}
@@ -162,6 +163,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSemaphoreType(SemaphoreType newSemaphoreType) {
 		SemaphoreType oldSemaphoreType = semaphoreType;
 		semaphoreType = newSemaphoreType == null ? SEMAPHORE_TYPE_EDEFAULT : newSemaphoreType;
@@ -174,6 +176,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getInitialValue() {
 		return initialValue;
 	}
@@ -183,6 +186,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInitialValue(int newInitialValue) {
 		int oldInitialValue = initialValue;
 		initialValue = newInitialValue;
@@ -195,6 +199,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxValue() {
 		return maxValue;
 	}
@@ -204,6 +209,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxValue(int newMaxValue) {
 		int oldMaxValue = maxValue;
 		maxValue = newMaxValue;
@@ -216,6 +222,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isPriorityCeilingProtocol() {
 		return priorityCeilingProtocol;
 	}
@@ -225,6 +232,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPriorityCeilingProtocol(boolean newPriorityCeilingProtocol) {
 		boolean oldPriorityCeilingProtocol = priorityCeilingProtocol;
 		priorityCeilingProtocol = newPriorityCeilingProtocol;
@@ -237,6 +245,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SemaphoreAccess> getSemaphoreAccesses() {
 		EReference _semaphoreAccess_Semaphore = AmaltheaPackage.eINSTANCE.getSemaphoreAccess_Semaphore();
 		return AmaltheaIndex.<SemaphoreAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSemaphore_SemaphoreAccesses(), 
@@ -248,6 +257,7 @@ public class SemaphoreImpl extends ReferableBaseObjectImpl implements Semaphore 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getReferringComponents() {
 		EReference _component_Semaphores = AmaltheaPackage.eINSTANCE.getComponent_Semaphores();
 		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getSemaphore_ReferringComponents(), 

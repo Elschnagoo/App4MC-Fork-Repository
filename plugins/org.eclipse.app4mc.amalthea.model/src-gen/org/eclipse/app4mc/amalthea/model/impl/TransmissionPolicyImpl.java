@@ -118,6 +118,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getChunkSize() {
 		return chunkSize;
 	}
@@ -142,6 +143,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setChunkSize(DataSize newChunkSize) {
 		if (newChunkSize != chunkSize) {
 			NotificationChain msgs = null;
@@ -161,6 +163,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getChunkProcessingTicks() {
 		return chunkProcessingTicks;
 	}
@@ -170,6 +173,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setChunkProcessingTicks(int newChunkProcessingTicks) {
 		int oldChunkProcessingTicks = chunkProcessingTicks;
 		chunkProcessingTicks = newChunkProcessingTicks;
@@ -182,6 +186,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getTransmitRatio() {
 		return transmitRatio;
 	}
@@ -191,6 +196,7 @@ public class TransmissionPolicyImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTransmitRatio(double newTransmitRatio) {
 		double oldTransmitRatio = transmitRatio;
 		transmitRatio = newTransmitRatio;

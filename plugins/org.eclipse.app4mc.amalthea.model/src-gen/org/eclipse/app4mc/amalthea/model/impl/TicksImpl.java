@@ -92,6 +92,7 @@ public class TicksImpl extends ComputationItemImpl implements Ticks {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getDefault() {
 		return default_;
 	}
@@ -116,6 +117,7 @@ public class TicksImpl extends ComputationItemImpl implements Ticks {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefault(IDiscreteValueDeviation newDefault) {
 		if (newDefault != default_) {
 			NotificationChain msgs = null;
@@ -135,6 +137,7 @@ public class TicksImpl extends ComputationItemImpl implements Ticks {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<ProcessingUnitDefinition, IDiscreteValueDeviation> getExtended() {
 		if (extended == null) {
 			extended = new EcoreEMap<ProcessingUnitDefinition,IDiscreteValueDeviation>(AmaltheaPackage.eINSTANCE.getTicksEntry(), TicksEntryImpl.class, this, AmaltheaPackage.TICKS__EXTENDED);

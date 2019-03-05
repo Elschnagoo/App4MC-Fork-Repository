@@ -262,6 +262,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getHash() {
 		if (hash == -1) {
 			Object theKey = getKey();
@@ -275,6 +276,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHash(int hash) {
 		this.hash = hash;
 	}
@@ -284,6 +286,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessingUnitDefinition getKey() {
 		return getTypedKey();
 	}
@@ -293,6 +296,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKey(ProcessingUnitDefinition key) {
 		setTypedKey(key);
 	}
@@ -302,6 +306,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getValue() {
 		return getTypedValue();
 	}
@@ -311,6 +316,7 @@ public class TicksEntryImpl extends AmaltheaExtendedEObjectImpl implements Basic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation setValue(IDiscreteValueDeviation value) {
 		IDiscreteValueDeviation oldValue = getValue();
 		setTypedValue(value);

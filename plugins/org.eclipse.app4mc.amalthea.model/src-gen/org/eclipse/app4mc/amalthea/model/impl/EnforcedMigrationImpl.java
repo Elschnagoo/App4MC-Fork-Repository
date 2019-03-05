@@ -73,6 +73,7 @@ public class EnforcedMigrationImpl extends CallSequenceItemImpl implements Enfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scheduler getResourceOwner() {
 		if (resourceOwner != null && resourceOwner.eIsProxy()) {
 			InternalEObject oldResourceOwner = (InternalEObject)resourceOwner;
@@ -99,6 +100,7 @@ public class EnforcedMigrationImpl extends CallSequenceItemImpl implements Enfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResourceOwner(Scheduler newResourceOwner) {
 		Scheduler oldResourceOwner = resourceOwner;
 		resourceOwner = newResourceOwner;

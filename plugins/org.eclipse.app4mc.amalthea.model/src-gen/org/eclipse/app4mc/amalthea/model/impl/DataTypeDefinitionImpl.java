@@ -74,6 +74,7 @@ public class DataTypeDefinitionImpl extends TypeDefinitionImpl implements DataTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
@@ -98,6 +99,7 @@ public class DataTypeDefinitionImpl extends TypeDefinitionImpl implements DataTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(DataType newDataType) {
 		if (newDataType != dataType) {
 			NotificationChain msgs = null;

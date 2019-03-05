@@ -107,6 +107,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Channel getData() {
 		if (data != null && data.eIsProxy()) {
 			InternalEObject oldData = (InternalEObject)data;
@@ -133,6 +134,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setData(Channel newData) {
 		Channel oldData = data;
 		data = newData;
@@ -145,6 +147,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getElements() {
 		return elements;
 	}
@@ -154,6 +157,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setElements(int newElements) {
 		int oldElements = elements;
 		elements = newElements;
@@ -166,6 +170,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TransmissionPolicy getTransmissionPolicy() {
 		return transmissionPolicy;
 	}
@@ -190,6 +195,7 @@ public abstract class ChannelAccessImpl extends RunnableItemImpl implements Chan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTransmissionPolicy(TransmissionPolicy newTransmissionPolicy) {
 		if (newTransmissionPolicy != transmissionPolicy) {
 			NotificationChain msgs = null;

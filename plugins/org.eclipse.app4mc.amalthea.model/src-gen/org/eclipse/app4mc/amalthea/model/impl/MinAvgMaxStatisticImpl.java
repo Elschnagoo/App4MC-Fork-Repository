@@ -125,6 +125,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMin() {
 		return min;
 	}
@@ -134,6 +135,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMin(int newMin) {
 		int oldMin = min;
 		min = newMin;
@@ -146,6 +148,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getAvg() {
 		return avg;
 	}
@@ -155,6 +158,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAvg(float newAvg) {
 		float oldAvg = avg;
 		avg = newAvg;
@@ -167,6 +171,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMax() {
 		return max;
 	}
@@ -176,6 +181,7 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMax(int newMax) {
 		int oldMax = max;
 		max = newMax;

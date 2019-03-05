@@ -91,6 +91,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLowerBound() {
 		return lowerBound;
 	}
@@ -115,6 +116,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLowerBound(Time newLowerBound) {
 		if (newLowerBound != lowerBound) {
 			NotificationChain msgs = null;
@@ -134,6 +136,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpperBound() {
 		return upperBound;
 	}
@@ -158,6 +161,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpperBound(Time newUpperBound) {
 		if (newUpperBound != upperBound) {
 			NotificationChain msgs = null;
@@ -177,6 +181,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));
 	}

@@ -93,6 +93,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getSize() {
 		return size;
 	}
@@ -117,6 +118,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
@@ -136,6 +138,7 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataPlatformMapping> getDataMapping() {
 		if (dataMapping == null) {
 			dataMapping = new EObjectContainmentEList<DataPlatformMapping>(DataPlatformMapping.class, this, AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING);

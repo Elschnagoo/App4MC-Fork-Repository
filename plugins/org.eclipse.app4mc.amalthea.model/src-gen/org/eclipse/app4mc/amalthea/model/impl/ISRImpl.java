@@ -82,6 +82,7 @@ public class ISRImpl extends ProcessImpl implements ISR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISRCategory getCategory() {
 		return category;
 	}
@@ -91,6 +92,7 @@ public class ISRImpl extends ProcessImpl implements ISR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCategory(ISRCategory newCategory) {
 		ISRCategory oldCategory = category;
 		category = newCategory == null ? CATEGORY_EDEFAULT : newCategory;

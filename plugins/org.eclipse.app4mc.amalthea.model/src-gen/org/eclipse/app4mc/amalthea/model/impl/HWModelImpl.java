@@ -114,6 +114,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwDefinition> getDefinitions() {
 		if (definitions == null) {
 			definitions = new EObjectContainmentEList<HwDefinition>(HwDefinition.class, this, AmaltheaPackage.HW_MODEL__DEFINITIONS);
@@ -126,6 +127,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwFeatureCategory> getFeatureCategories() {
 		if (featureCategories == null) {
 			featureCategories = new EObjectContainmentEList<HwFeatureCategory>(HwFeatureCategory.class, this, AmaltheaPackage.HW_MODEL__FEATURE_CATEGORIES);
@@ -138,6 +140,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwStructure> getStructures() {
 		if (structures == null) {
 			structures = new EObjectContainmentEList<HwStructure>(HwStructure.class, this, AmaltheaPackage.HW_MODEL__STRUCTURES);
@@ -150,6 +153,7 @@ public class HWModelImpl extends BaseObjectImpl implements HWModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwDomain> getDomains() {
 		if (domains == null) {
 			domains = new EObjectContainmentEList<HwDomain>(HwDomain.class, this, AmaltheaPackage.HW_MODEL__DOMAINS);

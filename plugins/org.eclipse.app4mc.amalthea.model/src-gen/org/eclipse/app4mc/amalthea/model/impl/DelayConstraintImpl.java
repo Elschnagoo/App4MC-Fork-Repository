@@ -130,6 +130,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MappingType getMappingType() {
 		return mappingType;
 	}
@@ -139,6 +140,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMappingType(MappingType newMappingType) {
 		MappingType oldMappingType = mappingType;
 		mappingType = newMappingType == null ? MAPPING_TYPE_EDEFAULT : newMappingType;
@@ -151,6 +153,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EntityEvent getSource() {
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject)source;
@@ -177,6 +180,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSource(EntityEvent newSource) {
 		EntityEvent oldSource = source;
 		source = newSource;
@@ -189,6 +193,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EntityEvent getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
@@ -215,6 +220,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(EntityEvent newTarget) {
 		EntityEvent oldTarget = target;
 		target = newTarget;
@@ -227,6 +233,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getUpper() {
 		return upper;
 	}
@@ -251,6 +258,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUpper(Time newUpper) {
 		if (newUpper != upper) {
 			NotificationChain msgs = null;
@@ -270,6 +278,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getLower() {
 		return lower;
 	}
@@ -294,6 +303,7 @@ public class DelayConstraintImpl extends TimingConstraintImpl implements DelayCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLower(Time newLower) {
 		if (newLower != lower) {
 			NotificationChain msgs = null;

@@ -108,6 +108,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OsDataConsistencyMode getMode() {
 		return mode;
 	}
@@ -117,6 +118,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMode(OsDataConsistencyMode newMode) {
 		OsDataConsistencyMode oldMode = mode;
 		mode = newMode == null ? MODE_EDEFAULT : newMode;
@@ -129,6 +131,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataStability getDataStability() {
 		return dataStability;
 	}
@@ -153,6 +156,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataStability(DataStability newDataStability) {
 		if (newDataStability != dataStability) {
 			NotificationChain msgs = null;
@@ -172,6 +176,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NonAtomicDataCoherency getNonAtomicDataCoherency() {
 		return nonAtomicDataCoherency;
 	}
@@ -196,6 +201,7 @@ public class OsDataConsistencyImpl extends BaseObjectImpl implements OsDataConsi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNonAtomicDataCoherency(NonAtomicDataCoherency newNonAtomicDataCoherency) {
 		if (newNonAtomicDataCoherency != nonAtomicDataCoherency) {
 			NotificationChain msgs = null;

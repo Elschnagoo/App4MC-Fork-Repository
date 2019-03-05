@@ -125,6 +125,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, Value> getCustomProperties() {
 		if (customProperties == null) {
 			customProperties = new EcoreEMap<String,Value>(AmaltheaPackage.eINSTANCE.getCustomProperty(), CustomPropertyImpl.class, this, AmaltheaPackage.REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES);
@@ -137,6 +138,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -146,6 +148,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -158,6 +161,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUniqueName() {
 		return this.computeUniqueName();
 	}
@@ -167,6 +171,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		return this.basicComputeUniqueName();
 	}
@@ -176,6 +181,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String basicComputeUniqueName() {
 		String _encode = this.encode(this.getName());
 		String _plus = (_encode + "?type=");
@@ -188,6 +194,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String basicComputeUniqueNameWithPrefix(final String prefix) {
 		String _encode = this.encode(prefix);
 		String _plus = (_encode + "/");
@@ -200,6 +207,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String encode(final String str) {
 		try {
 			String _xifexpression = null;

@@ -104,6 +104,7 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.OS_EVENT__TAGS);
@@ -116,6 +117,7 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getCommunicationOverheadInBit() {
 		return communicationOverheadInBit;
 	}
@@ -125,6 +127,7 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCommunicationOverheadInBit(int newCommunicationOverheadInBit) {
 		int oldCommunicationOverheadInBit = communicationOverheadInBit;
 		communicationOverheadInBit = newCommunicationOverheadInBit;
@@ -137,6 +140,7 @@ public class OsEventImpl extends ReferableBaseObjectImpl implements OsEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getReferringComponents() {
 		EReference _component_OsEvents = AmaltheaPackage.eINSTANCE.getComponent_OsEvents();
 		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getOsEvent_ReferringComponents(), 

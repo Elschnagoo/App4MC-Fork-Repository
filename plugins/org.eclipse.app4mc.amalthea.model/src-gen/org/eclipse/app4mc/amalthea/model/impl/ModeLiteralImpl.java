@@ -69,6 +69,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode getContainingMode() {
 		if (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE) return null;
 		return (Mode)eContainer();
@@ -89,6 +90,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		Mode _containingMode = this.getContainingMode();
 		String _name = null;
@@ -103,6 +105,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		Mode _containingMode = this.getContainingMode();
 		String _name = null;

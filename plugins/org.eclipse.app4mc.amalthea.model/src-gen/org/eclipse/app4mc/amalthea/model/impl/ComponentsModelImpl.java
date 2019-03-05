@@ -89,6 +89,7 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getComponents() {
 		if (components == null) {
 			components = new EObjectContainmentEList<Component>(Component.class, this, AmaltheaPackage.COMPONENTS_MODEL__COMPONENTS);
@@ -101,6 +102,7 @@ public class ComponentsModelImpl extends BaseObjectImpl implements ComponentsMod
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.System> getSystems() {
 		if (systems == null) {
 			systems = new EObjectContainmentEList<org.eclipse.app4mc.amalthea.model.System>(org.eclipse.app4mc.amalthea.model.System.class, this, AmaltheaPackage.COMPONENTS_MODEL__SYSTEMS);

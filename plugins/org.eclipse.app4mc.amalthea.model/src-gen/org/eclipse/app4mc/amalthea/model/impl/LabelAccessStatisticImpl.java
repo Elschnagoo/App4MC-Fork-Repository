@@ -85,6 +85,7 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NumericStatistic getValue() {
 		return value;
 	}
@@ -109,6 +110,7 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(NumericStatistic newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
@@ -128,6 +130,7 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NumericStatistic getCacheMisses() {
 		return cacheMisses;
 	}
@@ -152,6 +155,7 @@ public class LabelAccessStatisticImpl extends BaseObjectImpl implements LabelAcc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCacheMisses(NumericStatistic newCacheMisses) {
 		if (newCacheMisses != cacheMisses) {
 			NotificationChain msgs = null;

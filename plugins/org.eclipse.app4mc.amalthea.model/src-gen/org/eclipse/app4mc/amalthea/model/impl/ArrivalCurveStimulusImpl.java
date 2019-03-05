@@ -78,6 +78,7 @@ public class ArrivalCurveStimulusImpl extends StimulusImpl implements ArrivalCur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ArrivalCurveEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ArrivalCurveEntry>(ArrivalCurveEntry.class, this, AmaltheaPackage.ARRIVAL_CURVE_STIMULUS__ENTRIES);

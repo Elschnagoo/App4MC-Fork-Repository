@@ -140,6 +140,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getStep() {
 		return step;
 	}
@@ -164,6 +165,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStep(Time newStep) {
 		if (newStep != step) {
 			NotificationChain msgs = null;
@@ -183,6 +185,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IContinuousValueDeviation getOccurrencesPerStep() {
 		return occurrencesPerStep;
 	}
@@ -207,6 +210,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccurrencesPerStep(IContinuousValueDeviation newOccurrencesPerStep) {
 		if (newOccurrencesPerStep != occurrencesPerStep) {
 			NotificationChain msgs = null;
@@ -226,6 +230,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getMaxIncreasePerStep() {
 		return maxIncreasePerStep;
 	}
@@ -235,6 +240,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxIncreasePerStep(Double newMaxIncreasePerStep) {
 		Double oldMaxIncreasePerStep = maxIncreasePerStep;
 		maxIncreasePerStep = newMaxIncreasePerStep;
@@ -247,6 +253,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getMaxDecreasePerStep() {
 		return maxDecreasePerStep;
 	}
@@ -256,6 +263,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxDecreasePerStep(Double newMaxDecreasePerStep) {
 		Double oldMaxDecreasePerStep = maxDecreasePerStep;
 		maxDecreasePerStep = newMaxDecreasePerStep;
@@ -268,6 +276,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scenario getScenario() {
 		return scenario;
 	}
@@ -292,6 +301,7 @@ public class VariableRateStimulusImpl extends StimulusImpl implements VariableRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScenario(Scenario newScenario) {
 		if (newScenario != scenario) {
 			NotificationChain msgs = null;

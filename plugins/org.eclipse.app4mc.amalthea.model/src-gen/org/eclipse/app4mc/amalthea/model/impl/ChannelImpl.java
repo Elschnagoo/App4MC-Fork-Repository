@@ -144,6 +144,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDisplayName() {
 		return displayName;
 	}
@@ -153,6 +154,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDisplayName(String newDisplayName) {
 		String oldDisplayName = displayName;
 		displayName = newDisplayName;
@@ -165,6 +167,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getElementType() {
 		return elementType;
 	}
@@ -189,6 +192,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setElementType(DataType newElementType) {
 		if (newElementType != elementType) {
 			NotificationChain msgs = null;
@@ -208,6 +212,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getDefaultElements() {
 		return defaultElements;
 	}
@@ -217,6 +222,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultElements(int newDefaultElements) {
 		int oldDefaultElements = defaultElements;
 		defaultElements = newDefaultElements;
@@ -229,6 +235,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxElements() {
 		return maxElements;
 	}
@@ -238,6 +245,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxElements(int newMaxElements) {
 		int oldMaxElements = maxElements;
 		maxElements = newMaxElements;
@@ -250,6 +258,7 @@ public class ChannelImpl extends AbstractMemoryElementImpl implements Channel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ChannelAccess> getChannelAccesses() {
 		EReference _channelAccess_Data = AmaltheaPackage.eINSTANCE.getChannelAccess_Data();
 		return AmaltheaIndex.<ChannelAccess>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getChannel_ChannelAccesses(), 

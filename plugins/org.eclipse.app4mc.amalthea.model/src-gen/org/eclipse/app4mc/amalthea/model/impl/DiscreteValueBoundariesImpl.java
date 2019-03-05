@@ -82,6 +82,7 @@ public class DiscreteValueBoundariesImpl extends BoundedDiscreteValueDistributio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SamplingType getSamplingType() {
 		return samplingType;
 	}
@@ -91,6 +92,7 @@ public class DiscreteValueBoundariesImpl extends BoundedDiscreteValueDistributio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSamplingType(SamplingType newSamplingType) {
 		SamplingType oldSamplingType = samplingType;
 		samplingType = newSamplingType == null ? SAMPLING_TYPE_EDEFAULT : newSamplingType;

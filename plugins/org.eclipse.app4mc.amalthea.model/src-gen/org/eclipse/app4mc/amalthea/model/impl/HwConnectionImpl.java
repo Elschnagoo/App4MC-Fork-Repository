@@ -162,6 +162,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.HW_CONNECTION__TAGS);
@@ -174,6 +175,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getReadLatency() {
 		return readLatency;
 	}
@@ -198,6 +200,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReadLatency(IDiscreteValueDeviation newReadLatency) {
 		if (newReadLatency != readLatency) {
 			NotificationChain msgs = null;
@@ -217,6 +220,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IDiscreteValueDeviation getWriteLatency() {
 		return writeLatency;
 	}
@@ -241,6 +245,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWriteLatency(IDiscreteValueDeviation newWriteLatency) {
 		if (newWriteLatency != writeLatency) {
 			NotificationChain msgs = null;
@@ -260,6 +265,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataRate getDataRate() {
 		return dataRate;
 	}
@@ -284,6 +290,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataRate(DataRate newDataRate) {
 		if (newDataRate != dataRate) {
 			NotificationChain msgs = null;
@@ -303,6 +310,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwPort getPort1() {
 		if (port1 != null && port1.eIsProxy()) {
 			InternalEObject oldPort1 = (InternalEObject)port1;
@@ -329,6 +337,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPort1(HwPort newPort1) {
 		HwPort oldPort1 = port1;
 		port1 = newPort1;
@@ -341,6 +350,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwPort getPort2() {
 		if (port2 != null && port2.eIsProxy()) {
 			InternalEObject oldPort2 = (InternalEObject)port2;
@@ -367,6 +377,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPort2(HwPort newPort2) {
 		HwPort oldPort2 = port2;
 		port2 = newPort2;
@@ -379,6 +390,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInternal() {
 		EObject _eContainer = this.eContainer();
 		return (_eContainer instanceof ConnectionHandler);
@@ -389,6 +401,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		EObject _eContainer = this.eContainer();
 		String _name = null;
@@ -403,6 +416,7 @@ public class HwConnectionImpl extends ReferableBaseObjectImpl implements HwConne
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<HwPort> getPorts() {
 		return ECollections.<HwPort>unmodifiableEList(ECollections.<HwPort>toEList(IterableExtensions.<HwPort>filterNull(CollectionLiterals.<HwPort>newArrayList(this.getPort1(), this.getPort2()))));
 	}

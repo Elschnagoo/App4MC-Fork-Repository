@@ -87,6 +87,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getValue() {
 		return value;
 	}
@@ -96,6 +97,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(double newValue) {
 		double oldValue = value;
 		value = newValue;
@@ -108,6 +110,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getLowerBound() {
 		return Double.valueOf(this.getValue());
 	}
@@ -117,6 +120,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Double getUpperBound() {
 		return Double.valueOf(this.getValue());
 	}
@@ -126,6 +130,7 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getAverage() {
 		return this.getValue();
 	}

@@ -104,6 +104,7 @@ public abstract class ClassificationImpl extends BaseObjectImpl implements Class
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Condition getCondition() {
 		return condition;
 	}
@@ -113,6 +114,7 @@ public abstract class ClassificationImpl extends BaseObjectImpl implements Class
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCondition(Condition newCondition) {
 		Condition oldCondition = condition;
 		condition = newCondition == null ? CONDITION_EDEFAULT : newCondition;
@@ -125,6 +127,7 @@ public abstract class ClassificationImpl extends BaseObjectImpl implements Class
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GroupingType getGrouping() {
 		return grouping;
 	}
@@ -134,6 +137,7 @@ public abstract class ClassificationImpl extends BaseObjectImpl implements Class
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGrouping(GroupingType newGrouping) {
 		GroupingType oldGrouping = grouping;
 		grouping = newGrouping == null ? GROUPING_EDEFAULT : newGrouping;

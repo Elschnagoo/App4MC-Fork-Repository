@@ -73,6 +73,7 @@ public class ProcessChainImpl extends ReferableBaseObjectImpl implements Process
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<org.eclipse.app4mc.amalthea.model.Process> getProcesses() {
 		if (processes == null) {
 			processes = new EObjectResolvingEList<org.eclipse.app4mc.amalthea.model.Process>(org.eclipse.app4mc.amalthea.model.Process.class, this, AmaltheaPackage.PROCESS_CHAIN__PROCESSES);

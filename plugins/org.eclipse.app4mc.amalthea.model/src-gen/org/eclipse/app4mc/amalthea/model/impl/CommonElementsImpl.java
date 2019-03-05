@@ -102,6 +102,7 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectContainmentEList<Tag>(Tag.class, this, AmaltheaPackage.COMMON_ELEMENTS__TAGS);
@@ -114,6 +115,7 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CoreClassifier> getCoreClassifiers() {
 		if (coreClassifiers == null) {
 			coreClassifiers = new EObjectContainmentEList<CoreClassifier>(CoreClassifier.class, this, AmaltheaPackage.COMMON_ELEMENTS__CORE_CLASSIFIERS);
@@ -126,6 +128,7 @@ public class CommonElementsImpl extends BaseObjectImpl implements CommonElements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryClassifier> getMemoryClassifiers() {
 		if (memoryClassifiers == null) {
 			memoryClassifiers = new EObjectContainmentEList<MemoryClassifier>(MemoryClassifier.class, this, AmaltheaPackage.COMMON_ELEMENTS__MEMORY_CLASSIFIERS);

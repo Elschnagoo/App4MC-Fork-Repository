@@ -102,6 +102,7 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getPrescaler() {
 		return prescaler;
 	}
@@ -111,6 +112,7 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrescaler(long newPrescaler) {
 		long oldPrescaler = prescaler;
 		prescaler = newPrescaler;
@@ -123,6 +125,7 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getOffset() {
 		return offset;
 	}
@@ -132,6 +135,7 @@ public class CounterImpl extends BaseObjectImpl implements Counter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOffset(long newOffset) {
 		long oldOffset = offset;
 		offset = newOffset;

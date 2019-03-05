@@ -73,6 +73,7 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CustomEvent getEvent() {
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject)event;
@@ -99,6 +100,7 @@ public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEvent(CustomEvent newEvent) {
 		CustomEvent oldEvent = event;
 		event = newEvent;

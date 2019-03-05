@@ -106,6 +106,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISR getIsr() {
 		if (isr != null && isr.eIsProxy()) {
 			InternalEObject oldIsr = (InternalEObject)isr;
@@ -132,6 +133,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIsr(ISR newIsr) {
 		ISR oldIsr = isr;
 		isr = newIsr;
@@ -144,6 +146,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InterruptController getController() {
 		if (controller != null && controller.eIsProxy()) {
 			InternalEObject oldController = (InternalEObject)controller;
@@ -170,6 +173,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setController(InterruptController newController) {
 		InterruptController oldController = controller;
 		controller = newController;
@@ -182,6 +186,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getPriority() {
 		return priority;
 	}
@@ -191,6 +196,7 @@ public class ISRAllocationImpl extends BaseObjectImpl implements ISRAllocation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPriority(Integer newPriority) {
 		Integer oldPriority = priority;
 		priority = newPriority;

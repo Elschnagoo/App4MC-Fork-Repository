@@ -83,6 +83,7 @@ public abstract class GeneralPrecedenceImpl extends BaseObjectImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getOrigin() {
 		if (origin != null && origin.eIsProxy()) {
 			InternalEObject oldOrigin = (InternalEObject)origin;
@@ -109,6 +110,7 @@ public abstract class GeneralPrecedenceImpl extends BaseObjectImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrigin(org.eclipse.app4mc.amalthea.model.Runnable newOrigin) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldOrigin = origin;
 		origin = newOrigin;
@@ -121,6 +123,7 @@ public abstract class GeneralPrecedenceImpl extends BaseObjectImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
@@ -147,6 +150,7 @@ public abstract class GeneralPrecedenceImpl extends BaseObjectImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(org.eclipse.app4mc.amalthea.model.Runnable newTarget) {
 		org.eclipse.app4mc.amalthea.model.Runnable oldTarget = target;
 		target = newTarget;

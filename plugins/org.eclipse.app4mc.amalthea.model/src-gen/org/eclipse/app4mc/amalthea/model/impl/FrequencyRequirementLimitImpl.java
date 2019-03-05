@@ -96,6 +96,7 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FrequencyMetric getMetric() {
 		return metric;
 	}
@@ -105,6 +106,7 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMetric(FrequencyMetric newMetric) {
 		FrequencyMetric oldMetric = metric;
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
@@ -117,6 +119,7 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Frequency getLimitValue() {
 		return limitValue;
 	}
@@ -141,6 +144,7 @@ public class FrequencyRequirementLimitImpl extends RequirementLimitImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitValue(Frequency newLimitValue) {
 		if (newLimitValue != limitValue) {
 			NotificationChain msgs = null;

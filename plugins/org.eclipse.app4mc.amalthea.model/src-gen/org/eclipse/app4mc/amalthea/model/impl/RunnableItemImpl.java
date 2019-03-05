@@ -58,6 +58,7 @@ public abstract class RunnableItemImpl extends BaseObjectImpl implements Runnabl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable() {
 		return AmaltheaServices.<org.eclipse.app4mc.amalthea.model.Runnable>getContainerOfType(this, org.eclipse.app4mc.amalthea.model.Runnable.class);
 	}

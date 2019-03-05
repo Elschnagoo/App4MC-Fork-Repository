@@ -73,6 +73,7 @@ public class ProcessChainRequirementImpl extends RequirementImpl implements Proc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessChain getProcessChain() {
 		if (processChain != null && processChain.eIsProxy()) {
 			InternalEObject oldProcessChain = (InternalEObject)processChain;
@@ -99,6 +100,7 @@ public class ProcessChainRequirementImpl extends RequirementImpl implements Proc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProcessChain(ProcessChain newProcessChain) {
 		ProcessChain oldProcessChain = processChain;
 		processChain = newProcessChain;

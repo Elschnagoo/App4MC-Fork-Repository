@@ -112,6 +112,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getValue() {
 		return value;
 	}
@@ -121,6 +122,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(BigInteger newValue) {
 		BigInteger oldValue = value;
 		value = newValue;
@@ -133,6 +135,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TimeUnit getUnit() {
 		return unit;
 	}
@@ -142,6 +145,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnit(TimeUnit newUnit) {
 		TimeUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
@@ -154,6 +158,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		BigInteger _value = this.getValue();
 		String _plus = (_value + " ");
@@ -174,6 +179,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int compareTo(final Time t) {
 		return AmaltheaServices.compareTimes(this, t);
 	}
@@ -183,6 +189,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time adjustUnit() {
 		return AmaltheaServices.adjustTimeUnit(this);
 	}
@@ -192,6 +199,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time add(final Time t) {
 		return AmaltheaServices.addTime(this, t);
 	}
@@ -201,6 +209,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time subtract(final Time t) {
 		return AmaltheaServices.subtractTime(this, t);
 	}
@@ -210,6 +219,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time multiply(final long v) {
 		return AmaltheaServices.multiply(this, v);
 	}
@@ -219,6 +229,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time multiply(final double v) {
 		return AmaltheaServices.multiply(this, v);
 	}
@@ -228,6 +239,7 @@ public class TimeImpl extends QuantityImpl implements Time {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double divide(final Time t) {
 		return AmaltheaServices.divideTime(this, t);
 	}

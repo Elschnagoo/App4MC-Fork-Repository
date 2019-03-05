@@ -103,6 +103,7 @@ public class CountRequirementLimitImpl extends RequirementLimitImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CountMetric getMetric() {
 		return metric;
 	}
@@ -112,6 +113,7 @@ public class CountRequirementLimitImpl extends RequirementLimitImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMetric(CountMetric newMetric) {
 		CountMetric oldMetric = metric;
 		metric = newMetric == null ? METRIC_EDEFAULT : newMetric;
@@ -124,6 +126,7 @@ public class CountRequirementLimitImpl extends RequirementLimitImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getLimitValue() {
 		return limitValue;
 	}
@@ -133,6 +136,7 @@ public class CountRequirementLimitImpl extends RequirementLimitImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLimitValue(int newLimitValue) {
 		int oldLimitValue = limitValue;
 		limitValue = newLimitValue;

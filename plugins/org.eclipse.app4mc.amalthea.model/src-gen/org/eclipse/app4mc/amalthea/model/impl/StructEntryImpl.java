@@ -96,6 +96,7 @@ public class StructEntryImpl extends BaseObjectImpl implements StructEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -105,6 +106,7 @@ public class StructEntryImpl extends BaseObjectImpl implements StructEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -117,6 +119,7 @@ public class StructEntryImpl extends BaseObjectImpl implements StructEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
@@ -141,6 +144,7 @@ public class StructEntryImpl extends BaseObjectImpl implements StructEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(DataType newDataType) {
 		if (newDataType != dataType) {
 			NotificationChain msgs = null;

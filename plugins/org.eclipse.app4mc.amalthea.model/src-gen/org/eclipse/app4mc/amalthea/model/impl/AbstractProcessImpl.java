@@ -62,6 +62,7 @@ public abstract class AbstractProcessImpl extends AbstractMemoryElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Component> getReferringComponents() {
 		EReference _component_Tasks = AmaltheaPackage.eINSTANCE.getComponent_Tasks();
 		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getAbstractProcess_ReferringComponents(), 

@@ -85,6 +85,7 @@ public class QualifiedPortImpl extends BaseObjectImpl implements QualifiedPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentInstance getInstance() {
 		if (instance != null && instance.eIsProxy()) {
 			InternalEObject oldInstance = (InternalEObject)instance;
@@ -111,6 +112,7 @@ public class QualifiedPortImpl extends BaseObjectImpl implements QualifiedPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstance(ComponentInstance newInstance) {
 		ComponentInstance oldInstance = instance;
 		instance = newInstance;
@@ -123,6 +125,7 @@ public class QualifiedPortImpl extends BaseObjectImpl implements QualifiedPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Port getPort() {
 		if (port != null && port.eIsProxy()) {
 			InternalEObject oldPort = (InternalEObject)port;
@@ -149,6 +152,7 @@ public class QualifiedPortImpl extends BaseObjectImpl implements QualifiedPort {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPort(Port newPort) {
 		Port oldPort = port;
 		port = newPort;

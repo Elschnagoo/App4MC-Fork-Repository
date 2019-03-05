@@ -114,6 +114,7 @@ public class DataCoherencyGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Label> getLabels() {
 		if (labels == null) {
 			labels = new EObjectResolvingEList<Label>(Label.class, this, AmaltheaPackage.DATA_COHERENCY_GROUP__LABELS);
@@ -126,6 +127,7 @@ public class DataCoherencyGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataGroupScope getScope() {
 		return scope;
 	}
@@ -150,6 +152,7 @@ public class DataCoherencyGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScope(DataGroupScope newScope) {
 		if (newScope != scope) {
 			NotificationChain msgs = null;
@@ -169,6 +172,7 @@ public class DataCoherencyGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CoherencyDirection getDirection() {
 		return direction;
 	}
@@ -178,6 +182,7 @@ public class DataCoherencyGroupImpl extends ReferableBaseObjectImpl implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDirection(CoherencyDirection newDirection) {
 		CoherencyDirection oldDirection = direction;
 		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;

@@ -83,6 +83,7 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeValueDisjunctionEntry> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ModeValueDisjunctionEntry>(ModeValueDisjunctionEntry.class, this, AmaltheaPackage.MODE_VALUE_DISJUNCTION__ENTRIES);
@@ -95,6 +96,7 @@ public class ModeValueDisjunctionImpl extends BaseObjectImpl implements ModeValu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
 		EList<ModeValueDisjunctionEntry> _entries = this.getEntries();
 		for (final ModeValueDisjunctionEntry entry : _entries) {

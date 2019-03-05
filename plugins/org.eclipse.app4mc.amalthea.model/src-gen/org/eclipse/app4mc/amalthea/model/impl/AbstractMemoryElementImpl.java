@@ -97,6 +97,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT__TAGS);
@@ -109,6 +110,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSize getSize() {
 		return size;
 	}
@@ -133,6 +135,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(DataSize newSize) {
 		if (newSize != size) {
 			NotificationChain msgs = null;
@@ -152,6 +155,7 @@ public abstract class AbstractMemoryElementImpl extends ReferableBaseObjectImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MemoryMapping> getMappings() {
 		EReference _memoryMapping_AbstractElement = AmaltheaPackage.eINSTANCE.getMemoryMapping_AbstractElement();
 		return AmaltheaIndex.<MemoryMapping>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Mappings(), 

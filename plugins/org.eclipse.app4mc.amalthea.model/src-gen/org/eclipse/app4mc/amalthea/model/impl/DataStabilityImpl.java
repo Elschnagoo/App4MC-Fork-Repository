@@ -148,6 +148,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -157,6 +158,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnabled(boolean newEnabled) {
 		boolean oldEnabled = enabled;
 		enabled = newEnabled;
@@ -169,6 +171,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAlgorithm() {
 		return algorithm;
 	}
@@ -178,6 +181,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAlgorithm(String newAlgorithm) {
 		String oldAlgorithm = algorithm;
 		algorithm = newAlgorithm;
@@ -190,6 +194,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessMultiplicity getAccessMultiplicity() {
 		return accessMultiplicity;
 	}
@@ -199,6 +204,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessMultiplicity(AccessMultiplicity newAccessMultiplicity) {
 		AccessMultiplicity oldAccessMultiplicity = accessMultiplicity;
 		accessMultiplicity = newAccessMultiplicity == null ? ACCESS_MULTIPLICITY_EDEFAULT : newAccessMultiplicity;
@@ -211,6 +217,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataStabilityLevel getLevel() {
 		return level;
 	}
@@ -220,6 +227,7 @@ public class DataStabilityImpl extends AmaltheaExtendedEObjectImpl implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLevel(DataStabilityLevel newLevel) {
 		DataStabilityLevel oldLevel = level;
 		level = newLevel == null ? LEVEL_EDEFAULT : newLevel;

@@ -78,6 +78,7 @@ public class MeasurementModelImpl extends BaseObjectImpl implements MeasurementM
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Measurement> getMeasurements() {
 		if (measurements == null) {
 			measurements = new EObjectContainmentEList<Measurement>(Measurement.class, this, AmaltheaPackage.MEASUREMENT_MODEL__MEASUREMENTS);

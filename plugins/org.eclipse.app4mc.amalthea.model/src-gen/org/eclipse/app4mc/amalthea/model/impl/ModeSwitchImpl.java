@@ -94,6 +94,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModeSwitchEntry<GraphEntryBase>> getEntries() {
 		if (entries == null) {
 			entries = new EObjectContainmentEList<ModeSwitchEntry<GraphEntryBase>>(ModeSwitchEntry.class, this, AmaltheaPackage.MODE_SWITCH__ENTRIES);
@@ -106,6 +107,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeSwitchDefault<GraphEntryBase> getDefaultEntry() {
 		return defaultEntry;
 	}
@@ -130,6 +132,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultEntry(ModeSwitchDefault<GraphEntryBase> newDefaultEntry) {
 		if (newDefaultEntry != defaultEntry) {
 			NotificationChain msgs = null;

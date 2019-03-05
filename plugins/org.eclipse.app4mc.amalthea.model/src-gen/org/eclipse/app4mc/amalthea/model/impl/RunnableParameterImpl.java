@@ -117,6 +117,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable() {
 		if (eContainerFeatureID() != AmaltheaPackage.RUNNABLE_PARAMETER__CONTAINING_RUNNABLE) return null;
 		return (org.eclipse.app4mc.amalthea.model.Runnable)eContainer();
@@ -137,6 +138,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DirectionType getDirection() {
 		return direction;
 	}
@@ -146,6 +148,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDirection(DirectionType newDirection) {
 		DirectionType oldDirection = direction;
 		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
@@ -158,6 +161,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeDefinition getDataType() {
 		if (dataType != null && dataType.eIsProxy()) {
 			InternalEObject oldDataType = (InternalEObject)dataType;
@@ -184,6 +188,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataType(TypeDefinition newDataType) {
 		TypeDefinition oldDataType = dataType;
 		dataType = newDataType;
@@ -196,6 +201,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataDependency getDependsOn() {
 		return dependsOn;
 	}
@@ -220,6 +226,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDependsOn(DataDependency newDependsOn) {
 		if (newDependsOn != dependsOn) {
 			NotificationChain msgs = null;
@@ -239,6 +246,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		org.eclipse.app4mc.amalthea.model.Runnable _containingRunnable = this.getContainingRunnable();
 		String _name = null;
@@ -253,6 +261,7 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		org.eclipse.app4mc.amalthea.model.Runnable _containingRunnable = this.getContainingRunnable();
 		String _name = null;

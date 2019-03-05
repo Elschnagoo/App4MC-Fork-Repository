@@ -93,6 +93,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public HwFeatureCategory getContainingCategory() {
 		if (eContainerFeatureID() != AmaltheaPackage.HW_FEATURE__CONTAINING_CATEGORY) return null;
 		return (HwFeatureCategory)eContainer();
@@ -113,6 +114,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getValue() {
 		return value;
 	}
@@ -122,6 +124,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(double newValue) {
 		double oldValue = value;
 		value = newValue;
@@ -134,6 +137,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String computeUniqueName() {
 		HwFeatureCategory _containingCategory = this.getContainingCategory();
 		String _name = null;
@@ -148,6 +152,7 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		HwFeatureCategory _containingCategory = this.getContainingCategory();
 		String _name = null;

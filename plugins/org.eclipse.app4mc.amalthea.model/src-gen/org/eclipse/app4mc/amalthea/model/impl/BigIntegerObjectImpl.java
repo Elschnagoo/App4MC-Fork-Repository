@@ -83,6 +83,7 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BigInteger getValue() {
 		return value;
 	}
@@ -92,6 +93,7 @@ public class BigIntegerObjectImpl extends ValueImpl implements BigIntegerObject 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(BigInteger newValue) {
 		BigInteger oldValue = value;
 		value = newValue;

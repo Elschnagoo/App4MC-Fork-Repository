@@ -74,6 +74,7 @@ public class TimeStatisticsImpl extends BoundedTimeDistributionImpl implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Time getAverage() {
 		return average;
 	}
@@ -98,6 +99,7 @@ public class TimeStatisticsImpl extends BoundedTimeDistributionImpl implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAverage(Time newAverage) {
 		if (newAverage != average) {
 			NotificationChain msgs = null;

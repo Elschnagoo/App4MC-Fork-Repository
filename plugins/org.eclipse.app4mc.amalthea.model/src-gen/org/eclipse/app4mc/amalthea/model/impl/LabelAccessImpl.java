@@ -195,6 +195,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Tag> getTags() {
 		if (tags == null) {
 			tags = new EObjectResolvingEList<Tag>(Tag.class, this, AmaltheaPackage.LABEL_ACCESS__TAGS);
@@ -207,6 +208,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label getData() {
 		if (data != null && data.eIsProxy()) {
 			InternalEObject oldData = (InternalEObject)data;
@@ -233,6 +235,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setData(Label newData) {
 		Label oldData = data;
 		data = newData;
@@ -245,6 +248,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessEnum getAccess() {
 		return access;
 	}
@@ -254,6 +258,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccess(LabelAccessEnum newAccess) {
 		LabelAccessEnum oldAccess = access;
 		access = newAccess == null ? ACCESS_EDEFAULT : newAccess;
@@ -266,6 +271,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessStatistic getStatistic() {
 		return statistic;
 	}
@@ -290,6 +296,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatistic(LabelAccessStatistic newStatistic) {
 		if (newStatistic != statistic) {
 			NotificationChain msgs = null;
@@ -309,6 +316,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TransmissionPolicy getTransmissionPolicy() {
 		return transmissionPolicy;
 	}
@@ -333,6 +341,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTransmissionPolicy(TransmissionPolicy newTransmissionPolicy) {
 		if (newTransmissionPolicy != transmissionPolicy) {
 			NotificationChain msgs = null;
@@ -352,6 +361,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessDataStability getDataStability() {
 		return dataStability;
 	}
@@ -361,6 +371,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDataStability(LabelAccessDataStability newDataStability) {
 		LabelAccessDataStability oldDataStability = dataStability;
 		dataStability = newDataStability == null ? DATA_STABILITY_EDEFAULT : newDataStability;
@@ -373,6 +384,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LabelAccessImplementation getImplementation() {
 		return implementation;
 	}
@@ -382,6 +394,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImplementation(LabelAccessImplementation newImplementation) {
 		LabelAccessImplementation oldImplementation = implementation;
 		implementation = newImplementation == null ? IMPLEMENTATION_EDEFAULT : newImplementation;
@@ -394,6 +407,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataDependency getDependsOn() {
 		return dependsOn;
 	}
@@ -418,6 +432,7 @@ public class LabelAccessImpl extends ComputationItemImpl implements LabelAccess 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDependsOn(DataDependency newDependsOn) {
 		if (newDependsOn != dependsOn) {
 			NotificationChain msgs = null;

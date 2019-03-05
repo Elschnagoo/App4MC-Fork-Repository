@@ -106,6 +106,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskScheduler getChild() {
 		if (eContainerFeatureID() != AmaltheaPackage.SCHEDULER_ASSOCIATION__CHILD) return null;
 		return (TaskScheduler)eContainer();
@@ -126,6 +127,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TaskScheduler getParent() {
 		if (parent != null && parent.eIsProxy()) {
 			InternalEObject oldParent = (InternalEObject)parent;
@@ -152,6 +154,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParent(TaskScheduler newParent) {
 		TaskScheduler oldParent = parent;
 		parent = newParent;
@@ -164,6 +167,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SchedulingParameters getSchedulingParameters() {
 		return schedulingParameters;
 	}
@@ -188,6 +192,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSchedulingParameters(SchedulingParameters newSchedulingParameters) {
 		if (newSchedulingParameters != schedulingParameters) {
 			NotificationChain msgs = null;
@@ -207,6 +212,7 @@ public class SchedulerAssociationImpl extends AmaltheaExtendedEObjectImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EMap<String, String> getParameterExtensions() {
 		if (parameterExtensions == null) {
 			parameterExtensions = new EcoreEMap<String,String>(AmaltheaPackage.eINSTANCE.getParameterExtension(), ParameterExtensionImpl.class, this, AmaltheaPackage.SCHEDULER_ASSOCIATION__PARAMETER_EXTENSIONS);

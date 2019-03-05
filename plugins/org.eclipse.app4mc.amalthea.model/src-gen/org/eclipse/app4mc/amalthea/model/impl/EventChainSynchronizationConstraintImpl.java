@@ -100,6 +100,7 @@ public class EventChainSynchronizationConstraintImpl extends SynchronizationCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventChain> getScope() {
 		if (scope == null) {
 			scope = new EObjectResolvingEList<EventChain>(EventChain.class, this, AmaltheaPackage.EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT__SCOPE);
@@ -112,6 +113,7 @@ public class EventChainSynchronizationConstraintImpl extends SynchronizationCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SynchronizationType getType() {
 		return type;
 	}
@@ -121,6 +123,7 @@ public class EventChainSynchronizationConstraintImpl extends SynchronizationCons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(SynchronizationType newType) {
 		SynchronizationType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
