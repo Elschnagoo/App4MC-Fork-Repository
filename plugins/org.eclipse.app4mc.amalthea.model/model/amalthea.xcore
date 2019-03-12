@@ -2142,12 +2142,12 @@ enum PortInterface
 	LIN
 	MOST
 	Ethernet
-	SPI
-	I2C
-	AXI
-	ABH
-	APB
-	SWR
+	SPI			// Serial Peripheral Interface
+	I2C			// Inter-Integrated Circuit
+	AXI			// Advanced eXtensible Interface
+	AHB			// Advanced High-performance Bus
+	APB			// Advanced Peripheral Bus
+	SWR			// Serial WireRing
 }
 
 enum HwFeatureType

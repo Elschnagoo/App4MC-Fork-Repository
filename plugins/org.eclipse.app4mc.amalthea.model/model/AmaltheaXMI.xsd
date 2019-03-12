@@ -389,7 +389,7 @@ SPDX-License-Identifier: EPL-2.0
       <xsd:enumeration value="SPI"/>
       <xsd:enumeration value="I2C"/>
       <xsd:enumeration value="AXI"/>
-      <xsd:enumeration value="ABH"/>
+      <xsd:enumeration value="AHB"/>
       <xsd:enumeration value="APB"/>
       <xsd:enumeration value="SWR"/>
     </xsd:restriction>

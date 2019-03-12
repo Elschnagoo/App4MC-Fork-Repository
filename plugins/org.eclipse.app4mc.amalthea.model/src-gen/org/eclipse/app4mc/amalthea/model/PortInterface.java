@@ -131,14 +131,14 @@ public enum PortInterface implements Enumerator {
 	AXI(0, "AXI", "AXI"),
 
 	/**
-	 * The '<em><b>ABH</b></em>' literal object.
+	 * The '<em><b>AHB</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ABH_VALUE
+	 * @see #AHB_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ABH(0, "ABH", "ABH"),
+	AHB(0, "AHB", "AHB"),
 
 	/**
 	 * The '<em><b>APB</b></em>' literal object.
@@ -311,19 +311,19 @@ public enum PortInterface implements Enumerator {
 	public static final int AXI_VALUE = 0;
 
 	/**
-	 * The '<em><b>ABH</b></em>' literal value.
+	 * The '<em><b>AHB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>ABH</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>AHB</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ABH
+	 * @see #AHB
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ABH_VALUE = 0;
+	public static final int AHB_VALUE = 0;
 
 	/**
 	 * The '<em><b>APB</b></em>' literal value.
@@ -373,7 +373,7 @@ public enum PortInterface implements Enumerator {
 			SPI,
 			I2C,
 			AXI,
-			ABH,
+			AHB,
 			APB,
 			SWR,
 		};
