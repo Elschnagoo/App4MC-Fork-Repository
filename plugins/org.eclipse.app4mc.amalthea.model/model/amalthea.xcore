@@ -34,6 +34,8 @@ package org.eclipse.app4mc.amalthea.model
 
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import org.eclipse.emf.ecore.EDiagnosticChain
+import org.eclipse.emf.ecore.EMap
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.emf.ecore.util.EcoreEList$UnmodifiableEList
 
@@ -141,6 +143,10 @@ interface IReferable extends INamed
 	}
 	op String encode(String str) {
 		return (if (str.nullOrEmpty) "no-name" else URLEncoder.encode(str, StandardCharsets.UTF_8.toString))
+	}
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
 	}
 }
 
@@ -497,6 +503,10 @@ class MinAvgMaxStatistic extends NumericStatistic
 	int min = "0"
 	float avg = "0f"
 	int max = "0"
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 class SingleValueStatistic extends NumericStatistic

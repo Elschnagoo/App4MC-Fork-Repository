@@ -487,13 +487,22 @@ public interface AmaltheaPackage extends EPackage {
 	int IREFERABLE___ENCODE__STRING = INAMED_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = INAMED_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>IReferable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IREFERABLE_OPERATION_COUNT = INAMED_OPERATION_COUNT + 4;
+	int IREFERABLE_OPERATION_COUNT = INAMED_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ReferableObjectImpl <em>Referable Object</em>}' class.
@@ -567,6 +576,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERABLE_OBJECT___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Referable Object</em>' class.
@@ -660,13 +678,22 @@ public interface AmaltheaPackage extends EPackage {
 	int REFERABLE_BASE_OBJECT___ENCODE__STRING = IANNOTATABLE_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = IANNOTATABLE_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>Referable Base Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERABLE_BASE_OBJECT_OPERATION_COUNT = IANNOTATABLE_OPERATION_COUNT + 4;
+	int REFERABLE_BASE_OBJECT_OPERATION_COUNT = IANNOTATABLE_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.ITaggable <em>ITaggable</em>}' class.
@@ -843,6 +870,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TAG___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Tag</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -941,6 +977,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFIER___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Classifier</em>' class.
@@ -1043,6 +1088,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CORE_CLASSIFIER___ENCODE__STRING = CLASSIFIER___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CORE_CLASSIFIER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CLASSIFIER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Core Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1141,6 +1195,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MEMORY_CLASSIFIER___ENCODE__STRING = CLASSIFIER___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_CLASSIFIER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CLASSIFIER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Memory Classifier</em>' class.
@@ -2137,13 +2200,22 @@ public interface AmaltheaPackage extends EPackage {
 	int MIN_AVG_MAX_STATISTIC_FEATURE_COUNT = NUMERIC_STATISTIC_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIN_AVG_MAX_STATISTIC___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = NUMERIC_STATISTIC_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Min Avg Max Statistic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MIN_AVG_MAX_STATISTIC_OPERATION_COUNT = NUMERIC_STATISTIC_OPERATION_COUNT + 0;
+	int MIN_AVG_MAX_STATISTIC_OPERATION_COUNT = NUMERIC_STATISTIC_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.SingleValueStatisticImpl <em>Single Value Statistic</em>}' class.
@@ -5148,6 +5220,15 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Mode</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5237,6 +5318,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODE_LITERAL___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LITERAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -5476,6 +5566,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PORT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5637,6 +5736,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -5829,6 +5937,15 @@ public interface AmaltheaPackage extends EPackage {
 	int COMPOSITE___ENCODE__STRING = COMPONENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = COMPONENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Composite</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5965,6 +6082,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SYSTEM___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6072,6 +6198,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_INSTANCE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INSTANCE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Component Instance</em>' class.
@@ -6318,6 +6453,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_PORT___ENCODE__STRING = PORT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_PORT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PORT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -6666,6 +6810,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_SEQUENCING_CONSTRAINT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEQUENCING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Runnable Sequencing Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6755,6 +6908,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int AFFINITY_CONSTRAINT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AFFINITY_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Affinity Constraint</em>' class.
@@ -6848,6 +7010,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SEPARATION_CONSTRAINT___ENCODE__STRING = AFFINITY_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = AFFINITY_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Separation Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6937,6 +7108,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIRING_CONSTRAINT___ENCODE__STRING = AFFINITY_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = AFFINITY_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Pairing Constraint</em>' class.
@@ -7159,6 +7339,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_SEPARATION_CONSTRAINT___ENCODE__STRING = SEPARATION_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Runnable Separation Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7266,6 +7455,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_SEPARATION_CONSTRAINT___ENCODE__STRING = SEPARATION_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Process Separation Constraint</em>' class.
@@ -7377,6 +7575,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_SEPARATION_CONSTRAINT___ENCODE__STRING = SEPARATION_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SEPARATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Data Separation Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7484,6 +7691,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RUNNABLE_PAIRING_CONSTRAINT___ENCODE__STRING = PAIRING_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Runnable Pairing Constraint</em>' class.
@@ -7595,6 +7811,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_PAIRING_CONSTRAINT___ENCODE__STRING = PAIRING_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Process Pairing Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7702,6 +7927,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_PAIRING_CONSTRAINT___ENCODE__STRING = PAIRING_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PAIRING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Data Pairing Constraint</em>' class.
@@ -8403,13 +8637,22 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_CHAIN___ENCODE__STRING = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>Event Chain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_CHAIN_OPERATION_COUNT = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 4;
+	int EVENT_CHAIN_OPERATION_COUNT = ABSTRACT_EVENT_CHAIN_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.SubEventChainImpl <em>Sub Event Chain</em>}' class.
@@ -8723,6 +8966,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TIMING_CONSTRAINT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Timing Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8832,6 +9084,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PHYSICAL_SECTION_CONSTRAINT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Physical Section Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8939,6 +9200,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNCHRONIZATION_CONSTRAINT___ENCODE__STRING = TIMING_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNCHRONIZATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIMING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Synchronization Constraint</em>' class.
@@ -9057,6 +9327,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SYNCHRONIZATION_CONSTRAINT___ENCODE__STRING = SYNCHRONIZATION_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SYNCHRONIZATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SYNCHRONIZATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Event Synchronization Constraint</em>' class.
@@ -9184,6 +9463,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT___ENCODE__STRING = SYNCHRONIZATION_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SYNCHRONIZATION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Event Chain Synchronization Constraint</em>' class.
@@ -9322,6 +9610,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DELAY_CONSTRAINT___ENCODE__STRING = TIMING_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELAY_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIMING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Delay Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9447,6 +9744,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_CHAIN_LATENCY_CONSTRAINT___ENCODE__STRING = TIMING_CONSTRAINT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_CHAIN_LATENCY_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIMING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Event Chain Latency Constraint</em>' class.
@@ -9594,6 +9900,15 @@ public interface AmaltheaPackage extends EPackage {
 	int REPETITION_CONSTRAINT___ENCODE__STRING = TIMING_CONSTRAINT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPETITION_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIMING_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Repetition Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9710,6 +10025,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_AGE_CONSTRAINT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_AGE_CONSTRAINT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Data Age Constraint</em>' class.
@@ -10627,6 +10951,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_COHERENCY_GROUP___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_COHERENCY_GROUP___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Data Coherency Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10734,6 +11067,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_STABILITY_GROUP___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_STABILITY_GROUP___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Data Stability Group</em>' class.
@@ -11030,6 +11372,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11148,6 +11499,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_SET___ENCODE__STRING = EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SET___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Event Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11257,6 +11617,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ENTITY_EVENT___ENCODE__STRING = EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Entity Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11364,6 +11733,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRIGGER_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Trigger Event</em>' class.
@@ -11493,6 +11871,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_EVENT___ENCODE__STRING = TRIGGER_EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRIGGER_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Custom Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11609,6 +11996,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int STIMULUS_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Stimulus Event</em>' class.
@@ -11747,6 +12143,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESS_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Process Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11881,6 +12286,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CHAIN_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Process Chain Event</em>' class.
@@ -12028,6 +12442,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_EVENT___ENCODE__STRING = TRIGGER_EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRIGGER_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Runnable Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12173,6 +12596,15 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL_EVENT___ENCODE__STRING = TRIGGER_EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRIGGER_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Label Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12316,6 +12748,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL_EVENT___ENCODE__STRING = TRIGGER_EVENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRIGGER_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Channel Event</em>' class.
@@ -12472,6 +12913,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Semaphore Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12597,6 +13047,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EVENT___ENCODE__STRING = ENTITY_EVENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ENTITY_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Component Event</em>' class.
@@ -12826,6 +13285,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_STRUCTURE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_STRUCTURE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Hw Structure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12953,6 +13421,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_MODULE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_MODULE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Hw Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13051,6 +13528,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_DOMAIN___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_DOMAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Hw Domain</em>' class.
@@ -13171,6 +13657,15 @@ public interface AmaltheaPackage extends EPackage {
 	int FREQUENCY_DOMAIN___ENCODE__STRING = HW_DOMAIN___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FREQUENCY_DOMAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DOMAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Frequency Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13287,6 +13782,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int POWER_DOMAIN___ENCODE__STRING = HW_DOMAIN___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POWER_DOMAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DOMAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Power Domain</em>' class.
@@ -13443,6 +13947,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PROCESSING_UNIT___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESSING_UNIT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_MODULE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13597,6 +14110,15 @@ public interface AmaltheaPackage extends EPackage {
 	int MEMORY___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_MODULE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13742,6 +14264,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CACHE___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_MODULE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13869,6 +14400,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_FEATURE_CATEGORY___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE_CATEGORY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Hw Feature Category</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13967,6 +14507,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_FEATURE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_FEATURE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14132,6 +14681,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_PORT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PORT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14286,6 +14844,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER___ENCODE__STRING = HW_MODULE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_MODULE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14438,6 +15005,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_CONNECTION___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_CONNECTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -14658,6 +15234,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_DEFINITION___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Hw Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14783,6 +15368,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESSING_UNIT_DEFINITION___ENCODE__STRING = HW_DEFINITION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESSING_UNIT_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Processing Unit Definition</em>' class.
@@ -14939,6 +15533,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CONNECTION_HANDLER_DEFINITION___ENCODE__STRING = HW_DEFINITION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_HANDLER_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Connection Handler Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15082,6 +15685,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int MEMORY_DEFINITION___ENCODE__STRING = HW_DEFINITION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMORY_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Memory Definition</em>' class.
@@ -15263,6 +15875,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CACHE_DEFINITION___ENCODE__STRING = HW_DEFINITION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = HW_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Cache Definition</em>' class.
@@ -15511,6 +16132,15 @@ public interface AmaltheaPackage extends EPackage {
 	int HW_PATH_ELEMENT___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_PATH_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15600,6 +16230,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int HW_DESTINATION___ENCODE__STRING = IREFERABLE___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_DESTINATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Ports</em>' operation.
@@ -16185,6 +16824,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PHYSICAL_SECTION_MAPPING___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_SECTION_MAPPING___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Physical Section Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16577,6 +17225,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SEMAPHORE___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMAPHORE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Semaphore</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16693,6 +17350,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCHEDULER___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Scheduling Algorithm</em>' operation.
@@ -16874,6 +17540,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK_SCHEDULER___ENCODE__STRING = SCHEDULER___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_SCHEDULER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SCHEDULER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Scheduling Algorithm</em>' operation.
@@ -17083,6 +17758,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERRUPT_CONTROLLER___ENCODE__STRING = SCHEDULER___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPT_CONTROLLER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = SCHEDULER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Scheduling Algorithm</em>' operation.
@@ -18566,6 +19250,15 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_OVERHEAD___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_OVERHEAD___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Os Overhead</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19570,6 +20263,15 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20100,6 +20802,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Periodic Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20252,6 +20963,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATIVE_PERIODIC_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIVE_PERIODIC_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Relative Periodic Stimulus</em>' class.
@@ -20433,6 +21153,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int VARIABLE_RATE_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Variable Rate Stimulus</em>' class.
@@ -20653,6 +21382,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_SYNTHETIC_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_SYNTHETIC_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Periodic Synthetic Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20798,6 +21536,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Custom Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20941,6 +21688,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Single Stimulus</em>' class.
@@ -21095,6 +21851,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTER_PROCESS_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_PROCESS_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Inter Process Stimulus</em>' class.
@@ -21278,6 +22043,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_BURST_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_BURST_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Periodic Burst Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21432,6 +22206,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Event Stimulus</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21575,6 +22358,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARRIVAL_CURVE_STIMULUS___ENCODE__STRING = STIMULUS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_CURVE_STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = STIMULUS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Arrival Curve Stimulus</em>' class.
@@ -21732,6 +22524,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CLOCK___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Clock</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21857,6 +22658,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLOCK_TRIANGLE_FUNCTION___ENCODE__STRING = CLOCK___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_TRIANGLE_FUNCTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CLOCK___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Clock Triangle Function</em>' class.
@@ -21986,6 +22796,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CLOCK_SINUS_FUNCTION___ENCODE__STRING = CLOCK___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_SINUS_FUNCTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CLOCK___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Clock Sinus Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22084,6 +22903,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLOCK_MULTIPLIER_LIST___ENCODE__STRING = CLOCK___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOCK_MULTIPLIER_LIST___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CLOCK___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Clock Multiplier List</em>' class.
@@ -22431,6 +23259,15 @@ public interface AmaltheaPackage extends EPackage {
 	int ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Abstract Memory Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22556,6 +23393,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PROCESS___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Abstract Process</em>' class.
@@ -22685,6 +23531,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_ENTITY___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ENTITY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Custom Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22783,6 +23638,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CHAIN___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CHAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Process Chain</em>' class.
@@ -22928,6 +23792,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS___ENCODE__STRING = ABSTRACT_PROCESS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Process</em>' class.
@@ -23827,6 +24700,15 @@ public interface AmaltheaPackage extends EPackage {
 	int OS_EVENT___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_EVENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Os Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24301,6 +25183,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TASK___ENCODE__STRING = PROCESS___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24453,6 +25344,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ISR___ENCODE__STRING = PROCESS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISR___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>ISR</em>' class.
@@ -24652,6 +25552,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PROTOTYPE___ENCODE__STRING = ABSTRACT_PROCESS___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PROTOTYPE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_PROCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Process Prototype</em>' class.
@@ -25101,6 +26010,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE_PARAMETER___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE_PARAMETER___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25336,6 +26254,15 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get First Activation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25544,6 +26471,15 @@ public interface AmaltheaPackage extends EPackage {
 	int LABEL___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25707,6 +26643,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CHANNEL___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Channel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25852,6 +26797,15 @@ public interface AmaltheaPackage extends EPackage {
 	int MODE_LABEL___ENCODE__STRING = ABSTRACT_MEMORY_ELEMENT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE_LABEL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ABSTRACT_MEMORY_ELEMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Mode Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -25968,6 +26922,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECTION___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Section</em>' class.
@@ -27595,6 +28558,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CALL_ARGUMENT___ENCODE__STRING = REFERABLE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ARGUMENT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28200,6 +29172,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TYPE_DEFINITION___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28298,6 +29279,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE_DEFINITION___ENCODE__STRING = TYPE_DEFINITION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TYPE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Data Type Definition</em>' class.
@@ -28409,6 +29399,15 @@ public interface AmaltheaPackage extends EPackage {
 	int BASE_TYPE_DEFINITION___ENCODE__STRING = TYPE_DEFINITION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TYPE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TYPE_DEFINITION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Base Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28507,6 +29506,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVATION___ENCODE__STRING = REFERABLE_BASE_OBJECT___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Activation</em>' class.
@@ -28645,6 +29653,15 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIODIC_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Periodic Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28772,6 +29789,15 @@ public interface AmaltheaPackage extends EPackage {
 	int VARIABLE_RATE_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_RATE_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Variable Rate Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28888,6 +29914,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPORADIC_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPORADIC_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Sporadic Activation</em>' class.
@@ -29008,6 +30043,15 @@ public interface AmaltheaPackage extends EPackage {
 	int SINGLE_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Single Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29126,6 +30170,15 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Event Activation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29233,6 +30286,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_ACTIVATION___ENCODE__STRING = ACTIVATION___ENCODE__STRING;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ACTIVATION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The number of operations of the '<em>Custom Activation</em>' class.
@@ -30595,6 +31657,16 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getIReferable__Encode__String();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.IReferable#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.IReferable#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getIReferable__ValidateInvariants__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.IDisplayName <em>IDisplay Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31358,6 +32430,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMinAvgMaxStatistic_Max();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMinAvgMaxStatistic__ValidateInvariants__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.SingleValueStatistic <em>Single Value Statistic</em>}'.

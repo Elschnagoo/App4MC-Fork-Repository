@@ -14,6 +14,9 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,5 +89,13 @@ public interface IReferable extends INamed {
 	 * @generated
 	 */
 	String encode(String str);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" diagnosticsUnique="false" contextUnique="false"
+	 * @generated
+	 */
+	boolean validateInvariants(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // IReferable

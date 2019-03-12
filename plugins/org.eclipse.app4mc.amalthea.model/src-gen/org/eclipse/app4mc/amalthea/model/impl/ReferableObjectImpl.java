@@ -20,13 +20,17 @@ import java.net.URLEncoder;
 
 import java.nio.charset.StandardCharsets;
 
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -197,6 +201,16 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	 * @generated
 	 */
 	@Override
+	public boolean validateInvariants(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		return AmaltheaValidations.validateInvariants(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.REFERABLE_OBJECT__NAME:
@@ -259,6 +273,7 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case AmaltheaPackage.REFERABLE_OBJECT___COMPUTE_UNIQUE_NAME:
@@ -269,6 +284,8 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
 			case AmaltheaPackage.REFERABLE_OBJECT___ENCODE__STRING:
 				return encode((String)arguments.get(0));
+			case AmaltheaPackage.REFERABLE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:
+				return validateInvariants((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

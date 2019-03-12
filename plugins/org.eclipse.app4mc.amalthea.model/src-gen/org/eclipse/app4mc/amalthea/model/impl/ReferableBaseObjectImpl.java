@@ -20,7 +20,10 @@ import java.net.URLEncoder;
 
 import java.nio.charset.StandardCharsets;
 
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
@@ -31,6 +34,7 @@ import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
@@ -231,6 +235,16 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * @generated
 	 */
 	@Override
+	public boolean validateInvariants(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		return AmaltheaValidations.validateInvariants(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.REFERABLE_BASE_OBJECT__CUSTOM_PROPERTIES:
@@ -374,6 +388,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME: return AmaltheaPackage.REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME;
 				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING: return AmaltheaPackage.REFERABLE_BASE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 				case AmaltheaPackage.IREFERABLE___ENCODE__STRING: return AmaltheaPackage.REFERABLE_BASE_OBJECT___ENCODE__STRING;
+				case AmaltheaPackage.IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP: return AmaltheaPackage.REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 				default: return -1;
 			}
 		}
@@ -386,6 +401,7 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME:
@@ -396,6 +412,8 @@ public abstract class ReferableBaseObjectImpl extends AmaltheaExtendedEObjectImp
 				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
 			case AmaltheaPackage.REFERABLE_BASE_OBJECT___ENCODE__STRING:
 				return encode((String)arguments.get(0));
+			case AmaltheaPackage.REFERABLE_BASE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:
+				return validateInvariants((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

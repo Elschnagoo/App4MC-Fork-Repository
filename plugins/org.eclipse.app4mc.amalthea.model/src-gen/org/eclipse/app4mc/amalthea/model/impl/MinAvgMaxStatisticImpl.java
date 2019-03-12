@@ -14,12 +14,20 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -195,6 +203,16 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 	 * @generated
 	 */
 	@Override
+	public boolean validateInvariants(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		return AmaltheaValidations.validateInvariants(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC__MIN:
@@ -265,6 +283,21 @@ public class MinAvgMaxStatisticImpl extends AmaltheaExtendedEObjectImpl implemen
 				return max != MAX_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:
+				return validateInvariants((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

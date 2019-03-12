@@ -3852,6 +3852,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getIReferable__ValidateInvariants__DiagnosticChain_Map() {
+		return iReferableEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIDisplayName() {
 		return iDisplayNameEClass;
 	}
@@ -4574,6 +4584,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EAttribute getMinAvgMaxStatistic_Max() {
 		return (EAttribute)minAvgMaxStatisticEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getMinAvgMaxStatistic__ValidateInvariants__DiagnosticChain_Map() {
+		return minAvgMaxStatisticEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -15336,6 +15356,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEOperation(iReferableEClass, IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME);
 		createEOperation(iReferableEClass, IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING);
 		createEOperation(iReferableEClass, IREFERABLE___ENCODE__STRING);
+		createEOperation(iReferableEClass, IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		iDisplayNameEClass = createEClass(IDISPLAY_NAME);
 		createEAttribute(iDisplayNameEClass, IDISPLAY_NAME__DISPLAY_NAME);
@@ -15436,6 +15457,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(minAvgMaxStatisticEClass, MIN_AVG_MAX_STATISTIC__MIN);
 		createEAttribute(minAvgMaxStatisticEClass, MIN_AVG_MAX_STATISTIC__AVG);
 		createEAttribute(minAvgMaxStatisticEClass, MIN_AVG_MAX_STATISTIC__MAX);
+		createEOperation(minAvgMaxStatisticEClass, MIN_AVG_MAX_STATISTIC___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		singleValueStatisticEClass = createEClass(SINGLE_VALUE_STATISTIC);
 		createEAttribute(singleValueStatisticEClass, SINGLE_VALUE_STATISTIC__VALUE);
@@ -17329,6 +17351,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		op = initEOperation(getIReferable__Encode__String(), theEcorePackage.getEString(), "encode", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "str", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getIReferable__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(theEcorePackage.getEMap());
+		EGenericType g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(iDisplayNameEClass, IDisplayName.class, "IDisplayName", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIDisplayName_DisplayName(), theEcorePackage.getEString(), "displayName", null, 0, 1, IDisplayName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -17450,6 +17481,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getMinAvgMaxStatistic_Min(), theEcorePackage.getEInt(), "min", "0", 0, 1, MinAvgMaxStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMinAvgMaxStatistic_Avg(), theEcorePackage.getEFloat(), "avg", "0f", 0, 1, MinAvgMaxStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMinAvgMaxStatistic_Max(), theEcorePackage.getEInt(), "max", "0", 0, 1, MinAvgMaxStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getMinAvgMaxStatistic__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(singleValueStatisticEClass, SingleValueStatistic.class, "SingleValueStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSingleValueStatistic_Value(), theEcorePackage.getEFloat(), "value", "0f", 0, 1, SingleValueStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18520,8 +18560,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getCallSequence_Calls(), this.getCallSequenceItem(), null, "calls", null, 0, -1, CallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEClass, ModeSwitch.class, "ModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		EGenericType g1 = createEGenericType(this.getModeSwitchEntry());
-		EGenericType g2 = createEGenericType(this.getGraphEntryBase());
+		g1 = createEGenericType(this.getModeSwitchEntry());
+		g2 = createEGenericType(this.getGraphEntryBase());
 		g1.getETypeArguments().add(g2);
 		initEReference(getModeSwitch_Entries(), g1, null, "entries", null, 0, -1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getModeSwitchDefault());
@@ -19150,7 +19190,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.SPI);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.I2C);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.AXI);
-		addEEnumLiteral(portInterfaceEEnum, PortInterface.ABH);
+		addEEnumLiteral(portInterfaceEEnum, PortInterface.AHB);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.APB);
 		addEEnumLiteral(portInterfaceEEnum, PortInterface.SWR);
 

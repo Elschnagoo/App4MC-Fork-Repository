@@ -108,12 +108,12 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkReferableNames(final Amalthea model) {
 
-		for (final IReferable element : getObjectHelper().getAllInstancesAndInheritedOf(model, IReferable.class)) {
-			if (Strings.isNullOrEmpty(element.getName())) {
-				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getINamed_Name(),
-						getObjectHelper().getClassName(element));
-			}
-		}
+//		for (final IReferable element : getObjectHelper().getAllInstancesAndInheritedOf(model, IReferable.class)) {
+//			if (Strings.isNullOrEmpty(element.getName())) {
+//				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getINamed_Name(),
+//						getObjectHelper().getClassName(element));
+//			}
+//		}
 	}
 
 	/*

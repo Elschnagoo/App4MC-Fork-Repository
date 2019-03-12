@@ -20,10 +20,14 @@ import java.net.URLEncoder;
 
 import java.nio.charset.StandardCharsets;
 
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -148,6 +152,16 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * @generated
 	 */
 	@Override
+	public boolean validateInvariants(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		return AmaltheaValidations.validateInvariants(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.EVENT_CHAIN__UNIQUE_NAME:
@@ -215,6 +229,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME: return AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME;
 				case AmaltheaPackage.IREFERABLE___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING: return AmaltheaPackage.EVENT_CHAIN___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING;
 				case AmaltheaPackage.IREFERABLE___ENCODE__STRING: return AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING;
+				case AmaltheaPackage.IREFERABLE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP: return AmaltheaPackage.EVENT_CHAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 				default: return -1;
 			}
 		}
@@ -227,6 +242,7 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case AmaltheaPackage.EVENT_CHAIN___COMPUTE_UNIQUE_NAME:
@@ -237,6 +253,8 @@ public class EventChainImpl extends AbstractEventChainImpl implements EventChain
 				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
 			case AmaltheaPackage.EVENT_CHAIN___ENCODE__STRING:
 				return encode((String)arguments.get(0));
+			case AmaltheaPackage.EVENT_CHAIN___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:
+				return validateInvariants((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
