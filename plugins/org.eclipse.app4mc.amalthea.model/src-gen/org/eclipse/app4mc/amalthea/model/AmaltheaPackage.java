@@ -28759,14 +28759,23 @@ public interface AmaltheaPackage extends EPackage {
 	int DATA_TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.CompoundType <em>Compound Type</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.CompoundTypeImpl <em>Compound Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.CompoundType
+	 * @see org.eclipse.app4mc.amalthea.model.impl.CompoundTypeImpl
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getCompoundType()
 	 * @generated
 	 */
 	int COMPOUND_TYPE = 342;
+
+	/**
+	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOUND_TYPE__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The number of structural features of the '<em>Compound Type</em>' class.
@@ -28775,7 +28784,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOUND_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 0;
+	int COMPOUND_TYPE_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Compound Type</em>' class.
@@ -28784,7 +28793,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOUND_TYPE_OPERATION_COUNT = DATA_TYPE_OPERATION_COUNT + 0;
+	int COMPOUND_TYPE_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.StructImpl <em>Struct</em>}' class.
@@ -28803,7 +28812,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCT__CUSTOM_PROPERTIES = COMPOUND_TYPE_FEATURE_COUNT + 0;
+	int STRUCT__CUSTOM_PROPERTIES = COMPOUND_TYPE__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -28812,7 +28821,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCT__ENTRIES = COMPOUND_TYPE_FEATURE_COUNT + 1;
+	int STRUCT__ENTRIES = COMPOUND_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Struct</em>' class.
@@ -28821,7 +28830,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCT_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 2;
+	int STRUCT_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Struct</em>' class.
@@ -28904,7 +28913,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARRAY__CUSTOM_PROPERTIES = COMPOUND_TYPE_FEATURE_COUNT + 0;
+	int ARRAY__CUSTOM_PROPERTIES = COMPOUND_TYPE__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Number Elements</b></em>' attribute.
@@ -28913,7 +28922,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARRAY__NUMBER_ELEMENTS = COMPOUND_TYPE_FEATURE_COUNT + 1;
+	int ARRAY__NUMBER_ELEMENTS = COMPOUND_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Data Type</b></em>' containment reference.
@@ -28922,7 +28931,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARRAY__DATA_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 2;
+	int ARRAY__DATA_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Array</em>' class.
@@ -28931,7 +28940,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARRAY_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 3;
+	int ARRAY_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Array</em>' class.
@@ -28959,7 +28968,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER__CUSTOM_PROPERTIES = COMPOUND_TYPE_FEATURE_COUNT + 0;
+	int POINTER__CUSTOM_PROPERTIES = COMPOUND_TYPE__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Data Type</b></em>' containment reference.
@@ -28968,7 +28977,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER__DATA_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 1;
+	int POINTER__DATA_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Pointer</em>' class.
@@ -28977,7 +28986,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 2;
+	int POINTER_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Pointer</em>' class.
@@ -29005,7 +29014,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__CUSTOM_PROPERTIES = DATA_TYPE_FEATURE_COUNT + 0;
+	int TYPE_REF__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Type Def</b></em>' reference.
@@ -29014,7 +29023,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__TYPE_DEF = DATA_TYPE_FEATURE_COUNT + 1;
+	int TYPE_REF__TYPE_DEF = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -29023,7 +29032,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 2;
+	int TYPE_REF_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Type Ref</em>' class.
@@ -29032,7 +29041,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_OPERATION_COUNT = DATA_TYPE_OPERATION_COUNT + 0;
+	int TYPE_REF_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DataPlatformMappingImpl <em>Data Platform Mapping</em>}' class.
@@ -29127,13 +29136,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TYPE_DEFINITION__UNIQUE_NAME = REFERABLE_BASE_OBJECT__UNIQUE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Size</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION__SIZE = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 0;
+	int TYPE_DEFINITION_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -29225,6 +29243,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE_DEFINITION__UNIQUE_NAME = TYPE_DEFINITION__UNIQUE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_DEFINITION__SIZE = TYPE_DEFINITION__SIZE;
 
 	/**
 	 * The feature id for the '<em><b>Data Type</b></em>' containment reference.
@@ -29342,7 +29369,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BASE_TYPE_DEFINITION__SIZE = TYPE_DEFINITION_FEATURE_COUNT + 0;
+	int BASE_TYPE_DEFINITION__SIZE = TYPE_DEFINITION__SIZE;
 
 	/**
 	 * The feature id for the '<em><b>Data Mapping</b></em>' containment reference list.
@@ -29351,7 +29378,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BASE_TYPE_DEFINITION__DATA_MAPPING = TYPE_DEFINITION_FEATURE_COUNT + 1;
+	int BASE_TYPE_DEFINITION__DATA_MAPPING = TYPE_DEFINITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Base Type Definition</em>' class.
@@ -29360,7 +29387,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BASE_TYPE_DEFINITION_FEATURE_COUNT = TYPE_DEFINITION_FEATURE_COUNT + 2;
+	int BASE_TYPE_DEFINITION_FEATURE_COUNT = TYPE_DEFINITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -42703,6 +42730,17 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getTypeDefinition();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.TypeDefinition#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Size</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.TypeDefinition#getSize()
+	 * @see #getTypeDefinition()
+	 * @generated
+	 */
+	EReference getTypeDefinition_Size();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataTypeDefinition <em>Data Type Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42732,17 +42770,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBaseTypeDefinition();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getSize <em>Size</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Size</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getSize()
-	 * @see #getBaseTypeDefinition()
-	 * @generated
-	 */
-	EReference getBaseTypeDefinition_Size();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getDataMapping <em>Data Mapping</em>}'.

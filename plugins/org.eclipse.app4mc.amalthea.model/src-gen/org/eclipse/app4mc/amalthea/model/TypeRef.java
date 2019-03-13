@@ -31,7 +31,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface TypeRef extends DataType, BaseObject {
+public interface TypeRef extends BaseObject, DataType {
 	/**
 	 * Returns the value of the '<em><b>Type Def</b></em>' reference.
 	 * <!-- begin-user-doc -->

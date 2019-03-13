@@ -69,7 +69,6 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_Size());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_DataMapping());
 		}
 		return childrenFeatures;
@@ -139,7 +138,6 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BaseTypeDefinition.class)) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__SIZE:
 			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -156,11 +154,6 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_Size(),
-				 AmaltheaFactory.eINSTANCE.createDataSize()));
 
 		newChildDescriptors.add
 			(createChildParameter

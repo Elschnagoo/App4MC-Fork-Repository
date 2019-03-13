@@ -5906,7 +5906,7 @@ It can be also a group of runnable items without deviation, because the deviatio
       <xsd:documentation>Couple of compound data types</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:DataType"/>
+      <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="CompoundType" type="am:CompoundType">
@@ -5921,7 +5921,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:CompoundType">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="entries" type="am:StructEntry"/>
         </xsd:choice>
       </xsd:extension>
@@ -5957,7 +5956,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:CompoundType">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="dataType" type="am:DataType"/>
         </xsd:choice>
         <xsd:attribute name="numberElements" type="xsd:int"/>
@@ -5976,7 +5974,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:CompoundType">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="dataType" type="am:DataType"/>
         </xsd:choice>
       </xsd:extension>
@@ -5989,9 +5986,8 @@ It can be also a group of runnable items without deviation, because the deviatio
   </xsd:element>
   <xsd:complexType name="TypeRef">
     <xsd:complexContent>
-      <xsd:extension base="am:DataType">
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="customProperties" type="am:CustomProperty"/>
           <xsd:element name="typeDef" type="am:TypeDefinition"/>
         </xsd:choice>
         <xsd:attribute name="typeDef" type="xsd:string"/>
@@ -6025,7 +6021,15 @@ It can be also a group of runnable items without deviation, because the deviatio
   </xsd:element>
   <xsd:complexType abstract="true" name="TypeDefinition">
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject"/>
+      <xsd:extension base="am:ReferableBaseObject">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="size" type="am:DataSize">
+            <xsd:annotation>
+              <xsd:documentation>Size of the defined data type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TypeDefinition" type="am:TypeDefinition"/>
@@ -6046,11 +6050,6 @@ It can be also a group of runnable items without deviation, because the deviatio
     <xsd:complexContent>
       <xsd:extension base="am:TypeDefinition">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="size" type="am:DataSize">
-            <xsd:annotation>
-              <xsd:documentation>Size of the data type</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
           <xsd:element name="dataMapping" type="am:DataPlatformMapping">
             <xsd:annotation>
               <xsd:documentation>Data mappings of target platforms</xsd:documentation>

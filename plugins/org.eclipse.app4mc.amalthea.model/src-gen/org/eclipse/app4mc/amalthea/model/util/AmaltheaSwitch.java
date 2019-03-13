@@ -3605,7 +3605,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.COMPOUND_TYPE: {
 				CompoundType compoundType = (CompoundType)theEObject;
 				T1 result = caseCompoundType(compoundType);
+				if (result == null) result = caseBaseObject(compoundType);
 				if (result == null) result = caseDataType(compoundType);
+				if (result == null) result = caseIAnnotatable(compoundType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -3651,8 +3653,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			case AmaltheaPackage.TYPE_REF: {
 				TypeRef typeRef = (TypeRef)theEObject;
 				T1 result = caseTypeRef(typeRef);
-				if (result == null) result = caseDataType(typeRef);
 				if (result == null) result = caseBaseObject(typeRef);
+				if (result == null) result = caseDataType(typeRef);
 				if (result == null) result = caseIAnnotatable(typeRef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

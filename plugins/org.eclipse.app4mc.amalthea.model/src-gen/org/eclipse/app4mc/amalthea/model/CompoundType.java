@@ -26,8 +26,8 @@ package org.eclipse.app4mc.amalthea.model;
  *
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCompoundType()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
-public interface CompoundType extends DataType {
+public interface CompoundType extends BaseObject, DataType {
 } // CompoundType

@@ -14262,6 +14262,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getTypeDefinition_Size() {
+		return (EReference)typeDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDataTypeDefinition() {
 		return dataTypeDefinitionEClass;
 	}
@@ -14292,18 +14302,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getBaseTypeDefinition_Size() {
-		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getBaseTypeDefinition_DataMapping() {
-		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(1);
+		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -16738,12 +16738,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(dataPlatformMappingEClass, DATA_PLATFORM_MAPPING__PLATFORM_TYPE);
 
 		typeDefinitionEClass = createEClass(TYPE_DEFINITION);
+		createEReference(typeDefinitionEClass, TYPE_DEFINITION__SIZE);
 
 		dataTypeDefinitionEClass = createEClass(DATA_TYPE_DEFINITION);
 		createEReference(dataTypeDefinitionEClass, DATA_TYPE_DEFINITION__DATA_TYPE);
 
 		baseTypeDefinitionEClass = createEClass(BASE_TYPE_DEFINITION);
-		createEReference(baseTypeDefinitionEClass, BASE_TYPE_DEFINITION__SIZE);
 		createEReference(baseTypeDefinitionEClass, BASE_TYPE_DEFINITION__DATA_MAPPING);
 
 		activationEClass = createEClass(ACTIVATION);
@@ -17271,17 +17271,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
 		runnableCallEClass.getESuperTypes().add(this.getITaggable());
 		customEventTriggerEClass.getESuperTypes().add(this.getRunnableItem());
+		compoundTypeEClass.getESuperTypes().add(this.getBaseObject());
 		compoundTypeEClass.getESuperTypes().add(this.getDataType());
 		structEClass.getESuperTypes().add(this.getCompoundType());
-		structEClass.getESuperTypes().add(this.getBaseObject());
 		structEntryEClass.getESuperTypes().add(this.getBaseObject());
 		structEntryEClass.getESuperTypes().add(this.getINamed());
 		arrayEClass.getESuperTypes().add(this.getCompoundType());
-		arrayEClass.getESuperTypes().add(this.getBaseObject());
 		pointerEClass.getESuperTypes().add(this.getCompoundType());
-		pointerEClass.getESuperTypes().add(this.getBaseObject());
-		typeRefEClass.getESuperTypes().add(this.getDataType());
 		typeRefEClass.getESuperTypes().add(this.getBaseObject());
+		typeRefEClass.getESuperTypes().add(this.getDataType());
 		dataPlatformMappingEClass.getESuperTypes().add(this.getBaseObject());
 		typeDefinitionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		dataTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
@@ -18833,7 +18831,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(dataTypeEClass, DataType.class, "DataType", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(compoundTypeEClass, CompoundType.class, "CompoundType", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(compoundTypeEClass, CompoundType.class, "CompoundType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(structEClass, Struct.class, "Struct", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStruct_Entries(), this.getStructEntry(), null, "entries", null, 0, -1, Struct.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18856,12 +18854,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getDataPlatformMapping_PlatformType(), theEcorePackage.getEString(), "platformType", null, 0, 1, DataPlatformMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefinitionEClass, TypeDefinition.class, "TypeDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTypeDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, TypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataTypeDefinitionEClass, DataTypeDefinition.class, "DataTypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataTypeDefinition_DataType(), this.getDataType(), null, "dataType", null, 0, 1, DataTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(baseTypeDefinitionEClass, BaseTypeDefinition.class, "BaseTypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBaseTypeDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBaseTypeDefinition_DataMapping(), this.getDataPlatformMapping(), null, "dataMapping", null, 0, -1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activationEClass, Activation.class, "Activation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

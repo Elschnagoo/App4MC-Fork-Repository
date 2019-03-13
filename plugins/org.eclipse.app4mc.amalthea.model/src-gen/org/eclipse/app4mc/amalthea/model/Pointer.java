@@ -35,7 +35,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface Pointer extends CompoundType, BaseObject {
+public interface Pointer extends CompoundType {
 	/**
 	 * Returns the value of the '<em><b>Data Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

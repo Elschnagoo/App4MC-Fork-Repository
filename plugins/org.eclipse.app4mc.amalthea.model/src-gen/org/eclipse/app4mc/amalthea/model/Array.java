@@ -36,7 +36,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface Array extends CompoundType, BaseObject {
+public interface Array extends CompoundType {
 	/**
 	 * Returns the value of the '<em><b>Number Elements</b></em>' attribute.
 	 * The default value is <code>"0"</code>.

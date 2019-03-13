@@ -3959,14 +3959,14 @@ interface DataType
 /*
  * Couple of compound data types
  */
-interface CompoundType extends DataType
+abstract class CompoundType extends BaseObject, DataType
 {
 }
 
 /*
  * Representing a struct definition, containing different entries
  */
-class Struct extends CompoundType, BaseObject
+class Struct extends CompoundType
 {
 	contains StructEntry[] entries
 }
@@ -3982,7 +3982,7 @@ class StructEntry extends BaseObject, INamed
 /*
  * Representation of an array data type
  */
-class Array extends CompoundType, BaseObject
+class Array extends CompoundType
 {
 	int numberElements = "0"
 	contains DataType dataType
@@ -3991,12 +3991,12 @@ class Array extends CompoundType, BaseObject
 /*
  * Representing a pointer
  */
-class Pointer extends CompoundType, BaseObject
+class Pointer extends CompoundType
 {
 	contains DataType dataType
 }
 
-class TypeRef extends DataType, BaseObject
+class TypeRef extends BaseObject, DataType
 {
 	refers TypeDefinition typeDef
 }
@@ -4018,6 +4018,10 @@ class DataPlatformMapping extends BaseObject
 
 abstract class TypeDefinition extends ReferableBaseObject
 {
+	/*
+	 * Size of the defined data type
+	 */
+	contains DataSize size
 }
 
 class DataTypeDefinition extends TypeDefinition
@@ -4030,10 +4034,6 @@ class DataTypeDefinition extends TypeDefinition
  */
 class BaseTypeDefinition extends TypeDefinition
 {
-	/*
-	 * Size of the data type
-	 */
-	contains DataSize size
 	/*
 	 * Data mappings of target platforms
 	 */
