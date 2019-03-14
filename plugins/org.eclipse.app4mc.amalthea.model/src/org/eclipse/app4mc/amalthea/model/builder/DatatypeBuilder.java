@@ -15,11 +15,11 @@
 
 package org.eclipse.app4mc.amalthea.model.builder;
 
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.Array;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Channel;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Pointer;
@@ -42,11 +42,11 @@ public class DatatypeBuilder {
 		initializer.apply(obj);
 	}
 
-	// ********** Base Types - Platform Mapping **********
+	// ********** Base Types - Aliases **********
 
-	public void platform(final BaseTypeDefinition container, final Procedure1<DataPlatformMapping> initializer) {
-		final DataPlatformMapping obj = AmaltheaFactory.eINSTANCE.createDataPlatformMapping();
-		container.getDataMapping().add(obj);
+	public void alias(final BaseTypeDefinition container, final Procedure1<Alias> initializer) {
+		final Alias obj = AmaltheaFactory.eINSTANCE.createAlias();
+		container.getAliases().add(obj);
 		initializer.apply(obj);
 	}
 

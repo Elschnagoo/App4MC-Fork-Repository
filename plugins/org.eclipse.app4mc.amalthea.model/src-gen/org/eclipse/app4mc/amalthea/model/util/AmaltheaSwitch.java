@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -105,7 +106,6 @@ import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -3659,11 +3659,11 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING: {
-				DataPlatformMapping dataPlatformMapping = (DataPlatformMapping)theEObject;
-				T1 result = caseDataPlatformMapping(dataPlatformMapping);
-				if (result == null) result = caseBaseObject(dataPlatformMapping);
-				if (result == null) result = caseIAnnotatable(dataPlatformMapping);
+			case AmaltheaPackage.ALIAS: {
+				Alias alias = (Alias)theEObject;
+				T1 result = caseAlias(alias);
+				if (result == null) result = caseBaseObject(alias);
+				if (result == null) result = caseIAnnotatable(alias);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -9066,17 +9066,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Platform Mapping</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Alias</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Platform Mapping</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Alias</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataPlatformMapping(DataPlatformMapping object) {
+	public T1 caseAlias(Alias object) {
 		return null;
 	}
 

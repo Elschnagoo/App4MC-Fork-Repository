@@ -22,6 +22,7 @@ import org.apache.commons.lang.StringUtils
 import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType
+import org.eclipse.app4mc.amalthea.model.Alias
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement
@@ -51,7 +52,6 @@ import org.eclipse.app4mc.amalthea.model.CustomEventTrigger
 import org.eclipse.app4mc.amalthea.model.DataAgeCycle
 import org.eclipse.app4mc.amalthea.model.DataAgeTime
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping
 import org.eclipse.app4mc.amalthea.model.DataRate
 import org.eclipse.app4mc.amalthea.model.DataRateUnit
 import org.eclipse.app4mc.amalthea.model.DataSize
@@ -2699,15 +2699,15 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						DataPlatformMappingItemProvider
+	 * 						AliasItemProvider
 	 *****************************************************************************/
-	def static String getDataPlatformMappingItemProviderText(Object object, String defaultText) {
-		if (object instanceof DataPlatformMapping) {
-			val name = object?.platformName
-			val typeName = object?.platformType
-			val s1 = ppName(name, "<platform>")
-			val s2 = ppName(typeName, "<type>")
-			return "Platform Mapping: " + s1 + " --> " + s2
+	def static String getAliasItemProviderText(Object object, String defaultText) {
+		if (object instanceof Alias) {
+			val name = object?.target
+			val typeName = object?.alias
+			val s1 = ppName(name, "<target>")
+			val s2 = ppName(typeName, "<alias>")
+			return "Alias: " + s1 + " --> " + s2
 		} else {
 			return defaultText
 		}

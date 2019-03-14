@@ -22,14 +22,14 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Basic data type definition, including information of mapping to target platforms
+ * Basic data type definition, including naming (alias) in target environments
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getDataMapping <em>Data Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getAliases <em>Aliases</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBaseTypeDefinition()
@@ -38,18 +38,18 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface BaseTypeDefinition extends TypeDefinition {
 	/**
-	 * Returns the value of the '<em><b>Data Mapping</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping}.
+	 * Returns the value of the '<em><b>Aliases</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Alias}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Data mappings of target platforms
+	 * Naming in different target environments
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Data Mapping</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBaseTypeDefinition_DataMapping()
+	 * @return the value of the '<em>Aliases</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getBaseTypeDefinition_Aliases()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<DataPlatformMapping> getDataMapping();
+	EList<Alias> getAliases();
 
 } // BaseTypeDefinition

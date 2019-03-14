@@ -69,7 +69,7 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_DataMapping());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_Aliases());
 		}
 		return childrenFeatures;
 	}
@@ -138,7 +138,7 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BaseTypeDefinition.class)) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -157,8 +157,8 @@ public class BaseTypeDefinitionItemProvider extends TypeDefinitionItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_DataMapping(),
-				 AmaltheaFactory.eINSTANCE.createDataPlatformMapping()));
+				(AmaltheaPackage.eINSTANCE.getBaseTypeDefinition_Aliases(),
+				 AmaltheaFactory.eINSTANCE.createAlias()));
 	}
 
 }

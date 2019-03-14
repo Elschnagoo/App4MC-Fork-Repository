@@ -4001,19 +4001,17 @@ class TypeRef extends BaseObject, DataType
 	refers TypeDefinition typeDef
 }
 
-/*
- * Mapping of a data type to a target platform.
- */
-class DataPlatformMapping extends BaseObject
+
+class Alias extends BaseObject
 {
 	/*
-	 * Name of the target platform
+	 * Name of the target environment
 	 */
-	String platformName
+	String target
 	/*
-	 * Corresponding type of the target platform
+	 * Corresponding name in the target environment
 	 */
-	String platformType
+	String alias
 }
 
 abstract class TypeDefinition extends ReferableBaseObject
@@ -4030,14 +4028,14 @@ class DataTypeDefinition extends TypeDefinition
 }
 
 /*
- * Basic data type definition, including information of mapping to target platforms
+ * Basic data type definition, including naming (alias) in target environments
  */
 class BaseTypeDefinition extends TypeDefinition
 {
 	/*
-	 * Data mappings of target platforms
+	 * Naming in different target environments
 	 */
-	contains DataPlatformMapping[] dataMapping
+	contains Alias[] aliases
 }
 
 /*

@@ -12,13 +12,13 @@
  */
 package org.eclipse.app4mc.amalthea.model.builder;
 
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
 import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataSizeUnit;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
@@ -196,16 +196,16 @@ public class Examples {
         final Procedure1<BaseTypeDefinition> _function_4 = (BaseTypeDefinition it_2) -> {
           it_2.setName("Boolean");
           it_2.setSize(FactoryUtil.createDataSize(8, DataSizeUnit.BIT));
-          final Procedure1<DataPlatformMapping> _function_5 = (DataPlatformMapping it_3) -> {
-            it_3.setPlatformName("AR");
-            it_3.setPlatformType("Boolean");
+          final Procedure1<Alias> _function_5 = (Alias it_3) -> {
+            it_3.setTarget("AR");
+            it_3.setAlias("Boolean");
           };
-          this.b4.platform(it_2, _function_5);
-          final Procedure1<DataPlatformMapping> _function_6 = (DataPlatformMapping it_3) -> {
-            it_3.setPlatformName("C");
-            it_3.setPlatformType("bool");
+          this.b4.alias(it_2, _function_5);
+          final Procedure1<Alias> _function_6 = (Alias it_3) -> {
+            it_3.setTarget("C");
+            it_3.setAlias("bool");
           };
-          this.b4.platform(it_2, _function_6);
+          this.b4.alias(it_2, _function_6);
         };
         this.b4.typeDefinition_BaseType(it_1, _function_4);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_5 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {

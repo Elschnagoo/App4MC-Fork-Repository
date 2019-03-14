@@ -1,15 +1,15 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
  *  which is available at https://www.eclipse.org/legal/epl-2.0/
  * 
  *  SPDX-License-Identifier: EPL-2.0
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -18,34 +18,38 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Alias} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
+public class AliasItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataPlatformMappingItemProvider(AdapterFactory adapterFactory) {
+	public AliasItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -53,25 +57,26 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPlatformNamePropertyDescriptor(object);
-			addPlatformTypePropertyDescriptor(object);
+			addTargetPropertyDescriptor(object);
+			addAliasPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Platform Name feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPlatformNamePropertyDescriptor(Object object) {
+	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DataPlatformMapping_platformName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataPlatformMapping_platformName_feature", "_UI_DataPlatformMapping_type"),
-				 AmaltheaPackage.eINSTANCE.getDataPlatformMapping_PlatformName(),
+				 getString("_UI_Alias_target_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alias_target_feature", "_UI_Alias_type"),
+				 AmaltheaPackage.eINSTANCE.getAlias_Target(),
 				 true,
 				 false,
 				 false,
@@ -81,18 +86,19 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Platform Type feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Alias feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPlatformTypePropertyDescriptor(Object object) {
+	protected void addAliasPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DataPlatformMapping_platformType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataPlatformMapping_platformType_feature", "_UI_DataPlatformMapping_type"),
-				 AmaltheaPackage.eINSTANCE.getDataPlatformMapping_PlatformType(),
+				 getString("_UI_Alias_alias_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alias_alias_feature", "_UI_Alias_type"),
+				 AmaltheaPackage.eINSTANCE.getAlias_Alias(),
 				 true,
 				 false,
 				 false,
@@ -102,17 +108,19 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 	}
 
 	/**
-	 * This returns DataPlatformMapping.gif.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns Alias.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DataPlatformMapping"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Alias"));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -122,14 +130,15 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		String label = ((DataPlatformMapping)object).getPlatformName();
+		String label = ((Alias)object).getTarget();
 		return label == null || label.length() == 0 ?
-			getString("_UI_DataPlatformMapping_type") :
-			getString("_UI_DataPlatformMapping_type") + " " + label;
+			getString("_UI_Alias_type") :
+			getString("_UI_Alias_type") + " " + label;
 	}
 
 	/**
@@ -138,23 +147,23 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 	@Override
 	public String getText(final Object object) {
 		// delegate to custom item provider
-		return CustomItemProviderService.getDataPlatformMappingItemProviderText(object, getTextGen(object));
+		return CustomItemProviderService.getAliasItemProviderText(object, getTextGen(object));
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
-	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DataPlatformMapping.class)) {
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME:
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE:
+		switch (notification.getFeatureID(Alias.class)) {
+			case AmaltheaPackage.ALIAS__TARGET:
+			case AmaltheaPackage.ALIAS__ALIAS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -164,7 +173,8 @@ public class DataPlatformMappingItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

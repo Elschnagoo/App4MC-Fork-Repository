@@ -27,6 +27,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -118,7 +119,6 @@ import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
@@ -2894,7 +2894,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataPlatformMappingEClass = null;
+	private EClass aliasEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -14222,8 +14222,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getDataPlatformMapping() {
-		return dataPlatformMappingEClass;
+	public EClass getAlias() {
+		return aliasEClass;
 	}
 
 	/**
@@ -14232,8 +14232,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataPlatformMapping_PlatformName() {
-		return (EAttribute)dataPlatformMappingEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAlias_Target() {
+		return (EAttribute)aliasEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -14242,8 +14242,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataPlatformMapping_PlatformType() {
-		return (EAttribute)dataPlatformMappingEClass.getEStructuralFeatures().get(1);
+	public EAttribute getAlias_Alias() {
+		return (EAttribute)aliasEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -14302,7 +14302,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getBaseTypeDefinition_DataMapping() {
+	public EReference getBaseTypeDefinition_Aliases() {
 		return (EReference)baseTypeDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -16733,9 +16733,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		typeRefEClass = createEClass(TYPE_REF);
 		createEReference(typeRefEClass, TYPE_REF__TYPE_DEF);
 
-		dataPlatformMappingEClass = createEClass(DATA_PLATFORM_MAPPING);
-		createEAttribute(dataPlatformMappingEClass, DATA_PLATFORM_MAPPING__PLATFORM_NAME);
-		createEAttribute(dataPlatformMappingEClass, DATA_PLATFORM_MAPPING__PLATFORM_TYPE);
+		aliasEClass = createEClass(ALIAS);
+		createEAttribute(aliasEClass, ALIAS__TARGET);
+		createEAttribute(aliasEClass, ALIAS__ALIAS);
 
 		typeDefinitionEClass = createEClass(TYPE_DEFINITION);
 		createEReference(typeDefinitionEClass, TYPE_DEFINITION__SIZE);
@@ -16744,7 +16744,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(dataTypeDefinitionEClass, DATA_TYPE_DEFINITION__DATA_TYPE);
 
 		baseTypeDefinitionEClass = createEClass(BASE_TYPE_DEFINITION);
-		createEReference(baseTypeDefinitionEClass, BASE_TYPE_DEFINITION__DATA_MAPPING);
+		createEReference(baseTypeDefinitionEClass, BASE_TYPE_DEFINITION__ALIASES);
 
 		activationEClass = createEClass(ACTIVATION);
 
@@ -17280,7 +17280,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		pointerEClass.getESuperTypes().add(this.getCompoundType());
 		typeRefEClass.getESuperTypes().add(this.getBaseObject());
 		typeRefEClass.getESuperTypes().add(this.getDataType());
-		dataPlatformMappingEClass.getESuperTypes().add(this.getBaseObject());
+		aliasEClass.getESuperTypes().add(this.getBaseObject());
 		typeDefinitionEClass.getESuperTypes().add(this.getReferableBaseObject());
 		dataTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
 		baseTypeDefinitionEClass.getESuperTypes().add(this.getTypeDefinition());
@@ -18849,9 +18849,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(typeRefEClass, TypeRef.class, "TypeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTypeRef_TypeDef(), this.getTypeDefinition(), null, "typeDef", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataPlatformMappingEClass, DataPlatformMapping.class, "DataPlatformMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataPlatformMapping_PlatformName(), theEcorePackage.getEString(), "platformName", null, 0, 1, DataPlatformMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataPlatformMapping_PlatformType(), theEcorePackage.getEString(), "platformType", null, 0, 1, DataPlatformMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(aliasEClass, Alias.class, "Alias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAlias_Target(), theEcorePackage.getEString(), "target", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlias_Alias(), theEcorePackage.getEString(), "alias", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefinitionEClass, TypeDefinition.class, "TypeDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTypeDefinition_Size(), this.getDataSize(), null, "size", null, 0, 1, TypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18860,7 +18860,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getDataTypeDefinition_DataType(), this.getDataType(), null, "dataType", null, 0, 1, DataTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(baseTypeDefinitionEClass, BaseTypeDefinition.class, "BaseTypeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBaseTypeDefinition_DataMapping(), this.getDataPlatformMapping(), null, "dataMapping", null, 0, -1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBaseTypeDefinition_Aliases(), this.getAlias(), null, "aliases", null, 0, -1, BaseTypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activationEClass, Activation.class, "Activation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -6133,26 +6133,26 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Alias} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataPlatformMappingItemProvider dataPlatformMappingItemProvider;
+	protected AliasItemProvider aliasItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Alias}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataPlatformMappingAdapter() {
-		if (dataPlatformMappingItemProvider == null) {
-			dataPlatformMappingItemProvider = new DataPlatformMappingItemProvider(this);
+	public Adapter createAliasAdapter() {
+		if (aliasItemProvider == null) {
+			aliasItemProvider = new AliasItemProvider(this);
 		}
 
-		return dataPlatformMappingItemProvider;
+		return aliasItemProvider;
 	}
 
 	/**
@@ -6845,7 +6845,7 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (arrayItemProvider != null) arrayItemProvider.dispose();
 		if (pointerItemProvider != null) pointerItemProvider.dispose();
 		if (typeRefItemProvider != null) typeRefItemProvider.dispose();
-		if (dataPlatformMappingItemProvider != null) dataPlatformMappingItemProvider.dispose();
+		if (aliasItemProvider != null) aliasItemProvider.dispose();
 		if (dataTypeDefinitionItemProvider != null) dataTypeDefinitionItemProvider.dispose();
 		if (baseTypeDefinitionItemProvider != null) baseTypeDefinitionItemProvider.dispose();
 		if (periodicActivationItemProvider != null) periodicActivationItemProvider.dispose();

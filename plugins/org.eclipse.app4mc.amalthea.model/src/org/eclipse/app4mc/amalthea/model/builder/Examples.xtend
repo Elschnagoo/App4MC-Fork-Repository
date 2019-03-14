@@ -113,8 +113,8 @@ class Examples {
 			softwareModel [
 				typeDefinition_BaseType [
 					name = "Boolean" size = createDataSize(8, DataSizeUnit::BIT)
-					platform [ platformName = "AR" platformType = "Boolean"]
-					platform [ platformName = "C" platformType = "bool"]
+					alias [ target = "AR" alias = "Boolean" ]
+					alias [ target = "C" alias = "bool" ]
 				]
 				
 				runnable [

@@ -21,6 +21,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractElementMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.AccessMultiplicity;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
@@ -95,7 +96,6 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
@@ -665,7 +665,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.ARRAY: return createArray();
 			case AmaltheaPackage.POINTER: return createPointer();
 			case AmaltheaPackage.TYPE_REF: return createTypeRef();
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING: return createDataPlatformMapping();
+			case AmaltheaPackage.ALIAS: return createAlias();
 			case AmaltheaPackage.DATA_TYPE_DEFINITION: return createDataTypeDefinition();
 			case AmaltheaPackage.BASE_TYPE_DEFINITION: return createBaseTypeDefinition();
 			case AmaltheaPackage.PERIODIC_ACTIVATION: return createPeriodicActivation();
@@ -3849,9 +3849,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public DataPlatformMapping createDataPlatformMapping() {
-		DataPlatformMappingImpl dataPlatformMapping = new DataPlatformMappingImpl();
-		return dataPlatformMapping;
+	public Alias createAlias() {
+		AliasImpl alias = new AliasImpl();
+		return alias;
 	}
 
 	/**

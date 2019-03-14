@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -105,7 +106,6 @@ import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -1830,8 +1830,8 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createTypeRefAdapter();
 			}
 			@Override
-			public Adapter caseDataPlatformMapping(DataPlatformMapping object) {
-				return createDataPlatformMappingAdapter();
+			public Adapter caseAlias(Alias object) {
+				return createAliasAdapter();
 			}
 			@Override
 			public Adapter caseTypeDefinition(TypeDefinition object) {
@@ -6794,16 +6794,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping <em>Data Platform Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.Alias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.DataPlatformMapping
+	 * @see org.eclipse.app4mc.amalthea.model.Alias
 	 * @generated
 	 */
-	public Adapter createDataPlatformMappingAdapter() {
+	public Adapter createAliasAdapter() {
 		return null;
 	}
 

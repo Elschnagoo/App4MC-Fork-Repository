@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.AbstractMemoryElement;
 import org.eclipse.app4mc.amalthea.model.AbstractProcess;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -59,7 +60,6 @@ import org.eclipse.app4mc.amalthea.model.DataAgeCycle;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DataCoherencyGroup;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -5039,23 +5039,23 @@ public class CustomItemProviderService {
   }
   
   /**
-   * DataPlatformMappingItemProvider
+   * AliasItemProvider
    */
-  public static String getDataPlatformMappingItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof DataPlatformMapping)) {
-      String _platformName = null;
-      if (((DataPlatformMapping)object)!=null) {
-        _platformName=((DataPlatformMapping)object).getPlatformName();
+  public static String getAliasItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof Alias)) {
+      String _target = null;
+      if (((Alias)object)!=null) {
+        _target=((Alias)object).getTarget();
       }
-      final String name = _platformName;
-      String _platformType = null;
-      if (((DataPlatformMapping)object)!=null) {
-        _platformType=((DataPlatformMapping)object).getPlatformType();
+      final String name = _target;
+      String _alias = null;
+      if (((Alias)object)!=null) {
+        _alias=((Alias)object).getAlias();
       }
-      final String typeName = _platformType;
-      final String s1 = CustomItemProviderService.ppName(name, "<platform>");
-      final String s2 = CustomItemProviderService.ppName(typeName, "<type>");
-      return ((("Platform Mapping: " + s1) + " --> ") + s2);
+      final String typeName = _alias;
+      final String s1 = CustomItemProviderService.ppName(name, "<target>");
+      final String s2 = CustomItemProviderService.ppName(typeName, "<alias>");
+      return ((("Alias: " + s1) + " --> ") + s2);
     } else {
       return defaultText;
     }

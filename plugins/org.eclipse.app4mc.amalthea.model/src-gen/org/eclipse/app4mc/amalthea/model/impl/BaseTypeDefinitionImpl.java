@@ -16,9 +16,9 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -38,21 +38,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.BaseTypeDefinitionImpl#getDataMapping <em>Data Mapping</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.BaseTypeDefinitionImpl#getAliases <em>Aliases</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTypeDefinition {
 	/**
-	 * The cached value of the '{@link #getDataMapping() <em>Data Mapping</em>}' containment reference list.
+	 * The cached value of the '{@link #getAliases() <em>Aliases</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataMapping()
+	 * @see #getAliases()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DataPlatformMapping> dataMapping;
+	protected EList<Alias> aliases;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,11 +79,11 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	 * @generated
 	 */
 	@Override
-	public EList<DataPlatformMapping> getDataMapping() {
-		if (dataMapping == null) {
-			dataMapping = new EObjectContainmentEList<DataPlatformMapping>(DataPlatformMapping.class, this, AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING);
+	public EList<Alias> getAliases() {
+		if (aliases == null) {
+			aliases = new EObjectContainmentEList<Alias>(Alias.class, this, AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES);
 		}
-		return dataMapping;
+		return aliases;
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
-				return ((InternalEList<?>)getDataMapping()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
+				return ((InternalEList<?>)getAliases()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -108,8 +108,8 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
-				return getDataMapping();
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
+				return getAliases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,9 +123,9 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
-				getDataMapping().clear();
-				getDataMapping().addAll((Collection<? extends DataPlatformMapping>)newValue);
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
+				getAliases().clear();
+				getAliases().addAll((Collection<? extends Alias>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -139,8 +139,8 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
-				getDataMapping().clear();
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
+				getAliases().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class BaseTypeDefinitionImpl extends TypeDefinitionImpl implements BaseTy
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.BASE_TYPE_DEFINITION__DATA_MAPPING:
-				return dataMapping != null && !dataMapping.isEmpty();
+			case AmaltheaPackage.BASE_TYPE_DEFINITION__ALIASES:
+				return aliases != null && !aliases.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

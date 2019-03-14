@@ -2356,13 +2356,13 @@ public interface AmaltheaFactory extends EFactory {
 	TypeRef createTypeRef();
 
 	/**
-	 * Returns a new object of class '<em>Data Platform Mapping</em>'.
+	 * Returns a new object of class '<em>Alias</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Platform Mapping</em>'.
+	 * @return a new object of class '<em>Alias</em>'.
 	 * @generated
 	 */
-	DataPlatformMapping createDataPlatformMapping();
+	Alias createAlias();
 
 	/**
 	 * Returns a new object of class '<em>Data Type Definition</em>'.

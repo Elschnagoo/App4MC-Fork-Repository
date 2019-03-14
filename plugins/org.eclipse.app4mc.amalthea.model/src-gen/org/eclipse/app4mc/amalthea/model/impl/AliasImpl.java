@@ -14,8 +14,8 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -25,65 +25,65 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Platform Mapping</b></em>'.
+ * An implementation of the model object '<em><b>Alias</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataPlatformMappingImpl#getPlatformName <em>Platform Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.DataPlatformMappingImpl#getPlatformType <em>Platform Type</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AliasImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.AliasImpl#getAlias <em>Alias</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatformMapping {
+public class AliasImpl extends BaseObjectImpl implements Alias {
 	/**
-	 * The default value of the '{@link #getPlatformName() <em>Platform Name</em>}' attribute.
+	 * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlatformName()
+	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PLATFORM_NAME_EDEFAULT = null;
+	protected static final String TARGET_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPlatformName() <em>Platform Name</em>}' attribute.
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlatformName()
+	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected String platformName = PLATFORM_NAME_EDEFAULT;
+	protected String target = TARGET_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPlatformType() <em>Platform Type</em>}' attribute.
+	 * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlatformType()
+	 * @see #getAlias()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PLATFORM_TYPE_EDEFAULT = null;
+	protected static final String ALIAS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPlatformType() <em>Platform Type</em>}' attribute.
+	 * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlatformType()
+	 * @see #getAlias()
 	 * @generated
 	 * @ordered
 	 */
-	protected String platformType = PLATFORM_TYPE_EDEFAULT;
+	protected String alias = ALIAS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataPlatformMappingImpl() {
+	protected AliasImpl() {
 		super();
 	}
 
@@ -94,7 +94,7 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getDataPlatformMapping();
+		return AmaltheaPackage.eINSTANCE.getAlias();
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * @generated
 	 */
 	@Override
-	public String getPlatformName() {
-		return platformName;
+	public String getTarget() {
+		return target;
 	}
 
 	/**
@@ -113,11 +113,11 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * @generated
 	 */
 	@Override
-	public void setPlatformName(String newPlatformName) {
-		String oldPlatformName = platformName;
-		platformName = newPlatformName;
+	public void setTarget(String newTarget) {
+		String oldTarget = target;
+		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME, oldPlatformName, platformName));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALIAS__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * @generated
 	 */
 	@Override
-	public String getPlatformType() {
-		return platformType;
+	public String getAlias() {
+		return alias;
 	}
 
 	/**
@@ -136,11 +136,11 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	 * @generated
 	 */
 	@Override
-	public void setPlatformType(String newPlatformType) {
-		String oldPlatformType = platformType;
-		platformType = newPlatformType;
+	public void setAlias(String newAlias) {
+		String oldAlias = alias;
+		alias = newAlias;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE, oldPlatformType, platformType));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ALIAS__ALIAS, oldAlias, alias));
 	}
 
 	/**
@@ -151,10 +151,10 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME:
-				return getPlatformName();
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE:
-				return getPlatformType();
+			case AmaltheaPackage.ALIAS__TARGET:
+				return getTarget();
+			case AmaltheaPackage.ALIAS__ALIAS:
+				return getAlias();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,11 +167,11 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME:
-				setPlatformName((String)newValue);
+			case AmaltheaPackage.ALIAS__TARGET:
+				setTarget((String)newValue);
 				return;
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE:
-				setPlatformType((String)newValue);
+			case AmaltheaPackage.ALIAS__ALIAS:
+				setAlias((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,11 +185,11 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME:
-				setPlatformName(PLATFORM_NAME_EDEFAULT);
+			case AmaltheaPackage.ALIAS__TARGET:
+				setTarget(TARGET_EDEFAULT);
 				return;
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE:
-				setPlatformType(PLATFORM_TYPE_EDEFAULT);
+			case AmaltheaPackage.ALIAS__ALIAS:
+				setAlias(ALIAS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -203,10 +203,10 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_NAME:
-				return PLATFORM_NAME_EDEFAULT == null ? platformName != null : !PLATFORM_NAME_EDEFAULT.equals(platformName);
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING__PLATFORM_TYPE:
-				return PLATFORM_TYPE_EDEFAULT == null ? platformType != null : !PLATFORM_TYPE_EDEFAULT.equals(platformType);
+			case AmaltheaPackage.ALIAS__TARGET:
+				return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
+			case AmaltheaPackage.ALIAS__ALIAS:
+				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -221,12 +221,12 @@ public class DataPlatformMappingImpl extends BaseObjectImpl implements DataPlatf
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (platformName: ");
-		result.append(platformName);
-		result.append(", platformType: ");
-		result.append(platformType);
+		result.append(" (target: ");
+		result.append(target);
+		result.append(", alias: ");
+		result.append(alias);
 		result.append(')');
 		return result.toString();
 	}
 
-} //DataPlatformMappingImpl
+} //AliasImpl

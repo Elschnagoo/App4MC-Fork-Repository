@@ -29044,14 +29044,14 @@ public interface AmaltheaPackage extends EPackage {
 	int TYPE_REF_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DataPlatformMappingImpl <em>Data Platform Mapping</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.AliasImpl <em>Alias</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.app4mc.amalthea.model.impl.DataPlatformMappingImpl
-	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getDataPlatformMapping()
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AliasImpl
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getAlias()
 	 * @generated
 	 */
-	int DATA_PLATFORM_MAPPING = 348;
+	int ALIAS = 348;
 
 	/**
 	 * The feature id for the '<em><b>Custom Properties</b></em>' map.
@@ -29060,43 +29060,43 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PLATFORM_MAPPING__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
+	int ALIAS__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Platform Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PLATFORM_MAPPING__PLATFORM_NAME = BASE_OBJECT_FEATURE_COUNT + 0;
+	int ALIAS__TARGET = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Platform Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Alias</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PLATFORM_MAPPING__PLATFORM_TYPE = BASE_OBJECT_FEATURE_COUNT + 1;
+	int ALIAS__ALIAS = BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Data Platform Mapping</em>' class.
+	 * The number of structural features of the '<em>Alias</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PLATFORM_MAPPING_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int ALIAS_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Data Platform Mapping</em>' class.
+	 * The number of operations of the '<em>Alias</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PLATFORM_MAPPING_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
+	int ALIAS_OPERATION_COUNT = BASE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TypeDefinitionImpl <em>Type Definition</em>}' class.
@@ -29372,13 +29372,13 @@ public interface AmaltheaPackage extends EPackage {
 	int BASE_TYPE_DEFINITION__SIZE = TYPE_DEFINITION__SIZE;
 
 	/**
-	 * The feature id for the '<em><b>Data Mapping</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Aliases</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BASE_TYPE_DEFINITION__DATA_MAPPING = TYPE_DEFINITION_FEATURE_COUNT + 0;
+	int BASE_TYPE_DEFINITION__ALIASES = TYPE_DEFINITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Base Type Definition</em>' class.
@@ -42688,36 +42688,36 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getTypeRef_TypeDef();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping <em>Data Platform Mapping</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Alias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Platform Mapping</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DataPlatformMapping
+	 * @return the meta object for class '<em>Alias</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Alias
 	 * @generated
 	 */
-	EClass getDataPlatformMapping();
+	EClass getAlias();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping#getPlatformName <em>Platform Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Alias#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Platform Name</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DataPlatformMapping#getPlatformName()
-	 * @see #getDataPlatformMapping()
+	 * @return the meta object for the attribute '<em>Target</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Alias#getTarget()
+	 * @see #getAlias()
 	 * @generated
 	 */
-	EAttribute getDataPlatformMapping_PlatformName();
+	EAttribute getAlias_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.DataPlatformMapping#getPlatformType <em>Platform Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Alias#getAlias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Platform Type</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.DataPlatformMapping#getPlatformType()
-	 * @see #getDataPlatformMapping()
+	 * @return the meta object for the attribute '<em>Alias</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Alias#getAlias()
+	 * @see #getAlias()
 	 * @generated
 	 */
-	EAttribute getDataPlatformMapping_PlatformType();
+	EAttribute getAlias_Alias();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TypeDefinition <em>Type Definition</em>}'.
@@ -42772,15 +42772,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getBaseTypeDefinition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getDataMapping <em>Data Mapping</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getAliases <em>Aliases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Data Mapping</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getDataMapping()
+	 * @return the meta object for the containment reference list '<em>Aliases</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.BaseTypeDefinition#getAliases()
 	 * @see #getBaseTypeDefinition()
 	 * @generated
 	 */
-	EReference getBaseTypeDefinition_DataMapping();
+	EReference getBaseTypeDefinition_Aliases();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Activation <em>Activation</em>}'.

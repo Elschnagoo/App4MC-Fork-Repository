@@ -27,6 +27,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceType;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Algorithm;
+import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
@@ -117,7 +118,6 @@ import org.eclipse.app4mc.amalthea.model.DataConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DataGroupScope;
 import org.eclipse.app4mc.amalthea.model.DataPairingConstraint;
-import org.eclipse.app4mc.amalthea.model.DataPlatformMapping;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSeparationConstraint;
@@ -1224,8 +1224,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validatePointer((Pointer)value, diagnostics, context);
 			case AmaltheaPackage.TYPE_REF:
 				return validateTypeRef((TypeRef)value, diagnostics, context);
-			case AmaltheaPackage.DATA_PLATFORM_MAPPING:
-				return validateDataPlatformMapping((DataPlatformMapping)value, diagnostics, context);
+			case AmaltheaPackage.ALIAS:
+				return validateAlias((Alias)value, diagnostics, context);
 			case AmaltheaPackage.TYPE_DEFINITION:
 				return validateTypeDefinition((TypeDefinition)value, diagnostics, context);
 			case AmaltheaPackage.DATA_TYPE_DEFINITION:
@@ -5624,8 +5624,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDataPlatformMapping(DataPlatformMapping dataPlatformMapping, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(dataPlatformMapping, diagnostics, context);
+	public boolean validateAlias(Alias alias, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(alias, diagnostics, context);
 	}
 
 	/**
