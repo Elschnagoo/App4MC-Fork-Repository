@@ -32,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableItems <em>Runnable Items</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivations <em>Activations</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}</li>
@@ -96,31 +95,6 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	EList<Activation> getActivations();
-
-	/**
-	 * Returns the value of the '<em><b>Deadline</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Optional parameter for allocation to task or time slice.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Deadline</em>' containment reference.
-	 * @see #setDeadline(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Deadline()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Time getDeadline();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getDeadline <em>Deadline</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deadline</em>' containment reference.
-	 * @see #getDeadline()
-	 * @generated
-	 */
-	void setDeadline(Time value);
 
 	/**
 	 * Returns the value of the '<em><b>Callback</b></em>' attribute.

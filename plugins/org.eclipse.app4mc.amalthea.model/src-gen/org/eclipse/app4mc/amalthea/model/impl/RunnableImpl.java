@@ -28,7 +28,6 @@ import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.Section;
 import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
-import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -59,7 +58,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableItems <em>Runnable Items</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivations <em>Activations</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getDeadline <em>Deadline</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getAsilLevel <em>Asil Level</em>}</li>
@@ -101,16 +99,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @ordered
 	 */
 	protected EList<Activation> activations;
-
-	/**
-	 * The cached value of the '{@link #getDeadline() <em>Deadline</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeadline()
-	 * @generated
-	 * @ordered
-	 */
-	protected Time deadline;
 
 	/**
 	 * The default value of the '{@link #isCallback() <em>Callback</em>}' attribute.
@@ -238,51 +226,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			activations = new EObjectResolvingEList<Activation>(Activation.class, this, AmaltheaPackage.RUNNABLE__ACTIVATIONS);
 		}
 		return activations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Time getDeadline() {
-		return deadline;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDeadline(Time newDeadline, NotificationChain msgs) {
-		Time oldDeadline = deadline;
-		deadline = newDeadline;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__DEADLINE, oldDeadline, newDeadline);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDeadline(Time newDeadline) {
-		if (newDeadline != deadline) {
-			NotificationChain msgs = null;
-			if (deadline != null)
-				msgs = ((InternalEObject)deadline).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__DEADLINE, null, msgs);
-			if (newDeadline != null)
-				msgs = ((InternalEObject)newDeadline).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__DEADLINE, null, msgs);
-			msgs = basicSetDeadline(newDeadline, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__DEADLINE, newDeadline, newDeadline));
 	}
 
 	/**
@@ -467,8 +410,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
 				return ((InternalEList<?>)getRunnableItems()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
-				return basicSetDeadline(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -487,8 +428,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return getRunnableItems();
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				return getActivations();
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
-				return getDeadline();
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
 				return isCallback();
 			case AmaltheaPackage.RUNNABLE__SERVICE:
@@ -529,9 +468,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				getActivations().clear();
 				getActivations().addAll((Collection<? extends Activation>)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
-				setDeadline((Time)newValue);
-				return;
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
 				setCallback((Boolean)newValue);
 				return;
@@ -565,9 +501,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				getActivations().clear();
 				return;
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
-				setDeadline((Time)null);
-				return;
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
 				setCallback(CALLBACK_EDEFAULT);
 				return;
@@ -598,8 +531,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return runnableItems != null && !runnableItems.isEmpty();
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				return activations != null && !activations.isEmpty();
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
-				return deadline != null;
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
 				return callback != CALLBACK_EDEFAULT;
 			case AmaltheaPackage.RUNNABLE__SERVICE:

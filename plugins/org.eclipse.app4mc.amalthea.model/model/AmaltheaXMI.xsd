@@ -5340,11 +5340,6 @@ The final state can be several Tasks, which can be computed using provided infor
           <xsd:element name="parameters" type="am:RunnableParameter"/>
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
           <xsd:element name="activations" type="am:Activation"/>
-          <xsd:element name="deadline" type="am:Time">
-            <xsd:annotation>
-              <xsd:documentation>Optional parameter for allocation to task or time slice.</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
           <xsd:element name="section" type="am:Section"/>
         </xsd:choice>
         <xsd:attribute name="callback" type="xsd:boolean">

@@ -3480,10 +3480,6 @@ class Runnable extends AbstractMemoryElement
 		activations.head
 	}
 	/*
-	 * Optional parameter for allocation to task or time slice.
-	 */
-	contains Time deadline
-	/*
 	 * Marker if runnable is used as callback.
 	 */
 	boolean callback = "false"

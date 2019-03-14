@@ -267,7 +267,6 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Parameters());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Deadline());
 		}
 		return childrenFeatures;
 	}
@@ -340,7 +339,6 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				return;
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-			case AmaltheaPackage.RUNNABLE__DEADLINE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -447,11 +445,6 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
 				 AmaltheaFactory.eINSTANCE.createCustomEventTrigger()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_Deadline(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 
 }

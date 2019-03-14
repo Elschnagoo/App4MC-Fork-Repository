@@ -13032,18 +13032,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunnable_Deadline() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getRunnable_Callback() {
-		return (EAttribute)runnableEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)runnableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -13053,7 +13043,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EAttribute getRunnable_Service() {
-		return (EAttribute)runnableEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)runnableEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -13063,7 +13053,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EAttribute getRunnable_AsilLevel() {
-		return (EAttribute)runnableEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)runnableEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -13073,7 +13063,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EReference getRunnable_Section() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(7);
+		return (EReference)runnableEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -13083,7 +13073,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EReference getRunnable_RunnableCalls() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(8);
+		return (EReference)runnableEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -13093,7 +13083,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EReference getRunnable_TaskRunnableCalls() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
+		return (EReference)runnableEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -13103,7 +13093,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EReference getRunnable_ReferringComponents() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(10);
+		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -16577,7 +16567,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(runnableEClass, RUNNABLE__PARAMETERS);
 		createEReference(runnableEClass, RUNNABLE__RUNNABLE_ITEMS);
 		createEReference(runnableEClass, RUNNABLE__ACTIVATIONS);
-		createEReference(runnableEClass, RUNNABLE__DEADLINE);
 		createEAttribute(runnableEClass, RUNNABLE__CALLBACK);
 		createEAttribute(runnableEClass, RUNNABLE__SERVICE);
 		createEAttribute(runnableEClass, RUNNABLE__ASIL_LEVEL);
@@ -18681,7 +18670,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getRunnable_Parameters(), this.getRunnableParameter(), this.getRunnableParameter_ContainingRunnable(), "parameters", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_RunnableItems(), this.getRunnableItem(), null, "runnableItems", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_Activations(), this.getActivation(), null, "activations", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnable_Deadline(), this.getTime(), null, "deadline", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Callback(), theEcorePackage.getEBoolean(), "callback", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Service(), theEcorePackage.getEBoolean(), "service", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
