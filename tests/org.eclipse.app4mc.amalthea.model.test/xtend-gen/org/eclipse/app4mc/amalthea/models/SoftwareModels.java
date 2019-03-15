@@ -29,7 +29,7 @@ public class SoftwareModels {
   private SoftwareBuilder b2 = new SoftwareBuilder();
   
   public static void main(final String[] args) {
-    final Amalthea model1 = SoftwareModels.createModel1();
+    final Amalthea model1 = new SoftwareModels().model1();
     AmaltheaWriter.writeToFileNamed(model1, "test-data/SoftwareUtilTestModel-gen.amxmi");
   }
   

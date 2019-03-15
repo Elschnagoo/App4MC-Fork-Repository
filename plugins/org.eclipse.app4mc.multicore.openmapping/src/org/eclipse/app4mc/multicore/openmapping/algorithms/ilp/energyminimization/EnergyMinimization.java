@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
@@ -37,6 +38,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.Value;
+import org.eclipse.app4mc.amalthea.model.util.ConstraintsUtil;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractILPBasedMappingAlgorithm;
 import org.eclipse.app4mc.multicore.sharelibs.ConsoleOutputHandler;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
@@ -352,7 +354,7 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 			}
 			else {
 				UniversalHandler.getInstance()
-						.logCon("Warning: VoltageLevel '" + vl.getName() + "' is not corretly specified!");
+						.logCon("Warning: VoltageLevel '" + vl.getName() + "' is not correctly specified!");
 			}
 		}
 
@@ -652,11 +654,14 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 			return node.getLft();
 		}
 
+		Runnable nodeRunnable = node.getRunnableRef();
+		Time nodeDeadline = ConstraintsUtil.getDeadline(nodeRunnable);
+
 		// Has the node no successors?
 		if (this.dag.outDegreeOf(node) == 0) {
 			// A leaf nodes lft is its deadlne OR tCon
-			if (node.getRunnableRef().getDeadline() != null) {
-				final long deadline = Util.convertTime2ps(node.getRunnableRef().getDeadline());
+			if (nodeDeadline != null) {
+				final long deadline = AmaltheaServices.convertToPicoSeconds(nodeDeadline).longValue();
 				if (deadline < this.tCon) {
 					return deadline;
 				}
@@ -677,8 +682,8 @@ public class EnergyMinimization extends AbstractILPBasedMappingAlgorithm {
 		}
 
 		// Now, get the min(deadline, least)
-		if (node.getRunnableRef().getDeadline() != null) {
-			final long deadline = Util.convertTime2ps(node.getRunnableRef().getDeadline());
+		if (nodeDeadline != null) {
+			final long deadline = AmaltheaServices.convertToPicoSeconds(nodeDeadline).longValue();
 			if (deadline < least) {
 				return deadline;
 			}

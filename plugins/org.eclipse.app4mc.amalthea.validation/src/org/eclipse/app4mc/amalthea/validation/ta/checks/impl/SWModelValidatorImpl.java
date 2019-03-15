@@ -586,21 +586,21 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is the case, it will be handled as an error.
 	 */
 	public void checkRunnableDeadlineUnsigned(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Runnable) {
-				Runnable runnable = (Runnable) elem;
-				Time deadline = runnable.getDeadline();
-				if(null != deadline) {
-					BigInteger value = deadline.getValue();
-					if(0 > value.signum()) {
-						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getRunnable_Deadline(), value);
-					}
-				}
-			}
-		}
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof Runnable) {
+//				Runnable runnable = (Runnable) elem;
+//				Time deadline = runnable.getDeadline();
+//				if(null != deadline) {
+//					BigInteger value = deadline.getValue();
+//					if(0 > value.signum()) {
+//						this.issueCreator.issue(deadline, AmaltheaPackage.eINSTANCE.getRunnable_Deadline(), value);
+//					}
+//				}
+//			}
+//		}
 	}
 
 	/*

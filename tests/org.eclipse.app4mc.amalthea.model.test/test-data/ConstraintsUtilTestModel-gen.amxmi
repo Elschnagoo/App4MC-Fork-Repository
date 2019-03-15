@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="Task1" multipleTaskActivationLimit="0"/>
+    <tasks name="Task2" multipleTaskActivationLimit="0"/>
+    <runnables name="Run1" callback="false" service="false"/>
+    <runnables name="Run2" callback="false" service="false"/>
+    <labels name="Lab1" constant="false" bVolatile="false"/>
+    <labels name="Lab2" constant="false" bVolatile="false"/>
+  </swModel>
+  <constraintsModel>
+    <requirements xsi:type="am:ProcessRequirement" name="Process deadline - Task1" process="Task1?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Process deadline - Task1" process="Task1?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="30" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Process deadline - Task1" process="Task1?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="100" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:RunnableRequirement" name="Runnable deadline - Run2" runnable="Run2?type=Runnable">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="80" unit="ns"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:RunnableRequirement" name="Runnable deadline - Run2" runnable="Run2?type=Runnable">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime"/>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>

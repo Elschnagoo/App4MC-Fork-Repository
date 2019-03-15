@@ -29,8 +29,6 @@ import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_ACTIVAT
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS;
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS__OFFSET;
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.PERIODIC_STIMULUS__RECURRENCE;
-import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.RUNNABLE;
-import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.RUNNABLE__DEADLINE;
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION;
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION__MAX;
 import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATION__MIN;
@@ -235,7 +233,6 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 				if (!found) found = (classID == PERIODIC_ACTIVATION && featureID == PERIODIC_ACTIVATION__MAX);
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MIN);
 				if (!found) found = (classID == SINGLE_ACTIVATION && featureID == SINGLE_ACTIVATION__MAX);
-				if (!found) found = (classID == RUNNABLE && featureID == RUNNABLE__DEADLINE);
 				if (!found) found = (classID == PERIODIC_STIMULUS && featureID == PERIODIC_STIMULUS__OFFSET);
 				
 				if (found) {
