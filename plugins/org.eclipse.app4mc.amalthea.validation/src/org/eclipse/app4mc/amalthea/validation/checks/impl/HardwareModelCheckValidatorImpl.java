@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -216,9 +216,9 @@ public class HardwareModelCheckValidatorImpl extends AbstractValidatorImpl {
 		long addressRange = path.getEndAddress() - path.getStartAddress();
 		long requiredSize = path.getMemOffset() + addressRange;
 
-		if (addressRange <= 0) {
+		if (addressRange < 0) {
 			this.issueCreator.issue(path, AmaltheaPackage.eINSTANCE.getHwAccessPath_EndAddress(),
-					path.getName(), "Start address >= End address");
+					path.getName(), "Start address > End address");
 			performRangeCheck = false; // address range is invalid
 		}
 
