@@ -477,15 +477,15 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 		}
 
 		for (final ModeLabel modeLabel : modeLabelSet) {
-			if (null != modeLabel) {
-				final ModeLiteral initialValue = modeLabel.getInitialValue();
-				final Mode mode = modeLabel.getMode();
-				if ((null != mode) && (null != initialValue)) {
-					if (false == mode.getLiterals().contains(initialValue)) {
-						this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
-					}
-				}
-			}
+//			if (null != modeLabel) {
+//				final ModeLiteral initialValue = modeLabel.getInitialValue();
+//				final Mode mode = modeLabel.getMode();
+//				if ((null != mode) && (null != initialValue)) {
+//					if (false == mode.getLiterals().contains(initialValue)) {
+//						this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
+//					}
+//				}
+//			}
 		}
 	}
 
@@ -718,24 +718,24 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeLabelAccessModeEqual(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeLabelAccess) {
-				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
-				ModeLiteral modeLiteral = modeLabelAccess.getModeValue();
-				ModeLabel modeLabel = modeLabelAccess.getData();
-				if((null != modeLiteral) && (null != modeLabel)) {
-					Mode mode1 = modeLabel.getMode();
-					Mode mode2 = (Mode) modeLiteral.eContainer();
-					if(mode1 != mode2) {
-						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), mode1, mode2);
-						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), mode1, mode2);
-					}
-				}
-			}
-		}
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeLabelAccess) {
+//				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
+//				String modeValue = modeLabelAccess.getValue();
+//				ModeLabel modeLabel = modeLabelAccess.getData();
+//				if((null != modeValue) && (null != modeLabel)) {
+//					Mode mode1 = modeLabel.getMode();
+//					Mode mode2 = (Mode) modeValue.eContainer();
+//					if(mode1 != mode2) {
+//						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_Data(), mode1, mode2);
+//						this.issueCreator.issue(modeLabelAccess, AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(), mode1, mode2);
+//					}
+//				}
+//			}
+//		}
 	}
 
 	/*
@@ -743,38 +743,38 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeLiteralMode(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		Set<ModeLiteral> modeListerals = new HashSet<ModeLiteral>();
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeLabel) {
-				ModeLabel modeLabel = (ModeLabel) elem;
-				ModeLiteral modeLiteral = modeLabel.getInitialValue(); 
-				if(null != modeLiteral) {
-					modeListerals.add(modeLiteral);
-				}
-			} else if (elem instanceof ModeLabelAccess) {
-				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
-				ModeLiteral modeLiteral = modeLabelAccess.getModeValue(); 
-				if(null != modeLiteral) {
-					modeListerals.add(modeLiteral);
-				}
-			} else if (elem instanceof ModeSwitchEntry<?>) {
-//				ModeSwitchEntry<?> modeSwitchEntry = (ModeSwitchEntry<?>) elem;
-//				for(ModeLiteral modeLiteral : modeSwitchEntry.getValues()) {
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		Set<ModeLiteral> modeListerals = new HashSet<ModeLiteral>();
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeLabel) {
+//				ModeLabel modeLabel = (ModeLabel) elem;
+//				ModeLiteral modeLiteral = modeLabel.getInitialValue(); 
+//				if(null != modeLiteral) {
 //					modeListerals.add(modeLiteral);
 //				}
-			}
-		}
-		
-		for(ModeLiteral modeLiteral : modeListerals) {
-			if(null != modeLiteral) {
-				Object object = modeLiteral.eContainer();
-				if((null == object) || (false == (object instanceof Mode))) {
-					this.issueCreator.issue(modeLiteral, AmaltheaPackage.eINSTANCE.getMode_Literals());
-				}
-			}
-		}
+//			} else if (elem instanceof ModeLabelAccess) {
+//				ModeLabelAccess modeLabelAccess = (ModeLabelAccess) elem;
+//				ModeLiteral modeLiteral = modeLabelAccess.getModeValue(); 
+//				if(null != modeLiteral) {
+//					modeListerals.add(modeLiteral);
+//				}
+//			} else if (elem instanceof ModeSwitchEntry<?>) {
+////				ModeSwitchEntry<?> modeSwitchEntry = (ModeSwitchEntry<?>) elem;
+////				for(ModeLiteral modeLiteral : modeSwitchEntry.getValues()) {
+////					modeListerals.add(modeLiteral);
+////				}
+//			}
+//		}
+//		
+//		for(ModeLiteral modeLiteral : modeListerals) {
+//			if(null != modeLiteral) {
+//				Object object = modeLiteral.eContainer();
+//				if((null == object) || (false == (object instanceof EnumMode))) {
+//					this.issueCreator.issue(modeLiteral, AmaltheaPackage.eINSTANCE.getEnumMode_Literals());
+//				}
+//			}
+//		}
 	}
 }

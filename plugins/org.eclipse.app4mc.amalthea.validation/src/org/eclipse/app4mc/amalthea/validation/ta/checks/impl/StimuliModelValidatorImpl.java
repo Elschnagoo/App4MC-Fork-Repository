@@ -33,7 +33,7 @@ import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.SWModel;
@@ -492,30 +492,30 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
 
 		final List<ModeLabel> modeLabels = new ArrayList<>();
-		final Map<ModeLabel, ModeValue> valueProviders = new HashMap<>();
+		final Map<ModeLabel, ModeCondition> valueProviders = new HashMap<>();
 		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof SWModel) {
-				SWModel swModel = (SWModel) elem;
-				modeLabels.addAll(swModel.getModeLabels());
-			}
-			if (elem instanceof ModeValue) {
-				ModeValue entry = (ModeValue) elem;
-				ModeLabel valueProvider = entry.getValueProvider();
-				if(null == valueProvider) {
-					this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
-				} else {
-					valueProviders.put(valueProvider, entry);
-				}
-			}
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof SWModel) {
+//				SWModel swModel = (SWModel) elem;
+//				modeLabels.addAll(swModel.getModeLabels());
+//			}
+//			if (elem instanceof ModeCondition) {
+//				ModeCondition entry = (ModeCondition) elem;
+//				ModeLabel valueProvider = entry.getValueProvider();
+//				if(null == valueProvider) {
+//					this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
+//				} else {
+//					valueProviders.put(valueProvider, entry);
+//				}
+//			}
 		}
 		
 		// check
 		for(ModeLabel modeLabel : valueProviders.keySet()) {
-			if(false == modeLabels.contains(modeLabel)) {
-				ModeValue entry = valueProviders.get(modeLabel);
-				this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
-			}
+//			if(false == modeLabels.contains(modeLabel)) {
+//				ModeCondition entry = valueProviders.get(modeLabel);
+//				this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
+//			}
 		}
 		
 	}
