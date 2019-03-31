@@ -46,7 +46,7 @@
         <graphEntries xsi:type="am:ModeSwitch">
           <entries name="Content_2">
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_2?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="MessageContent_2" relation="EQUAL" />
             </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_2">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_2?type=Runnable" />
@@ -54,7 +54,7 @@
           </entries>
           <entries name="Content_3">
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_3?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="MessageContent_3" relation="EQUAL" />
             </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_3">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_3?type=Runnable" />
@@ -62,7 +62,7 @@
           </entries>
           <entries name="Content_1">
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="MessageContent_1" relation="EQUAL" />
             </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_1">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable" />
@@ -70,7 +70,7 @@
           </entries>
           <entries name="Content_4">
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="MessageMode/MessageContent_4?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="MessageContent_4" relation="EQUAL" />
             </condition>
             <items xsi:type="am:CallSequence" name="CallSequence_2_4">
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_4?type=Runnable" />
@@ -92,7 +92,7 @@
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="request" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="MessageContent_1" />
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="release" />
     </runnables>
     <runnables name="Runnable_2_1" callback="false" service="false">
@@ -132,22 +132,22 @@
     </runnables>
     <runnables name="Runnable_1_2" callback="false" service="false">
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="request" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_2?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="MessageContent_2" />
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="release" />
     </runnables>
     <runnables name="Runnable_1_3" callback="false" service="false">
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="request" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_3?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="MessageContent_3" />
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="release" />
     </runnables>
     <runnables name="Runnable_1_4" callback="false" service="false">
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="request" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_4?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="MessageContent_4" />
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="release" />
     </runnables>
     <runnables name="Runnable_1_0" callback="false" service="false">
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="request" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="MessageMode/MessageContent_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="MessageContent_0" />
       <runnableItems xsi:type="am:SemaphoreAccess" semaphore="Semaphore?type=Semaphore" access="release" />
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
@@ -155,7 +155,7 @@
         <default lowerBound="5994000" upperBound="6000000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
-    <modes name="MessageMode">
+    <modes xsi:type="am:EnumMode" name="MessageMode">
       <literals name="MessageContent_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -182,7 +182,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="message" initialValue="MessageMode/MessageContent_0?type=ModeLiteral">
+    <modeLabels name="message" mode="MessageMode?type=EnumMode" initialValue="MessageContent_0">
       <size value="8" unit="bit" />
     </modeLabels>
   </swModel>

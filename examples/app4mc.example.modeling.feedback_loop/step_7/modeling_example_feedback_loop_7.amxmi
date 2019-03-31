@@ -9,7 +9,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_u_0?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="e?type=ModeLabel" value="E/E_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="e?type=ModeLabel" value="E_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -17,7 +17,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Set_u_1?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="e?type=ModeLabel" value="E/E_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="e?type=ModeLabel" value="E_1" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -47,7 +47,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_0?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -55,12 +55,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_1?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="state?type=ModeLabel" value="State_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -74,7 +74,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_0?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -82,12 +82,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_2?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="state?type=ModeLabel" value="State_1" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -101,7 +101,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_1?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -109,12 +109,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Set_state_2?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="u?type=ModeLabel" value="U/U_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="u?type=ModeLabel" value="U_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="state?type=ModeLabel" value="State/State_2?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="state?type=ModeLabel" value="State_2" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -150,7 +150,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_0?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="y?type=ModeLabel" value="Y_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -158,7 +158,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_1?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_50?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="y?type=ModeLabel" value="Y_50" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -166,7 +166,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="R_3_2?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="y?type=ModeLabel" value="Y/Y_100?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="y?type=ModeLabel" value="Y_100" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -195,7 +195,7 @@
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="w?type=ModeLabel" value="W_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -212,7 +212,7 @@
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_50?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="w?type=ModeLabel" value="W_50" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -229,7 +229,7 @@
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="w?type=ModeLabel" value="W/W_100?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="w?type=ModeLabel" value="W_100" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -293,7 +293,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_1?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_1" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -301,7 +301,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_2?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_2?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_2" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -309,7 +309,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_3?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_3?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_3" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -317,7 +317,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_6_4?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="message?type=ModeLabel" value="Message/Message_4?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_4" relation="EQUAL" />
             </condition>
           </entries>
           <defaultEntry>
@@ -343,28 +343,28 @@
       </callGraph>
     </tasks>
     <runnables name="Set_e_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="e?type=ModeLabel" access="write" modeValue="E/E_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="e?type=ModeLabel" access="set" value="E_0" />
     </runnables>
     <runnables name="Set_e_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="e?type=ModeLabel" access="write" modeValue="E/E_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="e?type=ModeLabel" access="set" value="E_1" />
     </runnables>
     <runnables name="Set_state_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="write" modeValue="State/State_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="set" value="State_0" />
     </runnables>
     <runnables name="Set_state_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="write" modeValue="State/State_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="set" value="State_1" />
     </runnables>
     <runnables name="Set_state_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="write" modeValue="State/State_2?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="state?type=ModeLabel" access="set" value="State_2" />
     </runnables>
     <runnables name="Set_y_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="write" modeValue="Y/Y_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="set" value="Y_0" />
     </runnables>
     <runnables name="Set_y_50" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="write" modeValue="Y/Y_50?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="set" value="Y_50" />
     </runnables>
     <runnables name="Set_y_100" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="write" modeValue="Y/Y_100?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="y?type=ModeLabel" access="set" value="Y_100" />
     </runnables>
     <runnables name="R_3_0" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
@@ -382,19 +382,19 @@
       </runnableItems>
     </runnables>
     <runnables name="Set_w_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="write" modeValue="W/W_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="set" value="W_0" />
     </runnables>
     <runnables name="Set_w_50" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="write" modeValue="W/W_50?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="set" value="W_50" />
     </runnables>
     <runnables name="Set_w_100" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="write" modeValue="W/W_100?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="w?type=ModeLabel" access="set" value="W_100" />
     </runnables>
     <runnables name="Set_u_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="u?type=ModeLabel" access="write" modeValue="U/U_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="u?type=ModeLabel" access="set" value="U_0" />
     </runnables>
     <runnables name="Set_u_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="u?type=ModeLabel" access="write" modeValue="U/U_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="u?type=ModeLabel" access="set" value="U_1" />
     </runnables>
     <runnables name="R1" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
@@ -417,19 +417,19 @@
       </runnableItems>
     </runnables>
     <runnables name="Runnable_5_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_0" />
     </runnables>
     <runnables name="Runnable_5_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_1" />
     </runnables>
     <runnables name="Runnable_5_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_2?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_2" />
     </runnables>
     <runnables name="Runnable_5_3" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_3?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_3" />
     </runnables>
     <runnables name="Runnable_5_4" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="write" modeValue="Message/Message_4?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_4" />
     </runnables>
     <runnables name="Runnable_6_x" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
@@ -466,7 +466,7 @@
         <default lowerBound="11880000" upperBound="12120000" xsi:type="am:DiscreteValueUniformDistribution" />
       </runnableItems>
     </runnables>
-    <modes name="E">
+    <modes xsi:type="am:EnumMode" name="E">
       <literals name="E_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -478,7 +478,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="U">
+    <modes xsi:type="am:EnumMode" name="U">
       <literals name="U_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -490,7 +490,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="Y">
+    <modes xsi:type="am:EnumMode" name="Y">
       <literals name="Y_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -507,7 +507,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="W">
+    <modes xsi:type="am:EnumMode" name="W">
       <literals name="W_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -524,7 +524,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="State">
+    <modes xsi:type="am:EnumMode" name="State">
       <literals name="State_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -541,7 +541,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="Message">
+    <modes xsi:type="am:EnumMode" name="Message">
       <literals name="Message_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -568,22 +568,22 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="e" initialValue="E/E_0?type=ModeLiteral">
+    <modeLabels name="e" mode="E?type=EnumMode" initialValue="E_0">
       <size value="1" unit="bit" />
     </modeLabels>
-    <modeLabels name="message" initialValue="Message/Message_0?type=ModeLiteral">
+    <modeLabels name="message" mode="Message?type=EnumMode" initialValue="Message_0">
       <size value="8" unit="bit" />
     </modeLabels>
-    <modeLabels name="y" initialValue="Y/Y_0?type=ModeLiteral">
+    <modeLabels name="y" mode="Y?type=EnumMode" initialValue="Y_0">
       <size value="8" unit="bit" />
     </modeLabels>
-    <modeLabels name="w" initialValue="W/W_0?type=ModeLiteral">
+    <modeLabels name="w" mode="W?type=EnumMode" initialValue="W_0">
       <size value="8" unit="bit" />
     </modeLabels>
-    <modeLabels name="u" initialValue="U/U_0?type=ModeLiteral">
+    <modeLabels name="u" mode="U?type=EnumMode" initialValue="U_0">
       <size value="1" unit="bit" />
     </modeLabels>
-    <modeLabels name="state" initialValue="State/State_0?type=ModeLiteral">
+    <modeLabels name="state" mode="State?type=EnumMode" initialValue="State_0">
       <size value="8" unit="bit" />
     </modeLabels>
   </swModel>

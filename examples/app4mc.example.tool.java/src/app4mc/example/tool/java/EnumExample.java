@@ -21,11 +21,12 @@ import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Mode;
-import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -63,7 +64,7 @@ public class EnumExample {
 
 		// ***** How to handle modes *****
 
-		Mode mode = addNewMode(sw, "Shape");
+		EnumMode mode = addNewMode(sw, "Shape");
 		addNewModeLiteral(mode, "_undefined_");
 		addNewModeLiteral(mode, "Rectangle");
 		addNewModeLiteral(mode, "Circle");
@@ -73,7 +74,8 @@ public class EnumExample {
 		modeLabel.setName("myShape");
 		sw.getModeLabels().add(modeLabel);
 		
-		modeLabel.setInitialValue(mode.getLiterals().get(0));
+		modeLabel.setMode(mode);
+		modeLabel.setInitialValue(mode.getLiterals().get(0).getName());
 
 		Set<? extends Mode> modeSet = AmaltheaIndex.getElements(model, "Shape", Mode.class);
 		
@@ -97,7 +99,7 @@ public class EnumExample {
 		System.out.println("done");
 	}
 
-	private static ModeLiteral addNewModeLiteral(Mode m, String literalName) {
+	private static ModeLiteral addNewModeLiteral(EnumMode m, String literalName) {
 		ModeLiteral lit = AmaltheaFactory.eINSTANCE.createModeLiteral();
 		lit.setName(literalName);
 		m.getLiterals().add(lit);
@@ -105,8 +107,8 @@ public class EnumExample {
 		return lit;
 	}
 
-	private static Mode addNewMode(SWModel sw, String modeName) {
-		Mode m = AmaltheaFactory.eINSTANCE.createMode();
+	private static EnumMode addNewMode(SWModel sw, String modeName) {
+		EnumMode m = AmaltheaFactory.eINSTANCE.createEnumMode();
 		m.setName(modeName);
 		sw.getModes().add(m);
 

@@ -11,7 +11,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State1?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="stateT1?type=ModeLabel" value="StateT1/StateT1_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -19,12 +19,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State0?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="stateT1?type=ModeLabel" value="StateT1/StateT1_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="messageToT1?type=ModeLabel" value="MessageToT1/MessageToT1_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="messageToT1?type=ModeLabel" value="MessageToT1_1" relation="EQUAL" />
             </condition>
           </entries>
           <defaultEntry>
@@ -37,7 +37,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_0?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="stateT1?type=ModeLabel" value="StateT1/StateT1_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -45,7 +45,7 @@
               <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="stateT1?type=ModeLabel" value="StateT1/StateT1_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_1" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -73,7 +73,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_0?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -81,12 +81,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="stateT2?type=ModeLabel" value="StateT2/StateT2_1?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="stateT2?type=ModeLabel" value="StateT2_1" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -99,7 +99,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -107,12 +107,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_2?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="stateT2?type=ModeLabel" value="StateT2/StateT2_0?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="stateT2?type=ModeLabel" value="StateT2_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
@@ -125,7 +125,7 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_0?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
@@ -133,12 +133,12 @@
                   <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
                 </items>
                 <condition>
-                  <entries xsi:type="am:ModeValue" valueProvider="messageToT2?type=ModeLabel" value="MessageToT2/MessageToT2_1?type=ModeLiteral" />
+                  <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
                 </condition>
               </entries>
             </items>
             <condition>
-              <entries xsi:type="am:ModeValue" valueProvider="stateT2?type=ModeLabel" value="StateT2/StateT2_2?type=ModeLiteral" />
+              <entries xsi:type="am:ModeCondition" label="stateT2?type=ModeLabel" value="StateT2_2" relation="EQUAL" />
             </condition>
           </entries>
         </graphEntries>
@@ -151,7 +151,7 @@
       </customProperties>
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_1" />
     </runnables>
     <runnables name="Runnable_State_0" callback="false" service="false">
       <runnableItems xsi:type="am:Ticks">
@@ -174,29 +174,29 @@
       </runnableItems>
     </runnables>
     <runnables name="Runnable_1_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="write" modeValue="MessageToT2/MessageToT2_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_0" />
     </runnables>
     <runnables name="Runnable_Transition_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_0" />
     </runnables>
     <runnables name="Runnable_Transition_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_1" />
     </runnables>
     <runnables name="Runnable_Transition_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="write" modeValue="StateT2/StateT2_2?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_2" />
     </runnables>
     <runnables name="Runnable_1_State0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="write" modeValue="StateT1/StateT1_0?type=ModeLiteral" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_0" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
     </runnables>
     <runnables name="Runnable_1_State1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="write" modeValue="StateT1/StateT1_1?type=ModeLiteral" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_0?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_1" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
     </runnables>
     <runnables name="Runnable_2_Overflow" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="write" modeValue="MessageToT1/MessageToT1_1?type=ModeLiteral" />
+      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_1" />
     </runnables>
-    <modes name="MessageToT1">
+    <modes xsi:type="am:EnumMode" name="MessageToT1">
       <literals name="MessageToT1_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -208,7 +208,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="MessageToT2">
+    <modes xsi:type="am:EnumMode" name="MessageToT2">
       <literals name="MessageToT2_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -220,7 +220,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="StateT1">
+    <modes xsi:type="am:EnumMode" name="StateT1">
       <literals name="StateT1_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -232,7 +232,7 @@
         </customProperties>
       </literals>
     </modes>
-    <modes name="StateT2">
+    <modes xsi:type="am:EnumMode" name="StateT2">
       <literals name="StateT2_0">
         <customProperties key="enumValue">
           <value xsi:type="am:LongObject" value="0" />
@@ -249,16 +249,16 @@
         </customProperties>
       </literals>
     </modes>
-    <modeLabels name="messageToT1" initialValue="MessageToT1/MessageToT1_0?type=ModeLiteral">
+    <modeLabels name="messageToT1" mode="MessageToT1?type=EnumMode" initialValue="MessageToT1_0">
       <size value="1" unit="bit" />
     </modeLabels>
-    <modeLabels name="messageToT2" initialValue="MessageToT2/MessageToT2_0?type=ModeLiteral">
+    <modeLabels name="messageToT2" mode="MessageToT2?type=EnumMode" initialValue="MessageToT2_0">
       <size value="1" unit="bit" />
     </modeLabels>
-    <modeLabels name="stateT1" initialValue="StateT1/StateT1_1?type=ModeLiteral">
+    <modeLabels name="stateT1" mode="StateT1?type=EnumMode" initialValue="StateT1_1">
       <size value="1" unit="bit" />
     </modeLabels>
-    <modeLabels name="stateT2" initialValue="StateT2/StateT2_0?type=ModeLiteral">
+    <modeLabels name="stateT2" mode="StateT2?type=EnumMode" initialValue="StateT2_0">
       <size value="8" unit="bit" />
     </modeLabels>
   </swModel>
