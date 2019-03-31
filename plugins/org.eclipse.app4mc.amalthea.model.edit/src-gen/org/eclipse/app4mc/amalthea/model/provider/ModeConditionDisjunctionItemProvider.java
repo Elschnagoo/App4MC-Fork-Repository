@@ -1,15 +1,15 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
  *  which is available at https://www.eclipse.org/legal/epl-2.0/
  * 
  *  SPDX-License-Identifier: EPL-2.0
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -31,19 +31,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryItemProvider {
+public class ModeConditionDisjunctionItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeValueConjunctionItemProvider(AdapterFactory adapterFactory) {
+	public ModeConditionDisjunctionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -74,7 +74,7 @@ public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryI
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeValueConjunction_Entries());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeConditionDisjunction_Entries());
 		}
 		return childrenFeatures;
 	}
@@ -93,14 +93,14 @@ public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryI
 	}
 
 	/**
-	 * This returns ModeValueConjunction.gif.
+	 * This returns ModeConditionDisjunction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeValueConjunction"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeConditionDisjunction"));
 	}
 
 	/**
@@ -119,18 +119,11 @@ public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
-		return getString("_UI_ModeValueConjunction_type");
+	@Override
+	public String getText(Object object) {
+		return getString("_UI_ModeConditionDisjunction_type");
 	}
 
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getModeValueConjunctionItemProviderText(object, getTextGen(object));
-	}
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -143,8 +136,8 @@ public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryI
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModeValueConjunction.class)) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
+		switch (notification.getFeatureID(ModeConditionDisjunction.class)) {
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -164,8 +157,13 @@ public class ModeValueConjunctionItemProvider extends ModeValueDisjunctionEntryI
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getModeValueConjunction_Entries(),
-				 AmaltheaFactory.eINSTANCE.createModeValue()));
+				(AmaltheaPackage.eINSTANCE.getModeConditionDisjunction_Entries(),
+				 AmaltheaFactory.eINSTANCE.createModeCondition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getModeConditionDisjunction_Entries(),
+				 AmaltheaFactory.eINSTANCE.createModeConditionConjunction()));
 	}
 
 }

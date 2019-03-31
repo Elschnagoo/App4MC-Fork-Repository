@@ -114,14 +114,16 @@ import org.eclipse.app4mc.amalthea.model.MemoryClassifier;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
@@ -147,6 +149,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
@@ -193,7 +196,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour;
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl;
-import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl;
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl;
 import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl;
 import org.eclipse.app4mc.amalthea.model.provider.CustomDeviationItemProviderService;
@@ -3485,10 +3487,10 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ModeValueDisjunctionItemProvider
+   * ModeConditionDisjunctionItemProvider
    */
-  public static String getModeValueDisjunctionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeValueDisjunction)) {
+  public static String getModeConditionDisjunctionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeConditionDisjunction)) {
       String _containingFeatureName = CustomItemProviderService.getContainingFeatureName(((EObject)object));
       return (_containingFeatureName + "OR");
     } else {
@@ -3497,10 +3499,10 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ModeValueConjunctionItemProvider
+   * ModeConditionConjunctionItemProvider
    */
-  public static String getModeValueConjunctionItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeValueConjunction)) {
+  public static String getModeConditionConjunctionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeConditionConjunction)) {
       return "AND";
     } else {
       return defaultText;
@@ -3508,65 +3510,127 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ModeValueItemProvider
+   * ModeAssignmentItemProvider
    */
-  public static String getModeValueItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeValue)) {
-      ModeLabel _valueProvider = null;
-      if (((ModeValue)object)!=null) {
-        _valueProvider=((ModeValue)object).getValueProvider();
-      }
-      final ModeLabel prov = _valueProvider;
-      ModeLiteral _value = null;
-      if (((ModeValue)object)!=null) {
-        _value=((ModeValue)object).getValue();
-      }
-      final ModeLiteral value = _value;
+  public static String getModeAssignmentItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeAssignment)) {
+      final ModeLabel label = ((ModeAssignment)object).getLabel();
+      final String value = ((ModeAssignment)object).getValue();
       String _xifexpression = null;
-      EObject _eContainer = null;
-      if (((ModeValue)object)!=null) {
-        _eContainer=((ModeValue)object).eContainer();
-      }
-      if ((_eContainer instanceof ModeValueList)) {
-        _xifexpression = " <- ";
-      } else {
-        _xifexpression = " == ";
-      }
-      final String relation = _xifexpression;
-      String _xifexpression_1 = null;
       String _name = null;
-      if (prov!=null) {
-        _name=prov.getName();
+      if (label!=null) {
+        _name=label.getName();
       }
       boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
       if (_isNullOrEmpty) {
-        _xifexpression_1 = "<mode label>";
+        _xifexpression = "<mode label>";
       } else {
-        String _name_1 = prov.getName();
-        _xifexpression_1 = ("Mode Label " + _name_1);
+        String _name_1 = label.getName();
+        _xifexpression = ("Mode Label " + _name_1);
       }
-      final String s1 = _xifexpression_1;
-      String _xifexpression_2 = null;
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
       if ((value == null)) {
-        _xifexpression_2 = "<value>";
+        _xifexpression_1 = "<value>";
       } else {
-        _xifexpression_2 = value.toString();
+        _xifexpression_1 = value;
       }
-      final String s2 = _xifexpression_2;
+      final String s2 = _xifexpression_1;
+      final String relation = " := ";
       return ((s1 + relation) + s2);
     } else {
       return defaultText;
     }
   }
   
-  public static ViewerNotification getModeValueItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(ModeValueImpl.class);
+  public static ViewerNotification getModeAssignmentItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(ModeAssignment.class);
     boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER)) {
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__LABEL)) {
       _matched=true;
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE)) {
+        _matched=true;
+      }
+    }
+    if (_matched) {
+      Object _notifier = notification.getNotifier();
+      return new ViewerNotification(notification, _notifier, false, true);
+    }
+    return null;
+  }
+  
+  /**
+   * ModeConditionItemProvider
+   */
+  public static String getModeConditionItemProviderText(final Object object, final String defaultText) {
+    if ((object instanceof ModeCondition)) {
+      final ModeLabel label = ((ModeCondition)object).getLabel();
+      final String value = ((ModeCondition)object).getValue();
+      String _xifexpression = null;
+      String _name = null;
+      if (label!=null) {
+        _name=label.getName();
+      }
+      boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+      if (_isNullOrEmpty) {
+        _xifexpression = "<mode label>";
+      } else {
+        String _name_1 = label.getName();
+        _xifexpression = ("Mode Label " + _name_1);
+      }
+      final String s1 = _xifexpression;
+      String _xifexpression_1 = null;
+      if ((value == null)) {
+        _xifexpression_1 = "<value>";
+      } else {
+        _xifexpression_1 = value;
+      }
+      final String s2 = _xifexpression_1;
+      String _switchResult = null;
+      RelationalOperator _relation = ((ModeCondition)object).getRelation();
+      if (_relation != null) {
+        switch (_relation) {
+          case _UNDEFINED_:
+            _switchResult = " <relation> ";
+            break;
+          case EQUAL:
+            _switchResult = " == ";
+            break;
+          case NOT_EQUAL:
+            _switchResult = " != ";
+            break;
+          case LESS_THAN:
+            _switchResult = " < ";
+            break;
+          case GREATER_THAN:
+            _switchResult = " > ";
+            break;
+          default:
+            break;
+        }
+      }
+      final String relation = _switchResult;
+      return ((s1 + relation) + s2);
+    } else {
+      return defaultText;
+    }
+  }
+  
+  public static ViewerNotification getModeConditionItemProviderNotification(final Notification notification) {
+    int _featureID = notification.getFeatureID(ModeCondition.class);
+    boolean _matched = false;
+    if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__LABEL)) {
+      _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_VALUE__VALUE)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_CONDITION__RELATION)) {
         _matched=true;
       }
     }
@@ -4160,27 +4224,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * ModeItemProvider
-   */
-  public static ViewerNotification getModeItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(Mode.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.MODE__NAME)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.MODE__LITERALS)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, true, true);
-    }
-    return null;
-  }
-  
-  /**
    * ModeLiteralItemProvider
    */
   public static String getModeLiteralItemProviderText(final Object object, final String defaultText) {
@@ -4216,6 +4259,11 @@ public class CustomItemProviderService {
     boolean _matched = false;
     if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__NAME)) {
       _matched=true;
+    }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__MODE)) {
+        _matched=true;
+      }
     }
     if (!_matched) {
       if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL__INITIAL_VALUE)) {
@@ -4559,15 +4607,8 @@ public class CustomItemProviderService {
    */
   public static String getModeLabelAccessItemProviderText(final Object object, final String defaultText) {
     if ((object instanceof ModeLabelAccess)) {
-      LabelAccessEnum _access = null;
-      if (((ModeLabelAccess)object)!=null) {
-        _access=((ModeLabelAccess)object).getAccess();
-      }
-      final LabelAccessEnum access = _access;
-      ModeLabel _data = null;
-      if (((ModeLabelAccess)object)!=null) {
-        _data=((ModeLabelAccess)object).getData();
-      }
+      final ModeLabelAccessEnum access = ((ModeLabelAccess)object).getAccess();
+      ModeLabel _data = ((ModeLabelAccess)object).getData();
       String _name = null;
       if (_data!=null) {
         _name=_data.getName();
@@ -4581,7 +4622,24 @@ public class CustomItemProviderService {
       }
       final String s1 = _xifexpression;
       final String s2 = CustomItemProviderService.ppName(label, "<mode label>");
-      return ((s1 + " ") + s2);
+      String _xifexpression_1 = null;
+      boolean _equals = Objects.equal(s1, "set");
+      if (_equals) {
+        String _value = ((ModeLabelAccess)object).getValue();
+        _xifexpression_1 = (": " + _value);
+      } else {
+        _xifexpression_1 = "";
+      }
+      final String s3 = _xifexpression_1;
+      String _xifexpression_2 = null;
+      if ((Objects.equal(s1, "increment") || Objects.equal(s1, "decrement"))) {
+        int _step = ((ModeLabelAccess)object).getStep();
+        _xifexpression_2 = (" by " + Integer.valueOf(_step));
+      } else {
+        _xifexpression_2 = "";
+      }
+      final String s4 = _xifexpression_2;
+      return ((((s1 + " ") + s2) + s3) + s4);
     } else {
       return defaultText;
     }

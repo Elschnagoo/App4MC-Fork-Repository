@@ -220,7 +220,7 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 		(createChildParameter
 			(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition(),
-			 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
+			 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
 
 		EcoreGenericsHelper.collectNewChildDescriptorsForSwitchEntry(
 				AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items(), newChildDescriptors);

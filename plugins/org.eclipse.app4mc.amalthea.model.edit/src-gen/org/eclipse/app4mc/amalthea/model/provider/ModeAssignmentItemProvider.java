@@ -18,27 +18,28 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Mode} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeAssignment} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeItemProvider extends ReferableBaseObjectItemProvider {
+public class ModeAssignmentItemProvider extends ModeValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeItemProvider(AdapterFactory adapterFactory) {
+	public ModeAssignmentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,6 +59,17 @@ public class ModeItemProvider extends ReferableBaseObjectItemProvider {
 	}
 
 	/**
+	 * This returns ModeAssignment.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeAssignment"));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,12 +85,20 @@ public class ModeItemProvider extends ReferableBaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getText(Object object) {
-		String label = ((Mode)object).getName();
+	public String getTextGen(Object object) {
+		String label = ((ModeAssignment)object).getValue();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Mode_type") :
-			getString("_UI_Mode_type") + " " + label;
+			getString("_UI_ModeAssignment_type") :
+			getString("_UI_ModeAssignment_type") + " " + label;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(final Object object) {
+		// delegate to custom item provider
+		return CustomItemProviderService.getModeAssignmentItemProviderText(object, getTextGen(object));
 	}
 
 
@@ -89,9 +109,26 @@ public class ModeItemProvider extends ReferableBaseObjectItemProvider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final ViewerNotification vn = CustomItemProviderService
+				.getModeAssignmentItemProviderNotification(notification);
+		if (vn != null) {
+			fireNotifyChanged(vn);
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 itemis AG and others.
+ * Copyright (c) 2015-2019 itemis AG and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,6 +42,7 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivatio
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEnumModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionTicksIP;
@@ -50,9 +51,9 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelIP;
+import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedNumericModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainIP;
@@ -322,8 +323,13 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	}
 
 	@Override
-	public Adapter createModeAdapter() {
-		return new ExtendedModeIP(this);
+	public Adapter createNumericModeAdapter() {
+		return new ExtendedNumericModeIP(this);
+	}
+
+	@Override
+	public Adapter createEnumModeAdapter() {
+		return new ExtendedEnumModeIP(this);
 	}
 
 	@Override

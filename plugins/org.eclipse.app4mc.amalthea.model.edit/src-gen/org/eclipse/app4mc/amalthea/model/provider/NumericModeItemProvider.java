@@ -18,7 +18,7 @@ package org.eclipse.app4mc.amalthea.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,19 +26,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.Mode} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.NumericMode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeItemProvider extends ReferableBaseObjectItemProvider {
+public class NumericModeItemProvider extends ModeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeItemProvider(AdapterFactory adapterFactory) {
+	public NumericModeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,6 +55,17 @@ public class ModeItemProvider extends ReferableBaseObjectItemProvider {
 
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This returns NumericMode.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/NumericMode"));
 	}
 
 	/**
@@ -75,10 +86,10 @@ public class ModeItemProvider extends ReferableBaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Mode)object).getName();
+		String label = ((NumericMode)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Mode_type") :
-			getString("_UI_Mode_type") + " " + label;
+			getString("_UI_NumericMode_type") :
+			getString("_UI_NumericMode_type") + " " + label;
 	}
 
 

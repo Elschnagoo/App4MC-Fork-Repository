@@ -65,52 +65,6 @@ public class ModeLabelItemProvider extends AbstractMemoryElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Mode feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addModePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModeLabel_mode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_mode_feature", "_UI_ModeLabel_type"),
-				 AmaltheaPackage.eINSTANCE.getModeLabel_Mode(),
-				 false,
-				 false,
-				 false,
-				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
-	}
-
-	/**
-	 * This adds a property descriptor for the Initial Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInitialValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModeLabel_initialValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_initialValue_feature", "_UI_ModeLabel_type"),
-				 AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue(),
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Display Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,6 +84,75 @@ public class ModeLabelItemProvider extends AbstractMemoryElementItemProvider {
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mode feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addModePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeLabel_mode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_mode_feature", "_UI_ModeLabel_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabel_Mode(),
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Initial Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInitialValuePropertyDescriptorGen(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeLabel_initialValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_initialValue_feature", "_UI_ModeLabel_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addInitialValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeLabel_initialValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabel_initialValue_feature", "_UI_ModeLabel_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null) {
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getInitialValuesForModeLabel(object);
+					}
+				 }
+			);
 	}
 
 	/**
@@ -187,6 +210,7 @@ public class ModeLabelItemProvider extends AbstractMemoryElementItemProvider {
 
 		switch (notification.getFeatureID(ModeLabel.class)) {
 			case AmaltheaPackage.MODE_LABEL__DISPLAY_NAME:
+			case AmaltheaPackage.MODE_LABEL__INITIAL_VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

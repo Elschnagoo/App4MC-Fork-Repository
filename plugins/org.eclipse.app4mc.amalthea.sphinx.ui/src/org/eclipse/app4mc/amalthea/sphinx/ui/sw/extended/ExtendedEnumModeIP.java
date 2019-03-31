@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,14 +13,14 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended;
 
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.provider.ModeItemProvider;
+import org.eclipse.app4mc.amalthea.model.provider.EnumModeItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSWModelItemProvider;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-public class ExtendedModeIP extends ModeItemProvider {
+public class ExtendedEnumModeIP extends EnumModeItemProvider {
 
-	public ExtendedModeIP(final AdapterFactory adapterFactory) {
+	public ExtendedEnumModeIP(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 

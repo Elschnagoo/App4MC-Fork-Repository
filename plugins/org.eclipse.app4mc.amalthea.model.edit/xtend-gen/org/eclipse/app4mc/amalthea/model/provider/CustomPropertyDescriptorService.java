@@ -21,7 +21,14 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
+import org.eclipse.app4mc.amalthea.model.ModeLiteral;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
@@ -126,6 +133,79 @@ public class CustomPropertyDescriptorService {
         };
         Iterables.<CallArgument>addAll(choiceOfValues, 
           IterableExtensions.<CallArgument>filter(Iterables.<CallArgument>concat(ListExtensions.<RunnableItem, EList<CallArgument>>map(SoftwareUtil.collectRunnableItems(runnable, null, _function), _function_1)), _function_2));
+      }
+      return choiceOfValues;
+    }
+    return Collections.EMPTY_LIST;
+  }
+  
+  /**
+   * ModeValue Property Descriptors
+   */
+  public static Collection<?> getValuesForModeValue(final Object object) {
+    if ((object instanceof ModeValue)) {
+      final BasicEList<String> choiceOfValues = new BasicEList<String>();
+      ModeLabel _label = ((ModeValue)object).getLabel();
+      Mode _mode = null;
+      if (_label!=null) {
+        _mode=_label.getMode();
+      }
+      final Mode mode = _mode;
+      if ((mode instanceof NumericMode)) {
+        return null;
+      }
+      if ((mode instanceof EnumMode)) {
+        final Function1<ModeLiteral, String> _function = (ModeLiteral e) -> {
+          return e.getName();
+        };
+        choiceOfValues.addAll(ListExtensions.<ModeLiteral, String>map(((EnumMode)mode).getLiterals(), _function));
+      }
+      return choiceOfValues;
+    }
+    return Collections.EMPTY_LIST;
+  }
+  
+  /**
+   * ModeLabel Property Descriptors
+   */
+  public static Collection<?> getInitialValuesForModeLabel(final Object object) {
+    if ((object instanceof ModeLabel)) {
+      final BasicEList<String> choiceOfValues = new BasicEList<String>();
+      final Mode mode = ((ModeLabel)object).getMode();
+      if ((mode instanceof NumericMode)) {
+        return null;
+      }
+      if ((mode instanceof EnumMode)) {
+        final Function1<ModeLiteral, String> _function = (ModeLiteral e) -> {
+          return e.getName();
+        };
+        choiceOfValues.addAll(ListExtensions.<ModeLiteral, String>map(((EnumMode)mode).getLiterals(), _function));
+      }
+      return choiceOfValues;
+    }
+    return Collections.EMPTY_LIST;
+  }
+  
+  /**
+   * ModeLabelAccess Property Descriptors
+   */
+  public static Collection<?> getValuesForModeLabelAccess(final Object object) {
+    if ((object instanceof ModeLabelAccess)) {
+      final BasicEList<String> choiceOfValues = new BasicEList<String>();
+      ModeLabel _data = ((ModeLabelAccess)object).getData();
+      Mode _mode = null;
+      if (_data!=null) {
+        _mode=_data.getMode();
+      }
+      final Mode mode = _mode;
+      if ((mode instanceof NumericMode)) {
+        return null;
+      }
+      if ((mode instanceof EnumMode)) {
+        final Function1<ModeLiteral, String> _function = (ModeLiteral e) -> {
+          return e.getName();
+        };
+        choiceOfValues.addAll(ListExtensions.<ModeLiteral, String>map(((EnumMode)mode).getLiterals(), _function));
       }
       return choiceOfValues;
     }

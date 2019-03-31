@@ -30,12 +30,18 @@ import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.UniqueEList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.sphinx.emf.util.EObjectUtil
+import org.eclipse.app4mc.amalthea.model.ModeValue
+import org.eclipse.app4mc.amalthea.model.EnumMode
+import org.eclipse.app4mc.amalthea.model.NumericMode
+import org.eclipse.app4mc.amalthea.model.ModeLabel
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 
 class CustomPropertyDescriptorService {
 
 	/*****************************************************************************
 	 * 						NeedEntry Property Descriptors
 	 *****************************************************************************/
+
 	def static Collection<?> getNeedEntryValuesForKey(Object object) {
 		val choiceOfValues = new UniqueEList<Object>();
 
@@ -52,10 +58,10 @@ class CustomPropertyDescriptorService {
 		return choiceOfValues
 	}
 
-
 	/*****************************************************************************
 	 * 						CallArgument Property Descriptors
 	 *****************************************************************************/
+
 	def static Collection<?> getCallArgumentValuesForParameter(Object object) {
 		if (object instanceof CallArgument) {
 			val choiceOfValues = new BasicEList<RunnableParameter>();
@@ -75,6 +81,7 @@ class CustomPropertyDescriptorService {
 	/*****************************************************************************
 	 * 						DataDependency Property Descriptors
 	 *****************************************************************************/
+
 	def static Collection<?> getDataDependencyValuesForParameters(Object object) {
 		if (object instanceof DataDependency) {
 			val choiceOfValues = new BasicEList<RunnableParameter>();
@@ -106,6 +113,69 @@ class CustomPropertyDescriptorService {
 					.filter[e | e.parameter?.direction == DirectionType::OUT || e.parameter?.direction == DirectionType::INOUT]
 				)
 			}
+			return choiceOfValues
+		}
+		return Collections.EMPTY_LIST
+	}
+
+	/*****************************************************************************
+	 * 						ModeValue Property Descriptors
+	 *****************************************************************************/
+
+	def static Collection<?> getValuesForModeValue(Object object) {
+		if (object instanceof ModeValue) {
+			val choiceOfValues = new BasicEList<String>();
+			
+			// Identify mode and possible values
+			val mode = object.label?.mode
+			if (mode instanceof NumericMode) return null // standard editor
+			
+			if (mode instanceof EnumMode) {
+				choiceOfValues.addAll(mode.literals.map[e | e.name])
+			}
+			
+			return choiceOfValues
+		}
+		return Collections.EMPTY_LIST
+	}
+
+	/*****************************************************************************
+	 * 						ModeLabel Property Descriptors
+	 *****************************************************************************/
+
+	def static Collection<?> getInitialValuesForModeLabel(Object object) {
+		if (object instanceof ModeLabel) {
+			val choiceOfValues = new BasicEList<String>();
+			
+			// Identify mode and possible values
+			val mode = object.mode
+			if (mode instanceof NumericMode) return null // standard editor
+			
+			if (mode instanceof EnumMode) {
+				choiceOfValues.addAll(mode.literals.map[e | e.name])
+			}
+			
+			return choiceOfValues
+		}
+		return Collections.EMPTY_LIST
+	}
+
+	/*****************************************************************************
+	 * 						ModeLabelAccess Property Descriptors
+	 *****************************************************************************/
+
+	def static Collection<?> getValuesForModeLabelAccess(Object object) {
+		if (object instanceof ModeLabelAccess) {
+			val choiceOfValues = new BasicEList<String>();
+			
+			// Identify mode and possible values
+			val mode = object.data?.mode
+			if (mode instanceof NumericMode) return null // standard editor
+			
+			if (mode instanceof EnumMode) {
+				choiceOfValues.addAll(mode.literals.map[e | e.name])
+			}
+			
 			return choiceOfValues
 		}
 		return Collections.EMPTY_LIST

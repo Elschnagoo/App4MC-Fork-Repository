@@ -274,7 +274,12 @@ public class SWModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getSWModel_Modes(),
-				 AmaltheaFactory.eINSTANCE.createMode()));
+				 AmaltheaFactory.eINSTANCE.createNumericMode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getSWModel_Modes(),
+				 AmaltheaFactory.eINSTANCE.createEnumMode()));
 
 		newChildDescriptors.add
 			(createChildParameter

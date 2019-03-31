@@ -1188,6 +1188,52 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.NumericMode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NumericModeItemProvider numericModeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.NumericMode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNumericModeAdapter() {
+		if (numericModeItemProvider == null) {
+			numericModeItemProvider = new NumericModeItemProvider(this);
+		}
+
+		return numericModeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.EnumMode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnumModeItemProvider enumModeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.EnumMode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEnumModeAdapter() {
+		if (enumModeItemProvider == null) {
+			enumModeItemProvider = new EnumModeItemProvider(this);
+		}
+
+		return enumModeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1231,29 +1277,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return singleValueStatisticItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.Mode} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModeItemProvider modeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.Mode}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createModeAdapter() {
-		if (modeItemProvider == null) {
-			modeItemProvider = new ModeItemProvider(this);
-		}
-
-		return modeItemProvider;
 	}
 
 	/**
@@ -4293,29 +4316,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueList} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModeValueListItemProvider modeValueListItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueList}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createModeValueListAdapter() {
-		if (modeValueListItemProvider == null) {
-			modeValueListItemProvider = new ModeValueListItemProvider(this);
-		}
-
-		return modeValueListItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4339,72 +4339,118 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueDisjunctionItemProvider modeValueDisjunctionItemProvider;
+	protected ModeValueListItemProvider modeValueListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModeValueDisjunctionAdapter() {
-		if (modeValueDisjunctionItemProvider == null) {
-			modeValueDisjunctionItemProvider = new ModeValueDisjunctionItemProvider(this);
+	public Adapter createModeValueListAdapter() {
+		if (modeValueListItemProvider == null) {
+			modeValueListItemProvider = new ModeValueListItemProvider(this);
 		}
 
-		return modeValueDisjunctionItemProvider;
+		return modeValueListItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValue} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeAssignment} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueItemProvider modeValueItemProvider;
+	protected ModeAssignmentItemProvider modeAssignmentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValue}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeAssignment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModeValueAdapter() {
-		if (modeValueItemProvider == null) {
-			modeValueItemProvider = new ModeValueItemProvider(this);
+	public Adapter createModeAssignmentAdapter() {
+		if (modeAssignmentItemProvider == null) {
+			modeAssignmentItemProvider = new ModeAssignmentItemProvider(this);
 		}
 
-		return modeValueItemProvider;
+		return modeAssignmentItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueConjunctionItemProvider modeValueConjunctionItemProvider;
+	protected ModeConditionDisjunctionItemProvider modeConditionDisjunctionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModeValueConjunctionAdapter() {
-		if (modeValueConjunctionItemProvider == null) {
-			modeValueConjunctionItemProvider = new ModeValueConjunctionItemProvider(this);
+	public Adapter createModeConditionDisjunctionAdapter() {
+		if (modeConditionDisjunctionItemProvider == null) {
+			modeConditionDisjunctionItemProvider = new ModeConditionDisjunctionItemProvider(this);
 		}
 
-		return modeValueConjunctionItemProvider;
+		return modeConditionDisjunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeCondition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeConditionItemProvider modeConditionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeCondition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeConditionAdapter() {
+		if (modeConditionItemProvider == null) {
+			modeConditionItemProvider = new ModeConditionItemProvider(this);
+		}
+
+		return modeConditionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeConditionConjunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModeConditionConjunctionItemProvider modeConditionConjunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ModeConditionConjunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModeConditionConjunctionAdapter() {
+		if (modeConditionConjunctionItemProvider == null) {
+			modeConditionConjunctionItemProvider = new ModeConditionConjunctionItemProvider(this);
+		}
+
+		return modeConditionConjunctionItemProvider;
 	}
 
 	/**
@@ -6632,7 +6678,8 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (continuousValueGaussDistributionItemProvider != null) continuousValueGaussDistributionItemProvider.dispose();
 		if (continuousValueWeibullEstimatorsDistributionItemProvider != null) continuousValueWeibullEstimatorsDistributionItemProvider.dispose();
 		if (continuousValueBetaDistributionItemProvider != null) continuousValueBetaDistributionItemProvider.dispose();
-		if (modeItemProvider != null) modeItemProvider.dispose();
+		if (numericModeItemProvider != null) numericModeItemProvider.dispose();
+		if (enumModeItemProvider != null) enumModeItemProvider.dispose();
 		if (modeLiteralItemProvider != null) modeLiteralItemProvider.dispose();
 		if (componentsModelItemProvider != null) componentsModelItemProvider.dispose();
 		if (componentItemProvider != null) componentItemProvider.dispose();
@@ -6767,9 +6814,10 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (stimuliModelItemProvider != null) stimuliModelItemProvider.dispose();
 		if (modeValueListItemProvider != null) modeValueListItemProvider.dispose();
 		if (modeValueMapEntryItemProvider != null) modeValueMapEntryItemProvider.dispose();
-		if (modeValueDisjunctionItemProvider != null) modeValueDisjunctionItemProvider.dispose();
-		if (modeValueItemProvider != null) modeValueItemProvider.dispose();
-		if (modeValueConjunctionItemProvider != null) modeValueConjunctionItemProvider.dispose();
+		if (modeAssignmentItemProvider != null) modeAssignmentItemProvider.dispose();
+		if (modeConditionDisjunctionItemProvider != null) modeConditionDisjunctionItemProvider.dispose();
+		if (modeConditionItemProvider != null) modeConditionItemProvider.dispose();
+		if (modeConditionConjunctionItemProvider != null) modeConditionConjunctionItemProvider.dispose();
 		if (periodicStimulusItemProvider != null) periodicStimulusItemProvider.dispose();
 		if (relativePeriodicStimulusItemProvider != null) relativePeriodicStimulusItemProvider.dispose();
 		if (variableRateStimulusItemProvider != null) variableRateStimulusItemProvider.dispose();

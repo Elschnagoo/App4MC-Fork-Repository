@@ -208,12 +208,12 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList(),
-				 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
+				 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList(),
-				 AmaltheaFactory.eINSTANCE.createModeValueDisjunction()));
+				 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
 	}
 
 	/**

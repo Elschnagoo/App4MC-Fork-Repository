@@ -19,8 +19,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -56,7 +56,8 @@ public class ModeLabelAccessItemProvider extends RunnableItemItemProvider {
 
 			addDataPropertyDescriptor(object);
 			addAccessPropertyDescriptor(object);
-			addModeValuePropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
+			addStepPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -104,22 +105,71 @@ public class ModeLabelAccessItemProvider extends RunnableItemItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Mode Value feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addModeValuePropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModeLabelAccess_modeValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabelAccess_modeValue_feature", "_UI_ModeLabelAccess_type"),
-				 AmaltheaPackage.eINSTANCE.getModeLabelAccess_ModeValue(),
+				 getString("_UI_ModeLabelAccess_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabelAccess_value_feature", "_UI_ModeLabelAccess_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabelAccess_Value(),
 				 true,
 				 false,
-				 true,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
+				 null));
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+						 getResourceLocator(),
+						 getString("_UI_ModeLabelAccess_value_feature"),
+						 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabelAccess_value_feature", "_UI_ModeLabelAccess_type"),
+						 AmaltheaPackage.eINSTANCE.getModeLabelAccess_Value(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null) {
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getValuesForModeLabelAccess(object);
+					}
+				 }
+			);
+	}
+
+
+	/**
+	 * This adds a property descriptor for the Step feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStepPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeLabelAccess_step_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeLabelAccess_step_feature", "_UI_ModeLabelAccess_type"),
+				 AmaltheaPackage.eINSTANCE.getModeLabelAccess_Step(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -149,7 +199,7 @@ public class ModeLabelAccessItemProvider extends RunnableItemItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		LabelAccessEnum labelValue = ((ModeLabelAccess)object).getAccess();
+		ModeLabelAccessEnum labelValue = ((ModeLabelAccess)object).getAccess();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ModeLabelAccess_type") :
@@ -177,6 +227,8 @@ public class ModeLabelAccessItemProvider extends RunnableItemItemProvider {
 
 		switch (notification.getFeatureID(ModeLabelAccess.class)) {
 			case AmaltheaPackage.MODE_LABEL_ACCESS__ACCESS:
+			case AmaltheaPackage.MODE_LABEL_ACCESS__VALUE:
+			case AmaltheaPackage.MODE_LABEL_ACCESS__STEP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -1,15 +1,15 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
  *  which is available at https://www.eclipse.org/legal/epl-2.0/
  * 
  *  SPDX-License-Identifier: EPL-2.0
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -17,13 +17,14 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -32,7 +33,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider {
+public class ModeValueItemProvider 
+	extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -54,26 +56,26 @@ public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValueProviderPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value Provider feature.
+	 * This adds a property descriptor for the Label feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValueProviderPropertyDescriptor(Object object) {
+	protected void addLabelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModeValue_valueProvider_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModeValue_valueProvider_feature", "_UI_ModeValue_type"),
-				 AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider(),
+				 getString("_UI_ModeValue_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeValue_label_feature", "_UI_ModeValue_type"),
+				 AmaltheaPackage.eINSTANCE.getModeValue_Label(),
 				 true,
 				 false,
 				 true,
@@ -88,7 +90,7 @@ public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -98,21 +100,35 @@ public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider
 				 AmaltheaPackage.eINSTANCE.getModeValue_Value(),
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns ModeValue.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModeValue"));
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModeValue_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModeValue_value_feature", "_UI_ModeValue_type"),
+				 AmaltheaPackage.eINSTANCE.getModeValue_Value(),
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null) {
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						return CustomPropertyDescriptorService.getValuesForModeValue(object);
+					}
+				 }
+			);
 	}
 
 	/**
@@ -131,18 +147,14 @@ public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTextGen(Object object) {
-		return getString("_UI_ModeValue_type");
-	}
-	
-	/**
-	 * @generated NOT
-	 */
 	@Override
-	public String getText(final Object object) {
-		// delegate to custom item provider
-		return CustomItemProviderService.getModeValueItemProviderText(object, getTextGen(object));
+	public String getText(Object object) {
+		String label = ((ModeValue)object).getValue();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ModeValue_type") :
+			getString("_UI_ModeValue_type") + " " + label;
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -151,29 +163,18 @@ public class ModeValueItemProvider extends ModeValueDisjunctionEntryItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
 	@Override
-	public void notifyChanged(final Notification notification) {
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		// delegate to custom item provider and execute locally
-		final ViewerNotification vn = CustomItemProviderService
-				.getModeValueItemProviderNotification(notification);
-		if (vn != null) {
-			fireNotifyChanged(vn);
-			return;
+		switch (notification.getFeatureID(ModeValue.class)) {
+			case AmaltheaPackage.MODE_VALUE__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
-
 		super.notifyChanged(notification);
 	}
-	
+
 	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.

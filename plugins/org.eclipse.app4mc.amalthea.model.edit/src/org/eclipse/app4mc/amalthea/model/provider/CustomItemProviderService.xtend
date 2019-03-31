@@ -94,15 +94,15 @@ import org.eclipse.app4mc.amalthea.model.LongObject
 import org.eclipse.app4mc.amalthea.model.MemoryClassification
 import org.eclipse.app4mc.amalthea.model.MemoryMapping
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic
-import org.eclipse.app4mc.amalthea.model.Mode
+import org.eclipse.app4mc.amalthea.model.ModeAssignment
+import org.eclipse.app4mc.amalthea.model.ModeCondition
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeLabel
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.ModeSwitch
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
-import org.eclipse.app4mc.amalthea.model.ModeValue
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
 import org.eclipse.app4mc.amalthea.model.ModeValueList
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec
@@ -162,7 +162,6 @@ import org.eclipse.app4mc.amalthea.model.VoltageUnit
 import org.eclipse.app4mc.amalthea.model.WaitEvent
 import org.eclipse.app4mc.amalthea.model.WaitingBehaviour
 import org.eclipse.app4mc.amalthea.model.impl.CustomPropertyImpl
-import org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl
 import org.eclipse.app4mc.amalthea.model.impl.NeedEntryImpl
 import org.eclipse.app4mc.amalthea.model.impl.TicksEntryImpl
 import org.eclipse.emf.common.notify.AdapterFactory
@@ -1904,10 +1903,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ModeValueDisjunctionItemProvider
+	 * 						ModeConditionDisjunctionItemProvider
 	 *****************************************************************************/
-	def static String getModeValueDisjunctionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ModeValueDisjunction) {
+	def static String getModeConditionDisjunctionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeConditionDisjunction) {
 			return getContainingFeatureName(object) + "OR"
 		} else {
 			return defaultText
@@ -1915,10 +1914,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ModeValueConjunctionItemProvider
+	 * 						ModeConditionConjunctionItemProvider
 	 *****************************************************************************/
-	def static String getModeValueConjunctionItemProviderText(Object object, String defaultText) {
-		if (object instanceof ModeValueConjunction) {
+	def static String getModeConditionConjunctionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeConditionConjunction) {
 			return "AND"
 		} else {
 			return defaultText
@@ -1926,25 +1925,59 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ModeValueItemProvider
+	 * 						ModeAssignmentItemProvider
 	 *****************************************************************************/
-	def static String getModeValueItemProviderText(Object object, String defaultText) {
-		if (object instanceof ModeValue) {
-			val prov = object?.valueProvider
-			val value = object?.value
-			val relation = if(object?.eContainer instanceof ModeValueList) " <- " else " == "
-			val s1 = if(prov?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + prov.name
-			val s2 = if(value === null) "<value>" else value.toString
+	def static String getModeAssignmentItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeAssignment) {
+			val label = object.label
+			val value = object.value
+			
+			val s1 = if(label?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + label.name
+			val s2 = if(value === null) "<value>" else value	
+			val relation = " := "
 			return s1 + relation + s2
 		} else {
 			return defaultText
 		}
 	}
 
-	def static ViewerNotification getModeValueItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(ModeValueImpl)) {
-			case AmaltheaPackage::MODE_VALUE__VALUE_PROVIDER,
+	def static ViewerNotification getModeAssignmentItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(ModeAssignment)) {
+			case AmaltheaPackage::MODE_VALUE__LABEL,
 			case AmaltheaPackage::MODE_VALUE__VALUE:
+				return new ViewerNotification(notification, notification.getNotifier(), false, true)
+		}
+		return null
+	}
+
+	/*****************************************************************************
+	 * 						ModeConditionItemProvider
+	 *****************************************************************************/
+	def static String getModeConditionItemProviderText(Object object, String defaultText) {
+		if (object instanceof ModeCondition) {
+			val label = object.label
+			val value = object.value
+			
+			val s1 = if(label?.name.isNullOrEmpty) "<mode label>" else "Mode Label " + label.name
+			val s2 = if(value === null) "<value>" else value	
+			val relation = switch object.relation {
+				case _UNDEFINED_:	" <relation> "
+				case EQUAL:			" == "
+				case NOT_EQUAL:		" != "
+				case LESS_THAN:		" < "
+				case GREATER_THAN:	" > "
+			}
+			return s1 + relation + s2
+		} else {
+			return defaultText
+		}
+	}
+
+	def static ViewerNotification getModeConditionItemProviderNotification(Notification notification) {
+		switch notification.getFeatureID(typeof(ModeCondition)) {
+			case AmaltheaPackage::MODE_VALUE__LABEL,
+			case AmaltheaPackage::MODE_VALUE__VALUE,
+			case AmaltheaPackage::MODE_CONDITION__RELATION:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
 		return null
@@ -2194,18 +2227,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						ModeItemProvider
-	 *****************************************************************************/
-	def static ViewerNotification getModeItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(Mode)) {
-			case AmaltheaPackage::MODE__NAME,
-			case AmaltheaPackage::MODE__LITERALS:
-				return new ViewerNotification(notification, notification.getNotifier(), true, true)
-		}
-		return null
-	}
-
-	/*****************************************************************************
 	 * 						ModeLiteralItemProvider
 	 *****************************************************************************/
 	def static String getModeLiteralItemProviderText(Object object, String defaultText) {
@@ -2234,9 +2255,11 @@ class CustomItemProviderService {
 	def static ViewerNotification getModeLabelItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeLabel)) {
 			case AmaltheaPackage::MODE_LABEL__NAME,
+			case AmaltheaPackage::MODE_LABEL__MODE,
 			case AmaltheaPackage::MODE_LABEL__INITIAL_VALUE:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
+
 		return null
 	}
 
@@ -2433,11 +2456,13 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeLabelAccessItemProviderText(Object object, String defaultText) {
 		if (object instanceof ModeLabelAccess) {
-			val access = object?.access
-			val label = object?.data?.name
+			val access = object.access
+			val label = object.data?.name
 			val s1 = if(access === null || access == LabelAccessEnum::_UNDEFINED_) "<access>" else access.literal
 			val s2 = ppName(label, "<mode label>")
-			return s1 + " " + s2
+			val s3 = if(s1 == "set") ": " + object.value else ""
+			val s4 = if(s1 == "increment" || s1 == "decrement") " by " + object.step else ""
+			return s1 + " " + s2 + s3 + s4
 		} else {
 			return defaultText
 		}

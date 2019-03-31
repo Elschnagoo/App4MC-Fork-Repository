@@ -51,7 +51,8 @@ public class ModesContainerIP extends ExtendedSphinxTransientItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createMode()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createEnumMode()));
+		newChildDescriptors.add(createChildParameter(myFeature(), myFactory().createNumericMode()));
 	}
 
 }
