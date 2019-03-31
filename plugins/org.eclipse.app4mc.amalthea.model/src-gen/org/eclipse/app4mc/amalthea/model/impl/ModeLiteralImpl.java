@@ -17,8 +17,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.IReferable;
-import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 
@@ -70,9 +70,9 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * @generated
 	 */
 	@Override
-	public Mode getContainingMode() {
+	public EnumMode getContainingMode() {
 		if (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE) return null;
-		return (Mode)eContainer();
+		return (EnumMode)eContainer();
 	}
 
 	/**
@@ -80,9 +80,9 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Mode basicGetContainingMode() {
+	public EnumMode basicGetContainingMode() {
 		if (eContainerFeatureID() != AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE) return null;
-		return (Mode)eInternalContainer();
+		return (EnumMode)eInternalContainer();
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 */
 	@Override
 	public String computeUniqueName() {
-		Mode _containingMode = this.getContainingMode();
+		EnumMode _containingMode = this.getContainingMode();
 		String _name = null;
 		if (_containingMode!=null) {
 			_name=_containingMode.getName();
@@ -107,30 +107,15 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	 */
 	@Override
 	public String toString() {
-		Mode _containingMode = this.getContainingMode();
-		String _name = null;
-		if (_containingMode!=null) {
-			_name=_containingMode.getName();
-		}
-		final String modeName = _name;
 		String _xifexpression = null;
-		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(modeName);
+		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(this.getName());
 		if (_isNullOrEmpty) {
-			_xifexpression = "<mode>";
+			_xifexpression = "<literal>";
 		}
 		else {
-			_xifexpression = modeName;
+			_xifexpression = this.getName();
 		}
-		String _plus = (_xifexpression + "::");
-		String _xifexpression_1 = null;
-		boolean _isNullOrEmpty_1 = StringExtensions.isNullOrEmpty(this.getName());
-		if (_isNullOrEmpty_1) {
-			_xifexpression_1 = "<literal>";
-		}
-		else {
-			_xifexpression_1 = this.getName();
-		}
-		return (_plus + _xifexpression_1);
+		return _xifexpression;
 	}
 
 	/**
@@ -172,7 +157,7 @@ public class ModeLiteralImpl extends ReferableBaseObjectImpl implements ModeLite
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case AmaltheaPackage.MODE_LITERAL__CONTAINING_MODE:
-				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.MODE__LITERALS, Mode.class, msgs);
+				return eInternalContainer().eInverseRemove(this, AmaltheaPackage.ENUM_MODE__LITERALS, EnumMode.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}

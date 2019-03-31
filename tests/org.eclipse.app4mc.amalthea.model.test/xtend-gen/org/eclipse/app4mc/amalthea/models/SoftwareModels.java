@@ -2,10 +2,10 @@ package org.eclipse.app4mc.amalthea.models;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
-import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
@@ -44,11 +44,10 @@ public class SoftwareModels {
   public Amalthea model1() {
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
-        final Procedure1<Mode> _function_2 = (Mode it_2) -> {
+        final Procedure1<EnumMode> _function_2 = (EnumMode it_2) -> {
           it_2.setName("state");
           final Procedure1<ModeLiteral> _function_3 = (ModeLiteral it_3) -> {
             it_3.setName("pre-drive");
-            this.b1.<ModeLiteral>_reg(it_3, "state1");
           };
           this.b2.literal(it_2, _function_3);
           final Procedure1<ModeLiteral> _function_4 = (ModeLiteral it_3) -> {
@@ -60,10 +59,11 @@ public class SoftwareModels {
           };
           this.b2.literal(it_2, _function_5);
         };
-        this.b2.mode(it_1, _function_2);
+        this.b2.mode_Enum(it_1, _function_2);
         final Procedure1<ModeLabel> _function_3 = (ModeLabel it_2) -> {
           it_2.setName("car-state");
-          it_2.setInitialValue(this.b1.<ModeLiteral>_ref(ModeLiteral.class, "state1"));
+          it_2.setMode(this.b1.<EnumMode>_find(it_2, EnumMode.class, "state"));
+          it_2.setInitialValue("pre-drive");
         };
         this.b2.modeLabel(it_1, _function_3);
         final Procedure1<Label> _function_4 = (Label it_2) -> {

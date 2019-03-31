@@ -18,7 +18,12 @@
 	creationIcons="false",
 	forceOverwrite="true",
 	creationSubmenus="true",
-	generateSchema="true",
+	// *** create XML instance of the Amalthea meta model
+	publicationLocation="org.eclipse.app4mc.amalthea.model/model-gen/xml/amalthea.xml",
+	// *** generate XML schema
+	//generateSchema="true",
+	//resource="XML", // change temporarily to "XML" to generate the schema
+	//resource="XMI", // change temporarily to "XMI" to generate the schema
 	loadInitialization="false",	// can be removed with Neon.3 ??
 //	dynamicTemplates="true",
 //	templateDirectory="org.eclipse.app4mc.amalthea.model/templates",
@@ -170,6 +175,15 @@ class Tag extends ReferableBaseObject
 			#{AmaltheaPackage.eINSTANCE.ITaggable_Tags}
 		)
 	}
+}
+
+enum RelationalOperator
+{
+	_undefined_ // Display: "<relation>"
+	EQUAL
+	NOT_EQUAL
+	LESS_THAN
+	GREATER_THAN
 }
 
 /*
@@ -851,23 +865,33 @@ class ContinuousValueBetaDistribution extends BoundedContinuousValueDistribution
 //
 // -------------------------------------------------------------------------------
 
-class Mode extends ReferableBaseObject
+abstract class Mode extends ReferableBaseObject {}
+
+class NumericMode extends Mode
+{
+	// future extensions (restrictions) possible, e.g. range
+}
+
+class EnumMode extends Mode
 {
 	contains ModeLiteral[] literals opposite containingMode
+	
+	op ModeLiteral getLiteral(String literal) {
+		literals.findFirst[it.name == literal]
+	}
 }
 
 class ModeLiteral extends ReferableBaseObject
 {
 	@GenModel(propertyCategory="Read only")
-	container readonly Mode containingMode opposite literals
+	container readonly EnumMode containingMode opposite literals
 	
 	op String computeUniqueName() {
 		return basicComputeUniqueNameWithPrefix(containingMode?.name)
 	}
 	
 	op String toString() {
-		val modeName = containingMode?.name
-		return (if (modeName.nullOrEmpty) "<mode>" else modeName) + "::" + (if (name.nullOrEmpty) "<literal>" else name)
+		if (name.nullOrEmpty) "<literal>" else name
 	}
 }
 
@@ -2793,8 +2817,8 @@ class StimuliModel extends BaseObject
 abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
 	contains ModeValueList setModeValueList
-	contains ModeValueDisjunction enablingModeValueList
-	contains ModeValueDisjunction disablingModeValueList
+	contains ModeConditionDisjunction enablingModeValueList
+	contains ModeConditionDisjunction disablingModeValueList
 	
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of affected processes (Process).</b></p>")
@@ -2807,50 +2831,73 @@ abstract class Stimulus extends ReferableBaseObject, ITaggable
 
 class ModeValueList extends BaseObject
 {
-	contains ModeValue[] entries
+	contains ModeAssignment[] entries
 }
 
 class ModeValueMapEntry wraps java.util.Map$Entry
 {
 	refers ModeLabel[1] key
-	refers ModeLiteral[1] value
+	String[1] value
 }
 
-class ModeValueDisjunction extends BaseObject
+abstract class ModeValue extends BaseObject {
+	refers ModeLabel[1] label
+	String[1] value
+
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
+
+	op ModeLiteral getLiteral() {
+		if (value === null) return null
+		val mode = label?.mode
+		if (mode instanceof EnumMode) {mode.literals.findFirst[name == value]} else {null}
+	}
+
+	op Integer getInteger() {
+		if (value === null) return null
+		val mode = label?.mode
+		if (mode instanceof NumericMode && value.matches("-?\\d+")) {Integer.parseInt(value)} else {null}
+	}
+}
+
+class ModeAssignment extends ModeValue {
+}
+
+class ModeConditionDisjunction extends BaseObject
 {
-	contains ModeValueDisjunctionEntry[+] entries
-	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
-		for (ModeValueDisjunctionEntry entry : entries) {
-			if (entry.isSatisfiedBy(assignment)) return true;
+	contains ModeConditionDisjunctionEntry[+] entries
+	
+	op boolean isSatisfiedBy(ModeValueMapEntry[] context) {
+		for (ModeConditionDisjunctionEntry entry : entries) {
+			if (entry.isSatisfiedBy(context)) return true;
 		}
 		return false;
 	}
 }
 
-abstract class ModeValueDisjunctionEntry extends BaseObject
+interface ModeConditionDisjunctionEntry extends BaseObject
 {
-	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
-		false
+	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) 
+}
+
+class ModeCondition extends ModeValue, ModeConditionDisjunctionEntry {
+	RelationalOperator relation
+
+	op boolean isSatisfiedBy(ModeValueMapEntry[] context) {
+		// no value defined => satisfied (don't care)
+		val labelValue = context?.get(label)
+		return (labelValue === null) || (labelValue == value)
 	}
 }
 
-class ModeValue extends ModeValueDisjunctionEntry
+class ModeConditionConjunction extends ModeConditionDisjunctionEntry
 {
-	refers ModeLabel[1] valueProvider
-	refers ModeLiteral[1] value
-	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
-		// no value assigned => satisfied (don't care)
-		val assign = assignment?.get(valueProvider)
-		return (assign === null) || (assign === value)
-	}
-}
-
-class ModeValueConjunction extends ModeValueDisjunctionEntry
-{
-	contains ModeValue[+] entries
-	op boolean isSatisfiedBy(ModeValueMapEntry[] assignment) {
-		for (ModeValue entry : entries) {
-			if (! entry.isSatisfiedBy(assignment)) return false;
+	contains ModeCondition[+] entries
+	
+	op boolean isSatisfiedBy(ModeValueMapEntry[] context) {
+		for (ModeCondition entry : entries) {
+			if (! entry.isSatisfiedBy(context)) return false;
 		}
 		return true;
 	}
@@ -3058,7 +3105,7 @@ class SWModel extends BaseObject
 	contains ModeLabel[] modeLabels
 	op ModeLiteral modeLiteral(String mode, String literal) {
 		if (mode.isNullOrEmpty || literal.isNullOrEmpty) return null
-		return modes?.findFirst[it.name == mode]?.literals?.findFirst[it.name == literal]
+		return (modes?.findFirst[it instanceof EnumMode && it.name == mode] as EnumMode)?.literals?.findFirst[it.name == literal]
 	}
 }
 
@@ -3154,7 +3201,7 @@ class ModeSwitch extends GraphEntryBase
  */
 class ModeSwitchEntry<T> extends BaseObject, INamed
 {
-	contains ModeValueDisjunction[1] condition
+	contains ModeConditionDisjunction[1] condition
 	contains T[] items
 }
 
@@ -3571,14 +3618,23 @@ class Channel extends AbstractMemoryElement, IDisplayName
 	}
 }
 
-class ModeLabel extends AbstractMemoryElement, IDisplayName
-{
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers derived readonly Mode mode get {
-		return initialValue?.containingMode
+class ModeLabel extends AbstractMemoryElement, IDisplayName {
+	refers Mode[1] mode
+	String initialValue
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
 	}
-	refers ModeLiteral[1] initialValue
+
+	op boolean isEnum() {
+		mode instanceof EnumMode
+	}
+	
+	op boolean isNumeric() {
+		mode instanceof NumericMode
+	}
 }
+
 
 enum LabelDataStability
 {
@@ -3661,18 +3717,35 @@ class TicksEntry wraps java.util.Map$Entry {
 	contains IDiscreteValueDeviation[1] value
 }
 
+enum ModeLabelAccessEnum {
+	_undefined_ // Display: "<access>"
+	read
+	^set
+	increment
+	decrement
+}
+
 /*
  * Representation of a mode label access of a run entity.
  */
 class ModeLabelAccess extends RunnableItem
 {
 	refers ModeLabel[1] data
-	LabelAccessEnum access
+	ModeLabelAccessEnum access
 	/*
 	 * Just used in case that this access writes a value to a Mode-Label.
 	 * It can be used to define which mode value is written to the label. 
 	 */
-	refers ModeLiteral modeValue
+	String value
+	/*
+	 * Just used in case of increment or decrement.
+	 * It can be used to define a step other than 1. 
+	 */
+	PositiveInt step = "1"
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 class RunnableModeSwitch extends RunnableItem

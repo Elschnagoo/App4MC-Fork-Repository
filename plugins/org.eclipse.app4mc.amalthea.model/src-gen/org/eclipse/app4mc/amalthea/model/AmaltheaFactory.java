@@ -475,13 +475,22 @@ public interface AmaltheaFactory extends EFactory {
 	ContinuousValueBetaDistribution createContinuousValueBetaDistribution();
 
 	/**
-	 * Returns a new object of class '<em>Mode</em>'.
+	 * Returns a new object of class '<em>Numeric Mode</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode</em>'.
+	 * @return a new object of class '<em>Numeric Mode</em>'.
 	 * @generated
 	 */
-	Mode createMode();
+	NumericMode createNumericMode();
+
+	/**
+	 * Returns a new object of class '<em>Enum Mode</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Enum Mode</em>'.
+	 * @generated
+	 */
+	EnumMode createEnumMode();
 
 	/**
 	 * Returns a new object of class '<em>Mode Literal</em>'.
@@ -1672,31 +1681,40 @@ public interface AmaltheaFactory extends EFactory {
 	ModeValueList createModeValueList();
 
 	/**
-	 * Returns a new object of class '<em>Mode Value Disjunction</em>'.
+	 * Returns a new object of class '<em>Mode Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Value Disjunction</em>'.
+	 * @return a new object of class '<em>Mode Assignment</em>'.
 	 * @generated
 	 */
-	ModeValueDisjunction createModeValueDisjunction();
+	ModeAssignment createModeAssignment();
 
 	/**
-	 * Returns a new object of class '<em>Mode Value</em>'.
+	 * Returns a new object of class '<em>Mode Condition Disjunction</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Value</em>'.
+	 * @return a new object of class '<em>Mode Condition Disjunction</em>'.
 	 * @generated
 	 */
-	ModeValue createModeValue();
+	ModeConditionDisjunction createModeConditionDisjunction();
 
 	/**
-	 * Returns a new object of class '<em>Mode Value Conjunction</em>'.
+	 * Returns a new object of class '<em>Mode Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mode Value Conjunction</em>'.
+	 * @return a new object of class '<em>Mode Condition</em>'.
 	 * @generated
 	 */
-	ModeValueConjunction createModeValueConjunction();
+	ModeCondition createModeCondition();
+
+	/**
+	 * Returns a new object of class '<em>Mode Condition Conjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mode Condition Conjunction</em>'.
+	 * @generated
+	 */
+	ModeConditionConjunction createModeConditionConjunction();
 
 	/**
 	 * Returns a new object of class '<em>Periodic Stimulus</em>'.

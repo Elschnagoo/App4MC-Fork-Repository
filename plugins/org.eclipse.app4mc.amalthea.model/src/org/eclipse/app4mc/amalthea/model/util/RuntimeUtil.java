@@ -45,7 +45,6 @@ import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Process;
@@ -86,7 +85,7 @@ public class RuntimeUtil {
 	 * @param executionCase	BCET, ACET, WCET
 	 * @return execution time
 	 */
-	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
+	public static Time getExecutionTimeForProcess(Process process, EMap<ModeLabel, String> modes, TimeType executionCase) {
 		Time result = FactoryUtil.createTime();
 
 		Set<ProcessingUnit> processingUnits = DeploymentUtil.getAssignedCoreForProcess(process, (Amalthea) process.eContainer().eContainer());
@@ -112,7 +111,7 @@ public class RuntimeUtil {
 	 * @param executionCase		BCET, ACET, WCET
 	 * @return execution time
 	 */
-	public static Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, ModeLiteral> modes, TimeType executionCase) {
+	public static Time getExecutionTimeForProcess(Process process, ProcessingUnit processingUnit, EMap<ModeLabel, String> modes, TimeType executionCase) {
 		Time result = FactoryUtil.createTime();
 
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
@@ -131,7 +130,7 @@ public class RuntimeUtil {
 	 * @param executionCase		BCET, ACET, WCET
 	 * @return execution time
 	 */
-	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel,  ModeLiteral> modes, TimeType executionCase) {
+	public static Time getExecutionTimeForRunnable(Runnable runnable, ProcessingUnit processingUnit, EMap<ModeLabel, String> modes, TimeType executionCase) {
 		Time result = FactoryUtil.createTime();
 
 		List<Ticks> tickList = SoftwareUtil.getTicks(runnable, modes);
@@ -270,7 +269,7 @@ public class RuntimeUtil {
 	/**
 	 * Sets the runtime of the given runnable to the given ExecutionNeed
 	 */
-	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed need, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void setRuntimeOfRunnable(Runnable runnable, ExecutionNeed need, EMap<ModeLabel, String> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
 		addRuntimeToRunnable(runnable, need);
 	}
@@ -278,7 +277,7 @@ public class RuntimeUtil {
 	/**
 	 * Sets the runtime of the given runnable to the given Ticks
 	 */
-	public static void setRuntimeOfRunnable(Runnable runnable, Ticks ticks, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void setRuntimeOfRunnable(Runnable runnable, Ticks ticks, EMap<ModeLabel, String> modes) {
 		clearRuntimeOfRunnable(runnable,  modes);
 		addRuntimeToRunnable(runnable, ticks);
 	}
@@ -310,7 +309,7 @@ public class RuntimeUtil {
 	 * @param model		Amalthea model
 	 * @param modes		(optional) - null works
 	 */
-	public static void clearRuntimeOfModel(Amalthea model, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfModel(Amalthea model, EMap<ModeLabel, String> modes) {
 		List<Process> processes = new ArrayList<Process>();
 		processes.addAll(model.getSwModel().getTasks());
 		processes.addAll(model.getSwModel().getIsrs());
@@ -327,7 +326,7 @@ public class RuntimeUtil {
 	 * @param process	task or isr
 	 * @param modes		(optional) - null works
 	 */
-	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, String> modes) {
 		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
 		for (Runnable runnable : runnables) {
 			clearRuntimeOfRunnable(runnable, modes);
@@ -340,7 +339,7 @@ public class RuntimeUtil {
 	 * @param runnable	runnable
 	 * @param modes		(optional) - null works
 	 */
-	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static void clearRuntimeOfRunnable(Runnable runnable, EMap<ModeLabel, String> modes) {
 		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(runnable, modes);
 		AmaltheaIndex.deleteAll(executionNeeds);
 	
@@ -421,7 +420,7 @@ public class RuntimeUtil {
 	 * Calculates the utilization for a given procUnit
 	 */
 	public static double getProcUnitUtilization(ProcessingUnit procUnit, Amalthea model, TimeType tt,
-			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			List<HwFeature> hwFeatures, EMap<ModeLabel, String> modes) {
 		double utilization = 0.0;
 
 		for (Process proc : DeploymentUtil.getProcessesMappedToCore(procUnit, model)) {
@@ -437,7 +436,7 @@ public class RuntimeUtil {
 	 * @return Map: procUnit -&gt; utilization
 	 */
 	public static Map<ProcessingUnit, Double> getProcessUtilization(Process process, Amalthea model, TimeType tt,
-			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			List<HwFeature> hwFeatures, EMap<ModeLabel, String> modes) {
 		HashMap<ProcessingUnit, Double> utilizations = new HashMap<>();
 
 		Set<ProcessingUnit> procUnits = DeploymentUtil.getAssignedCoreForProcess(process, model);
@@ -458,7 +457,7 @@ public class RuntimeUtil {
 	 * @return utilization
 	 */
 	public static double getProcessUtilization(Process process, ProcessingUnit procUnit, Amalthea model, TimeType tt,
-			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			List<HwFeature> hwFeatures, EMap<ModeLabel, String> modes) {
 		double utilization = 0.0;
 
 		List<Time> periods = getPeriodsOfProcess(process, tt, modes);
@@ -480,7 +479,7 @@ public class RuntimeUtil {
 	/**
 	 * Calculates the process utilization
 	 */
-	public static double getProcessUtilization(Process process, Time period, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static double getProcessUtilization(Process process, Time period, TimeType tt, EMap<ModeLabel, String> modes) {
 		Time time = getExecutionTimeForProcess(process, modes, tt);
 		return time.divide(period);
 	}
@@ -491,7 +490,7 @@ public class RuntimeUtil {
 	 * @return Map: process -&gt; sum of utilization on all procUnits
 	 */
 	public static Map<Process, Double> getCumulativeProcessUtilizations(Amalthea model, TimeType tt,
-			List<HwFeature> hwFeatures, EMap<ModeLabel, ModeLiteral> modes) {
+			List<HwFeature> hwFeatures, EMap<ModeLabel, String> modes) {
 		HashMap<Process, Double> utilizations = new HashMap<>();
 
 		List<Process> procs = new ArrayList<Process>();
@@ -514,7 +513,7 @@ public class RuntimeUtil {
 	 * Gets all Period ranges from the model
 	 */
 	public static Map<Process, List<Time>> getPeriodsOfAllProcesses(Amalthea model, TimeType tt,
-			EMap<ModeLabel, ModeLiteral> modes) {
+			EMap<ModeLabel, String> modes) {
 		Map<Process, List<Time>> result = new HashMap<>();
 
 		List<Process> processes = new ArrayList<Process>();
@@ -532,7 +531,7 @@ public class RuntimeUtil {
 	/**
 	 * Returns a list of all triggering periods. Sorted by shortest period first!
 	 */
-	public static List<Time> getPeriodsOfProcess(Process process, TimeType tt, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Time> getPeriodsOfProcess(Process process, TimeType tt, EMap<ModeLabel, String> modes) {
 		List<Time> result = new ArrayList<Time>();
 		// System.out.println(process.getName());
 		for (Stimulus stimulus : process.getStimuli()) {
@@ -705,7 +704,7 @@ public class RuntimeUtil {
 	 * 
 	 * @return Map: process -&gt; prescaler value
 	 */
-	public static Map<Process, Long> getTriggeringProcesses(InterProcessStimulus ip, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Process, Long> getTriggeringProcesses(InterProcessStimulus ip, EMap<ModeLabel, String> modes) {
 		Map<Process, Long> result = new HashMap<>();
 
 		for (InterProcessTrigger interProcessTrigger : ip.getExplicitTriggers()) {
@@ -723,7 +722,7 @@ public class RuntimeUtil {
 	/**
 	 * Returns a map of all stimuli, triggered by this process, associated with its prescaler.
 	 */
-	public static HashMap<Stimulus, Long> getTriggeredStimuli(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static HashMap<Stimulus, Long> getTriggeredStimuli(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Stimulus, Long> stimuliMap = new HashMap<Stimulus, Long>();
 		List<InterProcessTrigger> interProcessTriggers = SoftwareUtil
 				.collectCalls(process, modes, s -> s instanceof InterProcessTrigger).stream()

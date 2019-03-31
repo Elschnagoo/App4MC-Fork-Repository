@@ -20,6 +20,7 @@ import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
@@ -29,12 +30,12 @@ import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
-import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
@@ -147,8 +148,14 @@ public class SoftwareBuilder {
 		initializer.apply(obj);
 	}
 
-	public void mode(final SWModel container, final Procedure1<Mode> initializer) {
-		final Mode obj = AmaltheaFactory.eINSTANCE.createMode();
+	public void mode_Enum(final SWModel container, final Procedure1<EnumMode> initializer) {
+		final EnumMode obj = AmaltheaFactory.eINSTANCE.createEnumMode();
+		container.getModes().add(obj);
+		initializer.apply(obj);
+	}
+
+	public void mode_Numeric(final SWModel container, final Procedure1<NumericMode> initializer) {
+		final NumericMode obj = AmaltheaFactory.eINSTANCE.createNumericMode();
 		container.getModes().add(obj);
 		initializer.apply(obj);
 	}
@@ -161,7 +168,7 @@ public class SoftwareBuilder {
 
 	// ********** Mode Literals **********
 
-	public void literal(final Mode container, final Procedure1<ModeLiteral> initializer) {
+	public void literal(final EnumMode container, final Procedure1<ModeLiteral> initializer) {
 		final ModeLiteral obj = AmaltheaFactory.eINSTANCE.createModeLiteral();
 		container.getLiterals().add(obj);
 		initializer.apply(obj);

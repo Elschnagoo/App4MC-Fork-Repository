@@ -132,6 +132,7 @@ import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
@@ -212,6 +213,11 @@ import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
@@ -219,11 +225,9 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -744,6 +748,14 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMode(Mode object) {
 				return createModeAdapter();
+			}
+			@Override
+			public Adapter caseNumericMode(NumericMode object) {
+				return createNumericModeAdapter();
+			}
+			@Override
+			public Adapter caseEnumMode(EnumMode object) {
+				return createEnumModeAdapter();
 			}
 			@Override
 			public Adapter caseModeLiteral(ModeLiteral object) {
@@ -1450,24 +1462,32 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createModeValueListAdapter();
 			}
 			@Override
-			public Adapter caseModeValueMapEntry(Map.Entry<ModeLabel, ModeLiteral> object) {
+			public Adapter caseModeValueMapEntry(Map.Entry<ModeLabel, String> object) {
 				return createModeValueMapEntryAdapter();
-			}
-			@Override
-			public Adapter caseModeValueDisjunction(ModeValueDisjunction object) {
-				return createModeValueDisjunctionAdapter();
-			}
-			@Override
-			public Adapter caseModeValueDisjunctionEntry(ModeValueDisjunctionEntry object) {
-				return createModeValueDisjunctionEntryAdapter();
 			}
 			@Override
 			public Adapter caseModeValue(ModeValue object) {
 				return createModeValueAdapter();
 			}
 			@Override
-			public Adapter caseModeValueConjunction(ModeValueConjunction object) {
-				return createModeValueConjunctionAdapter();
+			public Adapter caseModeAssignment(ModeAssignment object) {
+				return createModeAssignmentAdapter();
+			}
+			@Override
+			public Adapter caseModeConditionDisjunction(ModeConditionDisjunction object) {
+				return createModeConditionDisjunctionAdapter();
+			}
+			@Override
+			public Adapter caseModeConditionDisjunctionEntry(ModeConditionDisjunctionEntry object) {
+				return createModeConditionDisjunctionEntryAdapter();
+			}
+			@Override
+			public Adapter caseModeCondition(ModeCondition object) {
+				return createModeConditionAdapter();
+			}
+			@Override
+			public Adapter caseModeConditionConjunction(ModeConditionConjunction object) {
+				return createModeConditionConjunctionAdapter();
 			}
 			@Override
 			public Adapter caseFixedPeriodic(FixedPeriodic object) {
@@ -2996,6 +3016,34 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.NumericMode <em>Numeric Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.NumericMode
+	 * @generated
+	 */
+	public Adapter createNumericModeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.EnumMode <em>Enum Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.EnumMode
+	 * @generated
+	 */
+	public Adapter createEnumModeAdapter() {
 		return null;
 	}
 
@@ -5478,34 +5526,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction <em>Mode Value Disjunction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeValueDisjunction
-	 * @generated
-	 */
-	public Adapter createModeValueDisjunctionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry <em>Mode Value Disjunction Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry
-	 * @generated
-	 */
-	public Adapter createModeValueDisjunctionEntryAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeValue <em>Mode Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5520,16 +5540,72 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeValueConjunction <em>Mode Value Conjunction</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeAssignment <em>Mode Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ModeValueConjunction
+	 * @see org.eclipse.app4mc.amalthea.model.ModeAssignment
 	 * @generated
 	 */
-	public Adapter createModeValueConjunctionAdapter() {
+	public Adapter createModeAssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction <em>Mode Condition Disjunction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction
+	 * @generated
+	 */
+	public Adapter createModeConditionDisjunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry <em>Mode Condition Disjunction Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry
+	 * @generated
+	 */
+	public Adapter createModeConditionDisjunctionEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeCondition <em>Mode Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeCondition
+	 * @generated
+	 */
+	public Adapter createModeConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ModeConditionConjunction <em>Mode Condition Conjunction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ModeConditionConjunction
+	 * @generated
+	 */
+	public Adapter createModeConditionConjunctionAdapter() {
 		return null;
 	}
 

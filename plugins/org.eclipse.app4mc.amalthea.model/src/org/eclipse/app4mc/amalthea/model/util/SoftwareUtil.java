@@ -41,7 +41,6 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
@@ -86,7 +85,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of CallSequenceItems
 	 */
-	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes) {
+	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, String> modes) {
 		return collectCalls(process, modes, CallSequenceItem.class, null);
 	}
 
@@ -100,7 +99,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of CallSequenceItems
 	 */
-	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
+	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
 			final Function<CallSequenceItem, Boolean> filter) {
 		return collectCalls(process, modes, CallSequenceItem.class, filter);
 	}
@@ -115,7 +114,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of T extends CallSequenceItems
 	 */
-	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
+	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass) {
 		return collectCalls(process, modes, targetClass, null);
 	}
@@ -131,7 +130,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of T extends CallSequenceItems
 	 */
-	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, ModeLiteral> modes,
+	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter) {
 		EList<T> itemList = new BasicEList<T>();
 		if (process.getCallGraph() != null) {
@@ -141,7 +140,7 @@ public class SoftwareUtil {
 	}
 
 
-	private static <T extends CallSequenceItem> void collectCallSequenceItems(final EList<GraphEntryBase> input, final EMap<ModeLabel, ModeLiteral> modes,
+	private static <T extends CallSequenceItem> void collectCallSequenceItems(final EList<GraphEntryBase> input, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
 		for (GraphEntryBase entry : input) {
 			if (entry instanceof ProbabilitySwitch) {
@@ -196,7 +195,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of RunnableItems
 	 */
-	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes) {
+	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, RunnableItem.class, null);
 	}
 
@@ -210,7 +209,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of RunnableItems
 	 */
-	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
+	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
 			final Function<RunnableItem, Boolean> filter) {
 		return collectRunnableItems(runnable, modes, RunnableItem.class, filter);
 	}
@@ -225,7 +224,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of T extends RunnableItems
 	 */
-	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
+	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass) {
 		return collectRunnableItems(runnable, modes, targetClass, null);
 	}
@@ -241,7 +240,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of T extends RunnableItems
 	 */
-	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, ModeLiteral> modes,
+	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter) {
 		EList<T> itemList = new BasicEList<T>();
 		collectRunnableItems(runnable.getRunnableItems(), modes, targetClass, filter, itemList);
@@ -249,7 +248,7 @@ public class SoftwareUtil {
 	}
 
 
-	private static <T extends RunnableItem> void collectRunnableItems(final EList<RunnableItem> input, final EMap<ModeLabel, ModeLiteral> modes,
+	private static <T extends RunnableItem> void collectRunnableItems(final EList<RunnableItem> input, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
 		for (RunnableItem item : input) {
 			if (item instanceof Group) {
@@ -290,7 +289,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getAccessedLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getAccessedLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class)
 			.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
@@ -302,7 +301,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getReadLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getReadLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ))
 				.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
@@ -314,7 +313,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getWriteLabelSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getWriteLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE))
 			.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
@@ -326,7 +325,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of LabelAccesses
 	 */
-	public static List<LabelAccess> getLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<LabelAccess> getLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class);	
 	}
 
@@ -337,7 +336,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of LabelAccesses
 	 */
-	public static List<LabelAccess> getReadLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<LabelAccess> getReadLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ));	
 	}
 
@@ -348,7 +347,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of LabelAccesses
 	 */
-	public static List<LabelAccess> getWriteLabelAccessList(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<LabelAccess> getWriteLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE));	
 	}
 
@@ -359,7 +358,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccesses
 	 */
-	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getData() != null))
 			.stream().collect(Collectors.groupingBy(LabelAccess::getData));
 	}
@@ -371,7 +370,7 @@ public class SoftwareUtil {
 	 * @return Map:
 	 * 		Label -&gt; List of LabelAccessStatistics
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
 					(la -> la.getData() != null && la.getStatistic() != null))
 				.stream().collect(Collectors.groupingBy(
@@ -386,7 +385,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
 				(la -> la.getData() != null && la.getStatistic() != null && la.getAccess() == READ))
 			.stream().collect(Collectors.groupingBy(
@@ -401,7 +400,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, LabelAccess.class,
 				(la -> la.getData() != null && la.getStatistic() != null && la.getAccess() == WRITE))
 			.stream().collect(Collectors.groupingBy(
@@ -416,7 +415,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getAccessedLabelSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getAccessedLabelSet(Process process, EMap<ModeLabel, String> modes) {
 		HashSet<Label> result = new HashSet<>();
 		for (Runnable r : getRunnableList(process, modes))
 			result.addAll(getAccessedLabelSet(r, modes));
@@ -430,7 +429,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getReadLabelSet(Process  process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getReadLabelSet(Process  process, EMap<ModeLabel, String> modes) {
 		HashSet<Label> result = new HashSet<>(); 
 		for (Runnable r : getRunnableList(process, modes))
 			result.addAll(getReadLabelSet(r, modes));
@@ -444,7 +443,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Label> getWriteLabelSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Label> getWriteLabelSet(Process process, EMap<ModeLabel, String> modes) {
 		HashSet<Label> result = new HashSet<>(); 
 		for (Runnable r : getRunnableList(process, modes))
 			result.addAll(getWriteLabelSet(r, modes));
@@ -458,7 +457,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of LabelAccesses
 	 */
-	public static List<LabelAccess> getLabelAccessList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<LabelAccess> getLabelAccessList(Process process, EMap<ModeLabel, String> modes) {
 		ArrayList<LabelAccess> result = new ArrayList<>(); 
 		for (Runnable r : getRunnableList(process, modes))
 			result.addAll(getLabelAccessList(r, modes));
@@ -472,7 +471,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccess
 	 */
-	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Label, List<LabelAccess>> result = new HashMap<>();
 		for (Runnable r : getRunnableList(process, modes)) {
 			Map<Label, List<LabelAccess>> labelToLabelAccessMap = SoftwareUtil.getLabelToLabelAccessMap(r, modes);
@@ -493,7 +492,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		for (Runnable r : getRunnableList(process, modes)) {
 			Map<Label, List<LabelAccessStatistic>> labelToLabelAccessMap = SoftwareUtil.getLabelAccessStatisticsMap(r, modes);
@@ -514,7 +513,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		for (Runnable r : getRunnableList(process, modes)) {
 			Map<Label, List<LabelAccessStatistic>> readLabelAccessStatisticsMap = SoftwareUtil.getReadLabelAccessStatisticsMap(r, modes);
@@ -535,7 +534,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Map: Label -&gt; List of LabelAccessStatistic
 	 */
-	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Label, List<LabelAccessStatistic>> result = new HashMap<Label, List<LabelAccessStatistic>>();
 		for (Runnable r : getRunnableList(process, modes)) {
 			Map<Label, List<LabelAccessStatistic>> writeLabelAcessStatisticsMap = SoftwareUtil.getWriteLabelAccessStatisticsMap(r, modes);
@@ -553,7 +552,7 @@ public class SoftwareUtil {
 	 * Returns the reads from a process to a certain label. Evaluates the LabelAccessStatistic. 
 	 * Definition of TimeType is possible. Null value returns the average case.
 	 */
-	public static float getLabelReadCount(Label label, Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType timeType) {
+	public static float getLabelReadCount(Label label, Process process, EMap<ModeLabel, String> modes, TimeType timeType) {
 		float reads = 0f;
 		if (timeType == null)
 			timeType = TimeType.ACET;
@@ -589,7 +588,7 @@ public class SoftwareUtil {
 	 * Returns the writes from a process to a certain label. Evaluates the LabelAccessStatistic. 
 	 * Definition of TimeType is possible. Null value returns the average case.
 	 */
-	public static float getLabelWriteCount(Label label, Process process, EMap<ModeLabel, ModeLiteral> modes, TimeType timeType) {
+	public static float getLabelWriteCount(Label label, Process process, EMap<ModeLabel, String> modes, TimeType timeType) {
 		float writes = 0f;
 		if (timeType == null)
 			timeType = TimeType.ACET;
@@ -626,7 +625,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables
 	 */
-	public static List<Runnable> getRunnableList(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Runnable> getRunnableList(Process process, EMap<ModeLabel, String> modes) {
 		return SoftwareUtil.collectCalls(process, modes, TaskRunnableCall.class)
 			.stream().map(call -> call.getRunnable()).filter(Objects::nonNull).collect(Collectors.toList());
 	}
@@ -638,7 +637,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of runnables called by the process
 	 */
-	public static Set<Runnable> getRunnableSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Runnable> getRunnableSet(Process process, EMap<ModeLabel, String> modes) {
 		return new HashSet<>(getRunnableList(process, modes));
 	}
 
@@ -677,7 +676,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables 
 	 */
-	public static List<Runnable> getReaderListOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Runnable> getReaderListOfLabel(Label label, EMap<ModeLabel, String> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess() == LabelAccessEnum.READ) {
@@ -697,7 +696,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Labels
 	 */
-	public static Set<Runnable> getReadersSetOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Runnable> getReadersSetOfLabel(Label label, EMap<ModeLabel, String> modes) {
 		return new HashSet<>(getReaderListOfLabel(label, modes));
 	}
 
@@ -708,7 +707,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables
 	 */
-	public static List<Runnable> getWriterListOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Runnable> getWriterListOfLabel(Label label, EMap<ModeLabel, String> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.WRITE)) {
@@ -728,7 +727,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of Runnables 
 	 */
-	public static Set<Runnable> getWriterSetOfLabel(Label label, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<Runnable> getWriterSetOfLabel(Label label, EMap<ModeLabel, String> modes) {
 		return new HashSet<>(getWriterListOfLabel(label, modes));
 	}
 
@@ -739,7 +738,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of SetEvents
 	 */
-	public static List<SetEvent> collectSetEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<SetEvent> collectSetEvents(Process process, EMap<ModeLabel, String> modes) {
 		return SoftwareUtil.collectCalls(process, modes, SetEvent.class);
 	}
 
@@ -750,7 +749,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of ClearEvents
 	 */
-	public static List<ClearEvent> collectClearEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<ClearEvent> collectClearEvents(Process process, EMap<ModeLabel, String> modes) {
 		return SoftwareUtil.collectCalls(process, modes, ClearEvent.class);
 	}
 
@@ -761,7 +760,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of WaitEvents
 	 */
-	public static List<WaitEvent> collectWaitEvents(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<WaitEvent> collectWaitEvents(Process process, EMap<ModeLabel, String> modes) {
 		return SoftwareUtil.collectCalls(process, modes, WaitEvent.class);
 	}
 
@@ -772,7 +771,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of CallSequenceItems
 	 */
-	public static List<CallSequenceItem> collectEventsOfProcess(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<CallSequenceItem> collectEventsOfProcess(Process process, EMap<ModeLabel, String> modes) {
 		return SoftwareUtil.collectCalls(process, modes,
 				(call -> call instanceof ClearEvent || call instanceof SetEvent || call instanceof WaitEvent));
 	}
@@ -785,7 +784,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Labels
 	 */
-	 public static List<Label> getInterTaskCommunication(Process sender, Process receiver, EMap<ModeLabel, ModeLiteral> modes) {
+	 public static List<Label> getInterTaskCommunication(Process sender, Process receiver, EMap<ModeLabel, String> modes) {
 		ArrayList<Label> result = new ArrayList<Label>();
 		result.addAll(getWriteLabelSet(sender, modes));
 		result.retainAll(getReadLabelSet(receiver, modes));
@@ -799,7 +798,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Processes
 	 */
-	public static List<Process> getProcesses(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Process> getProcesses(Runnable runnable, EMap<ModeLabel, String> modes) {
 		ArrayList<Process> result = new ArrayList<>();
 		for (TaskRunnableCall trc : runnable.getTaskRunnableCalls()) {
 			Process proc = trc.getContainingProcess(); // null if container is not of type Process
@@ -823,7 +822,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables
 	 */
-	public static List<Runnable> getRunnableCallParents(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Runnable> getRunnableCallParents(Runnable runnable, EMap<ModeLabel, String> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
 		for (RunnableCall rc : runnable.getRunnableCalls()) {
 			Runnable run = rc.getContainingRunnable();
@@ -854,7 +853,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables
 	 */
-	public static List<Runnable> getCalledRunnables(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Runnable> getCalledRunnables(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, RunnableCall.class)
 			.stream().map(rc -> rc.getRunnable()).filter(Objects::nonNull).collect(Collectors.toList());
 	}
@@ -866,7 +865,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of ExecutionNeeds
 	 */
-	public static List<ExecutionNeed> getExecutionNeeds(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<ExecutionNeed> getExecutionNeeds(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, ExecutionNeed.class);
 	}
 
@@ -877,7 +876,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of ExecutionNeeds
 	 */
-	public static List<ExecutionNeed> getExecutionNeeds(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<ExecutionNeed> getExecutionNeeds(Process process, EMap<ModeLabel, String> modes) {
 		List<ExecutionNeed> result = new ArrayList<>();
 		List<Runnable> runnableList = getRunnableList(process, modes);
 		for (Runnable run : runnableList) {
@@ -893,7 +892,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Ticks
 	 */
-	public static List<Ticks> getTicks(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Ticks> getTicks(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, Ticks.class);
 	}
 
@@ -904,7 +903,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Ticks
 	 */
-	public static List<Ticks> getTicks(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static List<Ticks> getTicks(Process process, EMap<ModeLabel, String> modes) {
 		List<Ticks> result = new ArrayList<>();
 		for(Runnable run : getRunnableList(process, modes)) {
 			result.addAll(getTicks(run, modes));
@@ -919,7 +918,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of ServerCall
 	 */
-	public static Set<ServerCall> getServerCallSet(Runnable runnable, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<ServerCall> getServerCallSet(Runnable runnable, EMap<ModeLabel, String> modes) {
 		return collectRunnableItems(runnable, modes, ServerCall.class).stream().collect(Collectors.toSet());
 	}
 
@@ -930,7 +929,7 @@ public class SoftwareUtil {
 	 * @return
 	 * 		Set of ServerCall
 	 */
-	public static Set<ServerCall> getServerCallSet(Process process, EMap<ModeLabel, ModeLiteral> modes) {
+	public static Set<ServerCall> getServerCallSet(Process process, EMap<ModeLabel, String> modes) {
 		HashSet<ServerCall> result = new HashSet<>(); 
 		for (Runnable run : getRunnableList(process, modes)) {
 			result.addAll(getServerCallSet(run, modes));

@@ -132,6 +132,7 @@ import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
@@ -212,6 +213,11 @@ import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
@@ -219,11 +225,9 @@ import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -1016,6 +1020,28 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseIAnnotatable(mode);
 				if (result == null) result = caseIReferable(mode);
 				if (result == null) result = caseINamed(mode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.NUMERIC_MODE: {
+				NumericMode numericMode = (NumericMode)theEObject;
+				T1 result = caseNumericMode(numericMode);
+				if (result == null) result = caseMode(numericMode);
+				if (result == null) result = caseReferableBaseObject(numericMode);
+				if (result == null) result = caseIAnnotatable(numericMode);
+				if (result == null) result = caseIReferable(numericMode);
+				if (result == null) result = caseINamed(numericMode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.ENUM_MODE: {
+				EnumMode enumMode = (EnumMode)theEObject;
+				T1 result = caseEnumMode(enumMode);
+				if (result == null) result = caseMode(enumMode);
+				if (result == null) result = caseReferableBaseObject(enumMode);
+				if (result == null) result = caseIAnnotatable(enumMode);
+				if (result == null) result = caseIReferable(enumMode);
+				if (result == null) result = caseINamed(enumMode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -2735,42 +2761,60 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<ModeLabel, ModeLiteral> modeValueMapEntry = (Map.Entry<ModeLabel, ModeLiteral>)theEObject;
+				@SuppressWarnings("unchecked") Map.Entry<ModeLabel, String> modeValueMapEntry = (Map.Entry<ModeLabel, String>)theEObject;
 				T1 result = caseModeValueMapEntry(modeValueMapEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: {
-				ModeValueDisjunction modeValueDisjunction = (ModeValueDisjunction)theEObject;
-				T1 result = caseModeValueDisjunction(modeValueDisjunction);
-				if (result == null) result = caseBaseObject(modeValueDisjunction);
-				if (result == null) result = caseIAnnotatable(modeValueDisjunction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY: {
-				ModeValueDisjunctionEntry modeValueDisjunctionEntry = (ModeValueDisjunctionEntry)theEObject;
-				T1 result = caseModeValueDisjunctionEntry(modeValueDisjunctionEntry);
-				if (result == null) result = caseBaseObject(modeValueDisjunctionEntry);
-				if (result == null) result = caseIAnnotatable(modeValueDisjunctionEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_VALUE: {
 				ModeValue modeValue = (ModeValue)theEObject;
 				T1 result = caseModeValue(modeValue);
-				if (result == null) result = caseModeValueDisjunctionEntry(modeValue);
 				if (result == null) result = caseBaseObject(modeValue);
 				if (result == null) result = caseIAnnotatable(modeValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: {
-				ModeValueConjunction modeValueConjunction = (ModeValueConjunction)theEObject;
-				T1 result = caseModeValueConjunction(modeValueConjunction);
-				if (result == null) result = caseModeValueDisjunctionEntry(modeValueConjunction);
-				if (result == null) result = caseBaseObject(modeValueConjunction);
-				if (result == null) result = caseIAnnotatable(modeValueConjunction);
+			case AmaltheaPackage.MODE_ASSIGNMENT: {
+				ModeAssignment modeAssignment = (ModeAssignment)theEObject;
+				T1 result = caseModeAssignment(modeAssignment);
+				if (result == null) result = caseModeValue(modeAssignment);
+				if (result == null) result = caseBaseObject(modeAssignment);
+				if (result == null) result = caseIAnnotatable(modeAssignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION: {
+				ModeConditionDisjunction modeConditionDisjunction = (ModeConditionDisjunction)theEObject;
+				T1 result = caseModeConditionDisjunction(modeConditionDisjunction);
+				if (result == null) result = caseBaseObject(modeConditionDisjunction);
+				if (result == null) result = caseIAnnotatable(modeConditionDisjunction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION_ENTRY: {
+				ModeConditionDisjunctionEntry modeConditionDisjunctionEntry = (ModeConditionDisjunctionEntry)theEObject;
+				T1 result = caseModeConditionDisjunctionEntry(modeConditionDisjunctionEntry);
+				if (result == null) result = caseBaseObject(modeConditionDisjunctionEntry);
+				if (result == null) result = caseIAnnotatable(modeConditionDisjunctionEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_CONDITION: {
+				ModeCondition modeCondition = (ModeCondition)theEObject;
+				T1 result = caseModeCondition(modeCondition);
+				if (result == null) result = caseModeValue(modeCondition);
+				if (result == null) result = caseModeConditionDisjunctionEntry(modeCondition);
+				if (result == null) result = caseBaseObject(modeCondition);
+				if (result == null) result = caseIAnnotatable(modeCondition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AmaltheaPackage.MODE_CONDITION_CONJUNCTION: {
+				ModeConditionConjunction modeConditionConjunction = (ModeConditionConjunction)theEObject;
+				T1 result = caseModeConditionConjunction(modeConditionConjunction);
+				if (result == null) result = caseModeConditionDisjunctionEntry(modeConditionConjunction);
+				if (result == null) result = caseBaseObject(modeConditionConjunction);
+				if (result == null) result = caseIAnnotatable(modeConditionConjunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -4997,6 +5041,36 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseMode(Mode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Numeric Mode</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Numeric Mode</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseNumericMode(NumericMode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Enum Mode</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Enum Mode</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseEnumMode(EnumMode object) {
 		return null;
 	}
 
@@ -7651,37 +7725,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeValueMapEntry(Map.Entry<ModeLabel, ModeLiteral> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mode Value Disjunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mode Value Disjunction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseModeValueDisjunction(ModeValueDisjunction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mode Value Disjunction Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mode Value Disjunction Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseModeValueDisjunctionEntry(ModeValueDisjunctionEntry object) {
+	public T1 caseModeValueMapEntry(Map.Entry<ModeLabel, String> object) {
 		return null;
 	}
 
@@ -7701,17 +7745,77 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mode Value Conjunction</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mode Value Conjunction</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Assignment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeValueConjunction(ModeValueConjunction object) {
+	public T1 caseModeAssignment(ModeAssignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Condition Disjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Condition Disjunction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeConditionDisjunction(ModeConditionDisjunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Condition Disjunction Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Condition Disjunction Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeConditionDisjunctionEntry(ModeConditionDisjunctionEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Condition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeCondition(ModeCondition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mode Condition Conjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mode Condition Conjunction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseModeConditionConjunction(ModeConditionConjunction object) {
 		return null;
 	}
 

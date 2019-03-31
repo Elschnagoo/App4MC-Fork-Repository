@@ -148,6 +148,7 @@ import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EntityEvent;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
@@ -244,18 +245,22 @@ import org.eclipse.app4mc.amalthea.model.MemoryMappingConstraint;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
 import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.NumericStatistic;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -319,6 +324,7 @@ import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferableBaseObject;
 import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.Requirement;
@@ -482,12 +488,36 @@ public class AmaltheaValidator extends EObjectValidator {
 	public static final int MIN_AVG_MAX_STATISTIC__VALIDATE_INVARIANTS = 2;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Value'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int MODE_VALUE__VALIDATE_INVARIANTS = 3;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Label'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int MODE_LABEL__VALIDATE_INVARIANTS = 4;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Label Access'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int MODE_LABEL_ACCESS__VALIDATE_INVARIANTS = 5;
+
+	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 2;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 5;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -682,6 +712,10 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateContinuousValueBetaDistribution((ContinuousValueBetaDistribution)value, diagnostics, context);
 			case AmaltheaPackage.MODE:
 				return validateMode((Mode)value, diagnostics, context);
+			case AmaltheaPackage.NUMERIC_MODE:
+				return validateNumericMode((NumericMode)value, diagnostics, context);
+			case AmaltheaPackage.ENUM_MODE:
+				return validateEnumMode((EnumMode)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LITERAL:
 				return validateModeLiteral((ModeLiteral)value, diagnostics, context);
 			case AmaltheaPackage.COMPONENTS_MODEL:
@@ -1036,14 +1070,18 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateModeValueList((ModeValueList)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY:
 				return validateModeValueMapEntry((Map.Entry<?, ?>)value, diagnostics, context);
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION:
-				return validateModeValueDisjunction((ModeValueDisjunction)value, diagnostics, context);
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY:
-				return validateModeValueDisjunctionEntry((ModeValueDisjunctionEntry)value, diagnostics, context);
 			case AmaltheaPackage.MODE_VALUE:
 				return validateModeValue((ModeValue)value, diagnostics, context);
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION:
-				return validateModeValueConjunction((ModeValueConjunction)value, diagnostics, context);
+			case AmaltheaPackage.MODE_ASSIGNMENT:
+				return validateModeAssignment((ModeAssignment)value, diagnostics, context);
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION:
+				return validateModeConditionDisjunction((ModeConditionDisjunction)value, diagnostics, context);
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION_ENTRY:
+				return validateModeConditionDisjunctionEntry((ModeConditionDisjunctionEntry)value, diagnostics, context);
+			case AmaltheaPackage.MODE_CONDITION:
+				return validateModeCondition((ModeCondition)value, diagnostics, context);
+			case AmaltheaPackage.MODE_CONDITION_CONJUNCTION:
+				return validateModeConditionConjunction((ModeConditionConjunction)value, diagnostics, context);
 			case AmaltheaPackage.FIXED_PERIODIC:
 				return validateFixedPeriodic((FixedPeriodic)value, diagnostics, context);
 			case AmaltheaPackage.PERIODIC_STIMULUS:
@@ -1260,6 +1298,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTaskMeasurement((TaskMeasurement)value, diagnostics, context);
 			case AmaltheaPackage.RUNNABLE_MEASUREMENT:
 				return validateRunnableMeasurement((RunnableMeasurement)value, diagnostics, context);
+			case AmaltheaPackage.RELATIONAL_OPERATOR:
+				return validateRelationalOperator((RelationalOperator)value, diagnostics, context);
 			case AmaltheaPackage.TIME_UNIT:
 				return validateTimeUnit((TimeUnit)value, diagnostics, context);
 			case AmaltheaPackage.FREQUENCY_UNIT:
@@ -1356,6 +1396,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateDirectionType((DirectionType)value, diagnostics, context);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return validateLabelDataStability((LabelDataStability)value, diagnostics, context);
+			case AmaltheaPackage.MODE_LABEL_ACCESS_ENUM:
+				return validateModeLabelAccessEnum((ModeLabelAccessEnum)value, diagnostics, context);
 			case AmaltheaPackage.RECEIVE_OPERATION:
 				return validateReceiveOperation((ReceiveOperation)value, diagnostics, context);
 			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
@@ -2187,6 +2229,44 @@ public class AmaltheaValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mode, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mode, diagnostics, context);
 		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(mode, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNumericMode(NumericMode numericMode, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(numericMode, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(numericMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(numericMode, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEnumMode(EnumMode enumMode, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(enumMode, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(enumMode, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(enumMode, diagnostics, context);
 		return result;
 	}
 
@@ -4478,26 +4558,28 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModeValueDisjunction(ModeValueDisjunction modeValueDisjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValueDisjunction, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateModeValueDisjunctionEntry(ModeValueDisjunctionEntry modeValueDisjunctionEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValueDisjunctionEntry, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateModeValue(ModeValue modeValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValue, diagnostics, context);
+		if (!validate_NoCircularContainment(modeValue, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modeValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModeValue_validateInvariants(modeValue, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Mode Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeValue_validateInvariants(ModeValue modeValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return modeValue.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -4505,8 +4587,64 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModeValueConjunction(ModeValueConjunction modeValueConjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeValueConjunction, diagnostics, context);
+	public boolean validateModeAssignment(ModeAssignment modeAssignment, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(modeAssignment, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modeAssignment, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModeValue_validateInvariants(modeAssignment, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeConditionDisjunction(ModeConditionDisjunction modeConditionDisjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modeConditionDisjunction, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeConditionDisjunctionEntry(ModeConditionDisjunctionEntry modeConditionDisjunctionEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modeConditionDisjunctionEntry, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeCondition(ModeCondition modeCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(modeCondition, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modeCondition, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModeValue_validateInvariants(modeCondition, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeConditionConjunction(ModeConditionConjunction modeConditionConjunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(modeConditionConjunction, diagnostics, context);
 	}
 
 	/**
@@ -5298,8 +5436,18 @@ public class AmaltheaValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(modeLabel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modeLabel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modeLabel, diagnostics, context);
-		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(modeLabel, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModeLabel_validateInvariants(modeLabel, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Mode Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeLabel_validateInvariants(ModeLabel modeLabel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return modeLabel.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -5381,7 +5529,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateModeLabelAccess(ModeLabelAccess modeLabelAccess, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modeLabelAccess, diagnostics, context);
+		if (!validate_NoCircularContainment(modeLabelAccess, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(modeLabelAccess, diagnostics, context);
+		if (result || diagnostics != null) result &= validateModeLabelAccess_validateInvariants(modeLabelAccess, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Mode Label Access</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeLabelAccess_validateInvariants(ModeLabelAccess modeLabelAccess, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return modeLabelAccess.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -5886,6 +6054,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateRelationalOperator(RelationalOperator relationalOperator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateTimeUnit(TimeUnit timeUnit, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -6310,6 +6487,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLabelDataStability(LabelDataStability labelDataStability, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateModeLabelAccessEnum(ModeLabelAccessEnum modeLabelAccessEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

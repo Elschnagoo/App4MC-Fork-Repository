@@ -1,5 +1,6 @@
 package org.eclipse.app4mc.amalthea.models
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
 import org.eclipse.app4mc.amalthea.model.Label
 import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.Runnable
@@ -8,7 +9,7 @@ import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter
 
 import static org.eclipse.app4mc.amalthea.model.LabelAccessEnum.*
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.EnumMode
 
 class SoftwareModels {
 
@@ -32,12 +33,12 @@ class SoftwareModels {
 		val model = 
 			amalthea [
 				softwareModel [
-					mode [ name = "state"
-						literal [name = "pre-drive" _reg("state1")]
+					mode_Enum [ name = "state"
+						literal [name = "pre-drive" ]
 						literal [name = "drive" ]
 						literal [name = "post-drive" ]
 					]
-					modeLabel [ name = "car-state" initialValue = _ref(ModeLiteral, "state1")]
+					modeLabel [ name = "car-state" mode = _find(EnumMode, "state")  initialValue = "pre-drive"]
 					
 					label [name = "Lab1"]
 					label [name = "Lab2"]

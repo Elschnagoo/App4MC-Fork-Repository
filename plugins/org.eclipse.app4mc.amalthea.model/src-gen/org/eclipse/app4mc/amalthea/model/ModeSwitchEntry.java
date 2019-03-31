@@ -48,12 +48,12 @@ public interface ModeSwitchEntry<T> extends BaseObject, INamed {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
-	 * @see #setCondition(ModeValueDisjunction)
+	 * @see #setCondition(ModeConditionDisjunction)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchEntry_Condition()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	ModeValueDisjunction getCondition();
+	ModeConditionDisjunction getCondition();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getCondition <em>Condition</em>}' containment reference.
@@ -63,7 +63,7 @@ public interface ModeSwitchEntry<T> extends BaseObject, INamed {
 	 * @see #getCondition()
 	 * @generated
 	 */
-	void setCondition(ModeValueDisjunction value);
+	void setCondition(ModeConditionDisjunction value);
 
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.

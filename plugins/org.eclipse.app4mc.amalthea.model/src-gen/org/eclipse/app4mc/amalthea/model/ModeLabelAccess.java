@@ -14,6 +14,9 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +33,8 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getData <em>Data</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getAccess <em>Access</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getModeValue <em>Mode Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getStep <em>Step</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabelAccess()
@@ -66,7 +70,7 @@ public interface ModeLabelAccess extends RunnableItem {
 
 	/**
 	 * Returns the value of the '<em><b>Access</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LabelAccessEnum}.
+	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Access</em>' attribute isn't clear,
@@ -74,49 +78,84 @@ public interface ModeLabelAccess extends RunnableItem {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessEnum
-	 * @see #setAccess(LabelAccessEnum)
+	 * @see org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum
+	 * @see #setAccess(ModeLabelAccessEnum)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabelAccess_Access()
 	 * @model unique="false"
 	 * @generated
 	 */
-	LabelAccessEnum getAccess();
+	ModeLabelAccessEnum getAccess();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getAccess <em>Access</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Access</em>' attribute.
-	 * @see org.eclipse.app4mc.amalthea.model.LabelAccessEnum
+	 * @see org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum
 	 * @see #getAccess()
 	 * @generated
 	 */
-	void setAccess(LabelAccessEnum value);
+	void setAccess(ModeLabelAccessEnum value);
 
 	/**
-	 * Returns the value of the '<em><b>Mode Value</b></em>' reference.
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Just used in case that this access writes a value to a Mode-Label.
 	 * It can be used to define which mode value is written to the label.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Mode Value</em>' reference.
-	 * @see #setModeValue(ModeLiteral)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabelAccess_ModeValue()
-	 * @model
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(String)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabelAccess_Value()
+	 * @model unique="false"
 	 * @generated
 	 */
-	ModeLiteral getModeValue();
+	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getModeValue <em>Mode Value</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mode Value</em>' reference.
-	 * @see #getModeValue()
+	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #getValue()
 	 * @generated
 	 */
-	void setModeValue(ModeLiteral value);
+	void setValue(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Step</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Just used in case of increment or decrement.
+	 * It can be used to define a step other than 1.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Step</em>' attribute.
+	 * @see #setStep(int)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLabelAccess_Step()
+	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveInt"
+	 * @generated
+	 */
+	int getStep();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeLabelAccess#getStep <em>Step</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Step</em>' attribute.
+	 * @see #getStep()
+	 * @generated
+	 */
+	void setStep(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" diagnosticsUnique="false" contextUnique="false"
+	 * @generated
+	 */
+	boolean validateInvariants(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // ModeLabelAccess

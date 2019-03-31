@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Mode;
@@ -435,15 +436,14 @@ public class SWModelImpl extends BaseObjectImpl implements SWModel {
 		if (_modes!=null) {
 			final Function1<Mode, Boolean> _function = new Function1<Mode, Boolean>() {
 				public Boolean apply(final Mode it) {
-					String _name = it.getName();
-					return Boolean.valueOf(Objects.equal(_name, mode));
+					return Boolean.valueOf(((it instanceof EnumMode) && Objects.equal(it.getName(), mode)));
 				}
 			};
 			_findFirst=IterableExtensions.<Mode>findFirst(_modes, _function);
 		}
 		EList<ModeLiteral> _literals = null;
-		if (_findFirst!=null) {
-			_literals=_findFirst.getLiterals();
+		if (((EnumMode) _findFirst)!=null) {
+			_literals=((EnumMode) _findFirst).getLiterals();
 		}
 		ModeLiteral _findFirst_1 = null;
 		if (_literals!=null) {

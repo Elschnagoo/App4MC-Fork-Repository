@@ -17,9 +17,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
@@ -28,18 +27,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Value Disjunction Entry</b></em>'.
+ * An implementation of the model object '<em><b>Mode Condition Disjunction Entry</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class ModeValueDisjunctionEntryImpl extends BaseObjectImpl implements ModeValueDisjunctionEntry {
+public abstract class ModeConditionDisjunctionEntryImpl extends BaseObjectImpl implements ModeConditionDisjunctionEntry {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueDisjunctionEntryImpl() {
+	protected ModeConditionDisjunctionEntryImpl() {
 		super();
 	}
 
@@ -50,7 +49,7 @@ public abstract class ModeValueDisjunctionEntryImpl extends BaseObjectImpl imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeValueDisjunctionEntry();
+		return AmaltheaPackage.eINSTANCE.getModeConditionDisjunctionEntry();
 	}
 
 	/**
@@ -59,7 +58,7 @@ public abstract class ModeValueDisjunctionEntryImpl extends BaseObjectImpl imple
 	 * @generated
 	 */
 	@Override
-	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
+	public boolean isSatisfiedBy(final EMap<ModeLabel, String> assignment) {
 		return false;
 	}
 
@@ -72,10 +71,10 @@ public abstract class ModeValueDisjunctionEntryImpl extends BaseObjectImpl imple
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP:
-				return isSatisfiedBy((EMap<ModeLabel, ModeLiteral>)arguments.get(0));
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP:
+				return isSatisfiedBy((EMap<ModeLabel, String>)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //ModeValueDisjunctionEntryImpl
+} //ModeConditionDisjunctionEntryImpl

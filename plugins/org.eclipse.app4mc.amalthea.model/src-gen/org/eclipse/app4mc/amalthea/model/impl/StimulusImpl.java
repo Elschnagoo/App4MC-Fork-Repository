@@ -19,7 +19,7 @@ import java.util.Collection;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ITaggable;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
@@ -83,7 +83,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeValueDisjunction enablingModeValueList;
+	protected ModeConditionDisjunction enablingModeValueList;
 
 	/**
 	 * The cached value of the '{@link #getDisablingModeValueList() <em>Disabling Mode Value List</em>}' containment reference.
@@ -93,7 +93,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeValueDisjunction disablingModeValueList;
+	protected ModeConditionDisjunction disablingModeValueList;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,7 +178,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public ModeValueDisjunction getEnablingModeValueList() {
+	public ModeConditionDisjunction getEnablingModeValueList() {
 		return enablingModeValueList;
 	}
 
@@ -187,8 +187,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnablingModeValueList(ModeValueDisjunction newEnablingModeValueList, NotificationChain msgs) {
-		ModeValueDisjunction oldEnablingModeValueList = enablingModeValueList;
+	public NotificationChain basicSetEnablingModeValueList(ModeConditionDisjunction newEnablingModeValueList, NotificationChain msgs) {
+		ModeConditionDisjunction oldEnablingModeValueList = enablingModeValueList;
 		enablingModeValueList = newEnablingModeValueList;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, oldEnablingModeValueList, newEnablingModeValueList);
@@ -203,7 +203,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public void setEnablingModeValueList(ModeValueDisjunction newEnablingModeValueList) {
+	public void setEnablingModeValueList(ModeConditionDisjunction newEnablingModeValueList) {
 		if (newEnablingModeValueList != enablingModeValueList) {
 			NotificationChain msgs = null;
 			if (enablingModeValueList != null)
@@ -223,7 +223,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public ModeValueDisjunction getDisablingModeValueList() {
+	public ModeConditionDisjunction getDisablingModeValueList() {
 		return disablingModeValueList;
 	}
 
@@ -232,8 +232,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDisablingModeValueList(ModeValueDisjunction newDisablingModeValueList, NotificationChain msgs) {
-		ModeValueDisjunction oldDisablingModeValueList = disablingModeValueList;
+	public NotificationChain basicSetDisablingModeValueList(ModeConditionDisjunction newDisablingModeValueList, NotificationChain msgs) {
+		ModeConditionDisjunction oldDisablingModeValueList = disablingModeValueList;
 		disablingModeValueList = newDisablingModeValueList;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, oldDisablingModeValueList, newDisablingModeValueList);
@@ -248,7 +248,7 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public void setDisablingModeValueList(ModeValueDisjunction newDisablingModeValueList) {
+	public void setDisablingModeValueList(ModeConditionDisjunction newDisablingModeValueList) {
 		if (newDisablingModeValueList != disablingModeValueList) {
 			NotificationChain msgs = null;
 			if (disablingModeValueList != null)
@@ -331,10 +331,10 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				setSetModeValueList((ModeValueList)newValue);
 				return;
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				setEnablingModeValueList((ModeValueDisjunction)newValue);
+				setEnablingModeValueList((ModeConditionDisjunction)newValue);
 				return;
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				setDisablingModeValueList((ModeValueDisjunction)newValue);
+				setDisablingModeValueList((ModeConditionDisjunction)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -355,10 +355,10 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				setSetModeValueList((ModeValueList)null);
 				return;
 			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				setEnablingModeValueList((ModeValueDisjunction)null);
+				setEnablingModeValueList((ModeConditionDisjunction)null);
 				return;
 			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				setDisablingModeValueList((ModeValueDisjunction)null);
+				setDisablingModeValueList((ModeConditionDisjunction)null);
 				return;
 		}
 		super.eUnset(featureID);

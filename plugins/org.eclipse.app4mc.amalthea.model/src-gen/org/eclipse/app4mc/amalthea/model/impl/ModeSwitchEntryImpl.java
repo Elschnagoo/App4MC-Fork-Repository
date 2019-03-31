@@ -18,8 +18,8 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.INamed;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -79,7 +79,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeValueDisjunction condition;
+	protected ModeConditionDisjunction condition;
 
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
@@ -139,7 +139,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * @generated
 	 */
 	@Override
-	public ModeValueDisjunction getCondition() {
+	public ModeConditionDisjunction getCondition() {
 		return condition;
 	}
 
@@ -148,8 +148,8 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCondition(ModeValueDisjunction newCondition, NotificationChain msgs) {
-		ModeValueDisjunction oldCondition = condition;
+	public NotificationChain basicSetCondition(ModeConditionDisjunction newCondition, NotificationChain msgs) {
+		ModeConditionDisjunction oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION, oldCondition, newCondition);
@@ -164,7 +164,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * @generated
 	 */
 	@Override
-	public void setCondition(ModeValueDisjunction newCondition) {
+	public void setCondition(ModeConditionDisjunction newCondition) {
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
@@ -238,7 +238,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 				setName((String)newValue);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				setCondition((ModeValueDisjunction)newValue);
+				setCondition((ModeConditionDisjunction)newValue);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
@@ -260,7 +260,7 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 				setName(NAME_EDEFAULT);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				setCondition((ModeValueDisjunction)null);
+				setCondition((ModeConditionDisjunction)null);
 				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();

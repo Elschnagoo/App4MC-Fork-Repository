@@ -19,24 +19,24 @@ import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Mode Value Disjunction</b></em>'.
+ * A representation of the model object '<em><b>Mode Condition Conjunction</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunction#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeConditionConjunction#getEntries <em>Entries</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueDisjunction()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeConditionConjunction()
  * @model
  * @generated
  */
-public interface ModeValueDisjunction extends BaseObject {
+public interface ModeConditionConjunction extends ModeConditionDisjunctionEntry {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeCondition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
@@ -44,18 +44,18 @@ public interface ModeValueDisjunction extends BaseObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueDisjunction_Entries()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeConditionConjunction_Entries()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<ModeValueDisjunctionEntry> getEntries();
+	EList<ModeCondition> getEntries();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
+	 * @model unique="false" contextMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
-	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);
+	boolean isSatisfiedBy(EMap<ModeLabel, String> context);
 
-} // ModeValueDisjunction
+} // ModeConditionConjunction

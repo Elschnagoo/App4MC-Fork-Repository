@@ -122,6 +122,7 @@ import org.eclipse.app4mc.amalthea.model.DoubleObject;
 import org.eclipse.app4mc.amalthea.model.EarliestDeadlineFirst;
 import org.eclipse.app4mc.amalthea.model.EarlyReleaseFairPD2;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventChainContainer;
@@ -193,18 +194,20 @@ import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
 import org.eclipse.app4mc.amalthea.model.MemoryType;
 import org.eclipse.app4mc.amalthea.model.MinAvgMaxStatistic;
-import org.eclipse.app4mc.amalthea.model.Mode;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeValueList;
 import org.eclipse.app4mc.amalthea.model.NonAtomicDataCoherency;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.OSEK;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
@@ -258,6 +261,7 @@ import org.eclipse.app4mc.amalthea.model.QualifiedPort;
 import org.eclipse.app4mc.amalthea.model.RateMonotonic;
 import org.eclipse.app4mc.amalthea.model.ReceiveOperation;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
+import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.RunEntityCallStatistic;
@@ -452,7 +456,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CONTINUOUS_VALUE_GAUSS_DISTRIBUTION: return createContinuousValueGaussDistribution();
 			case AmaltheaPackage.CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION: return createContinuousValueWeibullEstimatorsDistribution();
 			case AmaltheaPackage.CONTINUOUS_VALUE_BETA_DISTRIBUTION: return createContinuousValueBetaDistribution();
-			case AmaltheaPackage.MODE: return createMode();
+			case AmaltheaPackage.NUMERIC_MODE: return createNumericMode();
+			case AmaltheaPackage.ENUM_MODE: return createEnumMode();
 			case AmaltheaPackage.MODE_LITERAL: return createModeLiteral();
 			case AmaltheaPackage.COMPONENTS_MODEL: return createComponentsModel();
 			case AmaltheaPackage.COMPONENT: return createComponent();
@@ -587,9 +592,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.STIMULI_MODEL: return createStimuliModel();
 			case AmaltheaPackage.MODE_VALUE_LIST: return createModeValueList();
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY: return (EObject)createModeValueMapEntry();
-			case AmaltheaPackage.MODE_VALUE_DISJUNCTION: return createModeValueDisjunction();
-			case AmaltheaPackage.MODE_VALUE: return createModeValue();
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION: return createModeValueConjunction();
+			case AmaltheaPackage.MODE_ASSIGNMENT: return createModeAssignment();
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION: return createModeConditionDisjunction();
+			case AmaltheaPackage.MODE_CONDITION: return createModeCondition();
+			case AmaltheaPackage.MODE_CONDITION_CONJUNCTION: return createModeConditionConjunction();
 			case AmaltheaPackage.PERIODIC_STIMULUS: return createPeriodicStimulus();
 			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS: return createRelativePeriodicStimulus();
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: return createVariableRateStimulus();
@@ -693,6 +699,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case AmaltheaPackage.RELATIONAL_OPERATOR:
+				return createRelationalOperatorFromString(eDataType, initialValue);
 			case AmaltheaPackage.TIME_UNIT:
 				return createTimeUnitFromString(eDataType, initialValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
@@ -789,6 +797,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createDirectionTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return createLabelDataStabilityFromString(eDataType, initialValue);
+			case AmaltheaPackage.MODE_LABEL_ACCESS_ENUM:
+				return createModeLabelAccessEnumFromString(eDataType, initialValue);
 			case AmaltheaPackage.RECEIVE_OPERATION:
 				return createReceiveOperationFromString(eDataType, initialValue);
 			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
@@ -828,6 +838,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case AmaltheaPackage.RELATIONAL_OPERATOR:
+				return convertRelationalOperatorToString(eDataType, instanceValue);
 			case AmaltheaPackage.TIME_UNIT:
 				return convertTimeUnitToString(eDataType, instanceValue);
 			case AmaltheaPackage.FREQUENCY_UNIT:
@@ -924,6 +936,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertDirectionTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_DATA_STABILITY:
 				return convertLabelDataStabilityToString(eDataType, instanceValue);
+			case AmaltheaPackage.MODE_LABEL_ACCESS_ENUM:
+				return convertModeLabelAccessEnumToString(eDataType, instanceValue);
 			case AmaltheaPackage.RECEIVE_OPERATION:
 				return convertReceiveOperationToString(eDataType, instanceValue);
 			case AmaltheaPackage.LABEL_ACCESS_DATA_STABILITY:
@@ -1510,9 +1524,20 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public Mode createMode() {
-		ModeImpl mode = new ModeImpl();
-		return mode;
+	public NumericMode createNumericMode() {
+		NumericModeImpl numericMode = new NumericModeImpl();
+		return numericMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EnumMode createEnumMode() {
+		EnumModeImpl enumMode = new EnumModeImpl();
+		return enumMode;
 	}
 
 	/**
@@ -2982,7 +3007,7 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<ModeLabel, ModeLiteral> createModeValueMapEntry() {
+	public Map.Entry<ModeLabel, String> createModeValueMapEntry() {
 		ModeValueMapEntryImpl modeValueMapEntry = new ModeValueMapEntryImpl();
 		return modeValueMapEntry;
 	}
@@ -2993,9 +3018,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ModeValueDisjunction createModeValueDisjunction() {
-		ModeValueDisjunctionImpl modeValueDisjunction = new ModeValueDisjunctionImpl();
-		return modeValueDisjunction;
+	public ModeAssignment createModeAssignment() {
+		ModeAssignmentImpl modeAssignment = new ModeAssignmentImpl();
+		return modeAssignment;
 	}
 
 	/**
@@ -3004,9 +3029,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ModeValue createModeValue() {
-		ModeValueImpl modeValue = new ModeValueImpl();
-		return modeValue;
+	public ModeConditionDisjunction createModeConditionDisjunction() {
+		ModeConditionDisjunctionImpl modeConditionDisjunction = new ModeConditionDisjunctionImpl();
+		return modeConditionDisjunction;
 	}
 
 	/**
@@ -3015,9 +3040,20 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ModeValueConjunction createModeValueConjunction() {
-		ModeValueConjunctionImpl modeValueConjunction = new ModeValueConjunctionImpl();
-		return modeValueConjunction;
+	public ModeCondition createModeCondition() {
+		ModeConditionImpl modeCondition = new ModeConditionImpl();
+		return modeCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModeConditionConjunction createModeConditionConjunction() {
+		ModeConditionConjunctionImpl modeConditionConjunction = new ModeConditionConjunctionImpl();
+		return modeConditionConjunction;
 	}
 
 	/**
@@ -4013,6 +4049,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RelationalOperator createRelationalOperatorFromString(EDataType eDataType, String initialValue) {
+		RelationalOperator result = RelationalOperator.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRelationalOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TimeUnit createTimeUnitFromString(EDataType eDataType, String initialValue) {
 		TimeUnit result = TimeUnit.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -4965,6 +5021,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertLabelDataStabilityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModeLabelAccessEnum createModeLabelAccessEnumFromString(EDataType eDataType, String initialValue) {
+		ModeLabelAccessEnum result = ModeLabelAccessEnum.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertModeLabelAccessEnumToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -14,7 +14,9 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,73 +27,89 @@ import org.eclipse.emf.common.util.EMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValue#getValueProvider <em>Value Provider</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValue#getLabel <em>Label</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeValue#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValue()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface ModeValue extends ModeValueDisjunctionEntry {
+public interface ModeValue extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Value Provider</b></em>' reference.
+	 * Returns the value of the '<em><b>Label</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value Provider</em>' reference isn't clear,
+	 * If the meaning of the '<em>Label</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Provider</em>' reference.
-	 * @see #setValueProvider(ModeLabel)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValue_ValueProvider()
+	 * @return the value of the '<em>Label</em>' reference.
+	 * @see #setLabel(ModeLabel)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValue_Label()
 	 * @model required="true"
 	 * @generated
 	 */
-	ModeLabel getValueProvider();
+	ModeLabel getLabel();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeValue#getValueProvider <em>Value Provider</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeValue#getLabel <em>Label</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Provider</em>' reference.
-	 * @see #getValueProvider()
+	 * @param value the new value of the '<em>Label</em>' reference.
+	 * @see #getLabel()
 	 * @generated
 	 */
-	void setValueProvider(ModeLabel value);
+	void setLabel(ModeLabel value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' reference isn't clear,
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' reference.
-	 * @see #setValue(ModeLiteral)
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(String)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValue_Value()
-	 * @model required="true"
+	 * @model unique="false" required="true"
 	 * @generated
 	 */
-	ModeLiteral getValue();
+	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeValue#getValue <em>Value</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeValue#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' reference.
+	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(ModeLiteral value);
+	void setValue(String value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
+	 * @model unique="false" diagnosticsUnique="false" contextUnique="false"
 	 * @generated
 	 */
-	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);
+	boolean validateInvariants(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	ModeLiteral getLiteral();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	Integer getInteger();
 
 } // ModeValue

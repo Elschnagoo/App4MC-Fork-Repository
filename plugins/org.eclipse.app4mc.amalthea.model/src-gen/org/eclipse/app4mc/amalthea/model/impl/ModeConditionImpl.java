@@ -14,58 +14,65 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import com.google.common.base.Objects;
+
 import java.lang.reflect.InvocationTargetException;
 
-import java.util.Collection;
-
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeCondition;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
-import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueConjunction;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
+import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 
-import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Value Conjunction</b></em>'.
+ * An implementation of the model object '<em><b>Mode Condition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueConjunctionImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeConditionImpl#getRelation <em>Relation</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl implements ModeValueConjunction {
+public class ModeConditionImpl extends ModeValueImpl implements ModeCondition {
 	/**
-	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * The default value of the '{@link #getRelation() <em>Relation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntries()
+	 * @see #getRelation()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeValue> entries;
+	protected static final RelationalOperator RELATION_EDEFAULT = RelationalOperator._UNDEFINED_;
+
+	/**
+	 * The cached value of the '{@link #getRelation() <em>Relation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelation()
+	 * @generated
+	 * @ordered
+	 */
+	protected RelationalOperator relation = RELATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueConjunctionImpl() {
+	protected ModeConditionImpl() {
 		super();
 	}
 
@@ -76,7 +83,7 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeValueConjunction();
+		return AmaltheaPackage.eINSTANCE.getModeCondition();
 	}
 
 	/**
@@ -85,11 +92,8 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * @generated
 	 */
 	@Override
-	public EList<ModeValue> getEntries() {
-		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeValue>(ModeValue.class, this, AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES);
-		}
-		return entries;
+	public RelationalOperator getRelation() {
+		return relation;
 	}
 
 	/**
@@ -98,16 +102,11 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * @generated
 	 */
 	@Override
-	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
-		EList<ModeValue> _entries = this.getEntries();
-		for (final ModeValue entry : _entries) {
-			boolean _isSatisfiedBy = entry.isSatisfiedBy(assignment);
-			boolean _not = (!_isSatisfiedBy);
-			if (_not) {
-				return false;
-			}
-		}
-		return true;
+	public void setRelation(RelationalOperator newRelation) {
+		RelationalOperator oldRelation = relation;
+		relation = newRelation == null ? RELATION_EDEFAULT : newRelation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_CONDITION__RELATION, oldRelation, relation));
 	}
 
 	/**
@@ -116,12 +115,13 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
-				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+	public boolean isSatisfiedBy(final EMap<ModeLabel, String> context) {
+		String _get = null;
+		if (context!=null) {
+			_get=context.get(this.getLabel());
 		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		final String labelValue = _get;
+		return ((labelValue == null) || Objects.equal(labelValue, this.getValue()));
 	}
 
 	/**
@@ -132,8 +132,8 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
-				return getEntries();
+			case AmaltheaPackage.MODE_CONDITION__RELATION:
+				return getRelation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,13 +143,11 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
-				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeValue>)newValue);
+			case AmaltheaPackage.MODE_CONDITION__RELATION:
+				setRelation((RelationalOperator)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,8 +161,8 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
-				getEntries().clear();
+			case AmaltheaPackage.MODE_CONDITION__RELATION:
+				setRelation(RELATION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -178,8 +176,8 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION__ENTRIES:
-				return entries != null && !entries.isEmpty();
+			case AmaltheaPackage.MODE_CONDITION__RELATION:
+				return relation != RELATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -191,10 +189,10 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == ModeValueDisjunctionEntry.class) {
+		if (baseClass == ModeConditionDisjunctionEntry.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP: return AmaltheaPackage.MODE_VALUE_CONJUNCTION___IS_SATISFIED_BY__EMAP;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+				case AmaltheaPackage.MODE_CONDITION_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP: return AmaltheaPackage.MODE_CONDITION___IS_SATISFIED_BY__EMAP;
+				default: return -1;
 			}
 		}
 		return super.eDerivedOperationID(baseOperationID, baseClass);
@@ -209,10 +207,26 @@ public class ModeValueConjunctionImpl extends ModeValueDisjunctionEntryImpl impl
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.MODE_VALUE_CONJUNCTION___IS_SATISFIED_BY__EMAP:
-				return isSatisfiedBy((EMap<ModeLabel, ModeLiteral>)arguments.get(0));
+			case AmaltheaPackage.MODE_CONDITION___IS_SATISFIED_BY__EMAP:
+				return isSatisfiedBy((EMap<ModeLabel, String>)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //ModeValueConjunctionImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (relation: ");
+		result.append(relation);
+		result.append(')');
+		return result.toString();
+	}
+
+} //ModeConditionImpl

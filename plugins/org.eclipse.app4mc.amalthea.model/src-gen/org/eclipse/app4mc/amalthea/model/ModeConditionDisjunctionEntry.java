@@ -12,38 +12,27 @@
  * 
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.model.impl;
+package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.Mode;
-
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode</b></em>'.
+ * A representation of the model object '<em><b>Mode Condition Disjunction Entry</b></em>'.
  * <!-- end-user-doc -->
  *
+ *
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeConditionDisjunctionEntry()
+ * @model interface="true" abstract="true"
  * @generated
  */
-public abstract class ModeImpl extends ReferableBaseObjectImpl implements Mode {
+public interface ModeConditionDisjunctionEntry extends BaseObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
-	protected ModeImpl() {
-		super();
-	}
+	boolean isSatisfiedBy(EMap<ModeLabel, String> assignment);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getMode();
-	}
-
-} //ModeImpl
+} // ModeConditionDisjunctionEntry

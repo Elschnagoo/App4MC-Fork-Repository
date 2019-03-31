@@ -14,15 +14,19 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ModeAssignment;
-import org.eclipse.app4mc.amalthea.model.ModeValueList;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunctionEntry;
+import org.eclipse.app4mc.amalthea.model.ModeLabel;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -32,18 +36,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mode Value List</b></em>'.
+ * An implementation of the model object '<em><b>Mode Condition Disjunction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueListImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeConditionDisjunctionImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
+public class ModeConditionDisjunctionImpl extends BaseObjectImpl implements ModeConditionDisjunction {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -52,14 +56,14 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeAssignment> entries;
+	protected EList<ModeConditionDisjunctionEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModeValueListImpl() {
+	protected ModeConditionDisjunctionImpl() {
 		super();
 	}
 
@@ -70,7 +74,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getModeValueList();
+		return AmaltheaPackage.eINSTANCE.getModeConditionDisjunction();
 	}
 
 	/**
@@ -79,9 +83,9 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * @generated
 	 */
 	@Override
-	public EList<ModeAssignment> getEntries() {
+	public EList<ModeConditionDisjunctionEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeAssignment>(ModeAssignment.class, this, AmaltheaPackage.MODE_VALUE_LIST__ENTRIES);
+			entries = new EObjectContainmentEList<ModeConditionDisjunctionEntry>(ModeConditionDisjunctionEntry.class, this, AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES);
 		}
 		return entries;
 	}
@@ -92,9 +96,26 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	 * @generated
 	 */
 	@Override
+	public boolean isSatisfiedBy(final EMap<ModeLabel, String> context) {
+		EList<ModeConditionDisjunctionEntry> _entries = this.getEntries();
+		for (final ModeConditionDisjunctionEntry entry : _entries) {
+			boolean _isSatisfiedBy = entry.isSatisfiedBy(context);
+			if (_isSatisfiedBy) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -108,7 +129,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				return getEntries();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -123,9 +144,9 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeAssignment>)newValue);
+				getEntries().addAll((Collection<? extends ModeConditionDisjunctionEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -139,7 +160,7 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				getEntries().clear();
 				return;
 		}
@@ -154,10 +175,25 @@ public class ModeValueListImpl extends BaseObjectImpl implements ModeValueList {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE_LIST__ENTRIES:
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION__ENTRIES:
 				return entries != null && !entries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModeValueListImpl
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION___IS_SATISFIED_BY__EMAP:
+				return isSatisfiedBy((EMap<ModeLabel, String>)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+} //ModeConditionDisjunctionImpl

@@ -34,7 +34,7 @@ package org.eclipse.app4mc.amalthea.model;
 public interface ModeLiteral extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Containing Mode</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Mode#getLiterals <em>Literals</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.EnumMode#getLiterals <em>Literals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Containing Mode</em>' container reference isn't clear,
@@ -43,12 +43,12 @@ public interface ModeLiteral extends ReferableBaseObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Mode</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral_ContainingMode()
-	 * @see org.eclipse.app4mc.amalthea.model.Mode#getLiterals
+	 * @see org.eclipse.app4mc.amalthea.model.EnumMode#getLiterals
 	 * @model opposite="literals" transient="false" changeable="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only'"
 	 * @generated
 	 */
-	Mode getContainingMode();
+	EnumMode getContainingMode();
 
 	/**
 	 * <!-- begin-user-doc -->

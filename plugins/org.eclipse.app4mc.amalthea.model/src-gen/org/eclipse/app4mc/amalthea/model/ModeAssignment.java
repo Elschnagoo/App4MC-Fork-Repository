@@ -17,13 +17,13 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Mode</b></em>'.
+ * A representation of the model object '<em><b>Mode Assignment</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMode()
- * @model abstract="true"
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeAssignment()
+ * @model
  * @generated
  */
-public interface Mode extends ReferableBaseObject {
-} // Mode
+public interface ModeAssignment extends ModeValue {
+} // ModeAssignment

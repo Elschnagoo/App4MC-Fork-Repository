@@ -14,23 +14,34 @@
  */
 package org.eclipse.app4mc.amalthea.model.impl;
 
+import com.google.common.base.Objects;
+
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
+import org.eclipse.app4mc.amalthea.model.EnumMode;
+import org.eclipse.app4mc.amalthea.model.Mode;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
-import org.eclipse.app4mc.amalthea.model.ModeValueDisjunctionEntry;
+import org.eclipse.app4mc.amalthea.model.NumericMode;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,32 +51,42 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl#getValueProvider <em>Value Provider</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements ModeValue {
+public abstract class ModeValueImpl extends BaseObjectImpl implements ModeValue {
 	/**
-	 * The cached value of the '{@link #getValueProvider() <em>Value Provider</em>}' reference.
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueProvider()
+	 * @see #getLabel()
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeLabel valueProvider;
+	protected ModeLabel label;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeLiteral value;
+	protected static final String VALUE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,16 +113,16 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	@Override
-	public ModeLabel getValueProvider() {
-		if (valueProvider != null && valueProvider.eIsProxy()) {
-			InternalEObject oldValueProvider = (InternalEObject)valueProvider;
-			valueProvider = (ModeLabel)eResolveProxy(oldValueProvider);
-			if (valueProvider != oldValueProvider) {
+	public ModeLabel getLabel() {
+		if (label != null && label.eIsProxy()) {
+			InternalEObject oldLabel = (InternalEObject)label;
+			label = (ModeLabel)eResolveProxy(oldLabel);
+			if (label != oldLabel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER, oldValueProvider, valueProvider));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_VALUE__LABEL, oldLabel, label));
 			}
 		}
-		return valueProvider;
+		return label;
 	}
 
 	/**
@@ -109,8 +130,8 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeLabel basicGetValueProvider() {
-		return valueProvider;
+	public ModeLabel basicGetLabel() {
+		return label;
 	}
 
 	/**
@@ -119,11 +140,11 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	@Override
-	public void setValueProvider(ModeLabel newValueProvider) {
-		ModeLabel oldValueProvider = valueProvider;
-		valueProvider = newValueProvider;
+	public void setLabel(ModeLabel newLabel) {
+		ModeLabel oldLabel = label;
+		label = newLabel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER, oldValueProvider, valueProvider));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_VALUE__LABEL, oldLabel, label));
 	}
 
 	/**
@@ -132,24 +153,7 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	@Override
-	public ModeLiteral getValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject)value;
-			value = (ModeLiteral)eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_VALUE__VALUE, oldValue, value));
-			}
-		}
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ModeLiteral basicGetValue() {
+	public String getValue() {
 		return value;
 	}
 
@@ -159,8 +163,8 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	@Override
-	public void setValue(ModeLiteral newValue) {
-		ModeLiteral oldValue = value;
+	public void setValue(String newValue) {
+		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_VALUE__VALUE, oldValue, value));
@@ -172,13 +176,79 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	 * @generated
 	 */
 	@Override
-	public boolean isSatisfiedBy(final EMap<ModeLabel, ModeLiteral> assignment) {
-		ModeLiteral _get = null;
-		if (assignment!=null) {
-			_get=assignment.get(this.getValueProvider());
+	public boolean validateInvariants(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		return AmaltheaValidations.validateInvariants(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModeLiteral getLiteral() {
+		ModeLiteral _xblockexpression = null;
+		{
+			String _value = this.getValue();
+			boolean _tripleEquals = (_value == null);
+			if (_tripleEquals) {
+				return null;
+			}
+			ModeLabel _label = this.getLabel();
+			Mode _mode = null;
+			if (_label!=null) {
+				_mode=_label.getMode();
+			}
+			final Mode mode = _mode;
+			ModeLiteral _xifexpression = null;
+			if ((mode instanceof EnumMode)) {
+				final Function1<ModeLiteral, Boolean> _function = new Function1<ModeLiteral, Boolean>() {
+					public Boolean apply(final ModeLiteral it) {
+						String _name = it.getName();
+						String _value = ModeValueImpl.this.getValue();
+						return Boolean.valueOf(Objects.equal(_name, _value));
+					}
+				};
+				_xifexpression = IterableExtensions.<ModeLiteral>findFirst(((EnumMode)mode).getLiterals(), _function);
+			}
+			else {
+				_xifexpression = null;
+			}
+			_xblockexpression = _xifexpression;
 		}
-		final ModeLiteral assign = _get;
-		return ((assign == null) || (assign == this.getValue()));
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Integer getInteger() {
+		Integer _xblockexpression = null;
+		{
+			String _value = this.getValue();
+			boolean _tripleEquals = (_value == null);
+			if (_tripleEquals) {
+				return null;
+			}
+			ModeLabel _label = this.getLabel();
+			Mode _mode = null;
+			if (_label!=null) {
+				_mode=_label.getMode();
+			}
+			final Mode mode = _mode;
+			Integer _xifexpression = null;
+			if (((mode instanceof NumericMode) && this.getValue().matches("-?\\d+"))) {
+				_xifexpression = Integer.valueOf(Integer.parseInt(this.getValue()));
+			}
+			else {
+				_xifexpression = null;
+			}
+			_xblockexpression = _xifexpression;
+		}
+		return _xblockexpression;
 	}
 
 	/**
@@ -189,12 +259,11 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER:
-				if (resolve) return getValueProvider();
-				return basicGetValueProvider();
+			case AmaltheaPackage.MODE_VALUE__LABEL:
+				if (resolve) return getLabel();
+				return basicGetLabel();
 			case AmaltheaPackage.MODE_VALUE__VALUE:
-				if (resolve) return getValue();
-				return basicGetValue();
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -207,11 +276,11 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER:
-				setValueProvider((ModeLabel)newValue);
+			case AmaltheaPackage.MODE_VALUE__LABEL:
+				setLabel((ModeLabel)newValue);
 				return;
 			case AmaltheaPackage.MODE_VALUE__VALUE:
-				setValue((ModeLiteral)newValue);
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,11 +294,11 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER:
-				setValueProvider((ModeLabel)null);
+			case AmaltheaPackage.MODE_VALUE__LABEL:
+				setLabel((ModeLabel)null);
 				return;
 			case AmaltheaPackage.MODE_VALUE__VALUE:
-				setValue((ModeLiteral)null);
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -243,28 +312,12 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_VALUE__VALUE_PROVIDER:
-				return valueProvider != null;
+			case AmaltheaPackage.MODE_VALUE__LABEL:
+				return label != null;
 			case AmaltheaPackage.MODE_VALUE__VALUE:
-				return value != null;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == ModeValueDisjunctionEntry.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.MODE_VALUE_DISJUNCTION_ENTRY___IS_SATISFIED_BY__EMAP: return AmaltheaPackage.MODE_VALUE___IS_SATISFIED_BY__EMAP;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**
@@ -276,10 +329,30 @@ public class ModeValueImpl extends ModeValueDisjunctionEntryImpl implements Mode
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.MODE_VALUE___IS_SATISFIED_BY__EMAP:
-				return isSatisfiedBy((EMap<ModeLabel, ModeLiteral>)arguments.get(0));
+			case AmaltheaPackage.MODE_VALUE___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:
+				return validateInvariants((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case AmaltheaPackage.MODE_VALUE___GET_LITERAL:
+				return getLiteral();
+			case AmaltheaPackage.MODE_VALUE___GET_INTEGER:
+				return getInteger();
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ModeValueImpl

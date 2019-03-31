@@ -12,27 +12,38 @@
  * 
  * *******************************************************************************
  */
-package org.eclipse.app4mc.amalthea.model;
+package org.eclipse.app4mc.amalthea.model.impl;
 
-import org.eclipse.emf.common.util.EMap;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.ModeAssignment;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Mode Value Disjunction Entry</b></em>'.
+ * An implementation of the model object '<em><b>Mode Assignment</b></em>'.
  * <!-- end-user-doc -->
  *
- *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeValueDisjunctionEntry()
- * @model abstract="true"
  * @generated
  */
-public interface ModeValueDisjunctionEntry extends BaseObject {
+public class ModeAssignmentImpl extends ModeValueImpl implements ModeAssignment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false" assignmentMapType="org.eclipse.app4mc.amalthea.model.ModeValueMapEntry&lt;org.eclipse.app4mc.amalthea.model.ModeLabel, org.eclipse.app4mc.amalthea.model.ModeLiteral&gt;"
 	 * @generated
 	 */
-	boolean isSatisfiedBy(EMap<ModeLabel, ModeLiteral> assignment);
+	protected ModeAssignmentImpl() {
+		super();
+	}
 
-} // ModeValueDisjunctionEntry
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return AmaltheaPackage.eINSTANCE.getModeAssignment();
+	}
+
+} //ModeAssignmentImpl

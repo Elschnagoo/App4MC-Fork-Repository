@@ -16,7 +16,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
-import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 
 import org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl;
 
@@ -45,7 +44,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ModeLabel,ModeLiteral> {
+public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implements BasicEMap.Entry<ModeLabel,String> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -57,14 +56,24 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	protected ModeLabel key;
 
 	/**
-	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' reference.
+	 * The default value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeLiteral value;
+	protected static final String VALUE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypedValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,15 +137,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeLiteral getTypedValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject)value;
-			value = (ModeLiteral)eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE, oldValue, value));
-			}
-		}
+	public String getTypedValue() {
 		return value;
 	}
 
@@ -145,17 +146,8 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModeLiteral basicGetTypedValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypedValue(ModeLiteral newValue) {
-		ModeLiteral oldValue = value;
+	public void setTypedValue(String newValue) {
+		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE, oldValue, value));
@@ -173,8 +165,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 				if (resolve) return getTypedKey();
 				return basicGetTypedKey();
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE:
-				if (resolve) return getTypedValue();
-				return basicGetTypedValue();
+				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,7 +182,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 				setTypedKey((ModeLabel)newValue);
 				return;
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE:
-				setTypedValue((ModeLiteral)newValue);
+				setTypedValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -209,7 +200,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 				setTypedKey((ModeLabel)null);
 				return;
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE:
-				setTypedValue((ModeLiteral)null);
+				setTypedValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -226,9 +217,25 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY__KEY:
 				return key != null;
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY__VALUE:
-				return value != null;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (value: ");
+		result.append(value);
+		result.append(')');
+		return result.toString();
 	}
 
 	/**
@@ -288,7 +295,7 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * @generated
 	 */
 	@Override
-	public ModeLiteral getValue() {
+	public String getValue() {
 		return getTypedValue();
 	}
 
@@ -298,8 +305,8 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * @generated
 	 */
 	@Override
-	public ModeLiteral setValue(ModeLiteral value) {
-		ModeLiteral oldValue = getValue();
+	public String setValue(String value) {
+		String oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -310,9 +317,9 @@ public class ModeValueMapEntryImpl extends AmaltheaExtendedEObjectImpl implement
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<ModeLabel, ModeLiteral> getEMap() {
+	public EMap<ModeLabel, String> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<ModeLabel, ModeLiteral>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<ModeLabel, String>)container.eGet(eContainmentFeature());
 	}
 
 } //ModeValueMapEntryImpl

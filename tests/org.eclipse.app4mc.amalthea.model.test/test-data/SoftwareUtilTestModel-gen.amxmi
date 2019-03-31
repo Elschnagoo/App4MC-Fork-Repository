@@ -46,11 +46,11 @@
     <labels name="Lab3" constant="false" bVolatile="false"/>
     <labels name="Lab4" constant="false" bVolatile="false"/>
     <labels name="Lab5" constant="false" bVolatile="false"/>
-    <modes name="state">
+    <modes xsi:type="am:EnumMode" name="state">
       <literals name="pre-drive"/>
       <literals name="drive"/>
       <literals name="post-drive"/>
     </modes>
-    <modeLabels name="car-state" initialValue="state/pre-drive?type=ModeLiteral"/>
+    <modeLabels name="car-state" mode="state?type=EnumMode" initialValue="pre-drive"/>
   </swModel>
 </am:Amalthea>
