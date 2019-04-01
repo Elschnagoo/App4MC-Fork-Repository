@@ -32,8 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getSetModeValueList <em>Set Mode Value List</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getExecutionCondition <em>Execution Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Stimulus#getAffectedProcesses <em>Affected Processes</em>}</li>
  * </ul>
  *
@@ -69,56 +68,30 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	void setSetModeValueList(ModeValueList value);
 
 	/**
-	 * Returns the value of the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Enabling Mode Value List</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Execution Condition</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Enabling Mode Value List</em>' containment reference.
-	 * @see #setEnablingModeValueList(ModeConditionDisjunction)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_EnablingModeValueList()
+	 * @return the value of the '<em>Execution Condition</em>' containment reference.
+	 * @see #setExecutionCondition(ModeConditionDisjunction)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_ExecutionCondition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ModeConditionDisjunction getEnablingModeValueList();
+	ModeConditionDisjunction getExecutionCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getExecutionCondition <em>Execution Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Enabling Mode Value List</em>' containment reference.
-	 * @see #getEnablingModeValueList()
+	 * @param value the new value of the '<em>Execution Condition</em>' containment reference.
+	 * @see #getExecutionCondition()
 	 * @generated
 	 */
-	void setEnablingModeValueList(ModeConditionDisjunction value);
-
-	/**
-	 * Returns the value of the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Disabling Mode Value List</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Disabling Mode Value List</em>' containment reference.
-	 * @see #setDisablingModeValueList(ModeConditionDisjunction)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getStimulus_DisablingModeValueList()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ModeConditionDisjunction getDisablingModeValueList();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Disabling Mode Value List</em>' containment reference.
-	 * @see #getDisablingModeValueList()
-	 * @generated
-	 */
-	void setDisablingModeValueList(ModeConditionDisjunction value);
+	void setExecutionCondition(ModeConditionDisjunction value);
 
 	/**
 	 * Returns the value of the '<em><b>Affected Processes</b></em>' reference list.

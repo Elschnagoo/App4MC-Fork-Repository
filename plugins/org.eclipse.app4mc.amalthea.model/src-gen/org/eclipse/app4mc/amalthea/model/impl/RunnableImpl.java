@@ -23,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Component;
+import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
@@ -55,6 +56,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getExecutionCondition <em>Execution Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableItems <em>Runnable Items</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivations <em>Activations</em>}</li>
@@ -70,6 +72,16 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * @generated
  */
 public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclipse.app4mc.amalthea.model.Runnable {
+	/**
+	 * The cached value of the '{@link #getExecutionCondition() <em>Execution Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected ModeConditionDisjunction executionCondition;
+
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -187,6 +199,51 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getRunnable();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModeConditionDisjunction getExecutionCondition() {
+		return executionCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExecutionCondition(ModeConditionDisjunction newExecutionCondition, NotificationChain msgs) {
+		ModeConditionDisjunction oldExecutionCondition = executionCondition;
+		executionCondition = newExecutionCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION, oldExecutionCondition, newExecutionCondition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExecutionCondition(ModeConditionDisjunction newExecutionCondition) {
+		if (newExecutionCondition != executionCondition) {
+			NotificationChain msgs = null;
+			if (executionCondition != null)
+				msgs = ((InternalEObject)executionCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION, null, msgs);
+			if (newExecutionCondition != null)
+				msgs = ((InternalEObject)newExecutionCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION, null, msgs);
+			msgs = basicSetExecutionCondition(newExecutionCondition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION, newExecutionCondition, newExecutionCondition));
 	}
 
 	/**
@@ -406,6 +463,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
+				return basicSetExecutionCondition(null, msgs);
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
@@ -422,6 +481,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
+				return getExecutionCondition();
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return getParameters();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
@@ -456,6 +517,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
+				setExecutionCondition((ModeConditionDisjunction)newValue);
+				return;
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends RunnableParameter>)newValue);
@@ -492,6 +556,9 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
+				setExecutionCondition((ModeConditionDisjunction)null);
+				return;
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -525,6 +592,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
+				return executionCondition != null;
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:

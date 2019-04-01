@@ -224,8 +224,6 @@ public class PeriodicBurstStimulusItemProvider extends StimulusItemProvider {
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Offset() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getFixedPeriodic_Recurrence() ||
 			childFeature == AmaltheaPackage.eINSTANCE.getPeriodicBurstStimulus_BurstLength() ||

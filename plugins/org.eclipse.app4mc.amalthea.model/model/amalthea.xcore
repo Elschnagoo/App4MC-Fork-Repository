@@ -2817,8 +2817,7 @@ class StimuliModel extends BaseObject
 abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
 	contains ModeValueList setModeValueList
-	contains ModeConditionDisjunction enablingModeValueList
-	contains ModeConditionDisjunction disablingModeValueList
+	contains ModeConditionDisjunction executionCondition
 	
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of affected processes (Process).</b></p>")
@@ -3520,9 +3519,11 @@ class RunnableParameter extends ReferableBaseObject
  */
 class Runnable extends AbstractMemoryElement
 {
+	contains ModeConditionDisjunction executionCondition
 	contains RunnableParameter[] parameters opposite containingRunnable
 	contains RunnableItem[] runnableItems
 	refers Activation[] activations
+	
 	op Activation getFirstActivation() {
 		activations.head
 	}

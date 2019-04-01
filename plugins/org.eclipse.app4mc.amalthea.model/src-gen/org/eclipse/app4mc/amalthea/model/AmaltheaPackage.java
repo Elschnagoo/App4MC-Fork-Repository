@@ -20400,22 +20400,13 @@ public interface AmaltheaPackage extends EPackage {
 	int STIMULUS__SET_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__ENABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STIMULUS__DISABLING_MODE_VALUE_LIST = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
+	int STIMULUS__EXECUTION_CONDITION = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -20424,7 +20415,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS__AFFECTED_PROCESSES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
+	int STIMULUS__AFFECTED_PROCESSES = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Stimulus</em>' class.
@@ -20433,7 +20424,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 5;
+	int STIMULUS_FEATURE_COUNT = REFERABLE_BASE_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -21103,22 +21094,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIODIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int PERIODIC_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -21284,22 +21266,13 @@ public interface AmaltheaPackage extends EPackage {
 	int RELATIVE_PERIODIC_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIVE_PERIODIC_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIVE_PERIODIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int RELATIVE_PERIODIC_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -21447,22 +21420,13 @@ public interface AmaltheaPackage extends EPackage {
 	int VARIABLE_RATE_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RATE_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_RATE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int VARIABLE_RATE_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -21692,22 +21656,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_SYNTHETIC_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_SYNTHETIC_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIODIC_SYNTHETIC_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int PERIODIC_SYNTHETIC_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -21864,22 +21819,13 @@ public interface AmaltheaPackage extends EPackage {
 	int CUSTOM_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int CUSTOM_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -22018,22 +21964,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SINGLE_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLE_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SINGLE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int SINGLE_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -22172,22 +22109,13 @@ public interface AmaltheaPackage extends EPackage {
 	int INTER_PROCESS_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_PROCESS_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTER_PROCESS_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int INTER_PROCESS_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -22335,22 +22263,13 @@ public interface AmaltheaPackage extends EPackage {
 	int PERIODIC_BURST_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERIODIC_BURST_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERIODIC_BURST_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int PERIODIC_BURST_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -22525,22 +22444,13 @@ public interface AmaltheaPackage extends EPackage {
 	int EVENT_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int EVENT_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -22688,22 +22598,13 @@ public interface AmaltheaPackage extends EPackage {
 	int ARRIVAL_CURVE_STIMULUS__SET_MODE_VALUE_LIST = STIMULUS__SET_MODE_VALUE_LIST;
 
 	/**
-	 * The feature id for the '<em><b>Enabling Mode Value List</b></em>' containment reference.
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARRIVAL_CURVE_STIMULUS__ENABLING_MODE_VALUE_LIST = STIMULUS__ENABLING_MODE_VALUE_LIST;
-
-	/**
-	 * The feature id for the '<em><b>Disabling Mode Value List</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARRIVAL_CURVE_STIMULUS__DISABLING_MODE_VALUE_LIST = STIMULUS__DISABLING_MODE_VALUE_LIST;
+	int ARRIVAL_CURVE_STIMULUS__EXECUTION_CONDITION = STIMULUS__EXECUTION_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Affected Processes</b></em>' reference list.
@@ -26519,13 +26420,22 @@ public interface AmaltheaPackage extends EPackage {
 	int RUNNABLE__MAPPINGS = ABSTRACT_MEMORY_ELEMENT__MAPPINGS;
 
 	/**
+	 * The feature id for the '<em><b>Execution Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__EXECUTION_CONDITION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__PARAMETERS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 0;
+	int RUNNABLE__PARAMETERS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Runnable Items</b></em>' containment reference list.
@@ -26534,7 +26444,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__RUNNABLE_ITEMS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 1;
+	int RUNNABLE__RUNNABLE_ITEMS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Activations</b></em>' reference list.
@@ -26543,7 +26453,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__ACTIVATIONS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 2;
+	int RUNNABLE__ACTIVATIONS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Callback</b></em>' attribute.
@@ -26552,7 +26462,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__CALLBACK = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 3;
+	int RUNNABLE__CALLBACK = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Service</b></em>' attribute.
@@ -26561,7 +26471,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__SERVICE = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 4;
+	int RUNNABLE__SERVICE = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Asil Level</b></em>' attribute.
@@ -26570,7 +26480,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__ASIL_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 5;
+	int RUNNABLE__ASIL_LEVEL = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Section</b></em>' reference.
@@ -26579,7 +26489,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 6;
+	int RUNNABLE__SECTION = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Runnable Calls</b></em>' reference list.
@@ -26588,7 +26498,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 7;
+	int RUNNABLE__RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Task Runnable Calls</b></em>' reference list.
@@ -26597,7 +26507,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 8;
+	int RUNNABLE__TASK_RUNNABLE_CALLS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Referring Components</b></em>' reference list.
@@ -26606,7 +26516,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE__REFERRING_COMPONENTS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 9;
+	int RUNNABLE__REFERRING_COMPONENTS = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
@@ -26615,7 +26525,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 10;
+	int RUNNABLE_FEATURE_COUNT = ABSTRACT_MEMORY_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Compute Unique Name</em>' operation.
@@ -39842,26 +39752,15 @@ public interface AmaltheaPackage extends EPackage {
 	EReference getStimulus_SetModeValueList();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList <em>Enabling Mode Value List</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getExecutionCondition <em>Execution Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Enabling Mode Value List</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Stimulus#getEnablingModeValueList()
+	 * @return the meta object for the containment reference '<em>Execution Condition</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Stimulus#getExecutionCondition()
 	 * @see #getStimulus()
 	 * @generated
 	 */
-	EReference getStimulus_EnablingModeValueList();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList <em>Disabling Mode Value List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Disabling Mode Value List</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Stimulus#getDisablingModeValueList()
-	 * @see #getStimulus()
-	 * @generated
-	 */
-	EReference getStimulus_DisablingModeValueList();
+	EReference getStimulus_ExecutionCondition();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.app4mc.amalthea.model.Stimulus#getAffectedProcesses <em>Affected Processes</em>}'.
@@ -41926,6 +41825,17 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRunnable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Runnable#getExecutionCondition <em>Execution Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Execution Condition</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Runnable#getExecutionCondition()
+	 * @see #getRunnable()
+	 * @generated
+	 */
+	EReference getRunnable_ExecutionCondition();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.app4mc.amalthea.model.Runnable#getParameters <em>Parameters</em>}'.

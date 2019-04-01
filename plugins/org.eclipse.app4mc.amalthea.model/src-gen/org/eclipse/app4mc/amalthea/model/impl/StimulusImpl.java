@@ -47,8 +47,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getSetModeValueList <em>Set Mode Value List</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getEnablingModeValueList <em>Enabling Mode Value List</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getDisablingModeValueList <em>Disabling Mode Value List</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getExecutionCondition <em>Execution Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.StimulusImpl#getAffectedProcesses <em>Affected Processes</em>}</li>
  * </ul>
  *
@@ -76,24 +75,14 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	protected ModeValueList setModeValueList;
 
 	/**
-	 * The cached value of the '{@link #getEnablingModeValueList() <em>Enabling Mode Value List</em>}' containment reference.
+	 * The cached value of the '{@link #getExecutionCondition() <em>Execution Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEnablingModeValueList()
+	 * @see #getExecutionCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeConditionDisjunction enablingModeValueList;
-
-	/**
-	 * The cached value of the '{@link #getDisablingModeValueList() <em>Disabling Mode Value List</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDisablingModeValueList()
-	 * @generated
-	 * @ordered
-	 */
-	protected ModeConditionDisjunction disablingModeValueList;
+	protected ModeConditionDisjunction executionCondition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,8 +167,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public ModeConditionDisjunction getEnablingModeValueList() {
-		return enablingModeValueList;
+	public ModeConditionDisjunction getExecutionCondition() {
+		return executionCondition;
 	}
 
 	/**
@@ -187,11 +176,11 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnablingModeValueList(ModeConditionDisjunction newEnablingModeValueList, NotificationChain msgs) {
-		ModeConditionDisjunction oldEnablingModeValueList = enablingModeValueList;
-		enablingModeValueList = newEnablingModeValueList;
+	public NotificationChain basicSetExecutionCondition(ModeConditionDisjunction newExecutionCondition, NotificationChain msgs) {
+		ModeConditionDisjunction oldExecutionCondition = executionCondition;
+		executionCondition = newExecutionCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, oldEnablingModeValueList, newEnablingModeValueList);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__EXECUTION_CONDITION, oldExecutionCondition, newExecutionCondition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -203,63 +192,18 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 	 * @generated
 	 */
 	@Override
-	public void setEnablingModeValueList(ModeConditionDisjunction newEnablingModeValueList) {
-		if (newEnablingModeValueList != enablingModeValueList) {
+	public void setExecutionCondition(ModeConditionDisjunction newExecutionCondition) {
+		if (newExecutionCondition != executionCondition) {
 			NotificationChain msgs = null;
-			if (enablingModeValueList != null)
-				msgs = ((InternalEObject)enablingModeValueList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, null, msgs);
-			if (newEnablingModeValueList != null)
-				msgs = ((InternalEObject)newEnablingModeValueList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, null, msgs);
-			msgs = basicSetEnablingModeValueList(newEnablingModeValueList, msgs);
+			if (executionCondition != null)
+				msgs = ((InternalEObject)executionCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__EXECUTION_CONDITION, null, msgs);
+			if (newExecutionCondition != null)
+				msgs = ((InternalEObject)newExecutionCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__EXECUTION_CONDITION, null, msgs);
+			msgs = basicSetExecutionCondition(newExecutionCondition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST, newEnablingModeValueList, newEnablingModeValueList));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ModeConditionDisjunction getDisablingModeValueList() {
-		return disablingModeValueList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDisablingModeValueList(ModeConditionDisjunction newDisablingModeValueList, NotificationChain msgs) {
-		ModeConditionDisjunction oldDisablingModeValueList = disablingModeValueList;
-		disablingModeValueList = newDisablingModeValueList;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, oldDisablingModeValueList, newDisablingModeValueList);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDisablingModeValueList(ModeConditionDisjunction newDisablingModeValueList) {
-		if (newDisablingModeValueList != disablingModeValueList) {
-			NotificationChain msgs = null;
-			if (disablingModeValueList != null)
-				msgs = ((InternalEObject)disablingModeValueList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, null, msgs);
-			if (newDisablingModeValueList != null)
-				msgs = ((InternalEObject)newDisablingModeValueList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, null, msgs);
-			msgs = basicSetDisablingModeValueList(newDisablingModeValueList, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST, newDisablingModeValueList, newDisablingModeValueList));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.STIMULUS__EXECUTION_CONDITION, newExecutionCondition, newExecutionCondition));
 	}
 
 	/**
@@ -284,10 +228,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 		switch (featureID) {
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return basicSetSetModeValueList(null, msgs);
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				return basicSetEnablingModeValueList(null, msgs);
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				return basicSetDisablingModeValueList(null, msgs);
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
+				return basicSetExecutionCondition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -304,10 +246,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				return getTags();
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return getSetModeValueList();
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				return getEnablingModeValueList();
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				return getDisablingModeValueList();
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
+				return getExecutionCondition();
 			case AmaltheaPackage.STIMULUS__AFFECTED_PROCESSES:
 				return getAffectedProcesses();
 		}
@@ -330,11 +270,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)newValue);
 				return;
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				setEnablingModeValueList((ModeConditionDisjunction)newValue);
-				return;
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				setDisablingModeValueList((ModeConditionDisjunction)newValue);
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
+				setExecutionCondition((ModeConditionDisjunction)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -354,11 +291,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				setSetModeValueList((ModeValueList)null);
 				return;
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				setEnablingModeValueList((ModeConditionDisjunction)null);
-				return;
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				setDisablingModeValueList((ModeConditionDisjunction)null);
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
+				setExecutionCondition((ModeConditionDisjunction)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -376,10 +310,8 @@ public abstract class StimulusImpl extends ReferableBaseObjectImpl implements St
 				return tags != null && !tags.isEmpty();
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
 				return setModeValueList != null;
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-				return enablingModeValueList != null;
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
-				return disablingModeValueList != null;
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
+				return executionCondition != null;
 			case AmaltheaPackage.STIMULUS__AFFECTED_PROCESSES:
 				return !getAffectedProcesses().isEmpty();
 		}

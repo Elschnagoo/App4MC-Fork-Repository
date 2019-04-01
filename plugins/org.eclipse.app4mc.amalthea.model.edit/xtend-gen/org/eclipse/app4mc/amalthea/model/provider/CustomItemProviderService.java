@@ -4656,6 +4656,11 @@ public class CustomItemProviderService {
         _matched=true;
       }
     }
+    if (!_matched) {
+      if (Objects.equal(_featureID, AmaltheaPackage.MODE_LABEL_ACCESS__STEP)) {
+        _matched=true;
+      }
+    }
     if (_matched) {
       Object _notifier = notification.getNotifier();
       return new ViewerNotification(notification, _notifier, false, true);

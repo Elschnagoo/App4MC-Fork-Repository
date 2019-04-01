@@ -2471,7 +2471,8 @@ class CustomItemProviderService {
 	def static ViewerNotification getModeLabelAccessItemProviderNotification(Notification notification) {
 		switch notification.getFeatureID(typeof(ModeLabelAccess)) {
 			case AmaltheaPackage::MODE_LABEL_ACCESS__ACCESS,
-			case AmaltheaPackage::MODE_LABEL_ACCESS__DATA:
+			case AmaltheaPackage::MODE_LABEL_ACCESS__DATA,
+			case AmaltheaPackage::MODE_LABEL_ACCESS__STEP:
 				return new ViewerNotification(notification, notification.getNotifier(), false, true)
 		}
 		return null

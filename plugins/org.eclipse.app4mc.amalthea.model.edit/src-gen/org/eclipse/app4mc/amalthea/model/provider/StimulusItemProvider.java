@@ -124,8 +124,7 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_SetModeValueList());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getStimulus_ExecutionCondition());
 		}
 		return childrenFeatures;
 	}
@@ -181,8 +180,7 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 
 		switch (notification.getFeatureID(Stimulus.class)) {
 			case AmaltheaPackage.STIMULUS__SET_MODE_VALUE_LIST:
-			case AmaltheaPackage.STIMULUS__ENABLING_MODE_VALUE_LIST:
-			case AmaltheaPackage.STIMULUS__DISABLING_MODE_VALUE_LIST:
+			case AmaltheaPackage.STIMULUS__EXECUTION_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -207,36 +205,8 @@ public class StimulusItemProvider extends ReferableBaseObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList(),
+				(AmaltheaPackage.eINSTANCE.getStimulus_ExecutionCondition(),
 				 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList(),
-				 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_EnablingModeValueList() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getStimulus_DisablingModeValueList();
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }
