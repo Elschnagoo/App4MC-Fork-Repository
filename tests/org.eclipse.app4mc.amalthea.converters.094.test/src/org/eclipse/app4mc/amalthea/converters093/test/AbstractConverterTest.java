@@ -226,10 +226,10 @@ public abstract class AbstractConverterTest {
 			final boolean isAmaltheaNameSpacePrefix = this.helper.enumTypeContainsIn070(prefix);
 
 			if (isAmaltheaNameSpacePrefix) {
-				final boolean ns_AvailableIn_093 = this.helper.isNS_AvailableIn_093(namespace);
+				final boolean ns_AvailableIn_094 = this.helper.isNS_AvailableIn_094(namespace);
 
-				assertTrue("Expected namespace from AMALTHEA 0.9.3 : " + namespace.getURI() + "  --> "
-						+ document.getBaseURI(), ns_AvailableIn_093);
+				assertTrue("Expected namespace from AMALTHEA 0.9.4 : " + namespace.getURI() + "  --> "
+						+ document.getBaseURI(), ns_AvailableIn_094);
 			}
 			else {
 				assertTrue("Invalid namespace is present in AMALTHEA model file : " + namespace.getURI(), false);
