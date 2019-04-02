@@ -1,13 +1,13 @@
 /**
  ********************************************************************************
  * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
- * 
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *     Robert Bosch GmbH - initial API and implementation
  ********************************************************************************
@@ -82,24 +82,45 @@ public abstract class AbstractHelper {
 		return false;
 
 	}
-	public boolean isNS_AvailableIn_093(final Namespace namespace) {
-		
+
+	public boolean isNS_AvailableIn_094(final Namespace namespace) {
+
 		if (namespace != null) {
-			
+
 			final String ns_prefix = namespace.getPrefix();
-			
+
 			final String ns_uri = namespace.getURI();
-			
+
+			if (enumTypeContainsIn094(ns_prefix)) {
+
+				if (ns_uri.equals(NameSpace_094.valueOf(ns_prefix).getNSValue())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public boolean isNS_AvailableIn_093(final Namespace namespace) {
+
+		if (namespace != null) {
+
+			final String ns_prefix = namespace.getPrefix();
+
+			final String ns_uri = namespace.getURI();
+
 			if (enumTypeContainsIn093(ns_prefix)) {
-				
+
 				if (ns_uri.equals(NameSpace_093.valueOf(ns_prefix).getNSValue())) {
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
+
 	public boolean isNS_AvailableIn_092(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -118,7 +139,7 @@ public abstract class AbstractHelper {
 
 		return false;
 	}
-	
+
 	public boolean isNS_AvailableIn_091(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -137,7 +158,7 @@ public abstract class AbstractHelper {
 
 		return false;
 	}
-	
+
 	public boolean isNS_AvailableIn_090(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -156,11 +177,8 @@ public abstract class AbstractHelper {
 
 		return false;
 	}
-	
 
 
-	
-	
 	public boolean isNS_AvailableIn_083(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -179,9 +197,8 @@ public abstract class AbstractHelper {
 
 		return false;
 	}
-	
 
-	
+
 	public boolean isNS_AvailableIn_082(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -201,8 +218,7 @@ public abstract class AbstractHelper {
 		return false;
 	}
 
-	
-	
+
 	public boolean isNS_AvailableIn_081(final Namespace namespace) {
 
 		if (namespace != null) {
@@ -430,7 +446,7 @@ public abstract class AbstractHelper {
 
 		return Namespace.getNamespace("", "");
 	}
-	
+
 	public Namespace getNS_082(final String prefix) {
 
 		if (enumTypeContainsIn082(prefix)) {
@@ -439,7 +455,7 @@ public abstract class AbstractHelper {
 
 		return Namespace.getNamespace("", "");
 	}
-	
+
 	public Namespace getNS_083(final String prefix) {
 
 		if (enumTypeContainsIn083(prefix)) {
@@ -466,7 +482,7 @@ public abstract class AbstractHelper {
 
 		return Namespace.getNamespace("", "");
 	}
-	
+
 	public Namespace getNS_092(final String prefix) {
 
 		if (enumTypeContainsIn092(prefix)) {
@@ -475,15 +491,25 @@ public abstract class AbstractHelper {
 
 		return Namespace.getNamespace("", "");
 	}
+
 	public Namespace getNS_093(final String prefix) {
-		
+
 		if (enumTypeContainsIn093(prefix)) {
 			return Namespace.getNamespace(prefix, NameSpace_093.valueOf(prefix).getNSValue());
 		}
-		
+
 		return Namespace.getNamespace("", "");
 	}
-	
+
+	public Namespace getNS_094(final String prefix) {
+
+		if (enumTypeContainsIn094(prefix)) {
+			return Namespace.getNamespace(prefix, NameSpace_094.valueOf(prefix).getNSValue());
+		}
+
+		return Namespace.getNamespace("", "");
+	}
+
 	public boolean enumTypeContainsIn110(final String s) {
 		try {
 			NameSpace_110.valueOf(s);
@@ -575,7 +601,7 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
-	
+
 	public boolean enumTypeContainsIn083(final String s) {
 		try {
 			NameSpace_083.valueOf(s);
@@ -585,7 +611,7 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
-	
+
 	public boolean enumTypeContainsIn090(final String s) {
 		try {
 			NameSpace_090.valueOf(s);
@@ -595,7 +621,7 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
-	
+
 	public boolean enumTypeContainsIn091(final String s) {
 		try {
 			NameSpace_091.valueOf(s);
@@ -605,7 +631,7 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
-	
+
 	public boolean enumTypeContainsIn092(final String s) {
 		try {
 			NameSpace_092.valueOf(s);
@@ -615,6 +641,7 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
+
 	public boolean enumTypeContainsIn093(final String s) {
 		try {
 			NameSpace_093.valueOf(s);
@@ -624,7 +651,17 @@ public abstract class AbstractHelper {
 		}
 		return true;
 	}
-	
+
+	public boolean enumTypeContainsIn094(final String s) {
+		try {
+			NameSpace_094.valueOf(s);
+		}
+		catch (final IllegalArgumentException iae) {
+			return false;
+		}
+		return true;
+	}
+
 	public Namespace getGenericNS(final String prefix) {
 
 		if ("xsi".equals(prefix)) {
@@ -1103,7 +1140,7 @@ public abstract class AbstractHelper {
 			populateStack(parentElement, st, modelVersion);
 		}
 	}
-	
+
 	public String encodeName(final String name) {
 		if (name == null || name.length() == 0) {
 			return "no-name";
@@ -1118,7 +1155,7 @@ public abstract class AbstractHelper {
 		}
 		return result;
 	}
-	
+
 	public String decodeName(final String name) {
 		if (name == null || name.length() == 0) {
 			return "no-name";
@@ -1133,39 +1170,39 @@ public abstract class AbstractHelper {
 		}
 		return result;
 	}
-	
-	
-	
+
 
 	/**
 	 * This method is used to add CustomProperty to the parent Element, with the supplied key and value
-	 * @param parentElement Element for which CustomProperty shall be added to
+	 *
+	 * @param parentElement
+	 *            Element for which CustomProperty shall be added to
 	 * @param key
 	 * @param value
 	 */
-	public void addCustomProperty(Element parentElement, String key, String value){
+	public void addCustomProperty(final Element parentElement, final String key, final String value) {
 
-		if(value == null){
-			return ;
+		if (value == null) {
+			return;
 		}
-		
-		Element customPropertiesElement=new Element("customProperties");
-		
+
+		final Element customPropertiesElement = new Element("customProperties");
+
 		customPropertiesElement.setAttribute("key", key);
-		
-		Element valueElement=new Element("value");
-		
+
+		final Element valueElement = new Element("value");
+
 		valueElement.setAttribute("type", "am:StringObject", getGenericNS("xsi"));
-		
+
 		valueElement.setAttribute("value", value);
-		
+
 		customPropertiesElement.addContent(valueElement);
-		
+
 		parentElement.addContent(customPropertiesElement);
-		
-		
+
+
 	}
-	
+
 	public String encodeNameForReference(final String name) {
 		if (name == null || name.length() == 0) {
 			return "no-name";
@@ -1180,104 +1217,113 @@ public abstract class AbstractHelper {
 		}
 		return result;
 	}
-	
-	
+
+
 	/**
 	 * This method returns name and type of the element
+	 *
 	 * @param attributeOrTagName
 	 * @param element
 	 * @return Entry<String, String> key here is name and value is Type
 	 */
-	public Map<String, String> getMultipleElementsNameandTypeFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
-		
-		
-		String attributeValue = element.getAttributeValue(attributeOrTagName);
+	public Map<String, String> getMultipleElementsNameandTypeFromAttributeOrChildeElement(
+			final String attributeOrTagName, final Element element) {
 
-		if(attributeValue!=null) {
-			Map<String, String> map=new HashMap<String, String>();
-			
-			String[] references = attributeValue.split("\\s");
-			
-			for (String reference : references) {
-				
-				String name= getElementNameFromReference(reference);
-				String type= getElementTypeFromReference(reference);
-				
+
+		final String attributeValue = element.getAttributeValue(attributeOrTagName);
+
+		if (attributeValue != null) {
+			final Map<String, String> map = new HashMap<String, String>();
+
+			final String[] references = attributeValue.split("\\s");
+
+			for (final String reference : references) {
+
+				final String name = getElementNameFromReference(reference);
+				final String type = getElementTypeFromReference(reference);
+
 				map.put(name, type);
 			}
 			return map;
-		}else {
-			
-			List<Element> children = element.getChildren(attributeOrTagName);
+		}
+		else {
 
-			if(children.size()>0) {
-				Map<String, String> map=new HashMap<String, String>();
+			final List<Element> children = element.getChildren(attributeOrTagName);
 
-				for (Element child : children) {
+			if (children.size() > 0) {
+				final Map<String, String> map = new HashMap<String, String>();
 
-					String hrefValue = child.getAttributeValue("href");
+				for (final Element child : children) {
 
-					if(hrefValue!=null) {
-						String name= getElementNameFromReference(hrefValue);
-						String type= getElementTypeFromReference(hrefValue);
+					final String hrefValue = child.getAttributeValue("href");
+
+					if (hrefValue != null) {
+						final String name = getElementNameFromReference(hrefValue);
+						final String type = getElementTypeFromReference(hrefValue);
 						map.put(name, type);
 					}
-				
+
 				}
-				
+
 				return map;
 			}
-		
+
 		}
-		
+
 		return new HashMap<String, String>();
 	}
-	
-	
+
+
 	/**
 	 * This method returns name and type of the element
+	 *
 	 * @param attributeOrTagName
 	 * @param element
 	 * @return Entry<String, String> key here is name and value is Type
 	 */
-	public Entry<String, String> getSingleElementsNameandTypeFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
-		
-		
-		String attributeValue = element.getAttributeValue(attributeOrTagName);
+	public Entry<String, String> getSingleElementsNameandTypeFromAttributeOrChildeElement(
+			final String attributeOrTagName, final Element element) {
 
-		if(attributeValue!=null) {
-			String name= getElementNameFromReference(attributeValue);
-			String type= getElementTypeFromReference(attributeValue);
-			return new AbstractMap.SimpleEntry<String,String>(name, type);
-		}else {
-			Element child = element.getChild(attributeOrTagName);
 
-			if(child!=null) {
-				String hrefValue = child.getAttributeValue("href");
+		final String attributeValue = element.getAttributeValue(attributeOrTagName);
 
-				if(hrefValue!=null) {
-					String name= getElementNameFromReference(hrefValue);
-					String type= getElementTypeFromReference(hrefValue);
-					return new AbstractMap.SimpleEntry<String,String>(name, type);
+		if (attributeValue != null) {
+			final String name = getElementNameFromReference(attributeValue);
+			final String type = getElementTypeFromReference(attributeValue);
+			return new AbstractMap.SimpleEntry<String, String>(name, type);
+		}
+		else {
+			final Element child = element.getChild(attributeOrTagName);
+
+			if (child != null) {
+				final String hrefValue = child.getAttributeValue("href");
+
+				if (hrefValue != null) {
+					final String name = getElementNameFromReference(hrefValue);
+					final String type = getElementTypeFromReference(hrefValue);
+					return new AbstractMap.SimpleEntry<String, String>(name, type);
 				}
 			}
 		}
-		
+
 		return null;
 	}
-	public String getSingleElementNameFromAttributeOrChildeElement(String attributeOrTagName, Element element) {
 
-		String attributeValue = element.getAttributeValue(attributeOrTagName);
+	public String getSingleElementNameFromAttributeOrChildeElement(final String attributeOrTagName,
+			final Element element) {
 
-		if(attributeValue!=null) {
+		final String attributeValue = element.getAttributeValue(attributeOrTagName);
+
+		if (attributeValue != null) {
 			return getElementNameFromReference(attributeValue);
-		}else {
-			Element child = element.getChild(attributeOrTagName);
+		}
+		else {
+			final Element child = element.getChild(attributeOrTagName);
 
-			if(child!=null) {
-				String hrefValue = child.getAttributeValue("href");
+			if (child != null) {
+				final String hrefValue = child.getAttributeValue("href");
 
-				if(hrefValue!=null) {
+				if (hrefValue != null) {
 					return getElementNameFromReference(hrefValue);
 				}
 			}
@@ -1286,36 +1332,36 @@ public abstract class AbstractHelper {
 		return null;
 	}
 
-	
-	public String getElementTypeFromReference(String reference) {
 
-		if(reference==null || reference.length()==0) {
+	public String getElementTypeFromReference(final String reference) {
+
+		if (reference == null || reference.length() == 0) {
 			return "";
 		}
-		int startIndex = reference.indexOf("?type=");
+		final int startIndex = reference.indexOf("?type=");
 
-		if(startIndex!=-1) {
-			String type = reference.substring(startIndex+6);
-			 
+		if (startIndex != -1) {
+			final String type = reference.substring(startIndex + 6);
+
 			return type;
 		}
 
 		return reference;
 	}
-	
-	
-	public String getElementNameFromReference(String reference) {
 
-		if(reference==null || reference.length()==0) {
+
+	public String getElementNameFromReference(final String reference) {
+
+		if (reference == null || reference.length() == 0) {
 			return "";
 		}
-		int startIndex = reference.indexOf("?type=");
+		final int startIndex = reference.indexOf("?type=");
 
-		if(startIndex!=-1) {
+		if (startIndex != -1) {
 			String name = reference.substring(0, startIndex);
 
-			if(name.startsWith("amlt:/#")) {
-				name=name.replaceFirst("amlt\\:\\/\\#", "");
+			if (name.startsWith("amlt:/#")) {
+				name = name.replaceFirst("amlt\\:\\/\\#", "");
 				return name;
 			}
 			return name;
@@ -1323,75 +1369,85 @@ public abstract class AbstractHelper {
 
 		return reference;
 	}
-	
+
 	/**
-	 * This method is used to copy an element from the source node to the target node, irrespective of if the element is an attribute or node
+	 * This method is used to copy an element from the source node to the target node, irrespective of if the element is
+	 * an attribute or node
+	 *
 	 * @param sourceElement
 	 * @param targetElement
-	 * @param childNodeOrAttributeName name of the child element. Method should detect if the child with this name exists as a 
+	 * @param childNodeOrAttributeName
+	 *            name of the child element. Method should detect if the child with this name exists as a
 	 */
-	public void copyElement_Attribute_or_Element(Element sourceElement, Element targetElement,
-			String childNodeOrAttributeName) {
+	public void copyElement_Attribute_or_Element(final Element sourceElement, final Element targetElement,
+			final String childNodeOrAttributeName) {
 
-		Attribute attribute = sourceElement.getAttribute(childNodeOrAttributeName);
+		final Attribute attribute = sourceElement.getAttribute(childNodeOrAttributeName);
 
-		Element childElement = sourceElement.getChild(childNodeOrAttributeName);
+		final Element childElement = sourceElement.getChild(childNodeOrAttributeName);
 
-		if(attribute!=null) {
+		if (attribute != null) {
 			targetElement.setAttribute(attribute.clone());
-		}else if(childElement!=null) {
+		}
+		else if (childElement != null) {
 			targetElement.setContent(childElement.clone());
 		}
 
 	}
+
 	/**
 	 * This method is used to get the ParentElement of the node, with a specific name.
-	 * 
-	 * Note: This method searches recursively in upward direction till the parent element with the specified name is obtained
+	 *
+	 * Note: This method searches recursively in upward direction till the parent element with the specified name is
+	 * obtained
+	 *
 	 * @param currentElement
 	 * @param parentName
 	 * @return
 	 */
-	
-	public Element getParentElementWithName(Element currentElement, String parentName) {
-		
-		Element parentElement = currentElement.getParentElement();
-		
-		if(parentElement!=null) {
-			if(parentElement.getName().equals(parentName)) {
+
+	public Element getParentElementWithName(final Element currentElement, final String parentName) {
+
+		final Element parentElement = currentElement.getParentElement();
+
+		if (parentElement != null) {
+			if (parentElement.getName().equals(parentName)) {
 				return parentElement;
-			}else {
+			}
+			else {
 				return getParentElementWithName(parentElement, parentName);
 			}
 		}
 		return null;
 	}
-	
-	public Element getParentElementOfName(Element currentElement, String... parentNames) {
-		
-		Element parentElement = currentElement.getParentElement();
-		
-		if(parentElement!=null) {
-			
-			boolean contains = Arrays.stream(parentNames).anyMatch(parentElement.getName()::equals);
-			
-			if(contains) {
+
+	public Element getParentElementOfName(final Element currentElement, final String... parentNames) {
+
+		final Element parentElement = currentElement.getParentElement();
+
+		if (parentElement != null) {
+
+			final boolean contains = Arrays.stream(parentNames).anyMatch(parentElement.getName()::equals);
+
+			if (contains) {
 				return parentElement;
-			}else {
+			}
+			else {
 				return getParentElementOfName(parentElement, parentNames);
 			}
 		}
 		return null;
 	}
-	
-	public String getValueFromChildElement(Element element, String childElementName, String childElementAttributeName) {
-		
-		Element child = element.getChild(childElementName);
-		
-		if(child !=null) {
+
+	public String getValueFromChildElement(final Element element, final String childElementName,
+			final String childElementAttributeName) {
+
+		final Element child = element.getChild(childElementName);
+
+		if (child != null) {
 			return child.getAttributeValue(childElementAttributeName);
 		}
-		
+
 		return null;
 	}
 }
