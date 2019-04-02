@@ -183,6 +183,11 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	public long getNumberBits() {
 		long _xblockexpression = (long) 0;
 		{
+			DataSizeUnit _unit = this.getUnit();
+			boolean _tripleEquals = (_unit == DataSizeUnit.BIT);
+			if (_tripleEquals) {
+				return this.getValue().longValue();
+			}
 			final BigInteger bits = AmaltheaServices.convertToBit(this);
 			long _xifexpression = (long) 0;
 			if ((bits == null)) {
@@ -205,6 +210,11 @@ public class DataSizeImpl extends QuantityImpl implements DataSize {
 	public long getNumberBytes() {
 		long _xblockexpression = (long) 0;
 		{
+			DataSizeUnit _unit = this.getUnit();
+			boolean _tripleEquals = (_unit == DataSizeUnit.B);
+			if (_tripleEquals) {
+				return this.getValue().longValue();
+			}
 			final BigInteger bits = AmaltheaServices.convertToBit(this);
 			long _xifexpression = (long) 0;
 			if ((bits == null)) {

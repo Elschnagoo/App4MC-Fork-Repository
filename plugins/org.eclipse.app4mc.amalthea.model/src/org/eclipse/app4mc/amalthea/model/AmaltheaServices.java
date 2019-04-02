@@ -42,6 +42,18 @@ import org.eclipse.jdt.annotation.Nullable;
  * The methods are called from several generated model objects.
  */
 public class AmaltheaServices {
+	private static final BigInteger INT_8 = BigInteger.valueOf(8);
+	private static final BigInteger INT_2_POW_10 = BigInteger.valueOf(2).pow(10);
+	private static final BigInteger INT_2_POW_20 = BigInteger.valueOf(2).pow(20);
+	private static final BigInteger INT_2_POW_30 = BigInteger.valueOf(2).pow(30);
+	private static final BigInteger INT_2_POW_40 = BigInteger.valueOf(2).pow(40);
+	private static final BigInteger INT_10_POW_3 = BigInteger.TEN.pow(3);
+	private static final BigInteger INT_10_POW_6 = BigInteger.TEN.pow(6);
+	private static final BigInteger INT_10_POW_9 = BigInteger.TEN.pow(9);
+	private static final BigInteger INT_10_POW_12 = BigInteger.TEN.pow(12);
+	private static final BigDecimal DEC_10_POW_3 = BigDecimal.TEN.pow(3);
+	private static final BigDecimal DEC_10_POW_6 = BigDecimal.TEN.pow(6);
+	private static final BigDecimal DEC_10_POW_9 = BigDecimal.TEN.pow(9);
 	private static final String ARG_NULL_MESSAGE = "Argument is null, expected: %s";
 	private static final String ARG_OBJECT_MESSAGE = "Object argument is null, expected: EObject";
 	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<T extends EObject>";
@@ -88,48 +100,48 @@ public class AmaltheaServices {
 		checkDataSizeArgument(size);
 
 		BigInteger bitBase = size.getValue();
-		BigInteger byteBase = size.getValue().multiply(BigInteger.valueOf(8));
+		BigInteger byteBase = size.getValue().multiply(INT_8);
 
 		switch (size.getUnit()) {
 		case BIT:
 			return bitBase;
 		case KBIT:
-			return bitBase.multiply(BigInteger.TEN.pow(3));
+			return bitBase.multiply(INT_10_POW_3);
 		case MBIT:
-			return bitBase.multiply(BigInteger.TEN.pow(6));
+			return bitBase.multiply(INT_10_POW_6);
 		case GBIT:
-			return bitBase.multiply(BigInteger.TEN.pow(9));
+			return bitBase.multiply(INT_10_POW_9);
 		case TBIT:
-			return bitBase.multiply(BigInteger.TEN.pow(12));
+			return bitBase.multiply(INT_10_POW_12);
 
 		case KIBIT:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(10));
+			return bitBase.multiply(INT_2_POW_10);
 		case MIBIT:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(20));
+			return bitBase.multiply(INT_2_POW_20);
 		case GIBIT:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(30));
+			return bitBase.multiply(INT_2_POW_30);
 		case TIBIT:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
+			return bitBase.multiply(INT_2_POW_40);
 
 		case B:
 			return byteBase;
 		case KB:
-			return byteBase.multiply(BigInteger.TEN.pow(3));
+			return byteBase.multiply(INT_10_POW_3);
 		case MB:
-			return byteBase.multiply(BigInteger.TEN.pow(6));
+			return byteBase.multiply(INT_10_POW_6);
 		case GB:
-			return byteBase.multiply(BigInteger.TEN.pow(9));
+			return byteBase.multiply(INT_10_POW_9);
 		case TB:
-			return byteBase.multiply(BigInteger.TEN.pow(12));
+			return byteBase.multiply(INT_10_POW_12);
 
 		case KI_B:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(10));
+			return byteBase.multiply(INT_2_POW_10);
 		case MI_B:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(20));
+			return byteBase.multiply(INT_2_POW_20);
 		case GI_B:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(30));
+			return byteBase.multiply(INT_2_POW_30);
 		case TI_B:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
+			return byteBase.multiply(INT_2_POW_40);
 
 		default:
 			return null; // should never happen
@@ -140,48 +152,48 @@ public class AmaltheaServices {
 		checkDataRateArgument(rate);
 
 		BigInteger bitBase = rate.getValue();
-		BigInteger byteBase = rate.getValue().multiply(BigInteger.valueOf(8));
+		BigInteger byteBase = rate.getValue().multiply(INT_8);
 
 		switch (rate.getUnit()) {
 		case BIT_PER_SECOND:
 			return bitBase;
 		case KBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.TEN.pow(3));
+			return bitBase.multiply(INT_10_POW_3);
 		case MBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.TEN.pow(6));
+			return bitBase.multiply(INT_10_POW_6);
 		case GBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.TEN.pow(9));
+			return bitBase.multiply(INT_10_POW_9);
 		case TBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.TEN.pow(12));
+			return bitBase.multiply(INT_10_POW_12);
 
 		case KIBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(10));
+			return bitBase.multiply(INT_2_POW_10);
 		case MIBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(20));
+			return bitBase.multiply(INT_2_POW_20);
 		case GIBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(30));
+			return bitBase.multiply(INT_2_POW_30);
 		case TIBIT_PER_SECOND:
-			return bitBase.multiply(BigInteger.valueOf(2).pow(40));
+			return bitBase.multiply(INT_2_POW_40);
 
 		case BPER_SECOND:
 			return byteBase;
 		case KB_PER_SECOND:
-			return byteBase.multiply(BigInteger.TEN.pow(3));
+			return byteBase.multiply(INT_10_POW_3);
 		case MB_PER_SECOND:
-			return byteBase.multiply(BigInteger.TEN.pow(6));
+			return byteBase.multiply(INT_10_POW_6);
 		case GB_PER_SECOND:
-			return byteBase.multiply(BigInteger.TEN.pow(9));
+			return byteBase.multiply(INT_10_POW_9);
 		case TB_PER_SECOND:
-			return byteBase.multiply(BigInteger.TEN.pow(12));
+			return byteBase.multiply(INT_10_POW_12);
 
 		case KI_BPER_SECOND:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(10));
+			return byteBase.multiply(INT_2_POW_10);
 		case MI_BPER_SECOND:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(20));
+			return byteBase.multiply(INT_2_POW_20);
 		case GI_BPER_SECOND:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(30));
+			return byteBase.multiply(INT_2_POW_30);
 		case TI_BPER_SECOND:
-			return byteBase.multiply(BigInteger.valueOf(2).pow(40));
+			return byteBase.multiply(INT_2_POW_40);
 
 		default:
 			return null; // should never happen
@@ -205,13 +217,13 @@ public class AmaltheaServices {
 		case PS:
 			return timeValue;
 		case NS:
-			return timeValue.multiply(BigInteger.TEN.pow(3));
+			return timeValue.multiply(INT_10_POW_3);
 		case US:
-			return timeValue.multiply(BigInteger.TEN.pow(6));
+			return timeValue.multiply(INT_10_POW_6);
 		case MS:
-			return timeValue.multiply(BigInteger.TEN.pow(9));
+			return timeValue.multiply(INT_10_POW_9);
 		case S:
-			return timeValue.multiply(BigInteger.TEN.pow(12));
+			return timeValue.multiply(INT_10_POW_12);
 		
 		default:
 			return null; // should never happen
@@ -228,11 +240,11 @@ public class AmaltheaServices {
 		case HZ:
 			return BigDecimal.valueOf(freqValue);
 		case KHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(3));
+			return BigDecimal.valueOf(freqValue).multiply(DEC_10_POW_3);
 		case MHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(6));
+			return BigDecimal.valueOf(freqValue).multiply(DEC_10_POW_6);
 		case GHZ:
-			return BigDecimal.valueOf(freqValue).multiply(BigDecimal.TEN.pow(9));
+			return BigDecimal.valueOf(freqValue).multiply(DEC_10_POW_9);
 		
 		default:
 			return null; // should never happen
@@ -249,9 +261,9 @@ public class AmaltheaServices {
 		case UV:
 			return BigDecimal.valueOf(voltValue);
 		case MV:
-			return BigDecimal.valueOf(voltValue).multiply(BigDecimal.TEN.pow(3));
+			return BigDecimal.valueOf(voltValue).multiply(DEC_10_POW_3);
 		case V:
-			return BigDecimal.valueOf(voltValue).multiply(BigDecimal.TEN.pow(6));
+			return BigDecimal.valueOf(voltValue).multiply(DEC_10_POW_6);
 		
 		default:
 			return null; // should never happen
@@ -325,7 +337,7 @@ public class AmaltheaServices {
 		int index = TIME_UNIT_LIST.indexOf(time.getUnit());
 		int maxIndex = TIME_UNIT_LIST.size() - 1;
 		BigInteger value = time.getValue();
-		BigInteger bigInt1000 = BigInteger.TEN.pow(3);
+		BigInteger bigInt1000 = INT_10_POW_3;
 
 		while (value.mod(bigInt1000) == BigInteger.ZERO && index < maxIndex) {
 			value = value.divide(bigInt1000);

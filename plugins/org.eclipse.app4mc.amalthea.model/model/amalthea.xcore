@@ -356,10 +356,14 @@ class DataSize extends Quantity
 	 * Convenience methods to retrieve the size in Bits and Bytes
 	 */
 	op long getNumberBits() {
+		if (unit === DataSizeUnit::BIT) return value.longValue
+		
 		val bits = AmaltheaServices.convertToBit(this)
 		if (bits === null) -1L else bits.longValue
 	}
 	op long getNumberBytes() {
+		if (unit === DataSizeUnit::B) return value.longValue
+		
 		val bits = AmaltheaServices.convertToBit(this)
 		if (bits === null) -1L else Math::ceil(bits.longValue / 8).longValue
 	}
