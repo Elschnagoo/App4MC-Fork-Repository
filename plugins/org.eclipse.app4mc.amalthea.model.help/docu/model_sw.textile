@@ -119,13 +119,10 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __callback__ | __True__ if a runnable is used as a callback |
 | __service__ | __True__ if __Runnable__ element can be seen in a service or global function manner. In more detail, the __Runnable__ is only called from other __Runnables__ and not directly from a __Task__ context. |
-| __deadline__ | Information in __Time__ at which the element must be finished / terminated. |
 | __runnableItems__ | List containing __RunnableItem__ objects, representing instructions, label accesses, other __Runnable__ accesses. The possibilities are described below. |
 | __tags__ | Can be used to annotate or group special kind of __Runnables__ |
 | __activation__ | Although runnables in the simulation can only be called by tasks, it is possible to specify an activation pattern for a runnable. |
 | __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
-
-*(validation-rule) _Runnable_: The _Time_ object in the role of _deadline_ must not contain a negative value!
 
 
 h3. Runnable Items
@@ -359,33 +356,32 @@ For more information about OS-Events, see the OSEK Specification 2.2.3, 2005.
 
 h3. Modes
 
-h4. Modes and Mode Labels
+The next diagram shows the overall picture, the sub chapters describe the details.
 
-The __Mode__ element denotes a specific system state. It is described using the following attributes:
+!(scale)../pictures/model_sw_modes_overview.png!
+
+Modes are mainly used in __Mode Conditions__ to describe the conditional execution of a __ModeSwitchEntry__, a __Runnable__ or a __Stimulus__.
+
+h4. Modes and Mode Labels
 
 !(scale)../pictures/model_sw_modes.png!
 
-table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
-|_. Name |_. Description |
-| __name__ | Name of the mode |
-| __literals__ | Enumeration values of the mode |
+The __Mode__ element denotes the type and the possible values of a specific system state. The subclasses __EnumMode__ and __NumericMode__ describe the values that are allowed for the corresponding __ModeLabel__. In case of a __EnumMode__ the __initialValue__ has to be the name of one of the contained __ModeLiterals__. For __NumericMode__ the __initialValue__ has to be the string representation of an integer. 
 
-Modes are used in __Mode Switches__ inside the __Call Graph__ of __Tasks__ and __ISRs__ using __Mode Labels__. Moreover, mode labels are used to enable and disable __Stimuli__.
-
-The __Mode Label__ element represents a value of a specific __Mode__. Is is described using the following attributes:
+The __Mode Label__ element represents a concrete representation of a specific __Mode__. Is is described using the following attributes:
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
 | __name__ | Name of the mode label |
 | __displayName__ | In addition to the name attribute, which must be unique, a mode label can also be described by an additional and optional display name. The displayName attribute must not be unique. It can be used for example to represent specification data, which can be different from the unique name (like a symbol) of an available software build. |
-| __mode__ | Reference of the __Mode__ |
-| __initialValue__ | Initial value of the referenced mode |
+| __mode__ | Reference to the corresponding __Mode__ definition |
+| __initialValue__ | String representation of the initial value |
 
 h4. Mode Changes
 
-The value of the mode label can be changed from its initial value using the set-mode-labels-list of a __Stimulus__.
+The value of the mode label can be changed using the set-mode-value-list of a __Stimulus__.
 
-Another possibility is a write access within a Runnable via __Mode Label Access__.
+Another possibility is a write access within a Runnable via a __Mode Label Access__.
 
 h4. Mode Conditions
 
