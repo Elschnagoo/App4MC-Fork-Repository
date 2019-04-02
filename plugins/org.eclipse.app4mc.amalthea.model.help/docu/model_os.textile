@@ -15,7 +15,7 @@ The basic element in the OS Model is the operating system. There can be multiple
 
 h3. Scheduler
 
-Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has computation items. These items (a subset of the runnable items) characterize the runtime behavior of the scheduler.
+Interrupt controller and task scheduler have a scheduling algorithm. The picture below shows that both types are inherited of the scheduler type. Each scheduler has computation items. These items (a subset of the runnable items) characterize the runtime behavior (algorithmic overhead) of the scheduler.
 
 !../pictures/model_os_scheduler.png!
 

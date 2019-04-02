@@ -135,29 +135,14 @@ If two equal stimuli have a different time base, the time of task activation can
 *(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
 
 
-h3. Mode label lists
+h3. Mode Value List and Execution Condition
 
-It is possible to define lists of mode label values for a stimulus. An entry in this list is always a pair of a mode label and a mode literal.
+It is possible to change mode label values when a stimulus is executed. The mode labels and their new values are stored in the *set-mode-value-list*. Via an *execution-condition* modes also determine if a stimulus is executed.
 
 !(scale)../pictures/model_stimuli_modevaluelist.png!
 
-*(validation-rule)  _ModeValue_: The _Mode_ objects referenced via _valueProvider_ and _value_ must be equal!
+*(validation-rule)  _ModeValue_: The _value_ string must be a valid element of the corresponding _Mode_!
 
+The *set-mode-value-list* indicates: Each time the stimulus is executed all mode labels in this list are set to the corresponding value. 
 
-The *set-mode-labels-list* indicates: Each time the stimulus is triggered all mode labels in this list are set to the corresponding value. 
-
-The *enabling-mode-label-list* and the *disabling-mode-label-list* can be used to enable or disable a stimulus by setting the mode label to a specific value (e.g. by a write access with a runnable).
-
-Meaning:
-* If there are no list entries at all, the stimulus is enabled.
-* If only the disabling-list has entries, the stimulus is disabled if the condition is fulfilled, otherwise enabled.
-* If only the enabling-list has entries, the stimuli is enabled if the condition is fulfilled, otherwise disabled.  
-* If there are entries in both lists, disabling has precedence.
-
-table(classic){text-align:center;margin-left:50px}.
-|\2/2. |\2. _disabling-list_ |
-| true | false|
-|/2. _enabling-list_ |true |{color:red}. disabled |{color:green}. enabled | 
-|false |{color:red}. disabled |{color:red}. disabled |
-
-
+The *execution-condition* is used to determine if a stimulus is executed.

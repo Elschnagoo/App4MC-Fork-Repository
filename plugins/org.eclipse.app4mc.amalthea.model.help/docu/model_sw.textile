@@ -51,7 +51,7 @@ h3. Data Types
 
 h4. General Information
 
-The AMALTHEA data model supports meta information for base data types. Therefore the element __BaseTypeDefinition__ exists in the software part of the model. It consists of the name and number of bits to define a data type. Additional information to store is the mapping information of these data types for a target platform, represented by the __DataPlatformMapping__ element, like AUTOSAR or any other one.
+The AMALTHEA data model supports meta information for data types. Therefore the element __TypeDefinition__ exists in the software part of the model. It consists of the name and size to define a data type. __BaseTypeDefinition__ has the additional possibility to define the representation of these data types in a target environment (e.g. AUTOSAR), represented by the __Alias__ element.
 
 The compound data types are data structures, based on given or defined base types.
 In the literature they are also often named composite or derived types "see Wiki":https://en.wikipedia.org/wiki/Data_type.
@@ -70,12 +70,12 @@ h4. Sample
 
 In the picture below a small sample is modeled containing the following information:
 
-* Boolean type with size of 8 bits and platform mapping for AR (Boolean) and C (bool)
-* Char16 type with size of 16 bits and platform mapping for AR (Char16) and C (short)
+* Boolean type with size of 8 bits and alias for AR (Boolean) and C (bool)
+* Char16 type with size of 16 bits and alias for AR (Char16) and C (short)
 * charArray consists of 4 elements of type Char16
-* "hello world struct" with the attribute name (Char16) and valid (Boolean)
+* "hello world struct" with the attribute name (charArray) and valid (Boolean)
 
-Note: The picture shows the activated element types for better understanding!
+Note: The picture shows the element types for better understanding!
 
 !(gray)../pictures/model_sw_type_sample.png!
 
@@ -165,7 +165,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 | __dataStability__ | Describes the data stability needs. If set, it overwrites the label settings, otherwise it inherits them (see <notextile><a href="./model_os.html#os-data-consistency">OS Data Consistency</a></notextile>). |
 | __implementation__ | Describes how a label access is implemented:	<ul><li>*explicit*: also known as "direct" </li><li>*implicit*: also known as "optimized"</li><li>*timed*</li></ul> |
 | __statistic__ | Defines the frequency of the label access. |
-| __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to transmit one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+| __transmissionPolicy__ | The following attributes reflect the computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingTicks*: Number of ticks that will be executed to process one chunk (algorithmic overhead). </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 
 h4. Channel Access
@@ -178,7 +178,7 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __data__ | Describes the access (__ChannelSend__ or __ChannelReceive__) to an existent __Channel__ (set as reference). |
 | __elements__ | Maximum number of elements that are transmitted. |
-| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingInstructions*: Number of instructions that will be executed to send / receive one chunk. </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
+| __transmissionPolicy__ | The following attributes reflect computing demand (time) depending on data: <ul><li> *chunkSize*: Size of a part of an element, maximum is the element size. </li><li> *chunkProcessingTicks*: Number of ticks that will be executed to process one chunk (algorithmic overhead). </li></ul> The next attribute specifies the amount of data actually accessed by a runnable (required to analyze memory bandwidth demands): <ul><li> *transmitRatio*: Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0 . </li></ul> |
 
 Receive attributes:
 
@@ -207,10 +207,9 @@ h4. Mode Label Access
 
 table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
 |_. Name |_. Description |
-| __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __LabelAccessEnum__: @write@ represents the change of a mode label. The defined __ModeLiteral__ is set. @read@ indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__. |
+| __ModeLabelAccess__ | Describes the access to an existing __ModeLabel__ (set as reference). The type of access is represented using the values of __ModeLabelAccessEnum__: <ul><li>*read*: indicates that the behavior of the runnable is influenced by the current value of the __ModeLabel__.</li><li>*set*: represents the change of a mode label. The defined __value__ is set.</li><li>*increment* / *decrement*: changes a mode label. The value is increased / decreased by __step__. In case of an __EnumMode__ the next / previous literal is set (according to __step__ limited by the range of literals).</li></ul> |
 
-*(validation-rule)  _ModeLabelAccess_: The _Mode_ objects referenced via _modeValue_ and _data_ must be equal!
-
+*(validation-rule)  _ModeLabelAccess_: The _value_ string must be a valid element of the corresponding _Mode_!
 
 h4. Custom Event Trigger
 
@@ -221,9 +220,9 @@ The __Custom Event Trigger__ references an event of type __Custom Event__. The e
 
 h4. Runnable Mode Switch
 
-With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of a __ModeLabel__ (with the help of __ModeValueProvider__) to decide which path has to be executed. 
-A __ModeSwitchEntry__ object is referenced to represent the different paths and each entry defines the value the mode must have to execute the path with the help of the __ModeLiteral__ values.
-At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if none of the __ModeSwitchEntries__ fits to the current set value of the mode.
+With the __RunnableModeSwitch__ it is possible to define different execution paths. They can be used like __if-else__ or __switch-case__ statements in a programming language. A __RunnableModeSwitch__ uses the value of mode labels to decide which entry has to be executed. The first fulfilled condition determines the path to execute.
+A __ModeSwitchEntry__ object is used to represent an execution path. A mode condition is defined for each entry (via ModeConditionDisjunction).
+At the __RunnableModeSwitch__ it is also possible to define a default path, which is executed if no condition of the __ModeSwitchEntries__ fits to the current mode settings.
 
 !../pictures/model_sw_runnablemodeswitch.png!
 
@@ -290,7 +289,7 @@ The __Call Graph__ contains a list of elements of type __GraphEntryBase__. This 
 
 h4. Mode Switch
 
-A __Mode Switch__ uses the value of a __Mode Label__ to decide which entry has to be executed. Therefore a __Mode Label__ object is referenced (via ModeValueProvider) and each entry defines the values the mode label must have to execute the path. 
+A __Mode Switch__ uses the value of mode labels to decide which entry has to be executed. Therefore a mode condition is defined for each entry (via ModeConditionDisjunction). The first fulfilled condition determines the path to execute. 
 
 !(scale)../pictures/model_sw_modeswitch.png!
 

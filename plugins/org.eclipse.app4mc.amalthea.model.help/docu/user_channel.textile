@@ -87,7 +87,7 @@ To further specify how elements are accessed by a runnable in terms of computing
 
 The transmission policy consists of the following attributes:
 * *chunkSize*: Size of a part of an element, maximum is the element size.
-* *chunkProcessingInstructions* (integer): Number of instructions that will be executed to send / receive one chunk.
+* *chunkProcessingTicks* (integer): Number of ticks that will be executed to process one chunk (algorithmic overhead).
 * *transmitRatio* (float): Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0. 
 
 Example for using transmission policy to detail the receiving phase of a runnable execution. Two elements are received, leading to transmission time as given in the formula. After the receiving phase, the runnable starts with the computing phase.
