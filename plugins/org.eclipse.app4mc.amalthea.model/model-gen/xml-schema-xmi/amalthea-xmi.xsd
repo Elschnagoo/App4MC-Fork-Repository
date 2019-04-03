@@ -14,6 +14,15 @@ SPDX-License-Identifier: EPL-2.0
   </xsd:annotation>
   <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="ecore.xsd"/>
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:simpleType name="RelationalOperator">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="EQUAL"/>
+      <xsd:enumeration value="NOT_EQUAL"/>
+      <xsd:enumeration value="LESS_THAN"/>
+      <xsd:enumeration value="GREATER_THAN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="TimeUnit">
     <xsd:annotation>
       <xsd:documentation>Time units (enumeration of available units)</xsd:documentation>
@@ -536,6 +545,15 @@ SPDX-License-Identifier: EPL-2.0
       <xsd:enumeration value="automaticProtection"/>
       <xsd:enumeration value="customProtection"/>
       <xsd:enumeration value="handledByModelElements"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ModeLabelAccessEnum">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="read"/>
+      <xsd:enumeration value="set"/>
+      <xsd:enumeration value="increment"/>
+      <xsd:enumeration value="decrement"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ReceiveOperation">
@@ -1608,21 +1626,33 @@ The parameter of a Weibull distribution (kappa, lambda...) are calculated from t
       <xsd:documentation>Beta distribution</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Mode">
+  <xsd:complexType abstract="true" name="Mode">
     <xsd:complexContent>
-      <xsd:extension base="am:ReferableBaseObject">
+      <xsd:extension base="am:ReferableBaseObject"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Mode" type="am:Mode"/>
+  <xsd:complexType name="NumericMode">
+    <xsd:complexContent>
+      <xsd:extension base="am:Mode"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="NumericMode" type="am:NumericMode"/>
+  <xsd:complexType name="EnumMode">
+    <xsd:complexContent>
+      <xsd:extension base="am:Mode">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="literals" type="am:ModeLiteral"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Mode" type="am:Mode"/>
+  <xsd:element name="EnumMode" type="am:EnumMode"/>
   <xsd:complexType name="ModeLiteral">
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="containingMode" type="am:Mode"/>
+          <xsd:element name="containingMode" type="am:EnumMode"/>
         </xsd:choice>
         <xsd:attribute name="containingMode" type="xsd:string"/>
       </xsd:extension>
@@ -4323,8 +4353,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="setModeValueList" type="am:ModeValueList"/>
-          <xsd:element name="enablingModeValueList" type="am:ModeValueDisjunction"/>
-          <xsd:element name="disablingModeValueList" type="am:ModeValueDisjunction"/>
+          <xsd:element name="executionCondition" type="am:ModeConditionDisjunction"/>
         </xsd:choice>
         <xsd:attribute name="tags" type="xsd:string"/>
       </xsd:extension>
@@ -4341,7 +4370,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValue"/>
+          <xsd:element name="entries" type="am:ModeAssignment"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4350,54 +4379,66 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   <xsd:complexType name="ModeValueMapEntry">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="key" type="am:ModeLabel"/>
-      <xsd:element name="value" type="am:ModeLiteral"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="value" type="xsd:string" use="required"/>
     <xsd:attribute name="key" type="xsd:string"/>
-    <xsd:attribute name="value" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="ModeValueMapEntry" type="am:ModeValueMapEntry"/>
-  <xsd:complexType name="ModeValueDisjunction">
+  <xsd:complexType abstract="true" name="ModeValue">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValueDisjunctionEntry"/>
+          <xsd:element name="label" type="am:ModeLabel"/>
         </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeValueDisjunction" type="am:ModeValueDisjunction"/>
-  <xsd:complexType abstract="true" name="ModeValueDisjunctionEntry">
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ModeValueDisjunctionEntry" type="am:ModeValueDisjunctionEntry"/>
-  <xsd:complexType name="ModeValue">
-    <xsd:complexContent>
-      <xsd:extension base="am:ModeValueDisjunctionEntry">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="valueProvider" type="am:ModeLabel"/>
-          <xsd:element name="value" type="am:ModeLiteral"/>
-        </xsd:choice>
-        <xsd:attribute name="valueProvider" type="xsd:string"/>
-        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string" use="required"/>
+        <xsd:attribute name="label" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ModeValue" type="am:ModeValue"/>
-  <xsd:complexType name="ModeValueConjunction">
+  <xsd:complexType name="ModeAssignment">
     <xsd:complexContent>
-      <xsd:extension base="am:ModeValueDisjunctionEntry">
+      <xsd:extension base="am:ModeValue"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeAssignment" type="am:ModeAssignment"/>
+  <xsd:complexType name="ModeConditionDisjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeValue"/>
+          <xsd:element name="entries" type="am:ModeConditionDisjunctionEntry"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ModeValueConjunction" type="am:ModeValueConjunction"/>
+  <xsd:element name="ModeConditionDisjunction" type="am:ModeConditionDisjunction"/>
+  <xsd:complexType abstract="true" name="ModeConditionDisjunctionEntry">
+    <xsd:complexContent>
+      <xsd:extension base="am:BaseObject"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeConditionDisjunctionEntry" type="am:ModeConditionDisjunctionEntry"/>
+  <xsd:complexType name="ModeCondition">
+    <xsd:complexContent>
+      <xsd:extension base="am:ModeValue">
+        <xsd:attribute name="relation" type="am:RelationalOperator"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeCondition" type="am:ModeCondition"/>
+  <xsd:complexType name="ModeConditionConjunction">
+    <xsd:complexContent>
+      <xsd:extension base="am:ModeConditionDisjunctionEntry">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ModeCondition"/>
+        </xsd:choice>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ModeConditionConjunction" type="am:ModeConditionConjunction"/>
   <xsd:complexType abstract="true" name="FixedPeriodic">
     <xsd:annotation>
       <xsd:documentation>Stimulus that is triggered periodically.
@@ -4903,7 +4944,7 @@ It describes a path of the switch and the required mode condition to use this pa
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="condition" type="am:ModeValueDisjunction"/>
+          <xsd:element name="condition" type="am:ModeConditionDisjunction"/>
           <xsd:element name="items" type="ecore:EObject"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
@@ -5337,6 +5378,7 @@ The final state can be several Tasks, which can be computed using provided infor
     <xsd:complexContent>
       <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="executionCondition" type="am:ModeConditionDisjunction"/>
           <xsd:element name="parameters" type="am:RunnableParameter"/>
           <xsd:element name="runnableItems" type="am:RunnableItem"/>
           <xsd:element name="activations" type="am:Activation"/>
@@ -5420,10 +5462,11 @@ The final state can be several Tasks, which can be computed using provided infor
     <xsd:complexContent>
       <xsd:extension base="am:AbstractMemoryElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="initialValue" type="am:ModeLiteral"/>
+          <xsd:element name="mode" type="am:Mode"/>
         </xsd:choice>
         <xsd:attribute name="displayName" type="xsd:string"/>
         <xsd:attribute name="initialValue" type="xsd:string"/>
+        <xsd:attribute name="mode" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5541,21 +5584,21 @@ which are belonging together.</xsd:documentation>
       <xsd:extension base="am:RunnableItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="data" type="am:ModeLabel"/>
-          <xsd:element name="modeValue" type="am:ModeLiteral">
-            <xsd:annotation>
-              <xsd:documentation>Just used in case that this access writes a value to a Mode-Label.
-It can be used to define which mode value is written to the label.</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
         </xsd:choice>
-        <xsd:attribute name="access" type="am:LabelAccessEnum"/>
-        <xsd:attribute name="data" type="xsd:string"/>
-        <xsd:attribute name="modeValue" type="xsd:string">
+        <xsd:attribute name="access" type="am:ModeLabelAccessEnum"/>
+        <xsd:attribute name="value" type="xsd:string">
           <xsd:annotation>
             <xsd:documentation>Just used in case that this access writes a value to a Mode-Label.
 It can be used to define which mode value is written to the label.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="step" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Just used in case of increment or decrement.
+It can be used to define a step other than 1.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="data" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
