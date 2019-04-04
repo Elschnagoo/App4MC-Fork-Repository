@@ -7,8 +7,8 @@
     modelName="Amalthea" updateClasspath="false" rootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl"
     testsDirectory="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.emf.ecore.xcore.importer"
     containmentProxies="true" complianceLevel="8.0" providerRootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter"
-    language="en" usedGenPackages="../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
-    operationReflection="true" importOrganizing="true" decoration="Live" oSGiCompatible="true">
+    language="en" operationReflection="true" importOrganizing="true" decoration="Live"
+    oSGiCompatible="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -2118,6 +2118,336 @@
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//RunnableMeasurement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableMeasurement/runnable"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Ecore" basePackage="org.eclipse.emf" disposableProviderFactory="true"
+      multipleEditorPages="false" contentTypeIdentifier="org.eclipse.emf.ecore" ecorePackage="../../../org.eclipse.emf.ecore/model/Ecore.ecore#/">
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+      <genAnnotations source="Ecore.xsd"/>
+    </genAnnotations>
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+      <genAnnotations source="EcoreXMI.xsd"/>
+    </genAnnotations>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBigDecimal"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBigInteger"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EByte"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EByteArray"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EByteObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EChar"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ECharacterObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDate"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDiagnosticChain"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDoubleObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEList">
+      <genTypeParameters ecoreTypeParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEList/E"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumerator"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFeatureMap"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFeatureMapEntry"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFloat"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFloatObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaClass">
+      <genTypeParameters ecoreTypeParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaClass/T"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELongObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EMap">
+      <genTypeParameters ecoreTypeParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EMap/K"/>
+      <genTypeParameters ecoreTypeParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EMap/V"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EResource"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EResourceSet"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EShort"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EShortObject"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETreeIterator">
+      <genTypeParameters ecoreTypeParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETreeIterator/E"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInvocationTargetException"/>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute">
+      <genFeatures createChild="false" propertyDescription="Whether the value of this attribute uniquely identifies an object within its containing resource"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/iD"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The data type of this attribute"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute/eAttributeType"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation">
+      <genFeatures createChild="false" propertyDescription="An identifier, typically an absolute URI, that uniquely identifies this kind of annotation"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/source"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/details"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/eModelElement"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/contents"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="Objects referenced by this annotation"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation/references"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass">
+      <genFeatures createChild="false" propertyDescription="Whether instances of this class can be created"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
+      <genFeatures createChild="false" propertyDescription="Whether no corresponding implementation will be generated for this class"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/interface"/>
+      <genFeatures createChild="false" propertyDescription="The immediate super types of this class"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          propertyDescription="The operations defined by this class" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllAttributes"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllReferences"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eReferences"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllContainments"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllOperations"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllStructuralFeatures"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllSuperTypes"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eIDAttribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eStructuralFeatures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eGenericSuperTypes"/>
+      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAllGenericSuperTypes"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/isSuperTypeOf">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/isSuperTypeOf/someClass"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getFeatureCount"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEStructuralFeature">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEStructuralFeature/featureID"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getFeatureID">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getFeatureID/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEStructuralFeature.1">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEStructuralFeature.1/featureName"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getOperationCount"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEOperation">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getEOperation/operationID"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getOperationID">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getOperationID/operation"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getOverride">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getOverride/operation"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getFeatureType">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/getFeatureType/feature"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier">
+      <genFeatures createChild="false" propertyDescription="The erased instance class name denoted by this classifier"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClassName">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceClass"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The default value for features of this type"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/defaultValue"/>
+      <genFeatures createChild="false" propertyDescription="The full instance type name denoted by this classifier"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/instanceTypeName"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/ePackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/eTypeParameters"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/isInstance">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/isInstance/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/getClassifierID"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType">
+      <genFeatures createChild="false" propertyDescription="Whether a value of this data type can be serialized using the factory"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType/serializable"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/eLiterals"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteral">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteral/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteral.1">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteral.1/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteralByLiteral">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/getEEnumLiteralByLiteral/literal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral">
+      <genFeatures createChild="false" propertyDescription="The integer value associated with this enumerator"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/value"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/instance"/>
+      <genFeatures createChild="false" propertyDescription="The literal value associated with this enumerator"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/literal"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/eEnum"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory">
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The package corresponding to this factory"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/ePackage"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/create">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/create/eClass"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/createFromString">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/createFromString/eDataType"/>
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/createFromString/literalValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/convertToString">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/convertToString/eDataType"/>
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/convertToString/instanceValue"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/eAnnotations"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/getEAnnotation">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement/getEAnnotation/source"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+      <genFeatures createChild="false" propertyDescription="The name of this model element"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eClass"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eIsProxy"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eResource"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eContainer"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eContainingFeature"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eContainmentFeature"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eContents"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eAllContents"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eCrossReferences"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eGet">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eGet/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eGet.1">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eGet.1/feature"/>
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eGet.1/resolve"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eSet">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eSet/feature"/>
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eSet/newValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eIsSet">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eIsSet/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eUnset">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eUnset/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eInvoke">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eInvoke/operation"/>
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject/eInvoke/arguments"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eContainingClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eTypeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="The exceptions thrown by this operation"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eGenericExceptions"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/getOperationID"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/isOverrideOf">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/isOverrideOf/someOperation"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage">
+      <genFeatures createChild="false" propertyCategory="" propertyDescription="The universally unique namespace identifier, typically an absolute URI, for this package"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
+      <genFeatures createChild="false" propertyDescription="The namespace prefix used by default when serializing instances of the package's classes"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsPrefix"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The factory corresponding to this package"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eFactoryInstance">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSubpackages"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSuperPackage"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/getEClassifier">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/getEClassifier/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter/eOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference">
+      <genFeatures createChild="false" propertyDescription="Whether this reference represents a composite relationship"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="Whether this reference has as its opposite a containment reference"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/container"/>
+      <genFeatures createChild="false" propertyDescription="Whether this reference resolves proxies automatically"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/resolveProxies"/>
+      <genFeatures createChild="false" propertyDescription="The reference that represents the bidirectional opposite of this reference"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The target class of the reference"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eReferenceType">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertyDescription="The attributes of the referenced class that uniquely identify a referenced instance"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eKeys"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature">
+      <genFeatures createChild="false" propertyDescription="Whether the value of this feature can be changed"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/changeable"/>
+      <genFeatures createChild="false" propertyDescription="Whether no field will be generated for this feature"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/volatile"/>
+      <genFeatures createChild="false" propertyDescription="Whether the value of this feature will be serialized"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/transient"/>
+      <genFeatures createChild="false" propertyDescription="The literal representation of the default value for this feature"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The default value for this feature"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValue">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures createChild="false" propertyDescription="Whether the value space for this feature includes the state of not being set"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/unsettable"/>
+      <genFeatures createChild="false" propertyDescription="Whether the value of this feature is derived from the values of other features"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="The class that defines this feature"
+          ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/eContainingClass">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/getFeatureID"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/getContainerClass"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+      <genFeatures createChild="false" propertyDescription="Whether the order in which values occur is meaningful"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
+      <genFeatures createChild="false" propertyDescription="Whether the same value may occur more than once"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
+      <genFeatures createChild="false" propertyDescription="The minimum number of values that must occur"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
+      <genFeatures createChild="false" propertyDescription="The maximum number of values that may occur; -1 represents unbounded and -2 represents unspecified"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="Whether more than one value may occur"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/many">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures property="Readonly" createChild="false" propertyDescription="Whether at least one value must occur"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/required">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures createChild="false" propertyDescription="The type of this element"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eGenericType"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry">
+      <genFeatures createChild="false" propertyCategory="" propertyDescription="The key of this map entry"
+          ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/key"/>
+      <genFeatures createChild="false" propertyDescription="The value of this map entry"
+          propertyMultiLine="true" ecoreFeature="ecore:EAttribute ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStringToStringMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eUpperBound"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eTypeArguments"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyDescription="The erased type denoted by this generic type"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eRawType">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eLowerBound"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="The type parameter denoted by this generic type"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eTypeParameter"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="The classifier denoted by this generic type"
+          propertySortChoices="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/eClassifier"/>
+      <genOperations ecoreOperation="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/isInstance">
+        <genParameters ecoreParameter="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EGenericType/isInstance/object"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypeParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypeParameter/eBounds"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
