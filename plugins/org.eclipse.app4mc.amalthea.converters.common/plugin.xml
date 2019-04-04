@@ -6,55 +6,5 @@
    <extension-point id="org.eclipse.app4mc.amalthea.model.converters.formatter" name="model.converters.formatter" schema="schema/org.eclipse.app4mc.amalthea.model.converters.formatter.exsd"/>
    <extension-point id="org.eclipse.app4mc.amalthea.model.converters.preprocessor" name="model.converters.preprocessor" schema="schema/org.eclipse.app4mc.amalthea.model.converters.preprocessor.exsd"/>
    <extension-point id="org.eclipse.app4mc.amalthea.model.converters.postprocessor" name="model.converters.postprocessor" schema="schema/org.eclipse.app4mc.amalthea.model.converters.postprocessor.exsd"/>
-   <extension
-         point="org.eclipse.app4mc.amalthea.model.converters.preprocessor">
-      <converters.preprocessor
-            class="org.eclipse.app4mc.amalthea.converters.common.preprocessor.CustomPropsPreProcessor"
-            id="org.eclipse.app4mc.amalthea.converters.common.customrproperty.referenceobj.removal">
-         <input-model-version
-               version="itea.103">
-         </input-model-version>
-         <input-model-version
-               version="itea.110">
-         </input-model-version>
-      </converters.preprocessor>
-   </extension>
-   <extension
-         point="org.eclipse.app4mc.amalthea.model.converters.postprocessor">
-      <converters.postprocessor
-            class="org.eclipse.app4mc.amalthea.converters.common.postprocessor.CustomPropsPostProcessor"
-            id="org.eclipse.app4mc.amalthea.converters.common.customprops.update"
-            >
-         <input-model-version
-               version="itea.103">
-         </input-model-version>
-         <input-model-version
-               version="itea.110">
-         </input-model-version>
-         <output-model-version
-               version="itea.111">
-         </output-model-version>
-         <output-model-version
-               version="0.7.0">
-         </output-model-version>
-      </converters.postprocessor>
-      <converters.postprocessor
-            class="org.eclipse.app4mc.amalthea.converters.common.postprocessor.FileNameUpdationProcessor"
-            id="org.eclipse.app4mc.amalthea.converters.common.update.filenames"
-           >
-         <input-model-version
-               version="itea.103">
-         </input-model-version>
-         <input-model-version
-               version="itea.110">
-         </input-model-version>
-         <output-model-version
-               version="itea.111">
-         </output-model-version>
-         <output-model-version
-               version="0.7.0">
-         </output-model-version>
-      </converters.postprocessor>
-   </extension>
 
 </plugin>

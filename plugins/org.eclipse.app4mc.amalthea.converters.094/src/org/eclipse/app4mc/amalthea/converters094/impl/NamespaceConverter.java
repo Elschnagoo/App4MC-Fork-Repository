@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2019 Robert Bosch GmbH and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,9 +29,6 @@ import org.jdom2.Element;
 
 /**
  * This class is responsible for converting the namespace of AMALTHEA model from 0.9.1 to 0.9.2
- *
- * @author Zakir Hussain
- *
  */
 public class NamespaceConverter implements IConverter {
 

@@ -85,12 +85,6 @@
             </annotation>
             <simpleType>
                <restriction base="string">
-                  <enumeration value="itea.103">
-                  </enumeration>
-                  <enumeration value="itea.110">
-                  </enumeration>
-                  <enumeration value="itea.111">
-                  </enumeration>
                   <enumeration value="0.7.0">
                   </enumeration>
                   <enumeration value="0.7.1">
@@ -110,6 +104,8 @@
                   <enumeration value="0.9.1">
                   </enumeration>
                   <enumeration value="0.9.2">
+                  </enumeration>
+                  <enumeration value="0.9.3">
                   </enumeration>
                </restriction>
             </simpleType>
