@@ -20,10 +20,6 @@
 	creationSubmenus="true",
 	// *** create XML instance of the Amalthea meta model
 	publicationLocation="org.eclipse.app4mc.amalthea.model/model-gen/xml/amalthea.xml",
-	// *** generate XML schema
-	//generateSchema="true",
-	//resource="XML", // change temporarily to "XML" to generate the schema
-	//resource="XMI", // change temporarily to "XMI" to generate the schema
 	loadInitialization="false",	// can be removed with Neon.3 ??
 //	dynamicTemplates="true",
 //	templateDirectory="org.eclipse.app4mc.amalthea.model/templates",
@@ -134,18 +130,12 @@ interface IReferable extends INamed
 	// use IPropertySheetEntry.FILTER_ID_EXPERT ("org.eclipse.ui.views.properties.expert")
 	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
 	id derived readonly String uniqueName get {
-		return computeUniqueName()
+		return (if (namePrefix.nullOrEmpty) "" else encode(namePrefix) + "/") + encode(name) + "?type=" + eClass.name
 	}
-	@GenModel(documentation="Overwrite this method to define specific IDs (used by name-based references).")
-	op String computeUniqueName() {
-		return basicComputeUniqueName
-	}
-	op String basicComputeUniqueName() {
-		return encode(name) + "?type=" + eClass.name
-	}
-	op String basicComputeUniqueNameWithPrefix(String prefix) {
-		return encode(prefix) + "/" + basicComputeUniqueName
-	}
+	
+	@GenModel(documentation="Overwrite this method to define a specific prefix (used by name-based references).")
+	op String getNamePrefix() { "" }
+	
 	op String encode(String str) {
 		return (if (str.nullOrEmpty) "no-name" else URLEncoder.encode(str, StandardCharsets.UTF_8.toString))
 	}
@@ -890,9 +880,7 @@ class ModeLiteral extends ReferableBaseObject
 	@GenModel(propertyCategory="Read only")
 	container readonly EnumMode containingMode opposite literals
 	
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingMode?.name)
-	}
+	op String getNamePrefix() { containingMode?.name }
 	
 	op String toString() {
 		if (name.nullOrEmpty) "<literal>" else name
@@ -973,9 +961,7 @@ abstract class Port extends ReferableBaseObject, ITaggable
 	@GenModel(propertyCategory="Read only")
 	container readonly Component containingComponent opposite ports
 	
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingComponent?.name)
-	}
+	op String getNamePrefix() { containingComponent?.name }
 }
 
 class Component extends ReferableBaseObject, ITaggable
@@ -1954,9 +1940,7 @@ class HwFeature extends ReferableBaseObject
 	@GenModel(propertyCategory="Read only")
 	container readonly HwFeatureCategory containingCategory opposite features
 	
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingCategory?.name)
-	}
+	op String getNamePrefix() { containingCategory?.name }
 	
 	op String toString() {
 		val featureName = containingCategory?.name
@@ -1968,9 +1952,7 @@ class HwFeature extends ReferableBaseObject
 
 class HwPort extends ReferableBaseObject, ITaggable
 {
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
-	}
+	op String getNamePrefix() { (eContainer as INamed)?.name }
 	
 	int bitWidth = "0"
 	int priority = "0"
@@ -2001,9 +1983,7 @@ class ConnectionHandler extends HwModule, HwPathElement
 
 class HwConnection extends ReferableBaseObject, HwPathElement, ITaggable
 {
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix((eContainer as INamed)?.name)
-	}
+	op String getNamePrefix() { (eContainer as INamed)?.name }
 	
 	@GenModel(documentation="<p><b>Read latency [cycles]</b></p>")
 	contains IDiscreteValueDeviation readLatency
@@ -3503,9 +3483,7 @@ class RunnableParameter extends ReferableBaseObject
 	@GenModel(propertyCategory="Read only")
 	container readonly Runnable containingRunnable opposite parameters
 	
-	op String computeUniqueName() {
-		return basicComputeUniqueNameWithPrefix(containingRunnable?.name)
-	}
+	op String getNamePrefix() { containingRunnable?.name }
 	
 	DirectionType direction
 	refers TypeDefinition dataType

@@ -17,8 +17,11 @@ package org.eclipse.app4mc.amalthea.model;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -85,6 +88,37 @@ public class AmaltheaServices {
 	public static final List<TimeUnit> TIME_UNIT_LIST = Collections
 			.unmodifiableList(Arrays.asList(TimeUnit.PS, TimeUnit.NS, TimeUnit.US, TimeUnit.MS, TimeUnit.S));
 
+	public static String getLongName(final @NonNull IReferable object) {
+		checkArgument(object != null, ARG_OBJECT_MESSAGE);
+		
+		final String name = object.getName();
+		final String prefix = object.getNamePrefix();
+		if (prefix == null || prefix.isEmpty()) return name;
+
+		return prefix + "/" + name;
+	}
+	
+	public static String getUniqueName(final @NonNull IReferable object) {
+		checkArgument(object != null, ARG_OBJECT_MESSAGE);
+		
+		final String name = object.getName();
+		final String prefix = object.getNamePrefix();
+		String s1 = (prefix == null || prefix.isEmpty()) ? "" : encodeName(prefix) + "/";
+		String s2 = encodeName(name) + "?type=" + object.eClass().getName();
+		
+		return s1 + s2;
+	}
+	
+	private static String encodeName(final @Nullable String name) {
+		if (name == null || name.isEmpty()) return "no-name";
+		
+		try {
+			return URLEncoder.encode(name, StandardCharsets.UTF_8.toString());
+		} catch (UnsupportedEncodingException e) {
+			return null;
+		}
+	}
+	
 	public static <T extends EObject> T getContainerOfType(final @NonNull EObject object, final @NonNull Class<T> type) {
 		checkArgument(object != null, ARG_OBJECT_MESSAGE);
 		checkArgument(type != null, ARG_CLASS_MESSAGE);

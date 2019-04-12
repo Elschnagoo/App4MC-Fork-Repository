@@ -461,24 +461,11 @@ Needs to be extended by other classes.</xsd:documentation>
   <xsd:complexType abstract="true" ecore:interface="true" name="IReferable">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <annotation source="http://www.eclipse.org/emf/2002/GenModel">
-            <detail key="documentation">Overwrite this method to define specific IDs (used by name-based references).</detail>
+            <detail key="documentation">Overwrite this method to define a specific prefix (used by name-based references).</detail>
           </annotation>
-          <body>return this.basicComputeUniqueName();</body>
-        </operation>
-        <operation name="basicComputeUniqueName" type="ecore:EString" unique="false">
-          <body>&lt;%java.lang.String%&gt; _encode = this.encode(this.getName());
-&lt;%java.lang.String%&gt; _plus = (_encode + "?type=");
-&lt;%java.lang.String%&gt; _name = this.eClass().getName();
-return (_plus + _name);</body>
-        </operation>
-        <operation name="basicComputeUniqueNameWithPrefix" type="ecore:EString" unique="false">
-          <parameter name="prefix" type="ecore:EString" unique="false"/>
-          <body>&lt;%java.lang.String%&gt; _encode = this.encode(prefix);
-&lt;%java.lang.String%&gt; _plus = (_encode + "/");
-&lt;%java.lang.String%&gt; _basicComputeUniqueName = this.basicComputeUniqueName();
-return (_plus + _basicComputeUniqueName);</body>
+          <body>return "";</body>
         </operation>
         <operation name="encode" type="ecore:EString" unique="false">
           <parameter name="str" type="ecore:EString" unique="false"/>
@@ -1763,14 +1750,14 @@ return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.ecl
   <xsd:complexType name="ModeLiteral">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.EnumMode%&gt; _containingMode = this.getContainingMode();
 &lt;%java.lang.String%&gt; _name = null;
 if (_containingMode!=null)
 {
 	_name=_containingMode.getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
         <operation name="toString" type="ecore:EString" unique="false">
           <body>&lt;%java.lang.String%&gt; _xifexpression = null;
@@ -1850,14 +1837,14 @@ return _xifexpression;</body>
   <xsd:complexType abstract="true" ecore:implements="am:ITaggable" name="Port">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.Component%&gt; _containingComponent = this.getContainingComponent();
 &lt;%java.lang.String%&gt; _name = null;
 if (_containingComponent!=null)
 {
 	_name=_containingComponent.getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
       </xsd:appinfo>
     </xsd:annotation>
@@ -3114,14 +3101,14 @@ entity: The component that fires the event (optional)</xsd:documentation>
   <xsd:complexType name="HwFeature">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();
 &lt;%java.lang.String%&gt; _name = null;
 if (_containingCategory!=null)
 {
 	_name=_containingCategory.getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
         <operation name="toString" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%&gt; _containingCategory = this.getContainingCategory();
@@ -3166,14 +3153,14 @@ return (_plus + _xifexpression_1);</body>
   <xsd:complexType ecore:implements="am:ITaggable" name="HwPort">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();
 &lt;%java.lang.String%&gt; _name = null;
 if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer)!=null)
 {
 	_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer).getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
       </xsd:appinfo>
     </xsd:annotation>
@@ -3212,14 +3199,14 @@ return this.basicComputeUniqueNameWithPrefix(_name);</body>
   <xsd:complexType ecore:implements="am:HwPathElement am:ITaggable" name="HwConnection">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.emf.ecore.EObject%&gt; _eContainer = this.eContainer();
 &lt;%java.lang.String%&gt; _name = null;
 if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer)!=null)
 {
 	_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%&gt;) _eContainer).getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
         <operation name="getPorts" type="am:HwPort" unique="false" upperBound="-1">
           <body>return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;unmodifiableEList(&lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;toEList(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;filterNull(&lt;%org.eclipse.xtext.xbase.lib.CollectionLiterals%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%&gt;&gt;newArrayList(this.getPort1(), this.getPort2()))));</body>
@@ -5339,14 +5326,14 @@ The final state can be several Tasks, which can be computed using provided infor
   <xsd:complexType name="RunnableParameter">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
-        <operation name="computeUniqueName" type="ecore:EString" unique="false">
+        <operation name="getNamePrefix" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _containingRunnable = this.getContainingRunnable();
 &lt;%java.lang.String%&gt; _name = null;
 if (_containingRunnable!=null)
 {
 	_name=_containingRunnable.getName();
 }
-return this.basicComputeUniqueNameWithPrefix(_name);</body>
+return _name;</body>
         </operation>
         <operation name="toString" type="ecore:EString" unique="false">
           <body>&lt;%org.eclipse.app4mc.amalthea.model.Runnable%&gt; _containingRunnable = this.getContainingRunnable();

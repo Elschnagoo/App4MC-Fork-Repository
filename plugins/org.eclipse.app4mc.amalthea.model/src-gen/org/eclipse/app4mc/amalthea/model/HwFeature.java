@@ -81,10 +81,10 @@ public interface HwFeature extends ReferableBaseObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false"
+	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	String computeUniqueName();
+	String getNamePrefix();
 
 	/**
 	 * <!-- begin-user-doc -->

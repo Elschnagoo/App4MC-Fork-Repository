@@ -94,22 +94,11 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="IReferable: Computed ID for name based references"/>
     </eAnnotations>
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Overwrite this method to define specific IDs (used by name-based references)."/>
-        <details key="body" value="return this.basicComputeUniqueName();"/>
+        <details key="documentation" value="Overwrite this method to define a specific prefix (used by name-based references)."/>
+        <details key="body" value="return &quot;&quot;;"/>
       </eAnnotations>
-    </eOperations>
-    <eOperations name="basicComputeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%java.lang.String%> _encode = this.encode(this.getName());&#xA;&lt;%java.lang.String%> _plus = (_encode + &quot;?type=&quot;);&#xA;&lt;%java.lang.String%> _name = this.eClass().getName();&#xA;return (_plus + _name);"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="basicComputeUniqueNameWithPrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%java.lang.String%> _encode = this.encode(prefix);&#xA;&lt;%java.lang.String%> _plus = (_encode + &quot;/&quot;);&#xA;&lt;%java.lang.String%> _basicComputeUniqueName = this.basicComputeUniqueName();&#xA;return (_plus + _basicComputeUniqueName);"/>
-      </eAnnotations>
-      <eParameters name="prefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="encode" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -135,7 +124,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="propertyCategory" value="Read only"/>
         <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
-        <details key="get" value="return this.computeUniqueName();"/>
+        <details key="get" value="&lt;%java.lang.String%> _xifexpression = null;&#xA;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(this.getNamePrefix());&#xA;if (_isNullOrEmpty)&#xA;{&#xA;&#x9;_xifexpression = &quot;&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _encode = this.encode(this.getNamePrefix());&#xA;&#x9;_xifexpression = (_encode + &quot;/&quot;);&#xA;}&#xA;&lt;%java.lang.String%> _encode_1 = this.encode(this.getName());&#xA;&lt;%java.lang.String%> _plus = (_xifexpression + _encode_1);&#xA;&lt;%java.lang.String%> _plus_1 = (_plus + &quot;?type=&quot;);&#xA;&lt;%java.lang.String%> _name = this.eClass().getName();&#xA;return (_plus_1 + _name);"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -906,9 +895,9 @@
         eType="#//ModeLiteral" containment="true" resolveProxies="false" eOpposite="#//ModeLiteral/containingMode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModeLiteral" eSuperTypes="#//ReferableBaseObject">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.EnumMode%> _containingMode = this.getContainingMode();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingMode!=null)&#xA;{&#xA;&#x9;_name=_containingMode.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.EnumMode%> _containingMode = this.getContainingMode();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingMode!=null)&#xA;{&#xA;&#x9;_name=_containingMode.getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="toString" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -981,9 +970,9 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//ReferableBaseObject #//ITaggable">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Component%> _containingComponent = this.getContainingComponent();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingComponent!=null)&#xA;{&#xA;&#x9;_name=_containingComponent.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Component%> _containingComponent = this.getContainingComponent();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingComponent!=null)&#xA;{&#xA;&#x9;_name=_containingComponent.getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containingComponent" eType="#//Component"
@@ -1787,9 +1776,9 @@
         eType="#//HwFeature" containment="true" resolveProxies="false" eOpposite="#//HwFeature/containingCategory"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HwFeature" eSuperTypes="#//ReferableBaseObject">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%> _containingCategory = this.getContainingCategory();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingCategory!=null)&#xA;{&#xA;&#x9;_name=_containingCategory.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%> _containingCategory = this.getContainingCategory();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingCategory!=null)&#xA;{&#xA;&#x9;_name=_containingCategory.getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="toString" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -1807,9 +1796,9 @@
         defaultValueLiteral="0.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HwPort" eSuperTypes="#//ReferableBaseObject #//ITaggable">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitWidth" unique="false"
@@ -1845,9 +1834,9 @@
         eType="#//HwConnection" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HwConnection" eSuperTypes="#//ReferableBaseObject #//HwPathElement #//ITaggable">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getPorts" unique="false" upperBound="-1" eType="#//HwPort">
@@ -3361,9 +3350,9 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RunnableParameter" eSuperTypes="#//ReferableBaseObject">
-    <eOperations name="computeUniqueName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="getNamePrefix" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Runnable%> _containingRunnable = this.getContainingRunnable();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingRunnable!=null)&#xA;{&#xA;&#x9;_name=_containingRunnable.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Runnable%> _containingRunnable = this.getContainingRunnable();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingRunnable!=null)&#xA;{&#xA;&#x9;_name=_containingRunnable.getName();&#xA;}&#xA;return _name;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="toString" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

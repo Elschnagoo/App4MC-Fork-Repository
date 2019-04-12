@@ -504,17 +504,10 @@
     </genClasses>
     <genClasses image="false" ecoreClass="amalthea.ecore#//IReferable">
       <genFeatures property="Readonly" createChild="false" propertyCategory="Read only"
-          ecoreFeature="ecore:EAttribute amalthea.ecore#//IReferable/uniqueName" get="return this.computeUniqueName();">
+          ecoreFeature="ecore:EAttribute amalthea.ecore#//IReferable/uniqueName" get="&lt;%java.lang.String%> _xifexpression = null;&#xA;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(this.getNamePrefix());&#xA;if (_isNullOrEmpty)&#xA;{&#xA;&#x9;_xifexpression = &quot;&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _encode = this.encode(this.getNamePrefix());&#xA;&#x9;_xifexpression = (_encode + &quot;/&quot;);&#xA;}&#xA;&lt;%java.lang.String%> _encode_1 = this.encode(this.getName());&#xA;&lt;%java.lang.String%> _plus = (_xifexpression + _encode_1);&#xA;&lt;%java.lang.String%> _plus_1 = (_plus + &quot;?type=&quot;);&#xA;&lt;%java.lang.String%> _name = this.eClass().getName();&#xA;return (_plus_1 + _name);">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genOperations ecoreOperation="amalthea.ecore#//IReferable/computeUniqueName"
-          body="return this.basicComputeUniqueName();"/>
-      <genOperations ecoreOperation="amalthea.ecore#//IReferable/basicComputeUniqueName"
-          body="&lt;%java.lang.String%> _encode = this.encode(this.getName());&#xA;&lt;%java.lang.String%> _plus = (_encode + &quot;?type=&quot;);&#xA;&lt;%java.lang.String%> _name = this.eClass().getName();&#xA;return (_plus + _name);"/>
-      <genOperations ecoreOperation="amalthea.ecore#//IReferable/basicComputeUniqueNameWithPrefix"
-          body="&lt;%java.lang.String%> _encode = this.encode(prefix);&#xA;&lt;%java.lang.String%> _plus = (_encode + &quot;/&quot;);&#xA;&lt;%java.lang.String%> _basicComputeUniqueName = this.basicComputeUniqueName();&#xA;return (_plus + _basicComputeUniqueName);">
-        <genParameters ecoreParameter="amalthea.ecore#//IReferable/basicComputeUniqueNameWithPrefix/prefix"/>
-      </genOperations>
+      <genOperations ecoreOperation="amalthea.ecore#//IReferable/getNamePrefix" body="return &quot;&quot;;"/>
       <genOperations ecoreOperation="amalthea.ecore#//IReferable/encode" body="try&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _xifexpression = null;&#xA;&#x9;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(str);&#xA;&#x9;if (_isNullOrEmpty)&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression = &quot;no-name&quot;;&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression = &lt;%java.net.URLEncoder%>.encode(str, &lt;%java.nio.charset.StandardCharsets%>.UTF_8.toString());&#xA;&#x9;}&#xA;&#x9;return _xifexpression;&#xA;}&#xA;catch (Throwable _e)&#xA;{&#xA;&#x9;throw org.eclipse.xtext.xbase.lib.Exceptions.sneakyThrow(_e);&#xA;}">
         <genParameters ecoreParameter="amalthea.ecore#//IReferable/encode/str"/>
       </genOperations>
@@ -830,8 +823,7 @@
     <genClasses ecoreClass="amalthea.ecore#//ModeLiteral">
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
           ecoreFeature="ecore:EReference amalthea.ecore#//ModeLiteral/containingMode"/>
-      <genOperations ecoreOperation="amalthea.ecore#//ModeLiteral/computeUniqueName"
-          body="&lt;%org.eclipse.app4mc.amalthea.model.EnumMode%> _containingMode = this.getContainingMode();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingMode!=null)&#xA;{&#xA;&#x9;_name=_containingMode.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//ModeLiteral/getNamePrefix" body="&lt;%org.eclipse.app4mc.amalthea.model.EnumMode%> _containingMode = this.getContainingMode();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingMode!=null)&#xA;{&#xA;&#x9;_name=_containingMode.getName();&#xA;}&#xA;return _name;"/>
       <genOperations ecoreOperation="amalthea.ecore#//ModeLiteral/toString" body="&lt;%java.lang.String%> _xifexpression = null;&#xA;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(this.getName());&#xA;if (_isNullOrEmpty)&#xA;{&#xA;&#x9;_xifexpression = &quot;&lt;literal>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = this.getName();&#xA;}&#xA;return _xifexpression;"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ComponentsModel">
@@ -850,7 +842,7 @@
     <genClasses image="false" ecoreClass="amalthea.ecore#//Port">
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
           ecoreFeature="ecore:EReference amalthea.ecore#//Port/containingComponent"/>
-      <genOperations ecoreOperation="amalthea.ecore#//Port/computeUniqueName" body="&lt;%org.eclipse.app4mc.amalthea.model.Component%> _containingComponent = this.getContainingComponent();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingComponent!=null)&#xA;{&#xA;&#x9;_name=_containingComponent.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//Port/getNamePrefix" body="&lt;%org.eclipse.app4mc.amalthea.model.Component%> _containingComponent = this.getContainingComponent();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingComponent!=null)&#xA;{&#xA;&#x9;_name=_containingComponent.getName();&#xA;}&#xA;return _name;"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//Component">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Component/ports"/>
@@ -1200,8 +1192,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
           ecoreFeature="ecore:EReference amalthea.ecore#//HwFeature/containingCategory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//HwFeature/value"/>
-      <genOperations ecoreOperation="amalthea.ecore#//HwFeature/computeUniqueName"
-          body="&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%> _containingCategory = this.getContainingCategory();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingCategory!=null)&#xA;{&#xA;&#x9;_name=_containingCategory.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//HwFeature/getNamePrefix" body="&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%> _containingCategory = this.getContainingCategory();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingCategory!=null)&#xA;{&#xA;&#x9;_name=_containingCategory.getName();&#xA;}&#xA;return _name;"/>
       <genOperations ecoreOperation="amalthea.ecore#//HwFeature/toString" body="&lt;%org.eclipse.app4mc.amalthea.model.HwFeatureCategory%> _containingCategory = this.getContainingCategory();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingCategory!=null)&#xA;{&#xA;&#x9;_name=_containingCategory.getName();&#xA;}&#xA;final &lt;%java.lang.String%> featureName = _name;&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(featureName);&#xA;if (_isNullOrEmpty)&#xA;{&#xA;&#x9;_xifexpression = &quot;&lt;category>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = featureName;&#xA;}&#xA;&lt;%java.lang.String%> _plus = (_xifexpression + &quot;::&quot;);&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;boolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(this.getName());&#xA;if (_isNullOrEmpty_1)&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&lt;feature>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = this.getName();&#xA;}&#xA;return (_plus + _xifexpression_1);"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//HwPort">
@@ -1215,7 +1206,7 @@
           ecoreFeature="ecore:EReference amalthea.ecore#//HwPort/connections" get="&lt;%org.eclipse.emf.ecore.EReference%> _hwConnection_Port1 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getHwConnection_Port1();&#xA;&lt;%org.eclipse.emf.ecore.EReference%> _hwConnection_Port2 = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getHwConnection_Port2();&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwConnection%>>getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getHwPort_Connections(), &#xA;&#x9;java.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>newHashSet(_hwConnection_Port1, _hwConnection_Port2)));">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genOperations ecoreOperation="amalthea.ecore#//HwPort/computeUniqueName" body="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//HwPort/getNamePrefix" body="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return _name;"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ConnectionHandler">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//ConnectionHandler/definition"/>
@@ -1229,8 +1220,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//HwConnection/port2"/>
       <genFeatures property="Readonly" createChild="false" propertyCategory="Read only"
           ecoreFeature="ecore:EAttribute amalthea.ecore#//HwConnection/internal" get="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;return (_eContainer instanceof &lt;%org.eclipse.app4mc.amalthea.model.ConnectionHandler%>);"/>
-      <genOperations ecoreOperation="amalthea.ecore#//HwConnection/computeUniqueName"
-          body="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//HwConnection/getNamePrefix"
+          body="&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer)!=null)&#xA;{&#xA;&#x9;_name=((&lt;%org.eclipse.app4mc.amalthea.model.INamed%>) _eContainer).getName();&#xA;}&#xA;return _name;"/>
       <genOperations ecoreOperation="amalthea.ecore#//HwConnection/getPorts" body="return &lt;%org.eclipse.emf.common.util.ECollections%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%>>unmodifiableEList(&lt;%org.eclipse.emf.common.util.ECollections%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%>>toEList(&lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%>>filterNull(&lt;%org.eclipse.xtext.xbase.lib.CollectionLiterals%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.HwPort%>>newArrayList(this.getPort1(), this.getPort2()))));"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//HwAccessElement">
@@ -1846,8 +1837,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//RunnableParameter/direction"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableParameter/dataType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableParameter/dependsOn"/>
-      <genOperations ecoreOperation="amalthea.ecore#//RunnableParameter/computeUniqueName"
-          body="&lt;%org.eclipse.app4mc.amalthea.model.Runnable%> _containingRunnable = this.getContainingRunnable();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingRunnable!=null)&#xA;{&#xA;&#x9;_name=_containingRunnable.getName();&#xA;}&#xA;return this.basicComputeUniqueNameWithPrefix(_name);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//RunnableParameter/getNamePrefix"
+          body="&lt;%org.eclipse.app4mc.amalthea.model.Runnable%> _containingRunnable = this.getContainingRunnable();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingRunnable!=null)&#xA;{&#xA;&#x9;_name=_containingRunnable.getName();&#xA;}&#xA;return _name;"/>
       <genOperations ecoreOperation="amalthea.ecore#//RunnableParameter/toString"
           body="&lt;%org.eclipse.app4mc.amalthea.model.Runnable%> _containingRunnable = this.getContainingRunnable();&#xA;&lt;%java.lang.String%> _name = null;&#xA;if (_containingRunnable!=null)&#xA;{&#xA;&#x9;_name=_containingRunnable.getName();&#xA;}&#xA;final &lt;%java.lang.String%> runName = _name;&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;boolean _isNullOrEmpty = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(runName);&#xA;if (_isNullOrEmpty)&#xA;{&#xA;&#x9;_xifexpression = &quot;&lt;runnable>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = runName;&#xA;}&#xA;&lt;%java.lang.String%> _plus = (_xifexpression + &quot;::&quot;);&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;boolean _isNullOrEmpty_1 = &lt;%org.eclipse.xtext.xbase.lib.StringExtensions%>.isNullOrEmpty(this.getName());&#xA;if (_isNullOrEmpty_1)&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&lt;parameter>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = this.getName();&#xA;}&#xA;return (_plus + _xifexpression_1);"/>
     </genClasses>

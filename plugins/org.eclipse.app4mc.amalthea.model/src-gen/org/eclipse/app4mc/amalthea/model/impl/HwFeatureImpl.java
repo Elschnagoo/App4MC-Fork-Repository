@@ -138,13 +138,13 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	 * @generated
 	 */
 	@Override
-	public String computeUniqueName() {
+	public String getNamePrefix() {
 		HwFeatureCategory _containingCategory = this.getContainingCategory();
 		String _name = null;
 		if (_containingCategory!=null) {
 			_name=_containingCategory.getName();
 		}
-		return this.basicComputeUniqueNameWithPrefix(_name);
+		return _name;
 	}
 
 	/**
@@ -296,13 +296,13 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___GET_NAME_PREFIX: return AmaltheaPackage.HW_FEATURE___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ReferableBaseObject.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT___GET_NAME_PREFIX: return AmaltheaPackage.HW_FEATURE___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -317,8 +317,8 @@ public class HwFeatureImpl extends ReferableBaseObjectImpl implements HwFeature 
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.HW_FEATURE___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
+			case AmaltheaPackage.HW_FEATURE___GET_NAME_PREFIX:
+				return getNamePrefix();
 			case AmaltheaPackage.HW_FEATURE___TO_STRING:
 				return toString();
 		}

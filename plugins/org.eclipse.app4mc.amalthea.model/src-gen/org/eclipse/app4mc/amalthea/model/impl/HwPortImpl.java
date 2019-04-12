@@ -317,13 +317,13 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	 * @generated
 	 */
 	@Override
-	public String computeUniqueName() {
+	public String getNamePrefix() {
 		EObject _eContainer = this.eContainer();
 		String _name = null;
 		if (((INamed) _eContainer)!=null) {
 			_name=((INamed) _eContainer).getName();
 		}
-		return this.basicComputeUniqueNameWithPrefix(_name);
+		return _name;
 	}
 
 	/**
@@ -475,13 +475,13 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_PORT___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___GET_NAME_PREFIX: return AmaltheaPackage.HW_PORT___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ReferableBaseObject.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.HW_PORT___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT___GET_NAME_PREFIX: return AmaltheaPackage.HW_PORT___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -501,8 +501,8 @@ public class HwPortImpl extends ReferableBaseObjectImpl implements HwPort {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.HW_PORT___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
+			case AmaltheaPackage.HW_PORT___GET_NAME_PREFIX:
+				return getNamePrefix();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -59,28 +59,12 @@ public interface IReferable extends INamed {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Overwrite this method to define specific IDs (used by name-based references).
+	 * Overwrite this method to define a specific prefix (used by name-based references).
 	 * <!-- end-model-doc -->
-	 * @model unique="false"
+	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	String computeUniqueName();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 * @generated
-	 */
-	String basicComputeUniqueName();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false" prefixUnique="false"
-	 * @generated
-	 */
-	String basicComputeUniqueNameWithPrefix(String prefix);
+	String getNamePrefix();
 
 	/**
 	 * <!-- begin-user-doc -->

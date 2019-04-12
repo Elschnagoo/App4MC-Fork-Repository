@@ -185,9 +185,9 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false"
+	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	String computeUniqueName();
+	String getNamePrefix();
 
 } // HwPort

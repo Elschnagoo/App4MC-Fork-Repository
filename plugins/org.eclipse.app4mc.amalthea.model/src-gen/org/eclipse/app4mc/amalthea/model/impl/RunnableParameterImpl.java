@@ -247,13 +247,13 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	 * @generated
 	 */
 	@Override
-	public String computeUniqueName() {
+	public String getNamePrefix() {
 		org.eclipse.app4mc.amalthea.model.Runnable _containingRunnable = this.getContainingRunnable();
 		String _name = null;
 		if (_containingRunnable!=null) {
 			_name=_containingRunnable.getName();
 		}
-		return this.basicComputeUniqueNameWithPrefix(_name);
+		return _name;
 	}
 
 	/**
@@ -428,13 +428,13 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.RUNNABLE_PARAMETER___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___GET_NAME_PREFIX: return AmaltheaPackage.RUNNABLE_PARAMETER___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ReferableBaseObject.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.RUNNABLE_PARAMETER___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT___GET_NAME_PREFIX: return AmaltheaPackage.RUNNABLE_PARAMETER___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -449,8 +449,8 @@ public class RunnableParameterImpl extends ReferableBaseObjectImpl implements Ru
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.RUNNABLE_PARAMETER___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
+			case AmaltheaPackage.RUNNABLE_PARAMETER___GET_NAME_PREFIX:
+				return getNamePrefix();
 			case AmaltheaPackage.RUNNABLE_PARAMETER___TO_STRING:
 				return toString();
 		}

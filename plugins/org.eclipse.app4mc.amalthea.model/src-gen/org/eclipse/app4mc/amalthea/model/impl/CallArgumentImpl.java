@@ -19,8 +19,6 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
-import org.eclipse.app4mc.amalthea.model.IReferable;
-import org.eclipse.app4mc.amalthea.model.ReferableObject;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 
@@ -378,28 +376,6 @@ public class CallArgumentImpl extends ReferableObjectImpl implements CallArgumen
 				return dependsOn != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == IReferable.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.CALL_ARGUMENT___COMPUTE_UNIQUE_NAME;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
-			}
-		}
-		if (baseClass == ReferableObject.class) {
-			switch (baseOperationID) {
-				case AmaltheaPackage.REFERABLE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.CALL_ARGUMENT___COMPUTE_UNIQUE_NAME;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**

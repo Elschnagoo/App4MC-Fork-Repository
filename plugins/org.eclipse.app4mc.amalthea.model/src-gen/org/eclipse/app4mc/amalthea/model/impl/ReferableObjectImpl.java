@@ -133,30 +133,20 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	 */
 	@Override
 	public String getUniqueName() {
-		return this.computeUniqueName();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String computeUniqueName() {
-		return this.basicComputeUniqueName();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String basicComputeUniqueName() {
-		String _encode = this.encode(this.getName());
-		String _plus = (_encode + "?type=");
+		String _xifexpression = null;
+		boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(this.getNamePrefix());
+		if (_isNullOrEmpty) {
+			_xifexpression = "";
+		}
+		else {
+			String _encode = this.encode(this.getNamePrefix());
+			_xifexpression = (_encode + "/");
+		}
+		String _encode_1 = this.encode(this.getName());
+		String _plus = (_xifexpression + _encode_1);
+		String _plus_1 = (_plus + "?type=");
 		String _name = this.eClass().getName();
-		return (_plus + _name);
+		return (_plus_1 + _name);
 	}
 
 	/**
@@ -165,11 +155,8 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	 * @generated
 	 */
 	@Override
-	public String basicComputeUniqueNameWithPrefix(final String prefix) {
-		String _encode = this.encode(prefix);
-		String _plus = (_encode + "/");
-		String _basicComputeUniqueName = this.basicComputeUniqueName();
-		return (_plus + _basicComputeUniqueName);
+	public String getNamePrefix() {
+		return "";
 	}
 
 	/**
@@ -276,12 +263,8 @@ public abstract class ReferableObjectImpl extends AmaltheaExtendedEObjectImpl im
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.REFERABLE_OBJECT___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
-			case AmaltheaPackage.REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME:
-				return basicComputeUniqueName();
-			case AmaltheaPackage.REFERABLE_OBJECT___BASIC_COMPUTE_UNIQUE_NAME_WITH_PREFIX__STRING:
-				return basicComputeUniqueNameWithPrefix((String)arguments.get(0));
+			case AmaltheaPackage.REFERABLE_OBJECT___GET_NAME_PREFIX:
+				return getNamePrefix();
 			case AmaltheaPackage.REFERABLE_OBJECT___ENCODE__STRING:
 				return encode((String)arguments.get(0));
 			case AmaltheaPackage.REFERABLE_OBJECT___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP:

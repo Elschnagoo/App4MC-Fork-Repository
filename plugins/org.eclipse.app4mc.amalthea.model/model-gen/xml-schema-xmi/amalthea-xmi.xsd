@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.4">
+<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:ecore_1="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.4">
   <xsd:annotation>
     <xsd:documentation>*
 *******************************************************************************
@@ -4945,7 +4945,7 @@ It describes a path of the switch and the required mode condition to use this pa
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="condition" type="am:ModeConditionDisjunction"/>
-          <xsd:element name="items" type="ecore:EObject"/>
+          <xsd:element name="items" type="ecore_1:EObject"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
       </xsd:extension>
@@ -4961,7 +4961,7 @@ It describes a path of the switch and the required mode condition to use this pa
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="ecore:EObject"/>
+          <xsd:element name="items" type="ecore_1:EObject"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4992,7 +4992,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="ecore:EObject"/>
+          <xsd:element name="items" type="ecore_1:EObject"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>

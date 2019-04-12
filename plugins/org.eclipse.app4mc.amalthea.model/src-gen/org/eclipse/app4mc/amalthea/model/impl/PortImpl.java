@@ -119,13 +119,13 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	 * @generated
 	 */
 	@Override
-	public String computeUniqueName() {
+	public String getNamePrefix() {
 		Component _containingComponent = this.getContainingComponent();
 		String _name = null;
 		if (_containingComponent!=null) {
 			_name=_containingComponent.getName();
 		}
-		return this.basicComputeUniqueNameWithPrefix(_name);
+		return _name;
 	}
 
 	/**
@@ -278,13 +278,13 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == IReferable.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.IREFERABLE___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.PORT___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.IREFERABLE___GET_NAME_PREFIX: return AmaltheaPackage.PORT___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ReferableBaseObject.class) {
 			switch (baseOperationID) {
-				case AmaltheaPackage.REFERABLE_BASE_OBJECT___COMPUTE_UNIQUE_NAME: return AmaltheaPackage.PORT___COMPUTE_UNIQUE_NAME;
+				case AmaltheaPackage.REFERABLE_BASE_OBJECT___GET_NAME_PREFIX: return AmaltheaPackage.PORT___GET_NAME_PREFIX;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -304,8 +304,8 @@ public abstract class PortImpl extends ReferableBaseObjectImpl implements Port {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case AmaltheaPackage.PORT___COMPUTE_UNIQUE_NAME:
-				return computeUniqueName();
+			case AmaltheaPackage.PORT___GET_NAME_PREFIX:
+				return getNamePrefix();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
