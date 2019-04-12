@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
     <definitions xsi:type="am:MemoryDefinition" name="ScratchpadDefinition">
-      <size value="16" unit="MB" />
-      <accessLatency xsi:type="am:DiscreteValueConstant" value="1" />
+      <size value="16" unit="MB"/>
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="1"/>
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" name="FlashDefinition">
-      <size value="128" unit="MB" />
-      <accessLatency lowerBound="8" upperBound="2" mean="6" xsi:type="am:DiscreteValueGaussDistribution" />
+      <size value="128" unit="MB"/>
+      <accessLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="8" upperBound="2" mean="6.0" sd="1.0"/>
     </definitions>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="ARMXXX" features="Instructions/IPC_ARMXXX?type=HwFeature" puType="CPU" />
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="ARMXXX" puType="CPU" features="Instructions/IPC_ARMXXX?type=HwFeature"/>
     <featureCategories name="Instructions" featureType="performance">
-      <features name="IPC_ARMXXX" value="8.0" />
+      <features name="IPC_ARMXXX" value="8.0"/>
     </featureCategories>
     <structures name="ECU" structureType="ECU">
       <modules xsi:type="am:ProcessingUnit" name="Core1" frequencyDomain="MainClk?type=FrequencyDomain" definition="ARMXXX?type=ProcessingUnitDefinition">
         <accessElements name="Flash" destination="Flash_Mem?type=Memory">
-          <readLatency lowerBound="8" upperBound="26" mean="16" xsi:type="am:DiscreteValueGaussDistribution" />
-          <writeLatency lowerBound="8" upperBound="26" mean="16" xsi:type="am:DiscreteValueGaussDistribution" />
+          <readLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="8" upperBound="26" mean="16.0" sd="1.0"/>
+          <writeLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="8" upperBound="26" mean="16.0" sd="1.0"/>
         </accessElements>
         <accessElements name="Local_Scratchpad" destination="Scratchpad_Core1?type=Memory">
-          <readLatency xsi:type="am:DiscreteValueConstant" value="1" />
-          <writeLatency xsi:type="am:DiscreteValueConstant" value="1" />
+          <readLatency xsi:type="am:DiscreteValueConstant" value="1"/>
+          <writeLatency xsi:type="am:DiscreteValueConstant" value="1"/>
         </accessElements>
         <accessElements name="Core2_Scratchpad" destination="Scratchpad_Core2?type=Memory">
-          <readLatency xsi:type="am:DiscreteValueConstant" value="4" />
-          <writeLatency xsi:type="am:DiscreteValueConstant" value="4" />
+          <readLatency xsi:type="am:DiscreteValueConstant" value="4"/>
+          <writeLatency xsi:type="am:DiscreteValueConstant" value="4"/>
         </accessElements>
       </modules>
       <modules xsi:type="am:ProcessingUnit" name="Core2" frequencyDomain="MainClk?type=FrequencyDomain" definition="ARMXXX?type=ProcessingUnitDefinition">
         <accessElements name="Flash" destination="Flash_Mem?type=Memory">
-          <readLatency lowerBound="8" upperBound="26" mean="16" xsi:type="am:DiscreteValueGaussDistribution" />
-          <writeLatency lowerBound="8" upperBound="26" mean="16" xsi:type="am:DiscreteValueGaussDistribution" />
+          <readLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="8" upperBound="26" mean="16.0" sd="1.0"/>
+          <writeLatency xsi:type="am:DiscreteValueGaussDistribution" lowerBound="8" upperBound="26" mean="16.0" sd="1.0"/>
         </accessElements>
         <accessElements name="Local_Scratchpad" destination="Scratchpad_Core2?type=Memory">
-          <readLatency xsi:type="am:DiscreteValueConstant" value="1" />
-          <writeLatency xsi:type="am:DiscreteValueConstant" value="1" />
+          <readLatency xsi:type="am:DiscreteValueConstant" value="1"/>
+          <writeLatency xsi:type="am:DiscreteValueConstant" value="1"/>
         </accessElements>
         <accessElements name="Core1_Scratchpad" destination="Scratchpad_Core1?type=Memory">
-          <readLatency xsi:type="am:DiscreteValueConstant" value="4" />
-          <writeLatency xsi:type="am:DiscreteValueConstant" value="4" />
+          <readLatency xsi:type="am:DiscreteValueConstant" value="4"/>
+          <writeLatency xsi:type="am:DiscreteValueConstant" value="4"/>
         </accessElements>
       </modules>
-      <modules xsi:type="am:Memory" name="Scratchpad_Core1" frequencyDomain="MainClk?type=FrequencyDomain" />
-      <modules xsi:type="am:Memory" name="Scratchpad_Core2" frequencyDomain="MainClk?type=FrequencyDomain" />
-      <modules xsi:type="am:Memory" name="Flash_Mem" frequencyDomain="MainClk?type=FrequencyDomain" />
+      <modules xsi:type="am:Memory" name="Scratchpad_Core1" frequencyDomain="MainClk?type=FrequencyDomain"/>
+      <modules xsi:type="am:Memory" name="Scratchpad_Core2" frequencyDomain="MainClk?type=FrequencyDomain"/>
+      <modules xsi:type="am:Memory" name="Flash_Mem" frequencyDomain="MainClk?type=FrequencyDomain"/>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="MainClk" clockGating="false">
-      <defaultValue value="500.0" unit="MHz" />
+      <defaultValue value="500.0" unit="MHz"/>
     </domains>
   </hwModel>
 </am:Amalthea>

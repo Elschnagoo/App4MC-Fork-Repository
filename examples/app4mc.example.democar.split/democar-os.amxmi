@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <osModel>
     <operatingSystems name="OperatingSystem">
       <taskSchedulers name="Task_Scheduler_Core_1">
-        <schedulingAlgorithm xsi:type="am:OSEK" />
+        <schedulingAlgorithm xsi:type="am:OSEK"/>
       </taskSchedulers>
     </operatingSystems>
   </osModel>
