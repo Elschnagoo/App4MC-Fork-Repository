@@ -47,7 +47,8 @@ table(classic).
 
 h4. HwDefinition
 
-Additional information about the definition concept in general can be found in the User Guide --> Concepts --> Hardware --> General Hardware Model Overview
+Additional information about the definition concept in general can be found in the User Guide (see <notextile><a href="./user_hw.html#general-hardware-model-overview">General Hardware Model Overview</a></notextile>).
+
 
 h5. ProcessingUnitDefinition
 
@@ -170,7 +171,8 @@ table(classic).
 h4. HwFeature
 
 
-A _HwFeature_ is an abstract element to represent any kind of special functionality of a _ProcessingUnitDefinition_. _HwFeatures_ could be reused several times by different definitions and organized within _HwFeatureCategories_. Currently this _HwFeatureCategories_ are directly referenced out of the Software Model in future the cost function (_Recipes_) of an algorithm will be placed in an additional intermediate layer. More information can be found in the User Guide --> Concepts --> Hardware.
+A _HwFeature_ is an abstract element to represent any kind of special functionality of a _ProcessingUnitDefinition_. _HwFeatures_ could be reused several times by different definitions and organized within _HwFeatureCategories_. Currently this _HwFeatureCategories_ are directly referenced out of the Software Model in future the cost function (_Recipes_) of an algorithm will be placed in an additional intermediate layer.
+More information can be found in (see <notextile><a href="./user_hw.html">Hardware Concepts</a></notextile>).
 
 _NOTE: The concepts "Recipe" and "Hardware Features" are work in progress. Changes to the already implemented HwFeatures are probable._
 

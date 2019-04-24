@@ -6,10 +6,12 @@ The mapping model is intended to provide tools that use hardware and software mo
 * schedulers and processing units: A scheduler can manage one or more processing units and deploy computations on these
 * data and memories: Data (such as functions, variables, heap etc) is mapped on static and volatile memories
 
+Note the mapping model is the only sub model of Amalthea with an attribute in the root element. The _Address Mapping Type_ defines the interpretation of used addresses in the mapping model. Additional information can be found in the _MemoryMapping_ section.
+
 
 h3. Overview
 
-The Meta Model specifying the Mapping Model is shown below. 
+The Meta Model specifying the Mapping Model is shown below.
 
 !(scale)../pictures/model_mapping_overview.png!
 
@@ -24,9 +26,9 @@ h3. Allocations
 
 h4. SchedulerAllocation
 
-The __SchedulerAllocation__ describes the allocation of  a __Scheduler__ to processing units. This class consists of references to the respective __Scheduler__, which is specified within an existing OS model, and a processing units, which is specified in a hardware model. Schedulers with algorithm "Grouping" are not allocated since they take no decisions and produce no overhead. 
+The __SchedulerAllocation__ describes the allocation of  a __Scheduler__ to processing units. This class consists of references to the respective __Scheduler__, which is specified within an existing OS model, and a processing units, which is specified in a hardware model. Schedulers with algorithm "Grouping" are not allocated since they take no decisions and produce no overhead.
 
-table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __scheduler__ | The scheduler (that is specified in more detail). |
 | __responsibility__ | Defines the processing units the scheduler is responsible for. On these units the scheduler takes decisions. Multiple schedulers can be responsible for one processing unit because of hierarchies. Child-schedulers only take decisions, if they parent-schedulers allows them to (e.g. hypervisors with virtual machines which execute an own operating system). Tasks allocated to this scheduler execute on the intersection between affinity and the responsibility of the scheduler. If this is null the configuration is invalid. If the intersection results in multiple cores, the task can migrate. |
@@ -40,7 +42,7 @@ h4. TaskAllocation
 
 The __TaskAllocation__ is used to associate a __Task__ with its __TaskScheduler__.
 
-table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}. 
+table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __task__ | The task  (that is specified in more detail). |
 | __scheduler__ | Specifies the unique allocation to the scheduler of the task. |
@@ -64,6 +66,6 @@ h4. PhysicalSectionMapping
 The _PhysicalSectionMapping_ class (can also be called as *Physical Memory Section* ) describes the following:
 * mapping of various *Section* elements to a specific *Memory*
 * mapping various *Label and Runnable* elements to a Physical Memory Section
-* description of memory address location where the Physical Memory Section is allocated 
+* description of memory address location where the Physical Memory Section is allocated
 
-
+Note for additional information (see <notextile><a href="./user_memorysection.html">Memory Section</a></notextile>)
