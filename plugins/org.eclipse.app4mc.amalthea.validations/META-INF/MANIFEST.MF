@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Validations
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.validations;singleton:=true
+Bundle-Version: 0.9.4.qualifier
+Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.validations.amalthea
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.eclipse.app4mc.amalthea.validation.profile,
+ org.eclipse.app4mc.amalthea.validations,
+ org.eclipse.app4mc.amalthea.validations.basic,
+ org.eclipse.app4mc.amalthea.validations.hardware,
+ org.eclipse.app4mc.amalthea.validations.misc,
+ org.eclipse.app4mc.amalthea.validations.software
+Require-Bundle: org.apache.commons.lang,
+ org.eclipse.app4mc.validation.core,
+ org.eclipse.app4mc.amalthea.model
