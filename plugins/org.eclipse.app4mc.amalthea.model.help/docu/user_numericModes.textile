@@ -1,0 +1,43 @@
+h3. (Numeric) Modes with Event Stimulus 
+
+Dynamic task activations and the execution of different control paths can depend on internal system states, external events and scheduling effects resulting in different execution sequences of tasks. In APP4MC modes can be used to steer different execution paths. The designer can define modes that execute different paths within runnables, tasks, and even control dynamic activation schemes of tasks with multiple dependencies. This page explains the concepts with a simple example. For the description of the basic model elements, we refer the reader to the chapters:
+
+Data Models -> Software Model -> Modes 
+Data Models -> Software Model -> Runnable Items -> Runnable Mode Switch
+Data Models -> Software Model -> The Call Graph -> Mode Switch
+Data Models -> Stimuli Model -> Mode Value List and Execution Condition
+
+
+h4. Example description
+
+In this chapter, we show a small example how to use modes to steer the execution and the activation of tasks with modes. The following picture depicts the example:
+
+!{width:600px}../pictures/user_numericModes_example.png!
+
+In this example, we have three modes, one _Enum__ and two __Numeric__. The numeric modes are initialized with the value -1: 
+
+!{width:300px}../pictures/user_numericModes.png!
+
+First, we have two data generators with Task __genX__ and Task __genY__ where each execution increases a numeric mode by 1. They are activated by a relative sporadic stimulus with an occurrence interval between 10ms and 50ms. The runnable __counterForX__ executes this for __genX__:
+
+!{width:400px}../pictures/user_numericModes_genX.png!
+
+On every execution, the generator tasks trigger the __CustomEvent__ __check__ to evaluate the __EventStimulus__. This event stimulus checks the condition: 
+*__executionMode == ModeA && countX > 2 && countY > 4__*
+In this example, we do not describe the change of the __executionMode__ to keep the model simpler. This mode could be changed e.g. from within the system or by an external ISR trigger. 
+
+!{width:400px}../pictures/user_numericModes_eventStimuli.png!
+
+If this condition is true, both counting modes are set to zero and the Task __doA__ is called.
+
+Another way to steer the execution depending can be done via mode switches on task level. In __doB__ the mode check is done at task level as depicted in the following picture: 
+
+!{width:400px}../pictures/user_numericModes_doB.png!
+
+Only if the condition is true runnable __runB__ is called. Within this runnable the counting modes are decremented by 3. 
+
+!{width:300px}../pictures/user_numericModes_runnB.png!
+
+The last mechanisms is also possible at runnable level by using the __runnableModeSwitch__. 
+
+Beware of where to reset or change the modes. In __doB__ the modes are reseted directly in the beginning. If you by accident put these after the __tick__ element, it could result in an unintended behavior. In the generator tasks be aware of where to put the __customEventTrigger__. This element activates the stimuli evaluation. If you put a tick element between the increment and the trigger, the evaluation is delayed.
