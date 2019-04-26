@@ -61,6 +61,7 @@
 		<module>../../examples/app4mc.example.democar.split</module>
 		<module>../../examples/app4mc.example.hardware</module>
 		<module>../../examples/app4mc.example.scheduler</module>
+		<module>../../examples/app4mc.example.numericModes</module>
 		<module>../../examples/app4mc.example.modeling</module>
 		<module>../../examples/app4mc.example.modeling.client_server</module>
 		<module>../../examples/app4mc.example.modeling.feedback_loop</module>

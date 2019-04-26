@@ -34,6 +34,15 @@
             icon="icons/full/ctool16/NewEMFExample.gif">
          <description>%_UI_AMALTHEA_SchedulerExamplesWizard_desc</description>
       </wizard>
+       <wizard
+            id="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard"
+            name="%_UI_AMALTHEA_NumericModesExamplesWizard_name"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            project="true"
+            icon="icons/full/ctool16/NewEMFExample.gif">
+         <description>%_UI_AMALTHEA_NumericModesExamplesWizard_desc</description>
+      </wizard>
       <wizard
             id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
             name="%_UI_AMALTHEA_HwmodelExamplesWizard_name"
@@ -119,6 +128,16 @@
                contentURI="examples/app4mc.example.scheduler/"
                description="%_UI_AMALTHEA_SchedulerExamplesWizard_desc"
                name="app4mc.example.scheduler">
+         </projectDescriptor>
+      </example>
+      <example
+            id="AMALTHEA NumericMode Project"
+            pageImage="icons/full/wizban/NewEMFExample.gif"
+            wizardID="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard">
+         <projectDescriptor
+               contentURI="examples/app4mc.example.numericmodes/"
+               description="%_UI_AMALTHEA_NumericModesExamplesWizard_desc"
+               name="app4mc.example.numericmodes">
          </projectDescriptor>
       </example>
       <example
