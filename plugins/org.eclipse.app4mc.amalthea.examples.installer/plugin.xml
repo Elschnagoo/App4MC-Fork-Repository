@@ -135,7 +135,7 @@
             pageImage="icons/full/wizban/NewEMFExample.gif"
             wizardID="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard">
          <projectDescriptor
-               contentURI="examples/app4mc.example.numericmodes/"
+               contentURI="examples/app4mc.example.numericModes/"
                description="%_UI_AMALTHEA_NumericModesExamplesWizard_desc"
                name="app4mc.example.numericmodes">
          </projectDescriptor>
