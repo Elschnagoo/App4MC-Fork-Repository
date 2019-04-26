@@ -79,6 +79,11 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui.editors</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.validation</module>
+		<!--new validation framework plugins -->
+		<module>../../plugins/org.eclipse.app4mc.amalthea.validations</module>
+		<module>../../plugins/org.eclipse.app4mc.validation.core</module>
+		
+		<!--workflow plugins -->
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.ease</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.mwe2</module>

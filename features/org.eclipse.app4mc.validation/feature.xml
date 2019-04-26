@@ -40,5 +40,17 @@ All rights reserved.
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+		 
+	  <plugin
+         id="org.eclipse.app4mc.amalthea.validations"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+		 
+	  <plugin
+         id="org.eclipse.app4mc.validation.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>
