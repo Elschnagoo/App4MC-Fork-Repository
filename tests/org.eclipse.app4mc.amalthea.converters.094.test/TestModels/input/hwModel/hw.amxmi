@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <hwModel>
+    <structures name="">
+      <ports name="" bitWidth="0" priority="0" portInterface="ABH"/>
+      <modules xsi:type="am:Cache" name="">
+        <ports name="" bitWidth="0" priority="0" portInterface="ABH"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" name="">
+        <ports name="" bitWidth="0" priority="0" portInterface="ABH"/>
+      </modules>
+      <modules xsi:type="am:Memory" name="">
+        <ports name="" bitWidth="0" priority="0" portInterface="ABH"/>
+      </modules>
+      <modules xsi:type="am:ProcessingUnit" name="">
+        <ports name="" bitWidth="0" priority="0" portInterface="ABH"/>
+      </modules>
+    </structures>
+  </hwModel>
+</am:Amalthea>

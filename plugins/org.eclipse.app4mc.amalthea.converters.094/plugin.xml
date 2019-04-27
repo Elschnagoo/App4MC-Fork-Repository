@@ -5,14 +5,6 @@
          point="org.eclipse.app4mc.amalthea.model.converters">
      
       <converter
-            converter-class="org.eclipse.app4mc.amalthea.converters094.impl.RootElementConverter"
-            enabled="true"
-            id="converters.094.rootElement"
-            input-model-version="0.9.3"
-            name="rootElement"
-            output-model-version="0.9.4">
-      </converter>
-      <converter
             converter-class="org.eclipse.app4mc.amalthea.converters094.impl.NamespaceConverter"
             enabled="true"
             id="converters.094.namespace"
@@ -34,21 +26,22 @@
                id="converters.094.rootElement">
          </dependent-on-converter>
       </converter>
-      
-      
-      
-      
-      
-   </extension>
-   <extension
-         point="org.eclipse.app4mc.amalthea.model.converters.cachebuilders">
-      <CacheBuilder
-            ID="org.eclipse.app4mc.amalthea.converters.094.HWCacheBuilder"
-            class="org.eclipse.app4mc.amalthea.converters094.utils.HWCacheBuilder"
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters094.impl.HwConverter"
             enabled="true"
+            id="converters.094.hwconverter"
             input-model-version="0.9.3"
-            name="HWCacheBuilder">
-      </CacheBuilder>
+            name="org.eclipse.app4mc.amalthea.converters.094.hwConverter"
+            output-model-version="0.9.4">
+         <dependent-on-converter
+               id="converters.094.rootElement">
+         </dependent-on-converter>
+      </converter>
+      
+      
+      
+      
+      
    </extension>
 
 </plugin>

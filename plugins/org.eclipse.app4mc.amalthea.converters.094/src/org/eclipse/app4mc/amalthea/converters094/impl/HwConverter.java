@@ -16,51 +16,54 @@
 package org.eclipse.app4mc.amalthea.converters094.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters094.utils.HelperUtils_093_094;
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-/**
- * This class is responsible for converting the namespace of AMALTHEA model from 0.9.3 to 0.9.4
- */
-public class NamespaceConverter extends AbstractConverter {
+public class HwConverter extends AbstractConverter {
 
-	public NamespaceConverter() {
+	public HwConverter() {
 		this.helper = HelperUtils_093_094.getInstance();
 		this.logger = LogManager.getLogger("org.eclipse.app4mc.amalthea.modelmigration");
 	}
 
 	@Override
-	public void convert(final File targetFile, final Map<File, Document> fileName_documentsMap,
-			final List<ICache> caches) throws Exception {
+	public void convert(final File file, final Map<File, Document> map, final List<ICache> caches) throws Exception {
 
-		this.logger.info("Migration from 0.9.3 to 0.9.4 : Executing Namespace converter for model file : "
-				+ targetFile.getName());
+		this.logger.info(
+				"Migration from 0.9.3 to 0.9.4 : Executing Hw converter for model file : " + file.getName());
 
-		basicConvert(targetFile, fileName_documentsMap, caches);
+		basicConvert(file, map, caches);
 	}
 
-	public void basicConvert(final File targetFile, final Map<File, Document> fileName_documentsMap, final List<ICache> caches) {
+	public void basicConvert(final File file, final Map<File, Document> map, final List<ICache> caches) {
 		
-		final Document document = fileName_documentsMap.get(targetFile);
+		final Document document = map.get(file);
 		if (document == null) {
 			return;
 		}
 		
 		final Element rootElement = document.getRootElement();
+		
+		update_portInterface(rootElement);
+	}
 
-		this.helper.updateRootElement_NameSpaces_to_094(rootElement);
-
-		try {
-			fileName_documentsMap.put(targetFile.getCanonicalFile(), document);
-		} catch (IOException e) {
-			e.printStackTrace();
+	private void update_portInterface(final Element rootElement) {
+		final String xpath = "./hwModel/structures//ports[@portInterface=\"ABH\"]";
+		
+		final List<Element> portInterfaceElements = this.helper.getXpathResult(rootElement, xpath,
+				Element.class, this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
+		
+		for (Element portInterfaceElement : portInterfaceElements) {
+			
+			Attribute portInterfaceAttribute = portInterfaceElement.getAttribute("portInterface");
+			portInterfaceAttribute.setValue("AHB");
 		}
 	}
 

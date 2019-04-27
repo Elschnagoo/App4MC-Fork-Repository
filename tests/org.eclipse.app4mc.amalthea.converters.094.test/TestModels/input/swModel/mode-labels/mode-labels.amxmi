@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <tasks name="10ms_task" preemption="preemptive" multipleTaskActivationLimit="10">
+      <callGraph>
+        <graphEntries xsi:type="am:ModeSwitch">
+          <entries name="">
+            <condition>
+              <entries xsi:type="am:ModeValue" valueProvider="ModeLabel1?type=ModeLabel">
+                <value href="amlt:/#Mode1/abc?type=ModeLiteral"/>
+              </entries>
+            </condition>
+          </entries>
+        </graphEntries>
+      </callGraph>
+    </tasks>
+    <runnables name="run1" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="ModeLabel2?type=ModeLabel" access="write" modeValue="Mode2/xyz?type=ModeLiteral"/>
+      <runnableItems xsi:type="am:ModeLabelAccess" access="read" modeValue="Mode2/pqr?type=ModeLiteral">
+        <data href="amlt:/#ml?type=ModeLabel"/>
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableModeSwitch">
+        <entries name="switch3">
+          <condition>
+            <entries xsi:type="am:ModeValueConjunction">
+              <entries valueProvider="ModeLabel2?type=ModeLabel" value="Mode2/pqr?type=ModeLiteral"/>
+            </entries>
+            <entries xsi:type="am:ModeValue" valueProvider="ModeLabel2?type=ModeLabel" value="Mode2/xyz?type=ModeLiteral"/>
+          </condition>
+        </entries>
+        <entries name="switch2">
+          <items xsi:type="am:ModeLabelAccess" data="ModeLabel1?type=ModeLabel" access="write" modeValue="Mode1/def?type=ModeLiteral"/>
+        </entries>
+        <entries name="switch1">
+          <condition>
+            <entries xsi:type="am:ModeValue" valueProvider="ModeLabel1?type=ModeLabel" value="Mode1/def?type=ModeLiteral"/>
+          </condition>
+        </entries>
+      </runnableItems>
+    </runnables>
+    <modes name="Mode1">
+      <literals name="abc"/>
+      <literals name="def"/>
+    </modes>
+    <modes name="Mode2">
+      <literals name="xyz"/>
+      <literals name="pqr"/>
+    </modes>
+    <modeLabels name="ModeLabel1" initialValue="Mode1/abc?type=ModeLiteral"/>
+    <modeLabels name="ModeLabel2" displayName="" initialValue="Mode2/xyz?type=ModeLiteral"/>
+  </swModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps1">
+      <setModeValueList>
+        <entries valueProvider="ModeLabel1?type=ModeLabel" value="Mode1/abc?type=ModeLiteral"/>
+      </setModeValueList>
+      <nextOccurrence xsi:type="am:TimeGaussDistribution">
+        <lowerBound value="0"/>
+        <upperBound value="0" unit="s"/>
+        <mean value="0"/>
+        <sd value="55" unit="us"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps2">
+      <enablingModeValueList>
+        <entries xsi:type="am:ModeValue" valueProvider="ModeLabel2?type=ModeLabel" value="Mode1/def?type=ModeLiteral"/>
+      </enablingModeValueList>
+      <nextOccurrence xsi:type="am:TimeBoundaries" samplingType="CornerCase">
+        <lowerBound value="0"/>
+        <upperBound value="0"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps3">
+      <nextOccurrence xsi:type="am:TimeBetaDistribution" alpha="0.0" beta="0.0">
+        <lowerBound value="66" unit="us"/>
+        <upperBound value="2" unit="ms"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps4">
+      <nextOccurrence xsi:type="am:TimeUniformDistribution">
+        <lowerBound value="0"/>
+        <upperBound value="0"/>
+      </nextOccurrence>
+    </stimuli>
+    <stimuli xsi:type="am:RelativePeriodicStimulus" name="rps5">
+      <nextOccurrence xsi:type="am:TimeWeibullEstimatorsDistribution" pRemainPromille="10.0">
+        <lowerBound value="0"/>
+        <upperBound value="0"/>
+        <average value="55" unit="us"/>
+      </nextOccurrence>
+    </stimuli>
+  </stimuliModel>
+</am:Amalthea>

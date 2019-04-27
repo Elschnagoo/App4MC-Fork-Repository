@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <typeDefinitions xsi:type="am:BaseTypeDefinition" name="Boolean">
+      <size value="8" unit="bit"/>
+      <dataMapping platformName="AR" platformType="Boolean"/>
+      <dataMapping platformName="C" platformType="bool"/>
+    </typeDefinitions>
+    <typeDefinitions xsi:type="am:BaseTypeDefinition" name="Some">
+      <size value="64" unit="bit"/>
+      <dataMapping platformName="Unix" platformType="foo"/>
+      <dataMapping platformName="OS/2" platformType="nix"/>
+    </typeDefinitions>
+    <typeDefinitions xsi:type="am:DataTypeDefinition" name="SomeArray">
+      <dataType xsi:type="am:Array" numberElements="32">
+        <dataType xsi:type="am:TypeRef" typeDef="Some?type=BaseTypeDefinition"/>
+      </dataType>
+    </typeDefinitions>
+    <typeDefinitions xsi:type="am:DataTypeDefinition" name="Record">
+      <dataType xsi:type="am:Struct">
+        <entries name="some">
+          <dataType xsi:type="am:TypeRef" typeDef="Some?type=BaseTypeDefinition"/>
+        </entries>
+        <entries name="bool">
+          <dataType xsi:type="am:TypeRef" typeDef="Boolean?type=BaseTypeDefinition"/>
+        </entries>
+      </dataType>
+    </typeDefinitions>
+  </swModel>
+</am:Amalthea>

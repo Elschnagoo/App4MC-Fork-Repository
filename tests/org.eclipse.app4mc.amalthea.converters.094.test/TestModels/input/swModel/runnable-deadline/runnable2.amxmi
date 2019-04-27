@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3">
+  <swModel>
+    <runnables name="run4" callback="false" service="false">
+      <deadline value="581" unit="ns"/>
+    </runnables>
+  </swModel>
+</am:Amalthea>

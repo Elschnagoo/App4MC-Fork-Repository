@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3">
+  <swModel>
+    <modes name="alphabet + special characters">
+      <literals name="letter &lt;A>"/>
+      <literals name="letter &lt;B>"/>
+    </modes>
+    <modeLabels name="alphabet/english" initialValue="alphabet+%2B+special+characters/letter+%3CB%3E?type=ModeLiteral"/>
+  </swModel>
+</am:Amalthea>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="package342/run1 (local) &lt;param>" callback="false" service="false">
+      <runnableItems xsi:type="am:Group" name="" ordered="true">
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="23"/>
+        </items>
+        <items xsi:type="am:RunnableCall" runnable="run3?type=Runnable"/>
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableModeSwitch">
+        <defaultEntry>
+          <items xsi:type="am:RunnableCall" runnable="run2?type=Runnable"/>
+        </defaultEntry>
+      </runnableItems>
+      <runnableItems xsi:type="am:RunnableProbabilitySwitch"/>
+      <runnableItems xsi:type="am:RunnableCall" runnable="run2?type=Runnable"/>
+    </runnables>
+    <runnables name="run2" callback="false" service="false"/>
+    <runnables name="run3" callback="false" service="false"/>
+  </swModel>
+  <constraintsModel>
+    <requirements xsi:type="am:RunnableRequirement" name="deadline" runnable="package342%2Frun1+%28local%29+%3Cparam%3E?type=Runnable">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="4" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:RunnableRequirement" name="deadline" runnable="run3?type=Runnable">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="1342" unit="ns"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>

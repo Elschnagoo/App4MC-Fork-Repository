@@ -1,5 +1,5 @@
 /*********************************************************************************
- * Copyright (c) 2017-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2017-2019 Robert Bosch GmbH and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,7 +12,7 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.converters093.test;
+package org.eclipse.app4mc.amalthea.converters094.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;

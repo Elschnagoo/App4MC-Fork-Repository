@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="" callback="false" service="false">
+      <runnableItems xsi:type="am:ModeLabelAccess" data="ABC?type=ModeLabel" access="read">
+        <modeValue href="amlt:/#alphabet+%2B+special+characters/letter+%3CB%3E?type=ModeLiteral"/>
+      </runnableItems>
+      <runnableItems xsi:type="am:ModeLabelAccess" access="write">
+        <data href="amlt:/#alphabet%2Fenglish?type=ModeLabel"/>
+        <modeValue href="amlt:/#alphabet+%2B+special+characters/letter+%3CB%3E?type=ModeLiteral"/>
+      </runnableItems>
+    </runnables>
+    <modeLabels name="ABC">
+      <initialValue href="amlt:/#alphabet+%2B+special+characters/letter+%3CA%3E?type=ModeLiteral"/>
+    </modeLabels>
+  </swModel>
+</am:Amalthea>
