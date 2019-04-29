@@ -312,6 +312,7 @@ public class SwConverter extends AbstractConverter {
 				this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
 		
 		for (Element stimulus : stimuli) {
+			final String stimulusName = stimulus.getAttributeValue("name");
 			// rename enabling list
 			Element enablingList = getSingleChild(stimulus, "enablingModeValueList");
 			if(enablingList != null) {
@@ -321,7 +322,8 @@ public class SwConverter extends AbstractConverter {
 			// remove disabling list
 			Element disablingList = getSingleChild(stimulus, "disablingModeValueList");
 			if (disablingList != null) {
-				// TODO log removal
+				this.logger.warn("From Stimulus : " + stimulusName
+						+ ", disablingModeValueList element is removed (as this element is no longer supported by AMALTHEA meta model from 0.9.4 version) ");
 				stimulus.removeChild("disablingModeValueList");
 			}
 		}
