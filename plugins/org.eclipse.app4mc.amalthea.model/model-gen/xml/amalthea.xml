@@ -3108,7 +3108,7 @@
       <details key="documentation" value="A counter for the call sequence items"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prescaler" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="1"/>
+        eType="#//PositiveLong" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="0"/>
   </eClassifiers>

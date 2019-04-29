@@ -241,7 +241,7 @@ public final class AmaltheaIndex {
 	 * @param context EObject, Resource or ResourceSet
 	 * @param namePattern for example: <code>Pattern.compile("Prefix_.*")</code>
 	 * @param targetClass for example: <code>Label.class</code>
-	 * @return Set of named objects (IName)
+	 * @return Set of named objects (INamed)
 	 */
 	public static <T extends INamed> Set<? extends T> getElements(final @NonNull Notifier context, final @NonNull Pattern namePattern,
 			final @NonNull Class<T> targetClass) {

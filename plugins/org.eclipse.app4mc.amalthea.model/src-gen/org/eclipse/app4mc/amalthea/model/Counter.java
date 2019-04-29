@@ -49,7 +49,7 @@ public interface Counter extends BaseObject {
 	 * @return the value of the '<em>Prescaler</em>' attribute.
 	 * @see #setPrescaler(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Prescaler()
-	 * @model default="1" unique="false"
+	 * @model default="1" unique="false" dataType="org.eclipse.app4mc.amalthea.model.PositiveLong"
 	 * @generated
 	 */
 	long getPrescaler();
