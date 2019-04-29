@@ -127,7 +127,7 @@
          <projectDescriptor
                contentURI="examples/app4mc.example.numeric_modes/"
                description="%_UI_AMALTHEA_NumericModesExamplesWizard_desc"
-               name="app4mc.example.numericmodes">
+               name="app4mc.example.numeric_modes">
          </projectDescriptor>
       </example>
       <example
