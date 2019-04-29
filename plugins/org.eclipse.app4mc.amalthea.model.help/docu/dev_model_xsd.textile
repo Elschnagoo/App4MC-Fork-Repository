@@ -6,7 +6,7 @@ h3. Ecore
 
 The AMALTHEA model is specified with the Eclipse Modeling Framework (EMF). Eclipse/Java developers can use the AMALTHEA Platform where the generated Java classes of the model are included. The underlying Xcore definition of the model is part of the model plugin.
 
-The derived *Ecore files* can be found "here":../help-model/ecore-definitions.zip.
+Both definitions (the original *Xcore file* and the derived *Ecore files*) can be found "here":../help-model/ecore-definitions.zip.
 
 h3. XML Schema Definition (XSD)
 

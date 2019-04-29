@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <project default="default">
-	<property name="source.dir" location="../../plugins/org.eclipse.app4mc.amalthea.model/model-gen" />
-	<property name="model.dir" location="help-model" />
-	<property name="ecore.dir" value="${model.dir}/ecore" />
-	<property name="ecore.archive" value="${model.dir}/ecore-definitions.zip" />
-	<property name="xml.dir" value="${model.dir}/xml" />
-	<property name="xml-xsd.dir" value="${model.dir}/xml-schema" />
-	<property name="xml-xsd-xmi.dir" value="${model.dir}/xml-schema-xmi" />
-	<property name="xml.archive" value="${model.dir}/xml-definitions.zip" />
+	<property name="source.dir" location="../../plugins/org.eclipse.app4mc.amalthea.model" />
+	<property name="target.dir" location="help-model" />
+	<property name="ecore.dir" value="${target.dir}/ecore" />
+	<property name="xcore.dir" value="${target.dir}/xcore" />
+	<property name="ecore.archive" value="${target.dir}/ecore-definitions.zip" />
+	<property name="xml.dir" value="${target.dir}/xml" />
+	<property name="xml-xsd.dir" value="${target.dir}/xml-schema" />
+	<property name="xml-xsd-xmi.dir" value="${target.dir}/xml-schema-xmi" />
+	<property name="xml.archive" value="${target.dir}/xml-definitions.zip" />
 
 	<target name="default">
 		<antcall target="deleteModelDir" />
@@ -18,41 +19,46 @@
 	</target>
 	
 	<target name="deleteModelDir">
-		<delete dir="${model.dir}"/>
+		<delete dir="${target.dir}"/>
 	</target>
 
 	<target name="createModelDir">
-		<mkdir dir="${model.dir}"/>
+		<mkdir dir="${target.dir}"/>
 		<mkdir dir="${ecore.dir}"/>
+		<mkdir dir="${xcore.dir}"/>
 		<mkdir dir="${xml.dir}"/>
 		<mkdir dir="${xml-xsd.dir}"/>
 		<mkdir dir="${xml-xsd-xmi.dir}"/>
 	</target>
 	
 	<target name="copyModelEcore">
+		<!-- Copy the xcore files -->
+		<copy todir="${xcore.dir}" flatten="true">
+			<fileset dir = "${source.dir}/model" includes="*.xcore"/>
+		</copy>
 		<!-- Copy the ecore files -->
 		<copy todir="${ecore.dir}" flatten="true">
-			<fileset dir = "${source.dir}" includes="ecore/*"/>
+			<fileset dir = "${source.dir}/model-gen" includes="ecore/*"/>
 		</copy>
 	</target>
 	
 	<target name="copyModelXML">
 		<!-- Copy xml and xsd files -->
 		<copy todir="${xml.dir}" flatten="true">
-			<fileset dir = "${source.dir}" includes="xml/*.xml"/>
+			<fileset dir = "${source.dir}/model-gen" includes="xml/*.xml"/>
 		</copy>
 		
 		<copy todir="${xml-xsd.dir}" flatten="true">
-			<fileset dir = "${source.dir}" includes="xml-schema/*.xsd"/>
+			<fileset dir = "${source.dir}/model-gen" includes="xml-schema/*.xsd"/>
 		</copy>
 		
 		<copy todir="${xml-xsd-xmi.dir}" flatten="true">
-			<fileset dir = "${source.dir}" includes="xml-schema-xmi/*.xsd"/>
+			<fileset dir = "${source.dir}/model-gen" includes="xml-schema-xmi/*.xsd"/>
 		</copy>
 	</target>
 	
 	<target name="zip">
-		<zip destfile="${ecore.archive}" basedir="${ecore.dir}"/>
-		<zip destfile="${xml.archive}" basedir="${source.dir}" includes="xml/*, xml-schema/*, xml-schema-xmi/*"/>
+		<zip destfile="${ecore.archive}" basedir="${target.dir}" includes="ecore/*, xcore/*"/>
+		<zip destfile="${xml.archive}" basedir="${target.dir}" includes="xml/*, xml-schema/*, xml-schema-xmi/*"/>
 	</target>
 </project>
