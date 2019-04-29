@@ -14,9 +14,10 @@
          <link toc="toc/example_modeling_state_machine-toc.xml"/>
          <link toc="toc/example_modeling_feedback_loop-toc.xml"/>
          <link toc="toc/example_modeling_state_machine_feedback_loop-toc.xml"/>
-         <link toc="toc/example_modeling_scheduler-toc.xml"/>
          <link toc="toc/example_democar-toc.xml"/>
          <link toc="toc/example_hardware-toc.xml"/>
+         <link toc="toc/example_scheduler-toc.xml"/>
+         <link toc="toc/example_numeric_modes-toc.xml"/>
          <anchor id="app4mc.docu.examples"/>
       </topic>
       <topic label="Tutorials">

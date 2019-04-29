@@ -17,7 +17,7 @@
 	</properties> 
 	
 
-	<artifactId>app4mc.example.numericModes</artifactId>
+	<artifactId>app4mc.example.numeric_modes</artifactId>
 	<packaging>jar</packaging>
 
 	<build>

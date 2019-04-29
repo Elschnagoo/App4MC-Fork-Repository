@@ -28,7 +28,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 /**
- * This class is responsible for converting the namespace of AMALTHEA model from 0.9.1 to 0.9.2
+ * This class is responsible for converting the namespace of AMALTHEA model from 0.9.2 to 0.9.3
  *
  * @author Zakir Hussain
  *

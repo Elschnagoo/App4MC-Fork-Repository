@@ -2,7 +2,7 @@ h3. Modeling Example "Feedback Loop"
 
 The task set of the modeling example "State Machine" is expanded further in this architecture pattern with the result that messages are exchanged in a loop, instead of just in one way. To achieve this, task T<sub>1</sub> sends a message _u_ to task T<sub>2</sub> before runnable R<sub>1</sub> is called. The content of this message is 0, if the content of a previously received message _e_ is 0, or 1 if it was 1. Task T<sub>2</sub> represents then a state machine with three states that increases its state, if message _u_ is 1 and decreases, if it is 0. In each state the messages _y_ and _w_ are set with state specific values and sent to task T<sub>3</sub> and task T<sub>4</sub> respectively. In case of _State 0_, the messages _y_ and _w_ contain the value 0, in case of _State 1_ both contain 50 and in case of _State 2_ the value 100 is sent. These messages are written before runnable R<sub>2</sub> is called. However, in 30 % of the cases task T<sub>4</sub> is activated via an inter-process activation before this runnable call happens. Task T<sub>3</sub> varies its dynamic behavior and consequently also its execution time according the transmitted content of message _y_. Task T<sub>4</sub> finally prepares again the input for task T<sub>1</sub>. If the content received in message _w_ is 0, then in 30% of the cases the content of message _e_ is 0, otherwise 1. In the case that message _w_ is 50, message _e_ is set to 0 with a probability of 50% and to 1 accordingly. Finally, message _e_ is set to 0 in 70% of the cases and to 1 in 30% of the cases, if message _w_ is 100. In addition to this feedback loop, other system architecture patterns are added to be executed concurrently in order to increase the complexity. The tasks T<sub>5</sub> and T<sub>6</sub> represent a client-server without reply and are equal to the tasks T<sub>1</sub> and T<sub>2</sub> respectively as described in the modeling example "Client-Server without Reply". T<sub>7</sub> is a periodically activated task without any communication and identical to task T<sub>7</sub> of modeling example "Purely Periodic without Communication".
 
-!../pictures/ExampleModeling/modeling_example_feedback_loop.png!
+!../pictures/example_modeling/modeling_example_feedback_loop.png!
 
 The table below gives a detailed specification of the tasks and their parameters. The tasks are scheduled according fixed-priority, preemptive scheduling and if not indicated otherwise, all events are active in order to get a detailed insight into the system's behavior.
 
@@ -54,28 +54,28 @@ table(classic){text-align:center; background:#f8f8f8}.
 In order to show the impact of changes to the model, the following consecutive variations are made to the model:
 
 - **1) Initial Task Set** := For this variation, the tasks T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub>, and T<sub>4</sub> of the table above are active.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_1.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_1.png!
 
 - **2) Increase of Task Set Size I** := For this variation, the Tasks T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub>, T<sub>4</sub>, T<sub>5</sub>, and T<sub>6</sub> are active. That way the utilization  of the system is increased.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_2.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_2.png!
 
 - **3) Increase of Task Set Size II** := As from this variation on, all tasks are active. That way the utilization  of the system is increased.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_3.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_3.png!
 
 - **4) Inter-process Activation** := As from this variation on, task T<sub>2</sub> gets activated by an inter-process activation from task T<sub>1</sub>, task T<sub>3</sub> by an inter-process activation from task T<sub>2</sub>, and task T<sub>6</sub> by an inter-process activation from task T<sub>5</sub> instead of being activated periodically. The inter-process activation in task T<sub>1</sub> is performed right after the message _u_ is written in T<sub>2</sub> and consequently before the runnable R<sub>1</sub> is called, in task T<sub>2</sub> respectively right before task T<sub>4</sub> is activated, and in task T<sub>5</sub> task T<sub>6</sub> is called right before runnable R<sub>5</sub>. That way, a direct connection between these tasks is established.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_4.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_4.png!
 
 - **5) Event Frequency Increase** := As from this variation on, the periodicity of the tasks T<sub>1</sub>, T<sub>5</sub>, and T<sub>7</sub> are shortened. For task T<sub>1</sub>, the value for the period is set to 450 * 10<sup>6</sup>, the task T<sub>5</sub> to 60 * 10<sup>6</sup>, and for task T<sub>7</sub> to 575 * 10<sup>6</sup>. That way, the information density is increased.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_5.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_5.png!
 
 - **6) Execution Time Fluctuation** := As from this variation on, the execution time distribution is widened for both tasks. Therefore, the maximum of the uniform distribution is increased by 1 percent so that the uniform distribution varies now by 2 percent. That way, the utilization  of the system is increased, which results in extinct activations.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_6.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_6.png!
 
 - **7) Activation** := As from this variation on, the maximum number of queued activation requests for both tasks is set to 2. That way, the problem with extinct activations resulting from the previous variation is solved.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_7.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_7.png!
 
 - **8) Accuracy in Logging of Data State I** := For this variation, the data accesses in all tasks are omitted. Instead, the runnable entities R<sub>3,0</sub>, R<sub>3,1</sub>, and R<sub>3,2</sub>, are executed with a probability of 50 %, 30 %, and 20 % respectively, and the runnable entities R<sub>6,x</sub>, R<sub>6,1</sub>, R<sub>6,2</sub>, R<sub>6,3</sub>, and R<sub>6,4</sub> are executed with a probability of 15 %, 20 %, 30 %, 20 %, and 15 % respectively. That way, only a limited insight into the system's runtime behavior is available.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_8.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_8.png!
 
 - **9) Accuracy in Logging of Data State II** := For this variation, just task events are active. That way, only a limited insight into the system's runtime behavior is available.
-!../pictures/ExampleModeling/modeling_example_feedback_loop_9.png!
+!../pictures/example_modeling/modeling_example_feedback_loop_9.png!

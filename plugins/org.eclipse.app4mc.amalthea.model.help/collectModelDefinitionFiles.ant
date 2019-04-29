@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 <project default="default">
+	<property name="source.dir" location="../../plugins/org.eclipse.app4mc.amalthea.model/model-gen" />
 	<property name="model.dir" location="help-model" />
 	<property name="ecore.dir" value="${model.dir}/ecore" />
 	<property name="ecore.archive" value="${model.dir}/ecore-definitions.zip" />
-	<property name="xsd.dir" value="${model.dir}/xsd" />
-	<property name="xsd.archive" value="${model.dir}/xml-schema-definitions.zip" />
+	<property name="xml.dir" value="${model.dir}/xml" />
+	<property name="xml-xsd.dir" value="${model.dir}/xml-schema" />
+	<property name="xml-xsd-xmi.dir" value="${model.dir}/xml-schema-xmi" />
+	<property name="xml.archive" value="${model.dir}/xml-definitions.zip" />
 
 	<target name="default">
 		<antcall target="deleteModelDir" />
 		<antcall target="createModelDir" />
 		<antcall target="copyModelEcore" />
-		<antcall target="copyModelXsd" />
+		<antcall target="copyModelXML" />
 		<antcall target="zip" />
 	</target>
 	
@@ -20,42 +23,36 @@
 
 	<target name="createModelDir">
 		<mkdir dir="${model.dir}"/>
-		<mkdir dir="${xsd.dir}"/>
+		<mkdir dir="${ecore.dir}"/>
+		<mkdir dir="${xml.dir}"/>
+		<mkdir dir="${xml-xsd.dir}"/>
+		<mkdir dir="${xml-xsd-xmi.dir}"/>
 	</target>
 	
 	<target name="copyModelEcore">
 		<!-- Copy the ecore files -->
 		<copy todir="${ecore.dir}" flatten="true">
-			<fileset dir = "../../" includes="plugins/org.eclipse.app4mc.amalthea.model/model-gen/*"/>
+			<fileset dir = "${source.dir}" includes="ecore/*"/>
 		</copy>
 	</target>
 	
-	<target name="copyModelXsd">
-		<!--Step 1:  Copy the xsd files -->
-		<copy todir="${xsd.dir}" flatten="true">
-			<fileset dir = "../../" includes="plugins/org.eclipse.app4mc.amalthea.model/model/*.xsd"/>
+	<target name="copyModelXML">
+		<!-- Copy xml and xsd files -->
+		<copy todir="${xml.dir}" flatten="true">
+			<fileset dir = "${source.dir}" includes="xml/*.xml"/>
 		</copy>
 		
-		<!--Step 2:  Rename the files
-		This renames the files to lower-case and removes the "XMI" from the name.
-		The "XMI.xsd" is not renamed because of the regex in b). 
-		-->
-		<move todir="${xsd.dir}">
-			<fileset dir="${xsd.dir}"/>
-			<chainedmapper>
-				<!-- a) to lower case-->
-				<scriptmapper language="javascript">
-					self.addMappedName(source.toLowerCase());
-				</scriptmapper>
-				
-				<!-- b) remove "XMI"-->
-				<regexpmapper from="^(.+)xmi\.xsd$" to="\1.xsd"/>
-			</chainedmapper>
-		</move>
+		<copy todir="${xml-xsd.dir}" flatten="true">
+			<fileset dir = "${source.dir}" includes="xml-schema/*.xsd"/>
+		</copy>
+		
+		<copy todir="${xml-xsd-xmi.dir}" flatten="true">
+			<fileset dir = "${source.dir}" includes="xml-schema-xmi/*.xsd"/>
+		</copy>
 	</target>
 	
 	<target name="zip">
 		<zip destfile="${ecore.archive}" basedir="${ecore.dir}"/>
-		<zip destfile="${xsd.archive}" basedir="${xsd.dir}"/>
+		<zip destfile="${xml.archive}" basedir="${source.dir}" includes="xml/*, xml-schema/*, xml-schema-xmi/*"/>
 	</target>
 </project>

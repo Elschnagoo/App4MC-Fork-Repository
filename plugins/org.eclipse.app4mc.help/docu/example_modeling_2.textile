@@ -6,12 +6,12 @@ h4. General information
 
 Modeling Example 2 describes a simple system consisting of 4 Tasks, which is running on a single core processor.
 The following figure shows the execution footprint in a Gantt chart:
-!../pictures/ExampleModeling/modeling_2_gantt.png!
+!../pictures/example_modeling/modeling_2_gantt.png!
 In the following sections, the individual parts of the AMALTHEA model for Modeling Example 2 are presented followed by a short description of its elements.
 
 h4. Hardware Model
 
-!../pictures/ExampleModeling/modeling_2_hw.png!
+!../pictures/example_modeling/modeling_2_hw.png!
 
 The hardware model of Modeling Example 2 consists as already mentioned of a single core processor.
 The following gives a structural overview on the modeled elements.
@@ -19,7 +19,7 @@ There, the core, 'Core_1' , has a static processing frequency of 600 MHz each, w
 
 h4. Operating System Model
 
-!../pictures/ExampleModeling/modeling_2_scheduler.png!
+!../pictures/example_modeling/modeling_2_scheduler.png!
 
 The operating system (OS) model defines in case of Modeling Example 2 only the needed Scheduler.
 Since only a single core has to be managed, a single scheduler is modeled correspondingly.
@@ -32,7 +32,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 
 h4. Mapping Model
 
-!../pictures/ExampleModeling/modeling_2_mapping.png!
+!../pictures/example_modeling/modeling_2_mapping.png!
 
 The mapping model defines allocations between different model parts.
 On the one hand, this is the allocation of processes to a scheduler.
@@ -60,7 +60,7 @@ h4. Software Model
 
 h5. Tasks
 
-!../pictures/ExampleModeling/modeling_2_tasks.png!
+!../pictures/example_modeling/modeling_2_tasks.png!
 
 As already mentioned above, the software model of Modeling Example 2 consists exactly of four tasks, named 'Task_1' to 'Task_4'.
 All tasks have assigned the same priority (10) to get a cooperative scheduling.
@@ -88,7 +88,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 
 h5. Runnables
 
-!../pictures/ExampleModeling/modeling_2_runnables.png!
+!../pictures/example_modeling/modeling_2_runnables.png!
 
 In addition to the task, the software model also contains a definition of Runnables.
 For Modeling Example 2, seven individual Runnables are defined.
@@ -112,7 +112,7 @@ table(classic){text-align:center; background:#f8f8f8}.
 
 h4. Stimulation Model
 
-!../pictures/ExampleModeling/modeling_2_stimuli.png!
+!../pictures/example_modeling/modeling_2_stimuli.png!
 
 The stimulation model defines the activations of tasks.
 'Task_1' is activated periodically by 'Stimulus_Task_1'

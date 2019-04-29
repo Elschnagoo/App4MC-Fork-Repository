@@ -3,7 +3,7 @@ h3. Timing in Amalthea Primer
 
 An Amalthea model per se is a static, structural model of a hardware/software system. The basic structural model consists of software model elements (tasks, runnables), hardware model elements (processing units, memories, connection handlers), stimuli that are used to activate execution, and mappings of software model elements to hardware model elements. Semantics of the model then allows for definite and clear interpretation of the static, structural model regarding its behavior over time.
 
-h3. Different Levels of Model Detail
+h4. Different Levels of Model Detail
 
 Amalthea provides a meta-model suitable for many different purposes in the design of hardware/software systems. Consequently, there is not _the_ level of Amalthea model detail—modelling often is purpose driven. Regarding timing analysis, we exemplary discuss three different levels of detail to clarify this aspect of Amalthea. Note that we focus on level of detail of the hardware model and assume other parts of the model (software, mapping, etc.) fixed.
 
@@ -23,7 +23,7 @@ A more detailed hardware model, our third and last example of model detail, will
 
 In the following, we discuss 'timing' of Amalthea in context of level of detail of the last example and discrete-event simulation.
 
-h3. Discrete-Event Simulation
+h4. Discrete-Event Simulation
 
 For dynamic timing analysis, the _initial_ state of the static system model is the starting point, and a series of _state changes_ is subject to model analysis. The _state_ of a model mainly consist of states of HW elements (processing units and connection handlers). During analysis, a state change is then, for example, a processing unit changing from _idle_ to _execute_.
 
@@ -35,7 +35,7 @@ After sketching the basic idea of discrete-event simulation, we can be more prec
 
 Stimulation of task execution with corresponding stimuli events, and scheduling in general, is not further discussed here. In the following, we focus on timing of execution at processing units and data accesses.
 
-h3. Execution Time
+h4. Execution Time
 
 The basic mechanism to specify execution time at a processing unit is the modelling element _ticks_. _Ticks_ are a generic abstraction of time for software, independent of hardware. Regarding hardware, one may think of _ticks_ as clock ticks or cycles of a processing unit. You can specify _ticks_ at several places in the model, most prominently as a runnable item of a runnable. The _ticks_ value together with a mapping to a specific processing unit that has a defined frequency then allows computation of an _execution time_. For instance, 100 ticks require 62.5ns simulated time at a processing unit with 1.6GHz, while 100 ticks require 41.6ns at a processing unit with 2.4GHz.
 
@@ -43,7 +43,7 @@ When the discrete-event simulator simulates execution of a runnable at a process
 
 In that sense, ticks translate into a fixed or *static timing behavior* - when execution starts, it is always clear when this execution will end. Note that the current version of Amalthea (0.9.3) also prepares an additional concept for specification of execution timing besides using _ticks_: _execution needs_. Execution needs will allow sophisticated ways of execution time specification, as required for heterogeneous systems. _Execution needs_ define the number of usages of user-defined needs; a later version of Amalthea (> 0.9.3) then will introduce _recipes_ that translate such execution needs into ticks, taking _hardware features_ of the executing processing unit into account. Note that, by definition, a sound model for timing simulation always allows to compute ticks from execution needs. Consequently, for timing analysis using discrete-event simulation as described above, we first translate execution needs into ticks, resulting in a model we call _ticks-only model_. Thus, we can ignore _execution needs_ for timing analysis.
 
-h3. Data Accesses
+h4. Data Accesses
 
 For data accesses, in contrast to ticks, the duration in simulation time is not always clear. A single data access may result in series of simulation events. Occurrence of these events in simulation time depends on several other model elements, for example, access paths, mapping of data to memory, and state of connection handlers. Thus, a data access may result in *dynamic timing behavior*. Note that there are plenty of options in Amalthea for hardware modelling; consequently, options for modelling and simulation of data accesses are manifold (see above _Different Levels of Model Detail_). In the following, we discuss some modelling patterns for data accesses.
 

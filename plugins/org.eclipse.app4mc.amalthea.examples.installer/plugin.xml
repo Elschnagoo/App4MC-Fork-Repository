@@ -8,15 +8,6 @@
             parentCategory="org.eclipse.ui.Examples">
       </category>
       <wizard
-            id="org.eclipse.app4mc.amalthea.examples.ModelingExamplesWizard"
-            name="%_UI_AMALTHEA_ModelingExamplesWizard_name"
-            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
-            project="true"
-            icon="icons/full/ctool16/NewEMFExample.gif">
-         <description>%_UI_AMALTHEA_ModelingExamplesWizard_desc</description>
-      </wizard>
-      <wizard
             id="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
             name="%_UI_AMALTHEA_DemocarExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
@@ -26,13 +17,22 @@
          <description>%_UI_AMALTHEA_DemocarExamplesWizard_desc</description>
       </wizard>
       <wizard
-            id="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard"
-            name="%_UI_AMALTHEA_SchedulerExamplesWizard_name"
+            id="org.eclipse.app4mc.amalthea.examples.ModelingExamplesWizard"
+            name="%_UI_AMALTHEA_ModelingExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
             category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
             project="true"
             icon="icons/full/ctool16/NewEMFExample.gif">
-         <description>%_UI_AMALTHEA_SchedulerExamplesWizard_desc</description>
+         <description>%_UI_AMALTHEA_ModelingExamplesWizard_desc</description>
+      </wizard>
+      <wizard
+            id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
+            name="%_UI_AMALTHEA_HwmodelExamplesWizard_name"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
+            project="true"
+            icon="icons/full/ctool16/NewEMFExample.gif">
+         <description>%_UI_AMALTHEA_HwmodelExamplesWizard_desc</description>
       </wizard>
        <wizard
             id="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard"
@@ -44,13 +44,13 @@
          <description>%_UI_AMALTHEA_NumericModesExamplesWizard_desc</description>
       </wizard>
       <wizard
-            id="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
-            name="%_UI_AMALTHEA_HwmodelExamplesWizard_name"
+            id="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard"
+            name="%_UI_AMALTHEA_SchedulerExamplesWizard_name"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
             category="org.eclipse.ui.Examples/org.eclipse.app4mc.amalthea.Examples"
             project="true"
             icon="icons/full/ctool16/NewEMFExample.gif">
-         <description>%_UI_AMALTHEA_HwmodelExamplesWizard_desc</description>
+         <description>%_UI_AMALTHEA_SchedulerExamplesWizard_desc</description>
       </wizard>
       <category
             id="org.eclipse.app4mc.tools.Examples"
@@ -69,6 +69,19 @@
    </extension>
 
    <extension point="org.eclipse.emf.common.ui.examples">
+      <example
+            id="AMALTHEA Democar Projects"
+            wizardID="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
+            pageImage="icons/full/wizban/NewEMFExample.gif">
+            <projectDescriptor
+               name="app4mc.example.democar"
+               contentURI="examples/app4mc.example.democar/"
+               description="%_UI_AMALTHEA_Example_Democar_Project_desc"/>
+            <projectDescriptor
+               name="app4mc.example.democar.split"
+               contentURI="examples/app4mc.example.democar.split/"
+               description="%_UI_AMALTHEA_Example_Democar_Project_desc"/>
+      </example>
       <example
             id="AMALTHEA Modeling Projects"
             pageImage="icons/full/wizban/NewEMFExample.gif"
@@ -99,19 +112,6 @@
                      description="%_UI_AMALTHEA_Example_Modeling_Project_desc"/>
       </example>
       <example
-            id="AMALTHEA Democar Projects"
-            wizardID="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
-            pageImage="icons/full/wizban/NewEMFExample.gif">
-            <projectDescriptor
-               name="app4mc.example.democar"
-               contentURI="examples/app4mc.example.democar/"
-               description="%_UI_AMALTHEA_Example_Democar_Project_desc"/>
-            <projectDescriptor
-               name="app4mc.example.democar.split"
-               contentURI="examples/app4mc.example.democar.split/"
-               description="%_UI_AMALTHEA_Example_Democar_Project_desc"/>
-      </example>
-      <example
             id="AMALTHEA Hardware Projects"
             wizardID="org.eclipse.app4mc.amalthea.examples.HwmodelExamplesWizard"
             pageImage="icons/full/wizban/NewEMFExample.gif">
@@ -121,6 +121,16 @@
                description="%_UI_AMALTHEA_Example_Hwmodel_Project_desc"/>
       </example>
       <example
+            id="AMALTHEA NumericMode Project"
+            pageImage="icons/full/wizban/NewEMFExample.gif"
+            wizardID="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard">
+         <projectDescriptor
+               contentURI="examples/app4mc.example.numeric_modes/"
+               description="%_UI_AMALTHEA_NumericModesExamplesWizard_desc"
+               name="app4mc.example.numericmodes">
+         </projectDescriptor>
+      </example>
+      <example
             id="AMALTHEA Scheduler Projects"
             pageImage="icons/full/wizban/NewEMFExample.gif"
             wizardID="org.eclipse.app4mc.amalthea.examples.SchedulerExamplesWizard">
@@ -128,16 +138,6 @@
                contentURI="examples/app4mc.example.scheduler/"
                description="%_UI_AMALTHEA_SchedulerExamplesWizard_desc"
                name="app4mc.example.scheduler">
-         </projectDescriptor>
-      </example>
-      <example
-            id="AMALTHEA NumericMode Project"
-            pageImage="icons/full/wizban/NewEMFExample.gif"
-            wizardID="org.eclipse.app4mc.amalthea.examples.NumericModesExamplesWizard">
-         <projectDescriptor
-               contentURI="examples/app4mc.example.numericModes/"
-               description="%_UI_AMALTHEA_NumericModesExamplesWizard_desc"
-               name="app4mc.example.numericmodes">
          </projectDescriptor>
       </example>
       <example
