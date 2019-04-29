@@ -2,11 +2,13 @@
 <?eclipse version="3.0"?>
 <plugin>
    <extension point="org.eclipse.ui.newWizards">
+
       <category
             id="org.eclipse.app4mc.amalthea.Examples"
             name="%_UI_AMALTHEA_ExamplesCategory_name"
             parentCategory="org.eclipse.ui.Examples">
       </category>
+
       <wizard
             id="org.eclipse.app4mc.amalthea.examples.DemocarExamplesWizard"
             name="%_UI_AMALTHEA_DemocarExamplesWizard_name"
@@ -52,11 +54,13 @@
             icon="icons/full/ctool16/NewEMFExample.gif">
          <description>%_UI_AMALTHEA_SchedulerExamplesWizard_desc</description>
       </wizard>
+
       <category
             id="org.eclipse.app4mc.tools.Examples"
             name="%_UI_Tools_ExamplesCategory_name"
             parentCategory="org.eclipse.ui.Examples">
       </category>
+
       <wizard
             id="org.eclipse.app4mc.tools.examples.JavaExamplesWizard"
             name="%_UI_Tools_JavaExamplesWizard_name"

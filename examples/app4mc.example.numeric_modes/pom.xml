@@ -12,7 +12,7 @@
 	</parent>
 	
 	<properties>
-	<plugin-id>app4mc.example.numericModes</plugin-id>
+	<plugin-id>app4mc.example.numeric_modes</plugin-id>
 	<examples-installer-location>../../plugins/org.eclipse.app4mc.amalthea.examples.installer</examples-installer-location>
 	</properties> 
 	
