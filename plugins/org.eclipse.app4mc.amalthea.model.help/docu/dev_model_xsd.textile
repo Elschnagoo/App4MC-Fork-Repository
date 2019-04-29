@@ -12,11 +12,8 @@ h3. XML Schema Definition (XSD)
 
 For developers that are not using Java or Eclipse, the specification is also provided in the XML and XSD format. The *XML related files* can be found "here":../help-model/xml-definitions.zip.
 
-The AMALTHEA model references an external model definitions:
-- The Ecore model (http://www.eclipse.org/emf/2002/Ecore)
-
-The XSD file for the Ecore model can be found on the "Eclipse EMF download page":https://download.eclipse.org/modeling/emf/emf/builds/index.html 
-Download the __Models__ package from __Latest Releases__. The download contains a folder "org.eclipse.emf.ecore_*". This folder contains the XSD schema for Ecore.
+The AMALTHEA model refers to the Ecore model definition (http://www.eclipse.org/emf/2002/Ecore).
+This definition (generated automatically during conversion) is also stored in the archive.
 
 ---
 
