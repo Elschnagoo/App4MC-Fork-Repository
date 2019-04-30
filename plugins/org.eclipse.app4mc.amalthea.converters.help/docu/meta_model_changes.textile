@@ -449,3 +449,66 @@ table(classic){margin-left:40px}.
 |cycles|value|Long|Long|LatencyConstant|hw|LatencyConstant is changed to DiscreteValueConstant, reference name changed from cycles to value|
 |cycles|value|Deviation|Deviation&lt;DoubleObject&gt;|LatencyDeviation|hw|LatencyDeviation is changed to DiscreteValueBetaDistribution DiscreteValueBoundaries DiscreteValueGaussDistribution DiscreteValueStatistics DiscreteValueUniformDistribution DiscreteValueWeibullEstimatorsDistribution. In 0.9.3, intermediate cycles element is removed. Content of it is merged as a part of the Distribution |
 
+h3. Version APP4MC 0.9.3 to APP4MC 0.9.4
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.9.3)_* | *_AMALTHEA Namespace  (version App4MC 0.9.4)_* |
+|http://app4mc.eclipse.org/amalthea/0.9.3|http://app4mc.eclipse.org/amalthea/0.9.4 |
+
+*Below Enum Literals are changed:*
+
+table(classic){margin-left:40px}. 
+| *_Enum Name_* | *_Literal name (version APP4MC 0.9.3)_* | *_Literal name (version APP4MC 0.9.4)_* |
+|PortInterface|ABH | AHB|
+
+*Below references are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|deadine|Time|Runnable|sw|deadline attribute has been removed and an equivalent RunnableRequirement object is created in the ConstraintsModel.|
+|disablingModeValueList|ModeValueDisjunction|Stimulus|stimuli|disablingModeValueList reference has been completely removed.|
+
+*Following Classes are renamed:*
+
+table(classic){margin-left:40px}. 
+|*Class name in 0.9.3*|*Changed Class name in 0.9.4*|*Amalthea sub-model*|
+|ModeValueDisjunction|ModeConditionDisjunction|sw, stimuli|
+|ModeValueDisjunctionEntry|ModeConditionDisjunctionEntry|sw, stimuli|
+|ModeValueConjunction|ModeConditionConjunction|sw, stimuli|
+|DataPlatformMapping|Alias|sw|
+
+
+*Following Classes behavior is changed:*
+
+table(classic){margin-left:40px}. 
+|*Class name*|*Amalthea sub-model*|*Changed behavior in 0.9.4*|
+|Mode|sw|Since 0.9.4 Numeric modes are supported.Hence Mode is now realized into 2 subclasses NumericMode & EnumMode. |
+|ModeValue|sw, stimuli| ModeValue is an abstract class derived into ModeAssignment & ModeCondition |
+|ModeValueDisjunctionEntry|sw, stimuli| It is now type interface ModeConditionDisjunctionEntry realized as ModeCondition & ModeConditionConjunction. |
+|Runnable|sw| Has a new attribute executionCondition.|
+
+
+
+
+
+*Below references are changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name(version APP4MC 0.9.3)_* | *_Variable Name(version APP4MC 0.9.4)_* | *_Variable Type (in 0.9.3)_* | *_Variable Type (in 0.9.4)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|enablingModeValueList|executionCondition|ModeValueDisjunction|ModeConditionDisjunction|Stimulus|stimuli|enablingModeValueList reference is now changed to executionCondition.|
+|entries|entries|ModeValue|ModeCondition|ModeValueDisjunction(in 0.9.3), ModeConditionDisjunction(in 0.9.4) |sw, stimuli|ModeValue is now changed to ModeCondition.|
+|value|value|ModeLiteral|String|ModeValueMapEntry|sw, stimuli| value is changed from ModeLiteral reference to a String (containing only modeLiteral name)|
+|valueProvider|label|ModeLabel|ModeLabel|ModeValue (in 0.9.3), ModeCondition (in 0.9.4)|sw, stimuli| valueProvider reference is changed to a label|
+|condition|condition|ModeValueDisjunction|ModeConditionDisjunction|ModeSwitchEntry|sw, stimuli| condition type is changed to new reference class type ModeConditionDisjunction|
+|initialValue|initialValue|ModeLiteral|String|ModeLabel|sw|initialValue is changed from ModeLiteral reference to a String (containing only modeLiteral name) additional attribute mode is created and it is referring to the Mode which was containing ModeLiteral|
+|access|access|LabelAccessEnum|ModeLabelAccessEnum|ModeLabelAccess|sw|access is now a reference to enum type ModeLabelAccessEnum enhanced to support Enum mode.If literal "write" was used now it is changed to "set".|
+|modeValue|value|ModeLiteral|String|ModeLabelAccess|sw|value is changed from ModeLIteral reference to a String (containing only modeLiteral name)|
+|dataMapping|aliases|DataPlatformMapping|Alias|BaseTypeDefinition|sw|dataMapping is renamed to avoid mixup with mapping to memory|
+|platformName|target|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|dataMapping is renamed to avoid mixup with mapping to memory|
+|platformType|alias|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|dataMapping is renamed to avoid mixup with mapping to memory|
+
+
+
+
