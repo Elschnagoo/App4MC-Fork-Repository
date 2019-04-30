@@ -4,34 +4,25 @@ h3. Communication via channels
 
 h4. Channel
 
-Sender and receiver communicating via a channel by issuing send and receive operations on ports; read policy and transmission policy define communication details.
+Sender and receiver communicating via a channel by issuing send and receive operations; read policy and transmission policy define communication details.
 
 !../pictures/user_channel.png!
 
-As basic thinking model, reading and writing to channels happens during runnable execution in distinct phases:
-* Receiving phase: The specified receive operations are performed for every read port.
-* Computing phase: A specified time passes, modeling processing of input data.
-* Sending phase: The specified send operations are performed for every write port. 
-
-
-A channel is specified by two attributes:
-* *elementType*: the type that is sent or received via connected ports.
+A channel is specified by three attributes:
+* *elementType*: the type that is sent to or read from the channel.
 * *defaultElements*:  number of elements initially in the channel (at start-up).
-* *maxElements* (integer) denoting a buffer limit, that is, the channel depth.
-In other words, no more than maxElements elements of the given type may be stored in the channel.
-
-
+* *maxElements* (integer) denoting a buffer limit, that is, the channel depth. In other words, no more than maxElements elements of the given element type may be stored in the channel.
 
 h4. Channel Access
 
-In the basic thinking model, all elements are stored as a sequential collection without buffer size limit (unlimited storage).
+In the basic thinking model, all elements are stored as a sequential collection in the channel.
 
 !../pictures/user_channel_access.png!
 
 
 h5. Sending
 
-A runnable may send elements to a channel by issuing a send operations.
+A runnable may send elements to a channel by issuing send operations.
 The send operation has a single parameter:
 * elements (integer): Number of elements that are written.
 
@@ -39,46 +30,26 @@ The send operation has a single parameter:
 h5. Receiving
 
 A runnable may receive elements from a channel by issuing receive operations.
-The operation has multiple aspects:
+The receive operation is specified with a *receive policy* that defines the main behaviour of the operation:
 
-* *Port Type*
-** A *LIFO* (last-in, first-out) port is chosen if processing the last written elements is the primary focus and thereby missing elements is tolerable.
-** A *FIFO* (first-in, first-out) port is chosen if every written element needs to be handled, that is, loss of elements is not tolerable.
-bq. The port type defines the direction the receive operations take effect: accesses from LIFO ports are from top of the sequential collection, while accesses from FIFO ports are from bottom of the sequential collection.
-
-* *Receive Operation*
-** *Read* will received elements without modifying the channel 
+** *LIFO* (last-in, first-out) is chosen if processing the last written elements is the primary focus and thereby missing elements is tolerable.
+** *FIFO* (first-in, first-out) is chosen if every written element needs to be handled, that is, loss of elements is not tolerable.
+** *Read* will received elements without modifying the channel
 ** *Take* will remove the received elements from the channel
 
-Each operation has two parameters and several attributes specifying the exact behavior:
+The receive policy defines the direction a receive operation takes effect with LIFO accesses are from top of the sequential collection, while with FIFO accesses are from bottom of the sequential collection-and they define if the receive operation is destructive (take) or non-destructive) read.
+
+Each operation further has two parameters and two attributes specifying the exact behavior. The two parameters are:
 * *elements* (integer): Maximum number n of elements that are received.
-* *elementIndex* (integer): Position (index i) in channel at which the operation is effective. Zero is the default and denotes the oldest (FIFO port) or newest element (LIFO port) in the channel.
-  
-Receive operations then are written in function notation, that is Read(n, i) and Take(n, i). For convenience, the index may be left out for default value '0' (Take(n,0) == Take(n)). See next figure for examples which elements are denoted by receive operations for FIFO and LIFO ports.
+* *elementIndex* (integer): Position (index i) in channel at which the operation is effective. Zero is the default and denotes the oldest (FIFO) or newest element (LIFO) in the channel.
+
+In the following several exmaples are shown, of how to read or take elements out of a channel with the introduced parameters.
 
 !../pictures/user_channel_operations.png!
 
-Additional attributes further define the receive operation:
-* *lowerBound* (integer): Specify the minimum number of elements returned by the operation. The value must be in the range [0,n], with n is the maximum number of elements that are received as specified as attribute of the receive operation. Default value is n.
-* *dataMustBeNew* (Boolean): Specify if the operation must only return elements that are not previously read by this port. Default value is false.
-
-
-h5. Common Read Policies: Last, New, and AllNew
-
-As three specific read policies are frequently used, these are introduced in the following.
-
-table(classic). 
-|_. Policy |_. Port Type |_. Operation |_. lower bound |_. must be new |
-| *Last(x)* | LIFO |  Read(x,0) | x | false |
-| *New(x)* | LIFO | Read(x,0) | 0 | true |
-| *AllNew* | FIFO | Take(sizeOfChannel,0) | 0 | true |
-
-
-An example of the different behavior of the New and Last policy is shown in the next figure. For demonstration purpose, in the example periodic triggering of the receiving runnables R1 and R2 and sporadic data writing by runnable S is assumed. Note that while New may be used on an empty channel, Last would lead to an error (dashed boxes).
-Left: Static connection between three runnables (S, R1, and R2). Right: Dynamic view of writing elements to channel over time (green arrows), runnable execution indicated as blue boxes, and the resulting received elements shown in square brackets.
-
-!../pictures/user_channel_example.png!
-
+Two attributes further detail the receive operation:
+* *lowerBound* (integer): Specify the minimum number of elements returned by the operation. The value must be in the range [0,n], with n is the value of the parameter elements. Default value is n.
+* *dataMustBeNew* (Boolean): Specify if the operation must only return elements that are not previously read by this Runnable. Default value is false.
 
 
 h4. Transmission Policy
@@ -88,11 +59,8 @@ To further specify how elements are accessed by a runnable in terms of computing
 The transmission policy consists of the following attributes:
 * *chunkSize*: Size of a part of an element, maximum is the element size.
 * *chunkProcessingTicks* (integer): Number of ticks that will be executed to process one chunk (algorithmic overhead).
-* *transmitRatio* (float): Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0. 
+* *transmitRatio* (float): Specify the ratio of each element that is actually transmitted by the runnable in percent. Value must be between [0, 1], default value is 1.0.
 
 Example for using transmission policy to detail the receiving phase of a runnable execution. Two elements are received, leading to transmission time as given in the formula. After the receiving phase, the runnable starts with the computing phase.
 
 !../pictures/user_channel_transmission_example.png!
-
-
-
