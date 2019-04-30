@@ -24,7 +24,7 @@ h5. Sending
 
 A runnable may send elements to a channel by issuing send operations.
 The send operation has a single parameter:
-* elements (integer): Number of elements that are written.
+* *elements* (integer): Number of elements that are written.
 
 
 h5. Receiving
@@ -32,10 +32,10 @@ h5. Receiving
 A runnable may receive elements from a channel by issuing receive operations.
 The receive operation is specified with a *receive policy* that defines the main behaviour of the operation:
 
-** *LIFO* (last-in, first-out) is chosen if processing the last written elements is the primary focus and thereby missing elements is tolerable.
-** *FIFO* (first-in, first-out) is chosen if every written element needs to be handled, that is, loss of elements is not tolerable.
-** *Read* will received elements without modifying the channel
-** *Take* will remove the received elements from the channel
+* *LIFO* (last-in, first-out) is chosen if processing the last written elements is the primary focus and thereby missing elements is tolerable.
+* *FIFO* (first-in, first-out) is chosen if every written element needs to be handled, that is, loss of elements is not tolerable.
+* *Read* will received elements without modifying the channel
+* *Take* will remove the received elements from the channel
 
 The receive policy defines the direction a receive operation takes effect with LIFO accesses are from top of the sequential collection, while with FIFO accesses are from bottom of the sequential collection-and they define if the receive operation is destructive (take) or non-destructive) read.
 
