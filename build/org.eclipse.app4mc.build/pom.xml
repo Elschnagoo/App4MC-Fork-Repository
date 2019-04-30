@@ -203,7 +203,9 @@
 		<module>../../tests/org.eclipse.app4mc.amalthea.converters.094.test</module>		
 		
 		<module>../../tests/org.eclipse.app4mc.amalthea.model.test</module>
-		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module>
+		<!-- TODO Remove old tests and implement tests for new validation framework !!!
+		<module>../../tests/org.eclipse.app4mc.amalthea.validation.test</module> -->
+		
 		<module>../../tests/org.eclipse.app4mc.amalthea.editors.sirius.design.test</module>
 		<!--  <module>../../tests/org.eclipse.app4mc.rcptt</module> -->
 		

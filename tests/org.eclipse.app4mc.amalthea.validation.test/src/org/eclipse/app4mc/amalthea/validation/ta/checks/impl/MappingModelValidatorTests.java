@@ -34,16 +34,16 @@ public class MappingModelValidatorTests {
 
 	@Before
 	public void setUp() {
-		/*
-		 * Create mock of dependency class
-		 */
-		this.issueCreator = EasyMock.createMock(IssueCreator.class);
-		// this.eObjectHelper = EasyMock.createMock(EObjectHelper.class);
-
-		/*
-		 * Create object from class to be tested
-		 */
-		this.classUnderTest = new MappingModelValidatorImpl(this.issueCreator/*, this.eObjectHelper*/);
+//		/*
+//		 * Create mock of dependency class
+//		 */
+//		this.issueCreator = EasyMock.createMock(IssueCreator.class);
+//		// this.eObjectHelper = EasyMock.createMock(EObjectHelper.class);
+//
+//		/*
+//		 * Create object from class to be tested
+//		 */
+//		this.classUnderTest = new MappingModelValidatorImpl(this.issueCreator/*, this.eObjectHelper*/);
 	}
 
 	/**
