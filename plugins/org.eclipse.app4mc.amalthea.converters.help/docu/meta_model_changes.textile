@@ -484,10 +484,10 @@ table(classic){margin-left:40px}.
 
 table(classic){margin-left:40px}. 
 |*Class name*|*Amalthea sub-model*|*Changed behavior in 0.9.4*|
-|Mode|sw|Since 0.9.4 Numeric modes are supported.Hence Mode is now realized into 2 subclasses NumericMode & EnumMode. |
-|ModeValue|sw, stimuli| ModeValue is an abstract class derived into ModeAssignment & ModeCondition |
-|ModeValueDisjunctionEntry|sw, stimuli| It is now type interface ModeConditionDisjunctionEntry realized as ModeCondition & ModeConditionConjunction. |
-|Runnable|sw| Has a new attribute executionCondition.|
+|Mode|sw|Mode is changed as abstract class. Mode has two subclasses NumericMode and EnumMode. All the Mode objects from Amalthea 0.9.3 are converted as EnumMode objects in 0.9.4|
+|ModeValue|sw, stimuli| ModeValue is an abstract class derived into ModeAssignment and ModeCondition |
+|ModeValueDisjunctionEntry|sw, stimuli| It is now changed as an interface ModeConditionDisjunctionEntry. This interface is realized as ModeCondition & ModeConditionConjunction. |
+|Runnable|sw| Runnable class has a new attribute executionCondition.|
 
 
 
@@ -496,18 +496,18 @@ table(classic){margin-left:40px}.
 *Below references are changed:*
 
 table(classic){margin-left:40px}. 
-| *_Variable Name(version APP4MC 0.9.3)_* | *_Variable Name(version APP4MC 0.9.4)_* | *_Variable Type (in 0.9.3)_* | *_Variable Type (in 0.9.4)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| *_Variable Name (version APP4MC 0.9.3)_* | *_Variable Name (version APP4MC 0.9.4)_* | *_Variable Type (in 0.9.3)_* | *_Variable Type (in 0.9.4)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
 |enablingModeValueList|executionCondition|ModeValueDisjunction|ModeConditionDisjunction|Stimulus|stimuli|enablingModeValueList reference is now changed to executionCondition.|
 |entries|entries|ModeValue|ModeCondition|ModeValueDisjunction(in 0.9.3), ModeConditionDisjunction(in 0.9.4) |sw, stimuli|ModeValue is now changed to ModeCondition.|
-|value|value|ModeLiteral|String|ModeValueMapEntry|sw, stimuli| value is changed from ModeLiteral reference to a String (containing only modeLiteral name)|
-|valueProvider|label|ModeLabel|ModeLabel|ModeValue (in 0.9.3), ModeCondition (in 0.9.4)|sw, stimuli| valueProvider reference is changed to a label|
+|value|value|ModeLiteral|String|ModeValueMapEntry, ModeValue|sw, stimuli| value is changed from ModeLiteral reference to a String (containing only modeLiteral name)|
+|valueProvider|label|ModeLabel|ModeLabel|ModeValue (can be ModeCondition or ModeAssignment)|sw, stimuli| valueProvider reference is changed to a label|
 |condition|condition|ModeValueDisjunction|ModeConditionDisjunction|ModeSwitchEntry|sw, stimuli| condition type is changed to new reference class type ModeConditionDisjunction|
 |initialValue|initialValue|ModeLiteral|String|ModeLabel|sw|initialValue is changed from ModeLiteral reference to a String (containing only modeLiteral name) additional attribute mode is created and it is referring to the Mode which was containing ModeLiteral|
 |access|access|LabelAccessEnum|ModeLabelAccessEnum|ModeLabelAccess|sw|access is now a reference to enum type ModeLabelAccessEnum enhanced to support Enum mode.If literal "write" was used now it is changed to "set".|
 |modeValue|value|ModeLiteral|String|ModeLabelAccess|sw|value is changed from ModeLIteral reference to a String (containing only modeLiteral name)|
 |dataMapping|aliases|DataPlatformMapping|Alias|BaseTypeDefinition|sw|dataMapping is renamed to avoid mixup with mapping to memory|
-|platformName|target|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|dataMapping is renamed to avoid mixup with mapping to memory|
-|platformType|alias|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|dataMapping is renamed to avoid mixup with mapping to memory|
+|platformName|target|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|platformName attribute is renamed to target|
+|platformType|alias|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|platformType attribute is renamed to alias|
 
 
 
