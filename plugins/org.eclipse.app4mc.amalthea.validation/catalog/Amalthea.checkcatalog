@@ -12,10 +12,6 @@
     label="Mapping Model Checks"/>
 
   <categories
-    id="EventModel"
-    label="Event Model Checks"/>
-
-  <categories
     id="ConstraintsModel"
     label="Constraints Model Checks"/>
 
@@ -84,13 +80,6 @@
     message="{0}"
     categories="MappingModel"/>
 
-  <constraints
-    id="LabelEvent"
-    label="Label Event Checks"
-    description="Checks on LabelEvent for complete information"
-    severity="Error"
-    message="LabelEvent: {0}"
-    categories="EventModel"/>
 
   <constraints
     id="EventChain"

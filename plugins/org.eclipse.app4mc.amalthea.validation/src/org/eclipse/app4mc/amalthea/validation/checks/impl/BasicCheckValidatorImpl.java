@@ -106,6 +106,8 @@ public class BasicCheckValidatorImpl extends AbstractValidatorImpl {
 	 */
 	public void checkReferableNames(final Amalthea model) {
 
+//	Already implemented on EMF level !!
+		
 //		for (final IReferable element : getObjectHelper().getAllInstancesAndInheritedOf(model, IReferable.class)) {
 //			if (Strings.isNullOrEmpty(element.getName())) {
 //				this.issueCreator.issue(element, AmaltheaPackage.eINSTANCE.getINamed_Name(),

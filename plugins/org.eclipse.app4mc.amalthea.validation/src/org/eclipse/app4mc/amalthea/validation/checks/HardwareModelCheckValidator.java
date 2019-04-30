@@ -15,7 +15,6 @@
 
 package org.eclipse.app4mc.amalthea.validation.checks;
 
-import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwAccessPath;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwDefinition;

@@ -314,31 +314,31 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeSwitchEntryValue1(final Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
-		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
+//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeSwitch) {
+//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
+//				modeSwitchSet.add(modeSwitch);
+//			} else if (elem instanceof SWModel) {
+//				final SWModel swModel = (SWModel) elem;
+//
+//				final Collection<ModeLabel> labelList = swModel.getModeLabels();
+//				if (null != labelList) {
+//					for (final ModeLabel modeLabel : labelList) {
+//						if (null != modeLabel) {
+//							modeLabelSet.add(modeLabel);
+//						}
+//					}
+//				}
+//			}
+//		}
 
-		while (amaIter.hasNext()) {
-			
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeSwitch) {
-				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				modeSwitchSet.add(modeSwitch);
-			} else if (elem instanceof SWModel) {
-				final SWModel swModel = (SWModel) elem;
-
-				final Collection<ModeLabel> labelList = swModel.getModeLabels();
-				if (null != labelList) {
-					for (final ModeLabel modeLabel : labelList) {
-						if (null != modeLabel) {
-							modeLabelSet.add(modeLabel);
-						}
-					}
-				}
-			}
-		}
-
-		final Set<ModeSwitchEntry<?>> erroneous = new HashSet<>();
+//		final Set<ModeSwitchEntry<?>> erroneous = new HashSet<>();
 //		for (final ModeSwitch modeSwitch : modeSwitchSet) {
 //			if (null != modeSwitch) {
 //				final Map<ModeLiteral, ModeSwitchEntry<?>> values = new HashMap<>();
@@ -370,28 +370,28 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeSwitchEntryValue2(final Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
-		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeSwitch) {
-				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-				modeSwitchSet.add(modeSwitch);
-			} else if (elem instanceof SWModel) {
-				final SWModel swModel = (SWModel) elem;
-
-				final Collection<ModeLabel> labelList = swModel.getModeLabels();
-				if (null != labelList) {
-					for (final ModeLabel modeLabel : labelList) {
-						if (null != modeLabel) {
-							modeLabelSet.add(modeLabel);
-						}
-					}
-				}
-			}
-		}
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
+//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeSwitch) {
+//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
+//				modeSwitchSet.add(modeSwitch);
+//			} else if (elem instanceof SWModel) {
+//				final SWModel swModel = (SWModel) elem;
+//
+//				final Collection<ModeLabel> labelList = swModel.getModeLabels();
+//				if (null != labelList) {
+//					for (final ModeLabel modeLabel : labelList) {
+//						if (null != modeLabel) {
+//							modeLabelSet.add(modeLabel);
+//						}
+//					}
+//				}
+//			}
+//		}
 
 //		for (final ModeSwitch modeSwitch : modeSwitchSet) {
 //			if (null != modeSwitch) {
@@ -426,37 +426,37 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeLabelMode(final Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-		final Set<Mode> modeSet = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeSwitch) {
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+//		final Set<Mode> modeSet = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeSwitch) {
 //				final ModeSwitch modeSwitch = (ModeSwitch) elem;
 //				final ModeLabel modeLabel = modeSwitch.getValueProvider();
 //				modeLabelSet.add(modeLabel);
-			} else if (elem instanceof SWModel) {
-				final SWModel swModel = (SWModel) elem;
-				final Collection<Mode> modeList = swModel.getModes();
-				if (null != modeList) {
-					for (final Mode mode : modeList) {
-						if (null != mode) {
-							modeSet.add(mode);
-						}
-					}
-				}
-			}
-		}
-
-		for (final ModeLabel modeLabel : modeLabelSet) {
-			if (null != modeLabel) {
-				final Mode mode = modeLabel.getMode();
-				if ((null == mode) || (false == modeSet.contains(mode))) {
-					this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
-				}
-			}
-		}
+//			} else if (elem instanceof SWModel) {
+//				final SWModel swModel = (SWModel) elem;
+//				final Collection<Mode> modeList = swModel.getModes();
+//				if (null != modeList) {
+//					for (final Mode mode : modeList) {
+//						if (null != mode) {
+//							modeSet.add(mode);
+//						}
+//					}
+//				}
+//			}
+//		}
+//
+//		for (final ModeLabel modeLabel : modeLabelSet) {
+//			if (null != modeLabel) {
+//				final Mode mode = modeLabel.getMode();
+//				if ((null == mode) || (false == modeSet.contains(mode))) {
+//					this.issueCreator.issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
+//				}
+//			}
+//		}
 	}
 
 	/*
@@ -464,19 +464,19 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeLabelInitialValue(final Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof ModeSwitch) {
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof ModeSwitch) {
 //				final ModeSwitch modeSwitch = (ModeSwitch) elem;
 //				final ModeLabel modeValueProvider = modeSwitch.getValueProvider();
 //				modeLabelSet.add(modeValueProvider);
-			}
-		}
-
-		for (final ModeLabel modeLabel : modeLabelSet) {
+//			}
+//		}
+//
+//		for (final ModeLabel modeLabel : modeLabelSet) {
 //			if (null != modeLabel) {
 //				final ModeLiteral initialValue = modeLabel.getInitialValue();
 //				final Mode mode = modeLabel.getMode();
@@ -486,7 +486,7 @@ public class SWModelValidatorImpl extends AbstractValidatorImpl {
 //					}
 //				}
 //			}
-		}
+//		}
 	}
 
 	/*

@@ -489,11 +489,11 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkModeValueProviderConstraint(Amalthea amalthea) {
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		final List<ModeLabel> modeLabels = new ArrayList<>();
-		final Map<ModeLabel, ModeCondition> valueProviders = new HashMap<>();
-		while (amaIter.hasNext()) {
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//
+//		final List<ModeLabel> modeLabels = new ArrayList<>();
+//		final Map<ModeLabel, ModeCondition> valueProviders = new HashMap<>();
+//		while (amaIter.hasNext()) {
 //			final EObject elem = amaIter.next();
 //			if (elem instanceof SWModel) {
 //				SWModel swModel = (SWModel) elem;
@@ -508,15 +508,15 @@ public class StimuliModelValidatorImpl extends AbstractValidatorImpl {
 //					valueProviders.put(valueProvider, entry);
 //				}
 //			}
-		}
+//		}
 		
 		// check
-		for(ModeLabel modeLabel : valueProviders.keySet()) {
+//		for(ModeLabel modeLabel : valueProviders.keySet()) {
 //			if(false == modeLabels.contains(modeLabel)) {
 //				ModeCondition entry = valueProviders.get(modeLabel);
 //				this.issueCreator.issue(entry, AmaltheaPackage.eINSTANCE.getModeValue_ValueProvider());
 //			}
-		}
-		
+//		}
 	}
+
 }

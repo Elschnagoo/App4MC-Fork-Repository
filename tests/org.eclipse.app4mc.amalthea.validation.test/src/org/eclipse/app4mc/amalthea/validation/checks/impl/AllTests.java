@@ -23,7 +23,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	BasicValidationTests.class,
 	ConstraintsModelTests.class,
-	EventModelTests.class,
 	HardwareModelTests.class,
 	MappingModelTests.class
 	})
