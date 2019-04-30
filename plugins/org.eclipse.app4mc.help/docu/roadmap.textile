@@ -3,6 +3,7 @@ h1. Roadmap
 Current topics:
 
 * Model changes (e.g. for heterogeneous hardware)
+* Model validation
 * Model utilities
 * Interactive help (visualization of model and meta model structure)
 
@@ -11,5 +12,4 @@ All new releases are provided by "Eclipse APP4MC":https://projects.eclipse.org/p
 
 For details see:
 
-* "Bugzilla entries for version 0.9.3":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.9.3
-
+* "Bugzilla entries for version 0.9.5":https://bugs.eclipse.org/bugs/buglist.cgi?product=App4mc&target_milestone=0.9.5
