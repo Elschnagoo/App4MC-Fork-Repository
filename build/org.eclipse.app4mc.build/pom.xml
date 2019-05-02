@@ -344,11 +344,11 @@
 
 				<configuration>
 					<environments>
-						<environment>
+						<!--<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86</arch>
-						</environment>
+						</environment>-->
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
@@ -625,11 +625,11 @@
 
 				<configuration>
 					<environments>
-						<environment>
+						<!--<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86</arch>
-						</environment>
+						</environment>-->
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
@@ -915,11 +915,11 @@
 
 				<configuration>
 					<environments>
-						<environment>
+						<!--<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86</arch>
-						</environment>
+						</environment>-->
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
@@ -1236,11 +1236,11 @@
 
 				<configuration>
 					<environments>
-						<environment>
+						<!--<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86</arch>
-						</environment>
+						</environment>-->
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
