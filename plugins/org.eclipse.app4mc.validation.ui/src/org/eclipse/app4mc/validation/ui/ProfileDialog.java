@@ -87,7 +87,7 @@ public class ProfileDialog extends CheckedTreeSelectionDialog {
 		
 		// set initial selection
 		TreeNode[] initialSelections = settings.getSelectedNodes();
-		this.setInitialSelections(initialSelections);
+		this.setInitialSelections((Object[]) initialSelections);
 
 		// expand tree
 		Set<TreeNode> set = new HashSet<>();

@@ -11,3 +11,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.app4mc.amalthea.model,
  org.eclipse.app4mc.amalthea.validations
 Automatic-Module-Name: app4mc.example.tool.validation
+Export-Package: app4mc.example.tool.validation
