@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Validation UI
+Bundle-SymbolicName: org.eclipse.app4mc.validation.ui;singleton:=true
+Bundle-Version: 0.9.4.qualifier
+Automatic-Module-Name: org.eclipse.app4mc.validation.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: Eclipse APP4MC
+Require-Bundle: org.eclipse.equinox.common,
+ org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.forms,
+ org.eclipse.emf.ecore,
+ org.eclipse.app4mc.validation.core,
+ org.eclipse.app4mc.amalthea.validations
+Export-Package: org.eclipse.app4mc.validation.ui
