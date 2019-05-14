@@ -16,7 +16,8 @@
 package org.eclipse.app4mc.amalthea.sphinx.ui.editors.editor;
 
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.ShowTypesAction;
-import org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.handlers.SearchAction;
+import org.eclipse.app4mc.amalthea.sphinx.ui.editors.actions.SearchAction;
+import org.eclipse.app4mc.amalthea.sphinx.ui.editors.actions.ValidateAction;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.sphinx.emf.editors.forms.pages.AbstractFormPage;
@@ -45,6 +46,8 @@ public class ExtendedContentsTreeSection extends GenericContentsTreeSection {
 		toolBarManager.add(new ShowTypesAction((ExtendedBasicTransactionalFormEditor) this.formPage.getEditor(),
 				(StructuredViewer) getViewer()));
 		toolBarManager.add(new SearchAction((StructuredViewer) getViewer(),
+				(ExtendedBasicTransactionalFormEditor) this.formPage.getEditor()));
+		toolBarManager.add(new ValidateAction((StructuredViewer) getViewer(),
 				(ExtendedBasicTransactionalFormEditor) this.formPage.getEditor()));
 	}
 

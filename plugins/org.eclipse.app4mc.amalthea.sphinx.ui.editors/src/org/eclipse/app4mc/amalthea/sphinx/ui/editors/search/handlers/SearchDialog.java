@@ -52,7 +52,7 @@ public class SearchDialog extends TitleAreaDialog {
 	 */
 	public SearchDialog(Shell parentShell, SearchDialogSettings set) {
 		super(parentShell);
-		setShellStyle(SWT.DIALOG_TRIM | SWT.RESIZE);
+		setShellStyle(SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM | SWT.RESIZE);
 		setHelpAvailable(false);
 		
 		if (set != null)

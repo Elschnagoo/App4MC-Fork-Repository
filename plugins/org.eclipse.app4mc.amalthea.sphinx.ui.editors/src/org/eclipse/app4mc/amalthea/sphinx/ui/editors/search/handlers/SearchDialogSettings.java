@@ -29,14 +29,14 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 
 public class SearchDialogSettings {
 
-	final String KEY_NAME_PATTERN = "Search_NamePattern";
-	final String KEY_CLASS_NAME = "Search_ClassName";
-	final String KEY_CASE_SENSITIVE = "Search_CaseSensitive";
-	final String KEY_REGEX = "Search_RegularExpression";
-	final String KEY_FILE_SCOPE = "Search_FileScope";
+	private final String KEY_NAME_PATTERN = "Search_NamePattern";
+	private final String KEY_CLASS_NAME = "Search_ClassName";
+	private final String KEY_CASE_SENSITIVE = "Search_CaseSensitive";
+	private final String KEY_REGEX = "Search_RegularExpression";
+	private final String KEY_FILE_SCOPE = "Search_FileScope";
 	
-	final EClass FILTER_CLASS_DEFAULT = AmaltheaPackage.eINSTANCE.getINamed();
-	final Map<String, EClass> FILTER_CLASS_MAP = computeSubclassMap();
+	private final EClass FILTER_CLASS_DEFAULT = AmaltheaPackage.eINSTANCE.getINamed();
+	private final Map<String, EClass> FILTER_CLASS_MAP = computeSubclassMap();
 
 	boolean m_success = false;
 	String m_namePattern = "";
@@ -49,15 +49,19 @@ public class SearchDialogSettings {
 		return FILTER_CLASS_MAP.keySet().stream().sorted().toArray(String[]::new);
 	}
 
+	public boolean isSearchRestrictedToFile() {
+		return m_restrictToFile;
+	}
+	
 	@SuppressWarnings("unchecked")
-	Class<INamed> computeFilterClass() {
+	public Class<INamed> computeFilterClass() {
 		EClass eClass = FILTER_CLASS_MAP.get(m_filterClassName);
 		if (eClass == null) return null;
 		
 		return (Class<INamed>) eClass.getInstanceClass();
 	}
 
-	Pattern computeSearchPattern() {
+	public Pattern computeSearchPattern() {
 		if (m_success == false)
 			return null;
 
@@ -73,7 +77,7 @@ public class SearchDialogSettings {
 				return null;
 			}
 		}
-
+		
 		// simple pattern
 		boolean quoted = false;
 		StringBuilder buffer = new StringBuilder();
@@ -99,6 +103,26 @@ public class SearchDialogSettings {
 		return Pattern.compile(pattern.toString());
 	}
 
+	public void saveTo(IDialogSettings store) {
+		if (store == null) return;
+		
+		store.put(KEY_NAME_PATTERN, m_namePattern);
+		store.put(KEY_CLASS_NAME, m_filterClassName);
+		store.put(KEY_CASE_SENSITIVE, m_caseSensitive);
+		store.put(KEY_REGEX, m_regularExpression);
+		store.put(KEY_FILE_SCOPE, m_restrictToFile);
+	}
+
+	public void loadFrom(IDialogSettings store) {
+		if (store == null) return;
+		
+		if (store.get(KEY_NAME_PATTERN) != null) m_namePattern = store.get(KEY_NAME_PATTERN);
+		if (store.get(KEY_CLASS_NAME) != null) m_filterClassName = store.get(KEY_CLASS_NAME);
+		if (store.get(KEY_CASE_SENSITIVE) != null) m_caseSensitive = store.getBoolean(KEY_CASE_SENSITIVE);
+		if (store.get(KEY_REGEX) != null) m_regularExpression = store.getBoolean(KEY_REGEX);
+		if (store.get(KEY_FILE_SCOPE) != null) m_restrictToFile = store.getBoolean(KEY_FILE_SCOPE);
+	}
+
 	private Map<String, EClass> computeSubclassMap() {
 		return computeSubclassMap(FILTER_CLASS_DEFAULT);
 	}
@@ -114,26 +138,6 @@ public class SearchDialogSettings {
 			}
 		}
 		return Collections.unmodifiableMap(classMap);
-	}
-
-	void saveTo(IDialogSettings store) {
-		if (store == null) return;
-		
-		store.put(KEY_NAME_PATTERN, m_namePattern);
-		store.put(KEY_CLASS_NAME, m_filterClassName);
-		store.put(KEY_CASE_SENSITIVE, m_caseSensitive);
-		store.put(KEY_REGEX, m_regularExpression);
-		store.put(KEY_FILE_SCOPE, m_restrictToFile);
-	}
-
-	void loadFrom(IDialogSettings store) {
-		if (store == null) return;
-		
-		if (store.get(KEY_NAME_PATTERN) != null) m_namePattern = store.get(KEY_NAME_PATTERN);
-		if (store.get(KEY_CLASS_NAME) != null) m_filterClassName = store.get(KEY_CLASS_NAME);
-		if (store.get(KEY_CASE_SENSITIVE) != null) m_caseSensitive = store.getBoolean(KEY_CASE_SENSITIVE);
-		if (store.get(KEY_REGEX) != null) m_regularExpression = store.getBoolean(KEY_REGEX);
-		if (store.get(KEY_FILE_SCOPE) != null) m_restrictToFile = store.getBoolean(KEY_FILE_SCOPE);
 	}
 	
 }
