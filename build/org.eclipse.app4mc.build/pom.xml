@@ -83,6 +83,7 @@
 		<!--new validation framework plugins -->
 		<module>../../plugins/org.eclipse.app4mc.amalthea.validations</module>
 		<module>../../plugins/org.eclipse.app4mc.validation.core</module>
+		<module>../../plugins/org.eclipse.app4mc.validation.ui</module>
 		
 		<!--workflow plugins -->
 		<module>../../plugins/org.eclipse.app4mc.amalthea.workflow.core</module>
