@@ -14,4 +14,5 @@ Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.emf.ecore,
  org.eclipse.app4mc.validation.core,
  org.eclipse.app4mc.amalthea.validations
-Export-Package: org.eclipse.app4mc.validation.ui
+Export-Package: org.eclipse.app4mc.validation.ui,
+ org.eclipse.app4mc.validation.ui.provider
