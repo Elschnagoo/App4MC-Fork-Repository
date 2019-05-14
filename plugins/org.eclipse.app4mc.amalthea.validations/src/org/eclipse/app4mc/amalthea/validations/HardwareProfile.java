@@ -13,7 +13,7 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validation.profile;
+package org.eclipse.app4mc.amalthea.validations;
 
 import org.eclipse.app4mc.amalthea.validations.hardware.AmHwAccessPath;
 import org.eclipse.app4mc.amalthea.validations.hardware.AmHwConnection;

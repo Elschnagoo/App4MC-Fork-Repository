@@ -13,22 +13,30 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validation.profile;
+package org.eclipse.app4mc.amalthea.validations;
 
+import org.eclipse.app4mc.amalthea.validations.emf.AmEmfIntrinsic;
+import org.eclipse.app4mc.validation.annotation.Profile;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 
-
 /**
- * Basic validations for AMALTHEA
+ * Generated EMF validations for AMALTHEA
  */
- 
-@ValidationGroup(
-		severity = Severity.ERROR,
-		validations =  {  }
+
+@Profile(
+	name = "Amalthea EMF Validations",
+	description = "This profile should be valid for *ALL* usecases."
 )
 
-public class ConstraintsProfile implements IProfile {
-    // Do nothing
+@ValidationGroup(
+		severity = Severity.UNDEFINED,
+		validations =  {
+				AmEmfIntrinsic.class
+		}
+)
+
+public class EMFProfile implements IProfile {
+	// Do nothing
 }

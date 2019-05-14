@@ -13,7 +13,7 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validations;
+package org.eclipse.app4mc.amalthea.validation.core;
 
 import java.util.List;
 

@@ -36,7 +36,7 @@ import static org.eclipse.app4mc.amalthea.model.AmaltheaPackage.SINGLE_ACTIVATIO
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.validations.AmaltheaValidation;
+import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.emf.ecore.EClass;

@@ -6,7 +6,7 @@ Bundle-Version: 0.9.4.qualifier
 Bundle-Vendor: Eclipse APP4MC
 Automatic-Module-Name: org.eclipse.app4mc.validations.amalthea
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.eclipse.app4mc.amalthea.validation.profile,
+Export-Package: org.eclipse.app4mc.amalthea.validation.core,
  org.eclipse.app4mc.amalthea.validations,
  org.eclipse.app4mc.amalthea.validations.basic,
  org.eclipse.app4mc.amalthea.validations.hardware,

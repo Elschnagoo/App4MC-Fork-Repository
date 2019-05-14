@@ -13,7 +13,7 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validation.profile;
+package org.eclipse.app4mc.amalthea.validations;
 
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicCustomPropertyKey;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicQuantity;

@@ -13,31 +13,22 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validation.profile;
+package org.eclipse.app4mc.amalthea.validations;
 
-import org.eclipse.app4mc.validation.annotation.Profile;
-import org.eclipse.app4mc.validation.annotation.ProfileGroup;
+import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
+import org.eclipse.app4mc.validation.core.Severity;
+
 
 /**
  * Basic validations for AMALTHEA
  */
-
-@Profile(
-	name = "Amalthea Standard Validations",
-	description = "This profile should be valid for *ALL* usecases."
+ 
+@ValidationGroup(
+		severity = Severity.ERROR,
+		validations =  {  }
 )
 
-@ProfileGroup(
-	profiles = {
-		BasicProfile.class,
-		HardwareProfile.class,
-		SoftwareProfile.class,
-		ConstraintsProfile.class,
-		MappingProfile.class
-	}
-)
-
-public class AmaltheaProfile implements IProfile {
-	// Do nothing
+public class ConstraintsProfile implements IProfile {
+    // Do nothing
 }

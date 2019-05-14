@@ -20,7 +20,7 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.PortInterface;
-import org.eclipse.app4mc.amalthea.validations.AmaltheaValidation;
+import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.emf.ecore.EClassifier;

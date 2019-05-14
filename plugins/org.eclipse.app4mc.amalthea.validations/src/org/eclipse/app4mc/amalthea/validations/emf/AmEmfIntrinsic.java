@@ -13,12 +13,13 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validations;
+package org.eclipse.app4mc.amalthea.validations.emf;
 
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
+import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.app4mc.validation.core.Severity;
@@ -31,15 +32,11 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 /**
  * Checks EMF constraints and generated AMALTHEA invariants
- * 
- * <ul>
- * <li>Unit has to be set (_undefined_ is an error)</li>
- * </ul>
  */
 
-@Validation(id = "AM-EMF")
+@Validation(id = "AM-EMF-INTRINSIC")
 
-public class AmEMF extends AmaltheaValidation {
+public class AmEmfIntrinsic extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {

@@ -4,8 +4,12 @@
    <extension
          point="org.eclipse.app4mc.validation.profile">
       <validationProfile
-            class="org.eclipse.app4mc.amalthea.validation.profile.AmaltheaProfile"
+            class="org.eclipse.app4mc.amalthea.validations.AmaltheaProfile"
             id="org.eclipse.app4mc.amalthea.validations.standard">
+      </validationProfile>
+      <validationProfile
+            class="org.eclipse.app4mc.amalthea.validations.EMFProfile"
+            id="org.eclipse.app4mc.amalthea.validations.emf">
       </validationProfile>
    </extension>
  

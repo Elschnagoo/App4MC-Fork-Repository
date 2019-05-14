@@ -13,8 +13,10 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validation.profile;
+package org.eclipse.app4mc.amalthea.validations;
 
+import org.eclipse.app4mc.amalthea.validations.software.AmSwCallArgument;
+import org.eclipse.app4mc.amalthea.validations.software.AmSwDataDependency;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
@@ -26,9 +28,12 @@ import org.eclipse.app4mc.validation.core.Severity;
  
 @ValidationGroup(
 		severity = Severity.ERROR,
-		validations =  {  }
+		validations =  { 
+				AmSwCallArgument.class,
+				AmSwDataDependency.class
+		}
 )
 
-public class MappingProfile implements IProfile {
+public class SoftwareProfile implements IProfile {
     // Do nothing
 }

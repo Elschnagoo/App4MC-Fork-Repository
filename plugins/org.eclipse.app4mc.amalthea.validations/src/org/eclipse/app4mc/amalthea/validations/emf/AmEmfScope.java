@@ -13,48 +13,41 @@
  ********************************************************************************
  */
 
-package org.eclipse.app4mc.amalthea.validations.basic;
+package org.eclipse.app4mc.amalthea.validations.emf;
 
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Quantity;
+import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.Result;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
 
 /**
- * Checks the correctness of Quantity
+ * Checks EMF scope
  * 
  * <ul>
- * <li>Unit has to be set (_undefined_ is an error)</li>
+ * <li>ID has to be unique in folder scope</li>
  * </ul>
  */
 
-@Validation(id = "AM-Basic-Quantity")
+@Validation(id = "AM-EMF-SCOPE")
 
-public class AmBasicQuantity extends AmaltheaValidation {
+public class AmEmfScope extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {
-		return ePackage.getQuantity();
+		return ePackage.getAmalthea();
 	}
 
 	@Override
 	public void validate(final EObject object, List<Result> results) {
-		if (object instanceof Quantity) {
-			Quantity quantity = (Quantity) object;
+		if (object instanceof Amalthea) {
+			Amalthea quantity = (Amalthea) object;
 			
-			Object unit = attributeValue(quantity, "unit");
-			if (unit instanceof Enumerator) {
-				if (((Enumerator) unit).getLiteral() == "_undefined_") {
-					addIssue(results, quantity,
-							typeInfo(quantity) + ": undefined unit" + containerInfo(quantity));
-				}
-			}
+			// TODO find duplicate name in file ...
 
 		}
 	}
