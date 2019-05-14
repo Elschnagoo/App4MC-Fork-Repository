@@ -30,8 +30,8 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaLoader;
-import org.eclipse.app4mc.amalthea.validation.profile.AmaltheaProfile;
-import org.eclipse.app4mc.amalthea.validation.profile.EMFProfile;
+import org.eclipse.app4mc.amalthea.validations.AmaltheaProfile;
+import org.eclipse.app4mc.amalthea.validations.EMFProfile;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;

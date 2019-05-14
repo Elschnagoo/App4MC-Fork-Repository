@@ -11,3 +11,4 @@ Export-Package: org.eclipse.app4mc.validation.annotation,
 Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore
+Automatic-Module-Name: org.eclipse.app4mc.validation.core

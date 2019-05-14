@@ -26,6 +26,7 @@ import org.eclipse.app4mc.validation.core.IValidation;
 import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -53,12 +54,20 @@ public class ValidationExecutor {
 
 	/**
 	 * @param model   validates the model
+	 * @return the list of results
+	 */
+	public List<Result> validate(final EObject model) {
+		return validate(model, new NullProgressMonitor());
+	}
+
+	/**
+	 * @param model   validates the model
 	 * @param monitor the progress monitor
 	 * @return the list of results
 	 */
 	public List<Result> validate(final EObject model, final IProgressMonitor monitor) {
 		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
-		validate(model); // need to validate the root, because the iterator misses this one
+		validateObject(model); // need to validate the root, because the iterator misses this one
 		int i = 0;
 		while (iterator.hasNext()) {
 			if (((i++ % 1000) == 0) && monitor.isCanceled()) {
@@ -66,13 +75,13 @@ public class ValidationExecutor {
 			}
 
 			EObject next = iterator.next();
-			validate(next);
+			validateObject(next);
 		}
 
 		return this.results;
 	}
 
-	private void validate(final EObject object) {
+	private void validateObject(final EObject object) {
 		
 		Set<ValidatorConfig> validations = validatorManager.getValidations(object.eClass());
 		for (ValidatorConfig validator : validations) {
