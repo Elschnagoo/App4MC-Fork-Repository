@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: APP4MC Amalthea Validations - Timing Architects Simulation
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.validations.ta;singleton:=true
+Bundle-Version: 0.9.4.qualifier
+Bundle-Vendor: Eclipse APP4MC
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.validations.ta
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.eclipse.app4mc.amalthea.validations.ta,
+ org.eclipse.app4mc.amalthea.validations.ta.basic
+Require-Bundle: org.eclipse.app4mc.validation.core,
+ org.eclipse.app4mc.amalthea.model,
+ org.eclipse.app4mc.amalthea.validations
