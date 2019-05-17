@@ -22,7 +22,7 @@ import org.eclipse.app4mc.amalthea.model.PortInterface;
 import org.eclipse.app4mc.amalthea.model.PortType;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -45,22 +45,22 @@ public class AmHwPortEnumerations extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwPort) {
 			HwPort port = (HwPort) object;
 			
 			// ***** PortType must be set
 			
 			if (port.getPortType() == PortType._UNDEFINED_) {
-				// AmaltheaPackage.eINSTANCE.getHwPort_PortType()
-				addIssue(results, port, "HW Port " + longName(port) + ": undefined port type");
+				addIssue(results, port, ePackage.getHwPort_PortType(),
+						"HW Port " + longName(port) + ": undefined port type");
 			}
 			
 			// ***** PortInterface must be set
 			
 			if (port.getPortInterface() == PortInterface._UNDEFINED_) {
-				// AmaltheaPackage.eINSTANCE.getHwPort_PortInterface()
-				addIssue(results, port, "HW Port " + longName(port) + ": undefined port interface");
+				addIssue(results, port, ePackage.getHwPort_PortInterface(),
+						"HW Port " + longName(port) + ": undefined port interface");
 			}
 
 		}

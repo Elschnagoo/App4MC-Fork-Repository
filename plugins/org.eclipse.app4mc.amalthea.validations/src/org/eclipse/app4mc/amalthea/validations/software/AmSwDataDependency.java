@@ -31,7 +31,7 @@ import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -63,7 +63,7 @@ public class AmSwDataDependency extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof DataDependency) {
 			DataDependency dependency = (DataDependency) object;
 			
@@ -72,30 +72,30 @@ public class AmSwDataDependency extends AmaltheaValidation {
 			
 			EObject container = dependency.eContainer();
 			if (container instanceof LabelAccess) {
-				LabelAccessEnum accessType = ((LabelAccess)container).getAccess();
+				LabelAccess labelAccess = (LabelAccess) container;
+				LabelAccessEnum accessType = labelAccess.getAccess();
 				if (accessType != LabelAccessEnum.WRITE) {
-					// AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems()
-					addIssue(results, container,
+					addIssue(results, labelAccess, ePackage.getLabelAccess_DependsOn(),
 							"Data dependency: A data dependency can only be defined for WRITE label accesses");
 				}
 			}
 			
 			if (container instanceof RunnableParameter) {
-				DirectionType direction = ((RunnableParameter)container).getDirection();
+				RunnableParameter runParam = (RunnableParameter) container;
+				DirectionType direction = runParam.getDirection();
 				if (direction != DirectionType.OUT && direction != DirectionType.INOUT) {
-					// AmaltheaPackage.eINSTANCE.getRunnable_Parameters()
-					addIssue(results, container,
+					addIssue(results, runParam, ePackage.getRunnableParameter_DependsOn(),
 							"Data dependency: A data dependency can only be defined for OUT/INOUT parameters");
 				}
 			}
 			
 			if (container instanceof CallArgument) {
-				RunnableParameter parameter = ((CallArgument) container).getParameter();
+				CallArgument callArg = (CallArgument) container;
+				RunnableParameter parameter = callArg.getParameter();
 				if (parameter != null) {
 					DirectionType direction = parameter.getDirection();
 					if (direction != DirectionType.IN && direction != DirectionType.INOUT) {
-						// AmaltheaPackage.eINSTANCE.getRunnableCall_Arguments()
-						addIssue(results, container,
+						addIssue(results, callArg, ePackage.getCallArgument_DependsOn(),
 								"Data dependency: A data dependency can only be defined for IN/INOUT call arguments");
 					}
 				}
@@ -103,15 +103,13 @@ public class AmSwDataDependency extends AmaltheaValidation {
 			
 			List<RunnableParameter> localParameters = getSuitableParameters(runnable);
 			if (!localParameters.containsAll(dependency.getParameters())) {
-				// AmaltheaPackage.eINSTANCE.getDataDependency_Parameters()
-				addIssue(results, dependency,
+				addIssue(results, dependency, ePackage.getDataDependency_Parameters(),
 						"Data dependency: A data dependency can only refer to local IN/INOUT parameters");
 			}
 			
 			List<CallArgument> localCallArguments = getSuitableCallArguments(runnable);
 			if (!localCallArguments.containsAll(dependency.getCallArguments())) {
-				// AmaltheaPackage.eINSTANCE.getDataDependency_CallArguments()
-				addIssue(results, dependency,
+				addIssue(results, dependency, ePackage.getDataDependency_CallArguments(),
 						"Data dependency: A data dependency can only refer to local OUT/INOUT call arguments");
 			}
 

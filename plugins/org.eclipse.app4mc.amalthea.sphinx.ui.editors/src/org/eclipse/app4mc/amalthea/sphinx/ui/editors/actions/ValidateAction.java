@@ -19,17 +19,20 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.editor.ExtendedBasicTransactionalFormEditor;
 import org.eclipse.app4mc.validation.core.IProfile;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.app4mc.validation.ui.ProfileDialog;
 import org.eclipse.app4mc.validation.ui.ProfileDialogSettings;
 import org.eclipse.app4mc.validation.ui.ValidationUIPlugin;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sphinx.emf.check.services.CheckProblemMarkerService;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -88,19 +91,35 @@ public class ValidateAction extends Action {
 			}
 			if (model == null) return;
 			
-			// validate
+			// validate TODO: non blocking 
 			ValidationExecutor executor = new ValidationExecutor(selectedProfiles);
-			List<Result> results = executor.validate(model);
+			List<ValidationDiagnostic> results = executor.validate(model);
 			
 			// show results
+			BasicDiagnostic diagnostics = new BasicDiagnostic();
+			for (ValidationDiagnostic diag : results) {
+				diagnostics.add((Diagnostic) diag);				
+			}
+			
+//		VERSION 1: EMF
+//
+//			MarkerHelper markerHelper = new EditUIMarkerHelper();
+//			try {
+//				markerHelper.updateMarkers(diagnostics);
+//			} catch (CoreException e) {
+//				// TODO: ignore or log
+//			}
+				
+//		VERSION 2: Sphinx
+//			CheckProblemMarkerService.INSTANCE.updateProblemMarkers(model, diagnostics);
 			
 			System.out.println("Selected profiles:");
 			for (Class<? extends IProfile> sc : selectedProfiles) {
 				System.out.println("  - " + sc.getName());
 			}
 			System.out.println("Result:");
-			for (Result result : results) {
-				System.out.println("    " + result.getMessageId() + " -- " + result.getSeverityLevel());
+			for (ValidationDiagnostic result : results) {
+				System.out.println("    " + result.getValidationID() + " -- " + result.getSeverityLevel());
 				System.out.println("    " + result.getMessage());
 				System.out.println("    --------------------------------");
 			}

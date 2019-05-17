@@ -21,7 +21,7 @@ import org.eclipse.app4mc.amalthea.model.HwConnection;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -44,7 +44,7 @@ public class AmHwPort extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwPort) {
 			HwPort port = (HwPort) object;
 			
@@ -61,8 +61,8 @@ public class AmHwPort extends AmaltheaValidation {
 						counter++; // ignore internal connections of connection handlers
 				}
 				if (counter > 1) {
-					// AmaltheaPackage.eINSTANCE.getHwPort_Connections(),
-					addIssue(results, port, "HW Port " + longName(port) + ": found " + counter + " connections, only 1 is allowed");
+					addIssue(results, port, ePackage.getHwPort_Connections(),
+							"HW Port " + longName(port) + ": found " + counter + " connections, only 1 is allowed");
 				}
 			}
 

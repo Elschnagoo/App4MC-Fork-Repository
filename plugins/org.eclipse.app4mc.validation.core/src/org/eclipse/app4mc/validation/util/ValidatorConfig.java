@@ -27,7 +27,7 @@ public class ValidatorConfig {
 
 	private final Class<? extends IValidation> validatorClass;
 	private final Severity severity;
-	private final String messageId;
+	private final String validationID;
 	private final IValidation validatorInstance;
 	private final EClassifier targetEClassifier;
 
@@ -37,9 +37,9 @@ public class ValidatorConfig {
 		this.validatorClass = validatorClass;
 		this.severity = severity;
 		
-		Validation validation = validatorClass.getAnnotation(Validation.class);
+		Validation validationInfo = validatorClass.getAnnotation(Validation.class);
 		
-		this.messageId = (validation != null) ? validation.id() : validatorClass.getSimpleName();
+		this.validationID = (validationInfo != null) ? validationInfo.id() : validatorClass.getSimpleName();
 		
 		try {
 			this.validatorInstance = validatorClass.newInstance();
@@ -78,8 +78,8 @@ public class ValidatorConfig {
 		return severity;
 	}
 
-	public String getMessageId() {
-		return messageId;
+	public String getValidationID() {
+		return validationID;
 	}
 
 }

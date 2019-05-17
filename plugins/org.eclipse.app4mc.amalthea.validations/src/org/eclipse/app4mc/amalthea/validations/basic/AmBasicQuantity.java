@@ -20,7 +20,7 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.Quantity;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -38,20 +38,22 @@ import org.eclipse.emf.ecore.EObject;
 
 public class AmBasicQuantity extends AmaltheaValidation {
 
+	final String UNIT = "unit";
+
 	@Override
 	public EClassifier getEClassifier() {
 		return ePackage.getQuantity();
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof Quantity) {
 			Quantity quantity = (Quantity) object;
 			
-			Object unit = attributeValue(quantity, "unit");
+			Object unit = attributeValue(quantity, UNIT);
 			if (unit instanceof Enumerator) {
 				if (((Enumerator) unit).getLiteral() == "_undefined_") {
-					addIssue(results, quantity,
+					addIssue(results, quantity, quantity.eClass().getEStructuralFeature(UNIT),
 							typeInfo(quantity) + ": undefined unit" + containerInfo(quantity));
 				}
 			}

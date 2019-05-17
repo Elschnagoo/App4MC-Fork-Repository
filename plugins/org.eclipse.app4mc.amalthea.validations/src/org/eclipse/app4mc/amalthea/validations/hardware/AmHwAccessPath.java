@@ -27,7 +27,7 @@ import org.eclipse.app4mc.amalthea.model.MemoryDefinition;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -52,7 +52,7 @@ public class AmHwAccessPath extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwAccessPath) {
 			HwAccessPath path = (HwAccessPath) object;
 			
@@ -66,8 +66,8 @@ public class AmHwAccessPath extends AmaltheaValidation {
 			long requiredSize = path.getMemOffset() + addressRange;
 			
 			if (addressRange < 0) {
-				// AmaltheaPackage.eINSTANCE.getHwAccessPath_EndAddress()
-				addIssue(results, path, "HW Access Path " + name(path) + ": Start address > End address");
+				addIssue(results, path, ePackage.getHwAccessPath_EndAddress(),
+						"HW Access Path " + name(path) + ": Start address > End address");
 				performRangeCheck = false; // address range is invalid
 			}
 			
@@ -75,8 +75,8 @@ public class AmHwAccessPath extends AmaltheaValidation {
 				memory = (Memory) path.getDestination();
 				memoryDef = memory.getDefinition();
 				if (memoryDef == null) {
-					// AmaltheaPackage.eINSTANCE.getHwPath_Destination()
-					addIssue(results, path, "HW Access Path " + name(path) + ": Destination (Memory) size is undefined");
+					addIssue(results, path, ePackage.getHwPath_Destination(),
+							"HW Access Path " + name(path) + ": Destination (Memory) size is undefined");
 					performRangeCheck = false; // memory size is not available
 				}
 			} else {
@@ -84,8 +84,8 @@ public class AmHwAccessPath extends AmaltheaValidation {
 			}
 			
 			if (performRangeCheck && requiredSize > memoryDef.getSize().getNumberBytes()) {
-				// AmaltheaPackage.eINSTANCE.getHwAccessPath_EndAddress()
-				addIssue(results, path, "HW Access Path " + name(path) + ": Address range > Memory size");
+				addIssue(results, path, ePackage.getHwAccessPath_EndAddress(),
+						"HW Access Path " + name(path) + ": Address range > Memory size");
 			}
 			
 			// ***** HwAccessPath elements must be consistent
@@ -102,28 +102,28 @@ public class AmHwAccessPath extends AmaltheaValidation {
 			if (first instanceof HwConnection) {
 				// check if source has a common port with the first path element 
 				if (Collections.disjoint(source.getPorts(), first.getPorts())) {
-					// AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements()
-					addIssue(results, path, "HW Access Path " + name(path) + ": No common port at the beginning of the path");
+					addIssue(results, path, ePackage.getHwAccessPath_PathElements(),
+							"HW Access Path " + name(path) + ": No common port at the beginning of the path");
 				}
 			} else {
-				// AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements()
-				addIssue(results, path, "HW Access Path " + name(path) + ": First path element must be a connection");
+				addIssue(results, path, ePackage.getHwAccessPath_PathElements(),
+						"HW Access Path " + name(path) + ": First path element must be a connection");
 			}
 			
 			if (last instanceof HwConnection) {
 				if (destination == null) {
-					// AmaltheaPackage.eINSTANCE.getHwPath_Destination()
-					addIssue(results, path, "HW Access Path " + name(path) + ": Destination is undefined");
+					addIssue(results, path, ePackage.getHwPath_Destination(),
+							"HW Access Path " + name(path) + ": Destination is undefined");
 				} else {
 					// check if destination has a common port with the last path element 
 					if (Collections.disjoint(destination.getPorts(), last.getPorts())) {
-						// AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements()
-						addIssue(results, path, "HW Access Path " + name(path) + ": No common port at the end of the path");
+						addIssue(results, path, ePackage.getHwAccessPath_PathElements(),
+								"HW Access Path " + name(path) + ": No common port at the end of the path");
 					}
 				}
 			} else {
-				// AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements()
-				addIssue(results, path, "HW Access Path " + name(path) + ": Last path element must be a connection");
+				addIssue(results, path, ePackage.getHwAccessPath_PathElements(),
+						"HW Access Path " + name(path) + ": Last path element must be a connection");
 			}
 			
 			if (pathElements.size() < 2) return;  // no further checks possible
@@ -135,8 +135,8 @@ public class AmHwAccessPath extends AmaltheaValidation {
 				HwPathElement item2 = pathElements.get(i + 1);
 				
 				if (Collections.disjoint(item1.getPorts(), item2.getPorts())) {
-					// AmaltheaPackage.eINSTANCE.getHwAccessPath_PathElements()
-					addIssue(results, path, "HW Access Path " + name(path) + ": No common port between element[" + i + "] and element[" + (i+1) + "]");
+					addIssue(results, path, ePackage.getHwAccessPath_PathElements(),
+							"HW Access Path " + name(path) + ": No common port between element[" + i + "] and element[" + (i+1) + "]");
 				}
 			}
 

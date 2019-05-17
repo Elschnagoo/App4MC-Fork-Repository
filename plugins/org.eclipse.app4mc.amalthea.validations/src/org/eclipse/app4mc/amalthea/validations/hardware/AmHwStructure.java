@@ -26,7 +26,7 @@ import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.PortType;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -49,7 +49,7 @@ public class AmHwStructure extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwStructure) {
 			HwStructure structure = (HwStructure) object;
 			
@@ -95,8 +95,7 @@ public class AmHwStructure extends AmaltheaValidation {
 					// HwPort
 					if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.INITIATOR)
 							|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.RESPONDER)) {
-						// AmaltheaPackage.eINSTANCE.getHwConnection_Port1()
-						addIssue(results, conn,
+						addIssue(results, conn, ePackage.getHwConnection_Port1(),
 								"HW Connection " + longName(conn) + ": Port types do not fulfill initiator -> responder");
 					}
 					
@@ -106,8 +105,7 @@ public class AmHwStructure extends AmaltheaValidation {
 					// Responder HwPort
 					if ((port1.getPortType() == PortType.INITIATOR && port2.getPortType() == PortType.RESPONDER)
 							|| (port1.getPortType() == PortType.RESPONDER && port2.getPortType() == PortType.INITIATOR)) {
-						// AmaltheaPackage.eINSTANCE.getHwConnection_Port1()
-						addIssue(results, conn,
+						addIssue(results, conn, ePackage.getHwConnection_Port1(),
 								"HW Connection " + longName(conn) + ": Port types of delegate connection do not match");
 					}
 				}

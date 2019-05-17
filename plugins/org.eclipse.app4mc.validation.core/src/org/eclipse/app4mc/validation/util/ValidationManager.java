@@ -174,7 +174,7 @@ public class ValidationManager {
 		for (EClassifier cl : classifiers) {
 			out.println("Validations for " + cl.getName() + ":");
 			for (ValidatorConfig vConf : validationMap1.get(cl)) {
-				out.println("    " + vConf.getSeverity() + " - " + vConf.getMessageId());
+				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
 			}
 		}
 	}
@@ -189,7 +189,7 @@ public class ValidationManager {
 		for (EClassifier cl : classifiers) {
 			out.println("Validations for " + cl.getName() + ":");
 			for (ValidatorConfig vConf : validationMap2.get(cl)) {
-				out.println("    " + vConf.getSeverity() + " - " + vConf.getMessageId());
+				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
 			}
 		}
 	}

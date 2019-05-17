@@ -22,7 +22,7 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.validation.core.IValidation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -94,8 +94,8 @@ public abstract class AmaltheaValidation implements IValidation {
 		return object.eGet(feature);
 	}
 
-	protected void addIssue(final List<Result> results, final EObject object, final String message) {
-		results.add(new Result(message, object));
+	protected void addIssue(final List<ValidationDiagnostic> results, final EObject object, final EStructuralFeature feature, final String message) {
+		results.add(new ValidationDiagnostic(message, object, feature));
 	}
 
 }

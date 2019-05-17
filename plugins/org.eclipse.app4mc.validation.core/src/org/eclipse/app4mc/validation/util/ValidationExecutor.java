@@ -23,8 +23,8 @@ import java.util.Set;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.IValidation;
-import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.app4mc.validation.core.Severity;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class ValidationExecutor {
 
 	private final ValidationManager validatorManager;
-	private final List<Result> results = new ArrayList<>();
+	private final List<ValidationDiagnostic> results = new ArrayList<>();
 
 	public ValidationExecutor(final Class<? extends IProfile> profileClass) {
 		this(Collections.singletonList(profileClass));
@@ -56,7 +56,7 @@ public class ValidationExecutor {
 	 * @param model   validates the model
 	 * @return the list of results
 	 */
-	public List<Result> validate(final EObject model) {
+	public List<ValidationDiagnostic> validate(final EObject model) {
 		return validate(model, new NullProgressMonitor());
 	}
 
@@ -65,7 +65,7 @@ public class ValidationExecutor {
 	 * @param monitor the progress monitor
 	 * @return the list of results
 	 */
-	public List<Result> validate(final EObject model, final IProgressMonitor monitor) {
+	public List<ValidationDiagnostic> validate(final EObject model, final IProgressMonitor monitor) {
 		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
 		validateObject(model); // need to validate the root, because the iterator misses this one
 		int i = 0;
@@ -85,7 +85,7 @@ public class ValidationExecutor {
 		
 		Set<ValidatorConfig> validations = validatorManager.getValidations(object.eClass());
 		for (ValidatorConfig validator : validations) {
-			List<Result> resultList = new ArrayList<>();
+			List<ValidationDiagnostic> resultList = new ArrayList<>();
 			try {
 				validator.getValidatorInstance().validate(object, resultList);
 			} catch (Exception ex) {
@@ -94,20 +94,20 @@ public class ValidationExecutor {
 			}
 			
 			// set message id and severity
-			for (Result r : resultList) {
-				r.setMessageId(validator.getMessageId());
+			for (ValidationDiagnostic result : resultList) {
+				result.setValidationID(validator.getValidationID());
 				if (validator.getSeverity() != Severity.UNDEFINED) {
-					r.setSeverityLevel(validator.getSeverity());					
+					result.setSeverityLevel(validator.getSeverity());					
 				}
-				this.results.add(r);
+				this.results.add(result);
 			}
 		}
 	
 	}
 
 	private void addExceptionResult(final EObject object, Class<? extends IValidation> validatorClass, Exception ex) {
-		Result exception = new Result("Validation exception in " + validatorClass + ": " + ex.getMessage(), object);
-		exception.setMessageId("AM-Runtime-Exception");
+		ValidationDiagnostic exception = new ValidationDiagnostic("Validation exception in " + validatorClass + ": " + ex.getMessage(), object);
+		exception.setValidationID("AM-Runtime-Exception");
 		exception.setSeverityLevel(Severity.ERROR);
 		this.results.add(exception);
 	}

@@ -21,8 +21,8 @@ import java.util.Map;
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
 import org.eclipse.app4mc.validation.core.Severity;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClassifier;
@@ -44,7 +44,7 @@ public class AmEmfIntrinsic extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject eObject, List<Result> results) {
+	public void validate(final EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject.eClass().eContainer() == ePackage) {
 			BasicDiagnostic diagnostics = new BasicDiagnostic();
 			Map<Object, Object> context = null;
@@ -53,7 +53,12 @@ public class AmEmfIntrinsic extends AmaltheaValidation {
 			if (!valid) {
 				for (Diagnostic emfDiagnostic : diagnostics.getChildren()) {
 					
-					Result result = new Result(emfDiagnostic.getMessage(), eObject);
+					EObject problematicObject = eObject;
+					if (!emfDiagnostic.getData().isEmpty() &&  emfDiagnostic.getData().get(0) instanceof EObject) {
+						problematicObject = (EObject) emfDiagnostic.getData().get(0);
+					}
+					
+					ValidationDiagnostic result = new ValidationDiagnostic(emfDiagnostic.getMessage(), problematicObject);
 					
 					switch (emfDiagnostic.getSeverity()) {
 					case Diagnostic.INFO:

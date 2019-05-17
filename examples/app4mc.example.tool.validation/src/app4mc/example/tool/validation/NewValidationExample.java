@@ -33,7 +33,7 @@ import org.eclipse.app4mc.amalthea.model.io.AmaltheaLoader;
 import org.eclipse.app4mc.amalthea.validations.AmaltheaProfile;
 import org.eclipse.app4mc.amalthea.validations.EMFProfile;
 import org.eclipse.app4mc.validation.core.IProfile;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
@@ -66,7 +66,7 @@ public class NewValidationExample {
 
 		ValidationExecutor executor = new ValidationExecutor(profileList);
 
-		List<Result> results = executor.validate(model, new NullProgressMonitor());
+		List<ValidationDiagnostic> results = executor.validate(model, new NullProgressMonitor());
 
 
 		// ***** Print results *****
@@ -85,8 +85,8 @@ public class NewValidationExample {
 		printWriter.println("\nValidation results (" + dateFormat.format(new Date()) + ")\n\n");
 
 		System.out.println("Writing file: " + outputFile.getAbsoluteFile());
-		for (Result result : results) {
-			printWriter.println("    " + result.getMessageId() + " -- " + result.getSeverityLevel());
+		for (ValidationDiagnostic result : results) {
+			printWriter.println("    " + result.getValidationID() + " -- " + result.getSeverityLevel());
 			printWriter.println("    " + result.getMessage());
 			printWriter.println("    --------------------------------");
 		}

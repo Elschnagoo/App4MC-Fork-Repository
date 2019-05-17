@@ -19,7 +19,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -35,11 +35,11 @@ public class TA005 extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		Label label = (Label) object;
 
 		// dummy
-		results.add(new Result("validation executed.", label));
+		results.add(new ValidationDiagnostic("validation executed.", label));
 	}
 
 }

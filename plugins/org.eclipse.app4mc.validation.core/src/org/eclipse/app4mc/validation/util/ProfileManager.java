@@ -116,7 +116,7 @@ public class ProfileManager {
 			stream.println(in + " - validations:");
 		}
 		for (ValidatorConfig conf : profileConfig.getValidations().values()) {
-			stream.println(in + "    " + conf.getMessageId() + "(" + conf.getSeverity() + " - "
+			stream.println(in + "    " + conf.getValidationID() + "(" + conf.getSeverity() + " - "
 					+ conf.getTargetClass().getSimpleName() + ")");
 		}
 

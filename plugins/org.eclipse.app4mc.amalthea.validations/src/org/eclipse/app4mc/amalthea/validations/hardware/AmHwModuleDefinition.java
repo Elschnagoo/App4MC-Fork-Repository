@@ -24,7 +24,7 @@ import org.eclipse.app4mc.amalthea.model.Memory;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -49,43 +49,47 @@ public class AmHwModuleDefinition extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwModule) {
 			HwModule module = (HwModule) object;
 			
 			// ***** Memory definition must be set
 			
 			if (module instanceof Memory) {
-				if (((Memory) module).getDefinition() == null) {
-					// AmaltheaPackage.eINSTANCE.getMemory_Definition()
-					addIssue(results, module, "HW Module (Memory) " + name(module) + ": missing definition");
+				Memory memory = (Memory) module;
+				if (memory.getDefinition() == null) {
+					addIssue(results, memory, ePackage.getMemory_Definition(),
+							"HW Module (Memory) " + name(module) + ": missing definition");
 				}
 			}
 			
 			// ***** ProcessingUnit definition must be set
 			
 			if (module instanceof ProcessingUnit) {
-				if (((ProcessingUnit) module).getDefinition() == null) {
-					// AmaltheaPackage.eINSTANCE.getProcessingUnit_Definition()
-					addIssue(results, module, "HW Module (ProcessingUnit) " + name(module) + ": missing definition");
+				ProcessingUnit pu = (ProcessingUnit) module;
+				if (pu.getDefinition() == null) {
+					addIssue(results, pu, ePackage.getProcessingUnit_Definition(),
+							"HW Module (ProcessingUnit) " + name(module) + ": missing definition");
 				}
 			}
 			
 			// ***** ConnectionHandler definition must be set
 			
 			if (module instanceof ConnectionHandler) {
-				if (((ConnectionHandler) module).getDefinition() == null) {
-					// AmaltheaPackage.eINSTANCE.getConnectionHandler_Definition()
-					addIssue(results, module, "HW Module (ConnectionHandler) " + name(module) + ": missing definition");
+				ConnectionHandler handler = (ConnectionHandler) module;
+				if (handler.getDefinition() == null) {
+					addIssue(results, handler, ePackage.getConnectionHandler_Definition(),
+							"HW Module (ConnectionHandler) " + name(module) + ": missing definition");
 				}
 			}
 			
 			// ***** Cache definition must be set
 			
 			if (module instanceof Cache) {
-				if (((Cache) module).getDefinition() == null) {
-					// AmaltheaPackage.eINSTANCE.getCache_Definition()
-					addIssue(results, module, "HW Module (Cache) " + name(module) + ": missing definition");
+				Cache cache = (Cache) module;
+				if (cache.getDefinition() == null) {
+					addIssue(results, cache, ePackage.getCache_Definition(),
+							"HW Module (Cache) " + name(module) + ": missing definition");
 				}
 			}
 

@@ -19,7 +19,7 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -36,11 +36,11 @@ public class TA011 extends AmaltheaValidation {
 
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		Runnable runnable = (Runnable) object;
 
 		if (runnable.getRunnableItems().isEmpty()) {
-			addIssue(results, runnable, "Runnable: no runnable items defined");
+			addIssue(results, runnable, null, "Runnable: no runnable items defined");
 		}
 	}
 

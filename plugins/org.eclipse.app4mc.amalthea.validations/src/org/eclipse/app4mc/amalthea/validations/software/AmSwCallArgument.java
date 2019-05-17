@@ -19,10 +19,11 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -44,22 +45,21 @@ public class AmSwCallArgument extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof CallArgument) {
 			CallArgument argument = (CallArgument) object;
 			
-			Runnable calledRunnable = argument.getContainingCall().getRunnable();
+			RunnableCall runnableCall = argument.getContainingCall();
+			Runnable calledRunnable = runnableCall.getRunnable();
 			RunnableParameter parameter = argument.getParameter();
 			
 			if (parameter == null) {
-				// AmaltheaPackage.eINSTANCE.getCallArgument_Parameter()
-				addIssue(results, argument,
+				addIssue(results, argument, ePackage.getCallArgument_Parameter(),
 						"Call argument: Parameter of argument is undefined");
 			}
 			
 			if (calledRunnable == null) {
-				// AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable()
-				addIssue(results, argument.getContainingCall(),
+				addIssue(results, runnableCall, ePackage.getRunnableCall_Runnable(),
 						"Call argument: Called runnable is undefined");
 			}
 			
@@ -68,8 +68,7 @@ public class AmSwCallArgument extends AmaltheaValidation {
 			}
 			
 			if (!calledRunnable.getParameters().contains(parameter)) {
-				// AmaltheaPackage.eINSTANCE.getCallArgument_Parameter()
-				addIssue(results, argument,
+				addIssue(results, argument, ePackage.getCallArgument_Parameter(),
 						"Call argument: Called Runnable \"" + calledRunnable.getName()
 						+ "\" does not match Parameter \"" + parameter.toString() + "\"");
 			}

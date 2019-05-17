@@ -22,7 +22,7 @@ import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.PortInterface;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -45,7 +45,7 @@ public class AmHwConnection extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof HwConnection) {
 			HwConnection connection = (HwConnection) object;
 			
@@ -56,20 +56,20 @@ public class AmHwConnection extends AmaltheaValidation {
 			// ***** HwConnections must refer to two HwPorts
 			
 			if (port1 == null) {
-				// AmaltheaPackage.eINSTANCE.getHwConnection_Port1()
-				addIssue(results, connection, "HW Connection " + longName(connection) + ": Port 1 is missing");
+				addIssue(results, connection, ePackage.getHwConnection_Port1(),
+						"HW Connection " + longName(connection) + ": Port 1 is missing");
 				continueChecks = false;
 			}
 			
 			if (port2 == null) {
-				// AmaltheaPackage.eINSTANCE.getHwConnection_Port2()
-				addIssue(results, connection, "HW Connection " + longName(connection) + ": Port 2 is missing");
+				addIssue(results, connection, ePackage.getHwConnection_Port2(),
+						"HW Connection " + longName(connection) + ": Port 2 is missing");
 				continueChecks = false;
 			}
 			
 			if (port1 != null && port1 == port2) {
-				// AmaltheaPackage.eINSTANCE.getHwConnection_Port1()
-				addIssue(results, connection, "HW Connection " + longName(connection) + ": Port 1 equals port 2");
+				addIssue(results, connection, ePackage.getHwConnection_Port1(),
+						"HW Connection " + longName(connection) + ": Port 1 equals port 2");
 				continueChecks = false;
 			}
 			
@@ -82,8 +82,8 @@ public class AmHwConnection extends AmaltheaValidation {
 					&& port1.getPortInterface() != PortInterface._UNDEFINED_ // undefined -> no error
 					&& port2.getPortInterface() != PortInterface._UNDEFINED_
 					&& port1.getPortInterface() != port2.getPortInterface()) {
-				// AmaltheaPackage.eINSTANCE.getHwConnection_Port1()
-				addIssue(results, connection, "HW Connection " + longName(connection) + ": Port interfaces do not match");
+				addIssue(results, connection, ePackage.getHwConnection_Port1(),
+						"HW Connection " + longName(connection) + ": Port interfaces do not match");
 			}
 
 		}

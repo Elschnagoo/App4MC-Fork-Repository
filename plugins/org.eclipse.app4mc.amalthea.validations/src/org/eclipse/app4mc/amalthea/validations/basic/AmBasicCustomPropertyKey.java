@@ -24,7 +24,7 @@ import org.eclipse.app4mc.amalthea.model.IAnnotatable;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
-import org.eclipse.app4mc.validation.core.Result;
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
@@ -47,7 +47,7 @@ public class AmBasicCustomPropertyKey extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<Result> results) {
+	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof IAnnotatable) {
 			IAnnotatable anno = (IAnnotatable) object;
 			
@@ -61,7 +61,7 @@ public class AmBasicCustomPropertyKey extends AmaltheaValidation {
 						// second entry: report duplicate
 						
 						// AmaltheaPackage.eINSTANCE.getCustomProperty_Key()
-						addIssue(results, anno,
+						addIssue(results, anno, ePackage.getIAnnotatable_CustomProperties(),
 								"CustomProperty: duplicate key \"" + key + "\" ( in " + objectInfo(anno) + " )");
 						
 						// mark key as duplicate that already has been reported
