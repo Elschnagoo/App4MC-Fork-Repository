@@ -22,8 +22,6 @@ All rights reserved.
 
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.sphinx.emf"/>
-      <import plugin="org.eclipse.sphinx.emf.check"/>
       <import plugin="org.eclipse.app4mc.amalthea.model"/>
       <import plugin="org.eclipse.help"/>
    </requires>
