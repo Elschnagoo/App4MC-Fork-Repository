@@ -17,23 +17,26 @@ package org.eclipse.app4mc.validation.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.IValidation;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.JobGroup;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * A validator for EMF models. Loads a configuration from a class annotated by
- * {@link ValidationGroup}.
+ * A validator for EMF models. Loads the configuration from a list of
+ * {@link IProfile} classes
  */
 public class ValidationExecutor {
 
@@ -43,7 +46,7 @@ public class ValidationExecutor {
 	public ValidationExecutor(final Class<? extends IProfile> profileClass) {
 		this(Collections.singletonList(profileClass));
 	}
-	
+
 	public ValidationExecutor(final List<Class<? extends IProfile>> profileClassList) {
 		if (profileClassList == null) {
 			throw new IllegalArgumentException("Loading aborted - Undefined profile class list");
@@ -53,36 +56,78 @@ public class ValidationExecutor {
 	}
 
 	/**
-	 * @param model   validates the model
-	 * @return the list of results
+	 * @param model		the model to validate
+	 * @return the status
 	 */
-	public List<ValidationDiagnostic> validate(final EObject model) {
+	public IStatus validate(final EObject model) {
 		return validate(model, new NullProgressMonitor());
 	}
 
 	/**
-	 * @param model   validates the model
-	 * @param monitor the progress monitor
-	 * @return the list of results
+	 * @param model		the model to validate
+	 * @param monitor	the progress monitor
+	 * @return the status
 	 */
-	public List<ValidationDiagnostic> validate(final EObject model, final IProgressMonitor monitor) {
-		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
-		validateObject(model); // need to validate the root, because the iterator misses this one
-		int i = 0;
-		while (iterator.hasNext()) {
-			if (((i++ % 1000) == 0) && monitor.isCanceled()) {
-				return this.results;
+	public IStatus validate(final EObject model, final IProgressMonitor monitor) {
+		this.results.clear();
+
+		try {
+			int count = getModelObjectCount(model);
+			monitor.beginTask("Validating objects", count / 1000 + 1);
+
+			TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
+			validateObject(model); // need to validate the root, because the iterator misses this one
+
+			int i = 0;
+			while (iterator.hasNext()) {
+				if ((i++ % 1000) == 0) {
+					monitor.worked(1);
+					if (monitor.isCanceled()) {
+						return Status.CANCEL_STATUS;
+					}
+				}
+
+				EObject next = iterator.next();
+				validateObject(next);
 			}
-
-			EObject next = iterator.next();
-			validateObject(next);
+			return Status.OK_STATUS;
+		} finally {
+			monitor.done();
 		}
+	}
 
+	public IStatus validateParallel(final EObject model, final IProgressMonitor monitor) {
+		
+		final JobGroup jobGroup = new JobGroup("Validate model", Runtime.getRuntime().availableProcessors(), 1);
+		
+		
+		
+		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
+		
+		//Streams.stream(iterator).parallel(). ...
+		
+		//StreamSupport.stream(iterable.spliterator(), false) ...
+		
+		return null;
+		
+	}
+	
+	
+	public List<ValidationDiagnostic> getResults() {
 		return this.results;
 	}
 
+	private int getModelObjectCount(EObject object) {
+		int count = 1; // root object
+		for (Iterator<?> iter = ((EObject) object).eAllContents(); iter.hasNext(); iter.next()) {
+			count++;
+		}
+
+		return count;
+	}
+
 	private void validateObject(final EObject object) {
-		
+
 		Set<ValidatorConfig> validations = validatorManager.getValidations(object.eClass());
 		for (ValidatorConfig validator : validations) {
 			List<ValidationDiagnostic> resultList = new ArrayList<>();
@@ -92,21 +137,22 @@ public class ValidationExecutor {
 				addExceptionResult(object, validator.getValidatorClass(), ex);
 				continue;
 			}
-			
+
 			// set message id and severity
 			for (ValidationDiagnostic result : resultList) {
 				result.setValidationID(validator.getValidationID());
 				if (validator.getSeverity() != Severity.UNDEFINED) {
-					result.setSeverityLevel(validator.getSeverity());					
+					result.setSeverityLevel(validator.getSeverity());
 				}
 				this.results.add(result);
 			}
 		}
-	
+
 	}
 
 	private void addExceptionResult(final EObject object, Class<? extends IValidation> validatorClass, Exception ex) {
-		ValidationDiagnostic exception = new ValidationDiagnostic("Validation exception in " + validatorClass + ": " + ex.getMessage(), object);
+		ValidationDiagnostic exception = new ValidationDiagnostic(
+				"Validation exception in " + validatorClass + ": " + ex.getMessage(), object);
 		exception.setValidationID("AM-Runtime-Exception");
 		exception.setSeverityLevel(Severity.ERROR);
 		this.results.add(exception);

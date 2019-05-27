@@ -65,8 +65,8 @@ public class NewValidationExample {
 				Arrays.asList(AmaltheaProfile.class, EMFProfile.class));
 
 		ValidationExecutor executor = new ValidationExecutor(profileList);
-
-		List<ValidationDiagnostic> results = executor.validate(model, new NullProgressMonitor());
+		executor.validate(model, new NullProgressMonitor());
+		List<ValidationDiagnostic> results = executor.getResults();
 
 
 		// ***** Print results *****

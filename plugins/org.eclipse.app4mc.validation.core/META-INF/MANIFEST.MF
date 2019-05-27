@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.app4mc.validation.annotation,
  org.eclipse.app4mc.validation.core,
  org.eclipse.app4mc.validation.util
-Require-Bundle: org.eclipse.equinox.common,
+Require-Bundle: com.google.guava;bundle-version="21.0.0",
+ org.eclipse.equinox.common,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore
 Automatic-Module-Name: org.eclipse.app4mc.validation.core
