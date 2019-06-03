@@ -45,7 +45,7 @@ public class AmEmfScope extends AmaltheaValidation {
 	@Override
 	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		if (object instanceof Amalthea) {
-			Amalthea quantity = (Amalthea) object;
+			Amalthea root = (Amalthea) object;
 			
 			// TODO find duplicate name in file ...
 
