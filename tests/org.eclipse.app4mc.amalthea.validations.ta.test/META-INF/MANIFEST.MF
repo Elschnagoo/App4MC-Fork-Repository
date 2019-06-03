@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: APP4MC Amalthea Model - Tests
-Bundle-SymbolicName: org.eclipse.app4mc.amalthea.model.test
+Bundle-Name: APP4MC Amalthea Validations TA - Tests
+Bundle-SymbolicName: org.eclipse.app4mc.amalthea.validations.ta.test
 Bundle-Version: 0.9.4.qualifier
-Fragment-Host: org.eclipse.app4mc.amalthea.model
+Fragment-Host: org.eclipse.app4mc.amalthea.validations.ta
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.12.0",
  org.apache.log4j;bundle-version="1.2.15"
 Bundle-Vendor: Eclipse APP4MC
-Automatic-Module-Name: org.eclipse.app4mc.amalthea.model.test
+Automatic-Module-Name: org.eclipse.app4mc.amalthea.validations.ta.test
