@@ -17,19 +17,27 @@ package org.eclipse.app4mc.amalthea.model;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.io.PrintStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 	private static final String ARG_NAME_MESSAGE = "Name argument is null, expected: String";
@@ -83,6 +91,15 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 			}
 		}
 		return result;
+	}
+
+	public List<List<IReferable>> getObjectsWithConflictingNames() {
+		
+		// iterate over name index. For each value list:
+		// - collect subclasses of IReferable
+		// - return multiple elements with same type
+		
+		return null;
 	}
 
 	@Override
@@ -234,4 +251,97 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		}
 		}
 	}
+
+	public void dumpInfo(final @Nullable PrintStream stream) {
+		PrintStream out = (stream == null) ? java.lang.System.out : stream;
+		
+		out.println("Amalthea Cross Reference Adapter {");
+		
+		out.print("  Resources: ");
+		Set<Resource> resources = inverseCrossReferencer.keySet().stream()
+			.map(obj -> obj.eResource()).filter(Objects::nonNull).collect(Collectors.toSet());
+		if (resources.isEmpty()) {
+			out.println("[]");
+		} else {
+			out.println("[");
+			for (Resource resource : resources) {
+				out.println("    " + resource.getURI());
+			}
+			out.println("  ]");
+		}
+		out.println("  Cross Reference Map size: " + inverseCrossReferencer.size());
+		out.println("  Name Index size: " + nameIndex.size());
+		out.println('}');
+	}
+	
+	public void dumpCrossReferenceMap(final @Nullable PrintStream stream) {
+		PrintStream out = (stream == null) ? java.lang.System.out : stream;
+
+		out.println("Cross Reference Map (size: " + inverseCrossReferencer.size() + ") {");
+
+		for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : inverseCrossReferencer.entrySet()) {
+			EObject eObject = entry.getKey();
+			out.print("  ");
+			out.print(description(eObject));
+			out.print(": ");
+			
+			Collection<EStructuralFeature.Setting> collection = entry.getValue();
+			if (collection.isEmpty()) {
+				out.println("[]");
+			} else {
+				out.println("[");
+				for (Iterator<EStructuralFeature.Setting> j = collection.iterator(); j.hasNext();) {
+					EStructuralFeature.Setting setting = j.next();
+					
+					EObject object = setting.getEObject();
+					EStructuralFeature feature = setting.getEStructuralFeature();
+					out.print("    ");
+					out.print(feature.getName());
+					out.print(" <- ");
+					out.print(description(object));
+					if (j.hasNext()) {
+						out.println(",");
+					}
+				}
+				out.println(']');
+			}
+		}
+
+		out.println('}');
+	}
+
+	public void dumpNameIndex(final @Nullable PrintStream stream) {
+		PrintStream out = (stream == null) ? java.lang.System.out : stream;
+		
+		out.println("Name Index (size: " + nameIndex.size() + ") {");
+
+		nameIndex.entrySet()
+			.stream()
+			.sorted(Map.Entry.<String, Set<INamed>>comparingByKey())
+			.forEachOrdered(e -> {
+				out.print("  \"" + e.getKey() + "\": ");
+				out.println(e.getValue()
+								.stream()
+								.map(obj -> obj.eClass().getName())
+								.sorted()
+								.collect(Collectors.toList())
+				);
+			});
+
+		out.println('}');
+	}
+
+	private String description(EObject eObject) {
+		StringBuilder result = new StringBuilder();
+		result.append(eObject.eClass().getName());
+		if (eObject instanceof INamed) {
+			result.append(" \"" + ((INamed) eObject).getName() + "\"");			
+		}
+		if (eObject.eContainer() != null && eObject.eContainer() instanceof INamed) {
+			INamed cont = (INamed) eObject.eContainer();
+			result.append(" (container: " + cont.eClass().getName() + " \"" + cont.getName() + "\")");
+		}
+		return result.toString();
+	}
+
 }

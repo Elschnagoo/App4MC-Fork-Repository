@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * This class provides static methods for efficient model navigation, search and delete.
@@ -106,6 +108,38 @@ public final class AmaltheaIndex {
 	}
 
 
+	public static Set<EObject> getReferringObjects(final @NonNull EObject eObject) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		
+		return getOrCreateAmaltheaAdapter(eObject).getNonNavigableInverseReferences(eObject)
+				.stream().map(setting -> setting.getEObject()).collect(Collectors.toSet());
+	}
+
+	public static List<List<IReferable>> getObjectsWithConflictingNames(final @NonNull Notifier context) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+		
+		// call index
+		List<List<IReferable>> conflictingObjects = getOrCreateAmaltheaAdapter(context).getObjectsWithConflictingNames();
+		
+		// filter scope
+		
+		// TODO
+		return null;
+	}
+
+	/**
+	 * Creates the index explicitly. If the index is already available the method will have no effect.
+	 * <p>
+	 * This method is optional. Normally the index will be built on demand.
+	 * 
+	 * @param eObject
+	 */
+	public static void buildIndex(final @NonNull EObject eObject) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		
+		getOrCreateAmaltheaAdapter(eObject);
+	}
+	
 	/**
 	 * Deletes the object from its {@link EObject#eResource containing} resource
 	 * and/or its {@link EObject#eContainer containing} object as well as from any
@@ -337,4 +371,29 @@ public final class AmaltheaIndex {
 
 		return null;
 	}
+
+	/**
+	 * Dumps adapter info to a print stream
+	 * 
+	 * @param context	EObject, Resource or ResourceSet
+	 * @param info		content selector <ul>
+	 * 					<li> 1 - basic adapter info (resources, size of maps)
+	 * 					<li> 2 - cross reference map
+	 * 					<li> 3 - name index </ul>
+	 * @param stream	output stream (if undefined then {@code System.out} is used)
+	 */
+	public static void dumpAdapterInfo(final @NonNull Notifier context, int info, final @Nullable PrintStream stream) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+
+		PrintStream out = (stream == null) ? java.lang.System.out : stream;
+		
+		AmaltheaCrossReferenceAdapter adapter = getOrCreateAmaltheaAdapter(context);
+		
+		switch (info) {
+		case 1: adapter.dumpInfo(out); break;
+		case 2: adapter.dumpCrossReferenceMap(out); break;
+		case 3: adapter.dumpNameIndex(out); break;
+		}
+	}
+
 }
