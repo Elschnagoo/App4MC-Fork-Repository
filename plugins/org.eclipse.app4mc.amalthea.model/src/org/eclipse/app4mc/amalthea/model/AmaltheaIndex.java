@@ -115,16 +115,15 @@ public final class AmaltheaIndex {
 				.stream().map(setting -> setting.getEObject()).collect(Collectors.toSet());
 	}
 
-	public static List<List<IReferable>> getObjectsWithConflictingNames(final @NonNull Notifier context) {
+	public static List<Set<IReferable>> getObjectsWithConflictingNames(final @NonNull Notifier context) {
 		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
 		
 		// call index
-		List<List<IReferable>> conflictingObjects = getOrCreateAmaltheaAdapter(context).getObjectsWithConflictingNames();
+		List<Set<IReferable>> conflictingObjects = getOrCreateAmaltheaAdapter(context).getObjectsWithConflictingNames();
 		
 		// filter scope
-		
 		// TODO
-		return null;
+		return conflictingObjects;
 	}
 
 	/**
@@ -134,10 +133,10 @@ public final class AmaltheaIndex {
 	 * 
 	 * @param eObject
 	 */
-	public static void buildIndex(final @NonNull EObject eObject) {
-		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+	public static void buildIndex(final @NonNull Notifier context) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
 		
-		getOrCreateAmaltheaAdapter(eObject);
+		getOrCreateAmaltheaAdapter(context);
 	}
 	
 	/**
@@ -253,21 +252,10 @@ public final class AmaltheaIndex {
 		checkArgument(name != null, ARG_NAME_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
-		Notifier rootContext = getRootContext(context);
-		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(name, targetClass);
+		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(context).getElements(name, targetClass);
 		
-		Resource resource = getResource(context);
-		if (rootContext instanceof ResourceSet && resource != null) {
-			// remove elements out of scope (to handle larger editing domains)
-			URI folderUri = resource.getURI().trimSegments(1);
-			return elements.stream()
-					.filter(e -> e.eResource().getURI().trimSegments(1).equals(folderUri))
-					.collect(Collectors.toSet());
-		}
-		
-		return elements;
+		return filterElements(context, elements);
 	}
-
 
 	/**
 	 * Finds elements by name pattern and class
@@ -283,30 +271,38 @@ public final class AmaltheaIndex {
 		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
-		Notifier rootContext = getRootContext(context);
-		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(rootContext).getElements(namePattern, targetClass);
+		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(context).getElements(namePattern, targetClass);
 		
-		Resource resource = getResource(context);
-		if (rootContext instanceof ResourceSet && resource != null) {
-			// remove elements out of scope (to handle larger editing domains)
-			URI folderUri = resource.getURI().trimSegments(1);
-			return elements.stream()
-					.filter(e -> e.eResource().getURI().trimSegments(1).equals(folderUri))
-					.collect(Collectors.toSet());
-		}
-		
-		return elements;
+		return filterElements(context, elements);
 	}
 
-
-	private static @NonNull AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final @NonNull EObject eObject) {
-		final Notifier target = getRootContext(eObject);
-		return getOrCreateAmaltheaAdapter(target);
+	/**
+	 * Dumps adapter info to a print stream
+	 * 
+	 * @param context	EObject, Resource or ResourceSet
+	 * @param info		content selector <ul>
+	 * 					<li> 1 - basic adapter info (resources, size of maps)
+	 * 					<li> 2 - cross reference map
+	 * 					<li> 3 - name index </ul>
+	 * @param stream	output stream (if undefined then {@code System.out} is used)
+	 */
+	public static void dumpAdapterInfo(final @NonNull Notifier context, int info, final @Nullable PrintStream stream) {
+		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
+	
+		PrintStream out = (stream == null) ? java.lang.System.out : stream;
+		
+		AmaltheaCrossReferenceAdapter adapter = getOrCreateAmaltheaAdapter(context);
+		
+		switch (info) {
+		case 1: adapter.dumpInfo(out); break;
+		case 2: adapter.dumpCrossReferenceMap(out); break;
+		case 3: adapter.dumpNameIndex(out); break;
+		}
 	}
 
 	private static synchronized @NonNull AmaltheaCrossReferenceAdapter getOrCreateAmaltheaAdapter(final @NonNull Notifier target) {
 		// Try to get Amalthea adapter
-		final EList<Adapter> adapters = target.eAdapters();
+		final EList<Adapter> adapters = getRootContext(target).eAdapters();
 		for (final Adapter adapter : adapters) {
 			if (adapter instanceof AmaltheaCrossReferenceAdapter) {
 				return (AmaltheaCrossReferenceAdapter) adapter;
@@ -373,27 +369,19 @@ public final class AmaltheaIndex {
 	}
 
 	/**
-	 * Dumps adapter info to a print stream
-	 * 
-	 * @param context	EObject, Resource or ResourceSet
-	 * @param info		content selector <ul>
-	 * 					<li> 1 - basic adapter info (resources, size of maps)
-	 * 					<li> 2 - cross reference map
-	 * 					<li> 3 - name index </ul>
-	 * @param stream	output stream (if undefined then {@code System.out} is used)
+	 * Removes elements out of scope (to handle larger editing domains / resource sets)
 	 */
-	public static void dumpAdapterInfo(final @NonNull Notifier context, int info, final @Nullable PrintStream stream) {
-		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
-
-		PrintStream out = (stream == null) ? java.lang.System.out : stream;
-		
-		AmaltheaCrossReferenceAdapter adapter = getOrCreateAmaltheaAdapter(context);
-		
-		switch (info) {
-		case 1: adapter.dumpInfo(out); break;
-		case 2: adapter.dumpCrossReferenceMap(out); break;
-		case 3: adapter.dumpNameIndex(out); break;
+	private static <T extends INamed> Set<? extends T> filterElements(final @NonNull Notifier context, Set<@NonNull ? extends T> elements) {
+		Notifier rootContext = getRootContext(context);
+		Resource resource = getResource(context);
+		if (rootContext instanceof ResourceSet && resource != null) {
+			URI folderUri = resource.getURI().trimSegments(1);
+			return elements.stream()
+					.filter(e -> e.eResource().getURI().trimSegments(1).equals(folderUri))
+					.collect(Collectors.toSet());
 		}
+		
+		return elements;
 	}
 
 }

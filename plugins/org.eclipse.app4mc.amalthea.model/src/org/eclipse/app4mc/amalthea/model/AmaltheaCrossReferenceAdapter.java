@@ -18,6 +18,7 @@ package org.eclipse.app4mc.amalthea.model;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -93,13 +94,37 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		return result;
 	}
 
-	public List<List<IReferable>> getObjectsWithConflictingNames() {
+	/**
+	 * Returns sets of objects with the same type and same unique name
+	 * 
+	 * @return Sets of objects
+	 */
+	public List<Set<IReferable>> getObjectsWithConflictingNames() {
+		final List<Set<IReferable>> result = new ArrayList<>();
 		
-		// iterate over name index. For each value list:
-		// - collect subclasses of IReferable
-		// - return multiple elements with same type
+		for (Set<INamed> objects : nameIndex.values()) {
+			if (objects.size() < 2) continue;
+			
+			Map<?, List<IReferable>> map1 = objects.stream()
+				.filter(obj -> obj instanceof IReferable)
+				.map(obj -> (IReferable) obj)
+				.collect(Collectors.groupingBy(IReferable::getClass));
+			 
+			for (List<IReferable> objectsWithSameType : map1.values()) {
+				if (objectsWithSameType.size() < 2) continue;
+				
+				Map<String, List<IReferable>> map2 = objectsWithSameType.stream()
+					.collect(Collectors.groupingBy(IReferable::getUniqueName));
+				
+				for (List<IReferable> objectsWithSameUniqueName : map2.values()) {
+					if (objectsWithSameUniqueName.size() < 2) continue;
+					
+					result.add(new HashSet<IReferable>(objectsWithSameUniqueName));
+				}
+			}
+		}
 		
-		return null;
+		return result;
 	}
 
 	@Override
@@ -257,6 +282,8 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		
 		out.println("Amalthea Cross Reference Adapter {");
 		
+		out.println("  Id: " + this.getClass().getName() + '@' + Integer.toHexString(this.hashCode()));
+	    
 		out.print("  Resources: ");
 		Set<Resource> resources = inverseCrossReferencer.keySet().stream()
 			.map(obj -> obj.eResource()).filter(Objects::nonNull).collect(Collectors.toSet());
@@ -269,6 +296,7 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 			}
 			out.println("  ]");
 		}
+		
 		out.println("  Cross Reference Map size: " + inverseCrossReferencer.size());
 		out.println("  Name Index size: " + nameIndex.size());
 		out.println('}');
