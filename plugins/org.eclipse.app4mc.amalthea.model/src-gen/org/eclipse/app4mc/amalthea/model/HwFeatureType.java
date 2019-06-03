@@ -73,10 +73,6 @@ public enum HwFeatureType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum HwFeatureType implements Enumerator {
 	/**
 	 * The '<em><b>Performance</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Performance</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PERFORMANCE
 	 * @model name="performance"
@@ -103,10 +95,6 @@ public enum HwFeatureType implements Enumerator {
 	/**
 	 * The '<em><b>Power</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Power</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #POWER
 	 * @model name="power"
@@ -118,10 +106,6 @@ public enum HwFeatureType implements Enumerator {
 	/**
 	 * The '<em><b>Performance and power</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Performance and power</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PERFORMANCE_AND_POWER
 	 * @model name="performance_and_power"

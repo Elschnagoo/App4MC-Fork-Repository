@@ -63,10 +63,6 @@ public enum LimitType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -78,10 +74,6 @@ public enum LimitType implements Enumerator {
 	/**
 	 * The '<em><b>Upper Limit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Upper Limit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UPPER_LIMIT
 	 * @model name="UpperLimit"
@@ -93,10 +85,6 @@ public enum LimitType implements Enumerator {
 	/**
 	 * The '<em><b>Lower Limit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Lower Limit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LOWER_LIMIT
 	 * @model name="LowerLimit"

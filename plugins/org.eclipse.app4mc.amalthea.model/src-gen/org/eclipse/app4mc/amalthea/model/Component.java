@@ -43,10 +43,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Port}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Port#getContainingComponent <em>Containing Component</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Ports()
@@ -60,10 +56,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Tasks</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AbstractProcess}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tasks</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Tasks()
@@ -76,10 +68,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Runnables</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnables</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnables</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Runnables()
@@ -92,10 +80,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Labels</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Labels()
@@ -108,10 +92,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Semaphores</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Semaphore}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Semaphores</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semaphores</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_Semaphores()
@@ -124,10 +104,6 @@ public interface Component extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Os Events</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.OsEvent}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os Events</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Os Events</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getComponent_OsEvents()

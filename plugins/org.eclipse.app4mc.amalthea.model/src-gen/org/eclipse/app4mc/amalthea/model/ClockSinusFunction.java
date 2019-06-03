@@ -38,10 +38,6 @@ public interface ClockSinusFunction extends Clock {
 	/**
 	 * Returns the value of the '<em><b>Shift</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Shift</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shift</em>' containment reference.
 	 * @see #setShift(Time)
@@ -64,10 +60,6 @@ public interface ClockSinusFunction extends Clock {
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Period</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)
@@ -91,10 +83,6 @@ public interface ClockSinusFunction extends Clock {
 	 * Returns the value of the '<em><b>Amplitude</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Amplitude</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Amplitude</em>' attribute.
 	 * @see #setAmplitude(double)
@@ -118,10 +106,6 @@ public interface ClockSinusFunction extends Clock {
 	 * Returns the value of the '<em><b>YOffset</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>YOffset</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>YOffset</em>' attribute.
 	 * @see #setYOffset(double)

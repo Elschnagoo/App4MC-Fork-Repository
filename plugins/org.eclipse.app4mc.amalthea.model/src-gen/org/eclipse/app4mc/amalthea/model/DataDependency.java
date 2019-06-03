@@ -40,10 +40,6 @@ public interface DataDependency extends BaseObject {
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Labels</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency_Labels()
@@ -56,10 +52,6 @@ public interface DataDependency extends BaseObject {
 	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableParameter}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency_Parameters()
@@ -72,10 +64,6 @@ public interface DataDependency extends BaseObject {
 	 * Returns the value of the '<em><b>Call Arguments</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CallArgument}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Call Arguments</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Arguments</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency_CallArguments()
@@ -87,10 +75,6 @@ public interface DataDependency extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Containing Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Runnable</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getDataDependency_ContainingRunnable()

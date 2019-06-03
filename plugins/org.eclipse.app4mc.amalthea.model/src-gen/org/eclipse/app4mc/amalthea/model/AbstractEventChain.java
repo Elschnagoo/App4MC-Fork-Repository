@@ -49,10 +49,6 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Stimulus</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stimulus</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stimulus</em>' reference.
 	 * @see #setStimulus(Event)
@@ -75,10 +71,6 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Response</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Response</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Response</em>' reference.
 	 * @see #setResponse(Event)
@@ -102,10 +94,6 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	 * Returns the value of the '<em><b>Segments</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.EventChainItem}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Segments</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Segments</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractEventChain_Segments()
@@ -118,10 +106,6 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	 * Returns the value of the '<em><b>Strands</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.EventChainItem}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Strands</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Strands</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractEventChain_Strands()

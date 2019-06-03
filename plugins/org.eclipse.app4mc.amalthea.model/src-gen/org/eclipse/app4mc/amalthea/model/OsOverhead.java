@@ -37,10 +37,6 @@ public interface OsOverhead extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Api Overhead</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Api Overhead</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Api Overhead</em>' containment reference.
 	 * @see #setApiOverhead(OsAPIOverhead)
@@ -63,10 +59,6 @@ public interface OsOverhead extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Isr Category1 Overhead</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Isr Category1 Overhead</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Category1 Overhead</em>' containment reference.
 	 * @see #setIsrCategory1Overhead(OsISROverhead)
@@ -89,10 +81,6 @@ public interface OsOverhead extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Isr Category2 Overhead</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Isr Category2 Overhead</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Category2 Overhead</em>' containment reference.
 	 * @see #setIsrCategory2Overhead(OsISROverhead)

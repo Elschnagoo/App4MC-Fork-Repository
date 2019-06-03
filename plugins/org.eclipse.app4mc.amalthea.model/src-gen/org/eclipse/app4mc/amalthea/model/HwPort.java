@@ -42,10 +42,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Bit Width</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Bit Width</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bit Width</em>' attribute.
 	 * @see #setBitWidth(int)
@@ -69,10 +65,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(int)
@@ -96,10 +88,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Port Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.PortType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.PortType
@@ -125,10 +113,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Port Interface</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.PortInterface}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port Interface</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port Interface</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.PortInterface
@@ -153,10 +137,6 @@ public interface HwPort extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Delegated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Delegated</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegated</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPort_Delegated()

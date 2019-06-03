@@ -37,10 +37,6 @@ public interface HwPath extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPath_Source()
@@ -53,10 +49,6 @@ public interface HwPath extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Destination</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwPath_Destination()

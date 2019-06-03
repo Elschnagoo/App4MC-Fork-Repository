@@ -66,10 +66,6 @@ public enum LabelEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>all </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_ALL_
 	 * @model name="_all_"
@@ -81,10 +77,6 @@ public enum LabelEventType implements Enumerator {
 	/**
 	 * The '<em><b>Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #READ
 	 * @model name="read"
@@ -96,10 +88,6 @@ public enum LabelEventType implements Enumerator {
 	/**
 	 * The '<em><b>Write</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Write</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WRITE
 	 * @model name="write"

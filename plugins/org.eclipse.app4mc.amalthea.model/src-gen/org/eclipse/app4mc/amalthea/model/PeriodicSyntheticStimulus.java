@@ -42,10 +42,6 @@ public interface PeriodicSyntheticStimulus extends Stimulus, FixedPeriodic {
 	 * Returns the value of the '<em><b>Occurrence Times</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Time}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrence Times</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrence Times</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPeriodicSyntheticStimulus_OccurrenceTimes()

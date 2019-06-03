@@ -83,10 +83,6 @@ public enum ModeLabelAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum ModeLabelAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #READ
 	 * @model name="read"
@@ -113,10 +105,6 @@ public enum ModeLabelAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Set</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Set</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SET
 	 * @model name="set"
@@ -128,10 +116,6 @@ public enum ModeLabelAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Increment</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Increment</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INCREMENT
 	 * @model name="increment"
@@ -143,10 +127,6 @@ public enum ModeLabelAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Decrement</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Decrement</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DECREMENT
 	 * @model name="decrement"

@@ -36,10 +36,6 @@ public interface ModeLiteral extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Containing Mode</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.EnumMode#getLiterals <em>Literals</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Mode</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Mode</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeLiteral_ContainingMode()

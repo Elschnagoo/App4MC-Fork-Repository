@@ -41,10 +41,6 @@ public interface SemaphoreAccess extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Semaphore</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Semaphore</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semaphore</em>' reference.
 	 * @see #setSemaphore(Semaphore)
@@ -68,10 +64,6 @@ public interface SemaphoreAccess extends RunnableItem {
 	 * Returns the value of the '<em><b>Access</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreAccessEnum
@@ -97,10 +89,6 @@ public interface SemaphoreAccess extends RunnableItem {
 	 * Returns the value of the '<em><b>Waiting Behaviour</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Waiting Behaviour</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waiting Behaviour</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.WaitingBehaviour

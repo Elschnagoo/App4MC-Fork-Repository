@@ -37,10 +37,6 @@ public interface ChainedProcessPrototype extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Prototype</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Prototype</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Prototype</em>' reference.
 	 * @see #setPrototype(ProcessPrototype)
@@ -64,10 +60,6 @@ public interface ChainedProcessPrototype extends BaseObject {
 	 * Returns the value of the '<em><b>Apply</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Apply</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Apply</em>' attribute.
 	 * @see #setApply(int)
@@ -91,10 +83,6 @@ public interface ChainedProcessPrototype extends BaseObject {
 	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(int)

@@ -44,10 +44,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Event</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Event</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event</em>' reference.
 	 * @see #setEvent(EntityEvent)
@@ -71,10 +67,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	 * Returns the value of the '<em><b>Span</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Span</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Span</em>' attribute.
 	 * @see #setSpan(int)
@@ -97,10 +89,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lower</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lower</em>' containment reference.
 	 * @see #setLower(Time)
@@ -123,10 +111,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Upper</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Upper</em>' containment reference.
 	 * @see #setUpper(Time)
@@ -149,10 +133,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Jitter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Jitter</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jitter</em>' containment reference.
 	 * @see #setJitter(Time)
@@ -175,10 +155,6 @@ public interface RepetitionConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Period</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Time)

@@ -38,10 +38,6 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	 * Returns the value of the '<em><b>Metric</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.CPUPercentageMetric}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Metric</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metric</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.CPUPercentageMetric
@@ -67,10 +63,6 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	 * Returns the value of the '<em><b>Limit Value</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Limit Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Limit Value</em>' attribute.
 	 * @see #setLimitValue(double)
@@ -93,10 +85,6 @@ public interface CPUPercentageRequirementLimit extends RequirementLimit {
 	/**
 	 * Returns the value of the '<em><b>Hardware Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Hardware Context</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hardware Context</em>' reference.
 	 * @see #setHardwareContext(ProcessingUnit)

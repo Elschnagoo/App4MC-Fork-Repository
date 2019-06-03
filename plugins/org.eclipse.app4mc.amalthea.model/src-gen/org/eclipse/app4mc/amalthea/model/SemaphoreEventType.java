@@ -66,10 +66,6 @@ public enum SemaphoreEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>all </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_ALL_
 	 * @model name="_all_"
@@ -81,10 +77,6 @@ public enum SemaphoreEventType implements Enumerator {
 	/**
 	 * The '<em><b>Lock</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Lock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LOCK
 	 * @model name="lock"
@@ -96,10 +88,6 @@ public enum SemaphoreEventType implements Enumerator {
 	/**
 	 * The '<em><b>Unlock</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Unlock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNLOCK
 	 * @model name="unlock"

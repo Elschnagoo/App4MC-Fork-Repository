@@ -46,10 +46,6 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Scope</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scope</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scope</em>' reference.
 	 * @see #setScope(EventChain)
@@ -73,10 +69,6 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LatencyType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.LatencyType
@@ -101,10 +93,6 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Minimum</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Minimum</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimum</em>' containment reference.
 	 * @see #setMinimum(Time)
@@ -127,10 +115,6 @@ public interface EventChainLatencyConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Maximum</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Maximum</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maximum</em>' containment reference.
 	 * @see #setMaximum(Time)

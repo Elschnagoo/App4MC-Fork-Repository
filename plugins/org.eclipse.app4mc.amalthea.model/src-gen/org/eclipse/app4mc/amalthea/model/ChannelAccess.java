@@ -37,10 +37,6 @@ public interface ChannelAccess extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data</em>' reference.
 	 * @see #setData(Channel)
@@ -64,10 +60,6 @@ public interface ChannelAccess extends RunnableItem {
 	 * Returns the value of the '<em><b>Elements</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Elements</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' attribute.
 	 * @see #setElements(int)
@@ -90,10 +82,6 @@ public interface ChannelAccess extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Transmission Policy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transmission Policy</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transmission Policy</em>' containment reference.
 	 * @see #setTransmissionPolicy(TransmissionPolicy)

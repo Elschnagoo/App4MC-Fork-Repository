@@ -39,10 +39,6 @@ public interface OperatingSystem extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Overhead</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Overhead</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Overhead</em>' reference.
 	 * @see #setOverhead(OsOverhead)
@@ -66,10 +62,6 @@ public interface OperatingSystem extends BaseObject, INamed {
 	 * Returns the value of the '<em><b>Task Schedulers</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskScheduler}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Task Schedulers</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Schedulers</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_TaskSchedulers()
@@ -82,10 +74,6 @@ public interface OperatingSystem extends BaseObject, INamed {
 	 * Returns the value of the '<em><b>Interrupt Controllers</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.InterruptController}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Interrupt Controllers</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Interrupt Controllers</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getOperatingSystem_InterruptControllers()
@@ -97,10 +85,6 @@ public interface OperatingSystem extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Os Data Consistency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os Data Consistency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Os Data Consistency</em>' containment reference.
 	 * @see #setOsDataConsistency(OsDataConsistency)

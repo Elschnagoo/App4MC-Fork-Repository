@@ -83,10 +83,6 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * The '<em><b>EQUAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>EQUAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EQUAL
 	 * @model
@@ -113,10 +105,6 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * The '<em><b>NOT EQUAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NOT EQUAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NOT_EQUAL
 	 * @model
@@ -128,10 +116,6 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * The '<em><b>LESS THAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LESS THAN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LESS_THAN
 	 * @model
@@ -143,10 +127,6 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * The '<em><b>GREATER THAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>GREATER THAN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GREATER_THAN
 	 * @model

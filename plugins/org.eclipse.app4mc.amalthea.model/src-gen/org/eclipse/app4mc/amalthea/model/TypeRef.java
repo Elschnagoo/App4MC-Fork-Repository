@@ -35,10 +35,6 @@ public interface TypeRef extends BaseObject, DataType {
 	/**
 	 * Returns the value of the '<em><b>Type Def</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type Def</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Def</em>' reference.
 	 * @see #setTypeDef(TypeDefinition)

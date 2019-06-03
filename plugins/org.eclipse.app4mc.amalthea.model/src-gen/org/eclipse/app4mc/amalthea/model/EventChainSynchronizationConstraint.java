@@ -44,10 +44,6 @@ public interface EventChainSynchronizationConstraint extends SynchronizationCons
 	 * Returns the value of the '<em><b>Scope</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.EventChain}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scope</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scope</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventChainSynchronizationConstraint_Scope()
@@ -60,10 +56,6 @@ public interface EventChainSynchronizationConstraint extends SynchronizationCons
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SynchronizationType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.SynchronizationType

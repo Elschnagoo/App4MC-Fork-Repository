@@ -39,10 +39,6 @@ public interface Channel extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Element Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Type</em>' containment reference.
 	 * @see #setElementType(DataType)
@@ -66,10 +62,6 @@ public interface Channel extends AbstractMemoryElement, IDisplayName {
 	 * Returns the value of the '<em><b>Default Elements</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default Elements</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Elements</em>' attribute.
 	 * @see #setDefaultElements(int)
@@ -93,10 +85,6 @@ public interface Channel extends AbstractMemoryElement, IDisplayName {
 	 * Returns the value of the '<em><b>Max Elements</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Elements</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Elements</em>' attribute.
 	 * @see #setMaxElements(int)

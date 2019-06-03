@@ -42,10 +42,6 @@ public interface PeriodicBurstStimulus extends Stimulus, FixedPeriodic {
 	/**
 	 * Returns the value of the '<em><b>Burst Length</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Burst Length</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Burst Length</em>' containment reference.
 	 * @see #setBurstLength(Time)
@@ -68,10 +64,6 @@ public interface PeriodicBurstStimulus extends Stimulus, FixedPeriodic {
 	/**
 	 * Returns the value of the '<em><b>Occurrence Min Distance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrence Min Distance</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrence Min Distance</em>' containment reference.
 	 * @see #setOccurrenceMinDistance(Time)
@@ -95,10 +87,6 @@ public interface PeriodicBurstStimulus extends Stimulus, FixedPeriodic {
 	 * Returns the value of the '<em><b>Occurrence Count</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrence Count</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrence Count</em>' attribute.
 	 * @see #setOccurrenceCount(int)

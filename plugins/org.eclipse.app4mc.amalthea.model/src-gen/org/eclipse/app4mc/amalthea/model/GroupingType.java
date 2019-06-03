@@ -63,10 +63,6 @@ public enum GroupingType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -78,10 +74,6 @@ public enum GroupingType implements Enumerator {
 	/**
 	 * The '<em><b>All Of Them</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>All Of Them</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALL_OF_THEM
 	 * @model name="allOfThem"
@@ -93,10 +85,6 @@ public enum GroupingType implements Enumerator {
 	/**
 	 * The '<em><b>At Least One Of Them</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>At Least One Of Them</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AT_LEAST_ONE_OF_THEM
 	 * @model name="atLeastOneOfThem"

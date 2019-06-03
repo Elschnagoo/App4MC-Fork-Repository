@@ -39,10 +39,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Containing Runnable</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.Runnable#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Runnable</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Runnable</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableParameter_ContainingRunnable()
@@ -57,10 +53,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.DirectionType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Direction</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Direction</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.DirectionType
@@ -85,10 +77,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Type</em>' reference.
 	 * @see #setDataType(TypeDefinition)
@@ -111,10 +99,6 @@ public interface RunnableParameter extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Depends On</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Depends On</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Depends On</em>' containment reference.
 	 * @see #setDependsOn(DataDependency)

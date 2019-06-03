@@ -42,10 +42,6 @@ public interface EventStimulus extends Stimulus {
 	 * Returns the value of the '<em><b>Triggering Events</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TriggerEvent}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Triggering Events</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Triggering Events</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventStimulus_TriggeringEvents()
@@ -57,10 +53,6 @@ public interface EventStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Counter</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Counter</em>' containment reference.
 	 * @see #setCounter(Counter)

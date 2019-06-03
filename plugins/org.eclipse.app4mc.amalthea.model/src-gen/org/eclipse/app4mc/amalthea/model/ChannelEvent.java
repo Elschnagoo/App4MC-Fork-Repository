@@ -47,10 +47,6 @@ public interface ChannelEvent extends TriggerEvent {
 	 * Returns the value of the '<em><b>Event Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ChannelEventType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Event Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ChannelEventType
@@ -75,10 +71,6 @@ public interface ChannelEvent extends TriggerEvent {
 	/**
 	 * Returns the value of the '<em><b>Entity</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entity</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entity</em>' reference.
 	 * @see #setEntity(Channel)
@@ -101,10 +93,6 @@ public interface ChannelEvent extends TriggerEvent {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable</em>' reference.
 	 * @see #setRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -127,10 +115,6 @@ public interface ChannelEvent extends TriggerEvent {
 	/**
 	 * Returns the value of the '<em><b>Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process</em>' reference.
 	 * @see #setProcess(org.eclipse.app4mc.amalthea.model.Process)

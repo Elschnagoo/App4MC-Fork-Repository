@@ -50,10 +50,6 @@ public interface Runnable extends AbstractMemoryElement {
 	/**
 	 * Returns the value of the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Execution Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Execution Condition</em>' containment reference.
 	 * @see #setExecutionCondition(ModeConditionDisjunction)
@@ -78,10 +74,6 @@ public interface Runnable extends AbstractMemoryElement {
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableParameter}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.RunnableParameter#getContainingRunnable <em>Containing Runnable</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Parameters()
@@ -95,10 +87,6 @@ public interface Runnable extends AbstractMemoryElement {
 	 * Returns the value of the '<em><b>Runnable Items</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable Items</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Items</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableItems()
@@ -111,10 +99,6 @@ public interface Runnable extends AbstractMemoryElement {
 	 * Returns the value of the '<em><b>Activations</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Activation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activations</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_Activations()
@@ -206,10 +190,6 @@ public interface Runnable extends AbstractMemoryElement {
 	/**
 	 * Returns the value of the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Section</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Section</em>' reference.
 	 * @see #setSection(Section)

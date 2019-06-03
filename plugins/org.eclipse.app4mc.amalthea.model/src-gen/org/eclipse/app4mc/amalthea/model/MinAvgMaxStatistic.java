@@ -45,10 +45,6 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * Returns the value of the '<em><b>Min</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Min</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min</em>' attribute.
 	 * @see #setMin(int)
@@ -72,10 +68,6 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * Returns the value of the '<em><b>Avg</b></em>' attribute.
 	 * The default value is <code>"0f"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Avg</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Avg</em>' attribute.
 	 * @see #setAvg(float)
@@ -99,10 +91,6 @@ public interface MinAvgMaxStatistic extends NumericStatistic {
 	 * Returns the value of the '<em><b>Max</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(int)

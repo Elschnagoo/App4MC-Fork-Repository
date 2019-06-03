@@ -39,10 +39,6 @@ public interface ChannelReceive extends ChannelAccess {
 	 * Returns the value of the '<em><b>Receive Operation</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ReceiveOperation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Receive Operation</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Receive Operation</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ReceiveOperation
@@ -68,10 +64,6 @@ public interface ChannelReceive extends ChannelAccess {
 	 * Returns the value of the '<em><b>Data Must Be New</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Must Be New</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Must Be New</em>' attribute.
 	 * @see #setDataMustBeNew(boolean)
@@ -95,10 +87,6 @@ public interface ChannelReceive extends ChannelAccess {
 	 * Returns the value of the '<em><b>Element Index</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Element Index</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Index</em>' attribute.
 	 * @see #setElementIndex(int)
@@ -122,10 +110,6 @@ public interface ChannelReceive extends ChannelAccess {
 	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lower Bound</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lower Bound</em>' attribute.
 	 * @see #setLowerBound(int)

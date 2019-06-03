@@ -73,10 +73,6 @@ public enum MappingType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum MappingType implements Enumerator {
 	/**
 	 * The '<em><b>One To One</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>One To One</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ONE_TO_ONE
 	 * @model name="OneToOne"
@@ -103,10 +95,6 @@ public enum MappingType implements Enumerator {
 	/**
 	 * The '<em><b>Reaction</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Reaction</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REACTION
 	 * @model name="Reaction"
@@ -118,10 +106,6 @@ public enum MappingType implements Enumerator {
 	/**
 	 * The '<em><b>Unique Reaction</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Unique Reaction</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNIQUE_REACTION
 	 * @model name="UniqueReaction"

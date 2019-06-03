@@ -36,10 +36,6 @@ public interface PowerDomain extends HwDomain {
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default Value</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(Voltage)
@@ -63,10 +59,6 @@ public interface PowerDomain extends HwDomain {
 	 * Returns the value of the '<em><b>Power Gating</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Power Gating</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Power Gating</em>' attribute.
 	 * @see #setPowerGating(boolean)

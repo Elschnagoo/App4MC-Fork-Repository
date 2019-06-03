@@ -83,10 +83,6 @@ public enum ReceiveOperation implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum ReceiveOperation implements Enumerator {
 	/**
 	 * The '<em><b>FIFO Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>FIFO Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FIFO_READ
 	 * @model name="FIFO_Read"
@@ -113,10 +105,6 @@ public enum ReceiveOperation implements Enumerator {
 	/**
 	 * The '<em><b>FIFO Take</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>FIFO Take</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FIFO_TAKE
 	 * @model name="FIFO_Take"
@@ -128,10 +116,6 @@ public enum ReceiveOperation implements Enumerator {
 	/**
 	 * The '<em><b>LIFO Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LIFO Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIFO_READ
 	 * @model name="LIFO_Read"
@@ -143,10 +127,6 @@ public enum ReceiveOperation implements Enumerator {
 	/**
 	 * The '<em><b>LIFO Take</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LIFO Take</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIFO_TAKE
 	 * @model name="LIFO_Take"

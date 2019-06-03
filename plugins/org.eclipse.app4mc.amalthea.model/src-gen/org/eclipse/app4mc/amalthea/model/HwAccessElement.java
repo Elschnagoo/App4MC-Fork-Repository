@@ -41,10 +41,6 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * Returns the value of the '<em><b>Source</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.ProcessingUnit#getAccessElements <em>Access Elements</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessElement_Source()
@@ -58,10 +54,6 @@ public interface HwAccessElement extends ITaggable, INamed {
 	/**
 	 * Returns the value of the '<em><b>Destination</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destination</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #setDestination(HwDestination)
@@ -85,10 +77,6 @@ public interface HwAccessElement extends ITaggable, INamed {
 	 * Returns the value of the '<em><b>Access Path</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwAccessPath#getContainingAccessElement <em>Containing Access Element</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access Path</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access Path</em>' containment reference.
 	 * @see #setAccessPath(HwAccessPath)
@@ -162,10 +150,6 @@ public interface HwAccessElement extends ITaggable, INamed {
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Rate</em>' containment reference.
 	 * @see #setDataRate(DataRate)

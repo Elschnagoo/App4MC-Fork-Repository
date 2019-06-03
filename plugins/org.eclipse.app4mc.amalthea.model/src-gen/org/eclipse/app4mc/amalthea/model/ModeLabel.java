@@ -39,10 +39,6 @@ public interface ModeLabel extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Mode</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mode</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mode</em>' reference.
 	 * @see #setMode(Mode)
@@ -65,10 +61,6 @@ public interface ModeLabel extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Initial Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initial Value</em>' attribute.
 	 * @see #setInitialValue(String)

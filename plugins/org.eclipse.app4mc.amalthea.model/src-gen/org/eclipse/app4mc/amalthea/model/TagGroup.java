@@ -40,10 +40,6 @@ public interface TagGroup extends RunnableGroup, ProcessGroup, BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Tag</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tag</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tag</em>' reference.
 	 * @see #setTag(Tag)

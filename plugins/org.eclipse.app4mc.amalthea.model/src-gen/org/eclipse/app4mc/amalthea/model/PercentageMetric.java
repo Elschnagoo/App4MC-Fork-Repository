@@ -113,10 +113,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -128,10 +124,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Hit Ratio</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Hit Ratio</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_HIT_RATIO
 	 * @model name="CacheHitRatio"
@@ -143,10 +135,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Miss Ratio</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Miss Ratio</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_MISS_RATIO
 	 * @model name="CacheMissRatio"
@@ -158,10 +146,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Core Execution Time Relative</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Core Execution Time Relative</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CORE_EXECUTION_TIME_RELATIVE
 	 * @model name="CoreExecutionTimeRelative"
@@ -173,10 +157,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Memory Access Time Relative</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Memory Access Time Relative</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MEMORY_ACCESS_TIME_RELATIVE
 	 * @model name="MemoryAccessTimeRelative"
@@ -188,10 +168,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Normalized Lateness</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Normalized Lateness</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NORMALIZED_LATENESS
 	 * @model name="NormalizedLateness"
@@ -203,10 +179,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Normalized Response Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Normalized Response Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NORMALIZED_RESPONSE_TIME
 	 * @model name="NormalizedResponseTime"
@@ -218,10 +190,6 @@ public enum PercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>Os Overhead Relative</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Os Overhead Relative</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OS_OVERHEAD_RELATIVE
 	 * @model name="OsOverheadRelative"

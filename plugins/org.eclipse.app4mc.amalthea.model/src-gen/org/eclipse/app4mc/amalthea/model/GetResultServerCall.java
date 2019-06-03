@@ -40,10 +40,6 @@ public interface GetResultServerCall extends ServerCall {
 	 * Returns the value of the '<em><b>Blocking Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.BlockingType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Blocking Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Blocking Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.BlockingType

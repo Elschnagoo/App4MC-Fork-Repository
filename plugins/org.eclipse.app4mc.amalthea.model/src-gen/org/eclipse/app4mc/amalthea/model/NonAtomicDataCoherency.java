@@ -39,10 +39,6 @@ public interface NonAtomicDataCoherency extends EObject {
 	 * Returns the value of the '<em><b>Enabled</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Enabled</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enabled</em>' attribute.
 	 * @see #setEnabled(boolean)
@@ -65,10 +61,6 @@ public interface NonAtomicDataCoherency extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Algorithm</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Algorithm</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Algorithm</em>' attribute.
 	 * @see #setAlgorithm(String)
@@ -92,10 +84,6 @@ public interface NonAtomicDataCoherency extends EObject {
 	 * Returns the value of the '<em><b>Access Multiplicity</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.AccessMultiplicity}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access Multiplicity</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access Multiplicity</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AccessMultiplicity

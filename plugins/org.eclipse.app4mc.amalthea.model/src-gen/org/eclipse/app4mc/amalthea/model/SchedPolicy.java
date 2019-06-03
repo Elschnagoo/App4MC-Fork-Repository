@@ -73,10 +73,6 @@ public enum SchedPolicy implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum SchedPolicy implements Enumerator {
 	/**
 	 * The '<em><b>Round Robin</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Round Robin</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ROUND_ROBIN
 	 * @model name="RoundRobin"
@@ -103,10 +95,6 @@ public enum SchedPolicy implements Enumerator {
 	/**
 	 * The '<em><b>FCFS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>FCFS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FCFS
 	 * @model
@@ -118,10 +106,6 @@ public enum SchedPolicy implements Enumerator {
 	/**
 	 * The '<em><b>Priority Based</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Priority Based</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PRIORITY_BASED
 	 * @model name="PriorityBased"

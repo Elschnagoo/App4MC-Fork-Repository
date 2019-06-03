@@ -38,10 +38,6 @@ public interface OsDataConsistency extends BaseObject {
 	 * Returns the value of the '<em><b>Mode</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mode</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mode</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.OsDataConsistencyMode
@@ -66,10 +62,6 @@ public interface OsDataConsistency extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Data Stability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Stability</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Stability</em>' containment reference.
 	 * @see #setDataStability(DataStability)
@@ -92,10 +84,6 @@ public interface OsDataConsistency extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Non Atomic Data Coherency</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Non Atomic Data Coherency</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Non Atomic Data Coherency</em>' containment reference.
 	 * @see #setNonAtomicDataCoherency(NonAtomicDataCoherency)

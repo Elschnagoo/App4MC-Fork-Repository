@@ -86,10 +86,6 @@ public enum RunnableEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>all </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_ALL_
 	 * @model name="_all_"
@@ -101,10 +97,6 @@ public enum RunnableEventType implements Enumerator {
 	/**
 	 * The '<em><b>Start</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START
 	 * @model name="start"
@@ -116,10 +108,6 @@ public enum RunnableEventType implements Enumerator {
 	/**
 	 * The '<em><b>Suspend</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Suspend</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SUSPEND
 	 * @model name="suspend"
@@ -131,10 +119,6 @@ public enum RunnableEventType implements Enumerator {
 	/**
 	 * The '<em><b>Resume</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Resume</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RESUME
 	 * @model name="resume"
@@ -146,10 +130,6 @@ public enum RunnableEventType implements Enumerator {
 	/**
 	 * The '<em><b>Terminate</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Terminate</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TERMINATE
 	 * @model name="terminate"

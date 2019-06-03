@@ -73,10 +73,6 @@ public enum LabelAccessImplementation implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum LabelAccessImplementation implements Enumerator {
 	/**
 	 * The '<em><b>Explicit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Explicit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EXPLICIT
 	 * @model name="explicit"
@@ -103,10 +95,6 @@ public enum LabelAccessImplementation implements Enumerator {
 	/**
 	 * The '<em><b>Implicit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Implicit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IMPLICIT
 	 * @model name="implicit"
@@ -118,10 +106,6 @@ public enum LabelAccessImplementation implements Enumerator {
 	/**
 	 * The '<em><b>Timed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Timed</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TIMED
 	 * @model name="timed"

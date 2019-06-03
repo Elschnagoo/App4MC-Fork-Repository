@@ -176,10 +176,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>all </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_ALL_
 	 * @model name="_all_"
@@ -191,10 +187,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Activate</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Activate</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ACTIVATE
 	 * @model name="activate"
@@ -206,10 +198,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Deadline</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Deadline</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DEADLINE
 	 * @model name="deadline"
@@ -221,10 +209,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Start</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START
 	 * @model name="start"
@@ -236,10 +220,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Resume</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Resume</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RESUME
 	 * @model name="resume"
@@ -251,10 +231,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Preempt</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Preempt</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PREEMPT
 	 * @model name="preempt"
@@ -266,10 +242,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Poll</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Poll</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #POLL
 	 * @model name="poll"
@@ -281,10 +253,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Run</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Run</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RUN
 	 * @model name="run"
@@ -296,10 +264,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Wait</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Wait</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WAIT
 	 * @model name="wait"
@@ -311,10 +275,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Poll parking</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Poll parking</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #POLL_PARKING
 	 * @model name="poll_parking"
@@ -326,10 +286,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Park</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Park</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARK
 	 * @model name="park"
@@ -341,10 +297,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Release parking</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Release parking</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELEASE_PARKING
 	 * @model name="release_parking"
@@ -356,10 +308,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Release</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Release</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELEASE
 	 * @model name="release"
@@ -371,10 +319,6 @@ public enum ProcessEventType implements Enumerator {
 	/**
 	 * The '<em><b>Terminate</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Terminate</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TERMINATE
 	 * @model name="terminate"

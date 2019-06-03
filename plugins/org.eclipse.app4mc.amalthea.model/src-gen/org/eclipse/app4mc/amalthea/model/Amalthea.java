@@ -47,10 +47,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAmalthea_Version()
@@ -62,10 +58,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Common Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Common Elements</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Common Elements</em>' containment reference.
 	 * @see #setCommonElements(CommonElements)
@@ -88,10 +80,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Sw Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sw Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sw Model</em>' containment reference.
 	 * @see #setSwModel(SWModel)
@@ -114,10 +102,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Hw Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Hw Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hw Model</em>' containment reference.
 	 * @see #setHwModel(HWModel)
@@ -140,10 +124,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Os Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Os Model</em>' containment reference.
 	 * @see #setOsModel(OSModel)
@@ -166,10 +146,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Stimuli Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stimuli Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stimuli Model</em>' containment reference.
 	 * @see #setStimuliModel(StimuliModel)
@@ -192,10 +168,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Event Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Event Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event Model</em>' containment reference.
 	 * @see #setEventModel(EventModel)
@@ -218,10 +190,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Constraints Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Constraints Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constraints Model</em>' containment reference.
 	 * @see #setConstraintsModel(ConstraintsModel)
@@ -244,10 +212,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Property Constraints Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Property Constraints Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Property Constraints Model</em>' containment reference.
 	 * @see #setPropertyConstraintsModel(PropertyConstraintsModel)
@@ -270,10 +234,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Mapping Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mapping Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mapping Model</em>' containment reference.
 	 * @see #setMappingModel(MappingModel)
@@ -296,10 +256,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Components Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Components Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Components Model</em>' containment reference.
 	 * @see #setComponentsModel(ComponentsModel)
@@ -322,10 +278,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Config Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Config Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Config Model</em>' containment reference.
 	 * @see #setConfigModel(ConfigModel)
@@ -348,10 +300,6 @@ public interface Amalthea extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Measurement Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Measurement Model</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measurement Model</em>' containment reference.
 	 * @see #setMeasurementModel(MeasurementModel)

@@ -43,10 +43,6 @@ public interface SynchronizationConstraint extends TimingConstraint {
 	 * Returns the value of the '<em><b>Multiple Occurrences Allowed</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Multiple Occurrences Allowed</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Multiple Occurrences Allowed</em>' attribute.
 	 * @see #setMultipleOccurrencesAllowed(boolean)
@@ -69,10 +65,6 @@ public interface SynchronizationConstraint extends TimingConstraint {
 	/**
 	 * Returns the value of the '<em><b>Tolerance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tolerance</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tolerance</em>' containment reference.
 	 * @see #setTolerance(Time)

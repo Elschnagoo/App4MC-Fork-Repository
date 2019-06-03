@@ -213,10 +213,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -228,10 +224,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Activate To Activate</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Activate To Activate</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ACTIVATE_TO_ACTIVATE
 	 * @model name="ActivateToActivate"
@@ -243,10 +235,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Core Execution Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Core Execution Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CORE_EXECUTION_TIME
 	 * @model name="CoreExecutionTime"
@@ -258,10 +246,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>End To End</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>End To End</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #END_TO_END
 	 * @model name="EndToEnd"
@@ -273,10 +257,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>End To Start</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>End To Start</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #END_TO_START
 	 * @model name="EndToStart"
@@ -288,10 +268,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Gross Execution Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gross Execution Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GROSS_EXECUTION_TIME
 	 * @model name="GrossExecutionTime"
@@ -303,10 +279,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Lateness</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Lateness</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LATENESS
 	 * @model name="Lateness"
@@ -318,10 +290,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Memory Access Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Memory Access Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MEMORY_ACCESS_TIME
 	 * @model name="MemoryAccessTime"
@@ -333,10 +301,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Net Execution Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Net Execution Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NET_EXECUTION_TIME
 	 * @model name="NetExecutionTime"
@@ -348,10 +312,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Os Overhead</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Os Overhead</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OS_OVERHEAD
 	 * @model name="OsOverhead"
@@ -363,10 +323,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Parking Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Parking Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARKING_TIME
 	 * @model name="ParkingTime"
@@ -378,10 +334,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Polling Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Polling Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #POLLING_TIME
 	 * @model name="PollingTime"
@@ -393,10 +345,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Ready Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ready Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #READY_TIME
 	 * @model name="ReadyTime"
@@ -408,10 +356,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Response Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Response Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RESPONSE_TIME
 	 * @model name="ResponseTime"
@@ -423,10 +367,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Running Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Running Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RUNNING_TIME
 	 * @model name="RunningTime"
@@ -438,10 +378,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Start Delay</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start Delay</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START_DELAY
 	 * @model name="StartDelay"
@@ -453,10 +389,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Start To Start</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start To Start</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START_TO_START
 	 * @model name="StartToStart"
@@ -468,10 +400,6 @@ public enum TimeMetric implements Enumerator {
 	/**
 	 * The '<em><b>Waiting Time</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Waiting Time</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WAITING_TIME
 	 * @model name="WaitingTime"

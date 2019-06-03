@@ -42,10 +42,6 @@ public interface SenderReceiverCommunication extends RunnableItem {
 	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Buffered</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Buffered</em>' attribute.
 	 * @see #setBuffered(boolean)
@@ -68,10 +64,6 @@ public interface SenderReceiverCommunication extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Label</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Label</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Label</em>' reference.
 	 * @see #setLabel(Label)
@@ -94,10 +86,6 @@ public interface SenderReceiverCommunication extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' reference.
 	 * @see #setPort(Port)

@@ -42,10 +42,6 @@ public interface TransmissionPolicy extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Chunk Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Chunk Size</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chunk Size</em>' containment reference.
 	 * @see #setChunkSize(DataSize)
@@ -69,10 +65,6 @@ public interface TransmissionPolicy extends EObject {
 	 * Returns the value of the '<em><b>Chunk Processing Ticks</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Chunk Processing Ticks</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chunk Processing Ticks</em>' attribute.
 	 * @see #setChunkProcessingTicks(int)
@@ -96,10 +88,6 @@ public interface TransmissionPolicy extends EObject {
 	 * Returns the value of the '<em><b>Transmit Ratio</b></em>' attribute.
 	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transmit Ratio</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transmit Ratio</em>' attribute.
 	 * @see #setTransmitRatio(double)

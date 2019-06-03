@@ -39,10 +39,6 @@ public interface HwModule extends ReferableBaseObject, ITaggable {
 	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwPort}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwModule_Ports()
@@ -54,10 +50,6 @@ public interface HwModule extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Power Domain</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Power Domain</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Power Domain</em>' reference.
 	 * @see #setPowerDomain(PowerDomain)
@@ -80,10 +72,6 @@ public interface HwModule extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Frequency Domain</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Frequency Domain</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Frequency Domain</em>' reference.
 	 * @see #setFrequencyDomain(FrequencyDomain)

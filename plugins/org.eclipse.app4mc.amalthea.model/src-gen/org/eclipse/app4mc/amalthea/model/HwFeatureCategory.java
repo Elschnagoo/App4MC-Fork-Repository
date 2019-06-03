@@ -39,10 +39,6 @@ public interface HwFeatureCategory extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Feature Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.HwFeatureType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Feature Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.HwFeatureType
@@ -67,10 +63,6 @@ public interface HwFeatureCategory extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
@@ -95,10 +87,6 @@ public interface HwFeatureCategory extends ReferableBaseObject {
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwFeature#getContainingCategory <em>Containing Category</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwFeatureCategory_Features()

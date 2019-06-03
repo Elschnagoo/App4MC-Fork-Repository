@@ -35,10 +35,6 @@ public interface ProcessChainRequirement extends Requirement {
 	/**
 	 * Returns the value of the '<em><b>Process Chain</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process Chain</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Chain</em>' reference.
 	 * @see #setProcessChain(ProcessChain)

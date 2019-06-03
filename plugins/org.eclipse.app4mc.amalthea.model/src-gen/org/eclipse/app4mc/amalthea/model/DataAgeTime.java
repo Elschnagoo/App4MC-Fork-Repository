@@ -36,10 +36,6 @@ public interface DataAgeTime extends DataAge {
 	/**
 	 * Returns the value of the '<em><b>Minimum Time</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Minimum Time</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimum Time</em>' containment reference.
 	 * @see #setMinimumTime(Time)
@@ -62,10 +58,6 @@ public interface DataAgeTime extends DataAge {
 	/**
 	 * Returns the value of the '<em><b>Maximum Time</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Maximum Time</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maximum Time</em>' containment reference.
 	 * @see #setMaximumTime(Time)

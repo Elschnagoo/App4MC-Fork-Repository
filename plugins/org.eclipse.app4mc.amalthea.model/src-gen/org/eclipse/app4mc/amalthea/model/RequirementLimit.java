@@ -37,10 +37,6 @@ public interface RequirementLimit extends EObject {
 	 * Returns the value of the '<em><b>Limit Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.LimitType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Limit Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Limit Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.LimitType

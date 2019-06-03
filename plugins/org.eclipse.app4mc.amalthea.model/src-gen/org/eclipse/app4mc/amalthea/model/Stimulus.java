@@ -24,7 +24,6 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * Every process/task can have one or more stimuli.
  * A stimulus activates the process
- * deviationStimulus: defines the deviation of the activation times of the stimulus
  * <!-- end-model-doc -->
  *
  * <p>
@@ -44,10 +43,6 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Set Mode Value List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Set Mode Value List</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Set Mode Value List</em>' containment reference.
 	 * @see #setSetModeValueList(ModeValueList)
@@ -70,10 +65,6 @@ public interface Stimulus extends ReferableBaseObject, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Execution Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Execution Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Execution Condition</em>' containment reference.
 	 * @see #setExecutionCondition(ModeConditionDisjunction)

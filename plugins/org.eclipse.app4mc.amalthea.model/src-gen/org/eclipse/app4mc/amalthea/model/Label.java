@@ -47,10 +47,6 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Data Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Type</em>' containment reference.
 	 * @see #setDataType(DataType)
@@ -154,10 +150,6 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	 * Returns the value of the '<em><b>Stability Level</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.DataStabilityLevel}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stability Level</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stability Level</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.DataStabilityLevel
@@ -182,10 +174,6 @@ public interface Label extends AbstractMemoryElement, IDisplayName {
 	/**
 	 * Returns the value of the '<em><b>Section</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Section</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Section</em>' reference.
 	 * @see #setSection(Section)

@@ -40,10 +40,6 @@ public interface SingleActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Min</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min</em>' containment reference.
 	 * @see #setMin(Time)
@@ -66,10 +62,6 @@ public interface SingleActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' containment reference.
 	 * @see #setMax(Time)

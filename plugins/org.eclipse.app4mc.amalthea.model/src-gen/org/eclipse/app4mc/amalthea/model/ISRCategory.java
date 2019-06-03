@@ -63,10 +63,6 @@ public enum ISRCategory implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -78,10 +74,6 @@ public enum ISRCategory implements Enumerator {
 	/**
 	 * The '<em><b>CATEGORY 1</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CATEGORY 1</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CATEGORY_1
 	 * @model
@@ -93,10 +85,6 @@ public enum ISRCategory implements Enumerator {
 	/**
 	 * The '<em><b>CATEGORY 2</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CATEGORY 2</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CATEGORY_2
 	 * @model

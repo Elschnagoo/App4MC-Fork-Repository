@@ -41,10 +41,6 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * Returns the value of the '<em><b>Mean</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mean</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mean</em>' attribute.
 	 * @see #setMean(double)
@@ -68,10 +64,6 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * Returns the value of the '<em><b>Sd</b></em>' attribute.
 	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sd</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sd</em>' attribute.
 	 * @see #setSd(double)

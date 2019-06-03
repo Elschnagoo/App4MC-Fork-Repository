@@ -38,10 +38,6 @@ public interface CallArgument extends ReferableObject {
 	 * Returns the value of the '<em><b>Containing Call</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.RunnableCall#getArguments <em>Arguments</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Call</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Call</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallArgument_ContainingCall()
@@ -55,10 +51,6 @@ public interface CallArgument extends ReferableObject {
 	/**
 	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter</em>' reference.
 	 * @see #setParameter(RunnableParameter)
@@ -81,10 +73,6 @@ public interface CallArgument extends ReferableObject {
 	/**
 	 * Returns the value of the '<em><b>Depends On</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Depends On</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Depends On</em>' containment reference.
 	 * @see #setDependsOn(DataDependency)

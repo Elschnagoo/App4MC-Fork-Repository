@@ -37,10 +37,6 @@ public interface Requirement extends BaseObject, INamed {
 	 * Returns the value of the '<em><b>Severity</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Severity}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Severity</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Severity</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.Severity
@@ -65,10 +61,6 @@ public interface Requirement extends BaseObject, INamed {
 	/**
 	 * Returns the value of the '<em><b>Limit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Limit</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Limit</em>' containment reference.
 	 * @see #setLimit(RequirementLimit)

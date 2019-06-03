@@ -40,10 +40,6 @@ public interface ProcessPrototypeAllocationConstraint extends CoreAllocationCons
 	/**
 	 * Returns the value of the '<em><b>Process Prototype</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process Prototype</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Prototype</em>' reference.
 	 * @see #setProcessPrototype(ProcessPrototype)

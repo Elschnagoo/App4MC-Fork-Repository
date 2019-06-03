@@ -39,10 +39,6 @@ public interface RunnableSequencingConstraint extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Order Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.RunnableOrderType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Order Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Order Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.RunnableOrderType
@@ -68,10 +64,6 @@ public interface RunnableSequencingConstraint extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Runnable Groups</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableEntityGroup}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable Groups</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Groups</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSequencingConstraint_RunnableGroups()
@@ -84,10 +76,6 @@ public interface RunnableSequencingConstraint extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Process Scope</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.AbstractProcess}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process Scope</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Scope</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableSequencingConstraint_ProcessScope()

@@ -43,10 +43,6 @@ public interface TargetScheduler extends RunnableConstraintTarget, ProcessConstr
 	 * Returns the value of the '<em><b>Schedulers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Scheduler}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Schedulers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Schedulers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTargetScheduler_Schedulers()

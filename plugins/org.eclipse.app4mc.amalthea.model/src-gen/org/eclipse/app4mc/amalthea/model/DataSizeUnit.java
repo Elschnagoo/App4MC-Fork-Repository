@@ -226,10 +226,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -241,10 +237,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Bit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Bit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BIT
 	 * @model name="bit"
@@ -256,10 +248,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Kbit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Kbit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KBIT
 	 * @model name="kbit"
@@ -271,10 +259,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mbit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mbit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MBIT
 	 * @model name="Mbit"
@@ -286,10 +270,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gbit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gbit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GBIT
 	 * @model name="Gbit"
@@ -301,10 +281,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Tbit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Tbit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TBIT
 	 * @model name="Tbit"
@@ -316,10 +292,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Kibit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Kibit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KIBIT
 	 * @model name="Kibit"
@@ -331,10 +303,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mibit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mibit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MIBIT
 	 * @model name="Mibit"
@@ -346,10 +314,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gibit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gibit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GIBIT
 	 * @model name="Gibit"
@@ -361,10 +325,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Tibit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Tibit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TIBIT
 	 * @model name="Tibit"
@@ -376,10 +336,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #B
 	 * @model
@@ -391,10 +347,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>KB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>KB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KB
 	 * @model name="kB"
@@ -406,10 +358,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>MB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MB
 	 * @model
@@ -421,10 +369,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>GB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>GB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GB
 	 * @model
@@ -436,10 +380,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>TB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>TB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TB
 	 * @model
@@ -451,10 +391,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ki B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ki B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KI_B
 	 * @model name="KiB"
@@ -466,10 +402,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mi B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mi B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MI_B
 	 * @model name="MiB"
@@ -481,10 +413,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gi B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gi B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GI_B
 	 * @model name="GiB"
@@ -496,10 +424,6 @@ public enum DataSizeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ti B</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ti B</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TI_B
 	 * @model name="TiB"

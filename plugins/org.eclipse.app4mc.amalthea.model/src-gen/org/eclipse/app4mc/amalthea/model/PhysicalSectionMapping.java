@@ -42,10 +42,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Origin</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Section}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Origin</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Origin</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionMapping_Origin()
@@ -58,10 +54,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Memory</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory</em>' reference.
 	 * @see #setMemory(Memory)
@@ -86,10 +78,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Start Address</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Start Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start Address</em>' attribute.
 	 * @see #setStartAddress(long)
@@ -114,10 +102,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>End Address</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>End Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End Address</em>' attribute.
 	 * @see #setEndAddress(long)
@@ -142,10 +126,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Labels</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Label}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Labels</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Labels</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionMapping_Labels()
@@ -158,10 +138,6 @@ public interface PhysicalSectionMapping extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Run Entities</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Runnable}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Run Entities</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Run Entities</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getPhysicalSectionMapping_RunEntities()

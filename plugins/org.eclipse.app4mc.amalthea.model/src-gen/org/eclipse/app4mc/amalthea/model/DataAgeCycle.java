@@ -37,10 +37,6 @@ public interface DataAgeCycle extends DataAge {
 	 * Returns the value of the '<em><b>Minimum Cycle</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Minimum Cycle</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimum Cycle</em>' attribute.
 	 * @see #setMinimumCycle(int)
@@ -64,10 +60,6 @@ public interface DataAgeCycle extends DataAge {
 	 * Returns the value of the '<em><b>Maximum Cycle</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Maximum Cycle</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maximum Cycle</em>' attribute.
 	 * @see #setMaximumCycle(int)

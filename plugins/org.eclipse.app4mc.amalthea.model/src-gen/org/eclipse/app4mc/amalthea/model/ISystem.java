@@ -42,10 +42,6 @@ public interface ISystem extends EObject {
 	 * Returns the value of the '<em><b>Component Instances</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ComponentInstance}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Instances</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Instances</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_ComponentInstances()
@@ -58,10 +54,6 @@ public interface ISystem extends EObject {
 	 * Returns the value of the '<em><b>Connectors</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Connector}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connectors</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connectors</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_Connectors()
@@ -74,10 +66,6 @@ public interface ISystem extends EObject {
 	 * Returns the value of the '<em><b>Grounded Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.QualifiedPort}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Grounded Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Grounded Ports</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_GroundedPorts()
@@ -90,10 +78,6 @@ public interface ISystem extends EObject {
 	 * Returns the value of the '<em><b>Inner Ports</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.QualifiedPort}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inner Ports</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inner Ports</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getISystem_InnerPorts()

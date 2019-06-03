@@ -36,10 +36,6 @@ public interface Scenario extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Recurrence</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
@@ -62,10 +58,6 @@ public interface Scenario extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Clock</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Clock</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clock</em>' reference.
 	 * @see #setClock(Clock)

@@ -41,10 +41,6 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * Returns the value of the '<em><b>Containing Access Element</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getAccessPath <em>Access Path</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Access Element</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Access Element</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessPath_ContainingAccessElement()
@@ -59,10 +55,6 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * Returns the value of the '<em><b>Path Elements</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwPathElement}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Path Elements</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path Elements</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwAccessPath_PathElements()
@@ -75,10 +67,6 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * Returns the value of the '<em><b>Start Address</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Start Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start Address</em>' attribute.
 	 * @see #setStartAddress(long)
@@ -102,10 +90,6 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * Returns the value of the '<em><b>End Address</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>End Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End Address</em>' attribute.
 	 * @see #setEndAddress(long)
@@ -129,10 +113,6 @@ public interface HwAccessPath extends HwPath, INamed {
 	 * Returns the value of the '<em><b>Mem Offset</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mem Offset</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mem Offset</em>' attribute.
 	 * @see #setMemOffset(long)

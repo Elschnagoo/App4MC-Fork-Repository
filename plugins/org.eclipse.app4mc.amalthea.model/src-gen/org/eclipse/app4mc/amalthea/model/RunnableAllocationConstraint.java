@@ -40,10 +40,6 @@ public interface RunnableAllocationConstraint extends CoreAllocationConstraint {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable</em>' reference.
 	 * @see #setRunnable(org.eclipse.app4mc.amalthea.model.Runnable)

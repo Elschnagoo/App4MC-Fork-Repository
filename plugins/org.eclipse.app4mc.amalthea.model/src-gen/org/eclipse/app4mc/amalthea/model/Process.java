@@ -41,10 +41,6 @@ public interface Process extends AbstractProcess {
 	/**
 	 * Returns the value of the '<em><b>Call Graph</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Call Graph</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Graph</em>' containment reference.
 	 * @see #setCallGraph(CallGraph)
@@ -68,10 +64,6 @@ public interface Process extends AbstractProcess {
 	 * Returns the value of the '<em><b>Stimuli</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Stimulus}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Stimuli</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stimuli</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcess_Stimuli()

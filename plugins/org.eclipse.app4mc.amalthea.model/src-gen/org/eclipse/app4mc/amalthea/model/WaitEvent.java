@@ -42,10 +42,6 @@ public interface WaitEvent extends CallSequenceItem {
 	/**
 	 * Returns the value of the '<em><b>Event Mask</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Event Mask</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event Mask</em>' containment reference.
 	 * @see #setEventMask(EventMask)
@@ -69,10 +65,6 @@ public interface WaitEvent extends CallSequenceItem {
 	 * Returns the value of the '<em><b>Mask Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.WaitEventType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mask Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mask Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.WaitEventType
@@ -98,10 +90,6 @@ public interface WaitEvent extends CallSequenceItem {
 	 * Returns the value of the '<em><b>Waiting Behaviour</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.WaitingBehaviour}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Waiting Behaviour</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waiting Behaviour</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.WaitingBehaviour

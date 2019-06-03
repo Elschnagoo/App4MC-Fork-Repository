@@ -89,10 +89,6 @@ public enum OrderType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -132,10 +128,6 @@ public enum OrderType implements Enumerator {
 	/**
 	 * The '<em><b>Start Sequence</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start Sequence</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START_SEQUENCE
 	 * @model name="startSequence"
@@ -147,10 +139,6 @@ public enum OrderType implements Enumerator {
 	/**
 	 * The '<em><b>End Sequence</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>End Sequence</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #END_SEQUENCE
 	 * @model name="endSequence"

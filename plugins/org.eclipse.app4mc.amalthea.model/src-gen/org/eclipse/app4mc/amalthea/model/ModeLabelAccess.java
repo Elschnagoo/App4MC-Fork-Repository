@@ -45,10 +45,6 @@ public interface ModeLabelAccess extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data</em>' reference.
 	 * @see #setData(ModeLabel)
@@ -72,10 +68,6 @@ public interface ModeLabelAccess extends RunnableItem {
 	 * Returns the value of the '<em><b>Access</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum

@@ -66,10 +66,6 @@ public enum ComponentEventType implements Enumerator {
 	/**
 	 * The '<em><b>all </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>all </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_ALL_
 	 * @model name="_all_"
@@ -81,10 +77,6 @@ public enum ComponentEventType implements Enumerator {
 	/**
 	 * The '<em><b>Start</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Start</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START
 	 * @model name="start"
@@ -96,10 +88,6 @@ public enum ComponentEventType implements Enumerator {
 	/**
 	 * The '<em><b>End</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>End</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #END
 	 * @model name="end"

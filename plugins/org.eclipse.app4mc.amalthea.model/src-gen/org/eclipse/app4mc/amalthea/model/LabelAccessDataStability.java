@@ -97,10 +97,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -112,10 +108,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>Inherited</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Inherited</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INHERITED
 	 * @model name="inherited"
@@ -127,10 +119,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>No Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>No Protection</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NO_PROTECTION
 	 * @model name="noProtection"
@@ -142,10 +130,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>Automatic Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Automatic Protection</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AUTOMATIC_PROTECTION
 	 * @model name="automaticProtection"
@@ -157,10 +141,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>Custom Protection</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Custom Protection</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CUSTOM_PROTECTION
 	 * @model name="customProtection"
@@ -172,10 +152,6 @@ public enum LabelAccessDataStability implements Enumerator {
 	/**
 	 * The '<em><b>Handled By Model Elements</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Handled By Model Elements</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HANDLED_BY_MODEL_ELEMENTS
 	 * @model name="handledByModelElements"

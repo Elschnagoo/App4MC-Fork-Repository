@@ -37,10 +37,6 @@ public interface InterruptController extends Scheduler {
 	/**
 	 * Returns the value of the '<em><b>Scheduling Algorithm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduling Algorithm</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduling Algorithm</em>' containment reference.
 	 * @see #setSchedulingAlgorithm(InterruptSchedulingAlgorithm)

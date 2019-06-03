@@ -44,10 +44,6 @@ public interface VariableRateStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Step</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Step</em>' containment reference.
 	 * @see #setStep(Time)
@@ -70,10 +66,6 @@ public interface VariableRateStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Occurrences Per Step</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrences Per Step</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrences Per Step</em>' containment reference.
 	 * @see #setOccurrencesPerStep(IContinuousValueDeviation)
@@ -96,10 +88,6 @@ public interface VariableRateStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Max Increase Per Step</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Increase Per Step</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Increase Per Step</em>' attribute.
 	 * @see #setMaxIncreasePerStep(Double)
@@ -122,10 +110,6 @@ public interface VariableRateStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Max Decrease Per Step</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Decrease Per Step</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Decrease Per Step</em>' attribute.
 	 * @see #setMaxDecreasePerStep(Double)
@@ -148,10 +132,6 @@ public interface VariableRateStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Scenario</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scenario</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scenario</em>' containment reference.
 	 * @see #setScenario(Scenario)

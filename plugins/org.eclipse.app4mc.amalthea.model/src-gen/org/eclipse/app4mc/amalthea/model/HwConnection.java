@@ -91,10 +91,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Rate</em>' containment reference.
 	 * @see #setDataRate(DataRate)
@@ -117,10 +113,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	/**
 	 * Returns the value of the '<em><b>Port1</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port1</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port1</em>' reference.
 	 * @see #setPort1(HwPort)
@@ -143,10 +135,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	/**
 	 * Returns the value of the '<em><b>Port2</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port2</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port2</em>' reference.
 	 * @see #setPort2(HwPort)
@@ -169,10 +157,6 @@ public interface HwConnection extends ReferableBaseObject, HwPathElement, ITagga
 	/**
 	 * Returns the value of the '<em><b>Internal</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Internal</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Internal</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getHwConnection_Internal()

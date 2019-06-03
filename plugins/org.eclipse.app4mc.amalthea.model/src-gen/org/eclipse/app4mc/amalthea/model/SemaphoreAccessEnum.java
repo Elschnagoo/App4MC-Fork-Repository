@@ -78,10 +78,6 @@ public enum SemaphoreAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -93,10 +89,6 @@ public enum SemaphoreAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Request</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Request</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REQUEST
 	 * @model name="request"
@@ -108,10 +100,6 @@ public enum SemaphoreAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Exclusive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Exclusive</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EXCLUSIVE
 	 * @model name="exclusive"
@@ -123,10 +111,6 @@ public enum SemaphoreAccessEnum implements Enumerator {
 	/**
 	 * The '<em><b>Release</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Release</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELEASE
 	 * @model name="release"

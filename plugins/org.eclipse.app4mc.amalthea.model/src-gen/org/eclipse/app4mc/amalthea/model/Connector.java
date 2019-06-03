@@ -36,10 +36,6 @@ public interface Connector extends BaseObject, INamed, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Source Port</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source Port</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source Port</em>' containment reference.
 	 * @see #setSourcePort(QualifiedPort)
@@ -62,10 +58,6 @@ public interface Connector extends BaseObject, INamed, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Target Port</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target Port</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Port</em>' containment reference.
 	 * @see #setTargetPort(QualifiedPort)

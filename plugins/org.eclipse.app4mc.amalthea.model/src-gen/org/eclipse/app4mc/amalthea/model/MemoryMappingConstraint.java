@@ -40,10 +40,6 @@ public interface MemoryMappingConstraint extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Memory Classification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory Classification</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory Classification</em>' containment reference.
 	 * @see #setMemoryClassification(MemoryClassification)

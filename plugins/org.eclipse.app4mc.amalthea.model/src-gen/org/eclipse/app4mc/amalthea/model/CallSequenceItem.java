@@ -40,10 +40,6 @@ public interface CallSequenceItem extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Containing Process</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Process</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem_ContainingProcess()
@@ -56,10 +52,6 @@ public interface CallSequenceItem extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Counter</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Counter</em>' containment reference.
 	 * @see #setCounter(Counter)

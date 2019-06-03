@@ -76,10 +76,6 @@ public enum Preemption implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -91,10 +87,6 @@ public enum Preemption implements Enumerator {
 	/**
 	 * The '<em><b>Preemptive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Preemptive</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PREEMPTIVE
 	 * @model name="preemptive"
@@ -106,10 +98,6 @@ public enum Preemption implements Enumerator {
 	/**
 	 * The '<em><b>Cooperative</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cooperative</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COOPERATIVE
 	 * @model name="cooperative"
@@ -121,10 +109,6 @@ public enum Preemption implements Enumerator {
 	/**
 	 * The '<em><b>Non preemptive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Non preemptive</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NON_PREEMPTIVE
 	 * @model name="non_preemptive"

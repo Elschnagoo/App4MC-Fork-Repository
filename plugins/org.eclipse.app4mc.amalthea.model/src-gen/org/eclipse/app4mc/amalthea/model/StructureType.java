@@ -133,10 +133,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -148,10 +144,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>System</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>System</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SYSTEM
 	 * @model name="System"
@@ -163,10 +155,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>ECU</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ECU</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ECU
 	 * @model
@@ -178,10 +166,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Microcontroller</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Microcontroller</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MICROCONTROLLER
 	 * @model name="Microcontroller"
@@ -193,10 +177,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>So C</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>So C</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SO_C
 	 * @model name="SoC"
@@ -208,10 +188,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Cluster</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cluster</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CLUSTER
 	 * @model name="Cluster"
@@ -223,10 +199,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Group</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Group</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GROUP
 	 * @model name="Group"
@@ -238,10 +210,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Array</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Array</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ARRAY
 	 * @model name="Array"
@@ -253,10 +221,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Area</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Area</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AREA
 	 * @model name="Area"
@@ -268,10 +232,6 @@ public enum StructureType implements Enumerator {
 	/**
 	 * The '<em><b>Region</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Region</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REGION
 	 * @model name="Region"

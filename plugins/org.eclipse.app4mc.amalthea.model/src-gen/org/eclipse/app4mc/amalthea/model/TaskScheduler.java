@@ -41,10 +41,6 @@ public interface TaskScheduler extends Scheduler {
 	/**
 	 * Returns the value of the '<em><b>Scheduling Algorithm</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduling Algorithm</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduling Algorithm</em>' containment reference.
 	 * @see #setSchedulingAlgorithm(TaskSchedulingAlgorithm)
@@ -68,10 +64,6 @@ public interface TaskScheduler extends Scheduler {
 	 * Returns the value of the '<em><b>Parent Association</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.SchedulerAssociation#getChild <em>Child</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent Association</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parent Association</em>' containment reference.
 	 * @see #setParentAssociation(SchedulerAssociation)
@@ -127,10 +119,6 @@ public interface TaskScheduler extends Scheduler {
 	/**
 	 * Returns the value of the '<em><b>Parent Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent Scheduler</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parent Scheduler</em>' reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ParentScheduler()
@@ -144,10 +132,6 @@ public interface TaskScheduler extends Scheduler {
 	 * Returns the value of the '<em><b>Child Schedulers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskScheduler}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Child Schedulers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Child Schedulers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskScheduler_ChildSchedulers()

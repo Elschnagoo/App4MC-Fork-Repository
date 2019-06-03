@@ -38,10 +38,6 @@ public interface Measurement extends BaseObject {
 	 * Returns the value of the '<em><b>Runtimes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Time}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runtimes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runtimes</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMeasurement_Runtimes()
@@ -53,10 +49,6 @@ public interface Measurement extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Runtime Deviation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runtime Deviation</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runtime Deviation</em>' containment reference.
 	 * @see #setRuntimeDeviation(ITimeDeviation)

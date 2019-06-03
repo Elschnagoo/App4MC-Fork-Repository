@@ -36,10 +36,6 @@ public interface TimeHistogramEntry extends TimeInterval {
 	 * Returns the value of the '<em><b>Occurrences</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occurrences</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occurrences</em>' attribute.
 	 * @see #setOccurrences(long)

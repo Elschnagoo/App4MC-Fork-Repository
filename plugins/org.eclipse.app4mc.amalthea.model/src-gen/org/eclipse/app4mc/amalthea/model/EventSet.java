@@ -41,10 +41,6 @@ public interface EventSet extends Event {
 	 * Returns the value of the '<em><b>Events</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.EntityEvent}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Events</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEventSet_Events()

@@ -41,10 +41,6 @@ public interface ClockMultiplierListEntry extends BaseObject {
 	 * Returns the value of the '<em><b>Multiplier</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Multiplier</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Multiplier</em>' attribute.
 	 * @see #setMultiplier(double)
@@ -67,10 +63,6 @@ public interface ClockMultiplierListEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Time</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Time</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Time</em>' containment reference.
 	 * @see #setTime(Time)

@@ -40,10 +40,6 @@ public interface MemoryDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Size</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' containment reference.
 	 * @see #setSize(DataSize)
@@ -91,10 +87,6 @@ public interface MemoryDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Rate</em>' containment reference.
 	 * @see #setDataRate(DataRate)
@@ -118,10 +110,6 @@ public interface MemoryDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Memory Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.MemoryType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.MemoryType
@@ -147,10 +135,6 @@ public interface MemoryDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryClassifier}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Classifiers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Classifiers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMemoryDefinition_Classifiers()

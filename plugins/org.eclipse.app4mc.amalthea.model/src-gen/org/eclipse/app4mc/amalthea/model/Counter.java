@@ -41,10 +41,6 @@ public interface Counter extends BaseObject {
 	 * Returns the value of the '<em><b>Prescaler</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Prescaler</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Prescaler</em>' attribute.
 	 * @see #setPrescaler(long)
@@ -68,10 +64,6 @@ public interface Counter extends BaseObject {
 	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(long)

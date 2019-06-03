@@ -76,10 +76,6 @@ public enum BlockingType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -91,10 +87,6 @@ public enum BlockingType implements Enumerator {
 	/**
 	 * The '<em><b>Active wait</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Active wait</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ACTIVE_WAIT
 	 * @model name="active_wait"
@@ -106,10 +98,6 @@ public enum BlockingType implements Enumerator {
 	/**
 	 * The '<em><b>Passive wait</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Passive wait</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PASSIVE_WAIT
 	 * @model name="passive_wait"
@@ -121,10 +109,6 @@ public enum BlockingType implements Enumerator {
 	/**
 	 * The '<em><b>Non blocking</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Non blocking</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NON_BLOCKING
 	 * @model name="non_blocking"

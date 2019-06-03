@@ -42,10 +42,6 @@ public interface SchedulerAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduler</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduler</em>' reference.
 	 * @see #setScheduler(Scheduler)
@@ -69,10 +65,6 @@ public interface SchedulerAllocation extends BaseObject {
 	 * Returns the value of the '<em><b>Responsibility</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Responsibility</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Responsibility</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAllocation_Responsibility()
@@ -84,10 +76,6 @@ public interface SchedulerAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Executing PU</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Executing PU</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Executing PU</em>' reference.
 	 * @see #setExecutingPU(ProcessingUnit)

@@ -83,10 +83,6 @@ public enum RunnableOrderType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum RunnableOrderType implements Enumerator {
 	/**
 	 * The '<em><b>Successor</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Successor</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SUCCESSOR
 	 * @model name="successor"
@@ -113,10 +105,6 @@ public enum RunnableOrderType implements Enumerator {
 	/**
 	 * The '<em><b>Immediate Successor Start Sequence</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Immediate Successor Start Sequence</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IMMEDIATE_SUCCESSOR_START_SEQUENCE
 	 * @model name="immediateSuccessorStartSequence"
@@ -128,10 +116,6 @@ public enum RunnableOrderType implements Enumerator {
 	/**
 	 * The '<em><b>Immediate Successor Any Sequence</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Immediate Successor Any Sequence</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IMMEDIATE_SUCCESSOR_ANY_SEQUENCE
 	 * @model name="immediateSuccessorAnySequence"
@@ -143,10 +127,6 @@ public enum RunnableOrderType implements Enumerator {
 	/**
 	 * The '<em><b>Immediate Successor End Sequence</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Immediate Successor End Sequence</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IMMEDIATE_SUCCESSOR_END_SEQUENCE
 	 * @model name="immediateSuccessorEndSequence"

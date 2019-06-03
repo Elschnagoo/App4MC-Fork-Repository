@@ -83,10 +83,6 @@ public enum Severity implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum Severity implements Enumerator {
 	/**
 	 * The '<em><b>Cosmetic</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cosmetic</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COSMETIC
 	 * @model name="Cosmetic"
@@ -113,10 +105,6 @@ public enum Severity implements Enumerator {
 	/**
 	 * The '<em><b>Minor</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Minor</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MINOR
 	 * @model name="Minor"
@@ -128,10 +116,6 @@ public enum Severity implements Enumerator {
 	/**
 	 * The '<em><b>Major</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Major</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MAJOR
 	 * @model name="Major"
@@ -143,10 +127,6 @@ public enum Severity implements Enumerator {
 	/**
 	 * The '<em><b>Critical</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Critical</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CRITICAL
 	 * @model name="Critical"

@@ -43,10 +43,6 @@ public interface ProbabilitySwitchEntry<T> extends BaseObject {
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Probability</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Probability</em>' attribute.
 	 * @see #setProbability(double)
@@ -69,10 +65,6 @@ public interface ProbabilitySwitchEntry<T> extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Items</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry_Items()

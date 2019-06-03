@@ -36,10 +36,6 @@ public interface RunnableAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduler</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduler</em>' reference.
 	 * @see #setScheduler(Scheduler)
@@ -62,10 +58,6 @@ public interface RunnableAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Entity</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entity</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entity</em>' reference.
 	 * @see #setEntity(org.eclipse.app4mc.amalthea.model.Runnable)

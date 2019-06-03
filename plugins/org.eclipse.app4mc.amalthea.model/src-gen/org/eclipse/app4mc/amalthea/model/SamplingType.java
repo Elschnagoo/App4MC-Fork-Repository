@@ -96,10 +96,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Default</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Default</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DEFAULT
 	 * @model name="default"
@@ -111,10 +107,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Best Case</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Best Case</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BEST_CASE
 	 * @model name="BestCase"
@@ -126,10 +118,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Worst Case</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Worst Case</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WORST_CASE
 	 * @model name="WorstCase"
@@ -141,10 +129,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Average Case</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Average Case</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AVERAGE_CASE
 	 * @model name="AverageCase"
@@ -156,10 +140,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Corner Case</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Corner Case</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CORNER_CASE
 	 * @model name="CornerCase"
@@ -171,10 +151,6 @@ public enum SamplingType implements Enumerator {
 	/**
 	 * The '<em><b>Uniform</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Uniform</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNIFORM
 	 * @model name="Uniform"

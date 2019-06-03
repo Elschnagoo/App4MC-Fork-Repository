@@ -163,10 +163,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -178,10 +174,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>Custom</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Custom</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CUSTOM
 	 * @model name="custom"
@@ -193,10 +185,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>CAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CAN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CAN
 	 * @model
@@ -208,10 +196,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>Flexray</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Flexray</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FLEXRAY
 	 * @model name="Flexray"
@@ -223,10 +207,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>LIN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LIN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIN
 	 * @model
@@ -238,10 +218,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>MOST</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MOST</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MOST
 	 * @model
@@ -253,10 +229,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>Ethernet</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ethernet</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ETHERNET
 	 * @model name="Ethernet"
@@ -268,10 +240,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>SPI</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SPI</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SPI
 	 * @model
@@ -283,10 +251,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>I2C</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>I2C</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #I2C
 	 * @model
@@ -298,10 +262,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>AXI</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>AXI</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AXI
 	 * @model
@@ -313,10 +273,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>AHB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>AHB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AHB
 	 * @model
@@ -328,10 +284,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>APB</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>APB</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #APB
 	 * @model
@@ -343,10 +295,6 @@ public enum PortInterface implements Enumerator {
 	/**
 	 * The '<em><b>SWR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SWR</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SWR
 	 * @model

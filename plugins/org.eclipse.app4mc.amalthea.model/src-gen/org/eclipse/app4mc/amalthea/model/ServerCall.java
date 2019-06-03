@@ -41,10 +41,6 @@ public interface ServerCall extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Server Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Server Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Server Runnable</em>' reference.
 	 * @see #setServerRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -67,10 +63,6 @@ public interface ServerCall extends RunnableItem {
 	/**
 	 * Returns the value of the '<em><b>Port</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Port</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' reference.
 	 * @see #setPort(Port)

@@ -41,10 +41,6 @@ public interface TaskAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Task</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Task</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task</em>' reference.
 	 * @see #setTask(Task)
@@ -67,10 +63,6 @@ public interface TaskAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Scheduler</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduler</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduler</em>' reference.
 	 * @see #setScheduler(TaskScheduler)
@@ -94,10 +86,6 @@ public interface TaskAllocation extends BaseObject {
 	 * Returns the value of the '<em><b>Affinity</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Affinity</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Affinity</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskAllocation_Affinity()
@@ -109,10 +97,6 @@ public interface TaskAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Scheduling Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduling Parameters</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduling Parameters</em>' containment reference.
 	 * @see #setSchedulingParameters(SchedulingParameters)
@@ -137,10 +121,6 @@ public interface TaskAllocation extends BaseObject {
 	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link java.lang.String},
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter Extensions</em>' map isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Extensions</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTaskAllocation_ParameterExtensions()

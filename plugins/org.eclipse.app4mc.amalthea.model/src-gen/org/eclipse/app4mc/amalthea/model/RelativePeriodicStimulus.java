@@ -42,10 +42,6 @@ public interface RelativePeriodicStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
@@ -68,10 +64,6 @@ public interface RelativePeriodicStimulus extends Stimulus {
 	/**
 	 * Returns the value of the '<em><b>Next Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Next Occurrence</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Next Occurrence</em>' containment reference.
 	 * @see #setNextOccurrence(ITimeDeviation)

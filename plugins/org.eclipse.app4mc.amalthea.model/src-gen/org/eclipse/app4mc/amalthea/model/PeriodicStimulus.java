@@ -42,10 +42,6 @@ public interface PeriodicStimulus extends Stimulus, FixedPeriodic {
 	/**
 	 * Returns the value of the '<em><b>Jitter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Jitter</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jitter</em>' containment reference.
 	 * @see #setJitter(ITimeDeviation)
@@ -68,10 +64,6 @@ public interface PeriodicStimulus extends Stimulus, FixedPeriodic {
 	/**
 	 * Returns the value of the '<em><b>Min Distance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Min Distance</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Distance</em>' containment reference.
 	 * @see #setMinDistance(Time)

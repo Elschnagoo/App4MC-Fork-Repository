@@ -36,10 +36,6 @@ public interface OrderPrecedenceSpec extends GeneralPrecedence {
 	 * Returns the value of the '<em><b>Order Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.OrderType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Order Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Order Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.OrderType

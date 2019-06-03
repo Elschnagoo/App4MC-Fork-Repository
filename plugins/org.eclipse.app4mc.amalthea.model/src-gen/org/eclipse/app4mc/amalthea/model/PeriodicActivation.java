@@ -42,10 +42,6 @@ public interface PeriodicActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Min</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Min</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min</em>' containment reference.
 	 * @see #setMin(Time)
@@ -68,10 +64,6 @@ public interface PeriodicActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' containment reference.
 	 * @see #setMax(Time)
@@ -94,10 +86,6 @@ public interface PeriodicActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Recurrence</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)
@@ -120,10 +108,6 @@ public interface PeriodicActivation extends Activation {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)

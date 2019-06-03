@@ -39,10 +39,6 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Pu Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.PuType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Pu Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pu Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.PuType
@@ -68,10 +64,6 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Features</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwFeature}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Features</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Features</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnitDefinition_Features()
@@ -84,10 +76,6 @@ public interface ProcessingUnitDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Classifiers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CoreClassifier}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Classifiers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Classifiers</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnitDefinition_Classifiers()

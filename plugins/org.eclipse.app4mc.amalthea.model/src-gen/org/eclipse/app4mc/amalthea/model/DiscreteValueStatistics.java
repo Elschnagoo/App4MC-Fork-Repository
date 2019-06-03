@@ -40,10 +40,6 @@ public interface DiscreteValueStatistics extends BoundedDiscreteValueDistributio
 	 * Returns the value of the '<em><b>Average</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Average</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' attribute.
 	 * @see #setAverage(double)

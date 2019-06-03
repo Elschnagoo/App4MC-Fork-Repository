@@ -42,10 +42,6 @@ public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 	 * Returns the value of the '<em><b>Preemption</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Preemption}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Preemption</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Preemption</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.Preemption
@@ -71,10 +67,6 @@ public interface Task extends org.eclipse.app4mc.amalthea.model.Process {
 	 * Returns the value of the '<em><b>Multiple Task Activation Limit</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Multiple Task Activation Limit</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Multiple Task Activation Limit</em>' attribute.
 	 * @see #setMultipleTaskActivationLimit(int)

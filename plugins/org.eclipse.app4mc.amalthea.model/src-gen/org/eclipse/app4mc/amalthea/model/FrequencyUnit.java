@@ -86,10 +86,6 @@ public enum FrequencyUnit implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -101,10 +97,6 @@ public enum FrequencyUnit implements Enumerator {
 	/**
 	 * The '<em><b>Hz</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Hz</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HZ
 	 * @model name="Hz"
@@ -116,10 +108,6 @@ public enum FrequencyUnit implements Enumerator {
 	/**
 	 * The '<em><b>KHz</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>KHz</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KHZ
 	 * @model name="kHz"
@@ -131,10 +119,6 @@ public enum FrequencyUnit implements Enumerator {
 	/**
 	 * The '<em><b>MHz</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MHz</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MHZ
 	 * @model name="MHz"
@@ -146,10 +130,6 @@ public enum FrequencyUnit implements Enumerator {
 	/**
 	 * The '<em><b>GHz</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>GHz</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GHZ
 	 * @model name="GHz"

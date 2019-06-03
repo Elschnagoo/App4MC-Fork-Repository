@@ -96,10 +96,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -111,10 +107,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>S</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>S</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #S
 	 * @model name="s"
@@ -126,10 +118,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ms</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ms</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MS
 	 * @model name="ms"
@@ -141,10 +129,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Us</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Us</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #US
 	 * @model name="us"
@@ -156,10 +140,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ns</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ns</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NS
 	 * @model name="ns"
@@ -171,10 +151,6 @@ public enum TimeUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ps</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ps</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PS
 	 * @model name="ps"

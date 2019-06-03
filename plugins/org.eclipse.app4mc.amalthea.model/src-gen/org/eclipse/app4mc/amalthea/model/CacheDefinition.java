@@ -43,10 +43,6 @@ public interface CacheDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Size</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' containment reference.
 	 * @see #setSize(DataSize)
@@ -69,10 +65,6 @@ public interface CacheDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Line Size</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Line Size</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Line Size</em>' containment reference.
 	 * @see #setLineSize(DataSize)
@@ -121,10 +113,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Cache Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.CacheType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Cache Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cache Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.CacheType
@@ -150,10 +138,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Write Strategy</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.WriteStrategy}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Write Strategy</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Write Strategy</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.WriteStrategy
@@ -179,10 +163,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>NWays</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>NWays</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>NWays</em>' attribute.
 	 * @see #setNWays(int)
@@ -206,10 +186,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Coherency</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Coherency</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Coherency</em>' attribute.
 	 * @see #setCoherency(boolean)
@@ -233,10 +209,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Exclusive</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exclusive</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Exclusive</em>' attribute.
 	 * @see #setExclusive(boolean)
@@ -260,10 +232,6 @@ public interface CacheDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Hit Rate</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Hit Rate</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hit Rate</em>' attribute.
 	 * @see #setHitRate(double)

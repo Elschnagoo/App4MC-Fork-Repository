@@ -113,10 +113,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -128,10 +124,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Activations</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Activations</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ACTIVATIONS
 	 * @model name="Activations"
@@ -143,10 +135,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Bounded Migrations</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Bounded Migrations</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BOUNDED_MIGRATIONS
 	 * @model name="BoundedMigrations"
@@ -158,10 +146,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Hit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Hit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_HIT
 	 * @model name="CacheHit"
@@ -173,10 +157,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Miss</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Miss</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_MISS
 	 * @model name="CacheMiss"
@@ -188,10 +168,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Full Migrations</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Full Migrations</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FULL_MIGRATIONS
 	 * @model name="FullMigrations"
@@ -203,10 +179,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Mta Limit Exceeding</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mta Limit Exceeding</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MTA_LIMIT_EXCEEDING
 	 * @model name="MtaLimitExceeding"
@@ -218,10 +190,6 @@ public enum CountMetric implements Enumerator {
 	/**
 	 * The '<em><b>Preemptions</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Preemptions</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PREEMPTIONS
 	 * @model name="Preemptions"

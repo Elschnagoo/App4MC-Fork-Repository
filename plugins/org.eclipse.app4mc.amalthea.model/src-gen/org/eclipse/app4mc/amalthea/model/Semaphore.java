@@ -49,10 +49,6 @@ public interface Semaphore extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Semaphore Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SemaphoreType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Semaphore Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semaphore Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.SemaphoreType
@@ -78,10 +74,6 @@ public interface Semaphore extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Initial Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initial Value</em>' attribute.
 	 * @see #setInitialValue(int)
@@ -105,10 +97,6 @@ public interface Semaphore extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Max Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Value</em>' attribute.
 	 * @see #setMaxValue(int)
@@ -132,10 +120,6 @@ public interface Semaphore extends ReferableBaseObject {
 	 * Returns the value of the '<em><b>Priority Ceiling Protocol</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Priority Ceiling Protocol</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority Ceiling Protocol</em>' attribute.
 	 * @see #setPriorityCeilingProtocol(boolean)

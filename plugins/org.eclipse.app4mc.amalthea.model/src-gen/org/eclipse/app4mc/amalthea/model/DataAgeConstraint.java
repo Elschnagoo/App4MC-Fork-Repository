@@ -37,10 +37,6 @@ public interface DataAgeConstraint extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable</em>' reference.
 	 * @see #setRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -63,10 +59,6 @@ public interface DataAgeConstraint extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Label</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Label</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Label</em>' reference.
 	 * @see #setLabel(Label)
@@ -89,10 +81,6 @@ public interface DataAgeConstraint extends ReferableBaseObject {
 	/**
 	 * Returns the value of the '<em><b>Data Age</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Age</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Age</em>' containment reference.
 	 * @see #setDataAge(DataAge)

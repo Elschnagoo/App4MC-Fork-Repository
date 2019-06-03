@@ -42,10 +42,6 @@ public interface RunnableCall extends RunnableItem, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable</em>' reference.
 	 * @see #setRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -70,10 +66,6 @@ public interface RunnableCall extends RunnableItem, ITaggable {
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CallArgument}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.CallArgument#getContainingCall <em>Containing Call</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Arguments</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Arguments</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnableCall_Arguments()
@@ -86,10 +78,6 @@ public interface RunnableCall extends RunnableItem, ITaggable {
 	/**
 	 * Returns the value of the '<em><b>Statistic</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Statistic</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Statistic</em>' containment reference.
 	 * @see #setStatistic(RunEntityCallStatistic)

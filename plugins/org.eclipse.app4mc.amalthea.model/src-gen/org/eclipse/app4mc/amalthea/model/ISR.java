@@ -40,10 +40,6 @@ public interface ISR extends org.eclipse.app4mc.amalthea.model.Process {
 	 * Returns the value of the '<em><b>Category</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.ISRCategory}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Category</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Category</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.ISRCategory

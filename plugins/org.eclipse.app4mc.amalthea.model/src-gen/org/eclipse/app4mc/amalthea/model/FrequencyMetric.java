@@ -63,10 +63,6 @@ public enum FrequencyMetric implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -78,10 +74,6 @@ public enum FrequencyMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Hit Frequency</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Hit Frequency</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_HIT_FREQUENCY
 	 * @model name="CacheHitFrequency"
@@ -93,10 +85,6 @@ public enum FrequencyMetric implements Enumerator {
 	/**
 	 * The '<em><b>Cache Miss Frequency</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Cache Miss Frequency</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CACHE_MISS_FREQUENCY
 	 * @model name="CacheMissFrequency"

@@ -42,10 +42,6 @@ public interface MemoryMapping extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Abstract Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Abstract Element</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Abstract Element</em>' reference.
 	 * @see #setAbstractElement(AbstractMemoryElement)
@@ -68,10 +64,6 @@ public interface MemoryMapping extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Memory</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory</em>' reference.
 	 * @see #setMemory(Memory)

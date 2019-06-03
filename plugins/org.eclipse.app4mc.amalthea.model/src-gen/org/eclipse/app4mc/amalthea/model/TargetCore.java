@@ -43,10 +43,6 @@ public interface TargetCore extends RunnableConstraintTarget, ProcessConstraintT
 	 * Returns the value of the '<em><b>Cores</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnit}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Cores</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cores</em>' reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTargetCore_Cores()

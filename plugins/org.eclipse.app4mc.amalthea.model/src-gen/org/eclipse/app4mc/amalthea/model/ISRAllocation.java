@@ -37,10 +37,6 @@ public interface ISRAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Isr</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Isr</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr</em>' reference.
 	 * @see #setIsr(ISR)
@@ -63,10 +59,6 @@ public interface ISRAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Controller</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Controller</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Controller</em>' reference.
 	 * @see #setController(InterruptController)
@@ -89,10 +81,6 @@ public interface ISRAllocation extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(Integer)

@@ -38,10 +38,6 @@ public interface ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	/**
 	 * Returns the value of the '<em><b>Definition</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Definition</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Definition</em>' reference.
 	 * @see #setDefinition(ProcessingUnitDefinition)
@@ -66,10 +62,6 @@ public interface ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.HwAccessElement}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.HwAccessElement#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Access Elements</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Access Elements</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnit_AccessElements()
@@ -83,10 +75,6 @@ public interface ProcessingUnit extends HwModule, HwDestination, HwPathElement {
 	 * Returns the value of the '<em><b>Caches</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Cache}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Caches</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Caches</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessingUnit_Caches()

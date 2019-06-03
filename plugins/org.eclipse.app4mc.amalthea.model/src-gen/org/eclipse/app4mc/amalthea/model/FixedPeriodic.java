@@ -43,10 +43,6 @@ public interface FixedPeriodic extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Offset</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' containment reference.
 	 * @see #setOffset(Time)
@@ -69,10 +65,6 @@ public interface FixedPeriodic extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Recurrence</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recurrence</em>' containment reference.
 	 * @see #setRecurrence(Time)

@@ -83,10 +83,6 @@ public enum DataStabilityLevel implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -98,10 +94,6 @@ public enum DataStabilityLevel implements Enumerator {
 	/**
 	 * The '<em><b>Period</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Period</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PERIOD
 	 * @model name="period"
@@ -113,10 +105,6 @@ public enum DataStabilityLevel implements Enumerator {
 	/**
 	 * The '<em><b>Process</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Process</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PROCESS
 	 * @model name="process"
@@ -128,10 +116,6 @@ public enum DataStabilityLevel implements Enumerator {
 	/**
 	 * The '<em><b>Schedule Section</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Schedule Section</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SCHEDULE_SECTION
 	 * @model name="scheduleSection"
@@ -143,10 +127,6 @@ public enum DataStabilityLevel implements Enumerator {
 	/**
 	 * The '<em><b>Runnable</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Runnable</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RUNNABLE
 	 * @model name="runnable"

@@ -63,10 +63,6 @@ public enum AccessMultiplicity implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -78,10 +74,6 @@ public enum AccessMultiplicity implements Enumerator {
 	/**
 	 * The '<em><b>Single Access</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Single Access</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SINGLE_ACCESS
 	 * @model name="singleAccess"
@@ -93,10 +85,6 @@ public enum AccessMultiplicity implements Enumerator {
 	/**
 	 * The '<em><b>Multiple Accesses</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Multiple Accesses</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MULTIPLE_ACCESSES
 	 * @model name="multipleAccesses"

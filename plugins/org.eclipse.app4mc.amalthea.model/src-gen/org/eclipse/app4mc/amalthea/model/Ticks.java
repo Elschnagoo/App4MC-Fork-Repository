@@ -41,10 +41,6 @@ public interface Ticks extends ComputationItem {
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' containment reference.
 	 * @see #setDefault(IDiscreteValueDeviation)
@@ -69,10 +65,6 @@ public interface Ticks extends ComputationItem {
 	 * The key is of type {@link org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition},
 	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation},
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Extended</em>' map isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getTicks_Extended()

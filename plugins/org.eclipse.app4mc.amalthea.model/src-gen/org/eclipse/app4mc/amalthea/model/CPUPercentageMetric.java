@@ -113,10 +113,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -128,10 +124,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Buffering</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Buffering</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_BUFFERING
 	 * @model name="CPUBuffering"
@@ -143,10 +135,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Load</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Load</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_LOAD
 	 * @model name="CPULoad"
@@ -158,10 +146,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Parking</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Parking</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_PARKING
 	 * @model name="CPUParking"
@@ -173,10 +157,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Polling</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Polling</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_POLLING
 	 * @model name="CPUPolling"
@@ -188,10 +168,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Ready</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Ready</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_READY
 	 * @model name="CPUReady"
@@ -203,10 +179,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Running</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Running</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_RUNNING
 	 * @model name="CPURunning"
@@ -218,10 +190,6 @@ public enum CPUPercentageMetric implements Enumerator {
 	/**
 	 * The '<em><b>CPU Waiting</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CPU Waiting</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CPU_WAITING
 	 * @model name="CPUWaiting"

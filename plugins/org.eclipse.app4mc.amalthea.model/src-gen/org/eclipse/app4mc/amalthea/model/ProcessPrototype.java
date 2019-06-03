@@ -50,10 +50,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * Returns the value of the '<em><b>Preemption</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.Preemption}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Preemption</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Preemption</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.Preemption
@@ -78,10 +74,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	/**
 	 * Returns the value of the '<em><b>First Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>First Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Runnable</em>' reference.
 	 * @see #setFirstRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -104,10 +96,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	/**
 	 * Returns the value of the '<em><b>Last Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Last Runnable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Last Runnable</em>' reference.
 	 * @see #setLastRunnable(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -161,10 +149,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * Returns the value of the '<em><b>Chained Prototypes</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Chained Prototypes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chained Prototypes</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_ChainedPrototypes()
@@ -176,10 +160,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	/**
 	 * Returns the value of the '<em><b>Activation</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activation</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activation</em>' reference.
 	 * @see #setActivation(Activation)
@@ -203,10 +183,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * Returns the value of the '<em><b>Runnable Calls</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable Calls</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProcessPrototype_RunnableCalls()

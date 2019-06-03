@@ -42,10 +42,6 @@ public interface SchedulerAssociation extends EObject {
 	 * Returns the value of the '<em><b>Child</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.app4mc.amalthea.model.TaskScheduler#getParentAssociation <em>Parent Association</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Child</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Child</em>' container reference.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_Child()
@@ -59,10 +55,6 @@ public interface SchedulerAssociation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parent</em>' reference.
 	 * @see #setParent(TaskScheduler)
@@ -85,10 +77,6 @@ public interface SchedulerAssociation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Scheduling Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduling Parameters</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduling Parameters</em>' containment reference.
 	 * @see #setSchedulingParameters(SchedulingParameters)
@@ -113,10 +101,6 @@ public interface SchedulerAssociation extends EObject {
 	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link java.lang.String},
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter Extensions</em>' map isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Extensions</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSchedulerAssociation_ParameterExtensions()

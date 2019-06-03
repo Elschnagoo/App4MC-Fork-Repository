@@ -73,10 +73,6 @@ public enum SemaphoreType implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum SemaphoreType implements Enumerator {
 	/**
 	 * The '<em><b>Counting Semaphore</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Counting Semaphore</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COUNTING_SEMAPHORE
 	 * @model name="CountingSemaphore"
@@ -103,10 +95,6 @@ public enum SemaphoreType implements Enumerator {
 	/**
 	 * The '<em><b>Resource</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Resource</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RESOURCE
 	 * @model name="Resource"
@@ -118,10 +106,6 @@ public enum SemaphoreType implements Enumerator {
 	/**
 	 * The '<em><b>Spinlock</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Spinlock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SPINLOCK
 	 * @model name="Spinlock"

@@ -43,10 +43,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Scheduler Allocation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.SchedulerAllocation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scheduler Allocation</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduler Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_SchedulerAllocation()
@@ -59,10 +55,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Runnable Allocation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableAllocation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Runnable Allocation</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_RunnableAllocation()
@@ -75,10 +67,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Task Allocation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskAllocation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Task Allocation</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_TaskAllocation()
@@ -91,10 +79,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Isr Allocation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ISRAllocation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Isr Allocation</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Isr Allocation</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_IsrAllocation()
@@ -107,10 +91,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Memory Mapping</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.MemoryMapping}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Memory Mapping</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Memory Mapping</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_MemoryMapping()
@@ -123,10 +103,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Physical Section Mapping</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.PhysicalSectionMapping}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Physical Section Mapping</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Physical Section Mapping</em>' containment reference list.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getMappingModel_PhysicalSectionMapping()
@@ -139,10 +115,6 @@ public interface MappingModel extends BaseObject {
 	 * Returns the value of the '<em><b>Address Mapping Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Address Mapping Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address Mapping Type</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.MemoryAddressMappingType

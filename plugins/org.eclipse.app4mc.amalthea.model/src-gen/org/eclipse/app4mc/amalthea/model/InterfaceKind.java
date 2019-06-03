@@ -73,10 +73,6 @@ public enum InterfaceKind implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -88,10 +84,6 @@ public enum InterfaceKind implements Enumerator {
 	/**
 	 * The '<em><b>Provides</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Provides</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PROVIDES
 	 * @model name="provides"
@@ -103,10 +95,6 @@ public enum InterfaceKind implements Enumerator {
 	/**
 	 * The '<em><b>Requires</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Requires</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REQUIRES
 	 * @model name="requires"
@@ -118,10 +106,6 @@ public enum InterfaceKind implements Enumerator {
 	/**
 	 * The '<em><b>Provides requires</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Provides requires</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PROVIDES_REQUIRES
 	 * @model name="provides_requires"

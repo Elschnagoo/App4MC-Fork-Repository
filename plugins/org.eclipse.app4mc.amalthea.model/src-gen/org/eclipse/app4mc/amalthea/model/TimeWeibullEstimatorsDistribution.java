@@ -41,10 +41,6 @@ public interface TimeWeibullEstimatorsDistribution extends BoundedTimeDistributi
 	/**
 	 * Returns the value of the '<em><b>Average</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Average</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' containment reference.
 	 * @see #setAverage(Time)
@@ -68,10 +64,6 @@ public interface TimeWeibullEstimatorsDistribution extends BoundedTimeDistributi
 	 * Returns the value of the '<em><b>PRemain Promille</b></em>' attribute.
 	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>PRemain Promille</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>PRemain Promille</em>' attribute.
 	 * @see #setPRemainPromille(double)

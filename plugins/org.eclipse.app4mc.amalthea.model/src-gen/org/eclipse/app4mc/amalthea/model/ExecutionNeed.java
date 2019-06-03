@@ -42,10 +42,6 @@ public interface ExecutionNeed extends RunnableItem {
 	 * The key is of type {@link java.lang.String},
 	 * and the value is of type {@link org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation},
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Needs</em>' map isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Needs</em>' map.
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getExecutionNeed_Needs()

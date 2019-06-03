@@ -38,10 +38,6 @@ public interface ArrivalCurveEntry extends BaseObject {
 	 * Returns the value of the '<em><b>Number Of Occurrences</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Number Of Occurrences</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Number Of Occurrences</em>' attribute.
 	 * @see #setNumberOfOccurrences(int)
@@ -64,10 +60,6 @@ public interface ArrivalCurveEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Lower Time Border</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lower Time Border</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lower Time Border</em>' containment reference.
 	 * @see #setLowerTimeBorder(Time)
@@ -90,10 +82,6 @@ public interface ArrivalCurveEntry extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Upper Time Border</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Upper Time Border</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Upper Time Border</em>' containment reference.
 	 * @see #setUpperTimeBorder(Time)

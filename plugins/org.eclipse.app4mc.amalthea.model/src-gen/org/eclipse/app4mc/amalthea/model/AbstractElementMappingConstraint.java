@@ -40,10 +40,6 @@ public interface AbstractElementMappingConstraint extends MemoryMappingConstrain
 	/**
 	 * Returns the value of the '<em><b>Abstract Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Abstract Element</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Abstract Element</em>' reference.
 	 * @see #setAbstractElement(AbstractMemoryElement)

@@ -41,10 +41,6 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Policy</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.app4mc.amalthea.model.SchedPolicy}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Policy</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Policy</em>' attribute.
 	 * @see org.eclipse.app4mc.amalthea.model.SchedPolicy
@@ -119,10 +115,6 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	/**
 	 * Returns the value of the '<em><b>Data Rate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Rate</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Rate</em>' containment reference.
 	 * @see #setDataRate(DataRate)
@@ -146,10 +138,6 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Max Burst Size</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Burst Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Burst Size</em>' attribute.
 	 * @see #setMaxBurstSize(int)
@@ -173,10 +161,6 @@ public interface ConnectionHandlerDefinition extends HwDefinition {
 	 * Returns the value of the '<em><b>Max Concurrent Transfers</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Concurrent Transfers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Concurrent Transfers</em>' attribute.
 	 * @see #setMaxConcurrentTransfers(int)

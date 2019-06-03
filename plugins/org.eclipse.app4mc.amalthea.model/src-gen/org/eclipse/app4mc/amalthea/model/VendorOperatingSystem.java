@@ -37,10 +37,6 @@ public interface VendorOperatingSystem extends OperatingSystem {
 	/**
 	 * Returns the value of the '<em><b>Os Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Os Name</em>' attribute.
 	 * @see #setOsName(String)
@@ -63,10 +59,6 @@ public interface VendorOperatingSystem extends OperatingSystem {
 	/**
 	 * Returns the value of the '<em><b>Vendor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Vendor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Vendor</em>' attribute.
 	 * @see #setVendor(String)
@@ -89,10 +81,6 @@ public interface VendorOperatingSystem extends OperatingSystem {
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)

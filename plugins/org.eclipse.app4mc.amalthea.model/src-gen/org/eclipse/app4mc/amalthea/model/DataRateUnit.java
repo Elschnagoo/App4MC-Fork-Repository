@@ -226,10 +226,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>undefined </b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>undefined </b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_UNDEFINED_
 	 * @model name="_undefined_"
@@ -241,10 +237,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Bit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Bit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BIT_PER_SECOND
 	 * @model name="bitPerSecond"
@@ -256,10 +248,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Kbit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Kbit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KBIT_PER_SECOND
 	 * @model name="kbitPerSecond"
@@ -271,10 +259,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mbit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mbit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MBIT_PER_SECOND
 	 * @model name="MbitPerSecond"
@@ -286,10 +270,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gbit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gbit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GBIT_PER_SECOND
 	 * @model name="GbitPerSecond"
@@ -301,10 +281,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Tbit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Tbit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TBIT_PER_SECOND
 	 * @model name="TbitPerSecond"
@@ -316,10 +292,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Kibit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Kibit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KIBIT_PER_SECOND
 	 * @model name="KibitPerSecond"
@@ -331,10 +303,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mibit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mibit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MIBIT_PER_SECOND
 	 * @model name="MibitPerSecond"
@@ -346,10 +314,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gibit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gibit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GIBIT_PER_SECOND
 	 * @model name="GibitPerSecond"
@@ -361,10 +325,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Tibit Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Tibit Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TIBIT_PER_SECOND
 	 * @model name="TibitPerSecond"
@@ -376,10 +336,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>BPer Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BPER_SECOND
 	 * @model name="BPerSecond"
@@ -391,10 +347,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>KB Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>KB Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KB_PER_SECOND
 	 * @model name="kBPerSecond"
@@ -406,10 +358,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>MB Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MB Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MB_PER_SECOND
 	 * @model name="MBPerSecond"
@@ -421,10 +369,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>GB Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>GB Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GB_PER_SECOND
 	 * @model name="GBPerSecond"
@@ -436,10 +380,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>TB Per Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>TB Per Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TB_PER_SECOND
 	 * @model name="TBPerSecond"
@@ -451,10 +391,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ki BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ki BPer Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KI_BPER_SECOND
 	 * @model name="KiBPerSecond"
@@ -466,10 +402,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Mi BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Mi BPer Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MI_BPER_SECOND
 	 * @model name="MiBPerSecond"
@@ -481,10 +413,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Gi BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Gi BPer Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GI_BPER_SECOND
 	 * @model name="GiBPerSecond"
@@ -496,10 +424,6 @@ public enum DataRateUnit implements Enumerator {
 	/**
 	 * The '<em><b>Ti BPer Second</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ti BPer Second</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TI_BPER_SECOND
 	 * @model name="TiBPerSecond"

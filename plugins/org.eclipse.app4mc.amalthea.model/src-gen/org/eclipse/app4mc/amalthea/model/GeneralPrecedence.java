@@ -40,10 +40,6 @@ public interface GeneralPrecedence extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Origin</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Origin</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Origin</em>' reference.
 	 * @see #setOrigin(org.eclipse.app4mc.amalthea.model.Runnable)
@@ -66,10 +62,6 @@ public interface GeneralPrecedence extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(org.eclipse.app4mc.amalthea.model.Runnable)
