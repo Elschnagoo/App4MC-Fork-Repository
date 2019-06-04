@@ -17,6 +17,7 @@ package org.eclipse.app4mc.validation.util;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -44,64 +45,78 @@ public class ValidationAggregator {
 	private final Map<EClassifier, List<CachedValidator>> validationMap1 = new HashMap<>();
 	private final Map<EClassifier, Set<CachedValidator>> validationMap2 = new HashMap<>();	
 
-
 	public ValidationAggregator(Class<? extends IProfile> profileClass) {
 		this(Collections.singletonList(profileClass));
 	}
 	
-	public ValidationAggregator(final List<Class<? extends IProfile>> profileClassList) {
+	public ValidationAggregator(final Collection<Class<? extends IProfile>> profileClasses) {
 		super();
 
-		addProfiles(profileClassList);
+		addProfiles(profileClasses);
 	}
 
-	public void addProfiles(final List<Class<? extends IProfile>> profileClassList) {
-		List<Class<? extends IProfile>> newProfileClasses = new ArrayList<>();
+	public void addProfiles(final Collection<Class<? extends IProfile>> profileClasses) {
+		if (profileClasses == null || profileClasses.isEmpty()) return;
+
+		Map<Class<? extends IValidation>, CachedValidator> newValidations = new HashMap<>();
 		
-		// Store profiles (without duplicates)
-		if (profileClassList != null) {
-			for (Class<? extends IProfile> profileClass : profileClassList) {
-				if (profileClass != null) {
-					if (!this.profileCache.containsKey(profileClass))
-					this.profileCache.put(profileClass, new CachedProfile(profileClass));
-					newProfileClasses.add(profileClass);
+		// Store profiles in cache (without duplicates)
+		
+		for (Class<? extends IProfile> pClass : profileClasses) {
+			if (pClass != null) {
+				if (!this.profileCache.containsKey(pClass)) {
+					CachedProfile profile = new CachedProfile(pClass);
+					this.profileCache.put(pClass, profile);
+					
+					newValidations.putAll(profile.getAllValidations());
 				}
 			}
 		}
 		
-		// Store validations (without duplicates)
-		for (Class<? extends IProfile> profileClass : newProfileClasses) {
-			CachedProfile profile = this.profileCache.get(profileClass);
+		addValidations(newValidations);
+	}
 
-			for (Entry<Class<? extends IValidation>, CachedValidator> entry : profile.getAllValidations().entrySet()) {
-				Class<? extends IValidation> validatorClass = entry.getKey();
-				CachedValidator newValidator = entry.getValue();
+	public void addValidations(final Map<Class<? extends IValidation>, CachedValidator> map) {
+		if (map == null || map.isEmpty()) return;
+		
+		// Store validations in cache (without duplicates)
+		
+		for (Entry<Class<? extends IValidation>, CachedValidator> entry : map.entrySet()) {
+			Class<? extends IValidation> validatorClass = entry.getKey();
+			CachedValidator newValidator = entry.getValue();
+			
+			CachedValidator previousValidator = this.validatorCache.get(validatorClass);
+			if (previousValidator == null) {
+				// insert new validator
+				this.validatorCache.put(validatorClass, newValidator);
 				
-				CachedValidator previousValidator = this.validatorCache.get(validatorClass);
-				if (previousValidator == null || previousValidator.getSeverity().ordinal() < newValidator.getSeverity().ordinal()) {
-					// insert validator with higher severity
-					this.validatorCache.put(validatorClass, newValidator);
+				// store affected Ecore package
+				EPackage ePackage = newValidator.getValidatorInstance().getEPackage();
+				boolean isNewPackage = this.ePackageSet.add(ePackage);
+				
+				// store all concrete Ecore classes of packages
+				if (isNewPackage) {
+					for (final EClassifier classifier : ePackage.getEClassifiers()) {
+						if (classifier instanceof EClass) {
+							EClass eClass = (EClass) classifier;
+							if (!eClass.isAbstract() && !eClass.isInterface())
+								this.eClassSet.add(eClass);
+						}
+					}
 				}
-			}
-		}
-		
-		// Store affected Ecore packages
-		for (CachedValidator validator : this.validatorCache.values()) {
-			this.ePackageSet.add(validator.getValidatorInstance().getEPackage());
-		}
-		
-		// Store all concrete Ecore classes of packages
-		for (EPackage ePackage : this.ePackageSet) {	
-			for (final EClassifier classifier : ePackage.getEClassifiers()) {
-				if (classifier instanceof EClass) {
-					EClass eClass = (EClass) classifier;
-					if (!eClass.isAbstract() && !eClass.isInterface())
-						this.eClassSet.add(eClass);
-				}
+			} else if (previousValidator.getSeverity().ordinal() < newValidator.getSeverity().ordinal()) {
+				// insert validator with higher severity
+				this.validatorCache.put(validatorClass, newValidator);
 			}
 		}
 
+		rebuildValidationMaps();
+	}
+
+	private void rebuildValidationMaps() {
+		
 		// Collect validations in Map 1
+		
 		this.validationMap1.clear();
 		
 		for (CachedValidator validator : this.validatorCache.values()) {
@@ -113,14 +128,14 @@ public class ValidationAggregator {
 		}
 		
 		// Reuse validations of Map1 in Map2
+		
 		this.validationMap2.clear();
 		
 		for (Entry<EClassifier, List<CachedValidator>> entry : validationMap1.entrySet()) {
 			addValidationsToMap2(entry.getKey(), entry.getValue());
 		}
-		
 	}
-
+	
 	private void addValidationsToMap2(final EClassifier eClassifier, final List<CachedValidator> validatorList) {
 		if (eClassifier instanceof EDataType) {
 			// Add entry for data type
