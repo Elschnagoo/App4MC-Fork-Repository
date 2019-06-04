@@ -1,1 +1,4 @@
 /dev_env_lib/help_docu/
+
+# Eclipse target directories
+bin/
