@@ -19,12 +19,13 @@ import org.junit.Test;
 
 public class ProfileTest {
 	
-	/**
-	 * Method getAverage() - Simple tests: Constant, Boundaries, UniformDistribution, Statistics, Weibull
-	 */
+
 	@Test
 	public void testABC() {
 	
+		
+		//TODO Test cases for validations: EObject, CustomProperty
+		
 	}
 
 }

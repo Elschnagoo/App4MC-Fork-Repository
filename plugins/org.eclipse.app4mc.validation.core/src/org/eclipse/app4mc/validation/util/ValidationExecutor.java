@@ -15,11 +15,16 @@
 
 package org.eclipse.app4mc.validation.util;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.IValidation;
@@ -31,16 +36,17 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.JobGroup;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * A validator for EMF models. Loads the configuration from a list of
+ * A validator for EMF models. Loads the validations from a list of
  * {@link IProfile} classes
  */
 public class ValidationExecutor {
 
-	private final ValidationManager validatorManager;
+	private final ConcurrentHashMap<EClassifier, CopyOnWriteArraySet<CachedValidator>> validationMap;
 	private final List<ValidationDiagnostic> results = new ArrayList<>();
 
 	public ValidationExecutor(final Class<? extends IProfile> profileClass) {
@@ -52,7 +58,8 @@ public class ValidationExecutor {
 			throw new IllegalArgumentException("Loading aborted - Undefined profile class list");
 		}
 
-		validatorManager = new ValidationManager(profileClassList);
+		ValidationAggregator validationAggregator = new ValidationAggregator(profileClassList);
+		this.validationMap = validationAggregator.getConcurrentValidationMap();
 	}
 
 	/**
@@ -100,7 +107,7 @@ public class ValidationExecutor {
 		
 		final JobGroup jobGroup = new JobGroup("Validate model", Runtime.getRuntime().availableProcessors(), 1);
 		
-		
+		// TODO
 		
 		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
 		
@@ -127,9 +134,12 @@ public class ValidationExecutor {
 	}
 
 	private void validateObject(final EObject object) {
-
-		Set<ValidatorConfig> validations = validatorManager.getValidations(object.eClass());
-		for (ValidatorConfig validator : validations) {
+		if (object == null) return;
+		
+		Set<CachedValidator> validations = validationMap.get(object.eClass());
+		if (validations == null) return;
+		
+		for (CachedValidator validator : validations) {
 			List<ValidationDiagnostic> resultList = new ArrayList<>();
 			try {
 				validator.getValidatorInstance().validate(object, resultList);
@@ -156,6 +166,21 @@ public class ValidationExecutor {
 		exception.setValidationID("AM-Runtime-Exception");
 		exception.setSeverityLevel(Severity.ERROR);
 		this.results.add(exception);
+	}
+
+	public void dumpValidationMap(PrintStream stream) {
+		PrintStream out = (stream == null) ? System.out : stream;
+		
+		List<EClassifier> classifiers = validationMap.keySet().stream()
+				.sorted(Comparator.comparing(EClassifier::getName))
+				.collect(Collectors.toList());
+		
+		for (EClassifier cl : classifiers) {
+			out.println("Validations for " + cl.getName() + ":");
+			for (CachedValidator vConf : validationMap.get(cl)) {
+				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
+			}
+		}
 	}
 
 }

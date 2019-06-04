@@ -21,9 +21,9 @@ import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.emf.ecore.EClassifier;
 
 /**
- * A configuration for a validator
+ * A cache object for a validator
  */
-public class ValidatorConfig {
+public class CachedValidator {
 
 	private final Class<? extends IValidation> validatorClass;
 	private final Severity severity;
@@ -31,7 +31,7 @@ public class ValidatorConfig {
 	private final IValidation validatorInstance;
 	private final EClassifier targetEClassifier;
 
-	public ValidatorConfig(final Class<? extends IValidation> validatorClass, final Severity severity) {
+	public CachedValidator(final Class<? extends IValidation> validatorClass, final Severity severity) {
 		super();
 		
 		this.validatorClass = validatorClass;

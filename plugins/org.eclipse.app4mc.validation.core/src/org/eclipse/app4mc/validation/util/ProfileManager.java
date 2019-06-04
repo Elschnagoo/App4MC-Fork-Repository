@@ -27,7 +27,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.RegistryFactory;
 
 public class ProfileManager {
-	private final Map<Class<? extends IProfile>, ProfileConfig> profileMap = new HashMap<>();
+	private final Map<Class<? extends IProfile>, CachedProfile> profileMap = new HashMap<>();
 
 	/**
 	 * Collects all profile classes that are registered via extension point
@@ -75,10 +75,10 @@ public class ProfileManager {
 		if (profileClass == null)
 			return;
 
-		profileMap.put(profileClass, new ProfileConfig(profileClass));
+		profileMap.put(profileClass, new CachedProfile(profileClass));
 	}
 
-	public ProfileConfig getProfileConfig(Class<? extends IProfile> profileClass) {
+	public CachedProfile getCachedProfile(Class<? extends IProfile> profileClass) {
 		if (profileClass == null)
 			return null;
 
@@ -91,41 +91,43 @@ public class ProfileManager {
 
 	// *** Some helper methods
 
-	public void printProfile(Class<? extends IProfile> profileClass, PrintStream stream) {
+	public void dumpProfile(Class<? extends IProfile> profileClass, PrintStream stream) {
 		PrintStream out = (stream == null) ? System.out : stream;
 
-		ProfileConfig config = getProfileConfig(profileClass);
-		printProfile(config, 0, out);
+		CachedProfile profile = getCachedProfile(profileClass);
+		dumpProfile(profile, 0, out);
 	}
 
-	private void printProfile(ProfileConfig profileConfig, int indent, PrintStream stream) {
+	private void dumpProfile(CachedProfile profile, int indent, PrintStream stream) {
+		if (profile == null) return;
+
 		String in = "";
 		for (int i = 0; i < indent; i++) {
 			in = in + "    ";
 		}
 
 		// Profile data
-		stream.println(in + "PROFILE " + profileConfig.getProfileClass().getSimpleName());
-		stream.println(in + " - name: " + profileConfig.getName());
-		if (!profileConfig.getDescription().isEmpty()) {
-			stream.println(in + " - description: " + profileConfig.getDescription());
+		stream.println(in + "PROFILE " + profile.getProfileClass().getSimpleName());
+		stream.println(in + " - name: " + profile.getName());
+		if (!profile.getDescription().isEmpty()) {
+			stream.println(in + " - description: " + profile.getDescription());
 		}
 
 		// Validations
-		if (!profileConfig.getValidations().isEmpty()) {
+		if (!profile.getValidations().isEmpty()) {
 			stream.println(in + " - validations:");
 		}
-		for (ValidatorConfig conf : profileConfig.getValidations().values()) {
+		for (CachedValidator conf : profile.getValidations().values()) {
 			stream.println(in + "    " + conf.getValidationID() + "(" + conf.getSeverity() + " - "
 					+ conf.getTargetClass().getSimpleName() + ")");
 		}
 
 		// Sub-Profiles
-		if (!profileConfig.getProfiles().isEmpty()) {
+		if (!profile.getProfiles().isEmpty()) {
 			stream.println(in + " - profiles:");
 		}
-		for (ProfileConfig conf : profileConfig.getProfiles().values()) {
-			printProfile(conf, 1, stream);
+		for (CachedProfile conf : profile.getProfiles().values()) {
+			dumpProfile(conf, 1, stream);
 		}
 	}
 

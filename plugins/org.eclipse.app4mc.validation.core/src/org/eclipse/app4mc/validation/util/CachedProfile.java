@@ -28,24 +28,24 @@ import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.IValidation;
 
 /**
- * A configuration for a validation profile
+ * A cache object for a validation profile
  */
-public class ProfileConfig {
+public class CachedProfile {
 
 	private final Class<? extends IProfile> profileClass;
-	private final ProfileConfig parentConfig;
+	private final CachedProfile parentProfile;
 	
 	private final String name;
 	private final String description;
-	private final Map<Class<? extends IProfile>, ProfileConfig> profiles = new HashMap<>();
-	private final Map<Class<? extends IValidation>, ValidatorConfig> validations = new HashMap<>();
+	private final Map<Class<? extends IProfile>, CachedProfile> profiles = new HashMap<>();
+	private final Map<Class<? extends IValidation>, CachedValidator> validations = new HashMap<>();
 	
 
-	public ProfileConfig(final Class<? extends IProfile> profileClass) {
+	public CachedProfile(final Class<? extends IProfile> profileClass) {
 		this(profileClass, null);
 	}
 
-	public ProfileConfig(final Class<? extends IProfile> profileClass, final ProfileConfig parent) {
+	public CachedProfile(final Class<? extends IProfile> profileClass, final CachedProfile parent) {
 		super();
 		
 		if (profileClass == null) {
@@ -53,7 +53,7 @@ public class ProfileConfig {
 		}
 		
 		this.profileClass = profileClass;
-		this.parentConfig = parent;
+		this.parentProfile = parent;
 		
 		Profile profile = profileClass.getAnnotation(Profile.class);
 		name = (profile != null) ? profile.name() : profileClass.getName();
@@ -72,7 +72,7 @@ public class ProfileConfig {
 					throw new IllegalArgumentException(
 							"Loading aborted - Cycle detected: " + pClass);
 				}
-				profiles.put(pClass, new ProfileConfig(pClass, this));
+				profiles.put(pClass, new CachedProfile(pClass, this));
 			}
 		}
 
@@ -83,7 +83,7 @@ public class ProfileConfig {
 					throw new IllegalArgumentException(
 							"Loading aborted - Undefined validation class");
 				}
-				validations.put(vClass, new ValidatorConfig(vClass, vGroup.severity()));
+				validations.put(vClass, new CachedValidator(vClass, vGroup.severity()));
 			}
 		}
 	}
@@ -91,8 +91,8 @@ public class ProfileConfig {
 	private List<Class<? extends IProfile>> forbiddenSubProfileClasses() {
 		List<Class<? extends IProfile>> classes = new ArrayList<>();
 		
-		for (ProfileConfig config = this; config != null; config = config.getParentConfig()) {
-			Class<? extends IProfile> pc = config.getProfileClass();
+		for (CachedProfile profile = this; profile != null; profile = profile.getParentProfile()) {
+			Class<? extends IProfile> pc = profile.getProfileClass();
 			if (pc != null) classes.add(pc);
 		}
 		return classes;	
@@ -100,8 +100,8 @@ public class ProfileConfig {
 
 	// *** public getters ***
 	
-	public ProfileConfig getParentConfig() {
-		return parentConfig;
+	public CachedProfile getParentProfile() {
+		return parentProfile;
 	}
 
 	public Class<? extends IProfile> getProfileClass() {
@@ -116,34 +116,34 @@ public class ProfileConfig {
 		return description;
 	}
 
-	public Map<Class<? extends IProfile>, ProfileConfig> getProfiles() {
+	public Map<Class<? extends IProfile>, CachedProfile> getProfiles() {
 		return profiles;
 	}
 
-	public Map<Class<? extends IValidation>, ValidatorConfig> getValidations() {
+	public Map<Class<? extends IValidation>, CachedValidator> getValidations() {
 		return validations;
 	}
 
-	public Map<Class<? extends IValidation>, ValidatorConfig> getAllValidations() {
-		Map<Class<? extends IValidation>, ValidatorConfig> result = new HashMap<>();
+	public Map<Class<? extends IValidation>, CachedValidator> getAllValidations() {
+		Map<Class<? extends IValidation>, CachedValidator> result = new HashMap<>();
 		addAllValidations(this, result);
 		return result;
 	}
 	
-	private void addAllValidations(final ProfileConfig config, final Map<Class<? extends IValidation>, ValidatorConfig> resultMap) {
+	private void addAllValidations(final CachedProfile newProfile, final Map<Class<? extends IValidation>, CachedValidator> resultMap) {
 		// add validations
-		for (ValidatorConfig currentConfig : config.getValidations().values()) {
-			Class<? extends IValidation> validatorClass = currentConfig.getValidatorClass();
+		for (CachedValidator newValidator : newProfile.getValidations().values()) {
+			Class<? extends IValidation> validatorClass = newValidator.getValidatorClass();
 			
-			ValidatorConfig previousConfig = resultMap.get(validatorClass);
-			if (previousConfig == null || previousConfig.getSeverity().ordinal() < currentConfig.getSeverity().ordinal()) {
-				// insert config with higher severity
-				resultMap.put(validatorClass, currentConfig);
+			CachedValidator oldValidator = resultMap.get(validatorClass);
+			if (oldValidator == null || oldValidator.getSeverity().ordinal() < newValidator.getSeverity().ordinal()) {
+				// insert validator with higher severity
+				resultMap.put(validatorClass, newValidator);
 			}
 		}
 		// add validations of profiles (recursive)
-		for (ProfileConfig pConfig : config.getProfiles().values()) {
-			addAllValidations(pConfig, resultMap);
+		for (CachedProfile profile : newProfile.getProfiles().values()) {
+			addAllValidations(profile, resultMap);
 		}
 	}
 	

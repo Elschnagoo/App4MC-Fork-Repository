@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.validation.core.IProfile;
@@ -34,49 +36,58 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
-public class ValidationManager {
-	private final Map<Class<? extends IProfile>, ProfileConfig> profileMap = new HashMap<>();
-	private final Map<Class<? extends IValidation>, ValidatorConfig> validationMap = new HashMap<>();
+public class ValidationAggregator {
+	private final Map<Class<? extends IProfile>, CachedProfile> profileCache = new HashMap<>();
+	private final Map<Class<? extends IValidation>, CachedValidator> validatorCache = new HashMap<>();
 	private final Set<EPackage> ePackageSet = new HashSet<>();
 	private final Set<EClass> eClassSet = new HashSet<>();
-	private final Map<EClassifier, List<ValidatorConfig>> validationMap1 = new HashMap<>();
-	private final Map<EClassifier, Set<ValidatorConfig>> validationMap2 = new HashMap<>();	
+	private final Map<EClassifier, List<CachedValidator>> validationMap1 = new HashMap<>();
+	private final Map<EClassifier, Set<CachedValidator>> validationMap2 = new HashMap<>();	
 
 
-	public ValidationManager(Class<? extends IProfile> profileClass) {
+	public ValidationAggregator(Class<? extends IProfile> profileClass) {
 		this(Collections.singletonList(profileClass));
 	}
 	
-	public ValidationManager(final List<Class<? extends IProfile>> profileClassList) {
+	public ValidationAggregator(final List<Class<? extends IProfile>> profileClassList) {
 		super();
 
+		addProfiles(profileClassList);
+	}
+
+	public void addProfiles(final List<Class<? extends IProfile>> profileClassList) {
+		List<Class<? extends IProfile>> newProfileClasses = new ArrayList<>();
+		
 		// Store profiles (without duplicates)
 		if (profileClassList != null) {
 			for (Class<? extends IProfile> profileClass : profileClassList) {
 				if (profileClass != null) {
-					if (!this.profileMap.containsKey(profileClass))
-					this.profileMap.put(profileClass, new ProfileConfig(profileClass));
+					if (!this.profileCache.containsKey(profileClass))
+					this.profileCache.put(profileClass, new CachedProfile(profileClass));
+					newProfileClasses.add(profileClass);
 				}
 			}
 		}
 		
 		// Store validations (without duplicates)
-		for (ProfileConfig pConfig : this.profileMap.values()) {
-			for (Entry<Class<? extends IValidation>, ValidatorConfig> entry : pConfig.getAllValidations().entrySet()) {
+		for (Class<? extends IProfile> profileClass : newProfileClasses) {
+			CachedProfile profile = this.profileCache.get(profileClass);
+
+			for (Entry<Class<? extends IValidation>, CachedValidator> entry : profile.getAllValidations().entrySet()) {
 				Class<? extends IValidation> validatorClass = entry.getKey();
-				ValidatorConfig newConfig = entry.getValue();
+				CachedValidator newValidator = entry.getValue();
 				
-				ValidatorConfig previousConfig = this.validationMap.get(validatorClass);
-				if (previousConfig == null || previousConfig.getSeverity().ordinal() < newConfig.getSeverity().ordinal()) {
-					// insert config with higher severity
-					this.validationMap.put(validatorClass, newConfig);
+				CachedValidator previousValidator = this.validatorCache.get(validatorClass);
+				if (previousValidator == null || previousValidator.getSeverity().ordinal() < newValidator.getSeverity().ordinal()) {
+					// insert validator with higher severity
+					this.validatorCache.put(validatorClass, newValidator);
 				}
 			}
 		}
 		
 		// Store affected Ecore packages
-		for (ValidatorConfig vConfig : this.validationMap.values()) {
-			this.ePackageSet.add(vConfig.getValidatorInstance().getEPackage());
+		for (CachedValidator validator : this.validatorCache.values()) {
+			this.ePackageSet.add(validator.getValidatorInstance().getEPackage());
 		}
 		
 		// Store all concrete Ecore classes of packages
@@ -89,51 +100,57 @@ public class ValidationManager {
 				}
 			}
 		}
-		
+
 		// Collect validations in Map 1
-		for (ValidatorConfig vConfig : this.validationMap.values()) {
-			EClassifier eClassifier = vConfig.getTargetEClassifier();
+		this.validationMap1.clear();
+		
+		for (CachedValidator validator : this.validatorCache.values()) {
+			EClassifier eClassifier = validator.getTargetEClassifier();
 			
 			this.validationMap1
-				.computeIfAbsent(eClassifier, k -> new ArrayList<ValidatorConfig>())
-				.add(vConfig);
+				.computeIfAbsent(eClassifier, k -> new ArrayList<CachedValidator>())
+				.add(validator);
 		}
 		
 		// Reuse validations of Map1 in Map2
-		for (Entry<EClassifier, List<ValidatorConfig>> entry : validationMap1.entrySet()) {
+		this.validationMap2.clear();
+		
+		for (Entry<EClassifier, List<CachedValidator>> entry : validationMap1.entrySet()) {
 			addValidationsToMap2(entry.getKey(), entry.getValue());
 		}
+		
 	}
 
-	private void addValidationsToMap2(final EClassifier eClassifier, final List<ValidatorConfig> validatorConfigList) {
+	private void addValidationsToMap2(final EClassifier eClassifier, final List<CachedValidator> validatorList) {
 		if (eClassifier instanceof EDataType) {
 			// Add entry for data type
-			basicAddValidationsToMap2(eClassifier, validatorConfigList);
+			basicAddValidationsToMap2(eClassifier, validatorList);
 			
 		} else if (eClassifier instanceof EClass) {
 			// Add entry for concrete target class
 			EClass eClass = (EClass) eClassifier;
 			if (!eClass.isAbstract() && !eClass.isInterface()) {
-				basicAddValidationsToMap2(eClass, validatorConfigList);
+				basicAddValidationsToMap2(eClass, validatorList);
 			}
 			
 			// Add entries for sub classes of target class
 			for (EClass potentialSubclass : this.eClassSet) {
 				// Hint: Do not use eClass.isSuperTypeOf(potentialSubclass)
 				// because has a different result for EObject
+				// TODO check CustomProperty
 				if (eClass.getInstanceClass().isAssignableFrom(potentialSubclass.getInstanceClass())) {
-					basicAddValidationsToMap2(potentialSubclass, validatorConfigList);
+					basicAddValidationsToMap2(potentialSubclass, validatorList);
 				}
 			}
 		}
 	}
 
-	private void basicAddValidationsToMap2(final EClassifier eClassifier, final List<ValidatorConfig> validatorConfigList) {
+	private void basicAddValidationsToMap2(final EClassifier eClassifier, final List<CachedValidator> validatorList) {
 		// only add entries for elements of the concerned packages
 		if (this.ePackageSet.contains(eClassifier.eContainer())) {
 			this.validationMap2
-				.computeIfAbsent(eClassifier, k -> new HashSet<ValidatorConfig>())
-				.addAll(validatorConfigList);
+				.computeIfAbsent(eClassifier, k -> new HashSet<CachedValidator>())
+				.addAll(validatorList);
 		}
 	}
 
@@ -141,15 +158,15 @@ public class ValidationManager {
 	// *** public getters ***
 
 	public List<Class<? extends IProfile>> getProfiles() {
-		return this.profileMap.values().stream().map(e -> e.getProfileClass()).collect(Collectors.toList());
+		return this.profileCache.values().stream().map(e -> e.getProfileClass()).collect(Collectors.toList());
 	}
 
 	public Set<EPackage> getEPackages() {
 		return  Collections.unmodifiableSet(ePackageSet);
 	}
 
-	public Set<ValidatorConfig> getValidations(final EClass targetClass) {
-		Set<ValidatorConfig> result = validationMap2.get(targetClass);
+	public Set<CachedValidator> getValidations(final EClass targetClass) {
+		Set<CachedValidator> result = validationMap2.get(targetClass);
 		if (result == null) {
 			return Collections.emptySet();
 		} else {
@@ -158,13 +175,22 @@ public class ValidationManager {
 	}
 
 	public List<IValidation> getAllValidatorInstances() {
-		return this.validationMap.values().stream().map(e -> e.getValidatorInstance()).collect(Collectors.toList());
+		return this.validatorCache.values().stream().map(e -> e.getValidatorInstance()).collect(Collectors.toList());
+	}
+
+	public ConcurrentHashMap<EClassifier, CopyOnWriteArraySet<CachedValidator>> getConcurrentValidationMap() {
+		ConcurrentHashMap<EClassifier, CopyOnWriteArraySet<CachedValidator>> map = new ConcurrentHashMap<>();
+		
+		for (Entry<EClassifier, Set<CachedValidator>> entry : validationMap2.entrySet()) {
+			map.put(entry.getKey(), new CopyOnWriteArraySet<CachedValidator>(entry.getValue()));
+		}
+		return map;
 	}
 
 
 	// *** Some helper methods
 
-	public void printValidationMap1(PrintStream stream) {
+	public void dumpValidationMap1(PrintStream stream) {
 		PrintStream out = (stream == null) ? System.out : stream;
 		
 		List<EClassifier> classifiers = validationMap1.keySet().stream()
@@ -173,13 +199,13 @@ public class ValidationManager {
 		
 		for (EClassifier cl : classifiers) {
 			out.println("Validations for " + cl.getName() + ":");
-			for (ValidatorConfig vConf : validationMap1.get(cl)) {
+			for (CachedValidator vConf : validationMap1.get(cl)) {
 				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
 			}
 		}
 	}
 
-	public void printValidationMap2(PrintStream stream) {
+	public void dumpValidationMap2(PrintStream stream) {
 		PrintStream out = (stream == null) ? System.out : stream;
 		
 		List<EClassifier> classifiers = validationMap2.keySet().stream()
@@ -188,7 +214,7 @@ public class ValidationManager {
 		
 		for (EClassifier cl : classifiers) {
 			out.println("Validations for " + cl.getName() + ":");
-			for (ValidatorConfig vConf : validationMap2.get(cl)) {
+			for (CachedValidator vConf : validationMap2.get(cl)) {
 				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
 			}
 		}
