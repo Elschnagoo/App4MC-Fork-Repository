@@ -119,11 +119,18 @@ public final class AmaltheaIndex {
 		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
 		
 		// call index
-		List<Set<IReferable>> conflictingObjects = getOrCreateAmaltheaAdapter(context).getObjectsWithConflictingNames();
+		@NonNull List<@NonNull Set<@NonNull IReferable>> list = getOrCreateAmaltheaAdapter(context).getObjectsWithConflictingNames();
 		
 		// filter scope
-		// TODO
-		return conflictingObjects;
+		List<Set<IReferable>> result = new ArrayList<>();
+		for (Set<IReferable> initialSet : list) {
+			Set<IReferable> filteredSet = filterElements(context, initialSet);
+			if (filteredSet.size() > 1) {
+				result.add(filteredSet);
+			}
+		}
+		
+		return result;
 	}
 
 	/**
@@ -246,13 +253,13 @@ public final class AmaltheaIndex {
 	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of named objects (INamed)
 	 */
-	public static <T extends INamed> Set<? extends T> getElements(final @NonNull Notifier context, final @NonNull String name,
+	public static <T extends INamed> Set<T> getElements(final @NonNull Notifier context, final @NonNull String name,
 			final @NonNull Class<T> targetClass) {
 		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
 		checkArgument(name != null, ARG_NAME_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
-		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(context).getElements(name, targetClass);
+		@NonNull Set<@NonNull T> elements = getOrCreateAmaltheaAdapter(context).getElements(name, targetClass);
 		
 		return filterElements(context, elements);
 	}
@@ -265,13 +272,13 @@ public final class AmaltheaIndex {
 	 * @param targetClass for example: <code>Label.class</code>
 	 * @return Set of named objects (INamed)
 	 */
-	public static <T extends INamed> Set<? extends T> getElements(final @NonNull Notifier context, final @NonNull Pattern namePattern,
+	public static <T extends INamed> Set<T> getElements(final @NonNull Notifier context, final @NonNull Pattern namePattern,
 			final @NonNull Class<T> targetClass) {
 		checkArgument(context != null, ARG_NOTIFIER_MESSAGE);
 		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
-		@NonNull Set<@NonNull ? extends T> elements = getOrCreateAmaltheaAdapter(context).getElements(namePattern, targetClass);
+		@NonNull Set<@NonNull T> elements = getOrCreateAmaltheaAdapter(context).getElements(namePattern, targetClass);
 		
 		return filterElements(context, elements);
 	}
@@ -371,7 +378,7 @@ public final class AmaltheaIndex {
 	/**
 	 * Removes elements out of scope (to handle larger editing domains / resource sets)
 	 */
-	private static <T extends INamed> Set<? extends T> filterElements(final @NonNull Notifier context, Set<@NonNull ? extends T> elements) {
+	private static <T extends INamed> Set<T> filterElements(final @NonNull Notifier context, Set<@NonNull T> elements) {
 		Notifier rootContext = getRootContext(context);
 		Resource resource = getResource(context);
 		if (rootContext instanceof ResourceSet && resource != null) {

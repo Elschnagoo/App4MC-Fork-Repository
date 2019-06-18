@@ -16,8 +16,11 @@
 package org.eclipse.app4mc.amalthea.validations.emf;
 
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -47,8 +50,14 @@ public class AmEmfScope extends AmaltheaValidation {
 		if (object instanceof Amalthea) {
 			Amalthea root = (Amalthea) object;
 			
-			// TODO find duplicate name in file ...
+			List<Set<IReferable>> conflictingObjects = AmaltheaIndex.getObjectsWithConflictingNames(root);
 
+			for (Set<IReferable> set : conflictingObjects) {
+				for (IReferable element : set) {
+					addIssue(results, element, ePackage.getINamed_Name(),
+							typeInfo(element) + ": duplicate name " + name(element));						
+				}
+			}
 		}
 	}
 

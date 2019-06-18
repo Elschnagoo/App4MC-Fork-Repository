@@ -47,14 +47,14 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 
 	private final Map<String, Set<INamed>> nameIndex = new HashMap<>();
 
-	public @NonNull Set<@NonNull ? extends INamed> getElements(final @NonNull String name) {
+	public @NonNull Set<@NonNull INamed> getElements(final @NonNull String name) {
 		checkArgument(name != null, ARG_NAME_MESSAGE);
 		
 		return getElements(name, INamed.class);
 	}
 
 	@SuppressWarnings("null")
-	public <T extends INamed> @NonNull Set<@NonNull ? extends T> getElements(final @NonNull String name, final @NonNull Class<T> targetClass) {
+	public <T extends INamed> @NonNull Set<@NonNull T> getElements(final @NonNull String name, final @NonNull Class<T> targetClass) {
 		checkArgument(name != null, ARG_NAME_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
@@ -70,14 +70,14 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 		return result;
 	}
 
-	public @NonNull Set<@NonNull ? extends INamed> getElements(final @NonNull Pattern namePattern) {
+	public @NonNull Set<@NonNull INamed> getElements(final @NonNull Pattern namePattern) {
 		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
 		
 		return getElements(namePattern, INamed.class);
 	}
 
 	@SuppressWarnings("null")
-	public <T extends INamed> @NonNull Set<@NonNull ? extends T> getElements(final @NonNull Pattern namePattern, final @NonNull Class<T> targetClass) {
+	public <T extends INamed> @NonNull Set<@NonNull T> getElements(final @NonNull Pattern namePattern, final @NonNull Class<T> targetClass) {
 		checkArgument(namePattern != null, ARG_PATTERN_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
 		
@@ -99,8 +99,9 @@ public class AmaltheaCrossReferenceAdapter extends ECrossReferenceAdapter {
 	 * 
 	 * @return Sets of objects
 	 */
-	public List<Set<IReferable>> getObjectsWithConflictingNames() {
-		final List<Set<IReferable>> result = new ArrayList<>();
+	@SuppressWarnings("null")
+	public @NonNull List<@NonNull Set<@NonNull IReferable>> getObjectsWithConflictingNames() {
+		final @NonNull List<@NonNull Set<@NonNull IReferable>> result = new ArrayList<>();
 		
 		for (Set<INamed> objects : nameIndex.values()) {
 			if (objects.size() < 2) continue;

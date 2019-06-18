@@ -11,6 +11,10 @@
             class="org.eclipse.app4mc.amalthea.validations.EMFProfile"
             id="org.eclipse.app4mc.amalthea.validations.emf">
       </validationProfile>
+      <validationProfile
+            class="org.eclipse.app4mc.amalthea.validations.EMFScopeProfile"
+            id="org.eclipse.app4mc.amalthea.validations.scope">
+      </validationProfile>
    </extension>
  
 </plugin>
