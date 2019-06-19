@@ -20,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -153,6 +154,20 @@ public class FactoryUtil {
 	}
 
 	/**
+	 * Creates a time out of a value and a unit (converted to pico seconds)
+	 */
+	public static Time createTime(double value, TimeUnit unit) {
+		if (unit == TimeUnit._UNDEFINED_)  return null;
+
+		// convert to pico seconds
+		int power = AmaltheaServices.TIME_UNIT_LIST.indexOf(unit);
+		double factor = Math.pow(1000, power);
+		long newValue = Math.round(value * factor);
+
+		return createTime(newValue, TimeUnit.PS);
+	}
+
+	/**
 	 * Creates a time out of a value and a unit
 	 */
 	public static Time createTime(BigInteger value, TimeUnit unit) {
@@ -162,23 +177,17 @@ public class FactoryUtil {
 		return time;
 	}
 
-	private static TimeUnit parseTimeUnit(String input) {
-		if (input == null) return TimeUnit.MS;	//default millisecond
-		
-		String unit = input.trim().toLowerCase();
-		if(unit.equals("ps")) return TimeUnit.PS;
-		if(unit.equals("ns")) return TimeUnit.NS;
-		if(unit.equals("us")) return TimeUnit.US;
-		if(unit.equals("ms")) return TimeUnit.MS;
-		if(unit.equals("s")) return TimeUnit.S;
-
-		return null;
-	}
-	
 	/**
 	 * Creates a time out of a value and a unit given as String.
 	 */
 	public static Time createTime(long value, String unit) {
+		return createTime(value, parseTimeUnit(unit));
+	}
+
+	/**
+	 * Creates a time out of a value and a unit given as String.
+	 */
+	public static Time createTime(double value, String unit) {
 		return createTime(value, parseTimeUnit(unit));
 	}
 
@@ -196,13 +205,31 @@ public class FactoryUtil {
 	 * 
 	 */
 	public static Time createTime(String timeString) {
-		Pattern p = Pattern.compile("(\\d+)\\s?(s|ms|us|ns|ps)");
+		Pattern p = Pattern.compile("(-?\\d+)(\\.\\d+)?\\s?(s|ms|us|ns|ps)");
 		Matcher m = p.matcher(timeString);
 		if(m.matches()) {
 			String value = m.group(1);
-			String unit = m.group(2);
-			return createTime(Long.parseLong(value), parseTimeUnit(unit));
+			String fraction = m.group(2);
+			String unit = m.group(3);
+			if (fraction == null) {
+				return createTime(Long.parseLong(value), parseTimeUnit(unit));
+			} else {
+				return createTime(Double.parseDouble(value + fraction), parseTimeUnit(unit));
+			}
 		}
+		return null;
+	}
+
+	private static TimeUnit parseTimeUnit(String input) {
+		if (input == null) return TimeUnit.MS;	//default millisecond
+		
+		String unit = input.trim().toLowerCase();
+		if(unit.equals("ps")) return TimeUnit.PS;
+		if(unit.equals("ns")) return TimeUnit.NS;
+		if(unit.equals("us")) return TimeUnit.US;
+		if(unit.equals("ms")) return TimeUnit.MS;
+		if(unit.equals("s")) return TimeUnit.S;
+	
 		return null;
 	}
 
