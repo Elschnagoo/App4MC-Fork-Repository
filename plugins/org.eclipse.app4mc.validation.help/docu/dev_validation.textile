@@ -2,24 +2,40 @@
 h2. Model Validation
 
 
+h3. Validation framework
+
+APP4MC contains a flexible framework based on standard EMF validations.
+
+The main plugins:
+
+- org.eclipse.app4mc.validation.core := Basic interfaces and helper classes to organize and execute validations.
+
+- org.eclipse.app4mc.validation.ui := User interface components: profile selection dialog, marker helper.
+
+- org.eclipse.app4mc.amalthea.validations := AMALTHEA standard profile and validations
 
 
+h3. Validations
+
+Validations have to implement the IValidation interface. Additional information is specified with annotations:
+
+* @Validation
+
+Example:
+
+!../pictures/validation/code_validation_1.png!
 
 
-h3. Sphinx check-based validations -- *@Deprecated !!*
+h3. Profiles
 
-AMALTHEA tried to use the Sphinx validation project to include custom model validations.
-Due to massive problems this approach will be abandoned.
+Profiles have to implement the IProfile interface. Details are specified with the following annotations:
 
+* @Profile
+* @ProfileGroup
+* @ValidationGroup
 
-h3. New validation framework
+Example:
 
-The next version of APP4MC will contain a new implementation based on standard EMF validations.
+!../pictures/validation/code_profile_1.png!
 
-The core plugins are already included in this release:
-
-- org.eclipse.app4mc.validation.core := Includes the basic implementation to organize and execute validations.
-
-- org.eclipse.app4mc.amalthea.validations := First subset of the AMALTHEA standard validations
-
-
+!../pictures/validation/code_profile_2.png!
