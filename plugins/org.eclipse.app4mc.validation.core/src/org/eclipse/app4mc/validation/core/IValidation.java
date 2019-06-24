@@ -31,6 +31,6 @@ public interface IValidation {
 	 * @param eObject the Ecore object to validate
 	 * @param results the list of validation results
 	 */
-	public void validate(final EObject eObject, List<ValidationDiagnostic> results);
+	public void validate(final EObject eObject, final List<ValidationDiagnostic> results);
 
 }

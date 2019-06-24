@@ -52,7 +52,7 @@ public class AmHwAccessPath extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof HwAccessPath) {
 			HwAccessPath path = (HwAccessPath) object;
 			

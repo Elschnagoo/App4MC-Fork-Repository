@@ -45,7 +45,7 @@ public class AmSwCallArgument extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof CallArgument) {
 			CallArgument argument = (CallArgument) object;
 			

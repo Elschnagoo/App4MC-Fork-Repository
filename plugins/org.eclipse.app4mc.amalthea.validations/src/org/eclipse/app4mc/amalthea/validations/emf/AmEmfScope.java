@@ -46,7 +46,7 @@ public class AmEmfScope extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof Amalthea) {
 			Amalthea root = (Amalthea) object;
 			

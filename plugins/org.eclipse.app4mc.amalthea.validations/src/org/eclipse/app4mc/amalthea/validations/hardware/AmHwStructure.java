@@ -49,7 +49,7 @@ public class AmHwStructure extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof HwStructure) {
 			HwStructure structure = (HwStructure) object;
 			

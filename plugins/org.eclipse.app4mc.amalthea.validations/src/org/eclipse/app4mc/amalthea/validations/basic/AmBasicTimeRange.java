@@ -44,7 +44,7 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof Time) {
 			Time time = (Time) object;
 

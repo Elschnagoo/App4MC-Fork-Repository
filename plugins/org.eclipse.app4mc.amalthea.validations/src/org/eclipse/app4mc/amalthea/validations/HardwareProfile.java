@@ -26,10 +26,6 @@ import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 
-
-/**
- * Basic validations for AMALTHEA
- */
  
 @ValidationGroup(
 		severity = Severity.ERROR,

@@ -46,7 +46,7 @@ public class AmBasicQuantity extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof Quantity) {
 			Quantity quantity = (Quantity) object;
 			

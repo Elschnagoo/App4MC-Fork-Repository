@@ -25,7 +25,7 @@ import org.eclipse.app4mc.validation.core.IProfile;
 
 @Profile(
 	name = "Amalthea Standard Validations",
-	description = "This profile should be valid for *ALL* usecases."
+	description = "This profile should be valid for *ALL* use cases."
 )
 
 @ProfileGroup(

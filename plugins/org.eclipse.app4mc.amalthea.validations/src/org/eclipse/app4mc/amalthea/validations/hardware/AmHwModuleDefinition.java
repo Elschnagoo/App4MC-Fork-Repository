@@ -49,7 +49,7 @@ public class AmHwModuleDefinition extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof HwModule) {
 			HwModule module = (HwModule) object;
 			

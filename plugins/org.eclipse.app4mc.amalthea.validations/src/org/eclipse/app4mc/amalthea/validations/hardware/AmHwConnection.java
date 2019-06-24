@@ -45,7 +45,7 @@ public class AmHwConnection extends AmaltheaValidation {
 	}
 
 	@Override
-	public void validate(final EObject object, List<ValidationDiagnostic> results) {
+	public void validate(final EObject object, final List<ValidationDiagnostic> results) {
 		if (object instanceof HwConnection) {
 			HwConnection connection = (HwConnection) object;
 			
