@@ -48,13 +48,13 @@ public class AmaltheaIndexTest {
   @Test
   public void testIndexSearch() {
     final Amalthea model = this.createTestModel();
-    final Set<? extends Label> elementsBasedOnName = AmaltheaIndex.<Label>getElements(model, "d0", Label.class);
+    final Set<Label> elementsBasedOnName = AmaltheaIndex.<Label>getElements(model, "d0", Label.class);
     Assert.assertEquals(
       "Label d0 present in the model, but not found by index search.", 1, elementsBasedOnName.size());
-    final Set<? extends Label> elementsBasedOnRegex = AmaltheaIndex.<Label>getElements(model, Pattern.compile("d\\d"), Label.class);
+    final Set<Label> elementsBasedOnRegex = AmaltheaIndex.<Label>getElements(model, Pattern.compile("d\\d"), Label.class);
     Assert.assertEquals(
       "Label d0, d1 present in the model, but not found by index search.", 2, elementsBasedOnRegex.size());
-    final Set<? extends Label> elementsBasedOnType = AmaltheaIndex.<Label>getElements(model, Pattern.compile(".*"), Label.class);
+    final Set<Label> elementsBasedOnType = AmaltheaIndex.<Label>getElements(model, Pattern.compile(".*"), Label.class);
     Assert.assertEquals(
       "Label d0, d1 present in the model, but not found by index search.", 2, elementsBasedOnType.size());
   }
@@ -90,7 +90,7 @@ public class AmaltheaIndexTest {
     final Amalthea model = this.createTestModel();
     AmaltheaIndex.deleteAll(model.getSwModel().getLabels());
     Assert.assertEquals("Label d0 is not removed from model.", 0, AmaltheaIndex.<Label>getElements(model, "d0", Label.class).size());
-    final org.eclipse.app4mc.amalthea.model.Runnable runnable0 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class));
+    final org.eclipse.app4mc.amalthea.model.Runnable runnable0 = IterableExtensions.<org.eclipse.app4mc.amalthea.model.Runnable>head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class));
     final EList<RunnableItem> runnableItems = runnable0.getRunnableItems();
     final Function1<RunnableItem, Boolean> _function = (RunnableItem s) -> {
       return Boolean.valueOf(((s instanceof LabelAccess) && (((LabelAccess) s).getData() != null)));

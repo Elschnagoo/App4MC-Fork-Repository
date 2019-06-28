@@ -34,9 +34,9 @@ public class ConstraintsUtilsTest {
   @Before
   public void initalizeModel() {
     this.model = ConstraintsModels.createModel1();
-    this.run1 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
-    this.run2 = IterableExtensions.head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run2", org.eclipse.app4mc.amalthea.model.Runnable.class));
-    this.task1 = IterableExtensions.head(AmaltheaIndex.<Task>getElements(this.model, "Task1", Task.class));
+    this.run1 = IterableExtensions.<org.eclipse.app4mc.amalthea.model.Runnable>head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run1", org.eclipse.app4mc.amalthea.model.Runnable.class));
+    this.run2 = IterableExtensions.<org.eclipse.app4mc.amalthea.model.Runnable>head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(this.model, "Run2", org.eclipse.app4mc.amalthea.model.Runnable.class));
+    this.task1 = IterableExtensions.<Task>head(AmaltheaIndex.<Task>getElements(this.model, "Task1", Task.class));
   }
   
   @Test

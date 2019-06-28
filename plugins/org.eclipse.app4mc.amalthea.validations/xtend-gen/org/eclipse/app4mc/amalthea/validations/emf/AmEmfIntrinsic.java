@@ -12,19 +12,25 @@
  */
 package org.eclipse.app4mc.amalthea.validations.emf;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
-import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
+import org.eclipse.app4mc.validation.core.IValidation;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -33,7 +39,49 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  */
 @Validation(id = "AM-EMF-INTRINSIC")
 @SuppressWarnings("all")
-public class AmEmfIntrinsic extends AmaltheaValidation {
+public class AmEmfIntrinsic implements IValidation {
+  public static class CustomSubstitutionLabelProvider implements EValidator.SubstitutionLabelProvider {
+    @Override
+    public String getFeatureLabel(final EStructuralFeature eStructuralFeature) {
+      return eStructuralFeature.getName();
+    }
+    
+    @Override
+    public String getObjectLabel(final EObject eObject) {
+      String _xblockexpression = null;
+      {
+        final String s1 = eObject.eClass().getName();
+        String _xifexpression = null;
+        if ((eObject instanceof INamed)) {
+          String _name = ((INamed) eObject).getName();
+          _xifexpression = (" " + _name);
+        } else {
+          _xifexpression = "";
+        }
+        final String s2 = _xifexpression;
+        _xblockexpression = (s1 + s2);
+      }
+      return _xblockexpression;
+    }
+    
+    @Override
+    public String getValueLabel(final EDataType eDataType, final Object value) {
+      return EcoreUtil.convertToString(eDataType, value);
+    }
+  }
+  
+  private final HashMap<Object, Object> CONTEXT = new HashMap<Object, Object>();
+  
+  public AmEmfIntrinsic() {
+    AmEmfIntrinsic.CustomSubstitutionLabelProvider _customSubstitutionLabelProvider = new AmEmfIntrinsic.CustomSubstitutionLabelProvider();
+    this.CONTEXT.put(EValidator.SubstitutionLabelProvider.class, _customSubstitutionLabelProvider);
+  }
+  
+  @Override
+  public EPackage getEPackage() {
+    return AmaltheaPackage.eINSTANCE;
+  }
+  
   @Override
   public EClassifier getEClassifier() {
     return EcorePackage.eINSTANCE.getEObject();
@@ -42,11 +90,11 @@ public class AmEmfIntrinsic extends AmaltheaValidation {
   @Override
   public void validate(final EObject eObject, final List<ValidationDiagnostic> resultList) {
     EObject _eContainer = eObject.eClass().eContainer();
-    boolean _tripleEquals = (_eContainer == AmaltheaValidation.ePackage);
+    EPackage _ePackage = this.getEPackage();
+    boolean _tripleEquals = (_eContainer == _ePackage);
     if (_tripleEquals) {
       BasicDiagnostic diagnostics = new BasicDiagnostic();
-      Map<Object, Object> context = null;
-      boolean valid = AmaltheaValidator.INSTANCE.validate(eObject.eClass(), eObject, diagnostics, context);
+      boolean valid = AmaltheaValidator.INSTANCE.validate(eObject.eClass(), eObject, diagnostics, this.CONTEXT);
       if ((!valid)) {
         List<Diagnostic> _children = diagnostics.getChildren();
         for (final Diagnostic emfDiagnostic : _children) {

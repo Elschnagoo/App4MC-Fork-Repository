@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * 
  * <ul>
  * <li>ID has to be unique in folder scope</li>
+ * <li>ID has to be set for {@link IReferable}</li>
  * </ul>
  */
 
@@ -58,6 +59,14 @@ public class AmEmfScope extends AmaltheaValidation {
 							typeInfo(element) + ": duplicate name " + name(element));						
 				}
 			}
+			
+			Set<IReferable> unnamedObjects = AmaltheaIndex.getElements(root, "", IReferable.class);
+			
+			for (IReferable element : unnamedObjects) {
+				addIssue(results, element, ePackage.getINamed_Name(),
+						typeInfo(element) + ": missing name");						
+			}
+			
 		}
 	}
 
