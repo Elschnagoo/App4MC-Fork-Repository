@@ -26,35 +26,41 @@ import org.eclipse.emf.ecore.EClassifier;
 public class CachedValidator {
 
 	private final Class<? extends IValidation> validatorClass;
-	private final Severity severity;
 	private final String validationID;
 	private final IValidation validatorInstance;
 	private final EClassifier targetEClassifier;
+	private Severity severity;
 
 	public CachedValidator(final Class<? extends IValidation> validatorClass, final Severity severity) {
 		super();
-		
+
+		if (validatorClass == null) {
+			throw new IllegalArgumentException("Loading aborted - Undefined validator class (null)");
+		}
+		if (severity == null) {
+			throw new IllegalArgumentException("Loading aborted - Undefined validator severity (null)");
+		}
+
 		this.validatorClass = validatorClass;
 		this.severity = severity;
-		
+
 		Validation validationInfo = validatorClass.getAnnotation(Validation.class);
-		
+
 		this.validationID = (validationInfo != null) ? validationInfo.id() : validatorClass.getSimpleName();
-		
+
 		try {
 			this.validatorInstance = validatorClass.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
 			// can't recover from this - programming error.
 			throw new IllegalStateException(e);
 		}
-		
+
 		this.targetEClassifier = this.validatorInstance.getEClassifier();
 		if (this.targetEClassifier == null) {
 			throw new IllegalArgumentException(
 					"Loading aborted - Validation doesn't define a target: " + validatorClass);
 		}
 	}
-
 
 	// *** public getters ***
 
@@ -74,12 +80,20 @@ public class CachedValidator {
 		return targetEClassifier.getInstanceClass();
 	}
 
+	public String getValidationID() {
+		return validationID;
+	}
+
+	// *** public getters and setters (only severity can be changed) ***
+
 	public Severity getSeverity() {
 		return severity;
 	}
 
-	public String getValidationID() {
-		return validationID;
+	public void setSeverity(Severity severity) {
+		if (severity == null) return;
+
+		this.severity = severity;
 	}
 
 }

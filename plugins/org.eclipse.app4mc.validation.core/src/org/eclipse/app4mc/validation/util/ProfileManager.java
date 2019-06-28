@@ -114,19 +114,19 @@ public class ProfileManager {
 		}
 
 		// Validations
-		if (!profile.getValidations().isEmpty()) {
+		if (!profile.getCachedValidations().isEmpty()) {
 			stream.println(in + " - validations:");
 		}
-		for (CachedValidator conf : profile.getValidations().values()) {
+		for (CachedValidator conf : profile.getCachedValidations().values()) {
 			stream.println(in + "    " + conf.getValidationID() + "(" + conf.getSeverity() + " - "
 					+ conf.getTargetClass().getSimpleName() + ")");
 		}
 
 		// Sub-Profiles
-		if (!profile.getProfiles().isEmpty()) {
+		if (!profile.getCachedProfiles().isEmpty()) {
 			stream.println(in + " - profiles:");
 		}
-		for (CachedProfile conf : profile.getProfiles().values()) {
+		for (CachedProfile conf : profile.getCachedProfiles().values()) {
 			dumpProfile(conf, 1, stream);
 		}
 	}

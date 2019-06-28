@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.validation.annotation.Profile;
 import org.eclipse.app4mc.validation.annotation.ProfileGroup;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.IValidation;
+import org.eclipse.app4mc.validation.core.Severity;
 
 /**
  * A cache object for a validation profile
@@ -49,7 +49,7 @@ public class CachedProfile {
 		super();
 		
 		if (profileClass == null) {
-			throw new IllegalArgumentException("Loading aborted - Undefined profile class");
+			throw new IllegalArgumentException("Loading aborted - Undefined profile class (null)");
 		}
 		
 		this.profileClass = profileClass;
@@ -66,7 +66,7 @@ public class CachedProfile {
 			for (Class<? extends IProfile> pClass : pGroup.profiles()) {
 				if (pClass == null) {
 					throw new IllegalArgumentException(
-							"Loading aborted - Undefined sub profile class");
+							"Loading aborted - Undefined sub profile class (null)");
 				}
 				if (forbiddenClasses.contains(pClass)) {
 					throw new IllegalArgumentException(
@@ -81,7 +81,7 @@ public class CachedProfile {
 			for (Class<? extends IValidation> vClass : vGroup.validations()) {
 				if (vClass == null) {
 					throw new IllegalArgumentException(
-							"Loading aborted - Undefined validation class");
+							"Loading aborted - Undefined validation class (null)");
 				}
 				validations.put(vClass, new CachedValidator(vClass, vGroup.severity()));
 			}
@@ -116,39 +116,37 @@ public class CachedProfile {
 		return description;
 	}
 
-	public Map<Class<? extends IProfile>, CachedProfile> getProfiles() {
+	public Map<Class<? extends IProfile>, CachedProfile> getCachedProfiles() {
 		return profiles;
 	}
 
-	public Map<Class<? extends IValidation>, CachedValidator> getValidations() {
+	public Map<Class<? extends IValidation>, CachedValidator> getCachedValidations() {
 		return validations;
 	}
 
-	public Map<Class<? extends IValidation>, CachedValidator> getAllValidations() {
-		Map<Class<? extends IValidation>, CachedValidator> result = new HashMap<>();
-		addAllValidations(this, result);
-		return result;
+	public Map<Class<? extends IValidation>, Severity> getAllValidations() {
+		Map<Class<? extends IValidation>, Severity> resultMap = new HashMap<>();
+		addAllValidations(this, resultMap);
+		return resultMap;
 	}
 	
-	private void addAllValidations(final CachedProfile newProfile, final Map<Class<? extends IValidation>, CachedValidator> resultMap) {
-		// add validations
-		for (CachedValidator newValidator : newProfile.getValidations().values()) {
-			Class<? extends IValidation> validatorClass = newValidator.getValidatorClass();
+	private void addAllValidations(final CachedProfile profile, final Map<Class<? extends IValidation>, Severity> resultMap) {
+		// add contained validations
+		for (CachedValidator cachedValidator : profile.getCachedValidations().values()) {
+			Class<? extends IValidation> validatorClass = cachedValidator.getValidatorClass();
+			Severity validatorSeverity = cachedValidator.getSeverity();
 			
-			CachedValidator oldValidator = resultMap.get(validatorClass);
-			if (oldValidator == null || oldValidator.getSeverity().ordinal() < newValidator.getSeverity().ordinal()) {
-				// insert validator with higher severity
-				resultMap.put(validatorClass, newValidator);
+			Severity oldSeverity = resultMap.get(validatorClass);
+			if (oldSeverity == null || oldSeverity.ordinal() < validatorSeverity.ordinal()) {
+				// insert: class -> higher severity
+				resultMap.put(validatorClass, validatorSeverity);
 			}
 		}
-		// add validations of profiles (recursive)
-		for (CachedProfile profile : newProfile.getProfiles().values()) {
-			addAllValidations(profile, resultMap);
+		
+		// add validations of contained profiles (recursive)
+		for (CachedProfile subProfile : profile.getCachedProfiles().values()) {
+			addAllValidations(subProfile, resultMap);
 		}
-	}
-	
-	public List<IValidation> getAllValidatorInstances() {
-		return getAllValidations().values().stream().map(e -> e.getValidatorInstance()).collect(Collectors.toList());
 	}
 
 }

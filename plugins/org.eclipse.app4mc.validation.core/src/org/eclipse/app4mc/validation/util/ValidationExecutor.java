@@ -17,6 +17,7 @@ package org.eclipse.app4mc.validation.util;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -50,16 +51,27 @@ public class ValidationExecutor {
 	private final List<ValidationDiagnostic> results = new ArrayList<>();
 
 	public ValidationExecutor(final Class<? extends IProfile> profileClass) {
-		this(Collections.singletonList(profileClass));
-	}
-
-	public ValidationExecutor(final List<Class<? extends IProfile>> profileClassList) {
-		if (profileClassList == null) {
-			throw new IllegalArgumentException("Loading aborted - Undefined profile class list");
+		if (profileClass == null) {
+			throw new IllegalArgumentException("Loading aborted - Undefined profile class (null)");
 		}
 
-		ValidationAggregator validationAggregator = new ValidationAggregator(profileClassList);
+		ValidationAggregator validationAggregator = new ValidationAggregator();
+		validationAggregator.addProfile(profileClass);
 		this.validationMap = validationAggregator.getConcurrentValidationMap();
+	}
+
+	public ValidationExecutor(final Collection<Class<? extends IProfile>> profileClasses) {
+		if (profileClasses == null || profileClasses.isEmpty()) {
+			throw new IllegalArgumentException("Loading aborted - Undefined profile classes");
+		}
+
+		ValidationAggregator validationAggregator = new ValidationAggregator();
+		validationAggregator.addProfiles(profileClasses);
+		this.validationMap = validationAggregator.getConcurrentValidationMap();
+	}
+
+	public ValidationExecutor(final ConcurrentHashMap<EClassifier, CopyOnWriteArraySet<CachedValidator>> validationMap) {
+		this.validationMap = validationMap;
 	}
 
 	/**
