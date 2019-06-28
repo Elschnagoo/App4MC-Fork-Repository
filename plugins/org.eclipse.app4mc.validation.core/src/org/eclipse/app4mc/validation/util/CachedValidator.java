@@ -49,8 +49,8 @@ public class CachedValidator {
 		this.validationID = (validationInfo != null) ? validationInfo.id() : validatorClass.getSimpleName();
 
 		try {
-			this.validatorInstance = validatorClass.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+			this.validatorInstance = validatorClass.getDeclaredConstructor().newInstance();
+		} catch (ReflectiveOperationException | IllegalArgumentException | SecurityException e) {
 			// can't recover from this - programming error.
 			throw new IllegalStateException(e);
 		}
