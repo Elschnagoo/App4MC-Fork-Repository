@@ -11,7 +11,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sphinx.emf.workspace
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.app4mc.amalthea.sphinx,
- org.eclipse.app4mc.amalthea.sphinx.validation.api
+Export-Package: org.eclipse.app4mc.amalthea.sphinx
 Bundle-Vendor: Eclipse APP4MC
 Automatic-Module-Name: org.eclipse.app4mc.amalthea.sphinx
