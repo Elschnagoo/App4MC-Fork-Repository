@@ -219,7 +219,7 @@ public class AmaltheaImpl extends BaseObjectImpl implements Amalthea {
 	 */
 	@Override
 	public String getVersion() {
-		return "0.9.4";
+		return "0.9.5";
 	}
 
 	/**
