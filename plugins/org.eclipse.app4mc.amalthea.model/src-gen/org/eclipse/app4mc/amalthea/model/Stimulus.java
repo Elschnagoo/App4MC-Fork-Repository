@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * Every process/task can have one or more stimuli.
  * A stimulus activates the process
+ * deviationStimulus: defines the deviation of the activation times of the stimulus
  * <!-- end-model-doc -->
  *
  * <p>
