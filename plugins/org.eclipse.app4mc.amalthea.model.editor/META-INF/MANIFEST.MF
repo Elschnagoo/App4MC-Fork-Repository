@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.model.editor;singleton:=true
 Automatic-Module-Name: org.eclipse.app4mc.amalthea.model.editor
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.9.5.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.app4mc.amalthea.model.presentation.AmaltheaEditorPlugin$Implementation
 Bundle-Vendor: %providerName
