@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * Describes a group of deviation runnable items
- * It can be also a group of runnable items without deviation, because the deviation is optional for each item
  * <!-- end-model-doc -->
  *
  * <p>

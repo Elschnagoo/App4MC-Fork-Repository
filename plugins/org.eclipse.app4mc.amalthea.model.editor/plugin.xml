@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ *******************************************************************************
+  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
+ 
+  This program and the accompanying materials are made
+  available under the terms of the Eclipse Public License 2.0
+  which is available at https://www.eclipse.org/legal/epl-2.0/
+ 
+  SPDX-License-Identifier: EPL-2.0
+ 
+     Generated using Eclipse EMF
+ 
+ *******************************************************************************
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated amalthea -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.app4mc.amalthea.model.presentation.AmaltheaModelWizardID"
+            name="%_UI_AmaltheaModelWizard_label"
+            class="org.eclipse.app4mc.amalthea.model.presentation.AmaltheaModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AmaltheaModelFile.gif">
+         <description>%_UI_AmaltheaModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated amalthea -->
+      <editor
+            id="org.eclipse.app4mc.amalthea.model.presentation.AmaltheaEditorID"
+            name="%_UI_AmaltheaEditor_label"
+            icon="icons/full/obj16/AmaltheaModelFile.gif"
+            extensions="amalthea"
+            class="org.eclipse.app4mc.amalthea.model.presentation.AmaltheaEditor"
+            contributorClass="org.eclipse.app4mc.amalthea.model.presentation.AmaltheaActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

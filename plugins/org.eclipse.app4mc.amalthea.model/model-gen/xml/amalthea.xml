@@ -6,6 +6,7 @@
     <details key="modelName" value="Amalthea"/>
     <details key="prefix" value="Amalthea"/>
     <details key="editDirectory" value="/org.eclipse.app4mc.amalthea.model.edit/src-gen"/>
+    <details key="editorDirectory" value="/org.eclipse.app4mc.amalthea.model.editor/src-gen"/>
     <details key="rootExtendsClass" value="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl"/>
     <details key="providerRootExtendsClass" value="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter"/>
     <details key="creationIcons" value="false"/>
@@ -14,6 +15,10 @@
     <details key="publicationLocation" value="org.eclipse.app4mc.amalthea.model/model-gen/xml/amalthea.xml"/>
     <details key="loadInitialization" value="false"/>
     <details key="copyrightText" value="*******************************************************************************&#xD;&#xA; Copyright (c) 2015-2019 Robert Bosch GmbH and others.&#xD;&#xA;&#xD;&#xA; This program and the accompanying materials are made&#xD;&#xA; available under the terms of the Eclipse Public License 2.0&#xD;&#xA; which is available at https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA;&#xD;&#xA; SPDX-License-Identifier: EPL-2.0&#xD;&#xA;&#xD;&#xA;    Generated using Eclipse EMF&#xD;&#xA;&#xD;&#xA;*******************************************************************************"/>
+    <details key="decoration" value="Live"/>
+    <details key="collapseAllAction" value="true"/>
+    <details key="expandAllAction" value="true"/>
+    <details key="autoExpandProperties" value="1"/>
     <details key="basePackage" value="org.eclipse.app4mc.amalthea"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Amalthea" eSuperTypes="#//BaseObject">
@@ -2681,7 +2686,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stimulus" abstract="true" eSuperTypes="#//ReferableBaseObject #//ITaggable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Every process/task can have one or more stimuli.&#xA;A stimulus activates the process&#xA;deviationStimulus: defines the deviation of the activation times of the stimulus"/>
+      <details key="documentation" value="Every process/task can have one or more stimuli.&#xA;A stimulus activates the process"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setModeValueList" eType="#//ModeValueList"
         containment="true" resolveProxies="false"/>
@@ -3832,7 +3837,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//RunnableItem #//INamed">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Describes a group of deviation runnable items&#xA;It can be also a group of runnable items without deviation, because the deviation is optional for each item"/>
+      <details key="documentation" value="Describes a group of deviation runnable items"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>

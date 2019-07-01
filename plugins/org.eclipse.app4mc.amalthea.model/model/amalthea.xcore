@@ -13,6 +13,7 @@
 @GenModel(
 	modelName="Amalthea", prefix="Amalthea",
 	editDirectory="/org.eclipse.app4mc.amalthea.model.edit/src-gen",
+	editorDirectory="/org.eclipse.app4mc.amalthea.model.editor/src-gen",
 	rootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl",
 	providerRootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter",
 	creationIcons="false",
@@ -23,7 +24,11 @@
 	loadInitialization="false",	// can be removed with Neon.3 ??
 //	dynamicTemplates="true",
 //	templateDirectory="org.eclipse.app4mc.amalthea.model/templates",
-	copyrightText="*******************************************************************************\r\n Copyright (c) 2015-2019 Robert Bosch GmbH and others.\r\n\r\n This program and the accompanying materials are made\r\n available under the terms of the Eclipse Public License 2.0\r\n which is available at https://www.eclipse.org/legal/epl-2.0/\r\n\r\n SPDX-License-Identifier: EPL-2.0\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************"
+	copyrightText="*******************************************************************************\r\n Copyright (c) 2015-2019 Robert Bosch GmbH and others.\r\n\r\n This program and the accompanying materials are made\r\n available under the terms of the Eclipse Public License 2.0\r\n which is available at https://www.eclipse.org/legal/epl-2.0/\r\n\r\n SPDX-License-Identifier: EPL-2.0\r\n\r\n    Generated using Eclipse EMF\r\n\r\n*******************************************************************************",
+	decoration="Live",
+	collapseAllAction="true",
+	expandAllAction="true", 
+	autoExpandProperties="1"
 )
 
 @Ecore(
@@ -2796,7 +2801,6 @@ class StimuliModel extends BaseObject
 /*
  * Every process/task can have one or more stimuli.
  * A stimulus activates the process
- * deviationStimulus: defines the deviation of the activation times of the stimulus
  */
 abstract class Stimulus extends ReferableBaseObject, ITaggable
 {
@@ -3925,7 +3929,6 @@ class RunnableProbabilitySwitch extends RunnableItem
 
 /*
  * Describes a group of deviation runnable items
- * It can be also a group of runnable items without deviation, because the deviation is optional for each item
  */
 class Group extends RunnableItem, INamed
 {
