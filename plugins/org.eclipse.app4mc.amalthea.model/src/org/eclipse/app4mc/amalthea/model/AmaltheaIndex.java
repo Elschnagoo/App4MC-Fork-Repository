@@ -112,7 +112,21 @@ public final class AmaltheaIndex {
 		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
 		
 		return getOrCreateAmaltheaAdapter(eObject).getNonNavigableInverseReferences(eObject)
-				.stream().map(setting -> setting.getEObject()).collect(Collectors.toSet());
+				.stream()
+				.map(setting -> setting.getEObject())
+				.collect(Collectors.toSet());
+	}
+
+	public static <T extends EObject> Set<T> getReferringObjects(final @NonNull EObject eObject, final @NonNull Class<T> targetClass) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
+		return getOrCreateAmaltheaAdapter(eObject).getNonNavigableInverseReferences(eObject)
+				.stream()
+				.map(setting -> setting.getEObject())
+				.filter(obj -> targetClass.isInstance(obj))
+				.map(obj -> targetClass.cast(obj))
+				.collect(Collectors.toSet());
 	}
 
 	public static List<Set<IReferable>> getObjectsWithConflictingNames(final @NonNull Notifier context) {
