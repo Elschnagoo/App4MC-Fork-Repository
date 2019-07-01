@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Validation UI
 Bundle-SymbolicName: org.eclipse.app4mc.validation.ui;singleton:=true
-Bundle-Version: 0.9.4.qualifier
+Bundle-Version: 0.9.5.qualifier
 Automatic-Module-Name: org.eclipse.app4mc.validation.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse APP4MC

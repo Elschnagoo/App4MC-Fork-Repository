@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: APP4MC Amalthea Converters to 0.8.3 Test
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.083.test
-Bundle-Version: 0.9.4.qualifier
+Bundle-Version: 0.9.5.qualifier
 Fragment-Host: org.eclipse.app4mc.amalthea.converters.083
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Eclipse APP4MC
