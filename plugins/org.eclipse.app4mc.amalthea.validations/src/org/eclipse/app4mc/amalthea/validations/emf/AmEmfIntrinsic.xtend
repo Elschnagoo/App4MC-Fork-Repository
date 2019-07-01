@@ -41,11 +41,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 
 class AmEmfIntrinsic implements IValidation {
 
-	val CONTEXT = new HashMap<Object, Object>
-
-	new() {
-		CONTEXT.put(SubstitutionLabelProvider, new CustomSubstitutionLabelProvider)
-	}
+	val CONTEXT = createContextMap
 
 	override getEPackage() {
 		AmaltheaPackage.eINSTANCE
@@ -68,7 +64,7 @@ class AmEmfIntrinsic implements IValidation {
 
 					val problematicObject = emfDiagnostic.getData().findFirst[e|e instanceof EObject] as EObject
 					val problematicFeature = emfDiagnostic.getData().findFirst[e|e instanceof EStructuralFeature] as EStructuralFeature
-					
+
 					val ValidationDiagnostic result = new ValidationDiagnostic(
 						emfDiagnostic.getMessage(),
 						if(problematicObject !== null) problematicObject else eObject,
@@ -83,7 +79,7 @@ class AmEmfIntrinsic implements IValidation {
 							default :					Severity.UNDEFINED
 						}
 					)
-					
+
 					resultList.add(result)
 				}
 			}
@@ -92,21 +88,25 @@ class AmEmfIntrinsic implements IValidation {
 	}
 
 
-	static class CustomSubstitutionLabelProvider implements SubstitutionLabelProvider {
-		
-		override getFeatureLabel(EStructuralFeature eStructuralFeature) {
-			eStructuralFeature.name
-		}
-		
-		override getObjectLabel(EObject eObject) {
-			val s1 = eObject.eClass().getName()
-			val s2 = if (eObject instanceof INamed) " " + (eObject as INamed).name else ""
-			s1 + s2
-		}
-		
-		override getValueLabel(EDataType eDataType, Object value) {
-			EcoreUtil.convertToString(eDataType, value)	// default
-		}
+	def private static createContextMap() {
+		val map = new HashMap<Object, Object>
+
+		// Set a custom label provider
+		map.put(SubstitutionLabelProvider, new SubstitutionLabelProvider {
+			override getFeatureLabel(EStructuralFeature eStructuralFeature) {
+				eStructuralFeature.name
+			}
+			override getObjectLabel(EObject eObject) {
+				val s1 = eObject.eClass().getName()
+				val s2 = if(eObject instanceof INamed) " " + (eObject as INamed).name else ""
+				s1 + s2
+			}
+			override getValueLabel(EDataType eDataType, Object value) {
+				EcoreUtil.convertToString(eDataType, value) // default
+			}
+		})
+
+		return map
 	}
 
 }

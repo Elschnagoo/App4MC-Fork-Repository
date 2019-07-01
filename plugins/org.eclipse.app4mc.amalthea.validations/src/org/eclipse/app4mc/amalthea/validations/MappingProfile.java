@@ -15,14 +15,21 @@
 
 package org.eclipse.app4mc.amalthea.validations;
 
+import org.eclipse.app4mc.amalthea.validations.misc.AmMappingIsrScheduler;
+import org.eclipse.app4mc.amalthea.validations.misc.AmMappingSchedulerProcessingUnit;
+import org.eclipse.app4mc.amalthea.validations.misc.AmMappingTaskScheduler;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 
  
 @ValidationGroup(
-		severity = Severity.ERROR,
-		validations =  {  }
+	severity = Severity.WARNING,
+	validations =  {
+		AmMappingTaskScheduler.class,
+		AmMappingIsrScheduler.class,
+		AmMappingSchedulerProcessingUnit.class
+	}
 )
 
 public class MappingProfile implements IProfile {

@@ -40,42 +40,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @Validation(id = "AM-EMF-INTRINSIC")
 @SuppressWarnings("all")
 public class AmEmfIntrinsic implements IValidation {
-  public static class CustomSubstitutionLabelProvider implements EValidator.SubstitutionLabelProvider {
-    @Override
-    public String getFeatureLabel(final EStructuralFeature eStructuralFeature) {
-      return eStructuralFeature.getName();
-    }
-    
-    @Override
-    public String getObjectLabel(final EObject eObject) {
-      String _xblockexpression = null;
-      {
-        final String s1 = eObject.eClass().getName();
-        String _xifexpression = null;
-        if ((eObject instanceof INamed)) {
-          String _name = ((INamed) eObject).getName();
-          _xifexpression = (" " + _name);
-        } else {
-          _xifexpression = "";
-        }
-        final String s2 = _xifexpression;
-        _xblockexpression = (s1 + s2);
-      }
-      return _xblockexpression;
-    }
-    
-    @Override
-    public String getValueLabel(final EDataType eDataType, final Object value) {
-      return EcoreUtil.convertToString(eDataType, value);
-    }
-  }
-  
-  private final HashMap<Object, Object> CONTEXT = new HashMap<Object, Object>();
-  
-  public AmEmfIntrinsic() {
-    AmEmfIntrinsic.CustomSubstitutionLabelProvider _customSubstitutionLabelProvider = new AmEmfIntrinsic.CustomSubstitutionLabelProvider();
-    this.CONTEXT.put(EValidator.SubstitutionLabelProvider.class, _customSubstitutionLabelProvider);
-  }
+  private final HashMap<Object, Object> CONTEXT = AmEmfIntrinsic.createContextMap();
   
   @Override
   public EPackage getEPackage() {
@@ -139,5 +104,39 @@ public class AmEmfIntrinsic implements IValidation {
         }
       }
     }
+  }
+  
+  private static HashMap<Object, Object> createContextMap() {
+    final HashMap<Object, Object> map = new HashMap<Object, Object>();
+    map.put(EValidator.SubstitutionLabelProvider.class, new EValidator.SubstitutionLabelProvider() {
+      @Override
+      public String getFeatureLabel(final EStructuralFeature eStructuralFeature) {
+        return eStructuralFeature.getName();
+      }
+      
+      @Override
+      public String getObjectLabel(final EObject eObject) {
+        String _xblockexpression = null;
+        {
+          final String s1 = eObject.eClass().getName();
+          String _xifexpression = null;
+          if ((eObject instanceof INamed)) {
+            String _name = ((INamed) eObject).getName();
+            _xifexpression = (" " + _name);
+          } else {
+            _xifexpression = "";
+          }
+          final String s2 = _xifexpression;
+          _xblockexpression = (s1 + s2);
+        }
+        return _xblockexpression;
+      }
+      
+      @Override
+      public String getValueLabel(final EDataType eDataType, final Object value) {
+        return EcoreUtil.convertToString(eDataType, value);
+      }
+    });
+    return map;
   }
 }
