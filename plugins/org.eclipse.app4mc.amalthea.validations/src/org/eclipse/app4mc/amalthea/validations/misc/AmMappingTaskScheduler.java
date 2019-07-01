@@ -37,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
 
 @Validation(id = "AM-Mapping-Task-Scheduler")
 
-
 public class AmMappingTaskScheduler extends AmaltheaValidation {
 
 	@Override

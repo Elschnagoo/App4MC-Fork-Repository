@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.EObject;
 
 @Validation(id = "AM-Mapping-Scheduler-ProcessingUnit")
 
-
 public class AmMappingSchedulerProcessingUnit extends AmaltheaValidation {
 
 	@Override
