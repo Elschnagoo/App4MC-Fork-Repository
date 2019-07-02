@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.9.4.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="APP4MC Tool Platform" uid="org.eclipse.app4mc.platform.product" id="org.eclipse.app4mc.platform.ide.product" application="org.eclipse.ui.ide.workbench" version="0.9.5.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipse.app4mc.platform.ide/about.png"/>
@@ -522,9 +522,9 @@ version(s), and exceptions or additional permissions here}.&quot;
    </configurations>
 
    <repositories>
-      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository" enabled="true" />
-      <repository location="http://download.eclipse.org/eclipse/updates/4.7" enabled="true" />
-      <repository location="http://download.eclipse.org/releases/oxygen" enabled="true" />
+      <repository location="http://download.eclipse.org/eclipse/updates/4.8" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/photon" enabled="true" />
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository" enabled="true" />
    </repositories>
 
    <preferencesInfo>
