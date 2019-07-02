@@ -1,0 +1,18 @@
+target "efx"
+
+location "http://download.eclipse.org/releases/photon" {
+	
+	org.eclipse.fx.ide.basic.feature.feature.group
+	org.eclipse.fx.ide.converter.feature.feature.group
+	org.eclipse.fx.ide.css.feature.feature.group
+	org.eclipse.fx.ide.feature.feature.group
+	org.eclipse.fx.ide.fxgraph.feature.feature.group
+	org.eclipse.fx.ide.fxml.feature.feature.group
+	org.eclipse.fx.ide.gmod.feature.feature.group
+	org.eclipse.fx.ide.l10n.feature.feature.group
+	org.eclipse.fx.ide.ldef.feature.feature.group
+	org.eclipse.fx.ide.pde.feature.feature.group
+	org.eclipse.fx.ide.rrobot.feature.feature.group
+	org.eclipse.fx.runtime.min.feature.feature.group
+
+}

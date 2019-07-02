@@ -1,0 +1,7 @@
+target "sphinx"
+
+location "http://download.eclipse.org/sphinx/updates/0.11.x" {
+	
+	org.eclipse.sphinx.sdk.feature.group
+
+}

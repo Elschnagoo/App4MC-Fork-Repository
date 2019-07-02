@@ -1,0 +1,123 @@
+target "Photon-Platform-Addon"
+
+location "http://download.eclipse.org/releases/photon" {
+
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.emf.transaction.sdk.feature.group
+	org.eclipse.acceleo.feature.group
+	org.eclipse.emf.ecore.xcore.sdk.feature.group
+	org.eclipse.emf.mwe.sdk.feature.group
+	org.eclipse.emf.mwe2.runtime.sdk.feature.group
+	org.eclipse.emf.mwe2.language.sdk.feature.group
+	org.eclipse.emf.parsley.sdk.feature.group
+	org.eclipse.cdt.remote.core
+	org.eclipse.cdt.sdk.feature.group
+	org.eclipse.ecf.core.feature.feature.group
+	org.eclipse.ecf.filetransfer.feature.feature.group
+	org.eclipse.ecf.discovery.feature.feature.group
+	org.eclipse.ecf.remoteservice.sdk.feature.feature.group
+	org.eclipse.ecf.filetransfer.httpclient4.feature.feature.group
+	org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.feature.group
+	org.eclipse.ecf.core.ssl.feature.feature.group
+	org.eclipse.ecf.filetransfer.ssl.feature.feature.group
+	//	org.eclipse.ecf 
+	org.eclipse.fx.code.editor.configuration
+	org.eclipse.fx.ide.basic.feature.feature.group
+	org.eclipse.fx.ide.converter.feature.feature.group
+	org.eclipse.fx.ide.css.feature.feature.group
+	org.eclipse.fx.ide.feature.feature.group
+	org.eclipse.fx.ide.fxgraph.feature.feature.group
+	org.eclipse.fx.ide.fxml.feature.feature.group
+	org.eclipse.fx.ide.gmod.feature.feature.group
+	org.eclipse.fx.ide.l10n.feature.feature.group
+	org.eclipse.fx.ide.ldef.feature.feature.group
+	org.eclipse.fx.ide.pde.feature.feature.group
+	org.eclipse.fx.ide.rrobot.feature.feature.group
+	org.eclipse.graphiti.sdk.feature.feature.group
+	org.eclipse.graphiti.export.feature.feature.group
+	org.eclipse.ocl.all.sdk.feature.group
+	org.eclipse.remote.feature.group
+	org.eclipse.uml2.sdk.feature.group
+	org.eclipse.wst.xml_ui.feature.feature.group
+	org.eclipse.xsd.sdk.feature.group
+	org.eclipse.gmf.runtime.sdk.feature.group
+	org.eclipse.gmf.runtime.notation.feature.group
+	org.eclipse.gmf.feature.group
+	org.eclipse.gef.dot.sdk.feature.group
+	org.eclipse.gef.common.sdk.feature.group
+	org.eclipse.gef.graph.feature.group
+	org.eclipse.gef.fx.doc.feature.group
+	org.eclipse.gef.geometry.doc.feature.group
+	org.eclipse.gef.fx.feature.group
+	org.eclipse.gef.geometry.feature.group
+	org.eclipse.gef.geometry.convert.fx.feature.group
+	org.eclipse.gef.layout.feature.group
+	org.eclipse.gef.mvc.fx.feature.group
+	org.eclipse.gef.graph.doc.feature.group
+	org.eclipse.gef.layout.doc.feature.group
+	org.eclipse.draw2d.feature.group
+	org.eclipse.gef.feature.group
+	org.eclipse.gef.mvc.doc.feature.group
+	org.eclipse.gef.mvc.fx.ui.feature.group
+	org.eclipse.gef.zest.sdk.feature.group
+	org.eclipse.gef.zest.fx.ui.feature.group
+	org.eclipse.gef.fx.jface.feature.group
+	org.eclipse.gef.fx.swt.feature.group
+
+}
+
+//EMF validation
+
+location "http://download.eclipse.org/releases/photon" {
+	
+	org.eclipse.emf.validation.doc.feature.group
+	org.eclipse.emf.validation.feature.group
+	org.eclipse.emf.validation.ocl.feature.group
+	org.eclipse.emf.validation.ocl.source.feature.group
+	org.eclipse.emf.validation.sdk.feature.group
+	org.eclipse.emf.validation.source.feature.group
+
+}
+
+////Xtext, Xtend, Xpand
+
+location "http://download.eclipse.org/releases/photon" {
+//location  "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" {
+
+	org.eclipse.xpand.sdk.feature.group
+
+}
+
+//eGit
+
+location "http://download.eclipse.org/releases/photon" {
+	
+	org.eclipse.egit.feature.group
+	org.eclipse.egit.mylyn.feature.group
+	org.eclipse.egit.source.feature.group
+	
+	//jgit
+	org.eclipse.jgit.feature.group
+	org.eclipse.jgit.http.apache.feature.group
+	org.eclipse.jgit.lfs.feature.group
+	org.eclipse.jgit.pgm.feature.group
+	org.eclipse.jgit.pgm.source.feature.group
+	org.eclipse.jgit.source.feature.group
+
+}
+
+//slf4j
+
+location "http://download.eclipse.org/releases/photon" {
+	
+	org.slf4j.api
+	org.slf4j.impl.log4j12
+	org.slf4j.jcl
+	
+}
+
+location "http://download.eclipse.org/releases/photon" {
+	
+	com.google.protobuf
+	
+}

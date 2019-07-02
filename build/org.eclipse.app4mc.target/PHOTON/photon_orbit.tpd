@@ -1,0 +1,66 @@
+target "Photon-Platform-Orbit"
+
+//for details about orbit versions matching to Eclipse release versions, refer http://download.eclipse.org/tools/orbit/downloads/ 
+
+//Google inject
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository" {
+	com.google.inject
+}
+
+//slf4j
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository" {
+//	org.slf4j.api
+//	org.slf4j.api.source
+//	org.slf4j.ext
+//	org.slf4j.ext.source
+//	org.slf4j.impl.log4j12
+//	org.slf4j.impl.log4j12.source
+//	org.slf4j.jcl
+//	org.slf4j.jcl.source
+//	org.slf4j.jul
+//	org.slf4j.jul.source
+	org.slf4j.log4j
+	org.slf4j.log4j.source
+}
+
+//general
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository" {
+	
+//	com.google.gson
+	com.sun.xml.bind
+	java_cup.runtime
+	javax.activation
+	javax.annotation
+	javax.el
+	javax.servlet
+	javax.ws.rs
+	javax.xml
+	javax.xml.bind
+	javax.xml.stream
+	org.antlr.runtime
+	org.apache.batik.css
+	org.apache.batik.util
+//	org.apache.batik.util.gui	???
+	org.apache.bcel
+	org.apache.commons.codec
+	org.apache.commons.io
+	org.apache.commons.lang
+	org.apache.commons.logging
+	org.apache.commons.math
+	org.apache.commons.math3
+	org.apache.httpcomponents.httpclient
+	org.apache.httpcomponents.httpcore
+	org.apache.log4j
+	org.apache.xalan
+	org.apache.xerces
+	org.apache.xml.resolver
+	org.apache.xml.serializer
+	org.easymock
+	org.swtchart
+	org.jdom
+
+}
+ 

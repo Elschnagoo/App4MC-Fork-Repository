@@ -1,0 +1,7 @@
+target "cbi"
+
+location "http://download.eclipse.org/cbi/updates/license/" {
+	
+	org.eclipse.license.feature.group
+	
+}

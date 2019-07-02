@@ -1,0 +1,27 @@
+target "Photon-Platform"
+
+include "photon_platform.tpd"
+
+include "photon_platform_addon.tpd"
+
+include "photon_orbit.tpd"
+
+include "sphinx.tpd"
+
+include "webtools.tpd"
+
+include "ease.tpd"
+
+include "efx.tpd"
+
+include "emfcompare.tpd"
+
+include "xtext.tpd"
+
+include "sirius.tpd"
+
+include "cbi.tpd"
+
+//include "emf.tpd"
+
+//include "acceleo.tpd"

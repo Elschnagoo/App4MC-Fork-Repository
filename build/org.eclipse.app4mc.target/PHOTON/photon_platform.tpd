@@ -1,0 +1,13 @@
+target "Photon-Platform-Base"
+
+location "http://download.eclipse.org/eclipse/updates/4.8" {
+	
+	org.eclipse.equinox.p2.discovery.feature.feature.group
+	org.eclipse.equinox.sdk.feature.group
+	org.eclipse.equinox.server.jetty.feature.group
+	org.eclipse.jdt.feature.group
+	org.eclipse.pde.feature.group 
+	org.eclipse.platform.ide
+	org.eclipse.platform.sdk
+	
+}
