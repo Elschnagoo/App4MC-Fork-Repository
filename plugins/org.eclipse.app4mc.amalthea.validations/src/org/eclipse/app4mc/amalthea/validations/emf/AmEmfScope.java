@@ -60,12 +60,14 @@ public class AmEmfScope extends AmaltheaValidation {
 				}
 			}
 			
-			Set<IReferable> unnamedObjects = AmaltheaIndex.getElements(root, "", IReferable.class);
-			
-			for (IReferable element : unnamedObjects) {
-				addIssue(results, element, ePackage.getINamed_Name(),
-						typeInfo(element) + ": missing name");						
-			}
+// Already implemented as EMF invariant
+//
+//			Set<IReferable> unnamedObjects = AmaltheaIndex.getElements(root, "", IReferable.class);
+//			
+//			for (IReferable element : unnamedObjects) {
+//				addIssue(results, element, ePackage.getINamed_Name(),
+//						typeInfo(element) + ": missing name");						
+//			}
 			
 		}
 	}

@@ -77,9 +77,7 @@
 		<module>../../plugins/org.eclipse.app4mc.amalthea.import.atdb</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.edit</module>
-		<!--
 		<module>../../plugins/org.eclipse.app4mc.amalthea.model.editor</module>
-		-->
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui</module>
 		<module>../../plugins/org.eclipse.app4mc.amalthea.sphinx.ui.editors</module>

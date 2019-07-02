@@ -19,6 +19,7 @@
     <details key="collapseAllAction" value="true"/>
     <details key="expandAllAction" value="true"/>
     <details key="autoExpandProperties" value="1"/>
+    <details key="eclipsePlatformVersion" value="Photon"/>
     <details key="basePackage" value="org.eclipse.app4mc.amalthea"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Amalthea" eSuperTypes="#//BaseObject">

@@ -28,7 +28,8 @@
 	decoration="Live",
 	collapseAllAction="true",
 	expandAllAction="true", 
-	autoExpandProperties="1"
+	autoExpandProperties="1",
+	eclipsePlatformVersion="Photon"
 )
 
 @Ecore(
