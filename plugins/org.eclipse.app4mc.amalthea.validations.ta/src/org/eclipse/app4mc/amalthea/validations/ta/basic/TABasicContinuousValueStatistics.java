@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -43,21 +45,22 @@ public class TABasicContinuousValueStatistics extends AmaltheaValidation {
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof ContinuousValueStatistics) {
-			ContinuousValueStatistics dvs = (ContinuousValueStatistics) eObject;
-			double average = dvs.getAverage();
+			ContinuousValueStatistics cvs = (ContinuousValueStatistics) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(cvs, INamed.class);
+			double average = cvs.getAverage();
 			if (Double.isFinite(average)) {
-				Double lower = dvs.getLowerBound();
+				Double lower = cvs.getLowerBound();
 				if (lower != null && !lower.isNaN() && !lower.isInfinite()) {
 					if (Double.compare(lower, average) > 0) {
-						addIssue(results, dvs, ePackage.getContinuousValueStatistics_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(dvs) + " )");
+						addIssue(results, cvs, ePackage.getContinuousValueStatistics_Average(),
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
-				Double upper = dvs.getUpperBound();
+				Double upper = cvs.getUpperBound();
 				if (upper != null && !upper.isNaN() && !upper.isInfinite()) {
 					if (Double.compare(upper, average) < 0) {
-						addIssue(results, dvs, ePackage.getContinuousValueStatistics_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(dvs) + " )");
+						addIssue(results, cvs, ePackage.getContinuousValueStatistics_Average(),
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

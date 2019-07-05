@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
@@ -45,20 +47,21 @@ public class TABasicTimeGaussDistribution extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TimeGaussDistribution) {
 			TimeGaussDistribution tgd = (TimeGaussDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(tgd, INamed.class);
 			Time mean = tgd.getMean();
 			if (mean != null) {
 				Time lower = tgd.getLowerBound();
 				if (lower != null) {
 					if (lower.compareTo(mean) > 0) {
 						addIssue(results, tgd, ePackage.getTimeGaussDistribution_Mean(),
-								getEClassifier().getName() + ": mean is less than the lower bound: (" + mean + " < " + lower + ", in " + objectInfo(tgd) + " )");
+								getEClassifier().getName() + ": mean is less than the lower bound: (" + mean + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Time upper = tgd.getUpperBound();
 				if (upper != null) {
 					if (upper.compareTo(mean) < 0) {
 						addIssue(results, tgd, ePackage.getTimeGaussDistribution_Mean(),
-								getEClassifier().getName() + ": mean is greater than the upper bound: (" + mean + " > " + upper + ", in " + objectInfo(tgd) + " )");
+								getEClassifier().getName() + ": mean is greater than the upper bound: (" + mean + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

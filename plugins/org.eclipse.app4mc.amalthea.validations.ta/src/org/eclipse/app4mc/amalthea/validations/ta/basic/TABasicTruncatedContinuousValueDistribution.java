@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
@@ -43,12 +45,13 @@ public class TABasicTruncatedContinuousValueDistribution extends AmaltheaValidat
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TruncatedContinuousValueDistribution) {
 			TruncatedContinuousValueDistribution tcvd = (TruncatedContinuousValueDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(tcvd, INamed.class);
 			Double lower = tcvd.getLowerBound();
 			Double upper = tcvd.getUpperBound();
 			if (lower != null && !lower.isNaN() && !lower.isInfinite() && upper != null && !upper.isNaN() && !upper.isInfinite()) {
 				if (lower.compareTo(upper) > 0) {
 					addIssue(results, tcvd, ePackage.getTruncatedContinuousValueDistribution_LowerBound(),
-							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(tcvd) + " )");
+							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 				}
 			}
 		}

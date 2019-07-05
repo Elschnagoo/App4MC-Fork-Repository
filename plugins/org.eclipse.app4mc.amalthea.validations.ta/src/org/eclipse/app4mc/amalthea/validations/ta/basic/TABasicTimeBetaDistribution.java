@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
@@ -43,19 +45,20 @@ public class TABasicTimeBetaDistribution extends AmaltheaValidation {
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TimeBetaDistribution) {
-			TimeBetaDistribution dvbd = (TimeBetaDistribution) eObject;
-			double alpha = dvbd.getAlpha();
+			TimeBetaDistribution tbd = (TimeBetaDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(tbd, INamed.class);
+			double alpha = tbd.getAlpha();
 			if (Double.isFinite(alpha)) {
 				if (Double.compare(0.0d, alpha) >= 0) {
-					addIssue(results, dvbd, ePackage.getTimeBetaDistribution_Alpha(),
-							getEClassifier().getName() + ": alpha must be greater than 0.0d: (" + alpha + " <= 0.0d, in " + objectInfo(dvbd) + " )");
+					addIssue(results, tbd, ePackage.getTimeBetaDistribution_Alpha(),
+							getEClassifier().getName() + ": alpha must be greater than 0.0d: (" + alpha + " <= 0.0d, in " + objectInfo(namedContainer) + ")");
 				}
 			}
-			double beta = dvbd.getBeta();
+			double beta = tbd.getBeta();
 			if (Double.isFinite(beta)) {
 				if (Double.compare(0.0d, beta) >= 0) {
-					addIssue(results, dvbd, ePackage.getTimeBetaDistribution_Beta(),
-							getEClassifier().getName() + ": beta must be greater than 0.0d: (" + beta + " <= 0.0d, in " + objectInfo(dvbd) + " )");
+					addIssue(results, tbd, ePackage.getTimeBetaDistribution_Beta(),
+							getEClassifier().getName() + ": beta must be greater than 0.0d: (" + beta + " <= 0.0d, in " + objectInfo(namedContainer) + ")");
 				}
 			}
 		}

@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeStatistics;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
@@ -44,21 +46,22 @@ public class TABasicTimeStatistics extends AmaltheaValidation {
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TimeStatistics) {
-			TimeStatistics dvs = (TimeStatistics) eObject;
-			Time average = dvs.getAverage();
+			TimeStatistics ts = (TimeStatistics) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(ts, INamed.class);
+			Time average = ts.getAverage();
 			if (average != null) {
-				Time lower = dvs.getLowerBound();
+				Time lower = ts.getLowerBound();
 				if (lower != null) {
 					if (lower.compareTo(average) > 0) {
-						addIssue(results, dvs, ePackage.getTimeStatistics_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(dvs) + " )");
+						addIssue(results, ts, ePackage.getTimeStatistics_Average(),
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
-				Time upper = dvs.getUpperBound();
+				Time upper = ts.getUpperBound();
 				if (upper != null) {
 					if (upper.compareTo(average) < 0) {
-						addIssue(results, dvs, ePackage.getTimeStatistics_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(dvs) + " )");
+						addIssue(results, ts, ePackage.getTimeStatistics_Average(),
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

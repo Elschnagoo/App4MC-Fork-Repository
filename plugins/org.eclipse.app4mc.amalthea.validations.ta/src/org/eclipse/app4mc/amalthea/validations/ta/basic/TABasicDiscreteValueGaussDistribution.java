@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -44,20 +46,21 @@ public class TABasicDiscreteValueGaussDistribution extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof DiscreteValueGaussDistribution) {
 			DiscreteValueGaussDistribution dvgd = (DiscreteValueGaussDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(dvgd, INamed.class);
 			double mean = dvgd.getMean();
 			if (Double.isFinite(mean)) {
 				Long lower = dvgd.getLowerBound();
 				if (lower != null) {
 					if (Double.compare(lower, mean) > 0) {
 						addIssue(results, dvgd, ePackage.getDiscreteValueGaussDistribution_Mean(),
-								getEClassifier().getName() + ": mean is less than the lower bound: (" + mean + " < " + lower + ", in " + objectInfo(dvgd) + " )");
+								getEClassifier().getName() + ": mean is less than the lower bound: (" + mean + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Long upper = dvgd.getUpperBound();
 				if (upper != null) {
 					if (Double.compare(upper, mean) < 0) {
 						addIssue(results, dvgd, ePackage.getDiscreteValueGaussDistribution_Mean(),
-								getEClassifier().getName() + ": mean is greater than the upper bound: (" + mean + " > " + upper + ", in " + objectInfo(dvgd) + " )");
+								getEClassifier().getName() + ": mean is greater than the upper bound: (" + mean + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

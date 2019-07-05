@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -43,19 +45,20 @@ public class TABasicContinuousValueBetaDistribution extends AmaltheaValidation {
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof ContinuousValueBetaDistribution) {
-			ContinuousValueBetaDistribution dvbd = (ContinuousValueBetaDistribution) eObject;
-			double alpha = dvbd.getAlpha();
+			ContinuousValueBetaDistribution cvbd = (ContinuousValueBetaDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(cvbd, INamed.class);
+			double alpha = cvbd.getAlpha();
 			if (Double.isFinite(alpha)) {
 				if (Double.compare(0.0d, alpha) >= 0) {
-					addIssue(results, dvbd, ePackage.getContinuousValueBetaDistribution_Alpha(),
-							getEClassifier().getName() + ": alpha must be greater than 0.0d: (" + alpha + " <= 0.0d, in " + objectInfo(dvbd) + " )");
+					addIssue(results, cvbd, ePackage.getContinuousValueBetaDistribution_Alpha(),
+							getEClassifier().getName() + ": alpha must be greater than 0.0d: (" + alpha + " <= 0.0d, in " + objectInfo(namedContainer) + ")");
 				}
 			}
-			double beta = dvbd.getBeta();
+			double beta = cvbd.getBeta();
 			if (Double.isFinite(beta)) {
 				if (Double.compare(0.0d, beta) >= 0) {
-					addIssue(results, dvbd, ePackage.getContinuousValueBetaDistribution_Beta(),
-							getEClassifier().getName() + ": beta must be greater than 0.0d: (" + beta + " <= 0.0d, in " + objectInfo(dvbd) + " )");
+					addIssue(results, cvbd, ePackage.getContinuousValueBetaDistribution_Beta(),
+							getEClassifier().getName() + ": beta must be greater than 0.0d: (" + beta + " <= 0.0d, in " + objectInfo(namedContainer) + ")");
 				}
 			}
 		}

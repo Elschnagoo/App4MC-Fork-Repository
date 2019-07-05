@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -44,20 +46,21 @@ public class TABasicDiscreteValueWeibullEstimatorsDistribution extends AmaltheaV
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof DiscreteValueWeibullEstimatorsDistribution) {
 			DiscreteValueWeibullEstimatorsDistribution dvwed = (DiscreteValueWeibullEstimatorsDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(dvwed, INamed.class);
 			double average = dvwed.getAverage();
 			if (Double.isFinite(average)) {
 				Long lower = dvwed.getLowerBound();
 				if (lower != null) {
 					if (Double.compare(lower, average) > 0) {
 						addIssue(results, dvwed, ePackage.getDiscreteValueWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(dvwed) + " )");
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Long upper = dvwed.getUpperBound();
 				if (upper != null) {
 					if (Double.compare(upper, average) < 0) {
 						addIssue(results, dvwed, ePackage.getDiscreteValueWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(dvwed) + " )");
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

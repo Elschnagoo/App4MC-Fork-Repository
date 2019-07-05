@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
@@ -44,12 +46,13 @@ public class TABasicTruncatedTimeDistribution extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TruncatedTimeDistribution) {
 			TruncatedTimeDistribution ttd = (TruncatedTimeDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(ttd, INamed.class);
 			Time lower = ttd.getLowerBound();
 			Time upper = ttd.getUpperBound();
 			if (lower != null && upper != null) {
 				if (lower.compareTo(upper) > 0) {
 					addIssue(results, ttd, ePackage.getTruncatedTimeDistribution_LowerBound(),
-							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(ttd) + " )");
+							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 				}
 			}
 		}

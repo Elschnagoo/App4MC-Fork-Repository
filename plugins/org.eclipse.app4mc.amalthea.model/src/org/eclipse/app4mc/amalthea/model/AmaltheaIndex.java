@@ -63,6 +63,7 @@ public final class AmaltheaIndex {
 	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<T extends INamed>";
 	private static final String ARG_RESULT_REFERENCE_MESSAGE = "Result reference argument is null, expected: EReference";
 	private static final String ARG_TARGET_REFERENCES_MESSAGE = "Target references argument is null, expected: Set<EReference>";
+	private static final String ARG_TARGET_REFERENCE_MESSAGE = "Target reference argument is null, expected: EReference";
 	
 	// Suppress default constructor
 	private AmaltheaIndex() {
@@ -123,6 +124,28 @@ public final class AmaltheaIndex {
 		
 		return getOrCreateAmaltheaAdapter(eObject).getNonNavigableInverseReferences(eObject)
 				.stream()
+				.map(setting -> setting.getEObject())
+				.filter(obj -> targetClass.isInstance(obj))
+				.map(obj -> targetClass.cast(obj))
+				.collect(Collectors.toSet());
+	}
+	
+	/**
+	 * Returns a type filtered (<code>targetClass</code>) set of objects that refer to the given <code>eObject</code> via their given <code>targetEReference</code>.
+	 * @param <T>
+	 * @param eObject
+	 * @param targetEReference
+	 * @param targetClass
+	 * @return
+	 */
+	public static <T extends EObject> Set<T> getReferringObjects(final @NonNull EObject eObject, final @NonNull EReference targetEReference, final @NonNull Class<T> targetClass) {
+		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
+		checkArgument(targetEReference != null, ARG_TARGET_REFERENCE_MESSAGE);
+		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
+		
+		return getOrCreateAmaltheaAdapter(eObject).getNonNavigableInverseReferences(eObject)
+				.stream()
+				.filter(setting -> setting.getEStructuralFeature() == targetEReference)
 				.map(setting -> setting.getEObject())
 				.filter(obj -> targetClass.isInstance(obj))
 				.map(obj -> targetClass.cast(obj))

@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
@@ -43,12 +45,13 @@ public class TABasicTruncatedDiscreteValueDistribution extends AmaltheaValidatio
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TruncatedDiscreteValueDistribution) {
 			TruncatedDiscreteValueDistribution tdvd = (TruncatedDiscreteValueDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(tdvd, INamed.class);
 			Long lower = tdvd.getLowerBound();
 			Long upper = tdvd.getUpperBound();
 			if (lower != null && upper != null) {
 				if (lower > upper) {
 					addIssue(results, tdvd, ePackage.getTruncatedDiscreteValueDistribution_LowerBound(),
-							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(tdvd) + " )");
+							getEClassifier().getName() + ": lower bound is higher than the upper: (" + lower + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 				}
 			}
 		}

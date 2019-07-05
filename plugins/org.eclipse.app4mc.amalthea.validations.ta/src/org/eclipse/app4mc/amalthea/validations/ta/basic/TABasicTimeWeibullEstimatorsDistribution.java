@@ -16,6 +16,8 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
@@ -45,20 +47,21 @@ public class TABasicTimeWeibullEstimatorsDistribution extends AmaltheaValidation
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof TimeWeibullEstimatorsDistribution) {
 			TimeWeibullEstimatorsDistribution twed = (TimeWeibullEstimatorsDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(twed, INamed.class);
 			Time average = twed.getAverage();
 			if (average != null) {
 				Time lower = twed.getLowerBound();
 				if (lower != null) {
 					if (lower.compareTo(average) > 0) {
 						addIssue(results, twed, ePackage.getTimeWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(twed) + " )");
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Time upper = twed.getUpperBound();
 				if (upper != null) {
 					if (upper.compareTo(average) < 0) {
 						addIssue(results, twed, ePackage.getTimeWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(twed) + " )");
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -44,20 +46,21 @@ public class TABasicDiscreteValueStatistics extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof DiscreteValueStatistics) {
 			DiscreteValueStatistics dvs = (DiscreteValueStatistics) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(dvs, INamed.class);
 			double average = dvs.getAverage();
 			if (Double.isFinite(average)) {
 				Long lower = dvs.getLowerBound();
 				if (lower != null) {
 					if (Double.compare(lower, average) > 0) {
 						addIssue(results, dvs, ePackage.getDiscreteValueStatistics_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(dvs) + " )");
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Long upper = dvs.getUpperBound();
 				if (upper != null) {
 					if (Double.compare(upper, average) < 0) {
 						addIssue(results, dvs, ePackage.getDiscreteValueStatistics_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(dvs) + " )");
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

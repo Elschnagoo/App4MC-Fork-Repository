@@ -16,7 +16,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.basic;
 
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution;
+import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -44,20 +46,21 @@ public class TABasicContinuousValueWeibullEstimatorsDistribution extends Amalthe
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof ContinuousValueWeibullEstimatorsDistribution) {
 			ContinuousValueWeibullEstimatorsDistribution cvwed = (ContinuousValueWeibullEstimatorsDistribution) eObject;
+			INamed namedContainer = AmaltheaServices.getContainerOfType(cvwed, INamed.class);
 			double average = cvwed.getAverage();
 			if (Double.isFinite(average)) {
 				Double lower = cvwed.getLowerBound();
 				if (lower != null && !lower.isNaN() && !lower.isInfinite()) {
 					if (lower.compareTo(average) > 0) {
 						addIssue(results, cvwed, ePackage.getContinuousValueWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(cvwed) + " )");
+								getEClassifier().getName() + ": average is less than the lower bound: (" + average + " < " + lower + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 				Double upper = cvwed.getUpperBound();
 				if (upper != null && !upper.isNaN() && !upper.isInfinite()) {
 					if (upper.compareTo(average) < 0) {
 						addIssue(results, cvwed, ePackage.getContinuousValueWeibullEstimatorsDistribution_Average(),
-								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(cvwed) + " )");
+								getEClassifier().getName() + ": average is greater than the upper bound: (" + average + " > " + upper + ", in " + objectInfo(namedContainer) + ")");
 					}
 				}
 			}

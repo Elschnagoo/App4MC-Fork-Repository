@@ -21,7 +21,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-		AmaltheaModelValidatorTests.class,
+		TABasicModelValidatorTests.class,
 		ConstraintsModelValidatorTests.class,
 		HWModelValidatorTests.class,
 		MappingModelValidatorTests.class,
