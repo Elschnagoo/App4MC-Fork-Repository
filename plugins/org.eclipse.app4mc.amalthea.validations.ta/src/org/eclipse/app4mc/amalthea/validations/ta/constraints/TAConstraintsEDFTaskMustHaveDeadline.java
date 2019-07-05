@@ -22,6 +22,8 @@ import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
+import org.eclipse.app4mc.amalthea.model.TimeMetric;
+import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -45,7 +47,6 @@ public class TAConstraintsEDFTaskMustHaveDeadline extends AmaltheaValidation {
 		return ePackage.getTask();
 	}
 
-	// TODO: Should the process requirement's limit be a TimeRequirementLimit with metric RESPONSE_TIME?
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof Task) {
@@ -54,8 +55,12 @@ public class TAConstraintsEDFTaskMustHaveDeadline extends AmaltheaValidation {
 					// check if at least one task scheduler that schedules this task has an EDF scheduling algorithm
 					.anyMatch(ta -> ta.getScheduler() != null && ta.getScheduler().getSchedulingAlgorithm() instanceof EarliestDeadlineFirst)) {
 				if (AmaltheaIndex.getReferringObjects(task, ePackage.getProcessRequirement_Process(), ProcessRequirement.class).stream()
-						// if there is no process requirement with and upper limit then there is not deadline specified for this task
-						.noneMatch(pr -> pr.getLimit() != null && pr.getLimit().getLimitType() == LimitType.UPPER_LIMIT)) {
+						// if there is no process requirement with and upper limit
+						.noneMatch(pr -> pr.getLimit() != null && pr.getLimit().getLimitType() == LimitType.UPPER_LIMIT &&
+							// and the limit is not a TimeRequirementLimit with metric RESPONSE_TIME
+							pr.getLimit() instanceof TimeRequirementLimit &&
+							// then there is no deadline
+							((TimeRequirementLimit)pr.getLimit()).getMetric() == TimeMetric.RESPONSE_TIME)) {
 					addIssue(results, task, null, "There is no deadline ProcessRequirement for task " + task.getName() +
 							", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified.");
 				}
