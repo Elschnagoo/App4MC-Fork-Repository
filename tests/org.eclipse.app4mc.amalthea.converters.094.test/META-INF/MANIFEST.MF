@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: APP4MC Amalthea Converters to 0.9.2 Test
+Bundle-Name: APP4MC Amalthea Converters to 0.9.4 Test
 Bundle-SymbolicName: org.eclipse.app4mc.amalthea.converters.094.test
 Bundle-Version: 0.9.5.qualifier
 Fragment-Host: org.eclipse.app4mc.amalthea.converters.094

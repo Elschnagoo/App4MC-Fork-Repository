@@ -40,6 +40,7 @@ public class ModelVersions {
 		allSupportedVersions.add("0.9.2");
 		allSupportedVersions.add("0.9.3");
 		allSupportedVersions.add("0.9.4");
+		allSupportedVersions.add("0.9.5");
 
 		return allSupportedVersions;
 	}
