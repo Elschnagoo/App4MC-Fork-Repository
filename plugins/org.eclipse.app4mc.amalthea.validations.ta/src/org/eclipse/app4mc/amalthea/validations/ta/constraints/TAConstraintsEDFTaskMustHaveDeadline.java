@@ -61,7 +61,7 @@ public class TAConstraintsEDFTaskMustHaveDeadline extends AmaltheaValidation {
 							pr.getLimit() instanceof TimeRequirementLimit &&
 							// then there is no deadline
 							((TimeRequirementLimit)pr.getLimit()).getMetric() == TimeMetric.RESPONSE_TIME)) {
-					addIssue(results, task, null, "There is no deadline ProcessRequirement for task " + task.getName() +
+					addIssue(results, task, null, "There is no deadline ProcessRequirement for " + objectInfo(task) +
 							", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified.");
 				}
 			}
