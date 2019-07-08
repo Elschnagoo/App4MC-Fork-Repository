@@ -11,7 +11,7 @@
 		<version>0.9.5-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.app4mc.amalthea.converters.094.test</artifactId>
+	<artifactId>org.eclipse.app4mc.amalthea.converters.095.test</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 	
 	<build>
