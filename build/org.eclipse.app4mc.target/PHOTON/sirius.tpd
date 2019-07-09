@@ -28,5 +28,7 @@ location "http://download.eclipse.org/releases/photon" {
 	org.eclipse.emf.eef.edt-feature.feature.group
 	org.eclipse.emf.eef.runtime-feature.feature.group
 	org.eclipse.emf.eef.extended-feature.feature.group
+	org.eclipse.m2e.feature.feature.group [1.9.0,1.10.0)
+	org.eclipse.fx.ide.m2e.feature.feature.group [3.3.0,3.3.1)
 	
 }

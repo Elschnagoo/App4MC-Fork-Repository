@@ -15,6 +15,8 @@ location "https://download.eclipse.org/releases/photon" {
 	org.eclipse.wst.common_ui.feature.feature.group
 	org.eclipse.wst.common_core.feature.feature.group
 	org.eclipse.wst.common.fproj.feature.group
+	org.eclipse.wst.xml_core.feature.feature.group [3.10.0,3.10.1)
+	org.eclipse.wst.xml_userdoc.feature.feature.group [3.10.0,3.10.1)
 }
 
 location "http://download.eclipse.org/releases/oxygen/201706021000" {

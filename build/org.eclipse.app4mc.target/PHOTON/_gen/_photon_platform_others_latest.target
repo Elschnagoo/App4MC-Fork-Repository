@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Photon-Platform" sequenceNumber="1562598162">
+<target name="Photon-Platform" sequenceNumber="1562672231">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.2.0.v20180512-1128"/>
@@ -50,7 +50,7 @@
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.objectweb.asm" version="7.0.0.v20181030-2244"/>
+      <unit id="org.objectweb.asm" version="6.2.1.v20181030-2244"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops2/R20181128170323/repository"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
@@ -71,6 +71,8 @@
       <unit id="org.eclipse.wst.common_ui.feature.feature.group" version="3.9.2.v201803040536"/>
       <unit id="org.eclipse.wst.common_core.feature.feature.group" version="3.9.1.v201803151712"/>
       <unit id="org.eclipse.wst.common.fproj.feature.group" version="3.7.1.v201711202234"/>
+      <unit id="org.eclipse.wst.xml_core.feature.feature.group" version="3.10.0.v201805022129"/>
+      <unit id="org.eclipse.wst.xml_userdoc.feature.feature.group" version="3.10.0.v201804190136"/>
       <repository location="https://download.eclipse.org/releases/photon"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
@@ -132,6 +134,8 @@
       <unit id="org.eclipse.emf.eef.edt-feature.feature.group" version="1.5.1.201601141612"/>
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
       <unit id="org.eclipse.emf.eef.extended-feature.feature.group" version="1.5.1.201601141612"/>
+      <unit id="org.eclipse.m2e.feature.feature.group" version="1.9.0.20180606-2036"/>
+      <unit id="org.eclipse.fx.ide.m2e.feature.feature.group" version="3.3.0.201805280700"/>
       <unit id="org.eclipse.fx.ide.basic.feature.feature.group" version="3.3.0.201805280700"/>
       <unit id="org.eclipse.fx.ide.converter.feature.feature.group" version="3.3.0.201805280700"/>
       <unit id="org.eclipse.fx.ide.css.feature.feature.group" version="3.3.0.201805280700"/>
@@ -182,6 +186,8 @@
       <unit id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.feature.group" version="1.1.100.v20180301-0132"/>
       <unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="1.1.100.v20180301-0201"/>
       <unit id="org.eclipse.ecf.filetransfer.ssl.feature.feature.group" version="1.1.100.v20180301-0132"/>
+      <unit id="org.eclipse.ecf.osgi.services.feature.feature.group" version="2.3.1.v20180518-0149"/>
+      <unit id="org.eclipse.ecf.console.feature.feature.group" version="1.1.0.v20180307-2220"/>
       <unit id="org.eclipse.fx.code.editor.configuration" version="3.3.0.201805280600"/>
       <unit id="org.eclipse.graphiti.sdk.feature.feature.group" version="0.15.0.201806050830"/>
       <unit id="org.eclipse.graphiti.export.feature.feature.group" version="0.15.0.201806050830"/>

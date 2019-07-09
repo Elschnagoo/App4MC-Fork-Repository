@@ -65,5 +65,5 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2018060614512
 }
  
 location "http://download.eclipse.org/tools/orbit/downloads/drops2/R20181128170323/repository" {
-	org.objectweb.asm
+	org.objectweb.asm [6.2.1,6.2.2)
 }
