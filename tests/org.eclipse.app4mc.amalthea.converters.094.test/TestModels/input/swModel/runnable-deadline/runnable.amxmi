@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
     <runnables name="package342/run1 (local) &lt;param>" callback="false" service="false">
       <runnableItems xsi:type="am:Group" name="" ordered="true">
