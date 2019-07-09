@@ -28,13 +28,10 @@ import org.eclipse.app4mc.validation.core.IProfile;
 @ProfileGroup(
 	profiles = {
 		TABasicProfile.class,
-		TAConstraintsProfile.class
+		TAConstraintsProfile.class,
+		TAHardwareProfile.class
 	}
 )
-/*@ValidationGroup(
-	severity = Severity.WARNING,
-	validations = { TA011.class }
-)*/
 public class TimingArchitectsProfile implements IProfile {
     // Do nothing
 }

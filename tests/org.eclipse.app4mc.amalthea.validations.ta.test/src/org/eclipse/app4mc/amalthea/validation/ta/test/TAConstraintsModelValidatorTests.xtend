@@ -38,6 +38,7 @@ import org.junit.Test
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
+import org.eclipse.app4mc.validation.core.Severity
 
 class TAConstraintsModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
@@ -100,7 +101,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The minimum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_min\")"))
 		assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_max\")"))
 		assertTrue(result.contains("The minimum time must not be negative (-2 ms < 0, in Data Age Constraint \"dac_maxmin\")"))
@@ -124,7 +125,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_lower\")"))
 		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upper\")"))
 		assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Delay Constraint \"dc_upperlower\")"))
@@ -148,7 +149,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The minimum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_lower\")"))
 		assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upper\")"))
 		assertTrue(result.contains("The minimum must not be negative (-2 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"))
@@ -195,7 +196,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("There is no deadline ProcessRequirement for Task \"t_noDead\", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified."))
 		assertFalse(result.contains("There is no deadline ProcessRequirement for Task \"t_ok\", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified."))
 	}
@@ -214,7 +215,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_lower\")"))
 		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upper\")"))
 		assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Repetition Constraint \"rc_upperlower\")"))
@@ -247,7 +248,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The response time specified in Process Requirement \"Process deadline - t_notOk\" must be greater than 0."))
 		assertFalse(result.contains("The response time specified in Process Requirement \"Process deadline - t_ok\" must be greater than 0."))
 	}
@@ -267,7 +268,7 @@ class TAConstraintsModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_notOk\" must not be negative."))
 		assertFalse(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_ok\" must not be negative."))
 	}

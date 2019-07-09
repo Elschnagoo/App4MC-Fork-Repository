@@ -12,8 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.validation.ta.test;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -40,6 +42,7 @@ import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder;
 import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile;
+import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;
 import org.eclipse.emf.common.util.EList;
@@ -152,10 +155,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The minimum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_min\")"));
     Assert.assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_max\")"));
     Assert.assertTrue(result.contains("The minimum time must not be negative (-2 ms < 0, in Data Age Constraint \"dac_maxmin\")"));
@@ -191,10 +198,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_lower\")"));
     Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upper\")"));
     Assert.assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Delay Constraint \"dc_upperlower\")"));
@@ -230,10 +241,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The minimum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_lower\")"));
     Assert.assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upper\")"));
     Assert.assertTrue(result.contains("The minimum must not be negative (-2 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"));
@@ -291,10 +306,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("There is no deadline ProcessRequirement for Task \"t_noDead\", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified."));
     Assert.assertFalse(result.contains("There is no deadline ProcessRequirement for Task \"t_ok\", since it is scheduled by an Earliest Deadline First scheduler a deadline must be specified."));
   }
@@ -329,10 +348,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_lower\")"));
     Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upper\")"));
     Assert.assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Repetition Constraint \"rc_upperlower\")"));
@@ -370,10 +393,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The response time specified in Process Requirement \"Process deadline - t_notOk\" must be greater than 0."));
     Assert.assertFalse(result.contains("The response time specified in Process Requirement \"Process deadline - t_ok\" must be greater than 0."));
   }
@@ -397,10 +424,14 @@ public class TAConstraintsModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_notOk\" must not be negative."));
     Assert.assertFalse(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_ok\" must not be negative."));
   }

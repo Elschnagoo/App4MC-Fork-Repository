@@ -12,8 +12,10 @@
  */
 package org.eclipse.app4mc.amalthea.validation.ta.test;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -43,6 +45,7 @@ import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder;
 import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile;
+import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -287,10 +290,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphaZero\")"));
     Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"));
     Assert.assertFalse(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"));
@@ -323,10 +330,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("ContinuousValueGaussDistribution: mean is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_meanLess\")"));
     Assert.assertTrue(result.contains("ContinuousValueGaussDistribution: mean is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_meanMore\")"));
     Assert.assertFalse(result.contains("ContinuousValueGaussDistribution: mean is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"));
@@ -352,10 +363,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("ContinuousValueInterval: lower bound is higher than the upper: (20.0 > 10.0, in Variable Rate Stimulus \"vrs_more\")"));
     Assert.assertFalse(result.contains("ContinuousValueInterval: lower bound is higher than the upper: (20.0 > 40.0, in Variable Rate Stimulus \"vrs_ok\")"));
   }
@@ -384,10 +399,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("ContinuousValueStatistics: average is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_avgLess\")"));
     Assert.assertTrue(result.contains("ContinuousValueStatistics: average is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_avgMore\")"));
     Assert.assertFalse(result.contains("ContinuousValueStatistics: average is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"));
@@ -418,10 +437,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_avgLess\")"));
     Assert.assertTrue(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_avgMore\")"));
     Assert.assertFalse(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"));
@@ -447,10 +470,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TruncatedContinuousValueDistribution: lower bound is higher than the upper: (20.0 > 10.0, in Variable Rate Stimulus \"vrs_more\")"));
     Assert.assertFalse(result.contains("TruncatedContinuousValueDistribution: lower bound is higher than the upper: (20.0 > 40.0, in Variable Rate Stimulus \"vrs_ok\")"));
   }
@@ -496,10 +523,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_alphaZero\")"));
     Assert.assertTrue(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_alphabetaZero\")"));
     Assert.assertFalse(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_ok\")"));
@@ -541,10 +572,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("DiscreteValueGaussDistribution: mean is less than the lower bound: (10.0 < 20, in Runnable \"r_meanLess\")"));
     Assert.assertTrue(result.contains("DiscreteValueGaussDistribution: mean is greater than the upper bound: (50.0 > 40, in Runnable \"r_meanMore\")"));
     Assert.assertFalse(result.contains("DiscreteValueGaussDistribution: mean is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"));
@@ -576,10 +611,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("DiscreteValueInterval: lower bound is higher than the upper: (20 > 10, in Runnable \"r_more\")"));
     Assert.assertFalse(result.contains("DiscreteValueInterval: lower bound is higher than the upper: (20 < 40, in Runnable \"r_ok\")"));
   }
@@ -617,10 +656,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("DiscreteValueStatistics: average is less than the lower bound: (10.0 < 20, in Runnable \"r_avgLess\")"));
     Assert.assertTrue(result.contains("DiscreteValueStatistics: average is greater than the upper bound: (50.0 > 40, in Runnable \"r_avgMore\")"));
     Assert.assertFalse(result.contains("DiscreteValueStatistics: average is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"));
@@ -660,10 +703,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is less than the lower bound: (10.0 < 20, in Runnable \"r_avgLess\")"));
     Assert.assertTrue(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is greater than the upper bound: (50.0 > 40, in Runnable \"r_avgMore\")"));
     Assert.assertFalse(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"));
@@ -695,10 +742,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TruncatedDiscreteValueDistribution: lower bound is higher than the upper: (20 > 10, in Runnable \"r_more\")"));
     Assert.assertFalse(result.contains("TruncatedDiscreteValueDistribution: lower bound is higher than the upper: (20 > 40, in Runnable \"r_ok\")"));
   }
@@ -732,10 +783,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_alphaZero\")"));
     Assert.assertTrue(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_alphabetaZero\")"));
     Assert.assertFalse(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_ok\")"));
@@ -768,10 +823,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TimeGaussDistribution: mean is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_meanLess\")"));
     Assert.assertTrue(result.contains("TimeGaussDistribution: mean is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_meanMore\")"));
     Assert.assertFalse(result.contains("TimeGaussDistribution: mean is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"));
@@ -797,10 +856,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TimeInterval: lower bound is higher than the upper: (20 ms > 10 ms, in Periodic Stimulus \"ps_more\")"));
     Assert.assertFalse(result.contains("TimeInterval: lower bound is higher than the upper: (20 ms > 40 ms, in Periodic Stimulus \"ps_ok\")"));
   }
@@ -829,10 +892,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TimeStatistics: average is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_avgLess\")"));
     Assert.assertTrue(result.contains("TimeStatistics: average is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_avgMore\")"));
     Assert.assertFalse(result.contains("TimeStatistics: average is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"));
@@ -863,10 +930,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TimeWeibullEstimatorsDistribution: average is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_avgLess\")"));
     Assert.assertTrue(result.contains("TimeWeibullEstimatorsDistribution: average is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_avgMore\")"));
     Assert.assertFalse(result.contains("TimeWeibullEstimatorsDistribution: average is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"));
@@ -892,10 +963,14 @@ public class TABasicModelValidatorTests {
     };
     final Amalthea model = this.b1.amalthea(_function);
     final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Function<ValidationDiagnostic, String> _function_1 = (ValidationDiagnostic it) -> {
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
       return it.getMessage();
     };
-    final List<String> result = validationResult.stream().<String>map(_function_1).collect(Collectors.<String>toList());
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("TruncatedTimeDistribution: lower bound is higher than the upper: (20 ms > 10 ms, in Periodic Stimulus \"ps_more\")"));
     Assert.assertFalse(result.contains("TruncatedTimeDistribution: lower bound is higher than the upper: (20 ms > 40 ms, in Periodic Stimulus \"ps_ok\")"));
   }

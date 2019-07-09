@@ -45,6 +45,7 @@ import org.eclipse.app4mc.amalthea.model.TimeStatistics
 import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution
 import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution
 import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution
+import org.eclipse.app4mc.validation.core.Severity
 
 class TABasicModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
@@ -206,7 +207,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphaZero\")"))
 		assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"))
 		assertFalse(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"))
@@ -234,7 +235,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("ContinuousValueGaussDistribution: mean is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_meanLess\")"))
 		assertTrue(result.contains("ContinuousValueGaussDistribution: mean is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_meanMore\")"))
 		assertFalse(result.contains("ContinuousValueGaussDistribution: mean is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"))
@@ -256,7 +257,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("ContinuousValueInterval: lower bound is higher than the upper: (20.0 > 10.0, in Variable Rate Stimulus \"vrs_more\")"))
 		assertFalse(result.contains("ContinuousValueInterval: lower bound is higher than the upper: (20.0 > 40.0, in Variable Rate Stimulus \"vrs_ok\")"))
 	}
@@ -280,7 +281,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("ContinuousValueStatistics: average is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_avgLess\")"))
 		assertTrue(result.contains("ContinuousValueStatistics: average is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_avgMore\")"))
 		assertFalse(result.contains("ContinuousValueStatistics: average is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"))
@@ -306,7 +307,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is less than the lower bound: (10.0 < 20.0, in Variable Rate Stimulus \"vrs_avgLess\")"))
 		assertTrue(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is greater than the upper bound: (50.0 > 40.0, in Variable Rate Stimulus \"vrs_avgMore\")"))
 		assertFalse(result.contains("ContinuousValueWeibullEstimatorsDistribution: average is less than the lower bound: (30.0 < 20.0, in Variable Rate Stimulus \"vrs_ok\")"))
@@ -328,7 +329,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TruncatedContinuousValueDistribution: lower bound is higher than the upper: (20.0 > 10.0, in Variable Rate Stimulus \"vrs_more\")"))
 		assertFalse(result.contains("TruncatedContinuousValueDistribution: lower bound is higher than the upper: (20.0 > 40.0, in Variable Rate Stimulus \"vrs_ok\")"))
 	}
@@ -364,7 +365,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_alphaZero\")"))
 		assertTrue(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_alphabetaZero\")"))
 		assertFalse(result.contains("DiscreteValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Runnable \"r_ok\")"))
@@ -398,7 +399,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("DiscreteValueGaussDistribution: mean is less than the lower bound: (10.0 < 20, in Runnable \"r_meanLess\")"))
 		assertTrue(result.contains("DiscreteValueGaussDistribution: mean is greater than the upper bound: (50.0 > 40, in Runnable \"r_meanMore\")"))
 		assertFalse(result.contains("DiscreteValueGaussDistribution: mean is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"))
@@ -424,7 +425,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("DiscreteValueInterval: lower bound is higher than the upper: (20 > 10, in Runnable \"r_more\")"))
 		assertFalse(result.contains("DiscreteValueInterval: lower bound is higher than the upper: (20 < 40, in Runnable \"r_ok\")"))
 	}
@@ -454,7 +455,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("DiscreteValueStatistics: average is less than the lower bound: (10.0 < 20, in Runnable \"r_avgLess\")"))
 		assertTrue(result.contains("DiscreteValueStatistics: average is greater than the upper bound: (50.0 > 40, in Runnable \"r_avgMore\")"))
 		assertFalse(result.contains("DiscreteValueStatistics: average is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"))
@@ -486,7 +487,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is less than the lower bound: (10.0 < 20, in Runnable \"r_avgLess\")"))
 		assertTrue(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is greater than the upper bound: (50.0 > 40, in Runnable \"r_avgMore\")"))
 		assertFalse(result.contains("DiscreteValueWeibullEstimatorsDistribution: average is less than the lower bound: (30.0 < 20, in Runnable \"r_ok\")"))
@@ -512,7 +513,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TruncatedDiscreteValueDistribution: lower bound is higher than the upper: (20 > 10, in Runnable \"r_more\")"))
 		assertFalse(result.contains("TruncatedDiscreteValueDistribution: lower bound is higher than the upper: (20 > 40, in Runnable \"r_ok\")"))
 	}
@@ -540,7 +541,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_alphaZero\")"))
 		assertTrue(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_alphabetaZero\")"))
 		assertFalse(result.contains("TimeBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Periodic Stimulus \"ps_ok\")"))
@@ -568,7 +569,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TimeGaussDistribution: mean is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_meanLess\")"))
 		assertTrue(result.contains("TimeGaussDistribution: mean is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_meanMore\")"))
 		assertFalse(result.contains("TimeGaussDistribution: mean is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"))
@@ -590,7 +591,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TimeInterval: lower bound is higher than the upper: (20 ms > 10 ms, in Periodic Stimulus \"ps_more\")"))
 		assertFalse(result.contains("TimeInterval: lower bound is higher than the upper: (20 ms > 40 ms, in Periodic Stimulus \"ps_ok\")"))
 	}
@@ -614,7 +615,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TimeStatistics: average is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_avgLess\")"))
 		assertTrue(result.contains("TimeStatistics: average is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_avgMore\")"))
 		assertFalse(result.contains("TimeStatistics: average is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"))
@@ -640,7 +641,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TimeWeibullEstimatorsDistribution: average is less than the lower bound: (10 ms < 20 ms, in Periodic Stimulus \"ps_avgLess\")"))
 		assertTrue(result.contains("TimeWeibullEstimatorsDistribution: average is greater than the upper bound: (50 ms > 40 ms, in Periodic Stimulus \"ps_avgMore\")"))
 		assertFalse(result.contains("TimeWeibullEstimatorsDistribution: average is less than the lower bound: (30 ms < 20 ms, in Periodic Stimulus \"ps_ok\")"))
@@ -662,7 +663,7 @@ class TABasicModelValidatorTests {
 			]
 		]
 		val validationResult = validate(model)
-		val result = validationResult.stream.map[it.message].collect(Collectors.toList)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("TruncatedTimeDistribution: lower bound is higher than the upper: (20 ms > 10 ms, in Periodic Stimulus \"ps_more\")"))
 		assertFalse(result.contains("TruncatedTimeDistribution: lower bound is higher than the upper: (20 ms > 40 ms, in Periodic Stimulus \"ps_ok\")"))
 	}

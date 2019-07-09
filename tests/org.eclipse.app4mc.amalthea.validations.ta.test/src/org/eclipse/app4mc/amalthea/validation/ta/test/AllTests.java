@@ -23,7 +23,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 		TABasicModelValidatorTests.class,
 		TAConstraintsModelValidatorTests.class,
-		HWModelValidatorTests.class,
+		TAHardwareModelValidatorTests.class,
 		MappingModelValidatorTests.class,
 		OSModelValidatorTests.class,
 		StimuliModelValidatorTests.class,

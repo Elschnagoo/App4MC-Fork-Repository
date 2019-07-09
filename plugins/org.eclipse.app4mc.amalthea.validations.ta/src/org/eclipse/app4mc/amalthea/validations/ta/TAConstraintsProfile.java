@@ -38,5 +38,5 @@ import org.eclipse.app4mc.validation.core.Severity;
 	}
 )
 public class TAConstraintsProfile implements IProfile {
-
+	// Do nothing
 }
