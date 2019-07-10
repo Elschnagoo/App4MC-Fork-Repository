@@ -65,7 +65,6 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			addAsilLevelPropertyDescriptor(object);
 			addSectionPropertyDescriptor(object);
 			addRunnableCallsPropertyDescriptor(object);
-			addTaskRunnableCallsPropertyDescriptor(object);
 			addReferringComponentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -184,30 +183,6 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Task Runnable Calls feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTaskRunnableCallsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Runnable_taskRunnableCalls_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Runnable_taskRunnableCalls_feature", "_UI_Runnable_type"),
-				 AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(),
-				 false,
-				 false,
-				 false,
-				 null,
-				 getString("_UI_ReadonlyPropertyCategory"),
-				 new String[] {
-					"org.eclipse.ui.views.properties.expert"
-				 }));
-	}
-
-	/**
 	 * This adds a property descriptor for the Referring Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -267,7 +242,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_ExecutionCondition());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_Parameters());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getRunnable_CallGraph());
 		}
 		return childrenFeatures;
 	}
@@ -340,7 +315,7 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 				return;
 			case AmaltheaPackage.RUNNABLE__EXECUTION_CONDITION:
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -370,88 +345,8 @@ public class RunnableItemProvider extends AbstractMemoryElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createExecutionNeed()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createTicks()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createRunnableModeSwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createChannelSend()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createChannelReceive()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createGetResultServerCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createGroup()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems(),
-				 AmaltheaFactory.eINSTANCE.createCustomEventTrigger()));
+				(AmaltheaPackage.eINSTANCE.getRunnable_CallGraph(),
+				 AmaltheaFactory.eINSTANCE.createCallGraph()));
 	}
 
 }

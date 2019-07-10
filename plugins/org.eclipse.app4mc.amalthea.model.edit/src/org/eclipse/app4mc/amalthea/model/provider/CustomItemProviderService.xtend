@@ -64,7 +64,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement
 import org.eclipse.app4mc.amalthea.model.EventChainReference
 import org.eclipse.app4mc.amalthea.model.EventConfig
-import org.eclipse.app4mc.amalthea.model.ExecutionNeed
 import org.eclipse.app4mc.amalthea.model.FloatObject
 import org.eclipse.app4mc.amalthea.model.Frequency
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric
@@ -126,11 +125,8 @@ import org.eclipse.app4mc.amalthea.model.ReferenceObject
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint
 import org.eclipse.app4mc.amalthea.model.RunnableCall
-import org.eclipse.app4mc.amalthea.model.RunnableItem
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
 import org.eclipse.app4mc.amalthea.model.RunnableParameter
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement
 import org.eclipse.app4mc.amalthea.model.RunnableScope
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation
@@ -147,7 +143,6 @@ import org.eclipse.app4mc.amalthea.model.SynchronousServerCall
 import org.eclipse.app4mc.amalthea.model.TagGroup
 import org.eclipse.app4mc.amalthea.model.TaskAllocation
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall
 import org.eclipse.app4mc.amalthea.model.Ticks
 import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.TimeMetric
@@ -2012,23 +2007,23 @@ class CustomItemProviderService {
 ///// _________________________ SW _________________________
 ///// 
 
-	private def static getRunnableItemText(RunnableItem item) {
-		switch item {
-			LabelAccess: getLabelAccessItemProviderText(item, null)
-			RunnableCall: getRunnableCallItemProviderText(item, null)
-			ExecutionNeed: "Execution Need"
-			Ticks: "Ticks"
-			Group: getGroupItemProviderText(item, null)
-			RunnableModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
-			RunnableProbabilitySwitch: "Probability Switch"
-			ModeLabelAccess: getModeLabelAccessItemProviderText(item, null)
-			SemaphoreAccess: getSemaphoreAccessItemProviderText(item, null)
-			SenderReceiverRead: getSenderReceiverReadItemProviderText(item, null)
-			SenderReceiverWrite: getSenderReceiverWriteItemProviderText(item, null)
-			AsynchronousServerCall: getAsynchronousServerCallItemProviderText(item, null)
-			SynchronousServerCall: getSynchronousServerCallItemProviderText(item, null)
-		}
-	}
+//	private def static getRunnableItemText(RunnableItem item) {
+//		switch item {
+//			LabelAccess: getLabelAccessItemProviderText(item, null)
+//			RunnableCall: getRunnableCallItemProviderText(item, null)
+//			ExecutionNeed: "Execution Need"
+//			Ticks: "Ticks"
+//			Group: getGroupItemProviderText(item, null)
+//			ModeSwitch: getRunnableModeSwitchItemProviderText(item, null)
+//			ProbabilitySwitch: "Probability Switch"
+//			ModeLabelAccess: getModeLabelAccessItemProviderText(item, null)
+//			SemaphoreAccess: getSemaphoreAccessItemProviderText(item, null)
+//			SenderReceiverRead: getSenderReceiverReadItemProviderText(item, null)
+//			SenderReceiverWrite: getSenderReceiverWriteItemProviderText(item, null)
+//			AsynchronousServerCall: getAsynchronousServerCallItemProviderText(item, null)
+//			SynchronousServerCall: getSynchronousServerCallItemProviderText(item, null)
+//		}
+//	}
 
 	/*****************************************************************************
 	 * 						AccessPrecedenceSpecItemProvider
@@ -2284,30 +2279,10 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						RunnableModeSwitchItemProvider
-	 *****************************************************************************/
-	def static String getRunnableModeSwitchItemProviderText(Object object, String defaultText) {
-		if (object instanceof RunnableModeSwitch) {
-			return "Mode Switch"
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getRunnableModeSwitchItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(RunnableModeSwitch)) {
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES,
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY:
-				return new ViewerNotification(notification, notification.getNotifier(), true, false)
-		}
-		return null
-	}
-
-	/*****************************************************************************
 	 * 						ModeSwitchEntryItemProvider
 	 *****************************************************************************/
 	def static String getModeSwitchEntryItemProviderText(Object object, String defaultText) {
-		if (object instanceof ModeSwitchEntry<?>) {
+		if (object instanceof ModeSwitchEntry) {
 			// Idea: create short notation if structure is simple (like the old one)
 			// val valueName = object?.values?.join("", ", ", "", [name])
 			val entryName = object?.name
@@ -2334,29 +2309,6 @@ class CustomItemProviderService {
 	 *****************************************************************************/
 	def static String getModeSwitchDefaultItemProviderText(Object object, String defaultText) {
 		return "default"
-	}
-
-	/*****************************************************************************
-	 * 						TaskRunnableCallItemProvider
-	 *****************************************************************************/
-	def static String getTaskRunnableCallItemProviderText(Object object, String defaultText) {
-		if (object instanceof TaskRunnableCall) {
-			val runName = object?.runnable?.name
-			val s1 = ppName(runName, "<runnable>")
-			return "call " + s1
-		} else {
-			return defaultText
-		}
-	}
-
-	def static ViewerNotification getTaskRunnableCallItemProviderNotification(Notification notification) {
-		switch notification.getFeatureID(typeof(TaskRunnableCall)) {
-			case AmaltheaPackage::TASK_RUNNABLE_CALL__RUNNABLE:
-				return new ViewerNotification(notification, notification.getNotifier(), false, true)
-			case AmaltheaPackage::TASK_RUNNABLE_CALL__STATISTIC:
-				return new ViewerNotification(notification, notification.getNotifier(), true, false)
-		}
-		return null
 	}
 
 	/*****************************************************************************

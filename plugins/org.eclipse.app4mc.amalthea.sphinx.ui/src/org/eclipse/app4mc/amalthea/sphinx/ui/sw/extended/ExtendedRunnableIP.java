@@ -22,7 +22,6 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.provider.RunnableItemProvider;
 import org.eclipse.app4mc.amalthea.sphinx.ui.ExtendedSWModelItemProvider;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.RunnableItemsContainerIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.container.RunnableParametersContainerIP;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
@@ -35,10 +34,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class ExtendedRunnableIP extends RunnableItemProvider {
 
 	protected RunnableParametersContainerIP runnableParamsCIP;
-	protected RunnableItemsContainerIP runnableItemsCIP;
 
 	private final EStructuralFeature feature_RUNNABLE_PARAMS = AmaltheaPackage.eINSTANCE.getRunnable_Parameters();
-	private final EStructuralFeature feature_RUNNABLE_ITEMS = AmaltheaPackage.eINSTANCE.getRunnable_RunnableItems();
 
 	public ExtendedRunnableIP(final AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -58,19 +55,11 @@ public class ExtendedRunnableIP extends RunnableItemProvider {
 		}
 		return this.runnableParamsCIP;
 	}
-	
-	public RunnableItemsContainerIP getRunnableItemsContainerIP(final Runnable runnable) {
-		if (null == this.runnableItemsCIP) {
-			this.runnableItemsCIP = new RunnableItemsContainerIP(this.adapterFactory, runnable);
-		}
-		return this.runnableItemsCIP;
-	}
 
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(final Object object) {
 		super.getChildrenFeatures(object);
 		this.childrenFeatures.remove(this.feature_RUNNABLE_PARAMS);
-		this.childrenFeatures.remove(this.feature_RUNNABLE_ITEMS);
 		return this.childrenFeatures;
 	}
 
@@ -78,9 +67,7 @@ public class ExtendedRunnableIP extends RunnableItemProvider {
 	public Collection<?> getChildren(final Object object) {
 		final List<Object> children = new ArrayList<Object>(super.getChildren(object));
 		final Runnable runnable = (Runnable) object;
-		
-		// always display virtual folder
-		children.add(0, getRunnableItemsContainerIP((Runnable) object));
+
 		// only display virtual folder if not empty
 		if (!runnable.getParameters().isEmpty())
 			children.add(0, getRunnableParametersContainerIP(runnable));
@@ -101,15 +88,13 @@ public class ExtendedRunnableIP extends RunnableItemProvider {
 
 	protected Command createWrappedCommand(final Command command, final EObject owner,
 			final EStructuralFeature feature) {
-		if (feature == feature_RUNNABLE_ITEMS || feature == feature_RUNNABLE_PARAMS) {
+		if (feature == feature_RUNNABLE_PARAMS) {
 			return new CommandWrapper(command) {
 				@Override
 				public Collection<?> getAffectedObjects() {
 					Collection<?> affected = super.getAffectedObjects();
 					if (affected.contains(owner)) {
-						if (feature == feature_RUNNABLE_ITEMS) {
-							affected = Collections.singleton(getRunnableItemsContainerIP(((Runnable) owner)));
-						} else if (feature == feature_RUNNABLE_PARAMS) {
+						if (feature == feature_RUNNABLE_PARAMS) {
 							affected = Collections.singleton(getRunnableParametersContainerIP(((Runnable) owner)));
 						}
 					}
@@ -124,9 +109,6 @@ public class ExtendedRunnableIP extends RunnableItemProvider {
 	public void dispose() {
 		if (null != this.runnableParamsCIP) {
 			this.runnableParamsCIP.dispose();
-		}
-		if (null != this.runnableItemsCIP) {
-			this.runnableItemsCIP.dispose();
 		}
 		super.dispose();
 	}

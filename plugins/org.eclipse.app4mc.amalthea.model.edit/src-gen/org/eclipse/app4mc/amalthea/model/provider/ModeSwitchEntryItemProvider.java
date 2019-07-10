@@ -93,8 +93,8 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items());
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items());
 		}
 		return childrenFeatures;
 	}
@@ -136,7 +136,7 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	 * @generated
 	 */
 	public String getTextGen(Object object) {
-		String label = ((ModeSwitchEntry<?>)object).getName();
+		String label = ((ModeSwitchEntry)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ModeSwitchEntry_type") :
 			getString("_UI_ModeSwitchEntry_type") + " " + label;
@@ -165,8 +165,8 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -207,51 +207,136 @@ public class ModeSwitchEntryItemProvider extends BaseObjectItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
-		// ***** Solution 1: call generated method (as a generic solution)
-//		collectNewChildDescriptorsGen(newChildDescriptors, object);
-		
-		// ***** Solution 2: customized collector
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-		
-		newChildDescriptors.add
-		(createChildParameter
-			(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition(),
-			 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
-
-		EcoreGenericsHelper.collectNewChildDescriptorsForSwitchEntry(
-				AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items(), newChildDescriptors);
-		
-		// postprocessing
-		EcoreGenericsHelper.correctChildDescriptorListForGenericTypes(object, newChildDescriptors);
-	}
-
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getIAnnotatable_CustomProperties() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Items() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition();
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitch()));
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createProbabilitySwitch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createWaitEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSetEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createClearEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createInterProcessTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createEnforcedMigration()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSchedulePoint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createTerminateProcess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createExecutionNeed()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createTicks()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelSend()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelReceive()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createGetResultServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createCustomEventTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Condition(),
+				 AmaltheaFactory.eINSTANCE.createModeConditionDisjunction()));
 	}
 
 }

@@ -158,8 +158,8 @@ public class EcoreGenericsHelper {
 		childObjects.add(factory.createLabelAccess());
 		childObjects.add(factory.createModeLabelAccess());
 		childObjects.add(factory.createRunnableCall());
-		childObjects.add(factory.createRunnableModeSwitch());
-		childObjects.add(factory.createRunnableProbabilitySwitch());
+		childObjects.add(factory.createModeSwitch());
+		childObjects.add(factory.createProbabilitySwitch());
 		childObjects.add(factory.createSemaphoreAccess());
 		childObjects.add(factory.createSenderReceiverRead());
 		childObjects.add(factory.createSenderReceiverWrite());
@@ -170,7 +170,6 @@ public class EcoreGenericsHelper {
 		childObjects.add(factory.createCustomEventTrigger());
 
 		// see CallGraphItemProvider
-		childObjects.add(factory.createCallSequence());
 		childObjects.add(factory.createModeSwitch());
 		childObjects.add(factory.createProbabilitySwitch());
 	

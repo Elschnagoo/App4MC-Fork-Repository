@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * 
  * @generated
  */
-public class WaitEventItemProvider extends CallSequenceItemItemProvider {
+public class WaitEventItemProvider extends CallGraphItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -117,6 +117,7 @@ public class WaitEventItemProvider extends CallSequenceItemItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getWaitEvent_EventMask());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getWaitEvent_Counter());
 		}
 		return childrenFeatures;
 	}
@@ -191,6 +192,7 @@ public class WaitEventItemProvider extends CallSequenceItemItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AmaltheaPackage.WAIT_EVENT__EVENT_MASK:
+			case AmaltheaPackage.WAIT_EVENT__COUNTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -211,6 +213,11 @@ public class WaitEventItemProvider extends CallSequenceItemItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getWaitEvent_EventMask(),
 				 AmaltheaFactory.eINSTANCE.createEventMask()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getWaitEvent_Counter(),
+				 AmaltheaFactory.eINSTANCE.createCounter()));
 	}
 
 }

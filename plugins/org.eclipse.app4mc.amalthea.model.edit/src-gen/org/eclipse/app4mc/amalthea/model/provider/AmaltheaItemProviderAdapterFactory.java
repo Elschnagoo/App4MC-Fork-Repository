@@ -4914,29 +4914,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.CallSequence} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CallSequenceItemProvider callSequenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.CallSequence}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCallSequenceAdapter() {
-		if (callSequenceItemProvider == null) {
-			callSequenceItemProvider = new CallSequenceItemProvider(this);
-		}
-
-		return callSequenceItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ModeSwitch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5233,29 +5210,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return enforcedMigrationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TaskRunnableCallItemProvider taskRunnableCallItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTaskRunnableCallAdapter() {
-		if (taskRunnableCallItemProvider == null) {
-			taskRunnableCallItemProvider = new TaskRunnableCallItemProvider(this);
-		}
-
-		return taskRunnableCallItemProvider;
 	}
 
 	/**
@@ -5719,29 +5673,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RunnableModeSwitchItemProvider runnableModeSwitchItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRunnableModeSwitchAdapter() {
-		if (runnableModeSwitchItemProvider == null) {
-			runnableModeSwitchItemProvider = new RunnableModeSwitchItemProvider(this);
-		}
-
-		return runnableModeSwitchItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.LabelAccess} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5946,29 +5877,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		}
 
 		return getResultServerCallItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RunnableProbabilitySwitchItemProvider runnableProbabilitySwitchItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRunnableProbabilitySwitchAdapter() {
-		if (runnableProbabilitySwitchItemProvider == null) {
-			runnableProbabilitySwitchItemProvider = new RunnableProbabilitySwitchItemProvider(this);
-		}
-
-		return runnableProbabilitySwitchItemProvider;
 	}
 
 	/**
@@ -6838,7 +6746,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (customEntityItemProvider != null) customEntityItemProvider.dispose();
 		if (processChainItemProvider != null) processChainItemProvider.dispose();
 		if (callGraphItemProvider != null) callGraphItemProvider.dispose();
-		if (callSequenceItemProvider != null) callSequenceItemProvider.dispose();
 		if (modeSwitchItemProvider != null) modeSwitchItemProvider.dispose();
 		if (modeSwitchEntryItemProvider != null) modeSwitchEntryItemProvider.dispose();
 		if (modeSwitchDefaultItemProvider != null) modeSwitchDefaultItemProvider.dispose();
@@ -6852,7 +6759,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (osEventItemProvider != null) osEventItemProvider.dispose();
 		if (interProcessTriggerItemProvider != null) interProcessTriggerItemProvider.dispose();
 		if (enforcedMigrationItemProvider != null) enforcedMigrationItemProvider.dispose();
-		if (taskRunnableCallItemProvider != null) taskRunnableCallItemProvider.dispose();
 		if (schedulePointItemProvider != null) schedulePointItemProvider.dispose();
 		if (terminateProcessItemProvider != null) terminateProcessItemProvider.dispose();
 		if (taskItemProvider != null) taskItemProvider.dispose();
@@ -6873,7 +6779,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (ticksItemProvider != null) ticksItemProvider.dispose();
 		if (ticksEntryItemProvider != null) ticksEntryItemProvider.dispose();
 		if (modeLabelAccessItemProvider != null) modeLabelAccessItemProvider.dispose();
-		if (runnableModeSwitchItemProvider != null) runnableModeSwitchItemProvider.dispose();
 		if (labelAccessItemProvider != null) labelAccessItemProvider.dispose();
 		if (channelSendItemProvider != null) channelSendItemProvider.dispose();
 		if (channelReceiveItemProvider != null) channelReceiveItemProvider.dispose();
@@ -6883,7 +6788,6 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (synchronousServerCallItemProvider != null) synchronousServerCallItemProvider.dispose();
 		if (asynchronousServerCallItemProvider != null) asynchronousServerCallItemProvider.dispose();
 		if (getResultServerCallItemProvider != null) getResultServerCallItemProvider.dispose();
-		if (runnableProbabilitySwitchItemProvider != null) runnableProbabilitySwitchItemProvider.dispose();
 		if (groupItemProvider != null) groupItemProvider.dispose();
 		if (callArgumentItemProvider != null) callArgumentItemProvider.dispose();
 		if (runnableCallItemProvider != null) runnableCallItemProvider.dispose();

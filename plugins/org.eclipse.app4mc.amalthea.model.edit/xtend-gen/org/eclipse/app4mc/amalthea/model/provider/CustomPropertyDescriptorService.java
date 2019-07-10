@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.function.Function;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.DataDependency;
 import org.eclipse.app4mc.amalthea.model.DirectionType;
 import org.eclipse.app4mc.amalthea.model.EnumMode;
@@ -30,7 +31,6 @@ import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeValue;
 import org.eclipse.app4mc.amalthea.model.NumericMode;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.emf.common.util.BasicEList;
@@ -104,10 +104,10 @@ public class CustomPropertyDescriptorService {
       final BasicEList<CallArgument> choiceOfValues = new BasicEList<CallArgument>();
       final org.eclipse.app4mc.amalthea.model.Runnable runnable = AmaltheaServices.<org.eclipse.app4mc.amalthea.model.Runnable>getContainerOfType(((EObject)object), org.eclipse.app4mc.amalthea.model.Runnable.class);
       if ((runnable != null)) {
-        final Function<RunnableItem, Boolean> _function = (RunnableItem e) -> {
+        final Function<CallGraphItem, Boolean> _function = (CallGraphItem e) -> {
           return Boolean.valueOf((e instanceof RunnableCall));
         };
-        final Function1<RunnableItem, EList<CallArgument>> _function_1 = (RunnableItem e) -> {
+        final Function1<CallGraphItem, EList<CallArgument>> _function_1 = (CallGraphItem e) -> {
           return ((RunnableCall) e).getArguments();
         };
         final Function1<CallArgument, Boolean> _function_2 = (CallArgument e) -> {
@@ -132,7 +132,7 @@ public class CustomPropertyDescriptorService {
           return Boolean.valueOf(_or);
         };
         Iterables.<CallArgument>addAll(choiceOfValues, 
-          IterableExtensions.<CallArgument>filter(Iterables.<CallArgument>concat(ListExtensions.<RunnableItem, EList<CallArgument>>map(SoftwareUtil.collectRunnableItems(runnable, null, _function), _function_1)), _function_2));
+          IterableExtensions.<CallArgument>filter(Iterables.<CallArgument>concat(ListExtensions.<CallGraphItem, EList<CallArgument>>map(SoftwareUtil.collectCallGraphItems(runnable.getCallGraph(), null, _function), _function_1)), _function_2));
       }
       return choiceOfValues;
     }

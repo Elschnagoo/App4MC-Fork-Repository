@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 
@@ -96,7 +97,7 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items());
 		}
 		return childrenFeatures;
 	}
@@ -143,7 +144,7 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		ProbabilitySwitchEntry<?> probabilitySwitchEntry = (ProbabilitySwitchEntry<?>)object;
+		ProbabilitySwitchEntry probabilitySwitchEntry = (ProbabilitySwitchEntry)object;
 		return getString("_UI_ProbabilitySwitchEntry_type") + " " + probabilitySwitchEntry.getProbability();
 	}
 	
@@ -175,44 +176,131 @@ public class ProbabilitySwitchEntryItemProvider extends BaseObjectItemProvider {
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
-		// ***** Solution 1: call generated method (as a generic solution)
-		//collectNewChildDescriptorsGen(newChildDescriptors, object);
-		
-		// ***** Solution 2: customized collector
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-		EcoreGenericsHelper.collectNewChildDescriptorsForSwitchEntry(
-				AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items(), newChildDescriptors);
-
-		// postprocessing
-		EcoreGenericsHelper.correctChildDescriptorListForGenericTypes(object, newChildDescriptors);
-	}
-
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getIAnnotatable_CustomProperties() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry_Items();
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createModeSwitch()));
 
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createProbabilitySwitch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createWaitEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSetEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createClearEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createInterProcessTrigger()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createEnforcedMigration()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSchedulePoint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createTerminateProcess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createExecutionNeed()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createTicks()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createModeLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createLabelAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelSend()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createChannelReceive()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSemaphoreAccess()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverRead()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSenderReceiverWrite()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createSynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createAsynchronousServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createGetResultServerCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getICallGraphItemContainer_Items(),
+				 AmaltheaFactory.eINSTANCE.createCustomEventTrigger()));
 	}
 
 }

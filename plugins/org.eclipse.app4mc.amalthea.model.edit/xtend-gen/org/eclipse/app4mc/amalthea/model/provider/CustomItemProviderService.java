@@ -74,7 +74,6 @@ import org.eclipse.app4mc.amalthea.model.EventChainContainer;
 import org.eclipse.app4mc.amalthea.model.EventChainMeasurement;
 import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.EventConfig;
-import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FloatObject;
 import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.FrequencyMetric;
@@ -153,11 +152,8 @@ import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocationConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
@@ -180,7 +176,6 @@ import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
@@ -3694,88 +3689,6 @@ public class CustomItemProviderService {
     return null;
   }
   
-  private static String getRunnableItemText(final RunnableItem item) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (item instanceof LabelAccess) {
-      _matched=true;
-      _switchResult = CustomItemProviderService.getLabelAccessItemProviderText(item, null);
-    }
-    if (!_matched) {
-      if (item instanceof RunnableCall) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getRunnableCallItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof ExecutionNeed) {
-        _matched=true;
-        _switchResult = "Execution Need";
-      }
-    }
-    if (!_matched) {
-      if (item instanceof Ticks) {
-        _matched=true;
-        _switchResult = "Ticks";
-      }
-    }
-    if (!_matched) {
-      if (item instanceof Group) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getGroupItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof RunnableModeSwitch) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getRunnableModeSwitchItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof RunnableProbabilitySwitch) {
-        _matched=true;
-        _switchResult = "Probability Switch";
-      }
-    }
-    if (!_matched) {
-      if (item instanceof ModeLabelAccess) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getModeLabelAccessItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof SemaphoreAccess) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getSemaphoreAccessItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof SenderReceiverRead) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getSenderReceiverReadItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof SenderReceiverWrite) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getSenderReceiverWriteItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof AsynchronousServerCall) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getAsynchronousServerCallItemProviderText(item, null);
-      }
-    }
-    if (!_matched) {
-      if (item instanceof SynchronousServerCall) {
-        _matched=true;
-        _switchResult = CustomItemProviderService.getSynchronousServerCallItemProviderText(item, null);
-      }
-    }
-    return _switchResult;
-  }
-  
   /**
    * AccessPrecedenceSpecItemProvider
    */
@@ -4307,42 +4220,13 @@ public class CustomItemProviderService {
   }
   
   /**
-   * RunnableModeSwitchItemProvider
-   */
-  public static String getRunnableModeSwitchItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof RunnableModeSwitch)) {
-      return "Mode Switch";
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getRunnableModeSwitchItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(RunnableModeSwitch.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__ENTRIES)) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY)) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, true, false);
-    }
-    return null;
-  }
-  
-  /**
    * ModeSwitchEntryItemProvider
    */
   public static String getModeSwitchEntryItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof ModeSwitchEntry<?>)) {
+    if ((object instanceof ModeSwitchEntry)) {
       String _name = null;
-      if (((ModeSwitchEntry<?>)object)!=null) {
-        _name=((ModeSwitchEntry<?>)object).getName();
+      if (((ModeSwitchEntry)object)!=null) {
+        _name=((ModeSwitchEntry)object).getName();
       }
       final String entryName = _name;
       String _xifexpression = null;
@@ -4389,45 +4273,6 @@ public class CustomItemProviderService {
    */
   public static String getModeSwitchDefaultItemProviderText(final Object object, final String defaultText) {
     return "default";
-  }
-  
-  /**
-   * TaskRunnableCallItemProvider
-   */
-  public static String getTaskRunnableCallItemProviderText(final Object object, final String defaultText) {
-    if ((object instanceof TaskRunnableCall)) {
-      org.eclipse.app4mc.amalthea.model.Runnable _runnable = null;
-      if (((TaskRunnableCall)object)!=null) {
-        _runnable=((TaskRunnableCall)object).getRunnable();
-      }
-      String _name = null;
-      if (_runnable!=null) {
-        _name=_runnable.getName();
-      }
-      final String runName = _name;
-      final String s1 = CustomItemProviderService.ppName(runName, "<runnable>");
-      return ("call " + s1);
-    } else {
-      return defaultText;
-    }
-  }
-  
-  public static ViewerNotification getTaskRunnableCallItemProviderNotification(final Notification notification) {
-    int _featureID = notification.getFeatureID(TaskRunnableCall.class);
-    boolean _matched = false;
-    if (Objects.equal(_featureID, AmaltheaPackage.TASK_RUNNABLE_CALL__RUNNABLE)) {
-      _matched=true;
-      Object _notifier = notification.getNotifier();
-      return new ViewerNotification(notification, _notifier, false, true);
-    }
-    if (!_matched) {
-      if (Objects.equal(_featureID, AmaltheaPackage.TASK_RUNNABLE_CALL__STATISTIC)) {
-        _matched=true;
-        Object _notifier_1 = notification.getNotifier();
-        return new ViewerNotification(notification, _notifier_1, true, false);
-      }
-    }
-    return null;
   }
   
   /**

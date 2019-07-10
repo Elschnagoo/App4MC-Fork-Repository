@@ -32,44 +32,26 @@ import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedMemoryIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedPowerDomainIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitDefinitionIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended.ExtendedProcessingUnitIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedAsynchronousServerCallIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedBaseTypeDefinitionIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCallArgumentIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelReceiveIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedChannelSendIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEntityIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedCustomEventTriggerIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedDataTypeDefinitionIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEnumModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedEventActivationIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionNeedIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedExecutionTicksIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGetResultServerCallIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedGroupIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedISRIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelAccessIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedLabelIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelAccessIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedModeLabelIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedNumericModeIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedOsEventIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedPeriodicActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessChainIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedProcessPrototypeIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableCallIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableModeSwitchIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableParameterIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedRunnableProbabilitySwitchIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSectionIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSemaphoreAccessIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverReadIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSenderReceiverWriteIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSingleActivationIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSporadicActivationIP;
-import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedSynchronousServerCallIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedTaskIP;
 import org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended.ExtendedVariableRateActivationIP;
 import org.eclipse.emf.common.notify.Adapter;
@@ -162,93 +144,6 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createMemoryClassifierAdapter() {
 		return new ExtendedMemoryClassifierIP(this);
-	}
-
-// SWModel Runnable Items
-
-	@Override
-	public Adapter createChannelReceiveAdapter() {
-		return new ExtendedChannelReceiveIP(this);
-	}
-
-	@Override
-	public Adapter createChannelSendAdapter() {
-		return new ExtendedChannelSendIP(this);
-	}
-
-	@Override
-	public Adapter createCustomEventTriggerAdapter() {
-		return new ExtendedCustomEventTriggerIP(this);
-	}
-
-	@Override
-	public Adapter createExecutionNeedAdapter() {
-		return new ExtendedExecutionNeedIP(this);
-	}
-
-	@Override
-	public Adapter createTicksAdapter() {
-		return new ExtendedExecutionTicksIP(this);
-	}
-	
-	@Override
-	public Adapter createGroupAdapter() {
-		return new ExtendedGroupIP(this);
-	}
-
-	@Override
-	public Adapter createLabelAccessAdapter() {
-		return new ExtendedLabelAccessIP(this);
-	}
-
-	@Override
-	public Adapter createModeLabelAccessAdapter() {
-		return new ExtendedModeLabelAccessIP(this);
-	}
-
-	@Override
-	public Adapter createRunnableCallAdapter() {
-		return new ExtendedRunnableCallIP(this);
-	}
-
-	@Override
-	public Adapter createRunnableModeSwitchAdapter() {
-		return new ExtendedRunnableModeSwitchIP(this);
-	}
-
-	@Override
-	public Adapter createRunnableProbabilitySwitchAdapter() {
-		return new ExtendedRunnableProbabilitySwitchIP(this);
-	}
-
-	@Override
-	public Adapter createSemaphoreAccessAdapter() {
-		return new ExtendedSemaphoreAccessIP(this);
-	}
-
-	@Override
-	public Adapter createSynchronousServerCallAdapter() {
-		return new ExtendedSynchronousServerCallIP(this);
-	}
-
-	@Override
-	public Adapter createAsynchronousServerCallAdapter() {
-		return new ExtendedAsynchronousServerCallIP(this);
-	}
-
-	@Override
-	public Adapter createGetResultServerCallAdapter() {
-		return new ExtendedGetResultServerCallIP(this);
-	}
-
-	@Override
-	public Adapter createSenderReceiverReadAdapter() {
-		return new ExtendedSenderReceiverReadIP(this);
-	}
-
-	@Override
-	public Adapter createSenderReceiverWriteAdapter() {
-		return new ExtendedSenderReceiverWriteIP(this);
 	}
 
 // SWModel Type Definitions
@@ -365,11 +260,6 @@ public class ExtendedAmaltheaItemProviderAdapterFactory extends AmaltheaItemProv
 	@Override
 	public Adapter createRunnableParameterAdapter() {
 		return new ExtendedRunnableParameterIP(this);
-	}
-
-	@Override
-	public Adapter createCallArgumentAdapter() {
-		return new ExtendedCallArgumentIP(this);
 	}
 
 

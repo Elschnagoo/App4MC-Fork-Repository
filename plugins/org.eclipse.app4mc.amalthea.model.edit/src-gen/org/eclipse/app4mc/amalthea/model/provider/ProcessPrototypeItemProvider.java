@@ -279,7 +279,7 @@ public class ProcessPrototypeItemProvider extends AbstractProcessItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getProcessPrototype_RunnableCalls(),
-				 AmaltheaFactory.eINSTANCE.createTaskRunnableCall()));
+				 AmaltheaFactory.eINSTANCE.createRunnableCall()));
 	}
 
 }

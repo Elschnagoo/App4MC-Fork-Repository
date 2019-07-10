@@ -33,7 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  *
  * @generated
  */
-public class ModeSwitchItemProvider extends GraphEntryBaseItemProvider {
+public class ModeSwitchItemProvider extends CallGraphItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

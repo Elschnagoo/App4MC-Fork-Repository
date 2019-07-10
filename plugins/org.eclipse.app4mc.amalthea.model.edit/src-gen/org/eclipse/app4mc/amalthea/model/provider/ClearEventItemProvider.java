@@ -33,7 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * 
  * @generated
  */
-public class ClearEventItemProvider extends CallSequenceItemItemProvider {
+public class ClearEventItemProvider extends CallGraphItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -70,6 +70,7 @@ public class ClearEventItemProvider extends CallSequenceItemItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClearEvent_EventMask());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClearEvent_Counter());
 		}
 		return childrenFeatures;
 	}
@@ -136,6 +137,7 @@ public class ClearEventItemProvider extends CallSequenceItemItemProvider {
 
 		switch (notification.getFeatureID(ClearEvent.class)) {
 			case AmaltheaPackage.CLEAR_EVENT__EVENT_MASK:
+			case AmaltheaPackage.CLEAR_EVENT__COUNTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -156,6 +158,11 @@ public class ClearEventItemProvider extends CallSequenceItemItemProvider {
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getClearEvent_EventMask(),
 				 AmaltheaFactory.eINSTANCE.createEventMask()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClearEvent_Counter(),
+				 AmaltheaFactory.eINSTANCE.createCounter()));
 	}
 
 }

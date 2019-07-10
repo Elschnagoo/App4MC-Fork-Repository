@@ -21,20 +21,20 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaServices
 import org.eclipse.app4mc.amalthea.model.CallArgument
 import org.eclipse.app4mc.amalthea.model.DataDependency
 import org.eclipse.app4mc.amalthea.model.DirectionType
+import org.eclipse.app4mc.amalthea.model.EnumMode
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory
+import org.eclipse.app4mc.amalthea.model.ModeLabel
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
+import org.eclipse.app4mc.amalthea.model.ModeValue
+import org.eclipse.app4mc.amalthea.model.NumericMode
 import org.eclipse.app4mc.amalthea.model.Runnable
-import org.eclipse.app4mc.amalthea.model.RunnableCall
 import org.eclipse.app4mc.amalthea.model.RunnableParameter
-import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.UniqueEList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.sphinx.emf.util.EObjectUtil
-import org.eclipse.app4mc.amalthea.model.ModeValue
-import org.eclipse.app4mc.amalthea.model.EnumMode
-import org.eclipse.app4mc.amalthea.model.NumericMode
-import org.eclipse.app4mc.amalthea.model.ModeLabel
-import org.eclipse.app4mc.amalthea.model.ModeLabelAccess
+import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil
+import org.eclipse.app4mc.amalthea.model.RunnableCall
 
 class CustomPropertyDescriptorService {
 
@@ -50,7 +50,7 @@ class CustomPropertyDescriptorService {
 
 		// entries: names of feature categories
 		choiceOfValues.addAll(
-			EObjectUtil.getAllInstancesOf(object as EObject, typeof(HwFeatureCategory), true)
+			EObjectUtil.getAllInstancesOf(object as EObject, HwFeatureCategory, true)
 			.map[name]
 			.filterNull
 			.sort);
@@ -87,7 +87,7 @@ class CustomPropertyDescriptorService {
 			val choiceOfValues = new BasicEList<RunnableParameter>();
 			
 			// Parameters (in, inout) of containing runnable
-			val runnable = AmaltheaServices.getContainerOfType(object, typeof(Runnable))
+			val runnable = AmaltheaServices.getContainerOfType(object, Runnable)
 			if (runnable !== null) {
 				choiceOfValues.addAll(
 					runnable.parameters
@@ -104,10 +104,10 @@ class CustomPropertyDescriptorService {
 			val choiceOfValues = new BasicEList<CallArgument>();
 			
 			// CallArguments (out, inout) of contained calls
-			val runnable = AmaltheaServices.getContainerOfType(object, typeof(Runnable))
+			val runnable = AmaltheaServices.getContainerOfType(object, Runnable)
 			if (runnable !== null) {
 				choiceOfValues.addAll(
-					SoftwareUtil.collectRunnableItems(runnable, null, [e | e instanceof RunnableCall])
+					SoftwareUtil.collectCallGraphItems(runnable.callGraph, null, [e | e instanceof RunnableCall])
 					.map[e | (e as RunnableCall).arguments]
 					.flatten
 					.filter[e | e.parameter?.direction == DirectionType::OUT || e.parameter?.direction == DirectionType::INOUT]
