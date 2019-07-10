@@ -24,16 +24,15 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.util.InstructionsUtil;
 import org.eclipse.app4mc.amalthea.model.util.ModelUtil;
 import org.junit.After;
@@ -141,39 +140,36 @@ public class TaskServiceTest {
 	public void testGetRunnablesFromTaskCallGraphOther() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
+		task.setCallGraph(cg);
+
 		InterProcessTrigger ipt = AmaltheaFactory.eINSTANCE.createInterProcessTrigger();
-		cs.getCalls().add(ipt);
-		task.setCallGraph(cg);
+		cg.getItems().add(ipt);
 		List<Runnable> result = this.taskS.getRunnablesFromTask(task);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
 
 	@Test
-	public void testGetRunnablesFromTaskCallGraphEmptyTaskRunnableCall() {
+	public void testGetRunnablesFromTaskCallGraphEmptyRunnableCall() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		List<Runnable> result = this.taskS.getRunnablesFromTask(task);
 		assertThat(result, notNullValue());
 		assertThat(result.isEmpty(), is(true));
 	}
 
 	@Test
-	public void testGetRunnablesFromTaskCallGraphTaskRunnableCall() {
+	public void testGetRunnablesFromTaskCallGraphRunnableCall() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
 		trc.setRunnable(runn);
 		List<Runnable> result = this.taskS.getRunnablesFromTask(task);
@@ -202,11 +198,10 @@ public class TaskServiceTest {
 	public void testGetAccessedLabelsOfTaskEmptyRunnable() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
 		trc.setRunnable(runn);
 		List<Label> result = this.taskS.getAccessedLabelsOfTask(task);
@@ -224,11 +219,10 @@ public class TaskServiceTest {
 		sw.getTasks().add(task);
 		
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		
 		ExecutionNeed execNeed = InstructionsUtil.createExecutionNeedConstant(25);
 		run.getRunnableItems().add(execNeed);
@@ -242,11 +236,10 @@ public class TaskServiceTest {
 	public void testGetAccessedLabelsOfTaskEmptyRunnableEmptyLabelAccess() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		runn.getRunnableItems().add(la);
@@ -260,11 +253,10 @@ public class TaskServiceTest {
 	public void testGetAccessedLabelsOfTaskEmptyRunnableLabelAccess() {
 		Task task = AmaltheaFactory.eINSTANCE.createTask();
 		CallGraph cg = AmaltheaFactory.eINSTANCE.createCallGraph();
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cg.getGraphEntries().add(cs);
-		TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		cs.getCalls().add(trc);
 		task.setCallGraph(cg);
+		
+		RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		cg.getItems().add(trc);
 		Runnable runn = AmaltheaFactory.eINSTANCE.createRunnable();
 		LabelAccess la = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		runn.getRunnableItems().add(la);

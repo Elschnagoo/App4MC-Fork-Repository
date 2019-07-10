@@ -18,11 +18,11 @@ package org.eclipse.app4mc.amalthea.editors.sirius.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -45,7 +45,7 @@ public class RunnableService {
 		return result;
 	}
 
-	private List<Label> getLabelAccessesForRunnableItems(final List<RunnableItem> items,
+	private List<Label> getLabelAccessesForRunnableItems(final List<CallGraphItem> items,
 			final LabelAccessEnum accessType) {
 		final List<Label> result = new ArrayList<>();
 		final TreeIterator<EObject> iter = EcoreUtil.getAllContents(items);
@@ -69,7 +69,7 @@ public class RunnableService {
 					if (null != label) {
 						for (final LabelAccess labelAccess : label.getLabelAccesses()) {
 							if (labelAccess != item && labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
-								result.add((Runnable) labelAccess.eContainer());
+								result.add(labelAccess.getContainingRunnable());
 							}
 						}
 					}

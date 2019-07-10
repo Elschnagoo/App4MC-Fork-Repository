@@ -29,7 +29,7 @@ public class LabelService {
 		final List<Runnable> result = new ArrayList<>();
 		if (null != label) {
 			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
-				result.add((Runnable) labelAccess.eContainer());
+				result.add(labelAccess.getContainingRunnable());
 			}
 		}
 		return result;
@@ -40,7 +40,7 @@ public class LabelService {
 		if (null != label) {
 			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
 				if (labelAccess.getAccess().equals(LabelAccessEnum.READ)) {
-					result.add((Runnable) labelAccess.eContainer());
+					result.add(labelAccess.getContainingRunnable());
 				}
 			}
 		}
@@ -52,7 +52,7 @@ public class LabelService {
 		if (null != label) {
 			for (final LabelAccess labelAccess : label.getLabelAccesses()) {
 				if (labelAccess.getAccess().equals(LabelAccessEnum.WRITE)) {
-					result.add((Runnable) labelAccess.eContainer());
+					result.add(labelAccess.getContainingRunnable());
 				}
 			}
 		}

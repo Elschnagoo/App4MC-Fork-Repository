@@ -23,8 +23,8 @@ import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -49,11 +49,11 @@ public class TaskService {
 	public List<Runnable> getRunnablesFromTask(final Task task) {
 		final List<Runnable> result = new ArrayList<>();
 		if (null != task && null != task.getCallGraph()) {
-			final TreeIterator<EObject> iter = EcoreUtil.getAllContents(task.getCallGraph().getGraphEntries());
+			final TreeIterator<EObject> iter = EcoreUtil.getAllContents(task.getCallGraph().getItems());
 			while (iter.hasNext()) {
 				final EObject item = iter.next();
-				if (item instanceof TaskRunnableCall && null != ((TaskRunnableCall) item).getRunnable()) {
-					result.add(((TaskRunnableCall) item).getRunnable());
+				if (item instanceof RunnableCall && null != ((RunnableCall) item).getRunnable()) {
+					result.add(((RunnableCall) item).getRunnable());
 				}
 			}
 		}
