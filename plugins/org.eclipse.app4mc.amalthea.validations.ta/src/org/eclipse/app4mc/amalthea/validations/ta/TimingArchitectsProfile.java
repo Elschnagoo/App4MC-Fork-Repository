@@ -14,9 +14,12 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
+import org.eclipse.app4mc.amalthea.validations.ta.misc.TAMiscSemaphore;
 import org.eclipse.app4mc.validation.annotation.Profile;
 import org.eclipse.app4mc.validation.annotation.ProfileGroup;
+import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
+import org.eclipse.app4mc.validation.core.Severity;
 
 /**
  * Validations for AMALTHEA models used in a Timing Architects Simulation
@@ -29,7 +32,14 @@ import org.eclipse.app4mc.validation.core.IProfile;
 	profiles = {
 		TABasicProfile.class,
 		TAConstraintsProfile.class,
-		TAHardwareProfile.class
+		TAHardwareProfile.class,
+		TAStimuliProfile.class
+	}
+)
+@ValidationGroup(
+	severity = Severity.ERROR,
+	validations = {
+		TAMiscSemaphore.class
 	}
 )
 public class TimingArchitectsProfile implements IProfile {

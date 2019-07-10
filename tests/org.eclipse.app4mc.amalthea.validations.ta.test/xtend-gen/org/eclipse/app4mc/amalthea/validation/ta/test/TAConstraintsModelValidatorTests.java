@@ -171,7 +171,7 @@ public class TAConstraintsModelValidatorTests {
     Assert.assertTrue(result.contains("The minimum time is greater than the maximum time (0 ms > -1 ms, in Data Age Constraint \"dac_maximin\")"));
     Assert.assertFalse(result.contains("The minimum time must not be negative (4 ms < 0, in Data Age Constraint \"dac_ok\")"));
     Assert.assertFalse(result.contains("The maximum time must not be negative (10 ms < 0, in Data Age Constraint \"dac_ok\")"));
-    Assert.assertFalse(result.contains("The minimum time greater than the maximum time (4 ms > 10 ms, in Data Age Constraint \"dac_ok\")"));
+    Assert.assertFalse(result.contains("The minimum time is greater than the maximum time (4 ms > 10 ms, in Data Age Constraint \"dac_ok\")"));
   }
   
   @Test

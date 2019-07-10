@@ -12,16 +12,14 @@
  *     Vector Informatik GmbH - initial API and implementation
  ********************************************************************************
  */
-package org.eclipse.app4mc.amalthea.validations.ta.constraints;
+package org.eclipse.app4mc.amalthea.validations.ta.stimuli;
 
 import java.math.BigInteger;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.INamed;
+import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.TimeMetric;
-import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -29,32 +27,35 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * Validates whether a timing requirement limit for time metric RESPONSE_TIME is positive.
+ * Validates sanity of variable rate stimuli.
  * 
  * <ul>
- * <li>response time must be positive</li>
+ * <li>scenario must be set</li>
+ * <li>scenario recurrence time must not be negative</li>
  * </ul>
  */
 
-@Validation(id = "TA-Constraints-RTLimitMustBePositive")
-public class TAConstraintsRTLimitMustBePositive extends AmaltheaValidation {
+@Validation(id = "TA-Stimuli-VariableRateStimulusScenario")
+public class TAStimuliVRStimulus extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {
-		return ePackage.getTimeRequirementLimit();
+		return ePackage.getVariableRateStimulus();
 	}
 
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
-		if (eObject instanceof TimeRequirementLimit) {
-			TimeRequirementLimit trl = (TimeRequirementLimit) eObject;
-			if (TimeMetric.RESPONSE_TIME == trl.getMetric()) {
-				Time rt = trl.getLimitValue();
-				if(null != rt) {
-					BigInteger value = rt.getValue();
+		if (eObject instanceof VariableRateStimulus) {
+			VariableRateStimulus vrs = (VariableRateStimulus) eObject;
+			if (vrs.getScenario() == null) {
+				addIssue(results, vrs, ePackage.getVariableRateStimulus_Scenario(), "Scenario must be set in "+ objectInfo(vrs) + ".");
+			} else {
+				Scenario s = vrs.getScenario();
+				Time r = s.getRecurrence();
+				if (r != null) {
+					BigInteger value = r.getValue();
 					if (0 >= value.signum()) {
-						INamed namedContainer = AmaltheaServices.getContainerOfType(trl, INamed.class);
-						addIssue(results, trl, ePackage.getTimeRequirementLimit_LimitValue(), "The response time specified in " + objectInfo(namedContainer) +
+						addIssue(results, s, ePackage.getScenario_Recurrence(), "The recurrence time specified in the scenario of " + objectInfo(vrs) +
 								" must be greater than 0.");
 					}
 				}

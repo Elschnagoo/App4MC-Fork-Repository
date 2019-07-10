@@ -77,6 +77,8 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 			if (time.getValue().signum() < 0) {
 				if (containingFeature == ePackage.getFixedPeriodic_Offset()
 						
+				|| containingFeature == ePackage.getSingleStimulus_Occurrence()
+						
 				|| containingFeature == ePackage.getPeriodicActivation_Offset()
 				|| containingFeature == ePackage.getPeriodicActivation_Min()
 				|| containingFeature == ePackage.getPeriodicActivation_Max()
