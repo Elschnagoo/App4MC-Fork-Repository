@@ -18,7 +18,8 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -38,21 +39,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CallGraphImpl#getGraphEntries <em>Graph Entries</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.CallGraphImpl#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	/**
-	 * The cached value of the '{@link #getGraphEntries() <em>Graph Entries</em>}' containment reference list.
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGraphEntries()
+	 * @see #getItems()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GraphEntryBase> graphEntries;
+	protected EList<CallGraphItem> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,11 +80,11 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	 * @generated
 	 */
 	@Override
-	public EList<GraphEntryBase> getGraphEntries() {
-		if (graphEntries == null) {
-			graphEntries = new EObjectContainmentEList<GraphEntryBase>(GraphEntryBase.class, this, AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES);
+	public EList<CallGraphItem> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<CallGraphItem>(CallGraphItem.class, this, AmaltheaPackage.CALL_GRAPH__ITEMS);
 		}
-		return graphEntries;
+		return items;
 	}
 
 	/**
@@ -94,8 +95,8 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES:
-				return ((InternalEList<?>)getGraphEntries()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.CALL_GRAPH__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -108,8 +109,8 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES:
-				return getGraphEntries();
+			case AmaltheaPackage.CALL_GRAPH__ITEMS:
+				return getItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,9 +124,9 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES:
-				getGraphEntries().clear();
-				getGraphEntries().addAll((Collection<? extends GraphEntryBase>)newValue);
+			case AmaltheaPackage.CALL_GRAPH__ITEMS:
+				getItems().clear();
+				getItems().addAll((Collection<? extends CallGraphItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -139,8 +140,8 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES:
-				getGraphEntries().clear();
+			case AmaltheaPackage.CALL_GRAPH__ITEMS:
+				getItems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -154,10 +155,42 @@ public class CallGraphImpl extends BaseObjectImpl implements CallGraph {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CALL_GRAPH__GRAPH_ENTRIES:
-				return graphEntries != null && !graphEntries.isEmpty();
+			case AmaltheaPackage.CALL_GRAPH__ITEMS:
+				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.CALL_GRAPH__ITEMS: return AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS: return AmaltheaPackage.CALL_GRAPH__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //CallGraphImpl

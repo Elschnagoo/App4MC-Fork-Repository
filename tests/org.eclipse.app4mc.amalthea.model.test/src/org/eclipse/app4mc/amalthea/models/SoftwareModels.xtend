@@ -1,15 +1,14 @@
 package org.eclipse.app4mc.amalthea.models
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.EnumMode
 import org.eclipse.app4mc.amalthea.model.Label
-import org.eclipse.app4mc.amalthea.model.ModeLiteral
 import org.eclipse.app4mc.amalthea.model.Runnable
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter
 
 import static org.eclipse.app4mc.amalthea.model.LabelAccessEnum.*
-import org.eclipse.app4mc.amalthea.model.EnumMode
 
 class SoftwareModels {
 
@@ -47,30 +46,38 @@ class SoftwareModels {
 					label [name = "Lab5"]
 
 					runnable [ name = "Run1"
-						ticks [ defaultConstant(200) ]
-						runModeSwitch [
-							defaultEntry [
-								labelAccess [ access = READ; data = _find(Label, "Lab1") ]
-								labelAccess [ access = READ; data = _find(Label, "Lab2") ]
-								ticks [ defaultConstant(333) ]
-								labelAccess [ access = WRITE; data = _find(Label, "Lab3") ]
-								labelAccess [ access = WRITE; data = _find(Label, "Lab4") ]
+						callGraph [
+							ticks [ defaultConstant(200) ]
+							modeSwitch [
+								defaultEntry [
+									labelAccess [ access = READ; data = _find(Label, "Lab1") ]
+									labelAccess [ access = READ; data = _find(Label, "Lab2") ]
+									ticks [ defaultConstant(333) ]
+									labelAccess [ access = WRITE; data = _find(Label, "Lab3") ]
+									labelAccess [ access = WRITE; data = _find(Label, "Lab4") ]
+								]
 							]
 						]
 					]
 					runnable [ name = "Run2"
-						ticks [ defaultConstant(400) ]
-						ticks [ defaultConstant(40) ]
-						ticks [ defaultConstant(4) ]
-						runnableCall [ runnable = _find(Runnable, "Run4") ]
-						labelAccess [ access = WRITE; data = _find(Label, "Lab5") ]
+						callGraph [
+							ticks [ defaultConstant(400) ]
+							ticks [ defaultConstant(40) ]
+							ticks [ defaultConstant(4) ]
+							runnableCall [ runnable = _find(Runnable, "Run4") ]
+							labelAccess [ access = WRITE; data = _find(Label, "Lab5") ]
+						]
 					]
 					runnable [ name = "Run3"
-						labelAccess [ access = READ; data = _find(Label, "Lab5") ]
-						ticks [ defaultConstant(600) ]
+						callGraph [
+							labelAccess [ access = READ; data = _find(Label, "Lab5") ]
+							ticks [ defaultConstant(600) ]
+						]
 					]
 					runnable [ name = "Run4"
-						ticks [ defaultConstant(700) ]
+						callGraph [
+							ticks [ defaultConstant(700) ]
+						]
 					]
 				]
 			]
@@ -90,21 +97,23 @@ class SoftwareModels {
 					label [name = "Lab5"]
 
 					runnable [ name = "Run1"
-						ticks [ defaultConstant(200) ]
-						// incomplete label accesses
-						labelAccess [ statistic = fac.createLabelAccessStatistic ]
-						labelAccess [ data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
-						labelAccess [ access = READ statistic = fac.createLabelAccessStatistic]
-						
-						// valid label accesses
-						labelAccess [ access = READ; data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
-						labelAccess [ access = READ; data = _find(Label, "Lab2") ]
-						labelAccess [ access = READ; data = _find(Label, "Lab3") ]
-						labelAccess [ access = READ; data = _find(Label, "Lab4") statistic = fac.createLabelAccessStatistic]
-						ticks [ defaultConstant(333) ]
-						labelAccess [ access = WRITE; data = _find(Label, "Lab3") ]
-						labelAccess [ access = WRITE; data = _find(Label, "Lab4") ]
-						labelAccess [ access = WRITE; data = _find(Label, "Lab5") statistic = fac.createLabelAccessStatistic]
+						callGraph [
+							ticks [ defaultConstant(200) ]
+							// incomplete label accesses
+							labelAccess [ statistic = fac.createLabelAccessStatistic ]
+							labelAccess [ data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
+							labelAccess [ access = READ statistic = fac.createLabelAccessStatistic]
+							
+							// valid label accesses
+							labelAccess [ access = READ; data = _find(Label, "Lab1") statistic = fac.createLabelAccessStatistic ]
+							labelAccess [ access = READ; data = _find(Label, "Lab2") ]
+							labelAccess [ access = READ; data = _find(Label, "Lab3") ]
+							labelAccess [ access = READ; data = _find(Label, "Lab4") statistic = fac.createLabelAccessStatistic]
+							ticks [ defaultConstant(333) ]
+							labelAccess [ access = WRITE; data = _find(Label, "Lab3") ]
+							labelAccess [ access = WRITE; data = _find(Label, "Lab4") ]
+							labelAccess [ access = WRITE; data = _find(Label, "Lab5") statistic = fac.createLabelAccessStatistic]
+						]
 					]
 				]
 			]

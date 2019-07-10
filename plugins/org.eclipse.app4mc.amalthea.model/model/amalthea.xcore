@@ -3134,7 +3134,7 @@ class CustomEntity extends AbstractMemoryElement
 
 /*
  * Groups a list of processes to a process chain.
- * This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)
+ * This does not define how the processes are chained, like being executed by one parent or like they trigger each other
  * This just defines that the processes should be chained.
  */
 class ProcessChain extends ReferableBaseObject 
@@ -3151,69 +3151,70 @@ abstract class Process extends AbstractProcess
 	refers Stimulus[] stimuli
 }
 
-/*
- * Describes the different execution paths of a process 
- */
-class CallGraph extends BaseObject
+interface ICallGraphItemContainer
 {
-	contains GraphEntryBase[] graphEntries
+	contains CallGraphItem[] items
+}
+
+
+/*
+ * Describes the different execution paths of a process or runnable
+ */
+class CallGraph extends BaseObject, ICallGraphItemContainer {}
+
+/*
+ * An abstract item of a call graph
+ */
+abstract class CallGraphItem extends BaseObject
+{
+	// container (read only)
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers local readonly derived Process containingProcess get {
+		AmaltheaServices.getContainerOfType(this, Process)
+	}
+	
+	// container (read only)
+	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
+	refers local readonly derived Runnable containingRunnable get {
+		AmaltheaServices.getContainerOfType(this, Runnable)
+	}
 }
 
 /*
- * An abstract entry for a call graph
+ * A switch in the call graph, the selected path depends on the value of the provided mode conditions
  */
-abstract class GraphEntryBase extends BaseObject
+class ModeSwitch extends CallGraphItem
 {
-}
-
-/*
- * A sequence of callable items that can be placed in the call graph 
- */
-class CallSequence extends GraphEntryBase, INamed
-{
-	contains CallSequenceItem[] calls
-}
-
-/*
- * A switch in the call graph, the selected path depends on the value of the provided ModeLabel
- */
-class ModeSwitch extends GraphEntryBase
-{
-	contains ModeSwitchEntry<GraphEntryBase>[] entries
-	contains ModeSwitchDefault<GraphEntryBase>defaultEntry
+	contains ModeSwitchEntry[] entries
+	contains ModeSwitchDefault defaultEntry
 }
 
 /*
  * A switch entry for a ModeSwitch. 
  * It describes a path of the switch and the required mode condition to use this path
  */
-class ModeSwitchEntry<T> extends BaseObject, INamed
+class ModeSwitchEntry extends BaseObject, INamed, ICallGraphItemContainer
 {
 	contains ModeConditionDisjunction[1] condition
-	contains T[] items
 }
 
-class ModeSwitchDefault<T> extends BaseObject
-{
-	contains T[] items
-}
+class ModeSwitchDefault extends BaseObject, ICallGraphItemContainer {}
 
 /*
  * A switch in the call graph, each path has a probability
  */
-class ProbabilitySwitch extends GraphEntryBase
+class ProbabilitySwitch extends CallGraphItem
 {
-	contains ProbabilitySwitchEntry<GraphEntryBase>[] entries
+	contains ProbabilitySwitchEntry[] entries
 }
 
 /*
  * A switch entry for a ProbabilitySwitch
  * It describes a path of the switch and it's probability
  */
-class ProbabilitySwitchEntry<T> extends BaseObject
+class ProbabilitySwitchEntry extends BaseObject, ICallGraphItemContainer
 {
 	double probability = "0.0"
-	contains T[] items
 }
 
 /*
@@ -3226,28 +3227,16 @@ class Counter extends BaseObject
 }
 
 /*
- * Generalizes task calls
- */
-abstract class CallSequenceItem extends BaseObject
-{
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers local readonly derived Process containingProcess get {
-		AmaltheaServices.getContainerOfType(this, Process)
-	}
-	
-	contains Counter counter
-}
-
-/*
  * Let the process wait for a combination of events defined by eventMask
  * maskType defines if the events in eventMask are linked by a AND or OR
  */
-class WaitEvent extends CallSequenceItem
+class WaitEvent extends CallGraphItem
 {
 	contains EventMask eventMask
 	WaitEventType maskType
 	WaitingBehaviour waitingBehaviour
+	
+	contains Counter counter
 }
 
 enum WaitEventType
@@ -3269,18 +3258,22 @@ enum WaitingBehaviour
  * These events can be set for a specific process, if there is no process, is is global (for all processes)
  * If there is a process, it is possible to set the event for a specific process instance that is currently activated
  */
-class SetEvent extends CallSequenceItem
+class SetEvent extends CallGraphItem
 {
 	contains EventMask eventMask
 	refers Process process
+	
+	contains Counter counter
 }
 
 /*
  * Clears the events of eventMask
  */
-class ClearEvent extends CallSequenceItem
+class ClearEvent extends CallGraphItem
 {
 	contains EventMask eventMask
+	
+	contains Counter counter
 }
 
 /*
@@ -3310,40 +3303,34 @@ class OsEvent extends ReferableBaseObject, ITaggable
 /*
  * Triggers a stimulus to activate its processes
  */
-class InterProcessTrigger extends CallSequenceItem
+class InterProcessTrigger extends CallGraphItem
 {
 	refers InterProcessStimulus[1] stimulus
+	
+	contains Counter counter
 }
 
 /*
  * Migrates task to core of resource owner
  */
-class EnforcedMigration extends CallSequenceItem
+class EnforcedMigration extends CallGraphItem
 {
 	refers Scheduler resourceOwner
 }
 
 /*
- * Executes a runnable
- */
-class TaskRunnableCall extends CallSequenceItem
-{
-	refers Runnable[1] runnable
-	contains RunEntityCallStatistic statistic
-}
-
-/*
  * Triggers scheduler
  */
-class SchedulePoint extends CallSequenceItem
+class SchedulePoint extends CallGraphItem
 {
 }
 
 /*
  * Terminates the process
  */
-class TerminateProcess extends CallSequenceItem
+class TerminateProcess extends CallGraphItem
 {
+	contains Counter counter
 }
 
 /*
@@ -3391,7 +3378,7 @@ class ProcessPrototype extends AbstractProcess
 	contains OrderPrecedenceSpec[] orderPrecedenceSpec
 	contains ChainedProcessPrototype[] chainedPrototypes
 	refers Activation activation
-	contains TaskRunnableCall[] runnableCalls
+	contains RunnableCall[] runnableCalls
 }
 
 class ChainedProcessPrototype extends BaseObject
@@ -3508,9 +3495,13 @@ class Runnable extends AbstractMemoryElement
 {
 	contains ModeConditionDisjunction executionCondition
 	contains RunnableParameter[] parameters opposite containingRunnable
-	contains RunnableItem[] runnableItems
+	contains CallGraph callGraph
 	refers Activation[] activations
 	
+	op CallGraphItem[] getRunnableItems() {
+		if (callGraph === null) callGraph = AmaltheaFactory.eINSTANCE.createCallGraph()
+		callGraph.items
+	}
 	op Activation getFirstActivation() {
 		activations.head
 	}
@@ -3535,13 +3526,6 @@ class Runnable extends AbstractMemoryElement
 	refers transient readonly volatile derived RunnableCall[] runnableCalls get {
 		AmaltheaIndex.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_RunnableCalls,
 			#{AmaltheaPackage.eINSTANCE.runnableCall_Runnable} )
-	}
-	// back pointer (readonly)
-	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>")
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers transient readonly volatile derived TaskRunnableCall[] taskRunnableCalls get {
-		AmaltheaIndex.getInverseReferences(this, AmaltheaPackage.eINSTANCE.runnable_TaskRunnableCalls,
-			#{AmaltheaPackage.eINSTANCE.taskRunnableCall_Runnable} )
 	}
 	// back pointer (readonly)
 	@GenModel(documentation="<p><b>Returns an <em>immutable</em> list of components the runnable belongs to.</b></p>")
@@ -3662,26 +3646,14 @@ class Section extends ReferableBaseObject
 }
 
 /*
- * Representation of a object that can be executed by a Runnable
- */
-abstract class RunnableItem extends BaseObject
-{
-	// container (read only)
-	@GenModel(propertyCategory="Read only", propertyFilterFlags="org.eclipse.ui.views.properties.expert")
-	refers local readonly derived Runnable containingRunnable get {
-		AmaltheaServices.getContainerOfType(this, Runnable)
-	}
-}
-
-/*
  * Representation of a object that describes computation
  */
-abstract class ComputationItem extends RunnableItem {}
+abstract class ComputationItem extends CallGraphItem {}
 
 /*
  * Representation of the execution needs of a Runnable (default and core-specific)
  */
-class ExecutionNeed extends RunnableItem
+class ExecutionNeed extends CallGraphItem
 {
 	contains NeedEntry[] needs
 }
@@ -3716,7 +3688,7 @@ enum ModeLabelAccessEnum {
 /*
  * Representation of a mode label access of a run entity.
  */
-class ModeLabelAccess extends RunnableItem
+class ModeLabelAccess extends CallGraphItem
 {
 	refers ModeLabel[1] data
 	ModeLabelAccessEnum access
@@ -3734,12 +3706,6 @@ class ModeLabelAccess extends RunnableItem
 	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
 		AmaltheaValidations.validateInvariants(this, diagnostics, context)
 	}
-}
-
-class RunnableModeSwitch extends RunnableItem
-{
-	contains ModeSwitchEntry<RunnableItem>[] entries
-	contains ModeSwitchDefault<RunnableItem>defaultEntry
 }
 
 /*
@@ -3769,7 +3735,7 @@ class LabelAccess extends ComputationItem, ITaggable
 	contains DataDependency dependsOn
 }
 
-abstract class ChannelAccess extends RunnableItem
+abstract class ChannelAccess extends CallGraphItem
 {
 	refers Channel[1] data
 	int elements = "0"
@@ -3830,7 +3796,7 @@ enum LabelAccessImplementation
 /*
  * Describes an semaphore access
  */
-class SemaphoreAccess extends RunnableItem
+class SemaphoreAccess extends CallGraphItem
 {
 	refers Semaphore[1] semaphore
 	SemaphoreAccessEnum access
@@ -3853,7 +3819,7 @@ enum SemaphoreAccessEnum
 /*
  * An abstract description for sender-receiver-communication (it can be read or write)
  */
-abstract class SenderReceiverCommunication extends RunnableItem
+abstract class SenderReceiverCommunication extends CallGraphItem
 {
 	boolean buffered = "false"
 	refers Label[1] label
@@ -3878,7 +3844,7 @@ class SenderReceiverWrite extends SenderReceiverCommunication
  * An abstract description for client/server communication
  * It refers to a required runnable that describes the called server operation
  */
-abstract class ServerCall extends RunnableItem
+abstract class ServerCall extends CallGraphItem
 {
 	refers Runnable[1] serverRunnable
 	refers Port port
@@ -3921,20 +3887,11 @@ enum BlockingType
 }
 
 /*
- * A switch in the runnable items, each path has a probability
- */
-class RunnableProbabilitySwitch extends RunnableItem
-{
-	contains ProbabilitySwitchEntry<RunnableItem>[] entries
-}
-
-/*
  * Describes a group of deviation runnable items
  */
-class Group extends RunnableItem, INamed
+class Group extends CallGraphItem, INamed, ICallGraphItemContainer
 {
 	boolean ordered = "true"
-	contains RunnableItem[] items
 }
 
 class CallArgument extends ReferableObject
@@ -3962,7 +3919,7 @@ class CallArgument extends ReferableObject
 /*
  * Representation of a runnable call of a run entity.
  */
-class RunnableCall extends RunnableItem, ITaggable
+class RunnableCall extends CallGraphItem, ITaggable
 {
 	refers Runnable[1] runnable
 	contains CallArgument[] arguments opposite containingCall
@@ -4000,7 +3957,7 @@ enum ConcurrencyType
 /*
  * Explicitly trigger a custom event from a runnable.
  */
-class CustomEventTrigger extends RunnableItem
+class CustomEventTrigger extends CallGraphItem
 {
 	refers CustomEvent[1] event
 }

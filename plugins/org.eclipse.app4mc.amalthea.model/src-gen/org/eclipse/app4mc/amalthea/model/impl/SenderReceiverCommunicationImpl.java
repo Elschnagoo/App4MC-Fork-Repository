@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class SenderReceiverCommunicationImpl extends RunnableItemImpl implements SenderReceiverCommunication {
+public abstract class SenderReceiverCommunicationImpl extends CallGraphItemImpl implements SenderReceiverCommunication {
 	/**
 	 * The default value of the '{@link #isBuffered() <em>Buffered</em>}' attribute.
 	 * <!-- begin-user-doc -->

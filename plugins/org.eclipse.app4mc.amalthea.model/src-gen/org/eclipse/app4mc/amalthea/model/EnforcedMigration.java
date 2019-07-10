@@ -35,7 +35,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface EnforcedMigration extends CallSequenceItem {
+public interface EnforcedMigration extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Resource Owner</b></em>' reference.
 	 * <!-- begin-user-doc -->

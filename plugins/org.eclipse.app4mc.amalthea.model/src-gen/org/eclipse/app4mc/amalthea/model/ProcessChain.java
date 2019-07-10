@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * Groups a list of processes to a process chain.
- * This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)
+ * This does not define how the processes are chained, like being executed by one parent or like they trigger each other
  * This just defines that the processes should be chained.
  * <!-- end-model-doc -->
  *

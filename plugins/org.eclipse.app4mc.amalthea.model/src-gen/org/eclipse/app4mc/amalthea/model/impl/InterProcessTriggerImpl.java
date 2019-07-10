@@ -15,10 +15,12 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.InterProcessStimulus;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -34,11 +36,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessTriggerImpl#getStimulus <em>Stimulus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.InterProcessTriggerImpl#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InterProcessTriggerImpl extends CallSequenceItemImpl implements InterProcessTrigger {
+public class InterProcessTriggerImpl extends CallGraphItemImpl implements InterProcessTrigger {
 	/**
 	 * The cached value of the '{@link #getStimulus() <em>Stimulus</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -48,6 +51,16 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 	 * @ordered
 	 */
 	protected InterProcessStimulus stimulus;
+
+	/**
+	 * The cached value of the '{@link #getCounter() <em>Counter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Counter counter;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,11 +127,72 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 	 * @generated
 	 */
 	@Override
+	public Counter getCounter() {
+		return counter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCounter(Counter newCounter, NotificationChain msgs) {
+		Counter oldCounter = counter;
+		counter = newCounter;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER, oldCounter, newCounter);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCounter(Counter newCounter) {
+		if (newCounter != counter) {
+			NotificationChain msgs = null;
+			if (counter != null)
+				msgs = ((InternalEObject)counter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER, null, msgs);
+			if (newCounter != null)
+				msgs = ((InternalEObject)newCounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER, null, msgs);
+			msgs = basicSetCounter(newCounter, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER, newCounter, newCounter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER:
+				return basicSetCounter(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				if (resolve) return getStimulus();
 				return basicGetStimulus();
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER:
+				return getCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,6 +207,9 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				setStimulus((InterProcessStimulus)newValue);
+				return;
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER:
+				setCounter((Counter)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -149,6 +226,9 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				setStimulus((InterProcessStimulus)null);
 				return;
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER:
+				setCounter((Counter)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -163,6 +243,8 @@ public class InterProcessTriggerImpl extends CallSequenceItemImpl implements Int
 		switch (featureID) {
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER__STIMULUS:
 				return stimulus != null;
+			case AmaltheaPackage.INTER_PROCESS_TRIGGER__COUNTER:
+				return counter != null;
 		}
 		return super.eIsSet(featureID);
 	}

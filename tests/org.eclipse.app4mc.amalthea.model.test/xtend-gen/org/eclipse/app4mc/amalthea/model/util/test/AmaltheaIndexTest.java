@@ -19,11 +19,11 @@ import java.util.regex.Pattern;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.MemoryMapping;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.util.ModelUtil;
 import org.eclipse.emf.common.util.EList;
@@ -91,11 +91,11 @@ public class AmaltheaIndexTest {
     AmaltheaIndex.deleteAll(model.getSwModel().getLabels());
     Assert.assertEquals("Label d0 is not removed from model.", 0, AmaltheaIndex.<Label>getElements(model, "d0", Label.class).size());
     final org.eclipse.app4mc.amalthea.model.Runnable runnable0 = IterableExtensions.<org.eclipse.app4mc.amalthea.model.Runnable>head(AmaltheaIndex.<org.eclipse.app4mc.amalthea.model.Runnable>getElements(model, "r0", org.eclipse.app4mc.amalthea.model.Runnable.class));
-    final EList<RunnableItem> runnableItems = runnable0.getRunnableItems();
-    final Function1<RunnableItem, Boolean> _function = (RunnableItem s) -> {
+    final EList<CallGraphItem> runnableItems = runnable0.getRunnableItems();
+    final Function1<CallGraphItem, Boolean> _function = (CallGraphItem s) -> {
       return Boolean.valueOf(((s instanceof LabelAccess) && (((LabelAccess) s).getData() != null)));
     };
-    final Iterable<RunnableItem> filteredItems = IterableExtensions.<RunnableItem>filter(runnableItems, _function);
+    final Iterable<CallGraphItem> filteredItems = IterableExtensions.<CallGraphItem>filter(runnableItems, _function);
     Assert.assertEquals("Runnable runnable0 should not contain reference to Label in LabelAccess - as all labels are deleted.", 0, IterableExtensions.size(filteredItems));
   }
   

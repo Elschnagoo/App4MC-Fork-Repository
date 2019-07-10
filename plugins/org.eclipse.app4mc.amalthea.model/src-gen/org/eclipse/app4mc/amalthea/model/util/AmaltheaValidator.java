@@ -50,8 +50,7 @@ import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
@@ -177,7 +176,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
@@ -197,6 +195,7 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
@@ -340,13 +339,10 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -398,7 +394,6 @@ import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
@@ -1130,26 +1125,24 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateProcessChain((ProcessChain)value, diagnostics, context);
 			case AmaltheaPackage.PROCESS:
 				return validateProcess((org.eclipse.app4mc.amalthea.model.Process)value, diagnostics, context);
+			case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER:
+				return validateICallGraphItemContainer((ICallGraphItemContainer)value, diagnostics, context);
 			case AmaltheaPackage.CALL_GRAPH:
 				return validateCallGraph((CallGraph)value, diagnostics, context);
-			case AmaltheaPackage.GRAPH_ENTRY_BASE:
-				return validateGraphEntryBase((GraphEntryBase)value, diagnostics, context);
-			case AmaltheaPackage.CALL_SEQUENCE:
-				return validateCallSequence((CallSequence)value, diagnostics, context);
+			case AmaltheaPackage.CALL_GRAPH_ITEM:
+				return validateCallGraphItem((CallGraphItem)value, diagnostics, context);
 			case AmaltheaPackage.MODE_SWITCH:
 				return validateModeSwitch((ModeSwitch)value, diagnostics, context);
 			case AmaltheaPackage.MODE_SWITCH_ENTRY:
-				return validateModeSwitchEntry((ModeSwitchEntry<?>)value, diagnostics, context);
+				return validateModeSwitchEntry((ModeSwitchEntry)value, diagnostics, context);
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT:
-				return validateModeSwitchDefault((ModeSwitchDefault<?>)value, diagnostics, context);
+				return validateModeSwitchDefault((ModeSwitchDefault)value, diagnostics, context);
 			case AmaltheaPackage.PROBABILITY_SWITCH:
 				return validateProbabilitySwitch((ProbabilitySwitch)value, diagnostics, context);
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY:
-				return validateProbabilitySwitchEntry((ProbabilitySwitchEntry<?>)value, diagnostics, context);
+				return validateProbabilitySwitchEntry((ProbabilitySwitchEntry)value, diagnostics, context);
 			case AmaltheaPackage.COUNTER:
 				return validateCounter((Counter)value, diagnostics, context);
-			case AmaltheaPackage.CALL_SEQUENCE_ITEM:
-				return validateCallSequenceItem((CallSequenceItem)value, diagnostics, context);
 			case AmaltheaPackage.WAIT_EVENT:
 				return validateWaitEvent((WaitEvent)value, diagnostics, context);
 			case AmaltheaPackage.SET_EVENT:
@@ -1164,8 +1157,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateInterProcessTrigger((InterProcessTrigger)value, diagnostics, context);
 			case AmaltheaPackage.ENFORCED_MIGRATION:
 				return validateEnforcedMigration((EnforcedMigration)value, diagnostics, context);
-			case AmaltheaPackage.TASK_RUNNABLE_CALL:
-				return validateTaskRunnableCall((TaskRunnableCall)value, diagnostics, context);
 			case AmaltheaPackage.SCHEDULE_POINT:
 				return validateSchedulePoint((SchedulePoint)value, diagnostics, context);
 			case AmaltheaPackage.TERMINATE_PROCESS:
@@ -1198,8 +1189,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateModeLabel((ModeLabel)value, diagnostics, context);
 			case AmaltheaPackage.SECTION:
 				return validateSection((Section)value, diagnostics, context);
-			case AmaltheaPackage.RUNNABLE_ITEM:
-				return validateRunnableItem((RunnableItem)value, diagnostics, context);
 			case AmaltheaPackage.COMPUTATION_ITEM:
 				return validateComputationItem((ComputationItem)value, diagnostics, context);
 			case AmaltheaPackage.EXECUTION_NEED:
@@ -1212,8 +1201,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateTicksEntry((Map.Entry<?, ?>)value, diagnostics, context);
 			case AmaltheaPackage.MODE_LABEL_ACCESS:
 				return validateModeLabelAccess((ModeLabelAccess)value, diagnostics, context);
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH:
-				return validateRunnableModeSwitch((RunnableModeSwitch)value, diagnostics, context);
 			case AmaltheaPackage.LABEL_ACCESS:
 				return validateLabelAccess((LabelAccess)value, diagnostics, context);
 			case AmaltheaPackage.CHANNEL_ACCESS:
@@ -1238,8 +1225,6 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateAsynchronousServerCall((AsynchronousServerCall)value, diagnostics, context);
 			case AmaltheaPackage.GET_RESULT_SERVER_CALL:
 				return validateGetResultServerCall((GetResultServerCall)value, diagnostics, context);
-			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH:
-				return validateRunnableProbabilitySwitch((RunnableProbabilitySwitch)value, diagnostics, context);
 			case AmaltheaPackage.GROUP:
 				return validateGroup((Group)value, diagnostics, context);
 			case AmaltheaPackage.CALL_ARGUMENT:
@@ -5058,6 +5043,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateICallGraphItemContainer(ICallGraphItemContainer iCallGraphItemContainer, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(iCallGraphItemContainer, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCallGraph(CallGraph callGraph, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(callGraph, diagnostics, context);
 	}
@@ -5067,17 +5061,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGraphEntryBase(GraphEntryBase graphEntryBase, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(graphEntryBase, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCallSequence(CallSequence callSequence, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(callSequence, diagnostics, context);
+	public boolean validateCallGraphItem(CallGraphItem callGraphItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(callGraphItem, diagnostics, context);
 	}
 
 	/**
@@ -5094,7 +5079,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModeSwitchEntry(ModeSwitchEntry<?> modeSwitchEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateModeSwitchEntry(ModeSwitchEntry modeSwitchEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(modeSwitchEntry, diagnostics, context);
 	}
 
@@ -5103,7 +5088,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateModeSwitchDefault(ModeSwitchDefault<?> modeSwitchDefault, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateModeSwitchDefault(ModeSwitchDefault modeSwitchDefault, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(modeSwitchDefault, diagnostics, context);
 	}
 
@@ -5121,7 +5106,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateProbabilitySwitchEntry(ProbabilitySwitchEntry<?> probabilitySwitchEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateProbabilitySwitchEntry(ProbabilitySwitchEntry probabilitySwitchEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(probabilitySwitchEntry, diagnostics, context);
 	}
 
@@ -5132,15 +5117,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateCounter(Counter counter, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(counter, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateCallSequenceItem(CallSequenceItem callSequenceItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(callSequenceItem, diagnostics, context);
 	}
 
 	/**
@@ -5214,15 +5190,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateEnforcedMigration(EnforcedMigration enforcedMigration, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(enforcedMigration, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTaskRunnableCall(TaskRunnableCall taskRunnableCall, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(taskRunnableCall, diagnostics, context);
 	}
 
 	/**
@@ -5474,15 +5441,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRunnableItem(RunnableItem runnableItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(runnableItem, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateComputationItem(ComputationItem computationItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(computationItem, diagnostics, context);
 	}
@@ -5550,15 +5508,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateModeLabelAccess_validateInvariants(ModeLabelAccess modeLabelAccess, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return modeLabelAccess.validateInvariants(diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateRunnableModeSwitch(RunnableModeSwitch runnableModeSwitch, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(runnableModeSwitch, diagnostics, context);
 	}
 
 	/**
@@ -5667,15 +5616,6 @@ public class AmaltheaValidator extends EObjectValidator {
 	 */
 	public boolean validateGetResultServerCall(GetResultServerCall getResultServerCall, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(getResultServerCall, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateRunnableProbabilitySwitch(RunnableProbabilitySwitch runnableProbabilitySwitch, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(runnableProbabilitySwitch, diagnostics, context);
 	}
 
 	/**

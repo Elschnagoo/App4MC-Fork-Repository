@@ -36,10 +36,10 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ProbabilitySwitch extends GraphEntryBase {
+public interface ProbabilitySwitch extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}<code>&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase&gt;</code>.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
@@ -47,6 +47,6 @@ public interface ProbabilitySwitch extends GraphEntryBase {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries();
+	EList<ProbabilitySwitchEntry> getEntries();
 
 } // ProbabilitySwitch

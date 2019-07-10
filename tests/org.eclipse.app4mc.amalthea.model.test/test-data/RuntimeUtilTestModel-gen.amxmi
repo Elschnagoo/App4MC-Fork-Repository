@@ -3,44 +3,44 @@
   <swModel>
     <tasks name="t1" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="">
-          <calls xsi:type="am:TaskRunnableCall" runnable="r1?type=Runnable"/>
-        </graphEntries>
+        <items xsi:type="am:RunnableCall" runnable="r1?type=Runnable"/>
       </callGraph>
     </tasks>
     <tasks name="t2" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="">
-          <calls xsi:type="am:TaskRunnableCall" runnable="r2?type=Runnable"/>
-        </graphEntries>
+        <items xsi:type="am:RunnableCall" runnable="r2?type=Runnable"/>
       </callGraph>
     </tasks>
     <runnables name="r1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="200"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <needs key="Instructions">
-          <value xsi:type="am:DiscreteValueConstant" value="500"/>
-        </needs>
-      </runnableItems>
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <needs key="Instructions">
-          <value xsi:type="am:DiscreteValueGaussDistribution" lowerBound="250" upperBound="750" mean="500.0" sd="2.0"/>
-        </needs>
-      </runnableItems>
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <needs key="MAC_Operations">
-          <value xsi:type="am:DiscreteValueConstant" value="2000"/>
-        </needs>
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="200"/>
+        </items>
+        <items xsi:type="am:ExecutionNeed">
+          <needs key="Instructions">
+            <value xsi:type="am:DiscreteValueConstant" value="500"/>
+          </needs>
+        </items>
+        <items xsi:type="am:ExecutionNeed">
+          <needs key="Instructions">
+            <value xsi:type="am:DiscreteValueGaussDistribution" lowerBound="250" upperBound="750" mean="500.0" sd="2.0"/>
+          </needs>
+        </items>
+        <items xsi:type="am:ExecutionNeed">
+          <needs key="MAC_Operations">
+            <value xsi:type="am:DiscreteValueConstant" value="2000"/>
+          </needs>
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="r2" callback="false" service="false">
-      <runnableItems xsi:type="am:ExecutionNeed">
-        <needs key="MAC_Operations">
-          <value xsi:type="am:DiscreteValueConstant" value="2000"/>
-        </needs>
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:ExecutionNeed">
+          <needs key="MAC_Operations">
+            <value xsi:type="am:DiscreteValueConstant" value="2000"/>
+          </needs>
+        </items>
+      </callGraph>
     </runnables>
   </swModel>
   <hwModel>

@@ -53,7 +53,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class RunnableCallImpl extends RunnableItemImpl implements RunnableCall {
+public class RunnableCallImpl extends CallGraphItemImpl implements RunnableCall {
 	/**
 	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
 	 * <!-- begin-user-doc -->

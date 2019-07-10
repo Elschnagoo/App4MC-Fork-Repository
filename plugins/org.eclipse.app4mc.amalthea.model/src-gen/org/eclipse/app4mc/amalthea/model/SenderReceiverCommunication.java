@@ -37,7 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface SenderReceiverCommunication extends RunnableItem {
+public interface SenderReceiverCommunication extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Buffered</b></em>' attribute.
 	 * The default value is <code>"false"</code>.

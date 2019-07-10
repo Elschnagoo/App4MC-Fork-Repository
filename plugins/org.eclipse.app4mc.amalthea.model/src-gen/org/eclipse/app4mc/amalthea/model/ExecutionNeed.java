@@ -36,7 +36,7 @@ import org.eclipse.emf.common.util.EMap;
  * @model
  * @generated
  */
-public interface ExecutionNeed extends RunnableItem {
+public interface ExecutionNeed extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Needs</b></em>' map.
 	 * The key is of type {@link java.lang.String},

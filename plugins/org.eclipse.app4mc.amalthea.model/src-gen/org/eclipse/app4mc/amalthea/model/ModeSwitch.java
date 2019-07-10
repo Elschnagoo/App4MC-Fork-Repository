@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A switch in the call graph, the selected path depends on the value of the provided ModeLabel
+ * A switch in the call graph, the selected path depends on the value of the provided mode conditions
  * <!-- end-model-doc -->
  *
  * <p>
@@ -37,10 +37,10 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ModeSwitch extends GraphEntryBase {
+public interface ModeSwitch extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}<code>&lt;org.eclipse.app4mc.amalthea.model.GraphEntryBase&gt;</code>.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' containment reference list.
@@ -48,7 +48,7 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ModeSwitchEntry<GraphEntryBase>> getEntries();
+	EList<ModeSwitchEntry> getEntries();
 
 	/**
 	 * Returns the value of the '<em><b>Default Entry</b></em>' containment reference.
@@ -60,7 +60,7 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @model containment="true"
 	 * @generated
 	 */
-	ModeSwitchDefault<GraphEntryBase> getDefaultEntry();
+	ModeSwitchDefault getDefaultEntry();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ModeSwitch#getDefaultEntry <em>Default Entry</em>}' containment reference.
@@ -70,6 +70,6 @@ public interface ModeSwitch extends GraphEntryBase {
 	 * @see #getDefaultEntry()
 	 * @generated
 	 */
-	void setDefaultEntry(ModeSwitchDefault<GraphEntryBase> value);
+	void setDefaultEntry(ModeSwitchDefault value);
 
 } // ModeSwitch

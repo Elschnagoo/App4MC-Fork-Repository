@@ -17,7 +17,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 
@@ -44,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements ProbabilitySwitch {
+public class ProbabilitySwitchImpl extends CallGraphItemImpl implements ProbabilitySwitch {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -53,7 +52,7 @@ public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements Probabi
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProbabilitySwitchEntry<GraphEntryBase>> entries;
+	protected EList<ProbabilitySwitchEntry> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,9 +79,9 @@ public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements Probabi
 	 * @generated
 	 */
 	@Override
-	public EList<ProbabilitySwitchEntry<GraphEntryBase>> getEntries() {
+	public EList<ProbabilitySwitchEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ProbabilitySwitchEntry<GraphEntryBase>>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ProbabilitySwitchEntry>(ProbabilitySwitchEntry.class, this, AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES);
 		}
 		return entries;
 	}
@@ -126,7 +125,7 @@ public class ProbabilitySwitchImpl extends GraphEntryBaseImpl implements Probabi
 		switch (featureID) {
 			case AmaltheaPackage.PROBABILITY_SWITCH__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry<GraphEntryBase>>)newValue);
+				getEntries().addAll((Collection<? extends ProbabilitySwitchEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -44,8 +44,7 @@ import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
@@ -159,7 +158,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
@@ -177,6 +175,7 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
@@ -296,12 +295,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -345,7 +341,6 @@ import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
@@ -1586,27 +1581,27 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProcessAdapter();
 			}
 			@Override
+			public Adapter caseICallGraphItemContainer(ICallGraphItemContainer object) {
+				return createICallGraphItemContainerAdapter();
+			}
+			@Override
 			public Adapter caseCallGraph(CallGraph object) {
 				return createCallGraphAdapter();
 			}
 			@Override
-			public Adapter caseGraphEntryBase(GraphEntryBase object) {
-				return createGraphEntryBaseAdapter();
-			}
-			@Override
-			public Adapter caseCallSequence(CallSequence object) {
-				return createCallSequenceAdapter();
+			public Adapter caseCallGraphItem(CallGraphItem object) {
+				return createCallGraphItemAdapter();
 			}
 			@Override
 			public Adapter caseModeSwitch(ModeSwitch object) {
 				return createModeSwitchAdapter();
 			}
 			@Override
-			public <T> Adapter caseModeSwitchEntry(ModeSwitchEntry<T> object) {
+			public Adapter caseModeSwitchEntry(ModeSwitchEntry object) {
 				return createModeSwitchEntryAdapter();
 			}
 			@Override
-			public <T> Adapter caseModeSwitchDefault(ModeSwitchDefault<T> object) {
+			public Adapter caseModeSwitchDefault(ModeSwitchDefault object) {
 				return createModeSwitchDefaultAdapter();
 			}
 			@Override
@@ -1614,16 +1609,12 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createProbabilitySwitchAdapter();
 			}
 			@Override
-			public <T> Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
+			public Adapter caseProbabilitySwitchEntry(ProbabilitySwitchEntry object) {
 				return createProbabilitySwitchEntryAdapter();
 			}
 			@Override
 			public Adapter caseCounter(Counter object) {
 				return createCounterAdapter();
-			}
-			@Override
-			public Adapter caseCallSequenceItem(CallSequenceItem object) {
-				return createCallSequenceItemAdapter();
 			}
 			@Override
 			public Adapter caseWaitEvent(WaitEvent object) {
@@ -1652,10 +1643,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEnforcedMigration(EnforcedMigration object) {
 				return createEnforcedMigrationAdapter();
-			}
-			@Override
-			public Adapter caseTaskRunnableCall(TaskRunnableCall object) {
-				return createTaskRunnableCallAdapter();
 			}
 			@Override
 			public Adapter caseSchedulePoint(SchedulePoint object) {
@@ -1722,10 +1709,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createSectionAdapter();
 			}
 			@Override
-			public Adapter caseRunnableItem(RunnableItem object) {
-				return createRunnableItemAdapter();
-			}
-			@Override
 			public Adapter caseComputationItem(ComputationItem object) {
 				return createComputationItemAdapter();
 			}
@@ -1748,10 +1731,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModeLabelAccess(ModeLabelAccess object) {
 				return createModeLabelAccessAdapter();
-			}
-			@Override
-			public Adapter caseRunnableModeSwitch(RunnableModeSwitch object) {
-				return createRunnableModeSwitchAdapter();
 			}
 			@Override
 			public Adapter caseLabelAccess(LabelAccess object) {
@@ -1800,10 +1779,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseGetResultServerCall(GetResultServerCall object) {
 				return createGetResultServerCallAdapter();
-			}
-			@Override
-			public Adapter caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
-				return createRunnableProbabilitySwitchAdapter();
 			}
 			@Override
 			public Adapter caseGroup(Group object) {
@@ -5946,6 +5921,20 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer <em>ICall Graph Item Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer
+	 * @generated
+	 */
+	public Adapter createICallGraphItemContainerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CallGraph <em>Call Graph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5960,30 +5949,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.GraphEntryBase <em>Graph Entry Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CallGraphItem <em>Call Graph Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.GraphEntryBase
+	 * @see org.eclipse.app4mc.amalthea.model.CallGraphItem
 	 * @generated
 	 */
-	public Adapter createGraphEntryBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CallSequence <em>Call Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CallSequence
-	 * @generated
-	 */
-	public Adapter createCallSequenceAdapter() {
+	public Adapter createCallGraphItemAdapter() {
 		return null;
 	}
 
@@ -6068,20 +6043,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCounterAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem <em>Call Sequence Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.CallSequenceItem
-	 * @generated
-	 */
-	public Adapter createCallSequenceItemAdapter() {
 		return null;
 	}
 
@@ -6180,20 +6141,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEnforcedMigrationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall <em>Task Runnable Call</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.TaskRunnableCall
-	 * @generated
-	 */
-	public Adapter createTaskRunnableCallAdapter() {
 		return null;
 	}
 
@@ -6422,20 +6369,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableItem <em>Runnable Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableItem
-	 * @generated
-	 */
-	public Adapter createRunnableItemAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ComputationItem <em>Computation Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -6516,20 +6449,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModeLabelAccessAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableModeSwitch <em>Runnable Mode Switch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableModeSwitch
-	 * @generated
-	 */
-	public Adapter createRunnableModeSwitchAdapter() {
 		return null;
 	}
 
@@ -6698,20 +6617,6 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGetResultServerCallAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch <em>Runnable Probability Switch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch
-	 * @generated
-	 */
-	public Adapter createRunnableProbabilitySwitchAdapter() {
 		return null;
 	}
 

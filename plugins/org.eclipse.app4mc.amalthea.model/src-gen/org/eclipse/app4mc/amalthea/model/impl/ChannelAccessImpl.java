@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class ChannelAccessImpl extends RunnableItemImpl implements ChannelAccess {
+public abstract class ChannelAccessImpl extends CallGraphItemImpl implements ChannelAccess {
 	/**
 	 * The cached value of the '{@link #getData() <em>Data</em>}' reference.
 	 * <!-- begin-user-doc -->

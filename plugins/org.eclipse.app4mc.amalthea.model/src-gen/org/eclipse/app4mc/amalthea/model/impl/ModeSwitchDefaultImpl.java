@@ -17,6 +17,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,7 +26,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -43,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwitchDefault<T> {
+public class ModeSwitchDefaultImpl extends BaseObjectImpl implements ModeSwitchDefault {
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -52,7 +53,7 @@ public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwit
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<T> items;
+	protected EList<CallGraphItem> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,9 +80,9 @@ public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwit
 	 * @generated
 	 */
 	@Override
-	public EList<T> getItems() {
+	public EList<CallGraphItem> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS);
+			items = new EObjectContainmentEList<CallGraphItem>(CallGraphItem.class, this, AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS);
 		}
 		return items;
 	}
@@ -125,7 +126,7 @@ public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwit
 		switch (featureID) {
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends T>)newValue);
+				getItems().addAll((Collection<? extends CallGraphItem>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -158,6 +159,38 @@ public class ModeSwitchDefaultImpl<T> extends BaseObjectImpl implements ModeSwit
 				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS: return AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS: return AmaltheaPackage.MODE_SWITCH_DEFAULT__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ModeSwitchDefaultImpl

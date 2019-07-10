@@ -29,5 +29,5 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface SchedulePoint extends CallSequenceItem {
+public interface SchedulePoint extends CallGraphItem {
 } // SchedulePoint

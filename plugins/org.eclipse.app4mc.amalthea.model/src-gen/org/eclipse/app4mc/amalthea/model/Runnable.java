@@ -31,14 +31,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getExecutionCondition <em>Execution Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableItems <em>Runnable Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getCallGraph <em>Call Graph</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getRunnableCalls <em>Runnable Calls</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Runnable#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
@@ -84,16 +83,26 @@ public interface Runnable extends AbstractMemoryElement {
 	EList<RunnableParameter> getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Runnable Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.
+	 * Returns the value of the '<em><b>Call Graph</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Runnable Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_RunnableItems()
+	 * @return the value of the '<em>Call Graph</em>' containment reference.
+	 * @see #setCallGraph(CallGraph)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_CallGraph()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<RunnableItem> getRunnableItems();
+	CallGraph getCallGraph();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Runnable#getCallGraph <em>Call Graph</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Call Graph</em>' containment reference.
+	 * @see #getCallGraph()
+	 * @generated
+	 */
+	void setCallGraph(CallGraph value);
 
 	/**
 	 * Returns the value of the '<em><b>Activations</b></em>' reference list.
@@ -226,22 +235,6 @@ public interface Runnable extends AbstractMemoryElement {
 	EList<RunnableCall> getRunnableCalls();
 
 	/**
-	 * Returns the value of the '<em><b>Task Runnable Calls</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * <p><b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b></p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Task Runnable Calls</em>' reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getRunnable_TaskRunnableCalls()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
-	 * @generated
-	 */
-	EList<TaskRunnableCall> getTaskRunnableCalls();
-
-	/**
 	 * Returns the value of the '<em><b>Referring Components</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.Component}.
 	 * <!-- begin-user-doc -->
@@ -256,6 +249,14 @@ public interface Runnable extends AbstractMemoryElement {
 	 * @generated
 	 */
 	EList<Component> getReferringComponents();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" unique="false"
+	 * @generated
+	 */
+	EList<CallGraphItem> getRunnableItems();
 
 	/**
 	 * <!-- begin-user-doc -->

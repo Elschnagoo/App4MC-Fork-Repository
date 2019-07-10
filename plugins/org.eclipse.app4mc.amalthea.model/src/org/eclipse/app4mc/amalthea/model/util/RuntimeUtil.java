@@ -32,7 +32,6 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.CustomStimulus;
 import org.eclipse.app4mc.amalthea.model.EventStimulus;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
@@ -51,17 +50,15 @@ import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jdt.annotation.NonNull;
 
 public class RuntimeUtil {
 	
@@ -327,10 +324,11 @@ public class RuntimeUtil {
 	 * @param modes		(optional) - null works
 	 */
 	public static void clearRuntimeOfProcess(Process process, EMap<ModeLabel, String> modes) {
-		List<Runnable> runnables = SoftwareUtil.getRunnableList(process, modes);
-		for (Runnable runnable : runnables) {
-			clearRuntimeOfRunnable(runnable, modes);
-		}
+		List<ExecutionNeed> executionNeeds = SoftwareUtil.getExecutionNeeds(process, modes);
+		AmaltheaIndex.deleteAll(executionNeeds);
+		
+		List<Ticks> ticks = SoftwareUtil.getTicks(process, modes);
+		AmaltheaIndex.deleteAll(ticks);
 	}
 	
 	/**
@@ -348,8 +346,7 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * Creates a new Runnable with the given runtime and create a CallSequence at
-	 * beginning / end of the given process
+	 * Creates a new Runnable with the given runtime at beginning / end of the given process
 	 * 
 	 * @param process		containing process (task or isr)
 	 * @param need			execution need
@@ -362,27 +359,21 @@ public class RuntimeUtil {
 		run.setName(runnableName);
 		run.getRunnableItems().add(need);
 
-		TaskRunnableCall tCall = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		tCall.setRunnable(run);
-
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cs.getCalls().add(tCall);
-		cs.setName("Call " + runnableName);
+		RunnableCall call = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		call.setRunnable(run);
 
 		if (positon.equals(PositionType.FIRST)) {
-			process.getCallGraph().getGraphEntries().add(0, cs);
+			process.getCallGraph().getItems().add(0, call);
 		} else {
-			process.getCallGraph().getGraphEntries().add(cs);
+			process.getCallGraph().getItems().add(call);
 		}
 
 		return run;
 	}		
 
 	/**
-	 * Creates a new Runnable with the given runtime and create a CallSequence at
-	 * beginning / end of the given process
-	 */
-	/**
+	 * Creates a new Runnable with the given runtime at beginning / end of the given process
+	 * 
 	 * @param process		containing process (task or isr)
 	 * @param ticks			ticks
 	 * @param runnableName	name of new runnable
@@ -394,19 +385,13 @@ public class RuntimeUtil {
 		run.setName(runnableName);
 		run.getRunnableItems().add(ticks);
 
-		TaskRunnableCall tCall = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		tCall.setRunnable(run);
-
-		CallSequence cs = AmaltheaFactory.eINSTANCE.createCallSequence();
-		cs.getCalls().add(tCall);
-		cs.setName("Call " + runnableName);
+		RunnableCall call = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		call.setRunnable(run);
 
 		if (positon.equals(PositionType.FIRST)) {
-			process.getCallGraph().getGraphEntries().add(0, cs);
+			process.getCallGraph().getItems().add(0, call);
 		} else {
-			// process.getCallGraph().getGraphEntries().add(process.getCallGraph().getGraphEntries().size()
-			// -1 , cs);
-			process.getCallGraph().getGraphEntries().add(cs);
+			process.getCallGraph().getItems().add(call);
 		}
 
 		return run;
@@ -725,8 +710,7 @@ public class RuntimeUtil {
 	public static HashMap<Stimulus, Long> getTriggeredStimuli(Process process, EMap<ModeLabel, String> modes) {
 		HashMap<Stimulus, Long> stimuliMap = new HashMap<Stimulus, Long>();
 		List<InterProcessTrigger> interProcessTriggers = SoftwareUtil
-				.collectCalls(process, modes, s -> s instanceof InterProcessTrigger).stream()
-				.map(s -> (InterProcessTrigger) s).collect(Collectors.toList());
+				.collectCallGraphItems(process.getCallGraph(), modes, InterProcessTrigger.class);
 
 		interProcessTriggers.forEach(ipa -> {
 			if (ipa.getCounter() != null) {
@@ -875,13 +859,4 @@ public class RuntimeUtil {
 		return map;
 	}
 
-	// idea:
-	// remove the (additional) Amalthea parameter in the method signatures
-	// and use the following method if necessary
-	private static Amalthea getRoot(final @NonNull EObject obj) {
-		return AmaltheaServices.getContainerOfType(obj, Amalthea.class);
-	}
 }
-	
-	
-

@@ -41,19 +41,19 @@ class SoftwareUtilsTest {
 	
 	@Test
 	def void testCollectRunnableItems() {
-		val list1 = SoftwareUtil.collectRunnableItems(run1);
+		val list1 = SoftwareUtil.collectCallGraphItems(run1.callGraph);
 		assertEquals(
 			"collectRunnableItems: 6 items expected", 6, list1.size);
 		
-		val list2 = SoftwareUtil.collectRunnableItems(run1, null, Ticks);
+		val list2 = SoftwareUtil.collectCallGraphItems(run1.callGraph, null, Ticks);
 		assertEquals(
 			"collectRunnableItems: 2 items (ticks) expected", 2, list2.size);
 		
-		val list3 = SoftwareUtil.collectRunnableItems(run1, null, LabelAccess, [i | i.access === LabelAccessEnum::READ]);
+		val list3 = SoftwareUtil.collectCallGraphItems(run1.callGraph, null, LabelAccess, [i | i.access === LabelAccessEnum::READ]);
 		assertEquals(
 			"collectRunnableItems: 2 items (label accesses) expected", 2, list3.size);
 		
-		val list4 = SoftwareUtil.collectRunnableItems(run4);
+		val list4 = SoftwareUtil.collectCallGraphItems(run4.callGraph);
 		assertEquals(
 			"collectRunnableItems: 1 item expected", 1, list4.size);
 	}

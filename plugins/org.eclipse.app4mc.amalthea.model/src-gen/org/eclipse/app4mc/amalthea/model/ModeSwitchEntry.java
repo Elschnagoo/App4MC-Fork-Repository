@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +30,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getCondition <em>Condition</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitchEntry#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchEntry()
  * @model
  * @generated
  */
-public interface ModeSwitchEntry<T> extends BaseObject, INamed {
+public interface ModeSwitchEntry extends BaseObject, INamed, ICallGraphItemContainer {
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -60,16 +58,5 @@ public interface ModeSwitchEntry<T> extends BaseObject, INamed {
 	 * @generated
 	 */
 	void setCondition(ModeConditionDisjunction value);
-
-	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchEntry_Items()
-	 * @model kind="reference" containment="true"
-	 * @generated
-	 */
-	EList<T> getItems();
 
 } // ModeSwitchEntry

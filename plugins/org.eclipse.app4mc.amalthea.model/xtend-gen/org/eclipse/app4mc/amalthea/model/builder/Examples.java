@@ -15,7 +15,7 @@ package org.eclipse.app4mc.amalthea.model.builder;
 import org.eclipse.app4mc.amalthea.model.Alias;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.BaseTypeDefinition;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
@@ -35,6 +35,7 @@ import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
@@ -42,7 +43,6 @@ import org.eclipse.app4mc.amalthea.model.StructureType;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
@@ -210,40 +210,46 @@ public class Examples {
         this.b4.typeDefinition_BaseType(it_1, _function_4);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_5 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r1");
-          final Procedure1<Ticks> _function_6 = (Ticks it_3) -> {
-            this.b3.defaultConstant(it_3, 500);
+          final Procedure1<CallGraph> _function_6 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_7 = (Ticks it_4) -> {
+              this.b3.defaultConstant(it_4, 500);
+            };
+            this.b3.ticks(it_3, _function_7);
           };
-          this.b3.ticks(it_2, _function_6);
+          this.b3.callGraph(it_2, _function_6);
         };
         this.b3.runnable(it_1, _function_5);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_6 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r2");
-          final Procedure1<Ticks> _function_7 = (Ticks it_3) -> {
-            this.b3.defaultConstant(it_3, 2000);
+          final Procedure1<CallGraph> _function_7 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_8 = (Ticks it_4) -> {
+              this.b3.defaultConstant(it_4, 2000);
+            };
+            this.b3.ticks(it_3, _function_8);
           };
-          this.b3.ticks(it_2, _function_7);
+          this.b3.callGraph(it_2, _function_7);
         };
         this.b3.runnable(it_1, _function_6);
         final Procedure1<Task> _function_7 = (Task it_2) -> {
           it_2.setName("t1");
-          final Procedure1<CallSequence> _function_8 = (CallSequence it_3) -> {
-            final Procedure1<TaskRunnableCall> _function_9 = (TaskRunnableCall it_4) -> {
+          final Procedure1<CallGraph> _function_8 = (CallGraph it_3) -> {
+            final Procedure1<RunnableCall> _function_9 = (RunnableCall it_4) -> {
               it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r1"));
             };
             this.b3.runnableCall(it_3, _function_9);
           };
-          this.b3.callSequence(it_2, _function_8);
+          this.b3.callGraph(it_2, _function_8);
         };
         this.b3.task(it_1, _function_7);
         final Procedure1<Task> _function_8 = (Task it_2) -> {
           it_2.setName("t2");
-          final Procedure1<CallSequence> _function_9 = (CallSequence it_3) -> {
-            final Procedure1<TaskRunnableCall> _function_10 = (TaskRunnableCall it_4) -> {
+          final Procedure1<CallGraph> _function_9 = (CallGraph it_3) -> {
+            final Procedure1<RunnableCall> _function_10 = (RunnableCall it_4) -> {
               it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
             };
             this.b3.runnableCall(it_3, _function_10);
           };
-          this.b3.callSequence(it_2, _function_9);
+          this.b3.callGraph(it_2, _function_9);
         };
         this.b3.task(it_1, _function_8);
       };

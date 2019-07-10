@@ -29,12 +29,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
@@ -49,13 +48,9 @@ import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 import org.eclipse.app4mc.amalthea.model.Process;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleValueStatistic;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil.TimeType;
@@ -66,211 +61,101 @@ import org.eclipse.emf.common.util.EMap;
 public class SoftwareUtil {
 
 	/**
-	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Traverse the contained call graph items and collect all items.
 	 * 
-	 * @param process	process (Task or ISR)
+	 * @param container	call graph, group, ...
 	 * @return
-	 * 		List of CallSequenceItems
+	 * 		List of CallGraphItems
 	 */
-	public static EList<CallSequenceItem> collectCalls(final Process process) {
-		return collectCalls(process, null, CallSequenceItem.class, null);
+	public static EList<CallGraphItem> collectCallGraphItems(final ICallGraphItemContainer container) {
+		return collectCallGraphItems(container, null, CallGraphItem.class, null);
 	}
 
 	/**
-	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Traverse the contained call graph items and collect all items.
 	 * Collection can be restricted to specific modes.
 	 * 
-	 * @param process	process (Task or ISR)
+	 * @param container	call graph, group, ...
 	 * @param modes		list of mode literals that should be considered
 	 * @return
-	 * 		List of CallSequenceItems
+	 * 		List of CallGraphItems
 	 */
-	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, String> modes) {
-		return collectCalls(process, modes, CallSequenceItem.class, null);
+	public static EList<CallGraphItem> collectCallGraphItems(final ICallGraphItemContainer container, final EMap<ModeLabel, String> modes) {
+		return collectCallGraphItems(container, modes, CallGraphItem.class, null);
 	}
 
 	/**
-	 * Traverse the call graph of a process and collect all items of the call sequences.
+	 * Traverse the contained call graph items and collect all items.
 	 * Collection can be restricted to specific modes and filtered by a lambda expression.
 	 * 
-	 * @param process	process (Task or ISR)
-	 * @param modes		list of mode literals that should be considered
-	 * @param filter	lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
-	 * @return
-	 * 		List of CallSequenceItems
-	 */
-	public static EList<CallSequenceItem> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
-			final Function<CallSequenceItem, Boolean> filter) {
-		return collectCalls(process, modes, CallSequenceItem.class, filter);
-	}
-
-	/**
-	 * Traverse the call graph of a process and collect all items of the call sequences.
-	 * Collection can be restricted to specific modes and filtered by class.
-	 * 
-	 * @param process		Process (Task or ISR)
-	 * @param modes			list of mode literals that should be considered
-	 * @param targetClass	subclass of CallSequenceItem that restricts the result
-	 * @return
-	 * 		List of T extends CallSequenceItems
-	 */
-	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
-			final Class<T> targetClass) {
-		return collectCalls(process, modes, targetClass, null);
-	}
-
-	/**
-	 * Traverse the call graph of a process and collect all items of the call sequences.
-	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
-	 * 
-	 * @param process		process (Task or ISR)
-	 * @param modes			list of mode literals that should be considered
-	 * @param targetClass	subclass of CallSequenceItem that restricts the result
-	 * @param filter		lambda expression (e.g. "a -&gt; a instanceof TaskRunnableCall")
-	 * @return
-	 * 		List of T extends CallSequenceItems
-	 */
-	public static <T extends CallSequenceItem> EList<T> collectCalls(final Process process, final EMap<ModeLabel, String> modes,
-			final Class<T> targetClass, final Function<T, Boolean> filter) {
-		EList<T> itemList = new BasicEList<T>();
-		if (process.getCallGraph() != null) {
-			collectCallSequenceItems(process.getCallGraph().getGraphEntries(), modes, targetClass, filter, itemList);
-		}
-		return itemList;
-	}
-
-
-	private static <T extends CallSequenceItem> void collectCallSequenceItems(final EList<GraphEntryBase> input, final EMap<ModeLabel, String> modes,
-			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
-		for (GraphEntryBase entry : input) {
-			if (entry instanceof ProbabilitySwitch) {
-				ProbabilitySwitch propSwitch = (ProbabilitySwitch) entry;
-				for (ProbabilitySwitchEntry<GraphEntryBase> pse : propSwitch.getEntries()) {
-					collectCallSequenceItems(pse.getItems(), modes, targetClass, filter, itemList);
-				}
-			} else if (entry instanceof ModeSwitch) {
-				ModeSwitch modeSwitch = (ModeSwitch) entry;
-				boolean includeDefault = true;
-				for (ModeSwitchEntry<GraphEntryBase> mse : modeSwitch.getEntries()) {
-					if (modes == null) {
-						collectCallSequenceItems(mse.getItems(), modes, targetClass, filter, itemList);
-					} else if (mse.getCondition().isSatisfiedBy(modes)) {
-						collectCallSequenceItems(mse.getItems(), modes, targetClass, filter, itemList);
-						includeDefault = false;
-					}
-				}
-				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectCallSequenceItems(modeSwitch.getDefaultEntry().getItems(), modes, targetClass, filter, itemList);
-				}
-			} else if (entry instanceof CallSequence) {
-				for (CallSequenceItem item : ((CallSequence) entry).getCalls()) {
-					if (targetClass.isInstance(item)) {
-						T castedItem = targetClass.cast(item);
-						if (filter == null || filter.apply(castedItem)) {
-							itemList.add(castedItem);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Traverse the runnable items graph of a runnable and collect all items.
-	 * 
-	 * @param runnable	runnable
-	 * @return
-	 * 		List of RunnableItems
-	 */
-	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable) {
-		return collectRunnableItems(runnable, null, RunnableItem.class, null);
-	}
-
-	/**
-	 * Traverse the runnable items graph of a runnable and collect all items.
-	 * Collection can be restricted to specific modes.
-	 * 
-	 * @param runnable	runnable
-	 * @param modes		list of mode literals that should be considered
-	 * @return
-	 * 		List of RunnableItems
-	 */
-	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, RunnableItem.class, null);
-	}
-
-	/**
-	 * Traverse the runnable items graph of a runnable and collect all items.
-	 * Collection can be restricted to specific modes and filtered by a lambda expression.
-	 * 
-	 * @param runnable	runnable
+	 * @param container	call graph, group, ...
 	 * @param modes		list of mode literals that should be considered
 	 * @param filter	lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
 	 * @return
-	 * 		List of RunnableItems
+	 * 		List of CallGraphItems
 	 */
-	public static EList<RunnableItem> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
-			final Function<RunnableItem, Boolean> filter) {
-		return collectRunnableItems(runnable, modes, RunnableItem.class, filter);
+	public static EList<CallGraphItem> collectCallGraphItems(final ICallGraphItemContainer container, final EMap<ModeLabel, String> modes,
+			final Function<CallGraphItem, Boolean> filter) {
+		return collectCallGraphItems(container, modes, CallGraphItem.class, filter);
 	}
 	
 	/**
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes and filtered by class.
 	 * 
-	 * @param runnable		runnable
+	 * @param container		call graph, group, ...
 	 * @param modes			list of mode literals that should be considered
-	 * @param targetClass	subclass of RunnableItem that restricts the result
+	 * @param targetClass	subclass of CallGraphItem that restricts the result
 	 * @return
-	 * 		List of T extends RunnableItems
+	 * 		List of T extends CallGraphItems
 	 */
-	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
+	public static <T extends CallGraphItem> EList<T> collectCallGraphItems(final ICallGraphItemContainer container, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass) {
-		return collectRunnableItems(runnable, modes, targetClass, null);
+		return collectCallGraphItems(container, modes, targetClass, null);
 	}
 	
 	/**
 	 * Traverse the runnable items graph of a runnable and collect all items.
 	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
 	 * 
-	 * @param runnable		runnable
+	 * @param container		call graph, group, ...
 	 * @param modes			list of mode literals that should be considered
-	 * @param targetClass	subclass of RunnableItem that restricts the result
+	 * @param targetClass	subclass of CallGraphItem that restricts the result
 	 * @param filter		lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
 	 * @return
-	 * 		List of T extends RunnableItems
+	 * 		List of T extends CallGraphItems
 	 */
-	public static <T extends RunnableItem> EList<T> collectRunnableItems(final Runnable runnable, final EMap<ModeLabel, String> modes,
+	public static <T extends CallGraphItem> EList<T> collectCallGraphItems(final ICallGraphItemContainer container, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter) {
 		EList<T> itemList = new BasicEList<T>();
-		collectRunnableItems(runnable.getRunnableItems(), modes, targetClass, filter, itemList);
+		collectCallGraphItems(container.getItems(), modes, targetClass, filter, itemList);
 		return itemList;
 	}
 
 
-	private static <T extends RunnableItem> void collectRunnableItems(final EList<RunnableItem> input, final EMap<ModeLabel, String> modes,
+	private static <T extends CallGraphItem> void collectCallGraphItems(final EList<CallGraphItem> input, final EMap<ModeLabel, String> modes,
 			final Class<T> targetClass, final Function<T, Boolean> filter, final List<T> itemList) {
-		for (RunnableItem item : input) {
+		for (CallGraphItem item : input) {
 			if (item instanceof Group) {
-				collectRunnableItems(((Group) item).getItems(), modes, targetClass, filter, itemList);
-			} else if (item instanceof RunnableProbabilitySwitch) {
-				RunnableProbabilitySwitch propSwitch = (RunnableProbabilitySwitch) item;
-				for (ProbabilitySwitchEntry<RunnableItem> pse : propSwitch.getEntries()) {
-					collectRunnableItems(pse.getItems(), modes, targetClass, filter, itemList);
+				collectCallGraphItems(((Group) item).getItems(), modes, targetClass, filter, itemList);
+			} else if (item instanceof ProbabilitySwitch) {
+				ProbabilitySwitch propSwitch = (ProbabilitySwitch) item;
+				for (ProbabilitySwitchEntry pse : propSwitch.getEntries()) {
+					collectCallGraphItems(pse.getItems(), modes, targetClass, filter, itemList);
 				}
-			} else if (item instanceof RunnableModeSwitch) {
-				RunnableModeSwitch modeSwitch = (RunnableModeSwitch) item;
+			} else if (item instanceof ModeSwitch) {
+				ModeSwitch modeSwitch = (ModeSwitch) item;
 				boolean includeDefault = true;
-				for (ModeSwitchEntry<RunnableItem> mse : modeSwitch.getEntries()) {
+				for (ModeSwitchEntry mse : modeSwitch.getEntries()) {
 					if (modes == null) {
-						collectRunnableItems(mse.getItems(), modes, targetClass, filter, itemList);
+						collectCallGraphItems(mse.getItems(), modes, targetClass, filter, itemList);
 					} else if (mse.getCondition().isSatisfiedBy(modes)) {
-						collectRunnableItems(mse.getItems(), modes, targetClass, filter, itemList);
+						collectCallGraphItems(mse.getItems(), modes, targetClass, filter, itemList);
 						includeDefault = false;
 					}
 				}
 				if (includeDefault && modeSwitch.getDefaultEntry() != null) {
-					collectRunnableItems(modeSwitch.getDefaultEntry().getItems(), modes, targetClass, filter, itemList);
+					collectCallGraphItems(modeSwitch.getDefaultEntry().getItems(), modes, targetClass, filter, itemList);
 				}
 			} else if (targetClass.isInstance(item)) {
 				T castedItem = targetClass.cast(item);
@@ -290,7 +175,7 @@ public class SoftwareUtil {
 	 * 		Set of Labels
 	 */
 	public static Set<Label> getAccessedLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class)
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class)
 			.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
 
@@ -302,7 +187,7 @@ public class SoftwareUtil {
 	 * 		Set of Labels
 	 */
 	public static Set<Label> getReadLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ))
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class, (la -> la.getAccess() == READ))
 				.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
 
@@ -314,7 +199,7 @@ public class SoftwareUtil {
 	 * 		Set of Labels
 	 */
 	public static Set<Label> getWriteLabelSet(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE))
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class, (la -> la.getAccess() == WRITE))
 			.stream().map(la -> la.getData()).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
 
@@ -326,7 +211,7 @@ public class SoftwareUtil {
 	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class);	
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class);	
 	}
 
 	/**
@@ -337,7 +222,7 @@ public class SoftwareUtil {
 	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getReadLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == READ));	
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class, (la -> la.getAccess() == READ));	
 	}
 
 	/**
@@ -348,7 +233,7 @@ public class SoftwareUtil {
 	 * 		List of LabelAccesses
 	 */
 	public static List<LabelAccess> getWriteLabelAccessList(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getAccess() == WRITE));	
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class, (la -> la.getAccess() == WRITE));	
 	}
 
 	/**
@@ -359,7 +244,7 @@ public class SoftwareUtil {
 	 * 		Map: Label -&gt; List of LabelAccesses
 	 */
 	public static Map<Label, List<LabelAccess>> getLabelToLabelAccessMap(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class, (la -> la.getData() != null))
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class, (la -> la.getData() != null))
 			.stream().collect(Collectors.groupingBy(LabelAccess::getData));
 	}
 
@@ -371,7 +256,7 @@ public class SoftwareUtil {
 	 * 		Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class,
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class,
 					(la -> la.getData() != null && la.getStatistic() != null))
 				.stream().collect(Collectors.groupingBy(
 						LabelAccess::getData,
@@ -386,7 +271,7 @@ public class SoftwareUtil {
 	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getReadLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class,
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class,
 				(la -> la.getData() != null && la.getStatistic() != null && la.getAccess() == READ))
 			.stream().collect(Collectors.groupingBy(
 					LabelAccess::getData,
@@ -401,7 +286,7 @@ public class SoftwareUtil {
 	 * 		Map: Label -&gt; List of LabelAccessStatistics
 	 */
 	public static Map<Label, List<LabelAccessStatistic>> getWriteLabelAccessStatisticsMap(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, LabelAccess.class,
+		return collectCallGraphItems(runnable.getCallGraph(), modes, LabelAccess.class,
 				(la -> la.getData() != null && la.getStatistic() != null && la.getAccess() == WRITE))
 			.stream().collect(Collectors.groupingBy(
 					LabelAccess::getData,
@@ -626,7 +511,7 @@ public class SoftwareUtil {
 	 * 		List of Runnables
 	 */
 	public static List<Runnable> getRunnableList(Process process, EMap<ModeLabel, String> modes) {
-		return SoftwareUtil.collectCalls(process, modes, TaskRunnableCall.class)
+		return collectCallGraphItems(process.getCallGraph(), modes, RunnableCall.class)
 			.stream().map(call -> call.getRunnable()).filter(Objects::nonNull).collect(Collectors.toList());
 	}
 
@@ -681,7 +566,7 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess() == LabelAccessEnum.READ) {
 				Runnable run = AmaltheaServices.getContainerOfType(la, Runnable.class);
-				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
+				if (modes == null || modes.isEmpty() || (collectCallGraphItems(run.getCallGraph(), modes)).contains(la)) {
 					result.add((Runnable) AmaltheaServices.getContainerOfType(la, Runnable.class));
 				}
 			}
@@ -712,7 +597,7 @@ public class SoftwareUtil {
 		for (LabelAccess la : label.getLabelAccesses()) {
 			if (la.getAccess().equals(LabelAccessEnum.WRITE)) {
 				Runnable run = AmaltheaServices.getContainerOfType(la, Runnable.class);
-				if (modes == null || modes.isEmpty() || (collectRunnableItems(run, modes)).contains(la)) {
+				if (modes == null || modes.isEmpty() || (collectCallGraphItems(run.getCallGraph(), modes)).contains(la)) {
 					result.add((Runnable) AmaltheaServices.getContainerOfType(la, Runnable.class));
 				}
 			}
@@ -739,7 +624,7 @@ public class SoftwareUtil {
 	 * 		List of SetEvents
 	 */
 	public static List<SetEvent> collectSetEvents(Process process, EMap<ModeLabel, String> modes) {
-		return SoftwareUtil.collectCalls(process, modes, SetEvent.class);
+		return collectCallGraphItems(process.getCallGraph(), modes, SetEvent.class);
 	}
 
 	/**
@@ -750,7 +635,7 @@ public class SoftwareUtil {
 	 * 		List of ClearEvents
 	 */
 	public static List<ClearEvent> collectClearEvents(Process process, EMap<ModeLabel, String> modes) {
-		return SoftwareUtil.collectCalls(process, modes, ClearEvent.class);
+		return collectCallGraphItems(process.getCallGraph(), modes, ClearEvent.class);
 	}
 
 	/**
@@ -761,7 +646,7 @@ public class SoftwareUtil {
 	 * 		List of WaitEvents
 	 */
 	public static List<WaitEvent> collectWaitEvents(Process process, EMap<ModeLabel, String> modes) {
-		return SoftwareUtil.collectCalls(process, modes, WaitEvent.class);
+		return collectCallGraphItems(process.getCallGraph(), modes, WaitEvent.class);
 	}
 
 	/**
@@ -771,8 +656,8 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of CallSequenceItems
 	 */
-	public static List<CallSequenceItem> collectEventsOfProcess(Process process, EMap<ModeLabel, String> modes) {
-		return SoftwareUtil.collectCalls(process, modes,
+	public static List<CallGraphItem> collectEventsOfProcess(Process process, EMap<ModeLabel, String> modes) {
+		return collectCallGraphItems(process.getCallGraph(), modes,
 				(call -> call instanceof ClearEvent || call instanceof SetEvent || call instanceof WaitEvent));
 	}
 
@@ -798,18 +683,21 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Processes
 	 */
-	public static List<Process> getProcesses(Runnable runnable, EMap<ModeLabel, String> modes) {
+	public static List<Process> getCallingProcesses(Runnable runnable, EMap<ModeLabel, String> modes) {
 		ArrayList<Process> result = new ArrayList<>();
-		for (TaskRunnableCall trc : runnable.getTaskRunnableCalls()) {
-			Process proc = trc.getContainingProcess(); // null if container is not of type Process
-			if (proc == null) continue;
+		for (RunnableCall callerRC : runnable.getRunnableCalls()) {
+			Process caller = callerRC.getContainingProcess(); // null if container is not of type Process
+			if (caller == null) continue;
 			
 			if (modes != null && !modes.isEmpty()) {
-				if (getRunnableList(proc, modes).contains(runnable)) {
-					result.add((Process) proc);
+				for (RunnableCall rc : collectCallGraphItems(caller.getCallGraph(), modes, RunnableCall.class)) {
+					if (rc.getRunnable() == runnable) {
+						result.add(caller);
+						break;
+					}
 				}
 			} else {
-				result.add(proc);
+				result.add(caller);
 			}
 		}
 		return result;
@@ -822,26 +710,22 @@ public class SoftwareUtil {
 	 * @return
 	 * 		List of Runnables
 	 */
-	public static List<Runnable> getRunnableCallParents(Runnable runnable, EMap<ModeLabel, String> modes) {
+	public static List<Runnable> getCallingRunnables(Runnable runnable, EMap<ModeLabel, String> modes) {
 		ArrayList<Runnable> result = new ArrayList<>();
-		for (RunnableCall rc : runnable.getRunnableCalls()) {
-			Runnable run = rc.getContainingRunnable();
-			if (run == null) continue;
+		for (RunnableCall callerRC : runnable.getRunnableCalls()) {
+			Runnable caller = callerRC.getContainingRunnable();	// null if container is not of type Runnable
+			if (caller == null) continue;
 			
 			if (modes != null && !modes.isEmpty()) {
-				EList<RunnableItem> runItems = collectRunnableItems(run, modes);
-				if (runItems != null  && runItems.isEmpty() ) {
-					for (RunnableItem runItem : runItems) {
-						if (runItem instanceof RunnableCall) {
-							if (((RunnableCall) runItem).getRunnable().equals(runnable)) {
-								result.add(run);
-							}
-						}
+				for (RunnableCall rc : collectCallGraphItems(caller.getCallGraph(), modes, RunnableCall.class)) {
+					if (rc.getRunnable() == runnable) {
+						result.add(caller);
+						break;
 					}
 				}
 			}
 			else
-				result.add(run);
+				result.add(caller);
 		}
 		return result;
 	}
@@ -854,7 +738,7 @@ public class SoftwareUtil {
 	 * 		List of Runnables
 	 */
 	public static List<Runnable> getCalledRunnables(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, RunnableCall.class)
+		return collectCallGraphItems(runnable.getCallGraph(), modes, RunnableCall.class)
 			.stream().map(rc -> rc.getRunnable()).filter(Objects::nonNull).collect(Collectors.toList());
 	}
 
@@ -866,7 +750,9 @@ public class SoftwareUtil {
 	 * 		List of ExecutionNeeds
 	 */
 	public static List<ExecutionNeed> getExecutionNeeds(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, ExecutionNeed.class);
+		return collectCallGraphItems(runnable.getCallGraph(), modes, ExecutionNeed.class);
+		
+		//TODO Should nested runnable calls also be included ? (potential cycles)
 	}
 
 	/**
@@ -878,9 +764,11 @@ public class SoftwareUtil {
 	 */
 	public static List<ExecutionNeed> getExecutionNeeds(Process process, EMap<ModeLabel, String> modes) {
 		List<ExecutionNeed> result = new ArrayList<>();
-		List<Runnable> runnableList = getRunnableList(process, modes);
-		for (Runnable run : runnableList) {
-			result.addAll(getExecutionNeeds(run, modes)) ;
+		// add needs on process level
+		result.addAll(collectCallGraphItems(process.getCallGraph(), modes, ExecutionNeed.class));
+		// add needs of called runnables
+		for (Runnable run : getRunnableList(process, modes)) {
+			result.addAll(getExecutionNeeds(run, modes));
 		}
 		return result; 
 	}
@@ -893,7 +781,9 @@ public class SoftwareUtil {
 	 * 		List of Ticks
 	 */
 	public static List<Ticks> getTicks(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, Ticks.class);
+		return collectCallGraphItems(runnable.getCallGraph(), modes, Ticks.class);
+		
+		//TODO Should nested runnable calls also be included ? (potential cycles)
 	}
 
 	/** 
@@ -905,6 +795,9 @@ public class SoftwareUtil {
 	 */
 	public static List<Ticks> getTicks(Process process, EMap<ModeLabel, String> modes) {
 		List<Ticks> result = new ArrayList<>();
+		// add needs on process level
+		result.addAll(collectCallGraphItems(process.getCallGraph(), modes, Ticks.class));
+		// add needs of called runnables
 		for(Runnable run : getRunnableList(process, modes)) {
 			result.addAll(getTicks(run, modes));
 		}
@@ -919,7 +812,7 @@ public class SoftwareUtil {
 	 * 		Set of ServerCall
 	 */
 	public static Set<ServerCall> getServerCallSet(Runnable runnable, EMap<ModeLabel, String> modes) {
-		return collectRunnableItems(runnable, modes, ServerCall.class).stream().collect(Collectors.toSet());
+		return collectCallGraphItems(runnable.getCallGraph(), modes, ServerCall.class).stream().collect(Collectors.toSet());
 	}
 
 	/**

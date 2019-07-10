@@ -3017,7 +3017,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessChain" eSuperTypes="#//ReferableBaseObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Groups a list of processes to a process chain.&#xA;This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)&#xA;This just defines that the processes should be chained."/>
+      <details key="documentation" value="Groups a list of processes to a process chain.&#xA;This does not define how the processes are chained, like being executed by one parent or like they trigger each other&#xA;This just defines that the processes should be chained."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="processes" upperBound="-1"
         eType="#//Process"/>
@@ -3031,83 +3031,67 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="stimuli" upperBound="-1"
         eType="#//Stimulus"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallGraph" eSuperTypes="#//BaseObject">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Describes the different execution paths of a process"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="graphEntries" upperBound="-1"
-        eType="#//GraphEntryBase" containment="true" resolveProxies="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ICallGraphItemContainer" abstract="true"
+      interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//CallGraphItem" containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GraphEntryBase" abstract="true" eSuperTypes="#//BaseObject">
+  <eClassifiers xsi:type="ecore:EClass" name="CallGraph" eSuperTypes="#//BaseObject #//ICallGraphItemContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An abstract entry for a call graph"/>
+      <details key="documentation" value="Describes the different execution paths of a process or runnable"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallSequence" eSuperTypes="#//GraphEntryBase #//INamed">
+  <eClassifiers xsi:type="ecore:EClass" name="CallGraphItem" abstract="true" eSuperTypes="#//BaseObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A sequence of callable items that can be placed in the call graph"/>
+      <details key="documentation" value="An abstract item of a call graph"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="calls" upperBound="-1"
-        eType="#//CallSequenceItem" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingProcess" eType="#//Process"
+        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="propertyCategory" value="Read only"/>
+        <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
+        <details key="get" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Process%>.class);"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingRunnable" eType="#//Runnable"
+        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="propertyCategory" value="Read only"/>
+        <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
+        <details key="get" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%>.class);"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitch" eSuperTypes="#//GraphEntryBase">
+  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitch" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A switch in the call graph, the selected path depends on the value of the provided ModeLabel"/>
+      <details key="documentation" value="A switch in the call graph, the selected path depends on the value of the provided mode conditions"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eClassifier="#//ModeSwitchEntry">
-        <eTypeArguments eClassifier="#//GraphEntryBase"/>
-      </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultEntry" containment="true"
-        resolveProxies="false">
-      <eGenericType eClassifier="#//ModeSwitchDefault">
-        <eTypeArguments eClassifier="#//GraphEntryBase"/>
-      </eGenericType>
-    </eStructuralFeatures>
+        eType="#//ModeSwitchEntry" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultEntry" eType="#//ModeSwitchDefault"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitchEntry" eSuperTypes="#//BaseObject #//INamed">
+  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitchEntry" eSuperTypes="#//BaseObject #//INamed #//ICallGraphItemContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A switch entry for a ModeSwitch.&#xA;It describes a path of the switch and the required mode condition to use this path"/>
     </eAnnotations>
-    <eTypeParameters name="T"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
         eType="#//ModeConditionDisjunction" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eTypeParameter="#//ModeSwitchEntry/T"/>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitchDefault" eSuperTypes="#//BaseObject">
-    <eTypeParameters name="T"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eTypeParameter="#//ModeSwitchDefault/T"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProbabilitySwitch" eSuperTypes="#//GraphEntryBase">
+  <eClassifiers xsi:type="ecore:EClass" name="ModeSwitchDefault" eSuperTypes="#//BaseObject #//ICallGraphItemContainer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProbabilitySwitch" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A switch in the call graph, each path has a probability"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eClassifier="#//ProbabilitySwitchEntry">
-        <eTypeArguments eClassifier="#//GraphEntryBase"/>
-      </eGenericType>
-    </eStructuralFeatures>
+        eType="#//ProbabilitySwitchEntry" containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProbabilitySwitchEntry" eSuperTypes="#//BaseObject">
+  <eClassifiers xsi:type="ecore:EClass" name="ProbabilitySwitchEntry" eSuperTypes="#//BaseObject #//ICallGraphItemContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A switch entry for a ProbabilitySwitch&#xA;It describes a path of the switch and it's probability"/>
     </eAnnotations>
-    <eTypeParameters name="T"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eTypeParameter="#//ProbabilitySwitchEntry/T"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Counter" eSuperTypes="#//BaseObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3118,22 +3102,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallSequenceItem" abstract="true" eSuperTypes="#//BaseObject">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Generalizes task calls"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containingProcess" eType="#//Process"
-        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="propertyCategory" value="Read only"/>
-        <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
-        <details key="get" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Process%>.class);"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
-        containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WaitEvent" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="WaitEvent" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Let the process wait for a combination of events defined by eventMask&#xA;maskType defines if the events in eventMask are linked by a AND or OR"/>
     </eAnnotations>
@@ -3143,6 +3112,8 @@
         eType="#//WaitEventType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="waitingBehaviour" unique="false"
         eType="#//WaitingBehaviour"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="WaitEventType">
     <eLiterals name="_undefined_"/>
@@ -3154,19 +3125,23 @@
     <eLiterals name="active"/>
     <eLiterals name="passive"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SetEvent" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="SetEvent" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Sets the events of eventMask&#xA;These events can be set for a specific process, if there is no process, is is global (for all processes)&#xA;If there is a process, it is possible to set the event for a specific process instance that is currently activated"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eventMask" eType="#//EventMask"
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClearEvent" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ClearEvent" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Clears the events of eventMask"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eventMask" eType="#//EventMask"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
         containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventMask" eSuperTypes="#//BaseObject">
@@ -3193,37 +3168,32 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InterProcessTrigger" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="InterProcessTrigger" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Triggers a stimulus to activate its processes"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stimulus" lowerBound="1"
         eType="#//InterProcessStimulus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EnforcedMigration" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="EnforcedMigration" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Migrates task to core of resource owner"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceOwner" eType="#//Scheduler"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskRunnableCall" eSuperTypes="#//CallSequenceItem">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Executes a runnable"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="runnable" lowerBound="1"
-        eType="#//Runnable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statistic" eType="#//RunEntityCallStatistic"
-        containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SchedulePoint" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="SchedulePoint" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Triggers scheduler"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TerminateProcess" eSuperTypes="#//CallSequenceItem">
+  <eClassifiers xsi:type="ecore:EClass" name="TerminateProcess" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Terminates the process"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//Process">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3271,7 +3241,7 @@
         eType="#//ChainedProcessPrototype" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activation" eType="#//Activation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="runnableCalls" upperBound="-1"
-        eType="#//TaskRunnableCall" containment="true" resolveProxies="false"/>
+        eType="#//RunnableCall" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChainedProcessPrototype" eSuperTypes="#//BaseObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="prototype" lowerBound="1"
@@ -3382,6 +3352,11 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Smallest allocatable unit, which provides additional (optional) attributes for allocation algorithms."/>
     </eAnnotations>
+    <eOperations name="getRunnableItems" unique="false" upperBound="-1" eType="#//CallGraphItem">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.CallGraphItem%>> _xblockexpression = null;&#xA;{&#xA;&#x9;&lt;%org.eclipse.app4mc.amalthea.model.CallGraph%> _callGraph = this.getCallGraph();&#xA;&#x9;boolean _tripleEquals = (_callGraph == null);&#xA;&#x9;if (_tripleEquals)&#xA;&#x9;{&#xA;&#x9;&#x9;this.setCallGraph(&lt;%org.eclipse.app4mc.amalthea.model.AmaltheaFactory%>.eINSTANCE.createCallGraph());&#xA;&#x9;}&#xA;&#x9;_xblockexpression = this.getCallGraph().getItems();&#xA;}&#xA;return _xblockexpression;"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getFirstActivation" unique="false" eType="#//Activation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Activation%>>head(this.getActivations());"/>
@@ -3391,8 +3366,8 @@
         containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//RunnableParameter" containment="true" resolveProxies="false" eOpposite="#//RunnableParameter/containingRunnable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="runnableItems" upperBound="-1"
-        eType="#//RunnableItem" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callGraph" eType="#//CallGraph"
+        containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activations" upperBound="-1"
         eType="#//Activation"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="callback" unique="false"
@@ -3422,16 +3397,6 @@
         <details key="propertyCategory" value="Read only"/>
         <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
         <details key="get" value="&lt;%org.eclipse.emf.ecore.EReference%> _runnableCall_Runnable = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getRunnableCall_Runnable();&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.RunnableCall%>>getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getRunnable_RunnableCalls(), &#xA;&#x9;java.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>newHashSet(_runnableCall_Runnable)));"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="taskRunnableCalls" upperBound="-1"
-        eType="#//TaskRunnableCall" changeable="false" volatile="true" transient="true"
-        derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="&lt;p>&lt;b>Returns an &lt;em>immutable&lt;/em> list of callers (TaskRunnableCalls).&lt;/b>&lt;/p>"/>
-        <details key="propertyCategory" value="Read only"/>
-        <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
-        <details key="get" value="&lt;%org.eclipse.emf.ecore.EReference%> _taskRunnableCall_Runnable = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getTaskRunnableCall_Runnable();&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskRunnableCall%>>getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getRunnable_TaskRunnableCalls(), &#xA;&#x9;java.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>newHashSet(_taskRunnableCall_Runnable)));"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referringComponents" upperBound="-1"
@@ -3572,25 +3537,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RunnableItem" abstract="true" eSuperTypes="#//BaseObject">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Representation of a object that can be executed by a Runnable"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containingRunnable" eType="#//Runnable"
-        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="propertyCategory" value="Read only"/>
-        <details key="propertyFilterFlags" value="org.eclipse.ui.views.properties.expert"/>
-        <details key="get" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%>.class);"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComputationItem" abstract="true" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ComputationItem" abstract="true" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Representation of a object that describes computation"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionNeed" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionNeed" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Representation of the execution needs of a Runnable (default and core-specific)"/>
     </eAnnotations>
@@ -3624,7 +3576,7 @@
     <eLiterals name="increment"/>
     <eLiterals name="decrement"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModeLabelAccess" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ModeLabelAccess" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Representation of a mode label access of a run entity."/>
     </eAnnotations>
@@ -3653,20 +3605,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Just used in case of increment or decrement.&#xA;It can be used to define a step other than 1."/>
       </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RunnableModeSwitch" eSuperTypes="#//RunnableItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eClassifier="#//ModeSwitchEntry">
-        <eTypeArguments eClassifier="#//RunnableItem"/>
-      </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultEntry" containment="true"
-        resolveProxies="false">
-      <eGenericType eClassifier="#//ModeSwitchDefault">
-        <eTypeArguments eClassifier="#//RunnableItem"/>
-      </eGenericType>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelAccess" eSuperTypes="#//ComputationItem #//ITaggable">
@@ -3699,7 +3637,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" eType="#//DataDependency"
         containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChannelAccess" abstract="true" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelAccess" abstract="true" eSuperTypes="#//CallGraphItem">
     <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" eType="#//Channel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="elements" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
@@ -3746,7 +3684,7 @@
     <eLiterals name="implicit"/>
     <eLiterals name="timed"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SemaphoreAccess" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="SemaphoreAccess" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Describes an semaphore access"/>
     </eAnnotations>
@@ -3767,7 +3705,7 @@
     <eLiterals name="release"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SenderReceiverCommunication" abstract="true"
-      eSuperTypes="#//RunnableItem">
+      eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An abstract description for sender-receiver-communication (it can be read or write)"/>
     </eAnnotations>
@@ -3788,7 +3726,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="notifiedRunnables" upperBound="-1"
         eType="#//Runnable"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ServerCall" abstract="true" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="ServerCall" abstract="true" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An abstract description for client/server communication&#xA;It refers to a required runnable that describes the called server operation"/>
     </eAnnotations>
@@ -3825,25 +3763,12 @@
     <eLiterals name="passive_wait"/>
     <eLiterals name="non_blocking"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RunnableProbabilitySwitch" eSuperTypes="#//RunnableItem">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A switch in the runnable items, each path has a probability"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        containment="true" resolveProxies="false">
-      <eGenericType eClassifier="#//ProbabilitySwitchEntry">
-        <eTypeArguments eClassifier="#//RunnableItem"/>
-      </eGenericType>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//RunnableItem #//INamed">
+  <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//CallGraphItem #//INamed #//ICallGraphItemContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Describes a group of deviation runnable items"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
-        eType="#//RunnableItem" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallArgument" eSuperTypes="#//ReferableObject">
     <eOperations name="getName" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -3870,7 +3795,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" eType="#//DataDependency"
         containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RunnableCall" eSuperTypes="#//RunnableItem #//ITaggable">
+  <eClassifiers xsi:type="ecore:EClass" name="RunnableCall" eSuperTypes="#//CallGraphItem #//ITaggable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Representation of a runnable call of a run entity."/>
     </eAnnotations>
@@ -3907,7 +3832,7 @@
     </eLiterals>
     <eLiterals name="SingleCorePrioSafe"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomEventTrigger" eSuperTypes="#//RunnableItem">
+  <eClassifiers xsi:type="ecore:EClass" name="CustomEventTrigger" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Explicitly trigger a custom event from a runnable."/>
     </eAnnotations>

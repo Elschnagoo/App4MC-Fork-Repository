@@ -17,6 +17,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
@@ -27,7 +29,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -44,13 +45,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ModeSwitchEntryImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitchEntry<T> {
+public class ModeSwitchEntryImpl extends BaseObjectImpl implements ModeSwitchEntry {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,6 +73,16 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CallGraphItem> items;
+
+	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,16 +91,6 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * @ordered
 	 */
 	protected ModeConditionDisjunction condition;
-
-	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<T> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,6 +132,19 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH_ENTRY__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<CallGraphItem> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<CallGraphItem>(CallGraphItem.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);
+		}
+		return items;
 	}
 
 	/**
@@ -184,25 +198,12 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 	 * @generated
 	 */
 	@Override
-	public EList<T> getItems() {
-		if (items == null) {
-			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS);
-		}
-		return items;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				return basicSetCondition(null, msgs);
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return basicSetCondition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -217,10 +218,10 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 		switch (featureID) {
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
 				return getName();
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				return getCondition();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return getItems();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -237,12 +238,12 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
 				setName((String)newValue);
 				return;
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				setCondition((ModeConditionDisjunction)newValue);
-				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends T>)newValue);
+				getItems().addAll((Collection<? extends CallGraphItem>)newValue);
+				return;
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				setCondition((ModeConditionDisjunction)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -259,11 +260,11 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				setCondition((ModeConditionDisjunction)null);
-				return;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
+				return;
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				setCondition((ModeConditionDisjunction)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -279,10 +280,10 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 		switch (featureID) {
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
-				return condition != null;
 			case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS:
 				return items != null && !items.isEmpty();
+			case AmaltheaPackage.MODE_SWITCH_ENTRY__CONDITION:
+				return condition != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -300,6 +301,12 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 				default: return -1;
 			}
 		}
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS: return AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -313,6 +320,12 @@ public class ModeSwitchEntryImpl<T> extends BaseObjectImpl implements ModeSwitch
 		if (baseClass == INamed.class) {
 			switch (baseFeatureID) {
 				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.MODE_SWITCH_ENTRY__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS: return AmaltheaPackage.MODE_SWITCH_ENTRY__ITEMS;
 				default: return -1;
 			}
 		}

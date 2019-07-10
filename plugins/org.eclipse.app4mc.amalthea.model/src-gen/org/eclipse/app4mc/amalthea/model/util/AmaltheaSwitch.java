@@ -44,8 +44,7 @@ import org.eclipse.app4mc.amalthea.model.Cache;
 import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
@@ -159,7 +158,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.HWModel;
@@ -177,6 +175,7 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
@@ -296,12 +295,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableConstraintTarget;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -345,7 +341,6 @@ import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
@@ -396,7 +391,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage
  * @generated
  */
-public class AmaltheaSwitch<T1> extends Switch<T1> {
+public class AmaltheaSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -438,11 +433,11 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	@Override
-	protected T1 doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case AmaltheaPackage.AMALTHEA: {
 				Amalthea amalthea = (Amalthea)theEObject;
-				T1 result = caseAmalthea(amalthea);
+				T result = caseAmalthea(amalthea);
 				if (result == null) result = caseBaseObject(amalthea);
 				if (result == null) result = caseIAnnotatable(amalthea);
 				if (result == null) result = defaultCase(theEObject);
@@ -450,7 +445,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMMON_ELEMENTS: {
 				CommonElements commonElements = (CommonElements)theEObject;
-				T1 result = caseCommonElements(commonElements);
+				T result = caseCommonElements(commonElements);
 				if (result == null) result = caseBaseObject(commonElements);
 				if (result == null) result = caseIAnnotatable(commonElements);
 				if (result == null) result = defaultCase(theEObject);
@@ -458,14 +453,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.BASE_OBJECT: {
 				BaseObject baseObject = (BaseObject)theEObject;
-				T1 result = caseBaseObject(baseObject);
+				T result = caseBaseObject(baseObject);
 				if (result == null) result = caseIAnnotatable(baseObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.REFERABLE_OBJECT: {
 				ReferableObject referableObject = (ReferableObject)theEObject;
-				T1 result = caseReferableObject(referableObject);
+				T result = caseReferableObject(referableObject);
 				if (result == null) result = caseIReferable(referableObject);
 				if (result == null) result = caseINamed(referableObject);
 				if (result == null) result = defaultCase(theEObject);
@@ -473,7 +468,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.REFERABLE_BASE_OBJECT: {
 				ReferableBaseObject referableBaseObject = (ReferableBaseObject)theEObject;
-				T1 result = caseReferableBaseObject(referableBaseObject);
+				T result = caseReferableBaseObject(referableBaseObject);
 				if (result == null) result = caseIAnnotatable(referableBaseObject);
 				if (result == null) result = caseIReferable(referableBaseObject);
 				if (result == null) result = caseINamed(referableBaseObject);
@@ -482,38 +477,38 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.IANNOTATABLE: {
 				IAnnotatable iAnnotatable = (IAnnotatable)theEObject;
-				T1 result = caseIAnnotatable(iAnnotatable);
+				T result = caseIAnnotatable(iAnnotatable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.ITAGGABLE: {
 				ITaggable iTaggable = (ITaggable)theEObject;
-				T1 result = caseITaggable(iTaggable);
+				T result = caseITaggable(iTaggable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.INAMED: {
 				INamed iNamed = (INamed)theEObject;
-				T1 result = caseINamed(iNamed);
+				T result = caseINamed(iNamed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.IREFERABLE: {
 				IReferable iReferable = (IReferable)theEObject;
-				T1 result = caseIReferable(iReferable);
+				T result = caseIReferable(iReferable);
 				if (result == null) result = caseINamed(iReferable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.IDISPLAY_NAME: {
 				IDisplayName iDisplayName = (IDisplayName)theEObject;
-				T1 result = caseIDisplayName(iDisplayName);
+				T result = caseIDisplayName(iDisplayName);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TAG: {
 				Tag tag = (Tag)theEObject;
-				T1 result = caseTag(tag);
+				T result = caseTag(tag);
 				if (result == null) result = caseReferableBaseObject(tag);
 				if (result == null) result = caseIAnnotatable(tag);
 				if (result == null) result = caseIReferable(tag);
@@ -523,7 +518,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLASSIFIER: {
 				Classifier classifier = (Classifier)theEObject;
-				T1 result = caseClassifier(classifier);
+				T result = caseClassifier(classifier);
 				if (result == null) result = caseReferableBaseObject(classifier);
 				if (result == null) result = caseIAnnotatable(classifier);
 				if (result == null) result = caseIReferable(classifier);
@@ -533,7 +528,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CORE_CLASSIFIER: {
 				CoreClassifier coreClassifier = (CoreClassifier)theEObject;
-				T1 result = caseCoreClassifier(coreClassifier);
+				T result = caseCoreClassifier(coreClassifier);
 				if (result == null) result = caseClassifier(coreClassifier);
 				if (result == null) result = caseReferableBaseObject(coreClassifier);
 				if (result == null) result = caseIAnnotatable(coreClassifier);
@@ -544,7 +539,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY_CLASSIFIER: {
 				MemoryClassifier memoryClassifier = (MemoryClassifier)theEObject;
-				T1 result = caseMemoryClassifier(memoryClassifier);
+				T result = caseMemoryClassifier(memoryClassifier);
 				if (result == null) result = caseClassifier(memoryClassifier);
 				if (result == null) result = caseReferableBaseObject(memoryClassifier);
 				if (result == null) result = caseIAnnotatable(memoryClassifier);
@@ -555,25 +550,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TRANSMISSION_POLICY: {
 				TransmissionPolicy transmissionPolicy = (TransmissionPolicy)theEObject;
-				T1 result = caseTransmissionPolicy(transmissionPolicy);
+				T result = caseTransmissionPolicy(transmissionPolicy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.QUANTITY: {
 				Quantity quantity = (Quantity)theEObject;
-				T1 result = caseQuantity(quantity);
+				T result = caseQuantity(quantity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_COMPARABLE: {
 				@SuppressWarnings("unchecked") Comparable<Time> timeComparable = (Comparable<Time>)theEObject;
-				T1 result = caseTimeComparable(timeComparable);
+				T result = caseTimeComparable(timeComparable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME: {
 				Time time = (Time)theEObject;
-				T1 result = caseTime(time);
+				T result = caseTime(time);
 				if (result == null) result = caseQuantity(time);
 				if (result == null) result = caseValue(time);
 				if (result == null) result = caseTimeComparable(time);
@@ -582,34 +577,34 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FREQUENCY: {
 				Frequency frequency = (Frequency)theEObject;
-				T1 result = caseFrequency(frequency);
+				T result = caseFrequency(frequency);
 				if (result == null) result = caseQuantity(frequency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.VOLTAGE: {
 				Voltage voltage = (Voltage)theEObject;
-				T1 result = caseVoltage(voltage);
+				T result = caseVoltage(voltage);
 				if (result == null) result = caseQuantity(voltage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_SIZE: {
 				DataSize dataSize = (DataSize)theEObject;
-				T1 result = caseDataSize(dataSize);
+				T result = caseDataSize(dataSize);
 				if (result == null) result = caseQuantity(dataSize);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_RATE_COMPARABLE: {
 				@SuppressWarnings("unchecked") Comparable<DataRate> dataRateComparable = (Comparable<DataRate>)theEObject;
-				T1 result = caseDataRateComparable(dataRateComparable);
+				T result = caseDataRateComparable(dataRateComparable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_RATE: {
 				DataRate dataRate = (DataRate)theEObject;
-				T1 result = caseDataRate(dataRate);
+				T result = caseDataRate(dataRate);
 				if (result == null) result = caseQuantity(dataRate);
 				if (result == null) result = caseDataRateComparable(dataRate);
 				if (result == null) result = defaultCase(theEObject);
@@ -617,135 +612,135 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_PROPERTY: {
 				@SuppressWarnings("unchecked") Map.Entry<String, Value> customProperty = (Map.Entry<String, Value>)theEObject;
-				T1 result = caseCustomProperty(customProperty);
+				T result = caseCustomProperty(customProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.VALUE: {
 				Value value = (Value)theEObject;
-				T1 result = caseValue(value);
+				T result = caseValue(value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.LIST_OBJECT: {
 				ListObject listObject = (ListObject)theEObject;
-				T1 result = caseListObject(listObject);
+				T result = caseListObject(listObject);
 				if (result == null) result = caseValue(listObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.STRING_OBJECT: {
 				StringObject stringObject = (StringObject)theEObject;
-				T1 result = caseStringObject(stringObject);
+				T result = caseStringObject(stringObject);
 				if (result == null) result = caseValue(stringObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.BIG_INTEGER_OBJECT: {
 				BigIntegerObject bigIntegerObject = (BigIntegerObject)theEObject;
-				T1 result = caseBigIntegerObject(bigIntegerObject);
+				T result = caseBigIntegerObject(bigIntegerObject);
 				if (result == null) result = caseValue(bigIntegerObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.REFERENCE_OBJECT: {
 				ReferenceObject referenceObject = (ReferenceObject)theEObject;
-				T1 result = caseReferenceObject(referenceObject);
+				T result = caseReferenceObject(referenceObject);
 				if (result == null) result = caseValue(referenceObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.INTEGER_OBJECT: {
 				IntegerObject integerObject = (IntegerObject)theEObject;
-				T1 result = caseIntegerObject(integerObject);
+				T result = caseIntegerObject(integerObject);
 				if (result == null) result = caseValue(integerObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.LONG_OBJECT: {
 				LongObject longObject = (LongObject)theEObject;
-				T1 result = caseLongObject(longObject);
+				T result = caseLongObject(longObject);
 				if (result == null) result = caseValue(longObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.FLOAT_OBJECT: {
 				FloatObject floatObject = (FloatObject)theEObject;
-				T1 result = caseFloatObject(floatObject);
+				T result = caseFloatObject(floatObject);
 				if (result == null) result = caseValue(floatObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DOUBLE_OBJECT: {
 				DoubleObject doubleObject = (DoubleObject)theEObject;
-				T1 result = caseDoubleObject(doubleObject);
+				T result = caseDoubleObject(doubleObject);
 				if (result == null) result = caseValue(doubleObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.BOOLEAN_OBJECT: {
 				BooleanObject booleanObject = (BooleanObject)theEObject;
-				T1 result = caseBooleanObject(booleanObject);
+				T result = caseBooleanObject(booleanObject);
 				if (result == null) result = caseValue(booleanObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.NUMERIC_STATISTIC: {
 				NumericStatistic numericStatistic = (NumericStatistic)theEObject;
-				T1 result = caseNumericStatistic(numericStatistic);
+				T result = caseNumericStatistic(numericStatistic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MIN_AVG_MAX_STATISTIC: {
 				MinAvgMaxStatistic minAvgMaxStatistic = (MinAvgMaxStatistic)theEObject;
-				T1 result = caseMinAvgMaxStatistic(minAvgMaxStatistic);
+				T result = caseMinAvgMaxStatistic(minAvgMaxStatistic);
 				if (result == null) result = caseNumericStatistic(minAvgMaxStatistic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.SINGLE_VALUE_STATISTIC: {
 				SingleValueStatistic singleValueStatistic = (SingleValueStatistic)theEObject;
-				T1 result = caseSingleValueStatistic(singleValueStatistic);
+				T result = caseSingleValueStatistic(singleValueStatistic);
 				if (result == null) result = caseNumericStatistic(singleValueStatistic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.ITIME_DEVIATION: {
 				ITimeDeviation iTimeDeviation = (ITimeDeviation)theEObject;
-				T1 result = caseITimeDeviation(iTimeDeviation);
+				T result = caseITimeDeviation(iTimeDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_INTERVAL: {
 				TimeInterval timeInterval = (TimeInterval)theEObject;
-				T1 result = caseTimeInterval(timeInterval);
+				T result = caseTimeInterval(timeInterval);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_CONSTANT: {
 				TimeConstant timeConstant = (TimeConstant)theEObject;
-				T1 result = caseTimeConstant(timeConstant);
+				T result = caseTimeConstant(timeConstant);
 				if (result == null) result = caseITimeDeviation(timeConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_HISTOGRAM: {
 				TimeHistogram timeHistogram = (TimeHistogram)theEObject;
-				T1 result = caseTimeHistogram(timeHistogram);
+				T result = caseTimeHistogram(timeHistogram);
 				if (result == null) result = caseITimeDeviation(timeHistogram);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_HISTOGRAM_ENTRY: {
 				TimeHistogramEntry timeHistogramEntry = (TimeHistogramEntry)theEObject;
-				T1 result = caseTimeHistogramEntry(timeHistogramEntry);
+				T result = caseTimeHistogramEntry(timeHistogramEntry);
 				if (result == null) result = caseTimeInterval(timeHistogramEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.BOUNDED_TIME_DISTRIBUTION: {
 				BoundedTimeDistribution boundedTimeDistribution = (BoundedTimeDistribution)theEObject;
-				T1 result = caseBoundedTimeDistribution(boundedTimeDistribution);
+				T result = caseBoundedTimeDistribution(boundedTimeDistribution);
 				if (result == null) result = caseTimeInterval(boundedTimeDistribution);
 				if (result == null) result = caseITimeDeviation(boundedTimeDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -753,14 +748,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TRUNCATED_TIME_DISTRIBUTION: {
 				TruncatedTimeDistribution truncatedTimeDistribution = (TruncatedTimeDistribution)theEObject;
-				T1 result = caseTruncatedTimeDistribution(truncatedTimeDistribution);
+				T result = caseTruncatedTimeDistribution(truncatedTimeDistribution);
 				if (result == null) result = caseITimeDeviation(truncatedTimeDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_BOUNDARIES: {
 				TimeBoundaries timeBoundaries = (TimeBoundaries)theEObject;
-				T1 result = caseTimeBoundaries(timeBoundaries);
+				T result = caseTimeBoundaries(timeBoundaries);
 				if (result == null) result = caseBoundedTimeDistribution(timeBoundaries);
 				if (result == null) result = caseTimeInterval(timeBoundaries);
 				if (result == null) result = caseITimeDeviation(timeBoundaries);
@@ -769,7 +764,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIME_STATISTICS: {
 				TimeStatistics timeStatistics = (TimeStatistics)theEObject;
-				T1 result = caseTimeStatistics(timeStatistics);
+				T result = caseTimeStatistics(timeStatistics);
 				if (result == null) result = caseBoundedTimeDistribution(timeStatistics);
 				if (result == null) result = caseTimeInterval(timeStatistics);
 				if (result == null) result = caseITimeDeviation(timeStatistics);
@@ -778,7 +773,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIME_UNIFORM_DISTRIBUTION: {
 				TimeUniformDistribution timeUniformDistribution = (TimeUniformDistribution)theEObject;
-				T1 result = caseTimeUniformDistribution(timeUniformDistribution);
+				T result = caseTimeUniformDistribution(timeUniformDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeUniformDistribution);
 				if (result == null) result = caseTimeInterval(timeUniformDistribution);
 				if (result == null) result = caseITimeDeviation(timeUniformDistribution);
@@ -787,7 +782,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIME_GAUSS_DISTRIBUTION: {
 				TimeGaussDistribution timeGaussDistribution = (TimeGaussDistribution)theEObject;
-				T1 result = caseTimeGaussDistribution(timeGaussDistribution);
+				T result = caseTimeGaussDistribution(timeGaussDistribution);
 				if (result == null) result = caseTruncatedTimeDistribution(timeGaussDistribution);
 				if (result == null) result = caseITimeDeviation(timeGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -795,7 +790,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIME_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution = (TimeWeibullEstimatorsDistribution)theEObject;
-				T1 result = caseTimeWeibullEstimatorsDistribution(timeWeibullEstimatorsDistribution);
+				T result = caseTimeWeibullEstimatorsDistribution(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseTimeInterval(timeWeibullEstimatorsDistribution);
 				if (result == null) result = caseITimeDeviation(timeWeibullEstimatorsDistribution);
@@ -804,7 +799,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIME_BETA_DISTRIBUTION: {
 				TimeBetaDistribution timeBetaDistribution = (TimeBetaDistribution)theEObject;
-				T1 result = caseTimeBetaDistribution(timeBetaDistribution);
+				T result = caseTimeBetaDistribution(timeBetaDistribution);
 				if (result == null) result = caseBoundedTimeDistribution(timeBetaDistribution);
 				if (result == null) result = caseTimeInterval(timeBetaDistribution);
 				if (result == null) result = caseITimeDeviation(timeBetaDistribution);
@@ -813,40 +808,40 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.IDISCRETE_VALUE_DEVIATION: {
 				IDiscreteValueDeviation iDiscreteValueDeviation = (IDiscreteValueDeviation)theEObject;
-				T1 result = caseIDiscreteValueDeviation(iDiscreteValueDeviation);
+				T result = caseIDiscreteValueDeviation(iDiscreteValueDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_INTERVAL: {
 				DiscreteValueInterval discreteValueInterval = (DiscreteValueInterval)theEObject;
-				T1 result = caseDiscreteValueInterval(discreteValueInterval);
+				T result = caseDiscreteValueInterval(discreteValueInterval);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_CONSTANT: {
 				DiscreteValueConstant discreteValueConstant = (DiscreteValueConstant)theEObject;
-				T1 result = caseDiscreteValueConstant(discreteValueConstant);
+				T result = caseDiscreteValueConstant(discreteValueConstant);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_HISTOGRAM: {
 				DiscreteValueHistogram discreteValueHistogram = (DiscreteValueHistogram)theEObject;
-				T1 result = caseDiscreteValueHistogram(discreteValueHistogram);
+				T result = caseDiscreteValueHistogram(discreteValueHistogram);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueHistogram);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_HISTOGRAM_ENTRY: {
 				DiscreteValueHistogramEntry discreteValueHistogramEntry = (DiscreteValueHistogramEntry)theEObject;
-				T1 result = caseDiscreteValueHistogramEntry(discreteValueHistogramEntry);
+				T result = caseDiscreteValueHistogramEntry(discreteValueHistogramEntry);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueHistogramEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.BOUNDED_DISCRETE_VALUE_DISTRIBUTION: {
 				BoundedDiscreteValueDistribution boundedDiscreteValueDistribution = (BoundedDiscreteValueDistribution)theEObject;
-				T1 result = caseBoundedDiscreteValueDistribution(boundedDiscreteValueDistribution);
+				T result = caseBoundedDiscreteValueDistribution(boundedDiscreteValueDistribution);
 				if (result == null) result = caseDiscreteValueInterval(boundedDiscreteValueDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(boundedDiscreteValueDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -854,14 +849,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TRUNCATED_DISCRETE_VALUE_DISTRIBUTION: {
 				TruncatedDiscreteValueDistribution truncatedDiscreteValueDistribution = (TruncatedDiscreteValueDistribution)theEObject;
-				T1 result = caseTruncatedDiscreteValueDistribution(truncatedDiscreteValueDistribution);
+				T result = caseTruncatedDiscreteValueDistribution(truncatedDiscreteValueDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(truncatedDiscreteValueDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_BOUNDARIES: {
 				DiscreteValueBoundaries discreteValueBoundaries = (DiscreteValueBoundaries)theEObject;
-				T1 result = caseDiscreteValueBoundaries(discreteValueBoundaries);
+				T result = caseDiscreteValueBoundaries(discreteValueBoundaries);
 				if (result == null) result = caseBoundedDiscreteValueDistribution(discreteValueBoundaries);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueBoundaries);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueBoundaries);
@@ -870,7 +865,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_STATISTICS: {
 				DiscreteValueStatistics discreteValueStatistics = (DiscreteValueStatistics)theEObject;
-				T1 result = caseDiscreteValueStatistics(discreteValueStatistics);
+				T result = caseDiscreteValueStatistics(discreteValueStatistics);
 				if (result == null) result = caseBoundedDiscreteValueDistribution(discreteValueStatistics);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueStatistics);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueStatistics);
@@ -879,7 +874,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_UNIFORM_DISTRIBUTION: {
 				DiscreteValueUniformDistribution discreteValueUniformDistribution = (DiscreteValueUniformDistribution)theEObject;
-				T1 result = caseDiscreteValueUniformDistribution(discreteValueUniformDistribution);
+				T result = caseDiscreteValueUniformDistribution(discreteValueUniformDistribution);
 				if (result == null) result = caseBoundedDiscreteValueDistribution(discreteValueUniformDistribution);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueUniformDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueUniformDistribution);
@@ -888,7 +883,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_GAUSS_DISTRIBUTION: {
 				DiscreteValueGaussDistribution discreteValueGaussDistribution = (DiscreteValueGaussDistribution)theEObject;
-				T1 result = caseDiscreteValueGaussDistribution(discreteValueGaussDistribution);
+				T result = caseDiscreteValueGaussDistribution(discreteValueGaussDistribution);
 				if (result == null) result = caseTruncatedDiscreteValueDistribution(discreteValueGaussDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -896,7 +891,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				DiscreteValueWeibullEstimatorsDistribution discreteValueWeibullEstimatorsDistribution = (DiscreteValueWeibullEstimatorsDistribution)theEObject;
-				T1 result = caseDiscreteValueWeibullEstimatorsDistribution(discreteValueWeibullEstimatorsDistribution);
+				T result = caseDiscreteValueWeibullEstimatorsDistribution(discreteValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedDiscreteValueDistribution(discreteValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueWeibullEstimatorsDistribution);
@@ -905,7 +900,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DISCRETE_VALUE_BETA_DISTRIBUTION: {
 				DiscreteValueBetaDistribution discreteValueBetaDistribution = (DiscreteValueBetaDistribution)theEObject;
-				T1 result = caseDiscreteValueBetaDistribution(discreteValueBetaDistribution);
+				T result = caseDiscreteValueBetaDistribution(discreteValueBetaDistribution);
 				if (result == null) result = caseBoundedDiscreteValueDistribution(discreteValueBetaDistribution);
 				if (result == null) result = caseDiscreteValueInterval(discreteValueBetaDistribution);
 				if (result == null) result = caseIDiscreteValueDeviation(discreteValueBetaDistribution);
@@ -914,40 +909,40 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ICONTINUOUS_VALUE_DEVIATION: {
 				IContinuousValueDeviation iContinuousValueDeviation = (IContinuousValueDeviation)theEObject;
-				T1 result = caseIContinuousValueDeviation(iContinuousValueDeviation);
+				T result = caseIContinuousValueDeviation(iContinuousValueDeviation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_INTERVAL: {
 				ContinuousValueInterval continuousValueInterval = (ContinuousValueInterval)theEObject;
-				T1 result = caseContinuousValueInterval(continuousValueInterval);
+				T result = caseContinuousValueInterval(continuousValueInterval);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_CONSTANT: {
 				ContinuousValueConstant continuousValueConstant = (ContinuousValueConstant)theEObject;
-				T1 result = caseContinuousValueConstant(continuousValueConstant);
+				T result = caseContinuousValueConstant(continuousValueConstant);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueConstant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_HISTOGRAM: {
 				ContinuousValueHistogram continuousValueHistogram = (ContinuousValueHistogram)theEObject;
-				T1 result = caseContinuousValueHistogram(continuousValueHistogram);
+				T result = caseContinuousValueHistogram(continuousValueHistogram);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueHistogram);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_HISTOGRAM_ENTRY: {
 				ContinuousValueHistogramEntry continuousValueHistogramEntry = (ContinuousValueHistogramEntry)theEObject;
-				T1 result = caseContinuousValueHistogramEntry(continuousValueHistogramEntry);
+				T result = caseContinuousValueHistogramEntry(continuousValueHistogramEntry);
 				if (result == null) result = caseContinuousValueInterval(continuousValueHistogramEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION: {
 				BoundedContinuousValueDistribution boundedContinuousValueDistribution = (BoundedContinuousValueDistribution)theEObject;
-				T1 result = caseBoundedContinuousValueDistribution(boundedContinuousValueDistribution);
+				T result = caseBoundedContinuousValueDistribution(boundedContinuousValueDistribution);
 				if (result == null) result = caseContinuousValueInterval(boundedContinuousValueDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(boundedContinuousValueDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -955,14 +950,14 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION: {
 				TruncatedContinuousValueDistribution truncatedContinuousValueDistribution = (TruncatedContinuousValueDistribution)theEObject;
-				T1 result = caseTruncatedContinuousValueDistribution(truncatedContinuousValueDistribution);
+				T result = caseTruncatedContinuousValueDistribution(truncatedContinuousValueDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(truncatedContinuousValueDistribution);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_BOUNDARIES: {
 				ContinuousValueBoundaries continuousValueBoundaries = (ContinuousValueBoundaries)theEObject;
-				T1 result = caseContinuousValueBoundaries(continuousValueBoundaries);
+				T result = caseContinuousValueBoundaries(continuousValueBoundaries);
 				if (result == null) result = caseBoundedContinuousValueDistribution(continuousValueBoundaries);
 				if (result == null) result = caseContinuousValueInterval(continuousValueBoundaries);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueBoundaries);
@@ -971,7 +966,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_STATISTICS: {
 				ContinuousValueStatistics continuousValueStatistics = (ContinuousValueStatistics)theEObject;
-				T1 result = caseContinuousValueStatistics(continuousValueStatistics);
+				T result = caseContinuousValueStatistics(continuousValueStatistics);
 				if (result == null) result = caseBoundedContinuousValueDistribution(continuousValueStatistics);
 				if (result == null) result = caseContinuousValueInterval(continuousValueStatistics);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueStatistics);
@@ -980,7 +975,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION: {
 				ContinuousValueUniformDistribution continuousValueUniformDistribution = (ContinuousValueUniformDistribution)theEObject;
-				T1 result = caseContinuousValueUniformDistribution(continuousValueUniformDistribution);
+				T result = caseContinuousValueUniformDistribution(continuousValueUniformDistribution);
 				if (result == null) result = caseBoundedContinuousValueDistribution(continuousValueUniformDistribution);
 				if (result == null) result = caseContinuousValueInterval(continuousValueUniformDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueUniformDistribution);
@@ -989,7 +984,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_GAUSS_DISTRIBUTION: {
 				ContinuousValueGaussDistribution continuousValueGaussDistribution = (ContinuousValueGaussDistribution)theEObject;
-				T1 result = caseContinuousValueGaussDistribution(continuousValueGaussDistribution);
+				T result = caseContinuousValueGaussDistribution(continuousValueGaussDistribution);
 				if (result == null) result = caseTruncatedContinuousValueDistribution(continuousValueGaussDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueGaussDistribution);
 				if (result == null) result = defaultCase(theEObject);
@@ -997,7 +992,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION: {
 				ContinuousValueWeibullEstimatorsDistribution continuousValueWeibullEstimatorsDistribution = (ContinuousValueWeibullEstimatorsDistribution)theEObject;
-				T1 result = caseContinuousValueWeibullEstimatorsDistribution(continuousValueWeibullEstimatorsDistribution);
+				T result = caseContinuousValueWeibullEstimatorsDistribution(continuousValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseBoundedContinuousValueDistribution(continuousValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseContinuousValueInterval(continuousValueWeibullEstimatorsDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueWeibullEstimatorsDistribution);
@@ -1006,7 +1001,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONTINUOUS_VALUE_BETA_DISTRIBUTION: {
 				ContinuousValueBetaDistribution continuousValueBetaDistribution = (ContinuousValueBetaDistribution)theEObject;
-				T1 result = caseContinuousValueBetaDistribution(continuousValueBetaDistribution);
+				T result = caseContinuousValueBetaDistribution(continuousValueBetaDistribution);
 				if (result == null) result = caseBoundedContinuousValueDistribution(continuousValueBetaDistribution);
 				if (result == null) result = caseContinuousValueInterval(continuousValueBetaDistribution);
 				if (result == null) result = caseIContinuousValueDeviation(continuousValueBetaDistribution);
@@ -1015,7 +1010,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE: {
 				Mode mode = (Mode)theEObject;
-				T1 result = caseMode(mode);
+				T result = caseMode(mode);
 				if (result == null) result = caseReferableBaseObject(mode);
 				if (result == null) result = caseIAnnotatable(mode);
 				if (result == null) result = caseIReferable(mode);
@@ -1025,7 +1020,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.NUMERIC_MODE: {
 				NumericMode numericMode = (NumericMode)theEObject;
-				T1 result = caseNumericMode(numericMode);
+				T result = caseNumericMode(numericMode);
 				if (result == null) result = caseMode(numericMode);
 				if (result == null) result = caseReferableBaseObject(numericMode);
 				if (result == null) result = caseIAnnotatable(numericMode);
@@ -1036,7 +1031,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ENUM_MODE: {
 				EnumMode enumMode = (EnumMode)theEObject;
-				T1 result = caseEnumMode(enumMode);
+				T result = caseEnumMode(enumMode);
 				if (result == null) result = caseMode(enumMode);
 				if (result == null) result = caseReferableBaseObject(enumMode);
 				if (result == null) result = caseIAnnotatable(enumMode);
@@ -1047,7 +1042,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_LITERAL: {
 				ModeLiteral modeLiteral = (ModeLiteral)theEObject;
-				T1 result = caseModeLiteral(modeLiteral);
+				T result = caseModeLiteral(modeLiteral);
 				if (result == null) result = caseReferableBaseObject(modeLiteral);
 				if (result == null) result = caseIAnnotatable(modeLiteral);
 				if (result == null) result = caseIReferable(modeLiteral);
@@ -1057,7 +1052,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMPONENTS_MODEL: {
 				ComponentsModel componentsModel = (ComponentsModel)theEObject;
-				T1 result = caseComponentsModel(componentsModel);
+				T result = caseComponentsModel(componentsModel);
 				if (result == null) result = caseBaseObject(componentsModel);
 				if (result == null) result = caseIAnnotatable(componentsModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -1065,13 +1060,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ISYSTEM: {
 				ISystem iSystem = (ISystem)theEObject;
-				T1 result = caseISystem(iSystem);
+				T result = caseISystem(iSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PORT: {
 				Port port = (Port)theEObject;
-				T1 result = casePort(port);
+				T result = casePort(port);
 				if (result == null) result = caseReferableBaseObject(port);
 				if (result == null) result = caseITaggable(port);
 				if (result == null) result = caseIAnnotatable(port);
@@ -1082,7 +1077,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMPONENT: {
 				Component component = (Component)theEObject;
-				T1 result = caseComponent(component);
+				T result = caseComponent(component);
 				if (result == null) result = caseReferableBaseObject(component);
 				if (result == null) result = caseITaggable(component);
 				if (result == null) result = caseIAnnotatable(component);
@@ -1093,7 +1088,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMPOSITE: {
 				Composite composite = (Composite)theEObject;
-				T1 result = caseComposite(composite);
+				T result = caseComposite(composite);
 				if (result == null) result = caseComponent(composite);
 				if (result == null) result = caseISystem(composite);
 				if (result == null) result = caseReferableBaseObject(composite);
@@ -1106,7 +1101,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SYSTEM: {
 				org.eclipse.app4mc.amalthea.model.System system = (org.eclipse.app4mc.amalthea.model.System)theEObject;
-				T1 result = caseSystem(system);
+				T result = caseSystem(system);
 				if (result == null) result = caseReferableBaseObject(system);
 				if (result == null) result = caseITaggable(system);
 				if (result == null) result = caseISystem(system);
@@ -1118,7 +1113,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMPONENT_INSTANCE: {
 				ComponentInstance componentInstance = (ComponentInstance)theEObject;
-				T1 result = caseComponentInstance(componentInstance);
+				T result = caseComponentInstance(componentInstance);
 				if (result == null) result = caseReferableBaseObject(componentInstance);
 				if (result == null) result = caseITaggable(componentInstance);
 				if (result == null) result = caseIAnnotatable(componentInstance);
@@ -1129,7 +1124,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONNECTOR: {
 				Connector connector = (Connector)theEObject;
-				T1 result = caseConnector(connector);
+				T result = caseConnector(connector);
 				if (result == null) result = caseBaseObject(connector);
 				if (result == null) result = caseINamed(connector);
 				if (result == null) result = caseITaggable(connector);
@@ -1139,7 +1134,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.QUALIFIED_PORT: {
 				QualifiedPort qualifiedPort = (QualifiedPort)theEObject;
-				T1 result = caseQualifiedPort(qualifiedPort);
+				T result = caseQualifiedPort(qualifiedPort);
 				if (result == null) result = caseBaseObject(qualifiedPort);
 				if (result == null) result = caseIAnnotatable(qualifiedPort);
 				if (result == null) result = defaultCase(theEObject);
@@ -1147,7 +1142,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.INTERFACE_PORT: {
 				InterfacePort interfacePort = (InterfacePort)theEObject;
-				T1 result = caseInterfacePort(interfacePort);
+				T result = caseInterfacePort(interfacePort);
 				if (result == null) result = casePort(interfacePort);
 				if (result == null) result = caseReferableBaseObject(interfacePort);
 				if (result == null) result = caseITaggable(interfacePort);
@@ -1159,7 +1154,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONFIG_MODEL: {
 				ConfigModel configModel = (ConfigModel)theEObject;
-				T1 result = caseConfigModel(configModel);
+				T result = caseConfigModel(configModel);
 				if (result == null) result = caseBaseObject(configModel);
 				if (result == null) result = caseIAnnotatable(configModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -1167,7 +1162,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CONFIG: {
 				EventConfig eventConfig = (EventConfig)theEObject;
-				T1 result = caseEventConfig(eventConfig);
+				T result = caseEventConfig(eventConfig);
 				if (result == null) result = caseBaseObject(eventConfig);
 				if (result == null) result = caseINamed(eventConfig);
 				if (result == null) result = caseIAnnotatable(eventConfig);
@@ -1176,7 +1171,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONSTRAINTS_MODEL: {
 				ConstraintsModel constraintsModel = (ConstraintsModel)theEObject;
-				T1 result = caseConstraintsModel(constraintsModel);
+				T result = caseConstraintsModel(constraintsModel);
 				if (result == null) result = caseBaseObject(constraintsModel);
 				if (result == null) result = caseIAnnotatable(constraintsModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -1184,7 +1179,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_SEQUENCING_CONSTRAINT: {
 				RunnableSequencingConstraint runnableSequencingConstraint = (RunnableSequencingConstraint)theEObject;
-				T1 result = caseRunnableSequencingConstraint(runnableSequencingConstraint);
+				T result = caseRunnableSequencingConstraint(runnableSequencingConstraint);
 				if (result == null) result = caseReferableBaseObject(runnableSequencingConstraint);
 				if (result == null) result = caseIAnnotatable(runnableSequencingConstraint);
 				if (result == null) result = caseIReferable(runnableSequencingConstraint);
@@ -1194,7 +1189,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.AFFINITY_CONSTRAINT: {
 				AffinityConstraint affinityConstraint = (AffinityConstraint)theEObject;
-				T1 result = caseAffinityConstraint(affinityConstraint);
+				T result = caseAffinityConstraint(affinityConstraint);
 				if (result == null) result = caseReferableBaseObject(affinityConstraint);
 				if (result == null) result = caseIAnnotatable(affinityConstraint);
 				if (result == null) result = caseIReferable(affinityConstraint);
@@ -1204,7 +1199,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SEPARATION_CONSTRAINT: {
 				SeparationConstraint separationConstraint = (SeparationConstraint)theEObject;
-				T1 result = caseSeparationConstraint(separationConstraint);
+				T result = caseSeparationConstraint(separationConstraint);
 				if (result == null) result = caseAffinityConstraint(separationConstraint);
 				if (result == null) result = caseReferableBaseObject(separationConstraint);
 				if (result == null) result = caseIAnnotatable(separationConstraint);
@@ -1215,7 +1210,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PAIRING_CONSTRAINT: {
 				PairingConstraint pairingConstraint = (PairingConstraint)theEObject;
-				T1 result = casePairingConstraint(pairingConstraint);
+				T result = casePairingConstraint(pairingConstraint);
 				if (result == null) result = caseAffinityConstraint(pairingConstraint);
 				if (result == null) result = caseReferableBaseObject(pairingConstraint);
 				if (result == null) result = caseIAnnotatable(pairingConstraint);
@@ -1226,25 +1221,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_CONSTRAINT: {
 				ProcessConstraint processConstraint = (ProcessConstraint)theEObject;
-				T1 result = caseProcessConstraint(processConstraint);
+				T result = caseProcessConstraint(processConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_CONSTRAINT: {
 				RunnableConstraint runnableConstraint = (RunnableConstraint)theEObject;
-				T1 result = caseRunnableConstraint(runnableConstraint);
+				T result = caseRunnableConstraint(runnableConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_CONSTRAINT: {
 				DataConstraint dataConstraint = (DataConstraint)theEObject;
-				T1 result = caseDataConstraint(dataConstraint);
+				T result = caseDataConstraint(dataConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_SEPARATION_CONSTRAINT: {
 				RunnableSeparationConstraint runnableSeparationConstraint = (RunnableSeparationConstraint)theEObject;
-				T1 result = caseRunnableSeparationConstraint(runnableSeparationConstraint);
+				T result = caseRunnableSeparationConstraint(runnableSeparationConstraint);
 				if (result == null) result = caseSeparationConstraint(runnableSeparationConstraint);
 				if (result == null) result = caseRunnableConstraint(runnableSeparationConstraint);
 				if (result == null) result = caseBaseObject(runnableSeparationConstraint);
@@ -1258,7 +1253,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_SEPARATION_CONSTRAINT: {
 				ProcessSeparationConstraint processSeparationConstraint = (ProcessSeparationConstraint)theEObject;
-				T1 result = caseProcessSeparationConstraint(processSeparationConstraint);
+				T result = caseProcessSeparationConstraint(processSeparationConstraint);
 				if (result == null) result = caseSeparationConstraint(processSeparationConstraint);
 				if (result == null) result = caseProcessConstraint(processSeparationConstraint);
 				if (result == null) result = caseBaseObject(processSeparationConstraint);
@@ -1272,7 +1267,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_SEPARATION_CONSTRAINT: {
 				DataSeparationConstraint dataSeparationConstraint = (DataSeparationConstraint)theEObject;
-				T1 result = caseDataSeparationConstraint(dataSeparationConstraint);
+				T result = caseDataSeparationConstraint(dataSeparationConstraint);
 				if (result == null) result = caseSeparationConstraint(dataSeparationConstraint);
 				if (result == null) result = caseDataConstraint(dataSeparationConstraint);
 				if (result == null) result = caseBaseObject(dataSeparationConstraint);
@@ -1286,7 +1281,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_PAIRING_CONSTRAINT: {
 				RunnablePairingConstraint runnablePairingConstraint = (RunnablePairingConstraint)theEObject;
-				T1 result = caseRunnablePairingConstraint(runnablePairingConstraint);
+				T result = caseRunnablePairingConstraint(runnablePairingConstraint);
 				if (result == null) result = casePairingConstraint(runnablePairingConstraint);
 				if (result == null) result = caseRunnableConstraint(runnablePairingConstraint);
 				if (result == null) result = caseBaseObject(runnablePairingConstraint);
@@ -1300,7 +1295,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_PAIRING_CONSTRAINT: {
 				ProcessPairingConstraint processPairingConstraint = (ProcessPairingConstraint)theEObject;
-				T1 result = caseProcessPairingConstraint(processPairingConstraint);
+				T result = caseProcessPairingConstraint(processPairingConstraint);
 				if (result == null) result = casePairingConstraint(processPairingConstraint);
 				if (result == null) result = caseProcessConstraint(processPairingConstraint);
 				if (result == null) result = caseBaseObject(processPairingConstraint);
@@ -1314,7 +1309,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_PAIRING_CONSTRAINT: {
 				DataPairingConstraint dataPairingConstraint = (DataPairingConstraint)theEObject;
-				T1 result = caseDataPairingConstraint(dataPairingConstraint);
+				T result = caseDataPairingConstraint(dataPairingConstraint);
 				if (result == null) result = casePairingConstraint(dataPairingConstraint);
 				if (result == null) result = caseDataConstraint(dataPairingConstraint);
 				if (result == null) result = caseBaseObject(dataPairingConstraint);
@@ -1328,25 +1323,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_CONSTRAINT_TARGET: {
 				RunnableConstraintTarget runnableConstraintTarget = (RunnableConstraintTarget)theEObject;
-				T1 result = caseRunnableConstraintTarget(runnableConstraintTarget);
+				T result = caseRunnableConstraintTarget(runnableConstraintTarget);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROCESS_CONSTRAINT_TARGET: {
 				ProcessConstraintTarget processConstraintTarget = (ProcessConstraintTarget)theEObject;
-				T1 result = caseProcessConstraintTarget(processConstraintTarget);
+				T result = caseProcessConstraintTarget(processConstraintTarget);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_CONSTRAINT_TARGET: {
 				DataConstraintTarget dataConstraintTarget = (DataConstraintTarget)theEObject;
-				T1 result = caseDataConstraintTarget(dataConstraintTarget);
+				T result = caseDataConstraintTarget(dataConstraintTarget);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TARGET_MEMORY: {
 				TargetMemory targetMemory = (TargetMemory)theEObject;
-				T1 result = caseTargetMemory(targetMemory);
+				T result = caseTargetMemory(targetMemory);
 				if (result == null) result = caseDataConstraintTarget(targetMemory);
 				if (result == null) result = caseBaseObject(targetMemory);
 				if (result == null) result = caseIAnnotatable(targetMemory);
@@ -1355,7 +1350,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TARGET_CORE: {
 				TargetCore targetCore = (TargetCore)theEObject;
-				T1 result = caseTargetCore(targetCore);
+				T result = caseTargetCore(targetCore);
 				if (result == null) result = caseRunnableConstraintTarget(targetCore);
 				if (result == null) result = caseProcessConstraintTarget(targetCore);
 				if (result == null) result = caseBaseObject(targetCore);
@@ -1365,7 +1360,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TARGET_SCHEDULER: {
 				TargetScheduler targetScheduler = (TargetScheduler)theEObject;
-				T1 result = caseTargetScheduler(targetScheduler);
+				T result = caseTargetScheduler(targetScheduler);
 				if (result == null) result = caseRunnableConstraintTarget(targetScheduler);
 				if (result == null) result = caseProcessConstraintTarget(targetScheduler);
 				if (result == null) result = caseBaseObject(targetScheduler);
@@ -1375,25 +1370,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.LABEL_GROUP: {
 				LabelGroup labelGroup = (LabelGroup)theEObject;
-				T1 result = caseLabelGroup(labelGroup);
+				T result = caseLabelGroup(labelGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_GROUP: {
 				RunnableGroup runnableGroup = (RunnableGroup)theEObject;
-				T1 result = caseRunnableGroup(runnableGroup);
+				T result = caseRunnableGroup(runnableGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROCESS_GROUP: {
 				ProcessGroup processGroup = (ProcessGroup)theEObject;
-				T1 result = caseProcessGroup(processGroup);
+				T result = caseProcessGroup(processGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.LABEL_ENTITY_GROUP: {
 				LabelEntityGroup labelEntityGroup = (LabelEntityGroup)theEObject;
-				T1 result = caseLabelEntityGroup(labelEntityGroup);
+				T result = caseLabelEntityGroup(labelEntityGroup);
 				if (result == null) result = caseLabelGroup(labelEntityGroup);
 				if (result == null) result = caseBaseObject(labelEntityGroup);
 				if (result == null) result = caseIAnnotatable(labelEntityGroup);
@@ -1402,7 +1397,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_ENTITY_GROUP: {
 				RunnableEntityGroup runnableEntityGroup = (RunnableEntityGroup)theEObject;
-				T1 result = caseRunnableEntityGroup(runnableEntityGroup);
+				T result = caseRunnableEntityGroup(runnableEntityGroup);
 				if (result == null) result = caseRunnableGroup(runnableEntityGroup);
 				if (result == null) result = caseBaseObject(runnableEntityGroup);
 				if (result == null) result = caseIAnnotatable(runnableEntityGroup);
@@ -1411,7 +1406,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_ENTITY_GROUP: {
 				ProcessEntityGroup processEntityGroup = (ProcessEntityGroup)theEObject;
-				T1 result = caseProcessEntityGroup(processEntityGroup);
+				T result = caseProcessEntityGroup(processEntityGroup);
 				if (result == null) result = caseProcessGroup(processEntityGroup);
 				if (result == null) result = caseBaseObject(processEntityGroup);
 				if (result == null) result = caseIAnnotatable(processEntityGroup);
@@ -1420,7 +1415,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TAG_GROUP: {
 				TagGroup tagGroup = (TagGroup)theEObject;
-				T1 result = caseTagGroup(tagGroup);
+				T result = caseTagGroup(tagGroup);
 				if (result == null) result = caseRunnableGroup(tagGroup);
 				if (result == null) result = caseProcessGroup(tagGroup);
 				if (result == null) result = caseBaseObject(tagGroup);
@@ -1430,7 +1425,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ABSTRACT_EVENT_CHAIN: {
 				AbstractEventChain abstractEventChain = (AbstractEventChain)theEObject;
-				T1 result = caseAbstractEventChain(abstractEventChain);
+				T result = caseAbstractEventChain(abstractEventChain);
 				if (result == null) result = caseBaseObject(abstractEventChain);
 				if (result == null) result = caseINamed(abstractEventChain);
 				if (result == null) result = caseIAnnotatable(abstractEventChain);
@@ -1439,7 +1434,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN: {
 				EventChain eventChain = (EventChain)theEObject;
-				T1 result = caseEventChain(eventChain);
+				T result = caseEventChain(eventChain);
 				if (result == null) result = caseAbstractEventChain(eventChain);
 				if (result == null) result = caseIReferable(eventChain);
 				if (result == null) result = caseBaseObject(eventChain);
@@ -1450,7 +1445,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SUB_EVENT_CHAIN: {
 				SubEventChain subEventChain = (SubEventChain)theEObject;
-				T1 result = caseSubEventChain(subEventChain);
+				T result = caseSubEventChain(subEventChain);
 				if (result == null) result = caseAbstractEventChain(subEventChain);
 				if (result == null) result = caseBaseObject(subEventChain);
 				if (result == null) result = caseINamed(subEventChain);
@@ -1460,13 +1455,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN_ITEM: {
 				EventChainItem eventChainItem = (EventChainItem)theEObject;
-				T1 result = caseEventChainItem(eventChainItem);
+				T result = caseEventChainItem(eventChainItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.EVENT_CHAIN_REFERENCE: {
 				EventChainReference eventChainReference = (EventChainReference)theEObject;
-				T1 result = caseEventChainReference(eventChainReference);
+				T result = caseEventChainReference(eventChainReference);
 				if (result == null) result = caseBaseObject(eventChainReference);
 				if (result == null) result = caseEventChainItem(eventChainReference);
 				if (result == null) result = caseIAnnotatable(eventChainReference);
@@ -1475,7 +1470,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN_CONTAINER: {
 				EventChainContainer eventChainContainer = (EventChainContainer)theEObject;
-				T1 result = caseEventChainContainer(eventChainContainer);
+				T result = caseEventChainContainer(eventChainContainer);
 				if (result == null) result = caseBaseObject(eventChainContainer);
 				if (result == null) result = caseEventChainItem(eventChainContainer);
 				if (result == null) result = caseIAnnotatable(eventChainContainer);
@@ -1484,7 +1479,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TIMING_CONSTRAINT: {
 				TimingConstraint timingConstraint = (TimingConstraint)theEObject;
-				T1 result = caseTimingConstraint(timingConstraint);
+				T result = caseTimingConstraint(timingConstraint);
 				if (result == null) result = caseReferableBaseObject(timingConstraint);
 				if (result == null) result = caseIAnnotatable(timingConstraint);
 				if (result == null) result = caseIReferable(timingConstraint);
@@ -1494,7 +1489,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PHYSICAL_SECTION_CONSTRAINT: {
 				PhysicalSectionConstraint physicalSectionConstraint = (PhysicalSectionConstraint)theEObject;
-				T1 result = casePhysicalSectionConstraint(physicalSectionConstraint);
+				T result = casePhysicalSectionConstraint(physicalSectionConstraint);
 				if (result == null) result = caseReferableBaseObject(physicalSectionConstraint);
 				if (result == null) result = caseIAnnotatable(physicalSectionConstraint);
 				if (result == null) result = caseIReferable(physicalSectionConstraint);
@@ -1504,7 +1499,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SYNCHRONIZATION_CONSTRAINT: {
 				SynchronizationConstraint synchronizationConstraint = (SynchronizationConstraint)theEObject;
-				T1 result = caseSynchronizationConstraint(synchronizationConstraint);
+				T result = caseSynchronizationConstraint(synchronizationConstraint);
 				if (result == null) result = caseTimingConstraint(synchronizationConstraint);
 				if (result == null) result = caseReferableBaseObject(synchronizationConstraint);
 				if (result == null) result = caseIAnnotatable(synchronizationConstraint);
@@ -1515,7 +1510,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_SYNCHRONIZATION_CONSTRAINT: {
 				EventSynchronizationConstraint eventSynchronizationConstraint = (EventSynchronizationConstraint)theEObject;
-				T1 result = caseEventSynchronizationConstraint(eventSynchronizationConstraint);
+				T result = caseEventSynchronizationConstraint(eventSynchronizationConstraint);
 				if (result == null) result = caseSynchronizationConstraint(eventSynchronizationConstraint);
 				if (result == null) result = caseTimingConstraint(eventSynchronizationConstraint);
 				if (result == null) result = caseReferableBaseObject(eventSynchronizationConstraint);
@@ -1527,7 +1522,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN_SYNCHRONIZATION_CONSTRAINT: {
 				EventChainSynchronizationConstraint eventChainSynchronizationConstraint = (EventChainSynchronizationConstraint)theEObject;
-				T1 result = caseEventChainSynchronizationConstraint(eventChainSynchronizationConstraint);
+				T result = caseEventChainSynchronizationConstraint(eventChainSynchronizationConstraint);
 				if (result == null) result = caseSynchronizationConstraint(eventChainSynchronizationConstraint);
 				if (result == null) result = caseTimingConstraint(eventChainSynchronizationConstraint);
 				if (result == null) result = caseReferableBaseObject(eventChainSynchronizationConstraint);
@@ -1539,7 +1534,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DELAY_CONSTRAINT: {
 				DelayConstraint delayConstraint = (DelayConstraint)theEObject;
-				T1 result = caseDelayConstraint(delayConstraint);
+				T result = caseDelayConstraint(delayConstraint);
 				if (result == null) result = caseTimingConstraint(delayConstraint);
 				if (result == null) result = caseReferableBaseObject(delayConstraint);
 				if (result == null) result = caseIAnnotatable(delayConstraint);
@@ -1550,7 +1545,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN_LATENCY_CONSTRAINT: {
 				EventChainLatencyConstraint eventChainLatencyConstraint = (EventChainLatencyConstraint)theEObject;
-				T1 result = caseEventChainLatencyConstraint(eventChainLatencyConstraint);
+				T result = caseEventChainLatencyConstraint(eventChainLatencyConstraint);
 				if (result == null) result = caseTimingConstraint(eventChainLatencyConstraint);
 				if (result == null) result = caseReferableBaseObject(eventChainLatencyConstraint);
 				if (result == null) result = caseIAnnotatable(eventChainLatencyConstraint);
@@ -1561,7 +1556,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.REPETITION_CONSTRAINT: {
 				RepetitionConstraint repetitionConstraint = (RepetitionConstraint)theEObject;
-				T1 result = caseRepetitionConstraint(repetitionConstraint);
+				T result = caseRepetitionConstraint(repetitionConstraint);
 				if (result == null) result = caseTimingConstraint(repetitionConstraint);
 				if (result == null) result = caseReferableBaseObject(repetitionConstraint);
 				if (result == null) result = caseIAnnotatable(repetitionConstraint);
@@ -1572,7 +1567,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_AGE_CONSTRAINT: {
 				DataAgeConstraint dataAgeConstraint = (DataAgeConstraint)theEObject;
-				T1 result = caseDataAgeConstraint(dataAgeConstraint);
+				T result = caseDataAgeConstraint(dataAgeConstraint);
 				if (result == null) result = caseReferableBaseObject(dataAgeConstraint);
 				if (result == null) result = caseIAnnotatable(dataAgeConstraint);
 				if (result == null) result = caseIReferable(dataAgeConstraint);
@@ -1582,27 +1577,27 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_AGE: {
 				DataAge dataAge = (DataAge)theEObject;
-				T1 result = caseDataAge(dataAge);
+				T result = caseDataAge(dataAge);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_AGE_CYCLE: {
 				DataAgeCycle dataAgeCycle = (DataAgeCycle)theEObject;
-				T1 result = caseDataAgeCycle(dataAgeCycle);
+				T result = caseDataAgeCycle(dataAgeCycle);
 				if (result == null) result = caseDataAge(dataAgeCycle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_AGE_TIME: {
 				DataAgeTime dataAgeTime = (DataAgeTime)theEObject;
-				T1 result = caseDataAgeTime(dataAgeTime);
+				T result = caseDataAgeTime(dataAgeTime);
 				if (result == null) result = caseDataAge(dataAgeTime);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.REQUIREMENT: {
 				Requirement requirement = (Requirement)theEObject;
-				T1 result = caseRequirement(requirement);
+				T result = caseRequirement(requirement);
 				if (result == null) result = caseBaseObject(requirement);
 				if (result == null) result = caseINamed(requirement);
 				if (result == null) result = caseIAnnotatable(requirement);
@@ -1611,7 +1606,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_REQUIREMENT: {
 				ProcessRequirement processRequirement = (ProcessRequirement)theEObject;
-				T1 result = caseProcessRequirement(processRequirement);
+				T result = caseProcessRequirement(processRequirement);
 				if (result == null) result = caseRequirement(processRequirement);
 				if (result == null) result = caseBaseObject(processRequirement);
 				if (result == null) result = caseINamed(processRequirement);
@@ -1621,7 +1616,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_REQUIREMENT: {
 				RunnableRequirement runnableRequirement = (RunnableRequirement)theEObject;
-				T1 result = caseRunnableRequirement(runnableRequirement);
+				T result = caseRunnableRequirement(runnableRequirement);
 				if (result == null) result = caseRequirement(runnableRequirement);
 				if (result == null) result = caseBaseObject(runnableRequirement);
 				if (result == null) result = caseINamed(runnableRequirement);
@@ -1631,7 +1626,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ARCHITECTURE_REQUIREMENT: {
 				ArchitectureRequirement architectureRequirement = (ArchitectureRequirement)theEObject;
-				T1 result = caseArchitectureRequirement(architectureRequirement);
+				T result = caseArchitectureRequirement(architectureRequirement);
 				if (result == null) result = caseRequirement(architectureRequirement);
 				if (result == null) result = caseBaseObject(architectureRequirement);
 				if (result == null) result = caseINamed(architectureRequirement);
@@ -1641,7 +1636,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_CHAIN_REQUIREMENT: {
 				ProcessChainRequirement processChainRequirement = (ProcessChainRequirement)theEObject;
-				T1 result = caseProcessChainRequirement(processChainRequirement);
+				T result = caseProcessChainRequirement(processChainRequirement);
 				if (result == null) result = caseRequirement(processChainRequirement);
 				if (result == null) result = caseBaseObject(processChainRequirement);
 				if (result == null) result = caseINamed(processChainRequirement);
@@ -1651,48 +1646,48 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.REQUIREMENT_LIMIT: {
 				RequirementLimit requirementLimit = (RequirementLimit)theEObject;
-				T1 result = caseRequirementLimit(requirementLimit);
+				T result = caseRequirementLimit(requirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.CPU_PERCENTAGE_REQUIREMENT_LIMIT: {
 				CPUPercentageRequirementLimit cpuPercentageRequirementLimit = (CPUPercentageRequirementLimit)theEObject;
-				T1 result = caseCPUPercentageRequirementLimit(cpuPercentageRequirementLimit);
+				T result = caseCPUPercentageRequirementLimit(cpuPercentageRequirementLimit);
 				if (result == null) result = caseRequirementLimit(cpuPercentageRequirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.FREQUENCY_REQUIREMENT_LIMIT: {
 				FrequencyRequirementLimit frequencyRequirementLimit = (FrequencyRequirementLimit)theEObject;
-				T1 result = caseFrequencyRequirementLimit(frequencyRequirementLimit);
+				T result = caseFrequencyRequirementLimit(frequencyRequirementLimit);
 				if (result == null) result = caseRequirementLimit(frequencyRequirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PERCENTAGE_REQUIREMENT_LIMIT: {
 				PercentageRequirementLimit percentageRequirementLimit = (PercentageRequirementLimit)theEObject;
-				T1 result = casePercentageRequirementLimit(percentageRequirementLimit);
+				T result = casePercentageRequirementLimit(percentageRequirementLimit);
 				if (result == null) result = caseRequirementLimit(percentageRequirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.COUNT_REQUIREMENT_LIMIT: {
 				CountRequirementLimit countRequirementLimit = (CountRequirementLimit)theEObject;
-				T1 result = caseCountRequirementLimit(countRequirementLimit);
+				T result = caseCountRequirementLimit(countRequirementLimit);
 				if (result == null) result = caseRequirementLimit(countRequirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TIME_REQUIREMENT_LIMIT: {
 				TimeRequirementLimit timeRequirementLimit = (TimeRequirementLimit)theEObject;
-				T1 result = caseTimeRequirementLimit(timeRequirementLimit);
+				T result = caseTimeRequirementLimit(timeRequirementLimit);
 				if (result == null) result = caseRequirementLimit(timeRequirementLimit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.DATA_COHERENCY_GROUP: {
 				DataCoherencyGroup dataCoherencyGroup = (DataCoherencyGroup)theEObject;
-				T1 result = caseDataCoherencyGroup(dataCoherencyGroup);
+				T result = caseDataCoherencyGroup(dataCoherencyGroup);
 				if (result == null) result = caseReferableBaseObject(dataCoherencyGroup);
 				if (result == null) result = caseIAnnotatable(dataCoherencyGroup);
 				if (result == null) result = caseIReferable(dataCoherencyGroup);
@@ -1702,7 +1697,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_STABILITY_GROUP: {
 				DataStabilityGroup dataStabilityGroup = (DataStabilityGroup)theEObject;
-				T1 result = caseDataStabilityGroup(dataStabilityGroup);
+				T result = caseDataStabilityGroup(dataStabilityGroup);
 				if (result == null) result = caseReferableBaseObject(dataStabilityGroup);
 				if (result == null) result = caseIAnnotatable(dataStabilityGroup);
 				if (result == null) result = caseIReferable(dataStabilityGroup);
@@ -1712,34 +1707,34 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_GROUP_SCOPE: {
 				DataGroupScope dataGroupScope = (DataGroupScope)theEObject;
-				T1 result = caseDataGroupScope(dataGroupScope);
+				T result = caseDataGroupScope(dataGroupScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROCESS_SCOPE: {
 				ProcessScope processScope = (ProcessScope)theEObject;
-				T1 result = caseProcessScope(processScope);
+				T result = caseProcessScope(processScope);
 				if (result == null) result = caseDataGroupScope(processScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.RUNNABLE_SCOPE: {
 				RunnableScope runnableScope = (RunnableScope)theEObject;
-				T1 result = caseRunnableScope(runnableScope);
+				T result = caseRunnableScope(runnableScope);
 				if (result == null) result = caseDataGroupScope(runnableScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.COMPONENT_SCOPE: {
 				ComponentScope componentScope = (ComponentScope)theEObject;
-				T1 result = caseComponentScope(componentScope);
+				T result = caseComponentScope(componentScope);
 				if (result == null) result = caseDataGroupScope(componentScope);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.EVENT_MODEL: {
 				EventModel eventModel = (EventModel)theEObject;
-				T1 result = caseEventModel(eventModel);
+				T result = caseEventModel(eventModel);
 				if (result == null) result = caseBaseObject(eventModel);
 				if (result == null) result = caseIAnnotatable(eventModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -1747,7 +1742,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT: {
 				Event event = (Event)theEObject;
-				T1 result = caseEvent(event);
+				T result = caseEvent(event);
 				if (result == null) result = caseReferableBaseObject(event);
 				if (result == null) result = caseITaggable(event);
 				if (result == null) result = caseIAnnotatable(event);
@@ -1758,7 +1753,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_SET: {
 				EventSet eventSet = (EventSet)theEObject;
-				T1 result = caseEventSet(eventSet);
+				T result = caseEventSet(eventSet);
 				if (result == null) result = caseEvent(eventSet);
 				if (result == null) result = caseReferableBaseObject(eventSet);
 				if (result == null) result = caseITaggable(eventSet);
@@ -1770,7 +1765,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ENTITY_EVENT: {
 				EntityEvent entityEvent = (EntityEvent)theEObject;
-				T1 result = caseEntityEvent(entityEvent);
+				T result = caseEntityEvent(entityEvent);
 				if (result == null) result = caseEvent(entityEvent);
 				if (result == null) result = caseReferableBaseObject(entityEvent);
 				if (result == null) result = caseITaggable(entityEvent);
@@ -1782,7 +1777,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TRIGGER_EVENT: {
 				TriggerEvent triggerEvent = (TriggerEvent)theEObject;
-				T1 result = caseTriggerEvent(triggerEvent);
+				T result = caseTriggerEvent(triggerEvent);
 				if (result == null) result = caseEntityEvent(triggerEvent);
 				if (result == null) result = caseEvent(triggerEvent);
 				if (result == null) result = caseReferableBaseObject(triggerEvent);
@@ -1795,7 +1790,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_EVENT: {
 				CustomEvent customEvent = (CustomEvent)theEObject;
-				T1 result = caseCustomEvent(customEvent);
+				T result = caseCustomEvent(customEvent);
 				if (result == null) result = caseTriggerEvent(customEvent);
 				if (result == null) result = caseEntityEvent(customEvent);
 				if (result == null) result = caseEvent(customEvent);
@@ -1809,7 +1804,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.STIMULUS_EVENT: {
 				StimulusEvent stimulusEvent = (StimulusEvent)theEObject;
-				T1 result = caseStimulusEvent(stimulusEvent);
+				T result = caseStimulusEvent(stimulusEvent);
 				if (result == null) result = caseEntityEvent(stimulusEvent);
 				if (result == null) result = caseEvent(stimulusEvent);
 				if (result == null) result = caseReferableBaseObject(stimulusEvent);
@@ -1822,7 +1817,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_EVENT: {
 				ProcessEvent processEvent = (ProcessEvent)theEObject;
-				T1 result = caseProcessEvent(processEvent);
+				T result = caseProcessEvent(processEvent);
 				if (result == null) result = caseEntityEvent(processEvent);
 				if (result == null) result = caseEvent(processEvent);
 				if (result == null) result = caseReferableBaseObject(processEvent);
@@ -1835,7 +1830,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_CHAIN_EVENT: {
 				ProcessChainEvent processChainEvent = (ProcessChainEvent)theEObject;
-				T1 result = caseProcessChainEvent(processChainEvent);
+				T result = caseProcessChainEvent(processChainEvent);
 				if (result == null) result = caseEntityEvent(processChainEvent);
 				if (result == null) result = caseEvent(processChainEvent);
 				if (result == null) result = caseReferableBaseObject(processChainEvent);
@@ -1848,7 +1843,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_EVENT: {
 				RunnableEvent runnableEvent = (RunnableEvent)theEObject;
-				T1 result = caseRunnableEvent(runnableEvent);
+				T result = caseRunnableEvent(runnableEvent);
 				if (result == null) result = caseTriggerEvent(runnableEvent);
 				if (result == null) result = caseEntityEvent(runnableEvent);
 				if (result == null) result = caseEvent(runnableEvent);
@@ -1862,7 +1857,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.LABEL_EVENT: {
 				LabelEvent labelEvent = (LabelEvent)theEObject;
-				T1 result = caseLabelEvent(labelEvent);
+				T result = caseLabelEvent(labelEvent);
 				if (result == null) result = caseTriggerEvent(labelEvent);
 				if (result == null) result = caseEntityEvent(labelEvent);
 				if (result == null) result = caseEvent(labelEvent);
@@ -1876,7 +1871,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHANNEL_EVENT: {
 				ChannelEvent channelEvent = (ChannelEvent)theEObject;
-				T1 result = caseChannelEvent(channelEvent);
+				T result = caseChannelEvent(channelEvent);
 				if (result == null) result = caseTriggerEvent(channelEvent);
 				if (result == null) result = caseEntityEvent(channelEvent);
 				if (result == null) result = caseEvent(channelEvent);
@@ -1890,7 +1885,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SEMAPHORE_EVENT: {
 				SemaphoreEvent semaphoreEvent = (SemaphoreEvent)theEObject;
-				T1 result = caseSemaphoreEvent(semaphoreEvent);
+				T result = caseSemaphoreEvent(semaphoreEvent);
 				if (result == null) result = caseEntityEvent(semaphoreEvent);
 				if (result == null) result = caseEvent(semaphoreEvent);
 				if (result == null) result = caseReferableBaseObject(semaphoreEvent);
@@ -1903,7 +1898,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.COMPONENT_EVENT: {
 				ComponentEvent componentEvent = (ComponentEvent)theEObject;
-				T1 result = caseComponentEvent(componentEvent);
+				T result = caseComponentEvent(componentEvent);
 				if (result == null) result = caseEntityEvent(componentEvent);
 				if (result == null) result = caseEvent(componentEvent);
 				if (result == null) result = caseReferableBaseObject(componentEvent);
@@ -1916,7 +1911,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_MODEL: {
 				HWModel hwModel = (HWModel)theEObject;
-				T1 result = caseHWModel(hwModel);
+				T result = caseHWModel(hwModel);
 				if (result == null) result = caseBaseObject(hwModel);
 				if (result == null) result = caseIAnnotatable(hwModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -1924,7 +1919,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_STRUCTURE: {
 				HwStructure hwStructure = (HwStructure)theEObject;
-				T1 result = caseHwStructure(hwStructure);
+				T result = caseHwStructure(hwStructure);
 				if (result == null) result = caseReferableBaseObject(hwStructure);
 				if (result == null) result = caseITaggable(hwStructure);
 				if (result == null) result = caseIAnnotatable(hwStructure);
@@ -1935,7 +1930,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_MODULE: {
 				HwModule hwModule = (HwModule)theEObject;
-				T1 result = caseHwModule(hwModule);
+				T result = caseHwModule(hwModule);
 				if (result == null) result = caseReferableBaseObject(hwModule);
 				if (result == null) result = caseITaggable(hwModule);
 				if (result == null) result = caseIAnnotatable(hwModule);
@@ -1946,7 +1941,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_DOMAIN: {
 				HwDomain hwDomain = (HwDomain)theEObject;
-				T1 result = caseHwDomain(hwDomain);
+				T result = caseHwDomain(hwDomain);
 				if (result == null) result = caseReferableBaseObject(hwDomain);
 				if (result == null) result = caseITaggable(hwDomain);
 				if (result == null) result = caseIAnnotatable(hwDomain);
@@ -1957,7 +1952,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FREQUENCY_DOMAIN: {
 				FrequencyDomain frequencyDomain = (FrequencyDomain)theEObject;
-				T1 result = caseFrequencyDomain(frequencyDomain);
+				T result = caseFrequencyDomain(frequencyDomain);
 				if (result == null) result = caseHwDomain(frequencyDomain);
 				if (result == null) result = caseReferableBaseObject(frequencyDomain);
 				if (result == null) result = caseITaggable(frequencyDomain);
@@ -1969,7 +1964,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.POWER_DOMAIN: {
 				PowerDomain powerDomain = (PowerDomain)theEObject;
-				T1 result = casePowerDomain(powerDomain);
+				T result = casePowerDomain(powerDomain);
 				if (result == null) result = caseHwDomain(powerDomain);
 				if (result == null) result = caseReferableBaseObject(powerDomain);
 				if (result == null) result = caseITaggable(powerDomain);
@@ -1981,7 +1976,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESSING_UNIT: {
 				ProcessingUnit processingUnit = (ProcessingUnit)theEObject;
-				T1 result = caseProcessingUnit(processingUnit);
+				T result = caseProcessingUnit(processingUnit);
 				if (result == null) result = caseHwModule(processingUnit);
 				if (result == null) result = caseHwDestination(processingUnit);
 				if (result == null) result = caseHwPathElement(processingUnit);
@@ -1995,7 +1990,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY: {
 				Memory memory = (Memory)theEObject;
-				T1 result = caseMemory(memory);
+				T result = caseMemory(memory);
 				if (result == null) result = caseHwModule(memory);
 				if (result == null) result = caseHwDestination(memory);
 				if (result == null) result = caseReferableBaseObject(memory);
@@ -2008,7 +2003,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CACHE: {
 				Cache cache = (Cache)theEObject;
-				T1 result = caseCache(cache);
+				T result = caseCache(cache);
 				if (result == null) result = caseHwModule(cache);
 				if (result == null) result = caseHwPathElement(cache);
 				if (result == null) result = caseReferableBaseObject(cache);
@@ -2021,7 +2016,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_FEATURE_CATEGORY: {
 				HwFeatureCategory hwFeatureCategory = (HwFeatureCategory)theEObject;
-				T1 result = caseHwFeatureCategory(hwFeatureCategory);
+				T result = caseHwFeatureCategory(hwFeatureCategory);
 				if (result == null) result = caseReferableBaseObject(hwFeatureCategory);
 				if (result == null) result = caseIAnnotatable(hwFeatureCategory);
 				if (result == null) result = caseIReferable(hwFeatureCategory);
@@ -2031,7 +2026,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_FEATURE: {
 				HwFeature hwFeature = (HwFeature)theEObject;
-				T1 result = caseHwFeature(hwFeature);
+				T result = caseHwFeature(hwFeature);
 				if (result == null) result = caseReferableBaseObject(hwFeature);
 				if (result == null) result = caseIAnnotatable(hwFeature);
 				if (result == null) result = caseIReferable(hwFeature);
@@ -2041,7 +2036,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_PORT: {
 				HwPort hwPort = (HwPort)theEObject;
-				T1 result = caseHwPort(hwPort);
+				T result = caseHwPort(hwPort);
 				if (result == null) result = caseReferableBaseObject(hwPort);
 				if (result == null) result = caseITaggable(hwPort);
 				if (result == null) result = caseIAnnotatable(hwPort);
@@ -2052,7 +2047,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONNECTION_HANDLER: {
 				ConnectionHandler connectionHandler = (ConnectionHandler)theEObject;
-				T1 result = caseConnectionHandler(connectionHandler);
+				T result = caseConnectionHandler(connectionHandler);
 				if (result == null) result = caseHwModule(connectionHandler);
 				if (result == null) result = caseHwPathElement(connectionHandler);
 				if (result == null) result = caseReferableBaseObject(connectionHandler);
@@ -2065,7 +2060,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_CONNECTION: {
 				HwConnection hwConnection = (HwConnection)theEObject;
-				T1 result = caseHwConnection(hwConnection);
+				T result = caseHwConnection(hwConnection);
 				if (result == null) result = caseReferableBaseObject(hwConnection);
 				if (result == null) result = caseHwPathElement(hwConnection);
 				if (result == null) result = caseITaggable(hwConnection);
@@ -2077,7 +2072,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_ACCESS_ELEMENT: {
 				HwAccessElement hwAccessElement = (HwAccessElement)theEObject;
-				T1 result = caseHwAccessElement(hwAccessElement);
+				T result = caseHwAccessElement(hwAccessElement);
 				if (result == null) result = caseITaggable(hwAccessElement);
 				if (result == null) result = caseINamed(hwAccessElement);
 				if (result == null) result = defaultCase(theEObject);
@@ -2085,7 +2080,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_DEFINITION: {
 				HwDefinition hwDefinition = (HwDefinition)theEObject;
-				T1 result = caseHwDefinition(hwDefinition);
+				T result = caseHwDefinition(hwDefinition);
 				if (result == null) result = caseReferableBaseObject(hwDefinition);
 				if (result == null) result = caseITaggable(hwDefinition);
 				if (result == null) result = caseIAnnotatable(hwDefinition);
@@ -2096,7 +2091,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESSING_UNIT_DEFINITION: {
 				ProcessingUnitDefinition processingUnitDefinition = (ProcessingUnitDefinition)theEObject;
-				T1 result = caseProcessingUnitDefinition(processingUnitDefinition);
+				T result = caseProcessingUnitDefinition(processingUnitDefinition);
 				if (result == null) result = caseHwDefinition(processingUnitDefinition);
 				if (result == null) result = caseReferableBaseObject(processingUnitDefinition);
 				if (result == null) result = caseITaggable(processingUnitDefinition);
@@ -2108,7 +2103,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONNECTION_HANDLER_DEFINITION: {
 				ConnectionHandlerDefinition connectionHandlerDefinition = (ConnectionHandlerDefinition)theEObject;
-				T1 result = caseConnectionHandlerDefinition(connectionHandlerDefinition);
+				T result = caseConnectionHandlerDefinition(connectionHandlerDefinition);
 				if (result == null) result = caseHwDefinition(connectionHandlerDefinition);
 				if (result == null) result = caseReferableBaseObject(connectionHandlerDefinition);
 				if (result == null) result = caseITaggable(connectionHandlerDefinition);
@@ -2120,7 +2115,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY_DEFINITION: {
 				MemoryDefinition memoryDefinition = (MemoryDefinition)theEObject;
-				T1 result = caseMemoryDefinition(memoryDefinition);
+				T result = caseMemoryDefinition(memoryDefinition);
 				if (result == null) result = caseHwDefinition(memoryDefinition);
 				if (result == null) result = caseReferableBaseObject(memoryDefinition);
 				if (result == null) result = caseITaggable(memoryDefinition);
@@ -2132,7 +2127,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CACHE_DEFINITION: {
 				CacheDefinition cacheDefinition = (CacheDefinition)theEObject;
-				T1 result = caseCacheDefinition(cacheDefinition);
+				T result = caseCacheDefinition(cacheDefinition);
 				if (result == null) result = caseHwDefinition(cacheDefinition);
 				if (result == null) result = caseReferableBaseObject(cacheDefinition);
 				if (result == null) result = caseITaggable(cacheDefinition);
@@ -2144,13 +2139,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_PATH: {
 				HwPath hwPath = (HwPath)theEObject;
-				T1 result = caseHwPath(hwPath);
+				T result = caseHwPath(hwPath);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.HW_ACCESS_PATH: {
 				HwAccessPath hwAccessPath = (HwAccessPath)theEObject;
-				T1 result = caseHwAccessPath(hwAccessPath);
+				T result = caseHwAccessPath(hwAccessPath);
 				if (result == null) result = caseHwPath(hwAccessPath);
 				if (result == null) result = caseINamed(hwAccessPath);
 				if (result == null) result = defaultCase(theEObject);
@@ -2158,7 +2153,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_PATH_ELEMENT: {
 				HwPathElement hwPathElement = (HwPathElement)theEObject;
-				T1 result = caseHwPathElement(hwPathElement);
+				T result = caseHwPathElement(hwPathElement);
 				if (result == null) result = caseIReferable(hwPathElement);
 				if (result == null) result = caseINamed(hwPathElement);
 				if (result == null) result = defaultCase(theEObject);
@@ -2166,7 +2161,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.HW_DESTINATION: {
 				HwDestination hwDestination = (HwDestination)theEObject;
-				T1 result = caseHwDestination(hwDestination);
+				T result = caseHwDestination(hwDestination);
 				if (result == null) result = caseIReferable(hwDestination);
 				if (result == null) result = caseINamed(hwDestination);
 				if (result == null) result = defaultCase(theEObject);
@@ -2174,7 +2169,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MAPPING_MODEL: {
 				MappingModel mappingModel = (MappingModel)theEObject;
-				T1 result = caseMappingModel(mappingModel);
+				T result = caseMappingModel(mappingModel);
 				if (result == null) result = caseBaseObject(mappingModel);
 				if (result == null) result = caseIAnnotatable(mappingModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -2182,7 +2177,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SCHEDULER_ALLOCATION: {
 				SchedulerAllocation schedulerAllocation = (SchedulerAllocation)theEObject;
-				T1 result = caseSchedulerAllocation(schedulerAllocation);
+				T result = caseSchedulerAllocation(schedulerAllocation);
 				if (result == null) result = caseBaseObject(schedulerAllocation);
 				if (result == null) result = caseIAnnotatable(schedulerAllocation);
 				if (result == null) result = defaultCase(theEObject);
@@ -2190,7 +2185,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TASK_ALLOCATION: {
 				TaskAllocation taskAllocation = (TaskAllocation)theEObject;
-				T1 result = caseTaskAllocation(taskAllocation);
+				T result = caseTaskAllocation(taskAllocation);
 				if (result == null) result = caseBaseObject(taskAllocation);
 				if (result == null) result = caseIAnnotatable(taskAllocation);
 				if (result == null) result = defaultCase(theEObject);
@@ -2198,7 +2193,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ISR_ALLOCATION: {
 				ISRAllocation isrAllocation = (ISRAllocation)theEObject;
-				T1 result = caseISRAllocation(isrAllocation);
+				T result = caseISRAllocation(isrAllocation);
 				if (result == null) result = caseBaseObject(isrAllocation);
 				if (result == null) result = caseIAnnotatable(isrAllocation);
 				if (result == null) result = defaultCase(theEObject);
@@ -2206,7 +2201,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_ALLOCATION: {
 				RunnableAllocation runnableAllocation = (RunnableAllocation)theEObject;
-				T1 result = caseRunnableAllocation(runnableAllocation);
+				T result = caseRunnableAllocation(runnableAllocation);
 				if (result == null) result = caseBaseObject(runnableAllocation);
 				if (result == null) result = caseIAnnotatable(runnableAllocation);
 				if (result == null) result = defaultCase(theEObject);
@@ -2214,7 +2209,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY_MAPPING: {
 				MemoryMapping memoryMapping = (MemoryMapping)theEObject;
-				T1 result = caseMemoryMapping(memoryMapping);
+				T result = caseMemoryMapping(memoryMapping);
 				if (result == null) result = caseBaseObject(memoryMapping);
 				if (result == null) result = caseIAnnotatable(memoryMapping);
 				if (result == null) result = defaultCase(theEObject);
@@ -2222,7 +2217,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PHYSICAL_SECTION_MAPPING: {
 				PhysicalSectionMapping physicalSectionMapping = (PhysicalSectionMapping)theEObject;
-				T1 result = casePhysicalSectionMapping(physicalSectionMapping);
+				T result = casePhysicalSectionMapping(physicalSectionMapping);
 				if (result == null) result = caseReferableBaseObject(physicalSectionMapping);
 				if (result == null) result = caseIAnnotatable(physicalSectionMapping);
 				if (result == null) result = caseIReferable(physicalSectionMapping);
@@ -2232,7 +2227,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_MODEL: {
 				OSModel osModel = (OSModel)theEObject;
-				T1 result = caseOSModel(osModel);
+				T result = caseOSModel(osModel);
 				if (result == null) result = caseBaseObject(osModel);
 				if (result == null) result = caseIAnnotatable(osModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -2240,7 +2235,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_DATA_CONSISTENCY: {
 				OsDataConsistency osDataConsistency = (OsDataConsistency)theEObject;
-				T1 result = caseOsDataConsistency(osDataConsistency);
+				T result = caseOsDataConsistency(osDataConsistency);
 				if (result == null) result = caseBaseObject(osDataConsistency);
 				if (result == null) result = caseIAnnotatable(osDataConsistency);
 				if (result == null) result = defaultCase(theEObject);
@@ -2248,19 +2243,19 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_STABILITY: {
 				DataStability dataStability = (DataStability)theEObject;
-				T1 result = caseDataStability(dataStability);
+				T result = caseDataStability(dataStability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.NON_ATOMIC_DATA_COHERENCY: {
 				NonAtomicDataCoherency nonAtomicDataCoherency = (NonAtomicDataCoherency)theEObject;
-				T1 result = caseNonAtomicDataCoherency(nonAtomicDataCoherency);
+				T result = caseNonAtomicDataCoherency(nonAtomicDataCoherency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.SEMAPHORE: {
 				Semaphore semaphore = (Semaphore)theEObject;
-				T1 result = caseSemaphore(semaphore);
+				T result = caseSemaphore(semaphore);
 				if (result == null) result = caseReferableBaseObject(semaphore);
 				if (result == null) result = caseIAnnotatable(semaphore);
 				if (result == null) result = caseIReferable(semaphore);
@@ -2270,7 +2265,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SCHEDULER: {
 				Scheduler scheduler = (Scheduler)theEObject;
-				T1 result = caseScheduler(scheduler);
+				T result = caseScheduler(scheduler);
 				if (result == null) result = caseReferableBaseObject(scheduler);
 				if (result == null) result = caseIAnnotatable(scheduler);
 				if (result == null) result = caseIReferable(scheduler);
@@ -2280,7 +2275,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TASK_SCHEDULER: {
 				TaskScheduler taskScheduler = (TaskScheduler)theEObject;
-				T1 result = caseTaskScheduler(taskScheduler);
+				T result = caseTaskScheduler(taskScheduler);
 				if (result == null) result = caseScheduler(taskScheduler);
 				if (result == null) result = caseReferableBaseObject(taskScheduler);
 				if (result == null) result = caseIAnnotatable(taskScheduler);
@@ -2291,13 +2286,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SCHEDULER_ASSOCIATION: {
 				SchedulerAssociation schedulerAssociation = (SchedulerAssociation)theEObject;
-				T1 result = caseSchedulerAssociation(schedulerAssociation);
+				T result = caseSchedulerAssociation(schedulerAssociation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.INTERRUPT_CONTROLLER: {
 				InterruptController interruptController = (InterruptController)theEObject;
-				T1 result = caseInterruptController(interruptController);
+				T result = caseInterruptController(interruptController);
 				if (result == null) result = caseScheduler(interruptController);
 				if (result == null) result = caseReferableBaseObject(interruptController);
 				if (result == null) result = caseIAnnotatable(interruptController);
@@ -2308,19 +2303,19 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SCHEDULING_PARAMETERS: {
 				SchedulingParameters schedulingParameters = (SchedulingParameters)theEObject;
-				T1 result = caseSchedulingParameters(schedulingParameters);
+				T result = caseSchedulingParameters(schedulingParameters);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PARAMETER_EXTENSION: {
 				@SuppressWarnings("unchecked") Map.Entry<String, String> parameterExtension = (Map.Entry<String, String>)theEObject;
-				T1 result = caseParameterExtension(parameterExtension);
+				T result = caseParameterExtension(parameterExtension);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.ALGORITHM: {
 				Algorithm algorithm = (Algorithm)theEObject;
-				T1 result = caseAlgorithm(algorithm);
+				T result = caseAlgorithm(algorithm);
 				if (result == null) result = caseBaseObject(algorithm);
 				if (result == null) result = caseIAnnotatable(algorithm);
 				if (result == null) result = defaultCase(theEObject);
@@ -2328,7 +2323,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.INTERRUPT_SCHEDULING_ALGORITHM: {
 				InterruptSchedulingAlgorithm interruptSchedulingAlgorithm = (InterruptSchedulingAlgorithm)theEObject;
-				T1 result = caseInterruptSchedulingAlgorithm(interruptSchedulingAlgorithm);
+				T result = caseInterruptSchedulingAlgorithm(interruptSchedulingAlgorithm);
 				if (result == null) result = caseAlgorithm(interruptSchedulingAlgorithm);
 				if (result == null) result = caseBaseObject(interruptSchedulingAlgorithm);
 				if (result == null) result = caseIAnnotatable(interruptSchedulingAlgorithm);
@@ -2337,7 +2332,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TASK_SCHEDULING_ALGORITHM: {
 				TaskSchedulingAlgorithm taskSchedulingAlgorithm = (TaskSchedulingAlgorithm)theEObject;
-				T1 result = caseTaskSchedulingAlgorithm(taskSchedulingAlgorithm);
+				T result = caseTaskSchedulingAlgorithm(taskSchedulingAlgorithm);
 				if (result == null) result = caseAlgorithm(taskSchedulingAlgorithm);
 				if (result == null) result = caseBaseObject(taskSchedulingAlgorithm);
 				if (result == null) result = caseIAnnotatable(taskSchedulingAlgorithm);
@@ -2346,7 +2341,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FIXED_PRIORITY: {
 				FixedPriority fixedPriority = (FixedPriority)theEObject;
-				T1 result = caseFixedPriority(fixedPriority);
+				T result = caseFixedPriority(fixedPriority);
 				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriority);
 				if (result == null) result = caseAlgorithm(fixedPriority);
 				if (result == null) result = caseBaseObject(fixedPriority);
@@ -2356,7 +2351,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE: {
 				FixedPriorityPreemptive fixedPriorityPreemptive = (FixedPriorityPreemptive)theEObject;
-				T1 result = caseFixedPriorityPreemptive(fixedPriorityPreemptive);
+				T result = caseFixedPriorityPreemptive(fixedPriorityPreemptive);
 				if (result == null) result = caseFixedPriority(fixedPriorityPreemptive);
 				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriorityPreemptive);
 				if (result == null) result = caseAlgorithm(fixedPriorityPreemptive);
@@ -2367,7 +2362,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FIXED_PRIORITY_PREEMPTIVE_WITH_BUDGET_ENFORCEMENT: {
 				FixedPriorityPreemptiveWithBudgetEnforcement fixedPriorityPreemptiveWithBudgetEnforcement = (FixedPriorityPreemptiveWithBudgetEnforcement)theEObject;
-				T1 result = caseFixedPriorityPreemptiveWithBudgetEnforcement(fixedPriorityPreemptiveWithBudgetEnforcement);
+				T result = caseFixedPriorityPreemptiveWithBudgetEnforcement(fixedPriorityPreemptiveWithBudgetEnforcement);
 				if (result == null) result = caseFixedPriority(fixedPriorityPreemptiveWithBudgetEnforcement);
 				if (result == null) result = caseTaskSchedulingAlgorithm(fixedPriorityPreemptiveWithBudgetEnforcement);
 				if (result == null) result = caseAlgorithm(fixedPriorityPreemptiveWithBudgetEnforcement);
@@ -2378,7 +2373,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OSEK: {
 				OSEK osek = (OSEK)theEObject;
-				T1 result = caseOSEK(osek);
+				T result = caseOSEK(osek);
 				if (result == null) result = caseFixedPriority(osek);
 				if (result == null) result = caseTaskSchedulingAlgorithm(osek);
 				if (result == null) result = caseAlgorithm(osek);
@@ -2389,7 +2384,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DEADLINE_MONOTONIC: {
 				DeadlineMonotonic deadlineMonotonic = (DeadlineMonotonic)theEObject;
-				T1 result = caseDeadlineMonotonic(deadlineMonotonic);
+				T result = caseDeadlineMonotonic(deadlineMonotonic);
 				if (result == null) result = caseFixedPriority(deadlineMonotonic);
 				if (result == null) result = caseTaskSchedulingAlgorithm(deadlineMonotonic);
 				if (result == null) result = caseAlgorithm(deadlineMonotonic);
@@ -2400,7 +2395,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RATE_MONOTONIC: {
 				RateMonotonic rateMonotonic = (RateMonotonic)theEObject;
-				T1 result = caseRateMonotonic(rateMonotonic);
+				T result = caseRateMonotonic(rateMonotonic);
 				if (result == null) result = caseFixedPriority(rateMonotonic);
 				if (result == null) result = caseTaskSchedulingAlgorithm(rateMonotonic);
 				if (result == null) result = caseAlgorithm(rateMonotonic);
@@ -2411,7 +2406,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PFAIR: {
 				Pfair pfair = (Pfair)theEObject;
-				T1 result = casePfair(pfair);
+				T result = casePfair(pfair);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pfair);
 				if (result == null) result = caseAlgorithm(pfair);
 				if (result == null) result = caseBaseObject(pfair);
@@ -2421,7 +2416,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PFAIR_PD2: {
 				PfairPD2 pfairPD2 = (PfairPD2)theEObject;
-				T1 result = casePfairPD2(pfairPD2);
+				T result = casePfairPD2(pfairPD2);
 				if (result == null) result = casePfair(pfairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pfairPD2);
 				if (result == null) result = caseAlgorithm(pfairPD2);
@@ -2432,7 +2427,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PARTLY_PFAIR_PD2: {
 				PartlyPFairPD2 partlyPFairPD2 = (PartlyPFairPD2)theEObject;
-				T1 result = casePartlyPFairPD2(partlyPFairPD2);
+				T result = casePartlyPFairPD2(partlyPFairPD2);
 				if (result == null) result = casePfair(partlyPFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(partlyPFairPD2);
 				if (result == null) result = caseAlgorithm(partlyPFairPD2);
@@ -2443,7 +2438,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EARLY_RELEASE_FAIR_PD2: {
 				EarlyReleaseFairPD2 earlyReleaseFairPD2 = (EarlyReleaseFairPD2)theEObject;
-				T1 result = caseEarlyReleaseFairPD2(earlyReleaseFairPD2);
+				T result = caseEarlyReleaseFairPD2(earlyReleaseFairPD2);
 				if (result == null) result = casePfair(earlyReleaseFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earlyReleaseFairPD2);
 				if (result == null) result = caseAlgorithm(earlyReleaseFairPD2);
@@ -2454,7 +2449,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PARTLY_EARLY_RELEASE_FAIR_PD2: {
 				PartlyEarlyReleaseFairPD2 partlyEarlyReleaseFairPD2 = (PartlyEarlyReleaseFairPD2)theEObject;
-				T1 result = casePartlyEarlyReleaseFairPD2(partlyEarlyReleaseFairPD2);
+				T result = casePartlyEarlyReleaseFairPD2(partlyEarlyReleaseFairPD2);
 				if (result == null) result = casePfair(partlyEarlyReleaseFairPD2);
 				if (result == null) result = caseTaskSchedulingAlgorithm(partlyEarlyReleaseFairPD2);
 				if (result == null) result = caseAlgorithm(partlyEarlyReleaseFairPD2);
@@ -2465,7 +2460,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DYNAMIC_PRIORITY: {
 				DynamicPriority dynamicPriority = (DynamicPriority)theEObject;
-				T1 result = caseDynamicPriority(dynamicPriority);
+				T result = caseDynamicPriority(dynamicPriority);
 				if (result == null) result = caseTaskSchedulingAlgorithm(dynamicPriority);
 				if (result == null) result = caseAlgorithm(dynamicPriority);
 				if (result == null) result = caseBaseObject(dynamicPriority);
@@ -2475,7 +2470,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.LEAST_LOCAL_REMAINING_EXECUTION_TIME_FIRST: {
 				LeastLocalRemainingExecutionTimeFirst leastLocalRemainingExecutionTimeFirst = (LeastLocalRemainingExecutionTimeFirst)theEObject;
-				T1 result = caseLeastLocalRemainingExecutionTimeFirst(leastLocalRemainingExecutionTimeFirst);
+				T result = caseLeastLocalRemainingExecutionTimeFirst(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseDynamicPriority(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(leastLocalRemainingExecutionTimeFirst);
 				if (result == null) result = caseAlgorithm(leastLocalRemainingExecutionTimeFirst);
@@ -2486,7 +2481,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EARLIEST_DEADLINE_FIRST: {
 				EarliestDeadlineFirst earliestDeadlineFirst = (EarliestDeadlineFirst)theEObject;
-				T1 result = caseEarliestDeadlineFirst(earliestDeadlineFirst);
+				T result = caseEarliestDeadlineFirst(earliestDeadlineFirst);
 				if (result == null) result = caseDynamicPriority(earliestDeadlineFirst);
 				if (result == null) result = caseTaskSchedulingAlgorithm(earliestDeadlineFirst);
 				if (result == null) result = caseAlgorithm(earliestDeadlineFirst);
@@ -2497,7 +2492,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PRIORITY_BASED_ROUND_ROBIN: {
 				PriorityBasedRoundRobin priorityBasedRoundRobin = (PriorityBasedRoundRobin)theEObject;
-				T1 result = casePriorityBasedRoundRobin(priorityBasedRoundRobin);
+				T result = casePriorityBasedRoundRobin(priorityBasedRoundRobin);
 				if (result == null) result = caseDynamicPriority(priorityBasedRoundRobin);
 				if (result == null) result = caseTaskSchedulingAlgorithm(priorityBasedRoundRobin);
 				if (result == null) result = caseAlgorithm(priorityBasedRoundRobin);
@@ -2508,7 +2503,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RESERVATION_BASED_SERVER: {
 				ReservationBasedServer reservationBasedServer = (ReservationBasedServer)theEObject;
-				T1 result = caseReservationBasedServer(reservationBasedServer);
+				T result = caseReservationBasedServer(reservationBasedServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(reservationBasedServer);
 				if (result == null) result = caseAlgorithm(reservationBasedServer);
 				if (result == null) result = caseBaseObject(reservationBasedServer);
@@ -2518,7 +2513,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DEFERRABLE_SERVER: {
 				DeferrableServer deferrableServer = (DeferrableServer)theEObject;
-				T1 result = caseDeferrableServer(deferrableServer);
+				T result = caseDeferrableServer(deferrableServer);
 				if (result == null) result = caseReservationBasedServer(deferrableServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(deferrableServer);
 				if (result == null) result = caseAlgorithm(deferrableServer);
@@ -2529,7 +2524,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.POLLING_PERIODIC_SERVER: {
 				PollingPeriodicServer pollingPeriodicServer = (PollingPeriodicServer)theEObject;
-				T1 result = casePollingPeriodicServer(pollingPeriodicServer);
+				T result = casePollingPeriodicServer(pollingPeriodicServer);
 				if (result == null) result = caseReservationBasedServer(pollingPeriodicServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(pollingPeriodicServer);
 				if (result == null) result = caseAlgorithm(pollingPeriodicServer);
@@ -2540,7 +2535,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SPORADIC_SERVER: {
 				SporadicServer sporadicServer = (SporadicServer)theEObject;
-				T1 result = caseSporadicServer(sporadicServer);
+				T result = caseSporadicServer(sporadicServer);
 				if (result == null) result = caseReservationBasedServer(sporadicServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(sporadicServer);
 				if (result == null) result = caseAlgorithm(sporadicServer);
@@ -2551,7 +2546,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER: {
 				ConstantBandwidthServer constantBandwidthServer = (ConstantBandwidthServer)theEObject;
-				T1 result = caseConstantBandwidthServer(constantBandwidthServer);
+				T result = caseConstantBandwidthServer(constantBandwidthServer);
 				if (result == null) result = caseReservationBasedServer(constantBandwidthServer);
 				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServer);
 				if (result == null) result = caseAlgorithm(constantBandwidthServer);
@@ -2562,7 +2557,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CONSTANT_BANDWIDTH_SERVER_WITH_CASH: {
 				ConstantBandwidthServerWithCASH constantBandwidthServerWithCASH = (ConstantBandwidthServerWithCASH)theEObject;
-				T1 result = caseConstantBandwidthServerWithCASH(constantBandwidthServerWithCASH);
+				T result = caseConstantBandwidthServerWithCASH(constantBandwidthServerWithCASH);
 				if (result == null) result = caseReservationBasedServer(constantBandwidthServerWithCASH);
 				if (result == null) result = caseTaskSchedulingAlgorithm(constantBandwidthServerWithCASH);
 				if (result == null) result = caseAlgorithm(constantBandwidthServerWithCASH);
@@ -2573,7 +2568,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.GROUPING: {
 				Grouping grouping = (Grouping)theEObject;
-				T1 result = caseGrouping(grouping);
+				T result = caseGrouping(grouping);
 				if (result == null) result = caseTaskSchedulingAlgorithm(grouping);
 				if (result == null) result = caseAlgorithm(grouping);
 				if (result == null) result = caseBaseObject(grouping);
@@ -2583,7 +2578,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.USER_SPECIFIC_SCHEDULING_ALGORITHM: {
 				UserSpecificSchedulingAlgorithm userSpecificSchedulingAlgorithm = (UserSpecificSchedulingAlgorithm)theEObject;
-				T1 result = caseUserSpecificSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
+				T result = caseUserSpecificSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseTaskSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseInterruptSchedulingAlgorithm(userSpecificSchedulingAlgorithm);
 				if (result == null) result = caseAlgorithm(userSpecificSchedulingAlgorithm);
@@ -2594,7 +2589,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PRIORITY_BASED: {
 				PriorityBased priorityBased = (PriorityBased)theEObject;
-				T1 result = casePriorityBased(priorityBased);
+				T result = casePriorityBased(priorityBased);
 				if (result == null) result = caseInterruptSchedulingAlgorithm(priorityBased);
 				if (result == null) result = caseAlgorithm(priorityBased);
 				if (result == null) result = caseBaseObject(priorityBased);
@@ -2604,7 +2599,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OPERATING_SYSTEM: {
 				OperatingSystem operatingSystem = (OperatingSystem)theEObject;
-				T1 result = caseOperatingSystem(operatingSystem);
+				T result = caseOperatingSystem(operatingSystem);
 				if (result == null) result = caseBaseObject(operatingSystem);
 				if (result == null) result = caseINamed(operatingSystem);
 				if (result == null) result = caseIAnnotatable(operatingSystem);
@@ -2613,7 +2608,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.VENDOR_OPERATING_SYSTEM: {
 				VendorOperatingSystem vendorOperatingSystem = (VendorOperatingSystem)theEObject;
-				T1 result = caseVendorOperatingSystem(vendorOperatingSystem);
+				T result = caseVendorOperatingSystem(vendorOperatingSystem);
 				if (result == null) result = caseOperatingSystem(vendorOperatingSystem);
 				if (result == null) result = caseBaseObject(vendorOperatingSystem);
 				if (result == null) result = caseINamed(vendorOperatingSystem);
@@ -2623,7 +2618,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_OVERHEAD: {
 				OsOverhead osOverhead = (OsOverhead)theEObject;
-				T1 result = caseOsOverhead(osOverhead);
+				T result = caseOsOverhead(osOverhead);
 				if (result == null) result = caseReferableBaseObject(osOverhead);
 				if (result == null) result = caseIAnnotatable(osOverhead);
 				if (result == null) result = caseIReferable(osOverhead);
@@ -2633,7 +2628,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_API_OVERHEAD: {
 				OsAPIOverhead osAPIOverhead = (OsAPIOverhead)theEObject;
-				T1 result = caseOsAPIOverhead(osAPIOverhead);
+				T result = caseOsAPIOverhead(osAPIOverhead);
 				if (result == null) result = caseBaseObject(osAPIOverhead);
 				if (result == null) result = caseIAnnotatable(osAPIOverhead);
 				if (result == null) result = defaultCase(theEObject);
@@ -2641,7 +2636,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_ISR_OVERHEAD: {
 				OsISROverhead osISROverhead = (OsISROverhead)theEObject;
-				T1 result = caseOsISROverhead(osISROverhead);
+				T result = caseOsISROverhead(osISROverhead);
 				if (result == null) result = caseBaseObject(osISROverhead);
 				if (result == null) result = caseIAnnotatable(osISROverhead);
 				if (result == null) result = defaultCase(theEObject);
@@ -2649,7 +2644,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROPERTY_CONSTRAINTS_MODEL: {
 				PropertyConstraintsModel propertyConstraintsModel = (PropertyConstraintsModel)theEObject;
-				T1 result = casePropertyConstraintsModel(propertyConstraintsModel);
+				T result = casePropertyConstraintsModel(propertyConstraintsModel);
 				if (result == null) result = caseBaseObject(propertyConstraintsModel);
 				if (result == null) result = caseIAnnotatable(propertyConstraintsModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -2657,7 +2652,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CORE_ALLOCATION_CONSTRAINT: {
 				CoreAllocationConstraint coreAllocationConstraint = (CoreAllocationConstraint)theEObject;
-				T1 result = caseCoreAllocationConstraint(coreAllocationConstraint);
+				T result = caseCoreAllocationConstraint(coreAllocationConstraint);
 				if (result == null) result = caseBaseObject(coreAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(coreAllocationConstraint);
 				if (result == null) result = defaultCase(theEObject);
@@ -2665,7 +2660,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY_MAPPING_CONSTRAINT: {
 				MemoryMappingConstraint memoryMappingConstraint = (MemoryMappingConstraint)theEObject;
-				T1 result = caseMemoryMappingConstraint(memoryMappingConstraint);
+				T result = caseMemoryMappingConstraint(memoryMappingConstraint);
 				if (result == null) result = caseBaseObject(memoryMappingConstraint);
 				if (result == null) result = caseIAnnotatable(memoryMappingConstraint);
 				if (result == null) result = defaultCase(theEObject);
@@ -2673,7 +2668,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_ALLOCATION_CONSTRAINT: {
 				ProcessAllocationConstraint processAllocationConstraint = (ProcessAllocationConstraint)theEObject;
-				T1 result = caseProcessAllocationConstraint(processAllocationConstraint);
+				T result = caseProcessAllocationConstraint(processAllocationConstraint);
 				if (result == null) result = caseCoreAllocationConstraint(processAllocationConstraint);
 				if (result == null) result = caseBaseObject(processAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(processAllocationConstraint);
@@ -2682,7 +2677,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_PROTOTYPE_ALLOCATION_CONSTRAINT: {
 				ProcessPrototypeAllocationConstraint processPrototypeAllocationConstraint = (ProcessPrototypeAllocationConstraint)theEObject;
-				T1 result = caseProcessPrototypeAllocationConstraint(processPrototypeAllocationConstraint);
+				T result = caseProcessPrototypeAllocationConstraint(processPrototypeAllocationConstraint);
 				if (result == null) result = caseCoreAllocationConstraint(processPrototypeAllocationConstraint);
 				if (result == null) result = caseBaseObject(processPrototypeAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(processPrototypeAllocationConstraint);
@@ -2691,7 +2686,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_ALLOCATION_CONSTRAINT: {
 				RunnableAllocationConstraint runnableAllocationConstraint = (RunnableAllocationConstraint)theEObject;
-				T1 result = caseRunnableAllocationConstraint(runnableAllocationConstraint);
+				T result = caseRunnableAllocationConstraint(runnableAllocationConstraint);
 				if (result == null) result = caseCoreAllocationConstraint(runnableAllocationConstraint);
 				if (result == null) result = caseBaseObject(runnableAllocationConstraint);
 				if (result == null) result = caseIAnnotatable(runnableAllocationConstraint);
@@ -2700,7 +2695,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ABSTRACT_ELEMENT_MAPPING_CONSTRAINT: {
 				AbstractElementMappingConstraint abstractElementMappingConstraint = (AbstractElementMappingConstraint)theEObject;
-				T1 result = caseAbstractElementMappingConstraint(abstractElementMappingConstraint);
+				T result = caseAbstractElementMappingConstraint(abstractElementMappingConstraint);
 				if (result == null) result = caseMemoryMappingConstraint(abstractElementMappingConstraint);
 				if (result == null) result = caseBaseObject(abstractElementMappingConstraint);
 				if (result == null) result = caseIAnnotatable(abstractElementMappingConstraint);
@@ -2709,7 +2704,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLASSIFICATION: {
 				Classification classification = (Classification)theEObject;
-				T1 result = caseClassification(classification);
+				T result = caseClassification(classification);
 				if (result == null) result = caseBaseObject(classification);
 				if (result == null) result = caseIAnnotatable(classification);
 				if (result == null) result = defaultCase(theEObject);
@@ -2717,7 +2712,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CORE_CLASSIFICATION: {
 				CoreClassification coreClassification = (CoreClassification)theEObject;
-				T1 result = caseCoreClassification(coreClassification);
+				T result = caseCoreClassification(coreClassification);
 				if (result == null) result = caseClassification(coreClassification);
 				if (result == null) result = caseBaseObject(coreClassification);
 				if (result == null) result = caseIAnnotatable(coreClassification);
@@ -2726,7 +2721,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEMORY_CLASSIFICATION: {
 				MemoryClassification memoryClassification = (MemoryClassification)theEObject;
-				T1 result = caseMemoryClassification(memoryClassification);
+				T result = caseMemoryClassification(memoryClassification);
 				if (result == null) result = caseClassification(memoryClassification);
 				if (result == null) result = caseBaseObject(memoryClassification);
 				if (result == null) result = caseIAnnotatable(memoryClassification);
@@ -2735,7 +2730,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.STIMULI_MODEL: {
 				StimuliModel stimuliModel = (StimuliModel)theEObject;
-				T1 result = caseStimuliModel(stimuliModel);
+				T result = caseStimuliModel(stimuliModel);
 				if (result == null) result = caseBaseObject(stimuliModel);
 				if (result == null) result = caseIAnnotatable(stimuliModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -2743,7 +2738,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.STIMULUS: {
 				Stimulus stimulus = (Stimulus)theEObject;
-				T1 result = caseStimulus(stimulus);
+				T result = caseStimulus(stimulus);
 				if (result == null) result = caseReferableBaseObject(stimulus);
 				if (result == null) result = caseITaggable(stimulus);
 				if (result == null) result = caseIAnnotatable(stimulus);
@@ -2754,7 +2749,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_VALUE_LIST: {
 				ModeValueList modeValueList = (ModeValueList)theEObject;
-				T1 result = caseModeValueList(modeValueList);
+				T result = caseModeValueList(modeValueList);
 				if (result == null) result = caseBaseObject(modeValueList);
 				if (result == null) result = caseIAnnotatable(modeValueList);
 				if (result == null) result = defaultCase(theEObject);
@@ -2762,13 +2757,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_VALUE_MAP_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<ModeLabel, String> modeValueMapEntry = (Map.Entry<ModeLabel, String>)theEObject;
-				T1 result = caseModeValueMapEntry(modeValueMapEntry);
+				T result = caseModeValueMapEntry(modeValueMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_VALUE: {
 				ModeValue modeValue = (ModeValue)theEObject;
-				T1 result = caseModeValue(modeValue);
+				T result = caseModeValue(modeValue);
 				if (result == null) result = caseBaseObject(modeValue);
 				if (result == null) result = caseIAnnotatable(modeValue);
 				if (result == null) result = defaultCase(theEObject);
@@ -2776,7 +2771,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_ASSIGNMENT: {
 				ModeAssignment modeAssignment = (ModeAssignment)theEObject;
-				T1 result = caseModeAssignment(modeAssignment);
+				T result = caseModeAssignment(modeAssignment);
 				if (result == null) result = caseModeValue(modeAssignment);
 				if (result == null) result = caseBaseObject(modeAssignment);
 				if (result == null) result = caseIAnnotatable(modeAssignment);
@@ -2785,7 +2780,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION: {
 				ModeConditionDisjunction modeConditionDisjunction = (ModeConditionDisjunction)theEObject;
-				T1 result = caseModeConditionDisjunction(modeConditionDisjunction);
+				T result = caseModeConditionDisjunction(modeConditionDisjunction);
 				if (result == null) result = caseBaseObject(modeConditionDisjunction);
 				if (result == null) result = caseIAnnotatable(modeConditionDisjunction);
 				if (result == null) result = defaultCase(theEObject);
@@ -2793,7 +2788,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_CONDITION_DISJUNCTION_ENTRY: {
 				ModeConditionDisjunctionEntry modeConditionDisjunctionEntry = (ModeConditionDisjunctionEntry)theEObject;
-				T1 result = caseModeConditionDisjunctionEntry(modeConditionDisjunctionEntry);
+				T result = caseModeConditionDisjunctionEntry(modeConditionDisjunctionEntry);
 				if (result == null) result = caseBaseObject(modeConditionDisjunctionEntry);
 				if (result == null) result = caseIAnnotatable(modeConditionDisjunctionEntry);
 				if (result == null) result = defaultCase(theEObject);
@@ -2801,7 +2796,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_CONDITION: {
 				ModeCondition modeCondition = (ModeCondition)theEObject;
-				T1 result = caseModeCondition(modeCondition);
+				T result = caseModeCondition(modeCondition);
 				if (result == null) result = caseModeValue(modeCondition);
 				if (result == null) result = caseModeConditionDisjunctionEntry(modeCondition);
 				if (result == null) result = caseBaseObject(modeCondition);
@@ -2811,7 +2806,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_CONDITION_CONJUNCTION: {
 				ModeConditionConjunction modeConditionConjunction = (ModeConditionConjunction)theEObject;
-				T1 result = caseModeConditionConjunction(modeConditionConjunction);
+				T result = caseModeConditionConjunction(modeConditionConjunction);
 				if (result == null) result = caseModeConditionDisjunctionEntry(modeConditionConjunction);
 				if (result == null) result = caseBaseObject(modeConditionConjunction);
 				if (result == null) result = caseIAnnotatable(modeConditionConjunction);
@@ -2820,13 +2815,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.FIXED_PERIODIC: {
 				FixedPeriodic fixedPeriodic = (FixedPeriodic)theEObject;
-				T1 result = caseFixedPeriodic(fixedPeriodic);
+				T result = caseFixedPeriodic(fixedPeriodic);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PERIODIC_STIMULUS: {
 				PeriodicStimulus periodicStimulus = (PeriodicStimulus)theEObject;
-				T1 result = casePeriodicStimulus(periodicStimulus);
+				T result = casePeriodicStimulus(periodicStimulus);
 				if (result == null) result = caseStimulus(periodicStimulus);
 				if (result == null) result = caseFixedPeriodic(periodicStimulus);
 				if (result == null) result = caseReferableBaseObject(periodicStimulus);
@@ -2839,7 +2834,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RELATIVE_PERIODIC_STIMULUS: {
 				RelativePeriodicStimulus relativePeriodicStimulus = (RelativePeriodicStimulus)theEObject;
-				T1 result = caseRelativePeriodicStimulus(relativePeriodicStimulus);
+				T result = caseRelativePeriodicStimulus(relativePeriodicStimulus);
 				if (result == null) result = caseStimulus(relativePeriodicStimulus);
 				if (result == null) result = caseReferableBaseObject(relativePeriodicStimulus);
 				if (result == null) result = caseITaggable(relativePeriodicStimulus);
@@ -2851,7 +2846,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.VARIABLE_RATE_STIMULUS: {
 				VariableRateStimulus variableRateStimulus = (VariableRateStimulus)theEObject;
-				T1 result = caseVariableRateStimulus(variableRateStimulus);
+				T result = caseVariableRateStimulus(variableRateStimulus);
 				if (result == null) result = caseStimulus(variableRateStimulus);
 				if (result == null) result = caseReferableBaseObject(variableRateStimulus);
 				if (result == null) result = caseITaggable(variableRateStimulus);
@@ -2863,7 +2858,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SCENARIO: {
 				Scenario scenario = (Scenario)theEObject;
-				T1 result = caseScenario(scenario);
+				T result = caseScenario(scenario);
 				if (result == null) result = caseBaseObject(scenario);
 				if (result == null) result = caseIAnnotatable(scenario);
 				if (result == null) result = defaultCase(theEObject);
@@ -2871,7 +2866,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PERIODIC_SYNTHETIC_STIMULUS: {
 				PeriodicSyntheticStimulus periodicSyntheticStimulus = (PeriodicSyntheticStimulus)theEObject;
-				T1 result = casePeriodicSyntheticStimulus(periodicSyntheticStimulus);
+				T result = casePeriodicSyntheticStimulus(periodicSyntheticStimulus);
 				if (result == null) result = caseStimulus(periodicSyntheticStimulus);
 				if (result == null) result = caseFixedPeriodic(periodicSyntheticStimulus);
 				if (result == null) result = caseReferableBaseObject(periodicSyntheticStimulus);
@@ -2884,7 +2879,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_STIMULUS: {
 				CustomStimulus customStimulus = (CustomStimulus)theEObject;
-				T1 result = caseCustomStimulus(customStimulus);
+				T result = caseCustomStimulus(customStimulus);
 				if (result == null) result = caseStimulus(customStimulus);
 				if (result == null) result = caseReferableBaseObject(customStimulus);
 				if (result == null) result = caseITaggable(customStimulus);
@@ -2896,7 +2891,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SINGLE_STIMULUS: {
 				SingleStimulus singleStimulus = (SingleStimulus)theEObject;
-				T1 result = caseSingleStimulus(singleStimulus);
+				T result = caseSingleStimulus(singleStimulus);
 				if (result == null) result = caseStimulus(singleStimulus);
 				if (result == null) result = caseReferableBaseObject(singleStimulus);
 				if (result == null) result = caseITaggable(singleStimulus);
@@ -2908,7 +2903,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.INTER_PROCESS_STIMULUS: {
 				InterProcessStimulus interProcessStimulus = (InterProcessStimulus)theEObject;
-				T1 result = caseInterProcessStimulus(interProcessStimulus);
+				T result = caseInterProcessStimulus(interProcessStimulus);
 				if (result == null) result = caseStimulus(interProcessStimulus);
 				if (result == null) result = caseReferableBaseObject(interProcessStimulus);
 				if (result == null) result = caseITaggable(interProcessStimulus);
@@ -2920,7 +2915,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PERIODIC_BURST_STIMULUS: {
 				PeriodicBurstStimulus periodicBurstStimulus = (PeriodicBurstStimulus)theEObject;
-				T1 result = casePeriodicBurstStimulus(periodicBurstStimulus);
+				T result = casePeriodicBurstStimulus(periodicBurstStimulus);
 				if (result == null) result = caseStimulus(periodicBurstStimulus);
 				if (result == null) result = caseFixedPeriodic(periodicBurstStimulus);
 				if (result == null) result = caseReferableBaseObject(periodicBurstStimulus);
@@ -2933,7 +2928,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_STIMULUS: {
 				EventStimulus eventStimulus = (EventStimulus)theEObject;
-				T1 result = caseEventStimulus(eventStimulus);
+				T result = caseEventStimulus(eventStimulus);
 				if (result == null) result = caseStimulus(eventStimulus);
 				if (result == null) result = caseReferableBaseObject(eventStimulus);
 				if (result == null) result = caseITaggable(eventStimulus);
@@ -2945,7 +2940,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS: {
 				ArrivalCurveStimulus arrivalCurveStimulus = (ArrivalCurveStimulus)theEObject;
-				T1 result = caseArrivalCurveStimulus(arrivalCurveStimulus);
+				T result = caseArrivalCurveStimulus(arrivalCurveStimulus);
 				if (result == null) result = caseStimulus(arrivalCurveStimulus);
 				if (result == null) result = caseReferableBaseObject(arrivalCurveStimulus);
 				if (result == null) result = caseITaggable(arrivalCurveStimulus);
@@ -2957,7 +2952,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY: {
 				ArrivalCurveEntry arrivalCurveEntry = (ArrivalCurveEntry)theEObject;
-				T1 result = caseArrivalCurveEntry(arrivalCurveEntry);
+				T result = caseArrivalCurveEntry(arrivalCurveEntry);
 				if (result == null) result = caseBaseObject(arrivalCurveEntry);
 				if (result == null) result = caseIAnnotatable(arrivalCurveEntry);
 				if (result == null) result = defaultCase(theEObject);
@@ -2965,7 +2960,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLOCK: {
 				Clock clock = (Clock)theEObject;
-				T1 result = caseClock(clock);
+				T result = caseClock(clock);
 				if (result == null) result = caseReferableBaseObject(clock);
 				if (result == null) result = caseIAnnotatable(clock);
 				if (result == null) result = caseIReferable(clock);
@@ -2975,7 +2970,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION: {
 				ClockTriangleFunction clockTriangleFunction = (ClockTriangleFunction)theEObject;
-				T1 result = caseClockTriangleFunction(clockTriangleFunction);
+				T result = caseClockTriangleFunction(clockTriangleFunction);
 				if (result == null) result = caseClock(clockTriangleFunction);
 				if (result == null) result = caseReferableBaseObject(clockTriangleFunction);
 				if (result == null) result = caseIAnnotatable(clockTriangleFunction);
@@ -2986,7 +2981,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLOCK_SINUS_FUNCTION: {
 				ClockSinusFunction clockSinusFunction = (ClockSinusFunction)theEObject;
-				T1 result = caseClockSinusFunction(clockSinusFunction);
+				T result = caseClockSinusFunction(clockSinusFunction);
 				if (result == null) result = caseClock(clockSinusFunction);
 				if (result == null) result = caseReferableBaseObject(clockSinusFunction);
 				if (result == null) result = caseIAnnotatable(clockSinusFunction);
@@ -2997,7 +2992,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST: {
 				ClockMultiplierList clockMultiplierList = (ClockMultiplierList)theEObject;
-				T1 result = caseClockMultiplierList(clockMultiplierList);
+				T result = caseClockMultiplierList(clockMultiplierList);
 				if (result == null) result = caseClock(clockMultiplierList);
 				if (result == null) result = caseReferableBaseObject(clockMultiplierList);
 				if (result == null) result = caseIAnnotatable(clockMultiplierList);
@@ -3008,7 +3003,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY: {
 				ClockMultiplierListEntry clockMultiplierListEntry = (ClockMultiplierListEntry)theEObject;
-				T1 result = caseClockMultiplierListEntry(clockMultiplierListEntry);
+				T result = caseClockMultiplierListEntry(clockMultiplierListEntry);
 				if (result == null) result = caseBaseObject(clockMultiplierListEntry);
 				if (result == null) result = caseIAnnotatable(clockMultiplierListEntry);
 				if (result == null) result = defaultCase(theEObject);
@@ -3016,7 +3011,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SW_MODEL: {
 				SWModel swModel = (SWModel)theEObject;
-				T1 result = caseSWModel(swModel);
+				T result = caseSWModel(swModel);
 				if (result == null) result = caseBaseObject(swModel);
 				if (result == null) result = caseIAnnotatable(swModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -3024,7 +3019,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT: {
 				AbstractMemoryElement abstractMemoryElement = (AbstractMemoryElement)theEObject;
-				T1 result = caseAbstractMemoryElement(abstractMemoryElement);
+				T result = caseAbstractMemoryElement(abstractMemoryElement);
 				if (result == null) result = caseReferableBaseObject(abstractMemoryElement);
 				if (result == null) result = caseITaggable(abstractMemoryElement);
 				if (result == null) result = caseIAnnotatable(abstractMemoryElement);
@@ -3035,7 +3030,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ABSTRACT_PROCESS: {
 				AbstractProcess abstractProcess = (AbstractProcess)theEObject;
-				T1 result = caseAbstractProcess(abstractProcess);
+				T result = caseAbstractProcess(abstractProcess);
 				if (result == null) result = caseAbstractMemoryElement(abstractProcess);
 				if (result == null) result = caseReferableBaseObject(abstractProcess);
 				if (result == null) result = caseITaggable(abstractProcess);
@@ -3047,7 +3042,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_ENTITY: {
 				CustomEntity customEntity = (CustomEntity)theEObject;
-				T1 result = caseCustomEntity(customEntity);
+				T result = caseCustomEntity(customEntity);
 				if (result == null) result = caseAbstractMemoryElement(customEntity);
 				if (result == null) result = caseReferableBaseObject(customEntity);
 				if (result == null) result = caseITaggable(customEntity);
@@ -3059,7 +3054,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_CHAIN: {
 				ProcessChain processChain = (ProcessChain)theEObject;
-				T1 result = caseProcessChain(processChain);
+				T result = caseProcessChain(processChain);
 				if (result == null) result = caseReferableBaseObject(processChain);
 				if (result == null) result = caseIAnnotatable(processChain);
 				if (result == null) result = caseIReferable(processChain);
@@ -3069,7 +3064,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS: {
 				org.eclipse.app4mc.amalthea.model.Process process = (org.eclipse.app4mc.amalthea.model.Process)theEObject;
-				T1 result = caseProcess(process);
+				T result = caseProcess(process);
 				if (result == null) result = caseAbstractProcess(process);
 				if (result == null) result = caseAbstractMemoryElement(process);
 				if (result == null) result = caseReferableBaseObject(process);
@@ -3080,95 +3075,87 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER: {
+				ICallGraphItemContainer iCallGraphItemContainer = (ICallGraphItemContainer)theEObject;
+				T result = caseICallGraphItemContainer(iCallGraphItemContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AmaltheaPackage.CALL_GRAPH: {
 				CallGraph callGraph = (CallGraph)theEObject;
-				T1 result = caseCallGraph(callGraph);
+				T result = caseCallGraph(callGraph);
 				if (result == null) result = caseBaseObject(callGraph);
+				if (result == null) result = caseICallGraphItemContainer(callGraph);
 				if (result == null) result = caseIAnnotatable(callGraph);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.GRAPH_ENTRY_BASE: {
-				GraphEntryBase graphEntryBase = (GraphEntryBase)theEObject;
-				T1 result = caseGraphEntryBase(graphEntryBase);
-				if (result == null) result = caseBaseObject(graphEntryBase);
-				if (result == null) result = caseIAnnotatable(graphEntryBase);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CALL_SEQUENCE: {
-				CallSequence callSequence = (CallSequence)theEObject;
-				T1 result = caseCallSequence(callSequence);
-				if (result == null) result = caseGraphEntryBase(callSequence);
-				if (result == null) result = caseINamed(callSequence);
-				if (result == null) result = caseBaseObject(callSequence);
-				if (result == null) result = caseIAnnotatable(callSequence);
+			case AmaltheaPackage.CALL_GRAPH_ITEM: {
+				CallGraphItem callGraphItem = (CallGraphItem)theEObject;
+				T result = caseCallGraphItem(callGraphItem);
+				if (result == null) result = caseBaseObject(callGraphItem);
+				if (result == null) result = caseIAnnotatable(callGraphItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_SWITCH: {
 				ModeSwitch modeSwitch = (ModeSwitch)theEObject;
-				T1 result = caseModeSwitch(modeSwitch);
-				if (result == null) result = caseGraphEntryBase(modeSwitch);
+				T result = caseModeSwitch(modeSwitch);
+				if (result == null) result = caseCallGraphItem(modeSwitch);
 				if (result == null) result = caseBaseObject(modeSwitch);
 				if (result == null) result = caseIAnnotatable(modeSwitch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_SWITCH_ENTRY: {
-				ModeSwitchEntry<?> modeSwitchEntry = (ModeSwitchEntry<?>)theEObject;
-				T1 result = caseModeSwitchEntry(modeSwitchEntry);
+				ModeSwitchEntry modeSwitchEntry = (ModeSwitchEntry)theEObject;
+				T result = caseModeSwitchEntry(modeSwitchEntry);
 				if (result == null) result = caseBaseObject(modeSwitchEntry);
 				if (result == null) result = caseINamed(modeSwitchEntry);
+				if (result == null) result = caseICallGraphItemContainer(modeSwitchEntry);
 				if (result == null) result = caseIAnnotatable(modeSwitchEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT: {
-				ModeSwitchDefault<?> modeSwitchDefault = (ModeSwitchDefault<?>)theEObject;
-				T1 result = caseModeSwitchDefault(modeSwitchDefault);
+				ModeSwitchDefault modeSwitchDefault = (ModeSwitchDefault)theEObject;
+				T result = caseModeSwitchDefault(modeSwitchDefault);
 				if (result == null) result = caseBaseObject(modeSwitchDefault);
+				if (result == null) result = caseICallGraphItemContainer(modeSwitchDefault);
 				if (result == null) result = caseIAnnotatable(modeSwitchDefault);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROBABILITY_SWITCH: {
 				ProbabilitySwitch probabilitySwitch = (ProbabilitySwitch)theEObject;
-				T1 result = caseProbabilitySwitch(probabilitySwitch);
-				if (result == null) result = caseGraphEntryBase(probabilitySwitch);
+				T result = caseProbabilitySwitch(probabilitySwitch);
+				if (result == null) result = caseCallGraphItem(probabilitySwitch);
 				if (result == null) result = caseBaseObject(probabilitySwitch);
 				if (result == null) result = caseIAnnotatable(probabilitySwitch);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY: {
-				ProbabilitySwitchEntry<?> probabilitySwitchEntry = (ProbabilitySwitchEntry<?>)theEObject;
-				T1 result = caseProbabilitySwitchEntry(probabilitySwitchEntry);
+				ProbabilitySwitchEntry probabilitySwitchEntry = (ProbabilitySwitchEntry)theEObject;
+				T result = caseProbabilitySwitchEntry(probabilitySwitchEntry);
 				if (result == null) result = caseBaseObject(probabilitySwitchEntry);
+				if (result == null) result = caseICallGraphItemContainer(probabilitySwitchEntry);
 				if (result == null) result = caseIAnnotatable(probabilitySwitchEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.COUNTER: {
 				Counter counter = (Counter)theEObject;
-				T1 result = caseCounter(counter);
+				T result = caseCounter(counter);
 				if (result == null) result = caseBaseObject(counter);
 				if (result == null) result = caseIAnnotatable(counter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CALL_SEQUENCE_ITEM: {
-				CallSequenceItem callSequenceItem = (CallSequenceItem)theEObject;
-				T1 result = caseCallSequenceItem(callSequenceItem);
-				if (result == null) result = caseBaseObject(callSequenceItem);
-				if (result == null) result = caseIAnnotatable(callSequenceItem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.WAIT_EVENT: {
 				WaitEvent waitEvent = (WaitEvent)theEObject;
-				T1 result = caseWaitEvent(waitEvent);
-				if (result == null) result = caseCallSequenceItem(waitEvent);
+				T result = caseWaitEvent(waitEvent);
+				if (result == null) result = caseCallGraphItem(waitEvent);
 				if (result == null) result = caseBaseObject(waitEvent);
 				if (result == null) result = caseIAnnotatable(waitEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -3176,8 +3163,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SET_EVENT: {
 				SetEvent setEvent = (SetEvent)theEObject;
-				T1 result = caseSetEvent(setEvent);
-				if (result == null) result = caseCallSequenceItem(setEvent);
+				T result = caseSetEvent(setEvent);
+				if (result == null) result = caseCallGraphItem(setEvent);
 				if (result == null) result = caseBaseObject(setEvent);
 				if (result == null) result = caseIAnnotatable(setEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -3185,8 +3172,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CLEAR_EVENT: {
 				ClearEvent clearEvent = (ClearEvent)theEObject;
-				T1 result = caseClearEvent(clearEvent);
-				if (result == null) result = caseCallSequenceItem(clearEvent);
+				T result = caseClearEvent(clearEvent);
+				if (result == null) result = caseCallGraphItem(clearEvent);
 				if (result == null) result = caseBaseObject(clearEvent);
 				if (result == null) result = caseIAnnotatable(clearEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -3194,7 +3181,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_MASK: {
 				EventMask eventMask = (EventMask)theEObject;
-				T1 result = caseEventMask(eventMask);
+				T result = caseEventMask(eventMask);
 				if (result == null) result = caseBaseObject(eventMask);
 				if (result == null) result = caseIAnnotatable(eventMask);
 				if (result == null) result = defaultCase(theEObject);
@@ -3202,7 +3189,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.OS_EVENT: {
 				OsEvent osEvent = (OsEvent)theEObject;
-				T1 result = caseOsEvent(osEvent);
+				T result = caseOsEvent(osEvent);
 				if (result == null) result = caseReferableBaseObject(osEvent);
 				if (result == null) result = caseITaggable(osEvent);
 				if (result == null) result = caseIAnnotatable(osEvent);
@@ -3213,8 +3200,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER: {
 				InterProcessTrigger interProcessTrigger = (InterProcessTrigger)theEObject;
-				T1 result = caseInterProcessTrigger(interProcessTrigger);
-				if (result == null) result = caseCallSequenceItem(interProcessTrigger);
+				T result = caseInterProcessTrigger(interProcessTrigger);
+				if (result == null) result = caseCallGraphItem(interProcessTrigger);
 				if (result == null) result = caseBaseObject(interProcessTrigger);
 				if (result == null) result = caseIAnnotatable(interProcessTrigger);
 				if (result == null) result = defaultCase(theEObject);
@@ -3222,26 +3209,17 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ENFORCED_MIGRATION: {
 				EnforcedMigration enforcedMigration = (EnforcedMigration)theEObject;
-				T1 result = caseEnforcedMigration(enforcedMigration);
-				if (result == null) result = caseCallSequenceItem(enforcedMigration);
+				T result = caseEnforcedMigration(enforcedMigration);
+				if (result == null) result = caseCallGraphItem(enforcedMigration);
 				if (result == null) result = caseBaseObject(enforcedMigration);
 				if (result == null) result = caseIAnnotatable(enforcedMigration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.TASK_RUNNABLE_CALL: {
-				TaskRunnableCall taskRunnableCall = (TaskRunnableCall)theEObject;
-				T1 result = caseTaskRunnableCall(taskRunnableCall);
-				if (result == null) result = caseCallSequenceItem(taskRunnableCall);
-				if (result == null) result = caseBaseObject(taskRunnableCall);
-				if (result == null) result = caseIAnnotatable(taskRunnableCall);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.SCHEDULE_POINT: {
 				SchedulePoint schedulePoint = (SchedulePoint)theEObject;
-				T1 result = caseSchedulePoint(schedulePoint);
-				if (result == null) result = caseCallSequenceItem(schedulePoint);
+				T result = caseSchedulePoint(schedulePoint);
+				if (result == null) result = caseCallGraphItem(schedulePoint);
 				if (result == null) result = caseBaseObject(schedulePoint);
 				if (result == null) result = caseIAnnotatable(schedulePoint);
 				if (result == null) result = defaultCase(theEObject);
@@ -3249,8 +3227,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TERMINATE_PROCESS: {
 				TerminateProcess terminateProcess = (TerminateProcess)theEObject;
-				T1 result = caseTerminateProcess(terminateProcess);
-				if (result == null) result = caseCallSequenceItem(terminateProcess);
+				T result = caseTerminateProcess(terminateProcess);
+				if (result == null) result = caseCallGraphItem(terminateProcess);
 				if (result == null) result = caseBaseObject(terminateProcess);
 				if (result == null) result = caseIAnnotatable(terminateProcess);
 				if (result == null) result = defaultCase(theEObject);
@@ -3258,7 +3236,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TASK: {
 				Task task = (Task)theEObject;
-				T1 result = caseTask(task);
+				T result = caseTask(task);
 				if (result == null) result = caseProcess(task);
 				if (result == null) result = caseAbstractProcess(task);
 				if (result == null) result = caseAbstractMemoryElement(task);
@@ -3272,7 +3250,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ISR: {
 				ISR isr = (ISR)theEObject;
-				T1 result = caseISR(isr);
+				T result = caseISR(isr);
 				if (result == null) result = caseProcess(isr);
 				if (result == null) result = caseAbstractProcess(isr);
 				if (result == null) result = caseAbstractMemoryElement(isr);
@@ -3286,7 +3264,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PROCESS_PROTOTYPE: {
 				ProcessPrototype processPrototype = (ProcessPrototype)theEObject;
-				T1 result = caseProcessPrototype(processPrototype);
+				T result = caseProcessPrototype(processPrototype);
 				if (result == null) result = caseAbstractProcess(processPrototype);
 				if (result == null) result = caseAbstractMemoryElement(processPrototype);
 				if (result == null) result = caseReferableBaseObject(processPrototype);
@@ -3299,7 +3277,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHAINED_PROCESS_PROTOTYPE: {
 				ChainedProcessPrototype chainedProcessPrototype = (ChainedProcessPrototype)theEObject;
-				T1 result = caseChainedProcessPrototype(chainedProcessPrototype);
+				T result = caseChainedProcessPrototype(chainedProcessPrototype);
 				if (result == null) result = caseBaseObject(chainedProcessPrototype);
 				if (result == null) result = caseIAnnotatable(chainedProcessPrototype);
 				if (result == null) result = defaultCase(theEObject);
@@ -3307,7 +3285,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.GENERAL_PRECEDENCE: {
 				GeneralPrecedence generalPrecedence = (GeneralPrecedence)theEObject;
-				T1 result = caseGeneralPrecedence(generalPrecedence);
+				T result = caseGeneralPrecedence(generalPrecedence);
 				if (result == null) result = caseBaseObject(generalPrecedence);
 				if (result == null) result = caseIAnnotatable(generalPrecedence);
 				if (result == null) result = defaultCase(theEObject);
@@ -3315,7 +3293,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ACCESS_PRECEDENCE_SPEC: {
 				AccessPrecedenceSpec accessPrecedenceSpec = (AccessPrecedenceSpec)theEObject;
-				T1 result = caseAccessPrecedenceSpec(accessPrecedenceSpec);
+				T result = caseAccessPrecedenceSpec(accessPrecedenceSpec);
 				if (result == null) result = caseGeneralPrecedence(accessPrecedenceSpec);
 				if (result == null) result = caseBaseObject(accessPrecedenceSpec);
 				if (result == null) result = caseIAnnotatable(accessPrecedenceSpec);
@@ -3324,7 +3302,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ORDER_PRECEDENCE_SPEC: {
 				OrderPrecedenceSpec orderPrecedenceSpec = (OrderPrecedenceSpec)theEObject;
-				T1 result = caseOrderPrecedenceSpec(orderPrecedenceSpec);
+				T result = caseOrderPrecedenceSpec(orderPrecedenceSpec);
 				if (result == null) result = caseGeneralPrecedence(orderPrecedenceSpec);
 				if (result == null) result = caseBaseObject(orderPrecedenceSpec);
 				if (result == null) result = caseIAnnotatable(orderPrecedenceSpec);
@@ -3333,7 +3311,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_DEPENDENCY: {
 				DataDependency dataDependency = (DataDependency)theEObject;
-				T1 result = caseDataDependency(dataDependency);
+				T result = caseDataDependency(dataDependency);
 				if (result == null) result = caseBaseObject(dataDependency);
 				if (result == null) result = caseIAnnotatable(dataDependency);
 				if (result == null) result = defaultCase(theEObject);
@@ -3341,7 +3319,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_PARAMETER: {
 				RunnableParameter runnableParameter = (RunnableParameter)theEObject;
-				T1 result = caseRunnableParameter(runnableParameter);
+				T result = caseRunnableParameter(runnableParameter);
 				if (result == null) result = caseReferableBaseObject(runnableParameter);
 				if (result == null) result = caseIAnnotatable(runnableParameter);
 				if (result == null) result = caseIReferable(runnableParameter);
@@ -3351,7 +3329,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE: {
 				org.eclipse.app4mc.amalthea.model.Runnable runnable = (org.eclipse.app4mc.amalthea.model.Runnable)theEObject;
-				T1 result = caseRunnable(runnable);
+				T result = caseRunnable(runnable);
 				if (result == null) result = caseAbstractMemoryElement(runnable);
 				if (result == null) result = caseReferableBaseObject(runnable);
 				if (result == null) result = caseITaggable(runnable);
@@ -3363,7 +3341,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.LABEL: {
 				Label label = (Label)theEObject;
-				T1 result = caseLabel(label);
+				T result = caseLabel(label);
 				if (result == null) result = caseAbstractMemoryElement(label);
 				if (result == null) result = caseIDisplayName(label);
 				if (result == null) result = caseReferableBaseObject(label);
@@ -3376,7 +3354,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHANNEL: {
 				Channel channel = (Channel)theEObject;
-				T1 result = caseChannel(channel);
+				T result = caseChannel(channel);
 				if (result == null) result = caseAbstractMemoryElement(channel);
 				if (result == null) result = caseIDisplayName(channel);
 				if (result == null) result = caseReferableBaseObject(channel);
@@ -3389,7 +3367,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MODE_LABEL: {
 				ModeLabel modeLabel = (ModeLabel)theEObject;
-				T1 result = caseModeLabel(modeLabel);
+				T result = caseModeLabel(modeLabel);
 				if (result == null) result = caseAbstractMemoryElement(modeLabel);
 				if (result == null) result = caseIDisplayName(modeLabel);
 				if (result == null) result = caseReferableBaseObject(modeLabel);
@@ -3402,7 +3380,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SECTION: {
 				Section section = (Section)theEObject;
-				T1 result = caseSection(section);
+				T result = caseSection(section);
 				if (result == null) result = caseReferableBaseObject(section);
 				if (result == null) result = caseIAnnotatable(section);
 				if (result == null) result = caseIReferable(section);
@@ -3410,18 +3388,10 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.RUNNABLE_ITEM: {
-				RunnableItem runnableItem = (RunnableItem)theEObject;
-				T1 result = caseRunnableItem(runnableItem);
-				if (result == null) result = caseBaseObject(runnableItem);
-				if (result == null) result = caseIAnnotatable(runnableItem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.COMPUTATION_ITEM: {
 				ComputationItem computationItem = (ComputationItem)theEObject;
-				T1 result = caseComputationItem(computationItem);
-				if (result == null) result = caseRunnableItem(computationItem);
+				T result = caseComputationItem(computationItem);
+				if (result == null) result = caseCallGraphItem(computationItem);
 				if (result == null) result = caseBaseObject(computationItem);
 				if (result == null) result = caseIAnnotatable(computationItem);
 				if (result == null) result = defaultCase(theEObject);
@@ -3429,8 +3399,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EXECUTION_NEED: {
 				ExecutionNeed executionNeed = (ExecutionNeed)theEObject;
-				T1 result = caseExecutionNeed(executionNeed);
-				if (result == null) result = caseRunnableItem(executionNeed);
+				T result = caseExecutionNeed(executionNeed);
+				if (result == null) result = caseCallGraphItem(executionNeed);
 				if (result == null) result = caseBaseObject(executionNeed);
 				if (result == null) result = caseIAnnotatable(executionNeed);
 				if (result == null) result = defaultCase(theEObject);
@@ -3438,15 +3408,15 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.NEED_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<String, IDiscreteValueDeviation> needEntry = (Map.Entry<String, IDiscreteValueDeviation>)theEObject;
-				T1 result = caseNeedEntry(needEntry);
+				T result = caseNeedEntry(needEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.TICKS: {
 				Ticks ticks = (Ticks)theEObject;
-				T1 result = caseTicks(ticks);
+				T result = caseTicks(ticks);
 				if (result == null) result = caseComputationItem(ticks);
-				if (result == null) result = caseRunnableItem(ticks);
+				if (result == null) result = caseCallGraphItem(ticks);
 				if (result == null) result = caseBaseObject(ticks);
 				if (result == null) result = caseIAnnotatable(ticks);
 				if (result == null) result = defaultCase(theEObject);
@@ -3454,34 +3424,25 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TICKS_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<ProcessingUnitDefinition, IDiscreteValueDeviation> ticksEntry = (Map.Entry<ProcessingUnitDefinition, IDiscreteValueDeviation>)theEObject;
-				T1 result = caseTicksEntry(ticksEntry);
+				T result = caseTicksEntry(ticksEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.MODE_LABEL_ACCESS: {
 				ModeLabelAccess modeLabelAccess = (ModeLabelAccess)theEObject;
-				T1 result = caseModeLabelAccess(modeLabelAccess);
-				if (result == null) result = caseRunnableItem(modeLabelAccess);
+				T result = caseModeLabelAccess(modeLabelAccess);
+				if (result == null) result = caseCallGraphItem(modeLabelAccess);
 				if (result == null) result = caseBaseObject(modeLabelAccess);
 				if (result == null) result = caseIAnnotatable(modeLabelAccess);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: {
-				RunnableModeSwitch runnableModeSwitch = (RunnableModeSwitch)theEObject;
-				T1 result = caseRunnableModeSwitch(runnableModeSwitch);
-				if (result == null) result = caseRunnableItem(runnableModeSwitch);
-				if (result == null) result = caseBaseObject(runnableModeSwitch);
-				if (result == null) result = caseIAnnotatable(runnableModeSwitch);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.LABEL_ACCESS: {
 				LabelAccess labelAccess = (LabelAccess)theEObject;
-				T1 result = caseLabelAccess(labelAccess);
+				T result = caseLabelAccess(labelAccess);
 				if (result == null) result = caseComputationItem(labelAccess);
 				if (result == null) result = caseITaggable(labelAccess);
-				if (result == null) result = caseRunnableItem(labelAccess);
+				if (result == null) result = caseCallGraphItem(labelAccess);
 				if (result == null) result = caseBaseObject(labelAccess);
 				if (result == null) result = caseIAnnotatable(labelAccess);
 				if (result == null) result = defaultCase(theEObject);
@@ -3489,8 +3450,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHANNEL_ACCESS: {
 				ChannelAccess channelAccess = (ChannelAccess)theEObject;
-				T1 result = caseChannelAccess(channelAccess);
-				if (result == null) result = caseRunnableItem(channelAccess);
+				T result = caseChannelAccess(channelAccess);
+				if (result == null) result = caseCallGraphItem(channelAccess);
 				if (result == null) result = caseBaseObject(channelAccess);
 				if (result == null) result = caseIAnnotatable(channelAccess);
 				if (result == null) result = defaultCase(theEObject);
@@ -3498,9 +3459,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHANNEL_SEND: {
 				ChannelSend channelSend = (ChannelSend)theEObject;
-				T1 result = caseChannelSend(channelSend);
+				T result = caseChannelSend(channelSend);
 				if (result == null) result = caseChannelAccess(channelSend);
-				if (result == null) result = caseRunnableItem(channelSend);
+				if (result == null) result = caseCallGraphItem(channelSend);
 				if (result == null) result = caseBaseObject(channelSend);
 				if (result == null) result = caseIAnnotatable(channelSend);
 				if (result == null) result = defaultCase(theEObject);
@@ -3508,9 +3469,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CHANNEL_RECEIVE: {
 				ChannelReceive channelReceive = (ChannelReceive)theEObject;
-				T1 result = caseChannelReceive(channelReceive);
+				T result = caseChannelReceive(channelReceive);
 				if (result == null) result = caseChannelAccess(channelReceive);
-				if (result == null) result = caseRunnableItem(channelReceive);
+				if (result == null) result = caseCallGraphItem(channelReceive);
 				if (result == null) result = caseBaseObject(channelReceive);
 				if (result == null) result = caseIAnnotatable(channelReceive);
 				if (result == null) result = defaultCase(theEObject);
@@ -3518,8 +3479,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SEMAPHORE_ACCESS: {
 				SemaphoreAccess semaphoreAccess = (SemaphoreAccess)theEObject;
-				T1 result = caseSemaphoreAccess(semaphoreAccess);
-				if (result == null) result = caseRunnableItem(semaphoreAccess);
+				T result = caseSemaphoreAccess(semaphoreAccess);
+				if (result == null) result = caseCallGraphItem(semaphoreAccess);
 				if (result == null) result = caseBaseObject(semaphoreAccess);
 				if (result == null) result = caseIAnnotatable(semaphoreAccess);
 				if (result == null) result = defaultCase(theEObject);
@@ -3527,8 +3488,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SENDER_RECEIVER_COMMUNICATION: {
 				SenderReceiverCommunication senderReceiverCommunication = (SenderReceiverCommunication)theEObject;
-				T1 result = caseSenderReceiverCommunication(senderReceiverCommunication);
-				if (result == null) result = caseRunnableItem(senderReceiverCommunication);
+				T result = caseSenderReceiverCommunication(senderReceiverCommunication);
+				if (result == null) result = caseCallGraphItem(senderReceiverCommunication);
 				if (result == null) result = caseBaseObject(senderReceiverCommunication);
 				if (result == null) result = caseIAnnotatable(senderReceiverCommunication);
 				if (result == null) result = defaultCase(theEObject);
@@ -3536,9 +3497,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SENDER_RECEIVER_READ: {
 				SenderReceiverRead senderReceiverRead = (SenderReceiverRead)theEObject;
-				T1 result = caseSenderReceiverRead(senderReceiverRead);
+				T result = caseSenderReceiverRead(senderReceiverRead);
 				if (result == null) result = caseSenderReceiverCommunication(senderReceiverRead);
-				if (result == null) result = caseRunnableItem(senderReceiverRead);
+				if (result == null) result = caseCallGraphItem(senderReceiverRead);
 				if (result == null) result = caseBaseObject(senderReceiverRead);
 				if (result == null) result = caseIAnnotatable(senderReceiverRead);
 				if (result == null) result = defaultCase(theEObject);
@@ -3546,9 +3507,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SENDER_RECEIVER_WRITE: {
 				SenderReceiverWrite senderReceiverWrite = (SenderReceiverWrite)theEObject;
-				T1 result = caseSenderReceiverWrite(senderReceiverWrite);
+				T result = caseSenderReceiverWrite(senderReceiverWrite);
 				if (result == null) result = caseSenderReceiverCommunication(senderReceiverWrite);
-				if (result == null) result = caseRunnableItem(senderReceiverWrite);
+				if (result == null) result = caseCallGraphItem(senderReceiverWrite);
 				if (result == null) result = caseBaseObject(senderReceiverWrite);
 				if (result == null) result = caseIAnnotatable(senderReceiverWrite);
 				if (result == null) result = defaultCase(theEObject);
@@ -3556,8 +3517,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SERVER_CALL: {
 				ServerCall serverCall = (ServerCall)theEObject;
-				T1 result = caseServerCall(serverCall);
-				if (result == null) result = caseRunnableItem(serverCall);
+				T result = caseServerCall(serverCall);
+				if (result == null) result = caseCallGraphItem(serverCall);
 				if (result == null) result = caseBaseObject(serverCall);
 				if (result == null) result = caseIAnnotatable(serverCall);
 				if (result == null) result = defaultCase(theEObject);
@@ -3565,9 +3526,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SYNCHRONOUS_SERVER_CALL: {
 				SynchronousServerCall synchronousServerCall = (SynchronousServerCall)theEObject;
-				T1 result = caseSynchronousServerCall(synchronousServerCall);
+				T result = caseSynchronousServerCall(synchronousServerCall);
 				if (result == null) result = caseServerCall(synchronousServerCall);
-				if (result == null) result = caseRunnableItem(synchronousServerCall);
+				if (result == null) result = caseCallGraphItem(synchronousServerCall);
 				if (result == null) result = caseBaseObject(synchronousServerCall);
 				if (result == null) result = caseIAnnotatable(synchronousServerCall);
 				if (result == null) result = defaultCase(theEObject);
@@ -3575,9 +3536,9 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL: {
 				AsynchronousServerCall asynchronousServerCall = (AsynchronousServerCall)theEObject;
-				T1 result = caseAsynchronousServerCall(asynchronousServerCall);
+				T result = caseAsynchronousServerCall(asynchronousServerCall);
 				if (result == null) result = caseServerCall(asynchronousServerCall);
-				if (result == null) result = caseRunnableItem(asynchronousServerCall);
+				if (result == null) result = caseCallGraphItem(asynchronousServerCall);
 				if (result == null) result = caseBaseObject(asynchronousServerCall);
 				if (result == null) result = caseIAnnotatable(asynchronousServerCall);
 				if (result == null) result = defaultCase(theEObject);
@@ -3585,28 +3546,20 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.GET_RESULT_SERVER_CALL: {
 				GetResultServerCall getResultServerCall = (GetResultServerCall)theEObject;
-				T1 result = caseGetResultServerCall(getResultServerCall);
+				T result = caseGetResultServerCall(getResultServerCall);
 				if (result == null) result = caseServerCall(getResultServerCall);
-				if (result == null) result = caseRunnableItem(getResultServerCall);
+				if (result == null) result = caseCallGraphItem(getResultServerCall);
 				if (result == null) result = caseBaseObject(getResultServerCall);
 				if (result == null) result = caseIAnnotatable(getResultServerCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: {
-				RunnableProbabilitySwitch runnableProbabilitySwitch = (RunnableProbabilitySwitch)theEObject;
-				T1 result = caseRunnableProbabilitySwitch(runnableProbabilitySwitch);
-				if (result == null) result = caseRunnableItem(runnableProbabilitySwitch);
-				if (result == null) result = caseBaseObject(runnableProbabilitySwitch);
-				if (result == null) result = caseIAnnotatable(runnableProbabilitySwitch);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AmaltheaPackage.GROUP: {
 				Group group = (Group)theEObject;
-				T1 result = caseGroup(group);
-				if (result == null) result = caseRunnableItem(group);
+				T result = caseGroup(group);
+				if (result == null) result = caseCallGraphItem(group);
 				if (result == null) result = caseINamed(group);
+				if (result == null) result = caseICallGraphItemContainer(group);
 				if (result == null) result = caseBaseObject(group);
 				if (result == null) result = caseIAnnotatable(group);
 				if (result == null) result = defaultCase(theEObject);
@@ -3614,7 +3567,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CALL_ARGUMENT: {
 				CallArgument callArgument = (CallArgument)theEObject;
-				T1 result = caseCallArgument(callArgument);
+				T result = caseCallArgument(callArgument);
 				if (result == null) result = caseReferableObject(callArgument);
 				if (result == null) result = caseIReferable(callArgument);
 				if (result == null) result = caseINamed(callArgument);
@@ -3623,8 +3576,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_CALL: {
 				RunnableCall runnableCall = (RunnableCall)theEObject;
-				T1 result = caseRunnableCall(runnableCall);
-				if (result == null) result = caseRunnableItem(runnableCall);
+				T result = caseRunnableCall(runnableCall);
+				if (result == null) result = caseCallGraphItem(runnableCall);
 				if (result == null) result = caseITaggable(runnableCall);
 				if (result == null) result = caseBaseObject(runnableCall);
 				if (result == null) result = caseIAnnotatable(runnableCall);
@@ -3633,8 +3586,8 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_EVENT_TRIGGER: {
 				CustomEventTrigger customEventTrigger = (CustomEventTrigger)theEObject;
-				T1 result = caseCustomEventTrigger(customEventTrigger);
-				if (result == null) result = caseRunnableItem(customEventTrigger);
+				T result = caseCustomEventTrigger(customEventTrigger);
+				if (result == null) result = caseCallGraphItem(customEventTrigger);
 				if (result == null) result = caseBaseObject(customEventTrigger);
 				if (result == null) result = caseIAnnotatable(customEventTrigger);
 				if (result == null) result = defaultCase(theEObject);
@@ -3642,13 +3595,13 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_TYPE: {
 				DataType dataType = (DataType)theEObject;
-				T1 result = caseDataType(dataType);
+				T result = caseDataType(dataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AmaltheaPackage.COMPOUND_TYPE: {
 				CompoundType compoundType = (CompoundType)theEObject;
-				T1 result = caseCompoundType(compoundType);
+				T result = caseCompoundType(compoundType);
 				if (result == null) result = caseBaseObject(compoundType);
 				if (result == null) result = caseDataType(compoundType);
 				if (result == null) result = caseIAnnotatable(compoundType);
@@ -3657,7 +3610,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.STRUCT: {
 				Struct struct = (Struct)theEObject;
-				T1 result = caseStruct(struct);
+				T result = caseStruct(struct);
 				if (result == null) result = caseCompoundType(struct);
 				if (result == null) result = caseBaseObject(struct);
 				if (result == null) result = caseDataType(struct);
@@ -3667,7 +3620,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.STRUCT_ENTRY: {
 				StructEntry structEntry = (StructEntry)theEObject;
-				T1 result = caseStructEntry(structEntry);
+				T result = caseStructEntry(structEntry);
 				if (result == null) result = caseBaseObject(structEntry);
 				if (result == null) result = caseINamed(structEntry);
 				if (result == null) result = caseIAnnotatable(structEntry);
@@ -3676,7 +3629,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ARRAY: {
 				Array array = (Array)theEObject;
-				T1 result = caseArray(array);
+				T result = caseArray(array);
 				if (result == null) result = caseCompoundType(array);
 				if (result == null) result = caseBaseObject(array);
 				if (result == null) result = caseDataType(array);
@@ -3686,7 +3639,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.POINTER: {
 				Pointer pointer = (Pointer)theEObject;
-				T1 result = casePointer(pointer);
+				T result = casePointer(pointer);
 				if (result == null) result = caseCompoundType(pointer);
 				if (result == null) result = caseBaseObject(pointer);
 				if (result == null) result = caseDataType(pointer);
@@ -3696,7 +3649,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TYPE_REF: {
 				TypeRef typeRef = (TypeRef)theEObject;
-				T1 result = caseTypeRef(typeRef);
+				T result = caseTypeRef(typeRef);
 				if (result == null) result = caseBaseObject(typeRef);
 				if (result == null) result = caseDataType(typeRef);
 				if (result == null) result = caseIAnnotatable(typeRef);
@@ -3705,7 +3658,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ALIAS: {
 				Alias alias = (Alias)theEObject;
-				T1 result = caseAlias(alias);
+				T result = caseAlias(alias);
 				if (result == null) result = caseBaseObject(alias);
 				if (result == null) result = caseIAnnotatable(alias);
 				if (result == null) result = defaultCase(theEObject);
@@ -3713,7 +3666,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TYPE_DEFINITION: {
 				TypeDefinition typeDefinition = (TypeDefinition)theEObject;
-				T1 result = caseTypeDefinition(typeDefinition);
+				T result = caseTypeDefinition(typeDefinition);
 				if (result == null) result = caseReferableBaseObject(typeDefinition);
 				if (result == null) result = caseIAnnotatable(typeDefinition);
 				if (result == null) result = caseIReferable(typeDefinition);
@@ -3723,7 +3676,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.DATA_TYPE_DEFINITION: {
 				DataTypeDefinition dataTypeDefinition = (DataTypeDefinition)theEObject;
-				T1 result = caseDataTypeDefinition(dataTypeDefinition);
+				T result = caseDataTypeDefinition(dataTypeDefinition);
 				if (result == null) result = caseTypeDefinition(dataTypeDefinition);
 				if (result == null) result = caseReferableBaseObject(dataTypeDefinition);
 				if (result == null) result = caseIAnnotatable(dataTypeDefinition);
@@ -3734,7 +3687,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.BASE_TYPE_DEFINITION: {
 				BaseTypeDefinition baseTypeDefinition = (BaseTypeDefinition)theEObject;
-				T1 result = caseBaseTypeDefinition(baseTypeDefinition);
+				T result = caseBaseTypeDefinition(baseTypeDefinition);
 				if (result == null) result = caseTypeDefinition(baseTypeDefinition);
 				if (result == null) result = caseReferableBaseObject(baseTypeDefinition);
 				if (result == null) result = caseIAnnotatable(baseTypeDefinition);
@@ -3745,7 +3698,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.ACTIVATION: {
 				Activation activation = (Activation)theEObject;
-				T1 result = caseActivation(activation);
+				T result = caseActivation(activation);
 				if (result == null) result = caseReferableBaseObject(activation);
 				if (result == null) result = caseITaggable(activation);
 				if (result == null) result = caseIAnnotatable(activation);
@@ -3756,7 +3709,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.PERIODIC_ACTIVATION: {
 				PeriodicActivation periodicActivation = (PeriodicActivation)theEObject;
-				T1 result = casePeriodicActivation(periodicActivation);
+				T result = casePeriodicActivation(periodicActivation);
 				if (result == null) result = caseActivation(periodicActivation);
 				if (result == null) result = caseReferableBaseObject(periodicActivation);
 				if (result == null) result = caseITaggable(periodicActivation);
@@ -3768,7 +3721,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.VARIABLE_RATE_ACTIVATION: {
 				VariableRateActivation variableRateActivation = (VariableRateActivation)theEObject;
-				T1 result = caseVariableRateActivation(variableRateActivation);
+				T result = caseVariableRateActivation(variableRateActivation);
 				if (result == null) result = caseActivation(variableRateActivation);
 				if (result == null) result = caseReferableBaseObject(variableRateActivation);
 				if (result == null) result = caseITaggable(variableRateActivation);
@@ -3780,7 +3733,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SPORADIC_ACTIVATION: {
 				SporadicActivation sporadicActivation = (SporadicActivation)theEObject;
-				T1 result = caseSporadicActivation(sporadicActivation);
+				T result = caseSporadicActivation(sporadicActivation);
 				if (result == null) result = caseActivation(sporadicActivation);
 				if (result == null) result = caseReferableBaseObject(sporadicActivation);
 				if (result == null) result = caseITaggable(sporadicActivation);
@@ -3792,7 +3745,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.SINGLE_ACTIVATION: {
 				SingleActivation singleActivation = (SingleActivation)theEObject;
-				T1 result = caseSingleActivation(singleActivation);
+				T result = caseSingleActivation(singleActivation);
 				if (result == null) result = caseActivation(singleActivation);
 				if (result == null) result = caseReferableBaseObject(singleActivation);
 				if (result == null) result = caseITaggable(singleActivation);
@@ -3804,7 +3757,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_ACTIVATION: {
 				EventActivation eventActivation = (EventActivation)theEObject;
-				T1 result = caseEventActivation(eventActivation);
+				T result = caseEventActivation(eventActivation);
 				if (result == null) result = caseActivation(eventActivation);
 				if (result == null) result = caseReferableBaseObject(eventActivation);
 				if (result == null) result = caseITaggable(eventActivation);
@@ -3816,7 +3769,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.CUSTOM_ACTIVATION: {
 				CustomActivation customActivation = (CustomActivation)theEObject;
-				T1 result = caseCustomActivation(customActivation);
+				T result = caseCustomActivation(customActivation);
 				if (result == null) result = caseActivation(customActivation);
 				if (result == null) result = caseReferableBaseObject(customActivation);
 				if (result == null) result = caseITaggable(customActivation);
@@ -3828,7 +3781,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.LABEL_ACCESS_STATISTIC: {
 				LabelAccessStatistic labelAccessStatistic = (LabelAccessStatistic)theEObject;
-				T1 result = caseLabelAccessStatistic(labelAccessStatistic);
+				T result = caseLabelAccessStatistic(labelAccessStatistic);
 				if (result == null) result = caseBaseObject(labelAccessStatistic);
 				if (result == null) result = caseIAnnotatable(labelAccessStatistic);
 				if (result == null) result = defaultCase(theEObject);
@@ -3836,7 +3789,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUN_ENTITY_CALL_STATISTIC: {
 				RunEntityCallStatistic runEntityCallStatistic = (RunEntityCallStatistic)theEObject;
-				T1 result = caseRunEntityCallStatistic(runEntityCallStatistic);
+				T result = caseRunEntityCallStatistic(runEntityCallStatistic);
 				if (result == null) result = caseBaseObject(runEntityCallStatistic);
 				if (result == null) result = caseIAnnotatable(runEntityCallStatistic);
 				if (result == null) result = defaultCase(theEObject);
@@ -3844,7 +3797,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEASUREMENT_MODEL: {
 				MeasurementModel measurementModel = (MeasurementModel)theEObject;
-				T1 result = caseMeasurementModel(measurementModel);
+				T result = caseMeasurementModel(measurementModel);
 				if (result == null) result = caseBaseObject(measurementModel);
 				if (result == null) result = caseIAnnotatable(measurementModel);
 				if (result == null) result = defaultCase(theEObject);
@@ -3852,7 +3805,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.MEASUREMENT: {
 				Measurement measurement = (Measurement)theEObject;
-				T1 result = caseMeasurement(measurement);
+				T result = caseMeasurement(measurement);
 				if (result == null) result = caseBaseObject(measurement);
 				if (result == null) result = caseIAnnotatable(measurement);
 				if (result == null) result = defaultCase(theEObject);
@@ -3860,7 +3813,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.EVENT_CHAIN_MEASUREMENT: {
 				EventChainMeasurement eventChainMeasurement = (EventChainMeasurement)theEObject;
-				T1 result = caseEventChainMeasurement(eventChainMeasurement);
+				T result = caseEventChainMeasurement(eventChainMeasurement);
 				if (result == null) result = caseMeasurement(eventChainMeasurement);
 				if (result == null) result = caseBaseObject(eventChainMeasurement);
 				if (result == null) result = caseIAnnotatable(eventChainMeasurement);
@@ -3869,7 +3822,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.TASK_MEASUREMENT: {
 				TaskMeasurement taskMeasurement = (TaskMeasurement)theEObject;
-				T1 result = caseTaskMeasurement(taskMeasurement);
+				T result = caseTaskMeasurement(taskMeasurement);
 				if (result == null) result = caseMeasurement(taskMeasurement);
 				if (result == null) result = caseBaseObject(taskMeasurement);
 				if (result == null) result = caseIAnnotatable(taskMeasurement);
@@ -3878,7 +3831,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 			}
 			case AmaltheaPackage.RUNNABLE_MEASUREMENT: {
 				RunnableMeasurement runnableMeasurement = (RunnableMeasurement)theEObject;
-				T1 result = caseRunnableMeasurement(runnableMeasurement);
+				T result = caseRunnableMeasurement(runnableMeasurement);
 				if (result == null) result = caseMeasurement(runnableMeasurement);
 				if (result == null) result = caseBaseObject(runnableMeasurement);
 				if (result == null) result = caseIAnnotatable(runnableMeasurement);
@@ -3900,7 +3853,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAmalthea(Amalthea object) {
+	public T caseAmalthea(Amalthea object) {
 		return null;
 	}
 
@@ -3915,7 +3868,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCommonElements(CommonElements object) {
+	public T caseCommonElements(CommonElements object) {
 		return null;
 	}
 
@@ -3930,7 +3883,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBaseObject(BaseObject object) {
+	public T caseBaseObject(BaseObject object) {
 		return null;
 	}
 
@@ -3945,7 +3898,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseReferableObject(ReferableObject object) {
+	public T caseReferableObject(ReferableObject object) {
 		return null;
 	}
 
@@ -3960,7 +3913,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseReferableBaseObject(ReferableBaseObject object) {
+	public T caseReferableBaseObject(ReferableBaseObject object) {
 		return null;
 	}
 
@@ -3975,7 +3928,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIAnnotatable(IAnnotatable object) {
+	public T caseIAnnotatable(IAnnotatable object) {
 		return null;
 	}
 
@@ -3990,7 +3943,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseITaggable(ITaggable object) {
+	public T caseITaggable(ITaggable object) {
 		return null;
 	}
 
@@ -4005,7 +3958,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseINamed(INamed object) {
+	public T caseINamed(INamed object) {
 		return null;
 	}
 
@@ -4020,7 +3973,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIReferable(IReferable object) {
+	public T caseIReferable(IReferable object) {
 		return null;
 	}
 
@@ -4035,7 +3988,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIDisplayName(IDisplayName object) {
+	public T caseIDisplayName(IDisplayName object) {
 		return null;
 	}
 
@@ -4050,7 +4003,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTag(Tag object) {
+	public T caseTag(Tag object) {
 		return null;
 	}
 
@@ -4065,7 +4018,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClassifier(Classifier object) {
+	public T caseClassifier(Classifier object) {
 		return null;
 	}
 
@@ -4080,7 +4033,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCoreClassifier(CoreClassifier object) {
+	public T caseCoreClassifier(CoreClassifier object) {
 		return null;
 	}
 
@@ -4095,7 +4048,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemoryClassifier(MemoryClassifier object) {
+	public T caseMemoryClassifier(MemoryClassifier object) {
 		return null;
 	}
 
@@ -4110,7 +4063,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTransmissionPolicy(TransmissionPolicy object) {
+	public T caseTransmissionPolicy(TransmissionPolicy object) {
 		return null;
 	}
 
@@ -4125,7 +4078,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseQuantity(Quantity object) {
+	public T caseQuantity(Quantity object) {
 		return null;
 	}
 
@@ -4140,7 +4093,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeComparable(Comparable<Time> object) {
+	public T caseTimeComparable(Comparable<Time> object) {
 		return null;
 	}
 
@@ -4155,7 +4108,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTime(Time object) {
+	public T caseTime(Time object) {
 		return null;
 	}
 
@@ -4170,7 +4123,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFrequency(Frequency object) {
+	public T caseFrequency(Frequency object) {
 		return null;
 	}
 
@@ -4185,7 +4138,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVoltage(Voltage object) {
+	public T caseVoltage(Voltage object) {
 		return null;
 	}
 
@@ -4200,7 +4153,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataSize(DataSize object) {
+	public T caseDataSize(DataSize object) {
 		return null;
 	}
 
@@ -4215,7 +4168,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataRateComparable(Comparable<DataRate> object) {
+	public T caseDataRateComparable(Comparable<DataRate> object) {
 		return null;
 	}
 
@@ -4230,7 +4183,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataRate(DataRate object) {
+	public T caseDataRate(DataRate object) {
 		return null;
 	}
 
@@ -4245,7 +4198,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomProperty(Map.Entry<String, Value> object) {
+	public T caseCustomProperty(Map.Entry<String, Value> object) {
 		return null;
 	}
 
@@ -4260,7 +4213,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseValue(Value object) {
+	public T caseValue(Value object) {
 		return null;
 	}
 
@@ -4275,7 +4228,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseListObject(ListObject object) {
+	public T caseListObject(ListObject object) {
 		return null;
 	}
 
@@ -4290,7 +4243,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStringObject(StringObject object) {
+	public T caseStringObject(StringObject object) {
 		return null;
 	}
 
@@ -4305,7 +4258,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBigIntegerObject(BigIntegerObject object) {
+	public T caseBigIntegerObject(BigIntegerObject object) {
 		return null;
 	}
 
@@ -4320,7 +4273,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseReferenceObject(ReferenceObject object) {
+	public T caseReferenceObject(ReferenceObject object) {
 		return null;
 	}
 
@@ -4335,7 +4288,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIntegerObject(IntegerObject object) {
+	public T caseIntegerObject(IntegerObject object) {
 		return null;
 	}
 
@@ -4350,7 +4303,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLongObject(LongObject object) {
+	public T caseLongObject(LongObject object) {
 		return null;
 	}
 
@@ -4365,7 +4318,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFloatObject(FloatObject object) {
+	public T caseFloatObject(FloatObject object) {
 		return null;
 	}
 
@@ -4380,7 +4333,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDoubleObject(DoubleObject object) {
+	public T caseDoubleObject(DoubleObject object) {
 		return null;
 	}
 
@@ -4395,7 +4348,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBooleanObject(BooleanObject object) {
+	public T caseBooleanObject(BooleanObject object) {
 		return null;
 	}
 
@@ -4410,7 +4363,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNumericStatistic(NumericStatistic object) {
+	public T caseNumericStatistic(NumericStatistic object) {
 		return null;
 	}
 
@@ -4425,7 +4378,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
+	public T caseMinAvgMaxStatistic(MinAvgMaxStatistic object) {
 		return null;
 	}
 
@@ -4440,7 +4393,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSingleValueStatistic(SingleValueStatistic object) {
+	public T caseSingleValueStatistic(SingleValueStatistic object) {
 		return null;
 	}
 
@@ -4455,7 +4408,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseITimeDeviation(ITimeDeviation object) {
+	public T caseITimeDeviation(ITimeDeviation object) {
 		return null;
 	}
 
@@ -4470,7 +4423,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeInterval(TimeInterval object) {
+	public T caseTimeInterval(TimeInterval object) {
 		return null;
 	}
 
@@ -4485,7 +4438,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeConstant(TimeConstant object) {
+	public T caseTimeConstant(TimeConstant object) {
 		return null;
 	}
 
@@ -4500,7 +4453,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeHistogram(TimeHistogram object) {
+	public T caseTimeHistogram(TimeHistogram object) {
 		return null;
 	}
 
@@ -4515,7 +4468,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeHistogramEntry(TimeHistogramEntry object) {
+	public T caseTimeHistogramEntry(TimeHistogramEntry object) {
 		return null;
 	}
 
@@ -4530,7 +4483,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBoundedTimeDistribution(BoundedTimeDistribution object) {
+	public T caseBoundedTimeDistribution(BoundedTimeDistribution object) {
 		return null;
 	}
 
@@ -4545,7 +4498,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTruncatedTimeDistribution(TruncatedTimeDistribution object) {
+	public T caseTruncatedTimeDistribution(TruncatedTimeDistribution object) {
 		return null;
 	}
 
@@ -4560,7 +4513,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeBoundaries(TimeBoundaries object) {
+	public T caseTimeBoundaries(TimeBoundaries object) {
 		return null;
 	}
 
@@ -4575,7 +4528,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeStatistics(TimeStatistics object) {
+	public T caseTimeStatistics(TimeStatistics object) {
 		return null;
 	}
 
@@ -4590,7 +4543,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeUniformDistribution(TimeUniformDistribution object) {
+	public T caseTimeUniformDistribution(TimeUniformDistribution object) {
 		return null;
 	}
 
@@ -4605,7 +4558,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeGaussDistribution(TimeGaussDistribution object) {
+	public T caseTimeGaussDistribution(TimeGaussDistribution object) {
 		return null;
 	}
 
@@ -4620,7 +4573,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution object) {
+	public T caseTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution object) {
 		return null;
 	}
 
@@ -4635,7 +4588,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeBetaDistribution(TimeBetaDistribution object) {
+	public T caseTimeBetaDistribution(TimeBetaDistribution object) {
 		return null;
 	}
 
@@ -4650,7 +4603,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIDiscreteValueDeviation(IDiscreteValueDeviation object) {
+	public T caseIDiscreteValueDeviation(IDiscreteValueDeviation object) {
 		return null;
 	}
 
@@ -4665,7 +4618,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueInterval(DiscreteValueInterval object) {
+	public T caseDiscreteValueInterval(DiscreteValueInterval object) {
 		return null;
 	}
 
@@ -4680,7 +4633,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueConstant(DiscreteValueConstant object) {
+	public T caseDiscreteValueConstant(DiscreteValueConstant object) {
 		return null;
 	}
 
@@ -4695,7 +4648,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueHistogram(DiscreteValueHistogram object) {
+	public T caseDiscreteValueHistogram(DiscreteValueHistogram object) {
 		return null;
 	}
 
@@ -4710,7 +4663,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueHistogramEntry(DiscreteValueHistogramEntry object) {
+	public T caseDiscreteValueHistogramEntry(DiscreteValueHistogramEntry object) {
 		return null;
 	}
 
@@ -4725,7 +4678,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBoundedDiscreteValueDistribution(BoundedDiscreteValueDistribution object) {
+	public T caseBoundedDiscreteValueDistribution(BoundedDiscreteValueDistribution object) {
 		return null;
 	}
 
@@ -4740,7 +4693,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTruncatedDiscreteValueDistribution(TruncatedDiscreteValueDistribution object) {
+	public T caseTruncatedDiscreteValueDistribution(TruncatedDiscreteValueDistribution object) {
 		return null;
 	}
 
@@ -4755,7 +4708,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueBoundaries(DiscreteValueBoundaries object) {
+	public T caseDiscreteValueBoundaries(DiscreteValueBoundaries object) {
 		return null;
 	}
 
@@ -4770,7 +4723,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueStatistics(DiscreteValueStatistics object) {
+	public T caseDiscreteValueStatistics(DiscreteValueStatistics object) {
 		return null;
 	}
 
@@ -4785,7 +4738,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueUniformDistribution(DiscreteValueUniformDistribution object) {
+	public T caseDiscreteValueUniformDistribution(DiscreteValueUniformDistribution object) {
 		return null;
 	}
 
@@ -4800,7 +4753,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueGaussDistribution(DiscreteValueGaussDistribution object) {
+	public T caseDiscreteValueGaussDistribution(DiscreteValueGaussDistribution object) {
 		return null;
 	}
 
@@ -4815,7 +4768,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueWeibullEstimatorsDistribution(DiscreteValueWeibullEstimatorsDistribution object) {
+	public T caseDiscreteValueWeibullEstimatorsDistribution(DiscreteValueWeibullEstimatorsDistribution object) {
 		return null;
 	}
 
@@ -4830,7 +4783,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDiscreteValueBetaDistribution(DiscreteValueBetaDistribution object) {
+	public T caseDiscreteValueBetaDistribution(DiscreteValueBetaDistribution object) {
 		return null;
 	}
 
@@ -4845,7 +4798,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIContinuousValueDeviation(IContinuousValueDeviation object) {
+	public T caseIContinuousValueDeviation(IContinuousValueDeviation object) {
 		return null;
 	}
 
@@ -4860,7 +4813,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueInterval(ContinuousValueInterval object) {
+	public T caseContinuousValueInterval(ContinuousValueInterval object) {
 		return null;
 	}
 
@@ -4875,7 +4828,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueConstant(ContinuousValueConstant object) {
+	public T caseContinuousValueConstant(ContinuousValueConstant object) {
 		return null;
 	}
 
@@ -4890,7 +4843,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueHistogram(ContinuousValueHistogram object) {
+	public T caseContinuousValueHistogram(ContinuousValueHistogram object) {
 		return null;
 	}
 
@@ -4905,7 +4858,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueHistogramEntry(ContinuousValueHistogramEntry object) {
+	public T caseContinuousValueHistogramEntry(ContinuousValueHistogramEntry object) {
 		return null;
 	}
 
@@ -4920,7 +4873,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBoundedContinuousValueDistribution(BoundedContinuousValueDistribution object) {
+	public T caseBoundedContinuousValueDistribution(BoundedContinuousValueDistribution object) {
 		return null;
 	}
 
@@ -4935,7 +4888,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTruncatedContinuousValueDistribution(TruncatedContinuousValueDistribution object) {
+	public T caseTruncatedContinuousValueDistribution(TruncatedContinuousValueDistribution object) {
 		return null;
 	}
 
@@ -4950,7 +4903,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueBoundaries(ContinuousValueBoundaries object) {
+	public T caseContinuousValueBoundaries(ContinuousValueBoundaries object) {
 		return null;
 	}
 
@@ -4965,7 +4918,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueStatistics(ContinuousValueStatistics object) {
+	public T caseContinuousValueStatistics(ContinuousValueStatistics object) {
 		return null;
 	}
 
@@ -4980,7 +4933,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueUniformDistribution(ContinuousValueUniformDistribution object) {
+	public T caseContinuousValueUniformDistribution(ContinuousValueUniformDistribution object) {
 		return null;
 	}
 
@@ -4995,7 +4948,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueGaussDistribution(ContinuousValueGaussDistribution object) {
+	public T caseContinuousValueGaussDistribution(ContinuousValueGaussDistribution object) {
 		return null;
 	}
 
@@ -5010,7 +4963,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueWeibullEstimatorsDistribution(ContinuousValueWeibullEstimatorsDistribution object) {
+	public T caseContinuousValueWeibullEstimatorsDistribution(ContinuousValueWeibullEstimatorsDistribution object) {
 		return null;
 	}
 
@@ -5025,7 +4978,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseContinuousValueBetaDistribution(ContinuousValueBetaDistribution object) {
+	public T caseContinuousValueBetaDistribution(ContinuousValueBetaDistribution object) {
 		return null;
 	}
 
@@ -5040,7 +4993,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMode(Mode object) {
+	public T caseMode(Mode object) {
 		return null;
 	}
 
@@ -5055,7 +5008,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNumericMode(NumericMode object) {
+	public T caseNumericMode(NumericMode object) {
 		return null;
 	}
 
@@ -5070,7 +5023,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEnumMode(EnumMode object) {
+	public T caseEnumMode(EnumMode object) {
 		return null;
 	}
 
@@ -5085,7 +5038,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeLiteral(ModeLiteral object) {
+	public T caseModeLiteral(ModeLiteral object) {
 		return null;
 	}
 
@@ -5100,7 +5053,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComponentsModel(ComponentsModel object) {
+	public T caseComponentsModel(ComponentsModel object) {
 		return null;
 	}
 
@@ -5115,7 +5068,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseISystem(ISystem object) {
+	public T caseISystem(ISystem object) {
 		return null;
 	}
 
@@ -5130,7 +5083,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePort(Port object) {
+	public T casePort(Port object) {
 		return null;
 	}
 
@@ -5145,7 +5098,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComponent(Component object) {
+	public T caseComponent(Component object) {
 		return null;
 	}
 
@@ -5160,7 +5113,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComposite(Composite object) {
+	public T caseComposite(Composite object) {
 		return null;
 	}
 
@@ -5175,7 +5128,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSystem(org.eclipse.app4mc.amalthea.model.System object) {
+	public T caseSystem(org.eclipse.app4mc.amalthea.model.System object) {
 		return null;
 	}
 
@@ -5190,7 +5143,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComponentInstance(ComponentInstance object) {
+	public T caseComponentInstance(ComponentInstance object) {
 		return null;
 	}
 
@@ -5205,7 +5158,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConnector(Connector object) {
+	public T caseConnector(Connector object) {
 		return null;
 	}
 
@@ -5220,7 +5173,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseQualifiedPort(QualifiedPort object) {
+	public T caseQualifiedPort(QualifiedPort object) {
 		return null;
 	}
 
@@ -5235,7 +5188,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterfacePort(InterfacePort object) {
+	public T caseInterfacePort(InterfacePort object) {
 		return null;
 	}
 
@@ -5250,7 +5203,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConfigModel(ConfigModel object) {
+	public T caseConfigModel(ConfigModel object) {
 		return null;
 	}
 
@@ -5265,7 +5218,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventConfig(EventConfig object) {
+	public T caseEventConfig(EventConfig object) {
 		return null;
 	}
 
@@ -5280,7 +5233,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConstraintsModel(ConstraintsModel object) {
+	public T caseConstraintsModel(ConstraintsModel object) {
 		return null;
 	}
 
@@ -5295,7 +5248,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableSequencingConstraint(RunnableSequencingConstraint object) {
+	public T caseRunnableSequencingConstraint(RunnableSequencingConstraint object) {
 		return null;
 	}
 
@@ -5310,7 +5263,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAffinityConstraint(AffinityConstraint object) {
+	public T caseAffinityConstraint(AffinityConstraint object) {
 		return null;
 	}
 
@@ -5325,7 +5278,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSeparationConstraint(SeparationConstraint object) {
+	public T caseSeparationConstraint(SeparationConstraint object) {
 		return null;
 	}
 
@@ -5340,7 +5293,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePairingConstraint(PairingConstraint object) {
+	public T casePairingConstraint(PairingConstraint object) {
 		return null;
 	}
 
@@ -5355,7 +5308,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessConstraint(ProcessConstraint object) {
+	public T caseProcessConstraint(ProcessConstraint object) {
 		return null;
 	}
 
@@ -5370,7 +5323,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableConstraint(RunnableConstraint object) {
+	public T caseRunnableConstraint(RunnableConstraint object) {
 		return null;
 	}
 
@@ -5385,7 +5338,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataConstraint(DataConstraint object) {
+	public T caseDataConstraint(DataConstraint object) {
 		return null;
 	}
 
@@ -5400,7 +5353,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableSeparationConstraint(RunnableSeparationConstraint object) {
+	public T caseRunnableSeparationConstraint(RunnableSeparationConstraint object) {
 		return null;
 	}
 
@@ -5415,7 +5368,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessSeparationConstraint(ProcessSeparationConstraint object) {
+	public T caseProcessSeparationConstraint(ProcessSeparationConstraint object) {
 		return null;
 	}
 
@@ -5430,7 +5383,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataSeparationConstraint(DataSeparationConstraint object) {
+	public T caseDataSeparationConstraint(DataSeparationConstraint object) {
 		return null;
 	}
 
@@ -5445,7 +5398,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnablePairingConstraint(RunnablePairingConstraint object) {
+	public T caseRunnablePairingConstraint(RunnablePairingConstraint object) {
 		return null;
 	}
 
@@ -5460,7 +5413,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessPairingConstraint(ProcessPairingConstraint object) {
+	public T caseProcessPairingConstraint(ProcessPairingConstraint object) {
 		return null;
 	}
 
@@ -5475,7 +5428,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataPairingConstraint(DataPairingConstraint object) {
+	public T caseDataPairingConstraint(DataPairingConstraint object) {
 		return null;
 	}
 
@@ -5490,7 +5443,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableConstraintTarget(RunnableConstraintTarget object) {
+	public T caseRunnableConstraintTarget(RunnableConstraintTarget object) {
 		return null;
 	}
 
@@ -5505,7 +5458,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessConstraintTarget(ProcessConstraintTarget object) {
+	public T caseProcessConstraintTarget(ProcessConstraintTarget object) {
 		return null;
 	}
 
@@ -5520,7 +5473,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataConstraintTarget(DataConstraintTarget object) {
+	public T caseDataConstraintTarget(DataConstraintTarget object) {
 		return null;
 	}
 
@@ -5535,7 +5488,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTargetMemory(TargetMemory object) {
+	public T caseTargetMemory(TargetMemory object) {
 		return null;
 	}
 
@@ -5550,7 +5503,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTargetCore(TargetCore object) {
+	public T caseTargetCore(TargetCore object) {
 		return null;
 	}
 
@@ -5565,7 +5518,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTargetScheduler(TargetScheduler object) {
+	public T caseTargetScheduler(TargetScheduler object) {
 		return null;
 	}
 
@@ -5580,7 +5533,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabelGroup(LabelGroup object) {
+	public T caseLabelGroup(LabelGroup object) {
 		return null;
 	}
 
@@ -5595,7 +5548,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableGroup(RunnableGroup object) {
+	public T caseRunnableGroup(RunnableGroup object) {
 		return null;
 	}
 
@@ -5610,7 +5563,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessGroup(ProcessGroup object) {
+	public T caseProcessGroup(ProcessGroup object) {
 		return null;
 	}
 
@@ -5625,7 +5578,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabelEntityGroup(LabelEntityGroup object) {
+	public T caseLabelEntityGroup(LabelEntityGroup object) {
 		return null;
 	}
 
@@ -5640,7 +5593,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableEntityGroup(RunnableEntityGroup object) {
+	public T caseRunnableEntityGroup(RunnableEntityGroup object) {
 		return null;
 	}
 
@@ -5655,7 +5608,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessEntityGroup(ProcessEntityGroup object) {
+	public T caseProcessEntityGroup(ProcessEntityGroup object) {
 		return null;
 	}
 
@@ -5670,7 +5623,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTagGroup(TagGroup object) {
+	public T caseTagGroup(TagGroup object) {
 		return null;
 	}
 
@@ -5685,7 +5638,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAbstractEventChain(AbstractEventChain object) {
+	public T caseAbstractEventChain(AbstractEventChain object) {
 		return null;
 	}
 
@@ -5700,7 +5653,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChain(EventChain object) {
+	public T caseEventChain(EventChain object) {
 		return null;
 	}
 
@@ -5715,7 +5668,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSubEventChain(SubEventChain object) {
+	public T caseSubEventChain(SubEventChain object) {
 		return null;
 	}
 
@@ -5730,7 +5683,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainItem(EventChainItem object) {
+	public T caseEventChainItem(EventChainItem object) {
 		return null;
 	}
 
@@ -5745,7 +5698,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainReference(EventChainReference object) {
+	public T caseEventChainReference(EventChainReference object) {
 		return null;
 	}
 
@@ -5760,7 +5713,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainContainer(EventChainContainer object) {
+	public T caseEventChainContainer(EventChainContainer object) {
 		return null;
 	}
 
@@ -5775,7 +5728,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimingConstraint(TimingConstraint object) {
+	public T caseTimingConstraint(TimingConstraint object) {
 		return null;
 	}
 
@@ -5790,7 +5743,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePhysicalSectionConstraint(PhysicalSectionConstraint object) {
+	public T casePhysicalSectionConstraint(PhysicalSectionConstraint object) {
 		return null;
 	}
 
@@ -5805,7 +5758,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSynchronizationConstraint(SynchronizationConstraint object) {
+	public T caseSynchronizationConstraint(SynchronizationConstraint object) {
 		return null;
 	}
 
@@ -5820,7 +5773,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventSynchronizationConstraint(EventSynchronizationConstraint object) {
+	public T caseEventSynchronizationConstraint(EventSynchronizationConstraint object) {
 		return null;
 	}
 
@@ -5835,7 +5788,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainSynchronizationConstraint(EventChainSynchronizationConstraint object) {
+	public T caseEventChainSynchronizationConstraint(EventChainSynchronizationConstraint object) {
 		return null;
 	}
 
@@ -5850,7 +5803,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDelayConstraint(DelayConstraint object) {
+	public T caseDelayConstraint(DelayConstraint object) {
 		return null;
 	}
 
@@ -5865,7 +5818,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainLatencyConstraint(EventChainLatencyConstraint object) {
+	public T caseEventChainLatencyConstraint(EventChainLatencyConstraint object) {
 		return null;
 	}
 
@@ -5880,7 +5833,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRepetitionConstraint(RepetitionConstraint object) {
+	public T caseRepetitionConstraint(RepetitionConstraint object) {
 		return null;
 	}
 
@@ -5895,7 +5848,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataAgeConstraint(DataAgeConstraint object) {
+	public T caseDataAgeConstraint(DataAgeConstraint object) {
 		return null;
 	}
 
@@ -5910,7 +5863,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataAge(DataAge object) {
+	public T caseDataAge(DataAge object) {
 		return null;
 	}
 
@@ -5925,7 +5878,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataAgeCycle(DataAgeCycle object) {
+	public T caseDataAgeCycle(DataAgeCycle object) {
 		return null;
 	}
 
@@ -5940,7 +5893,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataAgeTime(DataAgeTime object) {
+	public T caseDataAgeTime(DataAgeTime object) {
 		return null;
 	}
 
@@ -5955,7 +5908,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRequirement(Requirement object) {
+	public T caseRequirement(Requirement object) {
 		return null;
 	}
 
@@ -5970,7 +5923,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessRequirement(ProcessRequirement object) {
+	public T caseProcessRequirement(ProcessRequirement object) {
 		return null;
 	}
 
@@ -5985,7 +5938,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableRequirement(RunnableRequirement object) {
+	public T caseRunnableRequirement(RunnableRequirement object) {
 		return null;
 	}
 
@@ -6000,7 +5953,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArchitectureRequirement(ArchitectureRequirement object) {
+	public T caseArchitectureRequirement(ArchitectureRequirement object) {
 		return null;
 	}
 
@@ -6015,7 +5968,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessChainRequirement(ProcessChainRequirement object) {
+	public T caseProcessChainRequirement(ProcessChainRequirement object) {
 		return null;
 	}
 
@@ -6030,7 +5983,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRequirementLimit(RequirementLimit object) {
+	public T caseRequirementLimit(RequirementLimit object) {
 		return null;
 	}
 
@@ -6045,7 +5998,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCPUPercentageRequirementLimit(CPUPercentageRequirementLimit object) {
+	public T caseCPUPercentageRequirementLimit(CPUPercentageRequirementLimit object) {
 		return null;
 	}
 
@@ -6060,7 +6013,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFrequencyRequirementLimit(FrequencyRequirementLimit object) {
+	public T caseFrequencyRequirementLimit(FrequencyRequirementLimit object) {
 		return null;
 	}
 
@@ -6075,7 +6028,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePercentageRequirementLimit(PercentageRequirementLimit object) {
+	public T casePercentageRequirementLimit(PercentageRequirementLimit object) {
 		return null;
 	}
 
@@ -6090,7 +6043,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCountRequirementLimit(CountRequirementLimit object) {
+	public T caseCountRequirementLimit(CountRequirementLimit object) {
 		return null;
 	}
 
@@ -6105,7 +6058,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTimeRequirementLimit(TimeRequirementLimit object) {
+	public T caseTimeRequirementLimit(TimeRequirementLimit object) {
 		return null;
 	}
 
@@ -6120,7 +6073,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataCoherencyGroup(DataCoherencyGroup object) {
+	public T caseDataCoherencyGroup(DataCoherencyGroup object) {
 		return null;
 	}
 
@@ -6135,7 +6088,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataStabilityGroup(DataStabilityGroup object) {
+	public T caseDataStabilityGroup(DataStabilityGroup object) {
 		return null;
 	}
 
@@ -6150,7 +6103,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataGroupScope(DataGroupScope object) {
+	public T caseDataGroupScope(DataGroupScope object) {
 		return null;
 	}
 
@@ -6165,7 +6118,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessScope(ProcessScope object) {
+	public T caseProcessScope(ProcessScope object) {
 		return null;
 	}
 
@@ -6180,7 +6133,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableScope(RunnableScope object) {
+	public T caseRunnableScope(RunnableScope object) {
 		return null;
 	}
 
@@ -6195,7 +6148,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComponentScope(ComponentScope object) {
+	public T caseComponentScope(ComponentScope object) {
 		return null;
 	}
 
@@ -6210,7 +6163,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventModel(EventModel object) {
+	public T caseEventModel(EventModel object) {
 		return null;
 	}
 
@@ -6225,7 +6178,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEvent(Event object) {
+	public T caseEvent(Event object) {
 		return null;
 	}
 
@@ -6240,7 +6193,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventSet(EventSet object) {
+	public T caseEventSet(EventSet object) {
 		return null;
 	}
 
@@ -6255,7 +6208,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEntityEvent(EntityEvent object) {
+	public T caseEntityEvent(EntityEvent object) {
 		return null;
 	}
 
@@ -6270,7 +6223,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTriggerEvent(TriggerEvent object) {
+	public T caseTriggerEvent(TriggerEvent object) {
 		return null;
 	}
 
@@ -6285,7 +6238,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomEvent(CustomEvent object) {
+	public T caseCustomEvent(CustomEvent object) {
 		return null;
 	}
 
@@ -6300,7 +6253,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStimulusEvent(StimulusEvent object) {
+	public T caseStimulusEvent(StimulusEvent object) {
 		return null;
 	}
 
@@ -6315,7 +6268,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessEvent(ProcessEvent object) {
+	public T caseProcessEvent(ProcessEvent object) {
 		return null;
 	}
 
@@ -6330,7 +6283,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessChainEvent(ProcessChainEvent object) {
+	public T caseProcessChainEvent(ProcessChainEvent object) {
 		return null;
 	}
 
@@ -6345,7 +6298,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableEvent(RunnableEvent object) {
+	public T caseRunnableEvent(RunnableEvent object) {
 		return null;
 	}
 
@@ -6360,7 +6313,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabelEvent(LabelEvent object) {
+	public T caseLabelEvent(LabelEvent object) {
 		return null;
 	}
 
@@ -6375,7 +6328,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChannelEvent(ChannelEvent object) {
+	public T caseChannelEvent(ChannelEvent object) {
 		return null;
 	}
 
@@ -6390,7 +6343,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSemaphoreEvent(SemaphoreEvent object) {
+	public T caseSemaphoreEvent(SemaphoreEvent object) {
 		return null;
 	}
 
@@ -6405,7 +6358,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComponentEvent(ComponentEvent object) {
+	public T caseComponentEvent(ComponentEvent object) {
 		return null;
 	}
 
@@ -6420,7 +6373,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHWModel(HWModel object) {
+	public T caseHWModel(HWModel object) {
 		return null;
 	}
 
@@ -6435,7 +6388,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwStructure(HwStructure object) {
+	public T caseHwStructure(HwStructure object) {
 		return null;
 	}
 
@@ -6450,7 +6403,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwModule(HwModule object) {
+	public T caseHwModule(HwModule object) {
 		return null;
 	}
 
@@ -6465,7 +6418,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwDomain(HwDomain object) {
+	public T caseHwDomain(HwDomain object) {
 		return null;
 	}
 
@@ -6480,7 +6433,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFrequencyDomain(FrequencyDomain object) {
+	public T caseFrequencyDomain(FrequencyDomain object) {
 		return null;
 	}
 
@@ -6495,7 +6448,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePowerDomain(PowerDomain object) {
+	public T casePowerDomain(PowerDomain object) {
 		return null;
 	}
 
@@ -6510,7 +6463,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessingUnit(ProcessingUnit object) {
+	public T caseProcessingUnit(ProcessingUnit object) {
 		return null;
 	}
 
@@ -6525,7 +6478,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemory(Memory object) {
+	public T caseMemory(Memory object) {
 		return null;
 	}
 
@@ -6540,7 +6493,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCache(Cache object) {
+	public T caseCache(Cache object) {
 		return null;
 	}
 
@@ -6555,7 +6508,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwFeatureCategory(HwFeatureCategory object) {
+	public T caseHwFeatureCategory(HwFeatureCategory object) {
 		return null;
 	}
 
@@ -6570,7 +6523,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwFeature(HwFeature object) {
+	public T caseHwFeature(HwFeature object) {
 		return null;
 	}
 
@@ -6585,7 +6538,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwPort(HwPort object) {
+	public T caseHwPort(HwPort object) {
 		return null;
 	}
 
@@ -6600,7 +6553,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConnectionHandler(ConnectionHandler object) {
+	public T caseConnectionHandler(ConnectionHandler object) {
 		return null;
 	}
 
@@ -6615,7 +6568,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwConnection(HwConnection object) {
+	public T caseHwConnection(HwConnection object) {
 		return null;
 	}
 
@@ -6630,7 +6583,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwAccessElement(HwAccessElement object) {
+	public T caseHwAccessElement(HwAccessElement object) {
 		return null;
 	}
 
@@ -6645,7 +6598,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwDefinition(HwDefinition object) {
+	public T caseHwDefinition(HwDefinition object) {
 		return null;
 	}
 
@@ -6660,7 +6613,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessingUnitDefinition(ProcessingUnitDefinition object) {
+	public T caseProcessingUnitDefinition(ProcessingUnitDefinition object) {
 		return null;
 	}
 
@@ -6675,7 +6628,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConnectionHandlerDefinition(ConnectionHandlerDefinition object) {
+	public T caseConnectionHandlerDefinition(ConnectionHandlerDefinition object) {
 		return null;
 	}
 
@@ -6690,7 +6643,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemoryDefinition(MemoryDefinition object) {
+	public T caseMemoryDefinition(MemoryDefinition object) {
 		return null;
 	}
 
@@ -6705,7 +6658,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCacheDefinition(CacheDefinition object) {
+	public T caseCacheDefinition(CacheDefinition object) {
 		return null;
 	}
 
@@ -6720,7 +6673,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwPath(HwPath object) {
+	public T caseHwPath(HwPath object) {
 		return null;
 	}
 
@@ -6735,7 +6688,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwAccessPath(HwAccessPath object) {
+	public T caseHwAccessPath(HwAccessPath object) {
 		return null;
 	}
 
@@ -6750,7 +6703,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwPathElement(HwPathElement object) {
+	public T caseHwPathElement(HwPathElement object) {
 		return null;
 	}
 
@@ -6765,7 +6718,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseHwDestination(HwDestination object) {
+	public T caseHwDestination(HwDestination object) {
 		return null;
 	}
 
@@ -6780,7 +6733,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMappingModel(MappingModel object) {
+	public T caseMappingModel(MappingModel object) {
 		return null;
 	}
 
@@ -6795,7 +6748,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerAllocation(SchedulerAllocation object) {
+	public T caseSchedulerAllocation(SchedulerAllocation object) {
 		return null;
 	}
 
@@ -6810,7 +6763,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTaskAllocation(TaskAllocation object) {
+	public T caseTaskAllocation(TaskAllocation object) {
 		return null;
 	}
 
@@ -6825,7 +6778,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseISRAllocation(ISRAllocation object) {
+	public T caseISRAllocation(ISRAllocation object) {
 		return null;
 	}
 
@@ -6840,7 +6793,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableAllocation(RunnableAllocation object) {
+	public T caseRunnableAllocation(RunnableAllocation object) {
 		return null;
 	}
 
@@ -6855,7 +6808,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemoryMapping(MemoryMapping object) {
+	public T caseMemoryMapping(MemoryMapping object) {
 		return null;
 	}
 
@@ -6870,7 +6823,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePhysicalSectionMapping(PhysicalSectionMapping object) {
+	public T casePhysicalSectionMapping(PhysicalSectionMapping object) {
 		return null;
 	}
 
@@ -6885,7 +6838,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOSModel(OSModel object) {
+	public T caseOSModel(OSModel object) {
 		return null;
 	}
 
@@ -6900,7 +6853,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsDataConsistency(OsDataConsistency object) {
+	public T caseOsDataConsistency(OsDataConsistency object) {
 		return null;
 	}
 
@@ -6915,7 +6868,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataStability(DataStability object) {
+	public T caseDataStability(DataStability object) {
 		return null;
 	}
 
@@ -6930,7 +6883,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNonAtomicDataCoherency(NonAtomicDataCoherency object) {
+	public T caseNonAtomicDataCoherency(NonAtomicDataCoherency object) {
 		return null;
 	}
 
@@ -6945,7 +6898,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSemaphore(Semaphore object) {
+	public T caseSemaphore(Semaphore object) {
 		return null;
 	}
 
@@ -6960,7 +6913,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseScheduler(Scheduler object) {
+	public T caseScheduler(Scheduler object) {
 		return null;
 	}
 
@@ -6975,7 +6928,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTaskScheduler(TaskScheduler object) {
+	public T caseTaskScheduler(TaskScheduler object) {
 		return null;
 	}
 
@@ -6990,7 +6943,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulerAssociation(SchedulerAssociation object) {
+	public T caseSchedulerAssociation(SchedulerAssociation object) {
 		return null;
 	}
 
@@ -7005,7 +6958,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterruptController(InterruptController object) {
+	public T caseInterruptController(InterruptController object) {
 		return null;
 	}
 
@@ -7020,7 +6973,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulingParameters(SchedulingParameters object) {
+	public T caseSchedulingParameters(SchedulingParameters object) {
 		return null;
 	}
 
@@ -7035,7 +6988,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseParameterExtension(Map.Entry<String, String> object) {
+	public T caseParameterExtension(Map.Entry<String, String> object) {
 		return null;
 	}
 
@@ -7050,7 +7003,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAlgorithm(Algorithm object) {
+	public T caseAlgorithm(Algorithm object) {
 		return null;
 	}
 
@@ -7065,7 +7018,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterruptSchedulingAlgorithm(InterruptSchedulingAlgorithm object) {
+	public T caseInterruptSchedulingAlgorithm(InterruptSchedulingAlgorithm object) {
 		return null;
 	}
 
@@ -7080,7 +7033,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTaskSchedulingAlgorithm(TaskSchedulingAlgorithm object) {
+	public T caseTaskSchedulingAlgorithm(TaskSchedulingAlgorithm object) {
 		return null;
 	}
 
@@ -7095,7 +7048,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFixedPriority(FixedPriority object) {
+	public T caseFixedPriority(FixedPriority object) {
 		return null;
 	}
 
@@ -7110,7 +7063,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
+	public T caseFixedPriorityPreemptive(FixedPriorityPreemptive object) {
 		return null;
 	}
 
@@ -7125,7 +7078,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFixedPriorityPreemptiveWithBudgetEnforcement(FixedPriorityPreemptiveWithBudgetEnforcement object) {
+	public T caseFixedPriorityPreemptiveWithBudgetEnforcement(FixedPriorityPreemptiveWithBudgetEnforcement object) {
 		return null;
 	}
 
@@ -7140,7 +7093,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOSEK(OSEK object) {
+	public T caseOSEK(OSEK object) {
 		return null;
 	}
 
@@ -7155,7 +7108,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDeadlineMonotonic(DeadlineMonotonic object) {
+	public T caseDeadlineMonotonic(DeadlineMonotonic object) {
 		return null;
 	}
 
@@ -7170,7 +7123,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRateMonotonic(RateMonotonic object) {
+	public T caseRateMonotonic(RateMonotonic object) {
 		return null;
 	}
 
@@ -7185,7 +7138,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePfair(Pfair object) {
+	public T casePfair(Pfair object) {
 		return null;
 	}
 
@@ -7200,7 +7153,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePfairPD2(PfairPD2 object) {
+	public T casePfairPD2(PfairPD2 object) {
 		return null;
 	}
 
@@ -7215,7 +7168,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePartlyPFairPD2(PartlyPFairPD2 object) {
+	public T casePartlyPFairPD2(PartlyPFairPD2 object) {
 		return null;
 	}
 
@@ -7230,7 +7183,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEarlyReleaseFairPD2(EarlyReleaseFairPD2 object) {
+	public T caseEarlyReleaseFairPD2(EarlyReleaseFairPD2 object) {
 		return null;
 	}
 
@@ -7245,7 +7198,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
+	public T casePartlyEarlyReleaseFairPD2(PartlyEarlyReleaseFairPD2 object) {
 		return null;
 	}
 
@@ -7260,7 +7213,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDynamicPriority(DynamicPriority object) {
+	public T caseDynamicPriority(DynamicPriority object) {
 		return null;
 	}
 
@@ -7275,7 +7228,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLeastLocalRemainingExecutionTimeFirst(LeastLocalRemainingExecutionTimeFirst object) {
+	public T caseLeastLocalRemainingExecutionTimeFirst(LeastLocalRemainingExecutionTimeFirst object) {
 		return null;
 	}
 
@@ -7290,7 +7243,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEarliestDeadlineFirst(EarliestDeadlineFirst object) {
+	public T caseEarliestDeadlineFirst(EarliestDeadlineFirst object) {
 		return null;
 	}
 
@@ -7305,7 +7258,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePriorityBasedRoundRobin(PriorityBasedRoundRobin object) {
+	public T casePriorityBasedRoundRobin(PriorityBasedRoundRobin object) {
 		return null;
 	}
 
@@ -7320,7 +7273,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseReservationBasedServer(ReservationBasedServer object) {
+	public T caseReservationBasedServer(ReservationBasedServer object) {
 		return null;
 	}
 
@@ -7335,7 +7288,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDeferrableServer(DeferrableServer object) {
+	public T caseDeferrableServer(DeferrableServer object) {
 		return null;
 	}
 
@@ -7350,7 +7303,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePollingPeriodicServer(PollingPeriodicServer object) {
+	public T casePollingPeriodicServer(PollingPeriodicServer object) {
 		return null;
 	}
 
@@ -7365,7 +7318,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSporadicServer(SporadicServer object) {
+	public T caseSporadicServer(SporadicServer object) {
 		return null;
 	}
 
@@ -7380,7 +7333,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConstantBandwidthServer(ConstantBandwidthServer object) {
+	public T caseConstantBandwidthServer(ConstantBandwidthServer object) {
 		return null;
 	}
 
@@ -7395,7 +7348,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseConstantBandwidthServerWithCASH(ConstantBandwidthServerWithCASH object) {
+	public T caseConstantBandwidthServerWithCASH(ConstantBandwidthServerWithCASH object) {
 		return null;
 	}
 
@@ -7410,7 +7363,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseGrouping(Grouping object) {
+	public T caseGrouping(Grouping object) {
 		return null;
 	}
 
@@ -7425,7 +7378,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseUserSpecificSchedulingAlgorithm(UserSpecificSchedulingAlgorithm object) {
+	public T caseUserSpecificSchedulingAlgorithm(UserSpecificSchedulingAlgorithm object) {
 		return null;
 	}
 
@@ -7440,7 +7393,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePriorityBased(PriorityBased object) {
+	public T casePriorityBased(PriorityBased object) {
 		return null;
 	}
 
@@ -7455,7 +7408,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOperatingSystem(OperatingSystem object) {
+	public T caseOperatingSystem(OperatingSystem object) {
 		return null;
 	}
 
@@ -7470,7 +7423,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVendorOperatingSystem(VendorOperatingSystem object) {
+	public T caseVendorOperatingSystem(VendorOperatingSystem object) {
 		return null;
 	}
 
@@ -7485,7 +7438,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsOverhead(OsOverhead object) {
+	public T caseOsOverhead(OsOverhead object) {
 		return null;
 	}
 
@@ -7500,7 +7453,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsAPIOverhead(OsAPIOverhead object) {
+	public T caseOsAPIOverhead(OsAPIOverhead object) {
 		return null;
 	}
 
@@ -7515,7 +7468,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsISROverhead(OsISROverhead object) {
+	public T caseOsISROverhead(OsISROverhead object) {
 		return null;
 	}
 
@@ -7530,7 +7483,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePropertyConstraintsModel(PropertyConstraintsModel object) {
+	public T casePropertyConstraintsModel(PropertyConstraintsModel object) {
 		return null;
 	}
 
@@ -7545,7 +7498,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCoreAllocationConstraint(CoreAllocationConstraint object) {
+	public T caseCoreAllocationConstraint(CoreAllocationConstraint object) {
 		return null;
 	}
 
@@ -7560,7 +7513,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemoryMappingConstraint(MemoryMappingConstraint object) {
+	public T caseMemoryMappingConstraint(MemoryMappingConstraint object) {
 		return null;
 	}
 
@@ -7575,7 +7528,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessAllocationConstraint(ProcessAllocationConstraint object) {
+	public T caseProcessAllocationConstraint(ProcessAllocationConstraint object) {
 		return null;
 	}
 
@@ -7590,7 +7543,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessPrototypeAllocationConstraint(ProcessPrototypeAllocationConstraint object) {
+	public T caseProcessPrototypeAllocationConstraint(ProcessPrototypeAllocationConstraint object) {
 		return null;
 	}
 
@@ -7605,7 +7558,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableAllocationConstraint(RunnableAllocationConstraint object) {
+	public T caseRunnableAllocationConstraint(RunnableAllocationConstraint object) {
 		return null;
 	}
 
@@ -7620,7 +7573,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAbstractElementMappingConstraint(AbstractElementMappingConstraint object) {
+	public T caseAbstractElementMappingConstraint(AbstractElementMappingConstraint object) {
 		return null;
 	}
 
@@ -7635,7 +7588,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClassification(Classification object) {
+	public T caseClassification(Classification object) {
 		return null;
 	}
 
@@ -7650,7 +7603,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCoreClassification(CoreClassification object) {
+	public T caseCoreClassification(CoreClassification object) {
 		return null;
 	}
 
@@ -7665,7 +7618,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMemoryClassification(MemoryClassification object) {
+	public T caseMemoryClassification(MemoryClassification object) {
 		return null;
 	}
 
@@ -7680,7 +7633,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStimuliModel(StimuliModel object) {
+	public T caseStimuliModel(StimuliModel object) {
 		return null;
 	}
 
@@ -7695,7 +7648,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStimulus(Stimulus object) {
+	public T caseStimulus(Stimulus object) {
 		return null;
 	}
 
@@ -7710,7 +7663,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeValueList(ModeValueList object) {
+	public T caseModeValueList(ModeValueList object) {
 		return null;
 	}
 
@@ -7725,7 +7678,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeValueMapEntry(Map.Entry<ModeLabel, String> object) {
+	public T caseModeValueMapEntry(Map.Entry<ModeLabel, String> object) {
 		return null;
 	}
 
@@ -7740,7 +7693,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeValue(ModeValue object) {
+	public T caseModeValue(ModeValue object) {
 		return null;
 	}
 
@@ -7755,7 +7708,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeAssignment(ModeAssignment object) {
+	public T caseModeAssignment(ModeAssignment object) {
 		return null;
 	}
 
@@ -7770,7 +7723,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeConditionDisjunction(ModeConditionDisjunction object) {
+	public T caseModeConditionDisjunction(ModeConditionDisjunction object) {
 		return null;
 	}
 
@@ -7785,7 +7738,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeConditionDisjunctionEntry(ModeConditionDisjunctionEntry object) {
+	public T caseModeConditionDisjunctionEntry(ModeConditionDisjunctionEntry object) {
 		return null;
 	}
 
@@ -7800,7 +7753,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeCondition(ModeCondition object) {
+	public T caseModeCondition(ModeCondition object) {
 		return null;
 	}
 
@@ -7815,7 +7768,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeConditionConjunction(ModeConditionConjunction object) {
+	public T caseModeConditionConjunction(ModeConditionConjunction object) {
 		return null;
 	}
 
@@ -7830,7 +7783,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseFixedPeriodic(FixedPeriodic object) {
+	public T caseFixedPeriodic(FixedPeriodic object) {
 		return null;
 	}
 
@@ -7845,7 +7798,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodicStimulus(PeriodicStimulus object) {
+	public T casePeriodicStimulus(PeriodicStimulus object) {
 		return null;
 	}
 
@@ -7860,7 +7813,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRelativePeriodicStimulus(RelativePeriodicStimulus object) {
+	public T caseRelativePeriodicStimulus(RelativePeriodicStimulus object) {
 		return null;
 	}
 
@@ -7875,7 +7828,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVariableRateStimulus(VariableRateStimulus object) {
+	public T caseVariableRateStimulus(VariableRateStimulus object) {
 		return null;
 	}
 
@@ -7890,7 +7843,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseScenario(Scenario object) {
+	public T caseScenario(Scenario object) {
 		return null;
 	}
 
@@ -7905,7 +7858,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodicSyntheticStimulus(PeriodicSyntheticStimulus object) {
+	public T casePeriodicSyntheticStimulus(PeriodicSyntheticStimulus object) {
 		return null;
 	}
 
@@ -7920,7 +7873,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomStimulus(CustomStimulus object) {
+	public T caseCustomStimulus(CustomStimulus object) {
 		return null;
 	}
 
@@ -7935,7 +7888,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSingleStimulus(SingleStimulus object) {
+	public T caseSingleStimulus(SingleStimulus object) {
 		return null;
 	}
 
@@ -7950,7 +7903,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterProcessStimulus(InterProcessStimulus object) {
+	public T caseInterProcessStimulus(InterProcessStimulus object) {
 		return null;
 	}
 
@@ -7965,7 +7918,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodicBurstStimulus(PeriodicBurstStimulus object) {
+	public T casePeriodicBurstStimulus(PeriodicBurstStimulus object) {
 		return null;
 	}
 
@@ -7980,7 +7933,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventStimulus(EventStimulus object) {
+	public T caseEventStimulus(EventStimulus object) {
 		return null;
 	}
 
@@ -7995,7 +7948,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArrivalCurveStimulus(ArrivalCurveStimulus object) {
+	public T caseArrivalCurveStimulus(ArrivalCurveStimulus object) {
 		return null;
 	}
 
@@ -8010,7 +7963,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArrivalCurveEntry(ArrivalCurveEntry object) {
+	public T caseArrivalCurveEntry(ArrivalCurveEntry object) {
 		return null;
 	}
 
@@ -8025,7 +7978,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClock(Clock object) {
+	public T caseClock(Clock object) {
 		return null;
 	}
 
@@ -8040,7 +7993,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClockTriangleFunction(ClockTriangleFunction object) {
+	public T caseClockTriangleFunction(ClockTriangleFunction object) {
 		return null;
 	}
 
@@ -8055,7 +8008,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClockSinusFunction(ClockSinusFunction object) {
+	public T caseClockSinusFunction(ClockSinusFunction object) {
 		return null;
 	}
 
@@ -8070,7 +8023,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClockMultiplierList(ClockMultiplierList object) {
+	public T caseClockMultiplierList(ClockMultiplierList object) {
 		return null;
 	}
 
@@ -8085,7 +8038,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClockMultiplierListEntry(ClockMultiplierListEntry object) {
+	public T caseClockMultiplierListEntry(ClockMultiplierListEntry object) {
 		return null;
 	}
 
@@ -8100,7 +8053,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSWModel(SWModel object) {
+	public T caseSWModel(SWModel object) {
 		return null;
 	}
 
@@ -8115,7 +8068,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAbstractMemoryElement(AbstractMemoryElement object) {
+	public T caseAbstractMemoryElement(AbstractMemoryElement object) {
 		return null;
 	}
 
@@ -8130,7 +8083,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAbstractProcess(AbstractProcess object) {
+	public T caseAbstractProcess(AbstractProcess object) {
 		return null;
 	}
 
@@ -8145,7 +8098,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomEntity(CustomEntity object) {
+	public T caseCustomEntity(CustomEntity object) {
 		return null;
 	}
 
@@ -8160,7 +8113,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessChain(ProcessChain object) {
+	public T caseProcessChain(ProcessChain object) {
 		return null;
 	}
 
@@ -8175,7 +8128,22 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcess(org.eclipse.app4mc.amalthea.model.Process object) {
+	public T caseProcess(org.eclipse.app4mc.amalthea.model.Process object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ICall Graph Item Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ICall Graph Item Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseICallGraphItemContainer(ICallGraphItemContainer object) {
 		return null;
 	}
 
@@ -8190,37 +8158,22 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCallGraph(CallGraph object) {
+	public T caseCallGraph(CallGraph object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Graph Entry Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Call Graph Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Graph Entry Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Call Graph Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseGraphEntryBase(GraphEntryBase object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Call Sequence</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Call Sequence</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseCallSequence(CallSequence object) {
+	public T caseCallGraphItem(CallGraphItem object) {
 		return null;
 	}
 
@@ -8235,7 +8188,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeSwitch(ModeSwitch object) {
+	public T caseModeSwitch(ModeSwitch object) {
 		return null;
 	}
 
@@ -8250,7 +8203,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T> T1 caseModeSwitchEntry(ModeSwitchEntry<T> object) {
+	public T caseModeSwitchEntry(ModeSwitchEntry object) {
 		return null;
 	}
 
@@ -8265,7 +8218,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T> T1 caseModeSwitchDefault(ModeSwitchDefault<T> object) {
+	public T caseModeSwitchDefault(ModeSwitchDefault object) {
 		return null;
 	}
 
@@ -8280,7 +8233,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProbabilitySwitch(ProbabilitySwitch object) {
+	public T caseProbabilitySwitch(ProbabilitySwitch object) {
 		return null;
 	}
 
@@ -8295,7 +8248,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T> T1 caseProbabilitySwitchEntry(ProbabilitySwitchEntry<T> object) {
+	public T caseProbabilitySwitchEntry(ProbabilitySwitchEntry object) {
 		return null;
 	}
 
@@ -8310,22 +8263,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCounter(Counter object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Call Sequence Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Call Sequence Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseCallSequenceItem(CallSequenceItem object) {
+	public T caseCounter(Counter object) {
 		return null;
 	}
 
@@ -8340,7 +8278,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseWaitEvent(WaitEvent object) {
+	public T caseWaitEvent(WaitEvent object) {
 		return null;
 	}
 
@@ -8355,7 +8293,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSetEvent(SetEvent object) {
+	public T caseSetEvent(SetEvent object) {
 		return null;
 	}
 
@@ -8370,7 +8308,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseClearEvent(ClearEvent object) {
+	public T caseClearEvent(ClearEvent object) {
 		return null;
 	}
 
@@ -8385,7 +8323,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventMask(EventMask object) {
+	public T caseEventMask(EventMask object) {
 		return null;
 	}
 
@@ -8400,7 +8338,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOsEvent(OsEvent object) {
+	public T caseOsEvent(OsEvent object) {
 		return null;
 	}
 
@@ -8415,7 +8353,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseInterProcessTrigger(InterProcessTrigger object) {
+	public T caseInterProcessTrigger(InterProcessTrigger object) {
 		return null;
 	}
 
@@ -8430,22 +8368,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEnforcedMigration(EnforcedMigration object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Task Runnable Call</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Task Runnable Call</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTaskRunnableCall(TaskRunnableCall object) {
+	public T caseEnforcedMigration(EnforcedMigration object) {
 		return null;
 	}
 
@@ -8460,7 +8383,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSchedulePoint(SchedulePoint object) {
+	public T caseSchedulePoint(SchedulePoint object) {
 		return null;
 	}
 
@@ -8475,7 +8398,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTerminateProcess(TerminateProcess object) {
+	public T caseTerminateProcess(TerminateProcess object) {
 		return null;
 	}
 
@@ -8490,7 +8413,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTask(Task object) {
+	public T caseTask(Task object) {
 		return null;
 	}
 
@@ -8505,7 +8428,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseISR(ISR object) {
+	public T caseISR(ISR object) {
 		return null;
 	}
 
@@ -8520,7 +8443,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseProcessPrototype(ProcessPrototype object) {
+	public T caseProcessPrototype(ProcessPrototype object) {
 		return null;
 	}
 
@@ -8535,7 +8458,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChainedProcessPrototype(ChainedProcessPrototype object) {
+	public T caseChainedProcessPrototype(ChainedProcessPrototype object) {
 		return null;
 	}
 
@@ -8550,7 +8473,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseGeneralPrecedence(GeneralPrecedence object) {
+	public T caseGeneralPrecedence(GeneralPrecedence object) {
 		return null;
 	}
 
@@ -8565,7 +8488,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAccessPrecedenceSpec(AccessPrecedenceSpec object) {
+	public T caseAccessPrecedenceSpec(AccessPrecedenceSpec object) {
 		return null;
 	}
 
@@ -8580,7 +8503,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseOrderPrecedenceSpec(OrderPrecedenceSpec object) {
+	public T caseOrderPrecedenceSpec(OrderPrecedenceSpec object) {
 		return null;
 	}
 
@@ -8595,7 +8518,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataDependency(DataDependency object) {
+	public T caseDataDependency(DataDependency object) {
 		return null;
 	}
 
@@ -8610,7 +8533,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableParameter(RunnableParameter object) {
+	public T caseRunnableParameter(RunnableParameter object) {
 		return null;
 	}
 
@@ -8625,7 +8548,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnable(org.eclipse.app4mc.amalthea.model.Runnable object) {
+	public T caseRunnable(org.eclipse.app4mc.amalthea.model.Runnable object) {
 		return null;
 	}
 
@@ -8640,7 +8563,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabel(Label object) {
+	public T caseLabel(Label object) {
 		return null;
 	}
 
@@ -8655,7 +8578,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChannel(Channel object) {
+	public T caseChannel(Channel object) {
 		return null;
 	}
 
@@ -8670,7 +8593,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeLabel(ModeLabel object) {
+	public T caseModeLabel(ModeLabel object) {
 		return null;
 	}
 
@@ -8685,22 +8608,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSection(Section object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRunnableItem(RunnableItem object) {
+	public T caseSection(Section object) {
 		return null;
 	}
 
@@ -8715,7 +8623,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseComputationItem(ComputationItem object) {
+	public T caseComputationItem(ComputationItem object) {
 		return null;
 	}
 
@@ -8730,7 +8638,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseExecutionNeed(ExecutionNeed object) {
+	public T caseExecutionNeed(ExecutionNeed object) {
 		return null;
 	}
 
@@ -8745,7 +8653,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseNeedEntry(Map.Entry<String, IDiscreteValueDeviation> object) {
+	public T caseNeedEntry(Map.Entry<String, IDiscreteValueDeviation> object) {
 		return null;
 	}
 
@@ -8760,7 +8668,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTicks(Ticks object) {
+	public T caseTicks(Ticks object) {
 		return null;
 	}
 
@@ -8775,7 +8683,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTicksEntry(Map.Entry<ProcessingUnitDefinition, IDiscreteValueDeviation> object) {
+	public T caseTicksEntry(Map.Entry<ProcessingUnitDefinition, IDiscreteValueDeviation> object) {
 		return null;
 	}
 
@@ -8790,22 +8698,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseModeLabelAccess(ModeLabelAccess object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Mode Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Mode Switch</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRunnableModeSwitch(RunnableModeSwitch object) {
+	public T caseModeLabelAccess(ModeLabelAccess object) {
 		return null;
 	}
 
@@ -8820,7 +8713,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabelAccess(LabelAccess object) {
+	public T caseLabelAccess(LabelAccess object) {
 		return null;
 	}
 
@@ -8835,7 +8728,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChannelAccess(ChannelAccess object) {
+	public T caseChannelAccess(ChannelAccess object) {
 		return null;
 	}
 
@@ -8850,7 +8743,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChannelSend(ChannelSend object) {
+	public T caseChannelSend(ChannelSend object) {
 		return null;
 	}
 
@@ -8865,7 +8758,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseChannelReceive(ChannelReceive object) {
+	public T caseChannelReceive(ChannelReceive object) {
 		return null;
 	}
 
@@ -8880,7 +8773,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSemaphoreAccess(SemaphoreAccess object) {
+	public T caseSemaphoreAccess(SemaphoreAccess object) {
 		return null;
 	}
 
@@ -8895,7 +8788,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSenderReceiverCommunication(SenderReceiverCommunication object) {
+	public T caseSenderReceiverCommunication(SenderReceiverCommunication object) {
 		return null;
 	}
 
@@ -8910,7 +8803,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSenderReceiverRead(SenderReceiverRead object) {
+	public T caseSenderReceiverRead(SenderReceiverRead object) {
 		return null;
 	}
 
@@ -8925,7 +8818,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSenderReceiverWrite(SenderReceiverWrite object) {
+	public T caseSenderReceiverWrite(SenderReceiverWrite object) {
 		return null;
 	}
 
@@ -8940,7 +8833,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseServerCall(ServerCall object) {
+	public T caseServerCall(ServerCall object) {
 		return null;
 	}
 
@@ -8955,7 +8848,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSynchronousServerCall(SynchronousServerCall object) {
+	public T caseSynchronousServerCall(SynchronousServerCall object) {
 		return null;
 	}
 
@@ -8970,7 +8863,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAsynchronousServerCall(AsynchronousServerCall object) {
+	public T caseAsynchronousServerCall(AsynchronousServerCall object) {
 		return null;
 	}
 
@@ -8985,22 +8878,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseGetResultServerCall(GetResultServerCall object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runnable Probability Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runnable Probability Switch</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseRunnableProbabilitySwitch(RunnableProbabilitySwitch object) {
+	public T caseGetResultServerCall(GetResultServerCall object) {
 		return null;
 	}
 
@@ -9015,7 +8893,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseGroup(Group object) {
+	public T caseGroup(Group object) {
 		return null;
 	}
 
@@ -9030,7 +8908,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCallArgument(CallArgument object) {
+	public T caseCallArgument(CallArgument object) {
 		return null;
 	}
 
@@ -9045,7 +8923,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableCall(RunnableCall object) {
+	public T caseRunnableCall(RunnableCall object) {
 		return null;
 	}
 
@@ -9060,7 +8938,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomEventTrigger(CustomEventTrigger object) {
+	public T caseCustomEventTrigger(CustomEventTrigger object) {
 		return null;
 	}
 
@@ -9075,7 +8953,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataType(DataType object) {
+	public T caseDataType(DataType object) {
 		return null;
 	}
 
@@ -9090,7 +8968,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCompoundType(CompoundType object) {
+	public T caseCompoundType(CompoundType object) {
 		return null;
 	}
 
@@ -9105,7 +8983,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStruct(Struct object) {
+	public T caseStruct(Struct object) {
 		return null;
 	}
 
@@ -9120,7 +8998,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseStructEntry(StructEntry object) {
+	public T caseStructEntry(StructEntry object) {
 		return null;
 	}
 
@@ -9135,7 +9013,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArray(Array object) {
+	public T caseArray(Array object) {
 		return null;
 	}
 
@@ -9150,7 +9028,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePointer(Pointer object) {
+	public T casePointer(Pointer object) {
 		return null;
 	}
 
@@ -9165,7 +9043,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTypeRef(TypeRef object) {
+	public T caseTypeRef(TypeRef object) {
 		return null;
 	}
 
@@ -9180,7 +9058,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAlias(Alias object) {
+	public T caseAlias(Alias object) {
 		return null;
 	}
 
@@ -9195,7 +9073,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTypeDefinition(TypeDefinition object) {
+	public T caseTypeDefinition(TypeDefinition object) {
 		return null;
 	}
 
@@ -9210,7 +9088,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDataTypeDefinition(DataTypeDefinition object) {
+	public T caseDataTypeDefinition(DataTypeDefinition object) {
 		return null;
 	}
 
@@ -9225,7 +9103,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBaseTypeDefinition(BaseTypeDefinition object) {
+	public T caseBaseTypeDefinition(BaseTypeDefinition object) {
 		return null;
 	}
 
@@ -9240,7 +9118,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseActivation(Activation object) {
+	public T caseActivation(Activation object) {
 		return null;
 	}
 
@@ -9255,7 +9133,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePeriodicActivation(PeriodicActivation object) {
+	public T casePeriodicActivation(PeriodicActivation object) {
 		return null;
 	}
 
@@ -9270,7 +9148,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVariableRateActivation(VariableRateActivation object) {
+	public T caseVariableRateActivation(VariableRateActivation object) {
 		return null;
 	}
 
@@ -9285,7 +9163,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSporadicActivation(SporadicActivation object) {
+	public T caseSporadicActivation(SporadicActivation object) {
 		return null;
 	}
 
@@ -9300,7 +9178,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseSingleActivation(SingleActivation object) {
+	public T caseSingleActivation(SingleActivation object) {
 		return null;
 	}
 
@@ -9315,7 +9193,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventActivation(EventActivation object) {
+	public T caseEventActivation(EventActivation object) {
 		return null;
 	}
 
@@ -9330,7 +9208,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseCustomActivation(CustomActivation object) {
+	public T caseCustomActivation(CustomActivation object) {
 		return null;
 	}
 
@@ -9345,7 +9223,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLabelAccessStatistic(LabelAccessStatistic object) {
+	public T caseLabelAccessStatistic(LabelAccessStatistic object) {
 		return null;
 	}
 
@@ -9360,7 +9238,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunEntityCallStatistic(RunEntityCallStatistic object) {
+	public T caseRunEntityCallStatistic(RunEntityCallStatistic object) {
 		return null;
 	}
 
@@ -9375,7 +9253,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMeasurementModel(MeasurementModel object) {
+	public T caseMeasurementModel(MeasurementModel object) {
 		return null;
 	}
 
@@ -9390,7 +9268,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMeasurement(Measurement object) {
+	public T caseMeasurement(Measurement object) {
 		return null;
 	}
 
@@ -9405,7 +9283,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseEventChainMeasurement(EventChainMeasurement object) {
+	public T caseEventChainMeasurement(EventChainMeasurement object) {
 		return null;
 	}
 
@@ -9420,7 +9298,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseTaskMeasurement(TaskMeasurement object) {
+	public T caseTaskMeasurement(TaskMeasurement object) {
 		return null;
 	}
 
@@ -9435,7 +9313,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseRunnableMeasurement(RunnableMeasurement object) {
+	public T caseRunnableMeasurement(RunnableMeasurement object) {
 		return null;
 	}
 
@@ -9451,7 +9329,7 @@ public class AmaltheaSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	@Override
-	public T1 defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CustomEventTriggerImpl extends RunnableItemImpl implements CustomEventTrigger {
+public class CustomEventTriggerImpl extends CallGraphItemImpl implements CustomEventTrigger {
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
 	 * <!-- begin-user-doc -->

@@ -32,13 +32,14 @@ package org.eclipse.app4mc.amalthea.model;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SetEvent#getEventMask <em>Event Mask</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.SetEvent#getProcess <em>Process</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.SetEvent#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSetEvent()
  * @model
  * @generated
  */
-public interface SetEvent extends CallSequenceItem {
+public interface SetEvent extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Event Mask</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -82,5 +83,27 @@ public interface SetEvent extends CallSequenceItem {
 	 * @generated
 	 */
 	void setProcess(org.eclipse.app4mc.amalthea.model.Process value);
+
+	/**
+	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Counter</em>' containment reference.
+	 * @see #setCounter(Counter)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getSetEvent_Counter()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Counter getCounter();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.SetEvent#getCounter <em>Counter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Counter</em>' containment reference.
+	 * @see #getCounter()
+	 * @generated
+	 */
+	void setCounter(Counter value);
 
 } // SetEvent

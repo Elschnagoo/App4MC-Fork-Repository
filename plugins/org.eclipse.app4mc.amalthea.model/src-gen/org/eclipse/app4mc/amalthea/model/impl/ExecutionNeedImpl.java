@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ExecutionNeedImpl extends RunnableItemImpl implements ExecutionNeed {
+public class ExecutionNeedImpl extends CallGraphItemImpl implements ExecutionNeed {
 	/**
 	 * The cached value of the '{@link #getNeeds() <em>Needs</em>}' map.
 	 * <!-- begin-user-doc -->

@@ -50,7 +50,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ModeLabelAccessImpl extends RunnableItemImpl implements ModeLabelAccess {
+public class ModeLabelAccessImpl extends CallGraphItemImpl implements ModeLabelAccess {
 	/**
 	 * The cached value of the '{@link #getData() <em>Data</em>}' reference.
 	 * <!-- begin-user-doc -->

@@ -181,7 +181,7 @@ public interface ProcessPrototype extends AbstractProcess {
 
 	/**
 	 * Returns the value of the '<em><b>Runnable Calls</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.TaskRunnableCall}.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableCall}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Runnable Calls</em>' containment reference list.
@@ -189,6 +189,6 @@ public interface ProcessPrototype extends AbstractProcess {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TaskRunnableCall> getRunnableCalls();
+	EList<RunnableCall> getRunnableCalls();
 
 } // ProcessPrototype

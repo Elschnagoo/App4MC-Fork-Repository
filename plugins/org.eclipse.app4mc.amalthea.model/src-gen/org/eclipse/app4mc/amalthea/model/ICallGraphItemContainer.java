@@ -16,37 +16,35 @@ package org.eclipse.app4mc.amalthea.model;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Call Sequence</b></em>'.
+ * A representation of the model object '<em><b>ICall Graph Item Container</b></em>'.
  * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * A sequence of callable items that can be placed in the call graph
- * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequence#getCalls <em>Calls</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer#getItems <em>Items</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequence()
- * @model
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getICallGraphItemContainer()
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface CallSequence extends GraphEntryBase, INamed {
+public interface ICallGraphItemContainer extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Calls</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CallSequenceItem}.
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.CallGraphItem}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Calls</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequence_Calls()
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getICallGraphItemContainer_Items()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CallSequenceItem> getCalls();
+	EList<CallGraphItem> getItems();
 
-} // CallSequence
+} // ICallGraphItemContainer

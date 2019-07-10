@@ -41,7 +41,6 @@ import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelEvent;
@@ -272,11 +271,9 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -322,7 +319,6 @@ import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
@@ -616,7 +612,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.CUSTOM_ENTITY: return createCustomEntity();
 			case AmaltheaPackage.PROCESS_CHAIN: return createProcessChain();
 			case AmaltheaPackage.CALL_GRAPH: return createCallGraph();
-			case AmaltheaPackage.CALL_SEQUENCE: return createCallSequence();
 			case AmaltheaPackage.MODE_SWITCH: return createModeSwitch();
 			case AmaltheaPackage.MODE_SWITCH_ENTRY: return createModeSwitchEntry();
 			case AmaltheaPackage.MODE_SWITCH_DEFAULT: return createModeSwitchDefault();
@@ -630,7 +625,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.OS_EVENT: return createOsEvent();
 			case AmaltheaPackage.INTER_PROCESS_TRIGGER: return createInterProcessTrigger();
 			case AmaltheaPackage.ENFORCED_MIGRATION: return createEnforcedMigration();
-			case AmaltheaPackage.TASK_RUNNABLE_CALL: return createTaskRunnableCall();
 			case AmaltheaPackage.SCHEDULE_POINT: return createSchedulePoint();
 			case AmaltheaPackage.TERMINATE_PROCESS: return createTerminateProcess();
 			case AmaltheaPackage.TASK: return createTask();
@@ -651,7 +645,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.TICKS: return createTicks();
 			case AmaltheaPackage.TICKS_ENTRY: return (EObject)createTicksEntry();
 			case AmaltheaPackage.MODE_LABEL_ACCESS: return createModeLabelAccess();
-			case AmaltheaPackage.RUNNABLE_MODE_SWITCH: return createRunnableModeSwitch();
 			case AmaltheaPackage.LABEL_ACCESS: return createLabelAccess();
 			case AmaltheaPackage.CHANNEL_SEND: return createChannelSend();
 			case AmaltheaPackage.CHANNEL_RECEIVE: return createChannelReceive();
@@ -661,7 +654,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.SYNCHRONOUS_SERVER_CALL: return createSynchronousServerCall();
 			case AmaltheaPackage.ASYNCHRONOUS_SERVER_CALL: return createAsynchronousServerCall();
 			case AmaltheaPackage.GET_RESULT_SERVER_CALL: return createGetResultServerCall();
-			case AmaltheaPackage.RUNNABLE_PROBABILITY_SWITCH: return createRunnableProbabilitySwitch();
 			case AmaltheaPackage.GROUP: return createGroup();
 			case AmaltheaPackage.CALL_ARGUMENT: return createCallArgument();
 			case AmaltheaPackage.RUNNABLE_CALL: return createRunnableCall();
@@ -3282,17 +3274,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public CallSequence createCallSequence() {
-		CallSequenceImpl callSequence = new CallSequenceImpl();
-		return callSequence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ModeSwitch createModeSwitch() {
 		ModeSwitchImpl modeSwitch = new ModeSwitchImpl();
 		return modeSwitch;
@@ -3304,8 +3285,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public <T> ModeSwitchEntry<T> createModeSwitchEntry() {
-		ModeSwitchEntryImpl<T> modeSwitchEntry = new ModeSwitchEntryImpl<T>();
+	public ModeSwitchEntry createModeSwitchEntry() {
+		ModeSwitchEntryImpl modeSwitchEntry = new ModeSwitchEntryImpl();
 		return modeSwitchEntry;
 	}
 
@@ -3315,8 +3296,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public <T> ModeSwitchDefault<T> createModeSwitchDefault() {
-		ModeSwitchDefaultImpl<T> modeSwitchDefault = new ModeSwitchDefaultImpl<T>();
+	public ModeSwitchDefault createModeSwitchDefault() {
+		ModeSwitchDefaultImpl modeSwitchDefault = new ModeSwitchDefaultImpl();
 		return modeSwitchDefault;
 	}
 
@@ -3337,8 +3318,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public <T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry() {
-		ProbabilitySwitchEntryImpl<T> probabilitySwitchEntry = new ProbabilitySwitchEntryImpl<T>();
+	public ProbabilitySwitchEntry createProbabilitySwitchEntry() {
+		ProbabilitySwitchEntryImpl probabilitySwitchEntry = new ProbabilitySwitchEntryImpl();
 		return probabilitySwitchEntry;
 	}
 
@@ -3428,17 +3409,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public EnforcedMigration createEnforcedMigration() {
 		EnforcedMigrationImpl enforcedMigration = new EnforcedMigrationImpl();
 		return enforcedMigration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public TaskRunnableCall createTaskRunnableCall() {
-		TaskRunnableCallImpl taskRunnableCall = new TaskRunnableCallImpl();
-		return taskRunnableCall;
 	}
 
 	/**
@@ -3665,17 +3635,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public RunnableModeSwitch createRunnableModeSwitch() {
-		RunnableModeSwitchImpl runnableModeSwitch = new RunnableModeSwitchImpl();
-		return runnableModeSwitch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public LabelAccess createLabelAccess() {
 		LabelAccessImpl labelAccess = new LabelAccessImpl();
 		return labelAccess;
@@ -3767,17 +3726,6 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	public GetResultServerCall createGetResultServerCall() {
 		GetResultServerCallImpl getResultServerCall = new GetResultServerCallImpl();
 		return getResultServerCall;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public RunnableProbabilitySwitch createRunnableProbabilitySwitch() {
-		RunnableProbabilitySwitchImpl runnableProbabilitySwitch = new RunnableProbabilitySwitchImpl();
-		return runnableProbabilitySwitch;
 	}
 
 	/**

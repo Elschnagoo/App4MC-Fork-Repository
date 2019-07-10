@@ -37,7 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model
  * @generated
  */
-public interface SemaphoreAccess extends RunnableItem {
+public interface SemaphoreAccess extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Semaphore</b></em>' reference.
 	 * <!-- begin-user-doc -->

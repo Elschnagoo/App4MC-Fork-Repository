@@ -29,13 +29,14 @@ package org.eclipse.app4mc.amalthea.model;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger#getStimulus <em>Stimulus</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger()
  * @model
  * @generated
  */
-public interface InterProcessTrigger extends CallSequenceItem {
+public interface InterProcessTrigger extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Stimulus</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -57,5 +58,27 @@ public interface InterProcessTrigger extends CallSequenceItem {
 	 * @generated
 	 */
 	void setStimulus(InterProcessStimulus value);
+
+	/**
+	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Counter</em>' containment reference.
+	 * @see #setCounter(Counter)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getInterProcessTrigger_Counter()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Counter getCounter();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.InterProcessTrigger#getCounter <em>Counter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Counter</em>' containment reference.
+	 * @see #getCounter()
+	 * @generated
+	 */
+	void setCounter(Counter value);
 
 } // InterProcessTrigger

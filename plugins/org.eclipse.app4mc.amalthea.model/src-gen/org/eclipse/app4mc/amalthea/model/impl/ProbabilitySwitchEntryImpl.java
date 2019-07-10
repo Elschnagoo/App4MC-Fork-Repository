@@ -17,6 +17,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,7 +27,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -41,13 +42,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ProbabilitySwitchEntryImpl#getProbability <em>Probability</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements ProbabilitySwitchEntry<T> {
+public class ProbabilitySwitchEntryImpl extends BaseObjectImpl implements ProbabilitySwitchEntry {
+	/**
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CallGraphItem> items;
+
 	/**
 	 * The default value of the '{@link #getProbability() <em>Probability</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -69,16 +80,6 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	protected double probability = PROBABILITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<T> items;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,6 +96,19 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	@Override
 	protected EClass eStaticClass() {
 		return AmaltheaPackage.eINSTANCE.getProbabilitySwitchEntry();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<CallGraphItem> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<CallGraphItem>(CallGraphItem.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
+		}
+		return items;
 	}
 
 	/**
@@ -126,19 +140,6 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	 * @generated
 	 */
 	@Override
-	public EList<T> getItems() {
-		if (items == null) {
-			items = new EObjectContainmentEList<T>(EObject.class, this, AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS);
-		}
-		return items;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
@@ -155,10 +156,10 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
-				return getProbability();
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				return getItems();
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
+				return getProbability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -172,12 +173,12 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
-				setProbability((Double)newValue);
-				return;
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends T>)newValue);
+				getItems().addAll((Collection<? extends CallGraphItem>)newValue);
+				return;
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
+				setProbability((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -191,11 +192,11 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
-				setProbability(PROBABILITY_EDEFAULT);
-				return;
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				getItems().clear();
+				return;
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
+				setProbability(PROBABILITY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -209,12 +210,44 @@ public class ProbabilitySwitchEntryImpl<T> extends BaseObjectImpl implements Pro
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
-				return probability != PROBABILITY_EDEFAULT;
 			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS:
 				return items != null && !items.isEmpty();
+			case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__PROBABILITY:
+				return probability != PROBABILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS: return AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS: return AmaltheaPackage.PROBABILITY_SWITCH_ENTRY__ITEMS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class EnforcedMigrationImpl extends CallSequenceItemImpl implements EnforcedMigration {
+public class EnforcedMigrationImpl extends CallGraphItemImpl implements EnforcedMigration {
 	/**
 	 * The cached value of the '{@link #getResourceOwner() <em>Resource Owner</em>}' reference.
 	 * <!-- begin-user-doc -->

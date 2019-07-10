@@ -51,8 +51,7 @@ import org.eclipse.app4mc.amalthea.model.CacheDefinition;
 import org.eclipse.app4mc.amalthea.model.CacheType;
 import org.eclipse.app4mc.amalthea.model.CallArgument;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ChannelAccess;
@@ -178,7 +177,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.GeneralPrecedence;
 import org.eclipse.app4mc.amalthea.model.GetResultServerCall;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Grouping;
 import org.eclipse.app4mc.amalthea.model.GroupingType;
@@ -198,6 +196,7 @@ import org.eclipse.app4mc.amalthea.model.HwPathElement;
 import org.eclipse.app4mc.amalthea.model.HwPort;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.IAnnotatable;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.IDisplayName;
@@ -339,13 +338,10 @@ import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableEvent;
 import org.eclipse.app4mc.amalthea.model.RunnableEventType;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableMeasurement;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
 import org.eclipse.app4mc.amalthea.model.RunnableScope;
 import org.eclipse.app4mc.amalthea.model.RunnableSeparationConstraint;
@@ -397,7 +393,6 @@ import org.eclipse.app4mc.amalthea.model.TargetScheduler;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 import org.eclipse.app4mc.amalthea.model.TaskMeasurement;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.TaskSchedulingAlgorithm;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
@@ -446,7 +441,6 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 
@@ -2466,6 +2460,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass iCallGraphItemContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass callGraphEClass = null;
 
 	/**
@@ -2473,14 +2474,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass graphEntryBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass callSequenceEClass = null;
+	private EClass callGraphItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2523,13 +2517,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass counterEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass callSequenceItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2579,13 +2566,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass enforcedMigrationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass taskRunnableCallEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2704,13 +2684,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass runnableItemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass computationItemEClass = null;
 
 	/**
@@ -2747,13 +2720,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass modeLabelAccessEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass runnableModeSwitchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2838,13 +2804,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EClass getResultServerCallEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass runnableProbabilitySwitchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -12250,6 +12209,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getICallGraphItemContainer() {
+		return iCallGraphItemContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getICallGraphItemContainer_Items() {
+		return (EReference)iCallGraphItemContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCallGraph() {
 		return callGraphEClass;
 	}
@@ -12260,8 +12239,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getCallGraph_GraphEntries() {
-		return (EReference)callGraphEClass.getEStructuralFeatures().get(0);
+	public EClass getCallGraphItem() {
+		return callGraphItemEClass;
 	}
 
 	/**
@@ -12270,8 +12249,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getGraphEntryBase() {
-		return graphEntryBaseEClass;
+	public EReference getCallGraphItem_ContainingProcess() {
+		return (EReference)callGraphItemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12280,18 +12259,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getCallSequence() {
-		return callSequenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCallSequence_Calls() {
-		return (EReference)callSequenceEClass.getEStructuralFeatures().get(0);
+	public EReference getCallGraphItem_ContainingRunnable() {
+		return (EReference)callGraphItemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12350,28 +12319,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getModeSwitchEntry_Items() {
-		return (EReference)modeSwitchEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getModeSwitchDefault() {
 		return modeSwitchDefaultEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getModeSwitchDefault_Items() {
-		return (EReference)modeSwitchDefaultEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -12420,16 +12369,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getProbabilitySwitchEntry_Items() {
-		return (EReference)probabilitySwitchEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCounter() {
 		return counterEClass;
 	}
@@ -12452,36 +12391,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EAttribute getCounter_Offset() {
 		return (EAttribute)counterEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCallSequenceItem() {
-		return callSequenceItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCallSequenceItem_ContainingProcess() {
-		return (EReference)callSequenceItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCallSequenceItem_Counter() {
-		return (EReference)callSequenceItemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12530,6 +12439,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getWaitEvent_Counter() {
+		return (EReference)waitEventEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSetEvent() {
 		return setEventEClass;
 	}
@@ -12560,6 +12479,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getSetEvent_Counter() {
+		return (EReference)setEventEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getClearEvent() {
 		return clearEventEClass;
 	}
@@ -12572,6 +12501,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EReference getClearEvent_EventMask() {
 		return (EReference)clearEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getClearEvent_Counter() {
+		return (EReference)clearEventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -12650,6 +12589,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getInterProcessTrigger_Counter() {
+		return (EReference)interProcessTriggerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEnforcedMigration() {
 		return enforcedMigrationEClass;
 	}
@@ -12670,36 +12619,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getTaskRunnableCall() {
-		return taskRunnableCallEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTaskRunnableCall_Runnable() {
-		return (EReference)taskRunnableCallEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTaskRunnableCall_Statistic() {
-		return (EReference)taskRunnableCallEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getSchedulePoint() {
 		return schedulePointEClass;
 	}
@@ -12712,6 +12631,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EClass getTerminateProcess() {
 		return terminateProcessEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTerminateProcess_Counter() {
+		return (EReference)terminateProcessEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -13130,7 +13059,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunnable_RunnableItems() {
+	public EReference getRunnable_CallGraph() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -13200,7 +13129,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunnable_TaskRunnableCalls() {
+	public EReference getRunnable_ReferringComponents() {
 		return (EReference)runnableEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -13210,8 +13139,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunnable_ReferringComponents() {
-		return (EReference)runnableEClass.getEStructuralFeatures().get(10);
+	public EOperation getRunnable__GetRunnableItems() {
+		return runnableEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -13221,7 +13150,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 */
 	@Override
 	public EOperation getRunnable__GetFirstActivation() {
-		return runnableEClass.getEOperations().get(0);
+		return runnableEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -13470,26 +13399,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getRunnableItem() {
-		return runnableItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRunnableItem_ContainingRunnable() {
-		return (EReference)runnableItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getComputationItem() {
 		return computationItemEClass;
 	}
@@ -13662,36 +13571,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EOperation getModeLabelAccess__ValidateInvariants__DiagnosticChain_Map() {
 		return modeLabelAccessEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRunnableModeSwitch() {
-		return runnableModeSwitchEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRunnableModeSwitch_Entries() {
-		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRunnableModeSwitch_DefaultEntry() {
-		return (EReference)runnableModeSwitchEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -14080,26 +13959,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getRunnableProbabilitySwitch() {
-		return runnableProbabilitySwitchEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRunnableProbabilitySwitch_Entries() {
-		return (EReference)runnableProbabilitySwitchEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getGroup() {
 		return groupEClass;
 	}
@@ -14112,16 +13971,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EAttribute getGroup_Ordered() {
 		return (EAttribute)groupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGroup_Items() {
-		return (EReference)groupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -16647,13 +16496,14 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(processEClass, PROCESS__CALL_GRAPH);
 		createEReference(processEClass, PROCESS__STIMULI);
 
+		iCallGraphItemContainerEClass = createEClass(ICALL_GRAPH_ITEM_CONTAINER);
+		createEReference(iCallGraphItemContainerEClass, ICALL_GRAPH_ITEM_CONTAINER__ITEMS);
+
 		callGraphEClass = createEClass(CALL_GRAPH);
-		createEReference(callGraphEClass, CALL_GRAPH__GRAPH_ENTRIES);
 
-		graphEntryBaseEClass = createEClass(GRAPH_ENTRY_BASE);
-
-		callSequenceEClass = createEClass(CALL_SEQUENCE);
-		createEReference(callSequenceEClass, CALL_SEQUENCE__CALLS);
+		callGraphItemEClass = createEClass(CALL_GRAPH_ITEM);
+		createEReference(callGraphItemEClass, CALL_GRAPH_ITEM__CONTAINING_PROCESS);
+		createEReference(callGraphItemEClass, CALL_GRAPH_ITEM__CONTAINING_RUNNABLE);
 
 		modeSwitchEClass = createEClass(MODE_SWITCH);
 		createEReference(modeSwitchEClass, MODE_SWITCH__ENTRIES);
@@ -16661,37 +16511,33 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		modeSwitchEntryEClass = createEClass(MODE_SWITCH_ENTRY);
 		createEReference(modeSwitchEntryEClass, MODE_SWITCH_ENTRY__CONDITION);
-		createEReference(modeSwitchEntryEClass, MODE_SWITCH_ENTRY__ITEMS);
 
 		modeSwitchDefaultEClass = createEClass(MODE_SWITCH_DEFAULT);
-		createEReference(modeSwitchDefaultEClass, MODE_SWITCH_DEFAULT__ITEMS);
 
 		probabilitySwitchEClass = createEClass(PROBABILITY_SWITCH);
 		createEReference(probabilitySwitchEClass, PROBABILITY_SWITCH__ENTRIES);
 
 		probabilitySwitchEntryEClass = createEClass(PROBABILITY_SWITCH_ENTRY);
 		createEAttribute(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__PROBABILITY);
-		createEReference(probabilitySwitchEntryEClass, PROBABILITY_SWITCH_ENTRY__ITEMS);
 
 		counterEClass = createEClass(COUNTER);
 		createEAttribute(counterEClass, COUNTER__PRESCALER);
 		createEAttribute(counterEClass, COUNTER__OFFSET);
 
-		callSequenceItemEClass = createEClass(CALL_SEQUENCE_ITEM);
-		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__CONTAINING_PROCESS);
-		createEReference(callSequenceItemEClass, CALL_SEQUENCE_ITEM__COUNTER);
-
 		waitEventEClass = createEClass(WAIT_EVENT);
 		createEReference(waitEventEClass, WAIT_EVENT__EVENT_MASK);
 		createEAttribute(waitEventEClass, WAIT_EVENT__MASK_TYPE);
 		createEAttribute(waitEventEClass, WAIT_EVENT__WAITING_BEHAVIOUR);
+		createEReference(waitEventEClass, WAIT_EVENT__COUNTER);
 
 		setEventEClass = createEClass(SET_EVENT);
 		createEReference(setEventEClass, SET_EVENT__EVENT_MASK);
 		createEReference(setEventEClass, SET_EVENT__PROCESS);
+		createEReference(setEventEClass, SET_EVENT__COUNTER);
 
 		clearEventEClass = createEClass(CLEAR_EVENT);
 		createEReference(clearEventEClass, CLEAR_EVENT__EVENT_MASK);
+		createEReference(clearEventEClass, CLEAR_EVENT__COUNTER);
 
 		eventMaskEClass = createEClass(EVENT_MASK);
 		createEReference(eventMaskEClass, EVENT_MASK__EVENTS);
@@ -16702,17 +16548,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		interProcessTriggerEClass = createEClass(INTER_PROCESS_TRIGGER);
 		createEReference(interProcessTriggerEClass, INTER_PROCESS_TRIGGER__STIMULUS);
+		createEReference(interProcessTriggerEClass, INTER_PROCESS_TRIGGER__COUNTER);
 
 		enforcedMigrationEClass = createEClass(ENFORCED_MIGRATION);
 		createEReference(enforcedMigrationEClass, ENFORCED_MIGRATION__RESOURCE_OWNER);
 
-		taskRunnableCallEClass = createEClass(TASK_RUNNABLE_CALL);
-		createEReference(taskRunnableCallEClass, TASK_RUNNABLE_CALL__RUNNABLE);
-		createEReference(taskRunnableCallEClass, TASK_RUNNABLE_CALL__STATISTIC);
-
 		schedulePointEClass = createEClass(SCHEDULE_POINT);
 
 		terminateProcessEClass = createEClass(TERMINATE_PROCESS);
+		createEReference(terminateProcessEClass, TERMINATE_PROCESS__COUNTER);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__PREEMPTION);
@@ -16764,15 +16608,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		runnableEClass = createEClass(RUNNABLE);
 		createEReference(runnableEClass, RUNNABLE__EXECUTION_CONDITION);
 		createEReference(runnableEClass, RUNNABLE__PARAMETERS);
-		createEReference(runnableEClass, RUNNABLE__RUNNABLE_ITEMS);
+		createEReference(runnableEClass, RUNNABLE__CALL_GRAPH);
 		createEReference(runnableEClass, RUNNABLE__ACTIVATIONS);
 		createEAttribute(runnableEClass, RUNNABLE__CALLBACK);
 		createEAttribute(runnableEClass, RUNNABLE__SERVICE);
 		createEAttribute(runnableEClass, RUNNABLE__ASIL_LEVEL);
 		createEReference(runnableEClass, RUNNABLE__SECTION);
 		createEReference(runnableEClass, RUNNABLE__RUNNABLE_CALLS);
-		createEReference(runnableEClass, RUNNABLE__TASK_RUNNABLE_CALLS);
 		createEReference(runnableEClass, RUNNABLE__REFERRING_COMPONENTS);
+		createEOperation(runnableEClass, RUNNABLE___GET_RUNNABLE_ITEMS);
 		createEOperation(runnableEClass, RUNNABLE___GET_FIRST_ACTIVATION);
 
 		labelEClass = createEClass(LABEL);
@@ -16803,9 +16647,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(sectionEClass, SECTION__LABELS);
 		createEReference(sectionEClass, SECTION__RUNNABLES);
 
-		runnableItemEClass = createEClass(RUNNABLE_ITEM);
-		createEReference(runnableItemEClass, RUNNABLE_ITEM__CONTAINING_RUNNABLE);
-
 		computationItemEClass = createEClass(COMPUTATION_ITEM);
 
 		executionNeedEClass = createEClass(EXECUTION_NEED);
@@ -16829,10 +16670,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(modeLabelAccessEClass, MODE_LABEL_ACCESS__VALUE);
 		createEAttribute(modeLabelAccessEClass, MODE_LABEL_ACCESS__STEP);
 		createEOperation(modeLabelAccessEClass, MODE_LABEL_ACCESS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
-
-		runnableModeSwitchEClass = createEClass(RUNNABLE_MODE_SWITCH);
-		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__ENTRIES);
-		createEReference(runnableModeSwitchEClass, RUNNABLE_MODE_SWITCH__DEFAULT_ENTRY);
 
 		labelAccessEClass = createEClass(LABEL_ACCESS);
 		createEReference(labelAccessEClass, LABEL_ACCESS__DATA);
@@ -16884,12 +16721,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		getResultServerCallEClass = createEClass(GET_RESULT_SERVER_CALL);
 		createEAttribute(getResultServerCallEClass, GET_RESULT_SERVER_CALL__BLOCKING_TYPE);
 
-		runnableProbabilitySwitchEClass = createEClass(RUNNABLE_PROBABILITY_SWITCH);
-		createEReference(runnableProbabilitySwitchEClass, RUNNABLE_PROBABILITY_SWITCH__ENTRIES);
-
 		groupEClass = createEClass(GROUP);
 		createEAttribute(groupEClass, GROUP__ORDERED);
-		createEReference(groupEClass, GROUP__ITEMS);
 
 		callArgumentEClass = createEClass(CALL_ARGUMENT);
 		createEReference(callArgumentEClass, CALL_ARGUMENT__CONTAINING_CALL);
@@ -17085,9 +16918,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter modeSwitchEntryEClass_T = addETypeParameter(modeSwitchEntryEClass, "T");
-		ETypeParameter modeSwitchDefaultEClass_T = addETypeParameter(modeSwitchDefaultEClass, "T");
-		ETypeParameter probabilitySwitchEntryEClass_T = addETypeParameter(probabilitySwitchEntryEClass, "T");
 
 		// Set bounds for type parameters
 
@@ -17406,28 +17236,28 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		processChainEClass.getESuperTypes().add(this.getReferableBaseObject());
 		processEClass.getESuperTypes().add(this.getAbstractProcess());
 		callGraphEClass.getESuperTypes().add(this.getBaseObject());
-		graphEntryBaseEClass.getESuperTypes().add(this.getBaseObject());
-		callSequenceEClass.getESuperTypes().add(this.getGraphEntryBase());
-		callSequenceEClass.getESuperTypes().add(this.getINamed());
-		modeSwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
+		callGraphEClass.getESuperTypes().add(this.getICallGraphItemContainer());
+		callGraphItemEClass.getESuperTypes().add(this.getBaseObject());
+		modeSwitchEClass.getESuperTypes().add(this.getCallGraphItem());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
 		modeSwitchEntryEClass.getESuperTypes().add(this.getINamed());
+		modeSwitchEntryEClass.getESuperTypes().add(this.getICallGraphItemContainer());
 		modeSwitchDefaultEClass.getESuperTypes().add(this.getBaseObject());
-		probabilitySwitchEClass.getESuperTypes().add(this.getGraphEntryBase());
+		modeSwitchDefaultEClass.getESuperTypes().add(this.getICallGraphItemContainer());
+		probabilitySwitchEClass.getESuperTypes().add(this.getCallGraphItem());
 		probabilitySwitchEntryEClass.getESuperTypes().add(this.getBaseObject());
+		probabilitySwitchEntryEClass.getESuperTypes().add(this.getICallGraphItemContainer());
 		counterEClass.getESuperTypes().add(this.getBaseObject());
-		callSequenceItemEClass.getESuperTypes().add(this.getBaseObject());
-		waitEventEClass.getESuperTypes().add(this.getCallSequenceItem());
-		setEventEClass.getESuperTypes().add(this.getCallSequenceItem());
-		clearEventEClass.getESuperTypes().add(this.getCallSequenceItem());
+		waitEventEClass.getESuperTypes().add(this.getCallGraphItem());
+		setEventEClass.getESuperTypes().add(this.getCallGraphItem());
+		clearEventEClass.getESuperTypes().add(this.getCallGraphItem());
 		eventMaskEClass.getESuperTypes().add(this.getBaseObject());
 		osEventEClass.getESuperTypes().add(this.getReferableBaseObject());
 		osEventEClass.getESuperTypes().add(this.getITaggable());
-		interProcessTriggerEClass.getESuperTypes().add(this.getCallSequenceItem());
-		enforcedMigrationEClass.getESuperTypes().add(this.getCallSequenceItem());
-		taskRunnableCallEClass.getESuperTypes().add(this.getCallSequenceItem());
-		schedulePointEClass.getESuperTypes().add(this.getCallSequenceItem());
-		terminateProcessEClass.getESuperTypes().add(this.getCallSequenceItem());
+		interProcessTriggerEClass.getESuperTypes().add(this.getCallGraphItem());
+		enforcedMigrationEClass.getESuperTypes().add(this.getCallGraphItem());
+		schedulePointEClass.getESuperTypes().add(this.getCallGraphItem());
+		terminateProcessEClass.getESuperTypes().add(this.getCallGraphItem());
 		taskEClass.getESuperTypes().add(this.getProcess());
 		isrEClass.getESuperTypes().add(this.getProcess());
 		processPrototypeEClass.getESuperTypes().add(this.getAbstractProcess());
@@ -17445,32 +17275,30 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		modeLabelEClass.getESuperTypes().add(this.getAbstractMemoryElement());
 		modeLabelEClass.getESuperTypes().add(this.getIDisplayName());
 		sectionEClass.getESuperTypes().add(this.getReferableBaseObject());
-		runnableItemEClass.getESuperTypes().add(this.getBaseObject());
-		computationItemEClass.getESuperTypes().add(this.getRunnableItem());
-		executionNeedEClass.getESuperTypes().add(this.getRunnableItem());
+		computationItemEClass.getESuperTypes().add(this.getCallGraphItem());
+		executionNeedEClass.getESuperTypes().add(this.getCallGraphItem());
 		ticksEClass.getESuperTypes().add(this.getComputationItem());
-		modeLabelAccessEClass.getESuperTypes().add(this.getRunnableItem());
-		runnableModeSwitchEClass.getESuperTypes().add(this.getRunnableItem());
+		modeLabelAccessEClass.getESuperTypes().add(this.getCallGraphItem());
 		labelAccessEClass.getESuperTypes().add(this.getComputationItem());
 		labelAccessEClass.getESuperTypes().add(this.getITaggable());
-		channelAccessEClass.getESuperTypes().add(this.getRunnableItem());
+		channelAccessEClass.getESuperTypes().add(this.getCallGraphItem());
 		channelSendEClass.getESuperTypes().add(this.getChannelAccess());
 		channelReceiveEClass.getESuperTypes().add(this.getChannelAccess());
-		semaphoreAccessEClass.getESuperTypes().add(this.getRunnableItem());
-		senderReceiverCommunicationEClass.getESuperTypes().add(this.getRunnableItem());
+		semaphoreAccessEClass.getESuperTypes().add(this.getCallGraphItem());
+		senderReceiverCommunicationEClass.getESuperTypes().add(this.getCallGraphItem());
 		senderReceiverReadEClass.getESuperTypes().add(this.getSenderReceiverCommunication());
 		senderReceiverWriteEClass.getESuperTypes().add(this.getSenderReceiverCommunication());
-		serverCallEClass.getESuperTypes().add(this.getRunnableItem());
+		serverCallEClass.getESuperTypes().add(this.getCallGraphItem());
 		synchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
 		asynchronousServerCallEClass.getESuperTypes().add(this.getServerCall());
 		getResultServerCallEClass.getESuperTypes().add(this.getServerCall());
-		runnableProbabilitySwitchEClass.getESuperTypes().add(this.getRunnableItem());
-		groupEClass.getESuperTypes().add(this.getRunnableItem());
+		groupEClass.getESuperTypes().add(this.getCallGraphItem());
 		groupEClass.getESuperTypes().add(this.getINamed());
+		groupEClass.getESuperTypes().add(this.getICallGraphItemContainer());
 		callArgumentEClass.getESuperTypes().add(this.getReferableObject());
-		runnableCallEClass.getESuperTypes().add(this.getRunnableItem());
+		runnableCallEClass.getESuperTypes().add(this.getCallGraphItem());
 		runnableCallEClass.getESuperTypes().add(this.getITaggable());
-		customEventTriggerEClass.getESuperTypes().add(this.getRunnableItem());
+		customEventTriggerEClass.getESuperTypes().add(this.getCallGraphItem());
 		compoundTypeEClass.getESuperTypes().add(this.getBaseObject());
 		compoundTypeEClass.getESuperTypes().add(this.getDataType());
 		structEClass.getESuperTypes().add(this.getCompoundType());
@@ -18768,63 +18596,48 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getProcess_CallGraph(), this.getCallGraph(), null, "callGraph", null, 0, 1, org.eclipse.app4mc.amalthea.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcess_Stimuli(), this.getStimulus(), null, "stimuli", null, 0, -1, org.eclipse.app4mc.amalthea.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(iCallGraphItemContainerEClass, ICallGraphItemContainer.class, "ICallGraphItemContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getICallGraphItemContainer_Items(), this.getCallGraphItem(), null, "items", null, 0, -1, ICallGraphItemContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(callGraphEClass, CallGraph.class, "CallGraph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallGraph_GraphEntries(), this.getGraphEntryBase(), null, "graphEntries", null, 0, -1, CallGraph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(graphEntryBaseEClass, GraphEntryBase.class, "GraphEntryBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(callSequenceEClass, CallSequence.class, "CallSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallSequence_Calls(), this.getCallSequenceItem(), null, "calls", null, 0, -1, CallSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(callGraphItemEClass, CallGraphItem.class, "CallGraphItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallGraphItem_ContainingProcess(), this.getProcess(), null, "containingProcess", null, 0, 1, CallGraphItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getCallGraphItem_ContainingRunnable(), this.getRunnable(), null, "containingRunnable", null, 0, 1, CallGraphItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEClass, ModeSwitch.class, "ModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getModeSwitchEntry());
-		g2 = createEGenericType(this.getGraphEntryBase());
-		g1.getETypeArguments().add(g2);
-		initEReference(getModeSwitch_Entries(), g1, null, "entries", null, 0, -1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getModeSwitchDefault());
-		g2 = createEGenericType(this.getGraphEntryBase());
-		g1.getETypeArguments().add(g2);
-		initEReference(getModeSwitch_DefaultEntry(), g1, null, "defaultEntry", null, 0, 1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeSwitch_Entries(), this.getModeSwitchEntry(), null, "entries", null, 0, -1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModeSwitch_DefaultEntry(), this.getModeSwitchDefault(), null, "defaultEntry", null, 0, 1, ModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchEntryEClass, ModeSwitchEntry.class, "ModeSwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModeSwitchEntry_Condition(), this.getModeConditionDisjunction(), null, "condition", null, 1, 1, ModeSwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(modeSwitchEntryEClass_T);
-		initEReference(getModeSwitchEntry_Items(), g1, null, "items", null, 0, -1, ModeSwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modeSwitchDefaultEClass, ModeSwitchDefault.class, "ModeSwitchDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(modeSwitchDefaultEClass_T);
-		initEReference(getModeSwitchDefault_Items(), g1, null, "items", null, 0, -1, ModeSwitchDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(probabilitySwitchEClass, ProbabilitySwitch.class, "ProbabilitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getProbabilitySwitchEntry());
-		g2 = createEGenericType(this.getGraphEntryBase());
-		g1.getETypeArguments().add(g2);
-		initEReference(getProbabilitySwitch_Entries(), g1, null, "entries", null, 0, -1, ProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProbabilitySwitch_Entries(), this.getProbabilitySwitchEntry(), null, "entries", null, 0, -1, ProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(probabilitySwitchEntryEClass, ProbabilitySwitchEntry.class, "ProbabilitySwitchEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProbabilitySwitchEntry_Probability(), theEcorePackage.getEDouble(), "probability", "0.0", 0, 1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(probabilitySwitchEntryEClass_T);
-		initEReference(getProbabilitySwitchEntry_Items(), g1, null, "items", null, 0, -1, ProbabilitySwitchEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCounter_Prescaler(), this.getPositiveLong(), "prescaler", "1", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCounter_Offset(), theEcorePackage.getELong(), "offset", "0", 0, 1, Counter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(callSequenceItemEClass, CallSequenceItem.class, "CallSequenceItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallSequenceItem_ContainingProcess(), this.getProcess(), null, "containingProcess", null, 0, 1, CallSequenceItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getCallSequenceItem_Counter(), this.getCounter(), null, "counter", null, 0, 1, CallSequenceItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(waitEventEClass, WaitEvent.class, "WaitEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWaitEvent_EventMask(), this.getEventMask(), null, "eventMask", null, 0, 1, WaitEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWaitEvent_MaskType(), this.getWaitEventType(), "maskType", null, 0, 1, WaitEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWaitEvent_WaitingBehaviour(), this.getWaitingBehaviour(), "waitingBehaviour", null, 0, 1, WaitEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWaitEvent_Counter(), this.getCounter(), null, "counter", null, 0, 1, WaitEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setEventEClass, SetEvent.class, "SetEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSetEvent_EventMask(), this.getEventMask(), null, "eventMask", null, 0, 1, SetEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSetEvent_Process(), this.getProcess(), null, "process", null, 0, 1, SetEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetEvent_Counter(), this.getCounter(), null, "counter", null, 0, 1, SetEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clearEventEClass, ClearEvent.class, "ClearEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClearEvent_EventMask(), this.getEventMask(), null, "eventMask", null, 0, 1, ClearEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClearEvent_Counter(), this.getCounter(), null, "counter", null, 0, 1, ClearEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventMaskEClass, EventMask.class, "EventMask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventMask_Events(), this.getOsEvent(), null, "events", null, 0, -1, EventMask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18835,17 +18648,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(interProcessTriggerEClass, InterProcessTrigger.class, "InterProcessTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterProcessTrigger_Stimulus(), this.getInterProcessStimulus(), null, "stimulus", null, 1, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterProcessTrigger_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enforcedMigrationEClass, EnforcedMigration.class, "EnforcedMigration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnforcedMigration_ResourceOwner(), this.getScheduler(), null, "resourceOwner", null, 0, 1, EnforcedMigration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(taskRunnableCallEClass, TaskRunnableCall.class, "TaskRunnableCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTaskRunnableCall_Runnable(), this.getRunnable(), null, "runnable", null, 1, 1, TaskRunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTaskRunnableCall_Statistic(), this.getRunEntityCallStatistic(), null, "statistic", null, 0, 1, TaskRunnableCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(schedulePointEClass, SchedulePoint.class, "SchedulePoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(terminateProcessEClass, TerminateProcess.class, "TerminateProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTerminateProcess_Counter(), this.getCounter(), null, "counter", null, 0, 1, TerminateProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_Preemption(), this.getPreemption(), "preemption", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18862,7 +18673,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getProcessPrototype_OrderPrecedenceSpec(), this.getOrderPrecedenceSpec(), null, "orderPrecedenceSpec", null, 0, -1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessPrototype_ChainedPrototypes(), this.getChainedProcessPrototype(), null, "chainedPrototypes", null, 0, -1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessPrototype_Activation(), this.getActivation(), null, "activation", null, 0, 1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessPrototype_RunnableCalls(), this.getTaskRunnableCall(), null, "runnableCalls", null, 0, -1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessPrototype_RunnableCalls(), this.getRunnableCall(), null, "runnableCalls", null, 0, -1, ProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(chainedProcessPrototypeEClass, ChainedProcessPrototype.class, "ChainedProcessPrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChainedProcessPrototype_Prototype(), this.getProcessPrototype(), null, "prototype", null, 1, 1, ChainedProcessPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18899,15 +18710,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(runnableEClass, org.eclipse.app4mc.amalthea.model.Runnable.class, "Runnable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunnable_ExecutionCondition(), this.getModeConditionDisjunction(), null, "executionCondition", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_Parameters(), this.getRunnableParameter(), this.getRunnableParameter_ContainingRunnable(), "parameters", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnable_RunnableItems(), this.getRunnableItem(), null, "runnableItems", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunnable_CallGraph(), this.getCallGraph(), null, "callGraph", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_Activations(), this.getActivation(), null, "activations", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Callback(), theEcorePackage.getEBoolean(), "callback", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_Service(), theEcorePackage.getEBoolean(), "service", "false", 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRunnable_AsilLevel(), this.getASILType(), "asilLevel", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_Section(), this.getSection(), null, "section", null, 0, 1, org.eclipse.app4mc.amalthea.model.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_RunnableCalls(), this.getRunnableCall(), null, "runnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getRunnable_TaskRunnableCalls(), this.getTaskRunnableCall(), null, "taskRunnableCalls", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getRunnable_ReferringComponents(), this.getComponent(), null, "referringComponents", null, 0, -1, org.eclipse.app4mc.amalthea.model.Runnable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getRunnable__GetRunnableItems(), this.getCallGraphItem(), "getRunnableItems", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getRunnable__GetFirstActivation(), this.getActivation(), "getFirstActivation", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -18949,9 +18761,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getSection_Labels(), this.getLabel(), null, "labels", null, 0, -1, Section.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getSection_Runnables(), this.getRunnable(), null, "runnables", null, 0, -1, Section.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(runnableItemEClass, RunnableItem.class, "RunnableItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunnableItem_ContainingRunnable(), this.getRunnable(), null, "containingRunnable", null, 0, 1, RunnableItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
 		initEClass(computationItemEClass, ComputationItem.class, "ComputationItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(executionNeedEClass, ExecutionNeed.class, "ExecutionNeed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -18983,16 +18792,6 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		g2 = createEGenericType(theEcorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(runnableModeSwitchEClass, RunnableModeSwitch.class, "RunnableModeSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getModeSwitchEntry());
-		g2 = createEGenericType(this.getRunnableItem());
-		g1.getETypeArguments().add(g2);
-		initEReference(getRunnableModeSwitch_Entries(), g1, null, "entries", null, 0, -1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getModeSwitchDefault());
-		g2 = createEGenericType(this.getRunnableItem());
-		g1.getETypeArguments().add(g2);
-		initEReference(getRunnableModeSwitch_DefaultEntry(), g1, null, "defaultEntry", null, 0, 1, RunnableModeSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelAccessEClass, LabelAccess.class, "LabelAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLabelAccess_Data(), this.getLabel(), null, "data", null, 1, 1, LabelAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19044,15 +18843,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(getResultServerCallEClass, GetResultServerCall.class, "GetResultServerCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGetResultServerCall_BlockingType(), this.getBlockingType(), "blockingType", null, 0, 1, GetResultServerCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(runnableProbabilitySwitchEClass, RunnableProbabilitySwitch.class, "RunnableProbabilitySwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getProbabilitySwitchEntry());
-		g2 = createEGenericType(this.getRunnableItem());
-		g1.getETypeArguments().add(g2);
-		initEReference(getRunnableProbabilitySwitch_Entries(), g1, null, "entries", null, 0, -1, RunnableProbabilitySwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGroup_Ordered(), theEcorePackage.getEBoolean(), "ordered", "true", 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_Items(), this.getRunnableItem(), null, "items", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callArgumentEClass, CallArgument.class, "CallArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCallArgument_ContainingCall(), this.getRunnableCall(), this.getRunnableCall_Arguments(), "containingCall", null, 0, 1, CallArgument.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -108,26 +108,28 @@ class RuntimeModels {
 			softwareModel [
 				runnable [
 					name = "r1"
-					ticks [defaultConstant(200)]
-					execNeed [
-						instructions(500)
+					callGraph [
+						ticks [defaultConstant(200)]
+						execNeed [instructions(500)]
+						execNeed [instructions(createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]
+						execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
 					]
-					execNeed [instructions(createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]
-					execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
 				]
 				runnable [
 					name = "r2"
-					execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
+					callGraph [
+						execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]					
+					]
 				]
 				task [
 					name = "t1"
-					callSequence [
+					callGraph [
 						runnableCall [runnable = _find(Runnable, "r1")]
 					]
 				]
 				task [
 					name = "t2"
-					callSequence [
+					callGraph [
 						runnableCall [runnable = _find(Runnable, "r2")]
 					]
 				]

@@ -14,7 +14,7 @@
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
@@ -23,8 +23,8 @@ import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
@@ -43,10 +43,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.RunnableModeSwitch;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
-import org.eclipse.app4mc.amalthea.model.RunnableProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulePoint;
 import org.eclipse.app4mc.amalthea.model.Section;
@@ -54,7 +51,6 @@ import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TerminateProcess;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.VariableRateActivation;
@@ -174,159 +170,103 @@ public class SoftwareBuilder {
 		initializer.apply(obj);
 	}
 
-	// ********** Task - Container - Call Sequence **********
-
-	public void callSequence(final Task container, final Procedure1<CallSequence> initializer) {
-		final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
-		if (container.getCallGraph() == null) {
-			container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
-		}
-		container.getCallGraph().getGraphEntries().add(obj);
+	// ********** Call Graph **********
+	
+	public void callGraph(final Task container, final Procedure1<CallGraph> initializer) {
+		final CallGraph obj = AmaltheaFactory.eINSTANCE.createCallGraph();
+		container.setCallGraph(obj);
+		initializer.apply(obj);
+	}
+	
+	public void callGraph(final Runnable container, final Procedure1<CallGraph> initializer) {
+		final CallGraph obj = AmaltheaFactory.eINSTANCE.createCallGraph();
+		container.setCallGraph(obj);
 		initializer.apply(obj);
 	}
 
-	public void callSequence(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<CallSequence> initializer) {
-		final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
+	// ********** ICallGraphItemContainer - Items - ModeSwitch **********
 
-	public void callSequence(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<CallSequence> initializer) {
-		final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void callSequence(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<CallSequence> initializer) {
-		final CallSequence obj = AmaltheaFactory.eINSTANCE.createCallSequence();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Task - Container - ModeSwitch **********
-
-	public void modeSwitch(final Task container, final Procedure1<ModeSwitch> initializer) {
-		final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		if (container.getCallGraph() == null) {
-			container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
-		}
-		container.getCallGraph().getGraphEntries().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void modeSwitch(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<ModeSwitch> initializer) {
+	public void modeSwitch(final ICallGraphItemContainer container, final Procedure1<ModeSwitch> initializer) {
 		final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void modeSwitch(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<ModeSwitch> initializer) {
-		final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void modeSwitch(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<ModeSwitch> initializer) {
-		final ModeSwitch obj = AmaltheaFactory.eINSTANCE.createModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void entry(final ModeSwitch container, final Procedure1<ModeSwitchEntry<GraphEntryBase>> initializer) {
-		final ModeSwitchEntry<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createModeSwitchEntry();
+	public void entry(final ModeSwitch container, final Procedure1<ModeSwitchEntry> initializer) {
+		final ModeSwitchEntry obj = AmaltheaFactory.eINSTANCE.createModeSwitchEntry();
 		container.getEntries().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void defaultEntry(final ModeSwitch container, final Procedure1<ModeSwitchDefault<GraphEntryBase>> initializer) {
-		final ModeSwitchDefault<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createModeSwitchDefault();
+	public void defaultEntry(final ModeSwitch container, final Procedure1<ModeSwitchDefault> initializer) {
+		final ModeSwitchDefault obj = AmaltheaFactory.eINSTANCE.createModeSwitchDefault();
 		container.setDefaultEntry(obj);
 		initializer.apply(obj);
 	}
 
-	// ********** Task - Container - ProbabilitySwitch **********
+	// ********** ICallGraphItemContainer - Items - ProbabilitySwitch **********
 
-	public void probabilitySwitch(final Task container, final Procedure1<ProbabilitySwitch> initializer) {
-		final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
-		if (container.getCallGraph() == null) {
-			container.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
-		}
-		container.getCallGraph().getGraphEntries().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void probabilitySwitch(final ModeSwitchDefault<GraphEntryBase> container, final Procedure1<ProbabilitySwitch> initializer) {
+	public void probabilitySwitch(final ICallGraphItemContainer container, final Procedure1<ProbabilitySwitch> initializer) {
 		final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void probabilitySwitch(final ModeSwitchEntry<GraphEntryBase> container, final Procedure1<ProbabilitySwitch> initializer) {
-		final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void probabilitySwitch(final ProbabilitySwitchEntry<GraphEntryBase> container, final Procedure1<ProbabilitySwitch> initializer) {
-		final ProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-
-	}
-
-	public void entry(final ProbabilitySwitch container, final Procedure1<ProbabilitySwitchEntry<GraphEntryBase>> initializer) {
-		final ProbabilitySwitchEntry<GraphEntryBase> obj = AmaltheaFactory.eINSTANCE.<GraphEntryBase>createProbabilitySwitchEntry();
+	public void entry(final ProbabilitySwitch container, final Procedure1<ProbabilitySwitchEntry> initializer) {
+		final ProbabilitySwitchEntry obj = AmaltheaFactory.eINSTANCE.createProbabilitySwitchEntry();
 		container.getEntries().add(obj);
 		initializer.apply(obj);
 	}
 
-	// ********** Call Sequence Items **********
+	// ********** ICallGraphItemContainer - Items - SchedulePoint **********
 
-	public void runnableCall(final CallSequence container, final Procedure1<TaskRunnableCall> initializer) {
-		final TaskRunnableCall obj = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
-		container.getCalls().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void schedulePoint(final CallSequence container, final Procedure1<SchedulePoint> initializer) {
+	public void schedulePoint(final ICallGraphItemContainer container, final Procedure1<SchedulePoint> initializer) {
 		final SchedulePoint obj = AmaltheaFactory.eINSTANCE.createSchedulePoint();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void interProcessTrigger(final CallSequence container, final Procedure1<InterProcessTrigger> initializer) {
+	// ********** ICallGraphItemContainer - Items - InterProcessTrigger **********
+
+	public void interProcessTrigger(final ICallGraphItemContainer container, final Procedure1<InterProcessTrigger> initializer) {
 		final InterProcessTrigger obj = AmaltheaFactory.eINSTANCE.createInterProcessTrigger();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void enforcedMigration(final CallSequence container, final Procedure1<EnforcedMigration> initializer) {
+	// ********** ICallGraphItemContainer - Items - EnforcedMigration **********
+
+	public void enforcedMigration(final ICallGraphItemContainer container, final Procedure1<EnforcedMigration> initializer) {
 		final EnforcedMigration obj = AmaltheaFactory.eINSTANCE.createEnforcedMigration();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void terminateProcess(final CallSequence container, final Procedure1<TerminateProcess> initializer) {
+	// ********** ICallGraphItemContainer - Items - TerminateProcess **********
+
+	public void terminateProcess(final ICallGraphItemContainer container, final Procedure1<TerminateProcess> initializer) {
 		final TerminateProcess obj = AmaltheaFactory.eINSTANCE.createTerminateProcess();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void clearEvent(final CallSequence container, final Procedure1<ClearEvent> initializer) {
+	// ********** ICallGraphItemContainer - Items - OS events **********
+
+	public void clearEvent(final ICallGraphItemContainer container, final Procedure1<ClearEvent> initializer) {
 		final ClearEvent obj = AmaltheaFactory.eINSTANCE.createClearEvent();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void waitEvent(final CallSequence container, final Procedure1<WaitEvent> initializer) {
+	public void waitEvent(final ICallGraphItemContainer container, final Procedure1<WaitEvent> initializer) {
 		final WaitEvent obj = AmaltheaFactory.eINSTANCE.createWaitEvent();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void setEvent(final CallSequence container, final Procedure1<SetEvent> initializer) {
+	public void setEvent(final ICallGraphItemContainer container, final Procedure1<SetEvent> initializer) {
 		final SetEvent obj = AmaltheaFactory.eINSTANCE.createSetEvent();
-		container.getCalls().add(obj);
+		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
@@ -338,213 +278,33 @@ public class SoftwareBuilder {
 		initializer.apply(obj);
 	}
 
-	// ********** Runnable Items - Container - Group **********
+	// ********** ICallGraphItemContainer - Items - Group **********
 
-	public void group(final Runnable container, final Procedure1<Group> initializer) {
-		final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void group(final Group container, final Procedure1<Group> initializer) {
+	public void group(final ICallGraphItemContainer container, final Procedure1<Group> initializer) {
 		final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void group(final ModeSwitchDefault<RunnableItem> container, final Procedure1<Group> initializer) {
-		final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
+	// ********** ICallGraphItemContainer - Items - LabelAccess **********
 
-	public void group(final ModeSwitchEntry<RunnableItem> container, final Procedure1<Group> initializer) {
-		final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void group(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<Group> initializer) {
-		final Group obj = AmaltheaFactory.eINSTANCE.createGroup();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Runnable Items - Container - RunnableModeSwitch **********
-
-	public void runModeSwitch(final Runnable container, final Procedure1<RunnableModeSwitch> initializer) {
-		final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runModeSwitch(final Group container, final Procedure1<RunnableModeSwitch> initializer) {
-		final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runModeSwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<RunnableModeSwitch> initializer) {
-		final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-
-	}
-
-	public void runModeSwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<RunnableModeSwitch> initializer) {
-		final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-
-	}
-
-	public void runModeSwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<RunnableModeSwitch> initializer) {
-		final RunnableModeSwitch obj = AmaltheaFactory.eINSTANCE.createRunnableModeSwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void entry(final RunnableModeSwitch container, final Procedure1<ModeSwitchEntry<RunnableItem>> initializer) {
-		final ModeSwitchEntry<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchEntry();
-		container.getEntries().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void defaultEntry(final RunnableModeSwitch container, final Procedure1<ModeSwitchDefault<RunnableItem>> initializer) {
-		final ModeSwitchDefault<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createModeSwitchDefault();
-		container.setDefaultEntry(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Runnable Items - Container - RunnableProbabilitySwitch **********
-	
-	public void runProbabilitySwitch(final Runnable container, final Procedure1<RunnableProbabilitySwitch> initializer) {
-		final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runProbabilitySwitch(final Group container, final Procedure1<RunnableProbabilitySwitch> initializer) {
-		final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runProbabilitySwitch(final ModeSwitchDefault<RunnableItem> container, final Procedure1<RunnableProbabilitySwitch> initializer) {
-		final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runProbabilitySwitch(final ModeSwitchEntry<RunnableItem> container, final Procedure1<RunnableProbabilitySwitch> initializer) {
-		final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runProbabilitySwitch(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<RunnableProbabilitySwitch> initializer) {
-		final RunnableProbabilitySwitch obj = AmaltheaFactory.eINSTANCE.createRunnableProbabilitySwitch();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void entry(final RunnableProbabilitySwitch container, final Procedure1<ProbabilitySwitchEntry<RunnableItem>> initializer) {
-		final ProbabilitySwitchEntry<RunnableItem> obj = AmaltheaFactory.eINSTANCE.<RunnableItem>createProbabilitySwitchEntry();
-		container.getEntries().add(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Runnable Items - Label access **********
-
-	public void labelAccess(final Runnable container, final Procedure1<LabelAccess> initializer) {
-		final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void labelAccess(final Group container, final Procedure1<LabelAccess> initializer) {
+	public void labelAccess(final ICallGraphItemContainer container, final Procedure1<LabelAccess> initializer) {
 		final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void labelAccess(final ModeSwitchDefault<RunnableItem> container, final Procedure1<LabelAccess> initializer) {
-		final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
+	// ********** ICallGraphItemContainer - Items - RunnableCall **********
 
-	public void labelAccess(final ModeSwitchEntry<RunnableItem> container, final Procedure1<LabelAccess> initializer) {
-		final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void labelAccess(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<LabelAccess> initializer) {
-		final LabelAccess obj = AmaltheaFactory.eINSTANCE.createLabelAccess();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Runnable Items - Runnable call **********
-
-	public void runnableCall(final Runnable container, final Procedure1<RunnableCall> initializer) {
-		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runnableCall(final Group container, final Procedure1<RunnableCall> initializer) {
+	public void runnableCall(final ICallGraphItemContainer container, final Procedure1<RunnableCall> initializer) {
 		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
 
-	public void runnableCall(final ModeSwitchDefault<RunnableItem> container, final Procedure1<RunnableCall> initializer) {
-		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
+	// ********** ICallGraphItemContainer - Items - ExecutionNeed **********
 
-	public void runnableCall(final ModeSwitchEntry<RunnableItem> container, final Procedure1<RunnableCall> initializer) {
-		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void runnableCall(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<RunnableCall> initializer) {
-		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	// ********** Runnable Items - Execution need **********
-
-	public void execNeed(final Runnable container, final Procedure1<ExecutionNeed> initializer) {
-		final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void execNeed(final Group container, final Procedure1<ExecutionNeed> initializer) {
-		final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void execNeed(final ModeSwitchDefault<RunnableItem> container, final Procedure1<ExecutionNeed> initializer) {
-		final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void execNeed(final ModeSwitchEntry<RunnableItem> container, final Procedure1<ExecutionNeed> initializer) {
-		final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void execNeed(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<ExecutionNeed> initializer) {
+	public void execNeed(final ICallGraphItemContainer container, final Procedure1<ExecutionNeed> initializer) {
 		final ExecutionNeed obj = AmaltheaFactory.eINSTANCE.createExecutionNeed();
 		container.getItems().add(obj);
 		initializer.apply(obj);
@@ -553,34 +313,10 @@ public class SoftwareBuilder {
 	public void need(final ExecutionNeed container, final String key, final IDiscreteValueDeviation need) {
 		container.getNeeds().put(key, need);
 	}
+	
+	// ********** ICallGraphItemContainer - Items - Ticks **********
 
-	// ********** Runnable Items - Ticks **********
-
-	public void ticks(final Runnable container, final Procedure1<Ticks> initializer) {
-		final Ticks obj = AmaltheaFactory.eINSTANCE.createTicks();
-		container.getRunnableItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void ticks(final Group container, final Procedure1<Ticks> initializer) {
-		final Ticks obj = AmaltheaFactory.eINSTANCE.createTicks();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void ticks(final ModeSwitchDefault<RunnableItem> container, final Procedure1<Ticks> initializer) {
-		final Ticks obj = AmaltheaFactory.eINSTANCE.createTicks();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void ticks(final ModeSwitchEntry<RunnableItem> container, final Procedure1<Ticks> initializer) {
-		final Ticks obj = AmaltheaFactory.eINSTANCE.createTicks();
-		container.getItems().add(obj);
-		initializer.apply(obj);
-	}
-
-	public void ticks(final ProbabilitySwitchEntry<RunnableItem> container, final Procedure1<Ticks> initializer) {
+	public void ticks(final ICallGraphItemContainer container, final Procedure1<Ticks> initializer) {
 		final Ticks obj = AmaltheaFactory.eINSTANCE.createTicks();
 		container.getItems().add(obj);
 		initializer.apply(obj);
@@ -600,6 +336,6 @@ public class SoftwareBuilder {
 		container.getExtended().put(puDef, ticks);
 	}
 	
-	// ********** Runnable Items - to be extended **********
+	// ********** ICallGraphItemContainer - Items - to be extended **********
 
 }

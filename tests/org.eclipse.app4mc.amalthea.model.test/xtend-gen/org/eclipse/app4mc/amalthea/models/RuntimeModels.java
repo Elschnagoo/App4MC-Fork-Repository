@@ -13,7 +13,7 @@
 package org.eclipse.app4mc.amalthea.models;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
@@ -28,12 +28,12 @@ import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.RunnableAllocation;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
 import org.eclipse.app4mc.amalthea.model.StructureType;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.TaskAllocation;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
@@ -148,52 +148,58 @@ public class RuntimeModels {
       final Procedure1<SWModel> _function_2 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r1");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            this.b3.defaultConstant(it_3, 200);
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              this.b3.defaultConstant(it_4, 200);
+            };
+            this.b3.ticks(it_3, _function_5);
+            final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_4) -> {
+              this.b4.instructions(it_4, 500);
+            };
+            this.b3.execNeed(it_3, _function_6);
+            final Procedure1<ExecutionNeed> _function_7 = (ExecutionNeed it_4) -> {
+              this.b4.instructions(it_4, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
+            };
+            this.b3.execNeed(it_3, _function_7);
+            final Procedure1<ExecutionNeed> _function_8 = (ExecutionNeed it_4) -> {
+              this.b3.need(it_4, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
+            };
+            this.b3.execNeed(it_3, _function_8);
           };
-          this.b3.ticks(it_2, _function_4);
-          final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b4.instructions(it_3, 500);
-          };
-          this.b3.execNeed(it_2, _function_5);
-          final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_3) -> {
-            this.b4.instructions(it_3, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
-          };
-          this.b3.execNeed(it_2, _function_6);
-          final Procedure1<ExecutionNeed> _function_7 = (ExecutionNeed it_3) -> {
-            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
-          };
-          this.b3.execNeed(it_2, _function_7);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r2");
-          final Procedure1<ExecutionNeed> _function_5 = (ExecutionNeed it_3) -> {
-            this.b3.need(it_3, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
+          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
+            final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_4) -> {
+              this.b3.need(it_4, "MAC_Operations", FactoryUtil.createDiscreteValueConstant(2000));
+            };
+            this.b3.execNeed(it_3, _function_6);
           };
-          this.b3.execNeed(it_2, _function_5);
+          this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
         final Procedure1<Task> _function_5 = (Task it_2) -> {
           it_2.setName("t1");
-          final Procedure1<CallSequence> _function_6 = (CallSequence it_3) -> {
-            final Procedure1<TaskRunnableCall> _function_7 = (TaskRunnableCall it_4) -> {
+          final Procedure1<CallGraph> _function_6 = (CallGraph it_3) -> {
+            final Procedure1<RunnableCall> _function_7 = (RunnableCall it_4) -> {
               it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r1"));
             };
             this.b3.runnableCall(it_3, _function_7);
           };
-          this.b3.callSequence(it_2, _function_6);
+          this.b3.callGraph(it_2, _function_6);
         };
         this.b3.task(it_1, _function_5);
         final Procedure1<Task> _function_6 = (Task it_2) -> {
           it_2.setName("t2");
-          final Procedure1<CallSequence> _function_7 = (CallSequence it_3) -> {
-            final Procedure1<TaskRunnableCall> _function_8 = (TaskRunnableCall it_4) -> {
+          final Procedure1<CallGraph> _function_7 = (CallGraph it_3) -> {
+            final Procedure1<RunnableCall> _function_8 = (RunnableCall it_4) -> {
               it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
             };
             this.b3.runnableCall(it_3, _function_8);
           };
-          this.b3.callSequence(it_2, _function_7);
+          this.b3.callGraph(it_2, _function_7);
         };
         this.b3.task(it_1, _function_6);
       };

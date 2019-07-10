@@ -17,9 +17,10 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
 import org.eclipse.app4mc.amalthea.model.INamed;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -43,13 +44,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#isOrdered <em>Ordered</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.GroupImpl#isOrdered <em>Ordered</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GroupImpl extends RunnableItemImpl implements Group {
+public class GroupImpl extends CallGraphItemImpl implements Group {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,6 +72,16 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CallGraphItem> items;
+
+	/**
 	 * The default value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,16 +100,6 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * @ordered
 	 */
 	protected boolean ordered = ORDERED_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RunnableItem> items;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +149,19 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 	 * @generated
 	 */
 	@Override
+	public EList<CallGraphItem> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<CallGraphItem>(CallGraphItem.class, this, AmaltheaPackage.GROUP__ITEMS);
+		}
+		return items;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isOrdered() {
 		return ordered;
 	}
@@ -163,19 +177,6 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 		ordered = newOrdered;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.GROUP__ORDERED, oldOrdered, ordered));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<RunnableItem> getItems() {
-		if (items == null) {
-			items = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.GROUP__ITEMS);
-		}
-		return items;
 	}
 
 	/**
@@ -202,10 +203,10 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 		switch (featureID) {
 			case AmaltheaPackage.GROUP__NAME:
 				return getName();
-			case AmaltheaPackage.GROUP__ORDERED:
-				return isOrdered();
 			case AmaltheaPackage.GROUP__ITEMS:
 				return getItems();
+			case AmaltheaPackage.GROUP__ORDERED:
+				return isOrdered();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,12 +223,12 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 			case AmaltheaPackage.GROUP__NAME:
 				setName((String)newValue);
 				return;
-			case AmaltheaPackage.GROUP__ORDERED:
-				setOrdered((Boolean)newValue);
-				return;
 			case AmaltheaPackage.GROUP__ITEMS:
 				getItems().clear();
-				getItems().addAll((Collection<? extends RunnableItem>)newValue);
+				getItems().addAll((Collection<? extends CallGraphItem>)newValue);
+				return;
+			case AmaltheaPackage.GROUP__ORDERED:
+				setOrdered((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,11 +245,11 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 			case AmaltheaPackage.GROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case AmaltheaPackage.GROUP__ORDERED:
-				setOrdered(ORDERED_EDEFAULT);
-				return;
 			case AmaltheaPackage.GROUP__ITEMS:
 				getItems().clear();
+				return;
+			case AmaltheaPackage.GROUP__ORDERED:
+				setOrdered(ORDERED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -264,10 +265,10 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 		switch (featureID) {
 			case AmaltheaPackage.GROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case AmaltheaPackage.GROUP__ORDERED:
-				return ordered != ORDERED_EDEFAULT;
 			case AmaltheaPackage.GROUP__ITEMS:
 				return items != null && !items.isEmpty();
+			case AmaltheaPackage.GROUP__ORDERED:
+				return ordered != ORDERED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -285,6 +286,12 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 				default: return -1;
 			}
 		}
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (derivedFeatureID) {
+				case AmaltheaPackage.GROUP__ITEMS: return AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -298,6 +305,12 @@ public class GroupImpl extends RunnableItemImpl implements Group {
 		if (baseClass == INamed.class) {
 			switch (baseFeatureID) {
 				case AmaltheaPackage.INAMED__NAME: return AmaltheaPackage.GROUP__NAME;
+				default: return -1;
+			}
+		}
+		if (baseClass == ICallGraphItemContainer.class) {
+			switch (baseFeatureID) {
+				case AmaltheaPackage.ICALL_GRAPH_ITEM_CONTAINER__ITEMS: return AmaltheaPackage.GROUP__ITEMS;
 				default: return -1;
 			}
 		}

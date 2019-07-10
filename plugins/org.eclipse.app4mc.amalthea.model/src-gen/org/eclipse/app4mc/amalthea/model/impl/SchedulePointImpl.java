@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class SchedulePointImpl extends CallSequenceItemImpl implements SchedulePoint {
+public class SchedulePointImpl extends CallGraphItemImpl implements SchedulePoint {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

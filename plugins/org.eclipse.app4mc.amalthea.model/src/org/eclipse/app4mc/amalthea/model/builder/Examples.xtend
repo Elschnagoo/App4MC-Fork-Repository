@@ -119,21 +119,25 @@ class Examples {
 				
 				runnable [
 					name = "r1"
-					ticks [ defaultConstant(500) ]
+					callGraph [
+						ticks [ defaultConstant(500) ]
+					]
 				]
 				runnable [
 					name = "r2"
-					ticks [ defaultConstant(2000) ]
+					callGraph [
+						ticks [ defaultConstant(2000) ]
+					]
 				]
 				task [
 					name = "t1"
-					callSequence [
+					callGraph [
 						runnableCall [runnable = _find(Runnable, "r1")]
 					]
 				]
 				task [
 					name = "t2"
-					callSequence [
+					callGraph [
 						runnableCall [runnable = _find(Runnable, "r2")]
 					]
 				]

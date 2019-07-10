@@ -15,11 +15,11 @@ import java.util.Set;
 import java.util.function.Function;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.LabelAccessStatistic;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.models.SoftwareModels;
@@ -52,20 +52,20 @@ public class SoftwareUtilsTest {
   
   @Test
   public void testCollectRunnableItems() {
-    final EList<RunnableItem> list1 = SoftwareUtil.collectRunnableItems(this.run1);
+    final EList<CallGraphItem> list1 = SoftwareUtil.collectCallGraphItems(this.run1.getCallGraph());
     Assert.assertEquals(
       "collectRunnableItems: 6 items expected", 6, list1.size());
-    final EList<Ticks> list2 = SoftwareUtil.<Ticks>collectRunnableItems(this.run1, null, Ticks.class);
+    final EList<Ticks> list2 = SoftwareUtil.<Ticks>collectCallGraphItems(this.run1.getCallGraph(), null, Ticks.class);
     Assert.assertEquals(
       "collectRunnableItems: 2 items (ticks) expected", 2, list2.size());
     final Function<LabelAccess, Boolean> _function = (LabelAccess i) -> {
       LabelAccessEnum _access = i.getAccess();
       return Boolean.valueOf((_access == LabelAccessEnum.READ));
     };
-    final EList<LabelAccess> list3 = SoftwareUtil.<LabelAccess>collectRunnableItems(this.run1, null, LabelAccess.class, _function);
+    final EList<LabelAccess> list3 = SoftwareUtil.<LabelAccess>collectCallGraphItems(this.run1.getCallGraph(), null, LabelAccess.class, _function);
     Assert.assertEquals(
       "collectRunnableItems: 2 items (label accesses) expected", 2, list3.size());
-    final EList<RunnableItem> list4 = SoftwareUtil.collectRunnableItems(this.run4);
+    final EList<CallGraphItem> list4 = SoftwareUtil.collectCallGraphItems(this.run4.getCallGraph());
     Assert.assertEquals(
       "collectRunnableItems: 1 item expected", 1, list4.size());
   }

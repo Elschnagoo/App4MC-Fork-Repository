@@ -17,32 +17,32 @@ package org.eclipse.app4mc.amalthea.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Call Sequence Item</b></em>'.
+ * A representation of the model object '<em><b>Call Graph Item</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Generalizes task calls
+ * An abstract item of a call graph
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getContainingProcess <em>Containing Process</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getCounter <em>Counter</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CallGraphItem#getContainingProcess <em>Containing Process</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.CallGraphItem#getContainingRunnable <em>Containing Runnable</em>}</li>
  * </ul>
  *
- * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem()
+ * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraphItem()
  * @model abstract="true"
  * @generated
  */
-public interface CallSequenceItem extends BaseObject {
+public interface CallGraphItem extends BaseObject {
 	/**
 	 * Returns the value of the '<em><b>Containing Process</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containing Process</em>' reference.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem_ContainingProcess()
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraphItem_ContainingProcess()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
@@ -50,25 +50,15 @@ public interface CallSequenceItem extends BaseObject {
 	org.eclipse.app4mc.amalthea.model.Process getContainingProcess();
 
 	/**
-	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Containing Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Counter</em>' containment reference.
-	 * @see #setCounter(Counter)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallSequenceItem_Counter()
-	 * @model containment="true"
+	 * @return the value of the '<em>Containing Runnable</em>' reference.
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraphItem_ContainingRunnable()
+	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel propertyCategory='Read only' propertyFilterFlags='org.eclipse.ui.views.properties.expert'"
 	 * @generated
 	 */
-	Counter getCounter();
+	org.eclipse.app4mc.amalthea.model.Runnable getContainingRunnable();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.CallSequenceItem#getCounter <em>Counter</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Counter</em>' containment reference.
-	 * @see #getCounter()
-	 * @generated
-	 */
-	void setCounter(Counter value);
-
-} // CallSequenceItem
+} // CallGraphItem

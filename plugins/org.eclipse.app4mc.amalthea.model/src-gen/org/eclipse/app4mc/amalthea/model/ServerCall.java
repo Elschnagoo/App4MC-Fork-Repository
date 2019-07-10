@@ -37,7 +37,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface ServerCall extends RunnableItem {
+public interface ServerCall extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Server Runnable</b></em>' reference.
 	 * <!-- begin-user-doc -->

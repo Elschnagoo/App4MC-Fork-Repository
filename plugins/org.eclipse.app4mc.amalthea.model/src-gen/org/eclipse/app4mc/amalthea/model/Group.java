@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,14 +29,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Group#isOrdered <em>Ordered</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Group#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGroup()
  * @model
  * @generated
  */
-public interface Group extends RunnableItem, INamed {
+public interface Group extends CallGraphItem, INamed, ICallGraphItemContainer {
 	/**
 	 * Returns the value of the '<em><b>Ordered</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
@@ -60,17 +58,5 @@ public interface Group extends RunnableItem, INamed {
 	 * @generated
 	 */
 	void setOrdered(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.RunnableItem}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getGroup_Items()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<RunnableItem> getItems();
 
 } // Group

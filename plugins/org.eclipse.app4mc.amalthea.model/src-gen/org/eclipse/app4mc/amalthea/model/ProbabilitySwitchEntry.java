@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +30,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getProbability <em>Probability</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry()
  * @model
  * @generated
  */
-public interface ProbabilitySwitchEntry<T> extends BaseObject {
+public interface ProbabilitySwitchEntry extends BaseObject, ICallGraphItemContainer {
 	/**
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
 	 * The default value is <code>"0.0"</code>.
@@ -61,16 +59,5 @@ public interface ProbabilitySwitchEntry<T> extends BaseObject {
 	 * @generated
 	 */
 	void setProbability(double value);
-
-	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getProbabilitySwitchEntry_Items()
-	 * @model kind="reference" containment="true"
-	 * @generated
-	 */
-	EList<T> getItems();
 
 } // ProbabilitySwitchEntry

@@ -17,7 +17,6 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
@@ -49,7 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
+public class ModeSwitchImpl extends CallGraphItemImpl implements ModeSwitch {
 	/**
 	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -58,7 +57,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ModeSwitchEntry<GraphEntryBase>> entries;
+	protected EList<ModeSwitchEntry> entries;
 
 	/**
 	 * The cached value of the '{@link #getDefaultEntry() <em>Default Entry</em>}' containment reference.
@@ -68,7 +67,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 * @ordered
 	 */
-	protected ModeSwitchDefault<GraphEntryBase> defaultEntry;
+	protected ModeSwitchDefault defaultEntry;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,9 +94,9 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 */
 	@Override
-	public EList<ModeSwitchEntry<GraphEntryBase>> getEntries() {
+	public EList<ModeSwitchEntry> getEntries() {
 		if (entries == null) {
-			entries = new EObjectContainmentEList<ModeSwitchEntry<GraphEntryBase>>(ModeSwitchEntry.class, this, AmaltheaPackage.MODE_SWITCH__ENTRIES);
+			entries = new EObjectContainmentEList<ModeSwitchEntry>(ModeSwitchEntry.class, this, AmaltheaPackage.MODE_SWITCH__ENTRIES);
 		}
 		return entries;
 	}
@@ -108,7 +107,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 */
 	@Override
-	public ModeSwitchDefault<GraphEntryBase> getDefaultEntry() {
+	public ModeSwitchDefault getDefaultEntry() {
 		return defaultEntry;
 	}
 
@@ -117,8 +116,8 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDefaultEntry(ModeSwitchDefault<GraphEntryBase> newDefaultEntry, NotificationChain msgs) {
-		ModeSwitchDefault<GraphEntryBase> oldDefaultEntry = defaultEntry;
+	public NotificationChain basicSetDefaultEntry(ModeSwitchDefault newDefaultEntry, NotificationChain msgs) {
+		ModeSwitchDefault oldDefaultEntry = defaultEntry;
 		defaultEntry = newDefaultEntry;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY, oldDefaultEntry, newDefaultEntry);
@@ -133,7 +132,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 	 * @generated
 	 */
 	@Override
-	public void setDefaultEntry(ModeSwitchDefault<GraphEntryBase> newDefaultEntry) {
+	public void setDefaultEntry(ModeSwitchDefault newDefaultEntry) {
 		if (newDefaultEntry != defaultEntry) {
 			NotificationChain msgs = null;
 			if (defaultEntry != null)
@@ -190,10 +189,10 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 		switch (featureID) {
 			case AmaltheaPackage.MODE_SWITCH__ENTRIES:
 				getEntries().clear();
-				getEntries().addAll((Collection<? extends ModeSwitchEntry<GraphEntryBase>>)newValue);
+				getEntries().addAll((Collection<? extends ModeSwitchEntry>)newValue);
 				return;
 			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
-				setDefaultEntry((ModeSwitchDefault<GraphEntryBase>)newValue);
+				setDefaultEntry((ModeSwitchDefault)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -211,7 +210,7 @@ public class ModeSwitchImpl extends GraphEntryBaseImpl implements ModeSwitch {
 				getEntries().clear();
 				return;
 			case AmaltheaPackage.MODE_SWITCH__DEFAULT_ENTRY:
-				setDefaultEntry((ModeSwitchDefault<GraphEntryBase>)null);
+				setDefaultEntry((ModeSwitchDefault)null);
 				return;
 		}
 		super.eUnset(featureID);

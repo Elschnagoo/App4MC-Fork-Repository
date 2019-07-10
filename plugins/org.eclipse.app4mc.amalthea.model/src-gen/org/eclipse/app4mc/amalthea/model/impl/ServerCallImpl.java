@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class ServerCallImpl extends RunnableItemImpl implements ServerCall {
+public abstract class ServerCallImpl extends CallGraphItemImpl implements ServerCall {
 	/**
 	 * The cached value of the '{@link #getServerRunnable() <em>Server Runnable</em>}' reference.
 	 * <!-- begin-user-doc -->

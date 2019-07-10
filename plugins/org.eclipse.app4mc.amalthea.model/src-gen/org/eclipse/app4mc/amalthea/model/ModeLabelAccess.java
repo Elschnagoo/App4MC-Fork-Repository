@@ -41,7 +41,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model
  * @generated
  */
-public interface ModeLabelAccess extends RunnableItem {
+public interface ModeLabelAccess extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->

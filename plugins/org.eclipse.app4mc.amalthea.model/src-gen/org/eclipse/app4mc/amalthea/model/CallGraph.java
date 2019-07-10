@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,31 +21,13 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes the different execution paths of a process
+ * Describes the different execution paths of a process or runnable
  * <!-- end-model-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.CallGraph#getGraphEntries <em>Graph Entries</em>}</li>
- * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraph()
  * @model
  * @generated
  */
-public interface CallGraph extends BaseObject {
-	/**
-	 * Returns the value of the '<em><b>Graph Entries</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.app4mc.amalthea.model.GraphEntryBase}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Graph Entries</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCallGraph_GraphEntries()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<GraphEntryBase> getGraphEntries();
-
+public interface CallGraph extends BaseObject, ICallGraphItemContainer {
 } // CallGraph

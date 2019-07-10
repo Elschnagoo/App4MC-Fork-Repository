@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class SemaphoreAccessImpl extends RunnableItemImpl implements SemaphoreAccess {
+public class SemaphoreAccessImpl extends CallGraphItemImpl implements SemaphoreAccess {
 	/**
 	 * The cached value of the '{@link #getSemaphore() <em>Semaphore</em>}' reference.
 	 * <!-- begin-user-doc -->

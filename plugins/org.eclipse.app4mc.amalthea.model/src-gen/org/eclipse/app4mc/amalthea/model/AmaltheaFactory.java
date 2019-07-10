@@ -1897,15 +1897,6 @@ public interface AmaltheaFactory extends EFactory {
 	CallGraph createCallGraph();
 
 	/**
-	 * Returns a new object of class '<em>Call Sequence</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Call Sequence</em>'.
-	 * @generated
-	 */
-	CallSequence createCallSequence();
-
-	/**
 	 * Returns a new object of class '<em>Mode Switch</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1921,7 +1912,7 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Mode Switch Entry</em>'.
 	 * @generated
 	 */
-	<T> ModeSwitchEntry<T> createModeSwitchEntry();
+	ModeSwitchEntry createModeSwitchEntry();
 
 	/**
 	 * Returns a new object of class '<em>Mode Switch Default</em>'.
@@ -1930,7 +1921,7 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Mode Switch Default</em>'.
 	 * @generated
 	 */
-	<T> ModeSwitchDefault<T> createModeSwitchDefault();
+	ModeSwitchDefault createModeSwitchDefault();
 
 	/**
 	 * Returns a new object of class '<em>Probability Switch</em>'.
@@ -1948,7 +1939,7 @@ public interface AmaltheaFactory extends EFactory {
 	 * @return a new object of class '<em>Probability Switch Entry</em>'.
 	 * @generated
 	 */
-	<T> ProbabilitySwitchEntry<T> createProbabilitySwitchEntry();
+	ProbabilitySwitchEntry createProbabilitySwitchEntry();
 
 	/**
 	 * Returns a new object of class '<em>Counter</em>'.
@@ -2021,15 +2012,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	EnforcedMigration createEnforcedMigration();
-
-	/**
-	 * Returns a new object of class '<em>Task Runnable Call</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task Runnable Call</em>'.
-	 * @generated
-	 */
-	TaskRunnableCall createTaskRunnableCall();
 
 	/**
 	 * Returns a new object of class '<em>Schedule Point</em>'.
@@ -2194,15 +2176,6 @@ public interface AmaltheaFactory extends EFactory {
 	ModeLabelAccess createModeLabelAccess();
 
 	/**
-	 * Returns a new object of class '<em>Runnable Mode Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Runnable Mode Switch</em>'.
-	 * @generated
-	 */
-	RunnableModeSwitch createRunnableModeSwitch();
-
-	/**
 	 * Returns a new object of class '<em>Label Access</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2282,15 +2255,6 @@ public interface AmaltheaFactory extends EFactory {
 	 * @generated
 	 */
 	GetResultServerCall createGetResultServerCall();
-
-	/**
-	 * Returns a new object of class '<em>Runnable Probability Switch</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Runnable Probability Switch</em>'.
-	 * @generated
-	 */
-	RunnableProbabilitySwitch createRunnableProbabilitySwitch();
 
 	/**
 	 * Returns a new object of class '<em>Group</em>'.

@@ -20,15 +20,16 @@ import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.ASILType;
 import org.eclipse.app4mc.amalthea.model.Activation;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableParameter;
 import org.eclipse.app4mc.amalthea.model.Section;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,7 +42,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -58,14 +58,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * <ul>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getExecutionCondition <em>Execution Condition</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableItems <em>Runnable Items</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getCallGraph <em>Call Graph</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getActivations <em>Activations</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isCallback <em>Callback</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#isService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getAsilLevel <em>Asil Level</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getSection <em>Section</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getRunnableCalls <em>Runnable Calls</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getTaskRunnableCalls <em>Task Runnable Calls</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.RunnableImpl#getReferringComponents <em>Referring Components</em>}</li>
  * </ul>
  *
@@ -93,14 +92,14 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	protected EList<RunnableParameter> parameters;
 
 	/**
-	 * The cached value of the '{@link #getRunnableItems() <em>Runnable Items</em>}' containment reference list.
+	 * The cached value of the '{@link #getCallGraph() <em>Call Graph</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRunnableItems()
+	 * @see #getCallGraph()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RunnableItem> runnableItems;
+	protected CallGraph callGraph;
 
 	/**
 	 * The cached value of the '{@link #getActivations() <em>Activations</em>}' reference list.
@@ -265,11 +264,43 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	@Override
-	public EList<RunnableItem> getRunnableItems() {
-		if (runnableItems == null) {
-			runnableItems = new EObjectContainmentEList<RunnableItem>(RunnableItem.class, this, AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS);
+	public CallGraph getCallGraph() {
+		return callGraph;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCallGraph(CallGraph newCallGraph, NotificationChain msgs) {
+		CallGraph oldCallGraph = callGraph;
+		callGraph = newCallGraph;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__CALL_GRAPH, oldCallGraph, newCallGraph);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return runnableItems;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCallGraph(CallGraph newCallGraph) {
+		if (newCallGraph != callGraph) {
+			NotificationChain msgs = null;
+			if (callGraph != null)
+				msgs = ((InternalEObject)callGraph).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__CALL_GRAPH, null, msgs);
+			if (newCallGraph != null)
+				msgs = ((InternalEObject)newCallGraph).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.RUNNABLE__CALL_GRAPH, null, msgs);
+			msgs = basicSetCallGraph(newCallGraph, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.RUNNABLE__CALL_GRAPH, newCallGraph, newCallGraph));
 	}
 
 	/**
@@ -412,10 +443,10 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	@Override
-	public EList<TaskRunnableCall> getTaskRunnableCalls() {
-		EReference _taskRunnableCall_Runnable = AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable();
-		return AmaltheaIndex.<TaskRunnableCall>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_TaskRunnableCalls(), 
-			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_taskRunnableCall_Runnable)));
+	public EList<Component> getReferringComponents() {
+		EReference _component_Runnables = AmaltheaPackage.eINSTANCE.getComponent_Runnables();
+		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), 
+			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Runnables)));
 	}
 
 	/**
@@ -424,10 +455,17 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	 * @generated
 	 */
 	@Override
-	public EList<Component> getReferringComponents() {
-		EReference _component_Runnables = AmaltheaPackage.eINSTANCE.getComponent_Runnables();
-		return AmaltheaIndex.<Component>getInverseReferences(this, AmaltheaPackage.eINSTANCE.getRunnable_ReferringComponents(), 
-			java.util.Collections.<EReference>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.<EReference>newHashSet(_component_Runnables)));
+	public EList<CallGraphItem> getRunnableItems() {
+		EList<CallGraphItem> _xblockexpression = null;
+		{
+			CallGraph _callGraph = this.getCallGraph();
+			boolean _tripleEquals = (_callGraph == null);
+			if (_tripleEquals) {
+				this.setCallGraph(AmaltheaFactory.eINSTANCE.createCallGraph());
+			}
+			_xblockexpression = this.getCallGraph().getItems();
+		}
+		return _xblockexpression;
 	}
 
 	/**
@@ -467,8 +505,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return basicSetExecutionCondition(null, msgs);
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-				return ((InternalEList<?>)getRunnableItems()).basicRemove(otherEnd, msgs);
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
+				return basicSetCallGraph(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -485,8 +523,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return getExecutionCondition();
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return getParameters();
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-				return getRunnableItems();
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
+				return getCallGraph();
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				return getActivations();
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
@@ -500,8 +538,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return basicGetSection();
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return getRunnableCalls();
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				return getTaskRunnableCalls();
 			case AmaltheaPackage.RUNNABLE__REFERRING_COMPONENTS:
 				return getReferringComponents();
 		}
@@ -524,9 +560,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends RunnableParameter>)newValue);
 				return;
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-				getRunnableItems().clear();
-				getRunnableItems().addAll((Collection<? extends RunnableItem>)newValue);
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
+				setCallGraph((CallGraph)newValue);
 				return;
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				getActivations().clear();
@@ -562,8 +597,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				getParameters().clear();
 				return;
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-				getRunnableItems().clear();
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
+				setCallGraph((CallGraph)null);
 				return;
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				getActivations().clear();
@@ -596,8 +631,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return executionCondition != null;
 			case AmaltheaPackage.RUNNABLE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
-			case AmaltheaPackage.RUNNABLE__RUNNABLE_ITEMS:
-				return runnableItems != null && !runnableItems.isEmpty();
+			case AmaltheaPackage.RUNNABLE__CALL_GRAPH:
+				return callGraph != null;
 			case AmaltheaPackage.RUNNABLE__ACTIVATIONS:
 				return activations != null && !activations.isEmpty();
 			case AmaltheaPackage.RUNNABLE__CALLBACK:
@@ -610,8 +645,6 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 				return section != null;
 			case AmaltheaPackage.RUNNABLE__RUNNABLE_CALLS:
 				return !getRunnableCalls().isEmpty();
-			case AmaltheaPackage.RUNNABLE__TASK_RUNNABLE_CALLS:
-				return !getTaskRunnableCalls().isEmpty();
 			case AmaltheaPackage.RUNNABLE__REFERRING_COMPONENTS:
 				return !getReferringComponents().isEmpty();
 		}
@@ -626,6 +659,8 @@ public class RunnableImpl extends AbstractMemoryElementImpl implements org.eclip
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case AmaltheaPackage.RUNNABLE___GET_RUNNABLE_ITEMS:
+				return getRunnableItems();
 			case AmaltheaPackage.RUNNABLE___GET_FIRST_ACTIVATION:
 				return getFirstActivation();
 		}

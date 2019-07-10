@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class ComputationItemImpl extends RunnableItemImpl implements ComputationItem {
+public abstract class ComputationItemImpl extends CallGraphItemImpl implements ComputationItem {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -32,13 +32,14 @@ package org.eclipse.app4mc.amalthea.model;
  *   <li>{@link org.eclipse.app4mc.amalthea.model.WaitEvent#getEventMask <em>Event Mask</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.WaitEvent#getMaskType <em>Mask Type</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.WaitEvent#getWaitingBehaviour <em>Waiting Behaviour</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.WaitEvent#getCounter <em>Counter</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWaitEvent()
  * @model
  * @generated
  */
-public interface WaitEvent extends CallSequenceItem {
+public interface WaitEvent extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Event Mask</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -110,5 +111,27 @@ public interface WaitEvent extends CallSequenceItem {
 	 * @generated
 	 */
 	void setWaitingBehaviour(WaitingBehaviour value);
+
+	/**
+	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Counter</em>' containment reference.
+	 * @see #setCounter(Counter)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getWaitEvent_Counter()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Counter getCounter();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.WaitEvent#getCounter <em>Counter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Counter</em>' containment reference.
+	 * @see #getCounter()
+	 * @generated
+	 */
+	void setCounter(Counter value);
 
 } // WaitEvent

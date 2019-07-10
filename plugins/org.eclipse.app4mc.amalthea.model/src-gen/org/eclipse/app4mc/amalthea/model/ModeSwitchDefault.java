@@ -14,34 +14,16 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Mode Switch Default</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.ModeSwitchDefault#getItems <em>Items</em>}</li>
- * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchDefault()
  * @model
  * @generated
  */
-public interface ModeSwitchDefault<T> extends BaseObject {
-	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getModeSwitchDefault_Items()
-	 * @model kind="reference" containment="true"
-	 * @generated
-	 */
-	EList<T> getItems();
-
+public interface ModeSwitchDefault extends BaseObject, ICallGraphItemContainer {
 } // ModeSwitchDefault

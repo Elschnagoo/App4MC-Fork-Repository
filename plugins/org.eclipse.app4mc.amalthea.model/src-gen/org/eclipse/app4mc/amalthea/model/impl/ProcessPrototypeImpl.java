@@ -23,7 +23,7 @@ import org.eclipse.app4mc.amalthea.model.ChainedProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.OrderPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Preemption;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -147,7 +147,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TaskRunnableCall> runnableCalls;
+	protected EList<RunnableCall> runnableCalls;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,9 +356,9 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 	 * @generated
 	 */
 	@Override
-	public EList<TaskRunnableCall> getRunnableCalls() {
+	public EList<RunnableCall> getRunnableCalls() {
 		if (runnableCalls == null) {
-			runnableCalls = new EObjectContainmentEList<TaskRunnableCall>(TaskRunnableCall.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS);
+			runnableCalls = new EObjectContainmentEList<RunnableCall>(RunnableCall.class, this, AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS);
 		}
 		return runnableCalls;
 	}
@@ -449,7 +449,7 @@ public class ProcessPrototypeImpl extends AbstractProcessImpl implements Process
 				return;
 			case AmaltheaPackage.PROCESS_PROTOTYPE__RUNNABLE_CALLS:
 				getRunnableCalls().clear();
-				getRunnableCalls().addAll((Collection<? extends TaskRunnableCall>)newValue);
+				getRunnableCalls().addAll((Collection<? extends RunnableCall>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

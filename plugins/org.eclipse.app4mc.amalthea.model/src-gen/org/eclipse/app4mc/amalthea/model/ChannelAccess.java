@@ -33,7 +33,7 @@ package org.eclipse.app4mc.amalthea.model;
  * @model abstract="true"
  * @generated
  */
-public interface ChannelAccess extends RunnableItem {
+public interface ChannelAccess extends CallGraphItem {
 	/**
 	 * Returns the value of the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
