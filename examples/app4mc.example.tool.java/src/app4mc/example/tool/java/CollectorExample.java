@@ -16,19 +16,17 @@
 package app4mc.example.tool.java;
 
 import java.io.File;
-import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter;
-import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 
 public class CollectorExample {
 
@@ -53,15 +51,15 @@ public class CollectorExample {
 		addNewRunnableCall(sw, run, "Service B");
 
 		// ***** Some tests *****
-		
-		List<RunnableItem> items1 = SoftwareUtil.collectRunnableItems(run);
-
-		List<RunnableItem> items2 = SoftwareUtil.collectRunnableItems(run, null, a -> a instanceof LabelAccess);
-
-		List<RunnableItem> items3 = SoftwareUtil.collectRunnableItems(run, null, a -> isWritingLabelAccess(a));
-
-		List<RunnableItem> items4 = SoftwareUtil.collectRunnableItems(run, null,
-				a -> a instanceof LabelAccess && ((LabelAccess) a).getAccess() == LabelAccessEnum.READ);
+// FIXME		
+//		List<RunnableItem> items1 = SoftwareUtil.collectRunnableItems(run);
+//
+//		List<RunnableItem> items2 = SoftwareUtil.collectRunnableItems(run, null, a -> a instanceof LabelAccess);
+//
+//		List<RunnableItem> items3 = SoftwareUtil.collectRunnableItems(run, null, a -> isWritingLabelAccess(a));
+//
+//		List<RunnableItem> items4 = SoftwareUtil.collectRunnableItems(run, null,
+//				a -> a instanceof LabelAccess && ((LabelAccess) a).getAccess() == LabelAccessEnum.READ);
 
 		// ***** Save model *****
 
@@ -70,7 +68,7 @@ public class CollectorExample {
 		System.out.println("done");
 	}
 
-	private static boolean isWritingLabelAccess(RunnableItem item) {
+	private static boolean isWritingLabelAccess(CallGraphItem item) {
 		if (item instanceof LabelAccess) {
 			LabelAccess access = (LabelAccess) item;
 			return access.getAccess() == LabelAccessEnum.WRITE;

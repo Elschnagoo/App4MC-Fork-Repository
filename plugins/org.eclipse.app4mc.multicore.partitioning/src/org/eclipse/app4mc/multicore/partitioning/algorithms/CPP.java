@@ -23,16 +23,15 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.algorithms.CriticalPath.tf;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
@@ -69,7 +68,7 @@ public class CPP {
 	/**
 	 * INPUT: SWModel and ConstraintsModel featuring runnables and dependencies (graph structure, constructor)
 	 *
-	 * @return OUTPUT: Set of ProcessPrototypes with taskRunnableCalls
+	 * @return OUTPUT: Set of ProcessPrototypes with RunnableCalls
 	 */
 	public void build(final IProgressMonitor monitor) {
 		PartLog.getInstance().setLogName("CP Partitioning");
@@ -116,7 +115,7 @@ public class CPP {
 			pp0.setName("GCP00");
 			for (final Runnable r : gcpr) {
 				this.assignedNodes.add(r);
-				final TaskRunnableCall trc = swf.createTaskRunnableCall();
+				final RunnableCall trc = swf.createRunnableCall();
 				trc.setRunnable(r);
 				pp0.getRunnableCalls().add(trc);
 			}
@@ -174,7 +173,7 @@ public class CPP {
 					final ProcessPrototype pp1 = swf.createProcessPrototype();
 					pp1.setName("LCP" + ++this.ctcp + ct);
 					for (final Runnable r : lcpr) {
-						final TaskRunnableCall trc = swf.createTaskRunnableCall();
+						final RunnableCall trc = swf.createRunnableCall();
 						trc.setRunnable(r);
 						pp1.getRunnableCalls().add(trc);
 					}
@@ -219,7 +218,7 @@ public class CPP {
 							}
 							break;
 						case 1:
-							final TaskRunnableCall trc = swf.createTaskRunnableCall();
+							final RunnableCall trc = swf.createRunnableCall();
 							trc.setRunnable(an.get(0));
 							ppt.getRunnableCalls().add(trc);
 							ttime += (new Helper().getInstructions(an.get(0)));
@@ -232,7 +231,7 @@ public class CPP {
 								PartLog.getInstance().log("No most effective Runnable found - aborting", null);
 								return;
 							}
-							final TaskRunnableCall trc2 = swf.createTaskRunnableCall();
+							final RunnableCall trc2 = swf.createRunnableCall();
 							trc2.setRunnable(men);
 							ppt.getRunnableCalls().add(trc2);
 							ttime += (new Helper().getInstructions(men));
@@ -266,7 +265,7 @@ public class CPP {
 		// The following outout can be used to also illustrate each runnable's eit / lit values
 		/*
 		 * for (final ProcessPrototype pp : this.result) { final StringBuffer sb = new StringBuffer();
-		 * sb.append( "ProcessPrototype " + pp.getName() + ": "); for (final TaskRunnableCall trc :
+		 * sb.append( "ProcessPrototype " + pp.getName() + ": "); for (final RunnableCall trc :
 		 * pp.getRunnableCalls()) { sb.append(trc.getRunnable().getName() + " (" +
 		 * this.cache.get(trc.getRunnable()).eit + "," + this.cache.get(trc.getRunnable()).lit + ") "); }
 		 * PartLog.getInstance().log(sb.toString()); }
@@ -419,12 +418,12 @@ public class CPP {
 	private long getCommunicationOverhead(final Runnable r) {
 		int co = 0;
 		// Runnable is called by one processprototype
-		// TODO the following line should use getTaskRunnableCalls() !!
+		// TODO the following line should use getRunnableCalls() !!
 		if (r.getRunnableCalls().size() > 1) {
 			PartLog.getInstance().log("Runnable is called multiple times", null);
 			return 0;
 		}
-		final TaskRunnableCall trc = r.getTaskRunnableCalls().get(0);
+		final RunnableCall trc = r.getRunnableCalls().get(0);
 		if (trc == null) {
 			PartLog.getInstance().log("Runnable " + r.getName() + " is never called");
 			return 0;
@@ -434,14 +433,14 @@ public class CPP {
 		if (trc.eContainer() instanceof ProcessPrototype) {
 			pp = (ProcessPrototype) trc.eContainer();
 		}
-		else if (trc.eContainer() instanceof CallSequence) {
-			t = (Task) trc.eContainer().eContainer().eContainer();
-		}
+//		else if (trc.eContainer() instanceof CallSequence) {
+//			t = (Task) trc.eContainer().eContainer().eContainer();
+//		}
 		if (t == null && pp == null) {
 			PartLog.getInstance().log("TRC neither task nor parocessPrototye", null);
 			return 0;
 		}
-		for (final RunnableItem ri : r.getRunnableItems()) {
+		for (final CallGraphItem ri : r.getRunnableItems()) {
 			if (ri instanceof LabelAccess) {
 				final LabelAccess laSource = (LabelAccess) ri;
 				if (laSource.getData() != null) {
@@ -452,7 +451,7 @@ public class CPP {
 							if (laOther.eContainer() instanceof Runnable) {
 								final Runnable or = (Runnable) laOther.eContainer();
 								if (!r.equals(or)) {
-									final TaskRunnableCall trc2 = or.getTaskRunnableCalls().get(0);
+									final RunnableCall trc2 = or.getRunnableCalls().get(0);
 									if (trc2.eContainer() instanceof ProcessPrototype) {
 										final ProcessPrototype opp = (ProcessPrototype) trc2.eContainer();
 										// only add databits if shared ressource is shared with another
@@ -467,18 +466,18 @@ public class CPP {
 											}
 										}
 									}
-									else if (trc2.eContainer() instanceof CallSequence) {
-										final Task ot = (Task) trc2.eContainer().eContainer().eContainer();
-										if (!ot.equals(t)) {
-											if (laSource.getData().getSize() != null) {
-												co += laSource.getData().getSize().getNumberBits();
-											}
-											else {
-												// no label data available --> add 1
-												co += 1;
-											}
-										}
-									}
+//									else if (trc2.eContainer() instanceof CallSequence) {
+//										final Task ot = (Task) trc2.eContainer().eContainer().eContainer();
+//										if (!ot.equals(t)) {
+//											if (laSource.getData().getSize() != null) {
+//												co += laSource.getData().getSize().getNumberBits();
+//											}
+//											else {
+//												// no label data available --> add 1
+//												co += 1;
+//											}
+//										}
+//									}
 								}
 							}
 						}

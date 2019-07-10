@@ -25,6 +25,7 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
@@ -32,10 +33,9 @@ import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.BasicEList;
@@ -94,7 +94,7 @@ public class Helper {
 	 */
 	public ProcessPrototype getPPfromR(final Runnable runnable, final SWModel swm) {
 		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			for (final RunnableCall trc : pp.getRunnableCalls()) {
 				if (trc.getRunnable().equals(runnable)) {
 					return pp;
 				}
@@ -142,9 +142,9 @@ public class Helper {
 		if (getAllTRCs(swm).size() < swm.getRunnables().size()) {
 			final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 			pp.setName("AllRunnables");
-			final EList<TaskRunnableCall> alltrcs = new BasicEList<TaskRunnableCall>();
+			final EList<RunnableCall> alltrcs = new BasicEList<RunnableCall>();
 			for (final Runnable r : swm.getRunnables()) {
-				final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+				final RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
 				trc.setRunnable(r);
 				alltrcs.add(trc);
 			}
@@ -173,10 +173,10 @@ public class Helper {
 
 	/**
 	 *
-	 * @return all taskrunnablecalls across processprototypes
+	 * @return all runnablecalls across processprototypes
 	 */
-	public EList<TaskRunnableCall> getAllTRCs(final SWModel swm) {
-		final EList<TaskRunnableCall> trcs = new BasicEList<TaskRunnableCall>();
+	public EList<RunnableCall> getAllTRCs(final SWModel swm) {
+		final EList<RunnableCall> trcs = new BasicEList<RunnableCall>();
 		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
 			trcs.addAll(pp.getRunnableCalls());
 		}
@@ -220,10 +220,10 @@ public class Helper {
 	 * @return label common
 	 */
 	public Label getCommonLabel(final Runnable runnable, final Runnable runnable2) {
-		for (final RunnableItem ri1 : runnable.getRunnableItems()) {
+		for (final CallGraphItem ri1 : runnable.getRunnableItems()) {
 			if (ri1 instanceof LabelAccess) {
 				final LabelAccess la1 = (LabelAccess) ri1;
-				for (final RunnableItem ri2 : runnable2.getRunnableItems()) {
+				for (final CallGraphItem ri2 : runnable2.getRunnableItems()) {
 					if (ri2 instanceof LabelAccess) {
 						final LabelAccess la2 = (LabelAccess) ri2;
 						if (la1.getData().equals(la2.getData())
@@ -263,7 +263,7 @@ public class Helper {
 	 */
 	public EList<Runnable> getRunnables(final ProcessPrototype pp) {
 		final EList<Runnable> rl = new BasicEList<Runnable>();
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+		for (final RunnableCall trc : pp.getRunnableCalls()) {
 			rl.add(trc.getRunnable());
 		}
 		return rl;
@@ -291,8 +291,8 @@ public class Helper {
 	public void assignAPs(final Set<AccessPrecedenceSpec> aps) {
 		for (final AccessPrecedenceSpec ap : aps) {
 			final Runnable r = ap.getOrigin();
-			final EList<TaskRunnableCall> trcs = r.getTaskRunnableCalls();
-			for (final TaskRunnableCall trc : trcs) {
+			final EList<RunnableCall> trcs = r.getRunnableCalls();
+			for (final RunnableCall trc : trcs) {
 				ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 				if (trc.eContainer() instanceof ProcessPrototype) {
 					pp = (ProcessPrototype) trc.eContainer();
@@ -315,7 +315,7 @@ public class Helper {
 			final Runnable source = rsc.getRunnableGroups().get(0).getRunnables().get(0);
 			final Runnable target = rsc.getRunnableGroups().get(1).getRunnables().get(0);
 			for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				for (final RunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {
 						rsc.getProcessScope().clear();
 						rsc.getProcessScope().add(pp);
@@ -374,7 +374,7 @@ public class Helper {
 			sb.append(String.format("%2s%22.21s%16.15s%6s", i++, pp.getName(), getPPInstructions(pp), pp.getRunnableCalls().size()) + " ");
 			// sb.append("ProcessPrototype " + pp.getName() + "(" +
 			// getPPInstructions(pp) + ") : ");
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			for (final RunnableCall trc : pp.getRunnableCalls()) {
 				sb.append(String.format("%30s",
 						trc.getRunnable().getName().substring(0, trc.getRunnable().getName().length() > 29 ? 29 : trc.getRunnable().getName().length()) + " "));
 			}
@@ -391,7 +391,7 @@ public class Helper {
 	 */
 	public long getPPInstructions(final ProcessPrototype pp) {
 		long instrSum = 0;
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+		for (final RunnableCall trc : pp.getRunnableCalls()) {
 			instrSum += getInstructions(trc.getRunnable());
 		}
 
@@ -405,7 +405,7 @@ public class Helper {
 	 */
 	public double getPPIntrSumActRel(final ProcessPrototype pp) {
 		long instrSum = 0;
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+		for (final RunnableCall trc : pp.getRunnableCalls()) {
 			instrSum += getInstructions(trc.getRunnable());
 		}
 		// mpis = multiplier in seconds
@@ -483,7 +483,6 @@ public class Helper {
 
 	public boolean tRCsAreConsist(final SWModel swm) {
 		for (final Runnable r : swm.getRunnables()) {
-			// TODO the following line should use getTaskRunnableCalls() !!
 			if (r.getRunnableCalls().size() > 1) {
 				return false;
 			}
@@ -525,8 +524,8 @@ public class Helper {
 	public boolean runnablesContainedinSamePP(final EList<Runnable> runnables, final EList<Runnable> runnables2) {
 		for (final Runnable r : runnables) {
 			for (final Runnable r2 : runnables2) {
-				for (final TaskRunnableCall rc : r.getTaskRunnableCalls()) {
-					for (final TaskRunnableCall rc2 : r2.getTaskRunnableCalls()) {
+				for (final RunnableCall rc : r.getRunnableCalls()) {
+					for (final RunnableCall rc2 : r2.getRunnableCalls()) {
 						if (rc.eContainer().equals(rc2.eContainer())) {
 							return true;
 						}
@@ -538,8 +537,8 @@ public class Helper {
 	}
 
 	public boolean runnablesContainedinSamePP(final Runnable r1, final Runnable r2) {
-		for (final TaskRunnableCall trc1 : r1.getTaskRunnableCalls()) {
-			for (final TaskRunnableCall trc2 : r2.getTaskRunnableCalls()) {
+		for (final RunnableCall trc1 : r1.getRunnableCalls()) {
+			for (final RunnableCall trc2 : r2.getRunnableCalls()) {
 				if (trc1.eContainer().equals(trc2.eContainer())) {
 					return true;
 				}

@@ -21,19 +21,19 @@ import org.eclipse.app4mc.amalthea.model.AccessPrecedenceSpec;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.LabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnableOrderType;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.IParConstants;
 import org.eclipse.app4mc.multicore.partitioning.PartitioningPlugin;
 import org.eclipse.app4mc.multicore.partitioning.handlers.WriteAppletHandler;
@@ -269,16 +269,16 @@ public class PerformPartitioning {
 
 				// Update RunnableCalls
 				for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
-					final EList<TaskRunnableCall> trcrem = new BasicEList<TaskRunnableCall>();
-					final EList<TaskRunnableCall> trcs = new BasicEList<TaskRunnableCall>();
+					final EList<RunnableCall> trcrem = new BasicEList<RunnableCall>();
+					final EList<RunnableCall> trcs = new BasicEList<RunnableCall>();
 					int index = 0;
-					for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+					for (final RunnableCall trc : pp.getRunnableCalls()) {
 						if (cr.equals(trc.getRunnable())) {
 							index = pp.getRunnableCalls().indexOf(trc);
 							final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
 							for (final Runnable or : reg.getRunnables()) {
 								// create trcs for original runnables
-								final TaskRunnableCall ntrc = af.createTaskRunnableCall();
+								final RunnableCall ntrc = af.createRunnableCall();
 								ntrc.setRunnable(or);
 								trcs.add(ntrc);
 							}
@@ -310,7 +310,7 @@ public class PerformPartitioning {
 					final RunnableEntityGroup reg = (RunnableEntityGroup) ((RunnablePairingConstraint) am
 							.getConstraintsModel().getAffinityConstraints().get(crindex)).getGroup();
 					for (final Runnable or : reg.getRunnables()) {
-						for (final RunnableItem ri : or.getRunnableItems()) {
+						for (final CallGraphItem ri : or.getRunnableItems()) {
 							if (ri instanceof LabelAccess) {
 								final LabelAccess la = (LabelAccess) ri;
 								final Label l = la.getData();
@@ -358,7 +358,7 @@ public class PerformPartitioning {
 	private EList<Runnable> getAccessingRunnables(final Label l, final LabelAccessEnum lae, final SWModel swm) {
 		final EList<Runnable> rl = new BasicEList<Runnable>();
 		for (final Runnable r : swm.getRunnables()) {
-			for (final RunnableItem ri : r.getRunnableItems()) {
+			for (final CallGraphItem ri : r.getRunnableItems()) {
 				if (ri instanceof LabelAccess) {
 					final LabelAccess la = (LabelAccess) ri;
 					if (null == la.getData()) {
@@ -433,7 +433,7 @@ public class PerformPartitioning {
 		long ret = 0;
 		for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
 			long temp = 0;
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			for (final RunnableCall trc : pp.getRunnableCalls()) {
 				temp += new Helper().getInstructions(trc.getRunnable());
 			}
 			if (temp > ret) {
@@ -456,7 +456,7 @@ public class PerformPartitioning {
 
 	/**
 	 * @return swmodel containing a temporary ProcessPrototype with
-	 *         TaskRunnableCalls for all Runnables within the @param swmodel
+	 *         RunnableCalls for all Runnables within the @param swmodel
 	 */
 	private SWModel createPPs(final SWModel swm) {
 		final AmaltheaFactory af = AmaltheaFactory.eINSTANCE;
@@ -466,7 +466,7 @@ public class PerformPartitioning {
 		}
 		pp.setName("PPTemp");
 		for (final Runnable r : swm.getRunnables()) {
-			final TaskRunnableCall trc = af.createTaskRunnableCall();
+			final RunnableCall trc = af.createRunnableCall();
 			trc.setRunnable(r);
 			pp.getRunnableCalls().add(trc);
 		}

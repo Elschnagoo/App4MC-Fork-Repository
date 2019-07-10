@@ -23,9 +23,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Tag;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.emf.common.util.EList;
 
 public class TagToPP {
@@ -65,7 +65,7 @@ public class TagToPP {
 			final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 			pp.setName("allRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
-				final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+				final RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
@@ -78,22 +78,22 @@ public class TagToPP {
 			final ProcessPrototype pp = it.next();
 			final HashMap<Tag, Integer> TagPPIndexMap = new HashMap<Tag, Integer>();
 			int currentNoTagIndex = -1;
-			final ListIterator<TaskRunnableCall> it2 = pp.getRunnableCalls().listIterator();
+			final ListIterator<RunnableCall> it2 = pp.getRunnableCalls().listIterator();
 			while (it2.hasNext()) {
-				final TaskRunnableCall trc = it2.next();
+				final RunnableCall trc = it2.next();
 				if (null == trc.getRunnable().getTags() || 0 == trc.getRunnable().getTags().size()) {
 					if (currentNoTagIndex == -1) {
 						currentNoTagIndex = this.swm.getProcessPrototypes().indexOf(pp);
 						break;
 					}
-					final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+					final RunnableCall trc2 = AmaltheaFactory.eINSTANCE.createRunnableCall();
 					trc2.setRunnable(trc.getRunnable());
 					this.swm.getProcessPrototypes().get(currentNoTagIndex).getRunnableCalls().add(trc2);
 					it2.remove();
 				}
 				else {
 					if (TagPPIndexMap.containsKey(trc.getRunnable().getTags().get(0))) {
-						final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+						final RunnableCall trc2 = AmaltheaFactory.eINSTANCE.createRunnableCall();
 						trc2.setRunnable(trc.getRunnable());
 						this.swm.getProcessPrototypes().get(TagPPIndexMap.get(trc.getRunnable().getTags().get(0))).getRunnableCalls().add(trc2);
 						it2.remove();
@@ -105,7 +105,7 @@ public class TagToPP {
 							// TODO: handle multiple activations
 							pp2.setActivation(trc.getRunnable().getFirstActivation());
 						}
-						final TaskRunnableCall trc2 = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+						final RunnableCall trc2 = AmaltheaFactory.eINSTANCE.createRunnableCall();
 						trc2.setRunnable(trc.getRunnable());
 						pp2.getRunnableCalls().add(trc2);
 						it2.remove();

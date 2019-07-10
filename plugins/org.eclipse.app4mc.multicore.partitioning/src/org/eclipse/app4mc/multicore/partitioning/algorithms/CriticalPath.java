@@ -28,9 +28,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.emf.common.util.EList;
@@ -125,7 +125,7 @@ public class CriticalPath {
 			final AmaltheaFactory swf = AmaltheaFactory.eINSTANCE;
 			final ProcessPrototype pp = swf.createProcessPrototype();
 			for (final Runnable r : this.swm.getRunnables()) {
-				final TaskRunnableCall trc = swf.createTaskRunnableCall();
+				final RunnableCall trc = swf.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}

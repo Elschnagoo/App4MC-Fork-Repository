@@ -29,9 +29,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -229,7 +229,7 @@ public class CycleElimination {
 			final ProcessPrototype pp = swf.createProcessPrototype();
 			pp.setName("allRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
-				final TaskRunnableCall trc = swf.createTaskRunnableCall();
+				final RunnableCall trc = swf.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}

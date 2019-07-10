@@ -20,9 +20,9 @@ import java.util.LinkedList;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 
 /**
  * This class provides different topological calculations on a given graph
@@ -132,7 +132,7 @@ public class TopologicalCalculation {
 		int l = 0;
 		Runnable r = null;
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			for (final RunnableCall trc : pp.getRunnableCalls()) {
 				if (this.untreatedCNs.contains(trc.getRunnable())) {
 					final int k = calcNodesToSink(trc.getRunnable());
 					if (k > l && k < distance) {

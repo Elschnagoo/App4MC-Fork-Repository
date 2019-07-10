@@ -17,8 +17,8 @@ package org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimizati
 
 import java.util.Iterator;
 
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 
 public class ExtendedRunnable {
@@ -45,9 +45,9 @@ public class ExtendedRunnable {
 
 		// Create iterator for RunnableItems and process them until an
 		// Instructions element is encountered
-		final Iterator<RunnableItem> itRunnableItems = this.ref.getRunnableItems().iterator();
+		final Iterator<CallGraphItem> itRunnableItems = this.ref.getRunnableItems().iterator();
 		while (itRunnableItems.hasNext()) {
-			final RunnableItem runnableItem = itRunnableItems.next();
+			final CallGraphItem runnableItem = itRunnableItems.next();
 // TODO
 //			if (runnableItem instanceof RunnableInstructions) {
 //				final RunnableInstructions runnableInstructions = (RunnableInstructions) runnableItem;

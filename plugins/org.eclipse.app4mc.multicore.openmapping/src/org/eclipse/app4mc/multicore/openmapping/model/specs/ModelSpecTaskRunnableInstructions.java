@@ -20,14 +20,9 @@ import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
 
@@ -51,10 +46,10 @@ public class ModelSpecTaskRunnableInstructions extends ModelSpec {
 	 *            call graph
 	 * @return call sequence
 	 */
-	private CallSequence findCallSequence(final CallGraph cg) {
-		for (final GraphEntryBase ge : cg.getGraphEntries()) {
-			if (ge instanceof CallSequence) {
-				return (CallSequence) ge;
+	private Group findGroup(final CallGraph cg) {
+		for (final CallGraphItem ge : cg.getItems()) {
+			if (ge instanceof Group) {
+				return (Group) ge;
 			}
 		}
 
@@ -70,13 +65,13 @@ public class ModelSpecTaskRunnableInstructions extends ModelSpec {
 	 */
 	private List<Runnable> getRunnables(final Amalthea model) {
 		final List<Runnable> list = new ArrayList<Runnable>();
-		for (final Task task : model.getSwModel().getTasks()) {
-			for (final CallSequenceItem csi : findCallSequence(task.getCallGraph()).getCalls()) {
-				if (csi instanceof TaskRunnableCall) {
-					list.add(((TaskRunnableCall) csi).getRunnable());
-				}
-			}
-		}
+//		for (final Task task : model.getSwModel().getTasks()) {
+//			for (final CallSequenceItem csi : findGroup(task.getCallGraph()).getCalls()) {
+//				if (csi instanceof TaskRunnableCall) {
+//					list.add(((TaskRunnableCall) csi).getRunnable());
+//				}
+//			}
+//		}
 
 		return list;
 	}
@@ -89,18 +84,18 @@ public class ModelSpecTaskRunnableInstructions extends ModelSpec {
 	 * @return true if the runnable has instructions false otherwise
 	 */
 	private boolean checkInstruction(final Runnable run) {
-		boolean found = false;
-		for (final RunnableItem item : run.getRunnableItems()) {
-			if (item instanceof ExecutionNeed) {
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
-			log("Runnable " + run.getName() + " doesn't have instructions set.");
-			return false;
-		}
+//		boolean found = false;
+//		for (final RunnableItem item : run.getRunnableItems()) {
+//			if (item instanceof ExecutionNeed) {
+//				found = true;
+//				break;
+//			}
+//		}
+//
+//		if (!found) {
+//			log("Runnable " + run.getName() + " doesn't have instructions set.");
+//			return false;
+//		}
 
 		return true;
 	}

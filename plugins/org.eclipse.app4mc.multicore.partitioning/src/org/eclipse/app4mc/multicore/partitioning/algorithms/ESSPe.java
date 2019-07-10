@@ -29,9 +29,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -97,7 +97,7 @@ public class ESSPe {
 			if (null != ppEdit) {
 				final Stack<Runnable> rs = createRunnableStack(ppEdit);
 				while (!rs.isEmpty()) {
-					final TaskRunnableCall trc = swf.createTaskRunnableCall();
+					final RunnableCall trc = swf.createRunnableCall();
 					trc.setRunnable(rs.pop());
 					if (RDependsOn1(trc.getRunnable(), ppl)) {
 						ppl.get(0).getRunnableCalls().add(trc);
@@ -209,7 +209,7 @@ public class ESSPe {
 	 */
 	private Stack<Runnable> createRunnableStack(final ProcessPrototype PPs) {
 		final List<Runnable> rl = new BasicEList<Runnable>();
-		for (final TaskRunnableCall trc : PPs.getRunnableCalls()) {
+		for (final RunnableCall trc : PPs.getRunnableCalls()) {
 			rl.add(trc.getRunnable());
 		}
 		Collections.sort(rl, new Comparator<Runnable>() {
@@ -257,7 +257,7 @@ public class ESSPe {
 			return true;
 		}
 		int topology = 1;
-		for (final TaskRunnableCall trc : pps.getRunnableCalls()) {
+		for (final RunnableCall trc : pps.getRunnableCalls()) {
 			final Runnable r = trc.getRunnable();
 			if (this.graph.incomingEdgesOf(r).size() > 1) {
 				int counter = 0;

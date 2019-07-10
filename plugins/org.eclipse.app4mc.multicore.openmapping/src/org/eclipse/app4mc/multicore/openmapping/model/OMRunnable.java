@@ -15,8 +15,8 @@
 
 package org.eclipse.app4mc.multicore.openmapping.model;
 
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.emf.common.util.EList;
 
@@ -63,7 +63,7 @@ public class OMRunnable {
 		return out;
 	}
 
-	private long parseRunnableItems(final EList<RunnableItem> runnableItemsList) {
+	private long parseRunnableItems(final EList<CallGraphItem> runnableItemsList) {
 // TODO
 //		// Process all RunnableItems and search for instructions
 //		final Iterator<RunnableItem> itRunnableItems = runnableItemsList.iterator();

@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
 
@@ -51,7 +51,7 @@ public class ModelSpecProcessPrototypeRunnableInstructions extends ModelSpec {
 		final List<Runnable> listRun = new ArrayList<Runnable>();
 
 		for (final ProcessPrototype procProto : model.getSwModel().getProcessPrototypes()) {
-			for (final TaskRunnableCall call : procProto.getRunnableCalls()) {
+			for (final RunnableCall call : procProto.getRunnableCalls()) {
 				listRun.add(call.getRunnable());
 			}
 		}
@@ -67,7 +67,7 @@ public class ModelSpecProcessPrototypeRunnableInstructions extends ModelSpec {
 	 * @return true if the runnable has instructions false otherwise
 	 */
 	private boolean checkInstruction(final Runnable run) {
-		for (final RunnableItem item : run.getRunnableItems()) {
+		for (final CallGraphItem item : run.getRunnableItems()) {
 			if (item instanceof ExecutionNeed) {
 				return true;
 			}

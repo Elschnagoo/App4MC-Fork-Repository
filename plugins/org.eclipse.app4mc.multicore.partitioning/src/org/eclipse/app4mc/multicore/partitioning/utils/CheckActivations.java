@@ -18,23 +18,22 @@ package org.eclipse.app4mc.multicore.partitioning.utils;
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
- * This class creates ProcessPrototypes and including taskRunnableCalls
+ * This class creates ProcessPrototypes and including RunnableCalls
  * according to Activations either referenced by tasks (Stimuli model - reverse
  * engineered) or within a SW model
  */
@@ -87,8 +86,8 @@ public class CheckActivations {
 			swm.getActivations().add(act);
 		}
 		for (final Task t : swm.getTasks()) {
-			for (final GraphEntryBase geb : t.getCallGraph().getGraphEntries()) {
-				if (geb instanceof CallSequence) {
+			for (final CallGraphItem geb : t.getCallGraph().getItems()) {
+				if (geb instanceof Group) {
 					Activation ref = null;
 					for (final Activation a : swm.getActivations()) {
 						if (a.getName().equals(t.getStimuli().get(0).getName())) {
@@ -96,10 +95,10 @@ public class CheckActivations {
 						}
 					}
 					assert null != ref;
-					for (final CallSequenceItem csi : ((CallSequence) geb).getCalls()) {
-						if (csi instanceof TaskRunnableCall) {
-							((TaskRunnableCall) csi).getRunnable().getActivations().clear();
-							((TaskRunnableCall) csi).getRunnable().getActivations().add(ref);
+					for (final CallGraphItem csi : ((Group) geb).getItems()) {
+						if (csi instanceof RunnableCall) {
+							((RunnableCall) csi).getRunnable().getActivations().clear();
+							((RunnableCall) csi).getRunnable().getActivations().add(ref);
 							// TODO: handle multiple activations
 						}
 					}
@@ -141,7 +140,7 @@ public class CheckActivations {
 					// TODO: handle multiple activations
 					if (null != r.getFirstActivation()) {
 						if (r.getFirstActivation().equals(swm.getActivations().get(act))) {
-							final TaskRunnableCall trc = instance.createTaskRunnableCall();
+							final RunnableCall trc = instance.createRunnableCall();
 							trc.setRunnable(r);
 							pp.getRunnableCalls().add(trc);
 						}

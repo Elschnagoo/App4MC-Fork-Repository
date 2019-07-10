@@ -23,9 +23,9 @@ import java.io.Writer;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.CycleElimination;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.app4mc.multicore.partitioning.utils.TopologicalCalculation;
@@ -150,7 +150,7 @@ public class WriteAppletHandler extends org.eclipse.core.commands.AbstractHandle
 				int xpos = 0;
 				for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 					int ypos = 0;
-					for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+					for (final RunnableCall trc : pp.getRunnableCalls()) {
 						output.append("		positionVertexAt(\"" + trc.getRunnable().getName() + "\", "
 								+ Integer.toString(xpos * this.xdistance) + ", "
 								+ Integer.toString(ypos * this.ydistance) + ");\n");

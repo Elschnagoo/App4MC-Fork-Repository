@@ -24,9 +24,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
@@ -85,7 +85,7 @@ public class GGP {
 			final ProcessPrototype pp = swf.createProcessPrototype();
 			pp.setName("AllRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
-				final TaskRunnableCall trc = swf.createTaskRunnableCall();
+				final RunnableCall trc = swf.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
@@ -143,7 +143,7 @@ public class GGP {
 	private LinkedList<Runnable> getSinks(final ProcessPrototype pp) {
 		final LinkedList<Runnable> sinks = getSinks();
 		final Set<Runnable> rs = new HashSet<Runnable>();
-		for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+		for (final RunnableCall trc : pp.getRunnableCalls()) {
 			rs.add(trc.getRunnable());
 		}
 		sinks.retainAll(rs);
@@ -224,7 +224,7 @@ public class GGP {
 
 			final ProcessPrototype pp = instance.createProcessPrototype();
 			for (final Runnable r : llr) {
-				final TaskRunnableCall trc = instance.createTaskRunnableCall();
+				final RunnableCall trc = instance.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
@@ -243,7 +243,7 @@ public class GGP {
 						+ " could not be found. SWM.size:" + this.swm.getRunnables().size(), null);
 			}
 			for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				for (final RunnableCall trc : pp.getRunnableCalls()) {
 					if (trc.getRunnable().equals(source)) {
 						rsc.getProcessScope().clear();
 						rsc.getProcessScope().add(pp);

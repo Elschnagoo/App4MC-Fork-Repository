@@ -133,11 +133,13 @@ public class AmSwDataDependency extends AmaltheaValidation {
 		// CallArguments (out, inout) of contained calls
 		List<DirectionType> possibleDirections = Arrays.asList(DirectionType.OUT, DirectionType.INOUT);
 		
-		return SoftwareUtil.collectRunnableItems(runnable, null, (e -> e instanceof RunnableCall)).stream()
-				.flatMap(e -> ((RunnableCall) e).getArguments().stream())
-				.filter(e -> e.getParameter() != null)
-				.filter(e -> possibleDirections.contains(e.getParameter().getDirection()))
-				.collect(Collectors.toList());
+// FIXME
+//		return SoftwareUtil.collectRunnableItems(runnable, null, (e -> e instanceof RunnableCall)).stream()
+//				.flatMap(e -> ((RunnableCall) e).getArguments().stream())
+//				.filter(e -> e.getParameter() != null)
+//				.filter(e -> possibleDirections.contains(e.getParameter().getDirection()))
+//				.collect(Collectors.toList());
+		return Collections.EMPTY_LIST;
 	}
 
 }

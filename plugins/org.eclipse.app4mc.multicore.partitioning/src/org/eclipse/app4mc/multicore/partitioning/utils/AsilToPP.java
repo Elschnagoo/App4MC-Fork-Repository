@@ -25,13 +25,13 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * This class creates ProcessPrototypes if ASIL levels are assigend to runnables
+ * This class creates ProcessPrototypes if ASIL levels are assigned to runnables
  * and adds runnable calls correspondingly
  */
 public class AsilToPP {
@@ -53,7 +53,7 @@ public class AsilToPP {
 				final ProcessPrototype pp = AmaltheaFactory.eINSTANCE.createProcessPrototype();
 				pp.setName(at.getName());
 				for (final Runnable r : getAsilRunnables(at)) {
-					final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+					final RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
 					trc.setRunnable(r);
 					pp.getRunnableCalls().add(trc);
 				}
@@ -71,7 +71,7 @@ public class AsilToPP {
 	/**
 	 * Creates ProcessPrototypes (max 4) for each referenced ASIL level and
 	 * assigns runnables correspondingly. Considers existing ProcessPrototypes,
-	 * such that TaskRunnableCalls are removed from existing ProcessPrototypes
+	 * such that RunnableCalls are removed from existing ProcessPrototypes
 	 * if corresponding runnables reference ASIL levels.
 	 */
 	public void createPPsFromASILsSplit() {
@@ -79,16 +79,16 @@ public class AsilToPP {
 		for (final ProcessPrototype pp : this.swm.getProcessPrototypes()) {
 			ASILType at = null;
 
-			final Iterator<TaskRunnableCall> it = pp.getRunnableCalls().iterator();
+			final Iterator<RunnableCall> it = pp.getRunnableCalls().iterator();
 			while (it.hasNext()) {
-				final TaskRunnableCall trc = it.next();
-				// for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				final RunnableCall trc = it.next();
+				// for (final RunnableCall trc : pp.getRunnableCalls()) {
 				final Runnable r = trc.getRunnable();
 				if (null == at && null != r.getAsilLevel()) {
 					at = r.getAsilLevel();
 				}
 				else if (null != at && null != r.getAsilLevel() && !at.equals(r.getAsilLevel())) {
-					final TaskRunnableCall trcnew = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+					final RunnableCall trcnew = AmaltheaFactory.eINSTANCE.createRunnableCall();
 					trcnew.setRunnable(trc.getRunnable());
 					if (!newPPsContains(newPPs, r.getAsilLevel(), r.getFirstActivation())) {
 						final ProcessPrototype ppNew = AmaltheaFactory.eINSTANCE.createProcessPrototype();
@@ -120,7 +120,7 @@ public class AsilToPP {
 		while (ppit.hasNext()) {
 			final ProcessPrototype pp = ppit.next();
 			final List<ASILType> asils = new ArrayList<ASILType>();
-			final List<TaskRunnableCall> asiltrcs = pp.getRunnableCalls().stream().distinct()
+			final List<RunnableCall> asiltrcs = pp.getRunnableCalls().stream().distinct()
 					.filter(trc -> (null != trc.getRunnable().getAsilLevel()
 							&& trc.getRunnable().getAsilLevel().toString() != "_undefined_"))
 					.collect(Collectors.toList());
@@ -144,7 +144,7 @@ public class AsilToPP {
 	}
 
 
-	private void addTrcToNewAsilPP(final EList<ProcessPrototype> newPPs, final TaskRunnableCall trcnew) {
+	private void addTrcToNewAsilPP(final EList<ProcessPrototype> newPPs, final RunnableCall trcnew) {
 		for (final ProcessPrototype pp : newPPs) {
 			if (null != pp.getRunnableCalls().get(0)) {
 				final Runnable r = pp.getRunnableCalls().get(0).getRunnable();
@@ -160,7 +160,7 @@ public class AsilToPP {
 			final Activation activation) {
 		for (final ProcessPrototype pp : newPPs) {
 			if (pp.getRunnableCalls().size() > 0) {
-				final TaskRunnableCall trc = pp.getRunnableCalls().get(0);
+				final RunnableCall trc = pp.getRunnableCalls().get(0);
 				if (trc.getRunnable().getAsilLevel().equals(asilLevel)
 						&& trc.getRunnable().getFirstActivation().equals(activation)) {
 					return true;

@@ -20,15 +20,15 @@ import java.util.HashMap;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TargetCore;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
@@ -68,7 +68,7 @@ public class RunnableCorePairingToPP {
 						}
 						pp.getTags().add(tag);
 						for (final Runnable r : ((RunnableEntityGroup) rpc.getGroup()).getRunnables()) {
-							final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+							final RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
 							trc.setRunnable(r);
 							pp.getRunnableCalls().add(trc);
 							pp.getTags().add(tag);
@@ -76,7 +76,7 @@ public class RunnableCorePairingToPP {
 					}
 					else {
 						for (final Runnable r : ((RunnableEntityGroup) rpc.getGroup()).getRunnables()) {
-							final TaskRunnableCall trc = AmaltheaFactory.eINSTANCE.createTaskRunnableCall();
+							final RunnableCall trc = AmaltheaFactory.eINSTANCE.createRunnableCall();
 							trc.setRunnable(r);
 							ppl.get(CorePPIndexMap.get(c)).getRunnableCalls().add(trc);
 						}

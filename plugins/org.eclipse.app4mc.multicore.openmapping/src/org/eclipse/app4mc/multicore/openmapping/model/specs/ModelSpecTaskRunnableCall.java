@@ -17,11 +17,10 @@ package org.eclipse.app4mc.multicore.openmapping.model.specs;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
 
@@ -45,10 +44,10 @@ public class ModelSpecTaskRunnableCall extends ModelSpec {
 	 *            call graph
 	 * @return call sequence
 	 */
-	private CallSequence findCallSequence(final CallGraph cg) {
-		for (final GraphEntryBase ge : cg.getGraphEntries()) {
-			if (ge instanceof CallSequence) {
-				return (CallSequence) ge;
+	private Group findCallSequence(final CallGraph cg) {
+		for (final CallGraphItem ge : cg.getItems()) {
+			if (ge instanceof Group) {
+				return (Group) ge;
 			}
 		}
 
@@ -64,15 +63,15 @@ public class ModelSpecTaskRunnableCall extends ModelSpec {
 	 *            call sequence
 	 * @return false if an error was encountered.
 	 */
-	private boolean checkRunnableCalls(final Task task, final CallSequence cs) {
+	private boolean checkRunnableCalls(final Task task, final Group cs) {
 		boolean cond = true;
 		int amountTask = 0;
-		for (final CallSequenceItem csi : cs.getCalls()) {
-			if (!(csi instanceof TaskRunnableCall)) {
+		for (final CallGraphItem csi : cs.getItems()) {
+			if (!(csi instanceof RunnableCall)) {
 				continue;
 			}
 
-			final TaskRunnableCall trc = (TaskRunnableCall) csi;
+			final RunnableCall trc = (RunnableCall) csi;
 
 			if (trc.getRunnable() == null) {
 				log("Task " + task.getName() + " has a call without a valid Runnable reference.");
@@ -109,7 +108,7 @@ public class ModelSpecTaskRunnableCall extends ModelSpec {
 				continue;
 			}
 
-			final CallSequence cs = findCallSequence(cg);
+			final Group cs = findCallSequence(cg);
 
 			// Check that it has runnable calls
 			if (cs == null) {
@@ -118,7 +117,7 @@ public class ModelSpecTaskRunnableCall extends ModelSpec {
 				continue;
 			}
 
-			if (cs.getCalls().size() == 0) {
+			if (cs.getItems().size() == 0) {
 				log("Task " + task.getName() + " has a Call Sequence without any Calls set.");
 				cond &= false;
 				continue;

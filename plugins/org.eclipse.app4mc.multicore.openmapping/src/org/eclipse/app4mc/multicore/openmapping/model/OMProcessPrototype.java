@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.experimental.dag.DirectedAcyclicGraph;
@@ -53,13 +53,13 @@ public class OMProcessPrototype {
 
 		// Foreach runnable call we check if the Runnable is set (not null) and
 		// add a vertex to the graph.
-		final Stream<TaskRunnableCall> stRunnableCalls = this.refProcessPrototype.getRunnableCalls().stream();
+		final Stream<RunnableCall> stRunnableCalls = this.refProcessPrototype.getRunnableCalls().stream();
 		stRunnableCalls.forEach(r -> processRunnableCall(r));
 
 		return (this.runnableGraph.vertexSet().size() > 0);
 	}
 
-	private void processRunnableCall(final TaskRunnableCall r) {
+	private void processRunnableCall(final RunnableCall r) {
 		if (null == r.getRunnable()) {
 			return;
 		}

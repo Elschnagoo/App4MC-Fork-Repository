@@ -24,10 +24,6 @@ import org.eclipse.app4mc.amalthea._import.atdb.model.Model;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
 import org.eclipse.app4mc.amalthea.model.ISR;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.Runnable;
@@ -36,7 +32,6 @@ import org.eclipse.app4mc.amalthea.model.SingleStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -154,18 +149,19 @@ public class AmaltheaExporter {
 				stimuli.add(this.stimuli.get(stimulus));
 			}
 			// add runnable calls
-			final CallGraph callGraph = this.factory.createCallGraph();
-			final EList<GraphEntryBase> graphEntry = callGraph.getGraphEntries();
-			final CallSequence callSequence = this.factory.createCallSequence();
-			final EList<CallSequenceItem> callItemList = callSequence.getCalls();
-			for (final String name : myTask.getRunnableCalls()) {
-				final TaskRunnableCall runnableCall = this.factory.createTaskRunnableCall();
-				runnableCall.setRunnable(this.runnables.get(name));
-				callItemList.add(runnableCall);
-			}
-			graphEntry.add(callSequence);
-			aTask.setCallGraph(callGraph);
-			tasks.add(aTask);
+// FIXME
+//			final CallGraph callGraph = this.factory.createCallGraph();
+//			final EList<GraphEntryBase> graphEntry = callGraph.getGraphEntries();
+//			final CallSequence callSequence = this.factory.createCallSequence();
+//			final EList<CallSequenceItem> callItemList = callSequence.getCalls();
+//			for (final String name : myTask.getRunnableCalls()) {
+//				final TaskRunnableCall runnableCall = this.factory.createTaskRunnableCall();
+//				runnableCall.setRunnable(this.runnables.get(name));
+//				callItemList.add(runnableCall);
+//			}
+//			graphEntry.add(callSequence);
+//			aTask.setCallGraph(callGraph);
+//			tasks.add(aTask);
 		}
 	}
 

@@ -24,19 +24,16 @@ import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.AffinityConstraint;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableEntityGroup;
 import org.eclipse.app4mc.amalthea.model.RunnableGroup;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.RunnablePairingConstraint;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.TagGroup;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -67,8 +64,8 @@ public class MergeRunnablePairings {
 						instrCum += new Helper().getInstructions(run);
 						// do not add instruction constants / deviations;
 						// cumulation is added later
-						final EList<RunnableItem> ril = new BasicEList<RunnableItem>();
-						for (final RunnableItem ri : run.getRunnableItems()) {
+						final EList<CallGraphItem> ril = new BasicEList<CallGraphItem>();
+						for (final CallGraphItem ri : run.getRunnableItems()) {
 							if (!(ri instanceof Ticks)) {
 								ril.add(ri);
 							}
@@ -88,34 +85,34 @@ public class MergeRunnablePairings {
 
 					// also remove taskrunnablecall refs from tasks
 					for (final Task t : modelCopy.getSwModel().getTasks()) {
-						for (final GraphEntryBase geb : t.getCallGraph().getGraphEntries()) {
-							if (geb instanceof CallSequence) {
-								final EList<TaskRunnableCall> rtrcs = new BasicEList<TaskRunnableCall>();
-								final CallSequence cs = (CallSequence) geb;
-								for (final CallSequenceItem csi : cs.getCalls()) {
-									if (csi instanceof TaskRunnableCall) {
-										final TaskRunnableCall trc = (TaskRunnableCall) csi;
-										if (reg.getRunnables().contains(trc.getRunnable())) {
-											rtrcs.add(trc);
-										}
-									}
-								}
-								cs.getCalls().removeAll(rtrcs);
-							}
-						}
+//						for (final GraphEntryBase geb : t.getCallGraph().getGraphEntries()) {
+//							if (geb instanceof CallSequence) {
+//								final EList<TaskRunnableCall> rtrcs = new BasicEList<TaskRunnableCall>();
+//								final CallSequence cs = (CallSequence) geb;
+//								for (final CallSequenceItem csi : cs.getCalls()) {
+//									if (csi instanceof TaskRunnableCall) {
+//										final TaskRunnableCall trc = (TaskRunnableCall) csi;
+//										if (reg.getRunnables().contains(trc.getRunnable())) {
+//											rtrcs.add(trc);
+//										}
+//									}
+//								}
+//								cs.getCalls().removeAll(rtrcs);
+//							}
+//						}
 					}
 
 					// replace refs to cumulated runnables within
 					// processPrototypes
 					for (final ProcessPrototype pp : modelCopy.getSwModel().getProcessPrototypes()) {
-						final Iterator<TaskRunnableCall> trcIt = pp.getRunnableCalls().iterator();
-						final EList<TaskRunnableCall> trcsadd = new BasicEList<>();
+						final Iterator<RunnableCall> trcIt = pp.getRunnableCalls().iterator();
+						final EList<RunnableCall> trcsadd = new BasicEList<>();
 						while (trcIt.hasNext()) {
-							final TaskRunnableCall trc = trcIt.next();
+							final RunnableCall trc = trcIt.next();
 							if (reg.getRunnables().contains(trc.getRunnable())) {
 								trcIt.remove();
 								if (!trcsadd.contains(r)) {
-									final TaskRunnableCall trcnew = af.createTaskRunnableCall();
+									final RunnableCall trcnew = af.createRunnableCall();
 									trcnew.setRunnable(r);
 									trcsadd.add(trcnew);
 								}

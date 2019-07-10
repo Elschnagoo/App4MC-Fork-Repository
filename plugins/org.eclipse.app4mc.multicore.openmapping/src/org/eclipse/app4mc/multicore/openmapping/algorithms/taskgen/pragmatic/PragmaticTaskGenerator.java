@@ -23,16 +23,15 @@ import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Activation;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
 import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SporadicActivation;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.openmapping.OpenMappingPlugin;
 import org.eclipse.app4mc.multicore.openmapping.algorithms.AbstractTaskCreationAlgorithm;
 import org.eclipse.app4mc.multicore.openmapping.model.OMProcessPrototype;
@@ -188,16 +187,14 @@ public class PragmaticTaskGenerator extends AbstractTaskCreationAlgorithm {
 			final Task task = getSwInstance().createTask();
 			task.setName("Task_" + name);
 			final CallGraph cGraph = getSwInstance().createCallGraph();
-			final CallSequence cSeq = getSwInstance().createCallSequence();
-
+			task.setCallGraph(cGraph);
+			
 			for (final OMRunnable run : lRunnables) {
-				final TaskRunnableCall trc = getSwInstance().createTaskRunnableCall();
+				final RunnableCall trc = getSwInstance().createRunnableCall();
 				trc.setRunnable(run.getRunnableRef());
-				cSeq.getCalls().add(trc);
+				cGraph.getItems().add(trc);
 			}
 
-			cGraph.getGraphEntries().add(cSeq);
-			task.setCallGraph(cGraph);
 			if (epp.getProcessPrototype().getActivation() != null) {
 				task.getStimuli().add(this.mActivationStimuli.get(epp.getProcessPrototype().getActivation()));
 			}

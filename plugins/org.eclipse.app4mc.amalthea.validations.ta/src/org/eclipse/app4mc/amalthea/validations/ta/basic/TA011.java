@@ -39,9 +39,9 @@ public class TA011 extends AmaltheaValidation {
 	public void validate(final EObject object, List<ValidationDiagnostic> results) {
 		Runnable runnable = (Runnable) object;
 
-		if (runnable.getRunnableItems().isEmpty()) {
-			addIssue(results, runnable, null, "Runnable: no runnable items defined");
-		}
+//		if (runnable.getRunnableItems().isEmpty()) {
+//			addIssue(results, runnable, null, "Runnable: no runnable items defined");
+//		}
 	}
 
 }

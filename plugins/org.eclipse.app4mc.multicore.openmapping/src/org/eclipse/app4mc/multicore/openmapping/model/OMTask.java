@@ -21,22 +21,21 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.CoreClassifier;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.Group;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ReferenceObject;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Tag;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
 import org.eclipse.core.runtime.IStatus;
@@ -116,7 +115,7 @@ public class OMTask {
 			return;
 		}
 
-		if (callGraph.getGraphEntries().size() <= 0) {
+		if (callGraph.getItems().size() <= 0) {
 			UniversalHandler.getInstance().log(
 					"Invalid Software Model, The CallGraph of Task '" + this.taskRef.getName() + "' is empty", null);
 			return;
@@ -140,13 +139,13 @@ public class OMTask {
 		long tmpInstr = 0;
 
 		// Create iterator with call graph entries (Runnables) and process them
-		final Iterator<GraphEntryBase> itGraphEntries = callGraph.getGraphEntries().iterator();
+		final Iterator<CallGraphItem> itGraphEntries = callGraph.getItems().iterator();
 		while (itGraphEntries.hasNext()) {
 			// Check GraphEntry Specialization and process it accordingly
-			final GraphEntryBase graphEntry = itGraphEntries.next();
+			final CallGraphItem graphEntry = itGraphEntries.next();
 			// CallSequence
-			if (graphEntry instanceof CallSequence) {
-				tmpInstr += processCallSequence((CallSequence) graphEntry);
+			if (graphEntry instanceof Group) {
+				tmpInstr += processGroup((Group) graphEntry);
 			}
 
 			// LabelSwitch
@@ -172,30 +171,30 @@ public class OMTask {
 
 	/**
 	 * Processes the <code>CallSequence</code> and fetches the number of
-	 * Instructions for each of its <code>TaskRunnableCalls</code>. Further
+	 * Instructions for each of its <code>RunnableCalls</code>. Further
 	 * handled elements may be added in the future.
 	 *
-	 * @param callSeq
+	 * @param group
 	 *            The CallSequence to process
 	 * @return Number of Instructions in the CallSequence
 	 */
-	private long processCallSequence(final CallSequence callSeq) {
+	private long processGroup(final Group group) {
 		// Count the total number of Instructions of the CallSequence
 		long tmpInstr = 0;
 
 		// Check if CallSequence is empty
-		if (callSeq.getCalls().size() <= 0) {
-			UniversalHandler.getInstance().log("Invalid Software Model, CallSequence must not be empty. Skipping...",
+		if (group.getItems().size() <= 0) {
+			UniversalHandler.getInstance().log("Invalid Software Model, Group must not be empty. Skipping...",
 					null);
 			return tmpInstr;
 		}
 
 		// Process CallSequence items
-		final Iterator<CallSequenceItem> itCallSeqItems = callSeq.getCalls().iterator();
+		final Iterator<CallGraphItem> itCallSeqItems = group.getItems().iterator();
 		while (itCallSeqItems.hasNext()) {
-			final CallSequenceItem callSeqEntry = itCallSeqItems.next();
-			if (callSeqEntry instanceof TaskRunnableCall) {
-				tmpInstr += processTaskRunnableCall((TaskRunnableCall) callSeqEntry);
+			final CallGraphItem callSeqEntry = itCallSeqItems.next();
+			if (callSeqEntry instanceof RunnableCall) {
+				tmpInstr += processRunnableCall((RunnableCall) callSeqEntry);
 			} else {
 				UniversalHandler.getInstance().logWarn("Unkown CallSequenceItem specialisation. Skipping...");
 			}
@@ -204,15 +203,15 @@ public class OMTask {
 	}
 
 	/**
-	 * Processes the <code>TaskRunnableCall</code> and fetches the number of
+	 * Processes the <code>RunnableCall</code> and fetches the number of
 	 * Instructions for each of its <code>Runnable</code>s.
 	 *
-	 * @param taskRunnableCall
-	 *            The TaskRunnableCall to process
-	 * @return Number of Instructions in the TaskRunnableCall
+	 * @param RunnableCall
+	 *            The RunnableCall to process
+	 * @return Number of Instructions in the RunnableCall
 	 */
-	private long processTaskRunnableCall(final TaskRunnableCall taskRunnableCall) {
-		final Runnable runnable = taskRunnableCall.getRunnable();
+	private long processRunnableCall(final RunnableCall RunnableCall) {
+		final Runnable runnable = RunnableCall.getRunnable();
 		// Check if reference to runnable is set
 		if (runnable == null) {
 			UniversalHandler.getInstance()

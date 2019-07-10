@@ -17,7 +17,7 @@ package org.eclipse.app4mc.multicore.openmapping.model.specs;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
 import org.eclipse.emf.common.util.EList;
@@ -43,7 +43,7 @@ public class ModelSpecProcessPrototypeRunnableCall extends ModelSpec {
 		boolean cond = true;
 
 		for (final ProcessPrototype procProto : model.getSwModel().getProcessPrototypes()) {
-			final EList<TaskRunnableCall> runCall = procProto.getRunnableCalls();
+			final EList<RunnableCall> runCall = procProto.getRunnableCalls();
 
 
 			// Check that it has runnable calls
@@ -54,7 +54,7 @@ public class ModelSpecProcessPrototypeRunnableCall extends ModelSpec {
 			}
 
 			// Verify that the runnable
-			for (final TaskRunnableCall call : runCall) {
+			for (final RunnableCall call : runCall) {
 				if (call.getRunnable() == null) {
 					log("Process Prototype " + procProto.getName() + " has a runnable call with pointing to NULL.");
 					cond &= false;

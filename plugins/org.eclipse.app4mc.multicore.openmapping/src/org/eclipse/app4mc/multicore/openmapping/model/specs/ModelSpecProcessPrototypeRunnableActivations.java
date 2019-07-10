@@ -23,7 +23,7 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.ModelSpec;
 import org.eclipse.app4mc.multicore.sharelibs.modelchecker.logger.EntrySeverityLevel;
 
@@ -51,7 +51,7 @@ public class ModelSpecProcessPrototypeRunnableActivations extends ModelSpec {
 		final List<Runnable> listRun = new ArrayList<Runnable>();
 
 		for (final ProcessPrototype procProto : model.getSwModel().getProcessPrototypes()) {
-			for (final TaskRunnableCall call : procProto.getRunnableCalls()) {
+			for (final RunnableCall call : procProto.getRunnableCalls()) {
 				listRun.add(call.getRunnable());
 			}
 		}

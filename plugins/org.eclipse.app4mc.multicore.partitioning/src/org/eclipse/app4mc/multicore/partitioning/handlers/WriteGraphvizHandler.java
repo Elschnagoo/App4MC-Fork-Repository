@@ -26,9 +26,9 @@ import java.util.Set;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.app4mc.multicore.sharelibs.SelectionUtil;
@@ -59,7 +59,7 @@ public class WriteGraphvizHandler extends org.eclipse.core.commands.AbstractHand
 			for (final ProcessPrototype pp : swm.getProcessPrototypes()) {
 				output.write("subgraph cluster_" + swm.getProcessPrototypes().indexOf(pp)
 						+ " { \n style=filled; \n color=lightgrey; \n node [style=filled,color=white];\n");
-				for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+				for (final RunnableCall trc : pp.getRunnableCalls()) {
 					output.write(trc.getRunnable().getName() + ";\n");
 				}
 				if (validRSCs) {

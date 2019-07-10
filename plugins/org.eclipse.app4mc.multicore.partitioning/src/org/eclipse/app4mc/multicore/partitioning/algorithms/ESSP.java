@@ -31,9 +31,9 @@ import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.ProcessPrototype;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
 import org.eclipse.app4mc.amalthea.model.SWModel;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.multicore.partitioning.utils.Helper;
 import org.eclipse.app4mc.multicore.partitioning.utils.PartLog;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -58,7 +58,7 @@ public class ESSP {
 	private Stack<Runnable> runs = new Stack<Runnable>();
 
 	/**
-	 * Constructor reuires a @param swmi SWModel, @param cmi constraintsmodel
+	 * Constructor requires a @param swmi SWModel, @param cmi constraintsmodel
 	 * and @param tasks the user defined number of tasks
 	 */
 	public ESSP(final SWModel swmi, final ConstraintsModel cmi, final int tasks) {
@@ -82,7 +82,7 @@ public class ESSP {
 			final ProcessPrototype pp = swf.createProcessPrototype();
 			pp.setName("AllRunnables");
 			for (final Runnable r : this.swm.getRunnables()) {
-				final TaskRunnableCall trc = swf.createTaskRunnableCall();
+				final RunnableCall trc = swf.createRunnableCall();
 				trc.setRunnable(r);
 				pp.getRunnableCalls().add(trc);
 			}
@@ -130,7 +130,7 @@ public class ESSP {
 					break;
 			}
 			final AmaltheaFactory swf = AmaltheaFactory.eINSTANCE;
-			final TaskRunnableCall trc = swf.createTaskRunnableCall();
+			final RunnableCall trc = swf.createRunnableCall();
 			trc.setRunnable(r);
 			this.tasks.get(taskIndex).getRunnableCalls().add(trc);
 			this.assignedNodes.add(r);
@@ -215,7 +215,7 @@ public class ESSP {
 
 	private Integer getTaskIndexOf(final Runnable runnable) {
 		for (final ProcessPrototype pp : this.tasks) {
-			for (final TaskRunnableCall trc : pp.getRunnableCalls()) {
+			for (final RunnableCall trc : pp.getRunnableCalls()) {
 				if (trc.getRunnable().equals(runnable)) {
 					return this.tasks.indexOf(pp);
 				}

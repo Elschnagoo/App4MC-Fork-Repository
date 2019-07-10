@@ -17,9 +17,7 @@ package org.eclipse.app4mc.amalthea.validations.ta.todo;
 
 import java.math.BigInteger;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -35,13 +33,10 @@ import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
@@ -93,62 +88,14 @@ public class SWModelValidatorImpl {
 	public void checkRunnableReferenceOfTaskRunnableCall(final Amalthea amalthea) {
 
 		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<TaskRunnableCall> runnableCalls = new HashSet<>();
-		final Set<Runnable> runnables = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof TaskRunnableCall) {
-				final TaskRunnableCall runnableCall = (TaskRunnableCall) elem;
-				runnableCalls.add(runnableCall);
-			} else if (elem instanceof SWModel) {
-				final SWModel swModel = (SWModel) elem;
-
-				final Collection<Runnable> runnableList = swModel.getRunnables();
-				if (null != runnableList) {
-					for (final Runnable runnable : runnableList) {
-						if (null != runnable) {
-							runnables.add(runnable);
-						}
-					}
-				}
-			}
-		}
-
-		for (final TaskRunnableCall runnableCall : runnableCalls) {
-			if (null != runnableCall) {
-				final Runnable runnable = runnableCall.getRunnable();
-				if ((null == runnable) || (false == runnables.contains(runnable))) {
-					issue(runnableCall, AmaltheaPackage.eINSTANCE.getTaskRunnableCall_Runnable());
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks the reference to a Runnable of {@link RunnableCall}. The reference must be set and reference an existing Runnable.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkRunnableReferenceOfRunnableCall(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Map<RunnableCall, Runnable> call2Runnable = new HashMap<>();
 		final Set<RunnableCall> runnableCalls = new HashSet<>();
 		final Set<Runnable> runnables = new HashSet<>();
 
 		while (amaIter.hasNext()) {
 			final EObject elem = amaIter.next();
-			if (elem instanceof Runnable) {
-				final Runnable runnable = (Runnable) elem;
-				for (final RunnableItem runnableItem : runnable.getRunnableItems()) {
-					if (runnableItem instanceof RunnableCall) {
-						RunnableCall runnableCall = (RunnableCall) runnableItem;
-						call2Runnable.put(runnableCall, runnable);
-						if (null != runnableCall) {
-							runnableCalls.add(runnableCall);
-						}
-					}
-				}
+			if (elem instanceof RunnableCall) {
+				final RunnableCall runnableCall = (RunnableCall) elem;
+				runnableCalls.add(runnableCall);
 			} else if (elem instanceof SWModel) {
 				final SWModel swModel = (SWModel) elem;
 
@@ -165,13 +112,61 @@ public class SWModelValidatorImpl {
 
 		for (final RunnableCall runnableCall : runnableCalls) {
 			if (null != runnableCall) {
-				final Runnable calledRunnable = runnableCall.getRunnable();
-				final Runnable callingRunnable = call2Runnable.get(runnableCall);
-				if ((null == calledRunnable) || (false == runnables.contains(calledRunnable)) || (calledRunnable.equals(callingRunnable))) {
+				final Runnable runnable = runnableCall.getRunnable();
+				if ((null == runnable) || (false == runnables.contains(runnable))) {
 					issue(runnableCall, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
 				}
 			}
 		}
+	}
+
+	/*
+	 * Checks the reference to a Runnable of {@link RunnableCall}. The reference must be set and reference an existing Runnable.
+	 * If this is not the case, it will be handled as an error.
+	 */
+	public void checkRunnableReferenceOfRunnableCall(final Amalthea amalthea) {
+
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Map<RunnableCall, Runnable> call2Runnable = new HashMap<>();
+//		final Set<RunnableCall> runnableCalls = new HashSet<>();
+//		final Set<Runnable> runnables = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof Runnable) {
+//				final Runnable runnable = (Runnable) elem;
+//				for (final RunnableItem runnableItem : runnable.getRunnableItems()) {
+//					if (runnableItem instanceof RunnableCall) {
+//						RunnableCall runnableCall = (RunnableCall) runnableItem;
+//						call2Runnable.put(runnableCall, runnable);
+//						if (null != runnableCall) {
+//							runnableCalls.add(runnableCall);
+//						}
+//					}
+//				}
+//			} else if (elem instanceof SWModel) {
+//				final SWModel swModel = (SWModel) elem;
+//
+//				final Collection<Runnable> runnableList = swModel.getRunnables();
+//				if (null != runnableList) {
+//					for (final Runnable runnable : runnableList) {
+//						if (null != runnable) {
+//							runnables.add(runnable);
+//						}
+//					}
+//				}
+//			}
+//		}
+//
+//		for (final RunnableCall runnableCall : runnableCalls) {
+//			if (null != runnableCall) {
+//				final Runnable calledRunnable = runnableCall.getRunnable();
+//				final Runnable callingRunnable = call2Runnable.get(runnableCall);
+//				if ((null == calledRunnable) || (false == runnables.contains(calledRunnable)) || (calledRunnable.equals(callingRunnable))) {
+//					issue(runnableCall, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
+//				}
+//			}
+//		}
 	}
 
 	/*
@@ -508,25 +503,25 @@ public class SWModelValidatorImpl {
 				runnables.add(runnable);
 			}
 		}
-		for (final Runnable runnable : runnables) {
-			for (final RunnableItem item : runnable.getRunnableItems()) {
-				if (item instanceof ServerCall) {
-					final ServerCall serverCall = (ServerCall) item;
-					final Runnable serverRunnable = serverCall.getServerRunnable();
-					if (null == serverRunnable) {
-						issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
-					} else {
-						if (false == runnables.contains(serverRunnable)) {
-							issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
-						} else {
-							if (serverRunnable.equals(runnable)) {
-								issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
-							}
-						}
-					}
-				}
-			}
-		}
+//		for (final Runnable runnable : runnables) {
+//			for (final RunnableItem item : runnable.getRunnableItems()) {
+//				if (item instanceof ServerCall) {
+//					final ServerCall serverCall = (ServerCall) item;
+//					final Runnable serverRunnable = serverCall.getServerRunnable();
+//					if (null == serverRunnable) {
+//						issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
+//					} else {
+//						if (false == runnables.contains(serverRunnable)) {
+//							issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
+//						} else {
+//							if (serverRunnable.equals(runnable)) {
+//								issue(serverCall, AmaltheaPackage.eINSTANCE.getServerCall_ServerRunnable());
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	
