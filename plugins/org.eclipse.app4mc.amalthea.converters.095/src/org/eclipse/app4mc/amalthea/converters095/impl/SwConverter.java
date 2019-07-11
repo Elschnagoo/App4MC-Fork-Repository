@@ -16,15 +16,13 @@
 package org.eclipse.app4mc.amalthea.converters095.impl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.log4j.LogManager;
 import org.eclipse.app4mc.amalthea.converters.common.base.ICache;
 import org.eclipse.app4mc.amalthea.converters095.utils.HelperUtils_094_095;
-import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -38,8 +36,7 @@ public class SwConverter extends AbstractConverter {
 	@Override
 	public void convert(final File file, final Map<File, Document> map, final List<ICache> caches) throws Exception {
 
-		this.logger.info(
-				"Migration from 0.9.4 to 0.9.5 : Executing Sw converter for model file : " + file.getName());
+		this.logger.info("Migration from 0.9.4 to 0.9.5 : Executing Sw converter for model file : " + file.getName());
 
 		basicConvert(file, map, caches);
 	}
@@ -50,16 +47,108 @@ public class SwConverter extends AbstractConverter {
 		if (document == null) {
 			return;
 		}
-		
+
 		final Element rootElement = document.getRootElement();
-		
-		update_Tasks(rootElement);
-		
+
+		update_GraphEntries(rootElement);
+		update_CallSequences(rootElement);
+
+		update_RunnableItems(rootElement);
+		update_RunnableModeSwitches(rootElement);
+		update_RunnableProbabilitySwitches(rootElement);
 	}
-	
-	private void update_Tasks(final Element rootElement) { 
-		
+
+	private void update_GraphEntries(final Element rootElement) {
+		final String xpath = "./swModel/tasks/callGraph/graphEntries";
+
+		final List<Element> entries = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_095("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element graphEntry : entries) {
+			// graphEntries -> items
+			graphEntry.setName("items");
+		}
 	}
- 
+
+	private void update_CallSequences(final Element rootElement) {
+		final String xpath = "./swModel/tasks//*[@xsi:type=\"am:CallSequence\"]";
+
+		final List<Element> callSequences = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_095("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element cs : callSequences) {
+			// CallSequence -> Group
+			cs.setAttribute("type", "am:Group", this.helper.getGenericNS("xsi"));
+
+			// set name="CallSequence"
+			String oldName = cs.getAttributeValue("name");
+			if (oldName == null || oldName.isEmpty()) {
+				cs.setAttribute("name", "CallSequence");
+			}
+
+			// set ordered="true"
+			cs.setAttribute("ordered", "true");
+
+			for (Element call : cs.getChildren()) {
+				// calls -> items
+				call.setName("items");
+
+				// am:TaskRunnableCall -> am:RunnableCall
+				String callType = call.getAttributeValue("type", this.helper.getGenericNS("xsi"));
+				if (callType.equals("am:TaskRunnableCall")) {
+					call.setAttribute("type", "am:RunnableCall", this.helper.getGenericNS("xsi"));
+				}
+			}
+		}
+	}
+
+	private void update_RunnableItems(final Element rootElement) {
+		final String xpath = "./swModel/runnables";
+
+		final List<Element> runnables = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_095("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element runnable : runnables) {
+			// create call graph
+			Element callGraph = new Element("callGraph");
+			runnable.addContent(callGraph);
+
+			// copy list of runnable items !
+			List<Element> runnableItems = new ArrayList<>(runnable.getChildren("runnableItems"));
+
+			for (Element item : runnableItems) {
+				// runnableItems -> items
+				item.setName("items");
+
+				// move to callGraph
+				item.detach();
+				callGraph.addContent(item);
+			}
+		}
+	}
+
+	private void update_RunnableModeSwitches(final Element rootElement) {
+		final String xpath = "./swModel/runnables//*[@xsi:type=\"am:RunnableModeSwitch\"]";
+
+		final List<Element> switches = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_095("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element elem : switches) {
+			// RunnableModeSwitch -> ModeSwitch
+			elem.setAttribute("type", "am:ModeSwitch", this.helper.getGenericNS("xsi"));
+		}
+	}
+
+	private void update_RunnableProbabilitySwitches(final Element rootElement) {
+		final String xpath = "./swModel/runnables//*[@xsi:type=\"am:RunnableProbabilitySwitch\"]";
+
+		final List<Element> switches = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_095("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element elem : switches) {
+			// RunnableProbabilitySwitch -> ProbabilitySwitch
+			elem.setAttribute("type", "am:ProbabilitySwitch", this.helper.getGenericNS("xsi"));
+		}
+	}
 
 }
