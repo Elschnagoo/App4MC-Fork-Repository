@@ -340,27 +340,19 @@ class TABasicModelValidatorTests {
 			softwareModel [
 				runnable [
 					name = "r_ok"
-					ticks[
-						^default = createDVBetaD(0.5d, 0.5d, 20l, 40l)
-					]
+					callGraph [ticks [^default = createDVBetaD(0.5d, 0.5d, 20l, 40l)]]
 				]
 				runnable [
 					name = "r_alphaZero"
-					ticks[
-						^default = createDVBetaD(0d, 0.5d, 20l, 40l)
-					]
+					callGraph [ticks [^default = createDVBetaD(0d, 0.5d, 20l, 40l)]]
 				]
 				runnable [
 					name = "r_betaZero"
-					ticks[
-						^default = createDVBetaD(0.5d, 0d, 20l, 40l)
-					]
+					callGraph [ticks [^default = createDVBetaD(0.5d, 0d, 20l, 40l)]]
 				]
 				runnable [
 					name = "r_alphabetaZero"
-					ticks[
-						^default = createDVBetaD(0d, 0d, 20l, 40l)
-					]
+					callGraph [ticks [^default = createDVBetaD(0d, 0d, 20l, 40l)]]
 				]
 			]
 		]
@@ -380,21 +372,15 @@ class TABasicModelValidatorTests {
 			softwareModel[
 				runnable[
 					name = "r_ok"
-					ticks[
-						^default = createDVGaussD(30d, 10d, 20, 40)
-					]
+					callGraph [ticks [^default = createDVGaussD(30d, 10d, 20, 40)]]
 				]
 				runnable[
 					name = "r_meanLess"
-					ticks[
-						^default = createDVGaussD(10d, 10d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVGaussD(10d, 10d, 20, 40)]] 
 				]
 				runnable[
 					name = "r_meanMore"
-					ticks[
-						^default = createDVGaussD(50d, 10d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVGaussD(50d, 10d, 20, 40)]] 
 				]
 			]
 		]
@@ -412,15 +398,11 @@ class TABasicModelValidatorTests {
 			softwareModel[
 				runnable[
 					name = "r_ok"
-					ticks[
-						^default = createDVUniformD(20, 40)
-					]
+					callGraph [ticks [^default = createDVUniformD(20, 40)]]
 				]
 				runnable[
 					name = "r_more"
-					ticks[
-						^default = createDVUniformD(20, 10)
-					] 
+					callGraph [ticks [^default = createDVUniformD(20, 10)]] 
 				]
 			]
 		]
@@ -436,21 +418,15 @@ class TABasicModelValidatorTests {
 			softwareModel[
 				runnable[
 					name = "r_ok"
-					ticks[
-						^default = createDVStatistics(30d, 20, 40)
-					]
+					callGraph [ticks [^default = createDVStatistics(30d, 20, 40)]]
 				]
 				runnable[
 					name = "r_avgLess"
-					ticks[
-						^default = createDVStatistics(10d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVStatistics(10d, 20, 40)]] 
 				]
 				runnable[
 					name = "r_avgMore"
-					ticks[
-						^default = createDVStatistics(50d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVStatistics(50d, 20, 40)]] 
 				]
 			]
 		]
@@ -468,21 +444,15 @@ class TABasicModelValidatorTests {
 			softwareModel[
 				runnable[
 					name = "r_ok"
-					ticks[
-						^default = createDVWeibullED(30d, 1d, 20, 40)
-					]
+					callGraph [ticks [^default = createDVWeibullED(30d, 1d, 20, 40)]]
 				]
 				runnable[
 					name = "r_avgLess"
-					ticks[
-						^default = createDVWeibullED(10d, 1d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVWeibullED(10d, 1d, 20, 40)]] 
 				]
 				runnable[
 					name = "r_avgMore"
-					ticks[
-						^default = createDVWeibullED(50d, 1d, 20, 40)
-					] 
+					callGraph [ticks [^default = createDVWeibullED(50d, 1d, 20, 40)]] 
 				]
 			]
 		]
@@ -500,15 +470,11 @@ class TABasicModelValidatorTests {
 			softwareModel[
 				runnable[
 					name = "r_ok"
-					ticks[
-						^default = createDVGaussD(30d, 10d, 20, 40)
-					]
+					callGraph [ticks [^default = createDVGaussD(30d, 10d, 20, 40)]]
 				]
 				runnable[
 					name = "r_more"
-					ticks[
-						^default = createDVGaussD(30d, 10d, 20, 10)
-					] 
+					callGraph [ticks [^default = createDVGaussD(30d, 10d, 20, 10)]] 
 				]
 			]
 		]

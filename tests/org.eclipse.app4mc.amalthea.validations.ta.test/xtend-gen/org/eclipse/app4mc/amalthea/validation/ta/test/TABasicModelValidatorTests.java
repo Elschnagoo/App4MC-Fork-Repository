@@ -19,6 +19,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
@@ -488,34 +489,46 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVBetaD(0.5d, 0.5d, 20l, 40l));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVBetaD(0.5d, 0.5d, 20l, 40l));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_alphaZero");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVBetaD(0d, 0.5d, 20l, 40l));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVBetaD(0d, 0.5d, 20l, 40l));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_betaZero");
-          final Procedure1<Ticks> _function_5 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVBetaD(0.5d, 0d, 20l, 40l));
+          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_6 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVBetaD(0.5d, 0d, 20l, 40l));
+            };
+            this.b3.ticks(it_3, _function_6);
           };
-          this.b3.ticks(it_2, _function_5);
+          this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_5 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_alphabetaZero");
-          final Procedure1<Ticks> _function_6 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVBetaD(0d, 0d, 20l, 40l));
+          final Procedure1<CallGraph> _function_6 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_7 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVBetaD(0d, 0d, 20l, 40l));
+            };
+            this.b3.ticks(it_3, _function_7);
           };
-          this.b3.ticks(it_2, _function_6);
+          this.b3.callGraph(it_2, _function_6);
         };
         this.b3.runnable(it_1, _function_5);
       };
@@ -545,26 +558,35 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVGaussD(30d, 10d, 20, 40));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVGaussD(30d, 10d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_meanLess");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVGaussD(10d, 10d, 20, 40));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVGaussD(10d, 10d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_meanMore");
-          final Procedure1<Ticks> _function_5 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVGaussD(50d, 10d, 20, 40));
+          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_6 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVGaussD(50d, 10d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_6);
           };
-          this.b3.ticks(it_2, _function_5);
+          this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
       };
@@ -592,18 +614,24 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVUniformD(20, 40));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVUniformD(20, 40));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_more");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVUniformD(20, 10));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVUniformD(20, 10));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
       };
@@ -629,26 +657,35 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVStatistics(30d, 20, 40));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVStatistics(30d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_avgLess");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVStatistics(10d, 20, 40));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVStatistics(10d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_avgMore");
-          final Procedure1<Ticks> _function_5 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVStatistics(50d, 20, 40));
+          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_6 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVStatistics(50d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_6);
           };
-          this.b3.ticks(it_2, _function_5);
+          this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
       };
@@ -676,26 +713,35 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVWeibullED(30d, 1d, 20, 40));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVWeibullED(30d, 1d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_avgLess");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVWeibullED(10d, 1d, 20, 40));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVWeibullED(10d, 1d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_avgMore");
-          final Procedure1<Ticks> _function_5 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVWeibullED(50d, 1d, 20, 40));
+          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_6 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVWeibullED(50d, 1d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_6);
           };
-          this.b3.ticks(it_2, _function_5);
+          this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
       };
@@ -723,18 +769,24 @@ public class TABasicModelValidatorTests {
       final Procedure1<SWModel> _function_1 = (SWModel it_1) -> {
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_2 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_ok");
-          final Procedure1<Ticks> _function_3 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVGaussD(30d, 10d, 20, 40));
+          final Procedure1<CallGraph> _function_3 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_4 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVGaussD(30d, 10d, 20, 40));
+            };
+            this.b3.ticks(it_3, _function_4);
           };
-          this.b3.ticks(it_2, _function_3);
+          this.b3.callGraph(it_2, _function_3);
         };
         this.b3.runnable(it_1, _function_2);
         final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
           it_2.setName("r_more");
-          final Procedure1<Ticks> _function_4 = (Ticks it_3) -> {
-            it_3.setDefault(this.createDVGaussD(30d, 10d, 20, 10));
+          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
+            final Procedure1<Ticks> _function_5 = (Ticks it_4) -> {
+              it_4.setDefault(this.createDVGaussD(30d, 10d, 20, 10));
+            };
+            this.b3.ticks(it_3, _function_5);
           };
-          this.b3.ticks(it_2, _function_4);
+          this.b3.callGraph(it_2, _function_4);
         };
         this.b3.runnable(it_1, _function_3);
       };

@@ -17,7 +17,9 @@ package org.eclipse.app4mc.amalthea.validations.ta.todo;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
@@ -35,6 +37,7 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.ServerCall;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.SingleActivation;
 import org.eclipse.app4mc.amalthea.model.TaskScheduler;
@@ -45,248 +48,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class SWModelValidatorImpl {
-
-	/*
-	 * Checks the parameter size of {@link Label}. The parameter must not be set to zero or lower.
-	 * If this is the case, it will be handled as an error.
-	 */
-	public void checkLabelSize(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Label) {
-				final Label label = (Label) elem;
-				final DataSize size = label.getSize();
-				if (null != size) {
-					BigInteger value = size.getValue();
-					if(null == value) {
-						issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
-					} else {
-						if( false == (0 < value.compareTo(BigInteger.ZERO))) {
-							issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
-						}
-					}
-					DataSizeUnit unit = size.getUnit();
-					if(null == unit) {
-						issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
-					} else {
-						if(DataSizeUnit._UNDEFINED_ == unit) {
-							issue(label, AmaltheaPackage.eINSTANCE.getAbstractMemoryElement_Size());
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks the reference to a Runnable of {@link TaskRunnableCall}. The reference must be set and reference an existing Runnable.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkRunnableReferenceOfTaskRunnableCall(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<RunnableCall> runnableCalls = new HashSet<>();
-		final Set<Runnable> runnables = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof RunnableCall) {
-				final RunnableCall runnableCall = (RunnableCall) elem;
-				runnableCalls.add(runnableCall);
-			} else if (elem instanceof SWModel) {
-				final SWModel swModel = (SWModel) elem;
-
-				final Collection<Runnable> runnableList = swModel.getRunnables();
-				if (null != runnableList) {
-					for (final Runnable runnable : runnableList) {
-						if (null != runnable) {
-							runnables.add(runnable);
-						}
-					}
-				}
-			}
-		}
-
-		for (final RunnableCall runnableCall : runnableCalls) {
-			if (null != runnableCall) {
-				final Runnable runnable = runnableCall.getRunnable();
-				if ((null == runnable) || (false == runnables.contains(runnable))) {
-					issue(runnableCall, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks the reference to a Runnable of {@link RunnableCall}. The reference must be set and reference an existing Runnable.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkRunnableReferenceOfRunnableCall(final Amalthea amalthea) {
-
-//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-//		final Map<RunnableCall, Runnable> call2Runnable = new HashMap<>();
-//		final Set<RunnableCall> runnableCalls = new HashSet<>();
-//		final Set<Runnable> runnables = new HashSet<>();
-//
-//		while (amaIter.hasNext()) {
-//			final EObject elem = amaIter.next();
-//			if (elem instanceof Runnable) {
-//				final Runnable runnable = (Runnable) elem;
-//				for (final RunnableItem runnableItem : runnable.getRunnableItems()) {
-//					if (runnableItem instanceof RunnableCall) {
-//						RunnableCall runnableCall = (RunnableCall) runnableItem;
-//						call2Runnable.put(runnableCall, runnable);
-//						if (null != runnableCall) {
-//							runnableCalls.add(runnableCall);
-//						}
-//					}
-//				}
-//			} else if (elem instanceof SWModel) {
-//				final SWModel swModel = (SWModel) elem;
-//
-//				final Collection<Runnable> runnableList = swModel.getRunnables();
-//				if (null != runnableList) {
-//					for (final Runnable runnable : runnableList) {
-//						if (null != runnable) {
-//							runnables.add(runnable);
-//						}
-//					}
-//				}
-//			}
-//		}
-//
-//		for (final RunnableCall runnableCall : runnableCalls) {
-//			if (null != runnableCall) {
-//				final Runnable calledRunnable = runnableCall.getRunnable();
-//				final Runnable callingRunnable = call2Runnable.get(runnableCall);
-//				if ((null == calledRunnable) || (false == runnables.contains(calledRunnable)) || (calledRunnable.equals(callingRunnable))) {
-//					issue(runnableCall, AmaltheaPackage.eINSTANCE.getRunnableCall_Runnable());
-//				}
-//			}
-//		}
-	}
-
-	/*
-	 * Checks the reference to an OsEvent of {@link EventMask}. The reference must be set and reference an existing Runnable.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkOsEventReferenceOfEventMask(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<OsEvent> events = new HashSet<>();
-		final Set<EventMask> eventMasks = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof SWModel) {
-				final SWModel model = (SWModel) elem;
-				for (final OsEvent event : model.getEvents()) {
-					if (null != event) {
-						events.add(event);
-					}
-				}
-			} else if (elem instanceof EventMask) {
-				final EventMask eventMask = (EventMask) elem;
-				eventMasks.add(eventMask);
-			}
-		}
-
-		for (final EventMask eventMask : eventMasks) {
-			if (null != eventMask) {
-				if (true == eventMask.getEvents().isEmpty()) {
-					issue(eventMask, AmaltheaPackage.eINSTANCE.getEventMask_Events());
-				} else {
-					for (final OsEvent event : eventMask.getEvents()) {
-						if ((null == event) || (false == events.contains(event))) {
-							issue(eventMask, AmaltheaPackage.eINSTANCE.getEventMask_Events());
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/*
-	 * Checks, if for each OsEvents in {@link EventMask} of an WaitEvent an according SetEvent is available.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkEventMaskEvents(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<OsEvent> sets = new HashSet<>();
-		final Set<OsEvent> waits = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof SetEvent) {
-				final SetEvent set = (SetEvent) elem;
-				final EventMask eventMask = set.getEventMask();
-				for (final OsEvent event : eventMask.getEvents()) {
-					if (null != event) {
-						sets.add(event);
-					}
-				}
-			} else if (elem instanceof WaitEvent) {
-				final WaitEvent wait = (WaitEvent) elem;
-				final EventMask eventMask = wait.getEventMask();
-				for (final OsEvent event : eventMask.getEvents()) {
-					if (null != event) {
-						waits.add(event);
-					}
-				}
-			}
-		}
-
-		final Set<OsEvent> disjoint = new HashSet<OsEvent>(waits);
-		disjoint.removeAll(sets);
-		for (final OsEvent event : disjoint) {
-			if (null != event) {
-				issue(event, AmaltheaPackage.eINSTANCE.getSWModel_Events(), event.getName());
-			}
-		}
-	}
-
-	/*
-	 * Checks the reference "valueProvider" of {@link ModeSwitch}. The reference must be set and reference an existing ModeLabel.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkModeSwitchValueProvider(final Amalthea amalthea) {
-
-//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-//		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
-//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-//
-//		while (amaIter.hasNext()) {
-//			final EObject elem = amaIter.next();
-//			if (elem instanceof ModeSwitch) {
-//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-//				modeSwitchSet.add(modeSwitch);
-//			} else if (elem instanceof SWModel) {
-//				final SWModel swModel = (SWModel) elem;
-//
-//				final Collection<ModeLabel> labelList = swModel.getModeLabels();
-//				if (null != labelList) {
-//					for (final ModeLabel modeLabel : labelList) {
-//						if (null != modeLabel) {
-//							modeLabelSet.add(modeLabel);
-//						}
-//					}
-//				}
-//			}
-//		}
-//
-//		for (final ModeSwitch modeSwitch : modeSwitchSet) {
-//			if (null != modeSwitch) {
-//				final ModeLabel modeLabel = modeSwitch.getValueProvider();
-//				if ((null == modeLabel) || (false == modeLabelSet.contains(modeLabel))) {
-//					issue(modeSwitch, AmaltheaPackage.eINSTANCE.getModeSwitch_ValueProvider());
-//				}
-//			}
-//		}
-	}
 
 	/*
 	 * Checks the parameter "value" of {@link ModeSwitchEntry}. The same parameter value must not be used multiple times.
@@ -345,130 +106,6 @@ public class SWModelValidatorImpl {
 	}
 
 	/*
-	 * Checks the parameter "value" of {@link ModeSwitchEntry}. The parameter must be set and be conform to the referenced mode.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkModeSwitchEntryValue2(final Amalthea amalthea) {
-//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-//		final Set<ModeSwitch> modeSwitchSet = new HashSet<>();
-//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-//
-//		while (amaIter.hasNext()) {
-//			final EObject elem = amaIter.next();
-//			if (elem instanceof ModeSwitch) {
-//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-//				modeSwitchSet.add(modeSwitch);
-//			} else if (elem instanceof SWModel) {
-//				final SWModel swModel = (SWModel) elem;
-//
-//				final Collection<ModeLabel> labelList = swModel.getModeLabels();
-//				if (null != labelList) {
-//					for (final ModeLabel modeLabel : labelList) {
-//						if (null != modeLabel) {
-//							modeLabelSet.add(modeLabel);
-//						}
-//					}
-//				}
-//			}
-//		}
-
-//		for (final ModeSwitch modeSwitch : modeSwitchSet) {
-//			if (null != modeSwitch) {
-//				for (final ModeSwitchEntry<?> modeSwitchEntry : modeSwitch.getEntries()) {
-//					EList<ModeLiteral> valueList = modeSwitchEntry.getValues();
-//					if (true != valueList.isEmpty()) {
-//						for(ModeLiteral value : valueList) {
-//							if (null == value) {
-//								issue(modeSwitchEntry, AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values());
-//							} else {
-//								final ModeLabel modeLabel = modeSwitch.getValueProvider();
-//								if (null != modeLabel) {
-//									final Mode mode = modeLabel.getMode();
-//									if (null != mode) {
-//										if (false == mode.getLiterals().contains(value)) {
-//											issue(modeSwitchEntry, AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values());
-//										}
-//									}
-//								}
-//							}
-//						}
-//					} else {
-//						issue(modeSwitchEntry, AmaltheaPackage.eINSTANCE.getModeSwitchEntry_Values());
-//					}
-//				}
-//			}
-//		}
-	}
-
-	/*
-	 * Checks the reference "mode" of {@link ModeLabel}. The reference must be set and reference an existing Mode.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkModeLabelMode(final Amalthea amalthea) {
-//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-//		final Set<Mode> modeSet = new HashSet<>();
-//
-//		while (amaIter.hasNext()) {
-//			final EObject elem = amaIter.next();
-//			if (elem instanceof ModeSwitch) {
-//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-//				final ModeLabel modeLabel = modeSwitch.getValueProvider();
-//				modeLabelSet.add(modeLabel);
-//			} else if (elem instanceof SWModel) {
-//				final SWModel swModel = (SWModel) elem;
-//				final Collection<Mode> modeList = swModel.getModes();
-//				if (null != modeList) {
-//					for (final Mode mode : modeList) {
-//						if (null != mode) {
-//							modeSet.add(mode);
-//						}
-//					}
-//				}
-//			}
-//		}
-//
-//		for (final ModeLabel modeLabel : modeLabelSet) {
-//			if (null != modeLabel) {
-//				final Mode mode = modeLabel.getMode();
-//				if ((null == mode) || (false == modeSet.contains(mode))) {
-//					issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_Mode());
-//				}
-//			}
-//		}
-	}
-
-	/*
-	 * Checks the parameter "initialValue" of {@link ModeLabel}. The parameter must be conform to the referenced mode.
-	 * If this is not the case, it will be handled as an error.
-	 */
-	public void checkModeLabelInitialValue(final Amalthea amalthea) {
-//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-//		final Set<ModeLabel> modeLabelSet = new HashSet<>();
-//
-//		while (amaIter.hasNext()) {
-//			final EObject elem = amaIter.next();
-//			if (elem instanceof ModeSwitch) {
-//				final ModeSwitch modeSwitch = (ModeSwitch) elem;
-//				final ModeLabel modeValueProvider = modeSwitch.getValueProvider();
-//				modeLabelSet.add(modeValueProvider);
-//			}
-//		}
-//
-//		for (final ModeLabel modeLabel : modeLabelSet) {
-//			if (null != modeLabel) {
-//				final ModeLiteral initialValue = modeLabel.getInitialValue();
-//				final Mode mode = modeLabel.getMode();
-//				if ((null != mode) && (null != initialValue)) {
-//					if (false == mode.getLiterals().contains(initialValue)) {
-//						issue(modeLabel, AmaltheaPackage.eINSTANCE.getModeLabel_InitialValue());
-//					}
-//				}
-//			}
-//		}
-	}
-
-	/*
 	 * Checks the parameter Offset of {@link Counter}. The parameter must be larger than zero.
 	 * If this is not the case, it will be handled as an error.
 	 */
@@ -492,17 +129,17 @@ public class SWModelValidatorImpl {
 	 * If this is not the case, it will be handled as an error.
 	 */
 	public void checkServerCallServerRunnable(final Amalthea amalthea) {
-
-		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
-		final Set<Runnable> runnables = new HashSet<>();
-
-		while (amaIter.hasNext()) {
-			final EObject elem = amaIter.next();
-			if (elem instanceof Runnable) {
-				final Runnable runnable = (Runnable) elem;
-				runnables.add(runnable);
-			}
-		}
+//
+//		final TreeIterator<EObject> amaIter = amalthea.eAllContents();
+//		final Set<Runnable> runnables = new HashSet<>();
+//
+//		while (amaIter.hasNext()) {
+//			final EObject elem = amaIter.next();
+//			if (elem instanceof Runnable) {
+//				final Runnable runnable = (Runnable) elem;
+//				runnables.add(runnable);
+//			}
+//		}
 //		for (final Runnable runnable : runnables) {
 //			for (final RunnableItem item : runnable.getRunnableItems()) {
 //				if (item instanceof ServerCall) {
