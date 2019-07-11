@@ -14,6 +14,7 @@
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
 import org.eclipse.app4mc.amalthea.model.Channel;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
@@ -22,6 +23,7 @@ import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EnumMode;
 import org.eclipse.app4mc.amalthea.model.EventActivation;
+import org.eclipse.app4mc.amalthea.model.EventMask;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
 import org.eclipse.app4mc.amalthea.model.Group;
 import org.eclipse.app4mc.amalthea.model.ICallGraphItemContainer;
@@ -31,11 +33,13 @@ import org.eclipse.app4mc.amalthea.model.InterProcessTrigger;
 import org.eclipse.app4mc.amalthea.model.Label;
 import org.eclipse.app4mc.amalthea.model.LabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLabel;
+import org.eclipse.app4mc.amalthea.model.ModeLabelAccess;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchDefault;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
 import org.eclipse.app4mc.amalthea.model.NumericMode;
+import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.PeriodicActivation;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitch;
 import org.eclipse.app4mc.amalthea.model.ProbabilitySwitchEntry;
@@ -161,6 +165,12 @@ public class SoftwareBuilder {
 		container.getModeLabels().add(obj);
 		initializer.apply(obj);
 	}
+	
+	public void osEvent(final SWModel container, final Procedure1<OsEvent> initializer) {
+		final OsEvent obj = AmaltheaFactory.eINSTANCE.createOsEvent();
+		container.getEvents().add(obj);
+		initializer.apply(obj);
+	}
 
 	// ********** Mode Literals **********
 
@@ -269,6 +279,36 @@ public class SoftwareBuilder {
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
+	
+	public void eventMask(final ClearEvent clearEvent, final OsEvent...osEvents) {
+		final EventMask eventMask = AmaltheaFactory.eINSTANCE.createEventMask();
+		for(OsEvent osEvent:osEvents) {
+			if (osEvent != null) {
+				eventMask.getEvents().add(osEvent);
+			}
+		}
+		clearEvent.setEventMask(eventMask);
+	}
+	
+	public void eventMask(final WaitEvent waitEvent, final OsEvent...osEvents) {
+		final EventMask eventMask = AmaltheaFactory.eINSTANCE.createEventMask();
+		for(OsEvent osEvent:osEvents) {
+			if (osEvent != null) {
+				eventMask.getEvents().add(osEvent);
+			}
+		}
+		waitEvent.setEventMask(eventMask);
+	}
+	
+	public void eventMask(final SetEvent setEvent, final OsEvent...osEvents) {
+		final EventMask eventMask = AmaltheaFactory.eINSTANCE.createEventMask();
+		for(OsEvent osEvent:osEvents) {
+			if (osEvent != null) {
+				eventMask.getEvents().add(osEvent);
+			}
+		}
+		setEvent.setEventMask(eventMask);
+	}
 
 	// ********** Runnable Parameters **********
 
@@ -293,11 +333,25 @@ public class SoftwareBuilder {
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}
+	
+	public void modeLabelAccess(final ICallGraphItemContainer container, final Procedure1<ModeLabelAccess> initializer) {
+		final ModeLabelAccess obj = AmaltheaFactory.eINSTANCE.createModeLabelAccess();
+		container.getItems().add(obj);
+		initializer.apply(obj);
+	}
 
 	// ********** ICallGraphItemContainer - Items - RunnableCall **********
 
 	public void runnableCall(final ICallGraphItemContainer container, final Procedure1<RunnableCall> initializer) {
 		final RunnableCall obj = AmaltheaFactory.eINSTANCE.createRunnableCall();
+		container.getItems().add(obj);
+		initializer.apply(obj);
+	}
+	
+	// ********** ICallGraphItemContainer - Items - ServerCall **********
+	
+	public void asynchronousServerCall(final ICallGraphItemContainer container, final Procedure1<AsynchronousServerCall> initializer) {
+		final AsynchronousServerCall obj = AmaltheaFactory.eINSTANCE.createAsynchronousServerCall();
 		container.getItems().add(obj);
 		initializer.apply(obj);
 	}

@@ -33,6 +33,7 @@ import org.eclipse.app4mc.validation.core.Severity;
 		TABasicProfile.class,
 		TAConstraintsProfile.class,
 		TAHardwareProfile.class,
+		TASoftwareProfile.class,
 		TAStimuliProfile.class
 	}
 )

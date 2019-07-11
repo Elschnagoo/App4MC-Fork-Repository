@@ -26,7 +26,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		TAHardwareModelValidatorTests.class,
 		TAMiscModelValidatorTests.class,
 		TAStimuliModelValidatorTests.class,
-		SWModelValidatorTests.class })
+		TASoftwareModelValidatorTests.class })
 public class AllTests {
 	// run all tests
 }
