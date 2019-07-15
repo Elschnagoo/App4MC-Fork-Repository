@@ -131,6 +131,8 @@ public class OsConverter extends AbstractConverter {
 		xpathBuffer.append("|");
 		xpathBuffer.append("./osModel/osOverheads/apiOverhead/apiSynchronousServerCallPoint");
 		xpathBuffer.append("|");
+		xpathBuffer.append("./osModel/osOverheads/apiOverhead/apiIocRead");
+		xpathBuffer.append("|");
 		xpathBuffer.append("./osModel/osOverheads/apiOverhead/apiIocWrite");
 		xpathBuffer.append("|");
 		

@@ -110,6 +110,7 @@
         <apiSendMessage xsi:type="am:InstructionsConstant" value="20">
           <fetchStatistic/>
         </apiSendMessage>
+		<apiIocRead xsi:type="am:InstructionsConstant" value="10"/>
       </apiOverhead>
       <isrCategory1Overhead>
         <preExecutionOverhead xsi:type="am:InstructionsDeviation">
